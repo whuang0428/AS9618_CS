@@ -20,7 +20,7 @@ function validate() {
   if (monthlyAssessments.length !== 7) failures.push(`Expected 7 monthly assessments; found ${monthlyAssessments.length}`);
   if (stageReviews.length !== 14) failures.push(`Expected 14 stage reviews; found ${stageReviews.length}`);
   for (const assessment of [...quizzes, ...monthlyAssessments]) {
-    const expected = quizzes.includes(assessment) ? 10 : 24;
+    const expected = quizzes.includes(assessment) ? 10 : 30;
     if (totalMarks(assessment.questions) !== expected) failures.push(`L${assessment.lesson} total is not ${expected}`);
     for (const question of assessment.questions) {
       if (question.points.length !== question.marks) failures.push(`L${assessment.lesson} question has ${question.points.length} points for ${question.marks} marks`);
@@ -71,6 +71,10 @@ ${quizzes.map((entry) => `## Quiz after Lesson ${String(entry.lesson).padStart(3
 
 **Syllabus:** Sections ${entry.sections.join(", ")}
 
+**Assessment objectives:** ${entry.assessmentObjectives.join(", ")}
+
+**Coverage:** Lessons ${String(entry.coveredLessons[0]).padStart(3, "0")}-${String(entry.coveredLessons.at(-1)).padStart(3, "0")}
+
 **Time:** 8-10 minutes
 
 **Total:** 10 marks
@@ -86,14 +90,16 @@ ${entry.questions.map(msMarkdown).join("\n\n")}`).join("\n\n---\n\n")}
 }
 
 function renderMonthly() {
-  return `${intro("Monthly Assessments", "Use these 24-mark checkpoints roughly every 18-20 lessons. Allow 35-45 minutes plus correction time.")}
+  return `${intro("Monthly Assessments", "Use these 30-mark checkpoints roughly every 18-20 lessons. Allow 40 minutes plus correction time.")}
 ${monthlyAssessments.map((entry) => `## Checkpoint at Lesson ${String(entry.lesson).padStart(3, "0")}: ${entry.title}
 
 **Syllabus:** Sections ${entry.sections.join(", ")}
 
-**Time:** 35-45 minutes
+**Assessment objectives:** ${entry.assessmentObjectives.join(", ")}
 
-**Total:** 24 marks
+**Time:** 40 minutes
+
+**Total:** 30 marks
 
 ### Questions
 
@@ -106,12 +112,18 @@ ${entry.questions.map(msMarkdown).join("\n\n")}`).join("\n\n---\n\n")}
 }
 
 function renderReviews() {
-  return `${intro("Stage Reviews", "Each stage review combines retrieval, error correction and 10 marks of timed exam-style practice.")}
+  return `${intro("Stage Reviews", "Each 20-mark stage review combines retrieval, error correction and timed exam-style practice.")}
 ${stageReviews.map((entry) => `## Lesson ${String(entry.lesson).padStart(3, "0")}: ${entry.title}
 
 **Syllabus:** Sections ${entry.sections.join(", ")}
 
-### Retrieval Grid
+**Assessment objectives:** ${entry.assessmentObjectives.join(", ")}
+
+**Time:** 30-35 minutes
+
+**Total:** 20 marks
+
+### Retrieval Grid [6]
 
 ${entry.retrieval.map((entry, index) => `${index + 1}. ${entry.prompt}`).join("\n")}
 
@@ -120,16 +132,18 @@ ${entry.retrieval.map((entry, index) => `${index + 1}. ${entry.prompt}`).join("\
 
 ${entry.retrieval.map((entry, index) => `${index + 1}. ${entry.answer}`).join("\n")}
 
+**Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
+
 </details>
 
-### Error Clinic
+### Error Clinic [4]
 
 ${entry.errors.map((entry, index) => `${index + 1}. Correct this claim: “${entry.claim}”`).join("\n")}
 
 <details>
 <summary>Corrections</summary>
 
-${entry.errors.map((entry, index) => `${index + 1}. ${entry.correction}`).join("\n")}
+${entry.errors.map((entry, index) => `${index + 1}. ${entry.correction}\n   - **B1** identifies the technical error.\n   - **B1** supplies the accurate correction.`).join("\n")}
 
 </details>
 
@@ -145,9 +159,11 @@ ${entry.questions.map(msMarkdown).join("\n\n")}`).join("\n\n---\n\n")}
 
 function assessmentHtml(entry, type, index) {
   const questions = entry.questions.map((question, qIndex) => `<article class="question"><p><strong>Q${qIndex + 1}.</strong> ${escapeHtml(question.prompt)} <span>[${question.marks}]</span></p><details><summary>Show MS</summary><ul>${question.points.map(([code, text]) => `<li><strong>${code}</strong> ${escapeHtml(text)}</li>`).join("")}</ul><p><strong>Guidance:</strong> ${escapeHtml(question.note)}</p></details></article>`).join("");
-  const review = type === "review" ? `<div class="review-grid"><section><h4>Retrieval grid</h4><ol>${entry.retrieval.map((item) => `<li>${escapeHtml(item.prompt)}</li>`).join("")}</ol><details><summary>Show answers</summary><ol>${entry.retrieval.map((item) => `<li>${escapeHtml(item.answer)}</li>`).join("")}</ol></details></section><section><h4>Error clinic</h4><ol>${entry.errors.map((item) => `<li>${escapeHtml(item.claim)}</li>`).join("")}</ol><details><summary>Show corrections</summary><ol>${entry.errors.map((item) => `<li>${escapeHtml(item.correction)}</li>`).join("")}</ol></details></section></div>` : "";
-  const total = type === "quiz" ? 10 : type === "monthly" ? 24 : 10;
-  return `<article class="assessment" data-type="${type}" data-number="${index}"><header><div><p class="eyebrow">${type === "quiz" ? "Short quiz" : type === "monthly" ? "Monthly checkpoint" : "Stage review"}</p><h3>Lesson ${String(entry.lesson).padStart(3, "0")}: ${escapeHtml(entry.title)}</h3></div><span>${total} marks</span></header><p>Sections ${escapeHtml(entry.sections.join(", "))}</p>${review}<div class="questions">${questions}</div></article>`;
+  const review = type === "review" ? `<div class="review-grid"><section><h4>Retrieval grid <span>[6]</span></h4><ol>${entry.retrieval.map((item) => `<li>${escapeHtml(item.prompt)}</li>`).join("")}</ol><details><summary>Show answers</summary><ol>${entry.retrieval.map((item) => `<li>${escapeHtml(item.answer)}</li>`).join("")}</ol><p><strong>Marking:</strong> Award 1 mark for each accurate answer.</p></details></section><section><h4>Error clinic <span>[4]</span></h4><ol>${entry.errors.map((item) => `<li>${escapeHtml(item.claim)}</li>`).join("")}</ol><details><summary>Show corrections</summary><ol>${entry.errors.map((item) => `<li>${escapeHtml(item.correction)} <strong>[2]</strong></li>`).join("")}</ol><p><strong>Marking:</strong> For each claim, award B1 for identifying the error and B1 for the accurate correction.</p></details></section></div><h4>Timed exam practice <span>[10]</span></h4>` : "";
+  const total = type === "quiz" ? 10 : type === "monthly" ? 30 : 20;
+  const timing = type === "quiz" ? "8-10 minutes" : type === "monthly" ? "40 minutes" : "30-35 minutes";
+  const coverage = type === "quiz" ? ` | Lessons ${String(entry.coveredLessons[0]).padStart(3, "0")}-${String(entry.coveredLessons.at(-1)).padStart(3, "0")}` : "";
+  return `<article class="assessment" data-type="${type}" data-number="${index}"><header><div><p class="eyebrow">${type === "quiz" ? "Short quiz" : type === "monthly" ? "Monthly checkpoint" : "Stage review"}</p><h3>Lesson ${String(entry.lesson).padStart(3, "0")}: ${escapeHtml(entry.title)}</h3></div><span>${total} marks</span></header><p>Sections ${escapeHtml(entry.sections.join(", "))} | ${entry.assessmentObjectives.join(", ")} | ${timing}${coverage}</p>${review}<div class="questions">${questions}</div></article>`;
 }
 
 function renderWeb() {

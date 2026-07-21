@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AS9618 Resource Centre</title><link rel="icon" href="data:"><link rel="stylesheet" href="./styles.css"></head>
+<body><header class="topbar"><div><p class="eyebrow">Cambridge AS9618 Computer Science</p><h1>Resource centre</h1></div><a href="../">Course index</a></header>
+<main><section class="intro"><h2>Reference material for teaching and self-study</h2><p>Open a resource when needed. Cambridge pseudocode remains the Paper 2 answer standard; Java is supporting practice only.</p></section><section class="resource-list"><article class="resource-card" id="resource-1"><details open><summary><span>Glossary</span><small>English definitions with Chinese support.</small></summary><div class="resource-content"><h2>Glossary</h2>
+<div class="table-wrap"><table><thead><tr>
+<th>Term</th><th>English Definition</th><th>中文支持</th>
+</tr></thead><tbody>
+<tr><td>abstraction</td><td>Hiding unnecessary detail so the important features of a problem are clearer.</td><td>抽象：隐藏不必要细节，突出核心特征。</td></tr><tr><td>algorithm</td><td>A finite set of ordered steps used to solve a problem.</td><td>算法：解决问题的一组有限、有序步骤。</td></tr><tr><td>array</td><td>A data structure that stores multiple values of the same type under one identifier.</td><td>数组：用一个标识符保存多个同类型值。</td></tr><tr><td>binary</td><td>A base-2 number system using 0 and 1.</td><td>二进制：只使用 0 和 1 的数制。</td></tr><tr><td>compiler</td><td>A translator that converts source code into object code before execution.</td><td>编译器：执行前把源代码翻译成目标代码。</td></tr><tr><td>database</td><td>An organised collection of related data.</td><td>数据库：有组织的相关数据集合。</td></tr><tr><td>encryption</td><td>Transforming data so it cannot be understood without the correct key.</td><td>加密：没有正确密钥就无法理解数据。</td></tr><tr><td>foreign key</td><td>A field that links to the primary key of another table.</td><td>外键：连接到另一张表主键的字段。</td></tr><tr><td>interrupt</td><td>A signal that causes the processor to pause its current task and run a service routine.</td><td>中断：使处理器暂停当前任务并运行服务程序的信号。</td></tr><tr><td>pseudocode</td><td>A language-independent way to express an algorithm.</td><td>伪代码：不依赖具体编程语言来表达算法。</td></tr><tr><td>protocol</td><td>A set of rules for communication between devices.</td><td>协议：设备通信时遵守的规则集合。</td></tr><tr><td>validation</td><td>Checking data is reasonable and follows required rules.</td><td>验证：检查数据是否合理并符合规则。</td></tr>
+</tbody></table></div></div></details></article>
+<article class="resource-card" id="resource-2"><details><summary><span>Pseudocode and Java</span><small>Cambridge exam notation beside supporting Java examples.</small></summary><div class="resource-content"><h2>Cambridge Pseudocode and Java Support Guide</h2>
+<p>Cambridge pseudocode is the exam answer format. Java examples in this course are used to make ideas runnable and testable, not to replace pseudocode.</p>
+<h3>Core Differences</h3>
+<div class="table-wrap"><table><thead><tr>
+<th>Idea</th><th>Cambridge-style pseudocode</th><th>Java support example</th>
+</tr></thead><tbody>
+<tr><td>Assignment</td><td><code>total &lt;- total + 1</code></td><td><code>total = total + 1;</code></td></tr><tr><td>Output</td><td><code>OUTPUT total</code></td><td><code>System.out.println(total);</code></td></tr><tr><td>Selection</td><td><code>IF mark &gt;= 50 THEN ... ENDIF</code></td><td><code>if (mark &gt;= 50) { ... }</code></td></tr><tr><td>Count loop</td><td><code>FOR i &lt;- 1 TO 10 ... NEXT i</code></td><td><code>for (int i = 1; i &lt;= 10; i++) { ... }</code></td></tr><tr><td>Condition loop</td><td><code>WHILE found = FALSE DO ... ENDWHILE</code></td><td><code>while (!found) { ... }</code></td></tr><tr><td>Array access</td><td><code>names[1]</code> or syllabus-approved indexing as taught</td><td><code>names[0]</code> in standard Java zero-based arrays</td></tr>
+</tbody></table></div>
+<h3>Teacher Rule</h3>
+<p>When students write Paper 2 answers, mark for algorithmic clarity and Cambridge notation. Do not let Java punctuation become the main event. Semicolons are not a personality trait.</p>
+<h3>Conversion Routine</h3>
+<ol>
+<li>Write the algorithm in English.</li>
+<li>Convert English into Cambridge pseudocode.</li>
+<li>Only then implement a Java version for testing.</li>
+<li>Compare the trace table from the pseudocode with the Java output.</li>
+</ol></div></details></article>
+<article class="resource-card" id="resource-3"><details><summary><span>Common misconceptions</span><small>Frequent errors and the precise correction.</small></summary><div class="resource-content"><h2>Common Misconceptions Bank</h2>
+<h3>Paper 1</h3>
+<ul>
+<li>&quot;More bits always means better.&quot; Correction: more bits can increase range or precision, but also increases storage and processing needs.</li>
+<li>&quot;HTTPS is a different internet.&quot; Correction: HTTPS is a secure application-layer protocol used over the internet.</li>
+<li>&quot;RAM and storage are the same because both hold data.&quot; Correction: RAM is volatile primary memory; secondary storage is non-volatile.</li>
+<li>&quot;The CPU stores all files.&quot; Correction: the CPU processes instructions; files are stored in secondary storage.</li>
+<li>&quot;Encryption prevents all attacks.&quot; Correction: encryption protects confidentiality, but does not stop weak passwords, phishing, or poor access control.</li>
+<li>&quot;Ethics questions are opinion questions.&quot; Correction: they require balanced, evidence-based evaluation.</li>
+<li>&quot;A foreign key is just another primary key.&quot; Correction: a foreign key references a primary key in another table to create a relationship.</li>
+</ul>
+<h3>Paper 2</h3>
+<ul>
+<li>&quot;Pseudocode must compile.&quot; Correction: pseudocode must communicate the algorithm clearly using Cambridge conventions.</li>
+<li>&quot;Java syntax is automatically acceptable in Paper 2.&quot; Correction: Java is only a support language in this course; exam answers should use Cambridge pseudocode.</li>
+<li>&quot;A trace table is busywork.&quot; Correction: trace tables expose logic errors before code becomes expensive to fix.</li>
+<li>&quot;Testing one normal case is enough.&quot; Correction: robust testing includes normal, boundary, and erroneous data.</li>
+<li>&quot;A procedure and function are the same.&quot; Correction: a function returns a value; a procedure performs a task and may not return a value.</li>
+</ul></div></details></article>
+<article class="resource-card" id="resource-4"><details><summary><span>Marking conventions</span><small>Project rules for point-based Cambridge-style marking.</small></summary><div class="resource-content"><h2>Cambridge-Style Marking Conventions</h2>
+<p>This project uses original questions. It does not reproduce Cambridge past-paper questions or claim that its mark schemes are official.</p>
+<p>Calibration sources:</p>
+<ul>
+<li><a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/" target="_blank" rel="noreferrer">Cambridge 9618 past papers, examiner reports and specimen papers</a></li>
+<li><a href="https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf" target="_blank" rel="noreferrer">Cambridge 9618 syllabus for 2027-2029, Version 2</a></li>
+</ul>
+<h3>Point Marking</h3>
+<ul>
+<li><code>B1</code> is an independent fact, identification, definition or explanation point.</li>
+<li><code>M1</code> is a method or process point. The candidate must show the required operation or stage.</li>
+<li><code>A1</code> is an accurate answer or conclusion. It may depend on an earlier <code>M1</code> where the scheme makes that dependency clear.</li>
+<li><code>FT</code> permits follow-through from a candidate's earlier value only when explicitly stated.</li>
+<li>Each listed point is independently testable. A single vague sentence is not stretched across several marks.</li>
+<li>A slash separates acceptable alternatives for one mark; it does not create additional marks.</li>
+</ul>
+<h3>Wording Rules</h3>
+<ul>
+<li>Use the official syllabus term when the question requires a named concept.</li>
+<li>Allow different wording when it conveys the same precise technical meaning.</li>
+<li>Do not credit a keyword that is contradicted or used without the required explanation.</li>
+<li>Do not credit repetition, mirror statements or the same idea rewritten as a second point.</li>
+<li>For <code>state</code> or <code>identify</code>, do not demand an explanation unless the question asks for one.</li>
+<li>For <code>explain</code>, require a mechanism, reason or cause-consequence link rather than a bare advantage.</li>
+<li>For <code>compare</code>, use matched dimensions; two unrelated descriptions are weaker evidence of comparison.</li>
+<li>For <code>justify</code> or <code>evaluate</code>, require application to the stated scenario and a reasoned decision.</li>
+</ul>
+<h3>Calculation Rules</h3>
+<ul>
+<li>State units in both the question and final answer where relevant.</li>
+<li>Give <code>M1</code> for valid intermediate method stages and <code>A1</code> for the accurate result.</li>
+<li>Permit an alternative valid method that reaches equivalent stages.</li>
+<li>Apply FT only where a later method remains valid using the candidate's earlier value.</li>
+<li>Do not award a correct number in the wrong representation or unit when that distinction is being assessed.</li>
+</ul>
+<h3>Programming and SQL</h3>
+<ul>
+<li>Paper 2 answers use Cambridge pseudocode. Java syntax is not accepted as a substitute when pseudocode is requested.</li>
+<li>Award method points for correct control structure, bounds, conditions and data access before the final output point.</li>
+<li>Minor case or harmless layout differences do not lose marks when meaning is unambiguous.</li>
+<li>SQL keywords are case-insensitive. Credit equivalent valid SQL within the syllabus limit of at most two tables.</li>
+<li>Do not overlook a missing <code>WHERE</code> condition when it changes the operation's scope.</li>
+</ul>
+<h3>Required Guidance</h3>
+<p>Every substantial assessment question should provide at least one explicit instruction such as:</p>
+<ul>
+<li><code>Allow ...</code> for a valid alternative.</li>
+<li><code>Do not accept ...</code> for a predictable but technically incorrect response.</li>
+<li><code>FT ...</code> for a permitted follow-through rule.</li>
+<li><code>Award ... only when ...</code> where dependency or context is required.</li>
+</ul>
+<p>These instructions are local marking guidance modelled on Cambridge conventions. They are not quotations from an official confidential or public mark scheme.</p></div></details></article></section></main></body></html>

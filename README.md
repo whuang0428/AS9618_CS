@@ -8,7 +8,7 @@ Syllabus reference used for this pack: Cambridge International AS & A Level Comp
 
 ## Project Status
 
-All 150 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit maps all 121 AS requirements to direct teaching and assessment evidence. The Stage 3 assessment bank now provides 30 topic-specific quizzes, 7 monthly checkpoints and 14 stage reviews with point-based Cambridge-style marking guidance. Full-page visual review of every lesson remains part of later quality assurance, so the pack is still described as work in progress.
+All 150 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit maps all 121 AS requirements to direct teaching and assessment evidence. The assessment bank provides 30 ten-mark quizzes, 7 thirty-mark monthly checkpoints and 14 twenty-mark stage reviews with point-based Cambridge-style marking guidance. Full-page visual review of every lesson remains part of later quality assurance, so the pack is still described as work in progress.
 
 ## Course Design
 
@@ -25,8 +25,9 @@ All 150 lesson numbers have both a teacher-facing Markdown plan and an interacti
 
 - `course-map.md`: syllabus mapping, pacing, and assessment rhythm.
 - `syllabus-audit.md`: requirement-level coverage evidence, gaps, and fixed repair targets.
+- `stage4-assessment-audit.md`: Stage 4 assessment acceptance criteria and verification evidence.
 - `lessons/`: 150 generated lesson plans undergoing syllabus coverage and content-quality review.
-- `assessments/`: 51 topic-specific quizzes, monthly assessments and stage reviews with answer keys/MS.
+- `assessments/`: 51 topic-specific assessment items: 30 quizzes, 7 monthly checkpoints and 14 stage reviews, all with answer keys/MS.
 - `resources/`: glossary, pseudocode-Java guide, misconception bank, and Cambridge-style MS conventions.
 - `web/`: 150 independent teaching/self-study lesson webpages, a searchable course index, and the interactive assessment bank.
 
@@ -51,6 +52,7 @@ Then open:
 
 - Course web index: <http://127.0.0.1:8769/>
 - Interactive assessment bank: <http://127.0.0.1:8769/assessments/>
+- Resource centre: <http://127.0.0.1:8769/resources/>
 - Example lesson: <http://127.0.0.1:8769/lesson-001/>
 
 Each webpage is self-contained in its own `web/lesson-XXX/` folder and uses local answer/MS toggles rather than a global student/teacher view.

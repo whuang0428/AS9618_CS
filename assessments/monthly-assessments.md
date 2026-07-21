@@ -1,6 +1,6 @@
 # Monthly Assessments
 
-Use these 24-mark checkpoints roughly every 18-20 lessons. Allow 35-45 minutes plus correction time.
+Use these 30-mark checkpoints roughly every 18-20 lessons. Allow 40 minutes plus correction time.
 
 All questions are original Cambridge-style practice, not copied past-paper questions. Wording and marking guidance are calibrated against the [official Cambridge 9618 past-papers and mark-schemes page](https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/) and the [2027-2029 syllabus](https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf).
 
@@ -18,9 +18,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Syllabus:** Sections 1, 2
 
-**Time:** 35-45 minutes
+**Assessment objectives:** AO1, AO2
 
-**Total:** 24 marks
+**Time:** 40 minutes
+
+**Total:** 30 marks
 
 ### Questions
 
@@ -28,6 +30,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 2. A 640 x 480 bitmap has 16-bit colour depth. Calculate its uncompressed pixel data in MiB. **[6]**
 3. A school connects two buildings. Compare fibre-optic cable with a wireless microwave link and recommend one. **[6]**
 4. Describe how a browser uses a URL, DNS, IP addressing and network devices to request a web page from a remote server. **[8]**
+5. A music service supplies photographic album covers and recorded songs on demand. Explain suitable representation, compression and streaming choices. **[6]**
 
 ### Answer Key / Mark Scheme
 
@@ -75,15 +78,28 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Guidance:** Do not accept that DNS stores the page or that MAC addresses route end-to-end across the internet.
 
+#### Q5 [6]
+
+- **B1** album photograph is represented as a bitmap/pixels
+- **B1** lossy image compression can reduce size with acceptable visual loss
+- **B1** sound is represented by samples with sampling rate and resolution
+- **B1** lossy audio compression can remove less perceptible data to reduce bit rate
+- **B1** on-demand streaming begins before the complete file is downloaded
+- **B1** buffer stores arriving data to absorb rate variation and reduce playback interruption
+
+**Guidance:** Do not award generic 'compress it' or 'stream it' without a representation or mechanism.
+
 ---
 
 ## Checkpoint at Lesson 040: Communication and hardware
 
 **Syllabus:** Sections 2, 3
 
-**Time:** 35-45 minutes
+**Assessment objectives:** AO1, AO2
 
-**Total:** 24 marks
+**Time:** 40 minutes
+
+**Total:** 30 marks
 
 ### Questions
 
@@ -91,6 +107,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 2. Describe the principal operation of a laser printer from page data to fused output. **[6]**
 3. A greenhouse uses temperature sensors and fans. Describe the control loop and explain why a buffer may be needed when readings are sent to a slower storage device. **[6]**
 4. Recommend hardware for a portable wildlife-monitoring station and justify choices for input, processing, storage, output/communication and reliability. **[8]**
+5. A warehouse alarm should sound when Smoke is detected OR when Door is open while Armed is true. Construct the logic and explain how it controls the alarm. **[6]**
 
 ### Answer Key / Mark Scheme
 
@@ -138,15 +155,28 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Guidance:** Do not award a list of devices without scenario-linked reasons.
 
+#### Q5 [6]
+
+- **B1** identifies Door AND Armed sub-expression
+- **B1** combines Smoke OR (Door AND Armed)
+- **A1** correct Boolean expression/output label
+- **B1** AND gate output is 1 only when Door and Armed are both 1
+- **B1** OR gate output is 1 when smoke or the armed-door condition is 1
+- **B1** logic output drives an actuator such as siren through the control system
+
+**Guidance:** Allow an equivalent correctly labelled circuit; do not replace the required AND with OR.
+
 ---
 
 ## Checkpoint at Lesson 060: Processor fundamentals and system software
 
 **Syllabus:** Sections 4, 5
 
-**Time:** 35-45 minutes
+**Assessment objectives:** AO1, AO2
 
-**Total:** 24 marks
+**Time:** 40 minutes
+
+**Total:** 30 marks
 
 ### Questions
 
@@ -154,6 +184,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 2. Trace these operations: ACC starts at 12; ADD #5; SUB #3; LSL 1. State ACC after each instruction and the final 8-bit binary value. **[6]**
 3. Explain the two passes of an assembler and how a forward reference is resolved. **[6]**
 4. A team is developing a Java application. Explain how the OS, compiler/JVM, IDE and DLL/library support development and execution. **[8]**
+5. Describe how the processor handles an interrupt from an input device and then resumes the interrupted program. **[6]**
 
 ### Answer Key / Mark Scheme
 
@@ -201,15 +232,28 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Guidance:** Credit only correctly attributed roles; do not award a product-name list.
 
+#### Q5 [6]
+
+- **B1** interrupt request is raised/detected
+- **B1** processor completes the current instruction and checks priority/enabled state
+- **B1** current register state/return address is saved
+- **B1** interrupt service routine address is loaded and ISR executes
+- **B1** saved state is restored
+- **B1** execution resumes at the saved next instruction
+
+**Guidance:** Do not accept that the interrupted program restarts from its first instruction.
+
 ---
 
 ## Checkpoint at Lesson 080: Security, ethics and database foundations
 
 **Syllabus:** Sections 6, 7, 8
 
-**Time:** 35-45 minutes
+**Assessment objectives:** AO1, AO2
 
-**Total:** 24 marks
+**Time:** 40 minutes
+
+**Total:** 30 marks
 
 ### Questions
 
@@ -217,6 +261,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 2. Describe how a digital signature is created and checked. **[6]**
 3. A company deploys AI recruitment software. Explain two ethical risks and one control for each. **[6]**
 4. Design a relational database for members borrowing books. Identify tables/keys, explain referential integrity and write one query listing overdue member names. **[8]**
+5. A school must choose an open-source or proprietary licence for examination software. Evaluate the choice. **[6]**
 
 ### Answer Key / Mark Scheme
 
@@ -264,15 +309,28 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Guidance:** Allow an equivalent normalised design; do not require a particular table name.
 
+#### Q5 [6]
+
+- **B1** open-source code may be inspected/modified under licence terms
+- **B1** open-source support/accountability may depend on supplier/community arrangements
+- **B1** proprietary product may provide contracted support/certified updates
+- **B1** proprietary licence restricts copying/modification and may add cost/vendor dependence
+- **B1** copyright and licence conditions still apply to either model
+- **A1** balanced recommendation linked to reliability, security and examination context
+
+**Guidance:** Do not award a product preference without developed licence and context reasoning.
+
 ---
 
 ## Checkpoint at Lesson 100: Paper 1 review and algorithm design
 
 **Syllabus:** Sections 1-9
 
-**Time:** 35-45 minutes
+**Assessment objectives:** AO1, AO2, AO3
 
-**Total:** 24 marks
+**Time:** 40 minutes
+
+**Total:** 30 marks
 
 ### Questions
 
@@ -280,6 +338,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 2. Explain how an interrupt from an input device is handled by the processor. **[6]**
 3. Use stepwise refinement to design an algorithm that inputs ten valid marks and outputs the mean and highest mark. **[6]**
 4. A school replaces a file-based student system with a relational DBMS. Explain four benefits and four mechanisms/features that produce them. **[8]**
+5. A networked temperature-control system sends readings to a server. Explain six features from sensing to secure communication. **[6]**
 
 ### Answer Key / Mark Scheme
 
@@ -327,15 +386,28 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Guidance:** Do not award vague benefits without a DBMS mechanism.
 
+#### Q5 [6]
+
+- **B1** sensor measures temperature and converts/provides a digital reading
+- **B1** processor compares reading with a stored threshold
+- **B1** actuator is changed and feedback readings continue
+- **B1** buffer temporarily stores readings when transmission/storage rates differ
+- **B1** packets use destination IP/routing to reach the server
+- **B1** encryption/authentication protects transmitted data or access
+
+**Guidance:** Do not award six disconnected device names without their roles in the system.
+
 ---
 
 ## Checkpoint at Lesson 120: Algorithms and data structures
 
 **Syllabus:** Sections 9, 10
 
-**Time:** 35-45 minutes
+**Assessment objectives:** AO2, AO3
 
-**Total:** 24 marks
+**Time:** 40 minutes
+
+**Total:** 30 marks
 
 ### Questions
 
@@ -343,6 +415,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 2. Trace one full ascending bubble-sort pass through [7,3,5,2] and state whether another pass is required. **[6]**
 3. Compare an array-based stack, queue and linked list for undo history, print jobs and an editable playlist. **[6]**
 4. Write Cambridge pseudocode that reads records from a text file, stores up to 100 records in an array and uses linear search for a supplied ID. **[8]**
+5. An ordered array contains [4, 9, 15, 21, 30, 44, 57]. Trace binary search for 30 and explain its precondition. **[6]**
 
 ### Answer Key / Mark Scheme
 
@@ -390,15 +463,28 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Guidance:** Use Cambridge file and array conventions; do not accept Java API calls.
 
+#### Q5 [6]
+
+- **M1** first checks middle value 21
+- **M1** discards lower half and checks 44 or equivalent bounds update
+- **M1** continues to/checks 30
+- **A1** finds 30 at the correct declared index/position
+- **B1** array must be sorted in the search order
+- **B1** each comparison can discard half of the remaining search interval
+
+**Guidance:** FT consistent zero-based or one-based indexes when bounds and final position match.
+
 ---
 
 ## Checkpoint at Lesson 140: Programming and software development
 
 **Syllabus:** Sections 11, 12
 
-**Time:** 35-45 minutes
+**Assessment objectives:** AO2, AO3
 
-**Total:** 24 marks
+**Time:** 40 minutes
+
+**Total:** 30 marks
 
 ### Questions
 
@@ -406,6 +492,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 2. Write a procedure Swap(BYREF A : INTEGER, BYREF B : INTEGER) and explain why reference parameters are needed. **[6]**
 3. Create a test plan for a login rule: username must exist and three wrong passwords lock the account. Include normal, abnormal and boundary tests. **[6]**
 4. Compare waterfall, iterative and RAD for a safety-critical medical system. Recommend one approach and explain testing/maintenance implications. **[8]**
+5. Write Cambridge pseudocode to read every line from Results.txt, count lines containing 'PASS', and output the count. State one debugging check. **[6]**
 
 ### Answer Key / Mark Scheme
 
@@ -452,3 +539,14 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **B1** testing and corrective/adaptive/perfective maintenance consequence is developed
 
 **Guidance:** Do not award a model name without balanced context-specific justification.
+
+#### Q5 [6]
+
+- **B1** opens Results.txt FOR READ
+- **B1** initialises PassCount to 0
+- **M1** loops WHILE NOT EOF and reads each line
+- **A1** increments only when the line/value equals 'PASS'
+- **B1** closes file and outputs PassCount after the loop
+- **B1** valid debugging check such as trace count/line values or breakpoint inside loop
+
+**Guidance:** Do not accept Java file APIs or output of the counter only inside the loop.

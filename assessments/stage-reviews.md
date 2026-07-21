@@ -1,6 +1,6 @@
 # Stage Reviews
 
-Each stage review combines retrieval, error correction and 10 marks of timed exam-style practice.
+Each 20-mark stage review combines retrieval, error correction and timed exam-style practice.
 
 All questions are original Cambridge-style practice, not copied past-paper questions. Wording and marking guidance are calibrated against the [official Cambridge 9618 past-papers and mark-schemes page](https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/) and the [2027-2029 syllabus](https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf).
 
@@ -18,7 +18,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Syllabus:** Sections 1
 
-### Retrieval Grid
+**Assessment objectives:** AO1, AO2
+
+**Time:** 30-35 minutes
+
+**Total:** 20 marks
+
+### Retrieval Grid [6]
 
 1. 1 KiB in bytes
 2. Valid BCD nibble range
@@ -37,9 +43,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 5. rate x resolution x duration x channels
 6. long runs of repeated values occur
 
+**Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
+
 </details>
 
-### Error Clinic
+### Error Clinic [4]
 
 1. Correct this claim: “0011 0010 BCD equals denary 50 only because the whole byte is binary 50.”
 2. Correct this claim: “Doubling screen resolution always doubles an image file.”
@@ -48,7 +56,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. It equals 32 because separate BCD nibbles encode digits 3 and 2; whole-byte binary interpretation is a different representation.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 2. Screen resolution does not change stored image pixels; doubling one image dimension doubles pixel data only when other factors stay fixed.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 
 </details>
 
@@ -85,7 +97,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Syllabus:** Sections 2
 
-### Retrieval Grid
+**Assessment objectives:** AO1, AO2
+
+**Time:** 30-35 minutes
+
+**Total:** 20 marks
+
+### Retrieval Grid [6]
 
 1. Device forwarding packets between networks
 2. Device forwarding frames inside a LAN
@@ -104,9 +122,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 5. real-time streaming
 6. star
 
+**Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
+
 </details>
 
-### Error Clinic
+### Error Clinic [4]
 
 1. Correct this claim: “A MAC address routes a packet across the internet.”
 2. Correct this claim: “A private cloud is free public storage with a password.”
@@ -115,7 +135,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. IP addresses support inter-network routing; MAC addresses identify interfaces for local frame delivery.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 2. A private cloud is infrastructure dedicated to one organisation; it may be costly and still use access controls.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 
 </details>
 
@@ -152,7 +176,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Syllabus:** Sections 3
 
-### Retrieval Grid
+**Assessment objectives:** AO1, AO2
+
+**Time:** 30-35 minutes
+
+**Total:** 20 marks
+
+### Retrieval Grid [6]
 
 1. Volatile primary memory
 2. Fast no-refresh cache memory
@@ -171,9 +201,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 5. actuator
 6. XOR
 
+**Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
+
 </details>
 
-### Error Clinic
+### Error Clinic [4]
 
 1. Correct this claim: “A buffer permanently stores output as a backup.”
 2. Correct this claim: “Monitoring and control are identical because both use sensors.”
@@ -182,7 +214,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. A buffer temporarily stores data to manage different producer/consumer rates; it is not a backup.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 2. Monitoring records/displays readings; control additionally changes an actuator and may use feedback.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 
 </details>
 
@@ -219,7 +255,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Syllabus:** Sections 4
 
-### Retrieval Grid
+**Assessment objectives:** AO1, AO2
+
+**Time:** 30-35 minutes
+
+**Total:** 20 marks
+
+### Retrieval Grid [6]
 
 1. Register holding next instruction address
 2. Register holding current instruction
@@ -238,9 +280,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 5. JPE
 6. LSL
 
+**Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
+
 </details>
 
-### Error Clinic
+### Error Clinic [4]
 
 1. Correct this claim: “MAR stores the data fetched from memory.”
 2. Correct this claim: “Pass 1 of an assembler runs the program.”
@@ -249,7 +293,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. MAR stores the address; MDR stores transferred data or instruction.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 2. Pass 1 assigns addresses/builds the symbol table; neither assembler pass executes source.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 
 </details>
 
@@ -286,7 +334,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Syllabus:** Sections 5
 
-### Retrieval Grid
+**Assessment objectives:** AO1, AO2
+
+**Time:** 30-35 minutes
+
+**Total:** 20 marks
+
+### Retrieval Grid [6]
 
 1. Translator for assembly
 2. Whole-program translator
@@ -305,9 +359,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 5. DLL
 6. backup utility
 
+**Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
+
 </details>
 
-### Error Clinic
+### Error Clinic [4]
 
 1. Correct this claim: “An interpreter creates a permanent executable before any statement runs.”
 2. Correct this claim: “Dynamic syntax checking finds every logic error.”
@@ -316,7 +372,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. An interpreter normally translates and executes statement by statement without producing a standalone executable.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 2. It identifies syntax issues while editing; logically valid but incorrect algorithms require testing/debugging.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 
 </details>
 
@@ -353,7 +413,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Syllabus:** Sections 6
 
-### Retrieval Grid
+**Assessment objectives:** AO1, AO2
+
+**Time:** 30-35 minutes
+
+**Total:** 20 marks
+
+### Retrieval Grid [6]
 
 1. Secret monitoring malware
 2. Fake site redirection
@@ -372,9 +438,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 5. verification
 6. checksum
 
+**Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
+
 </details>
 
-### Error Clinic
+### Error Clinic [4]
 
 1. Correct this claim: “Encryption proves received data is accurate.”
 2. Correct this claim: “A presence check confirms a customer ID exists in the customer table.”
@@ -383,7 +451,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. Encryption protects confidentiality; integrity requires hashing/signatures/checks and accuracy may require validation/verification.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 2. Presence checks non-blank input; an existence check looks for a matching stored ID.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 
 </details>
 
@@ -420,7 +492,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Syllabus:** Sections 7
 
-### Retrieval Grid
+**Assessment objectives:** AO1, AO2
+
+**Time:** 30-35 minutes
+
+**Total:** 20 marks
+
+### Retrieval Grid [6]
 
 1. UK computing professional body
 2. International engineering/computing body
@@ -439,9 +517,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 5. shareware
 6. copyright
 
+**Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
+
 </details>
 
-### Error Clinic
+### Error Clinic [4]
 
 1. Correct this claim: “Open-source software has no copyright owner.”
 2. Correct this claim: “If AI is accurate overall, its use is automatically ethical.”
@@ -450,7 +530,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. Copyright remains; the owner grants permissions and conditions through a licence.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 2. Accuracy can vary by group and ethics also involves privacy, transparency, accountability and stakeholder harm.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 
 </details>
 
@@ -487,7 +571,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Syllabus:** Sections 8
 
-### Retrieval Grid
+**Assessment objectives:** AO1, AO2
+
+**Time:** 30-35 minutes
+
+**Total:** 20 marks
+
+### Retrieval Grid [6]
 
 1. Minimal unique identifier
 2. Chosen candidate key
@@ -506,9 +596,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 5. DDL
 6. AVG
 
+**Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
+
 </details>
 
-### Error Clinic
+### Error Clinic [4]
 
 1. Correct this claim: “A foreign key must be unique in the child table.”
 2. Correct this claim: “GROUP BY sorts rows alphabetically.”
@@ -517,7 +609,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. Foreign-key values may repeat; each must match a referenced parent key or valid null.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 2. GROUP BY forms groups for aggregate calculations; ORDER BY controls result ordering.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 
 </details>
 
@@ -554,7 +650,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Syllabus:** Sections 1-8
 
-### Retrieval Grid
+**Assessment objectives:** AO1, AO2
+
+**Time:** 30-35 minutes
+
+**Total:** 20 marks
+
+### Retrieval Grid [6]
 
 1. 2^40-byte prefix
 2. Name-to-address service
@@ -573,9 +675,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 5. JVM
 6. integrity
 
+**Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
+
 </details>
 
-### Error Clinic
+### Error Clinic [4]
 
 1. Correct this claim: “Fibre is better because it is faster.”
 2. Correct this claim: “A DBMS is secure because it has passwords.”
@@ -584,7 +688,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. State the mechanism and context: higher bandwidth/low attenuation/interference resistance, therefore suitable for the stated link.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 2. Explain authentication plus access rights, encryption, audit and backup as separate controls with consequences.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 
 </details>
 
@@ -621,7 +729,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Syllabus:** Sections 9
 
-### Retrieval Grid
+**Assessment objectives:** AO2, AO3
+
+**Time:** 30-35 minutes
+
+**Total:** 20 marks
+
+### Retrieval Grid [6]
 
 1. Removing irrelevant detail
 2. Breaking into modules
@@ -640,9 +754,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 5. diamond
 6. REPEAT...UNTIL
 
+**Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
+
 </details>
 
-### Error Clinic
+### Error Clinic [4]
 
 1. Correct this claim: “Stepwise refinement means writing the final code immediately.”
 2. Correct this claim: “Structured English is ordinary prose with no control rules.”
@@ -651,7 +767,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. It repeatedly decomposes high-level steps until each is precise enough to implement.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 2. It uses controlled statements and indentation to express sequence, selection and iteration unambiguously.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 
 </details>
 
@@ -688,7 +808,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Syllabus:** Sections 10
 
-### Retrieval Grid
+**Assessment objectives:** AO2, AO3
+
+**Time:** 30-35 minutes
+
+**Total:** 20 marks
+
+### Retrieval Grid [6]
 
 1. Same-type indexed collection
 2. Mixed named fields
@@ -707,9 +833,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 5. null
 6. text file
 
+**Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
+
 </details>
 
-### Error Clinic
+### Error Clinic [4]
 
 1. Correct this claim: “Linked-list nodes must be adjacent in an array.”
 2. Correct this claim: “A queue removes the newest item first.”
@@ -718,7 +846,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. Next indexes define logical order; physical array positions can be non-adjacent.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 2. A queue is FIFO and removes from the front; newest items join the rear.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 
 </details>
 
@@ -755,7 +887,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Syllabus:** Sections 11
 
-### Retrieval Grid
+**Assessment objectives:** AO2, AO3
+
+**Time:** 30-35 minutes
+
+**Total:** 20 marks
+
+### Retrieval Grid [6]
 
 1. Assignment operator
 2. Integer quotient operator
@@ -774,9 +912,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 5. function
 6. BYREF
 
+**Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
+
 </details>
 
-### Error Clinic
+### Error Clinic [4]
 
 1. Correct this claim: “IF Score >= 0 OR Score <= 100 validates the range.”
 2. Correct this claim: “A function can return several unrelated values by writing multiple RETURN statements in sequence.”
@@ -785,7 +925,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. Use AND; with OR nearly every number satisfies at least one comparison.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 2. A call returns one value on the executed path; use a record/reference parameters or separate functions for multiple outputs.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 
 </details>
 
@@ -822,7 +966,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Syllabus:** Sections 12
 
-### Retrieval Grid
+**Assessment objectives:** AO2, AO3
+
+**Time:** 30-35 minutes
+
+**Total:** 20 marks
+
+### Retrieval Grid [6]
 
 1. Internal pre-release testing
 2. External selected-user testing
@@ -841,9 +991,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 5. corrective
 6. adaptive
 
+**Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
+
 </details>
 
-### Error Clinic
+### Error Clinic [4]
 
 1. Correct this claim: “A structure chart shows states and events.”
 2. Correct this claim: “Boundary test data means any invalid value.”
@@ -852,7 +1004,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. A structure chart shows module hierarchy/calls and parameters; a state-transition diagram shows states and event-labelled transitions.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 2. Boundary values are at or immediately around a limit; abnormal data is invalid/outside the permitted domain.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 
 </details>
 
@@ -889,7 +1045,13 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 **Syllabus:** Sections 9-12
 
-### Retrieval Grid
+**Assessment objectives:** AO2, AO3
+
+**Time:** 30-35 minutes
+
+**Total:** 20 marks
+
+### Retrieval Grid [6]
 
 1. Linear search stop condition
 2. Bubble-sort comparison
@@ -908,9 +1070,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 5. WHILE
 6. stub
 
+**Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
+
 </details>
 
-### Error Clinic
+### Error Clinic [4]
 
 1. Correct this claim: “Java braces are acceptable Cambridge pseudocode terminators.”
 2. Correct this claim: “An efficient algorithm is always the one with the fewest lines.”
@@ -919,7 +1083,11 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 <summary>Corrections</summary>
 
 1. Use specified Cambridge terminators such as ENDIF, ENDWHILE, NEXT and ENDFUNCTION.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 2. Efficiency concerns operations/time/storage and clarity; fewer source lines can still perform more work or be incorrect.
+   - **B1** identifies the technical error.
+   - **B1** supplies the accurate correction.
 
 </details>
 
