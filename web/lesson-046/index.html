@@ -31,6 +31,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -284,6 +285,52 @@
             <p>These are original Cambridge-style questions. MS wording is strict about assembler vs compiler and assembly vs machine code.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Two-pass assembler and core instruction semantics</h2>
+            <p>Official audit rows: S4.10, S4.13</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.</p>
+            <p>Core mnemonics must be read by effect: LDM immediate; LDD direct; LDI indirect; LDX indexed; LDR relative; MOV register transfer; STO memory store; ADD/SUB/INC/DEC arithmetic; JMP branch; CMP/CMI compare; JPE/JPN conditional branches; IN/OUT I/O; END stops.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Forward label</h3>
+            <p>JMP FINISH appears before FINISH. Pass 1 records FINISH's eventual address in the symbol table; pass 2 substitutes that address when translating JMP.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which pass builds the symbol table?</p>
+              <details><summary>Show answer</summary><p>Pass 1.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What is the difference between LDM #5 and LDD 5?</p>
+              <details><summary>Show answer</summary><p>LDM loads literal 5; LDD loads the contents of memory address 5.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which instruction terminates execution?</p>
+              <details><summary>Show answer</summary><p>END.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Explain why an assembler commonly uses two passes when a program contains a forward reference.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> label is used before its address is known</li>
+                <li><strong>B1</strong> pass 1 assigns addresses/builds the symbol table</li>
+                <li><strong>B1</strong> the forward label address is then available</li>
+                <li><strong>B1</strong> pass 2 translates the instruction/substitutes the address into machine code</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept that pass 1 executes the program; both passes translate source.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

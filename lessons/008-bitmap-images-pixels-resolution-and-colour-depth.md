@@ -1,9 +1,9 @@
 # Lesson 008: Bitmap images: pixels, resolution, and colour depth
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 1  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 1
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students change one parameter at a time: width, height and colour depth. They pr
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Bitmap images: pixels, resolution, and colour depth** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it. For this lesson, make students contrast that mistake with the exact idea of **bitmap images: pixels, resolution, and colour depth**.  
+Misconception: Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it. For this lesson, make students contrast that mistake with the exact idea of **bitmap images: pixels, resolution, and colour depth**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S1.08
+**Focus:** Image resolution and screen resolution
+
+### Direct explanation
+
+- Image resolution is the number of pixels stored in the image, commonly width x height. Screen resolution is the number of physical display pixels available on the screen.
+- They are independent. A high-resolution image shown in a small area may be scaled down; a low-resolution image enlarged across a high-resolution screen may appear pixelated. More image pixels increase uncompressed bitmap size when colour depth is unchanged.
+
+### Worked example
+
+**800 x 600 image on a 1920 x 1080 screen:** The file stores 480,000 image pixels. The screen contains 2,073,600 display pixels. Showing the image at 1600 x 1200 requires scaling; it does not create new captured detail.
+
+### Targeted practice and answers
+
+1. What does 3840 x 2160 describe for a monitor?
+   **Answer:** Its screen resolution: the number of physical display pixels.
+2. Does a higher screen resolution automatically increase an image file's size?
+   **Answer:** No. File size depends on stored image data, not the screen used to view it.
+3. Why can a 200 x 100 image look pixelated when enlarged?
+   **Answer:** The same limited image pixels are spread over more screen pixels; no extra detail is stored.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Distinguish image resolution from screen resolution and explain why increasing image resolution can increase bitmap file size.
+
+- **B1** image resolution is the number/dimensions of pixels stored in the image
+- **B1** screen resolution is the number/dimensions of physical pixels on the display
+- **B1** more image pixels must be stored
+- **B1** therefore more bits are required when colour depth is unchanged
+
+**Strict note:** Do not accept 'resolution means quality' without identifying which pixels are being counted.

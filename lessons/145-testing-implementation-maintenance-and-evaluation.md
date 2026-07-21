@@ -1,9 +1,9 @@
 # Lesson 145: Testing, implementation, maintenance, and evaluation
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 2  
-**Syllabus reference:** Syllabus Section 12  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 2
+**Syllabus reference:** Syllabus Section 12
+**Duration:** 45 minutes
 **Assessment rhythm:** 5-minute quiz
 
 > Java is used only as a supporting implementation language. Cambridge pseudocode remains the exam answer format.
@@ -75,7 +75,7 @@ Students turn a vague client request into three testable requirements and one ac
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Testing, implementation, maintenance, and evaluation** is..., and a common mistake is..."
 
 ## Homework
@@ -90,5 +90,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages. For this lesson, make students contrast that mistake with the exact idea of **testing, implementation, maintenance, and evaluation**.  
+Misconception: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages. For this lesson, make students contrast that mistake with the exact idea of **testing, implementation, maintenance, and evaluation**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S12.05, S12.06
+**Focus:** Testing methods, strategy and test plan
+
+### Direct explanation
+
+- Dry run manually traces code; walkthrough is a structured peer review; white-box derives tests from internal paths; black-box derives tests from specifications. Integration tests combined modules, using a stub to imitate an unavailable called module.
+- Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.
+
+### Worked example
+
+**Test login:** White-box tests cover true/false paths and lockout count; black-box tests valid, invalid and boundary inputs from requirements; a stub returns simulated account results before the database is ready; acceptance confirms the agreed lockout behaviour.
+
+### Targeted practice and answers
+
+1. Which method derives tests from source-code paths?
+   **Answer:** White-box testing.
+2. Who normally performs beta testing?
+   **Answer:** Selected external/end users in realistic use.
+3. What does a stub replace?
+   **Answer:** A called module/component not yet available.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Describe four fields that should appear in a test plan and explain why expected and actual results are both recorded.
+
+- **B1** test identifier/purpose or feature
+- **B1** test data/input and expected result
+- **B1** actual result and pass/fail outcome
+- **B1** comparison shows whether observed behaviour meets the predicted requirement
+
+**Strict note:** Do not accept a list containing only normal/abnormal/boundary; those are test-data categories, not a complete test plan.

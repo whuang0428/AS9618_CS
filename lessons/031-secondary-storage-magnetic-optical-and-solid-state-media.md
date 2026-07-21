@@ -1,9 +1,9 @@
 # Lesson 031: Secondary storage: magnetic, optical, and solid-state media
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 3  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 3
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Teams design a hardware set-up for a specific user: librarian, weather station, 
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Secondary storage: magnetic, optical, and solid-state media** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need. For this lesson, make students contrast that mistake with the exact idea of **secondary storage: magnetic, optical, and solid-state media**.  
+Misconception: Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need. For this lesson, make students contrast that mistake with the exact idea of **secondary storage: magnetic, optical, and solid-state media**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S3.03
+**Focus:** HDD, flash and optical reader/writer operation
+
+### Direct explanation
+
+- An HDD spins magnetic platters while an actuator positions read/write heads; writing changes magnetic orientation and reading senses it. Flash memory stores charge in floating-gate cells and has no moving parts.
+- An optical drive spins a disc and directs a laser at its track. Reflected-light differences are read as data; a writer uses a higher-power laser to change a dye or recording layer.
+
+### Worked example
+
+**Read an HDD block:** The controller moves the head to the correct track, waits for the sector to rotate beneath it, senses magnetic patterns and transfers the decoded bits through a buffer.
+
+### Targeted practice and answers
+
+1. Why is flash storage resistant to mechanical shock?
+   **Answer:** It has no moving read/write head or spinning platter.
+2. What physical property stores HDD data?
+   **Answer:** Magnetic orientation/patterns on a platter.
+3. How does an optical reader distinguish stored data?
+   **Answer:** It detects differences in reflected laser light.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Describe how data is read from a magnetic hard disk drive.
+
+- **B1** platters rotate
+- **B1** actuator positions read/write head over the required track
+- **B1** required sector passes beneath the head
+- **B1** head senses magnetic patterns which are decoded as data
+
+**Strict note:** Do not accept a laser-based explanation for an HDD; lasers apply to optical media.

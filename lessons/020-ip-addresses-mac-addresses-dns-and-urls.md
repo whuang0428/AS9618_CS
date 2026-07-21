@@ -1,9 +1,9 @@
 # Lesson 020: IP addresses, MAC addresses, DNS, and URLs
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 2  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 2
+**Duration:** 45 minutes
 **Assessment rhythm:** 5-minute quiz, monthly assessment checkpoint
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students draw a packet journey for a web request and label where addressing, rou
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **IP addresses, MAC addresses, DNS, and URLs** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance. For this lesson, make students contrast that mistake with the exact idea of **ip addresses, mac addresses, dns, and urls**.  
+Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance. For this lesson, make students contrast that mistake with the exact idea of **ip addresses, mac addresses, dns, and urls**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S2.15
+**Focus:** Complete IP address distinctions
+
+### Direct explanation
+
+- IPv4 uses 32-bit addresses; IPv6 uses 128-bit addresses and provides a much larger address space. A subnet divides a network into logical sections and uses part of the address to identify the network/subnet.
+- A public address is routable on the internet; a private address is used inside a private network and is not directly routed across the public internet. Static addresses remain fixed; dynamic addresses are allocated and may change. An address identifies a network interface at a given time, not a human permanently.
+
+### Worked example
+
+**School web server and laptops:** The externally reachable server may need a stable public address. Laptops can receive dynamic private addresses; this limits direct unsolicited internet reachability but is not, by itself, complete security.
+
+### Targeted practice and answers
+
+1. How many bits are in IPv6?
+   **Answer:** 128 bits.
+2. Why might a server use a static IP address?
+   **Answer:** Clients/DNS need a predictable address for the service.
+3. What is the purpose of subnetting?
+   **Answer:** To divide a network into logical subnetworks and identify which subnet an address belongs to.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Compare public/private and static/dynamic IP addresses, giving one suitable use for a static public address.
+
+- **B1** public address is routable/visible on the internet; private address is for an internal network
+- **B1** static address remains fixed; dynamic address is allocated and may change
+- **B1** static public address suitable for an externally accessible server
+- **B1** fixed address supports reliable location/DNS mapping
+
+**Strict note:** Do not accept that private IP addresses guarantee security; they reduce direct public addressing but other controls are still required.

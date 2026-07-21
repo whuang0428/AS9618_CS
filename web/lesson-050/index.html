@@ -32,6 +32,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -297,6 +298,52 @@
             <p>These are original Cambridge-style questions. MS notes are strict about overlap, throughput, hazards, stalls and branch effects.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Bit masks and logical shifts</h2>
+            <p>Official audit rows: S4.15</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>AND with a mask tests/clears bits: mask 1 preserves a bit and mask 0 clears it. OR sets selected bits because OR with 1 gives 1. XOR toggles selected bits because XOR with 1 reverses the bit.</p>
+            <p>LSL moves bits left, inserts 0 on the right and discards the leftmost bit; without overflow this multiplies an unsigned value by 2. LSR moves bits right, inserts 0 on the left and discards the rightmost bit; for unsigned values this divides by 2 using integer truncation.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Test bit 3</h3>
+            <p>For value 10110100 and mask 00001000, AND gives 00000000, so that bit is 0. OR with the same mask would set it; XOR would toggle it.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which operation sets selected bits without clearing others?</p>
+              <details><summary>Show answer</summary><p>OR with a mask containing 1 at each bit to set.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Calculate 00110110 LSL 1 in eight bits.</p>
+              <details><summary>Show answer</summary><p>01101100.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Calculate 00110111 LSR 1.</p>
+              <details><summary>Show answer</summary><p>00011011; the discarded 1 gives integer truncation.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>The byte 10100100 is ANDed with mask 00000100. State the result and explain what the operation tests.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>M1</strong> performs bitwise AND</li>
+                <li><strong>A1</strong> result 00000100</li>
+                <li><strong>B1</strong> mask isolates the selected bit / clears all other positions</li>
+                <li><strong>B1</strong> non-zero result shows the selected bit was set</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept a Boolean whole-value AND; the operation is applied independently to corresponding bits.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

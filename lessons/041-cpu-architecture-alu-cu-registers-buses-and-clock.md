@@ -1,9 +1,9 @@
 # Lesson 041: CPU architecture: ALU, CU, registers, buses, and clock
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 4  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 4
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students annotate a CPU diagram with arrows for one instruction, then explain th
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **CPU architecture: ALU, CU, registers, buses, and clock** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **cpu architecture: alu, cu, registers, buses, and clock**.  
+Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **cpu architecture: alu, cu, registers, buses, and clock**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S4.03
+**Focus:** Immediate access store (IAS)
+
+### Direct explanation
+
+- The immediate access store is memory directly accessible by the processor for instructions and data currently required. In the stored-program model, instructions and data share this memory and are distinguished by how they are used.
+- IAS is not the same as a CPU register or secondary storage. Registers are smaller locations inside the CPU; secondary storage must supply programs/data to main memory before normal execution.
+
+### Worked example
+
+**Run a stored program:** Instructions and working data are loaded from SSD into the IAS/main memory. The CPU fetches an instruction from that memory into the MDR/CIR, then executes it using registers and the ALU.
+
+### Targeted practice and answers
+
+1. What two kinds of item are held in IAS?
+   **Answer:** Instructions and data currently required.
+2. Is IAS a CPU register?
+   **Answer:** No; it is processor-accessible main memory.
+3. Why must a program on secondary storage be loaded into IAS?
+   **Answer:** The processor fetches executable instructions from directly accessible main memory.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Explain the role of the immediate access store in a stored-program computer.
+
+- **B1** stores instructions currently required
+- **B1** stores data currently required
+- **B1** processor can directly access/fetch from it
+- **B1** instructions and data share memory in Von Neumann architecture
+
+**Strict note:** Do not accept 'IAS is cache' or 'IAS is a register'.

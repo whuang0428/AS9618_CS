@@ -1,9 +1,9 @@
 # Lesson 047: Addressing modes and operand interpretation
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 4  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 4
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students annotate a CPU diagram with arrows for one instruction, then explain th
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Addressing modes and operand interpretation** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **addressing modes and operand interpretation**.  
+Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **addressing modes and operand interpretation**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S4.13
+**Focus:** Address-sensitive load, compare and branch instructions
+
+### Direct explanation
+
+- LDI follows the address stored at the operand location; LDX adds IX to the operand; LDR uses an address relative to the current instruction/PC. CMI compares with an immediate value, while CMP compares using the instruction-set operand definition.
+- JPE branches when the equality result/zero condition is set. JPN branches when the result is negative. Correct traces update PC according to the condition and must distinguish an address from the value stored there.
+
+### Worked example
+
+**Trace a conditional:** After CMI #0, JPN NEG branches only if the accumulator compares as negative. Otherwise execution continues with the next sequential instruction.
+
+### Targeted practice and answers
+
+1. Which load follows a pointer in memory?
+   **Answer:** LDI.
+2. Which load combines its operand with IX?
+   **Answer:** LDX.
+3. When does JPE branch?
+   **Answer:** When the comparison indicates equal / zero condition is set.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Describe the difference between direct and indirect loading, and state how JPN affects execution.
+
+- **B1** direct uses the operand as the address of the value
+- **B1** indirect uses the contents of the operand address as another address
+- **B1** JPN tests the negative condition/status
+- **B1** PC changes to the branch target only when that condition is true
+
+**Strict note:** Do not accept that indirect addressing simply loads the operand as a literal value.

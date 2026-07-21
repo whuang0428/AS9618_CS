@@ -36,6 +36,7 @@
         <a href="#debug">Mistakes</a>
         <a href="#exam">Exam-style</a>
         <a href="#checkpoint">Checkpoint</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -327,6 +328,52 @@ ENDFUNCTION</code></pre>
             <article><h3>Explanation</h3><p>Explain why Java syntax is support only, not the Paper 2 answer format.</p></article>
             <article><h3>Accuracy</h3><p>Check that the algorithm meaning is unchanged after conversion.</p></article>
           </div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Translate descriptions into Cambridge pseudocode</h2>
+            <p>Official audit rows: S11.01</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>To translate a flowchart, follow arrows from Start, convert input/output symbols directly, convert diamonds into IF/CASE or loop conditions, and preserve every branch and reconnection. To translate structured English, identify its controlled verbs and indentation before selecting Cambridge constructs.</p>
+            <p>The answer must be Cambridge pseudocode, not Java: use assignment arrow, THEN/ENDIF, FOR...NEXT, WHILE...ENDWHILE or REPEAT...UNTIL as appropriate. Trace both versions with the same data to confirm equivalence.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Flowchart sum loop</h3>
+            <p>A flowchart sets Total to 0 and repeats input/add until Value = -1. Pseudocode uses Total &lt;- 0; REPEAT; INPUT Value; IF Value &lt;&gt; -1 THEN Total &lt;- Total + Value; ENDIF; UNTIL Value = -1; OUTPUT Total.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> How is a flowchart decision normally translated?</p>
+              <details><summary>Show answer</summary><p>As a selection or loop condition, depending on where arrows reconnect.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What check confirms a translation is equivalent?</p>
+              <details><summary>Show answer</summary><p>Dry-run both with the same inputs and compare outputs/control path.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Should Java braces appear in a Cambridge pseudocode answer?</p>
+              <details><summary>Show answer</summary><p>No; use Cambridge keywords and terminators.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Write Cambridge pseudocode for: input five temperatures, count those below zero, output the count.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> initialises count to 0</li>
+                <li><strong>M1</strong> uses a five-iteration count-controlled loop with INPUT</li>
+                <li><strong>M1</strong> tests Temperature &lt; 0 and increments count</li>
+                <li><strong>A1</strong> outputs count after the loop with coherent Cambridge syntax</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept Java syntax such as int, braces or System.out as Cambridge pseudocode.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

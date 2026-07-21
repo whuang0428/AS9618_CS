@@ -1,9 +1,9 @@
 # Lesson 001: Bits, bytes, nibbles and storage units
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 1  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 1
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students build a storage ladder from bit -> nibble -> byte -> KiB -> MiB, then c
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Bits, bytes, nibbles and storage units** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes. For this lesson, make students contrast that mistake with the exact idea of **bits, bytes, nibbles and storage units**.  
+Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes. For this lesson, make students contrast that mistake with the exact idea of **bits, bytes, nibbles and storage units**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S1.01
+**Focus:** Binary and decimal magnitude prefixes
+
+### Direct explanation
+
+- Binary prefixes use powers of 1024: 1 KiB = 2^10 bytes, 1 MiB = 2^20 bytes, 1 GiB = 2^30 bytes and 1 TiB = 2^40 bytes.
+- Decimal prefixes use powers of 1000: 1 kB = 10^3 bytes, 1 MB = 10^6 bytes, 1 GB = 10^9 bytes and 1 TB = 10^12 bytes. Case and the i in KiB/MiB/GiB/TiB carry meaning.
+
+### Worked example
+
+**2 TiB drive:** 2 TiB = 2 x 2^40 = 2,199,023,255,552 bytes. A 2 TB drive is 2,000,000,000,000 bytes, so the labels are not interchangeable.
+
+### Targeted practice and answers
+
+1. How many bytes are in 4 GiB?
+   **Answer:** 4 x 2^30 = 4,294,967,296 bytes.
+2. Which is larger, 1 TB or 1 TiB?
+   **Answer:** 1 TiB, because 2^40 is greater than 10^12.
+3. Convert 3,000,000 bytes to MB.
+   **Answer:** 3 MB using the decimal prefix mega.
+
+### Exam-style question and MS
+
+**Question (4 marks):** State the number of bytes represented by 1 GiB and explain why 1 GB represents a different number of bytes.
+
+- **B1** 1 GiB = 2^30 bytes / 1,073,741,824 bytes
+- **B1** gibi uses a binary power / multiples of 1024
+- **B1** 1 GB = 10^9 bytes / 1,000,000,000 bytes
+- **B1** giga uses a decimal power / multiples of 1000
+
+**Strict note:** Do not accept 'GiB is bigger' without both numerical definitions.

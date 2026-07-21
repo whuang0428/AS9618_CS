@@ -32,6 +32,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -277,6 +278,52 @@
             <p>These are original questions written in Cambridge style. The mark schemes are strict about table names and key roles.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Foreign keys and referential integrity</h2>
+            <p>Official audit rows: S8.02</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>A foreign key is an attribute in one table that refers to a primary/candidate key in another table. Referential integrity requires every non-null foreign-key value to match an existing referenced key.</p>
+            <p>The rule prevents orphan records. Insert, update and delete operations may be rejected or handled by an explicit cascade/null policy; the DBMS must not silently leave an invalid reference.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Delete a department</h3>
+            <p>If Employee.DepartmentID refers to Department.DepartmentID, deleting a department with employees would break referential integrity unless deletion is rejected or an authorised cascading policy handles dependent rows.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Where is the referenced key stored?</p>
+              <details><summary>Show answer</summary><p>In the parent/referenced table.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What is an orphan record?</p>
+              <details><summary>Show answer</summary><p>A child record whose foreign key has no matching parent key.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Name one valid delete response.</p>
+              <details><summary>Show answer</summary><p>Reject the delete, cascade it, or set nullable foreign keys to null according to defined rules.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Explain how a foreign key and referential integrity maintain a relationship between two tables.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> foreign key is stored in the related/child table</li>
+                <li><strong>B1</strong> references a key in the parent table</li>
+                <li><strong>B1</strong> each foreign-key value must match an existing referenced value (or valid null)</li>
+                <li><strong>B1</strong> prevents orphan/inconsistent relationships</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept that foreign-key values must be unique in the child table.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

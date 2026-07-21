@@ -33,6 +33,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -275,6 +276,52 @@ ENDIF</code></pre>
             <p>These questions target problem analysis, pseudocode planning, tracing and correction. MS uses strict Cambridge-style expectations.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Meaningful identifiers and identifier tables</h2>
+            <p>Official audit rows: S9.04</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>Identifiers should describe their data or role, be unambiguous and follow a consistent naming convention. Avoid unexplained single letters except conventional short counters.</p>
+            <p>An identifier table records each identifier's name, data type and purpose; scope and initial value may be added when useful. It is a design artefact, so entries must match the algorithm that follows.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Ticket calculation</h3>
+            <p>Use TicketCount: INTEGER, number of tickets requested; TicketPrice: REAL, price of one ticket; TotalCost: REAL, TicketCount * TicketPrice; IsMember: BOOLEAN, whether discount applies.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Improve identifier x for the number of absent students.</p>
+              <details><summary>Show answer</summary><p>AbsentCount or NumberAbsent.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What three columns are essential here?</p>
+              <details><summary>Show answer</summary><p>Identifier, data type and purpose/description.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why is Total misleading for several totals?</p>
+              <details><summary>Show answer</summary><p>It does not identify which quantity is totalled.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Construct identifier-table entries for a program storing a student's name, three test marks and calculated mean.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> meaningful identifier and STRING type for name</li>
+                <li><strong>B1</strong> meaningful array identifier with INTEGER/REAL elements for marks</li>
+                <li><strong>B1</strong> meaningful REAL identifier for mean</li>
+                <li><strong>B1</strong> purposes clearly distinguish input values from calculated result</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not award data types without identifiers and purposes; this is an identifier table, not only declarations.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

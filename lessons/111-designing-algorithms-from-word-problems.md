@@ -1,9 +1,9 @@
 # Lesson 111: Designing algorithms from word problems
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 2  
-**Syllabus reference:** Syllabus Section 9  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 2
+**Syllabus reference:** Syllabus Section 9
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 
 > Java is used only as a supporting implementation language. Cambridge pseudocode remains the exam answer format.
@@ -75,7 +75,7 @@ Students solve the same problem twice: first as numbered English steps, then as 
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Designing algorithms from word problems** is..., and a common mistake is..."
 
 ## Homework
@@ -90,5 +90,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **designing algorithms from word problems**.  
+Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **designing algorithms from word problems**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S9.08
+**Focus:** Stepwise refinement
+
+### Direct explanation
+
+- Stepwise refinement starts with a high-level task and repeatedly replaces each complex step with smaller, precise substeps. Refinement stops when each step can be implemented directly and its inputs/outputs are clear.
+- It supports modularity, review and testing because each refinement level preserves the purpose of its parent step. It is not merely adding more prose; each level must reduce ambiguity.
+
+### Worked example
+
+**Process an order:** Level 1: Validate order, calculate total, produce receipt. Refine calculate total into: set Total to 0; for each item validate quantity, add Price * Quantity; apply discount; add tax.
+
+### Targeted practice and answers
+
+1. What is the starting point of stepwise refinement?
+   **Answer:** A high-level solution/task.
+2. When should refinement stop?
+   **Answer:** When steps are precise enough to implement directly.
+3. How does refinement support testing?
+   **Answer:** Smaller modules/steps can be checked independently against defined inputs and outputs.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Apply one level of stepwise refinement to the task 'register a new library member'.
+
+- **B1** captures required member details
+- **B1** validates details / checks existing member
+- **B1** creates and stores a unique member record
+- **B1** outputs confirmation/card or error; steps form a coherent sequence
+
+**Strict note:** Do not award a list of unrelated features; substeps must collectively implement the parent task.

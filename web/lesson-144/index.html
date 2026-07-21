@@ -34,6 +34,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Mistakes</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -281,6 +282,52 @@ for (Booking booking : bookingList) {
             <p>These are original AS-style questions. The mark schemes use Cambridge-style precision, not copied past-paper wording.</p>
           </div>
           <div id="examList" class="exam-list"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Structure charts and state-transition diagrams</h2>
+            <p>Official audit rows: S12.02, S12.03</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>A structure chart shows module hierarchy and calls. Boxes name modules; connecting lines show calling relationships; labelled arrows show data or control parameters passed between modules. Reading top-down supports derivation of procedure headers and calls.</p>
+            <p>A state-transition diagram models states and event/condition-labelled transitions, with a marked start state. It describes how an event changes system state, not the sequence of every program statement.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Door controller</h3>
+            <p>States are Locked and Unlocked. Start at Locked; validCard / unlock moves to Unlocked; timeout / lock returns to Locked. A structure chart could show ControlDoor calling ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid).</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What does a box represent in a structure chart?</p>
+              <details><summary>Show answer</summary><p>A module/procedure/function.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What labels a state transition?</p>
+              <details><summary>Show answer</summary><p>The event and, where needed, a condition/action.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> How can a structure chart guide pseudocode?</p>
+              <details><summary>Show answer</summary><p>Each module becomes a subprogram with shown parameters and calls.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>A system starts LoggedOut. A valid login moves it to LoggedIn; logout returns it to LoggedOut; three invalid attempts move it to Locked. Describe the state-transition diagram.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> states LoggedOut, LoggedIn and Locked</li>
+                <li><strong>B1</strong> start state points to LoggedOut</li>
+                <li><strong>B1</strong> valid login transition to LoggedIn and logout transition back</li>
+                <li><strong>B1</strong> three invalid attempts transition from LoggedOut to Locked</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept a flowchart of processing steps; marks require persistent states and event-labelled transitions.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

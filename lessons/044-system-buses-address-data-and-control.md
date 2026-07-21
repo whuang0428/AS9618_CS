@@ -1,9 +1,9 @@
 # Lesson 044: System buses: address, data, and control
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 4  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 4
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students annotate a CPU diagram with arrows for one instruction, then explain th
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **System buses: address, data, and control** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **system buses: address, data, and control**.  
+Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **system buses: address, data, and control**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S4.06
+**Focus:** USB, HDMI and VGA ports
+
+### Direct explanation
+
+- USB is a general serial interface carrying digital data and often power for peripherals. HDMI carries digital video and audio. VGA carries analogue video and does not carry audio in the standard VGA signal.
+- Port choice depends on signal type and device: keyboard/storage commonly use USB, a modern display/TV uses HDMI, and a legacy analogue monitor/projector may use VGA. An adapter does not make analogue and digital signals identical.
+
+### Worked example
+
+**Connect a laptop to a modern TV:** Use HDMI because one cable can carry digital video and audio. VGA would carry analogue video only, so a separate audio connection would be needed.
+
+### Targeted practice and answers
+
+1. Which port commonly carries both digital video and audio?
+   **Answer:** HDMI.
+2. Which named port carries analogue video?
+   **Answer:** VGA.
+3. Give one extra facility USB may provide besides data.
+   **Answer:** Electrical power to a peripheral.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Compare HDMI and VGA for connecting a computer to a display.
+
+- **B1** HDMI carries digital video
+- **B1** HDMI can also carry audio
+- **B1** VGA carries analogue video
+- **B1** VGA does not normally carry audio / may have lower suitability for modern digital displays
+
+**Strict note:** Do not accept 'HDMI is always higher quality' without the digital/analogue or audio distinction.

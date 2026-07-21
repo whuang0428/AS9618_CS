@@ -1,9 +1,9 @@
 # Lesson 081: Primary keys, foreign keys, and relationships
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 8  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 8
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students design a two-table system for sports equipment loans and label each key
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Primary keys, foreign keys, and relationships** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record. For this lesson, make students contrast that mistake with the exact idea of **primary keys, foreign keys, and relationships**.  
+Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record. For this lesson, make students contrast that mistake with the exact idea of **primary keys, foreign keys, and relationships**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S8.02
+**Focus:** Foreign keys and referential integrity
+
+### Direct explanation
+
+- A foreign key is an attribute in one table that refers to a primary/candidate key in another table. Referential integrity requires every non-null foreign-key value to match an existing referenced key.
+- The rule prevents orphan records. Insert, update and delete operations may be rejected or handled by an explicit cascade/null policy; the DBMS must not silently leave an invalid reference.
+
+### Worked example
+
+**Delete a department:** If Employee.DepartmentID refers to Department.DepartmentID, deleting a department with employees would break referential integrity unless deletion is rejected or an authorised cascading policy handles dependent rows.
+
+### Targeted practice and answers
+
+1. Where is the referenced key stored?
+   **Answer:** In the parent/referenced table.
+2. What is an orphan record?
+   **Answer:** A child record whose foreign key has no matching parent key.
+3. Name one valid delete response.
+   **Answer:** Reject the delete, cascade it, or set nullable foreign keys to null according to defined rules.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Explain how a foreign key and referential integrity maintain a relationship between two tables.
+
+- **B1** foreign key is stored in the related/child table
+- **B1** references a key in the parent table
+- **B1** each foreign-key value must match an existing referenced value (or valid null)
+- **B1** prevents orphan/inconsistent relationships
+
+**Strict note:** Do not accept that foreign-key values must be unique in the child table.

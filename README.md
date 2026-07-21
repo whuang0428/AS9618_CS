@@ -8,7 +8,7 @@ Syllabus reference used for this pack: Cambridge International AS & A Level Comp
 
 ## Project Status
 
-All 150 lesson numbers currently have both a teacher-facing Markdown plan and an interactive webpage. The course is now in syllabus-audit and quality-assurance work: explicit syllabus gaps, supporting assessments and Cambridge-style marking guidance still need to be reviewed before the pack is described as complete.
+All 150 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit now maps all 121 AS requirements to direct teaching and assessment evidence after the Stage 2 content repairs. Broader assessment-bank review and Cambridge-style marking-language calibration remain separate quality-assurance stages, so the pack is still described as work in progress.
 
 ## Course Design
 

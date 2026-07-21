@@ -1,9 +1,9 @@
 # Lesson 016: Network purposes, LAN, WAN, and network topologies
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 2  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 2
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students draw a packet journey for a web request and label where addressing, rou
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Network purposes, LAN, WAN, and network topologies** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance. For this lesson, make students contrast that mistake with the exact idea of **network purposes, lan, wan, and network topologies**.  
+Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance. For this lesson, make students contrast that mistake with the exact idea of **network purposes, lan, wan, and network topologies**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S2.05
+**Focus:** Packet movement through network topologies
+
+### Direct explanation
+
+- In a bus, a transmitted signal travels along the shared backbone and devices inspect it. In a star, each frame travels through the central switch. In a mesh, alternative links can provide several possible routes. A hybrid combines behaviours of its component topologies.
+- Topology justification must connect packet path to the scenario: central failure, cable failure, congestion, expansion and redundancy are consequences of the structure.
+
+### Worked example
+
+**One star cable fails:** Only the device on that cable loses its link; packets between other devices still pass through the central switch. If the switch fails, all attached paths fail.
+
+### Targeted practice and answers
+
+1. Where does a frame pass in a star network?
+   **Answer:** Through the central switch.
+2. Why can a mesh continue after one link fails?
+   **Answer:** Packets may use an alternative link/route.
+3. What shared component carries transmissions in a bus?
+   **Answer:** The backbone cable.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Compare how a packet travels in a star topology and a mesh topology, and explain one reliability difference.
+
+- **B1** star packet/frame passes through a central switch
+- **B1** mesh provides multiple interconnected paths / possible routes
+- **B1** star switch is a single point of failure
+- **B1** mesh can reroute when a link fails
+
+**Strict note:** Do not accept 'mesh is better' without a packet-path or failure consequence.

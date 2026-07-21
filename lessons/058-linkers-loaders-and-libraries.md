@@ -1,9 +1,9 @@
 # Lesson 058: Linkers, loaders, and libraries
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 5  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 5
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students receive development and deployment scenarios and choose compiler, inter
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Linkers, loaders, and libraries** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often say interpreters are 'bad compilers'. Correction: they are different translation approaches with different use cases. For this lesson, make students contrast that mistake with the exact idea of **linkers, loaders, and libraries**.  
+Misconception: Students often say interpreters are 'bad compilers'. Correction: they are different translation approaches with different use cases. For this lesson, make students contrast that mistake with the exact idea of **linkers, loaders, and libraries**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S5.03
+**Focus:** Libraries and dynamically linked library files
+
+### Direct explanation
+
+- A library is a tested collection of reusable code. A dynamically linked library is linked when a program loads or calls it, rather than copying all library code into every executable.
+- DLLs can reduce executable size and memory duplication, support reuse and allow one shared update. They also create dependency and version risks: a missing or incompatible DLL can stop a program loading or change behaviour.
+
+### Worked example
+
+**Three programs use one graphics DLL:** All three executables call the shared graphics code. One loaded copy may be shared in memory and a security fix can update the DLL once, but replacing it with an incompatible version can break all three programs.
+
+### Targeted practice and answers
+
+1. When is a dynamically linked library connected to a program?
+   **Answer:** At load time or run time when required.
+2. Give one storage benefit of dynamic linking.
+   **Answer:** Library code need not be copied into every executable.
+3. Give one DLL risk.
+   **Answer:** A missing/incompatible version can prevent execution or cause faults.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Explain two benefits and one drawback of using a dynamically linked library.
+
+- **B1** shared reusable code / avoids rewriting
+- **B1** smaller executables or reduced duplicate memory/storage
+- **B1** shared library can be updated once
+- **B1** missing/incompatible DLL can stop or alter programs
+
+**Strict note:** Do not accept 'saves space' unless duplication or executable size is explained.

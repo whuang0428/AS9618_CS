@@ -1,9 +1,9 @@
 # Lesson 019: Protocols and layered communication
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 2  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 2
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students draw a packet journey for a web request and label where addressing, rou
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Protocols and layered communication** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance. For this lesson, make students contrast that mistake with the exact idea of **protocols and layered communication**.  
+Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance. For this lesson, make students contrast that mistake with the exact idea of **protocols and layered communication**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S2.11
+**Focus:** Ethernet collisions and CSMA/CD
+
+### Direct explanation
+
+- CSMA/CD means Carrier Sense Multiple Access with Collision Detection. A station listens to the shared medium; if idle it transmits, while continuing to detect a collision.
+- After a collision, stations stop transmitting, send/recognise a jam signal, wait for different random backoff periods and retry. The random delay reduces the chance of another simultaneous attempt.
+
+### Worked example
+
+**Two stations sense an idle cable:** Both may begin before either signal reaches the other. They detect the collision, stop, wait different random periods and the station whose timer expires first retries.
+
+### Targeted practice and answers
+
+1. What is sensed before Ethernet transmission?
+   **Answer:** Whether the shared carrier/medium is idle.
+2. What happens immediately after a collision is detected?
+   **Answer:** Transmission stops and a retry is scheduled after a random backoff.
+3. Why must the delay be random?
+   **Answer:** Different delays reduce repeated simultaneous retransmission.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Describe how CSMA/CD handles two devices attempting to transmit on a shared Ethernet medium.
+
+- **B1** each device listens/senses the carrier before transmitting
+- **B1** transmits when the medium is idle
+- **B1** detects a collision and stops transmission
+- **B1** waits a random/backoff time before retrying
+
+**Strict note:** Do not accept collision avoidance: CSMA/CD detects and responds to a collision after transmission has begun.

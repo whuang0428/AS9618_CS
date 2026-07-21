@@ -247,6 +247,52 @@
           </p>
         </section>
 
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Binary subtraction with signed and unsigned values</h2>
+            <p>Official audit rows: S1.04</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. The fixed bit width must be retained throughout.</p>
+            <p>For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Discard a carry beyond the fixed width, then interpret the remaining sign bit and check the representable range.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: 8-bit 23 - 9</h3>
+            <p>00010111 - 00001001 becomes 00010111 + 11110111 = 1 00001110. Discard the ninth carry: 00001110 is 14.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Calculate 00110110 - 00010100.</p>
+              <details><summary>Show answer</summary><p>00100010, which is 34.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> In 8-bit two's complement, calculate 7 - 12.</p>
+              <details><summary>Show answer</summary><p>00000111 + 11110100 = 11111011, which is -5.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why is a carry beyond bit 8 discarded?</p>
+              <details><summary>Show answer</summary><p>The operation has a fixed 8-bit width; the ninth bit lies outside that representation.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Using 8-bit two's complement, calculate 18 - 27. Show how subtraction is converted to addition.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>M1</strong> 27 is 00011011 and its two's complement is 11100101</li>
+                <li><strong>M1</strong> adds 00010010 + 11100101</li>
+                <li><strong>A1</strong> obtains 11110111</li>
+                <li><strong>A1</strong> interprets the result as -9</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not award the final mark for 247; the result must be interpreted as signed two's complement.</p>
+            </details>
+          </article>
+        </section>
+
         <section class="panel" id="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>

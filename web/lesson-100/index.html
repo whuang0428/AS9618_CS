@@ -33,6 +33,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -290,6 +291,52 @@ ENDIF</code></pre>
             <p>These questions target symbols, pseudocode structure and translation between representations. MS uses strict Cambridge-style expectations.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Structured English, flowcharts and pseudocode conversion</h2>
+            <p>Official audit rows: S9.07</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>Structured English expresses sequence, selection and repetition using controlled natural-language statements and indentation. A flowchart uses standard symbols and arrows; pseudocode uses Cambridge constructs. All three must preserve the same decisions and loop boundaries.</p>
+            <p>Convert by identifying inputs, outputs, conditions and repeated actions before translating notation. Do not translate shapes or sentences word for word while losing control flow.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Validate a mark</h3>
+            <p>Structured English: INPUT Mark; WHILE Mark &lt; 0 OR Mark &gt; 100, OUTPUT error and INPUT Mark; ENDWHILE. The flowchart returns from the invalid decision branch to input; pseudocode uses a pre-condition WHILE loop.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which flowchart symbol represents a decision?</p>
+              <details><summary>Show answer</summary><p>Diamond.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What must remain identical during conversion?</p>
+              <details><summary>Show answer</summary><p>The algorithm's control flow, conditions, inputs and outputs.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why is indentation useful in structured English?</p>
+              <details><summary>Show answer</summary><p>It shows which steps belong inside a selection or loop.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Convert this structured English to pseudocode: input Age; if Age is at least 18 output Adult, otherwise output Minor.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> INPUT Age</li>
+                <li><strong>B1</strong> IF Age &gt;= 18 THEN</li>
+                <li><strong>B1</strong> OUTPUT Adult and ELSE OUTPUT Minor</li>
+                <li><strong>B1</strong> closes with ENDIF / coherent Cambridge syntax</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept two independent IF statements if they can produce contradictory paths; the description requires mutually exclusive alternatives.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

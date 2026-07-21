@@ -1,9 +1,9 @@
 # Lesson 023: Network hardware: switches, routers, access points, and gateways
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 2  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 2
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students draw a packet journey for a web request and label where addressing, rou
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Network hardware: switches, routers, access points, and gateways** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance. For this lesson, make students contrast that mistake with the exact idea of **network hardware: switches, routers, access points, and gateways**.  
+Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance. For this lesson, make students contrast that mistake with the exact idea of **network hardware: switches, routers, access points, and gateways**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S2.09, S2.14
+**Focus:** Required LAN and internet connection hardware
+
+### Direct explanation
+
+- A NIC/WNIC provides wired/wireless network access; a WAP connects wireless devices to a LAN; a switch forwards frames within a LAN; a bridge joins LAN segments; a repeater regenerates a weakened signal; a server provides shared services; cables carry wired signals.
+- A modem converts signals for an access link. Internet access may use the PSTN, a dedicated leased line or a cellular phone network. A router forwards packets between the local network and other networks.
+
+### Worked example
+
+**Branch office connection:** Each desktop uses a NIC and cable to the switch; phones use a WNIC through the WAP. The router uses a dedicated line and suitable modem/interface to reach the ISP; a repeater is only added where signal distance requires regeneration.
+
+### Targeted practice and answers
+
+1. Which device regenerates a weakened signal?
+   **Answer:** Repeater.
+2. Which component gives a laptop wireless network connectivity?
+   **Answer:** WNIC; it connects through a WAP.
+3. Why might a business choose a dedicated line instead of PSTN dial-up?
+   **Answer:** It offers a permanent, predictable connection suited to continuous business traffic.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Describe the roles of a WNIC, WAP, switch and router when a wireless laptop accesses an internet server.
+
+- **B1** WNIC provides the laptop's wireless network interface
+- **B1** WAP connects wireless devices to the wired/local network
+- **B1** switch forwards local frames / connects LAN devices
+- **B1** router forwards packets between the LAN and internet/other networks
+
+**Strict note:** Do not accept WAP and router as automatically identical devices; award their distinct logical roles.

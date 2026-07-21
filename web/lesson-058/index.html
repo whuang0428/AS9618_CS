@@ -33,6 +33,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -273,6 +274,52 @@
             <p>These are original Cambridge-style questions. The mark schemes include strict wording notes and follow-through guidance.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Libraries and dynamically linked library files</h2>
+            <p>Official audit rows: S5.03</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>A library is a tested collection of reusable code. A dynamically linked library is linked when a program loads or calls it, rather than copying all library code into every executable.</p>
+            <p>DLLs can reduce executable size and memory duplication, support reuse and allow one shared update. They also create dependency and version risks: a missing or incompatible DLL can stop a program loading or change behaviour.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Three programs use one graphics DLL</h3>
+            <p>All three executables call the shared graphics code. One loaded copy may be shared in memory and a security fix can update the DLL once, but replacing it with an incompatible version can break all three programs.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> When is a dynamically linked library connected to a program?</p>
+              <details><summary>Show answer</summary><p>At load time or run time when required.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Give one storage benefit of dynamic linking.</p>
+              <details><summary>Show answer</summary><p>Library code need not be copied into every executable.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Give one DLL risk.</p>
+              <details><summary>Show answer</summary><p>A missing/incompatible version can prevent execution or cause faults.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Explain two benefits and one drawback of using a dynamically linked library.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> shared reusable code / avoids rewriting</li>
+                <li><strong>B1</strong> smaller executables or reduced duplicate memory/storage</li>
+                <li><strong>B1</strong> shared library can be updated once</li>
+                <li><strong>B1</strong> missing/incompatible DLL can stop or alter programs</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept 'saves space' unless duplication or executable size is explained.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

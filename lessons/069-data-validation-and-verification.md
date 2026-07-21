@@ -1,9 +1,9 @@
 # Lesson 069: Data validation and verification
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 6  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 6
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Groups create a risk-control table for a school database, online shop or hospita
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Data validation and verification** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups. For this lesson, make students contrast that mistake with the exact idea of **data validation and verification**.  
+Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups. For this lesson, make students contrast that mistake with the exact idea of **data validation and verification**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S6.07, S6.08
+**Focus:** Complete validation and verification methods
+
+### Direct explanation
+
+- Validation checks whether data is reasonable and follows rules: range, format, length, presence, existence, limit and check digit. It cannot prove truth. Verification checks whether data was copied accurately, using visual checking or double entry.
+- Error detection includes parity: a parity byte checks one group and block parity adds row/column checks; a checksum is calculated from a data block and compared after transmission. These detect many errors but do not correct every error.
+
+### Worked example
+
+**New product code:** A presence check rejects blank input, length and format checks enforce the pattern, an existence check confirms the code is in the product file, and a check digit detects many keying errors. None proves the label was attached to the correct product.
+
+### Targeted practice and answers
+
+1. Which check confirms a foreign code is already stored in a lookup file?
+   **Answer:** Existence check.
+2. How does double-entry verification work?
+   **Answer:** Data is entered twice and the two entries are compared.
+3. What happens to a checksum at the receiver?
+   **Answer:** It is recalculated and compared with the transmitted checksum.
+
+### Exam-style question and MS
+
+**Question (4 marks):** For an eight-digit account number, describe two suitable validation checks and one verification method.
+
+- **B1** length check requires eight characters/digits
+- **B1** format/type/check-digit or existence check accurately described
+- **B1** visual check against source or double entry described
+- **B1** distinguishes validation reasonableness from verification accuracy of copying
+
+**Strict note:** Do not accept 'validation proves the account number is correct'.

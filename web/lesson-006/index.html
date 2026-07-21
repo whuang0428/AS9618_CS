@@ -306,6 +306,52 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Binary-coded decimal (BCD)</h2>
+            <p>Official audit rows: S1.02, S1.03, S1.06</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>BCD encodes each denary digit separately in four bits. For example, 59 becomes 0101 1001, not the pure-binary value 00111011.</p>
+            <p>Only 0000 to 1001 are valid BCD digit groups. BCD is useful when decimal digits must be displayed exactly, such as clocks and calculators, but it usually uses more bits than pure binary.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Encode 407</h3>
+            <p>Treat 4, 0 and 7 separately: 4 = 0100, 0 = 0000, 7 = 0111, so 407 in BCD is 0100 0000 0111.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Write denary 82 in BCD.</p>
+              <details><summary>Show answer</summary><p>1000 0010.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Decode BCD 0011 1001.</p>
+              <details><summary>Show answer</summary><p>39.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why is 1010 invalid as one BCD digit?</p>
+              <details><summary>Show answer</summary><p>BCD digit groups represent only denary 0 to 9; 1010 represents 10.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>The bit pattern 0010 0101 is stored as BCD. State the denary value and explain one reason BCD may be chosen for a digital clock.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> identifies separate groups 0010 and 0101</li>
+                <li><strong>A1</strong> states 25</li>
+                <li><strong>B1</strong> each displayed denary digit maps directly to one four-bit group</li>
+                <li><strong>B1</strong> reduces conversion work / preserves exact decimal digits for display</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept 37, which is the pure-binary interpretation of the whole eight-bit pattern.</p>
+            </details>
+          </article>
+        </section>
+
         <section class="panel summary-panel" id="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>

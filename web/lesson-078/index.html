@@ -32,6 +32,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -321,6 +322,52 @@
             <p>These are original questions written in Cambridge style. The mark schemes are strict about terminology.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>DBMS features and query processing</h2>
+            <p>Official audit rows: S8.05, S8.06</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>A DBMS maintains a data dictionary of metadata, supports data modelling and a logical schema, enforces integrity/security/access rights, and provides backup/recovery. These services separate logical data use from physical storage details.</p>
+            <p>A developer interface accepts commands or API requests. The query processor parses/validates a query, plans how to execute it, accesses the stored data and returns results while the DBMS applies permissions and integrity rules.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Run a restricted query</h3>
+            <p>The interface sends SELECT to the DBMS; the query processor checks syntax and access rights, chooses an indexed access plan, reads matching rows and returns only authorised columns.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What does a data dictionary store?</p>
+              <details><summary>Show answer</summary><p>Metadata such as table, field, type, key and constraint definitions.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What is the role of the query processor?</p>
+              <details><summary>Show answer</summary><p>To parse, plan and execute database queries.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which DBMS feature limits users to permitted operations?</p>
+              <details><summary>Show answer</summary><p>Access rights/security controls.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Describe the roles of a data dictionary and query processor in a DBMS.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> data dictionary stores metadata/definitions about database structure</li>
+                <li><strong>B1</strong> example such as field type/key/constraint</li>
+                <li><strong>B1</strong> query processor interprets/parses a query</li>
+                <li><strong>B1</strong> plans/executes it and returns/accesses matching data</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept that the data dictionary stores the ordinary user records themselves.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

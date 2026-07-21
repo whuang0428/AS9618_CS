@@ -1,9 +1,9 @@
 # Lesson 043: Registers: PC, CIR, MAR, MDR, ACC, and status register
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 4  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 4
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students annotate a CPU diagram with arrows for one instruction, then explain th
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Registers: PC, CIR, MAR, MDR, ACC, and status register** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **registers: pc, cir, mar, mdr, acc, and status register**.  
+Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **registers: pc, cir, mar, mdr, acc, and status register**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S4.02
+**Focus:** Index register (IX)
+
+### Direct explanation
+
+- The index register stores an offset used to modify an address in an indexed instruction. The effective address is formed by adding the instruction's address operand to the IX value.
+- Indexed addressing is useful for arrays because the base address stays fixed while IX changes for successive elements. IX stores the offset/index contribution, not necessarily the array data itself.
+
+### Worked example
+
+**Access ARRAY[3]:** If the base address is 500 and IX contains 3, LDX 500 accesses effective address 503 (assuming one address per element). Incrementing IX moves to the next element.
+
+### Targeted practice and answers
+
+1. What does IX normally store?
+   **Answer:** An offset/index used in effective-address calculation.
+2. Base 120 plus IX 7 gives which effective address?
+   **Answer:** 127.
+3. Why is IX useful for arrays?
+   **Answer:** The same instruction/base can access successive elements by changing the offset.
+
+### Exam-style question and MS
+
+**Question (4 marks):** An instruction uses indexed addressing with address operand 240 and IX = 6. State the effective address and explain the role of IX.
+
+- **B1** effective address is 246
+- **B1** IX stores an offset/index
+- **B1** offset is added to the instruction/base address
+- **B1** allows repeated access to array/list elements
+
+**Strict note:** Do not accept 240 as the effective address when IX is non-zero.

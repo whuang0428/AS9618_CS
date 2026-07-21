@@ -1,9 +1,9 @@
 # Lesson 076: Environmental and social impacts of computing
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 7  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 7
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students role-play two stakeholders and prepare one argument each, then write a 
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Environmental and social impacts of computing** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement. For this lesson, make students contrast that mistake with the exact idea of **environmental and social impacts of computing**.  
+Misconception: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement. For this lesson, make students contrast that mistake with the exact idea of **environmental and social impacts of computing**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S7.06
+**Focus:** AI applications and impact chains
+
+### Direct explanation
+
+- AI applications include medical image classification, recommendation, fraud detection, language processing, autonomous control and predictive maintenance. A valid impact answer names the AI decision mechanism and traces a consequence for a stakeholder.
+- Social impacts include access, bias and privacy; economic impacts include productivity, job redesign and error cost; environmental impacts include data-centre energy/material use and optimisation of transport or power. Evaluation balances benefits, harms and mitigations in context.
+
+### Worked example
+
+**Medical triage model:** The model prioritises scans, reducing waiting time, but biased training data may miss a patient group. Human review, representative validation data and monitoring can reduce rather than eliminate the risk.
+
+### Targeted practice and answers
+
+1. Give one economic benefit of predictive maintenance.
+   **Answer:** Reduced downtime or repair cost by predicting failure.
+2. Give one environmental cost of training a large model.
+   **Answer:** Electricity use and associated emissions/resource demand.
+3. Why can biased training data create social harm?
+   **Answer:** The model may produce systematically poorer decisions for under-represented groups.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Evaluate the use of AI to select applicants for jobs.
+
+- **B1** valid benefit such as speed/consistent initial processing
+- **B1** valid risk such as bias, opacity, privacy or exclusion
+- **B1** explains a stakeholder consequence
+- **B1** balanced judgement or mitigation linked to the context
+
+**Strict note:** Do not accept a list of generic advantages/disadvantages without linking AI decisions to consequences.

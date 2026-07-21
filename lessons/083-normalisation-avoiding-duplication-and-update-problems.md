@@ -1,9 +1,9 @@
 # Lesson 083: Normalisation: avoiding duplication and update problems
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 8  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 8
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Pairs convert a messy club list into relational tables, then mark one field as a
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Normalisation: avoiding duplication and update problems** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record. For this lesson, make students contrast that mistake with the exact idea of **normalisation: avoiding duplication and update problems**.  
+Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record. For this lesson, make students contrast that mistake with the exact idea of **normalisation: avoiding duplication and update problems**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S8.04
+**Focus:** First, second and third normal form
+
+### Direct explanation
+
+- 1NF requires atomic values and no repeating groups. 2NF is 1NF with every non-key attribute dependent on the whole primary key, removing partial dependencies. 3NF is 2NF with no non-key attribute dependent on another non-key attribute, removing transitive dependencies.
+- Normalisation decomposes tables while preserving keys and relationships. A 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.
+
+### Worked example
+
+**Order line data:** ORDER_LINE(OrderID, ProductID, ProductName, Quantity) has composite key OrderID+ProductID. ProductName depends only on ProductID, so split PRODUCT(ProductID, ProductName) and ORDER_LINE(OrderID, ProductID, Quantity) to reach 2NF for that dependency.
+
+### Targeted practice and answers
+
+1. What does 1NF remove?
+   **Answer:** Repeating groups and non-atomic/multiple values in one field.
+2. What dependency violates 2NF?
+   **Answer:** A non-key attribute depending on only part of a composite key.
+3. What dependency violates 3NF?
+   **Answer:** A non-key attribute depending on another non-key attribute.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Explain why CUSTOMER(CustomerID, Postcode, Town) may not be in 3NF when each postcode determines one town, and give a 3NF design.
+
+- **B1** CustomerID determines Postcode and Postcode determines Town
+- **B1** Town is transitively dependent on CustomerID / depends on non-key Postcode
+- **A1** CUSTOMER(CustomerID, Postcode)
+- **A1** POSTCODE(Postcode, Town), with Postcode linked as foreign key
+
+**Strict note:** Do not award decomposition marks unless primary/foreign-key linkage can reconstruct the relationship.

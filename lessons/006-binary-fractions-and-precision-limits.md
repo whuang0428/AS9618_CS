@@ -1,9 +1,9 @@
 # Lesson 006: Binary fractions and precision limits
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 1  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 1
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Give each pair three cards: a denary value, a binary value and a hex value. They
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Binary fractions and precision limits** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes. For this lesson, make students contrast that mistake with the exact idea of **binary fractions and precision limits**.  
+Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes. For this lesson, make students contrast that mistake with the exact idea of **binary fractions and precision limits**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S1.02, S1.03, S1.06
+**Focus:** Binary-coded decimal (BCD)
+
+### Direct explanation
+
+- BCD encodes each denary digit separately in four bits. For example, 59 becomes 0101 1001, not the pure-binary value 00111011.
+- Only 0000 to 1001 are valid BCD digit groups. BCD is useful when decimal digits must be displayed exactly, such as clocks and calculators, but it usually uses more bits than pure binary.
+
+### Worked example
+
+**Encode 407:** Treat 4, 0 and 7 separately: 4 = 0100, 0 = 0000, 7 = 0111, so 407 in BCD is 0100 0000 0111.
+
+### Targeted practice and answers
+
+1. Write denary 82 in BCD.
+   **Answer:** 1000 0010.
+2. Decode BCD 0011 1001.
+   **Answer:** 39.
+3. Why is 1010 invalid as one BCD digit?
+   **Answer:** BCD digit groups represent only denary 0 to 9; 1010 represents 10.
+
+### Exam-style question and MS
+
+**Question (4 marks):** The bit pattern 0010 0101 is stored as BCD. State the denary value and explain one reason BCD may be chosen for a digital clock.
+
+- **B1** identifies separate groups 0010 and 0101
+- **A1** states 25
+- **B1** each displayed denary digit maps directly to one four-bit group
+- **B1** reduces conversion work / preserves exact decimal digits for display
+
+**Strict note:** Do not accept 37, which is the pure-binary interpretation of the whole eight-bit pattern.

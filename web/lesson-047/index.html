@@ -31,6 +31,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -287,6 +288,52 @@
             <p>These are original Cambridge-style questions. MS wording distinguishes address, value, pointer and effective address.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Address-sensitive load, compare and branch instructions</h2>
+            <p>Official audit rows: S4.13</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>LDI follows the address stored at the operand location; LDX adds IX to the operand; LDR uses an address relative to the current instruction/PC. CMI compares with an immediate value, while CMP compares using the instruction-set operand definition.</p>
+            <p>JPE branches when the equality result/zero condition is set. JPN branches when the result is negative. Correct traces update PC according to the condition and must distinguish an address from the value stored there.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Trace a conditional</h3>
+            <p>After CMI #0, JPN NEG branches only if the accumulator compares as negative. Otherwise execution continues with the next sequential instruction.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which load follows a pointer in memory?</p>
+              <details><summary>Show answer</summary><p>LDI.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which load combines its operand with IX?</p>
+              <details><summary>Show answer</summary><p>LDX.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> When does JPE branch?</p>
+              <details><summary>Show answer</summary><p>When the comparison indicates equal / zero condition is set.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Describe the difference between direct and indirect loading, and state how JPN affects execution.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> direct uses the operand as the address of the value</li>
+                <li><strong>B1</strong> indirect uses the contents of the operand address as another address</li>
+                <li><strong>B1</strong> JPN tests the negative condition/status</li>
+                <li><strong>B1</strong> PC changes to the branch target only when that condition is true</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept that indirect addressing simply loads the operand as a literal value.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

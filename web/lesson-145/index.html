@@ -34,6 +34,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Mistakes</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -261,6 +262,52 @@
             <p>These are original AS-style questions. The mark schemes use Cambridge-style precision, not copied past-paper wording.</p>
           </div>
           <div id="examList" class="exam-list"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Testing methods, strategy and test plan</h2>
+            <p>Official audit rows: S12.05, S12.06</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>Dry run manually traces code; walkthrough is a structured peer review; white-box derives tests from internal paths; black-box derives tests from specifications. Integration tests combined modules, using a stub to imitate an unavailable called module.</p>
+            <p>Alpha testing is performed internally before release; beta testing uses selected external users in realistic settings; acceptance testing checks the delivered system against agreed requirements. A strategy states levels/methods/responsibility, while a test plan records test ID, purpose, data, expected result, actual result and pass/fail.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Test login</h3>
+            <p>White-box tests cover true/false paths and lockout count; black-box tests valid, invalid and boundary inputs from requirements; a stub returns simulated account results before the database is ready; acceptance confirms the agreed lockout behaviour.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which method derives tests from source-code paths?</p>
+              <details><summary>Show answer</summary><p>White-box testing.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Who normally performs beta testing?</p>
+              <details><summary>Show answer</summary><p>Selected external/end users in realistic use.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What does a stub replace?</p>
+              <details><summary>Show answer</summary><p>A called module/component not yet available.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Describe four fields that should appear in a test plan and explain why expected and actual results are both recorded.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> test identifier/purpose or feature</li>
+                <li><strong>B1</strong> test data/input and expected result</li>
+                <li><strong>B1</strong> actual result and pass/fail outcome</li>
+                <li><strong>B1</strong> comparison shows whether observed behaviour meets the predicted requirement</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept a list containing only normal/abnormal/boundary; those are test-data categories, not a complete test plan.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

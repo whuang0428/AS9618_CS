@@ -215,6 +215,8 @@ pre {
   border-radius: 8px;
   padding: 16px;
   background: #ffffff;
+  min-width: 0;
+  max-width: 100%;
 }
 .code-grid h3, .worked-card h3, .sim-grid h3 { margin-top: 0; color: var(--accent-dark); }
 
@@ -334,8 +336,10 @@ pre {
 }
 
 @media (max-width: 640px) {
+  .layout { width: 100%; max-width: 100vw; min-width: 0; padding-inline: 10px; }
   .topbar { align-items: flex-start; flex-direction: column; }
   .lesson-nav { grid-template-columns: 1fr; }
+  .lesson-content, .hero, .panel, .guidance-grid > article { width: 100%; max-width: 100%; min-width: 0; }
   .hook-grid, .mistake-grid, .answer-row { grid-template-columns: 1fr; }
   .concept-table .table-row, .ops-table .table-row, .impl-table .table-row, .result-table .table-row {
     grid-template-columns: 1fr;
@@ -351,3 +355,12 @@ pre {
   .hero, .panel, .guidance-grid > article { box-shadow: none; break-inside: avoid; }
   body { background: #ffffff; }
 }
+
+/* Stage 2 syllabus completion */
+.stage2-completion { border-top: 4px solid var(--accent, #176b5b); }
+.stage2-explanation, .stage2-practice { display: grid; gap: 10px; }
+.stage2-example, .stage2-exam, .stage2-question { border: 1px solid var(--line, #d7ddd9); padding: 16px; background: #fff; }
+.stage2-question + .stage2-question { margin-top: 10px; }
+.stage2-completion details { margin-top: 10px; }
+.stage2-completion summary { cursor: pointer; color: var(--accent-dark, #124d43); font-weight: 750; min-height: 40px; padding: 8px 0; }
+.stage2-completion .mark-list { display: grid; gap: 8px; }

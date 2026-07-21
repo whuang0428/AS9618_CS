@@ -1,9 +1,9 @@
 # Lesson 045: Instruction sets and machine code
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 4  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 4
+**Duration:** 45 minutes
 **Assessment rhythm:** 5-minute quiz
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students annotate a CPU diagram with arrows for one instruction, then explain th
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Instruction sets and machine code** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **instruction sets and machine code**.  
+Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **instruction sets and machine code**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S4.12
+**Focus:** Assembly instruction groups
+
+### Direct explanation
+
+- Data movement instructions transfer values between memory/registers; input/output instructions communicate with devices; arithmetic instructions change numeric values; compare instructions set status information; branch instructions change the next instruction address.
+- A conditional branch depends on a comparison/status condition, while an unconditional jump always changes the PC. Classifying by effect helps trace code before considering a specific mnemonic.
+
+### Worked example
+
+**Classify a loop:** LDD COUNT is data movement, CMP LIMIT is comparison, JPE DONE is conditional branch, INC COUNT is arithmetic, JMP LOOP is unconditional branch and OUT is output.
+
+### Targeted practice and answers
+
+1. Which group does STO belong to?
+   **Answer:** Data movement/storage.
+2. Why is JPE conditional?
+   **Answer:** It branches only when the equality condition/status is satisfied.
+3. Which group changes a numeric accumulator value?
+   **Answer:** Arithmetic.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Explain the difference between a compare instruction, a conditional branch and an unconditional branch.
+
+- **B1** compare tests values / sets status without itself selecting normal data output
+- **B1** conditional branch changes flow only when a condition/status is met
+- **B1** unconditional branch always changes the next instruction/PC
+- **B1** uses a coherent example or sequence
+
+**Strict note:** Do not accept that CMP itself necessarily jumps to another instruction.

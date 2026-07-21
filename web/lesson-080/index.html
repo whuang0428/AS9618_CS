@@ -33,6 +33,7 @@
         <a href="#checkpoint">Checkpoint</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -309,6 +310,52 @@
             <p>These are original questions written in Cambridge style. The mark schemes are strict about selecting and justifying types and constraints.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Relational terminology and secondary indexes</h2>
+            <p>Official audit rows: S8.02</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>Entity/table and record/tuple and field/attribute are related pairs, but answers should follow the question's context. A candidate key is any minimal field set that uniquely identifies a record; one candidate becomes the primary key, while another may be a secondary/alternate key.</p>
+            <p>An index is an additional lookup structure mapping key values to record locations. It can speed retrieval and ordering but uses storage and must be updated when data changes.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Student identifiers</h3>
+            <p>StudentID and Email may both be candidate keys. StudentID is selected as primary; Email remains an alternate candidate and may be indexed for faster account lookup.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What makes a candidate key minimal?</p>
+              <details><summary>Show answer</summary><p>No field can be removed while retaining uniqueness.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Is every candidate key the primary key?</p>
+              <details><summary>Show answer</summary><p>No; one is selected as primary.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Give one cost of an index.</p>
+              <details><summary>Show answer</summary><p>Extra storage and update/maintenance processing.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Explain the difference between a candidate key, primary key and database index.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> candidate key is a minimal unique identifier</li>
+                <li><strong>B1</strong> primary key is the selected candidate key</li>
+                <li><strong>B1</strong> index is a separate lookup structure for faster access</li>
+                <li><strong>B1</strong> index has storage/update cost or need not enforce entity identity</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept that an index and a primary key are always the same object.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

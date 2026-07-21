@@ -35,6 +35,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -301,6 +302,52 @@
             <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Digital signatures</h2>
+            <p>Official audit rows: S6.03</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>A sender hashes the message and encrypts the hash with the sender's private key to form a digital signature. The receiver uses the sender's public key to recover/verify the signed hash and independently hashes the received message.</p>
+            <p>Matching hashes provide evidence of integrity and origin/authenticity; a valid signature does not keep the message confidential. Certificates help bind a public key to an identity.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Verify a signed update</h3>
+            <p>The device verifies the signature using the publisher's public key, hashes the downloaded update and compares hashes. A mismatch means the file or signature is not valid.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which key creates a sender's digital signature?</p>
+              <details><summary>Show answer</summary><p>The sender's private key.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What does the receiver compare?</p>
+              <details><summary>Show answer</summary><p>The verified signed hash with a newly calculated message hash.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Does a digital signature encrypt the whole message for confidentiality?</p>
+              <details><summary>Show answer</summary><p>Not necessarily; its main purposes are integrity and authentication/non-repudiation evidence.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Describe how a digital signature is created and checked.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> sender creates a hash of the message</li>
+                <li><strong>B1</strong> hash is signed/encrypted using sender's private key</li>
+                <li><strong>B1</strong> receiver uses sender's public key and hashes received message</li>
+                <li><strong>B1</strong> matching hashes verify integrity and provide evidence of sender authenticity</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not award confidentiality as the purpose of a signature unless separate message encryption is described.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

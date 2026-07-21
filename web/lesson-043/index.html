@@ -30,6 +30,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -277,6 +278,52 @@
             <p>These are original Cambridge-style questions. MS wording separates definition marks from role-in-context marks.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Index register (IX)</h2>
+            <p>Official audit rows: S4.02</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>The index register stores an offset used to modify an address in an indexed instruction. The effective address is formed by adding the instruction's address operand to the IX value.</p>
+            <p>Indexed addressing is useful for arrays because the base address stays fixed while IX changes for successive elements. IX stores the offset/index contribution, not necessarily the array data itself.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Access ARRAY[3]</h3>
+            <p>If the base address is 500 and IX contains 3, LDX 500 accesses effective address 503 (assuming one address per element). Incrementing IX moves to the next element.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What does IX normally store?</p>
+              <details><summary>Show answer</summary><p>An offset/index used in effective-address calculation.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Base 120 plus IX 7 gives which effective address?</p>
+              <details><summary>Show answer</summary><p>127.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why is IX useful for arrays?</p>
+              <details><summary>Show answer</summary><p>The same instruction/base can access successive elements by changing the offset.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>An instruction uses indexed addressing with address operand 240 and IX = 6. State the effective address and explain the role of IX.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> effective address is 246</li>
+                <li><strong>B1</strong> IX stores an offset/index</li>
+                <li><strong>B1</strong> offset is added to the instruction/base address</li>
+                <li><strong>B1</strong> allows repeated access to array/list elements</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept 240 as the effective address when IX is non-zero.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

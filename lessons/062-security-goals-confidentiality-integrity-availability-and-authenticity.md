@@ -1,9 +1,9 @@
 # Lesson 062: Security goals: confidentiality, integrity, availability, and authenticity
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 6  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 6
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Groups create a risk-control table for a school database, online shop or hospita
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Security goals: confidentiality, integrity, availability, and authenticity** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups. For this lesson, make students contrast that mistake with the exact idea of **security goals: confidentiality, integrity, availability, and authenticity**.  
+Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups. For this lesson, make students contrast that mistake with the exact idea of **security goals: confidentiality, integrity, availability, and authenticity**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S6.01
+**Focus:** Security, privacy and data integrity
+
+### Direct explanation
+
+- Data security is protection against unauthorised access, loss or damage. Privacy concerns appropriate collection, use and disclosure of personal data. Integrity means data remains accurate, complete and unaltered except by authorised processes.
+- The concepts overlap but are not synonyms: encrypted inaccurate data may be secure but lack integrity; authorised publication may preserve integrity while violating privacy.
+
+### Worked example
+
+**Incorrect medical record:** A record encrypted from attackers has security, but an accidental dosage change damages integrity. Sending the accurate record to an unauthorised advertiser violates privacy.
+
+### Targeted practice and answers
+
+1. Which concept is damaged when data is altered incorrectly?
+   **Answer:** Integrity.
+2. Which concept concerns how personal data is collected and disclosed?
+   **Answer:** Privacy.
+3. Can data be secure but inaccurate?
+   **Answer:** Yes; access protection does not guarantee correctness.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Distinguish data security, privacy and integrity using one data-record scenario.
+
+- **B1** security protects against unauthorised access/loss/damage
+- **B1** privacy controls appropriate personal-data use/disclosure
+- **B1** integrity concerns accuracy/completeness/authorised change
+- **B1** scenario correctly distinguishes at least two consequences
+
+**Strict note:** Do not accept three repetitions of 'keeping data safe'.

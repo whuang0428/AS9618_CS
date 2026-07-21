@@ -1,9 +1,9 @@
 # Lesson 030: Primary storage: RAM, ROM, cache, and virtual memory
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 3  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 3
+**Duration:** 45 minutes
 **Assessment rhythm:** 5-minute quiz
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Teams design a hardware set-up for a specific user: librarian, weather station, 
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Primary storage: RAM, ROM, cache, and virtual memory** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need. For this lesson, make students contrast that mistake with the exact idea of **primary storage: ram, rom, cache, and virtual memory**.  
+Misconception: Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need. For this lesson, make students contrast that mistake with the exact idea of **primary storage: ram, rom, cache, and virtual memory**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S3.06, S3.07
+**Focus:** SRAM, DRAM, PROM, EPROM and EEPROM
+
+### Direct explanation
+
+- SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.
+- PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All are non-volatile ROM technologies.
+
+### Worked example
+
+**Choose memory for CPU cache:** SRAM is chosen because no refresh and faster access reduce processor waiting; its higher cost and lower capacity are acceptable for a small cache.
+
+### Targeted practice and answers
+
+1. Why is DRAM refreshed?
+   **Answer:** Charge in its storage capacitors leaks and must be restored.
+2. Which ROM type is erased using ultraviolet light?
+   **Answer:** EPROM.
+3. Which ROM type can normally be rewritten electrically in circuit?
+   **Answer:** EEPROM.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Compare SRAM and DRAM and explain why DRAM is normally used for main memory.
+
+- **B1** SRAM is faster / does not require refresh
+- **B1** DRAM requires refresh / is slower
+- **B1** DRAM has greater density / lower cost per bit
+- **B1** main memory needs large capacity, making DRAM more economical
+
+**Strict note:** Do not award both comparison marks for merely expanding the abbreviations.

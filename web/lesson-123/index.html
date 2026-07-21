@@ -35,6 +35,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -314,6 +315,52 @@ Book[] books = new Book[200];</code></pre>
             <p>These questions focus on structure choice, precise reasons and rejecting unsuitable alternatives.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Choosing stack, queue or linked list</h2>
+            <p>Official audit rows: S10.09, S10.10</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>A stack is LIFO with push/pop at the top; a queue is FIFO with enqueue at the rear and dequeue at the front; a linked list supports traversal and insertion/deletion through links.</p>
+            <p>Justification must name the required access order or update behaviour. Array implementations have fixed capacity unless resized and require overflow/underflow checks; linked structures require pointer management.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose structures</h3>
+            <p>Undo history uses a stack because the most recent action is undone first. Print jobs use a queue because the earliest accepted job prints first. A changing ordered playlist can use a linked list for link-based insertion/deletion.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Choose an ADT for breadth-first waiting jobs.</p>
+              <details><summary>Show answer</summary><p>Queue, because first in is first out.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Choose an ADT for nested function return addresses.</p>
+              <details><summary>Show answer</summary><p>Stack, because the most recent call returns first.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What must be checked before pushing to a full array stack?</p>
+              <details><summary>Show answer</summary><p>Overflow/capacity.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Justify a suitable ADT for browser Back history and contrast it with a queue.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> selects stack</li>
+                <li><strong>B1</strong> most recently visited page is returned to first / LIFO</li>
+                <li><strong>B1</strong> queue removes earliest item first / FIFO</li>
+                <li><strong>B1</strong> explains why FIFO gives the wrong access order</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not award the structure name without its access-order consequence.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

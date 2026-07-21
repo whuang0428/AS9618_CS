@@ -261,6 +261,52 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Microphone, touchscreen and VR headset operation</h2>
+            <p>Official audit rows: S3.03</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>A microphone diaphragm vibrates with sound; a transducer converts the movement into an analogue electrical signal, which an ADC samples into digital values. A capacitive touchscreen detects a change in an electric field and calculates touch coordinates.</p>
+            <p>A VR headset displays a separate view to each eye and uses motion/orientation sensors to update the viewpoint. Low-latency tracking is needed so the displayed scene follows head movement.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Turn head in VR</h3>
+            <p>Gyroscope/accelerometer readings report orientation; the processor calculates a new camera view; displays present updated left/right images, creating stereoscopic depth.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What converts a microphone's analogue signal into digital samples?</p>
+              <details><summary>Show answer</summary><p>An analogue-to-digital converter (ADC).</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What does a capacitive touchscreen detect?</p>
+              <details><summary>Show answer</summary><p>A change in capacitance/electric field at a touch location.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why does a VR headset track head movement?</p>
+              <details><summary>Show answer</summary><p>To update the displayed viewpoint to match the user's orientation.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Describe how a microphone captures sound for storage in a computer.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> sound waves vibrate a diaphragm</li>
+                <li><strong>B1</strong> transducer converts vibration to an analogue electrical signal</li>
+                <li><strong>B1</strong> ADC samples/measures the signal</li>
+                <li><strong>B1</strong> sample values are encoded/stored as binary</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept that the microphone directly records binary without an analogue signal and conversion stage.</p>
+            </details>
+          </article>
+        </section>
+
         <section class="panel summary-panel" id="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>

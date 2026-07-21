@@ -1,9 +1,9 @@
 # Lesson 080: Tables, records, fields, data types, and constraints
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 8  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 8
+**Duration:** 45 minutes
 **Assessment rhythm:** 5-minute quiz, monthly assessment checkpoint
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Pairs convert a messy club list into relational tables, then mark one field as a
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Tables, records, fields, data types, and constraints** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record. For this lesson, make students contrast that mistake with the exact idea of **tables, records, fields, data types, and constraints**.  
+Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record. For this lesson, make students contrast that mistake with the exact idea of **tables, records, fields, data types, and constraints**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S8.02
+**Focus:** Relational terminology and secondary indexes
+
+### Direct explanation
+
+- Entity/table and record/tuple and field/attribute are related pairs, but answers should follow the question's context. A candidate key is any minimal field set that uniquely identifies a record; one candidate becomes the primary key, while another may be a secondary/alternate key.
+- An index is an additional lookup structure mapping key values to record locations. It can speed retrieval and ordering but uses storage and must be updated when data changes.
+
+### Worked example
+
+**Student identifiers:** StudentID and Email may both be candidate keys. StudentID is selected as primary; Email remains an alternate candidate and may be indexed for faster account lookup.
+
+### Targeted practice and answers
+
+1. What makes a candidate key minimal?
+   **Answer:** No field can be removed while retaining uniqueness.
+2. Is every candidate key the primary key?
+   **Answer:** No; one is selected as primary.
+3. Give one cost of an index.
+   **Answer:** Extra storage and update/maintenance processing.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Explain the difference between a candidate key, primary key and database index.
+
+- **B1** candidate key is a minimal unique identifier
+- **B1** primary key is the selected candidate key
+- **B1** index is a separate lookup structure for faster access
+- **B1** index has storage/update cost or need not enforce entity identity
+
+**Strict note:** Do not accept that an index and a primary key are always the same object.

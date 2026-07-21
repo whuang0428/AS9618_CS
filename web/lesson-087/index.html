@@ -33,6 +33,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -261,6 +262,52 @@
             <p>These are original questions written in Cambridge style. The mark schemes are strict about command syntax and affected records.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>DDL, DML and required SQL data types</h2>
+            <p>Official audit rows: S8.07, S8.09</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>DDL defines or changes database structure: CREATE DATABASE, CREATE TABLE and ALTER TABLE. DML queries or changes records: SELECT, INSERT, UPDATE and DELETE. SQL is the industry-standard language used for these operations.</p>
+            <p>Required column types include CHARACTER/VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME. CREATE TABLE can declare PRIMARY KEY and FOREIGN KEY references; ALTER TABLE changes an existing definition.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Create related tables</h3>
+            <p>CREATE TABLE Department (DepartmentID INTEGER PRIMARY KEY, Name VARCHAR(40)); then CREATE TABLE Employee (EmployeeID INTEGER PRIMARY KEY, Active BOOLEAN, DepartmentID INTEGER, FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID));</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Classify CREATE TABLE as DDL or DML.</p>
+              <details><summary>Show answer</summary><p>DDL.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Choose a type for 12.75.</p>
+              <details><summary>Show answer</summary><p>REAL.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which statement changes an existing table structure?</p>
+              <details><summary>Show answer</summary><p>ALTER TABLE.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Write SQL DDL to create Event(EventID integer primary key, EventDate date, StartTime time, Open boolean).</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> CREATE TABLE Event</li>
+                <li><strong>B1</strong> EventID INTEGER PRIMARY KEY</li>
+                <li><strong>B1</strong> EventDate DATE and StartTime TIME</li>
+                <li><strong>B1</strong> Open BOOLEAN with valid punctuation/structure</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not award INSERT/UPDATE statements: the question asks for structure, not record data.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

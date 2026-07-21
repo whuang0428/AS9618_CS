@@ -32,6 +32,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -261,6 +262,52 @@
             <p>These are original questions written in Cambridge style. The mark schemes are strict about anomaly type and cause.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>First, second and third normal form</h2>
+            <p>Official audit rows: S8.04</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>1NF requires atomic values and no repeating groups. 2NF is 1NF with every non-key attribute dependent on the whole primary key, removing partial dependencies. 3NF is 2NF with no non-key attribute dependent on another non-key attribute, removing transitive dependencies.</p>
+            <p>Normalisation decomposes tables while preserving keys and relationships. A 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Order line data</h3>
+            <p>ORDER_LINE(OrderID, ProductID, ProductName, Quantity) has composite key OrderID+ProductID. ProductName depends only on ProductID, so split PRODUCT(ProductID, ProductName) and ORDER_LINE(OrderID, ProductID, Quantity) to reach 2NF for that dependency.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What does 1NF remove?</p>
+              <details><summary>Show answer</summary><p>Repeating groups and non-atomic/multiple values in one field.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What dependency violates 2NF?</p>
+              <details><summary>Show answer</summary><p>A non-key attribute depending on only part of a composite key.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What dependency violates 3NF?</p>
+              <details><summary>Show answer</summary><p>A non-key attribute depending on another non-key attribute.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Explain why CUSTOMER(CustomerID, Postcode, Town) may not be in 3NF when each postcode determines one town, and give a 3NF design.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> CustomerID determines Postcode and Postcode determines Town</li>
+                <li><strong>B1</strong> Town is transitively dependent on CustomerID / depends on non-key Postcode</li>
+                <li><strong>A1</strong> CUSTOMER(CustomerID, Postcode)</li>
+                <li><strong>A1</strong> POSTCODE(Postcode, Town), with Postcode linked as foreign key</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not award decomposition marks unless primary/foreign-key linkage can reconstruct the relationship.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

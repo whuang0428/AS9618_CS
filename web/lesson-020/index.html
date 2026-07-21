@@ -251,6 +251,52 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Complete IP address distinctions</h2>
+            <p>Official audit rows: S2.15</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>IPv4 uses 32-bit addresses; IPv6 uses 128-bit addresses and provides a much larger address space. A subnet divides a network into logical sections and uses part of the address to identify the network/subnet.</p>
+            <p>A public address is routable on the internet; a private address is used inside a private network and is not directly routed across the public internet. Static addresses remain fixed; dynamic addresses are allocated and may change. An address identifies a network interface at a given time, not a human permanently.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: School web server and laptops</h3>
+            <p>The externally reachable server may need a stable public address. Laptops can receive dynamic private addresses; this limits direct unsolicited internet reachability but is not, by itself, complete security.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> How many bits are in IPv6?</p>
+              <details><summary>Show answer</summary><p>128 bits.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Why might a server use a static IP address?</p>
+              <details><summary>Show answer</summary><p>Clients/DNS need a predictable address for the service.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What is the purpose of subnetting?</p>
+              <details><summary>Show answer</summary><p>To divide a network into logical subnetworks and identify which subnet an address belongs to.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Compare public/private and static/dynamic IP addresses, giving one suitable use for a static public address.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> public address is routable/visible on the internet; private address is for an internal network</li>
+                <li><strong>B1</strong> static address remains fixed; dynamic address is allocated and may change</li>
+                <li><strong>B1</strong> static public address suitable for an externally accessible server</li>
+                <li><strong>B1</strong> fixed address supports reliable location/DNS mapping</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept that private IP addresses guarantee security; they reduce direct public addressing but other controls are still required.</p>
+            </details>
+          </article>
+        </section>
+
         <section class="panel summary-panel" id="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>

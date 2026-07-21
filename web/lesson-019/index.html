@@ -228,6 +228,52 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Ethernet collisions and CSMA/CD</h2>
+            <p>Official audit rows: S2.11</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>CSMA/CD means Carrier Sense Multiple Access with Collision Detection. A station listens to the shared medium; if idle it transmits, while continuing to detect a collision.</p>
+            <p>After a collision, stations stop transmitting, send/recognise a jam signal, wait for different random backoff periods and retry. The random delay reduces the chance of another simultaneous attempt.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Two stations sense an idle cable</h3>
+            <p>Both may begin before either signal reaches the other. They detect the collision, stop, wait different random periods and the station whose timer expires first retries.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What is sensed before Ethernet transmission?</p>
+              <details><summary>Show answer</summary><p>Whether the shared carrier/medium is idle.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What happens immediately after a collision is detected?</p>
+              <details><summary>Show answer</summary><p>Transmission stops and a retry is scheduled after a random backoff.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why must the delay be random?</p>
+              <details><summary>Show answer</summary><p>Different delays reduce repeated simultaneous retransmission.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Describe how CSMA/CD handles two devices attempting to transmit on a shared Ethernet medium.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> each device listens/senses the carrier before transmitting</li>
+                <li><strong>B1</strong> transmits when the medium is idle</li>
+                <li><strong>B1</strong> detects a collision and stops transmission</li>
+                <li><strong>B1</strong> waits a random/backoff time before retrying</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept collision avoidance: CSMA/CD detects and responds to a collision after transmission has begun.</p>
+            </details>
+          </article>
+        </section>
+
         <section class="panel summary-panel" id="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>

@@ -1,9 +1,9 @@
 # Lesson 067: Encryption, hashing, and digital certificates
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 6  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 6
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students create a three-column table: protection method, what it protects, what 
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Encryption, hashing, and digital certificates** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups. For this lesson, make students contrast that mistake with the exact idea of **encryption, hashing, and digital certificates**.  
+Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups. For this lesson, make students contrast that mistake with the exact idea of **encryption, hashing, and digital certificates**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S6.03
+**Focus:** Digital signatures
+
+### Direct explanation
+
+- A sender hashes the message and encrypts the hash with the sender's private key to form a digital signature. The receiver uses the sender's public key to recover/verify the signed hash and independently hashes the received message.
+- Matching hashes provide evidence of integrity and origin/authenticity; a valid signature does not keep the message confidential. Certificates help bind a public key to an identity.
+
+### Worked example
+
+**Verify a signed update:** The device verifies the signature using the publisher's public key, hashes the downloaded update and compares hashes. A mismatch means the file or signature is not valid.
+
+### Targeted practice and answers
+
+1. Which key creates a sender's digital signature?
+   **Answer:** The sender's private key.
+2. What does the receiver compare?
+   **Answer:** The verified signed hash with a newly calculated message hash.
+3. Does a digital signature encrypt the whole message for confidentiality?
+   **Answer:** Not necessarily; its main purposes are integrity and authentication/non-repudiation evidence.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Describe how a digital signature is created and checked.
+
+- **B1** sender creates a hash of the message
+- **B1** hash is signed/encrypted using sender's private key
+- **B1** receiver uses sender's public key and hashes received message
+- **B1** matching hashes verify integrity and provide evidence of sender authenticity
+
+**Strict note:** Do not award confidentiality as the purpose of a signature unless separate message encryption is described.

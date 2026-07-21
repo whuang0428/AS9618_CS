@@ -1,9 +1,9 @@
 # Lesson 060: Choosing translation approaches for development and deployment
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 5  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 5
+**Duration:** 45 minutes
 **Assessment rhythm:** 5-minute quiz, monthly assessment checkpoint
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students sort cards into OS roles, utility software and application software, th
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Choosing translation approaches for development and deployment** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often call every program an operating system. Correction: an OS manages resources and provides services; an app performs user tasks. For this lesson, make students contrast that mistake with the exact idea of **choosing translation approaches for development and deployment**.  
+Misconception: Students often call every program an operating system. Correction: an OS manages resources and provides services; an app performs user tasks. For this lesson, make students contrast that mistake with the exact idea of **choosing translation approaches for development and deployment**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S5.06, S5.07
+**Focus:** Java translation and required IDE features
+
+### Direct explanation
+
+- Java source is compiled into platform-independent bytecode. A Java Virtual Machine then interprets and/or just-in-time compiles bytecode for the host processor, supporting portability across systems with a suitable JVM.
+- An IDE may provide context-sensitive prompts, dynamic syntax checking, prettyprinting, code expand/collapse, single-step execution, breakpoints, variable/expression inspection and a report/output window. Each feature supports writing, navigating or debugging code; it does not prove logical correctness.
+
+### Worked example
+
+**Locate a loop fault:** A breakpoint pauses before the loop, single-step advances one statement at a time, and the variable window shows Index changing. Dynamic syntax checking would flag malformed syntax, but not a valid loop with the wrong boundary.
+
+### Targeted practice and answers
+
+1. What does a Java compiler normally produce?
+   **Answer:** Bytecode.
+2. What executes Java bytecode on a host system?
+   **Answer:** A Java Virtual Machine (JVM), using interpretation and/or JIT compilation.
+3. Which IDE feature pauses at a chosen line?
+   **Answer:** A breakpoint.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Explain how Java source is translated and executed, and describe one IDE feature useful for debugging.
+
+- **B1** Java source is compiled
+- **B1** compiler produces bytecode
+- **B1** JVM interprets/JIT-compiles bytecode for the host
+- **B1** valid debugging feature described with its effect
+
+**Strict note:** Do not accept that Java source is compiled directly into one universal machine-code file.

@@ -33,6 +33,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -304,6 +305,52 @@ for (int index = 0; index &lt; 5; index++) {
             <p>These questions target IPOC extraction, loop choice, update placement, sentinel handling and strict pseudocode wording.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Stepwise refinement</h2>
+            <p>Official audit rows: S9.08</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>Stepwise refinement starts with a high-level task and repeatedly replaces each complex step with smaller, precise substeps. Refinement stops when each step can be implemented directly and its inputs/outputs are clear.</p>
+            <p>It supports modularity, review and testing because each refinement level preserves the purpose of its parent step. It is not merely adding more prose; each level must reduce ambiguity.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Process an order</h3>
+            <p>Level 1: Validate order, calculate total, produce receipt. Refine calculate total into: set Total to 0; for each item validate quantity, add Price * Quantity; apply discount; add tax.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What is the starting point of stepwise refinement?</p>
+              <details><summary>Show answer</summary><p>A high-level solution/task.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> When should refinement stop?</p>
+              <details><summary>Show answer</summary><p>When steps are precise enough to implement directly.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> How does refinement support testing?</p>
+              <details><summary>Show answer</summary><p>Smaller modules/steps can be checked independently against defined inputs and outputs.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Apply one level of stepwise refinement to the task 'register a new library member'.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> captures required member details</li>
+                <li><strong>B1</strong> validates details / checks existing member</li>
+                <li><strong>B1</strong> creates and stores a unique member record</li>
+                <li><strong>B1</strong> outputs confirmation/card or error; steps form a coherent sequence</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not award a list of unrelated features; substeps must collectively implement the parent task.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

@@ -31,6 +31,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -298,6 +299,52 @@
             <p>These are original Cambridge-style questions. MS wording rewards exact definitions and role-based explanation.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Assembly instruction groups</h2>
+            <p>Official audit rows: S4.12</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>Data movement instructions transfer values between memory/registers; input/output instructions communicate with devices; arithmetic instructions change numeric values; compare instructions set status information; branch instructions change the next instruction address.</p>
+            <p>A conditional branch depends on a comparison/status condition, while an unconditional jump always changes the PC. Classifying by effect helps trace code before considering a specific mnemonic.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Classify a loop</h3>
+            <p>LDD COUNT is data movement, CMP LIMIT is comparison, JPE DONE is conditional branch, INC COUNT is arithmetic, JMP LOOP is unconditional branch and OUT is output.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which group does STO belong to?</p>
+              <details><summary>Show answer</summary><p>Data movement/storage.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Why is JPE conditional?</p>
+              <details><summary>Show answer</summary><p>It branches only when the equality condition/status is satisfied.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which group changes a numeric accumulator value?</p>
+              <details><summary>Show answer</summary><p>Arithmetic.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Explain the difference between a compare instruction, a conditional branch and an unconditional branch.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> compare tests values / sets status without itself selecting normal data output</li>
+                <li><strong>B1</strong> conditional branch changes flow only when a condition/status is met</li>
+                <li><strong>B1</strong> unconditional branch always changes the next instruction/PC</li>
+                <li><strong>B1</strong> uses a coherent example or sequence</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept that CMP itself necessarily jumps to another instruction.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

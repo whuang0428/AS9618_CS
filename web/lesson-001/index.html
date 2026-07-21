@@ -26,6 +26,7 @@
         <a href="#examples">Examples</a>
         <a href="#practice">Your turn</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -329,6 +330,52 @@
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Method marks can survive an arithmetic slip, but using 1000 where KiB/MiB requires 1024 is a different error.</p>
+          </article>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Binary and decimal magnitude prefixes</h2>
+            <p>Official audit rows: S1.01</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>Binary prefixes use powers of 1024: 1 KiB = 2^10 bytes, 1 MiB = 2^20 bytes, 1 GiB = 2^30 bytes and 1 TiB = 2^40 bytes.</p>
+            <p>Decimal prefixes use powers of 1000: 1 kB = 10^3 bytes, 1 MB = 10^6 bytes, 1 GB = 10^9 bytes and 1 TB = 10^12 bytes. Case and the i in KiB/MiB/GiB/TiB carry meaning.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: 2 TiB drive</h3>
+            <p>2 TiB = 2 x 2^40 = 2,199,023,255,552 bytes. A 2 TB drive is 2,000,000,000,000 bytes, so the labels are not interchangeable.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> How many bytes are in 4 GiB?</p>
+              <details><summary>Show answer</summary><p>4 x 2^30 = 4,294,967,296 bytes.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which is larger, 1 TB or 1 TiB?</p>
+              <details><summary>Show answer</summary><p>1 TiB, because 2^40 is greater than 10^12.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Convert 3,000,000 bytes to MB.</p>
+              <details><summary>Show answer</summary><p>3 MB using the decimal prefix mega.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>State the number of bytes represented by 1 GiB and explain why 1 GB represents a different number of bytes.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> 1 GiB = 2^30 bytes / 1,073,741,824 bytes</li>
+                <li><strong>B1</strong> gibi uses a binary power / multiples of 1024</li>
+                <li><strong>B1</strong> 1 GB = 10^9 bytes / 1,000,000,000 bytes</li>
+                <li><strong>B1</strong> giga uses a decimal power / multiples of 1000</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept 'GiB is bigger' without both numerical definitions.</p>
+            </details>
           </article>
         </section>
 

@@ -1,9 +1,9 @@
 # Lesson 050: Pipelining and why faster is not always simpler
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 4  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 4
+**Duration:** 45 minutes
 **Assessment rhythm:** 5-minute quiz
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students annotate a CPU diagram with arrows for one instruction, then explain th
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Pipelining and why faster is not always simpler** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **pipelining and why faster is not always simpler**.  
+Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **pipelining and why faster is not always simpler**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S4.15
+**Focus:** Bit masks and logical shifts
+
+### Direct explanation
+
+- AND with a mask tests/clears bits: mask 1 preserves a bit and mask 0 clears it. OR sets selected bits because OR with 1 gives 1. XOR toggles selected bits because XOR with 1 reverses the bit.
+- LSL moves bits left, inserts 0 on the right and discards the leftmost bit; without overflow this multiplies an unsigned value by 2. LSR moves bits right, inserts 0 on the left and discards the rightmost bit; for unsigned values this divides by 2 using integer truncation.
+
+### Worked example
+
+**Test bit 3:** For value 10110100 and mask 00001000, AND gives 00000000, so that bit is 0. OR with the same mask would set it; XOR would toggle it.
+
+### Targeted practice and answers
+
+1. Which operation sets selected bits without clearing others?
+   **Answer:** OR with a mask containing 1 at each bit to set.
+2. Calculate 00110110 LSL 1 in eight bits.
+   **Answer:** 01101100.
+3. Calculate 00110111 LSR 1.
+   **Answer:** 00011011; the discarded 1 gives integer truncation.
+
+### Exam-style question and MS
+
+**Question (4 marks):** The byte 10100100 is ANDed with mask 00000100. State the result and explain what the operation tests.
+
+- **M1** performs bitwise AND
+- **A1** result 00000100
+- **B1** mask isolates the selected bit / clears all other positions
+- **B1** non-zero result shows the selected bit was set
+
+**Strict note:** Do not accept a Boolean whole-value AND; the operation is applied independently to corresponding bits.

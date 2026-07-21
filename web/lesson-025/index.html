@@ -266,6 +266,52 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Bit streaming, bit rate and broadband</h2>
+            <p>Official audit rows: S2.12</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>Bit streaming delivers media progressively so playback can begin before the whole file arrives. Real-time streaming carries a live event with minimal delay; on-demand streaming sends stored content selected by the user.</p>
+            <p>Bit rate is the number of bits transmitted each second. Available broadband speed must normally exceed the media bit rate and absorb variation; otherwise the player buffers, lowers quality or pauses. A buffer stores arriving data temporarily.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: 6 Mbit/s video on 4 Mbit/s link</h3>
+            <p>The stream consumes data faster than the link supplies it. A starting buffer only delays the shortage; sustained playback requires a lower bit rate or faster connection.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Why does a streaming player buffer data?</p>
+              <details><summary>Show answer</summary><p>To absorb short variations between arrival and playback rates.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Classify a live sports broadcast.</p>
+              <details><summary>Show answer</summary><p>Real-time streaming.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Classify a selected recorded film.</p>
+              <details><summary>Show answer</summary><p>On-demand streaming.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>A video has a bit rate of 8 Mbit/s. Explain why a connection advertised as 8 Mbit/s may still pause during playback.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> video requires about 8 million bits each second</li>
+                <li><strong>B1</strong> actual available speed may be below advertised/maximum speed</li>
+                <li><strong>B1</strong> other traffic, overhead or variation reduces throughput</li>
+                <li><strong>B1</strong> buffer empties when data arrives more slowly than playback consumes it</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept 'bandwidth is slow' without comparing arrival rate with the stream bit rate.</p>
+            </details>
+          </article>
+        </section>
+
         <section class="panel summary-panel" id="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>

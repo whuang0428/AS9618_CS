@@ -1,9 +1,9 @@
 # Lesson 098: Algorithmic thinking: inputs, outputs, and constraints
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 2  
-**Syllabus reference:** Syllabus Section 9  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 2
+**Syllabus reference:** Syllabus Section 9
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 
 > Java is used only as a supporting implementation language. Cambridge pseudocode remains the exam answer format.
@@ -75,7 +75,7 @@ Students solve the same problem twice: first as numbered English steps, then as 
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Algorithmic thinking: inputs, outputs, and constraints** is..., and a common mistake is..."
 
 ## Homework
@@ -90,5 +90,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **algorithmic thinking: inputs, outputs, and constraints**.  
+Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **algorithmic thinking: inputs, outputs, and constraints**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S9.04
+**Focus:** Meaningful identifiers and identifier tables
+
+### Direct explanation
+
+- Identifiers should describe their data or role, be unambiguous and follow a consistent naming convention. Avoid unexplained single letters except conventional short counters.
+- An identifier table records each identifier's name, data type and purpose; scope and initial value may be added when useful. It is a design artefact, so entries must match the algorithm that follows.
+
+### Worked example
+
+**Ticket calculation:** Use TicketCount: INTEGER, number of tickets requested; TicketPrice: REAL, price of one ticket; TotalCost: REAL, TicketCount * TicketPrice; IsMember: BOOLEAN, whether discount applies.
+
+### Targeted practice and answers
+
+1. Improve identifier x for the number of absent students.
+   **Answer:** AbsentCount or NumberAbsent.
+2. What three columns are essential here?
+   **Answer:** Identifier, data type and purpose/description.
+3. Why is Total misleading for several totals?
+   **Answer:** It does not identify which quantity is totalled.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Construct identifier-table entries for a program storing a student's name, three test marks and calculated mean.
+
+- **B1** meaningful identifier and STRING type for name
+- **B1** meaningful array identifier with INTEGER/REAL elements for marks
+- **B1** meaningful REAL identifier for mean
+- **B1** purposes clearly distinguish input values from calculated result
+
+**Strict note:** Do not award data types without identifiers and purposes; this is an identifier table, not only declarations.

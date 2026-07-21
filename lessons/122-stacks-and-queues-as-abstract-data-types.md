@@ -1,9 +1,9 @@
 # Lesson 122: Stacks and queues as abstract data types
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 2  
-**Syllabus reference:** Syllabus Section 10  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 2
+**Syllabus reference:** Syllabus Section 10
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 
 > Java is used only as a supporting implementation language. Cambridge pseudocode remains the exam answer format.
@@ -70,7 +70,7 @@ Students act out a stack or queue with paper cards, then convert the movement in
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Stacks and queues as abstract data types** is..., and a common mistake is..."
 
 ## Homework
@@ -85,5 +85,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often describe stacks and queues as just arrays. Correction: the defining feature is the access rule, not the storage implementation. For this lesson, make students contrast that mistake with the exact idea of **stacks and queues as abstract data types**.  
+Misconception: Students often describe stacks and queues as just arrays. Correction: the defining feature is the access rule, not the storage implementation. For this lesson, make students contrast that mistake with the exact idea of **stacks and queues as abstract data types**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S10.09, S10.10
+**Focus:** Linked lists and array-based ADT state
+
+### Direct explanation
+
+- A linked list stores nodes containing data and a pointer/index to the next node; a start pointer identifies the first node and a null value ends the chain. Logical order can differ from physical array order.
+- In an array implementation, parallel Data and Next arrays store nodes and a free-list pointer tracks unused locations. Insert/delete changes links and the free list; items need not be shifted as in a contiguous array.
+
+### Worked example
+
+**Insert after node 2:** Take node 5 from the free list, set Data[5] to the new value, set Next[5] to old Next[2], then set Next[2] to 5. The logical chain now includes node 5 after node 2.
+
+### Targeted practice and answers
+
+1. What marks the end of a linked list?
+   **Answer:** A null/sentinel next pointer.
+2. What does the start pointer store?
+   **Answer:** The index/address of the first logical node.
+3. Why need a free list in an array implementation?
+   **Answer:** To track unused node positions available for insertion.
+
+### Exam-style question and MS
+
+**Question (4 marks):** An array-based linked list uses Data and Next arrays. Explain how a new node is inserted at the front.
+
+- **B1** obtains an unused index from the free list
+- **B1** stores the new data at that index
+- **B1** sets its Next to the old start index
+- **B1** updates start to the new index / updates free-list head
+
+**Strict note:** Do not accept shifting every array element as the defining linked-list insertion method.

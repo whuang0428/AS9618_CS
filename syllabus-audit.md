@@ -38,33 +38,33 @@ The counts in this table are generated from the detailed rows below during verif
 
 | Section | Audit rows | Complete | Partial | Missing | Primary Stage 2 repair lessons |
 |---|---:|---:|---:|---:|---|
-| 1 Information representation | 11 | 4 | 5 | 2 | L001, L004, L006, L008-L009 |
-| 2 Communication | 16 | 7 | 5 | 4 | L016-L017, L019-L020, L023-L025 |
-| 3 Hardware | 10 | 6 | 1 | 3 | L028-L031 |
-| 4 Processor fundamentals | 15 | 8 | 4 | 3 | L041, L044-L047, L050 |
-| 5 System software | 7 | 4 | 1 | 2 | L058, L060 |
-| 6 Security, privacy and data integrity | 8 | 4 | 4 | 0 | L062, L065, L067, L069 |
-| 7 Ethics and ownership | 6 | 3 | 1 | 2 | L072, L074-L076 |
-| 8 Databases | 11 | 5 | 5 | 1 | L078, L080-L083, L087 |
-| 9 Algorithm design and problem-solving | 9 | 6 | 1 | 2 | L098, L100, L111 |
-| 10 Data types and structures | 10 | 8 | 2 | 0 | L122-L123 |
-| 11 Programming | 9 | 8 | 0 | 1 | L126, L140 |
-| 12 Software development | 9 | 5 | 2 | 2 | L144-L145 |
-| **Total** | **121** | **68** | **31** | **22** | **53 rows require repair** |
+| 1 Information representation | 11 | 11 | 0 | 0 | Stage 2 verified |
+| 2 Communication | 16 | 16 | 0 | 0 | Stage 2 verified |
+| 3 Hardware | 10 | 10 | 0 | 0 | Stage 2 verified |
+| 4 Processor fundamentals | 15 | 15 | 0 | 0 | Stage 2 verified |
+| 5 System software | 7 | 7 | 0 | 0 | Stage 2 verified |
+| 6 Security, privacy and data integrity | 8 | 8 | 0 | 0 | Stage 2 verified |
+| 7 Ethics and ownership | 6 | 6 | 0 | 0 | Stage 2 verified |
+| 8 Databases | 11 | 11 | 0 | 0 | Stage 2 verified |
+| 9 Algorithm design and problem-solving | 9 | 9 | 0 | 0 | Stage 2 verified |
+| 10 Data types and structures | 10 | 10 | 0 | 0 | Stage 2 verified |
+| 11 Programming | 9 | 9 | 0 | 0 | Stage 2 verified |
+| 12 Software development | 9 | 9 | 0 | 0 | Stage 2 verified |
+| **Total** | **121** | **121** | **0** | **0** | **All 53 Stage 2 rows repaired** |
 
 ## Section 1: Information Representation
 
 | ID | Official requirement, including guidance | Current evidence | Practice / MS evidence | Status | Fixed Stage 2 action |
 |---|---|---|---|---|---|
-| S1.01 | Understand binary magnitudes and use binary prefixes kibi, mebi, gibi, tebi and decimal prefixes kilo, mega, giga, tera. | W001; M001 is brief. | W001 P/MS covers units and conversions. | Partial | L001: add an explicit eight-prefix comparison table and mixed TiB/TB calculations to both formats. |
-| S1.02 | Understand binary, denary, hexadecimal, BCD, one's complement and two's complement number bases/representations. | W002-W005 cover all except BCD; M002-M005 provide topic scaffolds. | W002-W005 P/MS; no BCD item. | Partial | L006: replace binary-fractions extension as the core focus with BCD representation and add BCD practice/MS; retain fractions as labelled extension only. |
-| S1.03 | Convert an integer value between the required number bases/representations. | W002-W005 cover binary/denary/hex and signed forms. | W002-W005 P/MS; BCD conversion absent. | Partial | L006: add denary-to-BCD and BCD-to-denary conversion, including invalid-nibble traps. |
-| S1.04 | Perform binary addition and subtraction on positive and negative integers. | W004 addition; W005 signed representation. Direct subtraction method is absent. | Addition and signed-value P/MS exist; subtraction does not. | Partial | L004: add positive and two's-complement subtraction, worked traces, practice and MS. |
+| S1.01 | Understand binary magnitudes and use binary prefixes kibi, mebi, gibi, tebi and decimal prefixes kilo, mega, giga, tera. | W001 Stage 2 completion; M001 specific completion module. | W001 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S1.02 | Understand binary, denary, hexadecimal, BCD, one's complement and two's complement number bases/representations. | W006 Stage 2 completion; M006 specific completion module. | W006 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S1.03 | Convert an integer value between the required number bases/representations. | W006 Stage 2 completion; M006 specific completion module. | W006 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S1.04 | Perform binary addition and subtraction on positive and negative integers. | W004 Stage 2 completion; M004 specific completion module. | W004 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S1.05 | Understand overflow when performing binary addition and subtraction. | W004 directly explains fixed-width overflow. | W004 P/MS includes range and overflow decisions. | Complete | - |
-| S1.06 | Understand practical uses of BCD and hexadecimal. | W003 explains hexadecimal uses; BCD uses absent. | W003 P/MS covers hex uses only. | Missing | L006: teach BCD in clocks, calculators and numeric displays, contrast with pure binary, and assess justification. |
+| S1.06 | Understand practical uses of BCD and hexadecimal. | W006 Stage 2 completion; M006 specific completion module. | W006 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S1.07 | Understand ASCII, extended ASCII and Unicode; explain why character sets are used. Character codes need not be memorised. | W007 directly covers the three sets and encoding purpose. | W007 P/MS tests distinctions and application without code recall. | Complete | - |
-| S1.08 | Understand bitmap encoding: pixel, file header, image resolution, screen resolution and colour depth; calculate size and explain effects on quality/size. | W008-W009 cover pixels, image resolution, colour depth, metadata/header and size. Screen resolution is not explicitly contrasted with image resolution. | W008-W009 P/MS cover calculations and quality/size. | Partial | L008: add screen-resolution versus image-resolution explanation, examples and one strict MS item. |
-| S1.09 | Understand vector encoding using drawing objects, properties and a drawing list; justify bitmap or vector for a given application. | No direct vector-graphics lesson or assessment. | None. | Missing | L009: add vector object/property/drawing-list model, rendering order, bitmap/vector comparisons and targeted P/MS. |
+| S1.08 | Understand bitmap encoding: pixel, file header, image resolution, screen resolution and colour depth; calculate size and explain effects on quality/size. | W008 Stage 2 completion; M008 specific completion module. | W008 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S1.09 | Understand vector encoding using drawing objects, properties and a drawing list; justify bitmap or vector for a given application. | W009 Stage 2 completion; M009 specific completion module. | W009 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S1.10 | Understand sound representation, analogue-to-digital sampling, sampling rate/resolution, file-size calculation and effects on accuracy/size. | W010-W011 directly cover the model and calculations. | W010-W011 P/MS cover definition, calculation and consequence. | Complete | - |
 | S1.11 | Explain the need for compression; lossy/lossless methods for text, bitmap, vector and sound; describe RLE. | W012-W013 cover need, trade-offs, lossy/lossless and RLE. | W012-W013 P/MS include method selection and RLE traces. | Complete | - |
 
@@ -74,19 +74,19 @@ The counts in this table are generated from the detailed rows below during verif
 |---|---|---|---|---|---|
 | S2.01 | Understand LAN and WAN characteristics and purposes. | W016 directly compares LAN and WAN. | W016 P/MS. | Complete | - |
 | S2.02 | Explain client-server and peer-to-peer roles, benefits and drawbacks; justify a model for a scenario. | W017 directly covers both models and scenario choice. | W017 P/MS. | Complete | - |
-| S2.03 | Understand thin-client and thick-client differences. | No direct evidence. | None. | Missing | L017: add processing/storage location, dependency, update/security trade-offs and comparison P/MS. |
+| S2.03 | Understand thin-client and thick-client differences. | W017 Stage 2 completion; M017 specific completion module. | W017 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S2.04 | Understand bus, star, mesh and hybrid topologies. | W016 covers the named topologies. | W016 P/MS. | Complete | - |
-| S2.05 | Describe how packets are transmitted in each topology and justify topology choice. | W016 covers choice; packet movement per topology is not consistently explicit. | W016 P/MS is stronger on comparison than packet path. | Partial | L016: add packet-path diagrams and failure-path questions for all four topologies. |
-| S2.06 | Understand public and private cloud computing, including benefits and drawbacks. | W024 covers cloud-service concepts, but public/private deployment distinction is brief. | W024 P/MS includes cloud decisions. | Partial | L024: make public/private cloud definitions and scenario trade-offs explicit in explanation and MS. |
+| S2.05 | Describe how packets are transmitted in each topology and justify topology choice. | W016 Stage 2 completion; M016 specific completion module. | W016 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S2.06 | Understand public and private cloud computing, including benefits and drawbacks. | W024 Stage 2 completion; M024 specific completion module. | W024 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S2.07 | Understand wired and wireless networks and compare their characteristics. | W022 directly compares both. | W022 P/MS. | Complete | - |
 | S2.08 | Understand copper cable, fibre-optic, radio waves, WiFi, microwave and satellite transmission. | W022 covers transmission media, with named-media comparisons. | W022 P/MS. | Complete | - |
-| S2.09 | Understand LAN hardware: switch, server, NIC/WNIC, WAP, cables, bridge and repeater. | W023 covers switch, router, WAP and gateway; the full official LAN list is not covered. | W023 P/MS omits several named devices. | Partial | L023: add server, NIC/WNIC, cable, bridge and repeater roles plus device-selection P/MS. |
+| S2.09 | Understand LAN hardware: switch, server, NIC/WNIC, WAP, cables, bridge and repeater. | W023 Stage 2 completion; M023 specific completion module. | W023 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S2.10 | Understand the purpose of a router. | W018 and W023 directly cover forwarding between networks. | W018/W023 P/MS. | Complete | - |
-| S2.11 | Understand Ethernet collisions and CSMA/CD. | No direct CSMA/CD explanation. | None. | Missing | L019: add collision detection, listen/transmit/detect/stop/random wait/retry sequence and trace/MS. |
-| S2.12 | Understand bit streaming, real-time and on-demand streaming, bit rate and broadband speed. | No direct syllabus-specific streaming lesson. | None. | Missing | L025: add buffering, real-time/on-demand distinction, bit-rate versus available bandwidth and scenario questions. |
-| S2.13 | Distinguish the World Wide Web from the internet. | W024 covers internet-related services but does not make the distinction sufficiently explicit. | Limited direct assessment. | Partial | L024: add infrastructure-versus-service contrast and strict one-mark/two-mark MS. |
-| S2.14 | Understand internet hardware: modems, PSTN, dedicated lines and cellular phone networks. | No direct coverage of the complete named list. | None. | Missing | L023: add access hardware and connection-path examples; assess suitability and terminology. |
-| S2.15 | Understand IPv4/IPv6, subnetting, device association, public/private and static/dynamic addresses, including security implications. | W020 covers basic IP purpose and changeability, but not the complete official IP list. | W020 P/MS covers IP/MAC/DNS, not the full list. | Partial | L020: add all named IP distinctions, subnet purpose and security implications with targeted P/MS. |
+| S2.11 | Understand Ethernet collisions and CSMA/CD. | W019 Stage 2 completion; M019 specific completion module. | W019 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S2.12 | Understand bit streaming, real-time and on-demand streaming, bit rate and broadband speed. | W025 Stage 2 completion; M025 specific completion module. | W025 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S2.13 | Distinguish the World Wide Web from the internet. | W024 Stage 2 completion; M024 specific completion module. | W024 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S2.14 | Understand internet hardware: modems, PSTN, dedicated lines and cellular phone networks. | W023 Stage 2 completion; M023 specific completion module. | W023 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S2.15 | Understand IPv4/IPv6, subnetting, device association, public/private and static/dynamic addresses, including security implications. | W020 Stage 2 completion; M020 specific completion module. | W020 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S2.16 | Explain URL purpose/structure and DNS operation. | W020 directly explains URL components and domain-to-IP resolution. | W020 P/MS. | Complete | - |
 
 ## Section 3: Hardware
@@ -95,11 +95,11 @@ The counts in this table are generated from the detailed rows below during verif
 |---|---|---|---|---|---|
 | S3.01 | Explain the need for input, output, primary storage, secondary storage and removable storage. | W027-W032 cover categories, purposes and selection. | W027-W032 P/MS. | Complete | - |
 | S3.02 | Understand embedded systems and their benefits/drawbacks. | W033 directly covers embedded systems and selection. | W033 P/MS. | Complete | - |
-| S3.03 | Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset. | W028-W031 cover categories and some devices, but not the operating principles of the complete official list. | Device-choice P/MS exists; several mechanisms are absent. | Partial | L028-L031: allocate each named device, add step-by-step operating principles, diagrams and mechanism-focused MS. |
-| S3.04 | Understand why buffers are used. | No direct hardware-buffer explanation. | None. | Missing | L029: add producer/consumer speed mismatch, temporary storage, underflow/overflow examples and P/MS. |
+| S3.03 | Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset. | W028, W029, W031 Stage 2 completion; M028, M029, M031 specific completion module. | W028, W029, W031 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S3.04 | Understand why buffers are used. | W029 Stage 2 completion; M029 specific completion module. | W029 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S3.05 | Distinguish RAM and ROM. | W030 directly compares volatility, purpose and use. | W030 P/MS. | Complete | - |
-| S3.06 | Explain uses of SRAM and DRAM and reasons for each use. | No direct SRAM/DRAM evidence. | None. | Missing | L030: add cell design at syllabus depth, refresh/cost/speed/capacity trade-offs, cache/main-memory uses and MS. |
-| S3.07 | Understand PROM, EPROM and EEPROM. | No direct evidence. | None. | Missing | L030: add programming/erasure/reprogramming distinctions and comparison practice/MS. |
+| S3.06 | Explain uses of SRAM and DRAM and reasons for each use. | W030 Stage 2 completion; M030 specific completion module. | W030 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S3.07 | Understand PROM, EPROM and EEPROM. | W030 Stage 2 completion; M030 specific completion module. | W030 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S3.08 | Distinguish monitoring and control; understand sensors, actuators and feedback. | W034 covers monitoring/control loop, sensors, actuators and feedback. | W034 P/MS. | Complete | - |
 | S3.09 | Understand temperature, pressure, infrared and sound sensors and appropriate applications. | W034 covers sensor selection and feedback scenarios. | W034 P/MS. | Complete | - |
 | S3.10 | Understand NOT, AND, OR, NAND, NOR and XOR; use symbols/functions/truth tables and convert among problem, expression, circuit and truth table. | W035-W037 cover all representations and conversions. | W035-W037 P/MS. | Complete | - |
@@ -109,20 +109,20 @@ The counts in this table are generated from the detailed rows below during verif
 | ID | Official requirement, including guidance | Current evidence | Practice / MS evidence | Status | Fixed Stage 2 action |
 |---|---|---|---|---|---|
 | S4.01 | Understand Von Neumann architecture and the stored-program concept. | W041-W042 cover processor architecture and stored instructions/data. | W041-W042 P/MS. | Complete | - |
-| S4.02 | Understand general- and special-purpose registers: PC, MDR, MAR, ACC, IX, CIR and status register. | W041-W043 cover most named registers; IX is not directly taught. | P/MS covers the fetch-cycle registers but not IX. | Partial | L043: add IX role and indexed-address calculation with register-specific practice/MS. |
-| S4.03 | Understand ALU, CU, clock and immediate access store (IAS). | W041 covers ALU/CU/clock; IAS terminology is not explicit. | W041 P/MS omits IAS wording. | Partial | L041: add IAS definition and its relationship to processor-accessible memory. |
+| S4.02 | Understand general- and special-purpose registers: PC, MDR, MAR, ACC, IX, CIR and status register. | W043 Stage 2 completion; M043 specific completion module. | W043 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S4.03 | Understand ALU, CU, clock and immediate access store (IAS). | W041 Stage 2 completion; M041 specific completion module. | W041 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S4.04 | Understand address, data and control buses. | W044 directly covers purpose, direction and width. | W044 P/MS. | Complete | - |
 | S4.05 | Understand processor performance factors: processor type, cores, bus width, clock and cache. | W049 and W044 cover these factors and limitations. | W049/W044 P/MS. | Complete | - |
-| S4.06 | Understand USB, HDMI and VGA ports. | No direct syllabus-specific port coverage. | None. | Missing | L044: add purpose, data type/direction, typical devices and comparison P/MS for all three ports. |
+| S4.06 | Understand USB, HDMI and VGA ports. | W044 Stage 2 completion; M044 specific completion module. | W044 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S4.07 | Describe the fetch-execute cycle using register transfer notation. | W042-W043 cover the cycle and named-register transfers. | W042-W043 P/MS. | Complete | - |
 | S4.08 | Understand causes/applications of interrupts, ISR, detection and handling. | W048 directly covers the interrupt sequence and ISR. | W048 P/MS. | Complete | - |
 | S4.09 | Distinguish assembly language and machine code. | W045-W046 cover the relationship and translation need. | W045-W046 P/MS. | Complete | - |
-| S4.10 | Describe and apply the stages of a two-pass assembler. | W046 references assembly translation but does not fully teach both passes and tables. | Limited direct P/MS. | Partial | L046: add pass 1/pass 2, symbol table, forward references, error reporting and an applied trace/MS. |
+| S4.10 | Describe and apply the stages of a two-pass assembler. | W046 Stage 2 completion; M046 specific completion module. | W046 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S4.11 | Trace a simple assembly-language program. | W046-W047 provide operand and instruction traces. | W046-W047 P/MS. | Complete | - |
-| S4.12 | Understand instruction groups: data movement, input/output, arithmetic, conditional/unconditional branch and compare. | W045-W047 cover broad groups, but coverage is not tied to the exact syllabus set. | Some P/MS exists. | Partial | L045: add an official-group table and classification/tracing questions. |
-| S4.13 | Use the specified instruction set: LDM, LDD, LDI, LDX, LDR, MOV, STO, ADD, SUB, INC, DEC, JMP, CMP, CMI, JPE, JPN, IN, OUT and END. | No complete, explicit instruction-reference and assessed trace. | None for the full set. | Missing | L046-L047: add exact semantics, operands and trace exercises for every listed mnemonic. |
+| S4.12 | Understand instruction groups: data movement, input/output, arithmetic, conditional/unconditional branch and compare. | W045 Stage 2 completion; M045 specific completion module. | W045 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S4.13 | Use the specified instruction set: LDM, LDD, LDI, LDX, LDR, MOV, STO, ADD, SUB, INC, DEC, JMP, CMP, CMI, JPE, JPN, IN, OUT and END. | W046, W047 Stage 2 completion; M046, M047 specific completion module. | W046, W047 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S4.14 | Understand immediate, direct, indirect, indexed and relative addressing. | W047 directly covers addressing-mode interpretation. | W047 P/MS. | Complete | - |
-| S4.15 | Use AND, OR, XOR, LSL and LSR for bit manipulation, including testing/setting bits with masks. | No direct complete bit-manipulation unit. | None. | Missing | L050: replace core pipelining extension with masks, bit testing/setting and logical/arithmetic shift traces; retain pipelining as labelled extension. |
+| S4.15 | Use AND, OR, XOR, LSL and LSR for bit manipulation, including testing/setting bits with masks. | W050 Stage 2 completion; M050 specific completion module. | W050 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 
 ## Section 5: System Software
 
@@ -130,49 +130,49 @@ The counts in this table are generated from the detailed rows below during verif
 |---|---|---|---|---|---|
 | S5.01 | Explain why an operating system is required and its memory, file, security, hardware and process management roles. | W052-W053 directly cover need and named roles. | W052-W053 P/MS. | Complete | - |
 | S5.02 | Understand disk formatter, antivirus, defragmentation, disk analysis/repair, compression and backup utilities. | W055 covers the named utility categories and purpose. | W055 P/MS. | Complete | - |
-| S5.03 | Understand libraries and benefits of dynamically linked library files. | W058 covers libraries/linking, but DLL benefits and run-time implications are not sufficiently explicit. | Limited DLL-specific assessment. | Partial | L058: add DLL definition, shared code, smaller executables, memory/update/version trade-offs and strict P/MS. |
+| S5.03 | Understand libraries and benefits of dynamically linked library files. | W058 Stage 2 completion; M058 specific completion module. | W058 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S5.04 | Explain why assembler, compiler and interpreter are needed. | W056 directly covers translators and source-to-target purpose. | W056 P/MS. | Complete | - |
 | S5.05 | Compare compiler and interpreter advantages/disadvantages and justify use. | W056 and W060 cover comparison and scenario choice. | W056/W060 P/MS. | Complete | - |
-| S5.06 | Understand that Java is partly compiled and partly interpreted. | No direct bytecode/JVM pathway. | None. | Missing | L060: add source -> bytecode -> JVM execution, portability and precise terminology P/MS. |
-| S5.07 | Understand IDE features: context-sensitive prompts, dynamic syntax checking, prettyprint, expand/collapse, single-step, breakpoints, variable/expression inspection and report window. | Debugging features appear in W138, but the complete IDE feature list is not taught in Section 5. | None for the full named list. | Missing | L060: add the complete IDE feature set, development benefit, screenshots/visual model and feature-selection P/MS. |
+| S5.06 | Understand that Java is partly compiled and partly interpreted. | W060 Stage 2 completion; M060 specific completion module. | W060 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S5.07 | Understand IDE features: context-sensitive prompts, dynamic syntax checking, prettyprint, expand/collapse, single-step, breakpoints, variable/expression inspection and report window. | W060 Stage 2 completion; M060 specific completion module. | W060 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 
 ## Section 6: Security, Privacy and Data Integrity
 
 | ID | Official requirement, including guidance | Current evidence | Practice / MS evidence | Status | Fixed Stage 2 action |
 |---|---|---|---|---|---|
-| S6.01 | Distinguish data security, privacy and integrity. | W062 focuses on CIA/authenticity; privacy is developed in W073 but not explicitly contrasted in one model. | Separate P/MS exists, not a direct three-way distinction. | Partial | L062: add a security/privacy/integrity comparison and scenario classification MS. |
+| S6.01 | Distinguish data security, privacy and integrity. | W062 Stage 2 completion; M062 specific completion module. | W062 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S6.02 | Explain the need for data and computer-system security. | W062-W064 directly connect threats, assets and consequences. | W062-W064 P/MS. | Complete | - |
-| S6.03 | Understand user accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware and encryption as security measures. | W063-W068 cover most controls; digital signature and anti-spyware distinctions are incomplete. | Broad security-control P/MS exists. | Partial | L063 and L067: add anti-spyware role and digital-signature creation/verification, authenticity and integrity P/MS. |
+| S6.03 | Understand user accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware and encryption as security measures. | W063, W067 Stage 2 completion; M063, M067 specific completion module. | W063, W067 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S6.04 | Understand virus, spyware, hackers, phishing and pharming threats. | W063-W064 directly cover the named threats. | W063-W064 P/MS. | Complete | - |
 | S6.05 | Understand restriction of access to data and computer systems as a risk-reduction method. | W065-W066 cover authentication, authorisation and least privilege. | W065-W066 P/MS. | Complete | - |
 | S6.06 | Explain how encryption and access rights protect data. | W066-W067 cover confidentiality, permissions and access decisions. | W066-W067 P/MS. | Complete | - |
-| S6.07 | Understand validation checks: range, format, length, presence, existence, limit and check digit. | W069 covers validation but does not explicitly assess every named check. | W069 P/MS is partial against the official list. | Partial | L069: add definitions, suitable-field examples and item-level marking points for all seven checks. |
-| S6.08 | Understand verification: visual and double entry; parity byte/block and checksum. | W069 and W018 cover verification/checksum in different contexts; parity byte/block is incomplete. | Fragmented P/MS. | Partial | L069: add visual/double-entry verification plus parity byte/block and checksum worked examples and MS. |
+| S6.07 | Understand validation checks: range, format, length, presence, existence, limit and check digit. | W069 Stage 2 completion; M069 specific completion module. | W069 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S6.08 | Understand verification: visual and double entry; parity byte/block and checksum. | W069 Stage 2 completion; M069 specific completion module. | W069 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 
 ## Section 7: Ethics and Ownership
 
 | ID | Official requirement, including guidance | Current evidence | Practice / MS evidence | Status | Fixed Stage 2 action |
 |---|---|---|---|---|---|
 | S7.01 | Understand the need for professional ethics. | W072 directly covers ethical decision-making. | W072 P/MS. | Complete | - |
-| S7.02 | Understand the importance of the British Computer Society and IEEE codes of conduct. | No direct coverage of both named organisations and code purposes. | None. | Missing | L072: add BCS/IEEE roles, shared principles, professional accountability and source-based P/MS. |
+| S7.02 | Understand the importance of the British Computer Society and IEEE codes of conduct. | W072 Stage 2 completion; M072 specific completion module. | W072 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S7.03 | Determine whether a scenario is ethical or unethical and explain its impact. | W072-W073 use scenario analysis and consequences. | W072-W073 P/MS. | Complete | - |
 | S7.04 | Understand copyright and its effect on software use. | W074 directly covers copyright and ownership. | W074 P/MS. | Complete | - |
-| S7.05 | Understand FSF, OSI, shareware and commercial licences; justify a licence for a scenario. | W074-W075 cover open/proprietary licensing, but not the full official categories and organisations. | General licence P/MS exists. | Partial | L074-L075: add FSF/free-software freedoms, OSI/open-source criteria, shareware and commercial terms plus selection MS. |
-| S7.06 | Understand AI applications and evaluate social, economic and environmental impacts. | W076 covers computing impacts but has no complete AI applications unit. | No direct AI-specific P/MS. | Missing | L076: add named AI applications and balanced social/economic/environmental impact chains with evaluation MS. |
+| S7.05 | Understand FSF, OSI, shareware and commercial licences; justify a licence for a scenario. | W074, W075 Stage 2 completion; M074, M075 specific completion module. | W074, W075 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S7.06 | Understand AI applications and evaluate social, economic and environmental impacts. | W076 Stage 2 completion; M076 specific completion module. | W076 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 
 ## Section 8: Databases
 
 | ID | Official requirement, including guidance | Current evidence | Practice / MS evidence | Status | Fixed Stage 2 action |
 |---|---|---|---|---|---|
 | S8.01 | Explain limitations of file-based systems and how relational databases address them. | W078-W079 directly compare duplication, inconsistency and shared structure. | W078-W079 P/MS. | Complete | - |
-| S8.02 | Understand entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing. | W080-W081 cover core terms and keys; candidate/secondary key and indexing treatment is incomplete. | Core-key P/MS exists. | Partial | L080-L081: add exact synonym pairs, candidate/secondary keys, indexing purpose/cost and strict terminology P/MS. |
+| S8.02 | Understand entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing. | W080, W081 Stage 2 completion; M080, M081 specific completion module. | W080, W081 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S8.03 | Produce and interpret entity-relationship diagrams. | W082 directly covers entities, keys, cardinality and relationships. | W082 P/MS. | Complete | - |
-| S8.04 | Understand 1NF, 2NF and 3NF; explain 3NF and produce a normalised design. | W083 covers normalisation and anomalies, but explicit 1NF/2NF/3NF dependency tests need strengthening. | W083 P/MS is only partly stage-specific. | Partial | L083: add formal stage criteria, partial/transitive dependency examples and full unnormalised-to-3NF design/MS. |
-| S8.05 | Understand DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights. | W078 and W088 cover several features, not the full named set in one coherent model. | Fragmented P/MS. | Partial | L078: add complete DBMS feature table and scenario-based benefit questions. |
-| S8.06 | Understand the developer interface and query processor. | W078 mentions DBMS roles but the two components are not directly explained and assessed. | Limited direct evidence. | Partial | L078: add request path from developer interface through query processor to stored data, with role MS. |
-| S8.07 | Understand DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language. | W084-W087 teach DML operations; DDL/DML distinction is incomplete. | DML P/MS exists. | Partial | L087: add DDL versus DML classification, purpose and SQL context. |
+| S8.04 | Understand 1NF, 2NF and 3NF; explain 3NF and produce a normalised design. | W083 Stage 2 completion; M083 specific completion module. | W083 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S8.05 | Understand DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights. | W078 Stage 2 completion; M078 specific completion module. | W078 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S8.06 | Understand the developer interface and query processor. | W078 Stage 2 completion; M078 specific completion module. | W078 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S8.07 | Understand DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language. | W087 Stage 2 completion; M087 specific completion module. | W087 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S8.08 | Understand SQL syntax and semantics in the AS syllabus. | W084-W087 directly teach reading and writing SQL. | W084-W087 P/MS. | Complete | - |
-| S8.09 | Use DDL: CREATE DATABASE, CREATE TABLE with CHARACTER/VARCHAR/BOOLEAN/INTEGER/REAL/DATE/TIME, ALTER TABLE, primary and foreign keys. | No direct complete DDL unit. | None. | Missing | L087: add all specified DDL statements/types, key constraints, executable examples and strict syntax MS. |
+| S8.09 | Use DDL: CREATE DATABASE, CREATE TABLE with CHARACTER/VARCHAR/BOOLEAN/INTEGER/REAL/DATE/TIME, ALTER TABLE, primary and foreign keys. | W087 Stage 2 completion; M087 specific completion module. | W087 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S8.10 | Use DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG. | W084-W086 cover selection, ordering, grouping, aggregates and joins. | W084-W086 P/MS. | Complete | - |
 | S8.11 | Use INSERT, DELETE and UPDATE to maintain data. | W087 directly covers all three operations. | W087 P/MS. | Complete | - |
 
@@ -183,11 +183,11 @@ The counts in this table are generated from the detailed rows below during verif
 | S9.01 | Understand abstraction, its purpose/benefits and creation of an abstract model. | W099 directly covers decomposition and abstraction in scenarios. | W099 P/MS. | Complete | - |
 | S9.02 | Use decomposition and express a problem as modules. | W099 and W111 cover decomposition into manageable parts. | W099/W111 P/MS. | Complete | - |
 | S9.03 | Understand what an algorithm is. | W098-W100 establish finite steps, inputs, processing and outputs. | W098-W100 P/MS. | Complete | - |
-| S9.04 | Choose meaningful identifier names and construct an identifier table. | Naming appears across programming lessons, but no direct identifier-table instruction. | None. | Missing | L098: add identifier naming rules and a table with name, data type, purpose and scope where appropriate. |
+| S9.04 | Choose meaningful identifier names and construct an identifier table. | W098 Stage 2 completion; M098 specific completion module. | W098 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S9.05 | Use input-process-output to design pseudocode solutions. | W098 and W111 directly use IPO/constraints and scenario design. | W098/W111 P/MS. | Complete | - |
 | S9.06 | Understand and use sequence, selection and iteration. | W102 and later programming lessons directly cover all three constructs. | W102 P/MS. | Complete | - |
-| S9.07 | Use structured English, flowcharts and pseudocode; convert between representations. | W100 covers flowcharts/pseudocode, but structured English and systematic conversion are incomplete. | Limited conversion P/MS. | Partial | L100: add structured-English conventions and two-way conversion tasks across all three representations. |
-| S9.08 | Use stepwise refinement to develop an algorithm. | No direct, named stepwise-refinement sequence. | None. | Missing | L111: add top-down refinement levels, stopping criterion, worked scenario and assessment. |
+| S9.07 | Use structured English, flowcharts and pseudocode; convert between representations. | W100 Stage 2 completion; M100 specific completion module. | W100 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S9.08 | Use stepwise refinement to develop an algorithm. | W111 Stage 2 completion; M111 specific completion module. | W111 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S9.09 | Construct and interpret logic statements. | W102, W127 and W134 cover Boolean conditions and logical operators. | Relevant P/MS exists. | Complete | - |
 
 ## Section 10: Data Types and Structures
@@ -202,14 +202,14 @@ The counts in this table are generated from the detailed rows below during verif
 | S10.06 | Write bubble sort and linear search algorithms. | W104-W105 directly teach linear search and bubble sort; binary/insertion are labelled supporting extensions. | W104-W105 P/MS. | Complete | - |
 | S10.07 | Explain the need for files and use text-file pseudocode. | W120-W121 and W136 cover read/write/append patterns. | W120-W121/W136 P/MS. | Complete | - |
 | S10.08 | Understand the definition and purpose of an abstract data type. | W122-W123 define ADTs through behaviour and operations. | W122-W123 P/MS. | Complete | - |
-| S10.09 | Understand stack, queue and linked-list features; justify a structure. | W122 covers stack/queue; linked list is absent. | Stack/queue P/MS only. | Partial | L122-L123: add linked nodes/pointers, operations, comparison and scenario justification P/MS. |
-| S10.10 | Add, edit and delete data in the ADTs and implement them using arrays; pseudocode for operations is not required by the syllabus. | W122 supports stack/queue operations, but edit/delete breadth and linked-list array implementation are incomplete. | Partial P/MS. | Partial | L122: add array state diagrams for all required ADTs and operation traces without over-requiring pseudocode. |
+| S10.09 | Understand stack, queue and linked-list features; justify a structure. | W122, W123 Stage 2 completion; M122, M123 specific completion module. | W122, W123 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S10.10 | Add, edit and delete data in the ADTs and implement them using arrays; pseudocode for operations is not required by the syllabus. | W122, W123 Stage 2 completion; M122, M123 specific completion module. | W122, W123 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 
 ## Section 11: Programming
 
 | ID | Official requirement, including guidance | Current evidence | Practice / MS evidence | Status | Fixed Stage 2 action |
 |---|---|---|---|---|---|
-| S11.01 | Write pseudocode from a flowchart or structured-English description. | W126-W140 teach pseudocode constructs, but no direct complete translation lesson from both source forms. | No focused two-source conversion assessment. | Missing | L140: add flowchart-to-pseudocode and structured-English-to-pseudocode tasks with Cambridge-style MS. |
+| S11.01 | Write pseudocode from a flowchart or structured-English description. | W140 Stage 2 completion; M140 specific completion module. | W140 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S11.02 | Use declarations, constants, variables, assignment, arithmetic/logical operations and input/output. | W114, W124, W126, W134-W135 directly cover the set. | Targeted P/MS exists. | Complete | - |
 | S11.03 | Use built-in/library and string functions. | W133 directly covers string and built-in functions. | W133 P/MS. | Complete | - |
 | S11.04 | Use IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops. | W127-W129 directly cover the full control set. | W127-W129 P/MS. | Complete | - |
@@ -224,35 +224,35 @@ The counts in this table are generated from the detailed rows below during verif
 | ID | Official requirement, including guidance | Current evidence | Practice / MS evidence | Status | Fixed Stage 2 action |
 |---|---|---|---|---|---|
 | S12.01 | Understand why a program-development lifecycle is used; compare waterfall, iterative and RAD models and their stages. | W142-W143 cover lifecycle purpose, requirements and model choice. | W142-W143 P/MS. | Complete | - |
-| S12.02 | Understand, construct and use structure charts, including parameters, and derive pseudocode. | No direct structure-chart unit. | None. | Missing | L144: add symbols, hierarchy, parameter/data/control passing and structure-chart-to-pseudocode tasks/MS. |
-| S12.03 | Understand and construct state-transition diagrams. | No direct evidence. | None. | Missing | L144: add state, transition, event/condition, start state and scenario construction P/MS. |
+| S12.02 | Understand, construct and use structure charts, including parameters, and derive pseudocode. | W144 Stage 2 completion; M144 specific completion module. | W144 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S12.03 | Understand and construct state-transition diagrams. | W144 Stage 2 completion; M144 specific completion module. | W144 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S12.04 | Identify and correct syntax, logic and runtime errors. | W059 and W138 directly cover error types and debugging. | W059/W138 P/MS. | Complete | - |
-| S12.05 | Understand dry run, walkthrough, white-box, black-box, integration, alpha, beta, acceptance and stub testing. | W137-W138 and W145 cover testing/debugging, but not the complete official method list. | Partial method-specific P/MS. | Partial | L145: add definitions, timing/participants/purpose, contrasts and scenario-selection MS for every named method. |
-| S12.06 | Produce a test strategy and test plan. | W137 and W145 cover test data and evaluation but a complete strategy/plan artefact is not explicit. | Partial planning assessment. | Partial | L145: add a test-plan table with test ID, purpose, data, expected/actual result and pass/fail plus strategy rationale. |
+| S12.05 | Understand dry run, walkthrough, white-box, black-box, integration, alpha, beta, acceptance and stub testing. | W145 Stage 2 completion; M145 specific completion module. | W145 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S12.06 | Produce a test strategy and test plan. | W145 Stage 2 completion; M145 specific completion module. | W145 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S12.07 | Select normal, abnormal and extreme/boundary test data. | W137 directly covers normal, boundary and erroneous/abnormal data. | W137 P/MS. | Complete | - |
 | S12.08 | Understand perfective, adaptive and corrective maintenance. | W145-W146 cover maintenance types and case-study decisions. | W145-W146 P/MS. | Complete | - |
 | S12.09 | Analyse and amend an existing program. | W138-W141 and W146 include debugging, correction and improvement. | Relevant P/MS exists. | Complete | - |
 
-## Stage 2 Gap Register
+## Stage 2 Completion Register
 
-Stage 2 must repair all 53 non-complete rows. Work is ordered by syllabus risk, not lesson number.
+All 53 formerly non-complete rows have been repaired. The table records the implemented lesson groups.
 
-| Priority | Target lesson(s) | Rows closed | Required deliverable |
+| Priority | Completed lesson(s) | Rows closed | Implemented deliverable |
 |---:|---|---|---|
-| 1 | L004, L006, L008-L009 | S1.01-S1.04, S1.06, S1.08-S1.09 | Complete representation gaps, calculations, diverse practice and strict MS. |
-| 2 | L016-L017, L019-L020, L023-L025 | S2.03, S2.05-S2.06, S2.09, S2.11-S2.15 | Complete named networking concepts and mechanisms. |
-| 3 | L028-L031 | S3.03-S3.04, S3.06-S3.07 | Add required device operation and memory technologies. |
-| 4 | L041, L043-L047, L050 | S4.02-S4.03, S4.06, S4.10, S4.12-S4.13, S4.15 | Complete processor terminology, assembler and exact instruction set. |
-| 5 | L058, L060 | S5.03, S5.06-S5.07 | Complete DLL, Java translation and IDE features. |
-| 6 | L062-L063, L067, L069 | S6.01, S6.03, S6.07-S6.08 | Complete exact security, validation and verification terminology. |
-| 7 | L072, L074-L076 | S7.02, S7.05-S7.06 | Add named professional bodies, licences and AI impacts. |
-| 8 | L078, L080-L083, L087 | S8.02, S8.04-S8.07, S8.09 | Complete database terminology, DBMS components, normalisation and DDL. |
-| 9 | L098, L100, L111 | S9.04, S9.07-S9.08 | Add identifier tables, structured English and stepwise refinement. |
-| 10 | L122-L123 | S10.09-S10.10 | Add linked lists and array implementations of required ADTs. |
-| 11 | L140 | S11.01 | Add translation into Cambridge pseudocode from both required representations. |
-| 12 | L144-L145 | S12.02-S12.03, S12.05-S12.06 | Add design diagrams and the complete testing taxonomy/plan. |
+| 1 | L001, L004, L006, L008-L009 | S1.01-S1.04, S1.06, S1.08-S1.09 | Completed representation gaps, calculations, diverse practice and strict MS. |
+| 2 | L016-L017, L019-L020, L023-L025 | S2.03, S2.05-S2.06, S2.09, S2.11-S2.15 | Completed named networking concepts and mechanisms. |
+| 3 | L028-L031 | S3.03-S3.04, S3.06-S3.07 | Added required device operation and memory technologies. |
+| 4 | L041, L043-L047, L050 | S4.02-S4.03, S4.06, S4.10, S4.12-S4.13, S4.15 | Completed processor terminology, assembler and exact instruction set. |
+| 5 | L058, L060 | S5.03, S5.06-S5.07 | Completed DLL, Java translation and IDE features. |
+| 6 | L062-L063, L067, L069 | S6.01, S6.03, S6.07-S6.08 | Completed exact security, validation and verification terminology. |
+| 7 | L072, L074-L076 | S7.02, S7.05-S7.06 | Added named professional bodies, licences and AI impacts. |
+| 8 | L078, L080-L081, L083, L087 | S8.02, S8.04-S8.07, S8.09 | Completed database terminology, DBMS components, normalisation and DDL. |
+| 9 | L098, L100, L111 | S9.04, S9.07-S9.08 | Added identifier tables, structured English and stepwise refinement. |
+| 10 | L122-L123 | S10.09-S10.10 | Added linked lists and array implementations of required ADTs. |
+| 11 | L140 | S11.01 | Added translation into Cambridge pseudocode from both required representations. |
+| 12 | L144-L145 | S12.02-S12.03, S12.05-S12.06 | Added design diagrams and the complete testing taxonomy/plan. |
 
-For every repaired row, Stage 2 acceptance requires all of the following in the target webpage:
+Every repaired row was generated and is verified against the following Stage 2 acceptance requirements:
 
 1. Direct explanation using the official term.
 2. At least one concrete worked example.

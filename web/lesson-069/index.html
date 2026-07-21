@@ -34,6 +34,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -321,6 +322,52 @@
             <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Complete validation and verification methods</h2>
+            <p>Official audit rows: S6.07, S6.08</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>Validation checks whether data is reasonable and follows rules: range, format, length, presence, existence, limit and check digit. It cannot prove truth. Verification checks whether data was copied accurately, using visual checking or double entry.</p>
+            <p>Error detection includes parity: a parity byte checks one group and block parity adds row/column checks; a checksum is calculated from a data block and compared after transmission. These detect many errors but do not correct every error.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: New product code</h3>
+            <p>A presence check rejects blank input, length and format checks enforce the pattern, an existence check confirms the code is in the product file, and a check digit detects many keying errors. None proves the label was attached to the correct product.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which check confirms a foreign code is already stored in a lookup file?</p>
+              <details><summary>Show answer</summary><p>Existence check.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> How does double-entry verification work?</p>
+              <details><summary>Show answer</summary><p>Data is entered twice and the two entries are compared.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What happens to a checksum at the receiver?</p>
+              <details><summary>Show answer</summary><p>It is recalculated and compared with the transmitted checksum.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>For an eight-digit account number, describe two suitable validation checks and one verification method.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> length check requires eight characters/digits</li>
+                <li><strong>B1</strong> format/type/check-digit or existence check accurately described</li>
+                <li><strong>B1</strong> visual check against source or double entry described</li>
+                <li><strong>B1</strong> distinguishes validation reasonableness from verification accuracy of copying</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept 'validation proves the account number is correct'.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

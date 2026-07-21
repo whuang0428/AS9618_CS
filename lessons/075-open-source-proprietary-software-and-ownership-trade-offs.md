@@ -1,9 +1,9 @@
 # Lesson 075: Open source, proprietary software, and ownership trade-offs
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 7  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 7
+**Duration:** 45 minutes
 **Assessment rhythm:** 5-minute quiz
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students role-play two stakeholders and prepare one argument each, then write a 
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Open source, proprietary software, and ownership trade-offs** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement. For this lesson, make students contrast that mistake with the exact idea of **open source, proprietary software, and ownership trade-offs**.  
+Misconception: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement. For this lesson, make students contrast that mistake with the exact idea of **open source, proprietary software, and ownership trade-offs**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S7.05
+**Focus:** Shareware and commercial licences
+
+### Direct explanation
+
+- Shareware is distributed for trial or limited use, with payment commonly required for continued, full or unrestricted use. A commercial/proprietary licence grants defined use while normally restricting copying, modification and redistribution.
+- Licence choice must fit the scenario: budget, support, source modification, redistribution, trial period, compatibility and legal obligations are relevant. 'Free to download' does not mean public domain.
+
+### Worked example
+
+**Trial accounting package:** A company tests a limited shareware edition for 30 days, then buys commercial licences for continued use, vendor support and full reporting features.
+
+### Targeted practice and answers
+
+1. What commonly changes after a shareware trial?
+   **Answer:** Payment is required or features/time become restricted.
+2. Can a buyer normally redistribute unlimited copies of commercial software?
+   **Answer:** No, unless the licence explicitly permits it.
+3. Give one reason to choose a commercial licence.
+   **Answer:** Vendor support, warranty, specialist features or compatibility, developed for the scenario.
+
+### Exam-style question and MS
+
+**Question (4 marks):** A school needs supported examination software but cannot modify or redistribute it. Justify a commercial licence and state one restriction.
+
+- **B1** vendor support/updates appropriate to examination use
+- **B1** reliability/compatibility/accountability developed
+- **B1** use limited to licensed users/devices
+- **B1** copying/modification/redistribution restricted
+
+**Strict note:** Do not award 'commercial is better' without a scenario-linked reason.

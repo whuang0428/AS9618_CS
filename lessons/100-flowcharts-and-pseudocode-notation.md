@@ -1,9 +1,9 @@
 # Lesson 100: Flowcharts and pseudocode notation
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 2  
-**Syllabus reference:** Syllabus Section 9  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 2
+**Syllabus reference:** Syllabus Section 9
+**Duration:** 45 minutes
 **Assessment rhythm:** 5-minute quiz, monthly assessment checkpoint
 
 > Java is used only as a supporting implementation language. Cambridge pseudocode remains the exam answer format.
@@ -75,7 +75,7 @@ Students solve the same problem twice: first as numbered English steps, then as 
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Flowcharts and pseudocode notation** is..., and a common mistake is..."
 
 ## Homework
@@ -90,5 +90,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **flowcharts and pseudocode notation**.  
+Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **flowcharts and pseudocode notation**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S9.07
+**Focus:** Structured English, flowcharts and pseudocode conversion
+
+### Direct explanation
+
+- Structured English expresses sequence, selection and repetition using controlled natural-language statements and indentation. A flowchart uses standard symbols and arrows; pseudocode uses Cambridge constructs. All three must preserve the same decisions and loop boundaries.
+- Convert by identifying inputs, outputs, conditions and repeated actions before translating notation. Do not translate shapes or sentences word for word while losing control flow.
+
+### Worked example
+
+**Validate a mark:** Structured English: INPUT Mark; WHILE Mark < 0 OR Mark > 100, OUTPUT error and INPUT Mark; ENDWHILE. The flowchart returns from the invalid decision branch to input; pseudocode uses a pre-condition WHILE loop.
+
+### Targeted practice and answers
+
+1. Which flowchart symbol represents a decision?
+   **Answer:** Diamond.
+2. What must remain identical during conversion?
+   **Answer:** The algorithm's control flow, conditions, inputs and outputs.
+3. Why is indentation useful in structured English?
+   **Answer:** It shows which steps belong inside a selection or loop.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Convert this structured English to pseudocode: input Age; if Age is at least 18 output Adult, otherwise output Minor.
+
+- **B1** INPUT Age
+- **B1** IF Age >= 18 THEN
+- **B1** OUTPUT Adult and ELSE OUTPUT Minor
+- **B1** closes with ENDIF / coherent Cambridge syntax
+
+**Strict note:** Do not accept two independent IF statements if they can produce contradictory paths; the description requires mutually exclusive alternatives.

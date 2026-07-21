@@ -1,9 +1,9 @@
 # Lesson 024: Internet, intranet, extranet, and cloud services
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 2  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 2
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students draw a packet journey for a web request and label where addressing, rou
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Internet, intranet, extranet, and cloud services** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance. For this lesson, make students contrast that mistake with the exact idea of **internet, intranet, extranet, and cloud services**.  
+Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance. For this lesson, make students contrast that mistake with the exact idea of **internet, intranet, extranet, and cloud services**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S2.06, S2.13
+**Focus:** Public/private cloud and WWW/internet distinction
+
+### Direct explanation
+
+- The internet is the global network infrastructure and protocols connecting networks. The World Wide Web is one service using that infrastructure: linked web resources accessed using browsers and HTTP/HTTPS.
+- A public cloud offers shared provider infrastructure to customers; a private cloud is dedicated to one organisation. Public cloud can scale with lower capital cost but gives less direct control; private cloud offers more control/customisation but costs more to operate.
+
+### Worked example
+
+**Company document system:** A small company may choose public cloud storage for rapid scaling and outsourced maintenance. A regulated organisation may choose a private cloud for control over configuration and data location, accepting higher cost.
+
+### Targeted practice and answers
+
+1. Is email part of the WWW?
+   **Answer:** No. It uses the internet but is a separate internet service.
+2. Who uses the infrastructure in a private cloud?
+   **Answer:** One organisation.
+3. Give one public-cloud drawback.
+   **Answer:** Less direct control, provider dependence, privacy/location concerns or internet dependence.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Distinguish the internet from the World Wide Web, then explain one benefit of a private cloud for an organisation.
+
+- **B1** internet is the network infrastructure / interconnected networks
+- **B1** WWW is a service of linked web resources using the internet
+- **B1** private cloud infrastructure is dedicated to one organisation
+- **B1** greater control/security configuration/customisation developed
+
+**Strict note:** Do not accept 'the internet is WiFi' or 'the WWW is the internet'.

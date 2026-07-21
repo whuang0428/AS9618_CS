@@ -247,6 +247,52 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>SRAM, DRAM, PROM, EPROM and EEPROM</h2>
+            <p>Official audit rows: S3.06, S3.07</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.</p>
+            <p>PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All are non-volatile ROM technologies.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose memory for CPU cache</h3>
+            <p>SRAM is chosen because no refresh and faster access reduce processor waiting; its higher cost and lower capacity are acceptable for a small cache.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Why is DRAM refreshed?</p>
+              <details><summary>Show answer</summary><p>Charge in its storage capacitors leaks and must be restored.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which ROM type is erased using ultraviolet light?</p>
+              <details><summary>Show answer</summary><p>EPROM.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which ROM type can normally be rewritten electrically in circuit?</p>
+              <details><summary>Show answer</summary><p>EEPROM.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Compare SRAM and DRAM and explain why DRAM is normally used for main memory.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> SRAM is faster / does not require refresh</li>
+                <li><strong>B1</strong> DRAM requires refresh / is slower</li>
+                <li><strong>B1</strong> DRAM has greater density / lower cost per bit</li>
+                <li><strong>B1</strong> main memory needs large capacity, making DRAM more economical</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not award both comparison marks for merely expanding the abbreviations.</p>
+            </details>
+          </article>
+        </section>
+
         <section class="panel summary-panel" id="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>

@@ -1,9 +1,9 @@
 # Lesson 072: Ethical issues in Computer Science decisions
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 7  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 7
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students role-play two stakeholders and prepare one argument each, then write a 
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Ethical issues in Computer Science decisions** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement. For this lesson, make students contrast that mistake with the exact idea of **ethical issues in computer science decisions**.  
+Misconception: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement. For this lesson, make students contrast that mistake with the exact idea of **ethical issues in computer science decisions**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S7.02
+**Focus:** BCS and IEEE professional codes
+
+### Direct explanation
+
+- The British Computer Society (BCS) and IEEE publish professional codes that guide competent, honest and responsible computing practice. They establish expectations for public interest, professional competence, integrity, privacy and accountability.
+- Codes support consistent decisions, public trust and disciplinary accountability. They do not replace law and do not automatically produce one answer; professionals apply principles to evidence and stakeholders.
+
+### Worked example
+
+**Unsafe release pressure:** A developer documents the safety risk, refuses to conceal test failures and escalates through professional channels, applying public-interest and integrity duties rather than following schedule pressure blindly.
+
+### Targeted practice and answers
+
+1. Name the two syllabus organisations with professional codes.
+   **Answer:** BCS and IEEE.
+2. Give one purpose of a professional code.
+   **Answer:** To set standards guiding responsible professional conduct.
+3. Does following a manager automatically satisfy a code?
+   **Answer:** No; duties such as public interest and integrity may require challenge/escalation.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Explain two reasons why professional bodies such as BCS and IEEE publish codes of conduct.
+
+- **B1** provide standards/guidance for professional decisions
+- **B1** protect public interest / reduce harm
+- **B1** support trust/accountability/discipline
+- **B1** promote competence, honesty, privacy or integrity
+
+**Strict note:** Do not accept 'because ethics are good' without a professional purpose or consequence.

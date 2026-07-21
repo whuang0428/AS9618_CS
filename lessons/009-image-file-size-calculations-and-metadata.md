@@ -1,9 +1,9 @@
 # Lesson 009: Image file size calculations and metadata
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 1  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 1
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students change one parameter at a time: width, height and colour depth. They pr
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Image file size calculations and metadata** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it. For this lesson, make students contrast that mistake with the exact idea of **image file size calculations and metadata**.  
+Misconception: Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it. For this lesson, make students contrast that mistake with the exact idea of **image file size calculations and metadata**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S1.09
+**Focus:** Vector graphics and drawing lists
+
+### Direct explanation
+
+- A vector graphic is stored as a drawing list of objects. Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness; software redraws the objects from these instructions.
+- Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. Choice must be justified using the source image and intended editing/scaling.
+
+### Worked example
+
+**Store a red circle:** A drawing-list entry could record object = circle, centre = (80, 60), radius = 20, fill = red and outline = black. Enlarging it changes the geometry before redrawing, not a grid of stored pixels.
+
+### Targeted practice and answers
+
+1. Name two properties stored for a vector object.
+   **Answer:** Any two of coordinates, dimensions, fill, line colour or line thickness.
+2. Choose vector or bitmap for a company logo that must appear on a pen and a billboard.
+   **Answer:** Vector, because geometric objects can be scaled without pixelation.
+3. Why is bitmap normally better for a photograph?
+   **Answer:** A photograph contains complex per-pixel colour and texture that is inefficient to describe as drawing objects.
+
+### Exam-style question and MS
+
+**Question (4 marks):** A designer creates a simple icon from circles and rectangles. Explain how it is stored as a vector graphic and give one advantage over a bitmap when resized.
+
+- **B1** stored as a drawing list / list of objects
+- **B1** stores object properties such as coordinates/dimensions/colour
+- **B1** software redraws objects from the descriptions
+- **B1** can be resized without pixelation / loss of shape quality
+
+**Strict note:** Do not accept 'vector has better quality' unless scalability or object-based storage is explained.

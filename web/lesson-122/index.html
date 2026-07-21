@@ -35,6 +35,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -306,6 +307,52 @@ String item = stack.pop();</code></pre>
             <p>These questions focus on definitions, traces, operation order and strict overflow/underflow wording.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Linked lists and array-based ADT state</h2>
+            <p>Official audit rows: S10.09, S10.10</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>A linked list stores nodes containing data and a pointer/index to the next node; a start pointer identifies the first node and a null value ends the chain. Logical order can differ from physical array order.</p>
+            <p>In an array implementation, parallel Data and Next arrays store nodes and a free-list pointer tracks unused locations. Insert/delete changes links and the free list; items need not be shifted as in a contiguous array.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Insert after node 2</h3>
+            <p>Take node 5 from the free list, set Data[5] to the new value, set Next[5] to old Next[2], then set Next[2] to 5. The logical chain now includes node 5 after node 2.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What marks the end of a linked list?</p>
+              <details><summary>Show answer</summary><p>A null/sentinel next pointer.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What does the start pointer store?</p>
+              <details><summary>Show answer</summary><p>The index/address of the first logical node.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why need a free list in an array implementation?</p>
+              <details><summary>Show answer</summary><p>To track unused node positions available for insertion.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>An array-based linked list uses Data and Next arrays. Explain how a new node is inserted at the front.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> obtains an unused index from the free list</li>
+                <li><strong>B1</strong> stores the new data at that index</li>
+                <li><strong>B1</strong> sets its Next to the old start index</li>
+                <li><strong>B1</strong> updates start to the new index / updates free-list head</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept shifting every array element as the defining linked-list insertion method.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

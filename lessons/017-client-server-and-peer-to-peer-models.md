@@ -1,9 +1,9 @@
 # Lesson 017: Client-server and peer-to-peer models
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 2  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 2
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students draw a packet journey for a web request and label where addressing, rou
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Client-server and peer-to-peer models** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance. For this lesson, make students contrast that mistake with the exact idea of **client-server and peer-to-peer models**.  
+Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance. For this lesson, make students contrast that mistake with the exact idea of **client-server and peer-to-peer models**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S2.03
+**Focus:** Thin clients and thick clients
+
+### Direct explanation
+
+- A thin client relies mainly on a server for processing and/or storage. A thick client performs more processing locally and normally stores more software or data on the client device.
+- Thin clients simplify central updates and can use lower-specification hardware, but depend heavily on the server and network. Thick clients can continue more work when disconnected, but local installation, security and maintenance are distributed.
+
+### Worked example
+
+**School computer room:** Thin clients suit centrally managed exam accounts because software and files can be controlled on servers. A network outage, however, can stop the room working; a thick client may retain local applications.
+
+### Targeted practice and answers
+
+1. Where is most processing performed for a thin client?
+   **Answer:** On the server.
+2. Give one thick-client advantage during a network outage.
+   **Answer:** Local applications/data may remain usable.
+3. Give one thin-client management advantage.
+   **Answer:** Software and updates can be managed centrally.
+
+### Exam-style question and MS
+
+**Question (4 marks):** A company is choosing thin clients for a call centre. Explain two benefits and one drawback.
+
+- **B1** centralised software/update management
+- **B1** lower client hardware/storage requirement or centralised security/data
+- **B1** depends on network/server availability or performance
+- **B1** develops one point in the call-centre context
+
+**Strict note:** Do not award a mark for 'cheaper' unless the lower client specification or central administration explains why.

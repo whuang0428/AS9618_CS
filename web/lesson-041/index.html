@@ -30,6 +30,7 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
+        <a href="#stage2-completion">Syllabus completion</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -265,6 +266,52 @@
             <p>These are original questions written in Cambridge style. Mark schemes are strict about roles and wording.</p>
           </div>
           <div class="exam-list" id="examList"></div>
+        </section>
+
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Immediate access store (IAS)</h2>
+            <p>Official audit rows: S4.03</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>The immediate access store is memory directly accessible by the processor for instructions and data currently required. In the stored-program model, instructions and data share this memory and are distinguished by how they are used.</p>
+            <p>IAS is not the same as a CPU register or secondary storage. Registers are smaller locations inside the CPU; secondary storage must supply programs/data to main memory before normal execution.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Run a stored program</h3>
+            <p>Instructions and working data are loaded from SSD into the IAS/main memory. The CPU fetches an instruction from that memory into the MDR/CIR, then executes it using registers and the ALU.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What two kinds of item are held in IAS?</p>
+              <details><summary>Show answer</summary><p>Instructions and data currently required.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Is IAS a CPU register?</p>
+              <details><summary>Show answer</summary><p>No; it is processor-accessible main memory.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why must a program on secondary storage be loaded into IAS?</p>
+              <details><summary>Show answer</summary><p>The processor fetches executable instructions from directly accessible main memory.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Explain the role of the immediate access store in a stored-program computer.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> stores instructions currently required</li>
+                <li><strong>B1</strong> stores data currently required</li>
+                <li><strong>B1</strong> processor can directly access/fetch from it</li>
+                <li><strong>B1</strong> instructions and data share memory in Von Neumann architecture</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept 'IAS is cache' or 'IAS is a register'.</p>
+            </details>
+          </article>
         </section>
 
         <section class="panel" id="summary">

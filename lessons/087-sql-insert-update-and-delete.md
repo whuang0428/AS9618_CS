@@ -1,9 +1,9 @@
 # Lesson 087: SQL INSERT, UPDATE, and DELETE
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 8  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 8
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students write three natural-language questions for a database, then swap and wr
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **SQL INSERT, UPDATE, and DELETE** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often select every field with `*`. Correction: exam questions usually specify exactly which fields are required. For this lesson, make students contrast that mistake with the exact idea of **sql insert, update, and delete**.  
+Misconception: Students often select every field with `*`. Correction: exam questions usually specify exactly which fields are required. For this lesson, make students contrast that mistake with the exact idea of **sql insert, update, and delete**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S8.07, S8.09
+**Focus:** DDL, DML and required SQL data types
+
+### Direct explanation
+
+- DDL defines or changes database structure: CREATE DATABASE, CREATE TABLE and ALTER TABLE. DML queries or changes records: SELECT, INSERT, UPDATE and DELETE. SQL is the industry-standard language used for these operations.
+- Required column types include CHARACTER/VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME. CREATE TABLE can declare PRIMARY KEY and FOREIGN KEY references; ALTER TABLE changes an existing definition.
+
+### Worked example
+
+**Create related tables:** CREATE TABLE Department (DepartmentID INTEGER PRIMARY KEY, Name VARCHAR(40)); then CREATE TABLE Employee (EmployeeID INTEGER PRIMARY KEY, Active BOOLEAN, DepartmentID INTEGER, FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID));
+
+### Targeted practice and answers
+
+1. Classify CREATE TABLE as DDL or DML.
+   **Answer:** DDL.
+2. Choose a type for 12.75.
+   **Answer:** REAL.
+3. Which statement changes an existing table structure?
+   **Answer:** ALTER TABLE.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Write SQL DDL to create Event(EventID integer primary key, EventDate date, StartTime time, Open boolean).
+
+- **B1** CREATE TABLE Event
+- **B1** EventID INTEGER PRIMARY KEY
+- **B1** EventDate DATE and StartTime TIME
+- **B1** Open BOOLEAN with valid punctuation/structure
+
+**Strict note:** Do not award INSERT/UPDATE statements: the question asks for structure, not record data.

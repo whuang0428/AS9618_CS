@@ -266,6 +266,52 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Laser/3D printers, speakers and output buffers</h2>
+            <p>Official audit rows: S3.03, S3.04</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>A laser printer charges a drum, a laser discharges selected points, toner adheres to the image, toner transfers to paper and heat/pressure fuse it. A 3D printer deposits or solidifies material layer by layer from a digital model.</p>
+            <p>A speaker uses a DAC/amplifier to drive a coil and cone, producing pressure waves. An output buffer temporarily holds data because the processor can produce it faster or in different-sized bursts than a printer or audio device can consume it.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Print a page</h3>
+            <p>The operating system places page data in a print buffer. The CPU can continue other work while the slower printer consumes buffered data and performs drum, toner and fusing stages.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What permanently bonds toner to laser-printer paper?</p>
+              <details><summary>Show answer</summary><p>Heat and pressure in the fuser.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> How does a 3D printer build an object?</p>
+              <details><summary>Show answer</summary><p>It deposits/solidifies successive layers.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why is a print buffer needed?</p>
+              <details><summary>Show answer</summary><p>It handles the speed difference and lets the producer continue while the printer consumes data.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Explain why a buffer is used when a computer sends a large document to a laser printer.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> processor/computer and printer operate at different speeds</li>
+                <li><strong>B1</strong> buffer temporarily stores print data</li>
+                <li><strong>B1</strong> printer reads data at its own rate</li>
+                <li><strong>B1</strong> computer/processor can continue other processing without waiting for the full print</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept 'the buffer makes the printer faster'; it manages transfer-rate differences.</p>
+            </details>
+          </article>
+        </section>
+
         <section class="panel summary-panel" id="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>

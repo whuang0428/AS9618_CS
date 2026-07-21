@@ -1,9 +1,9 @@
 # Lesson 078: Data, information, databases, and DBMS roles
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 8  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 8
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Pairs convert a messy club list into relational tables, then mark one field as a
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Data, information, databases, and DBMS roles** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record. For this lesson, make students contrast that mistake with the exact idea of **data, information, databases, and dbms roles**.  
+Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record. For this lesson, make students contrast that mistake with the exact idea of **data, information, databases, and dbms roles**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S8.05, S8.06
+**Focus:** DBMS features and query processing
+
+### Direct explanation
+
+- A DBMS maintains a data dictionary of metadata, supports data modelling and a logical schema, enforces integrity/security/access rights, and provides backup/recovery. These services separate logical data use from physical storage details.
+- A developer interface accepts commands or API requests. The query processor parses/validates a query, plans how to execute it, accesses the stored data and returns results while the DBMS applies permissions and integrity rules.
+
+### Worked example
+
+**Run a restricted query:** The interface sends SELECT to the DBMS; the query processor checks syntax and access rights, chooses an indexed access plan, reads matching rows and returns only authorised columns.
+
+### Targeted practice and answers
+
+1. What does a data dictionary store?
+   **Answer:** Metadata such as table, field, type, key and constraint definitions.
+2. What is the role of the query processor?
+   **Answer:** To parse, plan and execute database queries.
+3. Which DBMS feature limits users to permitted operations?
+   **Answer:** Access rights/security controls.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Describe the roles of a data dictionary and query processor in a DBMS.
+
+- **B1** data dictionary stores metadata/definitions about database structure
+- **B1** example such as field type/key/constraint
+- **B1** query processor interprets/parses a query
+- **B1** plans/executes it and returns/accesses matching data
+
+**Strict note:** Do not accept that the data dictionary stores the ordinary user records themselves.

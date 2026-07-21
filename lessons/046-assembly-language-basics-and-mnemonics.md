@@ -1,9 +1,9 @@
 # Lesson 046: Assembly language basics and mnemonics
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 4  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 4
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students annotate a CPU diagram with arrows for one instruction, then explain th
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Assembly language basics and mnemonics** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **assembly language basics and mnemonics**.  
+Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **assembly language basics and mnemonics**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S4.10, S4.13
+**Focus:** Two-pass assembler and core instruction semantics
+
+### Direct explanation
+
+- Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.
+- Core mnemonics must be read by effect: LDM immediate; LDD direct; LDI indirect; LDX indexed; LDR relative; MOV register transfer; STO memory store; ADD/SUB/INC/DEC arithmetic; JMP branch; CMP/CMI compare; JPE/JPN conditional branches; IN/OUT I/O; END stops.
+
+### Worked example
+
+**Forward label:** JMP FINISH appears before FINISH. Pass 1 records FINISH's eventual address in the symbol table; pass 2 substitutes that address when translating JMP.
+
+### Targeted practice and answers
+
+1. Which pass builds the symbol table?
+   **Answer:** Pass 1.
+2. What is the difference between LDM #5 and LDD 5?
+   **Answer:** LDM loads literal 5; LDD loads the contents of memory address 5.
+3. Which instruction terminates execution?
+   **Answer:** END.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Explain why an assembler commonly uses two passes when a program contains a forward reference.
+
+- **B1** label is used before its address is known
+- **B1** pass 1 assigns addresses/builds the symbol table
+- **B1** the forward label address is then available
+- **B1** pass 2 translates the instruction/substitutes the address into machine code
+
+**Strict note:** Do not accept that pass 1 executes the program; both passes translate source.

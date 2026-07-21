@@ -255,6 +255,52 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <section class="panel stage2-completion" id="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <h2>Packet movement through network topologies</h2>
+            <p>Official audit rows: S2.05</p>
+          </div>
+          <div class="stage2-explanation">
+            <p>In a bus, a transmitted signal travels along the shared backbone and devices inspect it. In a star, each frame travels through the central switch. In a mesh, alternative links can provide several possible routes. A hybrid combines behaviours of its component topologies.</p>
+            <p>Topology justification must connect packet path to the scenario: central failure, cable failure, congestion, expansion and redundancy are consequences of the structure.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: One star cable fails</h3>
+            <p>Only the device on that cable loses its link; packets between other devices still pass through the central switch. If the switch fails, all attached paths fail.</p>
+          </article>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Where does a frame pass in a star network?</p>
+              <details><summary>Show answer</summary><p>Through the central switch.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Why can a mesh continue after one link fails?</p>
+              <details><summary>Show answer</summary><p>Packets may use an alternative link/route.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What shared component carries transmissions in a bus?</p>
+              <details><summary>Show answer</summary><p>The backbone cable.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Compare how a packet travels in a star topology and a mesh topology, and explain one reliability difference.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> star packet/frame passes through a central switch</li>
+                <li><strong>B1</strong> mesh provides multiple interconnected paths / possible routes</li>
+                <li><strong>B1</strong> star switch is a single point of failure</li>
+                <li><strong>B1</strong> mesh can reroute when a link fails</li>
+              </ol>
+              <p><strong>Strict note:</strong> Do not accept 'mesh is better' without a packet-path or failure consequence.</p>
+            </details>
+          </article>
+        </section>
+
         <section class="panel summary-panel" id="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>

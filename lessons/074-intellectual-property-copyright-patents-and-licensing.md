@@ -1,9 +1,9 @@
 # Lesson 074: Intellectual property, copyright, patents, and licensing
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 7  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 7
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students role-play two stakeholders and prepare one argument each, then write a 
 3. Write one sentence that uses "therefore" to link the concept to a consequence.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "The key point about **Intellectual property, copyright, patents, and licensing** is..., and a common mistake is..."
 
 ## Homework
@@ -69,5 +69,39 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement. For this lesson, make students contrast that mistake with the exact idea of **intellectual property, copyright, patents, and licensing**.  
+Misconception: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement. For this lesson, make students contrast that mistake with the exact idea of **intellectual property, copyright, patents, and licensing**.
 Correction prompt: "Show the mechanism, not just the label."
+
+## Stage 2 syllabus completion
+
+**Official audit rows:** S7.05
+**Focus:** FSF, OSI and software freedoms
+
+### Direct explanation
+
+- The Free Software Foundation focuses on freedoms to run, study, modify and share software; source access is necessary for study/modification. The Open Source Initiative approves licences meeting open-source criteria, including source availability and rights to redistribute/modify.
+- Free/open-source does not necessarily mean zero price or no copyright. Copyright holders grant permissions through a licence, which may impose conditions such as preserving notices or sharing derivative source under the same terms.
+
+### Worked example
+
+**Modify a library:** An OSI-approved licence may permit source modification and redistribution. A copyleft licence may require distributed derivative work to use compatible terms; exact obligations depend on the licence.
+
+### Targeted practice and answers
+
+1. Which organisation emphasises four software freedoms?
+   **Answer:** Free Software Foundation (FSF).
+2. Why is source code needed to study and modify software?
+   **Answer:** Executable code alone is not a practical human-readable basis for modification.
+3. Can open-source software be sold?
+   **Answer:** Yes; open source concerns licence rights, not necessarily zero price.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Explain why open-source software is still protected by copyright and how a licence changes what users may do.
+
+- **B1** creator/copyright holder retains copyright
+- **B1** licence grants specified permissions
+- **B1** may allow source inspection/modification/redistribution
+- **B1** users must follow licence conditions
+
+**Strict note:** Do not accept that open source means 'no owner' or 'no rules'.
