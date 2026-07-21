@@ -24,6 +24,7 @@ All 150 lesson numbers currently have both a teacher-facing Markdown plan and an
 ## Folder Structure
 
 - `course-map.md`: syllabus mapping, pacing, and assessment rhythm.
+- `syllabus-audit.md`: requirement-level coverage evidence, gaps, and fixed repair targets.
 - `lessons/`: 150 generated lesson plans undergoing syllabus coverage and content-quality review.
 - `assessments/`: quizzes, monthly assessments, stage reviews, answer keys.
 - `resources/`: glossary, pseudocode-Java guide, and misconception bank.
@@ -31,7 +32,7 @@ All 150 lesson numbers currently have both a teacher-facing Markdown plan and an
 
 ## How To Use
 
-1. Start with `course-map.md` to see the full pacing plan.
+1. Start with `course-map.md` to see the full pacing plan, then use `syllabus-audit.md` to check current coverage status.
 2. Teach lessons in numerical order unless your school timetable requires rearrangement.
 3. Use the mini-quiz inside each lesson for retrieval practice.
 4. Use `assessments/quizzes.md` every 4-5 lessons and `assessments/monthly-assessments.md` roughly every 18-20 lessons.
