@@ -122,7 +122,7 @@ const examQuestions = [
       { mark: "B1", text: "continued readings/feedback allow switch off or adjustment" },
     ],
     strict: [
-      "Do not say the light sensor is the lamp.",
+      "Do not accept an answer that identifies the light sensor as the lamp.",
       "Do not require analogue-to-digital conversion unless asked.",
       "Allow LED/street lamp as output device.",
       "FT: award valid sequence marks even if threshold wording is simple.",

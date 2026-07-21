@@ -163,7 +163,7 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "4 marks",
-    prompt: "Explain how cache memory can improve processor performance.",
+    prompt: "A processor repeatedly executes the same instructions in a loop. Explain how cache memory can improve performance in this situation.",
     answer: "Cache stores frequently used data and instructions close to or inside the CPU. Cache is faster to access than RAM, so repeated data/instructions can be fetched more quickly. This reduces slower main memory accesses and can improve performance when the program reuses data or instructions.",
     marking: [
       { mark: "B1", text: "cache stores frequently used data/instructions" },
@@ -199,7 +199,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A school stores student records on a network. Explain three measures that can protect the records.",
+    prompt: "A school is moving student records to a shared server. Explain three different measures that can protect the records.",
     answer: "Authentication such as MFA can check user identity before access, reducing unauthorised logins. Access rights can restrict student records to staff who need them, limiting unauthorised viewing or editing. Encryption can encode stored or transmitted records so they are unreadable without the correct key if intercepted or stolen. Backups can also allow records to be restored after loss or corruption.",
     marking: [
       { mark: "B1", text: "names valid measure such as authentication/MFA/access rights/encryption/backup" },

@@ -50,6 +50,12 @@ button { cursor: pointer; }
   text-decoration: none;
 }
 
+.top-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .page {
   width: min(1400px, 100%);
   margin: 0 auto;

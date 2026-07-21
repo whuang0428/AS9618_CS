@@ -8,7 +8,7 @@ Syllabus reference used for this pack: Cambridge International AS & A Level Comp
 
 ## Project Status
 
-All 150 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit now maps all 121 AS requirements to direct teaching and assessment evidence after the Stage 2 content repairs. Broader assessment-bank review and Cambridge-style marking-language calibration remain separate quality-assurance stages, so the pack is still described as work in progress.
+All 150 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit maps all 121 AS requirements to direct teaching and assessment evidence. The Stage 3 assessment bank now provides 30 topic-specific quizzes, 7 monthly checkpoints and 14 stage reviews with point-based Cambridge-style marking guidance. Full-page visual review of every lesson remains part of later quality assurance, so the pack is still described as work in progress.
 
 ## Course Design
 
@@ -26,17 +26,18 @@ All 150 lesson numbers have both a teacher-facing Markdown plan and an interacti
 - `course-map.md`: syllabus mapping, pacing, and assessment rhythm.
 - `syllabus-audit.md`: requirement-level coverage evidence, gaps, and fixed repair targets.
 - `lessons/`: 150 generated lesson plans undergoing syllabus coverage and content-quality review.
-- `assessments/`: quizzes, monthly assessments, stage reviews, answer keys.
-- `resources/`: glossary, pseudocode-Java guide, and misconception bank.
-- `web/`: 150 independent teaching/self-study lesson webpages plus a searchable web index.
+- `assessments/`: 51 topic-specific quizzes, monthly assessments and stage reviews with answer keys/MS.
+- `resources/`: glossary, pseudocode-Java guide, misconception bank, and Cambridge-style MS conventions.
+- `web/`: 150 independent teaching/self-study lesson webpages, a searchable course index, and the interactive assessment bank.
 
 ## How To Use
 
 1. Start with `course-map.md` to see the full pacing plan, then use `syllabus-audit.md` to check current coverage status.
 2. Teach lessons in numerical order unless your school timetable requires rearrangement.
 3. Use the mini-quiz inside each lesson for retrieval practice.
-4. Use `assessments/quizzes.md` every 4-5 lessons and `assessments/monthly-assessments.md` roughly every 18-20 lessons.
+4. Use `assessments/quizzes.md` every 4-5 lessons, `assessments/monthly-assessments.md` roughly every 18-20 lessons, and `assessments/stage-reviews.md` at the mapped review points.
 5. For Paper 2, keep reminding students that Java examples are practice scaffolds, not Cambridge pseudocode answers.
+6. Apply `resources/cambridge-ms-conventions.md` when marking original course questions; use current official Cambridge papers for final wording calibration.
 
 ## Web Version
 
@@ -49,6 +50,7 @@ python3 -m http.server 8769 --directory web
 Then open:
 
 - Course web index: <http://127.0.0.1:8769/>
+- Interactive assessment bank: <http://127.0.0.1:8769/assessments/>
 - Example lesson: <http://127.0.0.1:8769/lesson-001/>
 
 Each webpage is self-contained in its own `web/lesson-XXX/` folder and uses local answer/MS toggles rather than a global student/teacher view.

@@ -194,7 +194,7 @@ const examQuestions = [
       { mark: "A1", text: "uses meaningful identifiers consistent with the scenario" },
     ],
     strict: [
-      "Java syntax alone should not receive the Cambridge-style syntax mark.",
+      "Do not award the Cambridge-style syntax mark for Java syntax alone.",
       "Allow Currency/REAL for Balance if syllabus context accepts numeric balance.",
       "Do not require exact identifier names if purpose is clear.",
       "FT: syntax mark can be awarded if one minor identifier differs but declaration form is consistent.",

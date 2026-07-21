@@ -173,7 +173,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Compare a compiler and an interpreter.",
+    prompt: "Compare how a compiler and an interpreter translate and execute a high-level language program.",
     answer: "A compiler translates the whole source program into object code before execution, whereas an interpreter translates and executes one statement at a time. A compiled program can be run without retranslation, whereas interpreted code needs the interpreter at run time. An interpreter is useful for debugging because errors are found as statements execute.",
     marking: [
       { mark: "B1", text: "compiler translates whole program/source before execution" },

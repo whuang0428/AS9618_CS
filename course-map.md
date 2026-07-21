@@ -55,6 +55,16 @@ Notes:
 - Stage reviews: lessons 015, 026, 040, 051, 061, 071, 077, 089, 097, 112, 125, 141, 146, 150.
 - Midterm and final examinations are not included in this 150-lesson pack.
 
+### Assessment Bank Deliverables
+
+| Type | Count | Marking/load | Delivery |
+|---|---:|---|---|
+| Short quiz | 30 | 10 marks; 8-10 minutes | One after every fifth lesson |
+| Monthly checkpoint | 7 | 24 marks; 35-45 minutes | Lessons 020-140 at 20-lesson intervals |
+| Stage review | 14 | 6 retrieval prompts, 2 error corrections and 10 timed marks | End of each major syllabus cluster |
+
+All 51 assessments are original Cambridge-style practice. Their answer keys use point-based `B1`, `M1` and `A1` marking, with `FT`, allowable alternatives and non-credit limits only where applicable. They are available in Markdown under `assessments/` and as locally expandable material at `web/assessments/`.
+
 ## Implementation Notes
 
 The lesson sequence is deliberately spiral:

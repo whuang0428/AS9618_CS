@@ -148,7 +148,7 @@ const examQuestions = [
       { mark: "B1", text: "MAC address used for local delivery / next hop on local network" },
     ],
     strict: [
-      "Do not state DNS converts the full URL including path into an IP address.",
+      "Do not accept that DNS converts the full URL, including its path, into an IP address.",
       "Do not require ARP by name at AS level unless taught locally.",
       "Award local MAC point only when local delivery is described correctly.",
       "Allow equivalent wording if the technical meaning is clear.",
