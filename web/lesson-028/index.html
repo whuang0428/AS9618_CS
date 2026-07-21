@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 028 | Input devices and data capture</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
+        <h1>Input devices and data capture</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#capture">Data capture</a>
+        <a href="#devices">Input devices</a>
+        <a href="#automatic">Automatic input</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Choice tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 028 | 45 minutes | Paper 1 Section 3</p>
+            <h2>Input is where the computer first meets the messy real world.</h2>
+            <p>
+              This lesson focuses on input devices and data capture. The exam skill is not
+              simply naming a device. You must explain how it captures data and why it is
+              suitable for the situation.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Describe</strong><span>the purpose of common input devices</span></div>
+              <div><strong>Compare</strong><span>manual and automatic data capture methods</span></div>
+              <div><strong>Justify</strong><span>input device choices using accuracy, speed, cost and suitability</span></div>
+            </div>
+          </div>
+          <div class="system-card" aria-label="Input data capture chain">
+            <span>real world -> sensor/scanner/user -> digital data</span>
+            <p>A barcode reader is not "clever". It is just very good at not mistyping 13 digits before lunch.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every device, use the three-part sentence: device, captured data, scenario reason.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style hardware questions reward suitability. "Keyboard" may be true; "keyboard because staff must type short codes occasionally" earns the mark.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not call every scanner a barcode reader. OCR, OMR, barcode and QR capture different patterns for different jobs.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A supermarket checkout scans an item, weighs fruit, accepts a typed discount code and reads a loyalty card. Which inputs are being captured?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="barcode">Barcode reader captures product ID</button>
+            <button class="choice-card" type="button" data-hook="scale">Sensor captures mass/weight</button>
+            <button class="choice-card" type="button" data-hook="keyboard">Keyboard captures typed code</button>
+            <button class="choice-card" type="button" data-hook="rfid">RFID/card reader captures customer ID</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click one input. The useful exam habit is naming what data is captured, not just naming the hardware.
+          </div>
+        </section>
+
+        <section class="panel" id="capture">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>What input devices do</h2>
+          </div>
+          <div class="flow-grid">
+            <article><strong>1. Capture</strong><span>The device captures data from a user, document, object or environment.</span></article>
+            <article><strong>2. Convert</strong><span>The data is converted into a digital form the computer can process.</span></article>
+            <article><strong>3. Validate later</strong><span>Input is not automatically correct. Validation and verification may still be needed.</span></article>
+          </div>
+          <div class="callout">Chinese support: input device = 输入设备；data capture = 数据采集；automatic input = 自动输入；manual input = 手动输入。</div>
+        </section>
+
+        <section class="panel" id="devices">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Common input devices and what they capture</h2>
+          </div>
+          <div class="device-table" role="table" aria-label="Input devices comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Device</div>
+              <div role="columnheader">Captures</div>
+              <div role="columnheader">Good use</div>
+              <div role="columnheader">Exam warning</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Keyboard</div>
+              <div role="cell">Typed text/numbers</div>
+              <div role="cell">Short manual entries, corrections, commands</div>
+              <div role="cell">Slow and error-prone for long repeated codes</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Barcode / QR reader</div>
+              <div role="cell">Encoded product, ticket or ID data</div>
+              <div role="cell">Fast repeated identification</div>
+              <div role="cell">Needs a readable code; does not capture handwriting</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">RFID / NFC reader</div>
+              <div role="cell">Data from a tag/card without contact</div>
+              <div role="cell">Access cards, library books, stock tracking</div>
+              <div role="cell">Range/security/cost must match scenario</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">OCR / OMR</div>
+              <div role="cell">Printed characters / shaded marks</div>
+              <div role="cell">Forms, exam answer sheets, printed documents</div>
+              <div role="cell">OCR reads characters; OMR detects marks</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Sensor</div>
+              <div role="cell">Physical measurements</div>
+              <div role="cell">Temperature, light, pressure, motion systems</div>
+              <div role="cell">Usually automatic; often needs calibration</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="automatic">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Manual input vs automatic data capture</h2>
+          </div>
+          <div class="compare-table" role="table" aria-label="Manual and automatic input comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Feature</div>
+              <div role="columnheader">Manual input</div>
+              <div role="columnheader">Automatic data capture</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Method</div>
+              <div role="cell">A person enters data, such as typing into a form.</div>
+              <div role="cell">A device captures data directly, such as scanning or sensing.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Advantages</div>
+              <div role="cell">Flexible, cheap for occasional input, useful for unusual data.</div>
+              <div role="cell">Fast, consistent, reduces transcription errors, suitable for high volume.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Limitations</div>
+              <div role="cell">Typing mistakes, slower, depends on user attention.</div>
+              <div role="cell">May need codes/tags/sensors; can fail if labels are damaged or conditions are poor.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purpose of input devices and the idea of data capture.</span></div>
+            <div><strong>Covered</strong><span>Manual input compared with automatic data capture.</span></div>
+            <div><strong>Covered</strong><span>Device suitability using accuracy, speed, reliability, cost and context.</span></div>
+            <div><strong>Covered</strong><span>Examples including keyboard, barcode/QR reader, RFID/NFC reader, OCR, OMR, sensors, microphone and camera.</span></div>
+            <div><strong>Boundary</strong><span>Output devices are next lesson. Sensors in control systems are developed further in Lesson 034.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Choose the input device</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="checkout">A shop needs to identify products quickly at checkout</option>
+                <option value="exam">An exam board marks multiple-choice answer sheets</option>
+                <option value="passport">A border system reads printed passport text</option>
+                <option value="greenhouse">A greenhouse records temperature every minute</option>
+                <option value="warehouse">A warehouse tracks stock in sealed boxes</option>
+                <option value="podcast">A student records spoken audio for a podcast</option>
+              </select>
+            </label>
+            <button type="button" id="chooseBtn">Recommend device</button>
+          </div>
+          <div class="result-box" id="componentResult" aria-live="polite"></div>
+          <div class="method-box" id="componentMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From device name to exam-worthy justification</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="checkout">Checkout</button>
+            <button class="tab" type="button" data-example="exam">OMR sheets</button>
+            <button class="tab" type="button" data-example="greenhouse">Greenhouse sensor</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak input answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"Use a keyboard because it is easy."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">This is too vague. A stronger answer links feature to scenario: use a barcode reader because it captures product codes faster than typing and reduces transcription errors at a busy checkout.</p>
+            </article>
+            <article>
+              <p class="wrong">"OMR reads printed words from a form."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">OMR detects shaded marks or tick boxes. OCR recognises printed characters. The letter R is not enough; the middle letter matters.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on accurate device role plus a scenario-linked reason.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Input device answers need a mechanism</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Input device</strong><span>Captures data from a user, object, document or environment.</span></div>
+            <div><strong>Automatic capture</strong><span>Reduces manual typing and is useful for repeated or high-volume data.</span></div>
+            <div><strong>OCR vs OMR</strong><span>OCR recognises characters; OMR detects marks.</span></div>
+            <div><strong>Barcode / QR</strong><span>Reads encoded data quickly if the code is present and readable.</span></div>
+            <div><strong>Sensor</strong><span>Captures physical measurements, often automatically.</span></div>
+            <div><strong>Suitability</strong><span>Name the feature and link it to the scenario consequence.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a two-column table: five input devices and the exact data each captures.</li>
+            <li>Write a 4-mark answer comparing barcode reader and keyboard for supermarket checkout input.</li>
+            <li>Choose a suitable input method for a school library, a greenhouse and an exam marking system. Give one reason for each.</li>
+            <li>Write one sentence explaining the difference between OCR and OMR.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Device table:</strong> include examples such as keyboard -> typed text; barcode reader -> encoded product ID; sensor -> physical measurement.</p>
+            <p><strong>Checkout answer:</strong> barcode reader is faster and reduces transcription errors; keyboard remains useful for exceptions or manual correction.</p>
+            <p><strong>Scenario choices:</strong> library can use barcode/RFID; greenhouse can use temperature/humidity sensors; exam system can use OMR for shaded multiple-choice sheets.</p>
+            <p><strong>OCR/OMR:</strong> OCR recognises printed characters; OMR detects the position of shaded marks.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 111 | Designing algorithms from word problems</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>Designing algorithms from word problems</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#ipoc">IPOC reading</a>
+        <a href="#requirements">Requirements</a>
+        <a href="#structures">Control choice</a>
+        <a href="#trace">Trace and tests</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#analyser">Scenario analyser</a>
+        <a href="#builder">Algorithm builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 111 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
+            <h2>Word problems are not stories. They are algorithms wearing paragraphs.</h2>
+            <p>
+              A Paper 2 word problem hides the algorithm in plain sight. Your job is to extract the inputs, processing,
+              outputs and constraints, then choose sequence, selection and iteration carefully. Today you will convert
+              scenarios into clear Cambridge-style pseudocode with traceable variables.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Extract</strong><span>inputs, outputs, constraints and stopping conditions from a scenario</span></div>
+              <div><strong>Design</strong><span>steps using sequence, selection and iteration before writing code</span></div>
+              <div><strong>Verify</strong><span>with trace tables and normal, boundary and erroneous test data</span></div>
+            </div>
+          </div>
+          <div class="scenario-visual" aria-label="Scenario visual">
+            <div class="problem-card">
+              <strong>Scenario</strong>
+              <span>Input marks until -1. Output total, count and average.</span>
+            </div>
+            <div class="ipoc-grid">
+              <span>Input</span><span>Process</span><span>Output</span><span>Constraints</span>
+            </div>
+            <div class="problem-card">
+              <strong>Algorithm shape</strong>
+              <span>Initialise -> WHILE not sentinel -> update -> output after loop</span>
+            </div>
+            <p>Read for structure first. The pseudocode comes after the thinking.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Before writing a single pseudocode line, underline nouns as data and verbs as processing steps.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam questions often award separate marks for input, initialisation, loop control, selection, update and final output.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not start coding from the first sentence. Start from the required output, then work backward to the needed inputs and variables.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>What is the required output?</h2>
+            <p>A question says: "Input five scores and display the highest score." Which item must the algorithm output?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="five">The number five</button>
+            <button class="choice-card" type="button" data-hook="all">All input scores</button>
+            <button class="choice-card" type="button" data-hook="highest">The highest score</button>
+            <button class="choice-card" type="button" data-hook="average">The average score</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the value explicitly requested by the question.</div>
+        </section>
+
+        <section class="panel" id="ipoc">
+          <div class="section-title">
+            <p class="eyebrow">IPOC reading</p>
+            <h2>Turn paragraphs into a design table</h2>
+          </div>
+          <div class="data-table pattern-table" role="table" aria-label="IPOC design table">
+            <div class="table-row table-head" role="row"><div>Part</div><div>Question to ask</div><div>Example evidence</div><div>Algorithm consequence</div></div>
+            <div class="table-row" role="row"><div>Input</div><div>What data is provided?</div><div>mark, price, password, reading</div><div>use INPUT or given array/list item</div></div>
+            <div class="table-row" role="row"><div>Process</div><div>What must be calculated or checked?</div><div>total, maximum, validation, search</div><div>choose assignment, IF, loop</div></div>
+            <div class="table-row" role="row"><div>Output</div><div>What must be displayed or returned?</div><div>message, total, average, position</div><div>place OUTPUT after correct processing</div></div>
+            <div class="table-row" role="row"><div>Constraints</div><div>What limits or rules are stated?</div><div>exactly 5, until -1, range 0-100</div><div>choose FOR, WHILE, validation or boundary tests</div></div>
+          </div>
+          <div class="callout">Chinese support: IPOC = Input, Process, Output, Constraints；约束条件决定循环和验证方式。</div>
+        </section>
+
+        <section class="panel" id="requirements">
+          <div class="section-title">
+            <p class="eyebrow">Requirements</p>
+            <h2>Words in the question usually signal a control structure</h2>
+          </div>
+          <div class="data-table signal-table" role="table" aria-label="Word problem signals">
+            <div class="table-row table-head" role="row"><div>Wording</div><div>Likely structure</div><div>Variables</div><div>Example</div></div>
+            <div class="table-row" role="row"><div>exactly / for each / ten values</div><div>count-controlled loop</div><div>`Index`, `Total`, `Count`</div><div>input 10 marks</div></div>
+            <div class="table-row" role="row"><div>until / while / sentinel</div><div>condition-controlled loop</div><div>`Number`, `Total`, `Count`</div><div>input until -1</div></div>
+            <div class="table-row" role="row"><div>if / otherwise / valid</div><div>selection</div><div>`Valid`, `Message`</div><div>if mark is between 0 and 100</div></div>
+            <div class="table-row" role="row"><div>highest / lowest / contains</div><div>running comparison or search</div><div>`Maximum`, `Minimum`, `Found`</div><div>find highest reading</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="structures">
+          <div class="section-title">
+            <p class="eyebrow">Control choice</p>
+            <h2>Pick the structure before writing the pseudocode</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Known count</h3>
+              <pre><code>Total &lt;- 0
+FOR Index &lt;- 1 TO 5
+    INPUT Mark
+    Total &lt;- Total + Mark
+NEXT Index
+OUTPUT Total</code></pre>
+              <p>Use when the number of repetitions is given.</p>
+            </article>
+            <article>
+              <h3>Unknown count with sentinel</h3>
+              <pre><code>Total &lt;- 0
+INPUT Mark
+WHILE Mark &lt;&gt; -1
+    Total &lt;- Total + Mark
+    INPUT Mark
+ENDWHILE
+OUTPUT Total</code></pre>
+              <p>Use when input continues until a stopping value appears.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Trace and tests</p>
+            <h2>A design is not finished until it survives a trace</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Trace focus</h3>
+              <p>For inputs 40, 70, -1 with sentinel -1, Total should become 40 then 110. The sentinel must not be added.</p>
+              <pre><code>Input: 40, 70, -1
+Total: 0 -> 40 -> 110
+Count: 0 -> 1 -> 2</code></pre>
+            </article>
+            <article>
+              <h3>Test data</h3>
+              <div class="data-table mini-table" role="table" aria-label="Test data types">
+                <div class="table-row table-head" role="row"><div>Type</div><div>Example</div></div>
+                <div class="table-row" role="row"><div>Normal</div><div>valid marks such as 40, 70</div></div>
+                <div class="table-row" role="row"><div>Boundary</div><div>0 and 100 when valid range is 0-100</div></div>
+                <div class="table-row" role="row"><div>Erroneous</div><div>-5 or 120 if marks must be 0-100</div></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Design in Cambridge pseudocode first; use Java only to support testing</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style answer</h3>
+              <pre><code>PassCount &lt;- 0
+FOR Index &lt;- 1 TO 5
+    INPUT Mark
+    IF Mark &gt;= 50 THEN
+        PassCount &lt;- PassCount + 1
+    ENDIF
+NEXT Index
+OUTPUT PassCount</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>int passCount = 0;
+for (int index = 0; index &lt; 5; index++) {
+    int mark = input.nextInt();
+    if (mark &gt;= 50) {
+        passCount++;
+    }
+}</code></pre>
+            </article>
+          </div>
+          <div class="callout">Exam reminder: the Java version can test an idea, but the Paper 2 answer should stay in clear Cambridge-style pseudocode.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson links Section 9 skills into full algorithm design</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>IPOC extraction, requirements reading, control structure choice, initialisation, update placement, sentinel handling, trace tables and test data selection.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 110 covered pseudocode readability. Lesson 112 reviews Section 9 as a whole. Later sections cover arrays, records, files and programming constructs in more detail.</span></div>
+            <div><strong>Paper 2 note</strong><span>Marks come from matching the scenario: correct inputs, loop type, conditions, variable updates and final output.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="analyser">
+          <div class="section-title">
+            <p class="eyebrow">Interactive scenario analyser</p>
+            <h2>Extract the design before writing pseudocode</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="passes">Input 5 marks and output how many are at least 50.</option>
+                <option value="sentinel">Input prices until 0 is entered and output the total.</option>
+                <option value="highest">Input 8 temperatures and output the highest.</option>
+                <option value="password">Input a password and output whether it contains @.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="scenarioBtn">Analyse</button>
+          </div>
+          <div class="trace-output" id="scenarioResult">Choose a scenario to see the IPOC breakdown.</div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive algorithm builder</p>
+            <h2>Choose a scenario and inspect a model answer</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Build target
+              <select id="builderInput">
+                <option value="passes">Count passes from five marks</option>
+                <option value="sentinel">Total prices until 0</option>
+                <option value="highest">Highest of eight temperatures</option>
+                <option value="password">Search for @ in password</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="builderBtn">Build</button>
+          </div>
+          <div class="trace-output" id="builderResult">Choose a target to show Cambridge-style pseudocode.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From words to pseudocode</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="passes">Count passes</button>
+            <button class="tab" type="button" data-example="sentinel">Sentinel total</button>
+            <button class="tab" type="button" data-example="highest">Find highest</button>
+            <button class="tab" type="button" data-example="password">Character search</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Design decisions</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix word-problem design mistakes</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style word-problem questions with expandable MS</h2>
+            <p>These questions target IPOC extraction, loop choice, update placement, sentinel handling and strict pseudocode wording.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Word-problem design checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Read</strong><span>Identify inputs, processing, outputs and constraints before writing pseudocode.</span></div>
+            <div><strong>Choose</strong><span>Match wording to sequence, selection, fixed loop or condition-controlled loop.</span></div>
+            <div><strong>Check</strong><span>Trace with test data and confirm the final output matches the scenario.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: IPOC table</strong>
+              <span>Create an IPOC table for: input daily rainfall for 7 days and output the total and average rainfall.</span>
+            </article>
+            <article>
+              <strong>Task 2: Pseudocode</strong>
+              <span>Write Cambridge-style pseudocode for the rainfall problem. Include initialisation and final output.</span>
+            </article>
+            <article>
+              <strong>Task 3: Trace and tests</strong>
+              <span>Trace your algorithm with rainfall values 2, 0, 4, 1, 0, 3, 4 and suggest one boundary or erroneous test.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

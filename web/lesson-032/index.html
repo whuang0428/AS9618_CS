@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 032 | Storage characteristics: capacity, speed, durability, portability and cost</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
+        <h1>Storage characteristics: capacity, speed, durability, portability and cost</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#criteria">Criteria</a>
+        <a href="#tradeoffs">Trade-offs</a>
+        <a href="#answer">Answer pattern</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Choice tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 032 | 45 minutes | Paper 1 Section 3</p>
+            <h2>Storage choice is a trade-off, not a popularity contest.</h2>
+            <p>
+              This lesson trains the comparison language needed for storage questions:
+              capacity, speed, durability, portability and cost. The goal is to justify
+              a choice for a specific user, not to declare one storage type "best".
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>five key storage characteristics accurately</span></div>
+              <div><strong>Compare</strong><span>storage devices using scenario-linked trade-offs</span></div>
+              <div><strong>Write</strong><span>CIE-style justifications with cause and consequence</span></div>
+            </div>
+          </div>
+          <div class="system-card" aria-label="Storage trade-off">
+            <span>capacity + speed + durability + portability + cost</span>
+            <p>"Best storage" without a scenario is like "best shoe" without saying hiking, running or wedding.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Push every answer from adjective to evidence: "fast" becomes "fast read/write access, so applications load quickly".</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>CIE marking is strict with vague claims. "Efficient" or "better" usually needs a named characteristic and a scenario consequence.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Students often compare only speed. Capacity, durability, portability and cost can be the real deciding factors.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Choose storage for a travel photographer: huge photo library, rough travel bag, limited budget and quick editing. Which feature matters most?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="capacity">Capacity: enough space for many large files</button>
+            <button class="choice-card" type="button" data-hook="durability">Durability: survives movement and knocks</button>
+            <button class="choice-card" type="button" data-hook="speed">Speed: loads and saves large files quickly</button>
+            <button class="choice-card" type="button" data-hook="cost">Cost: affordable per GB</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click one feature. Good answers often combine two features, then explain the trade-off.
+          </div>
+        </section>
+
+        <section class="panel" id="criteria">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>The five core characteristics</h2>
+          </div>
+          <div class="criteria-grid">
+            <article><strong>Capacity</strong><span>How much data can be stored, usually measured in GB or TB.</span></article>
+            <article><strong>Speed</strong><span>How quickly data can be read or written; affects startup, loading and transfer.</span></article>
+            <article><strong>Durability</strong><span>How well the device resists damage, wear, shock, scratches or environmental conditions.</span></article>
+            <article><strong>Portability</strong><span>How easy it is to carry, remove, connect and use between devices.</span></article>
+            <article><strong>Cost</strong><span>Price of the device and cost per unit of storage; not always the same thing.</span></article>
+          </div>
+          <div class="callout">Chinese support: capacity = 容量；speed = 速度；durability = 耐用性；portability = 便携性；cost per GB = 每 GB 成本。</div>
+        </section>
+
+        <section class="panel" id="tradeoffs">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Trade-offs by common storage device</h2>
+          </div>
+          <div class="device-table" role="table" aria-label="Storage characteristics comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Device</div>
+              <div role="columnheader">Strengths</div>
+              <div role="columnheader">Weaknesses</div>
+              <div role="columnheader">Suitable when...</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">HDD</div>
+              <div role="cell">High capacity; low cost per GB.</div>
+              <div role="cell">Moving parts; slower; less shock-resistant than SSD.</div>
+              <div role="cell">Large storage is needed cheaply and portability is less critical.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">SSD</div>
+              <div role="cell">Fast; durable; no moving parts; low power.</div>
+              <div role="cell">Often higher cost per GB than HDD.</div>
+              <div role="cell">Speed and durability matter, especially in laptops.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Magnetic tape</div>
+              <div role="cell">Very high capacity; low cost for archives.</div>
+              <div role="cell">Slow sequential access; not convenient for frequent random access.</div>
+              <div role="cell">Huge backups are rarely accessed.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Optical disc</div>
+              <div role="cell">Cheap removable media; useful for fixed offline copies.</div>
+              <div role="cell">Lower capacity; slower; can scratch.</div>
+              <div role="cell">Data rarely changes and low-cost distribution matters.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">USB flash / memory card</div>
+              <div role="cell">Very portable and removable; no moving parts.</div>
+              <div role="cell">Small devices can be lost; speed and quality vary.</div>
+              <div role="cell">Files need to be moved between devices or used in cameras/phones.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="answer">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>The answer pattern: choice -> characteristic -> context -> consequence</h2>
+          </div>
+          <div class="answer-pattern">
+            <div><strong>Choice</strong><span>Use an SSD</span></div>
+            <div><strong>Characteristic</strong><span>because it has fast access and no moving parts</span></div>
+            <div><strong>Context</strong><span>for a laptop carried to school each day</span></div>
+            <div><strong>Consequence</strong><span>so programs load quickly and it is less likely to be damaged by knocks</span></div>
+          </div>
+          <div class="callout">Weak: "SSD is better." Strong: "SSD is suitable because fast access reduces loading time and no moving parts improves durability in a portable laptop."</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Storage characteristics: capacity, speed, durability, portability and cost.</span></div>
+            <div><strong>Covered</strong><span>Comparing HDD, SSD, tape, optical media, USB flash and memory cards.</span></div>
+            <div><strong>Covered</strong><span>Scenario-based selection and justification using cause and consequence.</span></div>
+            <div><strong>Covered</strong><span>Common vague phrases that do not earn full credit.</span></div>
+            <div><strong>Boundary</strong><span>This lesson finishes the storage subtopic; embedded systems begin in Lesson 033.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Choose by priority</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="budget">Store 10 TB of video as cheaply as possible</option>
+                <option value="mobile">Run applications on a laptop carried every day</option>
+                <option value="archive">Keep huge backups for years, rarely accessed</option>
+                <option value="transfer">Move small files between school computers</option>
+                <option value="distribution">Distribute fixed read-only content cheaply</option>
+                <option value="camera">Store photos on a small removable device inside a camera</option>
+              </select>
+            </label>
+            <button type="button" id="chooseBtn">Recommend</button>
+          </div>
+          <div class="result-box" id="componentResult" aria-live="polite"></div>
+          <div class="method-box" id="componentMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Trade-off answers in exam style</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="laptop">Laptop</button>
+            <button class="tab" type="button" data-example="backup">Backup</button>
+            <button class="tab" type="button" data-example="video">Video editor</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the vague comparison</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"SSD is more efficient than HDD."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">Say what "efficient" means. For example: SSD has faster access and no moving parts, so applications load faster and the laptop is less likely to be damaged by knocks.</p>
+            </article>
+            <article>
+              <p class="wrong">"Tape is bad because it is slow."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">Tape can be suitable for huge backups because it has high capacity and low cost. Slow sequential access is acceptable if data is rarely restored.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on explicit characteristics and scenario-linked consequences.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Characteristics decide suitability</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Capacity</strong><span>Enough space for current and future data.</span></div>
+            <div><strong>Speed</strong><span>Read/write access affects loading, saving and transfer.</span></div>
+            <div><strong>Durability</strong><span>Resistance to shock, scratches, wear or damage.</span></div>
+            <div><strong>Portability</strong><span>Ease of carrying, removing and using between devices.</span></div>
+            <div><strong>Cost</strong><span>Device price and cost per GB.</span></div>
+            <div><strong>Exam rule</strong><span>Characteristic plus context plus consequence earns stronger credit.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a ranking table for HDD, SSD, tape, optical disc and USB flash using the five characteristics.</li>
+            <li>Write a 5-mark answer recommending storage for a school video archive and an active editing workstation.</li>
+            <li>Rewrite three vague phrases: "better", "more efficient", "more reliable" into precise storage explanations.</li>
+            <li>Write one trade-off sentence using "however" about SSD and HDD.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Ranking:</strong> use relative words such as high/medium/low and include a reason, not just ticks.</p>
+            <p><strong>Archive/editing:</strong> HDD or tape may suit large low-cost archive storage; SSD suits active editing because speed matters.</p>
+            <p><strong>Vague phrases:</strong> replace with named characteristics such as read/write speed, shock resistance or cost per GB.</p>
+            <p><strong>Trade-off:</strong> SSD is faster and more durable; however, HDD may offer more capacity for the same cost.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

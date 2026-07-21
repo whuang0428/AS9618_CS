@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 137 | Testing with normal, boundary, and erroneous data</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
+        <h1>Testing with normal, boundary, and erroneous data</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#purpose">Why testing</a>
+        <a href="#normal">Normal data</a>
+        <a href="#boundary">Boundary data</a>
+        <a href="#erroneous">Erroneous data</a>
+        <a href="#table">Test table</a>
+        <a href="#validation">Validation</a>
+        <a href="#java">Java support</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Classifier</a>
+        <a href="#builder">Table builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 137 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
+            <h2>Testing is not “try three lucky numbers and hope the program behaves”.</h2>
+            <p>
+              A good test set checks typical valid data, edge values, and invalid data. Cambridge questions often ask for
+              <strong>normal</strong>, <strong>boundary</strong> and <strong>erroneous</strong> test data, plus the expected result.
+              Chinese support: normal 正常数据, boundary 边界数据, erroneous 错误数据, expected result 预期结果。
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Classify</strong><span>test data as normal, boundary or erroneous</span></div>
+              <div><strong>Design</strong><span>a test table with data, reason and expected result</span></div>
+              <div><strong>Explain</strong><span>why edge cases reveal faults that normal data can miss</span></div>
+            </div>
+          </div>
+          <div class="test-visual" aria-label="Test data visual">
+            <div><strong>0</strong><span>lower boundary</span><em>valid if range includes 0</em></div>
+            <div><strong>50</strong><span>normal</span><em>typical valid mark</em></div>
+            <div><strong>100</strong><span>upper boundary</span><em>valid if range includes 100</em></div>
+            <div><strong>-1 / 101 / "cat"</strong><span>erroneous</span><em>should be rejected</em></div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Anchor every example to one validation rule first. Without a rule, “boundary” becomes a guessing game with extra stationery.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 answers need precise test data and expected outcomes. “Test it a lot” is effort, not a mark-worthy method.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Boundary data is not automatically invalid. For a mark range 0 to 100 inclusive, <code>0</code> and <code>100</code> are valid boundary values.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A mark must be an integer from 0 to 100 inclusive. Which value is valid boundary data?</h2>
+            <p>Select one option. The program is not allowed to “feel the vibe”; it must follow the range rule.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="50">50</button>
+            <button class="choice-card" type="button" data-hook="0">0</button>
+            <button class="choice-card" type="button" data-hook="101">101</button>
+            <button class="choice-card" type="button" data-hook="cat">"cat"</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the value at the edge of the valid range.</div>
+        </section>
+
+        <section class="panel" id="purpose">
+          <div class="section-title">
+            <p class="eyebrow">Why testing</p>
+            <h2>Testing compares actual results with expected results</h2>
+            <p>
+              A test is useful only if it can reveal whether the program behaves correctly. A strong test case has input data,
+              a reason for choosing it, and a clear expected result.
+            </p>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Validation rule</h3>
+              <pre><code>IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
+    OUTPUT "Accepted"
+ELSE
+    OUTPUT "Rejected"
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>Testing question</h3>
+              <p>Which values prove that the rule accepts valid marks and rejects invalid marks?</p>
+              <div class="callout">Normal data checks ordinary use. Boundary data checks the edges. Erroneous data checks rejection.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="normal">
+          <div class="section-title">
+            <p class="eyebrow">Normal data</p>
+            <h2>Normal data is valid, typical data inside the allowed range</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Normal data examples">
+            <div class="table-row table-head"><div>Rule</div><div>Normal test data</div><div>Expected result</div></div>
+            <div class="table-row"><div>Mark 0 to 100 inclusive</div><div><code>50</code></div><div>Accepted</div></div>
+            <div class="table-row"><div>Password length 8 to 20</div><div><code>12</code> characters</div><div>Accepted</div></div>
+            <div class="table-row"><div>Age 11 to 18 inclusive</div><div><code>15</code></div><div>Accepted</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="boundary">
+          <div class="section-title">
+            <p class="eyebrow">Boundary data</p>
+            <h2>Boundary data tests the edge of a valid range</h2>
+            <p>Use exact edges and, where helpful, values just outside the edges. Be explicit about which values are valid and invalid.</p>
+          </div>
+          <div class="range-strip" aria-label="Range 0 to 100">
+            <span class="bad">-1<br />just outside</span>
+            <span class="edge">0<br />lower boundary</span>
+            <span class="normal">50<br />normal</span>
+            <span class="edge">100<br />upper boundary</span>
+            <span class="bad">101<br />just outside</span>
+          </div>
+          <div class="callout">Cambridge marking usually rewards precise edge values. “Near the edge” is a direction, not a test case.</div>
+        </section>
+
+        <section class="panel" id="erroneous">
+          <div class="section-title">
+            <p class="eyebrow">Erroneous data</p>
+            <h2>Erroneous data is invalid data that should be rejected</h2>
+          </div>
+          <div class="card-grid">
+            <article>
+              <h3>Out of range</h3>
+              <p><code>-1</code> or <code>101</code> for a mark from 0 to 100. Expected result: rejected.</p>
+            </article>
+            <article>
+              <h3>Wrong type</h3>
+              <p><code>"cat"</code> where an integer mark is required. Expected result: rejected or error handled.</p>
+            </article>
+            <article>
+              <h3>Missing required data</h3>
+              <p>An empty name when a name must be entered. Expected result: rejected with a suitable message.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="table">
+          <div class="section-title">
+            <p class="eyebrow">Test table</p>
+            <h2>A clear test table turns thinking into marks</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Test table structure">
+            <div class="table-row table-head"><div>Test data</div><div>Type</div><div>Reason</div><div>Expected result</div></div>
+            <div class="table-row"><div><code>50</code></div><div>Normal</div><div>typical valid mark</div><div>Accepted</div></div>
+            <div class="table-row"><div><code>0</code></div><div>Boundary</div><div>lowest valid mark</div><div>Accepted</div></div>
+            <div class="table-row"><div><code>100</code></div><div>Boundary</div><div>highest valid mark</div><div>Accepted</div></div>
+            <div class="table-row"><div><code>-1</code></div><div>Erroneous</div><div>below valid range</div><div>Rejected</div></div>
+            <div class="table-row"><div><code>"cat"</code></div><div>Erroneous</div><div>wrong data type</div><div>Rejected or handled</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="validation">
+          <div class="section-title">
+            <p class="eyebrow">Validation vs testing</p>
+            <h2>Validation is the check. Testing proves whether the check works.</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Validation</h3>
+              <p>A program rule, such as “Mark must be from 0 to 100 inclusive”.</p>
+            </article>
+            <article>
+              <h3>Testing</h3>
+              <p>A planned set of inputs, such as <code>50</code>, <code>0</code>, <code>100</code>, <code>-1</code>, <code>101</code> and <code>"cat"</code>.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="java">
+          <div class="section-title">
+            <p class="eyebrow">Java support only</p>
+            <h2>Java can help you run examples, but Cambridge pseudocode is the exam answer format</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
+    OUTPUT "Accepted"
+ELSE
+    OUTPUT "Rejected"
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>if (mark &gt;= 0 &amp;&amp; mark &lt;= 100) {
+    System.out.println("Accepted");
+} else {
+    System.out.println("Rejected");
+}</code></pre>
+            </article>
+          </div>
+          <div class="callout">Do not write Java syntax as the final Cambridge pseudocode answer unless the question specifically asks for Java.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>This lesson covers the testing data part of Section 11</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>normal, boundary and erroneous test data</span></div>
+            <div><strong>Covered</strong><span>expected results and test table design</span></div>
+            <div><strong>Not this lesson</strong><span>full formal test plans, trace tables for complex algorithms and IDE unit testing frameworks</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive classifier</p>
+            <h2>Classify a test value for the mark rule</h2>
+            <p>Rule: mark must be an integer from 0 to 100 inclusive.</p>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Test value
+              <input id="testValue" type="text" value="50" />
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+          </div>
+          <div class="trace-output" id="classifierOutput" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Test table builder</p>
+            <h2>Choose a validation rule and generate a balanced test set</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Scenario
+              <select id="scenarioSelect">
+                <option value="mark">Mark: integer 0 to 100 inclusive</option>
+                <option value="password">Password length: 8 to 20 characters inclusive</option>
+                <option value="age">Competition age: integer 11 to 18 inclusive</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="buildBtn">Build table</button>
+          </div>
+          <div id="builderOutput" class="table-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Three ways exam questions ask for testing knowledge</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab-button active" type="button" data-example="classify">Classify data</button>
+            <button class="tab-button" type="button" data-example="design">Design table</button>
+            <button class="tab-button" type="button" data-example="explain">Explain edge cases</button>
+          </div>
+          <div id="exampleOutput" class="example-output"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant checking: short answers first, then reveal the answer</h2>
+          </div>
+          <div id="practiceList" class="practice-list"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the testing plan before the bug writes a memoir</h2>
+          </div>
+          <div id="mistakeList" class="mistake-grid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Cambridge-style wording with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. They do not copy past paper questions.</p>
+          </div>
+          <div id="examList" class="exam-list"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What to remember</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Normal</strong><span>valid, typical data inside the allowed range</span></div>
+            <div><strong>Boundary</strong><span>values at the edge of the range, plus just outside where useful</span></div>
+            <div><strong>Erroneous</strong><span>invalid data that should be rejected or handled</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Make the expected result impossible to miss</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a test table for a password length rule: 8 to 20 characters inclusive. Include two normal, four boundary and three erroneous tests.</li>
+            <li>Write a 5-mark explanation of why boundary data is useful when testing validation rules.</li>
+            <li>Write Cambridge-style pseudocode for a mark validation check, then list six test cases and their expected results.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

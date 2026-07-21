@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 010 | Digital sound: sampling rate, sample resolution and duration</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
+        <h1>Digital sound: sampling rate, sample resolution and duration</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#sampling">Sampling</a>
+        <a href="#rate">Sample rate</a>
+        <a href="#resolution">Resolution</a>
+        <a href="#duration">Duration</a>
+        <a href="#formula">Formula</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Calculator</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 010 | 45 minutes | 5-minute quiz</p>
+            <h2>Sound becomes data when we measure it again and again.</h2>
+            <p>
+              Digital sound is created by sampling an analogue sound wave at regular intervals.
+              Each sample is stored as a binary value. The sample rate, sample resolution and
+              duration determine how much data is stored.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div>
+                <strong>Describe</strong>
+                <span>how analogue sound is sampled and stored digitally</span>
+              </div>
+              <div>
+                <strong>Explain</strong>
+                <span>sample rate, sample resolution and duration</span>
+              </div>
+              <div>
+                <strong>Calculate</strong>
+                <span>basic mono sound file size in bits and bytes</span>
+              </div>
+            </div>
+          </div>
+          <div class="wave-card" aria-label="Digital sound focus">
+            <svg viewBox="0 0 360 180" role="img" aria-label="Sampled sound wave">
+              <path class="wave" d="M10 92 C45 20, 80 20, 115 92 S185 164, 220 92 S290 20, 350 92" />
+              <g class="samples">
+                <circle cx="25" cy="66" r="5" /><circle cx="65" cy="33" r="5" />
+                <circle cx="105" cy="75" r="5" /><circle cx="145" cy="133" r="5" />
+                <circle cx="185" cy="146" r="5" /><circle cx="225" cy="82" r="5" />
+                <circle cx="265" cy="37" r="5" /><circle cx="305" cy="45" r="5" />
+                <circle cx="345" cy="85" r="5" />
+              </g>
+            </svg>
+            <p>Each dot is a sample. The computer stores numbers, not tiny screams in a box.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Separate the two quality ideas: sample rate is how often; sample resolution is how accurately each sample value is stored.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Better sound quality usually needs more samples or more bits per sample, so file size increases.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not confuse sample resolution with screen resolution. Here it means bits per sound sample.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which change stores more measurements every second?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="rate">Increase sample rate</button>
+            <button class="choice-card" type="button" data-hook="resolution">Increase sample resolution</button>
+            <button class="choice-card" type="button" data-hook="duration">Increase duration</button>
+            <button class="choice-card" type="button" data-hook="volume">Increase speaker volume</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick an answer. “How often do we measure?” points to sample rate.
+          </div>
+        </section>
+
+        <section class="panel" id="sampling">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Sampling turns an analogue wave into digital values</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <h3>Analogue sound</h3>
+              <p>A continuous wave. The pressure changes smoothly over time.</p>
+            </article>
+            <article>
+              <h3>Sample</h3>
+              <p>A measurement of the wave amplitude at one moment in time.</p>
+            </article>
+            <article>
+              <h3>Digital sound</h3>
+              <p>A sequence of sample values stored as binary numbers.</p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: sampling = 采样；sample = 样本/采样值；amplitude = 振幅。</div>
+        </section>
+
+        <section class="panel" id="rate">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Sampling rate: samples per second</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Definition</h3>
+              <p>Sampling rate is the number of samples taken each second.</p>
+              <p>It is commonly measured in hertz, `Hz`.</p>
+            </article>
+            <article>
+              <h3>Effect</h3>
+              <p>A higher sampling rate records more measurements each second.</p>
+              <p>This can improve accuracy, but increases file size.</p>
+            </article>
+          </div>
+          <div class="sample-strip" id="sampleStrip" aria-label="Sampling rate visual"></div>
+        </section>
+
+        <section class="panel" id="resolution">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Sample resolution: bits per sample</h2>
+          </div>
+          <div class="resolution-grid">
+            <article>
+              <h3>8-bit sample resolution</h3>
+              <p>`2⁸ = 256` possible amplitude levels.</p>
+            </article>
+            <article>
+              <h3>16-bit sample resolution</h3>
+              <p>`2¹⁶ = 65 536` possible amplitude levels.</p>
+            </article>
+            <article>
+              <h3>Quality trade-off</h3>
+              <p>More bits per sample can store amplitude more precisely, but uses more storage.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="duration">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Duration: how long the sound lasts</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Seconds matter</h3>
+              <p>A 10-second clip stores ten times as many samples as a 1-second clip if the sample rate is unchanged.</p>
+            </article>
+            <article>
+              <h3>Mono for today</h3>
+              <p>This lesson uses mono sound, so there is one channel. Stereo channels are handled in the next calculation lesson.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="formula">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Basic mono sound file size formula</h2>
+          </div>
+          <div class="formula-box">
+            <strong>size in bits = sampling rate × sample resolution × duration</strong>
+            <span>size in bytes = bits ÷ 8</span>
+          </div>
+          <div class="worked-line">`8000 × 16 × 10 = 1 280 000 bits = 160 000 bytes`</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Sampling, sample rate, sample resolution and duration.</span></div>
+            <div><strong>Covered</strong><span>Basic mono sound file size calculation in bits and bytes.</span></div>
+            <div><strong>Boundary</strong><span>Channels, compression and advanced audio formats are left for the next lesson.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Mono sound size calculator</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Sampling rate / Hz
+              <input id="rateInput" type="number" min="1" value="8000" />
+            </label>
+            <label>
+              Sample resolution / bits
+              <select id="resolutionInput">
+                <option value="8">8 bits</option>
+                <option value="16" selected>16 bits</option>
+                <option value="24">24 bits</option>
+              </select>
+            </label>
+            <label>
+              Duration / seconds
+              <input id="durationInput" type="number" min="1" value="10" />
+            </label>
+            <button type="button" id="calculateBtn">Calculate</button>
+          </div>
+          <div class="result-box" id="calcResult" aria-live="polite"></div>
+          <div class="method-box" id="calcMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="basic">8000 Hz, 16-bit, 10 s</button>
+            <button class="tab" type="button" data-example="rate">Higher sample rate</button>
+            <button class="tab" type="button" data-example="resolution">Higher resolution</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the sound calculation</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">`8000 × 16 × 10 = 1 280 000 bytes`</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">The product is in bits. `1 280 000 bits ÷ 8 = 160 000 bytes`.</p>
+            </article>
+            <article>
+              <p class="wrong">“Sample resolution is how many samples are taken each second.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">That is sampling rate. Sample resolution is the number of bits used to store each sample.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>
+              Use the buttons under each question to expand the CIE-style mark scheme.
+              These are original questions written in Cambridge style, not copied past-paper items.
+            </p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Sound file size has three levers today</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>Sampling measures an analogue wave at regular intervals.</span></div>
+            <div><strong>2</strong><span>Sampling rate is samples per second, measured in Hz.</span></div>
+            <div><strong>3</strong><span>Sample resolution is bits per sample.</span></div>
+            <div><strong>4</strong><span>Bits = sampling rate × sample resolution × duration for mono sound.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Define sampling, sampling rate and sample resolution.</li>
+            <li>Calculate the size of a 5-second mono clip sampled at 4000 Hz with 8-bit sample resolution.</li>
+            <li>Calculate the size of a 20-second mono clip sampled at 8000 Hz with 16-bit sample resolution.</li>
+            <li>Write a 4-mark explanation of how increasing sampling rate affects quality and file size.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Definitions:</strong> sampling measures the wave; sampling rate is samples per second; sample resolution is bits per sample.</p>
+            <p><strong>Task 2:</strong> `4000 × 8 × 5 = 160 000 bits = 20 000 bytes`.</p>
+            <p><strong>Task 3:</strong> `8000 × 16 × 20 = 2 560 000 bits = 320 000 bytes`.</p>
+            <p><strong>Explanation focus:</strong> higher sampling rate takes more measurements per second, which can improve accuracy but increases file size.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

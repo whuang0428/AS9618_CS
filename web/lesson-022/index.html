@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 022 | Wired and wireless transmission media</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
+        <h1>Wired and wireless transmission media</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#wired">Wired media</a>
+        <a href="#wireless">Wireless media</a>
+        <a href="#compare">Comparison</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Choice tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 022 | 45 minutes | Paper 1 Section 2</p>
+            <h2>The network path is not magic. It is a physical route with trade-offs.</h2>
+            <p>
+              This lesson compares wired and wireless transmission media. A strong answer
+              names the medium, describes how it carries data, then links a feature to
+              the scenario: bandwidth, latency, interference, security, cost, range or mobility.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Describe</strong><span>copper cable, fibre-optic cable, radio waves, microwaves and satellites</span></div>
+              <div><strong>Compare</strong><span>wired and wireless networks using accurate technical factors</span></div>
+              <div><strong>Choose</strong><span>a suitable medium for a given network scenario and justify it</span></div>
+            </div>
+          </div>
+          <div class="signal-card" aria-label="Transmission media concept">
+            <span>copper -> fibre -> radio -> microwave -> satellite</span>
+            <p>Signals need a medium. The exam needs a reason.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every scenario, ask: fixed or mobile, short or long distance, private or shared space, cheap or high performance?</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge questions often reward comparison. "Wireless is easier" is not enough; explain mobility, interference, range or security.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not call WiFi a protocol answer here. This lesson is about the physical transmission medium: radio waves, cables and satellite links.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>The school wants a fast link between two server rooms. Which option is least embarrassing?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="fibre">Fibre-optic cable, because high bandwidth and low interference matter</button>
+            <button class="choice-card" type="button" data-hook="satellite">Satellite, because space sounds advanced</button>
+            <button class="choice-card" type="button" data-hook="wifi">WiFi, because cables are old-fashioned</button>
+            <button class="choice-card" type="button" data-hook="smtp">SMTP, because the servers send messages</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick the answer that uses a transmission medium and links it to the scenario.
+          </div>
+        </section>
+
+        <section class="panel" id="wired">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Wired transmission media</h2>
+            <p>Wired media carry signals through a physical cable. They are usually suitable for fixed devices and controlled environments.</p>
+          </div>
+          <div class="media-grid">
+            <article class="medium-card">
+              <h3>Copper cable</h3>
+              <p>Copper cable transmits data using electrical signals. It is common in local networks because it is relatively cheap and easy to install.</p>
+              <ul>
+                <li><strong>Good for:</strong> short local links, desktop PCs, classroom networks.</li>
+                <li><strong>Limits:</strong> affected by electromagnetic interference; lower bandwidth and distance than fibre in many contexts.</li>
+                <li><strong>Exam wording:</strong> say "electrical signals", not "data flows like water". The cable is not a tiny plumbing system.</li>
+              </ul>
+            </article>
+            <article class="medium-card">
+              <h3>Fibre-optic cable</h3>
+              <p>Fibre-optic cable transmits data as pulses of light through glass or plastic fibres.</p>
+              <ul>
+                <li><strong>Good for:</strong> high-bandwidth links, long distances, backbone connections.</li>
+                <li><strong>Strengths:</strong> less affected by electromagnetic interference and can support high data rates.</li>
+                <li><strong>Limits:</strong> installation can be more expensive and the cable can be more delicate to handle.</li>
+              </ul>
+            </article>
+          </div>
+          <div class="callout">Chinese support: copper cable = 铜缆；fibre-optic cable = 光纤；electrical signal = 电信号；light pulse = 光脉冲。</div>
+        </section>
+
+        <section class="panel" id="wireless">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Wireless transmission media</h2>
+            <p>Wireless media transmit through the air or space. They support mobility, but the signal can be affected by distance, obstacles and interference.</p>
+          </div>
+          <div class="media-grid three">
+            <article class="medium-card">
+              <h3>Radio waves</h3>
+              <p>Radio waves are used by technologies such as WiFi to transmit data without a physical cable.</p>
+              <ul>
+                <li><strong>Good for:</strong> mobile devices, classrooms, homes, short-range wireless networking.</li>
+                <li><strong>Limits:</strong> shared medium, interference from other devices, weaker security if poorly configured.</li>
+              </ul>
+            </article>
+            <article class="medium-card">
+              <h3>Microwaves</h3>
+              <p>Microwave links can transmit data between fixed points, often using directional antennas.</p>
+              <ul>
+                <li><strong>Good for:</strong> point-to-point links where a line of sight is available.</li>
+                <li><strong>Limits:</strong> obstacles, weather and alignment can affect the link.</li>
+              </ul>
+            </article>
+            <article class="medium-card">
+              <h3>Satellites</h3>
+              <p>Satellite communication uses signals to and from satellites to cover large geographical areas.</p>
+              <ul>
+                <li><strong>Good for:</strong> remote locations, ships, aircraft or areas without cable infrastructure.</li>
+                <li><strong>Limits:</strong> higher latency due to distance, cost, weather effects and limited capacity compared with some wired links.</li>
+              </ul>
+            </article>
+          </div>
+          <div class="callout">Chinese support: radio wave = 无线电波；microwave = 微波；satellite = 卫星；line of sight = 视距。</div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Compare by factor, not by vibe</h2>
+          </div>
+          <div class="compare-table" role="table" aria-label="Transmission media comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Factor</div>
+              <div role="columnheader">Wired networks</div>
+              <div role="columnheader">Wireless networks</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Mobility</div>
+              <div role="cell">Poor for moving devices because a cable is required.</div>
+              <div role="cell">Better for mobile devices because no physical cable is needed.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Interference</div>
+              <div role="cell">Copper may suffer electromagnetic interference; fibre is less affected.</div>
+              <div role="cell">Can be affected by walls, distance, other devices and weather.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Security</div>
+              <div role="cell">Physical access to the cable is usually needed to intercept traffic.</div>
+              <div role="cell">Signals travel through air, so encryption and access control are important.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Performance</div>
+              <div role="cell">Often stable; fibre can provide high bandwidth over long distances.</div>
+              <div role="cell">Bandwidth and latency can vary with signal quality and congestion.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Characteristics of wireless and wired networks.</span></div>
+            <div><strong>Covered</strong><span>Copper cable and fibre-optic cable as wired transmission media.</span></div>
+            <div><strong>Covered</strong><span>Radio waves including WiFi, microwaves and satellites as wireless transmission media.</span></div>
+            <div><strong>Boundary</strong><span>Network hardware such as switches, routers, access points and gateways is handled in Lesson 023.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Transmission medium choice helper</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="server">Fast fixed link between server rooms</option>
+                <option value="classroom">Tablets moving around a classroom</option>
+                <option value="remote">Internet access for a remote island office</option>
+                <option value="desktop">Reliable fixed desktop PC connection</option>
+                <option value="buildings">Two buildings with clear line of sight</option>
+                <option value="factory">Factory floor with electrical interference</option>
+              </select>
+            </label>
+            <button type="button" id="chooseBtn">Choose medium</button>
+          </div>
+          <div class="result-box" id="mediumResult" aria-live="polite"></div>
+          <div class="method-box" id="mediumMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="fibre">Fibre link</button>
+            <button class="tab" type="button" data-example="wifi">Wireless classroom</button>
+            <button class="tab" type="button" data-example="satellite">Remote site</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak transmission-media answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"Wireless is always faster because it is newer."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">Do not judge by age. Wireless performance depends on signal strength, interference, congestion and distance; fibre may provide higher stable bandwidth.</p>
+            </article>
+            <article>
+              <p class="wrong">"Fibre-optic cable sends electrical signals very quickly."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">Fibre-optic cable transmits data as pulses of light, not electrical signals. Copper cable uses electrical signals.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on matching the medium to the scenario and explaining a real factor.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Medium, signal, trade-off</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Copper</strong><span>Electrical signals; cheap and common; affected by electromagnetic interference.</span></div>
+            <div><strong>Fibre optic</strong><span>Light pulses; high bandwidth; long distance; low electromagnetic interference.</span></div>
+            <div><strong>Radio waves</strong><span>Wireless mobility; used by WiFi; affected by interference and obstacles.</span></div>
+            <div><strong>Microwaves</strong><span>Directional point-to-point links; often need line of sight.</span></div>
+            <div><strong>Satellite</strong><span>Large coverage for remote areas; higher latency and cost.</span></div>
+            <div><strong>Comparison</strong><span>Use factors: mobility, range, interference, security, bandwidth, latency and cost.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a comparison table for copper, fibre optic, radio waves, microwaves and satellites. Include one advantage and one limitation for each.</li>
+            <li>Write a 4-mark answer: explain why fibre optic may be chosen for a high-bandwidth link between buildings.</li>
+            <li>Write a 4-mark answer: explain why WiFi may be chosen for tablets in a classroom, and give one limitation.</li>
+            <li>Choose a medium for a remote weather station and justify it using coverage, latency or cost.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Comparison table:</strong> include signal type where relevant: copper uses electrical signals; fibre uses light pulses.</p>
+            <p><strong>Fibre answer:</strong> mention high bandwidth, long distance and low electromagnetic interference.</p>
+            <p><strong>WiFi answer:</strong> mention mobility/no cable, then a limitation such as interference, security or shared bandwidth.</p>
+            <p><strong>Remote station:</strong> satellite may be suitable where cable infrastructure is unavailable, but latency/cost can be disadvantages.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

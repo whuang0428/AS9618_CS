@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 051 | Section 4 review: tracing processor behaviour</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
+        <h1>Section 4 review: tracing processor behaviour</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#map">Section map</a>
+        <a href="#classifier">Classifier</a>
+        <a href="#retrieval">Retrieval</a>
+        <a href="#compare">Compare traps</a>
+        <a href="#timed">Timed task</a>
+        <a href="#clinic">Answer clinic</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#tool">Review tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 051 | 45 minutes | Paper 1 Section 4 | Stage review</p>
+            <h2>Before answering, choose the right mental toolbox.</h2>
+            <p>
+              Section 4 questions often look similar: registers, buses, instructions,
+              interrupts and performance all involve the CPU. This review trains topic
+              recognition, trace accuracy and Cambridge-style correction.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Recognise</strong><span>which Section 4 concept a mixed question is testing</span></div>
+              <div><strong>Trace</strong><span>processor behaviour using precise registers, buses and instruction stages</span></div>
+              <div><strong>Improve</strong><span>weak answers using mark-scheme language and correction prompts</span></div>
+            </div>
+          </div>
+          <div class="review-card" aria-label="Section 4 review sketch">
+            <div class="review-stack">
+              <span>Identify topic</span>
+              <span>State mechanism</span>
+              <span>Trace or compare</span>
+              <span>Add consequence</span>
+              <span>Check MS wording</span>
+            </div>
+            <p>The first mark is often knowing what the question is really asking.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Read the command word first, then circle the noun: register, bus, interrupt, addressing mode, pipeline or performance factor.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Students often know the content but answer the neighbouring topic. Review lessons fix recognition and precision.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not write a memorised paragraph about the CPU if the question asks specifically about MAR, indirect addressing or cache.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which topic is being tested?</h2>
+            <p>Click the best label for this mini-question: "Explain why `LOAD #5` and `LOAD 5` may load different values."</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="addressing">Addressing modes</button>
+            <button class="choice-card" type="button" data-hook="interrupts">Interrupt handling</button>
+            <button class="choice-card" type="button" data-hook="pipelining">Pipelining</button>
+            <button class="choice-card" type="button" data-hook="cache">Cache memory</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. A review lesson begins by naming the correct topic before writing the answer.
+          </div>
+        </section>
+
+        <section class="panel" id="map">
+          <div class="section-title">
+            <p class="eyebrow">Section map</p>
+            <h2>The Section 4 mental toolbox</h2>
+          </div>
+          <div class="map-grid">
+            <article><strong>CPU components</strong><span>ALU, CU, registers, buses and clock coordinate instruction processing.</span></article>
+            <article><strong>FDE cycle</strong><span>PC, MAR, MDR and CIR move address, instruction and data through fetch-decode-execute.</span></article>
+            <article><strong>Instruction set</strong><span>Machine code depends on a processor's instruction set; assembly uses mnemonics and labels.</span></article>
+            <article><strong>Addressing modes</strong><span>Immediate, direct, indirect and indexed modes change operand interpretation.</span></article>
+            <article><strong>Interrupts</strong><span>The CPU saves state, runs an ISR, then restores state and resumes.</span></article>
+            <article><strong>Performance</strong><span>Clock speed, cores, cache, word length and pipelining affect performance with limits.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Classify the question before answering</h2>
+          </div>
+          <div class="classifier-table" role="table" aria-label="Question classifier">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Question clue</div>
+              <div role="columnheader">Likely topic</div>
+              <div role="columnheader">What to include</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">PC, MAR, MDR, CIR, ACC, status flags</div>
+              <div role="cell">Registers / FDE cycle</div>
+              <div role="cell">Temporary storage role and sequence.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Address bus, data bus, control bus</div>
+              <div role="cell">System buses</div>
+              <div role="cell">Direction, content carried and purpose.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Mnemonic, opcode, operand, label</div>
+              <div role="cell">Instruction sets / assembly</div>
+              <div role="cell">Human-readable representation and processor-specific machine code.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">`#`, address, pointer, base + index</div>
+              <div role="cell">Addressing modes</div>
+              <div role="cell">How the operand is interpreted and effective address.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">ISR, save state, device signal</div>
+              <div role="cell">Interrupts</div>
+              <div role="cell">Pause, save state, run ISR, restore, resume.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Throughput, stall, branch, cache, cores</div>
+              <div role="cell">Performance / pipelining</div>
+              <div role="cell">Mechanism, condition and limitation.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="retrieval">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Retrieval grid: say the role, not just the name</h2>
+          </div>
+          <div class="retrieval-grid">
+            <article><strong>PC</strong><span>Holds address of the next instruction to fetch.</span></article>
+            <article><strong>MAR</strong><span>Holds the memory address being accessed.</span></article>
+            <article><strong>MDR</strong><span>Holds data/instruction transferred to or from memory.</span></article>
+            <article><strong>CIR</strong><span>Holds the current instruction while it is decoded/executed.</span></article>
+            <article><strong>Control bus</strong><span>Carries control/timing signals such as read, write and interrupt.</span></article>
+            <article><strong>Cache</strong><span>Small fast memory storing frequently/recently used items.</span></article>
+            <article><strong>ISR</strong><span>Routine that handles a specific interrupt.</span></article>
+            <article><strong>Pipeline stall</strong><span>Pause because an instruction cannot safely continue.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Common compare traps</h2>
+          </div>
+          <div class="compare-grid">
+            <article>
+              <h3>MAR vs MDR</h3>
+              <p>MAR holds an address. MDR holds the data or instruction being transferred. One points where; the other carries what.</p>
+            </article>
+            <article>
+              <h3>Direct vs indirect</h3>
+              <p>Direct uses the operand as the address of the value. Indirect uses the operand as the address of a pointer to the value.</p>
+            </article>
+            <article>
+              <h3>Clock speed vs throughput</h3>
+              <p>Clock speed is cycles per second. Throughput is completed work per unit time. They are related, not identical.</p>
+            </article>
+            <article>
+              <h3>Interrupt vs polling</h3>
+              <p>An interrupt lets a device signal the CPU. Polling means the CPU repeatedly checks the device/status flag.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="timed">
+          <div class="section-title">
+            <p class="eyebrow">Timed task</p>
+            <h2>8-minute mixed Section 4 response</h2>
+            <p>Choose one question, write the answer, then compare with the expandable MS in the exam section.</p>
+          </div>
+          <div class="timed-grid">
+            <article><strong>Question A</strong><span>Trace the fetch stage and name the role of PC, MAR and MDR.</span></article>
+            <article><strong>Question B</strong><span>Explain why an interrupt service routine must save and restore processor state.</span></article>
+            <article><strong>Question C</strong><span>Discuss why pipelining may improve CPU performance but not always reach ideal speed-up.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="clinic">
+          <div class="section-title">
+            <p class="eyebrow">Answer clinic</p>
+            <h2>Turn vague into mark-worthy</h2>
+          </div>
+          <div class="clinic-card">
+            <p><strong>Weak answer:</strong> "The CPU uses registers and buses to get instructions. It is faster because of cache and pipelining."</p>
+            <p><strong>Diagnosis:</strong> This names several topics but does not answer any one of them precisely.</p>
+            <p><strong>Fix pattern:</strong> Topic → mechanism → exact role/sequence → consequence.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>Section 4 review coverage</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Reviewed</strong><span>CPU architecture, ALU/CU/registers, buses and clock.</span></div>
+            <div><strong>Reviewed</strong><span>Fetch-decode-execute cycle and register roles.</span></div>
+            <div><strong>Reviewed</strong><span>Instruction sets, machine code, assembly language and mnemonics.</span></div>
+            <div><strong>Reviewed</strong><span>Addressing modes and operand interpretation.</span></div>
+            <div><strong>Reviewed</strong><span>Interrupts, ISRs, state saving and resuming.</span></div>
+            <div><strong>Reviewed</strong><span>Performance factors and pipelining limitations.</span></div>
+            <div><strong>Next unit</strong><span>Section 5 begins with operating system purposes in Lesson 052.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Question topic classifier</h2>
+            <p>Select a clue and practise choosing the correct Section 4 response pattern.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Question clue
+              <select id="scenarioInput">
+                <option value="fde">"Describe what happens during the fetch stage."</option>
+                <option value="bus">"Explain the role of the control bus."</option>
+                <option value="mode">"Compare LOAD #20 and LOAD 20."</option>
+                <option value="interrupt">"A device sends an interrupt signal."</option>
+                <option value="pipeline">"A branch instruction is in a pipeline."</option>
+                <option value="performance">"A processor has more cores and larger cache."</option>
+              </select>
+            </label>
+            <button type="button" id="simulateBtn">Classify</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Annotate where marks come from</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="fde">FDE trace</button>
+            <button class="tab" type="button" data-example="addressing">Addressing</button>
+            <button class="tab" type="button" data-example="interrupt">Interrupt</button>
+            <button class="tab" type="button" data-example="pipeline">Pipelining</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+            <p>These are deliberately mixed. Identify the topic before typing the answer.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair common Section 4 errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeList"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Stage review exam-style questions</p>
+            <h2>Mixed Section 4 questions with expandable mark schemes</h2>
+            <p>These are original Cambridge-style questions. MS notes are strict about topic recognition and precise processor vocabulary.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Review method: classify, trace, correct</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Classify</strong><span>Identify the topic from clue words before answering.</span></div>
+            <div><strong>Trace</strong><span>Use correct sequence for FDE, interrupts, addressing or pipelines.</span></div>
+            <div><strong>Compare</strong><span>State the exact difference between similar terms.</span></div>
+            <div><strong>Consequence</strong><span>Explain why the mechanism matters in the scenario.</span></div>
+            <div><strong>Correct</strong><span>Rewrite vague answers using MS wording.</span></div>
+            <div><strong>Exam habit</strong><span>One precise mechanism beats three vague keywords.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Finish the Section 4 correction cycle</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a one-page Section 4 retrieval sheet with six boxes: registers, buses, FDE, assembly/addressing, interrupts, performance/pipelining.</li>
+            <li>Answer Question A, B and C from the timed task in full sentences.</li>
+            <li>Mark each answer using the expandable MS style: underline each mark-worthy phrase.</li>
+            <li>Rewrite the weakest answer in a second colour, adding missing mechanism and consequence.</li>
+            <li>Write three "do not confuse" pairs, such as MAR/MDR or direct/indirect addressing.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 037 | Building logic circuits from requirements</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
+        <h1>Building logic circuits from requirements</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#parse">Parse requirements</a>
+        <a href="#design">Design method</a>
+        <a href="#diagram">Circuit structure</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Circuit builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 037 | 45 minutes | Paper 1 Section 3</p>
+            <h2>Requirements are English. Circuits are English after it has been through the gym.</h2>
+            <p>
+              This lesson trains the full design route: read a scenario, define
+              input variables, write a Boolean expression, build the gate sequence,
+              and verify the circuit with a truth table row.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>input conditions and output action from a requirement</span></div>
+              <div><strong>Construct</strong><span>Boolean expressions and matching gate sequences</span></div>
+              <div><strong>Verify</strong><span>the circuit using a truth-table row</span></div>
+            </div>
+          </div>
+          <div class="gate-card" aria-label="Circuit expression">
+            <span>Alarm = Armed AND (Door OR Window)</span>
+            <p>Start with the rule. The circuit should simply obey it, without inventing new drama.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask for the design chain every time: requirement -> variables -> expression -> gates -> test row.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge questions often give worded requirements. Marks depend on turning words such as only if, either, and not into the right gates.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not draw gates before defining variables. A circuit with mystery inputs is not clever; it is just hard to mark.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A school door unlocks only if the card is valid and the emergency stop is not active.</h2>
+            <p>Click the correct expression. The door is allergic to vague English.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="wrong1">Unlock = Card OR NOT Emergency</button>
+            <button class="choice-card" type="button" data-hook="correct">Unlock = Card AND NOT Emergency</button>
+            <button class="choice-card" type="button" data-hook="wrong2">Unlock = NOT Card AND Emergency</button>
+            <button class="choice-card" type="button" data-hook="wrong3">Unlock = Card XOR Emergency</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Look for "only if" and "not active". Those two phrases usually decide the gate choices.
+          </div>
+        </section>
+
+        <section class="panel" id="parse">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Parse requirement wording into logic</h2>
+          </div>
+          <div class="phrase-table" role="table" aria-label="Requirement phrases and logic">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Requirement phrase</div>
+              <div role="columnheader">Logic meaning</div>
+              <div role="columnheader">Gate / expression</div>
+              <div role="columnheader">Exam warning</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">both / all / only if X and Y</div>
+              <div role="cell">Every listed condition must be 1.</div>
+              <div role="cell">X AND Y</div>
+              <div role="cell">Do not replace AND with OR because one condition sounds important.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">either / at least one</div>
+              <div role="cell">One or more conditions may be 1.</div>
+              <div role="cell">X OR Y</div>
+              <div role="cell">OR includes the row where both inputs are 1.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">not / unless / inactive</div>
+              <div role="cell">Invert the condition.</div>
+              <div role="cell">NOT X</div>
+              <div role="cell">Check which variable is being inverted.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">exactly one</div>
+              <div role="cell">Inputs must be different.</div>
+              <div role="cell">X XOR Y</div>
+              <div role="cell">Do not use OR if both being 1 should produce 0.</div>
+            </div>
+          </div>
+          <div class="callout">Chinese support: requirement = 需求；variable = 变量；logic circuit = 逻辑电路；gate sequence = 逻辑门顺序。</div>
+        </section>
+
+        <section class="panel" id="design">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>A circuit design method that examiners can follow</h2>
+          </div>
+          <div class="method-list">
+            <div><strong>1. Name the output</strong><span>Use a clear output such as Alarm, Unlock, Fan or Light.</span></div>
+            <div><strong>2. Define variables</strong><span>Write what each input means, for example A = system armed.</span></div>
+            <div><strong>3. Write expression</strong><span>Translate the requirement with AND, OR, NOT, NAND, NOR or XOR.</span></div>
+            <div><strong>4. Draw in stages</strong><span>Draw inner gates first, then connect them to the final output gate.</span></div>
+          </div>
+          <div class="callout">A correct circuit is not just a pretty drawing. It must match the Boolean expression and produce the correct truth-table output.</div>
+        </section>
+
+        <section class="panel" id="diagram">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Gate sequence creates the circuit structure</h2>
+          </div>
+          <div class="circuit-flow" aria-label="Circuit build sequence">
+            <div><strong>Door</strong><span>Input D</span></div>
+            <div><strong>Window</strong><span>Input W</span></div>
+            <div><strong>OR</strong><span>D OR W</span></div>
+            <div><strong>Armed</strong><span>Input A</span></div>
+            <div><strong>AND</strong><span>A AND (D OR W)</span></div>
+            <div><strong>Alarm</strong><span>Final output Q</span></div>
+          </div>
+          <div class="callout">Draw the OR branch first, then feed it into AND with Armed. If the drawing order is unclear, label intermediate outputs.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Converting worded requirements into input variables and output names.</span></div>
+            <div><strong>Covered</strong><span>Building Boolean expressions from AND, OR, NOT and XOR wording.</span></div>
+            <div><strong>Covered</strong><span>Gate order and intermediate outputs for circuit diagrams.</span></div>
+            <div><strong>Covered</strong><span>Verification using truth-table rows.</span></div>
+            <div><strong>Boundary</strong><span>Hardware selection and non-logic hardware comparisons continue in Lesson 038.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Build the circuit from a requirement</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="alarm">Alarm if armed and either door or window is open</option>
+                <option value="unlock">Unlock if card is valid and emergency stop is not active</option>
+                <option value="fan">Fan if room is hot and override is not active</option>
+                <option value="light">Light if motion is detected or test mode is active</option>
+                <option value="selector">Select output if exactly one button is pressed</option>
+              </select>
+            </label>
+            <button type="button" id="buildBtn">Build circuit</button>
+          </div>
+          <div class="result-box" id="scenarioExpression" aria-live="polite"></div>
+          <div class="method-box" id="scenarioVariables"></div>
+          <div class="sequence-box" id="scenarioSequence"></div>
+          <div class="truth-table-wrap" id="truthTable"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From words to gates</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="alarm">Alarm circuit</button>
+            <button class="tab" type="button" data-example="unlock">Unlock circuit</button>
+            <button class="tab" type="button" data-example="xor">Exactly one condition</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak circuit design</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"The alarm sounds if door OR window is open. The system armed condition can be drawn somewhere at the end."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">If the requirement says the system must be armed, Armed must be part of the expression: Alarm = Armed AND (Door OR Window). The final AND is essential.</p>
+            </article>
+            <article>
+              <p class="wrong">"Emergency stop is not active, so I write NOT Card AND Emergency."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">The NOT applies to Emergency, not Card. The correct expression is Unlock = Card AND NOT Emergency.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on clear variables, correct gate choice, and a circuit sequence matching the requirement.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Circuit design in six exam sentences</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Variables</strong><span>Define every input before using it.</span></div>
+            <div><strong>Output</strong><span>Name the final action clearly.</span></div>
+            <div><strong>AND</strong><span>Use when all conditions are required.</span></div>
+            <div><strong>OR</strong><span>Use when at least one condition is enough.</span></div>
+            <div><strong>NOT</strong><span>Invert only the condition described as not/inactive.</span></div>
+            <div><strong>Verify</strong><span>Test one truth-table row against the original wording.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>For "A warning sounds if the system is armed and either a door or window is open", define variables, write the expression and describe the gate sequence.</li>
+            <li>For "A fan starts if the room is hot and manual override is not active", define variables and draw the gate structure in words.</li>
+            <li>Create one requirement that needs XOR and explain why OR would be wrong.</li>
+            <li>Verify one of your circuits with two truth-table rows: one where output is 1 and one where output is 0.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Alarm:</strong> let A = armed, D = door open, W = window open. Alarm = A AND (D OR W).</p>
+            <p><strong>Fan:</strong> let H = hot, O = override active. Fan = H AND NOT O.</p>
+            <p><strong>XOR:</strong> use "exactly one" wording, such as exactly one button pressed.</p>
+            <p><strong>Verification:</strong> write input values, intermediate gate result and final output.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

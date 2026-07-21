@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 113 | Data types and user-defined types</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
+        <h1>Data types: integer, real, Boolean, char, string, date and user-defined types</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#why-types">Why types</a>
+        <a href="#built-in">Built-in types</a>
+        <a href="#choose">Choosing types</a>
+        <a href="#user-defined">User-defined</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Type classifier</a>
+        <a href="#builder">Declaration builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 113 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
+            <h2>A value without a type is a suitcase without a label.</h2>
+            <p>
+              Data types tell a program what kind of value is stored, what operations are valid and how the value
+              should be interpreted. In Cambridge pseudocode, choosing the correct type is part of designing a clear
+              and reliable solution, not decoration for the variable name.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>INTEGER, REAL, BOOLEAN, CHAR, STRING, DATE and user-defined types</span></div>
+              <div><strong>Choose</strong><span>suitable types for values and scenarios with clear reasons</span></div>
+              <div><strong>Declare</strong><span>variables and simple user-defined types in Cambridge-style pseudocode</span></div>
+            </div>
+          </div>
+          <div class="type-visual" aria-label="Data type visual">
+            <div class="value-card"><strong>42</strong><span>INTEGER</span></div>
+            <div class="value-card"><strong>42.5</strong><span>REAL</span></div>
+            <div class="value-card"><strong>TRUE</strong><span>BOOLEAN</span></div>
+            <div class="value-card"><strong>"Ali"</strong><span>STRING</span></div>
+            <p>Same storage idea, different rules. The type decides what the value means.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For each value, ask two questions: can it have decimals, and will arithmetic be performed on it?</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 can ask for declarations, suitable data types, and reasons why a type is appropriate for a field.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not store phone numbers or IDs as INTEGER just because they contain digits. If arithmetic is not needed, STRING is often safer.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Is "007" a number or a code?</h2>
+            <p>A spy ID is stored as 007. Which type preserves the leading zero and avoids accidental arithmetic?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="integer">INTEGER</button>
+            <button class="choice-card" type="button" data-hook="real">REAL</button>
+            <button class="choice-card" type="button" data-hook="string">STRING</button>
+            <button class="choice-card" type="button" data-hook="boolean">BOOLEAN</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the type that stores the characters exactly as entered.</div>
+        </section>
+
+        <section class="panel" id="why-types">
+          <div class="section-title">
+            <p class="eyebrow">Why data types exist</p>
+            <h2>A type controls meaning and valid operations</h2>
+          </div>
+          <div class="triage-grid">
+            <article>
+              <h3>Meaning</h3>
+              <p><code>23</code> could be an age, a day of month, a count or part of an ID. The variable name and type make the intention explicit.</p>
+              <pre><code>DECLARE Age : INTEGER
+DECLARE StudentID : STRING</code></pre>
+            </article>
+            <article>
+              <h3>Operations</h3>
+              <p>You can add two INTEGER values, compare DATE values, test a BOOLEAN, and join STRING values. The type narrows what is sensible.</p>
+              <pre><code>IF IsValid = TRUE THEN
+    OUTPUT "Accepted"
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>Validation</h3>
+              <p>Choosing a type does not replace validation. A DATE type stores a date; validation still checks whether a date is in an allowed range.</p>
+              <pre><code>IF BirthDate &gt; Today THEN
+    OUTPUT "Invalid"
+ENDIF</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="built-in">
+          <div class="section-title">
+            <p class="eyebrow">Built-in types</p>
+            <h2>Core AS-level data types</h2>
+            <p>Chinese support: 类型不是“长得像什么”，而是“需要怎样使用”。</p>
+          </div>
+          <div class="data-table type-table" role="table" aria-label="Built-in data types">
+            <div class="table-row table-head" role="row"><div>Type</div><div>Stores</div><div>Good example</div><div>Do not use for</div></div>
+            <div class="table-row" role="row"><div>INTEGER</div><div>whole numbers</div><div>Score, Count, Quantity</div><div>values needing decimals</div></div>
+            <div class="table-row" role="row"><div>REAL</div><div>numbers with fractional parts</div><div>Temperature, Mass, Average</div><div>exact counters or indexes</div></div>
+            <div class="table-row" role="row"><div>BOOLEAN</div><div>TRUE or FALSE</div><div>Found, IsValid, HasPaid</div><div>more than two possible states</div></div>
+            <div class="table-row" role="row"><div>CHAR</div><div>one character</div><div>Grade, Initial, MenuChoice</div><div>names or full words</div></div>
+            <div class="table-row" role="row"><div>STRING</div><div>sequence of characters</div><div>Name, Postcode, PhoneNumber</div><div>values used for arithmetic</div></div>
+            <div class="table-row" role="row"><div>DATE</div><div>calendar date</div><div>BirthDate, BookingDate</div><div>date written as unvalidated free text</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="choose">
+          <div class="section-title">
+            <p class="eyebrow">Choosing types</p>
+            <h2>Use the scenario, not the surface appearance</h2>
+          </div>
+          <div class="data-table decision-table" role="table" aria-label="Type decision table">
+            <div class="table-row table-head" role="row"><div>Question</div><div>If yes</div><div>Type direction</div></div>
+            <div class="table-row" role="row"><div>Will arithmetic be performed?</div><div>yes</div><div>INTEGER or REAL</div></div>
+            <div class="table-row" role="row"><div>Can the value contain decimals?</div><div>yes</div><div>REAL</div></div>
+            <div class="table-row" role="row"><div>Is the answer only true/false?</div><div>yes</div><div>BOOLEAN</div></div>
+            <div class="table-row" role="row"><div>Is exactly one character stored?</div><div>yes</div><div>CHAR</div></div>
+            <div class="table-row" role="row"><div>Must leading zeros or letters be preserved?</div><div>yes</div><div>STRING</div></div>
+            <div class="table-row" role="row"><div>Is the value a calendar date?</div><div>yes</div><div>DATE</div></div>
+          </div>
+          <div class="callout">Exam wording tip: "suitable type" answers usually need both the type and a reason linked to the data.</div>
+        </section>
+
+        <section class="panel" id="user-defined">
+          <div class="section-title">
+            <p class="eyebrow">User-defined types</p>
+            <h2>When built-in types are not descriptive enough</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Enumerated type</h3>
+              <p>Use an enumerated type when a value must be one of a named set of options.</p>
+              <pre><code>TYPE TDay = (Monday, Tuesday, Wednesday, Thursday, Friday)
+
+DECLARE Day : TDay</code></pre>
+            </article>
+            <article>
+              <h3>Composite type preview</h3>
+              <p>A record groups fields of different types. Records are developed later, but the idea starts with type choice.</p>
+              <pre><code>TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE DateOfBirth : DATE
+    DECLARE Enrolled : BOOLEAN
+ENDTYPE</code></pre>
+            </article>
+          </div>
+          <div class="callout">Boundary: this lesson introduces user-defined type choice. Arrays and records get their own full lessons later.</div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Same idea, different syntax</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style declarations</h3>
+              <pre><code>DECLARE Count : INTEGER
+DECLARE Average : REAL
+DECLARE Found : BOOLEAN
+DECLARE Initial : CHAR
+DECLARE Name : STRING
+DECLARE BirthDate : DATE</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>int count;
+double average;
+boolean found;
+char initial;
+String name;
+LocalDate birthDate;</code></pre>
+            </article>
+          </div>
+          <div class="callout">Paper 2 reminder: Java syntax supports understanding, but Cambridge-style pseudocode is the expected exam answer format.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers and what it does not</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>INTEGER, REAL, BOOLEAN, CHAR, STRING, DATE, type suitability, declaration syntax, and introductory user-defined types.</span></div>
+            <div><strong>Boundary</strong><span>Constants and assignment are Lesson 114; one-dimensional arrays are Lesson 115; two-dimensional arrays are Lesson 116; records get fuller treatment later.</span></div>
+            <div><strong>Paper 2 note</strong><span>When giving a type, include a reason: range, decimal requirement, true/false state, one character, text preservation or date handling.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive type classifier</p>
+            <h2>Choose a suitable data type</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Value or field
+              <select id="typeInput">
+                <option value="score">Exam score out of 75</option>
+                <option value="average">Average temperature 18.7</option>
+                <option value="paid">Has the customer paid?</option>
+                <option value="grade">Single grade character A</option>
+                <option value="phone">Phone number 07123 456789</option>
+                <option value="booking">Booking date</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="typeBtn">Classify</button>
+          </div>
+          <div class="trace-output" id="typeResult">Choose a field to see the type and reason.</div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive declaration builder</p>
+            <h2>Build a Cambridge-style declaration</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Variable purpose
+              <select id="builderInput">
+                <option value="count">number of valid entries</option>
+                <option value="mass">mass measured in kilograms</option>
+                <option value="valid">whether password is valid</option>
+                <option value="initial">student initial</option>
+                <option value="postcode">postcode</option>
+                <option value="birth">date of birth</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="builderBtn">Build</button>
+          </div>
+          <div class="trace-output" id="builderResult">Choose a purpose to generate a declaration.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Type choices with exam-style reasoning</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="school">School data</button>
+            <button class="tab" type="button" data-example="id">ID and phone</button>
+            <button class="tab" type="button" data-example="enum">User-defined</button>
+            <button class="tab" type="button" data-example="declaration">Declarations</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Ten type decisions</h2>
+            <p>Type the best data type or short answer. Use Show answer after trying.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix common type-selection errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style data type questions with expandable MS</h2>
+            <p>Mark schemes reward a suitable type plus a reason linked to the exact field.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Data type checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Use</strong><span>INTEGER for whole-number arithmetic and REAL for decimal values.</span></div>
+            <div><strong>Preserve</strong><span>IDs, postcodes and phone numbers as STRING when arithmetic is not needed.</span></div>
+            <div><strong>Model</strong><span>BOOLEAN for two-state facts, CHAR for one character, DATE for calendar dates and user-defined types for named allowed values.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear consolidation tasks</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Type table</strong>
+              <span>For a library member system, choose types for MemberID, Name, DateJoined, HasOverdueBook, FineAmount and MembershipLevel. Give one reason for each.</span>
+            </article>
+            <article>
+              <strong>Task 2: Declarations</strong>
+              <span>Write Cambridge-style DECLARE statements for the six fields in Task 1.</span>
+            </article>
+            <article>
+              <strong>Task 3: User-defined type</strong>
+              <span>Create one enumerated type for MembershipLevel with at least three named values, then declare a variable that uses it.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

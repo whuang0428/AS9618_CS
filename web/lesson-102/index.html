@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 102 | Sequence, selection, and iteration in algorithms</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>Sequence, selection, and iteration in algorithms</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#sequence">Sequence</a>
+        <a href="#selection">Selection</a>
+        <a href="#iteration">Iteration</a>
+        <a href="#combining">Combining</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Structure classifier</a>
+        <a href="#builder">Algorithm builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 102 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
+            <h2>Algorithms are built from three moves: do this, choose that, repeat carefully.</h2>
+            <p>
+              Sequence runs steps in order. Selection chooses a path using a condition. Iteration repeats steps while
+              a count or condition says to continue. Most AS algorithms are these three structures combined with clear
+              variables and Cambridge-style pseudocode.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>sequence, selection and iteration in word problems and pseudocode</span></div>
+              <div><strong>Choose</strong><span>the correct control structure for fixed counts, conditions and decisions</span></div>
+              <div><strong>Write</strong><span>short Cambridge-style algorithms that combine the three structures</span></div>
+            </div>
+          </div>
+          <div class="control-visual" aria-label="Control structure visual">
+            <div><strong>Sequence</strong><span>INPUT Length<br />Area &lt;- Length * Width<br />OUTPUT Area</span></div>
+            <div><strong>Selection</strong><span>IF Mark &gt;= 50 THEN<br />OUTPUT "Pass"<br />ENDIF</span></div>
+            <div><strong>Iteration</strong><span>FOR Count &lt;- 1 TO 5<br />INPUT Mark<br />NEXT Count</span></div>
+            <p>One line after another, one branch or another, one loop until enough. That is the toolkit.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask: "Is there a choice? Is there repetition? If neither, it is probably sequence."</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam pseudocode marks often depend on selecting the right structure before worrying about syntax.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not use a loop because the problem sounds busy. Use a loop only when steps must repeat.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Sandwich algorithm, but make it examinable</h2>
+            <p>Classify each instruction. The sandwich is simple; the terminology is where crumbs happen.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="sequence">Put bread on plate, then add cheese.</button>
+            <button class="choice-card" type="button" data-hook="selection">If toasted is required, heat the sandwich.</button>
+            <button class="choice-card" type="button" data-hook="iteration">Repeat for each sandwich order.</button>
+            <button class="choice-card" type="button" data-hook="bad">Use WHILE because sandwiches are important.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose an instruction to classify the control structure.</div>
+        </section>
+
+        <section class="panel" id="sequence">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Sequence: steps run in a fixed order</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Idea</h3>
+              <p>Sequence is used when every step must happen once, in order, with no branch and no repetition.</p>
+              <div class="callout">Chinese support: sequence = 顺序结构。</div>
+            </article>
+            <article>
+              <h3>Example</h3>
+              <pre><code>INPUT Length
+INPUT Width
+Area &lt;- Length * Width
+OUTPUT Area</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="selection">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Selection: choose a path using a condition</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Idea</h3>
+              <p>Selection is used when the algorithm must decide between different actions.</p>
+              <div class="callout">Chinese support: selection = 选择结构；condition = 条件。</div>
+            </article>
+            <article>
+              <h3>Example</h3>
+              <pre><code>INPUT Mark
+IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit"
+ENDIF</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="iteration">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Iteration: repeat steps</h2>
+          </div>
+          <div class="data-table concept-table" role="table" aria-label="Iteration types">
+            <div class="table-row table-head" role="row"><div>Type</div><div>Use when</div><div>Cambridge-style pattern</div></div>
+            <div class="table-row" role="row"><div>Count-controlled</div><div>the number of repeats is known</div><div>FOR Count &lt;- 1 TO 10 ... NEXT Count</div></div>
+            <div class="table-row" role="row"><div>Condition-controlled</div><div>repeat until a condition changes</div><div>WHILE Number &lt;&gt; -1 ... ENDWHILE</div></div>
+            <div class="table-row" role="row"><div>Repeat-until style</div><div>the body must run at least once</div><div>REPEAT ... UNTIL Valid = TRUE</div></div>
+          </div>
+          <div class="callout">Iteration = 迭代/循环。Known count? Use count-controlled. Unknown stopping point? Use condition-controlled.</div>
+        </section>
+
+        <section class="panel" id="combining">
+          <div class="section-title">
+            <p class="eyebrow">Combining structures</p>
+            <h2>Real algorithms usually combine the three structures</h2>
+          </div>
+          <div class="step-strip">
+            <div><strong>1</strong><span>Use sequence to initialise variables and read inputs.</span></div>
+            <div><strong>2</strong><span>Use iteration when the same action happens repeatedly.</span></div>
+            <div><strong>3</strong><span>Use selection inside the loop when each item needs a decision.</span></div>
+            <div><strong>4</strong><span>Use sequence after the loop to calculate or output final results.</span></div>
+            <div><strong>5</strong><span>Indent nested structures so the examiner can see the logic.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Cambridge pseudocode is the exam form; Java is support only</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>PassCount &lt;- 0
+FOR Count &lt;- 1 TO 5
+    INPUT Mark
+    IF Mark &gt;= 50 THEN
+        PassCount &lt;- PassCount + 1
+    ENDIF
+NEXT Count
+OUTPUT PassCount</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>int passCount = 0;
+for (int count = 1; count &lt;= 5; count++) {
+    int mark = input.nextInt();
+    if (mark &gt;= 50) {
+        passCount++;
+    }
+}
+System.out.println(passCount);</code></pre>
+            </article>
+          </div>
+          <div class="callout">Exam reminder: do not answer Paper 2 pseudocode questions with Java braces, semicolons or `System.out.println`.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson covers the core control structures</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Sequence, selection, count-controlled iteration, condition-controlled iteration, nested structures, structure choice and Cambridge-style pseudocode.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 103 focuses on validation and defensive input handling. This page only introduces validation as one possible use of selection/iteration.</span></div>
+            <div><strong>Paper 2 note</strong><span>Cambridge pseudocode is the exam standard. Java is included only to prevent syntax confusion.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive structure classifier</p>
+            <h2>Choose the control structure</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario clue
+              <select id="classifierInput">
+                <option value="area">Input length and width, calculate area, output area.</option>
+                <option value="pass">Output Pass or Resit depending on mark.</option>
+                <option value="five">Input exactly five marks.</option>
+                <option value="sentinel">Input numbers until -1 is entered.</option>
+                <option value="countpass">Count how many of ten marks are at least 50.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+          </div>
+          <div class="feedback" id="classifyResult">Choose a clue to see the likely structure.</div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive algorithm builder</p>
+            <h2>Generate a Cambridge-style outline</h2>
+          </div>
+          <div class="builder-grid">
+            <label>
+              Problem
+              <select id="builderInput">
+                <option value="area">Area of rectangle</option>
+                <option value="pass">Pass/resit decision</option>
+                <option value="total5">Total of five marks</option>
+                <option value="passcount">Count passes from five marks</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="buildBtn">Build outline</button>
+          </div>
+          <div class="answer-frame" id="builderResult">Choose a problem to generate pseudocode.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Recognise and combine structures</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="sequence">Sequence</button>
+            <button class="tab" type="button" data-example="selection">Selection</button>
+            <button class="tab" type="button" data-example="iteration">Iteration</button>
+            <button class="tab" type="button" data-example="combined">Combined</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Control-structure decisions</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix weak structure choices</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style control-structure questions with expandable MS</h2>
+            <p>These questions target identifying, choosing and writing sequence, selection and iteration. MS uses strict Cambridge-style expectations.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Control-structure checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Sequence</strong><span>Use when steps happen once in a fixed order.</span></div>
+            <div><strong>Selection</strong><span>Use when a condition chooses between actions.</span></div>
+            <div><strong>Iteration</strong><span>Use when steps repeat, either a known number of times or until a condition changes.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Structure labels</strong>
+              <span>Write six real-life instructions and label each as sequence, selection or iteration. Explain each label in one sentence.</span>
+            </article>
+            <article>
+              <strong>Task 2: Pseudocode</strong>
+              <span>Write Cambridge-style pseudocode to input five marks and count how many are at least 50.</span>
+            </article>
+            <article>
+              <strong>Task 3: Correction</strong>
+              <span>Find one example where a loop is unnecessary. Rewrite it using sequence or selection only.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

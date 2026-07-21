@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 072 | Ethical issues in Computer Science decisions</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 7</p>
+        <h1>Ethical issues in Computer Science decisions</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#ethics">Ethics</a>
+        <a href="#stakeholders">Stakeholders</a>
+        <a href="#tradeoffs">Trade-offs</a>
+        <a href="#method">Answer method</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#mapper">Stakeholder map</a>
+        <a href="#builder">Judgement builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 072 | 45 minutes | Paper 1 Section 7 | Ethics and ownership</p>
+            <h2>Just because a system can do it does not mean it should.</h2>
+            <p>
+              Ethical decisions in Computer Science ask whether a computing action is responsible,
+              fair and justified. The exam skill is not to shout an opinion loudly. It is to identify
+              stakeholders, explain benefits and harms, then make a balanced judgement with evidence.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>ethics, stakeholder, responsibility and proportionality</span></div>
+              <div><strong>Analyse</strong><span>benefits, harms, rights and duties in computing scenarios</span></div>
+              <div><strong>Evaluate</strong><span>write balanced answers with a justified conclusion</span></div>
+            </div>
+          </div>
+          <div class="ethics-card" aria-label="Ethical decision frame">
+            <div class="ethics-stack">
+              <span>Can we?</span>
+              <span>Who is affected?</span>
+              <span>What could go wrong?</span>
+              <span>What is justified?</span>
+              <span>What safeguards are needed?</span>
+            </div>
+            <p>"It depends" is a good start. The marks live in what it depends on.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Force every answer to name at least two stakeholders and one possible harm before reaching a judgement.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Ethics questions often reward balance. A one-sided rant may be entertaining, but it usually leaks marks.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Ethics is not the same as security. Security asks how to protect a system; ethics asks whether the decision is responsible and justified.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A school can install software that records every website students visit. Should it?</h2>
+            <p>If the first answer is "obviously yes" or "obviously no", the examiner has just prepared a follow-up with a raised eyebrow.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="balanced">It depends on purpose, transparency, consent, proportionality and safeguards</button>
+            <button class="choice-card" type="button" data-hook="can">Yes, because if the technology exists then it should be used</button>
+            <button class="choice-card" type="button" data-hook="privacy">No, because privacy always overrides every other concern</button>
+            <button class="choice-card" type="button" data-hook="security">This is only a security question, not an ethical question</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. A strong ethics answer usually contains conditions.
+          </div>
+        </section>
+
+        <section class="panel" id="ethics">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Ethics is about responsible decision-making</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Ethics</strong><span>Principles about right and wrong behaviour, responsibility and fairness.</span></article>
+            <article><strong>Stakeholder</strong><span>A person or group affected by a decision, directly or indirectly.</span></article>
+            <article><strong>Responsibility</strong><span>The duty to consider consequences and act appropriately.</span></article>
+            <article><strong>Proportionality</strong><span>The response should be no more intrusive or harmful than needed for the aim.</span></article>
+          </div>
+          <div class="callout">Chinese support: ethics = 伦理；stakeholder = 利益相关者；responsibility = 责任；proportionality = 相称性/适度性。</div>
+        </section>
+
+        <section class="panel" id="stakeholders">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Ethical answers start with stakeholders</h2>
+          </div>
+          <div class="risk-table" role="table" aria-label="Stakeholder analysis table">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Stakeholder</div>
+              <div role="columnheader">Possible benefit</div>
+              <div role="columnheader">Possible harm or concern</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Users / students / patients</div>
+              <div role="cell">Better service, safety, convenience, personalisation.</div>
+              <div role="cell">Loss of privacy, unfair treatment, pressure, exclusion.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Organisation</div>
+              <div role="cell">Efficiency, security, reduced cost, legal compliance.</div>
+              <div role="cell">Reputation damage, misuse of data, over-collection.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Wider society</div>
+              <div role="cell">Public safety, accessibility, innovation.</div>
+              <div role="cell">Surveillance culture, inequality, environmental impact.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="tradeoffs">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Most ethical issues are trade-offs, not slogans</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Privacy vs safety</strong><span>Monitoring may protect users, but can intrude into personal behaviour.</span></article>
+            <article><strong>Efficiency vs fairness</strong><span>Automation may save time, but may disadvantage some groups if data or rules are biased.</span></article>
+            <article><strong>Convenience vs consent</strong><span>Personalisation can help users, but data collection should be clear and justified.</span></article>
+            <article><strong>Innovation vs responsibility</strong><span>New systems can create benefits, but developers still need to consider harms.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="method">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Use a balanced evaluation structure</h2>
+          </div>
+          <div class="flow-grid">
+            <article><strong>1. Context</strong><span>State the decision and the computing system involved.</span></article>
+            <article><strong>2. For</strong><span>Explain a benefit for a named stakeholder, with scenario detail.</span></article>
+            <article><strong>3. Against</strong><span>Explain a harm or right that may be affected.</span></article>
+            <article><strong>4. Judgement</strong><span>Give a justified conclusion with conditions or safeguards.</span></article>
+          </div>
+          <div class="answer-frame">
+            <strong>Answer frame:</strong>
+            <span>Although [benefit] helps [stakeholder], [harm] may affect [stakeholder]. Therefore, the decision is justified only if [condition/safeguard].</span>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson opens Section 7 and sets the evaluation method</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Ethical issues, stakeholders, benefits, harms, rights, responsibilities, proportionality, transparency and balanced judgement.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 073 focuses specifically on privacy, surveillance and data protection. Lesson 074 covers intellectual property, copyright, patents and licensing.</span></div>
+            <div><strong>Exam focus</strong><span>Do not write personal opinion only. Use stakeholders, evidence, counterargument and justified judgement.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="mapper">
+          <div class="section-title">
+            <p class="eyebrow">Interactive stakeholder mapper</p>
+            <h2>Map a decision to stakeholders, benefits and concerns</h2>
+            <p>Select a scenario and compare the ethical tension. The aim is not to memorise one answer; it is to see the pattern.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="schoolMonitor">School monitors student laptops.</option>
+                <option value="facial">Shop uses facial recognition for security.</option>
+                <option value="aiMarking">Exam board uses automated marking support.</option>
+                <option value="healthApp">Health app collects sleep and location data.</option>
+                <option value="workTracker">Employer tracks worker productivity minute by minute.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="mapBtn">Map ethics</button>
+          </div>
+          <div class="result-box" id="mapResult" aria-live="polite"></div>
+          <div class="method-box" id="mapBenefit"></div>
+          <div class="reject-box" id="mapConcern"></div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive judgement builder</p>
+            <h2>Build a balanced paragraph</h2>
+            <p>Choose one benefit, one concern and one safeguard. Then read the model judgement.</p>
+          </div>
+          <div class="builder-grid">
+            <label>
+              Benefit
+              <select id="benefitInput">
+                <option value="safety">improves safety and safeguarding</option>
+                <option value="efficiency">saves time and reduces manual workload</option>
+                <option value="access">improves access to a useful service</option>
+              </select>
+            </label>
+            <label>
+              Concern
+              <select id="concernInput">
+                <option value="privacy">may collect more personal data than users expect</option>
+                <option value="bias">may treat some users unfairly if data or rules are biased</option>
+                <option value="pressure">may create pressure or reduce trust</option>
+              </select>
+            </label>
+            <label>
+              Safeguard
+              <select id="safeguardInput">
+                <option value="transparent">users are told clearly what is collected and why</option>
+                <option value="limited">data collection is limited to what is necessary</option>
+                <option value="appeal">there is a human review or appeal process</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="buildBtn">Build judgement</button>
+          </div>
+          <div class="result-box" id="judgementResult" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four balanced ethics answers</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="monitoring">School monitoring</button>
+            <button class="tab" type="button" data-example="facial">Facial recognition</button>
+            <button class="tab" type="button" data-example="automation">Automated decisions</button>
+            <button class="tab" type="button" data-example="data">Data collection</button>
+          </div>
+          <div class="example-box" id="exampleBox" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Check core vocabulary before writing paragraphs</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair answers that sound opinionated but do not analyse</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Cambridge-style ethics questions with expandable MS</h2>
+            <p>Attempt first. Then check whether your answer names stakeholders, benefits, harms and a justified conclusion.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Ethical issues in six exam-ready ideas</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Ethics</strong><span>Asks whether a computing decision is responsible and justified.</span></div>
+            <div><strong>Stakeholders</strong><span>Name who is affected, not just "people".</span></div>
+            <div><strong>Balance</strong><span>Give benefits and harms before judging.</span></div>
+            <div><strong>Evidence</strong><span>Link each point to the scenario.</span></div>
+            <div><strong>Safeguards</strong><span>Use transparency, consent, limits, review and accountability.</span></div>
+            <div><strong>Judgement</strong><span>Finish with a reasoned conclusion, not a slogan.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Practise balanced evaluation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Stakeholder table</strong>
+              <span>Choose one system: school monitoring, facial recognition, health app or workplace tracking. Make a table with four stakeholders, one benefit and one concern for each.</span>
+            </article>
+            <article>
+              <strong>Task 2: Paragraph rewrite</strong>
+              <span>Rewrite: "This is bad because it invades privacy." Add stakeholder, benefit, harm, condition and justified conclusion.</span>
+            </article>
+            <article>
+              <strong>Task 3: Timed response</strong>
+              <span>Answer in 8 minutes: "Evaluate whether a school should use monitoring software on student devices." Use one argument for, one against and a final judgement.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

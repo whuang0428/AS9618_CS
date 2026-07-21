@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 064 | Hacking, phishing, pharming, and denial-of-service attacks</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
+        <h1>Hacking, phishing, pharming, and denial-of-service attacks</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#core">Core idea</a>
+        <a href="#hacking">Hacking</a>
+        <a href="#phishing">Phishing</a>
+        <a href="#pharming">Pharming</a>
+        <a href="#dos">DoS</a>
+        <a href="#compare">Compare</a>
+        <a href="#controls">Controls</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Attack tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 064 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
+            <h2>Same target, different route: access, trick, redirect, overload.</h2>
+            <p>
+              This lesson separates four common attack types. Hacking focuses on unauthorised access.
+              Phishing tricks users into giving information. Pharming redirects users to a fake site.
+              Denial-of-service attacks make a service unavailable.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>hacking, phishing, pharming and DoS with precise wording</span></div>
+              <div><strong>Classify</strong><span>attack scenarios by mechanism, not by panic level</span></div>
+              <div><strong>Explain</strong><span>impact and suitable controls using CIA and authenticity language</span></div>
+            </div>
+          </div>
+          <div class="attack-card" aria-label="Attack routes">
+            <div class="route-stack">
+              <span>Hacking -> unauthorised access</span>
+              <span>Phishing -> fake request / fake page</span>
+              <span>Pharming -> redirected to fake site</span>
+              <span>DoS -> service overwhelmed</span>
+            </div>
+            <p>Exam shortcut: name the route, then explain the damage.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use the sentence frame: "This is ___ because the attacker ___, causing ___."</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>CIE-style answers reward the mechanism. "It is dangerous" is true, but it is not a full mark machine.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Phishing and pharming both involve fake destinations, but phishing tricks the user; pharming redirects the traffic.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A user types the correct bank URL but lands on a convincing fake banking page. What is the best diagnosis?</h2>
+            <p>The user did not mistype. The browser is basically saying, "I followed the map; the map lied."</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="pharming">Pharming, because redirection sends the user to a fake site</button>
+            <button class="choice-card" type="button" data-hook="phishing">Phishing only, because every fake site is phishing</button>
+            <button class="choice-card" type="button" data-hook="dos">DoS, because the bank service is unavailable</button>
+            <button class="choice-card" type="button" data-hook="hacking">Hacking only, because someone must have guessed a password</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. The clue is correct URL plus redirection.
+          </div>
+        </section>
+
+        <section class="panel" id="core">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Start from mechanism, then discuss impact</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Asset</strong><span>Data, account, system or service being protected.</span></article>
+            <article><strong>Attack vector</strong><span>The route used by the attacker: access, deception, redirection or flooding.</span></article>
+            <article><strong>Impact</strong><span>Loss of confidentiality, integrity, availability or authenticity.</span></article>
+            <article><strong>Control</strong><span>A safeguard that reduces risk, detects attack or supports recovery.</span></article>
+          </div>
+          <div class="callout">Chinese support: attack vector = 攻击途径；unauthorised access = 未授权访问；availability = 可用性；authenticity = 真实性/身份可信。</div>
+        </section>
+
+        <section class="panel" id="hacking">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Hacking: gaining unauthorised access to a system or data</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Mechanism</strong><span>Bypasses or abuses access controls to enter an account, device or system.</span></article>
+            <article><strong>Examples</strong><span>Using stolen credentials, exploiting a vulnerability or accessing an account without permission.</span></article>
+            <article><strong>Impact</strong><span>Data may be viewed, copied, changed or deleted; system settings may be altered.</span></article>
+            <article><strong>Trap</strong><span>Do not use "hacking" as a label for every cyber attack. It specifically involves unauthorised access.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="phishing">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Phishing: tricking users into revealing information or visiting a fake page</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Mechanism</strong><span>Uses deceptive emails, messages or websites that appear to come from a trusted source.</span></article>
+            <article><strong>User action</strong><span>The user may enter credentials, personal data or payment details.</span></article>
+            <article><strong>Clues</strong><span>Urgent language, suspicious sender, unexpected link, spelling issues or mismatched URL.</span></article>
+            <article><strong>Impact</strong><span>Credential theft can lead to unauthorised access and impersonation.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="pharming">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Pharming: redirecting users to a fake website</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Mechanism</strong><span>Redirects traffic from a legitimate website to a fake one, often by attacking name resolution.</span></article>
+            <article><strong>User clue</strong><span>The user may type the correct URL but still arrive at a fraudulent page.</span></article>
+            <article><strong>Impact</strong><span>Users may submit credentials or payment details to the attacker.</span></article>
+            <article><strong>Trap</strong><span>Do not define pharming as just "sending a fake email"; that is phishing.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="dos">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Denial-of-service: making a service unavailable</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Mechanism</strong><span>Floods a server, network or service with traffic or requests so legitimate users cannot access it.</span></article>
+            <article><strong>DDoS</strong><span>Distributed DoS uses many devices/sources, making filtering harder.</span></article>
+            <article><strong>Impact</strong><span>Loss of availability, lost sales, disrupted lessons or inability to access online services.</span></article>
+            <article><strong>Trap</strong><span>DoS does not primarily mean data is stolen; the main issue is service availability.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Compare by route and result</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Attack comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Attack</div>
+              <div role="columnheader">Route</div>
+              <div role="columnheader">Main result</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Hacking</div>
+              <div role="cell">Unauthorised access to an account, device, network or system.</div>
+              <div role="cell">Data viewed, copied, changed, deleted or used to impersonate a user.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Phishing</div>
+              <div role="cell">Deceptive message/link/site persuades the user to reveal information.</div>
+              <div role="cell">Credentials or personal data stolen by tricking the user.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Pharming</div>
+              <div role="cell">Traffic is redirected to a fake site, possibly after the correct URL is entered.</div>
+              <div role="cell">User submits data to fraudulent site without realising redirection occurred.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">DoS/DDoS</div>
+              <div role="cell">Server or network is overwhelmed by requests/traffic.</div>
+              <div role="cell">Legitimate users cannot access the service.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="controls">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 7</p>
+            <h2>Controls must fit the attack route</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Against hacking</strong><span>Strong authentication, access rights, patching, audit logs and monitoring.</span></article>
+            <article><strong>Against phishing</strong><span>User training, checking URLs/senders, email filtering, reporting routes and MFA.</span></article>
+            <article><strong>Against pharming</strong><span>Secure DNS, certificate checks, HTTPS warnings, anti-malware and browser updates.</span></article>
+            <article><strong>Against DoS</strong><span>Traffic filtering, rate limiting, firewalls, load balancing and DDoS mitigation services.</span></article>
+          </div>
+          <div class="callout">Do not overclaim. A control reduces risk; it rarely makes the attack impossible.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers, and what it deliberately leaves for later</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Hacking, phishing, pharming, DoS/DDoS, mechanism, impact and suitable controls.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 065 will handle authentication methods in depth: passwords, biometrics, tokens and MFA.</span></div>
+            <div><strong>Exam focus</strong><span>Use precise definitions and scenario-specific consequences; avoid vague "security is improved" answers.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive classifier</p>
+            <h2>Classify the attack by the clue</h2>
+            <p>Select a scenario and compare the route, impact and common wrong answer.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario clue
+              <select id="scenarioInput">
+                <option value="access">An attacker logs in using stolen credentials and changes records.</option>
+                <option value="email">A fake delivery email asks the user to enter account details.</option>
+                <option value="redirect">The correct URL leads to a fake banking website.</option>
+                <option value="flood">Thousands of requests stop users accessing a ticket website.</option>
+                <option value="botnet">Many infected devices flood one server at the same time.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Classify</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four model answers with the mark-winning mechanism visible</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="hacking">Hacking</button>
+            <button class="tab" type="button" data-example="phishing">Phishing</button>
+            <button class="tab" type="button" data-example="pharming">Pharming</button>
+            <button class="tab" type="button" data-example="dos">DoS</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short answers: be precise, then check</h2>
+            <p>Type a concise answer. Use the local answer button if you need a model response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the sentence before it loses marks</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style questions with expandable MS</h2>
+            <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>The four labels are not interchangeable</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Hacking</strong><span>Unauthorised access is the core idea.</span></div>
+            <div><strong>Phishing/pharming</strong><span>Phishing persuades; pharming redirects.</span></div>
+            <div><strong>DoS</strong><span>The main impact is unavailable service, not necessarily stolen data.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks, not vague revision fog</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Four definitions</strong>
+              <span>Write one precise definition each for hacking, phishing, pharming and DoS. Each must include the attack route.</span>
+            </article>
+            <article>
+              <strong>Task 2: Scenario table</strong>
+              <span>Create a table with five new scenarios. For each, classify the attack, state the impact and recommend one control.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "Compare phishing and pharming, and explain how each can lead to unauthorised access." Use two paragraphs and Cambridge-style keywords.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

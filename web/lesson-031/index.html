@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 031 | Secondary storage: magnetic, optical and solid-state media</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
+        <h1>Secondary storage: magnetic, optical and solid-state media</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#purpose">Storage purpose</a>
+        <a href="#media">Media types</a>
+        <a href="#compare">Comparison</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Choice tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 031 | 45 minutes | Paper 1 Section 3</p>
+            <h2>Secondary storage is where data survives the power switch.</h2>
+            <p>
+              This lesson compares magnetic, optical and solid-state storage. The exam
+              skill is choosing a suitable medium for a scenario and justifying it with
+              capacity, speed, portability, durability and cost.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Classify</strong><span>magnetic, optical and solid-state storage media</span></div>
+              <div><strong>Compare</strong><span>capacity, speed, durability, portability and cost</span></div>
+              <div><strong>Justify</strong><span>storage choices for backups, software distribution and portable devices</span></div>
+            </div>
+          </div>
+          <div class="system-card" aria-label="Secondary storage examples">
+            <span>HDD | optical disc | SSD | flash drive</span>
+            <p>Storage is not just "big memory". It is the long-term cupboard, and some cupboards survive being dropped better than others.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use the same comparison axes each time: capacity, speed, durability, portability, cost and whether the data must be rewritten.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam marks usually come from matching a characteristic to the scenario. "SSD is fast" is a start; "SSD is fast and shock-resistant for a laptop" is stronger.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Secondary storage is non-volatile, but that does not mean every device is equally reliable, fast or suitable.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A student stores videos on an external HDD, installs apps on an SSD, shares photos with a flash drive and finds an old DVD. Why are these not all the same?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="hdd">HDD: high capacity and low cost per GB</button>
+            <button class="choice-card" type="button" data-hook="ssd">SSD: fast and shock-resistant</button>
+            <button class="choice-card" type="button" data-hook="flash">Flash drive: portable removable storage</button>
+            <button class="choice-card" type="button" data-hook="disc">Optical disc: cheap distribution or archive</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click one storage type. The useful exam habit is linking medium -> property -> scenario.
+          </div>
+        </section>
+
+        <section class="panel" id="purpose">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>What secondary storage does</h2>
+          </div>
+          <div class="flow-grid">
+            <article><strong>Non-volatile</strong><span>Data remains when power is switched off.</span></article>
+            <article><strong>Long-term</strong><span>Stores files, programs, backups and operating system data.</span></article>
+            <article><strong>Usually slower</strong><span>Secondary storage is usually slower than RAM for direct access.</span></article>
+            <article><strong>Scenario-based</strong><span>The best medium depends on speed, capacity, durability, portability and cost.</span></article>
+          </div>
+          <div class="callout">Chinese support: secondary storage = 辅助存储/外存；magnetic = 磁存储；optical = 光存储；solid-state = 固态存储；non-volatile = 非易失性。</div>
+        </section>
+
+        <section class="panel" id="media">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Three main storage media</h2>
+          </div>
+          <div class="media-grid">
+            <article>
+              <h3>Magnetic storage</h3>
+              <p>Stores data using magnetised areas on a medium.</p>
+              <p><strong>Examples:</strong> hard disk drive (HDD), magnetic tape.</p>
+              <p><strong>Typical strengths:</strong> high capacity, relatively low cost per GB; tape is useful for large backups.</p>
+              <p><strong>Limitations:</strong> moving parts in HDDs, slower than SSDs, vulnerable to shock and magnetic fields.</p>
+            </article>
+            <article>
+              <h3>Optical storage</h3>
+              <p>Uses laser light to read marks/pits on a disc surface.</p>
+              <p><strong>Examples:</strong> CD, DVD, Blu-ray.</p>
+              <p><strong>Typical strengths:</strong> cheap, portable, useful for distributing or archiving data that changes rarely.</p>
+              <p><strong>Limitations:</strong> lower capacity and slower access than HDD/SSD; discs can scratch.</p>
+            </article>
+            <article>
+              <h3>Solid-state storage</h3>
+              <p>Stores data electronically in flash memory with no moving parts.</p>
+              <p><strong>Examples:</strong> SSD, USB flash drive, memory card.</p>
+              <p><strong>Typical strengths:</strong> fast access, durable in portable devices, quiet and low power.</p>
+              <p><strong>Limitations:</strong> often higher cost per GB than HDD; finite write cycles.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Compare by scenario, not by favourite brand</h2>
+          </div>
+          <div class="device-table" role="table" aria-label="Secondary storage comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Medium</div>
+              <div role="columnheader">Speed</div>
+              <div role="columnheader">Capacity/cost</div>
+              <div role="columnheader">Good scenario</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Magnetic HDD</div>
+              <div role="cell">Slower than SSD; mechanical parts.</div>
+              <div role="cell">High capacity and low cost per GB.</div>
+              <div role="cell">Desktop storage, large file libraries, cost-sensitive backups.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Magnetic tape</div>
+              <div role="cell">Slow sequential access.</div>
+              <div role="cell">Very high capacity and low cost for backups.</div>
+              <div role="cell">Archiving and large organisation backups.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Optical disc</div>
+              <div role="cell">Generally slower access.</div>
+              <div role="cell">Lower capacity; cheap to produce.</div>
+              <div role="cell">Distributing fixed content or offline archive copies.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Solid-state SSD</div>
+              <div role="cell">Fast access, no moving parts.</div>
+              <div role="cell">Often higher cost per GB than HDD.</div>
+              <div role="cell">Laptops, operating system drive, fast application loading.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">USB flash / memory card</div>
+              <div role="cell">Fast enough for portable transfer; varies by device.</div>
+              <div role="cell">Portable, small, removable; capacity varies.</div>
+              <div role="cell">Moving files between devices, cameras, phones, embedded devices.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Secondary storage is non-volatile long-term storage.</span></div>
+            <div><strong>Covered</strong><span>Magnetic media: HDD and magnetic tape.</span></div>
+            <div><strong>Covered</strong><span>Optical media: CD, DVD and Blu-ray.</span></div>
+            <div><strong>Covered</strong><span>Solid-state media: SSD, USB flash drive and memory card.</span></div>
+            <div><strong>Boundary</strong><span>Detailed characteristic trade-offs continue in Lesson 032.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Choose the storage medium</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="laptop">A laptop needs fast startup and resistance to knocks</option>
+                <option value="backup">A company needs low-cost long-term backup of huge data sets</option>
+                <option value="archive">A photographer wants offline copies of finished albums that rarely change</option>
+                <option value="desktop">A desktop PC needs cheap high-capacity storage for videos</option>
+                <option value="camera">A camera needs small removable storage</option>
+                <option value="software">A publisher distributes fixed read-only media to many users</option>
+              </select>
+            </label>
+            <button type="button" id="chooseBtn">Recommend storage</button>
+          </div>
+          <div class="result-box" id="componentResult" aria-live="polite"></div>
+          <div class="method-box" id="componentMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Choosing storage with reasons</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="laptop">Laptop SSD</button>
+            <button class="tab" type="button" data-example="backup">Tape backup</button>
+            <button class="tab" type="button" data-example="optical">Optical archive</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak storage answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"Use RAM for backups because it is fast."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">Backups need non-volatile secondary storage. RAM is volatile, so backup data would be lost when power is off.</p>
+            </article>
+            <article>
+              <p class="wrong">"SSD is always best because it is fastest."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">SSD is fast and durable, but it may cost more per GB than HDD or tape. For huge low-cost archives, magnetic storage may be more suitable.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on naming the storage type and linking its characteristics to the scenario.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Secondary storage in six exam sentences</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Secondary storage</strong><span>Non-volatile long-term storage for files, programs and backups.</span></div>
+            <div><strong>Magnetic HDD</strong><span>High capacity and low cost per GB, but mechanical and slower than SSD.</span></div>
+            <div><strong>Magnetic tape</strong><span>Good for huge sequential backups and archives.</span></div>
+            <div><strong>Optical disc</strong><span>Cheap removable media for fixed content or archive copies.</span></div>
+            <div><strong>Solid-state</strong><span>Fast, durable, no moving parts, often higher cost per GB.</span></div>
+            <div><strong>Suitability</strong><span>Always connect the medium to capacity, speed, durability, portability and cost.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a comparison table for magnetic, optical and solid-state storage with examples and two characteristics each.</li>
+            <li>Write a 4-mark answer recommending storage for a laptop used by a travelling student.</li>
+            <li>Write a 4-mark answer recommending storage for a company archive that stores huge backups for years.</li>
+            <li>Explain why "SSD is always best" is not a full exam answer.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Comparison:</strong> magnetic HDD/tape; optical CD/DVD/Blu-ray; solid-state SSD/USB/memory card.</p>
+            <p><strong>Laptop:</strong> SSD is suitable because it is fast, has no moving parts and is less vulnerable to knocks.</p>
+            <p><strong>Archive:</strong> magnetic tape may be suitable because it offers very high capacity and low cost for long-term sequential backups.</p>
+            <p><strong>Evaluation:</strong> fastest is not always most suitable; cost, capacity, write patterns and durability also matter.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

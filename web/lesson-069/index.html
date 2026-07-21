@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 069 | Data validation and verification</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
+        <h1>Data validation and verification</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#core">Core idea</a>
+        <a href="#validation">Validation</a>
+        <a href="#checks">Check types</a>
+        <a href="#verification">Verification</a>
+        <a href="#compare">Compare</a>
+        <a href="#limits">Limits</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Rule tester</a>
+        <a href="#verify-tool">Verify tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 069 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
+            <h2>Validation asks "is it sensible?" Verification asks "was it copied correctly?"</h2>
+            <p>
+              Data validation checks that input follows rules such as range, length, type, format or presence.
+              Data verification checks that data has been entered or transferred accurately compared with the source.
+              Neither one guarantees that the data is true. A valid fake date is still fake, just better dressed.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Distinguish</strong><span>validation from verification using precise wording</span></div>
+              <div><strong>Apply</strong><span>range, length, type, format, presence and check digit examples</span></div>
+              <div><strong>Evaluate</strong><span>what each method can and cannot detect</span></div>
+            </div>
+          </div>
+          <div class="data-card" aria-label="Validation and verification map">
+            <div class="data-stack">
+              <span>Validation -> rules</span>
+              <span>Range: 0-100</span>
+              <span>Format: LL99 9LL</span>
+              <span>Verification -> compare</span>
+            </div>
+            <p>Correct-looking data can still be wrong. The exam enjoys that trap.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use the sentence frame: "This check detects ___, but it cannot detect ___."</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Marks are often lost when candidates say validation makes data correct. It only checks against a rule.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Double entry is verification, not validation. It compares two entries; it does not apply a range or format rule.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A form rejects an age of 302 because the allowed range is 0 to 120. What is happening?</h2>
+            <p>The form is not being rude. It is politely saying, "Your vampire application needs evidence."</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="validation">Validation, because the value is checked against a range rule</button>
+            <button class="choice-card" type="button" data-hook="verification">Verification, because the user typed the value twice</button>
+            <button class="choice-card" type="button" data-hook="truth">Proof the age is true</button>
+            <button class="choice-card" type="button" data-hook="backup">Backup, because rejected data can be restored</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. The clue is a rule applied to input.
+          </div>
+        </section>
+
+        <section class="panel" id="core">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Validation and verification protect data quality in different ways</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Validation</strong><span>Checks input data against rules before it is accepted.</span></article>
+            <article><strong>Verification</strong><span>Checks that data has been copied, entered or transferred accurately.</span></article>
+            <article><strong>Input error</strong><span>A mistake made while entering or transferring data.</span></article>
+            <article><strong>Data integrity</strong><span>Data remains accurate, consistent and not accidentally corrupted.</span></article>
+          </div>
+          <div class="callout">Chinese support: validation = 合理性/规则检查；verification = 核对/校验录入是否一致；data integrity = 数据完整性。</div>
+        </section>
+
+        <section class="panel" id="validation">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Validation checks whether data obeys a rule</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Before acceptance</strong><span>Invalid input can be rejected or a warning can be shown.</span></article>
+            <article><strong>Rule-based</strong><span>The rule may test type, range, length, format, presence or check digit.</span></article>
+            <article><strong>Benefit</strong><span>Reduces obvious errors and prevents unsuitable data entering the system.</span></article>
+            <article><strong>Limit</strong><span>Valid data can still be factually wrong, such as an incorrect but possible date.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="checks">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Common validation checks</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Validation check examples">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Check</div>
+              <div role="columnheader">What it tests</div>
+              <div role="columnheader">Example</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Range check</div>
+              <div role="cell">Value is within allowed limits.</div>
+              <div role="cell">Exam mark must be 0 to 75.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Length check</div>
+              <div role="cell">Number of characters is correct or acceptable.</div>
+              <div role="cell">Student ID must be 8 characters.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Type check</div>
+              <div role="cell">Data uses the expected data type.</div>
+              <div role="cell">Quantity must be an integer.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Format check</div>
+              <div role="cell">Data follows a required pattern.</div>
+              <div role="cell">Postcode follows an expected letter/digit pattern.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Presence check</div>
+              <div role="cell">Required data is not left blank.</div>
+              <div role="cell">Email address field must contain something.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Check digit</div>
+              <div role="cell">Extra digit detects common transcription errors.</div>
+              <div role="cell">Barcode or account number includes a calculated digit.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="verification">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Verification checks accuracy against the source</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Double entry</strong><span>Data is entered twice and the two entries are compared.</span></article>
+            <article><strong>Visual check</strong><span>A person compares entered data with the original document or screen.</span></article>
+            <article><strong>Proofreading</strong><span>Entered text is checked against the source for typing errors.</span></article>
+            <article><strong>Transfer check</strong><span>Data copied or transmitted is compared with the original or expected value.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Validation and verification are partners, not synonyms</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Validation verification comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Method</div>
+              <div role="columnheader">Question answered</div>
+              <div role="columnheader">Example</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Validation</div>
+              <div role="cell">Does this data obey the rule?</div>
+              <div role="cell">Reject mark 91 when maximum mark is 75.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Verification</div>
+              <div role="cell">Was this copied or entered correctly?</div>
+              <div role="cell">Compare typed name with the paper form.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Both together</div>
+              <div role="cell">Does it follow rules, and does it match the source?</div>
+              <div role="cell">Check date format, then compare with original application form.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="limits">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Neither method guarantees truth</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Validation limit</strong><span>A valid value can still be wrong, such as a valid but incorrect postcode.</span></article>
+            <article><strong>Verification limit</strong><span>Data can be copied accurately from a source that was already wrong.</span></article>
+            <article><strong>Human factor</strong><span>Visual checks can be skipped or performed carelessly.</span></article>
+            <article><strong>Security link</strong><span>Better input quality supports integrity but does not replace access control or backup.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers, and what it deliberately leaves for later</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Validation, verification, range, length, type, format, presence, check digit, double entry and visual checking.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 070 will cover backup strategies, disaster recovery and audit trails.</span></div>
+            <div><strong>Exam focus</strong><span>Explain what the check detects and what it cannot detect.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive validation rule tester</p>
+            <h2>Try common validation checks</h2>
+            <p>Select a check and enter practice data. The feedback explains the rule, not just "computer says no".</p>
+          </div>
+          <div class="tester-grid">
+            <label>
+              Check type
+              <select id="checkType">
+                <option value="range">Range check: mark 0-75</option>
+                <option value="length">Length check: student ID exactly 8 characters</option>
+                <option value="type">Type check: whole number quantity</option>
+                <option value="format">Format check: two letters then four digits</option>
+                <option value="presence">Presence check: not blank</option>
+              </select>
+            </label>
+            <label>
+              Practice input
+              <input type="text" id="checkInput" value="76" />
+            </label>
+            <button class="primary-button" type="button" id="checkBtn">Test</button>
+          </div>
+          <div class="result-box" id="checkResult" aria-live="polite"></div>
+          <div class="method-box" id="checkReason"></div>
+        </section>
+
+        <section class="panel" id="verify-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive verification selector</p>
+            <h2>Which verification method fits?</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="verifyInput">
+                <option value="password">User repeats a new password to catch typing errors.</option>
+                <option value="paper">Office worker checks typed address against a paper form.</option>
+                <option value="typedTwice">Account number is entered twice by two operators.</option>
+                <option value="copy">File copied to another system is compared with the original checksum/hash.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="verifyBtn">Select method</button>
+          </div>
+          <div class="result-box" id="verifyResult" aria-live="polite"></div>
+          <div class="method-box" id="verifyReason"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four model answers showing what is detected</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="range">Range</button>
+            <button class="tab" type="button" data-example="format">Format</button>
+            <button class="tab" type="button" data-example="double">Double entry</button>
+            <button class="tab" type="button" data-example="combined">Combined</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short answers: name the method and its limitation</h2>
+            <p>Type a concise answer. Use the local answer button if you need a model response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the sentence before it loses marks</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style questions with expandable MS</h2>
+            <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>The difference is small in wording and large in marks</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Validation</strong><span>Checks input against rules before acceptance.</span></div>
+            <div><strong>Verification</strong><span>Checks entered/copied data against source or repeat entry.</span></div>
+            <div><strong>Limit</strong><span>Neither proves the data is true in the real world.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks, not vague revision fog</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Check table</strong>
+              <span>Create a table for six validation checks. For each, give one field, one rejected example and one limitation.</span>
+            </article>
+            <article>
+              <strong>Task 2: Verification paragraph</strong>
+              <span>Explain how double entry and visual checking can reduce data entry errors, and why they still do not prove truth.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "Compare validation and verification using examples from a school admissions form." Include one limitation for each.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

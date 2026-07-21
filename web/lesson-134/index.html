@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 134 | Arithmetic operators, integer division, and MOD</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
+        <h1>Arithmetic operators, integer division, and MOD</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#operators">Operators</a>
+        <a href="#division">Division</a>
+        <a href="#mod">MOD</a>
+        <a href="#relationship">Relationship</a>
+        <a href="#precedence">Precedence</a>
+        <a href="#patterns">Patterns</a>
+        <a href="#java">Java support</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#chooser">Operator chooser</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 134 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
+            <h2><code>DIV</code> keeps the quotient. <code>MOD</code> keeps the leftovers.</h2>
+            <p>
+              Arithmetic operators let algorithms calculate values. Most are familiar: addition, subtraction,
+              multiplication and division. The exam trap is usually <code>DIV</code> and <code>MOD</code>. If
+              <code>17 DIV 5</code> is <code>3</code>, then <code>17 MOD 5</code> is <code>2</code>. The remainder is
+              not a rounding error; it is the bit of the pizza that did not fit evenly into boxes.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Calculate</strong><span>results for <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>DIV</code> and <code>MOD</code></span></div>
+              <div><strong>Trace</strong><span>expressions using quotient, remainder and precedence</span></div>
+              <div><strong>Apply</strong><span><code>DIV</code> and <code>MOD</code> in validation, digit extraction and time conversion</span></div>
+            </div>
+          </div>
+          <div class="arithmetic-visual" aria-label="DIV and MOD visual">
+            <div><strong>17 DIV 5</strong><span>3</span><em>whole groups</em></div>
+            <div><strong>17 MOD 5</strong><span>2</span><em>remainder</em></div>
+            <div><strong>17 = 5 * 3 + 2</strong><span>identity</span><em>check your trace</em></div>
+            <p>When the answer looks suspicious, rebuild the original number from divisor, quotient and remainder.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make students say the sentence: <code>DIV</code> gives the whole-number quotient; <code>MOD</code> gives the remainder.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 trace questions use <code>DIV</code> and <code>MOD</code> for parity checks, digit extraction, time conversion and array grouping.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p><code>17 / 5</code>, <code>17 DIV 5</code> and <code>17 MOD 5</code> are three different operations.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Seventeen students. Five seats per row.</h2>
+            <p>How many full rows, and how many students are left in the not-quite-full row?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="3-2">3 full rows, 2 left over</button>
+            <button class="choice-card" type="button" data-hook="2-3">2 full rows, 3 left over</button>
+            <button class="choice-card" type="button" data-hook="3-5">3 full rows, 5 left over</button>
+            <button class="choice-card" type="button" data-hook="3.4">3.4 full rows, 0 left over</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the quotient and remainder.</div>
+        </section>
+
+        <section class="panel" id="operators">
+          <div class="section-title">
+            <p class="eyebrow">Arithmetic operators</p>
+            <h2>Operators combine values to calculate a result</h2>
+            <p>Chinese support: operator 运算符, quotient 商, remainder 余数, integer division 整数除法。</p>
+          </div>
+          <div class="data-table compare-table" role="table" aria-label="Arithmetic operators">
+            <div class="table-row table-head"><div>Operator</div><div>Meaning</div><div>Example</div></div>
+            <div class="table-row"><div><code>+</code></div><div>addition</div><div><code>7 + 3 = 10</code></div></div>
+            <div class="table-row"><div><code>-</code></div><div>subtraction</div><div><code>7 - 3 = 4</code></div></div>
+            <div class="table-row"><div><code>*</code></div><div>multiplication</div><div><code>7 * 3 = 21</code></div></div>
+            <div class="table-row"><div><code>/</code></div><div>real division</div><div><code>7 / 2 = 3.5</code></div></div>
+            <div class="table-row"><div><code>DIV</code></div><div>integer quotient</div><div><code>7 DIV 2 = 3</code></div></div>
+            <div class="table-row"><div><code>MOD</code></div><div>remainder after integer division</div><div><code>7 MOD 2 = 1</code></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="division">
+          <div class="section-title">
+            <p class="eyebrow">Integer division</p>
+            <h2><code>DIV</code> returns the whole-number quotient</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>Students &lt;- 17
+SeatsPerRow &lt;- 5
+FullRows &lt;- Students DIV SeatsPerRow
+OUTPUT FullRows</code></pre>
+            </article>
+            <article>
+              <h3>Trace</h3>
+              <div class="trace-list">
+                <div><strong><code>17 / 5</code></strong><span>3.4</span></div>
+                <div><strong><code>17 DIV 5</code></strong><span>3</span></div>
+                <div><strong>Meaning</strong><span>three complete groups of five</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="mod">
+          <div class="section-title">
+            <p class="eyebrow">MOD</p>
+            <h2><code>MOD</code> returns the remainder</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>Students &lt;- 17
+SeatsPerRow &lt;- 5
+LeftOver &lt;- Students MOD SeatsPerRow
+OUTPUT LeftOver</code></pre>
+            </article>
+            <article>
+              <h3>Trace</h3>
+              <div class="trace-list">
+                <div><strong><code>17 DIV 5</code></strong><span>3 full groups</span></div>
+                <div><strong><code>3 * 5</code></strong><span>15 used</span></div>
+                <div><strong><code>17 MOD 5</code></strong><span>2 left over</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="relationship">
+          <div class="section-title">
+            <p class="eyebrow">Quotient and remainder relationship</p>
+            <h2>Use the identity to check your answer</h2>
+          </div>
+          <div class="formula-card">
+            <strong>Number = Divisor * (Number DIV Divisor) + (Number MOD Divisor)</strong>
+            <span>Example: <code>17 = 5 * (17 DIV 5) + (17 MOD 5) = 5 * 3 + 2</code></span>
+          </div>
+          <div class="callout">For positive integers, the remainder is smaller than the divisor. If <code>17 MOD 5</code> becomes <code>5</code>, the remainder has become too enthusiastic.</div>
+        </section>
+
+        <section class="panel" id="precedence">
+          <div class="section-title">
+            <p class="eyebrow">Precedence</p>
+            <h2>Use brackets when the intended order matters</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Without brackets</h3>
+              <pre><code>Result &lt;- 2 + 3 * 4
+OUTPUT Result</code></pre>
+              <p>Multiplication is evaluated before addition, so the result is <code>14</code>.</p>
+            </article>
+            <article>
+              <h3>With brackets</h3>
+              <pre><code>Result &lt;- (2 + 3) * 4
+OUTPUT Result</code></pre>
+              <p>Brackets force the addition first, so the result is <code>20</code>.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="patterns">
+          <div class="section-title">
+            <p class="eyebrow">Common patterns</p>
+            <h2><code>DIV</code> and <code>MOD</code> often appear in practical algorithm tasks</h2>
+          </div>
+          <div class="pattern-grid">
+            <article><strong>Even / odd</strong><span><code>Number MOD 2 = 0</code> means even.</span></article>
+            <article><strong>Digit extraction</strong><span><code>Number MOD 10</code> gives the last digit of a positive integer.</span></article>
+            <article><strong>Time conversion</strong><span><code>Minutes DIV 60</code> gives hours; <code>Minutes MOD 60</code> gives remaining minutes.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="java">
+          <div class="section-title">
+            <p class="eyebrow">Java support only</p>
+            <h2>Java can support the idea, but Cambridge pseudocode remains the answer format</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>Quotient &lt;- Number DIV Divisor
+Remainder &lt;- Number MOD Divisor</code></pre>
+            </article>
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>int quotient = number / divisor;
+int remainder = number % divisor;</code></pre>
+              <p>Do not write Java <code>%</code> as the exam pseudocode operator when the question expects <code>MOD</code>.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>What this lesson covers from Section 11</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Arithmetic operators</strong><span>addition, subtraction, multiplication and real division</span></div>
+            <div><strong>Integer division</strong><span><code>DIV</code> returns the whole-number quotient</span></div>
+            <div><strong>Remainder</strong><span><code>MOD</code> returns the remainder after integer division</span></div>
+            <div><strong>Trace and design</strong><span>precedence, brackets, parity checks, digit extraction and time conversion</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="calculator">
+          <div class="section-title">
+            <p class="eyebrow">Interactive arithmetic calculator</p>
+            <h2>Compare <code>/</code>, <code>DIV</code> and <code>MOD</code></h2>
+            <p>Use positive integers for this lesson's calculator.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Number
+              <input id="numberInput" type="number" min="0" step="1" value="17" />
+            </label>
+            <label>
+              Divisor
+              <input id="divisorInput" type="number" min="1" step="1" value="5" />
+            </label>
+            <label>
+              Operation
+              <select id="operationInput">
+                <option value="all">show /, DIV and MOD</option>
+                <option value="div">DIV only</option>
+                <option value="mod">MOD only</option>
+                <option value="identity">identity check</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="calcBtn">Calculate</button>
+          </div>
+          <div class="trace-output" id="calcResult" aria-live="polite">Enter values and calculate.</div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Operator chooser</p>
+            <h2>Which arithmetic operator fits the task?</h2>
+            <p>Select a scenario to see the operator and exam reasoning.</p>
+          </div>
+          <div class="scenario-grid" id="scenarioGrid"></div>
+          <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Trace quotient, remainder and final value</h2>
+          </div>
+          <div class="tabs" id="exampleTabs" role="tablist"></div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short calculations, exact values</h2>
+            <p>Type the numeric result or the requested operator keyword.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Find the exact arithmetic error</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Answer first, then expand the MS</h2>
+            <p>Questions are original Cambridge-style practice. MS notes are strict about quotient, remainder and operator wording.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Three rules to keep</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong><code>/</code></strong><span>real division, such as <code>17 / 5 = 3.4</code>.</span></div>
+            <div><strong><code>DIV</code></strong><span>integer quotient, such as <code>17 DIV 5 = 3</code>.</span></div>
+            <div><strong><code>MOD</code></strong><span>remainder, such as <code>17 MOD 5 = 2</code>.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Calculate, trace, apply</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Complete a table for <code>23 / 6</code>, <code>23 DIV 6</code> and <code>23 MOD 6</code>. Show the identity check.</li>
+            <li>Write pseudocode that inputs <code>TotalMinutes</code> and outputs whole hours and remaining minutes.</li>
+            <li>Trace <code>Result &lt;- 4 + 18 MOD 5 * 2</code>, then rewrite it with brackets to make the intended order obvious.</li>
+            <li>Answer a 4-mark question explaining why <code>MOD</code> is useful for checking whether an integer is even.</li>
+          </ol>
+          <div class="callout">Marking focus: name the operator, calculate the value, and explain what the value represents in the scenario.</div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 093 | Paper 1 review: ethics and databases</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Sections 7-8</p>
+        <h1>Paper 1 review: ethics and databases</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#map">Retrieval map</a>
+        <a href="#ethics">Ethics review</a>
+        <a href="#databases">Database review</a>
+        <a href="#sql">SQL review</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Classifier</a>
+        <a href="#builder">Judgement builder</a>
+        <a href="#tracer">SQL tracer</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 093 | 45 minutes | Paper 1 Sections 7-8 | informal questioning</p>
+            <h2>Ethics needs judgement. Databases need structure. Both punish waffle politely but firmly.</h2>
+            <p>
+              This review connects Section 7 evaluation answers with Section 8 database design and SQL.
+              You will identify whether a question wants balanced judgement, relational design, SQL, or data
+              protection, then answer with precise terms and scenario consequences.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Classify</strong><span>separate ethics/ownership questions from database/SQL questions</span></div>
+              <div><strong>Apply</strong><span>stakeholder judgement, relational design rules and SQL clauses</span></div>
+              <div><strong>Improve</strong><span>turn vague opinion or database wording into mark-worthy answers</span></div>
+            </div>
+          </div>
+          <div class="sql-visual" aria-label="Ethics and database review visual">
+            <span class="keyword">Evaluate</span><span>stakeholder, benefit, concern, safeguard, judgement</span>
+            <span class="keyword">Design</span><span>table, record, field, primary key, foreign key, normalisation</span>
+            <span class="keyword">Query</span><span>SELECT, WHERE, ORDER BY, GROUP BY, JOIN</span>
+            <p>If the question says "discuss", do not write SQL. If it says "query", do not write a speech about society.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use a two-second topic check: ethics asks "should/impact"; databases ask "store/link/query/protect data".</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 1 review questions often mix command words. Topic recognition prevents a correct fact being used in the wrong answer.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Privacy is not a primary key problem. A database can store personal data accurately and still be ethically questionable.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Open the correct mental toolbox</h2>
+            <p>A supermarket loyalty system can trigger both ethics and database questions. The mark scheme depends on the command word.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="privacy">Discuss privacy concerns of tracking customer purchases.</button>
+            <button class="choice-card" type="button" data-hook="key">Choose a field to uniquely identify each customer record.</button>
+            <button class="choice-card" type="button" data-hook="sql">Output customers with more than 1000 points.</button>
+            <button class="choice-card" type="button" data-hook="licence">Explain why copied proprietary software may be illegal.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose a card to classify the topic and first answer move.
+          </div>
+        </section>
+
+        <section class="panel" id="map">
+          <div class="section-title">
+            <p class="eyebrow">Retrieval map</p>
+            <h2>Sections 7-8 knowledge map</h2>
+          </div>
+          <div class="retrieval-grid">
+            <article><strong>Ethics</strong><span>stakeholders, consent, fairness, responsibility, proportionality and safeguards</span></article>
+            <article><strong>Privacy and data protection</strong><span>personal data, collection purpose, access, retention, monitoring and transparency</span></article>
+            <article><strong>Ownership</strong><span>copyright, patents, licences, open-source/proprietary software and obligations</span></article>
+            <article><strong>Impact</strong><span>environmental impact, e-waste, energy use, automation, digital divide and social consequences</span></article>
+            <article><strong>Database design</strong><span>data/information, DBMS, tables, records, fields, keys, relationships and normalisation</span></article>
+            <article><strong>SQL and protection</strong><span>SELECT, WHERE, ORDER BY, GROUP BY, joins, INSERT/UPDATE/DELETE, validation, verification and backup</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="ethics">
+          <div class="section-title">
+            <p class="eyebrow">Ethics review</p>
+            <h2>Evaluation answers need both sides and a condition</h2>
+          </div>
+          <div class="data-table review-table" role="table" aria-label="Ethics review">
+            <div class="table-row table-head" role="row"><div>Topic</div><div>Question clue</div><div>Mark-worthy phrase</div></div>
+            <div class="table-row" role="row"><div>Privacy</div><div>personal data, tracking, surveillance</div><div>collect only necessary data with consent, clear purpose and controlled access</div></div>
+            <div class="table-row" role="row"><div>Ownership</div><div>copyright, licence, copied software</div><div>a licence gives permission under conditions; copyright still applies</div></div>
+            <div class="table-row" role="row"><div>Environmental impact</div><div>energy use, disposal, replacement</div><div>reduce e-waste through recycling, repair and longer device life</div></div>
+            <div class="table-row" role="row"><div>Social impact</div><div>automation, access, jobs</div><div>benefits must be weighed against exclusion, deskilling or job displacement</div></div>
+          </div>
+          <div class="callout">Chinese support: stakeholder = 利益相关者；consent = 同意；licence = 许可；e-waste = 电子垃圾；judgement = 有依据的判断。</div>
+        </section>
+
+        <section class="panel" id="databases">
+          <div class="section-title">
+            <p class="eyebrow">Database review</p>
+            <h2>Relational design: structure before SQL</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Primary key</strong><span>Unique, reliable field that identifies each record in one table.</span></article>
+            <article><strong>Foreign key</strong><span>Field that stores a matching primary key value from another table to create a relationship.</span></article>
+            <article><strong>Normalisation</strong><span>Separates repeated data into related tables to reduce duplication, inconsistency and update errors.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="sql">
+          <div class="section-title">
+            <p class="eyebrow">SQL review</p>
+            <h2>Clause choice is not decoration</h2>
+          </div>
+          <div class="data-table sql-table" role="table" aria-label="SQL review">
+            <div class="table-row table-head" role="row"><div>Request</div><div>SQL feature</div><div>Example phrase</div></div>
+            <div class="table-row" role="row"><div>choose output fields</div><div><code>SELECT</code></div><div><code>SELECT Name, Points</code></div></div>
+            <div class="table-row" role="row"><div>filter records</div><div><code>WHERE</code></div><div><code>WHERE Points &gt; 1000</code></div></div>
+            <div class="table-row" role="row"><div>sort records</div><div><code>ORDER BY</code></div><div><code>ORDER BY Points DESC</code></div></div>
+            <div class="table-row" role="row"><div>summary per group</div><div><code>GROUP BY</code></div><div><code>SELECT Category, COUNT(*) ... GROUP BY Category</code></div></div>
+            <div class="table-row" role="row"><div>combine tables</div><div>join condition</div><div><code>Customer.CustomerID = Purchase.CustomerID</code></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This review covers Paper 1 Sections 7-8</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Ethics, privacy, surveillance, data protection, IP, copyright, patents, licensing, software ownership, environmental/social impact, database concepts, DBMS roles, keys, relationships, normalisation, SQL and database protection.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 094 moves to whole-Paper 1 mixed question strategy. This page does not review Sections 1-6 except where a security/control term supports databases.</span></div>
+            <div><strong>Assessment rhythm</strong><span>Topic classification, balanced judgement, relational design, SQL tracing and Cambridge-style mark scheme checking.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive question classifier</p>
+            <h2>Identify the topic and first move</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Mixed clue
+              <select id="classifierInput">
+                <option value="face">A school uses facial recognition at the entrance.</option>
+                <option value="copy">A business installs one purchased software copy on many machines.</option>
+                <option value="repeat">A table repeats customer details for every purchase.</option>
+                <option value="group">A query asks for total sales in each product category.</option>
+                <option value="verify">A clerk checks typed customer data against a paper form.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+          </div>
+          <div class="feedback" id="classifyResult">Choose a clue and classify the answer type.</div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive judgement builder</p>
+            <h2>Build a balanced ethics paragraph</h2>
+          </div>
+          <div class="builder-grid">
+            <label>
+              Benefit
+              <select id="benefitInput">
+                <option value="safety">improves safety by identifying risks quickly</option>
+                <option value="access">improves access or convenience for users</option>
+                <option value="efficiency">reduces cost or manual work for an organisation</option>
+              </select>
+            </label>
+            <label>
+              Concern
+              <select id="concernInput">
+                <option value="privacy">may reduce privacy by collecting personal data</option>
+                <option value="fairness">may treat some groups unfairly if data or algorithms are biased</option>
+                <option value="environment">may increase energy use or e-waste</option>
+              </select>
+            </label>
+            <label>
+              Safeguard
+              <select id="safeguardInput">
+                <option value="consent">clear consent, limited retention and controlled access are used</option>
+                <option value="audit">regular audit and appeal processes are available</option>
+                <option value="recycle">repair, recycling and energy-efficient devices are planned</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="buildBtn">Build paragraph</button>
+          </div>
+          <div class="answer-frame" id="builderResult">Choose options, then build a paragraph.</div>
+        </section>
+
+        <section class="panel" id="tracer">
+          <div class="section-title">
+            <p class="eyebrow">Interactive SQL tracer</p>
+            <h2>Trace one customer table query</h2>
+          </div>
+          <div class="data-table customer-table" role="table" aria-label="Customer table">
+            <div class="table-row table-head" role="row"><div>CustomerID</div><div>Name</div><div>Region</div><div>Points</div></div>
+            <div class="table-row" role="row"><div>C01</div><div>Ada</div><div>North</div><div>1280</div></div>
+            <div class="table-row" role="row"><div>C02</div><div>Bo</div><div>South</div><div>760</div></div>
+            <div class="table-row" role="row"><div>C03</div><div>Chen</div><div>North</div><div>1540</div></div>
+            <div class="table-row" role="row"><div>C04</div><div>Dia</div><div>South</div><div>1110</div></div>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Query
+              <select id="queryInput">
+                <option value="q1">SELECT Name FROM Customer WHERE Points &gt; 1000</option>
+                <option value="q2">SELECT Name, Points FROM Customer ORDER BY Points DESC</option>
+                <option value="q3">SELECT Region, COUNT(*) FROM Customer GROUP BY Region</option>
+                <option value="q4">SELECT Region, SUM(Points) FROM Customer GROUP BY Region</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="queryBtn">Trace result</button>
+          </div>
+          <div class="result-table" id="queryResult">Choose a query to see the result.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Annotate where the marks are</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="ethics">Ethics</button>
+            <button class="tab" type="button" data-example="licence">Licensing</button>
+            <button class="tab" type="button" data-example="design">Database design</button>
+            <button class="tab" type="button" data-example="sql">SQL</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Mixed retrieval check</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair weak Section 7-8 answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style review with expandable MS</h2>
+            <p>These questions mix ethics, ownership, relational design, SQL and data protection. The MS rewards precise terms and scenario links.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Review checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Classify</strong><span>Decide whether the question asks for judgement, design, SQL or protection.</span></div>
+            <div><strong>Use exact terms</strong><span>Stakeholder, consent, licence, primary key, foreign key, validation, verification.</span></div>
+            <div><strong>Link consequence</strong><span>Explain harm, benefit, legal risk, duplication, inconsistency, output or recovery.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Balanced evaluation</strong>
+              <span>Write a 6-mark response about facial recognition in school. Include stakeholder, benefit, concern, safeguard and judgement.</span>
+            </article>
+            <article>
+              <strong>Task 2: Database redesign</strong>
+              <span>Take a flat file with repeated CustomerName, Address and ProductName. Propose three related tables and identify primary/foreign keys.</span>
+            </article>
+            <article>
+              <strong>Task 3: SQL mini-set</strong>
+              <span>Write three queries for the customer table: filter points over 1000, sort by points descending, and total points by region.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

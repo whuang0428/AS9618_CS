@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 030 | Primary storage: RAM, ROM, cache and virtual memory</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
+        <h1>Primary storage: RAM, ROM, cache and virtual memory</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#primary">Primary storage</a>
+        <a href="#ram-rom">RAM vs ROM</a>
+        <a href="#cache-vm">Cache and VM</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Choice tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 030 | 45 minutes | Paper 1 Section 3</p>
+            <h2>Primary storage is the computer's working desk, not its filing cabinet.</h2>
+            <p>
+              This lesson explains RAM, ROM, cache and virtual memory. The main exam skill
+              is explaining what each type is used for, whether it is volatile, and how it
+              affects performance.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Distinguish</strong><span>RAM, ROM, cache and virtual memory</span></div>
+              <div><strong>Explain</strong><span>volatility, speed and purpose using precise terms</span></div>
+              <div><strong>Apply</strong><span>primary storage ideas to startup, multitasking and performance scenarios</span></div>
+            </div>
+          </div>
+          <div class="system-card" aria-label="Primary storage hierarchy">
+            <span>cache -> RAM -> virtual memory</span>
+            <p>Closer to the CPU usually means faster, smaller and more expensive. Convenient, like a front-row seat with a tiny desk.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Separate purpose from property: RAM holds current programs; volatile means contents are lost when power is off.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style answers often require exact contrasts. "RAM is temporary" is weaker than "RAM is volatile and stores data/instructions currently in use."</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Virtual memory is not extra physical RAM. It uses secondary storage as if it were memory, which is slower than RAM.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Your laptop has 30 browser tabs, a video call and an IDE open. Which memory areas are being stressed?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="ram">RAM holds active programs and data</button>
+            <button class="choice-card" type="button" data-hook="cache">Cache keeps frequently used data close to the CPU</button>
+            <button class="choice-card" type="button" data-hook="vm">Virtual memory helps when RAM is insufficient</button>
+            <button class="choice-card" type="button" data-hook="rom">ROM handled startup instructions earlier</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click one memory area. The useful exam habit is linking storage type -> role -> consequence.
+          </div>
+        </section>
+
+        <section class="panel" id="primary">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Primary storage is directly involved in current processing</h2>
+          </div>
+          <div class="flow-grid">
+            <article><strong>RAM</strong><span>Stores programs, data and instructions currently in use. It is volatile.</span></article>
+            <article><strong>ROM</strong><span>Stores startup/boot instructions. It is non-volatile and normally read-only.</span></article>
+            <article><strong>Cache</strong><span>Very fast memory close to/on the CPU for frequently used data and instructions.</span></article>
+            <article><strong>Virtual memory</strong><span>Uses part of secondary storage when RAM is full, but access is slower.</span></article>
+          </div>
+          <div class="callout">Chinese support: primary storage = 主存/主存储；volatile = 易失性；non-volatile = 非易失性；cache = 高速缓存；virtual memory = 虚拟内存。</div>
+        </section>
+
+        <section class="panel" id="ram-rom">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>RAM and ROM: similar letters, very different jobs</h2>
+          </div>
+          <div class="compare-table" role="table" aria-label="RAM and ROM comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Feature</div>
+              <div role="columnheader">RAM</div>
+              <div role="columnheader">ROM</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Purpose</div>
+              <div role="cell">Holds data, programs and instructions currently being used.</div>
+              <div role="cell">Stores firmware/startup instructions needed to boot the computer.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Volatility</div>
+              <div role="cell">Volatile: contents are lost when power is off.</div>
+              <div role="cell">Non-volatile: contents remain when power is off.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Write access</div>
+              <div role="cell">Can be read from and written to during normal use.</div>
+              <div role="cell">Normally read-only or not easily changed by the user.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="cache-vm">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Cache and virtual memory affect performance in opposite directions</h2>
+          </div>
+          <div class="memory-stack" aria-label="Memory hierarchy">
+            <div><strong>Cache</strong><span>Fastest, smallest, closest to CPU</span></div>
+            <div><strong>RAM</strong><span>Fast working memory for active programs</span></div>
+            <div><strong>Virtual memory</strong><span>Slower extension using secondary storage</span></div>
+            <div><strong>Secondary storage</strong><span>Persistent storage, covered next lesson</span></div>
+          </div>
+          <div class="compare-table" role="table" aria-label="Cache and virtual memory comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Concept</div>
+              <div role="columnheader">Why it is useful</div>
+              <div role="columnheader">Exam warning</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Cache</div>
+              <div role="cell">Stores frequently/recently used data or instructions so the CPU can access them faster than from RAM.</div>
+              <div role="cell">Do not say cache permanently stores user files.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Virtual memory</div>
+              <div role="cell">Allows the system to continue running more/larger programs than RAM alone can hold.</div>
+              <div role="cell">Do not say it is as fast as RAM; using it heavily can slow the system.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Primary storage roles: RAM, ROM, cache and virtual memory.</span></div>
+            <div><strong>Covered</strong><span>Volatile vs non-volatile, read/write use, startup and current processing.</span></div>
+            <div><strong>Covered</strong><span>Cache purpose and performance effect.</span></div>
+            <div><strong>Covered</strong><span>Virtual memory as use of secondary storage when RAM is insufficient.</span></div>
+            <div><strong>Boundary</strong><span>Magnetic, optical and solid-state secondary storage are covered in Lesson 031.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Choose the memory concept</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="active">A program and its current data are being edited</option>
+                <option value="boot">The computer needs startup instructions before the OS loads</option>
+                <option value="repeat">The CPU repeatedly needs the same instructions in a tight loop</option>
+                <option value="full">Many applications are open and RAM is nearly full</option>
+                <option value="power">Power is turned off and contents are lost</option>
+                <option value="slow">System becomes slow because pages are swapped to disk frequently</option>
+              </select>
+            </label>
+            <button type="button" id="chooseBtn">Identify concept</button>
+          </div>
+          <div class="result-box" id="componentResult" aria-live="polite"></div>
+          <div class="method-box" id="componentMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Precise explanations for primary storage</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="ram">RAM</button>
+            <button class="tab" type="button" data-example="rom">ROM</button>
+            <button class="tab" type="button" data-example="virtual">Virtual memory</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak memory answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"ROM is faster RAM that stores open programs."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">ROM is non-volatile memory used for firmware/startup instructions. RAM stores currently running programs and data and is volatile.</p>
+            </article>
+            <article>
+              <p class="wrong">"Virtual memory gives the computer more real RAM."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">Virtual memory uses part of secondary storage as if it were RAM. It can let more programs run, but it is slower than RAM and heavy use reduces performance.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on exact terms: volatile, non-volatile, currently in use, startup instructions and slower secondary storage.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Primary storage in six exam sentences</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>RAM</strong><span>Volatile memory for programs/data currently in use.</span></div>
+            <div><strong>ROM</strong><span>Non-volatile memory for startup/firmware instructions.</span></div>
+            <div><strong>Cache</strong><span>Very fast memory for frequently used data/instructions.</span></div>
+            <div><strong>Virtual memory</strong><span>Uses secondary storage when RAM is insufficient.</span></div>
+            <div><strong>Performance</strong><span>More cache/RAM can improve performance; heavy virtual memory use can slow it.</span></div>
+            <div><strong>Trap</strong><span>Primary storage is not the same as long-term secondary storage.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a comparison table for RAM, ROM, cache and virtual memory: purpose, volatility and performance effect.</li>
+            <li>Write a 4-mark answer explaining why a computer may slow down when virtual memory is used heavily.</li>
+            <li>Explain why ROM is needed during startup in two precise sentences.</li>
+            <li>Write one common misconception and correct it using the terms volatile or non-volatile.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Comparison:</strong> RAM = current volatile working memory; ROM = non-volatile startup instructions; cache = very fast frequently used data; virtual memory = slower secondary storage used when RAM is full.</p>
+            <p><strong>Virtual memory:</strong> it involves moving data between RAM and secondary storage, which is slower than accessing RAM directly.</p>
+            <p><strong>ROM startup:</strong> ROM retains boot instructions when power is off, so the system can start before the operating system is loaded.</p>
+            <p><strong>Misconception:</strong> "RAM keeps files after power off" is wrong because RAM is volatile.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

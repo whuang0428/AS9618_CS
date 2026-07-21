@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 079 | Flat-file databases vs relational databases</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
+        <h1>Flat-file databases vs relational databases</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#flat">Flat-file</a>
+        <a href="#relational">Relational</a>
+        <a href="#compare">Comparison</a>
+        <a href="#anomalies">Anomalies</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#chooser">Structure chooser</a>
+        <a href="#checker">Anomaly checker</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 079 | 45 minutes | Paper 1 Section 8 | Database concepts</p>
+            <h2>One giant table looks simple until one phone number changes in twelve places.</h2>
+            <p>
+              This lesson compares flat-file databases with relational databases. The key idea is not that
+              flat files are "bad"; it is that repeated related data creates maintenance problems as the
+              data grows. Relational design separates data into linked tables to reduce redundancy and
+              inconsistency.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>flat-file and relational database structures</span></div>
+              <div><strong>Compare</strong><span>redundancy, consistency, update effort and complexity</span></div>
+              <div><strong>Choose</strong><span>a suitable structure for a scenario with justified reasons</span></div>
+            </div>
+          </div>
+          <div class="split-visual" aria-label="Flat-file and relational visual">
+            <div class="flat-block">
+              <strong>Flat-file</strong>
+              <span>one table</span>
+              <span>repeated customer details</span>
+              <span>easy to start, painful to maintain</span>
+            </div>
+            <div class="rel-block">
+              <strong>Relational</strong>
+              <span>several linked tables</span>
+              <span>shared data stored once</span>
+              <span>better consistency, more design needed</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>When comparing structures, always name the problem: repeated data, inconsistent updates, or harder maintenance.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style answers reward cause and consequence: relational design reduces redundancy because shared data is stored once.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not say relational databases are always better. For a very small single-user list, a flat file may be simpler and sufficient.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A tutor keeps one spreadsheet: every lesson row repeats student name, phone, parent email and course.</h2>
+            <p>Then a parent changes email. The spreadsheet says, "I have twelve personalities now."</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="redundancy">Repeated same parent email in many rows</button>
+            <button class="choice-card" type="button" data-hook="password">Weak password for the spreadsheet</button>
+            <button class="choice-card" type="button" data-hook="binary">CourseID stored in binary</button>
+            <button class="choice-card" type="button" data-hook="processor">CPU cache stores recent rows</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose the issue most directly caused by flat-file structure.
+          </div>
+        </section>
+
+        <section class="panel" id="flat">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Flat-file database</h2>
+            <p>A flat-file database stores data in a single table. It is simple, but related data may be repeated in many records.</p>
+          </div>
+          <div class="flat-table" role="table" aria-label="Flat-file club records">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">MemberID</div>
+              <div role="columnheader">Name</div>
+              <div role="columnheader">ParentEmail</div>
+              <div role="columnheader">Session</div>
+              <div role="columnheader">FeePaid</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">M104</div><div role="cell">Amira Chen</div><div role="cell">lee@example.com</div><div role="cell">Python</div><div role="cell">TRUE</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">M104</div><div role="cell">Amira Chen</div><div role="cell">lee@example.com</div><div role="cell">Robotics</div><div role="cell">FALSE</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">M211</div><div role="cell">Leo Singh</div><div role="cell">patel@example.com</div><div role="cell">Python</div><div role="cell">TRUE</div>
+            </div>
+          </div>
+          <div class="callout">Chinese support: flat-file = 单表结构。The problem is not the word "file"; the problem is using one table for related repeated data.</div>
+        </section>
+
+        <section class="panel" id="relational">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Relational database</h2>
+            <p>A relational database stores data in multiple tables that are linked using shared fields. Shared facts can be stored once and referenced where needed.</p>
+          </div>
+          <div class="relational-preview">
+            <div class="mini-table">
+              <h3>Member</h3>
+              <p><strong>MemberID</strong> | Name | ParentEmail</p>
+              <p>M104 | Amira Chen | lee@example.com</p>
+              <p>M211 | Leo Singh | patel@example.com</p>
+            </div>
+            <div class="relation-arrow">linked by MemberID</div>
+            <div class="mini-table">
+              <h3>Enrolment</h3>
+              <p><strong>EnrolID</strong> | MemberID | Session | FeePaid</p>
+              <p>E501 | M104 | Python | TRUE</p>
+              <p>E502 | M104 | Robotics | FALSE</p>
+            </div>
+          </div>
+          <div class="answer-frame">
+            <strong>Exam sentence:</strong>
+            <span>A relational database reduces redundancy by separating related data into linked tables, so a fact such as a parent email is stored once instead of repeated in every lesson record.</span>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Flat-file vs relational comparison</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Flat-file relational comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Feature</div>
+              <div role="columnheader">Flat-file</div>
+              <div role="columnheader">Relational</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Structure</div>
+              <div role="cell">Single table</div>
+              <div role="cell">Multiple linked tables</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Redundancy</div>
+              <div role="cell">More likely because related details are repeated</div>
+              <div role="cell">Reduced because shared data can be stored once</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Consistency</div>
+              <div role="cell">Harder to maintain if repeated values are updated differently</div>
+              <div role="cell">Improved because updates can be made in one relevant table</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Complexity</div>
+              <div role="cell">Simpler to create for a small, simple dataset</div>
+              <div role="cell">Needs more planning and understanding of relationships</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Best fit</div>
+              <div role="cell">Small, single-purpose, low-change data</div>
+              <div role="cell">Data with repeated entities, many users, updates and queries</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="anomalies">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Why repeated data causes anomalies</h2>
+            <p>An anomaly is a problem caused when data is inserted, updated or deleted in a structure that stores repeated facts poorly.</p>
+          </div>
+          <div class="anomaly-grid">
+            <article><strong>Update anomaly</strong><span>A parent email is changed in one row but not in another, so the same member has two different emails.</span></article>
+            <article><strong>Insertion anomaly</strong><span>A new member cannot be recorded until they join a session, because member details only exist in lesson rows.</span></article>
+            <article><strong>Deletion anomaly</strong><span>Deleting a cancelled session row may accidentally delete the only copy of a member's contact details.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson compares database structures</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Flat-file database, relational database, single-table vs multiple linked tables, redundancy, inconsistency, update/insertion/deletion anomalies, scenario-based choice.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 080 will focus on tables, records, fields, data types and constraints. Keys and SQL are introduced only where needed for structure comparison.</span></div>
+            <div><strong>Exam focus</strong><span>Do not just name the structure. Explain the effect on repeated data, consistency and maintainability.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Interactive structure chooser</p>
+            <h2>Choose flat-file or relational for the scenario</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="singleList">A teacher keeps a one-off list of students attending one trip.</option>
+                <option value="club">A club records members, sessions, fees and changing contact details.</option>
+                <option value="shop">An online shop stores customers, orders and products.</option>
+                <option value="survey">A small survey stores one answer row per anonymous respondent.</option>
+                <option value="clinic">A clinic stores patients, appointments, staff and prescriptions.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="scenarioBtn">Choose structure</button>
+          </div>
+          <div class="result-box" id="scenarioResult">Choose a scenario, then justify the structure.</div>
+          <div class="feedback" id="scenarioReason">A strong answer mentions data size, repetition, updates or relationships.</div>
+        </section>
+
+        <section class="panel" id="checker">
+          <div class="section-title">
+            <p class="eyebrow">Interactive anomaly checker</p>
+            <h2>What can go wrong in a flat file?</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Event
+              <select id="anomalyInput">
+                <option value="changedEmail">A parent email is edited in only one of four repeated rows.</option>
+                <option value="newMember">A new member has not chosen a session yet, so no row can be created.</option>
+                <option value="deleteLast">The only row for a cancelled session is deleted and member contact details disappear.</option>
+                <option value="smallList">A one-off trip list has no repeated contact details.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="anomalyBtn">Check anomaly</button>
+          </div>
+          <div class="result-box" id="anomalyResult">Choose an event to classify the problem.</div>
+          <div class="feedback" id="anomalyReason">If there is no anomaly, explain why the simple structure may be acceptable.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From scenario to justified design choice</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="club">Club records</button>
+            <button class="tab" type="button" data-example="shop">Online shop</button>
+            <button class="tab" type="button" data-example="survey">Small survey</button>
+            <button class="tab" type="button" data-example="mistake">Weak comparison</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short-answer checks</h2>
+            <p>Type concise answers. Use the answer button only after committing to an attempt.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair common wording errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style practice with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about cause-and-effect wording.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What to remember</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Flat-file</strong><span>Single table; simple for small datasets but may repeat related data.</span></div>
+            <div><strong>Relational</strong><span>Multiple linked tables; reduces redundancy and supports consistent updates.</span></div>
+            <div><strong>Exam answer</strong><span>Name the structure, then explain a consequence such as reduced redundancy or increased design complexity.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Definitions</strong>
+              <span>Write exam-ready definitions for flat-file database, relational database, redundancy and inconsistency. Add Chinese support notes for the two hardest terms.</span>
+            </article>
+            <article>
+              <strong>Task 2: Scenario design</strong>
+              <span>A music school stores students, teachers, instruments and weekly lessons. Choose flat-file or relational and give three reasons linked to the scenario.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "Explain why a relational database may be more suitable than a flat-file database for a library loan system." Include redundancy, consistency and one possible disadvantage.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

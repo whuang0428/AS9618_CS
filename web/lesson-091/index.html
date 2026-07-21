@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 091 | Paper 1 review: hardware and processor fundamentals</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Sections 3-4</p>
+        <h1>Paper 1 review: hardware and processor fundamentals</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#map">Retrieval map</a>
+        <a href="#hardware">Hardware</a>
+        <a href="#processor">Processor</a>
+        <a href="#logic">Logic gates</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Classifier</a>
+        <a href="#fde">FDE tracer</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 091 | 45 minutes | Paper 1 Sections 3-4 | informal questioning</p>
+            <h2>Hardware questions reward precise parts. "The CPU does stuff" is not a lifestyle.</h2>
+            <p>
+              This review connects hardware selection, storage, embedded systems, logic gates, CPU architecture,
+              registers, the fetch-decode-execute cycle, interrupts and processor performance. The goal is to
+              explain mechanisms, not merely list component names.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Select</strong><span>hardware and storage by matching characteristics to user needs</span></div>
+              <div><strong>Trace</strong><span>processor behaviour using registers and buses</span></div>
+              <div><strong>Explain</strong><span>logic circuits, interrupts and performance factors precisely</span></div>
+            </div>
+          </div>
+          <div class="sql-visual" aria-label="Processor review visual">
+            <span class="keyword">Fetch</span><span>PC, MAR, memory, MDR, CIR</span>
+            <span class="keyword">Decode</span><span>CU interprets opcode and addressing</span>
+            <span class="keyword">Execute</span><span>ALU/registers perform operation</span>
+            <p>Registers are tiny, fast and examiners love them more than vague paragraphs.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For each answer, name the component, state its role, then link it to the scenario or processor step.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Hardware review questions often look descriptive, but marks sit in cause, consequence and exact register names.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Cache is not the same as RAM. Cache is smaller, faster memory close to/on the CPU for frequently used data and instructions.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which topic is being tested?</h2>
+            <p>If an answer starts with "it makes it faster", pause. Faster how? Because of which part? Under what workload?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="cache">A CPU reuses the same instructions many times.</button>
+            <button class="choice-card" type="button" data-hook="interrupt">A printer signals that it needs attention.</button>
+            <button class="choice-card" type="button" data-hook="ssd">A laptop needs light, durable secondary storage.</button>
+            <button class="choice-card" type="button" data-hook="xor">A circuit output is 1 when inputs are different.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose a card to identify the topic and the first exam phrase.
+          </div>
+        </section>
+
+        <section class="panel" id="map">
+          <div class="section-title">
+            <p class="eyebrow">Retrieval map</p>
+            <h2>Sections 3-4 knowledge map</h2>
+          </div>
+          <div class="retrieval-grid">
+            <article><strong>Computer system</strong><span>input, output, storage, memory, processor and data capture</span></article>
+            <article><strong>Storage and memory</strong><span>RAM, ROM, cache, virtual memory, magnetic/optical/solid-state storage</span></article>
+            <article><strong>Embedded systems</strong><span>sensors, actuators, microcontrollers and control systems</span></article>
+            <article><strong>Logic</strong><span>NOT, AND, OR, NAND, NOR, XOR, truth tables and Boolean expressions</span></article>
+            <article><strong>Processor</strong><span>ALU, CU, registers, buses, fetch-decode-execute and addressing modes</span></article>
+            <article><strong>Performance</strong><span>clock speed, cores, cache, word length, pipelining and interrupts</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="hardware">
+          <div class="section-title">
+            <p class="eyebrow">Hardware review</p>
+            <h2>Choose hardware by matching characteristics to use</h2>
+          </div>
+          <div class="data-table hardware-table" role="table" aria-label="Hardware selection review">
+            <div class="table-row table-head" role="row"><div>Need</div><div>Likely choice</div><div>Justification phrase</div></div>
+            <div class="table-row" role="row"><div>fast temporary access</div><div>RAM / cache</div><div>volatile memory used while programs run / frequently used data close to CPU</div></div>
+            <div class="table-row" role="row"><div>portable durable storage</div><div>SSD</div><div>no moving parts, fast access, resistant to shock</div></div>
+            <div class="table-row" role="row"><div>cheap high-capacity archive</div><div>magnetic disk</div><div>large capacity and lower cost per GiB</div></div>
+            <div class="table-row" role="row"><div>automatic physical response</div><div>actuator</div><div>converts control signals into movement or action</div></div>
+          </div>
+          <div class="callout">Chinese support: volatile = 易失性；register = 寄存器；bus = 总线；interrupt = 中断；actuator = 执行器。</div>
+        </section>
+
+        <section class="panel" id="processor">
+          <div class="section-title">
+            <p class="eyebrow">Processor review</p>
+            <h2>Registers and buses: the FDE cycle vocabulary</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>PC</strong><span>Stores the address of the next instruction to be fetched.</span></article>
+            <article><strong>MAR / MDR</strong><span>MAR stores an address; MDR stores data/instruction being transferred.</span></article>
+            <article><strong>CIR / ACC</strong><span>CIR stores current instruction; ACC stores intermediate arithmetic/logic results.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="logic">
+          <div class="section-title">
+            <p class="eyebrow">Logic gate review</p>
+            <h2>Truth table shortcuts</h2>
+          </div>
+          <div class="data-table logic-table" role="table" aria-label="Logic gate review">
+            <div class="table-row table-head" role="row"><div>Gate</div><div>Output 1 when...</div><div>Exam trap</div></div>
+            <div class="table-row" role="row"><div>AND</div><div>both inputs are 1</div><div>OR is not "also"; it has its own rule.</div></div>
+            <div class="table-row" role="row"><div>OR</div><div>at least one input is 1</div><div>Includes both inputs being 1.</div></div>
+            <div class="table-row" role="row"><div>XOR</div><div>inputs are different</div><div>Not the same as OR when both inputs are 1.</div></div>
+            <div class="table-row" role="row"><div>NAND / NOR</div><div>inverse of AND / OR</div><div>Invert only after applying the original gate.</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This review covers Paper 1 Sections 3-4</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Hardware components, input/output/storage, memory, embedded systems, sensors/actuators, logic gates, CPU architecture, registers, buses, FDE cycle, interrupts and performance factors.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 092 reviews system software and security. This page does not cover OS roles, translators or malware in detail.</span></div>
+            <div><strong>Assessment rhythm</strong><span>Mixed retrieval, register tracing, hardware justification and Cambridge-style mark scheme checking.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive question classifier</p>
+            <h2>Identify the topic and first move</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Mixed question clue
+              <select id="classifierInput">
+                <option value="fde">Describe how the next instruction is fetched.</option>
+                <option value="cache">Explain why increasing cache size may improve performance.</option>
+                <option value="ssd">Justify using SSD storage in a tablet.</option>
+                <option value="interrupt">Explain how the processor handles an interrupt.</option>
+                <option value="logic">Draw a truth table for A XOR B.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+          </div>
+          <div class="feedback" id="classifyResult">Choose a clue and classify the topic.</div>
+        </section>
+
+        <section class="panel" id="fde">
+          <div class="section-title">
+            <p class="eyebrow">Interactive FDE tracer</p>
+            <h2>Trace register actions</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Processor action
+              <select id="fdeInput">
+                <option value="pcToMar">Copy address of next instruction from PC to MAR.</option>
+                <option value="memoryToMdr">Fetch instruction from memory into MDR.</option>
+                <option value="mdrToCir">Copy fetched instruction from MDR to CIR.</option>
+                <option value="incrementPc">Increment PC to point to next instruction.</option>
+                <option value="decode">Decode opcode and identify operation.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="fdeBtn">Explain step</button>
+          </div>
+          <div class="result-table" id="fdeResult">Choose a step to see the register role.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Annotate where the marks are</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="hardware">Hardware choice</button>
+            <button class="tab" type="button" data-example="fde">FDE cycle</button>
+            <button class="tab" type="button" data-example="interrupt">Interrupts</button>
+            <button class="tab" type="button" data-example="performance">Performance</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Mixed retrieval check</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair weak hardware and processor answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style review with expandable MS</h2>
+            <p>These questions mix hardware choice and processor fundamentals. The MS rewards precise component roles and scenario links.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Review checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Name</strong><span>Use exact component/register/gate names.</span></div>
+            <div><strong>Role</strong><span>State what the part stores, controls, transfers or calculates.</span></div>
+            <div><strong>Scenario</strong><span>Link the mechanism to performance, reliability, cost or user need.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Register retrieval</strong>
+              <span>Create flashcards for PC, MAR, MDR, CIR, ACC, ALU and CU. Each card must include role and one FDE step.</span>
+            </article>
+            <article>
+              <strong>Task 2: Hardware justification</strong>
+              <span>Answer two 4-mark questions choosing storage and input/output devices for different users. Include characteristics and scenario links.</span>
+            </article>
+            <article>
+              <strong>Task 3: Logic and performance</strong>
+              <span>Draw truth tables for XOR and NAND, then explain why cache size can improve processor performance.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

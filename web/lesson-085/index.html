@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 085 | SQL ORDER BY, aggregate functions and GROUP BY</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
+        <h1>SQL ORDER BY, aggregate functions and GROUP BY</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#orderby">ORDER BY</a>
+        <a href="#aggregates">Aggregates</a>
+        <a href="#groupby">GROUP BY</a>
+        <a href="#trace">Trace results</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#builder">Query builder</a>
+        <a href="#runner">Result runner</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 085 | 45 minutes | Paper 1 Section 8 | 5-minute quiz</p>
+            <h2>SQL can sort the mess, count the mess, and summarise the mess. Sadly, it cannot mark your homework.</h2>
+            <p>
+              This lesson extends basic <code>SELECT</code> queries with <code>ORDER BY</code>, aggregate functions
+              and <code>GROUP BY</code>. You will sort rows, calculate summaries and group records by category.
+              Multi-table joins are left for Lesson 086.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Sort</strong><span>records using <code>ORDER BY</code>, <code>ASC</code> and <code>DESC</code></span></div>
+              <div><strong>Summarise</strong><span>data using <code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, <code>MIN</code>, <code>MAX</code></span></div>
+              <div><strong>Group</strong><span>records using <code>GROUP BY</code> with aggregate functions</span></div>
+            </div>
+          </div>
+          <div class="sql-visual" aria-label="SQL aggregate visual">
+            <span class="keyword">SELECT</span><span>Category, COUNT(*)</span>
+            <span class="keyword">FROM</span><span>Book</span>
+            <span class="keyword">GROUP BY</span><span>Category</span>
+            <p>When the question asks "per category", GROUP BY has entered the room.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask whether the question wants individual rows or a summary. Aggregates collapse rows into a calculated result.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Students often write a correct WHERE clause but miss the aggregate or GROUP BY, losing the summary mark.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>If you select a normal field alongside an aggregate, you usually need <code>GROUP BY</code> for that field.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which query counts how many books are in each category?</h2>
+            <p>Counting by category without grouping is like sorting socks with your eyes closed: brave, but not useful.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="group">SELECT Category, COUNT(*) FROM Book GROUP BY Category</button>
+            <button class="choice-card" type="button" data-hook="order">SELECT Category FROM Book ORDER BY Category</button>
+            <button class="choice-card" type="button" data-hook="where">SELECT Category FROM Book WHERE COUNT(*)</button>
+            <button class="choice-card" type="button" data-hook="star">SELECT * FROM Book</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose the query that creates a count per category.
+          </div>
+        </section>
+
+        <section class="panel" id="orderby">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2><code>ORDER BY</code> sorts output rows</h2>
+            <p><code>ORDER BY</code> controls the order of the result rows. <code>ASC</code> means ascending; <code>DESC</code> means descending.</p>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Ascending</strong><span><code>ORDER BY Price ASC</code>: low to high, A to Z, oldest to newest.</span></article>
+            <article><strong>Descending</strong><span><code>ORDER BY Price DESC</code>: high to low, Z to A, newest to oldest.</span></article>
+            <article><strong>Default</strong><span>Many SQL systems default to ascending, but exams may expect explicit <code>ASC</code> if asked.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="aggregates">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Aggregate functions calculate one summary value</h2>
+          </div>
+          <div class="aggregate-table" role="table" aria-label="Aggregate functions">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Function</div>
+              <div role="columnheader">Purpose</div>
+              <div role="columnheader">Example</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell"><code>COUNT</code></div>
+              <div role="cell">Counts records or non-null values</div>
+              <div role="cell"><code>SELECT COUNT(*) FROM Book</code></div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell"><code>SUM</code></div>
+              <div role="cell">Adds numeric values</div>
+              <div role="cell"><code>SELECT SUM(Price) FROM Book</code></div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell"><code>AVG</code></div>
+              <div role="cell">Calculates the mean</div>
+              <div role="cell"><code>SELECT AVG(Price) FROM Book</code></div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell"><code>MIN</code>, <code>MAX</code></div>
+              <div role="cell">Finds smallest or largest value</div>
+              <div role="cell"><code>SELECT MAX(Price) FROM Book</code></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="groupby">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2><code>GROUP BY</code> calculates summaries per group</h2>
+            <p>Use <code>GROUP BY</code> when the question asks for a summary for each category, each borrower, each course or each group.</p>
+          </div>
+          <div class="answer-frame">
+            <strong>Pattern:</strong>
+            <span><code>SELECT Category, COUNT(*) FROM Book GROUP BY Category;</code></span>
+          </div>
+          <div class="callout">Chinese support: sort = 排序；aggregate = 汇总函数；group = 分组；per category = 每个类别。</div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Trace summaries from a small table</h2>
+          </div>
+          <div class="data-table" role="table" aria-label="Book table">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">BookID</div>
+              <div role="columnheader">Title</div>
+              <div role="columnheader">Category</div>
+              <div role="columnheader">Price</div>
+              <div role="columnheader">Copies</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">B01</div><div role="cell">Networks</div><div role="cell">Computing</div><div role="cell">12.50</div><div role="cell">4</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">B02</div><div role="cell">Poems</div><div role="cell">Literature</div><div role="cell">8.00</div><div role="cell">7</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">B03</div><div role="cell">Databases</div><div role="cell">Computing</div><div role="cell">15.00</div><div role="cell">3</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">B04</div><div role="cell">Drama</div><div role="cell">Literature</div><div role="cell">9.50</div><div role="cell">2</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson extends single-table SQL</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span><code>ORDER BY</code>, <code>ASC</code>, <code>DESC</code>, <code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, <code>MIN</code>, <code>MAX</code>, <code>GROUP BY</code> and grouped result tracing.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 086 covers SQL joins using related tables. This lesson uses one table only.</span></div>
+            <div><strong>Assessment rhythm</strong><span>Includes a 5-minute quiz on clause purpose, aggregate choice and grouped output.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive query builder</p>
+            <h2>Choose the right summary query</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              English request
+              <select id="builderInput">
+                <option value="priceDesc">Show Title and Price sorted by Price highest first.</option>
+                <option value="countAll">Count all books.</option>
+                <option value="avgPrice">Find the average price of all books.</option>
+                <option value="countCategory">Count books in each Category.</option>
+                <option value="sumCopiesCategory">Show total Copies for each Category.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="builderBtn">Build SQL</button>
+          </div>
+          <pre class="sql-output" id="builderResult">Choose a request, then build the SQL.</pre>
+          <div class="feedback" id="builderReason">The output will choose sorting, aggregate or grouping as needed.</div>
+        </section>
+
+        <section class="panel" id="runner">
+          <div class="section-title">
+            <p class="eyebrow">Interactive result runner</p>
+            <h2>Run preset queries against the Book table</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Query
+              <select id="queryInput">
+                <option value="q1">SELECT Title, Price FROM Book ORDER BY Price DESC</option>
+                <option value="q2">SELECT COUNT(*) FROM Book</option>
+                <option value="q3">SELECT AVG(Price) FROM Book</option>
+                <option value="q4">SELECT Category, COUNT(*) FROM Book GROUP BY Category</option>
+                <option value="q5">SELECT Category, SUM(Copies) FROM Book GROUP BY Category</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="queryBtn">Run query</button>
+          </div>
+          <div class="result-table" id="queryResult">Choose a query to see the result.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Choose the correct SQL tool</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="sort">Sorting</button>
+            <button class="tab" type="button" data-example="count">COUNT</button>
+            <button class="tab" type="button" data-example="average">AVG</button>
+            <button class="tab" type="button" data-example="group">GROUP BY</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>5-minute quiz and core checks</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair sorting and aggregate errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style practice with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about aggregate choice and GROUP BY use.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>SQL extension checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>ORDER BY</strong><span>Sort result rows; use ASC or DESC as required.</span></div>
+            <div><strong>Aggregates</strong><span>Calculate summaries: count, total, average, minimum or maximum.</span></div>
+            <div><strong>GROUP BY</strong><span>Use when the summary is needed for each group.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Query writing</strong>
+              <span>Write one query each using <code>ORDER BY</code>, <code>COUNT</code>, <code>AVG</code> and <code>GROUP BY</code> for the Book table.</span>
+            </article>
+            <article>
+              <strong>Task 2: Result tracing</strong>
+              <span>Trace the result of <code>SELECT Category, SUM(Copies) FROM Book GROUP BY Category</code> using the table on this page.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "Write SQL to show the number of books in each category." Then annotate the aggregate and grouping clauses.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

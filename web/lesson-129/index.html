@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 129 | Condition-controlled loops</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
+        <h1>Condition-controlled loops</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#while">WHILE</a>
+        <a href="#repeat">REPEAT</a>
+        <a href="#compare">Compare</a>
+        <a href="#validation">Validation</a>
+        <a href="#sentinel">Sentinel</a>
+        <a href="#java">Java support</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#simulator">Loop simulator</a>
+        <a href="#chooser">Loop chooser</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 129 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
+            <h2>Repeat while a condition says so, not because you feel optimistic.</h2>
+            <p>
+              Condition-controlled loops are used when the number of repetitions is not known in advance. A WHILE loop
+              checks before it runs; a REPEAT...UNTIL loop runs once before checking. The condition is the door guard:
+              if it never changes, the program may keep walking into the same wall.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Distinguish</strong><span>WHILE and REPEAT...UNTIL control flow</span></div>
+              <div><strong>Trace</strong><span>conditions, updates and loop exit points accurately</span></div>
+              <div><strong>Apply</strong><span>condition-controlled loops to validation and sentinel-value tasks</span></div>
+            </div>
+          </div>
+          <div class="condition-visual" aria-label="Condition-controlled loop visual">
+            <div><strong>WHILE</strong><span>check first, maybe run zero times</span></div>
+            <div><strong>REPEAT</strong><span>run first, check after</span></div>
+            <div><strong>Risk</strong><span>condition never changes</span></div>
+            <p>The loop condition is not a decoration. It is the exit plan.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Before tracing the body, ask whether the condition is checked before or after the first pass.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 often uses condition-controlled loops for validation, EOF-style reading and sentinel values.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A loop that never updates the variable in its condition is not persistent; it is stuck.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Will the loop run?</h2>
+            <p>Given <code>Password = "open"</code> and <code>CorrectPassword = "open"</code>, click the correct result.</p>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Pseudocode</h3>
+              <pre><code>WHILE Password &lt;&gt; CorrectPassword
+    OUTPUT "Try again"
+    INPUT Password
+ENDWHILE</code></pre>
+            </article>
+            <article>
+              <h3>Choose the result</h3>
+              <div class="hook-grid">
+                <button class="choice-card" type="button" data-hook="zero">runs 0 times</button>
+                <button class="choice-card" type="button" data-hook="one">runs 1 time</button>
+                <button class="choice-card" type="button" data-hook="forever">runs forever</button>
+                <button class="choice-card" type="button" data-hook="unknown">cannot tell</button>
+              </div>
+            </article>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose whether the WHILE body runs.</div>
+        </section>
+
+        <section class="panel" id="while">
+          <div class="section-title">
+            <p class="eyebrow">WHILE loop</p>
+            <h2>Pre-condition loop: check before running</h2>
+            <p>Chinese support: condition 条件, pre-condition 前置条件, termination 终止, infinite loop 死循环。</p>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>General pattern</h3>
+              <pre><code>WHILE Condition
+    // repeated statements
+    // update something used by Condition
+ENDWHILE</code></pre>
+            </article>
+            <article>
+              <h3>Password example</h3>
+              <pre><code>INPUT Password
+WHILE Password &lt;&gt; CorrectPassword
+    OUTPUT "Try again"
+    INPUT Password
+ENDWHILE
+OUTPUT "Access granted"</code></pre>
+            </article>
+          </div>
+          <div class="callout">A WHILE loop may run zero times if the condition is false before the first iteration.</div>
+        </section>
+
+        <section class="panel" id="repeat">
+          <div class="section-title">
+            <p class="eyebrow">REPEAT...UNTIL loop</p>
+            <h2>Post-condition loop: run once, then check</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>General pattern</h3>
+              <pre><code>REPEAT
+    // repeated statements
+    // update something used by Condition
+UNTIL Condition</code></pre>
+            </article>
+            <article>
+              <h3>Input validation</h3>
+              <pre><code>REPEAT
+    INPUT Mark
+UNTIL Mark &gt;= 0 AND Mark &lt;= 100</code></pre>
+            </article>
+          </div>
+          <div class="callout">REPEAT...UNTIL is useful when the body must happen at least once, such as asking for the first input.</div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">WHILE vs REPEAT</p>
+            <h2>The difference is when the condition is tested</h2>
+          </div>
+          <div class="data-table compare-table" role="table" aria-label="WHILE and REPEAT comparison">
+            <div class="table-row table-head"><div>Feature</div><div>WHILE</div><div>REPEAT...UNTIL</div></div>
+            <div class="table-row"><div>Condition checked</div><div>before the loop body</div><div>after the loop body</div></div>
+            <div class="table-row"><div>Minimum iterations</div><div>0</div><div>1</div></div>
+            <div class="table-row"><div>Continues when</div><div>condition is TRUE</div><div>UNTIL condition becomes TRUE</div></div>
+            <div class="table-row"><div>Typical use</div><div>read while not EOF, repeat while invalid</div><div>input validation where input must be requested once</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="validation">
+          <div class="section-title">
+            <p class="eyebrow">Validation pattern</p>
+            <h2>Keep asking until the input is valid</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>REPEAT version</h3>
+              <pre><code>REPEAT
+    OUTPUT "Enter mark 0 to 100"
+    INPUT Mark
+UNTIL Mark &gt;= 0 AND Mark &lt;= 100</code></pre>
+            </article>
+            <article>
+              <h3>WHILE version</h3>
+              <pre><code>INPUT Mark
+WHILE Mark &lt; 0 OR Mark &gt; 100
+    OUTPUT "Invalid"
+    INPUT Mark
+ENDWHILE</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="sentinel">
+          <div class="section-title">
+            <p class="eyebrow">Sentinel values</p>
+            <h2>A special value can stop the loop</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Total until -1</h3>
+              <pre><code>Total &lt;- 0
+INPUT Number
+WHILE Number &lt;&gt; -1
+    Total &lt;- Total + Number
+    INPUT Number
+ENDWHILE
+OUTPUT Total</code></pre>
+            </article>
+            <article>
+              <h3>Trace idea</h3>
+              <div class="data-table trace-table" role="table" aria-label="Sentinel trace">
+                <div class="table-row table-head"><div>Input</div><div>Total after step</div></div>
+                <div class="table-row"><div>4</div><div>4</div></div>
+                <div class="table-row"><div>7</div><div>11</div></div>
+                <div class="table-row"><div>-1</div><div>11, stop</div></div>
+              </div>
+            </article>
+          </div>
+          <div class="callout">The sentinel value is used to stop the loop; it should not be included in the calculation.</div>
+        </section>
+
+        <section class="panel" id="java">
+          <div class="section-title">
+            <p class="eyebrow">Java support only</p>
+            <h2>Java syntax is support, not Cambridge pseudocode</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>WHILE Mark &lt; 0 OR Mark &gt; 100
+    INPUT Mark
+ENDWHILE</code></pre>
+            </article>
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>while (mark &lt; 0 || mark &gt; 100) {
+    mark = scanner.nextInt();
+}</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>WHILE</strong><span>pre-condition loops, zero iterations, condition update, ENDWHILE</span></div>
+            <div><strong>REPEAT...UNTIL</strong><span>post-condition loops, at least one iteration, validation pattern</span></div>
+            <div><strong>Trace</strong><span>condition checks, sentinel values, stopping without processing sentinel</span></div>
+            <div><strong>Exam risks</strong><span>infinite loops, reversed conditions, missing input update and Java syntax leakage</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="simulator">
+          <div class="section-title">
+            <p class="eyebrow">Interactive loop simulator</p>
+            <h2>Trace a sentinel loop</h2>
+          </div>
+          <div class="converter-grid two-control">
+            <label for="sequenceInput">
+              Input sequence, comma-separated
+              <input id="sequenceInput" type="text" value="4,7,-1" />
+            </label>
+            <button class="primary-button" type="button" id="traceBtn">Trace</button>
+          </div>
+          <div class="trace-output" id="traceResult">Enter numbers ending in -1 to trace the loop.</div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Loop chooser</p>
+            <h2>WHILE, REPEAT or FOR?</h2>
+          </div>
+          <div class="converter-grid two-control">
+            <label for="scenarioSelect">
+              Scenario
+              <select id="scenarioSelect"></select>
+            </label>
+            <button class="primary-button" type="button" id="chooseBtn">Choose</button>
+          </div>
+          <div class="trace-output" id="chooseResult">Choose a scenario to see the most suitable loop.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Condition-controlled loops in common exam patterns</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="password">Password WHILE</button>
+            <button class="tab" type="button" data-example="mark">Mark validation</button>
+            <button class="tab" type="button" data-example="sentinel">Sentinel total</button>
+            <button class="tab" type="button" data-example="infinite">Infinite loop fix</button>
+          </div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>10 quick checks</h2>
+            <p>Use short answers for checking. Expand the answer for fuller marking wording.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Condition mistakes that trap programs</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>WHILE, REPEAT and trace logic</h2>
+            <p>Original Cambridge-style questions. Try first, then expand the MS.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Condition-controlled loop checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Check timing</strong><span>Is the condition tested before or after the body?</span></div>
+            <div><strong>Update</strong><span>Does something inside the loop change the condition?</span></div>
+            <div><strong>Stop safely</strong><span>Is the exit value handled without corrupting the result?</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Condition-controlled loop practice</h2>
+          </div>
+          <ol class="homework-list">
+            <li><strong>Validation task</strong><span>Write a REPEAT...UNTIL loop that inputs Age until it is between 0 and 120 inclusive.</span></li>
+            <li><strong>Sentinel task</strong><span>Trace a loop that totals 3, 5, 8, -1. Show each input and Total after each accepted input.</span></li>
+            <li><strong>Debug task</strong><span>Explain why a WHILE loop can become infinite if the tested variable is not updated in the body.</span></li>
+            <li><strong>Comparison task</strong><span>Write one sentence comparing WHILE, REPEAT...UNTIL and FOR for known vs unknown repetition counts.</span></li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

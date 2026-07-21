@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 057 | Compilation stages: lexical analysis to object code</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
+        <h1>Compilation stages: lexical analysis to object code</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#lexical">Lexical analysis</a>
+        <a href="#syntax">Syntax analysis</a>
+        <a href="#semantic">Semantic analysis</a>
+        <a href="#generation">Code generation</a>
+        <a href="#optimisation">Optimisation</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Stage tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 057 | 45 minutes | Paper 1 Section 5 | System software</p>
+            <h2>A compiler is not one giant button. It is a careful sequence of checks and transformations.</h2>
+            <p>
+              This lesson follows source code through the main compilation stages:
+              lexical analysis, syntax analysis, semantic analysis, code generation and optimisation.
+              The aim is to explain what each stage does and what kind of error it can detect.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Sequence</strong><span>the main stages from source code to object code</span></div>
+              <div><strong>Explain</strong><span>tokens, grammar checks, semantic checks and code generation</span></div>
+              <div><strong>Classify</strong><span>compiler errors and outputs using precise exam wording</span></div>
+            </div>
+          </div>
+          <div class="pipeline-card" aria-label="Compilation pipeline">
+            <div class="pipeline-stack">
+              <span>source code</span>
+              <span>lexical analysis</span>
+              <span>syntax analysis</span>
+              <span>semantic analysis</span>
+              <span>object code</span>
+            </div>
+            <p>Compilers are strict because processors are even stricter.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every stage, ask: what goes in, what work happens, and what comes out?</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam questions often ask students to name a stage and describe its role. Stage names alone rarely earn full marks.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not mix syntax and semantic errors. Grammar may be valid while meaning is still wrong.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>What happens first when a compiler reads <code>total = price + tax</code>?</h2>
+            <p>Click the best answer. The compiler does not begin by panicking; it tokenises first.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="tokens">Break the text into tokens.</button>
+            <button class="choice-card" type="button" data-hook="run">Run the program immediately.</button>
+            <button class="choice-card" type="button" data-hook="link">Link external libraries.</button>
+            <button class="choice-card" type="button" data-hook="load">Load the executable into memory.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. The early compiler stages inspect the source code before object code exists.
+          </div>
+        </section>
+
+        <section class="panel" id="pipeline">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>The compilation pipeline transforms source code into object code</h2>
+          </div>
+          <div class="stage-grid">
+            <article><strong>Source code</strong><span>The high-level program written by the programmer.</span></article>
+            <article><strong>Tokens</strong><span>Meaningful units such as identifiers, keywords, operators and literals.</span></article>
+            <article><strong>Checks</strong><span>The compiler checks structure and meaning before generating code.</span></article>
+            <article><strong>Object code</strong><span>Translated low-level code output by the compiler before linking/loading details.</span></article>
+          </div>
+          <div class="callout">Chinese support: lexical analysis = 词法分析；syntax analysis = 语法分析；semantic analysis = 语义分析；token = 词法单元；object code = 目标代码。</div>
+        </section>
+
+        <section class="panel" id="lexical">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Lexical analysis converts character streams into tokens</h2>
+          </div>
+          <div class="stage-grid">
+            <article><strong>Input</strong><span>Source code as a stream of characters.</span></article>
+            <article><strong>Action</strong><span>Groups characters into tokens such as identifiers, operators, constants and keywords.</span></article>
+            <article><strong>Also</strong><span>May remove unnecessary whitespace and comments.</span></article>
+            <article><strong>Errors</strong><span>Can detect invalid characters or unrecognised symbols.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="syntax">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Syntax analysis checks grammar and program structure</h2>
+          </div>
+          <div class="stage-grid">
+            <article><strong>Input</strong><span>Tokens produced by lexical analysis.</span></article>
+            <article><strong>Action</strong><span>Checks whether tokens follow the grammar rules of the language.</span></article>
+            <article><strong>Output</strong><span>May build a parse tree or syntax tree to represent structure.</span></article>
+            <article><strong>Errors</strong><span>Can detect missing brackets, invalid statement order or malformed expressions.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="semantic">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Semantic analysis checks meaning and context</h2>
+          </div>
+          <div class="stage-grid">
+            <article><strong>Meaning</strong><span>Code can be grammatically correct but still not make valid sense.</span></article>
+            <article><strong>Checks</strong><span>Type compatibility, variable declarations, scope and valid operations.</span></article>
+            <article><strong>Symbol table</strong><span>Stores information about identifiers such as names, types and locations.</span></article>
+            <article><strong>Errors</strong><span>Examples include using an undeclared variable or adding incompatible types.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="generation">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Code generation produces object code</h2>
+          </div>
+          <div class="stage-grid">
+            <article><strong>Input</strong><span>Checked intermediate representation or syntax tree.</span></article>
+            <article><strong>Action</strong><span>Generates target low-level instructions for the processor or virtual machine.</span></article>
+            <article><strong>Output</strong><span>Object code, often not yet a complete final executable.</span></article>
+            <article><strong>Boundary</strong><span>Linking external modules and loading into memory belong to the next lesson.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="optimisation">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Optimisation improves code without changing what it does</h2>
+          </div>
+          <div class="stage-grid">
+            <article><strong>Purpose</strong><span>Improve efficiency, such as speed or memory use.</span></article>
+            <article><strong>Examples</strong><span>Remove unreachable code or avoid repeated calculations.</span></article>
+            <article><strong>Rule</strong><span>The program's intended behaviour should remain the same.</span></article>
+            <article><strong>Trap</strong><span>Optimisation does not mean fixing all logic errors in the programmer's algorithm.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Compilation as a staged translation process from source code to object code.</span></div>
+            <div><strong>Covered</strong><span>Lexical analysis, tokens, syntax analysis, semantic analysis and symbol table use.</span></div>
+            <div><strong>Covered</strong><span>Code generation, optimisation and compiler error classification.</span></div>
+            <div><strong>Boundary</strong><span>Compiler/interpreter/assembler overview was covered in Lesson 056.</span></div>
+            <div><strong>Boundary</strong><span>Linkers, loaders and libraries are covered in Lesson 058.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Compilation stage selector</h2>
+            <p>Select a compiler task and identify the relevant stage.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Compiler task
+              <select id="scenarioInput">
+                <option value="tokenise">Group characters into identifiers, keywords and operators</option>
+                <option value="grammar">Check whether a statement follows language grammar</option>
+                <option value="type">Detect assigning a string to an integer variable</option>
+                <option value="symbol">Look up an identifier's declared type and scope</option>
+                <option value="target">Produce low-level target instructions</option>
+                <option value="remove">Remove unreachable code without changing output</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Classify</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Track one line through compiler stages</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="lexical">Lexical</button>
+            <button class="tab" type="button" data-example="syntax">Syntax</button>
+            <button class="tab" type="button" data-example="semantic">Semantic</button>
+            <button class="tab" type="button" data-example="codegen">Code generation</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant-check questions</h2>
+            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the almost-right answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Answer first, then reveal the CIE-style mark scheme</h2>
+            <p>These are original Cambridge-style questions. The mark schemes include strict wording notes and follow-through guidance.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Compilation memory map</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Lexical</strong><span>Characters to tokens; removes comments/extra whitespace.</span></div>
+            <div><strong>Syntax</strong><span>Checks grammar and may build a parse tree.</span></div>
+            <div><strong>Semantic</strong><span>Checks meaning, types, declarations and scope.</span></div>
+            <div><strong>Symbol table</strong><span>Stores identifier information for compiler checks.</span></div>
+            <div><strong>Code generation</strong><span>Produces object/target code.</span></div>
+            <div><strong>Optimisation</strong><span>Improves efficiency without changing behaviour.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear output, not vague revision</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Stage table</strong>
+              <span>Create a table for lexical, syntax, semantic, code generation and optimisation: input, action, output/error.</span>
+            </article>
+            <article>
+              <strong>Task 2: Error classification</strong>
+              <span>Classify five errors as lexical, syntax or semantic, and justify each classification in one sentence.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Explain how a compiler can process source code and produce object code. Use the words token, grammar, semantic and object code.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

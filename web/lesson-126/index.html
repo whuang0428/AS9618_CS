@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 126 | Programming constructs: sequence, selection and iteration</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
+        <h1>Programming constructs: sequence, selection and iteration</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#constructs">Constructs</a>
+        <a href="#sequence">Sequence</a>
+        <a href="#selection">Selection</a>
+        <a href="#iteration">Iteration</a>
+        <a href="#trace">Trace method</a>
+        <a href="#java">Java support</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#tracer">Interactive trace</a>
+        <a href="#classifier">Classifier</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 126 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
+            <h2>Programs do three basic things: go next, choose, and repeat.</h2>
+            <p>
+              Sequence runs statements in order. Selection chooses between paths. Iteration repeats a block while a
+              condition or count controls it. That sounds small, until one missing ENDIF turns a calm algorithm into a
+              drama production with variables.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>sequence, selection and iteration in Cambridge pseudocode</span></div>
+              <div><strong>Trace</strong><span>variable values through control flow using test data</span></div>
+              <div><strong>Write</strong><span>clear pseudocode without leaking Java syntax into exam answers</span></div>
+            </div>
+          </div>
+          <div class="construct-visual" aria-label="Programming construct visual">
+            <div><strong>Sequence</strong><span>Line 1, then Line 2</span></div>
+            <div><strong>Selection</strong><span>IF condition THEN</span></div>
+            <div><strong>Iteration</strong><span>FOR / WHILE / REPEAT</span></div>
+            <p>Control flow is the route map. The computer is very literal and has no scenic instincts.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask students to point to the condition before explaining a selection or loop.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Most Paper 2 algorithm questions combine these constructs, then test whether students can trace them accurately.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not describe every repeated action as iteration unless there is a controlling condition or count.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Find the tiny bug before it gets promoted</h2>
+            <p>The pseudocode is meant to output Pass when Mark is at least 50. Which line causes the wrong boundary result?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="input">INPUT Mark</button>
+            <button class="choice-card" type="button" data-hook="condition">IF Mark &gt; 50 THEN</button>
+            <button class="choice-card" type="button" data-hook="output">OUTPUT "Pass"</button>
+            <button class="choice-card" type="button" data-hook="endif">ENDIF</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the line that fails when Mark is exactly 50.</div>
+        </section>
+
+        <section class="panel" id="constructs">
+          <div class="section-title">
+            <p class="eyebrow">Core constructs</p>
+            <h2>Three control-flow ideas</h2>
+            <p>Chinese support: sequence 顺序执行, selection 选择结构, iteration 重复/循环结构, trace 跟踪变量值。</p>
+          </div>
+          <div class="data-table construct-table" role="table" aria-label="Programming constructs">
+            <div class="table-row table-head" role="row"><div>Construct</div><div>Question it answers</div><div>Pseudocode clue</div><div>Typical error</div></div>
+            <div class="table-row" role="row"><div>Sequence</div><div>What happens next?</div><div>statements listed one after another</div><div>wrong order of assignment</div></div>
+            <div class="table-row" role="row"><div>Selection</div><div>Which path is taken?</div><div>IF...THEN...ELSE...ENDIF, CASE</div><div>boundary condition wrong</div></div>
+            <div class="table-row" role="row"><div>Iteration</div><div>How many times does this repeat?</div><div>FOR, WHILE, REPEAT...UNTIL</div><div>infinite loop or off-by-one</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="sequence">
+          <div class="section-title">
+            <p class="eyebrow">Sequence</p>
+            <h2>Order changes meaning</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Correct order</h3>
+              <pre><code>INPUT Price
+INPUT Quantity
+Total &lt;- Price * Quantity
+OUTPUT Total</code></pre>
+            </article>
+            <article>
+              <h3>Wrong order</h3>
+              <pre><code>Total &lt;- Price * Quantity
+INPUT Price
+INPUT Quantity
+OUTPUT Total</code></pre>
+            </article>
+          </div>
+          <div class="callout">A sequence is simple, but not optional. Using a value before it has been input is algorithmic optimism, not a method.</div>
+        </section>
+
+        <section class="panel" id="selection">
+          <div class="section-title">
+            <p class="eyebrow">Selection</p>
+            <h2>Conditions decide the path</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>IF selection</h3>
+              <pre><code>INPUT Mark
+IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit needed"
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>CASE selection</h3>
+              <pre><code>CASE Grade OF
+    "A" : OUTPUT "Excellent"
+    "B" : OUTPUT "Good"
+    OTHERWISE OUTPUT "Check grade"
+ENDCASE</code></pre>
+            </article>
+          </div>
+          <div class="callout">Boundary tests matter: Mark = 49, 50 and 51 reveal whether the condition is correct.</div>
+        </section>
+
+        <section class="panel" id="iteration">
+          <div class="section-title">
+            <p class="eyebrow">Iteration</p>
+            <h2>Loops repeat with control</h2>
+          </div>
+          <div class="data-table loop-table" role="table" aria-label="Loop types">
+            <div class="table-row table-head" role="row"><div>Loop</div><div>Use when</div><div>Condition checked</div><div>Risk</div></div>
+            <div class="table-row" role="row"><div>FOR</div><div>number of repetitions is known</div><div>by counter range</div><div>wrong start/end value</div></div>
+            <div class="table-row" role="row"><div>WHILE</div><div>may repeat zero or more times</div><div>before each iteration</div><div>condition never changes</div></div>
+            <div class="table-row" role="row"><div>REPEAT...UNTIL</div><div>must run at least once</div><div>after each iteration</div><div>stops on the wrong condition</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Trace method</p>
+            <h2>Trace values, not vibes</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Pseudocode to trace</h3>
+              <pre><code>Total &lt;- 0
+FOR Count &lt;- 1 TO 3
+    Total &lt;- Total + Count
+NEXT Count
+OUTPUT Total</code></pre>
+            </article>
+            <article>
+              <h3>Trace table</h3>
+              <div class="data-table trace-table" role="table" aria-label="Trace table">
+                <div class="table-row table-head"><div>Count</div><div>Total after update</div></div>
+                <div class="table-row"><div>1</div><div>1</div></div>
+                <div class="table-row"><div>2</div><div>3</div></div>
+                <div class="table-row"><div>3</div><div>6</div></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="java">
+          <div class="section-title">
+            <p class="eyebrow">Java support only</p>
+            <h2>Same logic, different exam language</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit needed"
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>if (mark &gt;= 50) {
+    System.out.println("Pass");
+} else {
+    System.out.println("Resit needed");
+}</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Sequence</strong><span>statements executed in order, inputs before calculations, assignment order</span></div>
+            <div><strong>Selection</strong><span>IF/ELSE, CASE, conditions, comparison operators, boundary tests</span></div>
+            <div><strong>Iteration</strong><span>FOR, WHILE, REPEAT UNTIL, loop control, trace tables and off-by-one errors</span></div>
+            <div><strong>Paper 2 style</strong><span>Cambridge pseudocode first; Java is labelled as support only</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="tracer">
+          <div class="section-title">
+            <p class="eyebrow">Interactive trace</p>
+            <h2>Run a small loop by hand</h2>
+          </div>
+          <div class="converter-grid">
+            <label for="loopLimit">
+              FOR Count &lt;- 1 TO
+              <select id="loopLimit">
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="traceBtn">Trace</button>
+          </div>
+          <div class="trace-output" id="traceResult">Choose a loop limit to build a trace table.</div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Construct classifier</p>
+            <h2>Which construct is being tested?</h2>
+          </div>
+          <div class="converter-grid">
+            <label for="constructSelect">
+              Scenario
+              <select id="constructSelect"></select>
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+          </div>
+          <div class="trace-output" id="classifyResult">Choose a scenario and classify it.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From construct to exam answer</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="sequence">Sequence</button>
+            <button class="tab" type="button" data-example="selection">Selection</button>
+            <button class="tab" type="button" data-example="forLoop">FOR loop</button>
+            <button class="tab" type="button" data-example="whileLoop">WHILE loop</button>
+          </div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>10 quick checks</h2>
+            <p>Give the key term or output. Use Show answer for the full marking wording.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Small control-flow mistakes, large exam consequences</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Constructs, tracing and correction</h2>
+            <p>Original Cambridge-style questions. Attempt first, then expand the MS.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>The control-flow checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Sequence</strong><span>Do statements happen in the required order?</span></div>
+            <div><strong>Selection</strong><span>Does the condition send each test case down the correct path?</span></div>
+            <div><strong>Iteration</strong><span>Does the loop start, stop and update correctly?</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Control-flow practice</h2>
+          </div>
+          <ol class="homework-list">
+            <li><strong>Trace task</strong><span>Trace a FOR loop that totals the numbers 1 to 5. Show Count and Total after each iteration.</span></li>
+            <li><strong>Boundary task</strong><span>Write an IF statement for a pass mark of 50, then test it with 49, 50 and 51.</span></li>
+            <li><strong>Loop choice</strong><span>Write one scenario where FOR is better than WHILE, and one where WHILE is better than FOR.</span></li>
+            <li><strong>Pseudocode vs Java</strong><span>Write one selection in Cambridge pseudocode and then one Java support version. Label the Java version clearly as support only.</span></li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

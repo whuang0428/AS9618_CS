@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 041 | CPU architecture: ALU, CU, registers, buses and clock</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
+        <h1>CPU architecture: ALU, CU, registers, buses and clock</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#architecture">CPU architecture</a>
+        <a href="#alu-cu">ALU and CU</a>
+        <a href="#registers">Registers, buses, clock</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">CPU mapper</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 041 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
+            <h2>The CPU is not one magic chip doing everything by vibes.</h2>
+            <p>
+              A processor works because specialised parts cooperate: the ALU performs calculations
+              and logical operations, the CU coordinates activity, registers hold tiny but fast
+              working values, buses move signals, and the clock keeps timing organised.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Describe</strong><span>the roles of ALU, CU, registers, buses and clock</span></div>
+              <div><strong>Distinguish</strong><span>CPU components from memory and storage</span></div>
+              <div><strong>Apply</strong><span>component roles to Cambridge-style explanations</span></div>
+            </div>
+          </div>
+          <div class="cpu-card" aria-label="CPU architecture sketch">
+            <div class="cpu-shell">
+              <span class="chip-title">CPU</span>
+              <div class="chip-row">
+                <span>CU</span>
+                <span>ALU</span>
+              </div>
+              <div class="register-strip">registers</div>
+              <div class="bus-strip">data bus | address bus | control bus</div>
+              <div class="clock-pulse">clock ticks: 1, 2, 3...</div>
+            </div>
+            <p>Cambridge answers need roles, not decorative labels.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use a simple job analogy, then leave it quickly: CPU parts are not people; marks come from exact computer roles.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Section 4 questions often reward precise verbs: calculates, coordinates, stores temporarily, transfers, synchronises.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Students write "the CPU stores data". Better: registers temporarily hold data or instructions currently being processed.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A computer adds 23 and 19. Which CPU part deserves the credit?</h2>
+            <p>Click a component. The joke: if every part says "I did the maths", the ALU files a very formal complaint.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="alu">ALU</button>
+            <button class="choice-card" type="button" data-hook="cu">CU</button>
+            <button class="choice-card" type="button" data-hook="register">Register</button>
+            <button class="choice-card" type="button" data-hook="bus">Bus</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click one. Your answer should name a role, not just a component.
+          </div>
+        </section>
+
+        <section class="panel" id="architecture">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>CPU architecture is about cooperating parts</h2>
+          </div>
+          <div class="architecture-grid">
+            <article>
+              <strong>Processor / CPU</strong>
+              <span>The hardware that executes instructions. It is inside the computer system, but it is not the same as RAM or secondary storage.</span>
+            </article>
+            <article>
+              <strong>Internal components</strong>
+              <span>The ALU, CU and registers are inside the CPU and are involved in processing instructions.</span>
+            </article>
+            <article>
+              <strong>Connections</strong>
+              <span>Buses provide pathways for data, addresses and control signals between CPU, memory and other components.</span>
+            </article>
+            <article>
+              <strong>Timing</strong>
+              <span>The clock provides regular pulses so CPU operations occur in a synchronised order.</span>
+            </article>
+          </div>
+          <div class="callout">Chinese support: architecture = 结构/体系结构；processor = 处理器；component = 组成部分；synchronise = 同步。</div>
+        </section>
+
+        <section class="panel" id="alu-cu">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>ALU and CU: do not swap their jobs</h2>
+          </div>
+          <div class="compare-table" role="table" aria-label="ALU and CU comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Component</div>
+              <div role="columnheader">Full name</div>
+              <div role="columnheader">Role</div>
+              <div role="columnheader">Exam-safe wording</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">ALU</div>
+              <div role="cell">Arithmetic Logic Unit</div>
+              <div role="cell">Performs arithmetic calculations and logical operations.</div>
+              <div role="cell">The ALU performs addition, subtraction and comparisons such as AND/OR or greater-than tests.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">CU</div>
+              <div role="cell">Control Unit</div>
+              <div role="cell">Coordinates CPU activity and issues control signals.</div>
+              <div role="cell">The CU decodes instructions and controls the sequence of operations in the fetch-decode-execute cycle.</div>
+            </div>
+          </div>
+          <div class="trap-card inline-card">
+            <h3>Common trap</h3>
+            <p>"The CU calculates" is wrong. The CU controls; the ALU calculates. The CU is the traffic controller, not the calculator.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="registers">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Registers, buses and clock</h2>
+          </div>
+          <div class="component-grid">
+            <article>
+              <h3>Registers</h3>
+              <p>Registers are small, very fast storage locations inside the CPU. They temporarily hold data, instructions, addresses or intermediate results while processing takes place.</p>
+              <p class="mini-note">Specific registers such as PC, MAR, MDR and CIR are handled more deeply in later lessons.</p>
+            </article>
+            <article>
+              <h3>Data bus</h3>
+              <p>Carries data and instructions between the CPU, memory and other components. It is about the value being transferred.</p>
+            </article>
+            <article>
+              <h3>Address bus</h3>
+              <p>Carries the memory address that identifies where data or an instruction should be read from or written to.</p>
+            </article>
+            <article>
+              <h3>Control bus</h3>
+              <p>Carries control signals such as read, write, interrupt and timing signals between CPU and other components.</p>
+            </article>
+            <article>
+              <h3>Clock</h3>
+              <p>Produces regular pulses used to synchronise CPU operations. Clock speed is measured in hertz, often GHz for modern processors.</p>
+            </article>
+            <article>
+              <h3>Performance caution</h3>
+              <p>A higher clock speed may allow more cycles per second, but performance also depends on architecture, cache, cores, instruction type and memory access.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers and deliberately leaves for later</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purpose of ALU, CU, registers, buses and clock in CPU architecture.</span></div>
+            <div><strong>Covered</strong><span>Data bus, address bus and control bus roles.</span></div>
+            <div><strong>Covered</strong><span>Clock speed as timing, plus the warning that it is not the only performance factor.</span></div>
+            <div><strong>Light preview</strong><span>PC, CIR, MAR, MDR and ACC are named as registers only; detailed roles come later.</span></div>
+            <div><strong>Not this lesson</strong><span>The full fetch-decode-execute cycle and interrupt handling are covered in following Section 4 lessons.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>CPU component mapper</h2>
+            <p>Select a CPU architecture item and read the role, a mark-worthy sentence and the likely trap.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Component
+              <select id="componentInput">
+                <option value="alu">ALU</option>
+                <option value="cu">Control unit</option>
+                <option value="register">Register</option>
+                <option value="dataBus">Data bus</option>
+                <option value="addressBus">Address bus</option>
+                <option value="controlBus">Control bus</option>
+                <option value="clock">Clock</option>
+              </select>
+            </label>
+            <button type="button" id="mapBtn">Map role</button>
+          </div>
+          <div class="result-box" id="mapResult" aria-live="polite"></div>
+          <div class="method-box" id="mapSentence"></div>
+          <div class="reject-box" id="mapTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Build answers from exact component roles</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="identify">Identify</button>
+            <button class="tab" type="button" data-example="add">ADD instruction</button>
+            <button class="tab" type="button" data-example="clock">Clock speed</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+            <p>Use exact terms. "Thingy inside the CPU" is not an exam technique, even if the thingy is emotionally important.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the wording before it loses marks</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeList"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>CIE-style questions with expandable mark schemes</h2>
+            <p>These are original questions written in Cambridge style. Mark schemes are strict about roles and wording.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>One CPU, several specialised jobs</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>ALU</strong><span>Performs arithmetic and logical operations.</span></div>
+            <div><strong>CU</strong><span>Coordinates activity, decodes instructions and sends control signals.</span></div>
+            <div><strong>Registers</strong><span>Hold small, fast, temporary values inside the CPU.</span></div>
+            <div><strong>Buses</strong><span>Move data, addresses and control signals.</span></div>
+            <div><strong>Clock</strong><span>Synchronises operations using regular pulses.</span></div>
+            <div><strong>Exam habit</strong><span>Name the component, state its role, link it to the scenario.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Make the architecture answer-ready</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Draw a labelled CPU architecture diagram showing ALU, CU, registers, data bus, address bus, control bus and clock.</li>
+            <li>Write a 6-mark answer: "Describe the roles of three buses in a computer system."</li>
+            <li>Explain in 4-5 sentences why registers are used instead of repeatedly accessing RAM for every tiny working value.</li>
+            <li>Rewrite this weak sentence into a mark-worthy answer: "The ALU controls the CPU and the CU does maths."</li>
+            <li>Create five flashcards: ALU, CU, register, bus, clock. Each card must include English term, Chinese support and one exam-safe sentence.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

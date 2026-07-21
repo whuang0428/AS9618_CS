@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 004 | Binary addition, carries and overflow</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
+        <h1>Binary addition, carries and overflow</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#rules">Rules</a>
+        <a href="#method">Method</a>
+        <a href="#overflow">Overflow</a>
+        <a href="#adder">Adder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 004 | 45 minutes | Informal questioning</p>
+            <h2>Binary addition is column addition with stricter carrying.</h2>
+            <p>
+              This lesson adds unsigned 8-bit binary values, tracks carries, and explains overflow
+              when the true result cannot fit in 8 bits.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div>
+                <strong>Add</strong>
+                <span>two unsigned 8-bit binary values using column addition</span>
+              </div>
+              <div>
+                <strong>Track</strong>
+                <span>carry bits from one column to the next</span>
+              </div>
+              <div>
+                <strong>Explain</strong>
+                <span>overflow as a fixed-width storage problem, not just a scary word</span>
+              </div>
+            </div>
+          </div>
+          <div class="binary-display" aria-label="Binary addition focus">
+            <span>11001010₂<br />+ 01110101₂</span>
+            <p>What happens to the ninth bit?</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Start from the rightmost bit. Carries move left, never right.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam answers often need both the binary result and a clear overflow explanation.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Overflow in this lesson is unsigned 8-bit overflow. Signed overflow belongs later.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>If an 8-bit box is full, where does the ninth bit go?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="ignored">It is ignored safely</button>
+            <button class="choice-card" type="button" data-hook="overflow">It causes overflow</button>
+            <button class="choice-card" type="button" data-hook="negative">It means the result is negative</button>
+            <button class="choice-card" type="button" data-hook="hex">It must be converted to hex</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick an answer. The box has exactly eight bit positions.
+          </div>
+        </section>
+
+        <section class="panel" id="rules">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Single-bit addition rules</h2>
+          </div>
+          <div class="rule-grid">
+            <article><strong>0 + 0</strong><span>sum 0, carry 0</span></article>
+            <article><strong>0 + 1</strong><span>sum 1, carry 0</span></article>
+            <article><strong>1 + 0</strong><span>sum 1, carry 0</span></article>
+            <article><strong>1 + 1</strong><span>sum 0, carry 1</span></article>
+            <article><strong>1 + 1 + carry 1</strong><span>sum 1, carry 1</span></article>
+          </div>
+          <div class="callout">In binary, `1 + 1 = 10₂`: write 0 in the current column and carry 1 left.</div>
+        </section>
+
+        <section class="panel" id="method">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>8-bit addition method</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Column method</h3>
+              <ol>
+                <li>Align the two 8-bit values.</li>
+                <li>Start at the rightmost bit.</li>
+                <li>Add the two bits and any carry-in.</li>
+                <li>Write the result bit; carry 1 left if the column total is 2 or 3.</li>
+                <li>After the leftmost bit, check whether there is a carry-out.</li>
+              </ol>
+            </article>
+            <article>
+              <h3>Exam discipline</h3>
+              <ol>
+                <li>Show the carry row or annotate carried bits.</li>
+                <li>Give the 8-bit result if the question asks for 8-bit addition.</li>
+                <li>State whether overflow occurs.</li>
+                <li>Explain overflow using range or carry-out, not vague "too big".</li>
+              </ol>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="overflow">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Unsigned 8-bit overflow</h2>
+          </div>
+          <div class="overflow-grid">
+            <article>
+              <h3>Range</h3>
+              <p class="range-value">00000000₂ to 11111111₂ = 0 to 255</p>
+              <p>An unsigned 8-bit result cannot store a value above 255.</p>
+            </article>
+            <article>
+              <h3>Carry-out</h3>
+              <p class="range-value">11110000₂ + 00010000₂ = 1 00000000₂</p>
+              <p>The ninth bit is a carry-out beyond the 8-bit storage width.</p>
+            </article>
+            <article>
+              <h3>Boundary warning</h3>
+              <p class="range-value">01111111₂ + 00000001₂ = 10000000₂</p>
+              <p>No unsigned overflow: the result is 128, which still fits in 8 bits.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="guidance-grid compact" aria-label="Overflow guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use denary range only as a check. The working should still show binary addition.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not say every carry means overflow. Carries inside the 8-bit result are normal.</p>
+          </article>
+        </section>
+
+        <section class="panel interactive" id="adder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>8-bit binary adder</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              First 8-bit value
+              <input id="addA" type="text" value="00110101" />
+            </label>
+            <label>
+              Second 8-bit value
+              <input id="addB" type="text" value="00010110" />
+            </label>
+            <button type="button" id="addBtn">Add</button>
+          </div>
+          <div class="result-box" id="addResult" aria-live="polite"></div>
+          <div class="method-box" id="addMethod"></div>
+          <div class="addition-visual" id="additionVisual" aria-label="Binary addition visual"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="fit">Fits in 8 bits</button>
+            <button class="tab" type="button" data-example="overflow">Overflow example</button>
+            <button class="tab" type="button" data-example="boundary">Boundary example</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button type="button" id="checkPractice">Check answers</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel mistake-panel">
+          <div class="section-title">
+            <p class="eyebrow">Debug the mistakes</p>
+            <h2>Find the trap, fix the answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <h3>Mistake 1</h3>
+              <p class="wrong">00110101₂ + 00010110₂ = 01001001₂</p>
+              <button type="button" class="reveal" data-reveal="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">Correct result is `01001011₂`. The student lost a carry in the low-order columns.</p>
+            </article>
+            <article>
+              <h3>Mistake 2</h3>
+              <p class="wrong">01111111₂ + 00000001₂ overflows because the leftmost bit becomes 1</p>
+              <button type="button" class="reveal" data-reveal="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">For unsigned 8-bit addition, `10000000₂ = 128`, so it still fits. No carry-out means no unsigned overflow.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Past-paper style</p>
+            <h2>Original exam-style questions</h2>
+          </div>
+          <div class="exam-grid" id="examGrid"></div>
+          <p class="source-note">
+            These are original Cambridge-style questions, not copied Cambridge past paper text.
+            Use the buttons under each question to expand the CIE-style mark scheme.
+          </p>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What must survive until the exam?</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>Add from right to left and carry left when the column total is 2 or 3.</span></div>
+            <div><strong>2</strong><span>A carry inside the byte is normal; a ninth carry-out means unsigned overflow.</span></div>
+            <div><strong>3</strong><span>8-bit unsigned values can represent only 0 to 255.</span></div>
+          </div>
+          <div class="exit-ticket">
+            <label for="exitTicket">Exit ticket</label>
+            <textarea id="exitTicket" rows="3" placeholder="The key point about binary addition is..., and a common mistake is..."></textarea>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks, not vague revision</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Add and state whether overflow occurs: `00101101₂ + 00011011₂`.</li>
+            <li>Add and state whether overflow occurs: `11110000₂ + 00010000₂`.</li>
+            <li>Add and state whether overflow occurs: `11001010₂ + 01110101₂`.</li>
+            <li>Write a 4-mark explanation of why an internal carry is not the same as overflow.</li>
+          </ol>
+        </section>
+
+        <section class="panel homework-support">
+          <div class="section-title">
+            <p class="eyebrow">Homework support</p>
+            <h2>Check only after attempting</h2>
+          </div>
+          <button
+            type="button"
+            class="reveal"
+            data-reveal="homeworkAnswers"
+            data-open-label="Show homework answers"
+            data-close-label="Hide homework answers"
+          >
+            Show homework answers
+          </button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Answers:</strong> `00101101₂ + 00011011₂ = 01001000₂`, no overflow; `11110000₂ + 00010000₂ = 00000000₂` with carry-out, overflow; `11001010₂ + 01110101₂ = 00111111₂` with carry-out, overflow.</p>
+            <p><strong>Explanation focus:</strong> internal carries are used to calculate later columns; overflow occurs only when the true result exceeds the 8-bit unsigned range or produces a carry-out beyond the leftmost bit.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

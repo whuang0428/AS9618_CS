@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 016 | Network purposes, LAN, WAN and topologies</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
+        <h1>Network purposes, LAN, WAN and topologies</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#purpose">Purpose</a>
+        <a href="#lanwan">LAN vs WAN</a>
+        <a href="#topologies">Topologies</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Topology tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 016 | 45 minutes | Paper 1 Section 2</p>
+            <h2>A network is not just “Wi-Fi exists”.</h2>
+            <p>
+              A network connects devices so they can communicate and share resources.
+              Today we separate purpose, scale and structure: why a network exists,
+              whether it is a LAN or WAN, and how topology affects cost, performance
+              and fault tolerance.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Explain</strong><span>the purposes and advantages of computer networks</span></div>
+              <div><strong>Compare</strong><span>LAN and WAN using ownership, geography and infrastructure</span></div>
+              <div><strong>Evaluate</strong><span>bus, star, mesh and ring topology choices for scenarios</span></div>
+            </div>
+          </div>
+          <div class="network-card" aria-label="Network concept">
+            <span>device -> link -> device</span>
+            <p>When the link breaks, the excuses become very specific.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make every comparison use a basis: coverage area, ownership, cost, fault tolerance or performance.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Network questions often look descriptive, but marks come from precise distinctions and scenario-linked consequences.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>LAN does not mean “small and wireless”. LAN means a local network, usually privately owned within a limited area.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>The classroom printer is shared by 24 computers. What is the actual network purpose?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="resource">Sharing a resource</button>
+            <button class="choice-card" type="button" data-hook="wan">Creating a WAN</button>
+            <button class="choice-card" type="button" data-hook="protocol">Replacing protocols</button>
+            <button class="choice-card" type="button" data-hook="mesh">Using mesh topology</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick the purpose first. The printer is not being dramatic; it is simply a shared resource.
+          </div>
+        </section>
+
+        <section class="panel" id="purpose">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Why networks are used</h2>
+          </div>
+          <div class="purpose-grid">
+            <article>
+              <h3>Communication</h3>
+              <p>Users and devices exchange data, messages, files and requests.</p>
+            </article>
+            <article>
+              <h3>Resource sharing</h3>
+              <p>Printers, storage, internet connections and software can be shared instead of duplicated.</p>
+            </article>
+            <article>
+              <h3>Central management</h3>
+              <p>Accounts, permissions, backups and updates can be controlled from central systems.</p>
+            </article>
+            <article>
+              <h3>Collaboration</h3>
+              <p>Multiple users can work with shared files or services, sometimes at the same time.</p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: resource sharing = 资源共享；central management = 集中管理；collaboration = 协作。</div>
+        </section>
+
+        <section class="panel" id="lanwan">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>LAN vs WAN</h2>
+          </div>
+          <div class="compare-table" role="table" aria-label="LAN and WAN comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Feature</div>
+              <div role="columnheader">LAN</div>
+              <div role="columnheader">WAN</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Area</div>
+              <div role="cell">Limited area, such as a room, building or school site.</div>
+              <div role="cell">Large geographical area, such as cities, countries or continents.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Ownership</div>
+              <div role="cell">Usually owned and managed by one organisation or individual.</div>
+              <div role="cell">Often uses infrastructure from telecommunications providers.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Example</div>
+              <div role="cell">A school network connecting classrooms and servers.</div>
+              <div role="cell">A bank connecting branches in different countries.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="topologies">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Network topologies</h2>
+          </div>
+          <div class="topology-grid">
+            <article>
+              <div class="topology-icon bus"><span></span><span></span><span></span></div>
+              <h3>Bus</h3>
+              <p>Devices share one backbone cable. Cheap, but the backbone can become a bottleneck or single point of failure.</p>
+            </article>
+            <article>
+              <div class="topology-icon star"><span></span><span></span><span></span><span></span></div>
+              <h3>Star</h3>
+              <p>Devices connect to a central switch or hub. Easy to add devices, but central device failure affects the network.</p>
+            </article>
+            <article>
+              <div class="topology-icon mesh"><span></span><span></span><span></span><span></span></div>
+              <h3>Mesh</h3>
+              <p>Devices have multiple paths between them. Reliable and fault tolerant, but expensive and complex to install.</p>
+            </article>
+            <article>
+              <div class="topology-icon ring"><span></span><span></span><span></span><span></span></div>
+              <h3>Ring</h3>
+              <p>Devices are connected in a loop. Data travels around the ring; a break may disrupt communication unless bypassed.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purposes and benefits of networking: communication, resource sharing and management.</span></div>
+            <div><strong>Covered</strong><span>LAN and WAN distinctions using area, ownership and examples.</span></div>
+            <div><strong>Covered</strong><span>Common topologies and scenario-based advantages/disadvantages.</span></div>
+            <div><strong>Boundary</strong><span>Packet switching, protocols and addressing are introduced lightly and handled in later lessons.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Topology recommendation helper</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="school">School computer room</option>
+                <option value="temporary">Temporary lab with very low budget</option>
+                <option value="critical">Hospital monitoring network</option>
+                <option value="branches">Company branches in several countries</option>
+              </select>
+            </label>
+            <button type="button" id="recommendBtn">Recommend</button>
+          </div>
+          <div class="result-box" id="recommendResult" aria-live="polite"></div>
+          <div class="method-box" id="recommendMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="lan">LAN vs WAN</button>
+            <button class="tab" type="button" data-example="star">Star topology</button>
+            <button class="tab" type="button" data-example="mesh">Mesh topology</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak network answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">“A WAN is just a bigger LAN.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">A WAN covers a large geographical area and often uses telecommunications provider infrastructure; a LAN is local and usually privately managed.</p>
+            </article>
+            <article>
+              <p class="wrong">“Star topology is always best because it is modern.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">Star topology is useful because devices connect through a central switch, making faults easier to isolate; however, the central switch is a potential single point of failure.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. The wording matters: name the network feature and link it to the scenario.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Network answers need a comparison basis</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>Networks support communication, resource sharing, collaboration and central management.</span></div>
+            <div><strong>2</strong><span>LAN and WAN differ by geographical area, ownership and infrastructure.</span></div>
+            <div><strong>3</strong><span>Topology affects cost, installation, performance and fault tolerance.</span></div>
+            <div><strong>4</strong><span>Scenario answers must explain cause and consequence, not just name a topology.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write two precise differences between a LAN and a WAN. Include one example of each.</li>
+            <li>For a school computer room, choose a suitable topology and justify it with two reasons.</li>
+            <li>For a hospital monitoring system, explain why fault tolerance may be important.</li>
+            <li>Create a four-row comparison table for bus, star, mesh and ring topology.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>LAN/WAN:</strong> use area and ownership/infrastructure, not only "small" and "large".</p>
+            <p><strong>School room:</strong> star is often suitable because devices connect through a switch and faults are easier to isolate.</p>
+            <p><strong>Hospital:</strong> fault tolerance matters because loss of communication could affect patient monitoring.</p>
+            <p><strong>Topology table:</strong> each row should include structure, one advantage and one disadvantage.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

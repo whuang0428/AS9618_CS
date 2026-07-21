@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 078 | Data, information, databases and DBMS roles</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
+        <h1>Data, information, databases and DBMS roles</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#data-info">Data vs information</a>
+        <a href="#database">Database</a>
+        <a href="#dbms">DBMS roles</a>
+        <a href="#terms">Core terms</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#sorter">Concept sorter</a>
+        <a href="#scenario">DBMS selector</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 078 | 45 minutes | Paper 1 Section 8 | Database concepts</p>
+            <h2>A database is not a magic spreadsheet. It is organised data with rules, tools and a bouncer at the door.</h2>
+            <p>
+              This lesson starts Section 8 by separating raw data from useful information, defining a database,
+              and explaining what a Database Management System (DBMS) provides. The focus is exam wording:
+              what the system stores, what the DBMS controls, and why this improves reliability.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Distinguish</strong><span>data, information, database and DBMS</span></div>
+              <div><strong>Describe</strong><span>records, fields, tables/entities at an introductory level</span></div>
+              <div><strong>Explain</strong><span>DBMS roles such as dictionary, security, integrity and query processing</span></div>
+            </div>
+          </div>
+          <div class="db-stack" aria-label="Database stack">
+            <div class="stack-layer">Users and applications</div>
+            <div class="stack-layer accent">DBMS</div>
+            <div class="stack-grid">
+              <span>data dictionary</span>
+              <span>query processor</span>
+              <span>access rights</span>
+              <span>backup</span>
+            </div>
+            <div class="stack-layer">Database</div>
+            <p>Chinese support: DBMS = 数据库管理系统，不是数据库本身。</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>When a sentence says "the database does...", check whether it really means the DBMS. That distinction saves marks.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Section 8 answers need exact vocabulary. "It stores data" is often too thin; the exam asks what structure or DBMS feature solves the problem.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A spreadsheet file can store data, but calling every table a database does not explain management, integrity, security or querying.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A school has 700 rows of attendance marks. Which item is information?</h2>
+            <p>Raw marks are ingredients. Information is the meal. Please do not serve uncooked commas.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="raw">09:00, A, S0234, Mon</button>
+            <button class="choice-card" type="button" data-hook="field">AttendanceStatus</button>
+            <button class="choice-card" type="button" data-hook="info">12% of Year 12 students were absent on Monday</button>
+            <button class="choice-card" type="button" data-hook="dbms">The query processor checks a SELECT statement</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Ask: has the raw data been processed into meaning?
+          </div>
+        </section>
+
+        <section class="panel" id="data-info">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Data vs information</h2>
+            <p>Data is raw facts and values. Information is data that has been processed, organised or interpreted so it has meaning.</p>
+          </div>
+          <div class="data-flow">
+            <article>
+              <strong>Raw data</strong>
+              <span><code>BookID=B144</code>, <code>DueDate=2026-06-20</code>, <code>Returned=FALSE</code></span>
+            </article>
+            <article>
+              <strong>Processing</strong>
+              <span>compare due date, filter not returned, group by student</span>
+            </article>
+            <article>
+              <strong>Information</strong>
+              <span>"Amira has two overdue books and needs a reminder."</span>
+            </article>
+          </div>
+          <div class="info-table" role="table" aria-label="Data and information examples">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Context</div>
+              <div role="columnheader">Data</div>
+              <div role="columnheader">Information</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Library</div>
+              <div role="cell">Loan dates, student IDs, book IDs</div>
+              <div role="cell">Which students have overdue loans</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Clinic</div>
+              <div role="cell">Temperatures, appointment times, patient IDs</div>
+              <div role="cell">Patients needing urgent triage</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Online shop</div>
+              <div role="cell">Product IDs, basket items, prices, timestamps</div>
+              <div role="cell">Best-selling product this week</div>
+            </div>
+          </div>
+          <div class="callout">Chinese support: data = 原始事实；information = 被处理后有意义的信息。Exam answers should state the processing or meaning.</div>
+        </section>
+
+        <section class="panel" id="database">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>What is a database?</h2>
+            <p>A database is an organised collection of related data that can be stored, retrieved and updated.</p>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Organised</strong><span>Data is arranged using defined structures, not random notes in one giant document.</span></article>
+            <article><strong>Related</strong><span>Records are connected by a shared context, such as students, books and loans.</span></article>
+            <article><strong>Retrievable</strong><span>Users can search, filter and query the data to produce information.</span></article>
+            <article><strong>Maintainable</strong><span>Data can be updated while rules help reduce invalid or inconsistent values.</span></article>
+          </div>
+          <div class="schema-preview">
+            <div class="mini-table">
+              <h3>Student</h3>
+              <p><strong>StudentID</strong> | Name | Form</p>
+              <p>S0234 | Amira Chen | 12A</p>
+              <p>S0318 | Leo Singh | 12B</p>
+            </div>
+            <div class="relation-arrow">linked by ID</div>
+            <div class="mini-table">
+              <h3>Loan</h3>
+              <p><strong>LoanID</strong> | StudentID | BookID | Returned</p>
+              <p>L9001 | S0234 | B144 | FALSE</p>
+              <p>L9002 | S0318 | B102 | TRUE</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="dbms">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>What does a DBMS provide?</h2>
+            <p>A DBMS is software used to create, manage and control access to a database. It sits between users/applications and stored data.</p>
+          </div>
+          <div class="role-grid">
+            <article><strong>Data management</strong><span>stores, organises, retrieves and updates data; maintains metadata in a data dictionary.</span></article>
+            <article><strong>Data modelling</strong><span>helps define entities, tables, fields and the logical schema of the database.</span></article>
+            <article><strong>Data integrity</strong><span>enforces rules so values are valid and relationships remain consistent.</span></article>
+            <article><strong>Data security</strong><span>uses access rights for individuals or groups; supports backup and recovery procedures.</span></article>
+            <article><strong>Developer interface</strong><span>provides tools for creating structures, forms, reports or database applications.</span></article>
+            <article><strong>Query processor</strong><span>interprets and carries out queries so users can retrieve or change data.</span></article>
+          </div>
+          <div class="answer-frame">
+            <strong>Exam sentence:</strong>
+            <span>The DBMS manages the database by controlling data definition, access, integrity, security and queries; the database is the organised data itself.</span>
+          </div>
+        </section>
+
+        <section class="panel" id="terms">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Core relational words for this lesson</h2>
+            <p>This is the vocabulary doorway. Later lessons will go deeper into keys, relationships, E-R diagrams, normalisation and SQL.</p>
+          </div>
+          <div class="term-table" role="table" aria-label="Core relational terms">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Term</div>
+              <div role="columnheader">Meaning</div>
+              <div role="columnheader">Example</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Entity</div>
+              <div role="cell">A thing about which data is stored</div>
+              <div role="cell">Student, Book, Loan</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Table</div>
+              <div role="cell">A set of records about one entity</div>
+              <div role="cell">Student table</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Record / tuple</div>
+              <div role="cell">One row in a table</div>
+              <div role="cell">S0234, Amira Chen, 12A</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Field / attribute</div>
+              <div role="cell">One column or property</div>
+              <div role="cell">StudentID, Name, Form</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers and what it deliberately leaves for later</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Data vs information; database definition; DBMS role; introductory entity/table/record/field terminology; data dictionary, logical schema, integrity, security, access rights, backup, developer interface and query processor.</span></div>
+            <div><strong>Next lessons</strong><span>Flat-file limitations, relational database features, primary/foreign keys, relationships, E-R diagrams, normalisation and SQL are developed after this entry lesson.</span></div>
+            <div><strong>Exam focus</strong><span>Use exact nouns. A database stores organised related data; a DBMS manages and controls that database.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="sorter">
+          <div class="section-title">
+            <p class="eyebrow">Interactive concept sorter</p>
+            <h2>Is it data, information, database, or DBMS?</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario item
+              <select id="sortInput">
+                <option value="rawMark">S0234, 2026-06-15, absent</option>
+                <option value="absenceRate">8% of students are absent today</option>
+                <option value="libraryTables">A set of related Student, Book and Loan tables</option>
+                <option value="queryProcessor">Software component that interprets a SELECT query</option>
+                <option value="backupTool">Software tool that restores data after failure</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="sortBtn">Classify</button>
+          </div>
+          <div class="result-box" id="sortResult">Choose an item, then classify it.</div>
+          <div class="feedback" id="sortReason">Reasoning will appear here.</div>
+        </section>
+
+        <section class="panel" id="scenario">
+          <div class="section-title">
+            <p class="eyebrow">Interactive DBMS selector</p>
+            <h2>Which DBMS feature solves the problem?</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Problem
+              <select id="featureInput">
+                <option value="unknownField">A developer needs to know every table field and its data type.</option>
+                <option value="wrongValue">A loan record is saved with a return date before the loan date.</option>
+                <option value="privateData">Only nurses should see patient contact details.</option>
+                <option value="diskFailure">The storage device fails during the night.</option>
+                <option value="findRows">A user searches for all unpaid orders over $100.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="featureBtn">Select feature</button>
+          </div>
+          <div class="result-box" id="featureResult">Choose a problem, then select the DBMS feature.</div>
+          <div class="feedback" id="featureReason">The answer should name a feature and explain its purpose.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Move from messy values to exam-ready wording</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="dataInfo">Data to information</button>
+            <button class="tab" type="button" data-example="database">Database definition</button>
+            <button class="tab" type="button" data-example="dbms">DBMS feature</button>
+            <button class="tab" type="button" data-example="terms">Relational terms</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short-answer checks</h2>
+            <p>Type concise answers. Use the answer button only after committing to an attempt.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair common database wording errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style practice with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about terminology.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Three distinctions to keep clean</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Data vs information</strong><span>Data is raw values; information is processed data with meaning.</span></div>
+            <div><strong>Database vs DBMS</strong><span>The database is organised related data; the DBMS is the software that manages it.</span></div>
+            <div><strong>Table words</strong><span>Entity/table, record/tuple and field/attribute describe relational database structure.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Vocabulary precision</strong>
+              <span>Write one exam-ready definition each for data, information, database and DBMS. Add one Chinese support note beside each.</span>
+            </article>
+            <article>
+              <strong>Task 2: Scenario application</strong>
+              <span>A sports club stores member, payment and training attendance data. Write four bullet points explaining how a DBMS could help, naming a different feature each time.</span>
+            </article>
+            <article>
+              <strong>Task 3: 4-mark answer</strong>
+              <span>Answer: "Explain two features provided by a DBMS that help manage a school database." Use two distinct features and explain the effect of each.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

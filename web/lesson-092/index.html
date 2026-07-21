@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 092 | Paper 1 review: system software and security</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Sections 5-6</p>
+        <h1>Paper 1 review: system software and security</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#map">Retrieval map</a>
+        <a href="#software">System software</a>
+        <a href="#translators">Translators</a>
+        <a href="#security">Security</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Classifier</a>
+        <a href="#matcher">Risk matcher</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 092 | 45 minutes | Paper 1 Sections 5-6 | informal questioning</p>
+            <h2>System software runs the show. Security stops the show becoming a crime scene.</h2>
+            <p>
+              This review joins two explanation-heavy areas: system software and security. You will distinguish
+              OS roles, utility software and translators, then match security threats to controls using precise
+              mechanism-and-consequence language.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Compare</strong><span>OS roles, utility software and translation approaches</span></div>
+              <div><strong>Match</strong><span>security risks to suitable controls and justifications</span></div>
+              <div><strong>Correct</strong><span>vague answers about malware, encryption, firewalls and backups</span></div>
+            </div>
+          </div>
+          <div class="sql-visual" aria-label="System software and security visual">
+            <span class="keyword">OS</span><span>process, memory, file and device management</span>
+            <span class="keyword">Translator</span><span>compiler, interpreter, assembler</span>
+            <span class="keyword">Security</span><span>CIA, authentication, encryption, firewall, backup</span>
+            <p>If the answer says "protects it", the examiner asks: from what, how, and with what consequence?</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use two steps: identify the tool or threat, then explain the mechanism in the given scenario.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>These questions are often wordy. Marks reward precise roles and controls, not dramatic cybersecurity vocabulary.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Encryption does not prove who a user is. Authentication checks identity; encryption protects data readability.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which topic is being tested?</h2>
+            <p>Security answers are not action movie scripts. "Hackers bad, firewall good" needs a mechanism before it gets marks.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="os">The system allocates RAM to running programs.</button>
+            <button class="choice-card" type="button" data-hook="compiler">Source code is translated before execution into object code.</button>
+            <button class="choice-card" type="button" data-hook="phishing">A fake login email asks a user for credentials.</button>
+            <button class="choice-card" type="button" data-hook="hash">A password is stored as a digest rather than plain text.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose a card to identify the topic and first exam phrase.
+          </div>
+        </section>
+
+        <section class="panel" id="map">
+          <div class="section-title">
+            <p class="eyebrow">Retrieval map</p>
+            <h2>Sections 5-6 knowledge map</h2>
+          </div>
+          <div class="retrieval-grid">
+            <article><strong>Operating system</strong><span>process, memory, file, device and security/user management</span></article>
+            <article><strong>User interfaces</strong><span>CLI, GUI, menu-driven and natural language interfaces</span></article>
+            <article><strong>Utilities</strong><span>backup, compression, encryption, defragmentation and anti-malware tools</span></article>
+            <article><strong>Translators</strong><span>assembler, compiler, interpreter, linker, loader and libraries</span></article>
+            <article><strong>Security goals</strong><span>confidentiality, integrity, availability, authenticity</span></article>
+            <article><strong>Controls</strong><span>authentication, access rights, encryption, hashing, certificates, firewalls and audit trails</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="software">
+          <div class="section-title">
+            <p class="eyebrow">System software review</p>
+            <h2>OS and utility roles</h2>
+          </div>
+          <div class="data-table review-table" role="table" aria-label="System software review">
+            <div class="table-row table-head" role="row"><div>Area</div><div>Role</div><div>Mark-worthy phrase</div></div>
+            <div class="table-row" role="row"><div>OS process management</div><div>schedules processes</div><div>allocates processor time and manages multitasking</div></div>
+            <div class="table-row" role="row"><div>OS memory management</div><div>allocates memory</div><div>keeps programs/data in separate memory areas and manages virtual memory</div></div>
+            <div class="table-row" role="row"><div>File management</div><div>organises files</div><div>stores, names, retrieves and controls access to files</div></div>
+            <div class="table-row" role="row"><div>Utility software</div><div>maintains system</div><div>performs specialist maintenance such as backup, compression or anti-malware scanning</div></div>
+          </div>
+          <div class="callout">Chinese support: operating system = 操作系统；utility software = 实用程序；translator = 翻译程序；authentication = 身份认证。</div>
+        </section>
+
+        <section class="panel" id="translators">
+          <div class="section-title">
+            <p class="eyebrow">Translator review</p>
+            <h2>Compiler, interpreter and assembler</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Compiler</strong><span>Translates whole source program into object code before execution; can report errors after compilation.</span></article>
+            <article><strong>Interpreter</strong><span>Translates and executes code line by line; useful for testing and debugging.</span></article>
+            <article><strong>Assembler</strong><span>Translates assembly language mnemonics into machine code.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="security">
+          <div class="section-title">
+            <p class="eyebrow">Security review</p>
+            <h2>Match the control to the threat</h2>
+          </div>
+          <div class="data-table review-table" role="table" aria-label="Security controls">
+            <div class="table-row table-head" role="row"><div>Threat / need</div><div>Control</div><div>Mechanism</div></div>
+            <div class="table-row" role="row"><div>unauthorised login</div><div>authentication / MFA</div><div>checks user identity using factors such as password and token</div></div>
+            <div class="table-row" role="row"><div>intercepted data</div><div>encryption</div><div>encodes data so it is unreadable without the key</div></div>
+            <div class="table-row" role="row"><div>malicious traffic</div><div>firewall</div><div>filters traffic using rules such as IP address, port or protocol</div></div>
+            <div class="table-row" role="row"><div>data loss</div><div>backup</div><div>allows recovery from a separate copy after failure or corruption</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This review covers Paper 1 Sections 5-6</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>OS roles, UIs, utility software, translators, compilation stages, linkers/loaders/libraries, error types, CIA/security goals, malware/social engineering and security controls.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 093 reviews ethics and databases. This page does not cover IP law, environmental impact or SQL in detail.</span></div>
+            <div><strong>Assessment rhythm</strong><span>Mixed retrieval, risk-control matching, comparison answers and Cambridge-style mark scheme checking.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive question classifier</p>
+            <h2>Identify the topic and first move</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Mixed question clue
+              <select id="classifierInput">
+                <option value="memory">The OS allocates RAM to a newly opened program.</option>
+                <option value="debug">A developer wants to test code one line at a time.</option>
+                <option value="linker">Several object files and library routines are combined.</option>
+                <option value="malware">A file encrypts user documents and demands payment.</option>
+                <option value="firewall">Network traffic is blocked based on ports and IP addresses.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+          </div>
+          <div class="feedback" id="classifyResult">Choose a clue and classify the topic.</div>
+        </section>
+
+        <section class="panel" id="matcher">
+          <div class="section-title">
+            <p class="eyebrow">Interactive risk-control matcher</p>
+            <h2>Choose the best control</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Risk
+              <select id="riskInput">
+                <option value="phishing">Users are tricked by fake emails into entering passwords.</option>
+                <option value="lost">Database server storage fails and recent data is lost.</option>
+                <option value="sniffing">Data is intercepted while travelling across a network.</option>
+                <option value="privilege">A student account can edit administrator settings.</option>
+                <option value="tamper">A downloaded installer may have been altered.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="matchBtn">Match control</button>
+          </div>
+          <div class="result-table" id="matchResult">Choose a risk to see a suitable control and justification.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Annotate where the marks are</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="os">OS role</button>
+            <button class="tab" type="button" data-example="translator">Translator</button>
+            <button class="tab" type="button" data-example="security">Security control</button>
+            <button class="tab" type="button" data-example="backup">Backup</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Mixed retrieval check</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair weak system software and security answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style review with expandable MS</h2>
+            <p>These questions mix system software and security. The MS rewards precise roles, threat-control matching and scenario consequence.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Review checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Name</strong><span>Name the OS role, utility, translator, threat or control.</span></div>
+            <div><strong>Mechanism</strong><span>Explain how it works, not just that it helps.</span></div>
+            <div><strong>Consequence</strong><span>Link to reliability, development, confidentiality, integrity or recovery.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Comparison answers</strong>
+              <span>Write one compiler-vs-interpreter comparison and one OS-vs-utility comparison. Use two precise differences each.</span>
+            </article>
+            <article>
+              <strong>Task 2: Risk-control grid</strong>
+              <span>Create a table with five risks and suitable controls. Include mechanism and limitation for each control.</span>
+            </article>
+            <article>
+              <strong>Task 3: Improve weak answer</strong>
+              <span>Rewrite: "Encryption is good because it makes data secure." Include what encryption does and what it does not do.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

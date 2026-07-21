@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 101 | Trace tables and dry runs</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>Trace tables and dry runs</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#trace-table">Trace table</a>
+        <a href="#dry-run">Dry run method</a>
+        <a href="#loops">Loop tracing</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#predictor">Output predictor</a>
+        <a href="#builder">Trace builder</a>
+        <a href="#checker">Dry-run checker</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 101 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
+            <h2>A trace table is the algorithm's receipt: every variable change must pay rent.</h2>
+            <p>
+              A dry run means executing pseudocode manually using test data. A trace table records variable values and
+              outputs after each relevant step. This is how you prove what an algorithm does, find logic errors and avoid
+              guessing during Paper 2.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Trace</strong><span>record changing variables and outputs in a clear table</span></div>
+              <div><strong>Predict</strong><span>work out final output from Cambridge-style pseudocode and test data</span></div>
+              <div><strong>Debug</strong><span>locate mistakes such as wrong initialisation, missing updates and off-by-one loops</span></div>
+            </div>
+          </div>
+          <div class="trace-visual" aria-label="Trace table visual">
+            <pre><code>Total &lt;- 0
+FOR Count &lt;- 1 TO 3
+    INPUT Mark
+    Total &lt;- Total + Mark
+NEXT Count
+OUTPUT Total</code></pre>
+            <div class="mini-table">
+              <span>Count</span><span>Mark</span><span>Total</span><span>Output</span>
+              <span>1</span><span>4</span><span>4</span><span>-</span>
+              <span>2</span><span>7</span><span>11</span><span>-</span>
+              <span>3</span><span>9</span><span>20</span><span>20</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Say "read, update, record" out loud. It slows students down just enough to stop most trace-table slips.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 trace questions reward accuracy, not confidence. The table is the working; the output is only the final receipt.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not update a variable in your head and forget to write it. Invisible arithmetic earns invisible marks.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>The coffee shop total that keeps changing</h2>
+            <p>A cashier adds 3, then 5, then 2. Which row shows the correct running total? The till is not psychic; it needs a trace.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="a">3, 5, 2</button>
+            <button class="choice-card" type="button" data-hook="b">3, 8, 10</button>
+            <button class="choice-card" type="button" data-hook="c">0, 3, 8</button>
+            <button class="choice-card" type="button" data-hook="d">10, 8, 3</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the row that records Total after each item is added.</div>
+        </section>
+
+        <section class="panel" id="trace-table">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>A trace table records variables after each change</h2>
+          </div>
+          <div class="data-table concept-table" role="table" aria-label="Trace table parts">
+            <div class="table-row table-head" role="row"><div>Column</div><div>What it records</div><div>Exam note</div></div>
+            <div class="table-row" role="row"><div>Line / step</div><div>which statement is being executed</div><div>optional, but useful for debugging</div></div>
+            <div class="table-row" role="row"><div>Input value</div><div>the test data read by INPUT</div><div>do not invent values not given by the question</div></div>
+            <div class="table-row" role="row"><div>Variable columns</div><div>current values of Count, Total, Mark, Found, etc.</div><div>write changed values clearly</div></div>
+            <div class="table-row" role="row"><div>Output column</div><div>anything displayed by OUTPUT</div><div>leave blank or dash until output happens</div></div>
+          </div>
+          <div class="callout">Chinese support: trace table = 跟踪表；dry run = 手动执行；variable = 变量；output column = 输出列。</div>
+        </section>
+
+        <section class="panel" id="dry-run">
+          <div class="section-title">
+            <p class="eyebrow">Method</p>
+            <h2>Dry run: execute the algorithm by hand</h2>
+          </div>
+          <div class="step-strip">
+            <div><strong>1</strong><span>Copy the variable names into table columns.</span></div>
+            <div><strong>2</strong><span>Write initial values before the loop starts.</span></div>
+            <div><strong>3</strong><span>Use each input value in order.</span></div>
+            <div><strong>4</strong><span>Update variables exactly when pseudocode updates them.</span></div>
+            <div><strong>5</strong><span>Record output only when an OUTPUT statement is executed.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="loops">
+          <div class="section-title">
+            <p class="eyebrow">Loop tracing</p>
+            <h2>Loops make trace tables useful and slightly unforgiving</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Initialisation</strong><span>Variables such as Total and Count usually need a starting value before the loop.</span></article>
+            <article><strong>Update</strong><span>Record new values after assignment, not before.</span></article>
+            <article><strong>Condition</strong><span>For WHILE loops, check the condition before each iteration.</span></article>
+            <article><strong>Sentinel</strong><span>A sentinel value stops input and should usually not be processed as data.</span></article>
+            <article><strong>Output timing</strong><span>If OUTPUT is after the loop, output appears once at the end.</span></article>
+            <article><strong>Boundary</strong><span>Check whether loops run 5 times, 6 times, or one time too many.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Trace Cambridge pseudocode in the exam; Java is only a support view</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>Total &lt;- 0
+FOR Count &lt;- 1 TO 3
+    INPUT Number
+    Total &lt;- Total + Number
+NEXT Count
+OUTPUT Total</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>int total = 0;
+for (int count = 1; count &lt;= 3; count++) {
+    int number = input.nextInt();
+    total = total + number;
+}
+System.out.println(total);</code></pre>
+            </article>
+          </div>
+          <div class="callout">Trace the Cambridge-style statements. Java syntax such as braces and `++` may help implementation practice, but it is not the required Paper 2 pseudocode notation.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson focuses on manual execution and checking</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Dry runs, trace tables, variable updates, output columns, loop iterations, sentinel exclusion and logic-error detection.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 102 focuses on sequence, selection and iteration as design constructs. This page uses those constructs only as tracing material.</span></div>
+            <div><strong>Paper 2 note</strong><span>Cambridge pseudocode is the exam standard. Java appears only as a support comparison.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="predictor">
+          <div class="section-title">
+            <p class="eyebrow">Interactive output predictor</p>
+            <h2>Predict the final output</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Input set
+              <select id="predictInput">
+                <option value="a">4, 7, 9</option>
+                <option value="b">10, 0, 5</option>
+                <option value="c">-2, 8, 6</option>
+                <option value="d">3, 3, 3</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="predictBtn">Predict output</button>
+          </div>
+          <div class="feedback" id="predictResult">The pseudocode totals three input numbers and outputs Total.</div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive trace builder</p>
+            <h2>Build the trace table rows</h2>
+          </div>
+          <div class="builder-grid">
+            <label>
+              Trace scenario
+              <select id="traceInput">
+                <option value="total">Total 4, 7, 9</option>
+                <option value="max">Find maximum of 6, 11, 8</option>
+                <option value="sentinel">Total until -1: 5, 2, -1</option>
+                <option value="valid">Validate age 10, then 15</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="traceBtn">Build trace</button>
+          </div>
+          <div class="trace-output" id="traceResult">Choose a scenario to generate a trace table.</div>
+        </section>
+
+        <section class="panel" id="checker">
+          <div class="section-title">
+            <p class="eyebrow">Interactive dry-run checker</p>
+            <h2>Find the first wrong row</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Proposed trace
+              <select id="checkerInput">
+                <option value="wrong-total">Total after 4, 7, 9 is shown as 4, 7, 9</option>
+                <option value="wrong-sentinel">Sentinel -1 is added to Total</option>
+                <option value="wrong-output">Output is written before OUTPUT statement</option>
+                <option value="correct">Total after 4, 7, 9 is shown as 4, 11, 20</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="checkerBtn">Check trace</button>
+          </div>
+          <div class="feedback" id="checkerResult">Choose a proposed trace to check it.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Trace common Paper 2 patterns</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="total">Running total</button>
+            <button class="tab" type="button" data-example="max">Maximum</button>
+            <button class="tab" type="button" data-example="sentinel">Sentinel</button>
+            <button class="tab" type="button" data-example="selection">Selection</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Trace table and dry-run accuracy</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix trace-table mistakes</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style trace questions with expandable MS</h2>
+            <p>These questions target dry runs, trace tables, loop tracing and output prediction. MS uses strict Cambridge-style expectations.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Trace-table checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Columns</strong><span>Include every variable that changes and an output column when output may occur.</span></div>
+            <div><strong>Order</strong><span>Use input values in order and update variables exactly when the pseudocode updates them.</span></div>
+            <div><strong>Timing</strong><span>Write output only when OUTPUT executes; check loop conditions before repeating.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Trace a running total</strong>
+              <span>Trace a loop that inputs 5, 8, 1 and outputs the total. Include columns Count, Number, Total and Output.</span>
+            </article>
+            <article>
+              <strong>Task 2: Trace a maximum algorithm</strong>
+              <span>Trace values 12, 7, 15, 10. Show how Highest changes and state the final output.</span>
+            </article>
+            <article>
+              <strong>Task 3: Debug paragraph</strong>
+              <span>Explain why adding a sentinel value to Total is a logic error. Use the words sentinel, condition and output.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

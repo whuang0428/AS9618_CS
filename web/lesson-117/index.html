@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 117 | Array algorithms: traversal, update, search and count</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
+        <h1>Array algorithms: traversal, update, search and count</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#patterns">Pattern map</a>
+        <a href="#traversal">Traversal</a>
+        <a href="#update">Update</a>
+        <a href="#search">Search</a>
+        <a href="#count">Count</a>
+        <a href="#trace">Trace</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#selector">Pattern selector</a>
+        <a href="#runner">Trace runner</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 117 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
+            <h2>Arrays become useful when loops do the repetitive work.</h2>
+            <p>
+              Declaring an array is only the start. Most Paper 2 array questions ask you to visit elements, update
+              selected elements, search for a target, or count elements that match a condition. The secret is simple:
+              one loop visits one valid index at a time, and the statement inside the loop does the job.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Recognise</strong><span>traversal, update, search and count array algorithm patterns</span></div>
+              <div><strong>Write</strong><span>Cambridge-style pseudocode using correct indexes and loop bounds</span></div>
+              <div><strong>Trace</strong><span>running totals, counters, flags and updated elements accurately</span></div>
+            </div>
+          </div>
+          <div class="algorithm-visual" aria-label="Array algorithm visual">
+            <div class="array-row">
+              <span>Index</span><strong>1</strong><strong>2</strong><strong>3</strong><strong>4</strong><strong>5</strong>
+              <span>Score</span><strong>42</strong><strong>67</strong><strong>55</strong><strong>81</strong><strong>49</strong>
+            </div>
+            <div class="algorithm-card">IF Scores[Index] &gt;= 50 THEN Count &lt;- Count + 1</div>
+            <p>The index moves. The pattern stays calm.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Name the pattern before writing code. "I am counting passes" produces cleaner pseudocode than "I am doing array stuff".</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Mark schemes reward matching bounds, indexed access, correct initialisation and placing updates inside the loop.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not update the counter, total or flag outside the loop if it depends on each element.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>What is the algorithm really doing?</h2>
+            <p>A program checks every score and counts how many are at least 50. Which pattern is this?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="traversal">Traversal only</button>
+            <button class="choice-card" type="button" data-hook="update">Update every element</button>
+            <button class="choice-card" type="button" data-hook="search">Search for first match</button>
+            <button class="choice-card" type="button" data-hook="count">Conditional count</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the pattern that increments a counter only when a condition is true.</div>
+        </section>
+
+        <section class="panel" id="patterns">
+          <div class="section-title">
+            <p class="eyebrow">Pattern map</p>
+            <h2>Four array algorithm patterns</h2>
+            <p>Chinese support: 先判断题目是“遍历、修改、查找、计数”哪一种，再写循环。</p>
+          </div>
+          <div class="data-table pattern-table" role="table" aria-label="Array algorithm patterns">
+            <div class="table-row table-head" role="row"><div>Pattern</div><div>Question wording</div><div>Core idea</div><div>Key variable</div></div>
+            <div class="table-row" role="row"><div>Traversal</div><div>output all, process each</div><div>visit every valid index</div><div><code>Index</code></div></div>
+            <div class="table-row" role="row"><div>Update</div><div>increase, replace, apply discount</div><div>assign a new value to selected elements</div><div><code>Scores[Index]</code></div></div>
+            <div class="table-row" role="row"><div>Search</div><div>find, present, target</div><div>compare each element with target</div><div><code>Found</code></div></div>
+            <div class="table-row" role="row"><div>Count</div><div>how many, number of, at least</div><div>increment a counter when condition is true</div><div><code>Count</code></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="traversal">
+          <div class="section-title">
+            <p class="eyebrow">Traversal</p>
+            <h2>Visit every element once</h2>
+          </div>
+          <pre><code>FOR Index &lt;- 1 TO 5
+    OUTPUT Scores[Index]
+NEXT Index</code></pre>
+          <div class="callout">Traversal is the skeleton. Update, search and count usually add logic inside this skeleton.</div>
+        </section>
+
+        <section class="panel" id="update">
+          <div class="section-title">
+            <p class="eyebrow">Update</p>
+            <h2>Change selected elements</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Update every element</h3>
+              <pre><code>FOR Index &lt;- 1 TO 5
+    Scores[Index] &lt;- Scores[Index] + 2
+NEXT Index</code></pre>
+            </article>
+            <article>
+              <h3>Update only when condition is true</h3>
+              <pre><code>FOR Index &lt;- 1 TO 5
+    IF Scores[Index] &lt; 50 THEN
+        Scores[Index] &lt;- Scores[Index] + 5
+    ENDIF
+NEXT Index</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="search">
+          <div class="section-title">
+            <p class="eyebrow">Search</p>
+            <h2>Use a flag to remember whether the target appeared</h2>
+          </div>
+          <pre><code>Found &lt;- FALSE
+FOR Index &lt;- 1 TO 5
+    IF Names[Index] = TargetName THEN
+        Found &lt;- TRUE
+    ENDIF
+NEXT Index
+OUTPUT Found</code></pre>
+        </section>
+
+        <section class="panel" id="count">
+          <div class="section-title">
+            <p class="eyebrow">Count</p>
+            <h2>Increment only when a condition is true</h2>
+          </div>
+          <pre><code>PassCount &lt;- 0
+FOR Index &lt;- 1 TO 5
+    IF Scores[Index] &gt;= 50 THEN
+        PassCount &lt;- PassCount + 1
+    ENDIF
+NEXT Index
+OUTPUT PassCount</code></pre>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Trace</p>
+            <h2>Trace the index, condition and running variable</h2>
+          </div>
+          <div class="data-table trace-table" role="table" aria-label="Pass count trace">
+            <div class="table-row table-head" role="row"><div>Index</div><div>Scores[Index]</div><div>Condition &gt;= 50</div><div>PassCount</div></div>
+            <div class="table-row" role="row"><div>start</div><div>-</div><div>-</div><div>0</div></div>
+            <div class="table-row" role="row"><div>1</div><div>42</div><div>FALSE</div><div>0</div></div>
+            <div class="table-row" role="row"><div>2</div><div>67</div><div>TRUE</div><div>1</div></div>
+            <div class="table-row" role="row"><div>3</div><div>55</div><div>TRUE</div><div>2</div></div>
+            <div class="table-row" role="row"><div>4</div><div>81</div><div>TRUE</div><div>3</div></div>
+            <div class="table-row" role="row"><div>5</div><div>49</div><div>FALSE</div><div>3</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Same algorithm, different array syntax</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>PassCount &lt;- 0
+FOR Index &lt;- 1 TO 5
+    IF Scores[Index] &gt;= 50 THEN
+        PassCount &lt;- PassCount + 1
+    ENDIF
+NEXT Index</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>int passCount = 0;
+for (int index = 0; index &lt; 5; index++) {
+    if (scores[index] &gt;= 50) {
+        passCount++;
+    }
+}</code></pre>
+            </article>
+          </div>
+          <div class="callout">Paper 2 reminder: follow the bounds in the pseudocode question. Java examples support understanding, not exam syntax.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers and what it leaves for later</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>array traversal, element update, linear search, conditional count, running totals/counters, flags, trace tables and loop-bound precision.</span></div>
+            <div><strong>Boundary</strong><span>This lesson uses arrays only. Lesson 118 begins records and composite data; files, stacks and queues come later.</span></div>
+            <div><strong>Paper 2 note</strong><span>Marks usually depend on correct initialisation, indexed access, condition placement and update placement inside the loop.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="selector">
+          <div class="section-title">
+            <p class="eyebrow">Interactive pattern selector</p>
+            <h2>Choose a scenario and inspect the matching template</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="patternInput">
+                <option value="output">Output every score</option>
+                <option value="bonus">Add 5 to scores below 50</option>
+                <option value="find">Check whether TargetName is present</option>
+                <option value="count">Count scores at least 50</option>
+                <option value="total">Calculate total score</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="patternBtn">Select pattern</button>
+          </div>
+          <div class="trace-output" id="patternResult">Choose a scenario to see the algorithm pattern.</div>
+        </section>
+
+        <section class="panel" id="runner">
+          <div class="section-title">
+            <p class="eyebrow">Interactive trace runner</p>
+            <h2>Run a count algorithm on the sample scores</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Threshold
+              <select id="thresholdInput">
+                <option value="50">50</option>
+                <option value="60">60</option>
+                <option value="80">80</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="traceBtn">Run count</button>
+          </div>
+          <div class="trace-output" id="traceResult">Scores are 42, 67, 55, 81, 49.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Reusable array algorithms</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="traversal">Traversal</button>
+            <button class="tab" type="button" data-example="update">Update</button>
+            <button class="tab" type="button" data-example="search">Search</button>
+            <button class="tab" type="button" data-example="count">Count</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Ten quick algorithm checks</h2>
+            <p>Answer briefly, then use Show answer to compare with strict wording.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix common array algorithm errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style array algorithm questions with expandable MS</h2>
+            <p>These questions focus on indexed access, traversal, update, search, count and trace precision.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Array algorithm checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Initialise</strong><span>set totals, counters and flags before the loop.</span></div>
+            <div><strong>Index</strong><span>use <code>Array[Index]</code> with loop bounds matching the declaration.</span></div>
+            <div><strong>Update</strong><span>place condition checks and updates inside the loop when they depend on each element.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear consolidation tasks</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Search</strong>
+              <span>Write pseudocode to search Codes[1:20] for TargetCode and output whether it is found.</span>
+            </article>
+            <article>
+              <strong>Task 2: Count</strong>
+              <span>Write pseudocode to count how many Temperatures[1:7] are greater than 30.</span>
+            </article>
+            <article>
+              <strong>Task 3: Update and trace</strong>
+              <span>For Scores[1:5] = 42, 67, 55, 81, 49, trace the result after adding 5 to every score below 50.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

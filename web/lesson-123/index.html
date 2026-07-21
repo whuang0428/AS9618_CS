@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 123 | Choosing appropriate data structures</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
+        <h1>Choosing appropriate data structures</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#criteria">Criteria</a>
+        <a href="#array">Array</a>
+        <a href="#record">Record</a>
+        <a href="#file">File</a>
+        <a href="#adt">Stack/queue</a>
+        <a href="#decision">Decision table</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#chooser">Chooser</a>
+        <a href="#ranker">Reason ranker</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 123 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
+            <h2>The best data structure is the one whose access pattern matches the problem.</h2>
+            <p>
+              Paper 2 rarely rewards “because it is easier” on its own. A strong answer chooses a structure and explains
+              the reason: same-type repeated values, mixed fields about one entity, persistent storage, LIFO removal,
+              FIFO service order, or a need to process many records.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Choose</strong><span>array, record, file, stack or queue for a scenario</span></div>
+              <div><strong>Justify</strong><span>link structure features to scenario requirements</span></div>
+              <div><strong>Avoid</strong><span>vague answers that do not earn Cambridge-style marks</span></div>
+            </div>
+          </div>
+          <div class="decision-visual" aria-label="Data structure decision visual">
+            <div class="decision-card">
+              <strong>Scenario clue</strong>
+              <span>many same-type values -> array</span>
+              <span>one entity, mixed fields -> record</span>
+              <span>survives program end -> file</span>
+              <span>LIFO/FIFO rule -> stack/queue</span>
+            </div>
+            <div class="decision-caption">Structure + reason + consequence = marks</div>
+            <p>The structure is not a vibe. It is a design choice with evidence.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask students to underline the access pattern in the scenario before choosing a structure.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam questions often ask for a suitable data structure and a reason. The reason usually carries the marks.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>“It is efficient” is not enough unless the answer explains why the structure matches the operation needed.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Would you store a class register as 28 separate variables?</h2>
+            <p>Choose the best structure for 28 students, each with name, mark and attendance status.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="separate">28 groups of separate variables</button>
+            <button class="choice-card" type="button" data-hook="array">ARRAY[1:84] OF STRING</button>
+            <button class="choice-card" type="button" data-hook="records">ARRAY[1:28] OF TStudent</button>
+            <button class="choice-card" type="button" data-hook="stack">Stack of student names</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the structure that stores many students while preserving fields for each student.</div>
+        </section>
+
+        <section class="panel" id="criteria">
+          <div class="section-title">
+            <p class="eyebrow">Selection criteria</p>
+            <h2>Start with the data and operations, not the keyword</h2>
+            <p>Chinese support: criteria 是“选择标准”；access pattern 是“访问方式”；justification 是“理由说明”。</p>
+          </div>
+          <div class="data-table criteria-table" role="table" aria-label="Selection criteria">
+            <div class="table-row table-head" role="row"><div>Question to ask</div><div>Why it matters</div><div>Likely structure</div></div>
+            <div class="table-row" role="row"><div>Are there many values of the same type?</div><div>indexed traversal/search</div><div>Array</div></div>
+            <div class="table-row" role="row"><div>Does one item have several named fields?</div><div>mixed types and meaningful field names</div><div>Record</div></div>
+            <div class="table-row" role="row"><div>Are there many entities with the same fields?</div><div>repeat a record shape</div><div>Array of records</div></div>
+            <div class="table-row" role="row"><div>Must the data survive after the program ends?</div><div>persistent storage</div><div>Text file / CSV file</div></div>
+            <div class="table-row" role="row"><div>Is removal order LIFO or FIFO?</div><div>restricted access rule</div><div>Stack / Queue</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="array">
+          <div class="section-title">
+            <p class="eyebrow">Array</p>
+            <h2>Use arrays for many similar values accessed by index</h2>
+          </div>
+          <pre><code>DECLARE Scores : ARRAY[1:30] OF INTEGER
+FOR Index &lt;- 1 TO 30
+    Total &lt;- Total + Scores[Index]
+NEXT Index</code></pre>
+          <div class="callout">Good reason: all elements are INTEGER scores and can be traversed using an index.</div>
+        </section>
+
+        <section class="panel" id="record">
+          <div class="section-title">
+            <p class="eyebrow">Record / array of records</p>
+            <h2>Use records when named fields belong to one entity</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>One student</h3>
+              <pre><code>TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+    DECLARE Present : BOOLEAN
+ENDTYPE</code></pre>
+            </article>
+            <article>
+              <h3>Many students</h3>
+              <pre><code>DECLARE Students : ARRAY[1:28] OF TStudent
+OUTPUT Students[1].Name</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="file">
+          <div class="section-title">
+            <p class="eyebrow">File</p>
+            <h2>Use files when data must persist or be exchanged</h2>
+          </div>
+          <pre><code>OPENFILE "Scores.csv" FOR APPEND
+WRITEFILE "Scores.csv", NewLine
+CLOSEFILE "Scores.csv"</code></pre>
+          <div class="callout">Good reason: the data must be stored after the program has finished, so memory-only structures are not enough.</div>
+        </section>
+
+        <section class="panel" id="adt">
+          <div class="section-title">
+            <p class="eyebrow">Stack and queue</p>
+            <h2>Use ADTs when the removal rule matters</h2>
+          </div>
+          <div class="data-table adt-table" role="table" aria-label="Stack and queue choices">
+            <div class="table-row table-head" role="row"><div>Scenario clue</div><div>Structure</div><div>Reason</div></div>
+            <div class="table-row" role="row"><div>undo last action</div><div>Stack</div><div>most recent action is reversed first</div></div>
+            <div class="table-row" role="row"><div>print jobs in arrival order</div><div>Queue</div><div>first job submitted should print first</div></div>
+            <div class="table-row" role="row"><div>customer service line</div><div>Queue</div><div>fair FIFO order</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="decision">
+          <div class="section-title">
+            <p class="eyebrow">Decision table</p>
+            <h2>Match scenario evidence to structure features</h2>
+          </div>
+          <div class="data-table decision-table" role="table" aria-label="Decision table">
+            <div class="table-row table-head" role="row"><div>Need</div><div>Choose</div><div>Do not choose just because...</div></div>
+            <div class="table-row" role="row"><div>calculate average of 50 readings</div><div>array of REAL</div><div>records sound more advanced</div></div>
+            <div class="table-row" role="row"><div>store one book's ISBN, title and pages</div><div>record</div><div>ISBN has digits</div></div>
+            <div class="table-row" role="row"><div>store 200 books with same fields</div><div>array of records</div><div>one record is not enough</div></div>
+            <div class="table-row" role="row"><div>save transactions for next run</div><div>text/CSV file</div><div>array works during one run</div></div>
+            <div class="table-row" role="row"><div>serve requests in arrival order</div><div>queue</div><div>stack is also an ADT</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Cambridge answers should justify the structure, not advertise a Java class</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style modelling</h3>
+              <pre><code>TYPE TBook
+    DECLARE ISBN : STRING
+    DECLARE Title : STRING
+    DECLARE Pages : INTEGER
+ENDTYPE
+
+DECLARE Books : ARRAY[1:200] OF TBook</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>class Book {
+    String isbn;
+    String title;
+    int pages;
+}
+
+Book[] books = new Book[200];</code></pre>
+            </article>
+          </div>
+          <div class="callout">Paper 2 may accept many clear pseudocode styles, but the explanation must still match the scenario.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson consolidates</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>choosing among arrays, records, arrays of records, files, stacks and queues using scenario evidence.</span></div>
+            <div><strong>Boundary</strong><span>This lesson is a selection-and-justification lesson; detailed algorithms for each structure belong to previous and later lessons.</span></div>
+            <div><strong>Paper 2 note</strong><span>Credit depends on matching the data structure to the required access, storage and processing behaviour.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Interactive chooser</p>
+            <h2>Select the best structure for a scenario</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioSelect">
+                <option value="scores">30 integer test scores, calculate average</option>
+                <option value="student">one student's name, mark and enrolled status</option>
+                <option value="class">28 students, each with name, mark and attendance</option>
+                <option value="log">append each login event for next run</option>
+                <option value="undo">undo the most recent edit first</option>
+                <option value="printer">print jobs in arrival order</option>
+              </select>
+            </label>
+            <label>
+              Structure
+              <select id="structureSelect">
+                <option value="array">Array</option>
+                <option value="record">Record</option>
+                <option value="array-records">Array of records</option>
+                <option value="file">Text/CSV file</option>
+                <option value="stack">Stack</option>
+                <option value="queue">Queue</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="chooseBtn">Check choice</button>
+          </div>
+          <div class="trace-output" id="choiceResult">Choose a scenario and a structure.</div>
+        </section>
+
+        <section class="panel" id="ranker">
+          <div class="section-title">
+            <p class="eyebrow">Reason ranker</p>
+            <h2>Spot the answer that would earn marks</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-reason="vague">Use an array because it is easier.</button>
+            <button class="choice-card" type="button" data-reason="precise">Use an array because all readings are REAL values and can be processed using the same indexed loop.</button>
+            <button class="choice-card" type="button" data-reason="wrong">Use a stack because it stores many values.</button>
+            <button class="choice-card" type="button" data-reason="generic">Use a record because it is a data structure.</button>
+          </div>
+          <div class="feedback" id="reasonFeedback" aria-live="polite">Choose the answer with scenario evidence and consequence.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Selection answers that explain the choice</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="array">Array</button>
+            <button class="tab" type="button" data-example="record">Record</button>
+            <button class="tab" type="button" data-example="file">File</button>
+            <button class="tab" type="button" data-example="adt">ADT</button>
+          </div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Ten quick data-structure choices</h2>
+            <p>Type a concise answer, then check. Each question also has its own answer button.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix weak structure choices</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style questions with expandable MS</h2>
+            <p>These questions focus on structure choice, precise reasons and rejecting unsuitable alternatives.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Choice checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Data</strong><span>same type, mixed fields, or persistent text?</span></div>
+            <div><strong>Operation</strong><span>traverse, search, append, undo or serve?</span></div>
+            <div><strong>Reason</strong><span>state why the feature fits the scenario.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Choose, justify, reject</h2>
+          </div>
+          <ol class="homework-list">
+            <li>
+              <strong>Task 1: Three choices</strong>
+              <span>For a library system, choose structures for one book, 1000 books, and saved borrowing history. Give one precise reason for each.</span>
+            </li>
+            <li>
+              <strong>Task 2: Reject a weak answer</strong>
+              <span>Improve this answer: “Use a queue because it is efficient.” The scenario is print jobs processed in arrival order.</span>
+            </li>
+            <li>
+              <strong>Task 3: Exam paragraph</strong>
+              <span>Write a 6-mark comparison of using an array of records versus three separate arrays for student records.</span>
+            </li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 124 | Pseudocode data declarations vs Java declarations</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
+        <h1>Pseudocode data declarations vs Java declarations</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#principle">Principle</a>
+        <a href="#types">Types</a>
+        <a href="#variables">Variables</a>
+        <a href="#constants">Constants</a>
+        <a href="#arrays">Arrays</a>
+        <a href="#records">Records</a>
+        <a href="#assignment">Assignment</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#converter">Converter</a>
+        <a href="#sorter">Syntax sorter</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 124 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
+            <h2>Java helps you understand programming, but Cambridge pseudocode is the exam language.</h2>
+            <p>
+              This lesson separates declaration styles so students do not donate marks to punctuation. Cambridge
+              pseudocode usually declares using <code>DECLARE Identifier : Type</code>, while Java usually places the
+              type before the identifier and uses semicolons. The idea can match; the syntax does not.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>Cambridge pseudocode declarations for variables, arrays and records</span></div>
+              <div><strong>Compare</strong><span>equivalent Java declarations without mixing syntax</span></div>
+              <div><strong>Correct</strong><span>common exam mistakes in declarations and assignment</span></div>
+            </div>
+          </div>
+          <div class="syntax-visual" aria-label="Pseudocode versus Java visual">
+            <div class="syntax-card">
+              <strong>Pseudocode</strong>
+              <span>DECLARE Count : INTEGER</span>
+              <span>Count &lt;- 0</span>
+              <span>DECLARE Scores : ARRAY[1:30] OF INTEGER</span>
+            </div>
+            <div class="syntax-card">
+              <strong>Java support only</strong>
+              <span>int count = 0;</span>
+              <span>int[] scores = new int[30];</span>
+            </div>
+            <p>Same intention. Different exam surface.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask whether the answer is meant for Paper 2 pseudocode or Java implementation before checking syntax.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 marks often depend on clear declarations, suitable data types and correct pseudocode assignment.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p><code>int count;</code> is Java-style. In Cambridge pseudocode, write <code>DECLARE Count : INTEGER</code>.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which answer belongs in a Paper 2 pseudocode answer?</h2>
+            <p>The task says: declare an integer variable called Count. Choose the Cambridge-style answer.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="java">int count;</button>
+            <button class="choice-card" type="button" data-hook="pseudo">DECLARE Count : INTEGER</button>
+            <button class="choice-card" type="button" data-hook="mixed">INTEGER Count;</button>
+            <button class="choice-card" type="button" data-hook="assign">Count &lt;- INTEGER</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the declaration style expected in Cambridge pseudocode.</div>
+        </section>
+
+        <section class="panel" id="principle">
+          <div class="section-title">
+            <p class="eyebrow">Core principle</p>
+            <h2>Do not mix the two languages inside one answer</h2>
+            <p>Chinese support: declaration 是“声明”；assignment 是“赋值”；syntax 是“语法形式”。</p>
+          </div>
+          <div class="data-table principle-table" role="table" aria-label="Pseudocode and Java principle">
+            <div class="table-row table-head" role="row"><div>Feature</div><div>Cambridge-style pseudocode</div><div>Java support only</div></div>
+            <div class="table-row" role="row"><div>Variable declaration</div><div><code>DECLARE Count : INTEGER</code></div><div><code>int count;</code></div></div>
+            <div class="table-row" role="row"><div>Assignment</div><div><code>Count &lt;- 0</code></div><div><code>count = 0;</code></div></div>
+            <div class="table-row" role="row"><div>Array declaration</div><div><code>DECLARE Scores : ARRAY[1:30] OF INTEGER</code></div><div><code>int[] scores = new int[30];</code></div></div>
+            <div class="table-row" role="row"><div>Record/class idea</div><div><code>TYPE ... ENDTYPE</code></div><div><code>class ... { }</code></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="types">
+          <div class="section-title">
+            <p class="eyebrow">Data type mapping</p>
+            <h2>Map concepts, not spelling</h2>
+          </div>
+          <div class="data-table type-table" role="table" aria-label="Data type mapping">
+            <div class="table-row table-head" role="row"><div>Meaning</div><div>Pseudocode type</div><div>Java support example</div></div>
+            <div class="table-row" role="row"><div>whole number</div><div><code>INTEGER</code></div><div><code>int</code></div></div>
+            <div class="table-row" role="row"><div>decimal number</div><div><code>REAL</code></div><div><code>double</code></div></div>
+            <div class="table-row" role="row"><div>single character</div><div><code>CHAR</code></div><div><code>char</code></div></div>
+            <div class="table-row" role="row"><div>text</div><div><code>STRING</code></div><div><code>String</code></div></div>
+            <div class="table-row" role="row"><div>true/false</div><div><code>BOOLEAN</code></div><div><code>boolean</code></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="variables">
+          <div class="section-title">
+            <p class="eyebrow">Variables</p>
+            <h2>Declare first; initialise separately when needed</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>DECLARE Count : INTEGER
+Count &lt;- 0
+
+DECLARE Name : STRING
+Name &lt;- "Ali"</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>int count = 0;
+String name = "Ali";</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="constants">
+          <div class="section-title">
+            <p class="eyebrow">Constants</p>
+            <h2>Constants are named values that should not change</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>CONSTANT MaxSize = 100
+CONSTANT PassMark = 40</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>final int MAX_SIZE = 100;
+final int PASS_MARK = 40;</code></pre>
+            </article>
+          </div>
+          <div class="callout">Java naming conventions may use capitals for constants. Cambridge pseudocode credit comes from clear constant declaration and use.</div>
+        </section>
+
+        <section class="panel" id="arrays">
+          <div class="section-title">
+            <p class="eyebrow">Arrays</p>
+            <h2>Cambridge array bounds are stated explicitly</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>DECLARE Scores : ARRAY[1:30] OF INTEGER
+Scores[1] &lt;- 72</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>int[] scores = new int[30];
+scores[0] = 72;</code></pre>
+            </article>
+          </div>
+          <div class="callout">Index warning: if pseudocode declares <code>ARRAY[1:30]</code>, do not automatically use Java's index 0 in the exam answer.</div>
+        </section>
+
+        <section class="panel" id="records">
+          <div class="section-title">
+            <p class="eyebrow">Records</p>
+            <h2>Record declarations use TYPE and ENDTYPE</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE
+
+DECLARE Student1 : TStudent</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>class Student {
+    String name;
+    int mark;
+}
+
+Student student1 = new Student();</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="assignment">
+          <div class="section-title">
+            <p class="eyebrow">Assignment versus comparison</p>
+            <h2><code>&lt;-</code> changes a value; <code>=</code> usually tests equality in conditions</h2>
+          </div>
+          <div class="data-table assign-table" role="table" aria-label="Assignment and comparison">
+            <div class="table-row table-head" role="row"><div>Purpose</div><div>Pseudocode</div><div>Meaning</div></div>
+            <div class="table-row" role="row"><div>Assign</div><div><code>Count &lt;- Count + 1</code></div><div>store a new value in Count</div></div>
+            <div class="table-row" role="row"><div>Compare</div><div><code>IF Count = 10 THEN</code></div><div>test whether Count equals 10</div></div>
+            <div class="table-row" role="row"><div>Java warning</div><div><code>count == 10</code></div><div>Java equality syntax is not the expected pseudocode style</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers and what it leaves outside</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>pseudocode versus Java declarations for variables, constants, arrays, records, assignment and type mapping.</span></div>
+            <div><strong>Boundary</strong><span>This lesson does not teach full Java syntax or compiler rules; Java is used only as a support comparison.</span></div>
+            <div><strong>Paper 2 note</strong><span>Use Cambridge-style pseudocode unless the question explicitly asks for Java.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="converter">
+          <div class="section-title">
+            <p class="eyebrow">Interactive declaration converter</p>
+            <h2>Convert Java-style meaning into pseudocode</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Java-style declaration
+              <select id="declarationSelect">
+                <option value="int count;">int count;</option>
+                <option value="double price;">double price;</option>
+                <option value="String name;">String name;</option>
+                <option value="boolean enrolled;">boolean enrolled;</option>
+                <option value="int[] scores = new int[30];">int[] scores = new int[30];</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="convertBtn">Convert</button>
+          </div>
+          <div class="trace-output" id="convertResult">Choose a declaration to convert.</div>
+        </section>
+
+        <section class="panel" id="sorter">
+          <div class="section-title">
+            <p class="eyebrow">Syntax sorter</p>
+            <h2>Which syntax belongs to which answer style?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-sort="pseudo">DECLARE Total : REAL</button>
+            <button class="choice-card" type="button" data-sort="java">double total;</button>
+            <button class="choice-card" type="button" data-sort="pseudo">Scores[Index] &lt;- 50</button>
+            <button class="choice-card" type="button" data-sort="java">scores[index] = 50;</button>
+          </div>
+          <div class="feedback" id="sortFeedback" aria-live="polite">Click a statement to identify whether it is pseudocode or Java-style.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Declaration conversions</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="variable">Variable</button>
+            <button class="tab" type="button" data-example="constant">Constant</button>
+            <button class="tab" type="button" data-example="array">Array</button>
+            <button class="tab" type="button" data-example="record">Record</button>
+          </div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Ten quick declaration checks</h2>
+            <p>Type a concise answer, then check. Each question also has its own answer button.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix mixed-syntax answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style questions with expandable MS</h2>
+            <p>These questions focus on declarations, type choices, array bounds, records, constants and strict pseudocode style.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Declaration checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Declare</strong><span><code>DECLARE Name : TYPE</code> for variables.</span></div>
+            <div><strong>Assign</strong><span>use <code>&lt;-</code> to store a value.</span></div>
+            <div><strong>Separate</strong><span>Java syntax supports learning; pseudocode earns Paper 2 marks.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Translate without mixing syntax</h2>
+          </div>
+          <ol class="homework-list">
+            <li>
+              <strong>Task 1: Convert declarations</strong>
+              <span>Convert these Java-style declarations to Cambridge-style pseudocode: <code>int total;</code>, <code>String name;</code>, <code>boolean found;</code>.</span>
+            </li>
+            <li>
+              <strong>Task 2: Array declaration</strong>
+              <span>Write pseudocode to declare 50 REAL readings and assign 12.5 to the first element.</span>
+            </li>
+            <li>
+              <strong>Task 3: Record declaration</strong>
+              <span>Define <code>TBook</code> with Title, ISBN and Pages fields, then declare <code>Book1</code> as <code>TBook</code>.</span>
+            </li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

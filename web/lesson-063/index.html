@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 063 | Malware types and social engineering</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
+        <h1>Malware types and social engineering</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Core idea</a>
+        <a href="#virus">Virus/worm</a>
+        <a href="#trojan">Trojan</a>
+        <a href="#spyware">Spyware</a>
+        <a href="#ransomware">Ransomware</a>
+        <a href="#social">Social engineering</a>
+        <a href="#controls">Controls</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Threat tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 063 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
+            <h2>Some attacks target software. Some target the person holding the keyboard.</h2>
+            <p>
+              Malware is malicious software designed to damage, disrupt, steal or gain unauthorised access.
+              Social engineering manipulates people into giving access, information or permission.
+              Exam answers need the mechanism, not just a scary label.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Classify</strong><span>common malware types by mechanism and impact</span></div>
+              <div><strong>Explain</strong><span>how social engineering exploits human trust or pressure</span></div>
+              <div><strong>Recommend</strong><span>controls that match the threat and protected security goal</span></div>
+            </div>
+          </div>
+          <div class="threat-card" aria-label="Threat map">
+            <div class="threat-stack">
+              <span>Virus: attaches, needs host/action</span>
+              <span>Worm: self-replicates across networks</span>
+              <span>Trojan: disguised as legitimate</span>
+              <span>Spyware: secretly monitors/steals</span>
+              <span>Social engineering: manipulates people</span>
+            </div>
+            <p>If the attack starts with "just click this", check both the device and the decision.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For each threat, use four words: entry, behaviour, impact, control.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Many candidates list names of malware but do not describe what each one does. Names alone are low-yield.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not use encryption as a cure for every threat. It may protect confidentiality but does not remove malware or train users.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A user installs a "free game update" that secretly records keystrokes. What is the best diagnosis?</h2>
+            <p>Click the best answer. The update was free in the same way a trapdoor is open-plan architecture.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="trojan-spyware">Trojan delivery with spyware/keylogging behaviour</button>
+            <button class="choice-card" type="button" data-hook="worm">Worm only, because all malware spreads by itself</button>
+            <button class="choice-card" type="button" data-hook="availability">Availability control, because it is always about uptime</button>
+            <button class="choice-card" type="button" data-hook="backup">Backup, because every security question wants backup</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Look for disguise, behaviour and data impact.
+          </div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Malware is malicious software; social engineering manipulates people</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Malware</strong><span>Software created to disrupt, damage, steal data or gain unauthorised access.</span></article>
+            <article><strong>Payload</strong><span>The harmful action, such as deleting files, encrypting data or stealing credentials.</span></article>
+            <article><strong>Propagation</strong><span>How it spreads, such as infected files, networks, removable media or deceptive downloads.</span></article>
+            <article><strong>Social engineering</strong><span>Manipulating a person into revealing information or performing an unsafe action.</span></article>
+          </div>
+          <div class="callout">Chinese support: malware = 恶意软件；payload = 有害载荷/破坏行为；propagation = 传播方式；social engineering = 社会工程学攻击。</div>
+        </section>
+
+        <section class="panel" id="virus">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Virus and worm: both can spread, but not in the same way</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Virus</strong><span>Attaches to a host file/program and often needs the host to be run or shared.</span></article>
+            <article><strong>Worm</strong><span>Self-replicates, often across networks, without needing to attach to a host file.</span></article>
+            <article><strong>Impact</strong><span>Can corrupt data, slow systems, consume bandwidth or install further malware.</span></article>
+            <article><strong>Trap</strong><span>Do not say every self-spreading threat is a virus.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="trojan">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Trojan: malicious code disguised as legitimate software</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Mechanism</strong><span>Appears useful or harmless so a user installs or runs it.</span></article>
+            <article><strong>Impact</strong><span>May create a backdoor, steal data, install other malware or change settings.</span></article>
+            <article><strong>Control</strong><span>Download from trusted sources, check permissions, use anti-malware and user education.</span></article>
+            <article><strong>Trap</strong><span>A Trojan does not need to self-replicate to be harmful.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="spyware">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Spyware secretly monitors activity or collects data</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Mechanism</strong><span>Runs without clear user awareness and gathers information.</span></article>
+            <article><strong>Examples</strong><span>Keylogger, screen monitoring or browser tracking used to capture credentials.</span></article>
+            <article><strong>Goal affected</strong><span>Often threatens confidentiality and authenticity if credentials are stolen.</span></article>
+            <article><strong>Control</strong><span>Anti-malware, least privilege, patching, browser controls and caution with downloads.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="ransomware">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Ransomware denies access by encrypting or locking data</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Mechanism</strong><span>Encrypts files or locks systems, then demands payment for restoration.</span></article>
+            <article><strong>Goal affected</strong><span>Mainly threatens availability; may also threaten confidentiality if data is stolen.</span></article>
+            <article><strong>Control</strong><span>Offline backups, patching, anti-malware, restricted permissions and user training.</span></article>
+            <article><strong>Trap</strong><span>Paying is not a reliable recovery strategy in an exam answer.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="social">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Social engineering exploits people rather than code</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Mechanism</strong><span>Uses trust, urgency, authority, curiosity or fear to influence a user.</span></article>
+            <article><strong>Action</strong><span>User may reveal passwords, approve access, install software or transfer data.</span></article>
+            <article><strong>Goal affected</strong><span>Often threatens confidentiality and authenticity through impersonation or credential theft.</span></article>
+            <article><strong>Control</strong><span>User training, verification procedures, MFA, reporting routes and least privilege.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="controls">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 7</p>
+            <h2>Match controls to mechanism, not just the word "malware"</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Threat control comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Threat</div>
+              <div role="columnheader">Likely impact</div>
+              <div role="columnheader">Suitable controls</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Virus/worm</div>
+              <div role="cell">Corrupts data, spreads, slows systems, uses resources.</div>
+              <div role="cell">Anti-malware, patching, scanning removable media, network monitoring.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Trojan</div>
+              <div role="cell">Disguised malicious installation or backdoor.</div>
+              <div role="cell">Trusted sources, permissions review, user education, anti-malware.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Spyware</div>
+              <div role="cell">Secret monitoring, credential/data theft.</div>
+              <div role="cell">Anti-spyware, least privilege, MFA, patching, download caution.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Ransomware</div>
+              <div role="cell">Loss of access to files/services.</div>
+              <div role="cell">Offline backups, patching, anti-malware, restricted write access.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Social engineering</div>
+              <div role="cell">User reveals credentials or performs unsafe action.</div>
+              <div role="cell">Training, verification, MFA, clear reporting procedure.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Malware meaning, payload, propagation and impact.</span></div>
+            <div><strong>Covered</strong><span>Virus, worm, Trojan, spyware/keylogger and ransomware mechanisms.</span></div>
+            <div><strong>Covered</strong><span>Social engineering as human manipulation and suitable controls.</span></div>
+            <div><strong>Boundary</strong><span>Security goals were introduced in Lesson 062.</span></div>
+            <div><strong>Boundary</strong><span>Hacking, phishing, pharming and denial-of-service are handled in Lesson 064.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Threat classifier</h2>
+            <p>Select a clue and identify the most likely malware/social engineering category.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario clue
+              <select id="scenarioInput">
+                <option value="host">Malicious code attaches to a document and runs when opened</option>
+                <option value="network">Malicious code self-replicates across a network</option>
+                <option value="disguise">A useful-looking installer secretly opens a backdoor</option>
+                <option value="keys">Software secretly records keystrokes</option>
+                <option value="locked">Files are encrypted and payment is demanded</option>
+                <option value="urgent">A caller pressures staff to reveal a password urgently</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Classify</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Threat, impact, control</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="worm">Worm</button>
+            <button class="tab" type="button" data-example="trojan">Trojan</button>
+            <button class="tab" type="button" data-example="ransomware">Ransomware</button>
+            <button class="tab" type="button" data-example="social">Social engineering</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant-check questions</h2>
+            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the almost-right answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Answer first, then reveal the CIE-style mark scheme</h2>
+            <p>These are original Cambridge-style questions. The mark schemes reward mechanism, impact and control linkage.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Threat memory map</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Virus</strong><span>Attaches to host file/program and spreads when run/shared.</span></div>
+            <div><strong>Worm</strong><span>Self-replicates, often across networks.</span></div>
+            <div><strong>Trojan</strong><span>Disguised as legitimate software.</span></div>
+            <div><strong>Spyware</strong><span>Secretly monitors or steals information.</span></div>
+            <div><strong>Ransomware</strong><span>Locks/encrypts data and demands payment.</span></div>
+            <div><strong>Social engineering</strong><span>Manipulates people into unsafe actions.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear output, not vague revision</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Threat comparison cards</strong>
+              <span>Create six cards: virus, worm, Trojan, spyware, ransomware and social engineering. Include mechanism, impact and control.</span>
+            </article>
+            <article>
+              <strong>Task 2: Risk-control table</strong>
+              <span>For a school network, list three malware/social engineering risks and one suitable control for each.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Compare ransomware and spyware, then recommend two controls that reduce risk from both technical and human weaknesses.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

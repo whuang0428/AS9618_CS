@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 080 | Tables, records, fields, data types and constraints</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
+        <h1>Tables, records, fields, data types and constraints</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#terms">Tables and records</a>
+        <a href="#fields">Fields</a>
+        <a href="#types">Data types</a>
+        <a href="#constraints">Constraints</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#type-tool">Type chooser</a>
+        <a href="#constraint-tool">Constraint checker</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#checkpoint">Checkpoint</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 080 | 45 minutes | Paper 1 Section 8 | 5-minute quiz and monthly checkpoint</p>
+            <h2>A table is not just boxes. It is boxes with rules, otherwise the data starts doing parkour.</h2>
+            <p>
+              This lesson focuses on the inside of a database table: records, fields, data types, field sizes
+              and constraints. The aim is to design fields that store the right kind of data and reject values
+              that should not be accepted.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Label</strong><span>table, record/tuple, field/attribute and value</span></div>
+              <div><strong>Select</strong><span>appropriate data types and field sizes for scenario data</span></div>
+              <div><strong>Apply</strong><span>constraints and validation rules to protect data integrity</span></div>
+            </div>
+          </div>
+          <div class="table-visual" aria-label="Annotated table visual">
+            <div class="visual-row head"><span>StudentID</span><span>Name</span><span>DOB</span><span>FeePaid</span></div>
+            <div class="visual-row"><span>S0234</span><span>Amira Chen</span><span>2009-04-18</span><span>TRUE</span></div>
+            <div class="visual-row"><span>S0318</span><span>Leo Singh</span><span>2008-11-02</span><span>FALSE</span></div>
+            <p>Fields are columns. Records are rows. Values live at the intersections.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every field, ask: what kind of value is stored, how big can it be, and what values must be rejected?</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Database design marks often come from precise choices: a date field for dates, Boolean for true/false, and a constraint with a clear purpose.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not choose Integer for phone numbers. You do not calculate with phone numbers, and leading zeroes may matter.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A school stores a phone number as Integer. What could go wrong?</h2>
+            <p>The phone number is not trying to join a maths competition.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="zero">A leading zero may be removed</button>
+            <button class="choice-card" type="button" data-hook="sum">The school can add two phone numbers</button>
+            <button class="choice-card" type="button" data-hook="date">It becomes a valid date</button>
+            <button class="choice-card" type="button" data-hook="image">It stores a profile photo</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose the database design issue.
+          </div>
+        </section>
+
+        <section class="panel" id="terms">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Tables, records and fields</h2>
+            <p>A table stores records about one entity. A record is one complete row. A field is one column or attribute.</p>
+          </div>
+          <div class="term-table" role="table" aria-label="Table record field terms">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Term</div>
+              <div role="columnheader">Meaning</div>
+              <div role="columnheader">Example</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Table</div>
+              <div role="cell">A collection of records for one entity</div>
+              <div role="cell">Student table</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Record / tuple</div>
+              <div role="cell">One complete row in a table</div>
+              <div role="cell">S0234, Amira Chen, 2009-04-18, TRUE</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Field / attribute</div>
+              <div role="cell">One column or property stored for each record</div>
+              <div role="cell">StudentID, Name, DateOfBirth, FeePaid</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Value</div>
+              <div role="cell">One item of data in a field for a record</div>
+              <div role="cell">TRUE in the FeePaid field</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="fields">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Designing fields properly</h2>
+            <p>Each field should have a name, data type, possible field size and constraints. Good design reduces invalid data at entry.</p>
+          </div>
+          <div class="field-design-grid">
+            <article><strong>Field name</strong><span>Clear and specific: <code>DateOfBirth</code>, not <code>date</code>.</span></article>
+            <article><strong>Data type</strong><span>Controls the kind of data: text, integer, real, date/time, Boolean.</span></article>
+            <article><strong>Field size</strong><span>Maximum storage length where relevant, such as 8 characters for StudentID.</span></article>
+            <article><strong>Constraint</strong><span>A rule that a value must satisfy before it is accepted.</span></article>
+          </div>
+          <div class="callout">Chinese support: field = 字段/列；record = 记录/行；constraint = 约束/限制规则；data integrity = 数据完整性。</div>
+        </section>
+
+        <section class="panel" id="types">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Common database data types</h2>
+          </div>
+          <div class="data-type-table" role="table" aria-label="Common data types">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Data type</div>
+              <div role="columnheader">Use when</div>
+              <div role="columnheader">Example</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Text / string</div>
+              <div role="cell">The value may contain letters, spaces, symbols or leading zeroes</div>
+              <div role="cell">PhoneNumber = "02071234567"</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Integer</div>
+              <div role="cell">Whole number used for counting or arithmetic</div>
+              <div role="cell">Quantity = 24</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Real / decimal</div>
+              <div role="cell">Number may include fractional part</div>
+              <div role="cell">MassKg = 62.5</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Boolean</div>
+              <div role="cell">Only two logical states are needed</div>
+              <div role="cell">FeePaid = TRUE</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Date/time</div>
+              <div role="cell">Date or time operations, ordering or validation are needed</div>
+              <div role="cell">AppointmentDate = 2026-06-15</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="constraints">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Constraints and validation rules</h2>
+            <p>A constraint limits accepted values to help maintain data integrity. It does not prove the data is true; it helps reject impossible or invalid data.</p>
+          </div>
+          <div class="constraint-grid">
+            <article><strong>Presence check</strong><span>Value must not be blank. Example: Name is required.</span></article>
+            <article><strong>Range check</strong><span>Value must be within limits. Example: Mark is 0 to 100.</span></article>
+            <article><strong>Type check</strong><span>Value must match the data type. Example: Quantity must be Integer.</span></article>
+            <article><strong>Length check</strong><span>Value must have a permitted length. Example: StudentID has 5 characters.</span></article>
+            <article><strong>Format check</strong><span>Value must match a pattern. Example: postcode or email pattern.</span></article>
+            <article><strong>Lookup check</strong><span>Value must be from an allowed list. Example: Grade is A, B, C, D, E or U.</span></article>
+          </div>
+          <div class="answer-frame">
+            <strong>Exam sentence:</strong>
+            <span>A constraint improves data integrity by preventing values that do not meet a rule, such as rejecting a mark outside 0 to 100.</span>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson handles table structure and valid values</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Table, record/tuple, field/attribute, value, field name, data type, field size, constraints, common validation checks and data integrity.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 081 develops primary keys, foreign keys and relationships. This lesson may mention identifiers, but does not teach key selection in depth.</span></div>
+            <div><strong>Assessment rhythm</strong><span>This lesson includes a 5-minute quiz and a short monthly checkpoint on Section 8 basics so far.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="type-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive data type chooser</p>
+            <h2>Choose the best data type</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Field
+              <select id="typeInput">
+                <option value="phone">PhoneNumber stores 02071234567</option>
+                <option value="paid">FeePaid stores TRUE or FALSE</option>
+                <option value="height">HeightM stores 1.72</option>
+                <option value="quantity">QuantityInStock stores 54</option>
+                <option value="appointment">AppointmentDate stores 2026-06-15</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="typeBtn">Choose type</button>
+          </div>
+          <div class="result-box" id="typeResult">Choose a field, then decide the data type.</div>
+          <div class="feedback" id="typeReason">The best answer depends on how the value is used, not how numeric it looks.</div>
+        </section>
+
+        <section class="panel" id="constraint-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive constraint checker</p>
+            <h2>Which rule rejects the bad value?</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Bad value
+              <select id="constraintInput">
+                <option value="blankName">Name is blank</option>
+                <option value="badMark">ExamMark is 128</option>
+                <option value="badId">StudentID is S1234567 but should be 5 characters</option>
+                <option value="badGrade">Grade is X but allowed grades are A to E or U</option>
+                <option value="badQuantity">Quantity is "ten"</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="constraintBtn">Check rule</button>
+          </div>
+          <div class="result-box" id="constraintResult">Choose a bad value to identify the check.</div>
+          <div class="feedback" id="constraintReason">Name the rule and explain what it prevents.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Design fields that do not invite chaos</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="student">Student table</button>
+            <button class="tab" type="button" data-example="booking">Booking table</button>
+            <button class="tab" type="button" data-example="phone">Phone number trap</button>
+            <button class="tab" type="button" data-example="constraint">Constraint answer</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>5-minute quiz plus core checks</h2>
+            <p>Answer quickly, then use Show answer to mark with strict vocabulary.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="checkpoint">
+          <div class="section-title">
+            <p class="eyebrow">Monthly checkpoint</p>
+            <h2>Section 8 basics so far</h2>
+            <p>This checkpoint connects Lessons 078-080 without becoming a full exam.</p>
+          </div>
+          <div class="checkpoint-grid">
+            <article><strong>1. Define</strong><span>data, information, database, DBMS, flat-file, relational database.</span></article>
+            <article><strong>2. Compare</strong><span>one-table repeated data vs linked tables with reduced redundancy.</span></article>
+            <article><strong>3. Design</strong><span>choose data types and constraints for five fields in a small scenario.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair common field design errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style practice with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about selecting and justifying types and constraints.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What to remember</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Structure</strong><span>Table = collection of records; record = row; field = column.</span></div>
+            <div><strong>Types</strong><span>Choose the type based on use: text, integer, real, Boolean or date/time.</span></div>
+            <div><strong>Constraints</strong><span>Rules reject invalid values and help maintain data integrity.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Field design table</strong>
+              <span>For fields StudentID, Name, DateOfBirth, PhoneNumber, ExamMark and FeePaid, give a suitable data type, field size if relevant, and one constraint.</span>
+            </article>
+            <article>
+              <strong>Task 2: Explain two choices</strong>
+              <span>Write two short paragraphs explaining why PhoneNumber should usually be text and why ExamMark should have a range check.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "Explain how suitable data types and constraints can improve data integrity in a school database." Use two fields as examples.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

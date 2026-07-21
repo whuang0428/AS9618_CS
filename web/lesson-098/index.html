@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 098 | Algorithmic thinking: inputs, outputs, and constraints</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>Algorithmic thinking: inputs, outputs, and constraints</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Core idea</a>
+        <a href="#model">Problem model</a>
+        <a href="#constraints">Constraints</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Problem classifier</a>
+        <a href="#builder">Algorithm builder</a>
+        <a href="#trace">Trace</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 098 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
+            <h2>Before writing code, know what goes in, what comes out, and what is allowed to happen in between.</h2>
+            <p>
+              Paper 2 starts with algorithmic thinking. You will turn a word problem into clear inputs, outputs,
+              constraints, steps and stopping conditions before writing Cambridge-style pseudocode. Java appears
+              only as a supporting implementation view; Cambridge pseudocode remains the exam answer format.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>inputs, outputs, constraints and assumptions in a problem statement</span></div>
+              <div><strong>Design</strong><span>numbered steps and Cambridge-style pseudocode from a simple problem</span></div>
+              <div><strong>Trace</strong><span>check an algorithm using test data and variable changes</span></div>
+            </div>
+          </div>
+          <div class="algo-visual" aria-label="Algorithm pipeline visual">
+            <span class="keyword">Input</span><span>what data is provided?</span>
+            <span class="keyword">Process</span><span>what steps transform the data?</span>
+            <span class="keyword">Output</span><span>what result is required?</span>
+            <span class="keyword">Constraint</span><span>what limits, rules or stopping conditions apply?</span>
+            <p>An algorithm without an output is just a very organised walk in circles.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Start every problem by writing IPOC: input, process, output, constraints. Pseudocode comes after that.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Most Paper 2 mistakes start before the first line of pseudocode: unclear inputs, missing output or no termination condition.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not write Java syntax as the exam answer. Java can help you test ideas, but Cambridge pseudocode has its own conventions.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>The missing tea algorithm</h2>
+            <p>Give instructions for making tea but remove one step. If the cup is empty, the kettle is not being difficult; the algorithm is.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="input">"Use milk" but never say whether milk is available.</button>
+            <button class="choice-card" type="button" data-hook="output">"Do steps carefully" but never say the expected result.</button>
+            <button class="choice-card" type="button" data-hook="constraint">"Boil water forever" with no stopping condition.</button>
+            <button class="choice-card" type="button" data-hook="process">"Make tea" with no ordered steps.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose a fault to classify it as input, output, constraint or process.
+          </div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Core idea</p>
+            <h2>An algorithm is a precise method for solving a problem</h2>
+          </div>
+          <div class="data-table concept-table" role="table" aria-label="Algorithmic thinking concepts">
+            <div class="table-row table-head" role="row"><div>Concept</div><div>Question to ask</div><div>Example</div></div>
+            <div class="table-row" role="row"><div>Input</div><div>What data is supplied?</div><div>Mark, NumberOfItems, List[1:10]</div></div>
+            <div class="table-row" role="row"><div>Process</div><div>What operations are performed?</div><div>compare, add, count, repeat, validate</div></div>
+            <div class="table-row" role="row"><div>Output</div><div>What must be shown or returned?</div><div>"Pass", total, maximum, valid/invalid</div></div>
+            <div class="table-row" role="row"><div>Constraint</div><div>What rule or limit applies?</div><div>Mark must be 0-100; loop stops after 10 items</div></div>
+          </div>
+          <div class="callout">Chinese support: input = 输入；output = 输出；constraint = 约束；stopping condition = 停止条件；trace = 跟踪执行。</div>
+        </section>
+
+        <section class="panel" id="model">
+          <div class="section-title">
+            <p class="eyebrow">Problem model</p>
+            <h2>Use IPOC before pseudocode</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Input</strong><span>List each value the algorithm needs. Decide type and range when possible.</span></article>
+            <article><strong>Process</strong><span>Write the transformation in English first: calculate, compare, count, search, repeat.</span></article>
+            <article><strong>Output</strong><span>State exactly what the algorithm must display, return or store.</span></article>
+            <article><strong>Constraints</strong><span>Record limits, valid ranges, maximum repetitions and stopping conditions.</span></article>
+            <article><strong>Assumptions</strong><span>State what is guaranteed if the question implies it, such as exactly 10 values.</span></article>
+            <article><strong>Test data</strong><span>Choose normal, boundary and invalid data when validation is involved.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="constraints">
+          <div class="section-title">
+            <p class="eyebrow">Constraints</p>
+            <h2>Constraints stop algorithms from wandering off</h2>
+          </div>
+          <div class="data-table concept-table" role="table" aria-label="Constraint examples">
+            <div class="table-row table-head" role="row"><div>Constraint type</div><div>Example clue</div><div>Design effect</div></div>
+            <div class="table-row" role="row"><div>Range</div><div>mark is between 0 and 100</div><div>validate before processing</div></div>
+            <div class="table-row" role="row"><div>Count</div><div>exactly 10 readings are entered</div><div>use count-controlled loop</div></div>
+            <div class="table-row" role="row"><div>Sentinel</div><div>enter -1 to finish</div><div>use condition-controlled loop</div></div>
+            <div class="table-row" role="row"><div>Output format</div><div>output highest value and its position</div><div>track both value and position</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Cambridge pseudocode is the exam language</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>INPUT Mark
+IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit needed"
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>if (mark &gt;= 50) {
+    System.out.println("Pass");
+} else {
+    System.out.println("Resit needed");
+}</code></pre>
+            </article>
+          </div>
+          <div class="callout">Exam reminder: write `IF ... THEN`, `ELSE`, `ENDIF`, `INPUT`, `OUTPUT` in Cambridge-style pseudocode. Java braces and semicolons are support examples only.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson opens Paper 2 Section 9</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Algorithmic thinking, IPOC analysis, constraints, assumptions, stopping conditions, test data, trace and introductory Cambridge-style pseudocode.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 099 continues with decomposition and abstraction. This page does not teach full searching/sorting algorithms yet.</span></div>
+            <div><strong>Paper 2 note</strong><span>Cambridge pseudocode is the exam standard. Java appears only as supporting implementation language.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive problem classifier</p>
+            <h2>Identify the design need</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Problem clue
+              <select id="classifierInput">
+                <option value="pass">A mark is entered and Pass/Resit is output.</option>
+                <option value="total">Ten prices are entered and the total is output.</option>
+                <option value="sentinel">Numbers are entered until -1 is typed.</option>
+                <option value="highest">A list of scores is entered and the highest score is output.</option>
+                <option value="validate">A temperature must be between -20 and 50.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+          </div>
+          <div class="feedback" id="classifyResult">Choose a problem clue to see the main algorithm design need.</div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive algorithm builder</p>
+            <h2>Build an IPOC plan</h2>
+          </div>
+          <div class="builder-grid">
+            <label>
+              Problem
+              <select id="problemInput">
+                <option value="pass">Pass/resit from mark</option>
+                <option value="average">Average of 5 values</option>
+                <option value="valid">Validate age 11-18</option>
+                <option value="maximum">Find maximum of 6 scores</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="buildBtn">Build IPOC</button>
+          </div>
+          <div class="answer-frame" id="builderResult">Choose a problem to generate inputs, output and constraints.</div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Interactive trace</p>
+            <h2>Trace the pass/resit algorithm</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Test mark
+              <select id="traceInput">
+                <option value="72">72</option>
+                <option value="50">50</option>
+                <option value="49">49</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="traceBtn">Trace output</button>
+          </div>
+          <div class="result-table" id="traceResult">Choose a mark to trace the condition and output.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From word problem to algorithm</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="pass">Pass/resit</button>
+            <button class="tab" type="button" data-example="average">Average</button>
+            <button class="tab" type="button" data-example="validate">Validation</button>
+            <button class="tab" type="button" data-example="max">Maximum</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Algorithmic thinking vocabulary</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix weak algorithm design habits</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style algorithm thinking questions with expandable MS</h2>
+            <p>These questions target problem analysis, pseudocode planning, tracing and correction. MS uses strict Cambridge-style expectations.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Algorithm design checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Define</strong><span>Inputs, outputs, constraints and assumptions before pseudocode.</span></div>
+            <div><strong>Design</strong><span>Use sequence, selection and iteration only where the problem needs them.</span></div>
+            <div><strong>Trace</strong><span>Run test data through the steps to find missing updates or stopping conditions.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: IPOC cards</strong>
+              <span>For three small problems, write input, process, output, constraints and one assumption before any pseudocode.</span>
+            </article>
+            <article>
+              <strong>Task 2: Pseudocode rewrite</strong>
+              <span>Write Cambridge-style pseudocode for pass/resit and average of 5 values. Do not use Java braces or semicolons.</span>
+            </article>
+            <article>
+              <strong>Task 3: Trace table</strong>
+              <span>Trace the pass/resit algorithm using 49, 50 and 72. State why 50 is a boundary test.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 039 | Environmental and reliability considerations in hardware</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
+        <h1>Environmental and reliability considerations in hardware</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#environment">Environment</a>
+        <a href="#reliability">Reliability</a>
+        <a href="#mitigation">Mitigation</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Risk tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 039 | 45 minutes | Paper 1 Section 3</p>
+            <h2>Hardware does not fail because it is dramatic. It fails because dust, heat and power cuts are patient.</h2>
+            <p>
+              This lesson focuses on environmental and reliability considerations
+              when selecting hardware. You will identify risks, choose protective
+              measures, and explain how reliability affects a user's task.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>environmental risks such as heat, moisture, dust and shock</span></div>
+              <div><strong>Explain</strong><span>reliability ideas such as redundancy, backup, maintenance and availability</span></div>
+              <div><strong>Justify</strong><span>hardware protection using risk, mitigation and consequence</span></div>
+            </div>
+          </div>
+          <div class="hardware-card" aria-label="Risk mitigation formula">
+            <span>risk -> mitigation -> consequence</span>
+            <p>"It is durable" is a start. "It is sealed, so dust cannot damage outdoor sensors" is an answer.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every recommendation, require one named risk, one hardware measure, and one effect on reliability.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style questions reward context. The same device can be suitable in an office and unsuitable on a windy roof in winter.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Reliability is not just "good quality". It is the chance the system continues to work correctly when it is needed.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A sensor works perfectly on a desk. Then it is placed outside in rain, dust and heat. What changed?</h2>
+            <p>Click the best first explanation. The sensor did not suddenly become lazy; its environment changed.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="env">Environmental conditions can damage or disrupt hardware</button>
+            <button class="choice-card" type="button" data-hook="speed">The CPU must automatically run faster outside</button>
+            <button class="choice-card" type="button" data-hook="storage">More storage always fixes outdoor failure</button>
+            <button class="choice-card" type="button" data-hook="software">Only software matters once hardware is installed</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Think about heat, water, dust, vibration, power and maintenance access.
+          </div>
+        </section>
+
+        <section class="panel" id="environment">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Environmental factors change hardware suitability</h2>
+          </div>
+          <div class="risk-table" role="table" aria-label="Environmental risks">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Factor</div>
+              <div role="columnheader">Possible effect</div>
+              <div role="columnheader">Suitable protection</div>
+              <div role="columnheader">Exam warning</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Temperature</div>
+              <div role="cell">Overheating can slow, shut down or damage components.</div>
+              <div role="cell">Cooling, heat sinks, ventilation, temperature-rated hardware</div>
+              <div role="cell">Do not just say "fast"; explain heat tolerance or cooling.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Moisture / water</div>
+              <div role="cell">Corrosion or short circuits can stop the system working.</div>
+              <div role="cell">Sealed casing, waterproof enclosure, humidity control</div>
+              <div role="cell">Name what water does to reliability.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Dust / dirt</div>
+              <div role="cell">Dust can block cooling or interfere with moving parts and sensors.</div>
+              <div role="cell">Dust filters, sealed enclosure, regular cleaning</div>
+              <div role="cell">Dust is not only untidy; it changes cooling and accuracy.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Shock / vibration</div>
+              <div role="cell">Movement can damage drives, connectors or screens.</div>
+              <div role="cell">Rugged casing, SSD, shock mounting</div>
+              <div role="cell">Link mobile use to physical impact.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Power instability</div>
+              <div role="cell">Power loss can corrupt data or interrupt service.</div>
+              <div role="cell">UPS, surge protection, battery backup</div>
+              <div role="cell">Explain continuity, not just "more power".</div>
+            </div>
+          </div>
+          <div class="callout">Chinese support: environmental factor = 环境因素；corrosion = 腐蚀；surge protection = 浪涌保护；rugged = 加固型。</div>
+        </section>
+
+        <section class="panel" id="reliability">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Reliability is about continuing to work correctly</h2>
+          </div>
+          <div class="criteria-grid">
+            <article><strong>Availability</strong><span>The system is usable when required, such as a checkout system during opening hours.</span></article>
+            <article><strong>Redundancy</strong><span>Extra hardware can take over if one component fails, such as a spare disk or power supply.</span></article>
+            <article><strong>Backup</strong><span>Copies of data reduce the impact of storage failure or accidental loss.</span></article>
+            <article><strong>MTBF</strong><span>Mean time between failures indicates expected reliability, often used for comparing components.</span></article>
+            <article><strong>Maintenance</strong><span>Cleaning, updates and replacement schedules reduce unexpected failure.</span></article>
+            <article><strong>Monitoring</strong><span>Temperature, battery, disk and network monitoring can warn before failure becomes outage.</span></article>
+          </div>
+          <div class="callout">Reliability answer frame: "If X fails, Y prevents or reduces the impact, so the user can continue Z."</div>
+        </section>
+
+        <section class="panel" id="mitigation">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Mitigation must match the risk</h2>
+          </div>
+          <div class="scenario-grid">
+            <article><strong>Outdoor weather station</strong><span>Weatherproof casing, low-power controller, battery/solar power and wireless communication.</span></article>
+            <article><strong>Hospital workstation</strong><span>Reliable power, backup, regular maintenance and quick replacement to reduce downtime.</span></article>
+            <article><strong>Delivery handheld</strong><span>Rugged case, long battery life, mobile data fallback and SSD/flash storage.</span></article>
+            <article><strong>Data server</strong><span>Cooling, UPS, RAID, backup, monitoring and controlled access.</span></article>
+          </div>
+          <div class="callout">A strong answer rejects an unsuitable protection. A UPS helps power cuts; it does not make a sensor waterproof.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Environmental risks: temperature, moisture, dust, shock/vibration and power instability.</span></div>
+            <div><strong>Covered</strong><span>Reliability concepts: availability, redundancy, backup, maintenance, monitoring and MTBF.</span></div>
+            <div><strong>Covered</strong><span>Matching mitigation to scenario and consequence.</span></div>
+            <div><strong>Covered</strong><span>Exam-style justification using risk, mitigation and consequence.</span></div>
+            <div><strong>Boundary</strong><span>Section 3 integrated hardware review continues in Lesson 040.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Environmental risk evaluator</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="weather">Remote weather station</option>
+                <option value="server">School server room</option>
+                <option value="delivery">Delivery handheld device</option>
+                <option value="factory">Factory barcode scanner</option>
+                <option value="clinic">Clinic reception system</option>
+              </select>
+            </label>
+            <button type="button" id="evaluateBtn">Evaluate risk</button>
+          </div>
+          <div class="result-box" id="riskSummary" aria-live="polite"></div>
+          <div class="method-box" id="mitigationSummary"></div>
+          <div class="reject-box" id="rejectSummary"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Write reliability answers that earn marks</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="weather">Weather station</button>
+            <button class="tab" type="button" data-example="server">Server room</button>
+            <button class="tab" type="button" data-example="delivery">Delivery device</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak reliability answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"Use a UPS because it makes the computer waterproof."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">A UPS protects against short power cuts and allows safe shutdown. Waterproofing needs a sealed or weatherproof enclosure.</p>
+            </article>
+            <article>
+              <p class="wrong">"Reliability means the hardware is expensive and therefore good."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">Reliability means the hardware continues to work correctly when required. Cost may be one factor, but redundancy, maintenance and environmental protection are more precise evidence.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on naming the risk, matching a mitigation, and explaining the effect on reliability.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Environmental reliability in six exam sentences</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Heat</strong><span>Cooling and ventilation reduce overheating and shutdowns.</span></div>
+            <div><strong>Water</strong><span>Sealed enclosures reduce corrosion and short circuits.</span></div>
+            <div><strong>Dust</strong><span>Filters and cleaning protect cooling and sensors.</span></div>
+            <div><strong>Shock</strong><span>Rugged casing and SSDs reduce mobile damage.</span></div>
+            <div><strong>Power</strong><span>UPS and surge protection reduce interruption and data loss.</span></div>
+            <div><strong>Failure</strong><span>Backup, redundancy and maintenance reduce downtime.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write a 6-mark answer recommending hardware protections for a remote weather station.</li>
+            <li>Explain how a UPS, backup and RAID each improve reliability, using a different sentence for each.</li>
+            <li>Compare an office desktop and a rugged handheld device for a delivery driver using environmental risks.</li>
+            <li>Rewrite this weak sentence: "Use expensive hardware because it is reliable."</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Weather station:</strong> mention weatherproof casing, low power, battery/solar, wireless communication and accurate sensors.</p>
+            <p><strong>UPS:</strong> keeps power briefly and allows safe shutdown. <strong>Backup:</strong> restores data. <strong>RAID:</strong> can keep service running after a disk failure depending on type.</p>
+            <p><strong>Delivery:</strong> rugged, portable, shock-resistant and long battery life are more relevant than desktop processing power.</p>
+            <p><strong>Rewrite:</strong> name a reliability feature such as redundancy, MTBF, protective casing or maintenance schedule.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

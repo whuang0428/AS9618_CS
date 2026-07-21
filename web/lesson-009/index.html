@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 009 | Image file size calculations and metadata</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
+        <h1>Image file size calculations and metadata</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#chain">Calculation chain</a>
+        <a href="#metadata">Metadata</a>
+        <a href="#units">Units</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Calculator</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 009 | 45 minutes | Informal questioning</p>
+            <h2>The exam is not asking for vibes. It wants units.</h2>
+            <p>
+              This lesson turns bitmap knowledge into reliable calculation habits:
+              calculate pixel data, convert bits to bytes, decide whether metadata is
+              included, and label every final answer clearly.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div>
+                <strong>Calculate</strong>
+                <span>uncompressed bitmap size from width, height and colour depth</span>
+              </div>
+              <div>
+                <strong>Handle</strong>
+                <span>metadata correctly when it is included or ignored</span>
+              </div>
+              <div>
+                <strong>Convert</strong>
+                <span>bits, bytes and KiB without changing the question by accident</span>
+              </div>
+            </div>
+          </div>
+          <div class="file-card" aria-label="Image file calculation focus">
+            <span>100 × 80 × 8</span>
+            <p>Pixel data first. Metadata only joins the party if the question invites it.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Underline the requested unit before calculating. “bits”, “bytes” and “KiB” are different final answers.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Most wrong answers in this topic come from a correct formula followed by a careless unit or metadata decision.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>If the question says “ignore metadata”, do not add headers, dimensions or file information to the answer.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A file is 64 000 bits. Is that 64 000 bytes?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="yes">Yes, same number</button>
+            <button class="choice-card" type="button" data-hook="divide">No, divide by 8</button>
+            <button class="choice-card" type="button" data-hook="metadata">Only if metadata is present</button>
+            <button class="choice-card" type="button" data-hook="colour">Only with 8-bit colour</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick an answer. Bits are not bytes wearing a fake moustache.
+          </div>
+        </section>
+
+        <section class="panel" id="chain">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>The calculation chain</h2>
+          </div>
+          <div class="chain-grid">
+            <article>
+              <strong>1. Pixels</strong>
+              <span>width × height</span>
+            </article>
+            <article>
+              <strong>2. Bits</strong>
+              <span>pixels × colour depth</span>
+            </article>
+            <article>
+              <strong>3. Bytes</strong>
+              <span>bits ÷ 8</span>
+            </article>
+            <article>
+              <strong>4. Metadata</strong>
+              <span>add only if the question includes it</span>
+            </article>
+          </div>
+          <div class="worked-line">`100 × 80 × 8 = 64 000 bits = 8000 bytes`</div>
+        </section>
+
+        <section class="panel" id="metadata">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Metadata is data about the image, not the pixels themselves</h2>
+          </div>
+          <div class="metadata-grid">
+            <article>
+              <h3>Examples</h3>
+              <p>Width, height, colour depth, file type, date created, camera model, location data or thumbnail data.</p>
+            </article>
+            <article>
+              <h3>Purpose</h3>
+              <p>Metadata helps software interpret, organise, search or display the image correctly.</p>
+            </article>
+            <article>
+              <h3>Calculation rule</h3>
+              <p>Add metadata size only when the question gives it and asks for total file size.</p>
+            </article>
+          </div>
+          <div class="callout warning">Exam wording matters: “ignore metadata” means pixel data only.</div>
+        </section>
+
+        <section class="panel" id="units">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Units: do not trip at the finish line</h2>
+          </div>
+          <div class="unit-grid">
+            <article>
+              <h3>Bits to bytes</h3>
+              <p>`8 bits = 1 byte`, so divide bits by 8.</p>
+            </article>
+            <article>
+              <h3>Bytes to KiB</h3>
+              <p>`1 KiB = 1024 bytes`, so divide bytes by 1024 when binary units are requested.</p>
+            </article>
+            <article>
+              <h3>Rounding</h3>
+              <p>Only round if the question requests it. Otherwise keep an exact value or enough working.</p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: metadata = 元数据；header = 文件头；pixel data = 像素数据。</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Image file size from resolution and colour depth.</span></div>
+            <div><strong>Covered</strong><span>Metadata examples and whether metadata is included in a calculation.</span></div>
+            <div><strong>Boundary</strong><span>Compression ratios and lossy/lossless methods come later.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Image size calculator with metadata</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Width / pixels
+              <input id="widthInput" type="number" min="1" value="100" />
+            </label>
+            <label>
+              Height / pixels
+              <input id="heightInput" type="number" min="1" value="80" />
+            </label>
+            <label>
+              Colour depth / bits
+              <select id="depthInput">
+                <option value="1">1 bit</option>
+                <option value="4">4 bits</option>
+                <option value="8" selected>8 bits</option>
+                <option value="16">16 bits</option>
+                <option value="24">24 bits</option>
+              </select>
+            </label>
+            <label>
+              Metadata / bytes
+              <input id="metadataInput" type="number" min="0" value="512" />
+            </label>
+            <label class="checkbox-label">
+              <input id="includeMetadata" type="checkbox" checked />
+              Include metadata
+            </label>
+            <button type="button" id="calculateBtn">Calculate</button>
+          </div>
+          <div class="result-box" id="calcResult" aria-live="polite"></div>
+          <div class="method-box" id="calcMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="ignore">Ignore metadata</button>
+            <button class="tab" type="button" data-example="include">Include metadata</button>
+            <button class="tab" type="button" data-example="kib">Convert to KiB</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Catch the wording trap</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">Question says ignore metadata. Answer adds 512 bytes of metadata.</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">Do not add metadata when the question says ignore it. Use pixel data only.</p>
+            </article>
+            <article>
+              <p class="wrong">`8192 bytes = 8192 KiB`</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">`8192 bytes ÷ 1024 = 8 KiB`.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>
+              Use the buttons under each question to expand the CIE-style mark scheme.
+              These are original questions written in Cambridge style, not copied past-paper items.
+            </p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Read the wording before the calculator</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>Pixel data bits = width × height × colour depth.</span></div>
+            <div><strong>2</strong><span>Bytes = bits ÷ 8.</span></div>
+            <div><strong>3</strong><span>Metadata is data about the image; add it only when required.</span></div>
+            <div><strong>4</strong><span>KiB uses 1024 bytes, not 1000 bytes.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Calculate the pixel data size of a `128 × 128` image using 8-bit colour depth, in bytes.</li>
+            <li>Add 1024 bytes of metadata to the answer from task 1 and give the total in KiB.</li>
+            <li>List four examples of image metadata and explain one purpose of metadata.</li>
+            <li>Write a 4-mark explanation of why the phrase “ignore metadata” changes the calculation.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Task 1:</strong> `128 × 128 × 8 = 131 072 bits = 16 384 bytes`.</p>
+            <p><strong>Task 2:</strong> `16 384 + 1024 = 17 408 bytes = 17 KiB`.</p>
+            <p><strong>Metadata examples:</strong> width, height, colour depth, file type, date created, camera model, GPS location.</p>
+            <p><strong>Explanation focus:</strong> ignoring metadata means calculating only the image pixel data, not additional data about the file.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

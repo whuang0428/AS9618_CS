@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 071 | Section 6 review: matching risks to controls</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
+        <h1>Section 6 review: matching risks to controls</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#review-map">Review map</a>
+        <a href="#method">Answer method</a>
+        <a href="#controls">Controls</a>
+        <a href="#compare">Compare</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#matcher">Risk matcher</a>
+        <a href="#diagnostic">Diagnostic</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 071 | 45 minutes | Paper 1 Section 6 | Stage review</p>
+            <h2>The right control depends on the risk, not on the fanciest keyword.</h2>
+            <p>
+              This review lesson connects Section 6 topics: threats, vulnerabilities, confidentiality,
+              integrity, availability, privacy, authentication, encryption, backup, disaster recovery
+              and audit trails. The exam skill is to diagnose the problem first, then choose and justify
+              a proportionate control.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Classify</strong><span>risk type: access, loss, corruption, disclosure or disruption</span></div>
+              <div><strong>Match</strong><span>each risk to a suitable control and clear mechanism</span></div>
+              <div><strong>Correct</strong><span>vague answers into mark-worthy scenario explanations</span></div>
+            </div>
+          </div>
+          <div class="review-card" aria-label="Risk control chain">
+            <div class="review-stack">
+              <span>Asset</span>
+              <span>Threat</span>
+              <span>Vulnerability</span>
+              <span>Impact</span>
+              <span>Control</span>
+              <span>Consequence</span>
+            </div>
+            <p>"Use encryption" is not a personality. Explain what it protects and why.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For each answer, require a chain: risk -> control -> mechanism -> scenario consequence.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style marks often reward the link between a control and the specific scenario, not a memorised list.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Students often prescribe encryption for everything. Encryption protects confidentiality; it does not prove identity, restore data or stop weak behaviour.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A school loses coursework because a shared drive failed. Which control best addresses the main risk?</h2>
+            <p>If the answer is "stronger passwords", the files remain impressively inaccessible to everyone.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="backup">Regular tested backups with an offsite copy</button>
+            <button class="choice-card" type="button" data-hook="password">Longer passwords for all users</button>
+            <button class="choice-card" type="button" data-hook="hashing">Hashing the coursework folder names</button>
+            <button class="choice-card" type="button" data-hook="ethics">Writing an ethics policy about coursework ownership</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Identify the risk before admiring the control.
+          </div>
+        </section>
+
+        <section class="panel" id="review-map">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Section 6 review map: risk families and likely controls</h2>
+          </div>
+          <div class="risk-table" role="table" aria-label="Section 6 risk families">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Risk family</div>
+              <div role="columnheader">Typical problem</div>
+              <div role="columnheader">Useful controls</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Unauthorised access</div>
+              <div role="cell">A user enters a system or data they should not access.</div>
+              <div role="cell">Authentication, access levels, strong passwords, two-factor authentication.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Disclosure</div>
+              <div role="cell">Sensitive data is read or intercepted by an unauthorised party.</div>
+              <div role="cell">Encryption in transit/at rest, access rights, staff training.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Corruption / inaccurate data</div>
+              <div role="cell">Data is changed incorrectly, accidentally or maliciously.</div>
+              <div role="cell">Validation, verification, permissions, audit trails, backups.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Loss / unavailability</div>
+              <div role="cell">Data or service cannot be accessed after failure or attack.</div>
+              <div role="cell">Backups, disaster recovery, redundancy, restore testing.</div>
+            </div>
+          </div>
+          <div class="callout">Chinese support: risk = 风险；control/safeguard = 控制措施/保护措施；mechanism = 作用机制；consequence = 后果。</div>
+        </section>
+
+        <section class="panel" id="method">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Use the four-part answer chain</h2>
+          </div>
+          <div class="flow-grid">
+            <article><strong>1. Name the risk</strong><span>Example: unauthorised users may view medical records.</span></article>
+            <article><strong>2. Choose a control</strong><span>Example: role-based access levels and authentication.</span></article>
+            <article><strong>3. Explain mechanism</strong><span>Example: only authenticated staff with the correct role can open the record.</span></article>
+            <article><strong>4. Link consequence</strong><span>Example: this protects confidentiality and reduces privacy breaches.</span></article>
+          </div>
+          <div class="answer-frame">
+            <strong>Answer frame:</strong>
+            <span>[Control] reduces [risk] because [mechanism]. In this scenario, this matters because [impact/consequence].</span>
+          </div>
+        </section>
+
+        <section class="panel" id="controls">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Controls have different jobs</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Authentication</strong><span>Checks identity before access. It does not decide every permission by itself.</span></article>
+            <article><strong>Access rights</strong><span>Limit what an authenticated user can read, edit, delete or approve.</span></article>
+            <article><strong>Encryption</strong><span>Makes data unreadable without the key, protecting confidentiality.</span></article>
+            <article><strong>Validation</strong><span>Checks input follows rules such as type, range, length or format.</span></article>
+            <article><strong>Verification</strong><span>Checks data has been copied or entered accurately, often by comparison.</span></article>
+            <article><strong>Backup</strong><span>Provides recoverable copies after deletion, corruption or hardware failure.</span></article>
+            <article><strong>Disaster recovery</strong><span>Plans how systems and services are restored after a major incident.</span></article>
+            <article><strong>Audit trail</strong><span>Records actions for investigation, accountability and evidence.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Similar-looking controls: choose by mechanism</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Similar controls comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Pair</div>
+              <div role="columnheader">Difference</div>
+              <div role="columnheader">Exam trap</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Validation vs verification</div>
+              <div role="cell">Validation checks rule acceptability; verification checks accurate transfer/copying.</div>
+              <div role="cell">A valid value can still be the wrong value.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Authentication vs authorisation</div>
+              <div role="cell">Authentication confirms identity; authorisation/access rights decide permitted actions.</div>
+              <div role="cell">Logging in does not mean full access should be granted.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Encryption vs hashing</div>
+              <div role="cell">Encryption is reversible with a key; hashing is one-way and often used for password storage.</div>
+              <div role="cell">Do not say hashed data can be decrypted.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Backup vs audit trail</div>
+              <div role="cell">Backup restores data; audit trail explains what happened.</div>
+              <div role="cell">An audit log is not a copy of the lost file.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson reviews Section 6 without starting Section 7</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Threats, vulnerabilities, controls, authentication, access rights, encryption, hashing, validation, verification, backup, disaster recovery, audit trails and data integrity.</span></div>
+            <div><strong>Boundary</strong><span>Ethical evaluation, copyright, ownership and wider social issues start in Lesson 072.</span></div>
+            <div><strong>Exam focus</strong><span>Recognise the risk family, select a control, explain its mechanism and connect it to the scenario.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="matcher">
+          <div class="section-title">
+            <p class="eyebrow">Interactive risk matcher</p>
+            <h2>Select the best control for the scenario</h2>
+            <p>The best answer is the one whose mechanism directly addresses the named risk.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="lostLaptop">A teacher loses a laptop containing pupil medical information.</option>
+                <option value="wrongEmail">A clerk types the wrong email address for a parent.</option>
+                <option value="sharedAdmin">Several staff share one admin account.</option>
+                <option value="deletedMarks">Exam marks are deleted accidentally.</option>
+                <option value="suspiciousEdit">A customer record is changed at midnight.</option>
+                <option value="fakeLogin">A user tricks staff into entering credentials on a fake page.</option>
+              </select>
+            </label>
+            <label>
+              Control
+              <select id="controlInput">
+                <option value="encryption">Encryption</option>
+                <option value="verification">Verification</option>
+                <option value="uniqueAccounts">Unique accounts and access rights</option>
+                <option value="backups">Tested backups</option>
+                <option value="auditTrail">Audit trail</option>
+                <option value="training2fa">User training plus two-factor authentication</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="matchBtn">Check match</button>
+          </div>
+          <div class="result-box" id="matchResult" aria-live="polite"></div>
+          <div class="method-box" id="matchReason"></div>
+          <div class="reject-box" id="matchTrap"></div>
+        </section>
+
+        <section class="panel" id="diagnostic">
+          <div class="section-title">
+            <p class="eyebrow">Interactive diagnostic</p>
+            <h2>Identify the risk family first</h2>
+            <p>Choose the broad risk family. Then compare the suggested control route.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Symptom
+              <select id="diagnosticInput">
+                <option value="cannotAccess">Users cannot access the service after a server failure.</option>
+                <option value="viewPrivate">A user can view records outside their job role.</option>
+                <option value="badInput">A date of birth is entered as 31/02/2010.</option>
+                <option value="copiedWrong">A correct source value is copied incorrectly into another system.</option>
+                <option value="passwordFile">A password file is stolen from a server.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="diagnosticBtn">Diagnose</button>
+          </div>
+          <div class="result-box" id="diagnosticResult" aria-live="polite"></div>
+          <div class="method-box" id="diagnosticReason"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four model answers that turn labels into marks</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="hospital">Hospital records</button>
+            <button class="tab" type="button" data-example="email">Wrong email</button>
+            <button class="tab" type="button" data-example="password">Password file</button>
+            <button class="tab" type="button" data-example="outage">Service outage</button>
+          </div>
+          <div class="example-box" id="exampleBox" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Use precise vocabulary, then expand into full explanations</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix answers that sound secure but do not earn enough marks</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Cambridge-style Section 6 review questions with expandable MS</h2>
+            <p>Attempt first. Then open the mark scheme and check whether the mechanism and scenario link are present.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Section 6 review in six exam-ready sentences</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Risk first</strong><span>Identify what can go wrong before naming a control.</span></div>
+            <div><strong>Mechanism earns marks</strong><span>Explain how the control reduces the risk.</span></div>
+            <div><strong>Scenario matters</strong><span>Link the answer to the data, user or organisation given.</span></div>
+            <div><strong>Different controls</strong><span>Authentication, encryption, validation, backup and audit trail solve different problems.</span></div>
+            <div><strong>Do not overclaim</strong><span>No control removes all risk; describe what it reduces.</span></div>
+            <div><strong>Use consequences</strong><span>Connect to confidentiality, integrity, availability, privacy or accountability.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Make the review useful, not decorative</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Risk-control table</strong>
+              <span>Create a 12-row table with columns: scenario, risk family, suitable control, mechanism, consequence. Use at least six different Section 6 controls.</span>
+            </article>
+            <article>
+              <strong>Task 2: Rewrite weak answers</strong>
+              <span>Rewrite these into mark-worthy answers: "Use encryption", "Make backups", "Use validation", "Use passwords". Each rewrite must include because + scenario consequence.</span>
+            </article>
+            <article>
+              <strong>Task 3: Timed exam response</strong>
+              <span>Answer: "A school stores pupil records online. Discuss security measures that could reduce risks to this data." Write 8-10 marks worth of points using Section 6 vocabulary.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

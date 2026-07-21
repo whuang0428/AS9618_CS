@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 075 | Open source, proprietary software, and ownership trade-offs</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 7</p>
+        <h1>Open source, proprietary software, and ownership trade-offs</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#open-source">Open source</a>
+        <a href="#proprietary">Proprietary</a>
+        <a href="#tradeoffs">Trade-offs</a>
+        <a href="#ownership">Ownership</a>
+        <a href="#method">Answer method</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#advisor">Choice advisor</a>
+        <a href="#checker">Trade-off checker</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 075 | 45 minutes | Paper 1 Section 7 | 5-minute quiz</p>
+            <h2>Free software is not always free of responsibility.</h2>
+            <p>
+              This lesson compares open-source and proprietary software. The exam skill is not to declare
+              one side "better"; it is to explain the trade-off for a given user, organisation or project:
+              cost, control, support, security, customisation, compatibility and licensing.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>open source, proprietary software and ownership restrictions</span></div>
+              <div><strong>Compare</strong><span>cost, support, customisation, security and lock-in trade-offs</span></div>
+              <div><strong>Recommend</strong><span>a suitable choice using scenario-specific evidence</span></div>
+            </div>
+          </div>
+          <div class="software-card" aria-label="Software choice chain">
+            <div class="software-stack">
+              <span>Source visible?</span>
+              <span>Can modify?</span>
+              <span>Who supports it?</span>
+              <span>What licence terms?</span>
+              <span>What costs?</span>
+              <span>What risk?</span>
+            </div>
+            <p>Choosing software by slogan is like choosing a database by logo colour. Entertaining, not evidence.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Every comparison must include a scenario: school, startup, hospital, developer team or ordinary user.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Marks come from trade-offs: low cost may mean less formal support; vendor support may mean less control.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Open source does not mean no copyright, no licence, no security risk or no maintenance cost.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A school wants free software for its network servers. Should it automatically choose open source?</h2>
+            <p>"Free download" is a starting price, not the total cost of ownership wearing a tiny hat.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="depends">It depends on support, skills, security updates, compatibility and licence terms</button>
+            <button class="choice-card" type="button" data-hook="always">Yes. Open source is always free and always safer</button>
+            <button class="choice-card" type="button" data-hook="never">No. Proprietary software is always more professional</button>
+            <button class="choice-card" type="button" data-hook="owner">Yes. Open source means the school owns the code</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. The exam likes trade-offs more than fan clubs.
+          </div>
+        </section>
+
+        <section class="panel" id="open-source">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Open-source software makes source code available under a licence</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Source code available</strong><span>Users can inspect the program code rather than only using compiled software.</span></article>
+            <article><strong>Modify</strong><span>Licence may allow users to adapt the code for their own needs.</span></article>
+            <article><strong>Redistribute</strong><span>Licence may allow sharing original or modified versions under conditions.</span></article>
+            <article><strong>Community</strong><span>Development and support may come from volunteers, companies or mixed communities.</span></article>
+          </div>
+          <div class="callout">Chinese support: open source = 开源；source code = 源代码；modify = 修改；redistribute = 再分发。</div>
+        </section>
+
+        <section class="panel" id="proprietary">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Proprietary software keeps control with the owner</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Closed source</strong><span>Source code is usually not available to users.</span></article>
+            <article><strong>Restricted rights</strong><span>Licences often restrict copying, modification and redistribution.</span></article>
+            <article><strong>Vendor support</strong><span>Users may receive official updates, warranties, help desk or service agreements.</span></article>
+            <article><strong>Vendor lock-in</strong><span>Users may depend on one supplier, format, subscription or ecosystem.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="tradeoffs">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Compare by factor, not by favourite label</h2>
+          </div>
+          <div class="risk-table" role="table" aria-label="Open source proprietary trade-offs">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Factor</div>
+              <div role="columnheader">Open source may offer</div>
+              <div role="columnheader">Proprietary may offer</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Cost</div>
+              <div role="cell">Low or no licence fee, but support and training can still cost money.</div>
+              <div role="cell">Licence/subscription cost, but bundled support may reduce operational risk.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Control</div>
+              <div role="cell">More ability to inspect, modify and adapt code.</div>
+              <div role="cell">Less control over internals; vendor controls source and roadmap.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Security</div>
+              <div role="cell">Code can be reviewed publicly, but someone must apply updates and assess trust.</div>
+              <div role="cell">Vendor may provide tested updates, but users must trust closed code and vendor response.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Support</div>
+              <div role="cell">Community help or paid third-party support may vary.</div>
+              <div role="cell">Official support agreements may be clearer for organisations.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="ownership">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Ownership and licence obligations still matter</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Copyright remains</strong><span>Open-source software is still protected; the licence grants permissions.</span></article>
+            <article><strong>Attribution</strong><span>Some licences require credit or notices to be kept.</span></article>
+            <article><strong>Share-alike</strong><span>Some licences require modified versions to be shared under similar terms.</span></article>
+            <article><strong>Compliance</strong><span>Organisations must track third-party components and meet licence conditions.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="method">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Use a scenario-based comparison structure</h2>
+          </div>
+          <div class="flow-grid">
+            <article><strong>1. Need</strong><span>Identify the user's priority: cost, support, control, reliability, security or compatibility.</span></article>
+            <article><strong>2. Open source point</strong><span>Explain one benefit or risk linked to that priority.</span></article>
+            <article><strong>3. Proprietary point</strong><span>Explain a contrasting benefit or risk.</span></article>
+            <article><strong>4. Judgement</strong><span>Recommend one option with conditions and trade-offs.</span></article>
+          </div>
+          <div class="answer-frame">
+            <strong>Answer frame:</strong>
+            <span>For [scenario], [option] may be suitable because [factor]. However, [trade-off]. Therefore, the best choice depends on [condition/evidence].</span>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson covers software ownership trade-offs, not environmental impact</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Open source, proprietary software, source availability, modification, redistribution, support, cost, security, vendor lock-in, licence obligations and ownership.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 076 covers environmental and social impacts of computing.</span></div>
+            <div><strong>Exam focus</strong><span>Never say one option is always better. Compare factors and link them to the scenario.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="advisor">
+          <div class="section-title">
+            <p class="eyebrow">Interactive software choice advisor</p>
+            <h2>Match the software type to the scenario</h2>
+            <p>Select a scenario and compare the recommendation with its trade-off.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="startup">Startup needs to customise server software with a skilled developer team.</option>
+                <option value="hospital">Hospital needs guaranteed vendor support for a critical system.</option>
+                <option value="school">School has limited budget but limited technical support staff.</option>
+                <option value="research">Research group wants to inspect and modify algorithms.</option>
+                <option value="office">Small business wants familiar office software and training materials.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="adviseBtn">Advise</button>
+          </div>
+          <div class="result-box" id="adviseResult" aria-live="polite"></div>
+          <div class="method-box" id="adviseReason"></div>
+          <div class="reject-box" id="adviseTrap"></div>
+        </section>
+
+        <section class="panel" id="checker">
+          <div class="section-title">
+            <p class="eyebrow">Interactive trade-off checker</p>
+            <h2>Spot the missing qualification</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Claim
+              <select id="claimInput">
+                <option value="free">Open source is always free.</option>
+                <option value="secure">Open source is always more secure.</option>
+                <option value="support">Proprietary software always has better support.</option>
+                <option value="own">Buying proprietary software means owning the source code.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="claimBtn">Improve claim</button>
+          </div>
+          <div class="result-box" id="claimResult" aria-live="polite"></div>
+          <div class="method-box" id="claimReason"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four model answers with trade-off reasoning</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="startup">Startup</button>
+            <button class="tab" type="button" data-example="hospital">Hospital</button>
+            <button class="tab" type="button" data-example="school">School</button>
+            <button class="tab" type="button" data-example="research">Research</button>
+          </div>
+          <div class="example-box" id="exampleBox" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Check vocabulary before writing comparisons</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix answers that sound certain but are not scenario-based</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Cambridge-style software ownership questions with expandable MS</h2>
+            <p>Attempt first. Then check whether your answer balances factors and links them to the user or organisation.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Open source vs proprietary in six exam-ready ideas</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Open source</strong><span>Source code is available and can often be modified under licence.</span></div>
+            <div><strong>Proprietary</strong><span>Owner controls source code and licence restrictions.</span></div>
+            <div><strong>Cost</strong><span>Licence price is not the same as total cost.</span></div>
+            <div><strong>Support</strong><span>Community support and vendor support suit different risks.</span></div>
+            <div><strong>Security</strong><span>Reviewability and responsibility for updates both matter.</span></div>
+            <div><strong>Judgement</strong><span>Recommend by scenario, not by slogan.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Practise balanced comparison</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Comparison table</strong>
+              <span>Compare one open-source and one proprietary tool for the same task. Use columns: cost, support, customisation, security updates, compatibility, licence obligations.</span>
+            </article>
+            <article>
+              <strong>Task 2: Rewrite weak claims</strong>
+              <span>Rewrite these with qualifications: "Open source is free", "Proprietary is safer", "Open source has no owner", "Paid software gives ownership".</span>
+            </article>
+            <article>
+              <strong>Task 3: Timed response</strong>
+              <span>Answer in 8 minutes: "A school is choosing between open-source and proprietary software for a learning platform. Discuss the trade-offs." Include a final recommendation.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

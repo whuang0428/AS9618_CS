@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 084 | SQL SELECT, FROM, WHERE</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
+        <h1>SQL SELECT, FROM, WHERE</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#clauses">Clauses</a>
+        <a href="#conditions">Conditions</a>
+        <a href="#strings">Strings</a>
+        <a href="#trace">Trace a query</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#builder">Clause builder</a>
+        <a href="#runner">Query runner</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 084 | 45 minutes | Paper 1 Section 8 | SQL basics</p>
+            <h2>SQL is how you ask a database a precise question. "Show me stuff" is not a query; it is a cry for help.</h2>
+            <p>
+              This lesson turns English questions into basic single-table SQL queries using <code>SELECT</code>,
+              <code>FROM</code> and <code>WHERE</code>. The focus is field selection, table selection and conditions.
+              Sorting, aggregates, grouping and joins are left for later lessons.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Select</strong><span>the fields required by the question</span></div>
+              <div><strong>Use</strong><span>FROM to name the correct table</span></div>
+              <div><strong>Filter</strong><span>records using WHERE conditions and comparison operators</span></div>
+            </div>
+          </div>
+          <div class="sql-visual" aria-label="SQL query visual">
+            <span class="keyword">SELECT</span><span>Title, DueDate</span>
+            <span class="keyword">FROM</span><span>Loan</span>
+            <span class="keyword">WHERE</span><span>Returned = FALSE</span>
+            <p>Think: fields, table, condition. Then write the clauses.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Underline three parts of the English question: output fields, source table, and condition. Then translate, line by line.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>SQL questions are often marked with one point per clause or condition. A missing field or wrong table can lose easy marks.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not use <code>SELECT *</code> unless all fields are required. Cambridge usually asks for specific output fields.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Find all overdue books without scrolling like a detective in a low-budget movie.</h2>
+            <p>SQL lets you ask the database exactly what to return. The database enjoys clear instructions. Same.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="select">SELECT Title FROM Loan WHERE Returned = FALSE</button>
+            <button class="choice-card" type="button" data-hook="all">SELECT * FROM Loan</button>
+            <button class="choice-card" type="button" data-hook="from">FROM Loan WHERE Returned = FALSE</button>
+            <button class="choice-card" type="button" data-hook="where">WHERE Returned = FALSE SELECT Title</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose the best basic SQL query.
+          </div>
+        </section>
+
+        <section class="panel" id="clauses">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>The three foundation clauses</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>SELECT</strong><span>Names the fields to output, such as <code>Title, DueDate</code>.</span></article>
+            <article><strong>FROM</strong><span>Names the table to use, such as <code>Loan</code>.</span></article>
+            <article><strong>WHERE</strong><span>Filters records using a condition, such as <code>Returned = FALSE</code>.</span></article>
+          </div>
+          <div class="answer-frame">
+            <strong>Thinking order:</strong>
+            <span>What fields do I need? Which table contains them? Which records should be included?</span>
+          </div>
+        </section>
+
+        <section class="panel" id="conditions">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>WHERE conditions and comparison operators</h2>
+            <p>A <code>WHERE</code> clause tests each record and returns only records where the condition is true.</p>
+          </div>
+          <div class="operator-table" role="table" aria-label="SQL comparison operators">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Operator</div>
+              <div role="columnheader">Meaning</div>
+              <div role="columnheader">Example</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell"><code>=</code></div>
+              <div role="cell">equal to</div>
+              <div role="cell"><code>Category = 'Fiction'</code></div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell"><code>&lt;&gt;</code></div>
+              <div role="cell">not equal to</div>
+              <div role="cell"><code>Status &lt;&gt; 'Returned'</code></div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell"><code>&gt;</code>, <code>&lt;</code></div>
+              <div role="cell">greater than, less than</div>
+              <div role="cell"><code>Price &lt; 10.00</code></div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell"><code>&gt;=</code>, <code>&lt;=</code></div>
+              <div role="cell">greater/less than or equal to</div>
+              <div role="cell"><code>ExamMark &gt;= 80</code></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="strings">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Text values need quotes; numbers usually do not</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Text/string</strong><span><code>Category = 'Fiction'</code>. The text value is quoted.</span></article>
+            <article><strong>Number</strong><span><code>Price &lt; 10.00</code>. Numeric values are not quoted in basic exam SQL.</span></article>
+            <article><strong>Boolean</strong><span><code>Returned = FALSE</code>. Use the Boolean value expected by the question/table.</span></article>
+            <article><strong>Field names</strong><span>Usually not quoted: <code>SELECT Title</code>, not <code>SELECT 'Title'</code>.</span></article>
+          </div>
+          <div class="callout">Chinese support: clause = 子句；condition = 条件；string/text value = 字符串/文本值；quotes = 引号。</div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Trace a query against rows</h2>
+            <p>Check each row against the <code>WHERE</code> condition, then output only the selected fields from matching rows.</p>
+          </div>
+          <div class="data-table" role="table" aria-label="Loan table">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">LoanID</div>
+              <div role="columnheader">Title</div>
+              <div role="columnheader">Borrower</div>
+              <div role="columnheader">Category</div>
+              <div role="columnheader">DaysOverdue</div>
+              <div role="columnheader">Returned</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">L01</div><div role="cell">Networks</div><div role="cell">Amira</div><div role="cell">Computing</div><div role="cell">5</div><div role="cell">FALSE</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">L02</div><div role="cell">Poems</div><div role="cell">Leo</div><div role="cell">Literature</div><div role="cell">0</div><div role="cell">TRUE</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">L03</div><div role="cell">Databases</div><div role="cell">Maya</div><div role="cell">Computing</div><div role="cell">12</div><div role="cell">FALSE</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson starts SQL with single-table selection</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span><code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, selected fields, table name, comparison operators, quoted strings, Boolean and numeric conditions, row tracing.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 085 covers <code>ORDER BY</code>, aggregate functions and <code>GROUP BY</code>. Joins and data definition/manipulation are later.</span></div>
+            <div><strong>Exam focus</strong><span>Write exactly the requested output fields and condition. Avoid <code>*</code> unless all fields are required.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive clause builder</p>
+            <h2>Translate English to SQL parts</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              English request
+              <select id="builderInput">
+                <option value="overdueTitles">Show Title and Borrower for books that have not been returned.</option>
+                <option value="computingBooks">Show Title for loans where Category is Computing.</option>
+                <option value="bigOverdue">Show LoanID and Title for loans more than 7 days overdue.</option>
+                <option value="leoLoans">Show Title and DaysOverdue for loans borrowed by Leo.</option>
+                <option value="notReturned">Show LoanID for loans where Returned is FALSE.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="builderBtn">Build SQL</button>
+          </div>
+          <pre class="sql-output" id="builderResult">Choose a request, then build the SQL.</pre>
+          <div class="feedback" id="builderReason">The output will identify SELECT fields, FROM table and WHERE condition.</div>
+        </section>
+
+        <section class="panel" id="runner">
+          <div class="section-title">
+            <p class="eyebrow">Interactive query runner</p>
+            <h2>Run a safe preset query against the Loan table</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Query
+              <select id="queryInput">
+                <option value="q1">SELECT Title, Borrower FROM Loan WHERE Returned = FALSE</option>
+                <option value="q2">SELECT Title FROM Loan WHERE Category = 'Computing'</option>
+                <option value="q3">SELECT LoanID, Title FROM Loan WHERE DaysOverdue > 7</option>
+                <option value="q4">SELECT Title, DaysOverdue FROM Loan WHERE Borrower = 'Leo'</option>
+                <option value="q5">SELECT Borrower FROM Loan WHERE DaysOverdue = 0</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="queryBtn">Run query</button>
+          </div>
+          <div class="result-table" id="queryResult">Choose a query to see matching rows.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From English to SQL</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="returned">Boolean condition</button>
+            <button class="tab" type="button" data-example="text">Text condition</button>
+            <button class="tab" type="button" data-example="number">Numeric condition</button>
+            <button class="tab" type="button" data-example="star">Avoid SELECT *</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short-answer checks</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair common SQL errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style practice with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about fields, table and condition syntax.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Basic SQL checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>SELECT</strong><span>List only the required output fields.</span></div>
+            <div><strong>FROM</strong><span>Name the table that contains the data.</span></div>
+            <div><strong>WHERE</strong><span>Filter rows using a condition; quote text values.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Translate five requests</strong>
+              <span>Write SQL for five English requests using only <code>SELECT</code>, <code>FROM</code> and <code>WHERE</code>. Include at least one text condition and one numeric condition.</span>
+            </article>
+            <article>
+              <strong>Task 2: Trace results</strong>
+              <span>For the Loan table on this page, trace which rows match <code>WHERE DaysOverdue &gt; 0</code> and list only <code>Title</code> and <code>Borrower</code>.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "Write SQL to output the borrower and title of all Computing books that have not been returned." Then annotate which part is SELECT, FROM and WHERE.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

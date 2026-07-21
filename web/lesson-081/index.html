@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 081 | Primary keys, foreign keys and relationships</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
+        <h1>Primary keys, foreign keys and relationships</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#primary">Primary keys</a>
+        <a href="#foreign">Foreign keys</a>
+        <a href="#relationships">Relationships</a>
+        <a href="#referential">Referential integrity</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#key-picker">Key picker</a>
+        <a href="#relationship-tool">Relationship tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 081 | 45 minutes | Paper 1 Section 8 | Database relationships</p>
+            <h2>A key is not decoration. It is how a database points at the right row without squinting.</h2>
+            <p>
+              This lesson explains how primary keys uniquely identify records, how foreign keys link tables,
+              and how relationships connect data without repeating everything. The focus is precise Cambridge
+              vocabulary: unique, non-null, reference, related table and integrity.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>suitable primary keys for records in a table</span></div>
+              <div><strong>Link</strong><span>foreign keys to matching primary keys in another table</span></div>
+              <div><strong>Explain</strong><span>one-to-many relationships and referential integrity</span></div>
+            </div>
+          </div>
+          <div class="key-visual" aria-label="Key relationship visual">
+            <div class="key-table">
+              <strong>Student</strong>
+              <span class="pk">PK StudentID</span>
+              <span>Name</span>
+            </div>
+            <div class="link-line">1 -> many</div>
+            <div class="key-table">
+              <strong>Loan</strong>
+              <span class="pk">PK LoanID</span>
+              <span class="fk">FK StudentID</span>
+              <span>BookID</span>
+            </div>
+            <p>Foreign key values must match existing primary key values.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask "which row exactly?" for primary keys, then ask "which table does this value point to?" for foreign keys.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Key questions are often mark-scheme strict: name the field, say which table it belongs to, and explain the link.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not choose a name as a primary key. Two students can share a name, and names can change. Databases dislike identity drama.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Two students are called Alex Chen. Which field should identify each student?</h2>
+            <p>If your database identifies people by vibes, the mark scheme will quietly leave.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="name">Name</button>
+            <button class="choice-card" type="button" data-hook="tutor">TutorGroup</button>
+            <button class="choice-card" type="button" data-hook="studentid">StudentID</button>
+            <button class="choice-card" type="button" data-hook="phone">PhoneNumber</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose the field most suitable as a primary key.
+          </div>
+        </section>
+
+        <section class="panel" id="primary">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Primary keys uniquely identify records</h2>
+            <p>A primary key is a field, or combination of fields, that uniquely identifies each record in a table. It should be unique and not null.</p>
+          </div>
+          <div class="criteria-grid">
+            <article><strong>Unique</strong><span>No two records in the table have the same key value.</span></article>
+            <article><strong>Not null</strong><span>Every record must have a key value; blank identity is not identity.</span></article>
+            <article><strong>Stable</strong><span>A good key is unlikely to change, such as an allocated ID.</span></article>
+            <article><strong>Minimal</strong><span>Do not use extra fields when one suitable field is enough.</span></article>
+          </div>
+          <div class="student-table" role="table" aria-label="Student table">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">StudentID</div>
+              <div role="columnheader">Name</div>
+              <div role="columnheader">TutorGroup</div>
+              <div role="columnheader">PhoneNumber</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell" class="key-cell">S0234</div><div role="cell">Alex Chen</div><div role="cell">12A</div><div role="cell">02071234567</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell" class="key-cell">S0318</div><div role="cell">Alex Chen</div><div role="cell">12B</div><div role="cell">02079876543</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="foreign">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Foreign keys link tables</h2>
+            <p>A foreign key is a field in one table that references the primary key in another table. It creates a link between related records.</p>
+          </div>
+          <div class="relational-preview">
+            <div class="mini-table">
+              <h3>Student</h3>
+              <p><strong>StudentID</strong> | Name</p>
+              <p>S0234 | Alex Chen</p>
+              <p>S0318 | Maya Patel</p>
+            </div>
+            <div class="relation-arrow">StudentID links tables</div>
+            <div class="mini-table">
+              <h3>Loan</h3>
+              <p><strong>LoanID</strong> | StudentID | BookID</p>
+              <p>L9001 | S0234 | B144</p>
+              <p>L9002 | S0234 | B102</p>
+            </div>
+          </div>
+          <div class="answer-frame">
+            <strong>Exam sentence:</strong>
+            <span><code>StudentID</code> is a primary key in <code>Student</code> and a foreign key in <code>Loan</code>, linking each loan to the student who borrowed the book.</span>
+          </div>
+        </section>
+
+        <section class="panel" id="relationships">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Relationships describe how records connect</h2>
+            <p>A relationship describes how records in one table are associated with records in another table.</p>
+          </div>
+          <div class="relationship-grid">
+            <article><strong>One-to-one</strong><span>One record in A relates to one record in B. Example: person and passport in a simplified system.</span></article>
+            <article><strong>One-to-many</strong><span>One record in A relates to many records in B. Example: one student can have many loans.</span></article>
+            <article><strong>Many-to-many</strong><span>Many records in A relate to many in B. Often resolved using a linking table. Example: students and clubs.</span></article>
+          </div>
+          <div class="callout">Chinese support: primary key = 主键；foreign key = 外键；relationship = 关系；one-to-many = 一对多。</div>
+        </section>
+
+        <section class="panel" id="referential">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Referential integrity</h2>
+            <p>Referential integrity means a foreign key value must match an existing primary key value in the referenced table.</p>
+          </div>
+          <div class="integrity-grid">
+            <article><strong>Valid</strong><span><code>Loan.StudentID = S0234</code> is valid if <code>Student.StudentID = S0234</code> exists.</span></article>
+            <article><strong>Invalid</strong><span><code>Loan.StudentID = S9999</code> is invalid if no student with that ID exists.</span></article>
+            <article><strong>Why</strong><span>It prevents orphan records, such as a loan assigned to a non-existent student.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson covers keys and relationships, not full E-R modelling</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Primary key, foreign key, candidate key judgement, uniqueness, non-null values, one-to-one, one-to-many, many-to-many, linking tables and referential integrity.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 082 develops formal entity-relationship modelling and diagram notation. This lesson uses simple table links only.</span></div>
+            <div><strong>Exam focus</strong><span>Always state the key field and the table. "StudentID is a key" is weaker than "StudentID is the primary key in Student and a foreign key in Loan."</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="key-picker">
+          <div class="section-title">
+            <p class="eyebrow">Interactive key picker</p>
+            <h2>Choose the best primary key</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Table
+              <select id="keyInput">
+                <option value="student">Student(StudentID, Name, DateOfBirth, TutorGroup)</option>
+                <option value="book">Book(ISBN, Title, Author, Price)</option>
+                <option value="appointment">Appointment(AppointmentID, PatientID, Date, Time)</option>
+                <option value="memberWeak">Member(Name, PhoneNumber, Email)</option>
+                <option value="product">Product(ProductCode, Description, UnitPrice)</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="keyBtn">Pick key</button>
+          </div>
+          <div class="result-box" id="keyResult">Choose a table to identify the strongest primary key.</div>
+          <div class="feedback" id="keyReason">A good primary key is unique, not null and stable.</div>
+        </section>
+
+        <section class="panel" id="relationship-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive relationship classifier</p>
+            <h2>Classify the relationship</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="relationshipInput">
+                <option value="studentLoans">One student can borrow many books through many loan records.</option>
+                <option value="personPassport">One person has one passport in a simplified passport database.</option>
+                <option value="studentsClubs">A student can join many clubs; a club has many students.</option>
+                <option value="customerOrders">One customer can place many orders.</option>
+                <option value="doctorAppointments">One doctor can have many appointments.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="relationshipBtn">Classify</button>
+          </div>
+          <div class="result-box" id="relationshipResult">Choose a scenario to classify the relationship.</div>
+          <div class="feedback" id="relationshipReason">Use one-to-one, one-to-many or many-to-many with a scenario reason.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Identify keys and explain links</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="library">Library loans</button>
+            <button class="tab" type="button" data-example="orders">Orders</button>
+            <button class="tab" type="button" data-example="clubs">Linking table</button>
+            <button class="tab" type="button" data-example="integrity">Integrity error</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short-answer checks</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair common key and relationship errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style practice with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about table names and key roles.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Keep the roles separate</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Primary key</strong><span>Uniquely identifies each record in its own table.</span></div>
+            <div><strong>Foreign key</strong><span>References a primary key in another table to create a link.</span></div>
+            <div><strong>Relationship</strong><span>Describes how records in two tables are associated.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Label keys</strong>
+              <span>For Student(StudentID, Name), Book(BookID, Title) and Loan(LoanID, StudentID, BookID, DateBorrowed), label all primary keys and foreign keys.</span>
+            </article>
+            <article>
+              <strong>Task 2: Explain one relationship</strong>
+              <span>Write a paragraph explaining the relationship between Student and Loan, including one-to-many and the foreign key field.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "Explain how primary keys and foreign keys help maintain links between tables in a relational database." Use a library loan example.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

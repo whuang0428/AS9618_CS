@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 033 | Embedded systems and microcontrollers</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
+        <h1>Embedded systems and microcontrollers</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#embedded">Embedded system</a>
+        <a href="#loop">Control loop</a>
+        <a href="#microcontroller">Microcontroller</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Control tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 033 | 45 minutes | Paper 1 Section 3</p>
+            <h2>An embedded system is a computer that quietly does one job very seriously.</h2>
+            <p>
+              This lesson explains embedded systems, microcontrollers and basic control
+              loops. The exam skill is describing the mechanism: sensor input, processing
+              against a rule, actuator output, then repeated monitoring.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>embedded systems and microcontrollers accurately</span></div>
+              <div><strong>Trace</strong><span>sensor -> processing -> actuator control loops</span></div>
+              <div><strong>Explain</strong><span>why embedded systems are designed for specific tasks</span></div>
+            </div>
+          </div>
+          <div class="system-card" aria-label="Embedded control loop">
+            <span>sensor -> rule -> actuator -> repeat</span>
+            <p>A washing machine is not having a personality. It is following rules with sensors, outputs and a lot of confidence.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make students label each part of a scenario: sensed condition, decision rule, actuator action and repeated feedback.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Control-system answers often lose marks when students say the sensor performs the action. Sensors detect; actuators act.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A microcontroller is not just "a tiny CPU". It often integrates CPU, memory and input/output interfaces on one chip.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>How does a washing machine know the door is closed, the water level is enough and the motor should start?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="sensor">Sensors detect door and water conditions</button>
+            <button class="choice-card" type="button" data-hook="process">Microcontroller checks rules</button>
+            <button class="choice-card" type="button" data-hook="actuator">Actuators control motor, valve or lock</button>
+            <button class="choice-card" type="button" data-hook="repeat">The loop repeats while the cycle runs</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click one part. A strong answer explains the whole chain, not just one component.
+          </div>
+        </section>
+
+        <section class="panel" id="embedded">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>What is an embedded system?</h2>
+          </div>
+          <div class="criteria-grid">
+            <article><strong>Dedicated purpose</strong><span>Designed to perform a specific task or set of tasks.</span></article>
+            <article><strong>Built into device</strong><span>Part of a larger product, such as a washing machine or traffic light.</span></article>
+            <article><strong>Limited interface</strong><span>Often has few controls or displays compared with a general-purpose computer.</span></article>
+            <article><strong>Real-world input/output</strong><span>Often reads sensors and controls actuators.</span></article>
+            <article><strong>Reliability focus</strong><span>Usually expected to run repeatedly and predictably.</span></article>
+          </div>
+          <div class="callout">Chinese support: embedded system = 嵌入式系统；microcontroller = 微控制器；sensor = 传感器；actuator = 执行器；control loop = 控制循环。</div>
+        </section>
+
+        <section class="panel" id="loop">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>The basic control loop</h2>
+          </div>
+          <div class="loop-grid" aria-label="Control loop">
+            <div><strong>1. Sense</strong><span>A sensor captures a physical quantity, such as temperature, light, pressure or distance.</span></div>
+            <div><strong>2. Process</strong><span>The microcontroller compares the reading with a stored rule or threshold.</span></div>
+            <div><strong>3. Act</strong><span>An actuator changes something physically, such as opening a valve or starting a motor.</span></div>
+            <div><strong>4. Repeat</strong><span>The sensor reads again so the system can respond to changing conditions.</span></div>
+          </div>
+          <div class="callout">Example rule: IF temperature &gt; 28°C THEN turn fan ON ELSE turn fan OFF.</div>
+        </section>
+
+        <section class="panel" id="microcontroller">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Microcontroller vs general-purpose computer</h2>
+          </div>
+          <div class="device-table" role="table" aria-label="Microcontroller comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Feature</div>
+              <div role="columnheader">Microcontroller / embedded system</div>
+              <div role="columnheader">General-purpose computer</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Purpose</div>
+              <div role="cell">Designed for a specific control task.</div>
+              <div role="cell">Designed to run many different programs.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Hardware</div>
+              <div role="cell">Often integrates CPU, memory and I/O on one chip.</div>
+              <div role="cell">Separate high-performance components are common.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Interface</div>
+              <div role="cell">May have simple buttons, LEDs or no screen.</div>
+              <div role="cell">Usually has richer input/output and user interface.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Design priorities</div>
+              <div role="cell">Low cost, low power, reliability, real-time response.</div>
+              <div role="cell">Flexibility, performance and user interaction.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Definition and purpose of embedded systems.</span></div>
+            <div><strong>Covered</strong><span>Microcontroller as an integrated control computer.</span></div>
+            <div><strong>Covered</strong><span>Control loop: sensor input, processing decision, actuator output and repeated monitoring.</span></div>
+            <div><strong>Covered</strong><span>Examples: washing machine, greenhouse fan, automatic door, traffic lights and car systems.</span></div>
+            <div><strong>Boundary</strong><span>Sensors, actuators and control systems are developed further in Lesson 034.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Build the control explanation</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="greenhouse">Greenhouse fan turns on when temperature is too high</option>
+                <option value="door">Automatic door opens when a person approaches</option>
+                <option value="traffic">Traffic lights change using vehicle detection</option>
+                <option value="washer">Washing machine starts only when door is locked</option>
+                <option value="car">Car parking sensor warns when an obstacle is close</option>
+                <option value="heater">Room heater turns off when target temperature is reached</option>
+              </select>
+            </label>
+            <button type="button" id="chooseBtn">Explain loop</button>
+          </div>
+          <div class="result-box" id="componentResult" aria-live="polite"></div>
+          <div class="method-box" id="componentMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Control-loop explanations</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="greenhouse">Greenhouse</button>
+            <button class="tab" type="button" data-example="door">Automatic door</button>
+            <button class="tab" type="button" data-example="washing">Washing machine</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak embedded-system answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"The temperature sensor turns on the fan."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">The sensor detects temperature. The microcontroller compares the reading with a rule. The fan motor/actuator turns on if the rule condition is met.</p>
+            </article>
+            <article>
+              <p class="wrong">"An embedded system is just a normal computer inside a machine."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">An embedded system is built into a larger device and designed for a specific task, often with limited interface, low power use and predictable control behaviour.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on distinguishing sensor, microcontroller/processor and actuator roles.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Embedded systems in six exam sentences</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Embedded system</strong><span>Computer system built into a larger device for a specific task.</span></div>
+            <div><strong>Microcontroller</strong><span>Often integrates CPU, memory and I/O for control tasks.</span></div>
+            <div><strong>Sensor</strong><span>Detects a physical condition and provides input data.</span></div>
+            <div><strong>Processing</strong><span>Compares sensor data with stored rules or thresholds.</span></div>
+            <div><strong>Actuator</strong><span>Produces physical action such as movement, heating or locking.</span></div>
+            <div><strong>Loop</strong><span>Repeated sensing allows the system to respond to changes.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Draw a control-loop diagram for an automatic door: sensor, decision rule, actuator and repeated check.</li>
+            <li>Write a 5-mark explanation for a greenhouse fan controlled by a microcontroller.</li>
+            <li>Compare an embedded system with a general-purpose computer using purpose, interface and hardware.</li>
+            <li>Rewrite this weak sentence: "The sensor opens the door."</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Door:</strong> proximity sensor detects person -> microcontroller checks rule -> motor actuator opens door -> sensor checks again.</p>
+            <p><strong>Greenhouse:</strong> temperature sensor reads temperature; microcontroller compares with threshold; fan actuator turns on/off.</p>
+            <p><strong>Comparison:</strong> embedded system has a dedicated purpose and limited interface; general-purpose computer runs many programs.</p>
+            <p><strong>Correction:</strong> the sensor detects the person; the actuator/motor opens the door after the microcontroller decision.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 138 | Debugging using traces and breakpoints</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
+        <h1>Debugging using traces and breakpoints</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#purpose">Debugging</a>
+        <a href="#trace">Trace table</a>
+        <a href="#breakpoint">Breakpoint</a>
+        <a href="#watch">Watch variables</a>
+        <a href="#stepping">Stepping</a>
+        <a href="#bug">Fault example</a>
+        <a href="#java">Java support</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#simulator">Trace simulator</a>
+        <a href="#chooser">Breakpoint chooser</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Mistakes</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 138 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
+            <h2>A debugger is not magic. It is a very patient witness.</h2>
+            <p>
+              Debugging means finding and correcting faults in an algorithm or program. In this lesson, traces show how
+              variable values change, while breakpoints pause execution so the program can be inspected before it confidently
+              walks into the wrong answer. Chinese support: trace 跟踪, breakpoint 断点, watch 监视变量, step 单步执行。
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Trace</strong><span>variables through pseudocode using a clear table</span></div>
+              <div><strong>Pause</strong><span>execution at a breakpoint and inspect state</span></div>
+              <div><strong>Explain</strong><span>how debugging tools help locate logic errors</span></div>
+            </div>
+          </div>
+          <div class="debug-visual" aria-label="Debugging visual">
+            <div><strong>Line 1</strong><span>INPUT Mark</span><em>state begins</em></div>
+            <div><strong>Line 2</strong><span>IF Mark &gt;= 50</span><em>decision point</em></div>
+            <div><strong>Trace</strong><span>Mark = 49</span><em>expected Resit needed</em></div>
+            <div><strong>Breakpoint</strong><span>pause before branch</span><em>inspect, then step</em></div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask learners to say what they expect before each step. Debugging without a prediction is just watching code scroll by.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 may ask students to trace an algorithm, identify a logic error, or explain why breakpoints help debugging.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A syntax error stops code from running. A logic error runs, but produces the wrong result. Traces are especially useful for logic errors.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>The pass mark is 50. Which line is best for a breakpoint?</h2>
+            <p>The program sometimes outputs the wrong message. Choose where to pause so you can inspect the decision.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="input">Line 1: INPUT Mark</button>
+            <button class="choice-card" type="button" data-hook="if">Line 2: IF Mark &gt; 50 THEN</button>
+            <button class="choice-card" type="button" data-hook="pass">Line 3: OUTPUT "Pass"</button>
+            <button class="choice-card" type="button" data-hook="end">Line 6: ENDIF</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the line where the branch decision is made.</div>
+        </section>
+
+        <section class="panel" id="purpose">
+          <div class="section-title">
+            <p class="eyebrow">Debugging</p>
+            <h2>Debugging locates and corrects faults</h2>
+            <p>
+              A program can be syntactically valid and still wrong. Debugging checks the actual behaviour against the intended
+              behaviour, then narrows down where the fault occurs.
+            </p>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Faulty pseudocode</h3>
+              <pre><code>INPUT Mark
+IF Mark &gt; 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit needed"
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>Intended rule</h3>
+              <p>A mark of <code>50</code> should pass. The code uses <code>&gt;</code>, so <code>50</code> incorrectly goes to the ELSE branch.</p>
+              <div class="callout">The bug is small. Its exam mark consequences are not.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Trace table</p>
+            <h2>A trace table records values after each important step</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Trace table example">
+            <div class="table-row table-head"><div>Step</div><div>Mark</div><div>Condition</div><div>Output</div></div>
+            <div class="table-row"><div>Input</div><div><code>50</code></div><div>-</div><div>-</div></div>
+            <div class="table-row"><div>IF Mark &gt; 50</div><div><code>50</code></div><div>False</div><div>-</div></div>
+            <div class="table-row"><div>ELSE branch</div><div><code>50</code></div><div>-</div><div>Resit needed</div></div>
+          </div>
+          <div class="callout">The trace shows the actual route through the program. The expected route for 50 should have been Pass.</div>
+        </section>
+
+        <section class="panel" id="breakpoint">
+          <div class="section-title">
+            <p class="eyebrow">Breakpoint</p>
+            <h2>A breakpoint pauses execution at a chosen line</h2>
+          </div>
+          <div class="card-grid">
+            <article>
+              <h3>Best place</h3>
+              <p>Place a breakpoint before or on the line where the suspected decision or calculation happens.</p>
+            </article>
+            <article>
+              <h3>What to inspect</h3>
+              <p>Check variable values, the next line to execute, and whether the condition is true or false.</p>
+            </article>
+            <article>
+              <h3>What not to do</h3>
+              <p>Do not scatter breakpoints randomly. Random pausing is just procrastination wearing a technical hat.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="watch">
+          <div class="section-title">
+            <p class="eyebrow">Watch variables</p>
+            <h2>Watching variables shows state changes while stepping</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Watched variable example">
+            <div class="table-row table-head"><div>Variable</div><div>Expected</div><div>Suspicious result</div></div>
+            <div class="table-row"><div><code>Total</code></div><div>increases by each item price</div><div>resets to 0 inside loop</div></div>
+            <div class="table-row"><div><code>Index</code></div><div>moves through every array element</div><div>skips first or last element</div></div>
+            <div class="table-row"><div><code>Mark</code></div><div>50 passes</div><div>50 goes to ELSE branch</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="stepping">
+          <div class="section-title">
+            <p class="eyebrow">Stepping</p>
+            <h2>Step through code one instruction at a time</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Step over</h3>
+              <p>Run the next line without entering a called procedure or function. Useful when the call itself is not suspicious.</p>
+            </article>
+            <article>
+              <h3>Step into</h3>
+              <p>Enter a called procedure or function. Useful when the fault may be inside that subroutine.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="bug">
+          <div class="section-title">
+            <p class="eyebrow">Fault example</p>
+            <h2>Trace the boundary case to expose a logic error</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Buggy condition</h3>
+              <pre><code>IF Mark &gt; 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit needed"
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>Corrected condition</h3>
+              <pre><code>IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit needed"
+ENDIF</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="java">
+          <div class="section-title">
+            <p class="eyebrow">Java support only</p>
+            <h2>Java debugging tools help practice, but Cambridge pseudocode remains the exam format</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>INPUT Mark
+IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit needed"
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>int mark = 50;
+if (mark &gt;= 50) {
+    System.out.println("Pass");
+} else {
+    System.out.println("Resit needed");
+}</code></pre>
+            </article>
+          </div>
+          <div class="callout">Breakpoints in an IDE are useful for learning, but do not replace a trace table when the exam asks for one.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>This lesson covers debugging with traces and breakpoints</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>trace tables for variable values and output</span></div>
+            <div><strong>Covered</strong><span>breakpoints, watched variables and stepping</span></div>
+            <div><strong>Not this lesson</strong><span>full IDE configuration, formal test plan design and version control workflows</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="simulator">
+          <div class="section-title">
+            <p class="eyebrow">Interactive trace simulator</p>
+            <h2>Run the faulty condition with a chosen mark</h2>
+            <p>Faulty condition: <code>IF Mark &gt; 50 THEN</code>. Intended rule: 50 or more should pass.</p>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Mark
+              <input id="markInput" type="number" value="50" />
+            </label>
+            <button class="primary-button" type="button" id="traceBtn">Trace</button>
+          </div>
+          <div class="trace-output" id="traceOutput" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Breakpoint chooser</p>
+            <h2>Select the most useful breakpoint for a suspected fault</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Suspected problem
+              <select id="bugSelect">
+                <option value="condition">50 should pass but does not</option>
+                <option value="total">Total is wrong after a loop</option>
+                <option value="procedure">Output from CalculateGrade is wrong</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="chooseBtn">Choose breakpoint</button>
+          </div>
+          <div id="breakpointOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Use traces and breakpoints to narrow the fault</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab-button active" type="button" data-example="trace">Trace table</button>
+            <button class="tab-button" type="button" data-example="breakpoint">Breakpoint</button>
+            <button class="tab-button" type="button" data-example="step">Step into</button>
+          </div>
+          <div id="exampleOutput" class="example-output"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant checking: answer first, reveal second</h2>
+          </div>
+          <div id="practiceList" class="practice-list"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Debug the debugging plan</h2>
+          </div>
+          <div id="mistakeList" class="mistake-grid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Cambridge-style wording with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. They do not copy past paper questions.</p>
+          </div>
+          <div id="examList" class="exam-list"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What to remember</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Trace</strong><span>records variable values and outputs step by step</span></div>
+            <div><strong>Breakpoint</strong><span>pauses execution so state can be inspected</span></div>
+            <div><strong>Debugging</strong><span>uses evidence to locate and correct faults</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Make the bug leave footprints</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a trace table for the faulty condition <code>IF Mark &gt; 50</code> using marks 49, 50 and 51. State expected and actual output.</li>
+            <li>Write a 5-mark explanation of how breakpoints and watched variables help debug a loop that calculates a total.</li>
+            <li>Design two debugging steps for a procedure that returns the wrong grade. Include where to place a breakpoint and which variable to watch.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

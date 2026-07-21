@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 104 | Linear search and binary search</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>Linear search and binary search</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#linear">Linear search</a>
+        <a href="#binary">Binary search</a>
+        <a href="#compare">Comparison</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Search chooser</a>
+        <a href="#linear-tool">Linear trace</a>
+        <a href="#binary-tool">Binary trace</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 104 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
+            <h2>Linear search checks politely from the front. Binary search cuts the queue in half.</h2>
+            <p>
+              Searching means finding whether a target value is present and often where it is found. Linear search checks
+              items one by one and works on unsorted data. Binary search repeatedly checks the middle item, but only works
+              correctly when the data is sorted.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Trace</strong><span>linear search and binary search using test data</span></div>
+              <div><strong>Choose</strong><span>the suitable search method from data size and sorted/unsorted status</span></div>
+              <div><strong>Explain</strong><span>why binary search is faster but requires sorted data</span></div>
+            </div>
+          </div>
+          <div class="search-visual" aria-label="Search visual">
+            <div class="array-line">
+              <span>13</span><span>21</span><span>42</span><span>56</span><span>70</span><span>88</span><span>91</span>
+            </div>
+            <div class="search-card">
+              <strong>Linear</strong>
+              <span>13 → 21 → 42 found</span>
+            </div>
+            <div class="search-card">
+              <strong>Binary</strong>
+              <span>middle 56 too high → left half → 21 too low → 42 found</span>
+            </div>
+            <p>Binary search is clever only because the list is sorted. Without order, "discard half" becomes "discard marks".</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make students say the precondition before binary search: the data must be sorted.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 may ask students to trace, compare or justify a search method. "Faster" alone is not enough for the mark.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Binary search does not mean "start somewhere random". It means compare the middle, then discard the impossible half.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Find the exam paper in a pile</h2>
+            <p>If the papers are unsorted, what is the safest search method?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="linear">Check papers one by one.</button>
+            <button class="choice-card" type="button" data-hook="binary">Open the middle and throw away half.</button>
+            <button class="choice-card" type="button" data-hook="sort">Sort the whole pile first, then search.</button>
+            <button class="choice-card" type="button" data-hook="guess">Guess confidently.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose a strategy for unsorted data.</div>
+        </section>
+
+        <section class="panel" id="linear">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Linear search checks each item in order</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>How it works</h3>
+              <p>Start at the first item. Compare it with the target. If it matches, stop. If not, move to the next item until found or the list ends.</p>
+              <div class="callout">Chinese support: linear search = 线性搜索 / 顺序搜索。</div>
+            </article>
+            <article>
+              <h3>When it is suitable</h3>
+              <p>Use it when data is unsorted, the list is small, or simplicity matters more than speed.</p>
+              <div class="callout">Worst case: the target is last or absent, so every item may be checked.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="binary">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Binary search repeatedly halves a sorted list</h2>
+          </div>
+          <div class="step-strip">
+            <div><strong>1</strong><span>Set Low to first index and High to last index.</span></div>
+            <div><strong>2</strong><span>Find Mid, the middle index.</span></div>
+            <div><strong>3</strong><span>Compare List[Mid] with Target.</span></div>
+            <div><strong>4</strong><span>If target is smaller, move High left; if larger, move Low right.</span></div>
+            <div><strong>5</strong><span>Stop when found or Low is greater than High.</span></div>
+          </div>
+          <div class="callout">Binary search requires sorted data. 二分搜索必须基于有序数据，否则无法安全排除一半数据。</div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Comparison</p>
+            <h2>Choosing the right search</h2>
+          </div>
+          <div class="data-table concept-table" role="table" aria-label="Linear and binary search comparison">
+            <div class="table-row table-head" role="row"><div>Feature</div><div>Linear search</div><div>Binary search</div></div>
+            <div class="table-row" role="row"><div>Data order</div><div>works on unsorted or sorted data</div><div>requires sorted data</div></div>
+            <div class="table-row" role="row"><div>Method</div><div>checks each item one by one</div><div>checks middle and discards half</div></div>
+            <div class="table-row" role="row"><div>Worst case</div><div>may check every item</div><div>checks far fewer items for large sorted lists</div></div>
+            <div class="table-row" role="row"><div>Exam phrase</div><div>"sequentially compare each item with target"</div><div>"compare middle item and adjust low/high bounds"</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Cambridge pseudocode is the exam format</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Linear search pseudocode</h3>
+              <pre><code>Found &lt;- FALSE
+Index &lt;- 1
+WHILE Found = FALSE AND Index &lt;= Length
+    IF List[Index] = Target THEN
+        Found &lt;- TRUE
+    ELSE
+        Index &lt;- Index + 1
+    ENDIF
+ENDWHILE</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>boolean found = false;
+int index = 0;
+while (!found &amp;&amp; index &lt; list.length) {
+    if (list[index] == target) {
+        found = true;
+    } else {
+        index++;
+    }
+}</code></pre>
+            </article>
+          </div>
+          <div class="callout">Exam reminder: Java array indexing starts at 0; Cambridge pseudocode examples often use index 1. Keep the notation you are using consistent.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson focuses on searching, not sorting</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Linear search, binary search, sorted-data requirement, target comparisons, low/high/mid updates, found/not found outcomes and trace-style reasoning.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 105 covers bubble sort and insertion sort. This page does not teach sorting passes.</span></div>
+            <div><strong>Paper 2 note</strong><span>Cambridge pseudocode is the exam standard. Java appears only as a support comparison.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive search chooser</p>
+            <h2>Pick a suitable search method</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="classifierInput">
+                <option value="unsorted">Unsorted list of 12 names</option>
+                <option value="sorted-large">Sorted list of 1000 candidate numbers</option>
+                <option value="small">Small list of 4 scores</option>
+                <option value="unknown">List order is not stated</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Choose method</button>
+          </div>
+          <div class="feedback" id="classifyResult">Choose a scenario to see a justified method.</div>
+        </section>
+
+        <section class="panel" id="linear-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive linear trace</p>
+            <h2>Trace linear search</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Target in [13, 42, 56, 70]
+              <select id="linearInput">
+                <option value="42">42</option>
+                <option value="70">70</option>
+                <option value="99">99</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="linearBtn">Trace</button>
+          </div>
+          <div class="trace-output" id="linearResult">Choose a target to trace comparisons.</div>
+        </section>
+
+        <section class="panel" id="binary-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive binary trace</p>
+            <h2>Trace binary search on sorted data</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Target in [13, 21, 42, 56, 70, 88, 91]
+              <select id="binaryInput">
+                <option value="42">42</option>
+                <option value="88">88</option>
+                <option value="15">15</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="binaryBtn">Trace</button>
+          </div>
+          <div class="trace-output" id="binaryResult">Choose a target to trace low, mid and high.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Search traces</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="linear-found">Linear found</button>
+            <button class="tab" type="button" data-example="linear-absent">Linear absent</button>
+            <button class="tab" type="button" data-example="binary-found">Binary found</button>
+            <button class="tab" type="button" data-example="binary-absent">Binary absent</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Searching accuracy</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix search mistakes</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style search questions with expandable MS</h2>
+            <p>These questions target tracing, method choice, sorted-data requirements and strict pseudocode reasoning.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Search checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Linear</strong><span>Compare each item with the target until found or list ends.</span></div>
+            <div><strong>Binary</strong><span>Use only sorted data; compare middle item and adjust low/high.</span></div>
+            <div><strong>Trace</strong><span>Record comparisons, index changes and found/not found outcome clearly.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Linear trace</strong>
+              <span>Trace linear search for 56 and 99 in [13, 42, 56, 70]. State comparisons and final found/not found result.</span>
+            </article>
+            <article>
+              <strong>Task 2: Binary trace</strong>
+              <span>Trace binary search for 88 in [13, 21, 42, 56, 70, 88, 91]. Show Low, Mid, High for each comparison.</span>
+            </article>
+            <article>
+              <strong>Task 3: Explanation</strong>
+              <span>Explain why binary search cannot be safely used on unsorted data unless the data is sorted first.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 055 | Utility software: backup, compression, encryption, defragmentation and antivirus</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
+        <h1>Utility software: backup, compression, encryption, defragmentation and antivirus</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Core idea</a>
+        <a href="#backup">Backup</a>
+        <a href="#compression">Compression</a>
+        <a href="#encryption">Encryption</a>
+        <a href="#defrag">Defragmentation</a>
+        <a href="#antivirus">Antivirus</a>
+        <a href="#compare">Comparison</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Utility tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 055 | 45 minutes | Paper 1 Section 5 | System software</p>
+            <h2>Utility software is the toolkit that keeps a system usable, recoverable and safer.</h2>
+            <p>
+              Utility programs perform maintenance, protection and management tasks.
+              They are system software, but they are not the operating system itself.
+              The exam expects the exact purpose of each utility, plus a scenario where it is appropriate.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Describe</strong><span>backup, compression, encryption, defragmentation and antivirus utilities</span></div>
+              <div><strong>Apply</strong><span>the correct utility to a user or organisation scenario</span></div>
+              <div><strong>Explain</strong><span>benefits, limitations and common exam traps precisely</span></div>
+            </div>
+          </div>
+          <div class="utility-card" aria-label="Utility software sketch">
+            <div class="utility-stack">
+              <span>Backup: recover data</span>
+              <span>Compression: reduce file size</span>
+              <span>Encryption: protect confidentiality</span>
+              <span>Defrag: rearrange fragmented files</span>
+              <span>Antivirus: detect and remove malware</span>
+            </div>
+            <p>A utility is not a magic "make computer better" button. Name the job.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For each utility, use this frame: problem, mechanism, benefit, limitation.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge questions often give a scenario. Marks come from matching the utility to the exact problem.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not write "secure" or "efficient" alone. Explain what is protected, reduced, recovered or detected.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A student deletes their coursework folder five minutes before the deadline. Which utility matters most?</h2>
+            <p>Click the best answer. At this point, "I was going to save it later" is not a recovery strategy.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="backup">Backup utility</button>
+            <button class="choice-card" type="button" data-hook="compression">Compression utility</button>
+            <button class="choice-card" type="button" data-hook="encryption">Encryption utility</button>
+            <button class="choice-card" type="button" data-hook="defrag">Defragmentation utility</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. The best utility depends on the problem being solved.
+          </div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Utility software performs maintenance and support tasks</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>System software</strong><span>Software that supports the operation and management of the computer system.</span></article>
+            <article><strong>Utility software</strong><span>System software designed for a specific maintenance, protection or management task.</span></article>
+            <article><strong>Not application software</strong><span>It supports the system rather than directly producing user documents, games or media.</span></article>
+            <article><strong>Scenario link</strong><span>The correct utility depends on whether the problem is loss, size, confidentiality, fragmentation or malware.</span></article>
+          </div>
+          <div class="callout">Chinese support: utility software = 实用程序；backup = 备份；compression = 压缩；encryption = 加密；defragmentation = 磁盘碎片整理；antivirus = 防病毒软件。</div>
+        </section>
+
+        <section class="panel" id="backup">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Backup utilities create copies so data can be restored</h2>
+          </div>
+          <div class="utility-grid">
+            <article><strong>Purpose</strong><span>Create copies of files or systems in another location or storage medium.</span></article>
+            <article><strong>Benefit</strong><span>Data can be restored after accidental deletion, hardware failure, corruption or ransomware.</span></article>
+            <article><strong>Good practice</strong><span>Use automatic scheduling, versioning and off-site/cloud copies where appropriate.</span></article>
+            <article><strong>Limitation</strong><span>A backup is only useful if it is recent, complete and can actually be restored.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="compression">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Compression utilities reduce file size</h2>
+          </div>
+          <div class="utility-grid">
+            <article><strong>Purpose</strong><span>Encode data so it takes up fewer bits than the original file.</span></article>
+            <article><strong>Uses</strong><span>Save storage space, reduce upload/download time and fit within attachment limits.</span></article>
+            <article><strong>Lossless</strong><span>Original data can be reconstructed exactly, suitable for text, programs and archives.</span></article>
+            <article><strong>Lossy</strong><span>Some detail is discarded, often suitable for media where small quality loss is acceptable.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="encryption">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Encryption utilities protect confidentiality</h2>
+          </div>
+          <div class="utility-grid">
+            <article><strong>Purpose</strong><span>Scramble plaintext into ciphertext using an algorithm and a key.</span></article>
+            <article><strong>Benefit</strong><span>Unauthorised users cannot read the data without the correct key.</span></article>
+            <article><strong>Examples</strong><span>Encrypting a laptop drive, a backup archive or files sent over a network.</span></article>
+            <article><strong>Limitation</strong><span>Encryption does not stop deletion or malware; losing the key can make data unrecoverable.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="defrag">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Defragmentation rearranges fragmented files on magnetic disks</h2>
+          </div>
+          <div class="utility-grid">
+            <article><strong>Fragmentation</strong><span>Parts of a file are stored in non-contiguous blocks across a disk.</span></article>
+            <article><strong>Purpose</strong><span>Rearrange file blocks so related parts are stored closer together.</span></article>
+            <article><strong>Benefit</strong><span>Can reduce mechanical disk head movement and improve hard disk access time.</span></article>
+            <article><strong>Boundary</strong><span>Do not apply the same benefit to SSDs; they have no moving disk head.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="antivirus">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Antivirus utilities detect, quarantine and remove malware</h2>
+          </div>
+          <div class="utility-grid">
+            <article><strong>Purpose</strong><span>Scan files, memory or downloads for malware signatures or suspicious behaviour.</span></article>
+            <article><strong>Actions</strong><span>Warn the user, quarantine infected files, delete malware or block malicious activity.</span></article>
+            <article><strong>Updates</strong><span>Definitions and detection rules should be updated to recognise newer threats.</span></article>
+            <article><strong>Limitation</strong><span>Antivirus reduces risk but cannot guarantee protection against every new or disguised threat.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 7</p>
+            <h2>Choose the utility by diagnosing the problem</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Utility software comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Problem</div>
+              <div role="columnheader">Most relevant utility</div>
+              <div role="columnheader">Exam-quality reason</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Deleted work needs recovery</div>
+              <div role="cell">Backup</div>
+              <div role="cell">A previous copy can be restored if it was made before the loss.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">File is too large to email</div>
+              <div role="cell">Compression</div>
+              <div role="cell">Reduces file size, saving transmission time and storage space.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Sensitive file may be stolen</div>
+              <div role="cell">Encryption</div>
+              <div role="cell">Turns readable data into ciphertext that needs a key to read.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Old HDD opens files slowly</div>
+              <div role="cell">Defragmentation</div>
+              <div role="cell">Rearranges scattered file blocks to reduce disk head movement.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Downloaded file may contain malware</div>
+              <div role="cell">Antivirus</div>
+              <div role="cell">Scans, quarantines or removes malicious code.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purpose of utility software as system software.</span></div>
+            <div><strong>Covered</strong><span>Backup, compression, encryption, defragmentation and antivirus.</span></div>
+            <div><strong>Covered</strong><span>Benefits, limitations and scenario suitability for each utility.</span></div>
+            <div><strong>Boundary</strong><span>Operating system roles were covered in Lesson 053.</span></div>
+            <div><strong>Boundary</strong><span>Compilers, interpreters and assemblers are covered in Lesson 056.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Utility selector</h2>
+            <p>Select a problem and identify the most suitable utility.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Problem scenario
+              <select id="scenarioInput">
+                <option value="deleted">Coursework folder was deleted</option>
+                <option value="email">Video file is too large to upload</option>
+                <option value="stolen">A laptop with customer data may be stolen</option>
+                <option value="slowhdd">An old magnetic hard disk opens files slowly</option>
+                <option value="malware">A suspicious attachment may contain malware</option>
+                <option value="ssd">A laptop with SSD storage feels slow</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Diagnose</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From scenario to utility choice</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="backup">Backup</button>
+            <button class="tab" type="button" data-example="compression">Compression</button>
+            <button class="tab" type="button" data-example="encryption">Encryption</button>
+            <button class="tab" type="button" data-example="defrag">Defrag</button>
+            <button class="tab" type="button" data-example="antivirus">Antivirus</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant-check questions</h2>
+            <p>Type a short answer, then check. Use the answer button if you need the expected wording.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the almost-right answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Answer first, then reveal the CIE-style mark scheme</h2>
+            <p>These are original Cambridge-style questions. The mark schemes use strict wording notes to train exam precision.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>The one-line memory map</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Backup</strong><span>Recover data from a copy.</span></div>
+            <div><strong>Compression</strong><span>Reduce file size.</span></div>
+            <div><strong>Encryption</strong><span>Protect confidentiality with ciphertext and a key.</span></div>
+            <div><strong>Defrag</strong><span>Rearrange file blocks on magnetic disks.</span></div>
+            <div><strong>Antivirus</strong><span>Detect, quarantine and remove malware.</span></div>
+            <div><strong>Exam rule</strong><span>Utility + mechanism + scenario consequence.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear output, not vague revision</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Five utility flashcards</strong>
+              <span>Create one flashcard for each utility. Front: utility name. Back: purpose, one scenario, one limitation.</span>
+            </article>
+            <article>
+              <strong>Task 2: Scenario paragraph</strong>
+              <span>Write a 6-mark answer recommending two utilities for a small business that stores customer data and has suffered malware before.</span>
+            </article>
+            <article>
+              <strong>Task 3: Marking check</strong>
+              <span>Underline each mechanism word in your answer: restore, reduce, encrypt, rearrange, scan, quarantine or remove.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

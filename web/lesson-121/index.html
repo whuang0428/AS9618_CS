@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 121 | CSV-style structured text files</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
+        <h1>CSV-style structured text files</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Concept</a>
+        <a href="#format">CSV format</a>
+        <a href="#parse">Parse fields</a>
+        <a href="#validate">Validate lines</a>
+        <a href="#types">Text vs types</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#parser">CSV parser</a>
+        <a href="#validator">Line validator</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 121 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
+            <h2>A CSV-style file gives each text line a predictable structure.</h2>
+            <p>
+              A normal text file can hold any text. A CSV-style structured text file is more disciplined: each line
+              represents one record, fields appear in a fixed order, and a delimiter such as a comma separates the fields.
+              The exam skill is reading the line, splitting it, validating it, then using the right field.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Describe</strong><span>records, fields and delimiters in CSV-style lines</span></div>
+              <div><strong>Parse</strong><span>extract fields from a line after READFILE</span></div>
+              <div><strong>Validate</strong><span>spot missing fields and convert numeric text safely</span></div>
+            </div>
+          </div>
+          <div class="csv-visual" aria-label="CSV visual">
+            <div class="file-card">
+              <strong>Scores.csv</strong>
+              <span>StudentID,Name,Mark</span>
+              <span>S001,Ali,72</span>
+              <span>S002,Bea,64</span>
+            </div>
+            <div class="file-caption">Fields &lt;- SPLIT(Line, ",")</div>
+            <p>The comma is small. The consequences of ignoring it are not.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask: which part is the whole line, which parts are fields, and which symbol separates them?</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 file questions often require a line to be read first, then split or parsed before a field can be tested.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A field read from a text file is text at first. Convert marks or quantities before numeric comparison.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which line is useful to a program?</h2>
+            <p>A file stores one student's ID, name and mark. Which line is easiest to parse consistently?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="sentence">Ali got 72 and is student S001</button>
+            <button class="choice-card" type="button" data-hook="csv">S001,Ali,72</button>
+            <button class="choice-card" type="button" data-hook="random">Ali 72 S001 maybe</button>
+            <button class="choice-card" type="button" data-hook="onefield">S001Ali72</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the line where field boundaries are clear and repeatable.</div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Concept</p>
+            <h2>CSV-style means separated fields in a fixed order</h2>
+            <p>Chinese support: delimiter 是“分隔符”；field position 是“字段位置”；malformed line 是“格式错误的一行”。</p>
+          </div>
+          <div class="data-table concept-table" role="table" aria-label="CSV concepts">
+            <div class="table-row table-head" role="row"><div>Term</div><div>Meaning</div><div>Example</div></div>
+            <div class="table-row" role="row"><div>Record</div><div>one complete line of data</div><div><code>S001,Ali,72</code></div></div>
+            <div class="table-row" role="row"><div>Field</div><div>one item inside the record</div><div><code>Ali</code></div></div>
+            <div class="table-row" role="row"><div>Delimiter</div><div>character that separates fields</div><div><code>,</code></div></div>
+            <div class="table-row" role="row"><div>Fixed order</div><div>each position has agreed meaning</div><div>ID, Name, Mark</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="format">
+          <div class="section-title">
+            <p class="eyebrow">CSV format</p>
+            <h2>Design the format before writing code</h2>
+          </div>
+          <div class="data-table csv-table" role="table" aria-label="CSV field positions">
+            <div class="table-row table-head" role="row"><div>Position</div><div>Field name</div><div>Data type after conversion</div></div>
+            <div class="table-row" role="row"><div>1</div><div>StudentID</div><div>STRING</div></div>
+            <div class="table-row" role="row"><div>2</div><div>Name</div><div>STRING</div></div>
+            <div class="table-row" role="row"><div>3</div><div>Mark</div><div>INTEGER</div></div>
+          </div>
+          <div class="callout">The file stores all fields as text. The program gives each position meaning.</div>
+        </section>
+
+        <section class="panel" id="parse">
+          <div class="section-title">
+            <p class="eyebrow">Parse fields</p>
+            <h2>Read the line before splitting it</h2>
+          </div>
+          <pre><code>READFILE "Scores.csv", Line
+Fields &lt;- SPLIT(Line, ",")
+StudentID &lt;- Fields[1]
+Name &lt;- Fields[2]
+Mark &lt;- STRING_TO_INTEGER(Fields[3])</code></pre>
+          <div class="callout"><code>SPLIT</code> is used here as clear Cambridge-style pseudocode for separating a line by a delimiter.</div>
+        </section>
+
+        <section class="panel" id="validate">
+          <div class="section-title">
+            <p class="eyebrow">Validation</p>
+            <h2>A structured file can still contain bad lines</h2>
+          </div>
+          <div class="data-table validate-table" role="table" aria-label="Malformed CSV lines">
+            <div class="table-row table-head" role="row"><div>Line</div><div>Problem</div><div>Correction prompt</div></div>
+            <div class="table-row" role="row"><div><code>S003,Chen</code></div><div>missing Mark field</div><div>check field count before using Fields[3]</div></div>
+            <div class="table-row" role="row"><div><code>S004,Dina,Ninety</code></div><div>mark is not numeric</div><div>validate before converting to INTEGER</div></div>
+            <div class="table-row" role="row"><div><code>S005;Eli;88</code></div><div>wrong delimiter</div><div>use the delimiter specified by the format</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="types">
+          <div class="section-title">
+            <p class="eyebrow">Text vs data types</p>
+            <h2>CSV fields arrive as text, then become useful values</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Incorrect comparison</h3>
+              <pre><code>IF Fields[3] &gt; 70 THEN
+    OUTPUT Name
+ENDIF</code></pre>
+              <p>This compares text unless conversion has happened.</p>
+            </article>
+            <article>
+              <h3>Correct pattern</h3>
+              <pre><code>Mark &lt;- STRING_TO_INTEGER(Fields[3])
+IF Mark &gt; 70 THEN
+    OUTPUT Name
+ENDIF</code></pre>
+              <p>The numeric comparison now has a numeric value.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Java split helps understanding, but Cambridge pseudocode remains the answer format</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>READFILE "Scores.csv", Line
+Fields &lt;- SPLIT(Line, ",")
+Mark &lt;- STRING_TO_INTEGER(Fields[3])</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>String[] fields = line.split(",");
+int mark = Integer.parseInt(fields[2]);</code></pre>
+            </article>
+          </div>
+          <div class="callout">Notice the index difference: Cambridge-style examples here use <code>Fields[1]</code>; Java arrays are zero-based.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers and what it leaves outside</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>CSV-style text records, delimiters, field order, splitting/parsing, malformed lines and numeric conversion.</span></div>
+            <div><strong>Boundary</strong><span>This is simple exam-style CSV. Full CSV quoting rules and database import tools are outside this lesson.</span></div>
+            <div><strong>Paper 2 note</strong><span>Marks often require reading a line before parsing, checking field positions, and converting numeric fields.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="parser">
+          <div class="section-title">
+            <p class="eyebrow">Interactive CSV parser</p>
+            <h2>Split a line into fields</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              CSV line
+              <input id="csvInput" type="text" value="S001,Ali,72" />
+            </label>
+            <label>
+              Delimiter
+              <select id="delimiterInput">
+                <option value=",">comma (,)</option>
+                <option value=";">semicolon (;)</option>
+                <option value="|">pipe (|)</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="parseBtn">Parse line</button>
+          </div>
+          <div class="trace-output" id="parseResult">Enter a line and split it into fields.</div>
+        </section>
+
+        <section class="panel" id="validator">
+          <div class="section-title">
+            <p class="eyebrow">Interactive validator</p>
+            <h2>Check field count and mark type</h2>
+          </div>
+          <div class="trace-actions">
+            <button class="primary-button" type="button" data-sample="good">Good line</button>
+            <button class="answer-toggle" type="button" data-sample="missing">Missing field</button>
+            <button class="answer-toggle" type="button" data-sample="textmark">Text mark</button>
+            <button class="answer-toggle" type="button" data-sample="wrongdelimiter">Wrong delimiter</button>
+          </div>
+          <div class="trace-output" id="validationResult">Choose a sample line to validate.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>CSV parsing patterns</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="parse">Parse</button>
+            <button class="tab" type="button" data-example="validate">Validate</button>
+            <button class="tab" type="button" data-example="count">Count passes</button>
+            <button class="tab" type="button" data-example="write">Write CSV</button>
+          </div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Ten quick CSV checks</h2>
+            <p>Type a concise answer, then check. Each question also has its own answer button.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix common CSV-style file errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style questions with expandable MS</h2>
+            <p>These questions focus on delimiters, field positions, parsing, validation and strict file-processing order.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>CSV-style checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Delimiter</strong><span>know which character separates fields.</span></div>
+            <div><strong>Position</strong><span>each field position has a fixed meaning.</span></div>
+            <div><strong>Convert</strong><span>numeric fields read from text need conversion.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Design and process a CSV-style file</h2>
+          </div>
+          <ol class="homework-list">
+            <li>
+              <strong>Task 1: Define a format</strong>
+              <span>Design a CSV-style format for <code>Books.csv</code> with fields BookID, Title and Pages. State delimiter and field order.</span>
+            </li>
+            <li>
+              <strong>Task 2: Parse one line</strong>
+              <span>Write pseudocode to read one line from <code>Books.csv</code>, split it, and convert Pages to INTEGER.</span>
+            </li>
+            <li>
+              <strong>Task 3: Validate</strong>
+              <span>Write a 5-mark explanation of why <code>B01,Intro</code> is malformed if the expected format is BookID,Title,Pages.</span>
+            </li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

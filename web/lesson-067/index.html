@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 067 | Encryption, hashing, and digital certificates</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
+        <h1>Encryption, hashing, and digital certificates</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#core">Core idea</a>
+        <a href="#encryption">Encryption</a>
+        <a href="#keys">Keys</a>
+        <a href="#hashing">Hashing</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#https">HTTPS flow</a>
+        <a href="#compare">Compare</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Method tool</a>
+        <a href="#hash-demo">Hash demo</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 067 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
+            <h2>Three security tools, three different jobs.</h2>
+            <p>
+              Encryption protects confidentiality by making data unreadable without a key.
+              Hashing creates a fixed digest used for checking or password verification, not for recovery.
+              Digital certificates help users trust that a public key belongs to the claimed website.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Separate</strong><span>encryption, hashing and digital certificates by purpose</span></div>
+              <div><strong>Explain</strong><span>how keys, hashes and certificate authorities support security</span></div>
+              <div><strong>Apply</strong><span>the correct method to password storage, payment data and HTTPS scenarios</span></div>
+            </div>
+          </div>
+          <div class="crypto-card" aria-label="Protection method map">
+            <div class="crypto-stack">
+              <span>Encrypt -> hide readable data</span>
+              <span>Decrypt -> recover plaintext with key</span>
+              <span>Hash -> one-way fixed digest</span>
+              <span>Certificate -> trust website public key</span>
+            </div>
+            <p>If you can "decrypt" a hash, congratulations, you have invented the wrong answer.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every scenario ask: are we hiding data, checking data, or proving identity?</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>CIE-style answers often reject vague "secure it" wording. Name the method and its mechanism.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Passwords are normally stored as hashes, not encrypted plaintext waiting politely to be stolen.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A website stores a digest of your password, not the password itself. What method is being used?</h2>
+            <p>The website is not trying to remember your secret. It is trying to recognise the fingerprint of your secret.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="hashing">Hashing, because the stored value is used for comparison and is not meant to be reversed</button>
+            <button class="choice-card" type="button" data-hook="encryption">Encryption, because all protected data is encrypted</button>
+            <button class="choice-card" type="button" data-hook="certificate">Digital certificate, because login pages need HTTPS</button>
+            <button class="choice-card" type="button" data-hook="backup">Backup, because the password can be restored later</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Look for "digest" and "comparison".
+          </div>
+        </section>
+
+        <section class="panel" id="core">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Security methods have different purposes</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Plaintext</strong><span>Readable original data before encryption.</span></article>
+            <article><strong>Ciphertext</strong><span>Unreadable encrypted data produced from plaintext and a key.</span></article>
+            <article><strong>Hash / digest</strong><span>Fixed output created from input data, usually used for comparison or integrity checking.</span></article>
+            <article><strong>Certificate</strong><span>Digital evidence that links an identity, such as a website, to a public key.</span></article>
+          </div>
+          <div class="callout">Chinese support: plaintext = 明文；ciphertext = 密文；hash/digest = 哈希值/摘要；digital certificate = 数字证书。</div>
+        </section>
+
+        <section class="panel" id="encryption">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Encryption protects confidentiality</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Mechanism</strong><span>Uses an algorithm and key to convert plaintext into ciphertext.</span></article>
+            <article><strong>Decryption</strong><span>Uses the correct key to convert ciphertext back into readable plaintext.</span></article>
+            <article><strong>Use cases</strong><span>Protecting data stored on a device or transmitted across a network.</span></article>
+            <article><strong>Limitation</strong><span>It does not prove data has not been changed unless integrity checks are also used.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="keys">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Keys control who can encrypt or decrypt</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Symmetric key</strong><span>The same secret key is used to encrypt and decrypt; key sharing must be protected.</span></article>
+            <article><strong>Public key</strong><span>A key that can be shared openly, often used to support secure communication setup.</span></article>
+            <article><strong>Private key</strong><span>A key kept secret by its owner; if exposed, trust is damaged.</span></article>
+            <article><strong>Trap</strong><span>Encryption strength depends on keeping keys secure, not hiding the algorithm in a drawer.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="hashing">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Hashing is one-way comparison, not secret recovery</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>One-way</strong><span>A hash is designed so the original input cannot feasibly be found from the digest.</span></article>
+            <article><strong>Fixed length</strong><span>The digest has a standard length even if the input length changes.</span></article>
+            <article><strong>Password storage</strong><span>Store the hash; when a user logs in, hash the entered password and compare.</span></article>
+            <article><strong>Integrity check</strong><span>If data changes, the hash should change, so tampering can be detected.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="certificates">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Digital certificates help authenticate websites</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Contains</strong><span>Owner identity, public key, issuer, expiry date and digital signature information.</span></article>
+            <article><strong>Certificate authority</strong><span>A trusted organisation that issues or signs certificates after checks.</span></article>
+            <article><strong>Purpose</strong><span>Helps the browser trust that a public key belongs to the claimed site.</span></article>
+            <article><strong>Warning</strong><span>Expired, mismatched or untrusted certificates can trigger browser warnings.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="https">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>HTTPS combines identity checking with encrypted communication</h2>
+          </div>
+          <div class="flow-grid">
+            <article><strong>1. Request</strong><span>Browser asks a website to start a secure connection.</span></article>
+            <article><strong>2. Certificate</strong><span>Website sends its digital certificate containing its public key.</span></article>
+            <article><strong>3. Trust check</strong><span>Browser checks issuer, expiry, domain match and signature chain.</span></article>
+            <article><strong>4. Encryption</strong><span>A secure session is established so transmitted data is unreadable to eavesdroppers.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 7</p>
+            <h2>Choose by job, not by favourite buzzword</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Protection method comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Method</div>
+              <div role="columnheader">Main job</div>
+              <div role="columnheader">Good use</div>
+              <div role="columnheader">Common wrong use</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Encryption</div>
+              <div role="cell">Protect confidentiality by hiding readable data.</div>
+              <div role="cell">Payment data in transit; sensitive files at rest.</div>
+              <div role="cell">Storing passwords so they can be decrypted later.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Hashing</div>
+              <div role="cell">Create a one-way digest for comparison or integrity.</div>
+              <div role="cell">Password verification; checking a file has not changed.</div>
+              <div role="cell">Trying to recover the original message from the hash.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Digital certificate</div>
+              <div role="cell">Link a public key to a trusted identity.</div>
+              <div role="cell">Browser checking a bank website before HTTPS.</div>
+              <div role="cell">Encrypting files directly by itself.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers, and what it deliberately leaves for later</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Encryption, decryption, keys, hashing, password verification, integrity checks, digital certificates, certificate authorities and HTTPS trust.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 068 will handle firewalls, proxies and network monitoring as network controls.</span></div>
+            <div><strong>Exam focus</strong><span>State the method, the mechanism and the exact security goal it supports.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive method selector</p>
+            <h2>Which security method fits the scenario?</h2>
+            <p>Select a scenario and compare the method, reason and common wrong answer.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="payment">Payment card details are sent from browser to online shop.</option>
+                <option value="password">A site wants to verify passwords without storing plaintext passwords.</option>
+                <option value="download">A user checks whether a downloaded file has changed.</option>
+                <option value="bank">A browser checks that a public key really belongs to the bank website.</option>
+                <option value="lostLaptop">A laptop may be stolen and contains sensitive local files.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Choose method</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="hash-demo">
+          <div class="section-title">
+            <p class="eyebrow">Interactive hash demo</p>
+            <h2>A tiny teaching hash, not a real security hash</h2>
+            <p>This toy digest shows the idea that a small input change creates a different digest. Real systems use cryptographic hash algorithms.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Practice input
+              <input type="text" id="hashInput" value="AS9618" autocomplete="off" />
+            </label>
+            <button class="primary-button" type="button" id="hashBtn">Make digest</button>
+          </div>
+          <div class="result-box" id="hashResult" aria-live="polite"></div>
+          <div class="method-box" id="hashAdvice"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four model answers with strict method boundaries</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="password">Password hash</button>
+            <button class="tab" type="button" data-example="payment">Payment encryption</button>
+            <button class="tab" type="button" data-example="certificate">Certificate</button>
+            <button class="tab" type="button" data-example="integrity">Integrity check</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short answers: choose the exact method</h2>
+            <p>Type a concise answer. Use the local answer button if you need a model response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the sentence before it loses marks</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style questions with expandable MS</h2>
+            <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Do not swap the three methods</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Encryption</strong><span>Reversible with the correct key; protects confidentiality.</span></div>
+            <div><strong>Hashing</strong><span>One-way digest; supports comparison and integrity checks.</span></div>
+            <div><strong>Certificates</strong><span>Bind public keys to trusted identities for secure communication.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks, not vague revision fog</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Method table</strong>
+              <span>Create a table for encryption, hashing and digital certificates. For each, state purpose, one use case and one common misconception.</span>
+            </article>
+            <article>
+              <strong>Task 2: Website security paragraph</strong>
+              <span>Explain how an online shop should protect payment data, stored passwords and website identity. Use all three methods correctly.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "Compare encryption and hashing, and explain why a digital certificate is useful for HTTPS." Use precise security-goal vocabulary.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

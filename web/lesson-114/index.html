@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 114 | Constants, variables and assignment</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
+        <h1>Constants, variables and assignment</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#model">Memory model</a>
+        <a href="#declare">Declare</a>
+        <a href="#constants">Constants</a>
+        <a href="#assignment">Assignment</a>
+        <a href="#trace">Trace</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#simulator">Assignment simulator</a>
+        <a href="#builder">Statement builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 114 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
+            <h2>Assignment is not a maths equals sign. It is an update.</h2>
+            <p>
+              Variables store values that may change while an algorithm runs. Constants store named values that should
+              not change. Assignment gives a variable a value, often by using its current value to calculate a new one.
+              That is why <code>Count &lt;- Count + 1</code> is sensible in pseudocode, even though it would be a very odd
+              maths equation.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Declare</strong><span>variables and constants using Cambridge-style syntax</span></div>
+              <div><strong>Assign</strong><span>values with <code>&lt;-</code> and trace variable updates accurately</span></div>
+              <div><strong>Explain</strong><span>why constants improve clarity and should not be overwritten</span></div>
+            </div>
+          </div>
+          <div class="assignment-visual" aria-label="Assignment visual">
+            <div class="memory-card"><strong>Total</strong><span>0</span></div>
+            <div class="arrow-card">Total &lt;- Total + Mark</div>
+            <div class="memory-card"><strong>Total</strong><span>57</span></div>
+            <p>The variable keeps its name; the stored value changes.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Say assignment out loud as "is set to", not "equals". This prevents the classic <code>x = x + 1</code> confusion.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Trace-table and pseudocode questions often award marks for declaration, initialisation, update and final value.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not write <code>CONSTANT TaxRate : REAL</code> and then later assign a new value to <code>TaxRate</code>.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Can a variable be on both sides?</h2>
+            <p>What does <code>Score &lt;- Score + 10</code> mean in Cambridge pseudocode?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="impossible">It is impossible maths</button>
+            <button class="choice-card" type="button" data-hook="update">Update Score by adding 10</button>
+            <button class="choice-card" type="button" data-hook="compare">Compare Score with 10</button>
+            <button class="choice-card" type="button" data-hook="constant">Declare Score as a constant</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Read the arrow as "is set to".</div>
+        </section>
+
+        <section class="panel" id="model">
+          <div class="section-title">
+            <p class="eyebrow">Memory model</p>
+            <h2>Identifiers name storage locations</h2>
+          </div>
+          <div class="triage-grid">
+            <article>
+              <h3>Variable</h3>
+              <p>A named storage location whose value can change while the algorithm runs.</p>
+              <pre><code>DECLARE Count : INTEGER
+Count &lt;- 0
+Count &lt;- Count + 1</code></pre>
+            </article>
+            <article>
+              <h3>Constant</h3>
+              <p>A named value that should remain fixed. Use it when the same fixed value is used in several places.</p>
+              <pre><code>CONSTANT MaxMark = 100
+CONSTANT VATRate = 0.2</code></pre>
+            </article>
+            <article>
+              <h3>Assignment</h3>
+              <p>Assignment evaluates the right-hand expression first, then stores the result in the left-hand variable.</p>
+              <pre><code>Total &lt;- Total + Price
+Average &lt;- Total / Count</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="declare">
+          <div class="section-title">
+            <p class="eyebrow">Declare variables</p>
+            <h2>Declaration gives a name and a type before use</h2>
+            <p>Chinese support: declaration 是“先告诉程序变量叫什么、存什么类型”；assignment 是“把具体值放进去”。</p>
+          </div>
+          <div class="data-table syntax-table" role="table" aria-label="Declaration syntax">
+            <div class="table-row table-head" role="row"><div>Purpose</div><div>Cambridge-style pseudocode</div><div>Meaning</div></div>
+            <div class="table-row" role="row"><div>Whole-number counter</div><div><code>DECLARE Count : INTEGER</code></div><div>Count can store whole numbers</div></div>
+            <div class="table-row" role="row"><div>Decimal total</div><div><code>DECLARE Price : REAL</code></div><div>Price can store decimal values</div></div>
+            <div class="table-row" role="row"><div>True/false state</div><div><code>DECLARE Found : BOOLEAN</code></div><div>Found can store TRUE or FALSE</div></div>
+            <div class="table-row" role="row"><div>Text value</div><div><code>DECLARE Name : STRING</code></div><div>Name can store a sequence of characters</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="constants">
+          <div class="section-title">
+            <p class="eyebrow">Constants</p>
+            <h2>Name fixed values so the algorithm explains itself</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Without a constant</h3>
+              <pre><code>IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ENDIF</code></pre>
+              <p>The value 50 appears without explaining its role.</p>
+            </article>
+            <article>
+              <h3>With a constant</h3>
+              <pre><code>CONSTANT PassMark = 50
+
+IF Mark &gt;= PassMark THEN
+    OUTPUT "Pass"
+ENDIF</code></pre>
+              <p>The identifier documents the meaning of the fixed value.</p>
+            </article>
+          </div>
+          <div class="callout">Exam point: changing a constant later is a contradiction. If it must change during execution, it should be a variable.</div>
+        </section>
+
+        <section class="panel" id="assignment">
+          <div class="section-title">
+            <p class="eyebrow">Assignment</p>
+            <h2>Right side first, left side second</h2>
+          </div>
+          <div class="data-table assignment-table" role="table" aria-label="Assignment examples">
+            <div class="table-row table-head" role="row"><div>Statement</div><div>Read as</div><div>Effect</div></div>
+            <div class="table-row" role="row"><div><code>Total &lt;- 0</code></div><div>Total is set to 0</div><div>initialises Total</div></div>
+            <div class="table-row" role="row"><div><code>Total &lt;- Total + Mark</code></div><div>Total becomes old Total plus Mark</div><div>running total update</div></div>
+            <div class="table-row" role="row"><div><code>Count &lt;- Count + 1</code></div><div>Count is incremented</div><div>counter update</div></div>
+            <div class="table-row" role="row"><div><code>Found &lt;- TRUE</code></div><div>Found is set to TRUE</div><div>flag update</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Trace</p>
+            <h2>Trace assignment one statement at a time</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Pseudocode</h3>
+              <pre><code>Total &lt;- 0
+Count &lt;- 0
+INPUT Mark       // 40
+Total &lt;- Total + Mark
+Count &lt;- Count + 1
+INPUT Mark       // 65
+Total &lt;- Total + Mark
+Count &lt;- Count + 1</code></pre>
+            </article>
+            <article>
+              <h3>Trace table</h3>
+              <div class="data-table trace-table" role="table" aria-label="Assignment trace table">
+                <div class="table-row table-head" role="row"><div>Step</div><div>Mark</div><div>Total</div><div>Count</div></div>
+                <div class="table-row" role="row"><div>initialise</div><div>-</div><div>0</div><div>0</div></div>
+                <div class="table-row" role="row"><div>input 40</div><div>40</div><div>40</div><div>1</div></div>
+                <div class="table-row" role="row"><div>input 65</div><div>65</div><div>105</div><div>2</div></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>The symbol changes, the update idea does not</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>CONSTANT PassMark = 50
+DECLARE Mark : INTEGER
+DECLARE Passed : BOOLEAN
+
+INPUT Mark
+Passed &lt;- Mark &gt;= PassMark</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>final int PASS_MARK = 50;
+int mark = input.nextInt();
+boolean passed = mark &gt;= PASS_MARK;</code></pre>
+            </article>
+          </div>
+          <div class="callout">Paper 2 reminder: use Cambridge-style assignment <code>&lt;-</code> in pseudocode. Java uses <code>=</code> for assignment.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers and what it leaves for later</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>variables, constants, declaration, initialisation, assignment, incrementing, running totals, flags, and trace-table updates.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 113 covered data types. Lesson 115 begins one-dimensional arrays, so indexed storage is not developed here.</span></div>
+            <div><strong>Paper 2 note</strong><span>Marks often depend on whether assignment direction, initialisation and variable update order are correct.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="simulator">
+          <div class="section-title">
+            <p class="eyebrow">Interactive assignment simulator</p>
+            <h2>Trace a single assignment</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Old Total
+              <input type="number" id="oldTotal" value="30" />
+            </label>
+            <label>
+              Mark
+              <input type="number" id="markValue" value="12" />
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Run Total &lt;- Total + Mark</button>
+          </div>
+          <div class="trace-output" id="simulateResult">Enter values to see the updated Total.</div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive statement builder</p>
+            <h2>Choose the correct statement form</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Task
+              <select id="builderInput">
+                <option value="declareCounter">declare a counter</option>
+                <option value="constantPass">create a pass mark constant</option>
+                <option value="initialiseTotal">initialise a total</option>
+                <option value="incrementCount">increment a count</option>
+                <option value="setFlag">set a found flag</option>
+                <option value="calculateAverage">calculate an average</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="builderBtn">Build</button>
+          </div>
+          <div class="trace-output" id="builderResult">Choose a task to generate a Cambridge-style statement.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Declaration, constants and trace examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="score">Score update</button>
+            <button class="tab" type="button" data-example="passmark">Pass mark</button>
+            <button class="tab" type="button" data-example="swap">Swap values</button>
+            <button class="tab" type="button" data-example="flag">Boolean flag</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Ten quick decisions</h2>
+            <p>Answer briefly, then use Show answer to check precise wording.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix assignment and constant errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style questions with expandable MS</h2>
+            <p>These questions focus on declaration, assignment direction, trace values, constants and strict pseudocode syntax.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Constants, variables and assignment checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Variable</strong><span>a named storage location whose value can change during execution.</span></div>
+            <div><strong>Constant</strong><span>a named value that should not change once defined.</span></div>
+            <div><strong>Assignment</strong><span>evaluate the right-hand expression, then store the result in the left-hand variable.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear consolidation tasks</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Declarations</strong>
+              <span>Write Cambridge-style declarations for Total, Count, Average, Found and StudentName. Choose suitable data types.</span>
+            </article>
+            <article>
+              <strong>Task 2: Constants</strong>
+              <span>Define constants for PassMark = 50 and MaxStudents = 30, then write one IF statement that uses PassMark.</span>
+            </article>
+            <article>
+              <strong>Task 3: Trace</strong>
+              <span>Trace Total and Count for input marks 20, 35 and 45 using Total &lt;- Total + Mark and Count &lt;- Count + 1.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

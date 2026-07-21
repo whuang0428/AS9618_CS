@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 122 | Stacks and queues as abstract data types</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
+        <h1>Stacks and queues as abstract data types</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Concept</a>
+        <a href="#stack">Stack</a>
+        <a href="#queue">Queue</a>
+        <a href="#operations">Operations</a>
+        <a href="#errors">Overflow/underflow</a>
+        <a href="#implementation">Implementation</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#simulator">Simulator</a>
+        <a href="#trace">Trace</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 122 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
+            <h2>An abstract data type is defined by what you can do with it, not by the box it lives in.</h2>
+            <p>
+              A stack and a queue may both be implemented using arrays, but their rules are different. A stack removes
+              the most recently added item. A queue removes the item that has waited longest. That one rule difference
+              explains many exam traces.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>stack, queue and abstract data type accurately</span></div>
+              <div><strong>Trace</strong><span>push/pop and enqueue/dequeue operation sequences</span></div>
+              <div><strong>Check</strong><span>overflow and underflow before invalid operations</span></div>
+            </div>
+          </div>
+          <div class="adt-visual" aria-label="Stack and queue visual">
+            <div class="mini-adt">
+              <strong>Stack</strong>
+              <span>top: C</span>
+              <span>B</span>
+              <span>A</span>
+              <em>LIFO</em>
+            </div>
+            <div class="mini-adt queue-line">
+              <strong>Queue</strong>
+              <span>front: A</span>
+              <span>B</span>
+              <span>rear: C</span>
+              <em>FIFO</em>
+            </div>
+            <p>Same data items. Different access rules. Exams enjoy that distinction.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask which item is allowed to leave next. The answer reveals whether the structure is a stack or a queue.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 can ask for definitions, operation traces, pointer updates, or checks for full and empty structures.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not define a stack as “an array”. The ADT rule is LIFO; an array is only one possible implementation.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Who leaves first?</h2>
+            <p>Items arrive in this order: A, then B, then C. Which item leaves first in a normal service queue?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="a">A</button>
+            <button class="choice-card" type="button" data-hook="b">B</button>
+            <button class="choice-card" type="button" data-hook="c">C</button>
+            <button class="choice-card" type="button" data-hook="all">All at once</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the item that has waited the longest.</div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Concept</p>
+            <h2>ADT means behaviour first, implementation second</h2>
+            <p>Chinese support: abstract data type 是“抽象数据类型”；LIFO 是“后进先出”；FIFO 是“先进先出”。</p>
+          </div>
+          <div class="data-table concept-table" role="table" aria-label="ADT concepts">
+            <div class="table-row table-head" role="row"><div>Term</div><div>Rule</div><div>Common operations</div></div>
+            <div class="table-row" role="row"><div>Stack</div><div>LIFO: last in, first out</div><div>push, pop, peek</div></div>
+            <div class="table-row" role="row"><div>Queue</div><div>FIFO: first in, first out</div><div>enqueue, dequeue, peek/front</div></div>
+            <div class="table-row" role="row"><div>ADT</div><div>defined by allowed operations and behaviour</div><div>can be implemented using arrays or linked structures</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="stack">
+          <div class="section-title">
+            <p class="eyebrow">Stack</p>
+            <h2>Push adds to the top; pop removes from the top</h2>
+          </div>
+          <pre><code>PUSH A
+PUSH B
+PUSH C
+POP returns C</code></pre>
+          <div class="callout">A stack behaves like a pile of plates: the newest item blocks the older items until it is removed.</div>
+        </section>
+
+        <section class="panel" id="queue">
+          <div class="section-title">
+            <p class="eyebrow">Queue</p>
+            <h2>Enqueue adds at the rear; dequeue removes from the front</h2>
+          </div>
+          <pre><code>ENQUEUE A
+ENQUEUE B
+ENQUEUE C
+DEQUEUE returns A</code></pre>
+          <div class="callout">A queue behaves like a waiting line: the earliest item is served first.</div>
+        </section>
+
+        <section class="panel" id="operations">
+          <div class="section-title">
+            <p class="eyebrow">Operations</p>
+            <h2>Use the operation name that matches the ADT</h2>
+          </div>
+          <div class="data-table ops-table" role="table" aria-label="Stack and queue operations">
+            <div class="table-row table-head" role="row"><div>Operation</div><div>Stack</div><div>Queue</div></div>
+            <div class="table-row" role="row"><div>Add item</div><div><code>PUSH(Item)</code></div><div><code>ENQUEUE(Item)</code></div></div>
+            <div class="table-row" role="row"><div>Remove item</div><div><code>POP()</code> from top</div><div><code>DEQUEUE()</code> from front</div></div>
+            <div class="table-row" role="row"><div>Inspect item</div><div><code>PEEK()</code> top item</div><div><code>PEEK()</code> or front item</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="errors">
+          <div class="section-title">
+            <p class="eyebrow">Overflow and underflow</p>
+            <h2>Check before doing the operation</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Underflow</h3>
+              <pre><code>IF StackPointer = 0 THEN
+    OUTPUT "Stack is empty"
+ELSE
+    POP()
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>Overflow</h3>
+              <pre><code>IF StackPointer = MaxSize THEN
+    OUTPUT "Stack is full"
+ELSE
+    PUSH(NewItem)
+ENDIF</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="implementation">
+          <div class="section-title">
+            <p class="eyebrow">Implementation note</p>
+            <h2>An array can store the items, but the ADT rule controls access</h2>
+          </div>
+          <div class="data-table impl-table" role="table" aria-label="ADT implementation contrast">
+            <div class="table-row table-head" role="row"><div>Structure</div><div>Possible array pointers</div><div>Meaning</div></div>
+            <div class="table-row" role="row"><div>Stack</div><div><code>TopPointer</code></div><div>index of the current top item</div></div>
+            <div class="table-row" role="row"><div>Queue</div><div><code>FrontPointer</code>, <code>RearPointer</code></div><div>front leaves; rear receives new items</div></div>
+            <div class="table-row" role="row"><div>ADT</div><div>implementation detail</div><div>marks often focus on behaviour and trace correctness</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Use Cambridge-style operations in exam answers</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>PUSH(Stack, "A")
+PUSH(Stack, "B")
+Item &lt;- POP(Stack)</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>Stack&lt;String&gt; stack = new Stack&lt;&gt;();
+stack.push("A");
+stack.push("B");
+String item = stack.pop();</code></pre>
+            </article>
+          </div>
+          <div class="callout">Java library classes can support understanding, but Paper 2 answers should show the requested ADT operations and checks.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers and what it leaves outside</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>stack and queue definitions, LIFO/FIFO, core operations, operation tracing, overflow/underflow and implementation-vs-ADT distinction.</span></div>
+            <div><strong>Boundary</strong><span>This lesson introduces ADT behaviour. Detailed circular queue array algorithms can be expanded in a later implementation lesson.</span></div>
+            <div><strong>Paper 2 note</strong><span>Marks are commonly lost by mixing up pop/dequeue order or by ignoring empty/full checks.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="simulator">
+          <div class="section-title">
+            <p class="eyebrow">Interactive simulator</p>
+            <h2>Compare stack and queue behaviour</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Item
+              <input id="itemInput" type="text" maxlength="6" value="A" />
+            </label>
+            <button class="primary-button" type="button" id="stackPushBtn">Push stack</button>
+            <button class="answer-toggle" type="button" id="stackPopBtn">Pop stack</button>
+            <button class="primary-button" type="button" id="queueEnqBtn">Enqueue</button>
+            <button class="answer-toggle" type="button" id="queueDeqBtn">Dequeue</button>
+          </div>
+          <div class="sim-grid">
+            <article>
+              <h3>Stack</h3>
+              <div class="adt-state" id="stackState"></div>
+            </article>
+            <article>
+              <h3>Queue</h3>
+              <div class="adt-state" id="queueState"></div>
+            </article>
+          </div>
+          <div class="trace-output" id="simResult">Capacity is 4. Try the same items in both structures.</div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Interactive trace</p>
+            <h2>Step through a mixed operation sequence</h2>
+          </div>
+          <div class="trace-actions">
+            <button class="primary-button" type="button" id="traceStepBtn">Step trace</button>
+            <button class="answer-toggle" type="button" id="traceResetBtn">Reset</button>
+          </div>
+          <div class="trace-output" id="traceOutput">Ready: PUSH A, PUSH B, POP, PUSH C, POP.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>ADT traces and checks</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="stackTrace">Stack trace</button>
+            <button class="tab" type="button" data-example="queueTrace">Queue trace</button>
+            <button class="tab" type="button" data-example="underflow">Underflow</button>
+            <button class="tab" type="button" data-example="compare">Compare</button>
+          </div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Ten quick ADT checks</h2>
+            <p>Type a concise answer, then check. Each question also has its own answer button.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix common stack and queue errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style questions with expandable MS</h2>
+            <p>These questions focus on definitions, traces, operation order and strict overflow/underflow wording.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Stack and queue checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Stack</strong><span>LIFO: push and pop at the top.</span></div>
+            <div><strong>Queue</strong><span>FIFO: enqueue rear, dequeue front.</span></div>
+            <div><strong>Check</strong><span>full before add; empty before remove.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Trace before you code</h2>
+          </div>
+          <ol class="homework-list">
+            <li>
+              <strong>Task 1: Stack trace</strong>
+              <span>Trace: PUSH A, PUSH B, PUSH C, POP, PUSH D, POP. State each item returned by POP and the final stack contents.</span>
+            </li>
+            <li>
+              <strong>Task 2: Queue trace</strong>
+              <span>Trace: ENQUEUE A, ENQUEUE B, ENQUEUE C, DEQUEUE, ENQUEUE D, DEQUEUE. State each item returned by DEQUEUE and final queue contents.</span>
+            </li>
+            <li>
+              <strong>Task 3: Explain the trap</strong>
+              <span>Write a 5-mark explanation of why “a stack is an array” is not a complete definition of a stack ADT.</span>
+            </li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

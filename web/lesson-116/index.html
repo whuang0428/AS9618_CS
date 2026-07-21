@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 116 | Two-dimensional arrays</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
+        <h1>Two-dimensional arrays</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#model">2D model</a>
+        <a href="#declare">Declare</a>
+        <a href="#access">Access/update</a>
+        <a href="#nested">Nested loops</a>
+        <a href="#trace">Trace</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#lookup">Cell lookup</a>
+        <a href="#builder">Loop builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 116 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
+            <h2>A two-dimensional array is a spreadsheet with rules.</h2>
+            <p>
+              A two-dimensional array stores values of the same type using two indexes: usually row and column.
+              If a one-dimensional array is a row of lockers, a two-dimensional array is the whole locker wall.
+              Accessing one value means naming both its row and its column.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Declare</strong><span>two-dimensional arrays with row and column bounds</span></div>
+              <div><strong>Access</strong><span>read and update one cell using two indexes</span></div>
+              <div><strong>Traverse</strong><span>use nested loops to process rows and columns</span></div>
+            </div>
+          </div>
+          <div class="matrix-visual" aria-label="Two-dimensional array visual">
+            <div class="matrix-grid">
+              <span></span><span>C1</span><span>C2</span><span>C3</span>
+              <span>R1</span><strong>12</strong><strong>15</strong><strong>11</strong>
+              <span>R2</span><strong>18</strong><strong>16</strong><strong>14</strong>
+              <span>R3</span><strong>20</strong><strong>17</strong><strong>19</strong>
+            </div>
+            <div class="array-caption">Marks[2, 3] is 14</div>
+            <p>Two indexes: first choose the row, then choose the column.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Trace the outer loop slowly. Each row value triggers a full run of the inner column loop.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 can ask for array declaration, cell access, nested loop traversal and row/column trace values.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not write <code>Marks[Index]</code> when the array is two-dimensional. One cell needs two indexes.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which seat is it?</h2>
+            <p>A theatre seat is in row 4, column 7. Which style matches that idea?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="single">Seat[7]</button>
+            <button class="choice-card" type="button" data-hook="two">Seat[4, 7]</button>
+            <button class="choice-card" type="button" data-hook="string">"Row 4 Column 7"</button>
+            <button class="choice-card" type="button" data-hook="constant">CONSTANT Seat = 47</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the representation that keeps row and column separate.</div>
+        </section>
+
+        <section class="panel" id="model">
+          <div class="section-title">
+            <p class="eyebrow">2D model</p>
+            <h2>Rows and columns create coordinates</h2>
+          </div>
+          <div class="triage-grid">
+            <article>
+              <h3>Same identifier</h3>
+              <p>The whole grid has one array name.</p>
+              <pre><code>Marks</code></pre>
+            </article>
+            <article>
+              <h3>Two indexes</h3>
+              <p>The first index usually selects the row; the second index selects the column.</p>
+              <pre><code>Marks[Row, Column]</code></pre>
+            </article>
+            <article>
+              <h3>Same type</h3>
+              <p>Each cell stores the same data type.</p>
+              <pre><code>ARRAY[1:3, 1:4] OF INTEGER</code></pre>
+            </article>
+          </div>
+          <div class="callout">Chinese support: row = 行，column = 列，cell = 某一行某一列交叉处的一个值。</div>
+        </section>
+
+        <section class="panel" id="declare">
+          <div class="section-title">
+            <p class="eyebrow">Declare 2D arrays</p>
+            <h2>Two dimensions need two ranges</h2>
+          </div>
+          <div class="data-table syntax-table" role="table" aria-label="Two-dimensional array declarations">
+            <div class="table-row table-head" role="row"><div>Purpose</div><div>Cambridge-style pseudocode</div><div>Valid cells</div></div>
+            <div class="table-row" role="row"><div>3 by 4 mark table</div><div><code>DECLARE Marks : ARRAY[1:3, 1:4] OF INTEGER</code></div><div>3 rows, 4 columns, 12 cells</div></div>
+            <div class="table-row" role="row"><div>5 by 7 temperatures</div><div><code>DECLARE Temp : ARRAY[1:5, 1:7] OF REAL</code></div><div>5 rows, 7 columns, 35 cells</div></div>
+            <div class="table-row" role="row"><div>10 by 10 grid</div><div><code>DECLARE Grid : ARRAY[1:10, 1:10] OF BOOLEAN</code></div><div>100 Boolean cells</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="access">
+          <div class="section-title">
+            <p class="eyebrow">Access and update</p>
+            <h2>A cell needs row and column</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Read one cell</h3>
+              <pre><code>OUTPUT Marks[2, 3]</code></pre>
+              <p>Outputs the value in row 2, column 3.</p>
+            </article>
+            <article>
+              <h3>Update one cell</h3>
+              <pre><code>Marks[2, 3] &lt;- Marks[2, 3] + 1</code></pre>
+              <p>Only that cell changes; other rows and columns are untouched.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="nested">
+          <div class="section-title">
+            <p class="eyebrow">Nested loops</p>
+            <h2>Outer row loop, inner column loop</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Input every cell</h3>
+              <pre><code>FOR Row &lt;- 1 TO 3
+    FOR Column &lt;- 1 TO 4
+        INPUT Marks[Row, Column]
+    NEXT Column
+NEXT Row</code></pre>
+            </article>
+            <article>
+              <h3>Total every cell</h3>
+              <pre><code>Total &lt;- 0
+FOR Row &lt;- 1 TO 3
+    FOR Column &lt;- 1 TO 4
+        Total &lt;- Total + Marks[Row, Column]
+    NEXT Column
+NEXT Row
+OUTPUT Total</code></pre>
+            </article>
+          </div>
+          <div class="callout">For a 3 by 4 array, the inner statement runs 3 * 4 = 12 times.</div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Trace</p>
+            <h2>Trace row and column together</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Example array</h3>
+              <div class="data-table matrix-table" role="table" aria-label="2D array values">
+                <div class="table-row table-head" role="row"><div></div><div>Col 1</div><div>Col 2</div><div>Col 3</div></div>
+                <div class="table-row" role="row"><div>Row 1</div><div>2</div><div>4</div><div>6</div></div>
+                <div class="table-row" role="row"><div>Row 2</div><div>1</div><div>3</div><div>5</div></div>
+              </div>
+            </article>
+            <article>
+              <h3>Traversal order</h3>
+              <div class="data-table mini-table" role="table" aria-label="Nested loop trace">
+                <div class="table-row table-head" role="row"><div>Step</div><div>Row</div><div>Column</div><div>Value</div></div>
+                <div class="table-row" role="row"><div>1</div><div>1</div><div>1</div><div>2</div></div>
+                <div class="table-row" role="row"><div>2</div><div>1</div><div>2</div><div>4</div></div>
+                <div class="table-row" role="row"><div>3</div><div>1</div><div>3</div><div>6</div></div>
+                <div class="table-row" role="row"><div>4</div><div>2</div><div>1</div><div>1</div></div>
+                <div class="table-row" role="row"><div>5</div><div>2</div><div>2</div><div>3</div></div>
+                <div class="table-row" role="row"><div>6</div><div>2</div><div>3</div><div>5</div></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Do not import Java indexing into Cambridge answers</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>DECLARE Marks : ARRAY[1:3, 1:4] OF INTEGER
+
+FOR Row &lt;- 1 TO 3
+    FOR Column &lt;- 1 TO 4
+        OUTPUT Marks[Row, Column]
+    NEXT Column
+NEXT Row</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>int[][] marks = new int[3][4];
+
+for (int row = 0; row &lt; 3; row++) {
+    for (int column = 0; column &lt; 4; column++) {
+        System.out.println(marks[row][column]);
+    }
+}</code></pre>
+            </article>
+          </div>
+          <div class="callout">Paper 2 reminder: if the question states <code>ARRAY[1:3, 1:4]</code>, valid row indexes are 1 to 3 and valid column indexes are 1 to 4.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers and what it leaves for later</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>two-dimensional array purpose, declaration, row/column bounds, cell access, update, nested traversal, total calculation and out-of-range errors.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 115 covered one-dimensional arrays. Later lessons cover records, files, stacks and queues; this lesson does not use record fields or file operations.</span></div>
+            <div><strong>Paper 2 note</strong><span>Marks often require two indexes, correct nested loop bounds, and clear row/column terminology.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="lookup">
+          <div class="section-title">
+            <p class="eyebrow">Interactive cell lookup</p>
+            <h2>Read Marks[Row, Column]</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Row
+              <select id="rowInput">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </label>
+            <label>
+              Column
+              <select id="columnInput">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="lookupBtn">Read cell</button>
+          </div>
+          <div class="trace-output" id="lookupResult">Array: Marks[1:3, 1:4]. Choose a row and column.</div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive loop builder</p>
+            <h2>Generate a common 2D array pattern</h2>
+          </div>
+          <div class="converter-grid builder-grid">
+            <label>
+              Task
+              <select id="builderInput">
+                <option value="declare">declare a 3 by 4 mark table</option>
+                <option value="input">input every cell</option>
+                <option value="output">output every cell</option>
+                <option value="rowTotal">calculate one row total</option>
+                <option value="allTotal">calculate whole table total</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="builderBtn">Build</button>
+          </div>
+          <div class="trace-output" id="builderResult">Choose a task to generate Cambridge-style pseudocode.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>2D array patterns you can reuse</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="declare">Declare/input</button>
+            <button class="tab" type="button" data-example="lookup">Cell lookup</button>
+            <button class="tab" type="button" data-example="total">Whole total</button>
+            <button class="tab" type="button" data-example="rowTotal">Row total</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Ten quick 2D array checks</h2>
+            <p>Answer briefly, then use Show answer to compare with strict wording.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix common 2D array errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style 2D array questions with expandable MS</h2>
+            <p>These questions focus on declaration, two-index access, nested loops, row totals and trace values.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Two-dimensional array checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Declare</strong><span>state row bounds, column bounds and element type.</span></div>
+            <div><strong>Access</strong><span>use two indexes, usually <code>[Row, Column]</code>, to access one cell.</span></div>
+            <div><strong>Traverse</strong><span>use nested loops so every valid row/column pair is visited.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear consolidation tasks</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Declaration and input</strong>
+              <span>Declare a two-dimensional array called Rainfall that stores REAL values for 7 days and 4 weeks, then input every cell.</span>
+            </article>
+            <article>
+              <strong>Task 2: Total</strong>
+              <span>Write pseudocode to calculate the total of all cells in Rainfall[1:7, 1:4].</span>
+            </article>
+            <article>
+              <strong>Task 3: Bounds explanation</strong>
+              <span>Explain why Rainfall[8, 1] and Rainfall[2, 5] are invalid if the array is declared as ARRAY[1:7, 1:4] OF REAL.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

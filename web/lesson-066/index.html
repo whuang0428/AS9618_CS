@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 066 | Access rights, permissions, and least privilege</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
+        <h1>Access rights, permissions, and least privilege</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#core">Core idea</a>
+        <a href="#rights">Rights</a>
+        <a href="#users">Users/roles</a>
+        <a href="#matrix">Matrix</a>
+        <a href="#least">Least privilege</a>
+        <a href="#review">Review</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Decision tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 066 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
+            <h2>Logging in proves who you are. Permissions decide what you can touch.</h2>
+            <p>
+              Access rights define what an authenticated user can read, write, delete, execute or administer.
+              Least privilege means users receive only the permissions needed for their role. It is the opposite
+              of giving everyone the digital master key and hoping nobody presses the shiny red button.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>access rights, permissions, roles and least privilege</span></div>
+              <div><strong>Apply</strong><span>permission matrices to realistic files, databases and accounts</span></div>
+              <div><strong>Justify</strong><span>how limiting permissions protects confidentiality and integrity</span></div>
+            </div>
+          </div>
+          <div class="access-card" aria-label="Permission flow">
+            <div class="permission-stack">
+              <span>Authenticate -> identify user</span>
+              <span>Authorise -> check permission</span>
+              <span>Allow only needed actions</span>
+              <span>Log and review access</span>
+            </div>
+            <p>A correct login is not a permission slip for everything.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use the access sentence: "This user may ___ because their role needs ___, but must not ___ because ___."</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Good exam answers connect a permission to a protected security goal, not just to the word "secure".</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Authentication is not the same as authorisation. Being known by the system does not mean being allowed to edit everything.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A student can log into the school system but cannot edit exam grades. What control is this?</h2>
+            <p>The system recognises the student. It just does not hand over the gradebook and a confetti cannon.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="permissions">Access rights limit what the authenticated student can do</button>
+            <button class="choice-card" type="button" data-hook="authentication">Authentication, because the student logged in</button>
+            <button class="choice-card" type="button" data-hook="encryption">Encryption, because marks are hidden from students</button>
+            <button class="choice-card" type="button" data-hook="backup">Backup, because grades can be restored later</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Focus on the action the user is allowed or denied.
+          </div>
+        </section>
+
+        <section class="panel" id="core">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Access control decides what authenticated users may do</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Access right</strong><span>A permission to perform an action on a resource, such as read or write.</span></article>
+            <article><strong>Resource</strong><span>A file, database table, account, device, folder, application or network service.</span></article>
+            <article><strong>Authorisation</strong><span>The decision to allow or deny an action after identity has been checked.</span></article>
+            <article><strong>Policy</strong><span>The rule set that maps users, groups or roles to permitted actions.</span></article>
+          </div>
+          <div class="callout">Chinese support: access rights = 访问权限；permission = 权限；least privilege = 最小权限原则；authorisation = 授权。</div>
+        </section>
+
+        <section class="panel" id="rights">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Common permission types</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Read</strong><span>View or open data without changing it. Protects confidentiality when restricted.</span></article>
+            <article><strong>Write/modify</strong><span>Create or change data. Protects integrity when restricted.</span></article>
+            <article><strong>Delete</strong><span>Remove data or accounts. Often high risk because loss may affect availability.</span></article>
+            <article><strong>Execute/admin</strong><span>Run programs, install software or manage settings. Usually limited to trusted roles.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="users">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Users, groups and roles keep permissions manageable</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>User account</strong><span>Individual identity, useful for accountability and audit trails.</span></article>
+            <article><strong>Group</strong><span>A collection of accounts that share permissions, such as "Students" or "Finance".</span></article>
+            <article><strong>Role</strong><span>A job-based permission set, such as teacher, receptionist, technician or administrator.</span></article>
+            <article><strong>Audit log</strong><span>Records access attempts or changes, helping detect misuse and investigate incidents.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="matrix">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>A permission matrix makes access decisions visible</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Permission matrix">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Role</div>
+              <div role="columnheader">Student records</div>
+              <div role="columnheader">Exam marks</div>
+              <div role="columnheader">System settings</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Student</div>
+              <div role="cell">Read own record</div>
+              <div role="cell">No access</div>
+              <div role="cell">No access</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Teacher</div>
+              <div role="cell">Read class records</div>
+              <div role="cell">Write marks for own classes</div>
+              <div role="cell">No access</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Exam officer</div>
+              <div role="cell">Read relevant records</div>
+              <div role="cell">Read/write exam data</div>
+              <div role="cell">No access</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Administrator</div>
+              <div role="cell">Manage accounts</div>
+              <div role="cell">Access only if required</div>
+              <div role="cell">Change settings</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="least">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Least privilege reduces unnecessary damage</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Definition</strong><span>Give users only the minimum permissions needed to perform their role.</span></article>
+            <article><strong>Confidentiality</strong><span>Users cannot view data that is not needed for their work.</span></article>
+            <article><strong>Integrity</strong><span>Users cannot accidentally or deliberately change data outside their responsibility.</span></article>
+            <article><strong>Availability</strong><span>Fewer users can delete files, disable services or change critical settings.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="review">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Permissions need review, not just setup day optimism</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Joiner</strong><span>New user receives permissions based on role, not copied blindly from a friend.</span></article>
+            <article><strong>Mover</strong><span>User changes role; old permissions are removed and new ones are added.</span></article>
+            <article><strong>Leaver</strong><span>Account is disabled or removed when the user leaves.</span></article>
+            <article><strong>Review</strong><span>Regular checks remove excessive, stale or temporary permissions.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers, and what it deliberately leaves for later</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Access rights, permissions, roles/groups, permission matrices, least privilege, review and audit logs.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 067 will cover encryption, hashing and digital certificates in depth.</span></div>
+            <div><strong>Exam focus</strong><span>Name the permission, link it to a role, then explain the protected security goal.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive decision tool</p>
+            <h2>Should the action be allowed?</h2>
+            <p>Select a scenario and compare the decision with the reason and exam trap.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Access request
+              <select id="scenarioInput">
+                <option value="studentOwn">Student reads their own timetable.</option>
+                <option value="studentMarks">Student tries to edit exam marks.</option>
+                <option value="teacherClass">Teacher enters marks for their own class.</option>
+                <option value="teacherAll">Teacher tries to view all school medical records.</option>
+                <option value="adminTemp">Temporary technician asks for permanent admin rights.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Decide</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four model answers using role, action and consequence</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="grades">Exam marks</button>
+            <button class="tab" type="button" data-example="files">Shared files</button>
+            <button class="tab" type="button" data-example="temporary">Temporary admin</button>
+            <button class="tab" type="button" data-example="leaver">Leaver account</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short answers: permission, role, reason</h2>
+            <p>Type a concise answer. Use the local answer button if you need a model response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the sentence before it loses marks</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style questions with expandable MS</h2>
+            <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Permissions are practical security rules</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Access rights</strong><span>Define permitted actions on resources.</span></div>
+            <div><strong>Roles/groups</strong><span>Make permissions consistent and easier to manage.</span></div>
+            <div><strong>Least privilege</strong><span>Limits unnecessary access and reduces damage.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks, not vague revision fog</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Permission matrix</strong>
+              <span>Create a 4-role permission matrix for a hospital system: patient, doctor, receptionist and administrator. Use read, write, delete and no access.</span>
+            </article>
+            <article>
+              <strong>Task 2: Least privilege explanation</strong>
+              <span>Write two paragraphs explaining how least privilege protects confidentiality and integrity in a school database.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "A temporary worker needs access for one week. Explain how access rights should be managed and why." Include review/removal.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

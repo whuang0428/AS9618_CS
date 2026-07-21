@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 061 | Section 5 review: precise software comparisons</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
+        <h1>Section 5 review: precise software comparisons</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#retrieval">Retrieval grid</a>
+        <a href="#compare">Comparisons</a>
+        <a href="#precision">Precision rules</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#tool">Review tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 061 | 45 minutes | Paper 1 Section 5 | Stage review</p>
+            <h2>Review is not rereading. It is choosing the right mental toolbox under exam pressure.</h2>
+            <p>
+              This review connects Section 5 ideas: operating systems, utility software, interfaces,
+              translators, compilation stages, linkers/loaders/libraries and error diagnostics.
+              The aim is precise comparison: name the correct tool, show the mechanism, and link it to the scenario.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Retrieve</strong><span>key Section 5 definitions without notes</span></div>
+              <div><strong>Compare</strong><span>similar concepts using mechanism-level differences</span></div>
+              <div><strong>Improve</strong><span>weak answers into mark-worthy Cambridge-style responses</span></div>
+            </div>
+          </div>
+          <div class="review-card" aria-label="Section 5 review map">
+            <div class="review-stack">
+              <span>OS manages resources</span>
+              <span>Utility performs maintenance</span>
+              <span>Translator converts code</span>
+              <span>Linker connects modules</span>
+              <span>Loader loads into memory</span>
+            </div>
+            <p>Keyword first. Mechanism next. Scenario consequence last.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use the same answer frame all lesson: term, mechanism, scenario effect, limitation or trap.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Mixed questions often look easy until students explain the wrong tool. Recognition is part of the mark.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not use "makes it work" for everything. A linker, loader, compiler and OS do different jobs.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Three answers say "it helps the computer run". Which one earns marks?</h2>
+            <p>Click the best answer. Vague answers are comfortable until the mark scheme arrives.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="precise">A loader places executable code into main memory ready for execution.</button>
+            <button class="choice-card" type="button" data-hook="vague">A loader makes the program work.</button>
+            <button class="choice-card" type="button" data-hook="wrong">A loader translates source code into object code.</button>
+            <button class="choice-card" type="button" data-hook="mixed">A loader resolves library references and checks syntax.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Full marks need a mechanism, not just a friendly label.
+          </div>
+        </section>
+
+        <section class="panel" id="retrieval">
+          <div class="section-title">
+            <p class="eyebrow">Retrieval grid</p>
+            <h2>Section 5 in one screen</h2>
+          </div>
+          <div class="retrieval-grid">
+            <article><strong>Operating system</strong><span>Manages resources and provides services such as process, memory, file and device management.</span></article>
+            <article><strong>Utility software</strong><span>Performs a maintenance/protection task such as backup, compression, encryption, defragmentation or antivirus.</span></article>
+            <article><strong>User interface</strong><span>Allows the user to interact with the system: CLI, GUI, menu-driven or natural language.</span></article>
+            <article><strong>Compiler</strong><span>Translates a whole high-level program before execution and can produce object/executable code.</span></article>
+            <article><strong>Interpreter</strong><span>Translates and executes high-level code statement by statement.</span></article>
+            <article><strong>Assembler</strong><span>Translates assembly language mnemonics into machine code/object code.</span></article>
+            <article><strong>Compilation stages</strong><span>Lexical analysis, syntax analysis, semantic analysis, code generation and optimisation.</span></article>
+            <article><strong>Linker / loader</strong><span>Linker resolves external references; loader places executable code into main memory.</span></article>
+          </div>
+          <div class="callout">Chinese support: precise comparison = 精准对比；mechanism = 机制/工作原理；scenario consequence = 场景中的结果或影响。</div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">High-value comparisons</p>
+            <h2>Similar terms that the exam likes to separate</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Section 5 comparison table">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Pair</div>
+              <div role="columnheader">Difference that earns marks</div>
+              <div role="columnheader">Common wrong answer</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">OS vs utility</div>
+              <div role="cell">OS manages resources; a utility performs a specific maintenance/protection task.</div>
+              <div role="cell">"Both are apps."</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Compiler vs interpreter</div>
+              <div role="cell">Compiler translates whole program before execution; interpreter translates/executes statement by statement.</div>
+              <div role="cell">"Interpreter is a bad compiler."</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Syntax vs semantic</div>
+              <div role="cell">Syntax checks grammar; semantic checks meaning such as type, scope and declarations.</div>
+              <div role="cell">"Both mean spelling mistakes."</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Linker vs loader</div>
+              <div role="cell">Linker combines object modules/resolves references; loader places executable code into memory.</div>
+              <div role="cell">"Both run the program."</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Logic vs runtime error</div>
+              <div role="cell">Logic runs but gives wrong output; runtime fails while executing.</div>
+              <div role="cell">"Wrong output means runtime error."</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="precision">
+          <div class="section-title">
+            <p class="eyebrow">Precision rules</p>
+            <h2>Turn a weak answer into marks</h2>
+          </div>
+          <div class="precision-grid">
+            <article><strong>Weak</strong><span>"A compiler changes code so it can run."</span><em>Too vague: no input, output or timing.</em></article>
+            <article><strong>Better</strong><span>"A compiler translates the whole high-level source program into object/executable code before execution."</span><em>Names input, output and timing.</em></article>
+            <article><strong>Weak</strong><span>"Encryption makes data safe."</span><em>Too broad: safe from what?</em></article>
+            <article><strong>Better</strong><span>"Encryption converts plaintext into ciphertext using a key so unauthorised users cannot read it."</span><em>Names mechanism and security goal.</em></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this review covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Operating system roles, utilities and user interfaces.</span></div>
+            <div><strong>Covered</strong><span>Compilers, interpreters, assemblers and compilation stages.</span></div>
+            <div><strong>Covered</strong><span>Linkers, loaders, libraries, error types and diagnostics.</span></div>
+            <div><strong>Review skill</strong><span>Mixed-topic recognition, timed response and answer correction.</span></div>
+            <div><strong>Boundary</strong><span>Section 6 security goals begin in Lesson 062.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Mixed topic classifier</h2>
+            <p>Select a clue and identify the Section 5 topic before answering.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Exam clue
+              <select id="scenarioInput">
+                <option value="memory">Allocates RAM to running programs</option>
+                <option value="restore">Restores deleted coursework from a previous copy</option>
+                <option value="prompt">User types precise commands at a prompt</option>
+                <option value="tokens">Groups source-code characters into tokens</option>
+                <option value="references">Resolves references between object modules</option>
+                <option value="wrongresult">Program runs but gives the wrong result</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Classify</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Answer, annotate, improve</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="translator">Translator comparison</button>
+            <button class="tab" type="button" data-example="utility">Utility choice</button>
+            <button class="tab" type="button" data-example="linkload">Linker/loader</button>
+            <button class="tab" type="button" data-example="errors">Error diagnosis</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant-check mixed retrieval</h2>
+            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair weak review answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style stage review</p>
+            <h2>Answer first, then reveal the CIE-style mark scheme</h2>
+            <p>These are original Cambridge-style mixed Section 5 questions. The MS rewards precision and scenario linkage.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Section 5 review rule</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Recognise</strong><span>Identify the topic before writing the answer.</span></div>
+            <div><strong>Define</strong><span>Use precise input, action and output/result.</span></div>
+            <div><strong>Compare</strong><span>State the mechanism difference, not only a vague benefit.</span></div>
+            <div><strong>Apply</strong><span>Link the tool to the scenario evidence.</span></div>
+            <div><strong>Correct</strong><span>Rewrite weak answers using mark scheme phrases.</span></div>
+            <div><strong>Boundary</strong><span>Section 6 security begins next lesson.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear output, not vague revision</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Ten-card retrieval deck</strong>
+              <span>Create 10 cards from Section 5. Each back must include input/action/output or problem/mechanism/result.</span>
+            </article>
+            <article>
+              <strong>Task 2: Two comparison paragraphs</strong>
+              <span>Write one paragraph comparing compiler and interpreter, and one comparing linker and loader.</span>
+            </article>
+            <article>
+              <strong>Task 3: Timed answer repair</strong>
+              <span>Answer one 6-mark mixed Section 5 question in 7 minutes, then rewrite it using a different colour to add missing mark points.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

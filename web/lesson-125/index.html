@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 125 | Section 10 review: data modelling in algorithms</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
+        <h1>Section 10 review: data modelling in algorithms</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#map">Topic map</a>
+        <a href="#decision">Data choice</a>
+        <a href="#files">Files</a>
+        <a href="#adts">Stack/queue</a>
+        <a href="#declare">Declarations</a>
+        <a href="#marks">Mark language</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Classifier</a>
+        <a href="#improver">Mark improver</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 125 | 45 minutes | Paper 2 Section 10 | 5-minute quiz + stage review</p>
+            <h2>Before answering, choose the right data model.</h2>
+            <p>
+              Section 10 is not a pile of separate vocabulary cards. It is the skill of choosing, declaring and using
+              data structures so an algorithm can store the right values in the right shape. This review links arrays,
+              records, files, CSV data, stacks, queues and declarations into one exam-ready decision process.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Recognise</strong><span>which Section 10 topic a mixed question is testing</span></div>
+              <div><strong>Select</strong><span>a suitable data model for a scenario and justify it precisely</span></div>
+              <div><strong>Improve</strong><span>weak answers using mark-worthy Cambridge-style language</span></div>
+            </div>
+          </div>
+          <div class="review-visual" aria-label="Section 10 review visual">
+            <div class="stack-card">Stack<br /><span>LIFO</span></div>
+            <div class="queue-card">Queue<br /><span>FIFO</span></div>
+            <div class="record-card">
+              <span>TYPE TStudent</span>
+              <span>Name : STRING</span>
+              <span>Mark : INTEGER</span>
+            </div>
+            <p>Same exam section. Different toolbox. Choose before you write.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Start every mixed question by naming the topic: array, record, file, stack, queue or declaration.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge marks often reward scenario-fit: why this structure works here, not just what the structure is.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>"It is efficient" is usually too vague. State what is easier, faster or safer because of the data model.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Topic first, answer second</h2>
+            <p>Three questions walk into an exam. Only one tells you its topic politely. Click the best label.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="array">"Store 30 marks and output the highest."</button>
+            <button class="choice-card" type="button" data-hook="record">"Store each student's name, ID and mark together."</button>
+            <button class="choice-card" type="button" data-hook="queue">"Serve print jobs in arrival order."</button>
+            <button class="choice-card" type="button" data-hook="file">"Read each line from Scores.csv."</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose a card to reveal the most likely Section 10 topic.</div>
+        </section>
+
+        <section class="panel" id="map">
+          <div class="section-title">
+            <p class="eyebrow">Retrieval map</p>
+            <h2>Section 10 in one review grid</h2>
+            <p>Chinese support: model 是“数据建模方式”；justify 是“说明为什么适合这个场景”。</p>
+          </div>
+          <div class="data-table map-table" role="table" aria-label="Section 10 topic map">
+            <div class="table-row table-head" role="row"><div>Topic</div><div>Best clue</div><div>Exam action</div><div>Common weak answer</div></div>
+            <div class="table-row" role="row"><div>Array</div><div>many values of the same type</div><div>declare bounds, loop over indexes</div><div>"list of data"</div></div>
+            <div class="table-row" role="row"><div>Record</div><div>one item has several fields</div><div>declare TYPE, fields and variables</div><div>"array with different things"</div></div>
+            <div class="table-row" role="row"><div>Array of records</div><div>many items, each with fields</div><div>combine array and record</div><div>"2D array for everything"</div></div>
+            <div class="table-row" role="row"><div>Text file / CSV</div><div>persistent line-based data</div><div>open, read/write, split fields, close</div><div>"save it somewhere"</div></div>
+            <div class="table-row" role="row"><div>Stack</div><div>most recent item first</div><div>push/pop, LIFO</div><div>"queue because it stores data"</div></div>
+            <div class="table-row" role="row"><div>Queue</div><div>arrival order matters</div><div>enqueue/dequeue, FIFO</div><div>"stack because it is ordered"</div></div>
+            <div class="table-row" role="row"><div>Declaration</div><div>question asks to define storage</div><div>use Cambridge pseudocode syntax</div><div>Java syntax in Paper 2</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="decision">
+          <div class="section-title">
+            <p class="eyebrow">Data model decision</p>
+            <h2>A good answer names the structure and the reason</h2>
+          </div>
+          <div class="decision-grid">
+            <article>
+              <h3>Scenario</h3>
+              <p>A school stores 120 students. Each student has an ID, name, class group and average mark.</p>
+            </article>
+            <article>
+              <h3>Strong choice</h3>
+              <p>Use an array of records: the array stores many students; each record keeps fields for one student together.</p>
+            </article>
+            <article>
+              <h3>Why not just an array?</h3>
+              <p>A single array normally stores one type of value. A record is better when one logical item has different fields.</p>
+            </article>
+          </div>
+          <div class="callout">Mark-worthy pattern: <strong>structure + scenario clue + consequence</strong>.</div>
+        </section>
+
+        <section class="panel" id="files">
+          <div class="section-title">
+            <p class="eyebrow">File handling review</p>
+            <h2>Files preserve data beyond the running program</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Line-based read pattern</h3>
+              <pre><code>OPENFILE "Scores.csv" FOR READ
+WHILE NOT EOF("Scores.csv")
+    READFILE "Scores.csv", Line
+    // process Line
+ENDWHILE
+CLOSEFILE "Scores.csv"</code></pre>
+            </article>
+            <article>
+              <h3>CSV processing idea</h3>
+              <pre><code>Line &lt;- "S017,Ava,82"
+Fields &lt;- SPLIT(Line, ",")
+StudentID &lt;- Fields[1]
+Name &lt;- Fields[2]
+Mark &lt;- STRING_TO_INTEGER(Fields[3])</code></pre>
+            </article>
+          </div>
+          <div class="callout">CSV fields arrive as text. Convert numeric fields before arithmetic.</div>
+        </section>
+
+        <section class="panel" id="adts">
+          <div class="section-title">
+            <p class="eyebrow">Stack and queue review</p>
+            <h2>Order of removal is the key clue</h2>
+          </div>
+          <div class="data-table adt-table" role="table" aria-label="Stack and queue comparison">
+            <div class="table-row table-head" role="row"><div>ADT</div><div>Rule</div><div>Typical operations</div><div>Scenario clue</div></div>
+            <div class="table-row" role="row"><div>Stack</div><div>LIFO: Last In, First Out</div><div>PUSH, POP, PEEK</div><div>undo, backtracking, nested calls</div></div>
+            <div class="table-row" role="row"><div>Queue</div><div>FIFO: First In, First Out</div><div>ENQUEUE, DEQUEUE</div><div>print jobs, calls, waiting line</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="declare">
+          <div class="section-title">
+            <p class="eyebrow">Declaration review</p>
+            <h2>Cambridge pseudocode remains the exam standard</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>TYPE TStudent
+    DECLARE ID : STRING
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE
+
+DECLARE Students : ARRAY[1:120] OF TStudent</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>class Student {
+    String id;
+    String name;
+    int mark;
+}
+
+Student[] students = new Student[120];</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="marks">
+          <div class="section-title">
+            <p class="eyebrow">Mark-scheme language</p>
+            <h2>Upgrade vague words into credit-bearing words</h2>
+          </div>
+          <div class="data-table mark-table" role="table" aria-label="Weak and stronger wording">
+            <div class="table-row table-head" role="row"><div>Weak wording</div><div>Stronger wording</div><div>Why it earns more</div></div>
+            <div class="table-row" role="row"><div>It is better.</div><div>It keeps all fields for one student together.</div><div>names the consequence</div></div>
+            <div class="table-row" role="row"><div>It is ordered.</div><div>A queue removes items in the same order they arrived.</div><div>states FIFO clearly</div></div>
+            <div class="table-row" role="row"><div>Use a file.</div><div>Use a text file so data remains after the program closes.</div><div>links storage to persistence</div></div>
+            <div class="table-row" role="row"><div>Use Java array.</div><div>DECLARE Scores : ARRAY[1:30] OF INTEGER.</div><div>answers in Cambridge pseudocode</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>What this review checks</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Arrays and records</strong><span>single arrays, record fields, arrays of records, suitable declarations</span></div>
+            <div><strong>Files and CSV</strong><span>open/read/write/close, line processing, comma-separated fields, type conversion</span></div>
+            <div><strong>Stacks and queues</strong><span>LIFO/FIFO identification, operations and scenario justification</span></div>
+            <div><strong>Exam method</strong><span>topic recognition, mark-worthy wording, strict pseudocode vs Java support</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive classifier</p>
+            <h2>Classify the scenario before solving it</h2>
+          </div>
+          <div class="converter-grid">
+            <label for="scenarioSelect">
+              Scenario
+              <select id="scenarioSelect"></select>
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+          </div>
+          <div class="trace-output" id="classifyResult">Choose a scenario and classify the likely Section 10 topic.</div>
+        </section>
+
+        <section class="panel" id="improver">
+          <div class="section-title">
+            <p class="eyebrow">Mark improver</p>
+            <h2>Turn a weak answer into a useful answer</h2>
+          </div>
+          <div class="converter-grid">
+            <label for="weakSelect">
+              Weak answer
+              <select id="weakSelect"></select>
+            </label>
+            <button class="primary-button" type="button" id="improveBtn">Improve</button>
+          </div>
+          <div class="trace-output" id="improveResult">Pick a weak answer to see a mark-worthy rewrite.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four mixed questions, one decision habit</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="records">Array of records</button>
+            <button class="tab" type="button" data-example="csv">CSV file</button>
+            <button class="tab" type="button" data-example="stack">Stack</button>
+            <button class="tab" type="button" data-example="queue">Queue</button>
+          </div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>10 quick checks</h2>
+            <p>Short answers are accepted when they use the key concept accurately. Use the answer button for fuller wording.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Find the lost mark before it escapes</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Mixed Section 10 stage review</h2>
+            <p>Original Cambridge-style questions. Expand MS only after attempting the answer.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>One review habit to keep</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Identify</strong><span>What Section 10 idea is being tested?</span></div>
+            <div><strong>Use</strong><span>Which declaration, operation or processing pattern fits?</span></div>
+            <div><strong>Justify</strong><span>What scenario consequence earns the mark?</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Stage review pack</h2>
+          </div>
+          <ol class="homework-list">
+            <li><strong>Retrieval grid</strong><span>Make a one-page table for array, record, file, stack and queue: clue, operations, one example, one trap.</span></li>
+            <li><strong>Timed answer</strong><span>Answer one 6-mark Section 10 scenario question in 8 minutes. Underline the words that should earn marks.</span></li>
+            <li><strong>Correction task</strong><span>Rewrite two weak answers using the pattern: structure + scenario clue + consequence.</span></li>
+            <li><strong>Pseudocode check</strong><span>Write declarations for an array of 50 product records with ProductID, Name, Price and InStock fields.</span></li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 087 | SQL INSERT, UPDATE and DELETE</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
+        <h1>SQL INSERT, UPDATE and DELETE</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#dml">DML purpose</a>
+        <a href="#insert">INSERT</a>
+        <a href="#update">UPDATE</a>
+        <a href="#delete">DELETE</a>
+        <a href="#trace">Trace changes</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#builder">Statement builder</a>
+        <a href="#simulator">Change simulator</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 087 | 45 minutes | Paper 1 Section 8 | informal questioning</p>
+            <h2>SELECT asks politely. INSERT, UPDATE and DELETE move the furniture.</h2>
+            <p>
+              This lesson covers SQL statements that change table contents. You will add records with
+              <code>INSERT</code>, change existing records with <code>UPDATE</code>, remove records with
+              <code>DELETE</code>, and explain why <code>WHERE</code> is not decorative confetti.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Add</strong><span>new records using <code>INSERT INTO</code> and <code>VALUES</code></span></div>
+              <div><strong>Change</strong><span>existing records using <code>UPDATE</code>, <code>SET</code> and <code>WHERE</code></span></div>
+              <div><strong>Remove</strong><span>records using <code>DELETE FROM</code> with a precise condition</span></div>
+            </div>
+          </div>
+          <div class="sql-visual" aria-label="SQL data modification visual">
+            <span class="keyword">INSERT</span><span>adds a row</span>
+            <span class="keyword">UPDATE</span><span>changes matching rows</span>
+            <span class="keyword">DELETE</span><span>removes matching rows</span>
+            <p>These commands are powerful. So is a chainsaw. Use the WHERE clause.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every statement, ask: which table, which fields, which values, and which rows are affected?</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Mark schemes credit exact command structure and conditions. A missing <code>WHERE</code> can change every record.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p><code>DELETE</code> removes records. It is not the command for clearing one field value in a record.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which statement changes only Amira's tutor group?</h2>
+            <p>A missing WHERE clause is the SQL equivalent of replying-all to the whole school. Technically fast, socially expensive.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="correct">UPDATE Student SET TutorGroup = '12C' WHERE StudentID = 'S01'</button>
+            <button class="choice-card" type="button" data-hook="all">UPDATE Student SET TutorGroup = '12C'</button>
+            <button class="choice-card" type="button" data-hook="insert">INSERT INTO Student VALUES ('S01', 'Amira', '12C')</button>
+            <button class="choice-card" type="button" data-hook="delete">DELETE FROM Student WHERE StudentID = 'S01'</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose the statement that changes one existing record without adding or removing a record.
+          </div>
+        </section>
+
+        <section class="panel" id="dml">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>INSERT, UPDATE and DELETE are data manipulation commands</h2>
+            <p>They change stored data. In exam answers, be precise about command keywords and affected records.</p>
+          </div>
+          <div class="clause-grid">
+            <article><strong><code>INSERT</code></strong><span>Adds a new record to a table.</span></article>
+            <article><strong><code>UPDATE</code></strong><span>Changes values in existing records.</span></article>
+            <article><strong><code>DELETE</code></strong><span>Removes existing records from a table.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="insert">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2><code>INSERT INTO</code> adds a record</h2>
+            <p>List the fields, then list matching values in the same order. Text values use quotes.</p>
+          </div>
+          <div class="answer-frame">
+            <strong>Pattern:</strong>
+            <span><code>INSERT INTO Student (StudentID, StudentName, TutorGroup) VALUES ('S04', 'Nina', '12C');</code></span>
+          </div>
+          <div class="callout">Chinese support: insert = 插入/新增；record = 记录；field = 字段；value = 值。</div>
+        </section>
+
+        <section class="panel" id="update">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2><code>UPDATE</code> changes existing records</h2>
+            <p><code>SET</code> names the field and new value. <code>WHERE</code> restricts which rows are changed.</p>
+          </div>
+          <div class="answer-frame">
+            <strong>Pattern:</strong>
+            <span><code>UPDATE Student SET TutorGroup = '12C' WHERE StudentID = 'S01';</code></span>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Table</strong><span><code>UPDATE Student</code> chooses the table.</span></article>
+            <article><strong>New value</strong><span><code>SET TutorGroup = '12C'</code> changes the field.</span></article>
+            <article><strong>Target rows</strong><span><code>WHERE StudentID = 'S01'</code> prevents changing every student.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="delete">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2><code>DELETE FROM</code> removes records</h2>
+            <p>Use <code>DELETE</code> only when the whole record should be removed. A missing condition can remove all records.</p>
+          </div>
+          <div class="answer-frame">
+            <strong>Pattern:</strong>
+            <span><code>DELETE FROM Student WHERE StudentID = 'S03';</code></span>
+          </div>
+          <div class="callout">Exam caution: <code>DELETE FROM Student;</code> has no <code>WHERE</code>, so it targets every record in the table.</div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Trace changes from a small table</h2>
+          </div>
+          <div class="data-table" role="table" aria-label="Student table">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">StudentID</div>
+              <div role="columnheader">StudentName</div>
+              <div role="columnheader">TutorGroup</div>
+              <div role="columnheader">Active</div>
+            </div>
+            <div class="table-row" role="row"><div>S01</div><div>Amira</div><div>12A</div><div>TRUE</div></div>
+            <div class="table-row" role="row"><div>S02</div><div>Leo</div><div>12B</div><div>TRUE</div></div>
+            <div class="table-row" role="row"><div>S03</div><div>Maya</div><div>12A</div><div>FALSE</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson covers SQL statements that modify data</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span><code>INSERT INTO</code>, field lists, <code>VALUES</code>, <code>UPDATE</code>, <code>SET</code>, <code>DELETE FROM</code>, <code>WHERE</code> conditions and before/after tracing.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 086 covered joins. Lesson 088 covers validation, verification, security and backup in databases.</span></div>
+            <div><strong>Assessment rhythm</strong><span>Includes informal questioning, short quiz items and strict Cambridge-style mark schemes.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive statement builder</p>
+            <h2>Choose the right data modification command</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              English request
+              <select id="builderInput">
+                <option value="insertNina">Add a new student S04 called Nina in tutor group 12C.</option>
+                <option value="updateAmira">Change Amira's tutor group to 12C using StudentID S01.</option>
+                <option value="updateInactive">Set Active to FALSE for Leo using StudentID S02.</option>
+                <option value="deleteMaya">Remove the record for student S03.</option>
+                <option value="deleteInactive">Remove all records where Active is FALSE.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="builderBtn">Build SQL</button>
+          </div>
+          <pre class="sql-output" id="builderResult">Choose a request, then build the SQL.</pre>
+          <div class="feedback" id="builderReason">The output will show command choice and condition logic.</div>
+        </section>
+
+        <section class="panel" id="simulator">
+          <div class="section-title">
+            <p class="eyebrow">Interactive change simulator</p>
+            <h2>Preview the result before the database gets nervous</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Statement
+              <select id="statementInput">
+                <option value="s1">INSERT new student S04, Nina, 12C, TRUE</option>
+                <option value="s2">UPDATE S01 TutorGroup to 12C</option>
+                <option value="s3">UPDATE every row TutorGroup to 12C without WHERE</option>
+                <option value="s4">DELETE student S03</option>
+                <option value="s5">DELETE every row without WHERE</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Simulate</button>
+          </div>
+          <div class="feedback" id="simulationNote">Choose a statement to see the table after execution.</div>
+          <div class="result-table" id="simulationResult">The after-table will appear here.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Write the command that matches the intention</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="insert">INSERT</button>
+            <button class="tab" type="button" data-example="update">UPDATE</button>
+            <button class="tab" type="button" data-example="delete">DELETE</button>
+            <button class="tab" type="button" data-example="unsafe">Unsafe WHERE</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short quiz and core checks</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair weak modification statements</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style practice with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about command syntax and affected records.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Modification command checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>INSERT</strong><span>Adds a new record; fields and values must match.</span></div>
+            <div><strong>UPDATE</strong><span>Changes existing records; <code>SET</code> gives the new value.</span></div>
+            <div><strong>DELETE</strong><span>Removes records; <code>WHERE</code> controls which records go.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Write three statements</strong>
+              <span>Write one <code>INSERT</code>, one <code>UPDATE</code> and one <code>DELETE</code> for the Student table. Each must include realistic field names and values.</span>
+            </article>
+            <article>
+              <strong>Task 2: Trace before and after</strong>
+              <span>Draw the Student table after <code>UPDATE Student SET Active = FALSE WHERE StudentID = 'S02';</code>.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark correction</strong>
+              <span>Correct and explain: <code>UPDATE Student TutorGroup = '12C';</code>. Include the missing keyword and the risk of omitting <code>WHERE</code>.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

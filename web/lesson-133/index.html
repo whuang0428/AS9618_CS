@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 133 | String handling and built-in functions</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
+        <h1>String handling and built-in functions</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#strings">Strings</a>
+        <a href="#length">LENGTH</a>
+        <a href="#substring">Substring</a>
+        <a href="#case">Case conversion</a>
+        <a href="#concat">Concatenation</a>
+        <a href="#position">Positions</a>
+        <a href="#java">Java support</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#lab">String lab</a>
+        <a href="#chooser">Function chooser</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 133 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
+            <h2>Strings are arrays of characters wearing quotation marks.</h2>
+            <p>
+              String handling lets an algorithm measure, extract, compare and rebuild text. Built-in functions such
+              as <code>LENGTH</code>, <code>UCASE</code>, <code>LCASE</code>, <code>LEFT</code>, <code>RIGHT</code> and
+              <code>MID</code> save you from writing a loop every time. Useful, but still strict: arguments, positions
+              and returned values must be traced exactly.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Use</strong><span>common Cambridge-style string functions accurately</span></div>
+              <div><strong>Trace</strong><span>returned strings from length, case and substring operations</span></div>
+              <div><strong>Separate</strong><span>pseudocode string positions from Java string indexes</span></div>
+            </div>
+          </div>
+          <div class="string-visual" aria-label="String visual">
+            <div><strong>"COMPUTER"</strong><span>8 characters</span><em>LENGTH("COMPUTER") = 8</em></div>
+            <div><strong>MID("COMPUTER", 4, 3)</strong><span>"PUT"</span><em>start position, count</em></div>
+            <div><strong>UCASE("exam")</strong><span>"EXAM"</span><em>same text, changed case</em></div>
+            <p>A built-in function returns a value. It does not politely explain your off-by-one error.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every function call, ask: what is the input, what is the returned value, and where is the returned value used?</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 often uses strings in validation, searching, formatting and trace questions where one character changes the answer.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Java uses zero-based indexes. Cambridge-style pseudocode examples commonly use positions starting at 1 unless a question states otherwise.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>What does <code>MID("MONITOR", 2, 3)</code> return?</h2>
+            <p>Assume positions start at 1 and the third argument is the number of characters to return.</p>
+          </div>
+          <div class="position-strip" aria-label="MONITOR character positions">
+            <div><strong>1</strong><span>M</span></div>
+            <div><strong>2</strong><span>O</span></div>
+            <div><strong>3</strong><span>N</span></div>
+            <div><strong>4</strong><span>I</span></div>
+            <div><strong>5</strong><span>T</span></div>
+            <div><strong>6</strong><span>O</span></div>
+            <div><strong>7</strong><span>R</span></div>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="mon">"MON"</button>
+            <button class="choice-card" type="button" data-hook="oni">"ONI"</button>
+            <button class="choice-card" type="button" data-hook="oni0">"ON"</button>
+            <button class="choice-card" type="button" data-hook="nit">"NIT"</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the returned substring.</div>
+        </section>
+
+        <section class="panel" id="strings">
+          <div class="section-title">
+            <p class="eyebrow">Strings</p>
+            <h2>A string is a sequence of characters</h2>
+            <p>Chinese support: string 字符串, character 字符, built-in function 内置函数, return value 返回值。</p>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style assignment</h3>
+              <pre><code>Name &lt;- "Ada"
+Message &lt;- "Hello, " &amp; Name
+OUTPUT Message</code></pre>
+            </article>
+            <article>
+              <h3>Reasoning</h3>
+              <p><code>"Ada"</code> is a string of three characters. <code>&amp;</code> is used here for concatenation.</p>
+              <div class="callout">If a question uses a different concatenation operator, follow the question. The mark is for clear string construction.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="length">
+          <div class="section-title">
+            <p class="eyebrow">LENGTH</p>
+            <h2><code>LENGTH(String)</code> returns the number of characters</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Example</h3>
+              <pre><code>Word &lt;- "ALGORITHM"
+Size &lt;- LENGTH(Word)
+OUTPUT Size</code></pre>
+            </article>
+            <article>
+              <h3>Trace</h3>
+              <div class="trace-list">
+                <div><strong><code>Word</code></strong><span>"ALGORITHM"</span></div>
+                <div><strong><code>LENGTH(Word)</code></strong><span>9</span></div>
+                <div><strong><code>Size</code></strong><span>9</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="substring">
+          <div class="section-title">
+            <p class="eyebrow">Substring functions</p>
+            <h2>Use substring functions to extract part of a string</h2>
+          </div>
+          <div class="data-table compare-table" role="table" aria-label="Substring functions">
+            <div class="table-row table-head"><div>Function</div><div>Meaning</div><div>Example</div></div>
+            <div class="table-row"><div><code>LEFT(Text, n)</code></div><div>first <code>n</code> characters</div><div><code>LEFT("NETWORK", 3)</code> returns <code>"NET"</code></div></div>
+            <div class="table-row"><div><code>RIGHT(Text, n)</code></div><div>last <code>n</code> characters</div><div><code>RIGHT("NETWORK", 4)</code> returns <code>"WORK"</code></div></div>
+            <div class="table-row"><div><code>MID(Text, start, n)</code></div><div><code>n</code> characters from a start position</div><div><code>MID("NETWORK", 4, 2)</code> returns <code>"WO"</code></div></div>
+          </div>
+          <div class="callout">This course uses <code>MID(Text, start, count)</code>. If a paper specifies <code>SUBSTRING</code> or a different convention, follow the convention given in the question.</div>
+        </section>
+
+        <section class="panel" id="case">
+          <div class="section-title">
+            <p class="eyebrow">Case conversion</p>
+            <h2><code>UCASE</code> and <code>LCASE</code> normalise text before comparison</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>INPUT Answer
+Answer &lt;- UCASE(Answer)
+
+IF Answer = "Y" THEN
+    OUTPUT "Continue"
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>Why it helps</h3>
+              <p>If the user enters <code>"y"</code>, converting to upper case lets the algorithm compare it with <code>"Y"</code>.</p>
+              <div class="callout">Case conversion changes letter case; it does not remove spaces or fix spelling.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="concat">
+          <div class="section-title">
+            <p class="eyebrow">Concatenation</p>
+            <h2>Concatenation joins strings to form a new string</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Build a username</h3>
+              <pre><code>FirstName &lt;- "Lin"
+Year &lt;- "2029"
+Username &lt;- LCASE(FirstName) &amp; Year
+OUTPUT Username</code></pre>
+            </article>
+            <article>
+              <h3>Trace</h3>
+              <div class="trace-list">
+                <div><strong><code>LCASE(FirstName)</code></strong><span>"lin"</span></div>
+                <div><strong><code>Username</code></strong><span>"lin2029"</span></div>
+                <div><strong>Common error</strong><span>treating <code>Year</code> as arithmetic instead of text</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="position">
+          <div class="section-title">
+            <p class="eyebrow">Positions and indexing</p>
+            <h2>Exam traces must follow the position convention stated or implied</h2>
+          </div>
+          <div class="position-strip" aria-label="DATA character positions">
+            <div><strong>1</strong><span>D</span></div>
+            <div><strong>2</strong><span>A</span></div>
+            <div><strong>3</strong><span>T</span></div>
+            <div><strong>4</strong><span>A</span></div>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style trace</h3>
+              <pre><code>Word &lt;- "DATA"
+Part &lt;- MID(Word, 2, 2)
+OUTPUT Part</code></pre>
+              <p>Using 1-based positions, the output is <code>"AT"</code>.</p>
+            </article>
+            <article>
+              <h3>Common trap</h3>
+              <p>Do not import Java's zero-based indexing into a pseudocode trace unless the question explicitly tells you to.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="java">
+          <div class="section-title">
+            <p class="eyebrow">Java support only</p>
+            <h2>Java method syntax is not Cambridge pseudocode</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>Code &lt;- LEFT(UCASE(Name), 3)</code></pre>
+            </article>
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>String code = name.toUpperCase().substring(0, 3);</code></pre>
+              <p>Java's <code>substring(0, 3)</code> uses indexes 0 to 2. That is not the same notation as <code>LEFT(Name, 3)</code>.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>What this lesson covers from Section 11</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>String values</strong><span>quoted text, characters, positions and concatenation</span></div>
+            <div><strong>Built-in functions</strong><span><code>LENGTH</code>, <code>LEFT</code>, <code>RIGHT</code>, <code>MID</code>, <code>UCASE</code> and <code>LCASE</code></span></div>
+            <div><strong>Trace skills</strong><span>returned values, nested function calls and off-by-one errors</span></div>
+            <div><strong>Java boundary</strong><span>Java string methods are support only; Cambridge pseudocode remains the exam answer format</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="lab">
+          <div class="section-title">
+            <p class="eyebrow">Interactive string lab</p>
+            <h2>Test a built-in function</h2>
+            <p>Use a short string and compare the returned value. For <code>MID</code>, positions start at 1.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Text
+              <input id="textInput" type="text" value="COMPUTER" maxlength="24" />
+            </label>
+            <label>
+              Function
+              <select id="functionInput">
+                <option value="length">LENGTH(Text)</option>
+                <option value="left">LEFT(Text, n)</option>
+                <option value="right">RIGHT(Text, n)</option>
+                <option value="mid">MID(Text, start, n)</option>
+                <option value="ucase">UCASE(Text)</option>
+                <option value="lcase">LCASE(Text)</option>
+              </select>
+            </label>
+            <label>
+              start
+              <input id="startInput" type="number" min="1" step="1" value="4" />
+            </label>
+            <label>
+              n
+              <input id="countInput" type="number" min="1" step="1" value="3" />
+            </label>
+            <button class="primary-button" type="button" id="runBtn">Run</button>
+          </div>
+          <div class="trace-output" id="labResult" aria-live="polite">Choose a function and run it.</div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Function chooser</p>
+            <h2>Which built-in function fits the job?</h2>
+            <p>Select a scenario to see the function and exam reasoning.</p>
+          </div>
+          <div class="scenario-grid" id="scenarioGrid"></div>
+          <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Trace the returned value</h2>
+          </div>
+          <div class="tabs" id="exampleTabs" role="tablist"></div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short answers, exact returns</h2>
+            <p>Type the returned value without extra quotation marks unless the question asks for them.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Find the exact string error</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Answer first, then expand the MS</h2>
+            <p>Questions are original Cambridge-style practice. MS notes are strict about returned values and position conventions.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Three useful rules</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Function call</strong><span>A built-in function takes arguments and returns a value.</span></div>
+            <div><strong>String trace</strong><span>Write positions above characters before extracting substrings.</span></div>
+            <div><strong>Java boundary</strong><span>Do not use Java indexes or methods as pseudocode unless requested.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Trace, build, explain</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Make a table for <code>"PROGRAM"</code> showing positions 1 to 7, then evaluate <code>LEFT</code>, <code>RIGHT</code> and <code>MID</code> examples of your own.</li>
+            <li>Write pseudocode that inputs a name, converts it to upper case, and outputs the first three characters.</li>
+            <li>Trace this expression: <code>LCASE(LEFT("NETWORK", 3)) &amp; RIGHT("2029", 2)</code>.</li>
+            <li>Answer a 4-mark question explaining why Java <code>substring</code> syntax should not be copied into Cambridge pseudocode.</li>
+          </ol>
+          <div class="callout">Marking focus: show the function arguments, the returned value, and the final assignment or output.</div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

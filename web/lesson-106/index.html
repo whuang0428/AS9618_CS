@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 106 | Maximum, minimum, count and total</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>Maximum, minimum, count and total</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#patterns">Core patterns</a>
+        <a href="#initialise">Initialisation</a>
+        <a href="#fixed">Fixed count</a>
+        <a href="#sentinel">Sentinel input</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#chooser">Algorithm chooser</a>
+        <a href="#trace-tool">Trace simulator</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 106 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
+            <h2>Algorithms remember things. Sadly, only if you initialise the memory first.</h2>
+            <p>
+              Many AS Paper 2 algorithms process a list of values and keep a running result: a total, a count, a
+              maximum or a minimum. The idea is simple, but exam marks are strict: initialise the variable, update it
+              inside the correct loop, and show a trace that proves every value was processed.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Initialise</strong><span>running variables correctly before processing values</span></div>
+              <div><strong>Update</strong><span>total, count, maximum and minimum inside loops</span></div>
+              <div><strong>Trace</strong><span>variable changes using Cambridge-style evidence</span></div>
+            </div>
+          </div>
+          <div class="accumulator-visual" aria-label="Accumulator visual">
+            <div class="number-stream">
+              <span>72</span><span>55</span><span>91</span><span>64</span>
+            </div>
+            <div class="metric-grid">
+              <div><strong>Total</strong><span>282</span></div>
+              <div><strong>Count</strong><span>4</span></div>
+              <div><strong>Maximum</strong><span>91</span></div>
+              <div><strong>Minimum</strong><span>55</span></div>
+            </div>
+            <p>One loop can collect several facts, but each variable needs a clear starting value and update rule.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every algorithm, ask two questions aloud: "What must be remembered?" and "When does that value change?"</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style mark schemes often credit initialisation, loop control, condition tests and update statements separately.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Using `Maximum &lt;- 0` fails if all data values can be negative. Use the first input value when the range is not guaranteed.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>The class scoreboard is not psychic</h2>
+            <p>You read scores one at a time: 72, 55, 91, 64. Which variable update counts how many scores have been read?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="count">Count &lt;- Count + 1</button>
+            <button class="choice-card" type="button" data-hook="total">Total &lt;- Total + Score</button>
+            <button class="choice-card" type="button" data-hook="max">IF Score &gt; Maximum THEN Maximum &lt;- Score</button>
+            <button class="choice-card" type="button" data-hook="output">OUTPUT Count before the loop starts</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the update that increases the number of processed scores.</div>
+        </section>
+
+        <section class="panel" id="patterns">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Four running-value patterns</h2>
+            <p>Start with a concrete list, then name the algorithm pattern.</p>
+          </div>
+          <div class="data-table pattern-table" role="table" aria-label="Accumulator patterns">
+            <div class="table-row table-head" role="row"><div>Goal</div><div>Variable</div><div>Update rule</div><div>Meaning</div></div>
+            <div class="table-row" role="row"><div>Total</div><div>`Total`</div><div>`Total &lt;- Total + Value`</div><div>running sum of values</div></div>
+            <div class="table-row" role="row"><div>Count</div><div>`Count`</div><div>`Count &lt;- Count + 1` when a value is processed or meets a condition</div><div>number of items</div></div>
+            <div class="table-row" role="row"><div>Maximum</div><div>`Maximum`</div><div>replace when `Value &gt; Maximum`</div><div>largest value seen so far</div></div>
+            <div class="table-row" role="row"><div>Minimum</div><div>`Minimum`</div><div>replace when `Value &lt; Minimum`</div><div>smallest value seen so far</div></div>
+          </div>
+          <div class="callout">Chinese support: running total = 累加总和；count = 计数；maximum/minimum = 最大值/最小值；initialise = 初始化。</div>
+        </section>
+
+        <section class="panel" id="initialise">
+          <div class="section-title">
+            <p class="eyebrow">Initialisation</p>
+            <h2>The starting value decides whether the algorithm is honest</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Total and count</h3>
+              <pre><code>Total &lt;- 0
+Count &lt;- 0
+
+FOR Index &lt;- 1 TO 4
+    INPUT Score
+    Total &lt;- Total + Score
+    Count &lt;- Count + 1
+NEXT Index</code></pre>
+              <p>Zero is safe because nothing has been added or counted yet.</p>
+            </article>
+            <article>
+              <h3>Maximum and minimum</h3>
+              <pre><code>INPUT Value
+Maximum &lt;- Value
+Minimum &lt;- Value
+
+FOR Index &lt;- 2 TO 4
+    INPUT Value
+    IF Value &gt; Maximum THEN
+        Maximum &lt;- Value
+    ENDIF
+    IF Value &lt; Minimum THEN
+        Minimum &lt;- Value
+    ENDIF
+NEXT Index</code></pre>
+              <p>The first real value is safer than guessing a starting maximum or minimum.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="fixed">
+          <div class="section-title">
+            <p class="eyebrow">Fixed-count input</p>
+            <h2>When the number of values is known, use a count-controlled loop</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Example: total and average of 4 scores</h3>
+              <pre><code>Total &lt;- 0
+FOR Index &lt;- 1 TO 4
+    INPUT Score
+    Total &lt;- Total + Score
+NEXT Index
+Average &lt;- Total / 4
+OUTPUT Average</code></pre>
+            </article>
+            <article>
+              <h3>Trace focus</h3>
+              <p>For scores 72, 55, 91, 64, the total becomes 72, 127, 218, 282. The average is 70.5.</p>
+              <div class="callout">Do not output the average inside the loop unless the question asks for a running average.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="sentinel">
+          <div class="section-title">
+            <p class="eyebrow">Sentinel input</p>
+            <h2>When input stops on a special value, do not process the sentinel</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Example: enter numbers until -1</h3>
+              <pre><code>Total &lt;- 0
+Count &lt;- 0
+INPUT Number
+WHILE Number &lt;&gt; -1
+    Total &lt;- Total + Number
+    Count &lt;- Count + 1
+    INPUT Number
+ENDWHILE
+OUTPUT Total
+OUTPUT Count</code></pre>
+            </article>
+            <article>
+              <h3>Exam wording</h3>
+              <p>The sentinel is a control signal, not data. If the inputs are 4, 6, 2, -1, the total is 12 and the count is 3.</p>
+              <div class="callout">Chinese support: sentinel value = 哨兵值 / 结束标记。</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Use Cambridge assignment and loop keywords in exam answers</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>Total &lt;- 0
+PassCount &lt;- 0
+FOR Index &lt;- 1 TO 5
+    INPUT Mark
+    Total &lt;- Total + Mark
+    IF Mark &gt;= 50 THEN
+        PassCount &lt;- PassCount + 1
+    ENDIF
+NEXT Index
+OUTPUT Total
+OUTPUT PassCount</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>int total = 0;
+int passCount = 0;
+for (int index = 0; index &lt; 5; index++) {
+    int mark = input.nextInt();
+    total = total + mark;
+    if (mark &gt;= 50) {
+        passCount = passCount + 1;
+    }
+}</code></pre>
+            </article>
+          </div>
+          <div class="callout">Exam reminder: Java helps implementation practice, but Paper 2 expects clear Cambridge-style pseudocode unless Java is explicitly requested.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson covers list-processing accumulator algorithms</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Initialisation, running total, count, conditional count, maximum, minimum, trace tables, fixed-count loops and sentinel-controlled loops.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 105 covered sorting. Lesson 107 moves to string-processing algorithms. This page does not teach string traversal or nested-loop table problems.</span></div>
+            <div><strong>Paper 2 note</strong><span>Answers need mechanism: variables, loop, condition and update. Labels alone do not earn full marks.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Interactive algorithm chooser</p>
+            <h2>Match the task to the running-value pattern</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Task clue
+              <select id="chooserInput">
+                <option value="total">Find the combined score of all players.</option>
+                <option value="count">Find how many readings are above 30.</option>
+                <option value="maximum">Find the highest temperature recorded.</option>
+                <option value="minimum">Find the lowest lap time.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="chooserBtn">Identify</button>
+          </div>
+          <div class="feedback" id="chooserResult">Choose a clue to classify it.</div>
+        </section>
+
+        <section class="panel" id="trace-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive trace simulator</p>
+            <h2>Watch running variables change</h2>
+          </div>
+          <div class="converter-grid three-col">
+            <label>
+              Data set
+              <select id="dataInput">
+                <option value="scores">Scores: 72, 55, 91, 64</option>
+                <option value="temps">Temperatures: -3, -8, 2, -1</option>
+                <option value="sales">Sales: 12, 0, 7, 5</option>
+              </select>
+            </label>
+            <label>
+              Goal
+              <select id="goalInput">
+                <option value="total">Total</option>
+                <option value="countPositive">Count values greater than 0</option>
+                <option value="maximum">Maximum</option>
+                <option value="minimum">Minimum</option>
+                <option value="all">All four variables</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="traceBtn">Trace</button>
+          </div>
+          <div class="trace-output" id="traceResult">Choose a data set and goal, then trace the algorithm.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Accumulator traces</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="total-average">Total and average</button>
+            <button class="tab" type="button" data-example="count-pass">Conditional count</button>
+            <button class="tab" type="button" data-example="max-min">Maximum and minimum</button>
+            <button class="tab" type="button" data-example="sentinel">Sentinel input</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Running-value precision</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix accumulator mistakes</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style accumulator questions with expandable MS</h2>
+            <p>These questions target initialisation, loop control, updates, trace tables and strict pseudocode wording.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Accumulator checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Start</strong><span>Initialise total/count to 0; initialise maximum/minimum from a real input value when range is uncertain.</span></div>
+            <div><strong>Loop</strong><span>Process each value exactly once unless the question states otherwise.</span></div>
+            <div><strong>Update</strong><span>Use assignment after addition, comparison or condition test; show changed variables in traces.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Trace table</strong>
+              <span>For values 9, 4, 12, 7, trace `Total`, `Count`, `Maximum` and `Minimum` after each value is processed.</span>
+            </article>
+            <article>
+              <strong>Task 2: Pseudocode</strong>
+              <span>Write Cambridge-style pseudocode to input 6 marks, output the total, and count how many marks are at least 50.</span>
+            </article>
+            <article>
+              <strong>Task 3: Sentinel correction</strong>
+              <span>Explain why the sentinel value `-1` must not be added to the total in an input-until--1 algorithm.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

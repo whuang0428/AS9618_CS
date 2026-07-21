@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 048 | Interrupts and interrupt service routines</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
+        <h1>Interrupts and interrupt service routines</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Core idea</a>
+        <a href="#sources">Sources</a>
+        <a href="#cycle">Interrupt cycle</a>
+        <a href="#priority">Priority</a>
+        <a href="#polling">Polling</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">ISR simulator</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 048 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
+            <h2>An interrupt is the CPU's polite emergency bell.</h2>
+            <p>
+              A processor normally follows the fetch-decode-execute cycle. An interrupt
+              signal asks it to pause that flow, save its current state, run an
+              interrupt service routine, and then return to the interrupted program.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>interrupt, ISR, interrupt flag and processor state</span></div>
+              <div><strong>Trace</strong><span>the steps taken when an interrupt is accepted</span></div>
+              <div><strong>Compare</strong><span>interrupt-driven input with polling</span></div>
+            </div>
+          </div>
+          <div class="interrupt-card" aria-label="Interrupt handling sketch">
+            <div class="isr-stack">
+              <span>Current program</span>
+              <span>Interrupt signal</span>
+              <span>Save state</span>
+              <span>Run ISR</span>
+              <span>Restore state</span>
+            </div>
+            <p>The CPU is interrupted. The plan is not destroyed; it is bookmarked.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Keep saying "pause, save, service, restore, resume". The rhythm helps, but the exam still wants the precise state-saving idea.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Section 4 questions often ask for a sequence. Marks are lost when answers say only "the CPU stops and deals with it".</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>An interrupt is not an error by definition. It is a signal that can come from hardware, software, a timer or an exception.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>The keyboard needs attention while a program is running. What should the CPU do?</h2>
+            <p>Click the best answer. The wrong choices are what computers would do if they had no manners.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="save">Pause, save state, run ISR, then resume</button>
+            <button class="choice-card" type="button" data-hook="delete">Delete the current program and start again</button>
+            <button class="choice-card" type="button" data-hook="ignore">Ignore every device until the program finishes</button>
+            <button class="choice-card" type="button" data-hook="random">Jump to a random memory address</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. A good interrupt explanation keeps the interrupted program recoverable.
+          </div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>What an interrupt is</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <strong>Interrupt</strong>
+              <span>A signal that causes the processor to pause normal execution and deal with an event.</span>
+            </article>
+            <article>
+              <strong>Interrupt service routine</strong>
+              <span>A program routine that handles a specific interrupt.</span>
+            </article>
+            <article>
+              <strong>Processor state</strong>
+              <span>The information needed to continue later, such as PC, registers and status flags.</span>
+            </article>
+            <article>
+              <strong>Interrupt flag</strong>
+              <span>A stored indication that an interrupt has occurred or is waiting to be handled.</span>
+            </article>
+          </div>
+          <div class="callout">Chinese support: interrupt = 中断信号；ISR = 中断服务程序；processor state = 处理器当前状态；resume = 恢复继续执行。</div>
+        </section>
+
+        <section class="panel" id="sources">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Where interrupts come from</h2>
+          </div>
+          <div class="source-grid">
+            <article>
+              <strong>Input/output device</strong>
+              <span>A keyboard, printer or network interface signals that it needs CPU attention.</span>
+              <em>Example: key pressed; printer buffer ready.</em>
+            </article>
+            <article>
+              <strong>Timer</strong>
+              <span>A timer interrupt lets an operating system share CPU time between tasks.</span>
+              <em>Example: scheduler checks whether another process should run.</em>
+            </article>
+            <article>
+              <strong>Hardware fault</strong>
+              <span>A device or hardware condition signals a problem that must be handled.</span>
+              <em>Example: power warning or device failure signal.</em>
+            </article>
+            <article>
+              <strong>Software / exception</strong>
+              <span>A program event requires special handling.</span>
+              <em>Example: division by zero or system call, depending on architecture.</em>
+            </article>
+          </div>
+          <div class="trap-card inline-card">
+            <h3>Common trap</h3>
+            <p>Do not write that all interrupts are "high priority errors". Some are routine, such as timer and I/O interrupts.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="cycle">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>The interrupt handling cycle</h2>
+          </div>
+          <div class="timeline" aria-label="Interrupt handling sequence">
+            <div><strong>1. Execute instruction</strong><span>The CPU finishes the current instruction before accepting most maskable interrupts.</span></div>
+            <div><strong>2. Check interrupt</strong><span>The control unit checks whether an interrupt is pending and enabled.</span></div>
+            <div><strong>3. Save state</strong><span>Important registers, PC and status information are stored, often on a stack.</span></div>
+            <div><strong>4. Find ISR</strong><span>The interrupt type is used to locate the correct interrupt service routine.</span></div>
+            <div><strong>5. Run ISR</strong><span>The routine handles the event, such as reading a key or acknowledging a device.</span></div>
+            <div><strong>6. Restore and return</strong><span>The saved state is restored and the interrupted program continues.</span></div>
+          </div>
+          <div class="why-card inline-card">
+            <h3>Why this matters</h3>
+            <p>Saving state is the "bookmark". Without it, the CPU may not know where or how to resume the interrupted program.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="priority">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Priority and masking</h2>
+          </div>
+          <div class="priority-table" role="table" aria-label="Interrupt priority">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Idea</div>
+              <div role="columnheader">Meaning</div>
+              <div role="columnheader">Exam-safe wording</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Priority</div>
+              <div role="cell">Some interrupts are more urgent than others.</div>
+              <div role="cell">A higher-priority interrupt may be handled before a lower-priority one.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Maskable interrupt</div>
+              <div role="cell">Can be disabled or delayed by the processor.</div>
+              <div role="cell">Used when a less urgent event can wait.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Non-maskable interrupt</div>
+              <div role="cell">Cannot normally be ignored.</div>
+              <div role="cell">Used for critical events such as serious hardware faults.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Nested interrupt</div>
+              <div role="cell">An interrupt occurs while another ISR is running.</div>
+              <div role="cell">Only handled immediately if the system allows it and priority rules permit it.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="polling">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Interrupts versus polling</h2>
+          </div>
+          <div class="compare-grid">
+            <article>
+              <h3>Interrupt-driven input</h3>
+              <p>The device signals the CPU when attention is needed. The CPU can do useful work meanwhile.</p>
+              <ul>
+                <li>Efficient when events are unpredictable.</li>
+                <li>Requires interrupt handling and state saving.</li>
+                <li>Good exam phrase: "CPU does not continually check the device."</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Polling</h3>
+              <p>The CPU repeatedly checks a device or flag to see whether attention is needed.</p>
+              <ul>
+                <li>Simple to understand and implement.</li>
+                <li>Can waste processor time if checks are frequent and no event has occurred.</li>
+                <li>Good exam phrase: "regularly checks the status of the device."</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purpose of interrupts in processor operation.</span></div>
+            <div><strong>Covered</strong><span>Role of interrupt service routines.</span></div>
+            <div><strong>Covered</strong><span>Saving and restoring processor state before resuming the main program.</span></div>
+            <div><strong>Covered</strong><span>Priority, masking and common interrupt sources at AS depth.</span></div>
+            <div><strong>Covered</strong><span>Interrupt-driven handling compared with polling.</span></div>
+            <div><strong>Not this lesson</strong><span>Scheduling algorithms and operating system process states are covered in later system software lessons.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Interrupt handling simulator</h2>
+            <p>Select an event. Follow what is saved, which ISR runs and what happens after the service routine finishes.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Interrupt scenario
+              <select id="interruptInput">
+                <option value="keyboard">Keyboard key pressed</option>
+                <option value="timer">Timer tick for multitasking</option>
+                <option value="printer">Printer ready signal</option>
+                <option value="fault">Critical hardware fault</option>
+              </select>
+            </label>
+            <button type="button" id="simulateBtn">Simulate</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Trace the interrupt, not just the device</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="keyboard">Keyboard input</button>
+            <button class="tab" type="button" data-example="timer">Timer interrupt</button>
+            <button class="tab" type="button" data-example="polling">Polling comparison</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+            <p>Short answers are fine, but they must name the mechanism. "It sorts itself out" is still not a processor feature.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair the interrupt explanation</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeList"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>CIE-style questions with expandable mark schemes</h2>
+            <p>These are original Cambridge-style questions. MS notes are strict about pause, save state, ISR, restore and resume.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Interrupts are controlled pauses</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Interrupt</strong><span>A signal requesting processor attention.</span></div>
+            <div><strong>ISR</strong><span>The routine that handles a specific interrupt.</span></div>
+            <div><strong>State saving</strong><span>Stores PC, registers and flags so execution can resume.</span></div>
+            <div><strong>Priority</strong><span>More urgent interrupts may be serviced first.</span></div>
+            <div><strong>Polling</strong><span>CPU repeatedly checks device status instead of waiting for a signal.</span></div>
+            <div><strong>Exam habit</strong><span>Write the sequence: finish instruction, check, save, service, restore, resume.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Make the interrupt sequence exam-ready</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Define interrupt and interrupt service routine in one sentence each.</li>
+            <li>Write the six-step sequence used when a keyboard interrupt is accepted.</li>
+            <li>Explain why saving the program counter and registers is necessary before running an ISR.</li>
+            <li>Compare interrupt-driven input with polling in a 4-mark answer.</li>
+            <li>Correct this sentence: "An interrupt always means the current program has crashed."</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

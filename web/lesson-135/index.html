@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 135 | Input and output formatting</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
+        <h1>Input and output formatting</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#input">INPUT</a>
+        <a href="#output">OUTPUT</a>
+        <a href="#prompts">Prompts</a>
+        <a href="#formatting">Formatting</a>
+        <a href="#types">Types</a>
+        <a href="#tables">Tables</a>
+        <a href="#java">Java support</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#formatter">Formatter</a>
+        <a href="#chooser">Command chooser</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 135 | 45 minutes | Paper 2 Section 11 | 5-minute quiz</p>
+            <h2>Good input gets data in. Good output lets humans understand it.</h2>
+            <p>
+              <code>INPUT</code> stores data entered by the user. <code>OUTPUT</code> displays data to the user.
+              Formatting controls how information is presented: labels, spacing, order, decimal places and line breaks.
+              Algorithms do not get extra marks for being mysterious. If the output reads like a printer having an
+              existential crisis, fix the format.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Use</strong><span><code>INPUT</code> and <code>OUTPUT</code> precisely in Cambridge-style pseudocode</span></div>
+              <div><strong>Format</strong><span>labels, concatenated strings, numeric values and table-like output</span></div>
+              <div><strong>Avoid</strong><span>confusing prompts, output text and stored input values</span></div>
+            </div>
+          </div>
+          <div class="io-visual" aria-label="Input output visual">
+            <div><strong>INPUT Mark</strong><span>read and store</span><em>data enters the algorithm</em></div>
+            <div><strong>OUTPUT Mark</strong><span>display value</span><em>data leaves to screen</em></div>
+            <div><strong>OUTPUT "Mark: " &amp; Mark</strong><span>formatted message</span><em>clear for humans</em></div>
+            <p>Prompting tells the user what to enter. INPUT actually receives it.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask students to underline every value that is stored, and circle every value that is displayed.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 answers often lose marks when candidates output a prompt but never input the value, or calculate correctly but display unclearly.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p><code>OUTPUT "Enter mark"</code> is only a prompt. It does not store the user's mark. Use <code>INPUT Mark</code>.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which line actually stores the user's name?</h2>
+            <p>A prompt can be very polite and still store absolutely nothing.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="output">OUTPUT "Enter name"</button>
+            <button class="choice-card" type="button" data-hook="input">INPUT Name</button>
+            <button class="choice-card" type="button" data-hook="assign">Name &lt;- "Enter name"</button>
+            <button class="choice-card" type="button" data-hook="display">OUTPUT Name</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the line that reads and stores user data.</div>
+        </section>
+
+        <section class="panel" id="input">
+          <div class="section-title">
+            <p class="eyebrow">INPUT</p>
+            <h2><code>INPUT</code> reads data and stores it in a variable</h2>
+            <p>Chinese support: input 输入, store 存储, variable 变量, prompt 提示信息。</p>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>OUTPUT "Enter mark"
+INPUT Mark</code></pre>
+            </article>
+            <article>
+              <h3>Trace</h3>
+              <div class="trace-list">
+                <div><strong>Prompt</strong><span>screen shows <code>Enter mark</code></span></div>
+                <div><strong>Input</strong><span>user enters a value such as <code>72</code></span></div>
+                <div><strong>Storage</strong><span><code>Mark</code> now stores <code>72</code></span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="output">
+          <div class="section-title">
+            <p class="eyebrow">OUTPUT</p>
+            <h2><code>OUTPUT</code> displays text, values or expressions</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Display text and values</h3>
+              <pre><code>Name &lt;- "Ada"
+Mark &lt;- 72
+OUTPUT "Student: " &amp; Name
+OUTPUT "Mark: " &amp; Mark</code></pre>
+            </article>
+            <article>
+              <h3>Displayed output</h3>
+              <div class="screen-box">
+                <p>Student: Ada</p>
+                <p>Mark: 72</p>
+              </div>
+              <p>Labels make the output meaningful. A lonely <code>72</code> on a screen is not a user interface; it is a small mystery.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="prompts">
+          <div class="section-title">
+            <p class="eyebrow">Prompts</p>
+            <h2>A good prompt tells the user what to enter and the expected format</h2>
+          </div>
+          <div class="data-table compare-table" role="table" aria-label="Prompt comparison">
+            <div class="table-row table-head"><div>Prompt</div><div>Quality</div><div>Reason</div></div>
+            <div class="table-row"><div><code>OUTPUT "Input"</code></div><div>weak</div><div>does not say what value is needed</div></div>
+            <div class="table-row"><div><code>OUTPUT "Enter mark"</code></div><div>better</div><div>states the required data item</div></div>
+            <div class="table-row"><div><code>OUTPUT "Enter mark 0 to 100"</code></div><div>best</div><div>states expected range and reduces invalid input</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="formatting">
+          <div class="section-title">
+            <p class="eyebrow">Formatting output</p>
+            <h2>Formatting means controlling how values are shown</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Unformatted</h3>
+              <pre><code>OUTPUT Name
+OUTPUT Mark
+OUTPUT Grade</code></pre>
+              <div class="screen-box compact"><p>Ada</p><p>72</p><p>B</p></div>
+            </article>
+            <article>
+              <h3>Formatted</h3>
+              <pre><code>OUTPUT "Name: " &amp; Name
+OUTPUT "Mark: " &amp; Mark
+OUTPUT "Grade: " &amp; Grade</code></pre>
+              <div class="screen-box compact"><p>Name: Ada</p><p>Mark: 72</p><p>Grade: B</p></div>
+            </article>
+          </div>
+          <div class="callout">In Cambridge-style pseudocode, clear labels and logical order often matter more than language-specific formatting syntax.</div>
+        </section>
+
+        <section class="panel" id="types">
+          <div class="section-title">
+            <p class="eyebrow">Input type handling</p>
+            <h2>Input data must be used with the correct data type</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Numeric calculation</h3>
+              <pre><code>OUTPUT "Enter price"
+INPUT Price
+Total &lt;- Price * 1.20
+OUTPUT "Total: " &amp; Total</code></pre>
+            </article>
+            <article>
+              <h3>Reasoning</h3>
+              <p><code>Price</code> must be treated as numeric for multiplication. If a language reads all input as text, conversion may be needed.</p>
+              <div class="callout">Cambridge pseudocode usually focuses on the algorithm. If the question demands conversion, show it clearly.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="tables">
+          <div class="section-title">
+            <p class="eyebrow">Table-like output</p>
+            <h2>Formatted output can make repeated records readable</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Pseudocode idea</h3>
+              <pre><code>OUTPUT "Name    Mark"
+OUTPUT "Ada     72"
+OUTPUT "Lin     85"</code></pre>
+            </article>
+            <article>
+              <h3>Displayed output</h3>
+              <div class="screen-box mono">
+                <p>Name    Mark</p>
+                <p>Ada     72</p>
+                <p>Lin     85</p>
+              </div>
+              <p>Headings, spacing and row order make the values interpretable.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="java">
+          <div class="section-title">
+            <p class="eyebrow">Java support only</p>
+            <h2>Java I/O syntax is not Cambridge pseudocode</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>OUTPUT "Enter mark"
+INPUT Mark
+OUTPUT "Mark: " &amp; Mark</code></pre>
+            </article>
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>Scanner input = new Scanner(System.in);
+System.out.print("Enter mark: ");
+int mark = input.nextInt();
+System.out.println("Mark: " + mark);</code></pre>
+              <p>Do not copy <code>Scanner</code>, semicolons or Java method calls into Paper 2 pseudocode unless Java is explicitly requested.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>What this lesson covers from Section 11</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Input</strong><span>prompts, <code>INPUT</code>, storing values and using data types correctly</span></div>
+            <div><strong>Output</strong><span><code>OUTPUT</code>, labels, line order and values from expressions</span></div>
+            <div><strong>Formatting</strong><span>concatenation, numeric labels, table-like output and readable user messages</span></div>
+            <div><strong>Java boundary</strong><span>Java I/O is support only; Cambridge pseudocode remains the exam answer format</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="formatter">
+          <div class="section-title">
+            <p class="eyebrow">Interactive output formatter</p>
+            <h2>Build a readable result line</h2>
+            <p>Enter values and choose a format. The goal is not decoration; it is clarity.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Name
+              <input id="nameInput" type="text" value="Ada" maxlength="20" />
+            </label>
+            <label>
+              Mark
+              <input id="markInput" type="number" min="0" max="100" step="1" value="72" />
+            </label>
+            <label>
+              Format
+              <select id="formatInput">
+                <option value="plain">plain values</option>
+                <option value="labels">with labels</option>
+                <option value="sentence">sentence</option>
+                <option value="table">table row</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="formatBtn">Format</button>
+          </div>
+          <div class="trace-output" id="formatResult" aria-live="polite">Choose values and format the output.</div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Command chooser</p>
+            <h2>Is this input, output, or formatting?</h2>
+            <p>Select a scenario to see the command and exam reasoning.</p>
+          </div>
+          <div class="scenario-grid" id="scenarioGrid"></div>
+          <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Trace what is stored and what is displayed</h2>
+          </div>
+          <div class="tabs" id="exampleTabs" role="tablist"></div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short answers, precise commands</h2>
+            <p>Type the command keyword, displayed output, or missing line.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Find the I/O error</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Answer first, then expand the MS</h2>
+            <p>Questions are original Cambridge-style practice. MS notes are strict about storing input, displaying output and readable formatting.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Three rules to keep</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong><code>INPUT</code></strong><span>reads data and stores it in a variable.</span></div>
+            <div><strong><code>OUTPUT</code></strong><span>displays text, values or expression results.</span></div>
+            <div><strong>Formatting</strong><span>uses labels, order and spacing so output is meaningful.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Prompt, input, display</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write pseudocode that prompts for a name and mark, inputs both values, and outputs <code>Name: Ada, Mark: 72</code>-style text.</li>
+            <li>Rewrite three unclear outputs from today's lesson using labels and sensible ordering.</li>
+            <li>Write a small table-like output for three products and their prices using headings.</li>
+            <li>Answer a 4-mark question explaining why <code>OUTPUT "Enter mark"</code> alone is not enough to read a mark.</li>
+          </ol>
+          <div class="callout">Marking focus: include both prompt and input where needed, then output values with clear labels.</div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

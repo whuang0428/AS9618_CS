@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 045 | Instruction sets and machine code</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
+        <h1>Instruction sets and machine code</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#instruction-set">Instruction set</a>
+        <a href="#machine-code">Machine code</a>
+        <a href="#opcode">Opcode and operand</a>
+        <a href="#compatibility">Compatibility</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Decoder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 045 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
+            <h2>The CPU cannot run your vibes. It runs instructions it understands.</h2>
+            <p>
+              An instruction set is the collection of machine-code instructions a
+              processor can recognise and execute. Machine code is binary, and each
+              instruction normally contains an opcode that says what to do and an
+              operand that says what to do it to.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>instruction set and machine code accurately</span></div>
+              <div><strong>Decode</strong><span>simple opcode and operand instruction formats</span></div>
+              <div><strong>Explain</strong><span>why instruction sets affect compatibility</span></div>
+            </div>
+          </div>
+          <div class="machine-card" aria-label="Machine code sketch">
+            <div class="instruction-word">
+              <span class="opcode">0011</span>
+              <span class="operand">01011010</span>
+            </div>
+            <div class="legend">
+              <span>opcode: ADD</span>
+              <span>operand: address 90</span>
+            </div>
+            <p>Binary is not the mystery. The agreed meaning is the instruction set.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Start with a fake 12-bit instruction format. Students decode meaning before hearing the formal terms.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Questions often separate definition marks from "why can this CPU run/not run this code?" explanation marks.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Machine code is not assembly language. Assembly uses mnemonics; machine code is binary instructions.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Two CPUs see the same bits. Why might they do different things?</h2>
+            <p>Click the best reason. Bits are innocent; the instruction set gives them meaning.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="isa">They use different instruction sets</button>
+            <button class="choice-card" type="button" data-hook="ram">They have different RAM colours</button>
+            <button class="choice-card" type="button" data-hook="font">The binary is written in a different font</button>
+            <button class="choice-card" type="button" data-hook="bus">The data bus refuses to cooperate</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click one. The key idea is that instruction meaning is processor-specific.
+          </div>
+        </section>
+
+        <section class="panel" id="instruction-set">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>What is an instruction set?</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <strong>Definition</strong>
+              <span>The set of instructions that a particular processor can recognise and execute.</span>
+            </article>
+            <article>
+              <strong>Includes operations</strong>
+              <span>Examples include load, store, add, subtract, compare, jump and input/output instructions.</span>
+            </article>
+            <article>
+              <strong>Processor-specific</strong>
+              <span>Different processor families can have different instruction sets and instruction formats.</span>
+            </article>
+            <article>
+              <strong>Defines meaning</strong>
+              <span>The instruction set tells the CPU what each opcode means and how operands are interpreted.</span>
+            </article>
+          </div>
+          <div class="callout">Chinese support: instruction set = 指令集；machine code = 机器码；opcode = 操作码；operand = 操作数；mnemonic = 助记符。</div>
+        </section>
+
+        <section class="panel" id="machine-code">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Machine code is binary instructions for the CPU</h2>
+          </div>
+          <div class="machine-grid">
+            <article>
+              <h3>Lowest-level executable form</h3>
+              <p>Machine code consists of binary instructions that can be executed directly by the processor.</p>
+            </article>
+            <article>
+              <h3>Not friendly for humans</h3>
+              <p>Binary instructions are hard to read and write, which is why assembly language uses mnemonics and high-level languages use translators.</p>
+            </article>
+            <article>
+              <h3>Stored in memory</h3>
+              <p>Machine-code instructions are stored in memory and fetched by the CPU during the fetch-decode-execute cycle.</p>
+            </article>
+            <article>
+              <h3>CPU-specific meaning</h3>
+              <p>The same bit pattern can have different meanings on different architectures because opcodes are defined by the instruction set.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="opcode">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Opcode and operand</h2>
+          </div>
+          <div class="format-card">
+            <div class="format-word">
+              <span class="opcode">opcode</span>
+              <span class="operand">operand</span>
+            </div>
+            <p><strong>Opcode</strong> tells the CPU which operation to perform. <strong>Operand</strong> gives the data, register, address or value used by the operation.</p>
+          </div>
+          <div class="instruction-table" role="table" aria-label="Example instruction set">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Opcode</div>
+              <div role="columnheader">Mnemonic</div>
+              <div role="columnheader">Meaning</div>
+              <div role="columnheader">Example with operand</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">0001</div>
+              <div role="cell">LOAD</div>
+              <div role="cell">Load value from memory into ACC.</div>
+              <div role="cell">0001 01011010 = LOAD address 90</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">0010</div>
+              <div role="cell">STORE</div>
+              <div role="cell">Store ACC value into memory.</div>
+              <div role="cell">0010 01011010 = STORE address 90</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">0011</div>
+              <div role="cell">ADD</div>
+              <div role="cell">Add value from memory to ACC.</div>
+              <div role="cell">0011 01011010 = ADD value at address 90</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">0100</div>
+              <div role="cell">JMP</div>
+              <div role="cell">Jump to a different instruction address.</div>
+              <div role="cell">0100 00001100 = jump to address 12</div>
+            </div>
+          </div>
+          <div class="trap-card inline-card">
+            <h3>Common trap</h3>
+            <p>The operand is not always data itself. It may be an address, a register identifier or an immediate value depending on the instruction format.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="compatibility">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Instruction sets and compatibility</h2>
+          </div>
+          <div class="compat-grid">
+            <article>
+              <strong>Same ISA</strong>
+              <span>A program compiled to one instruction set can run on compatible processors that implement that instruction set.</span>
+            </article>
+            <article>
+              <strong>Different ISA</strong>
+              <span>Machine code for one architecture may not run correctly on another architecture.</span>
+            </article>
+            <article>
+              <strong>Translation needed</strong>
+              <span>Source code may need to be recompiled, interpreted, emulated or translated for a different processor.</span>
+            </article>
+            <article>
+              <strong>Exam wording</strong>
+              <span>Say "the CPU cannot recognise/execute those opcodes" rather than simply "the CPU does not like it".</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Instruction set as instructions a processor can recognise and execute.</span></div>
+            <div><strong>Covered</strong><span>Machine code as binary instructions executed by the CPU.</span></div>
+            <div><strong>Covered</strong><span>Opcode and operand roles in a simplified instruction format.</span></div>
+            <div><strong>Covered</strong><span>Processor compatibility and why machine code depends on the instruction set.</span></div>
+            <div><strong>Not this lesson</strong><span>Assembly language mnemonics are introduced more fully in Lesson 046.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Simple instruction decoder</h2>
+            <p>Use the lesson's fake 12-bit format: first 4 bits are opcode, last 8 bits are operand.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Machine-code instruction
+              <select id="instructionInput">
+                <option value="000101011010">0001 01011010</option>
+                <option value="001001011010">0010 01011010</option>
+                <option value="001101011010">0011 01011010</option>
+                <option value="010000001100">0100 00001100</option>
+                <option value="111101011010">1111 01011010</option>
+              </select>
+            </label>
+            <button type="button" id="decodeBtn">Decode</button>
+          </div>
+          <div class="result-box" id="decodeResult" aria-live="polite"></div>
+          <div class="method-box" id="decodeMethod"></div>
+          <div class="reject-box" id="decodeTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Decode the instruction, then explain it</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="decode">Decode</button>
+            <button class="tab" type="button" data-example="compatibility">Compatibility</button>
+            <button class="tab" type="button" data-example="assembly">Machine vs assembly</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+            <p>Short answers are fine. "Binary spell" is not a recognised Cambridge keyword, tempting though it is.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the vocabulary</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeList"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>CIE-style questions with expandable mark schemes</h2>
+            <p>These are original Cambridge-style questions. MS wording rewards exact definitions and role-based explanation.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Meaning comes from the instruction set</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Instruction set</strong><span>Instructions a processor can recognise and execute.</span></div>
+            <div><strong>Machine code</strong><span>Binary instructions executable by the CPU.</span></div>
+            <div><strong>Opcode</strong><span>Specifies the operation to perform.</span></div>
+            <div><strong>Operand</strong><span>Specifies data, address, register or value used by the operation.</span></div>
+            <div><strong>Compatibility</strong><span>Machine code depends on the processor's instruction set.</span></div>
+            <div><strong>Assembly</strong><span>Uses mnemonics; it is not the same as binary machine code.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Make instruction wording precise</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Define instruction set, machine code, opcode and operand in one sentence each.</li>
+            <li>Decode these fake instructions using the lesson table: `0001 00001111`, `0011 00001010`, `0100 00100000`.</li>
+            <li>Write a 5-mark answer: "Explain why machine code written for one processor may not run on another processor."</li>
+            <li>Explain the difference between machine code and assembly language using the terms binary and mnemonic.</li>
+            <li>Correct this sentence: "The operand tells the CPU what operation to perform and the opcode stores the data."</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

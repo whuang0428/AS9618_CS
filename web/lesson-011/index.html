@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 011 | Sound file size calculations</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
+        <h1>Sound file size calculations</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#formula">Formula</a>
+        <a href="#channels">Channels</a>
+        <a href="#units">Units</a>
+        <a href="#tradeoffs">Trade-offs</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Calculator</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 011 | 45 minutes | Informal questioning</p>
+            <h2>Sound file size is multiplication with consequences.</h2>
+            <p>
+              This lesson extends the basic mono calculation by adding channels and
+              multi-step unit conversion. The key habit is to keep each factor visible:
+              sampling rate, sample resolution, duration and number of channels.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div>
+                <strong>Calculate</strong>
+                <span>mono and stereo uncompressed sound file sizes</span>
+              </div>
+              <div>
+                <strong>Convert</strong>
+                <span>bits to bytes, KiB and MiB using binary units</span>
+              </div>
+              <div>
+                <strong>Explain</strong>
+                <span>how changing each parameter affects quality and storage</span>
+              </div>
+            </div>
+          </div>
+          <div class="formula-card" aria-label="Sound file size formula">
+            <span>rate × resolution × duration × channels</span>
+            <p>Stereo is not a vibe. It is another channel in the calculation.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Train students to write the full factor list before touching the calculator.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style marks often reward method steps separately from the final number.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>If the question says stereo, multiply by 2 channels. If it says mono, do not.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A mono clip becomes stereo. What happens to size?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="same">It stays the same</button>
+            <button class="choice-card" type="button" data-hook="double">It doubles</button>
+            <button class="choice-card" type="button" data-hook="half">It halves</button>
+            <button class="choice-card" type="button" data-hook="unknown">It cannot be calculated</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick an answer. Stereo stores two channels, so the channel factor matters.
+          </div>
+        </section>
+
+        <section class="panel" id="formula">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>The full uncompressed sound formula</h2>
+          </div>
+          <div class="formula-box">
+            <strong>size in bits = sampling rate × sample resolution × duration × channels</strong>
+            <span>size in bytes = bits ÷ 8</span>
+            <span>KiB = bytes ÷ 1024; MiB = KiB ÷ 1024</span>
+          </div>
+          <div class="chain-grid">
+            <article><strong>Sampling rate</strong><span>samples per second, measured in Hz</span></article>
+            <article><strong>Sample resolution</strong><span>bits used for each sample</span></article>
+            <article><strong>Duration</strong><span>length of the sound in seconds</span></article>
+            <article><strong>Channels</strong><span>mono = 1, stereo = 2</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="channels">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Channels: mono and stereo</h2>
+          </div>
+          <div class="channel-grid">
+            <article>
+              <h3>Mono</h3>
+              <p>One channel of audio. Use channel factor `1`.</p>
+              <p class="mini-formula">`rate × resolution × duration × 1`</p>
+            </article>
+            <article>
+              <h3>Stereo</h3>
+              <p>Two channels, commonly left and right. Use channel factor `2`.</p>
+              <p class="mini-formula">`rate × resolution × duration × 2`</p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: channel = 声道；mono = 单声道；stereo = 立体声/双声道。</div>
+        </section>
+
+        <section class="panel" id="units">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Unit conversion without changing the answer</h2>
+          </div>
+          <div class="unit-grid">
+            <article><h3>Bits</h3><p>The formula gives bits first.</p></article>
+            <article><h3>Bytes</h3><p>`8 bits = 1 byte`.</p></article>
+            <article><h3>KiB</h3><p>`1 KiB = 1024 bytes`.</p></article>
+            <article><h3>MiB</h3><p>`1 MiB = 1024 KiB`.</p></article>
+          </div>
+          <div class="callout warning">Do not divide by 1000 when the question asks for KiB or MiB.</div>
+        </section>
+
+        <section class="panel" id="tradeoffs">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Parameter changes and consequences</h2>
+          </div>
+          <div class="tradeoff-grid">
+            <article>
+              <h3>Higher sampling rate</h3>
+              <p>More samples per second; may improve accuracy; increases file size.</p>
+            </article>
+            <article>
+              <h3>Higher sample resolution</h3>
+              <p>More bits per sample; more amplitude levels; increases file size.</p>
+            </article>
+            <article>
+              <h3>Longer duration</h3>
+              <p>More seconds of samples; increases file size in direct proportion.</p>
+            </article>
+            <article>
+              <h3>More channels</h3>
+              <p>More separate audio streams; stereo doubles mono size when other factors match.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Uncompressed sound file size calculations with channels.</span></div>
+            <div><strong>Covered</strong><span>Bits, bytes, KiB and MiB conversion.</span></div>
+            <div><strong>Boundary</strong><span>Compression ratios and lossy/lossless methods come in the next lessons.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Sound file size calculator</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Sampling rate / Hz
+              <input id="rateInput" type="number" min="1" value="8000" />
+            </label>
+            <label>
+              Sample resolution / bits
+              <select id="resolutionInput">
+                <option value="8">8 bits</option>
+                <option value="16" selected>16 bits</option>
+                <option value="24">24 bits</option>
+              </select>
+            </label>
+            <label>
+              Duration / seconds
+              <input id="durationInput" type="number" min="1" value="10" />
+            </label>
+            <label>
+              Channels
+              <select id="channelInput">
+                <option value="1">Mono / 1</option>
+                <option value="2" selected>Stereo / 2</option>
+              </select>
+            </label>
+            <button type="button" id="calculateBtn">Calculate</button>
+          </div>
+          <div class="result-box" id="calcResult" aria-live="polite"></div>
+          <div class="method-box" id="calcMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="stereo">Stereo calculation</button>
+            <button class="tab" type="button" data-example="kib">Bytes to KiB</button>
+            <button class="tab" type="button" data-example="compare">Compare clips</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Find the missing factor</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">Stereo clip: `8000 × 16 × 10 = 1 280 000 bits`</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">Stereo has 2 channels, so multiply by 2: `8000 × 16 × 10 × 2 = 2 560 000 bits`.</p>
+            </article>
+            <article>
+              <p class="wrong">`160 000 bytes = 160 KiB`</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">For KiB, divide by 1024: `160 000 ÷ 1024 = 156.25 KiB`.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>
+              Use the buttons under each question to expand the CIE-style mark scheme.
+              These are original questions written in Cambridge style, not copied past-paper items.
+            </p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Write every factor before every answer</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>Bits = rate × resolution × duration × channels.</span></div>
+            <div><strong>2</strong><span>Mono uses 1 channel; stereo uses 2 channels.</span></div>
+            <div><strong>3</strong><span>Bytes = bits ÷ 8; KiB = bytes ÷ 1024.</span></div>
+            <div><strong>4</strong><span>Higher rate, resolution, duration or channels increases file size.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Calculate the size in bytes of a 10-second stereo clip sampled at 8000 Hz with 16-bit sample resolution.</li>
+            <li>Convert 160 000 bytes to KiB.</li>
+            <li>Calculate the size in MiB of a 60-second stereo clip sampled at 44 100 Hz with 16-bit sample resolution.</li>
+            <li>Write a 4-mark explanation of why a stereo sound file is larger than a matching mono sound file.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Task 1:</strong> `8000 × 16 × 10 × 2 = 2 560 000 bits = 320 000 bytes`.</p>
+            <p><strong>Task 2:</strong> `160 000 ÷ 1024 = 156.25 KiB`.</p>
+            <p><strong>Task 3:</strong> `44 100 × 16 × 60 × 2 = 84 672 000 bits = 10 584 000 bytes ≈ 10.09 MiB`.</p>
+            <p><strong>Explanation focus:</strong> stereo stores two channels, so it stores twice as many sample values as mono when rate, resolution and duration match.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

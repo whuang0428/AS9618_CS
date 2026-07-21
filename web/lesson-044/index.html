@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 044 | System buses: address, data and control</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
+        <h1>System buses: address, data and control</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Bus concept</a>
+        <a href="#three-buses">Three buses</a>
+        <a href="#read-write">Read/write traces</a>
+        <a href="#width">Bus width</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Bus mapper</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 044 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
+            <h2>Buses move signals. They are not tiny school buses full of bytes wearing backpacks.</h2>
+            <p>
+              A system bus is a communication pathway used to transfer signals between
+              the CPU, memory and other components. The address bus says where, the
+              data bus carries what, and the control bus says what operation is happening.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Describe</strong><span>the roles of address, data and control buses</span></div>
+              <div><strong>Trace</strong><span>read and write operations using the correct bus</span></div>
+              <div><strong>Explain</strong><span>how address bus width affects addressable memory locations</span></div>
+            </div>
+          </div>
+          <div class="bus-card" aria-label="System bus sketch">
+            <div class="bus-board">
+              <span class="node">CPU</span>
+              <span class="bus-line address">address bus: where?</span>
+              <span class="bus-line data">data bus: what?</span>
+              <span class="bus-line control">control bus: read/write?</span>
+              <span class="node">Memory / I/O</span>
+            </div>
+            <p>Exam shortcut: where, what, command.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use three colours or columns: address = location, data = value, control = operation signal.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge marking often rewards the bus name only when the role is also accurate.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>"The bus transfers data" is not enough if the question asks for three buses. Distinguish each pathway.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>The CPU wants to read memory address 500. Which bus carries 500?</h2>
+            <p>Click the best answer. Address 500 is a location, not the value hiding inside that location.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="address">Address bus</button>
+            <button class="choice-card" type="button" data-hook="data">Data bus</button>
+            <button class="choice-card" type="button" data-hook="control">Control bus</button>
+            <button class="choice-card" type="button" data-hook="register">MDR</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click one. Ask: is 500 a location, a value, or a command?
+          </div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>What a system bus does</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <strong>Communication pathway</strong>
+              <span>A bus is a set of parallel wires or connections used to carry signals.</span>
+            </article>
+            <article>
+              <strong>Connects components</strong>
+              <span>System buses connect CPU, main memory and other devices through controlled transfers.</span>
+            </article>
+            <article>
+              <strong>Not storage</strong>
+              <span>A bus transfers signals; it does not permanently store data or instructions.</span>
+            </article>
+            <article>
+              <strong>Part of a trace</strong>
+              <span>In processor questions, bus roles often appear inside fetch, read and write sequences.</span>
+            </article>
+          </div>
+          <div class="callout">Chinese support: bus = 总线；address = 地址/位置；data = 数据/值；control signal = 控制信号；bidirectional = 双向。</div>
+        </section>
+
+        <section class="panel" id="three-buses">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>The three buses</h2>
+          </div>
+          <div class="bus-table" role="table" aria-label="System bus roles">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Bus</div>
+              <div role="columnheader">Carries</div>
+              <div role="columnheader">Typical direction</div>
+              <div role="columnheader">Exam-safe sentence</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Address bus</div>
+              <div role="cell">Memory or I/O address identifying a location.</div>
+              <div role="cell">Usually from CPU to memory/I/O.</div>
+              <div role="cell">The address bus carries the address of the location to be read from or written to.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Data bus</div>
+              <div role="cell">Data or instructions being transferred.</div>
+              <div role="cell">Usually bidirectional.</div>
+              <div role="cell">The data bus carries the actual data or instruction between CPU, memory and devices.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Control bus</div>
+              <div role="cell">Control and timing signals such as read, write, interrupt and clock signals.</div>
+              <div role="cell">Signals can travel in different directions depending on purpose.</div>
+              <div role="cell">The control bus carries signals that coordinate and control the transfer.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="read-write">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Read and write traces</h2>
+          </div>
+          <div class="trace-grid">
+            <article>
+              <h3>Memory read</h3>
+              <ol>
+                <li>CPU places the required address on the address bus.</li>
+                <li>CPU sends a read signal on the control bus.</li>
+                <li>Memory places the requested data/instruction on the data bus.</li>
+                <li>CPU receives the data, often through the MDR.</li>
+              </ol>
+            </article>
+            <article>
+              <h3>Memory write</h3>
+              <ol>
+                <li>CPU places the target address on the address bus.</li>
+                <li>CPU places the data to be stored on the data bus.</li>
+                <li>CPU sends a write signal on the control bus.</li>
+                <li>Memory stores the data at the addressed location.</li>
+              </ol>
+            </article>
+          </div>
+          <div class="trap-card inline-card">
+            <h3>Common trap</h3>
+            <p>Read and write both use all three buses, but the direction of data transfer changes.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="width">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Bus width and addressable locations</h2>
+          </div>
+          <div class="width-grid">
+            <article>
+              <strong>Address bus width</strong>
+              <span>If the address bus has n lines, it can represent 2^n different addresses.</span>
+            </article>
+            <article>
+              <strong>Example</strong>
+              <span>A 16-bit address bus can address 2^16 = 65,536 memory locations.</span>
+            </article>
+            <article>
+              <strong>Data bus width</strong>
+              <span>A wider data bus can transfer more bits at once, which can affect throughput.</span>
+            </article>
+            <article>
+              <strong>Precision</strong>
+              <span>Address bus width affects address range; data bus width affects transfer size.</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>System bus as communication pathways between CPU, memory and devices.</span></div>
+            <div><strong>Covered</strong><span>Address bus, data bus and control bus roles with exam-safe wording.</span></div>
+            <div><strong>Covered</strong><span>Memory read and write traces using all three buses.</span></div>
+            <div><strong>Covered</strong><span>Address bus width and 2^n addressable locations.</span></div>
+            <div><strong>Not this lesson</strong><span>Detailed instruction sets and assembly mnemonics are covered in the next lessons.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Bus role mapper</h2>
+            <p>Select a signal and identify the correct bus, reason and common trap.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Signal or task
+              <select id="busInput">
+                <option value="address500">CPU sends memory address 500</option>
+                <option value="instruction">Instruction transferred from memory to CPU</option>
+                <option value="read">Read signal sent to memory</option>
+                <option value="write">Write signal sent to memory</option>
+                <option value="interrupt">Interrupt signal sent to CPU</option>
+                <option value="width16">16-bit address bus capacity</option>
+              </select>
+            </label>
+            <button type="button" id="mapBtn">Map bus</button>
+          </div>
+          <div class="result-box" id="mapResult" aria-live="polite"></div>
+          <div class="method-box" id="mapMethod"></div>
+          <div class="reject-box" id="mapTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Sort the signal before writing the sentence</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="read">Memory read</button>
+            <button class="tab" type="button" data-example="write">Memory write</button>
+            <button class="tab" type="button" data-example="width">Address width</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+            <p>One-word answers are okay here, but they need to be the right bus. "The busy bus" remains sadly unmarkable.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the bus confusion</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeList"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>CIE-style questions with expandable mark schemes</h2>
+            <p>These are original Cambridge-style questions. MS wording separates bus identification from role explanation.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Three buses, three jobs</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Address bus</strong><span>Carries the address/location to be accessed.</span></div>
+            <div><strong>Data bus</strong><span>Carries the data or instruction being transferred.</span></div>
+            <div><strong>Control bus</strong><span>Carries control/timing signals such as read and write.</span></div>
+            <div><strong>Read</strong><span>Address out, read signal out, data back to CPU.</span></div>
+            <div><strong>Write</strong><span>Address out, data out, write signal out.</span></div>
+            <div><strong>Width</strong><span>n address lines can represent 2^n addresses.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Make bus answers precise</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a three-row table for address bus, data bus and control bus. Include what each carries and one example signal/value.</li>
+            <li>Write a 6-mark answer: "Describe the roles of the three system buses during a memory read operation."</li>
+            <li>Trace a memory write operation in four numbered steps using all three buses.</li>
+            <li>Calculate how many addresses can be represented by 12-bit, 16-bit and 20-bit address buses.</li>
+            <li>Correct this sentence: "The address bus carries the data and the data bus carries the address."</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

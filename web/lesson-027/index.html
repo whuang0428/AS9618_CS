@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 027 | Computer system overview: input, output, storage, processor and memory</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
+        <h1>Computer system overview: input, output, storage, processor and memory</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#flow">System flow</a>
+        <a href="#components">Components</a>
+        <a href="#memory-storage">Memory vs storage</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Choice tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 027 | 45 minutes | Paper 1 Section 3</p>
+            <h2>A computer system is not one magic box. It is a team with very specific jobs.</h2>
+            <p>
+              This lesson introduces the main parts of a computer system: input, processor,
+              memory, storage and output. The aim is to classify hardware by purpose and
+              explain how data moves through a system in a real scenario.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Classify</strong><span>input, output, processor, memory and storage components</span></div>
+              <div><strong>Trace</strong><span>data flow through a simple computer system</span></div>
+              <div><strong>Justify</strong><span>suitable hardware choices using speed, capacity, durability, accuracy and cost</span></div>
+            </div>
+          </div>
+          <div class="system-card" aria-label="Computer system data flow">
+            <span>input -> process -> memory/storage -> output</span>
+            <p>Data enters. Instructions run. Results leave. Files do not live inside the CPU.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Every time a device is named, ask what job it does: capture, process, temporarily hold, permanently store or present.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Hardware questions often award marks for suitability. Naming a device starts the answer; matching its feature to the scenario earns it.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>RAM and secondary storage both hold data, but not in the same way. RAM forgets when power is off; storage is the more dependable librarian.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A phone scans a QR code, checks the ticket, saves the record and shows "Entry allowed". Which part does each job?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="camera">Camera captures the QR code as input</button>
+            <button class="choice-card" type="button" data-hook="processor">Processor checks the ticket data</button>
+            <button class="choice-card" type="button" data-hook="storage">Storage keeps the attendance record</button>
+            <button class="choice-card" type="button" data-hook="screen">Screen displays output feedback</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click any job. The useful exam habit is matching component -> role -> reason.
+          </div>
+        </section>
+
+        <section class="panel" id="flow">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>The basic system flow</h2>
+          </div>
+          <div class="flow-grid">
+            <article><strong>1. Input</strong><span>Data is captured by an input device, such as a keyboard, sensor, scanner, camera or microphone.</span></article>
+            <article><strong>2. Processing</strong><span>The processor executes instructions and performs operations on data.</span></article>
+            <article><strong>3. Memory</strong><span>Data and instructions in current use are held temporarily in primary memory such as RAM.</span></article>
+            <article><strong>4. Storage</strong><span>Files and data that must persist are saved in secondary storage such as SSD, HDD or optical media.</span></article>
+            <article><strong>5. Output</strong><span>Results are presented through output devices such as screens, speakers, printers or actuators.</span></article>
+          </div>
+          <div class="callout">Chinese support: input = 输入；output = 输出；processor = 处理器；memory = 内存/主存；storage = 存储/辅存。</div>
+        </section>
+
+        <section class="panel" id="components">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Component roles and examples</h2>
+          </div>
+          <div class="component-grid">
+            <article>
+              <h3>Input devices</h3>
+              <p>Allow data to enter the system.</p>
+              <p><strong>Examples:</strong> keyboard, mouse, barcode reader, touch screen, microphone, camera, sensor.</p>
+            </article>
+            <article>
+              <h3>Output devices</h3>
+              <p>Present data or results from the system.</p>
+              <p><strong>Examples:</strong> monitor, speaker, printer, projector, actuator.</p>
+            </article>
+            <article>
+              <h3>Processor</h3>
+              <p>Executes instructions and coordinates operations. It processes data; it is not where user files are stored.</p>
+            </article>
+            <article>
+              <h3>Primary memory</h3>
+              <p>Stores instructions and data currently in use. RAM is volatile; ROM is non-volatile and stores startup instructions.</p>
+            </article>
+            <article>
+              <h3>Secondary storage</h3>
+              <p>Stores data and files long term, even when power is off.</p>
+              <p><strong>Examples:</strong> SSD, HDD, optical disc, flash storage.</p>
+            </article>
+            <article>
+              <h3>Interfaces</h3>
+              <p>Hardware and software work together. A useful answer explains how the chosen device fits the user task.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="memory-storage">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Memory is not the same as storage</h2>
+          </div>
+          <div class="compare-table" role="table" aria-label="Memory and storage comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Feature</div>
+              <div role="columnheader">Primary memory</div>
+              <div role="columnheader">Secondary storage</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Purpose</div>
+              <div role="cell">Holds data/instructions currently being used.</div>
+              <div role="cell">Holds files and data long term.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Volatility</div>
+              <div role="cell">RAM is volatile; contents are lost without power.</div>
+              <div role="cell">Non-volatile; data remains when power is off.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Speed and capacity</div>
+              <div role="cell">Usually faster but smaller and more expensive per unit.</div>
+              <div role="cell">Usually larger and cheaper per unit but slower than RAM.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Computer system components: input, output, processor, memory and storage.</span></div>
+            <div><strong>Covered</strong><span>Data flow through a simple system using scenario-based examples.</span></div>
+            <div><strong>Covered</strong><span>Difference between primary memory and secondary storage at overview level.</span></div>
+            <div><strong>Covered</strong><span>Suitability language: accuracy, speed, capacity, durability, portability and cost.</span></div>
+            <div><strong>Boundary</strong><span>Detailed input devices, output devices, primary storage and secondary storage are covered in Lessons 028-032.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Component choice helper</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="barcode">A librarian scans book IDs quickly at a desk</option>
+                <option value="weather">A weather station measures temperature automatically</option>
+                <option value="attendance">A school stores attendance records after scanning ID cards</option>
+                <option value="exam">An exam office prints candidate timetables</option>
+                <option value="driver">A delivery driver needs turn-by-turn visual feedback</option>
+                <option value="editing">A laptop temporarily holds a large image while editing</option>
+              </select>
+            </label>
+            <button type="button" id="chooseBtn">Choose component</button>
+          </div>
+          <div class="result-box" id="componentResult" aria-live="polite"></div>
+          <div class="method-box" id="componentMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Hardware choices with reasons</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="attendance">Attendance system</button>
+            <button class="tab" type="button" data-example="weather">Weather station</button>
+            <button class="tab" type="button" data-example="library">Library desk</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak hardware answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"The CPU stores all the files."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">The CPU processes instructions and data. Files are stored in secondary storage; data in current use may be held in memory.</p>
+            </article>
+            <article>
+              <p class="wrong">"RAM and storage are the same because both hold data."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">RAM is primary memory used for current tasks and is volatile. Secondary storage is non-volatile and keeps files long term.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on classifying the component and linking its feature to the scenario.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>System overview in one chain</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Input</strong><span>Captures data from the user or environment.</span></div>
+            <div><strong>Processor</strong><span>Executes instructions and processes data.</span></div>
+            <div><strong>Memory</strong><span>Holds data/instructions currently in use; RAM is volatile.</span></div>
+            <div><strong>Storage</strong><span>Holds files and data long term; non-volatile.</span></div>
+            <div><strong>Output</strong><span>Presents results or controls a physical action.</span></div>
+            <div><strong>Suitability</strong><span>Match device characteristics to the exact user need.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Draw a data-flow diagram for a self-checkout system: input, processing, memory/storage and output.</li>
+            <li>Create a table comparing primary memory and secondary storage using purpose, volatility, speed and capacity.</li>
+            <li>Choose hardware for a school attendance system: one input, one storage, one output. Justify each choice.</li>
+            <li>Write a 4-mark answer explaining why listing hardware is not enough for a suitability question.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Data-flow diagram:</strong> barcode/touch input -> processor checks price -> memory holds current basket -> storage saves transaction -> screen/receipt output.</p>
+            <p><strong>Memory/storage:</strong> include volatile vs non-volatile and current use vs long-term files.</p>
+            <p><strong>Attendance:</strong> ID reader for accurate fast input; SSD/database storage for persistent records; screen/speaker for immediate feedback.</p>
+            <p><strong>Suitability:</strong> every device needs a reason linked to the scenario.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

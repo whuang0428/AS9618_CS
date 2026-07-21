@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 095 | Paper 1 timed short-answer practice</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Sections 1-8</p>
+        <h1>Paper 1 timed short-answer practice</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#timing">Timing rules</a>
+        <a href="#quiz">5-minute quiz</a>
+        <a href="#short">Short-answer craft</a>
+        <a href="#marking">Self-marking</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#timer">Timer</a>
+        <a href="#planner">Mark planner</a>
+        <a href="#triage">Question triage</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 095 | 45 minutes | Paper 1 Sections 1-8 | 5-minute quiz</p>
+            <h2>Short answers are not tiny essays. They are marks delivered on time.</h2>
+            <p>
+              This lesson turns Paper 1 knowledge into timed short-answer performance. You will practise quick
+              recall, decide how much to write for the marks available, and self-mark using CIE-style wording.
+              The aim is controlled speed: enough detail for marks, no decorative paragraphs.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Pace</strong><span>allocate time from mark value and avoid over-writing low-mark answers</span></div>
+              <div><strong>Answer</strong><span>write concise definitions, calculations, comparisons and explanations</span></div>
+              <div><strong>Mark</strong><span>use strict wording to identify missing mechanism, unit or context</span></div>
+            </div>
+          </div>
+          <div class="sql-visual" aria-label="Timed short-answer visual">
+            <span class="keyword">1 mark</span><span>precise term or value</span>
+            <span class="keyword">2 marks</span><span>point + explanation / method + answer</span>
+            <span class="keyword">4-6 marks</span><span>several distinct points with scenario links</span>
+            <p>If a 2-mark question gets a 12-line answer, the clock has already filed a complaint.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use the mark value as a writing limit. One mark rarely needs a paragraph; six marks need distinct points.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Students often know the content but lose marks by spending too long on early questions or writing vague extra words.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Fast is not the same as vague. A short answer still needs exact terminology, units, or mechanism.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>How much should you write?</h2>
+            <p>The mark value is a hint, not a decorative number. The examiner is not paying rent for your paragraphs.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="one">State the purpose of a primary key. [1]</button>
+            <button class="choice-card" type="button" data-hook="two">Explain why cache can improve performance. [2]</button>
+            <button class="choice-card" type="button" data-hook="four">Compare open-source and proprietary software. [4]</button>
+            <button class="choice-card" type="button" data-hook="six">Evaluate facial recognition in school. [6]</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose a card to see the expected writing depth.
+          </div>
+        </section>
+
+        <section class="panel" id="timing">
+          <div class="section-title">
+            <p class="eyebrow">Timing rules</p>
+            <h2>A practical mark-per-minute model</h2>
+          </div>
+          <div class="data-table timing-table" role="table" aria-label="Timing guidance">
+            <div class="table-row table-head" role="row"><div>Mark value</div><div>Target time</div><div>Answer behaviour</div></div>
+            <div class="table-row" role="row"><div>1 mark</div><div>30-45 seconds</div><div>give the term/value directly, then stop</div></div>
+            <div class="table-row" role="row"><div>2 marks</div><div>1-2 minutes</div><div>two separate points, or point plus mechanism/consequence</div></div>
+            <div class="table-row" role="row"><div>3-4 marks</div><div>3-5 minutes</div><div>structured bullets, each carrying a mark-worthy idea</div></div>
+            <div class="table-row" role="row"><div>5-6 marks</div><div>6-8 minutes</div><div>plan briefly, then write distinct points with context</div></div>
+          </div>
+          <div class="callout">Chinese support: pace = 控制速度；mark value = 分值；concise = 简洁；distinct point = 独立得分点；self-mark = 自我批改。</div>
+        </section>
+
+        <section class="panel" id="quiz">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Quick retrieval across Paper 1</h2>
+            <p>Use the timer below if you want the pressure. The questions here are deliberately short.</p>
+          </div>
+          <div class="quick-grid">
+            <article><strong>1.</strong><span>What is the 8-bit denary range for unsigned binary?</span></article>
+            <article><strong>2.</strong><span>Name the protocol used to transfer web pages securely.</span></article>
+            <article><strong>3.</strong><span>Which register stores the address of the next instruction?</span></article>
+            <article><strong>4.</strong><span>Which translator executes code one statement at a time?</span></article>
+            <article><strong>5.</strong><span>Which SQL clause filters records?</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="short">
+          <div class="section-title">
+            <p class="eyebrow">Short-answer craft</p>
+            <h2>Compress the answer, not the marks</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Definition</strong><span>Term + essential property. Example: A primary key uniquely identifies a record.</span></article>
+            <article><strong>Calculation</strong><span>Formula + substitution + conversion + unit. Skip none of these.</span></article>
+            <article><strong>Explain</strong><span>Mechanism + consequence. Use "because" or "so that".</span></article>
+            <article><strong>Compare</strong><span>Paired differences. Use "whereas" to force contrast.</span></article>
+            <article><strong>SQL</strong><span>Required fields, table, condition/group/sort. Avoid SELECT * unless asked.</span></article>
+            <article><strong>Evaluate</strong><span>Benefit, concern, safeguard, judgement. Keep each point short.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="marking">
+          <div class="section-title">
+            <p class="eyebrow">Self-marking</p>
+            <h2>Three checks before moving on</h2>
+          </div>
+          <div class="data-table timing-table" role="table" aria-label="Self-marking checks">
+            <div class="table-row table-head" role="row"><div>Check</div><div>Question to ask</div><div>Fix if missing</div></div>
+            <div class="table-row" role="row"><div>Precision</div><div>Did I use the exact term or unit?</div><div>add the term, register, SQL clause, protocol or unit</div></div>
+            <div class="table-row" role="row"><div>Mechanism</div><div>Did I say how it works?</div><div>add the process: filters, encrypts, schedules, links, fetches</div></div>
+            <div class="table-row" role="row"><div>Context</div><div>Did I link to the scenario?</div><div>name the user, network, database, school or business from the question</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This timed practice samples Paper 1 Sections 1-8</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Representation calculations, network facts, hardware/CPU recall, system software, security controls, ethics evaluation and database/SQL short answers.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 096 moves into extended-response practice. This page focuses on short-answer speed and accuracy.</span></div>
+            <div><strong>Assessment rhythm</strong><span>5-minute quiz, timed drills, self-marking, correction and Cambridge-style short-answer MS.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="timer">
+          <div class="section-title">
+            <p class="eyebrow">Interactive timer</p>
+            <h2>Run a timed short-answer sprint</h2>
+          </div>
+          <div class="timer-box">
+            <div class="timer-display" id="timerDisplay">05:00</div>
+            <div class="timer-controls">
+              <button class="primary-button" type="button" data-time="300">5 min</button>
+              <button class="primary-button" type="button" data-time="180">3 min</button>
+              <button class="primary-button" type="button" data-time="60">1 min</button>
+              <button class="primary-button" type="button" id="startTimer">Start</button>
+              <button class="answer-toggle" type="button" id="pauseTimer">Pause</button>
+              <button class="answer-toggle" type="button" id="resetTimer">Reset</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="planner">
+          <div class="section-title">
+            <p class="eyebrow">Interactive mark planner</p>
+            <h2>Estimate a sensible time budget</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Marks available
+              <select id="markInput">
+                <option value="1">1 mark</option>
+                <option value="2">2 marks</option>
+                <option value="3">3 marks</option>
+                <option value="4">4 marks</option>
+                <option value="6">6 marks</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="planBtn">Plan time</button>
+          </div>
+          <div class="answer-frame" id="planResult">Choose a mark value to see the target writing behaviour.</div>
+        </section>
+
+        <section class="panel" id="triage">
+          <div class="section-title">
+            <p class="eyebrow">Interactive question triage</p>
+            <h2>Decide: answer now, flag, or return later?</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Situation
+              <select id="triageInput">
+                <option value="known">You know a 1-mark definition immediately.</option>
+                <option value="calc">A 5-mark calculation is familiar but needs working.</option>
+                <option value="blank">You cannot identify the topic after 20 seconds.</option>
+                <option value="long">A 6-mark evaluation answer could become too long.</option>
+                <option value="sql">A 5-mark SQL query needs GROUP BY and an aggregate.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="triageBtn">Triage</button>
+          </div>
+          <div class="feedback" id="triageResult">Choose a situation to decide a practical exam move.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Short answers trimmed to the mark value</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="one">1 mark</button>
+            <button class="tab" type="button" data-example="two">2 marks</button>
+            <button class="tab" type="button" data-example="calc">Calculation</button>
+            <button class="tab" type="button" data-example="six">6 marks</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Quick-answer retrieval</h2>
+            <p>Type concise answers. Use Show answer only after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair time-wasting or under-marked answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style timed short-answer set with expandable MS</h2>
+            <p>Attempt the set in 18-20 minutes, then mark strictly. The MS rewards concise precision, method and context.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Timed short-answer checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Spend by marks</strong><span>Low-mark questions need direct answers; high-mark questions need structure.</span></div>
+            <div><strong>Write for credit</strong><span>Term, method, mechanism, context, consequence, unit.</span></div>
+            <div><strong>Move on</strong><span>If topic recognition fails, flag it and return after securing easier marks.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: 12-minute sprint</strong>
+              <span>Answer six short Paper 1 questions: two 1-mark, two 2-mark, one 4-mark and one 5-mark question. Stop at 12 minutes.</span>
+            </article>
+            <article>
+              <strong>Task 2: Strict self-mark</strong>
+              <span>Mark your sprint with a different colour. Label each lost mark as precision, mechanism, context, unit or timing.</span>
+            </article>
+            <article>
+              <strong>Task 3: Rewrite</strong>
+              <span>Rewrite the two weakest answers in half the words while keeping all mark-worthy points.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

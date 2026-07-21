@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 059 | Error types: syntax, logic, runtime and translation diagnostics</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
+        <h1>Error types: syntax, logic, runtime and translation diagnostics</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Core idea</a>
+        <a href="#syntax">Syntax errors</a>
+        <a href="#logic">Logic errors</a>
+        <a href="#runtime">Runtime errors</a>
+        <a href="#diagnostics">Diagnostics</a>
+        <a href="#compare">Comparison</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Error tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 059 | 45 minutes | Paper 1 Section 5 | System software</p>
+            <h2>Not all errors are equal. Some stop translation, some crash at run time, and some smile while giving the wrong answer.</h2>
+            <p>
+              This lesson classifies syntax, logic and runtime errors, then connects them to compiler and interpreter diagnostics.
+              The goal is to diagnose the error from evidence: when it happens, what the translator reports, and whether the program still runs.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Classify</strong><span>syntax, logic and runtime errors from short scenarios</span></div>
+              <div><strong>Explain</strong><span>how compiler and interpreter diagnostics help programmers</span></div>
+              <div><strong>Justify</strong><span>why an error belongs to a category using evidence, not vibes</span></div>
+            </div>
+          </div>
+          <div class="error-card" aria-label="Error type sketch">
+            <div class="error-stack">
+              <span>Syntax: grammar broken</span>
+              <span>Logic: runs, wrong result</span>
+              <span>Runtime: fails while running</span>
+              <span>Diagnostics: messages to locate/fix</span>
+            </div>
+            <p>The compiler can complain loudly. The worst logic error just nods and lies.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask: does it fail before running, during running, or run successfully with the wrong result?</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam answers need a category plus a reason. "There is an error" is not a diagnosis.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not call every incorrect answer a runtime error. If the program completes but calculates wrongly, it is usually a logic error.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A program calculates a bill, runs without crashing, but charges everyone double. What type of error is most likely?</h2>
+            <p>Click the best answer. The program is confident, fast, and absolutely wrong.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="logic">Logic error</button>
+            <button class="choice-card" type="button" data-hook="syntax">Syntax error</button>
+            <button class="choice-card" type="button" data-hook="runtime">Runtime error</button>
+            <button class="choice-card" type="button" data-hook="linker">Linker error</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. The timing and symptom of the error matter.
+          </div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Error classification depends on when and how the fault appears</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Before execution</strong><span>Syntax and translation errors may stop a program from being translated or run.</span></article>
+            <article><strong>During execution</strong><span>Runtime errors occur while the program is running.</span></article>
+            <article><strong>After execution</strong><span>Logic errors may allow completion but produce an incorrect result.</span></article>
+            <article><strong>Diagnostics</strong><span>Error messages and locations help the programmer identify and correct faults.</span></article>
+          </div>
+          <div class="callout">Chinese support: syntax error = 语法错误；logic error = 逻辑错误；runtime error = 运行时错误；diagnostic message = 诊断信息；debugging = 调试。</div>
+        </section>
+
+        <section class="panel" id="syntax">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Syntax errors break the grammar rules of the language</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Meaning</strong><span>The code structure does not follow the language grammar.</span></article>
+            <article><strong>Examples</strong><span>Missing brackets, missing keywords, invalid statement structure or misplaced punctuation.</span></article>
+            <article><strong>Detection</strong><span>Detected by translator syntax analysis or parser before successful translation/execution.</span></article>
+            <article><strong>Diagnostic</strong><span>Usually reports a line number or location near the invalid syntax.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="logic">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Logic errors make the program do the wrong thing</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Meaning</strong><span>The code is syntactically valid and may run, but the algorithm or condition is wrong.</span></article>
+            <article><strong>Examples</strong><span>Using <code>&lt;</code> instead of <code>&lt;=</code>, wrong formula, wrong loop condition or off-by-one error.</span></article>
+            <article><strong>Detection</strong><span>Usually found by testing, tracing or comparing actual output with expected output.</span></article>
+            <article><strong>Trap</strong><span>A translator may not detect it because the instructions are legal.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="runtime">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Runtime errors occur while the program is executing</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Meaning</strong><span>The program starts running but fails because of an event or invalid operation during execution.</span></article>
+            <article><strong>Examples</strong><span>Division by zero, file not found, array index out of range or insufficient memory.</span></article>
+            <article><strong>Result</strong><span>The program may crash, halt, raise an exception or display an error message.</span></article>
+            <article><strong>Handling</strong><span>Robust programs may use validation and exception handling to reduce runtime failure.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="diagnostics">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Translation diagnostics help locate and correct errors</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Compiler</strong><span>May report a list of errors after attempting translation.</span></article>
+            <article><strong>Interpreter</strong><span>May stop at or near the statement being translated/executed.</span></article>
+            <article><strong>Useful details</strong><span>Error type, line number, token, expected symbol or explanation of the fault.</span></article>
+            <article><strong>Limitation</strong><span>The reported line may be near the cause, not always the exact cause.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Compare error types by evidence</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Error type comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Error type</div>
+              <div role="columnheader">When noticed</div>
+              <div role="columnheader">Evidence</div>
+              <div role="columnheader">Example</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Syntax</div>
+              <div role="cell">Translation/parsing time</div>
+              <div role="cell">Invalid grammar or structure.</div>
+              <div role="cell">Missing bracket or malformed IF statement.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Logic</div>
+              <div role="cell">Testing/output checking</div>
+              <div role="cell">Program runs but result is incorrect.</div>
+              <div role="cell">Average calculated with wrong divisor.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Runtime</div>
+              <div role="cell">While executing</div>
+              <div role="cell">Program fails due to operation or resource problem.</div>
+              <div role="cell">Division by zero or file not found.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Syntax, logic and runtime error definitions and examples.</span></div>
+            <div><strong>Covered</strong><span>Compiler/interpreter diagnostics, line numbers, messages and limits.</span></div>
+            <div><strong>Covered</strong><span>Classification from scenario evidence and exam-style wording.</span></div>
+            <div><strong>Boundary</strong><span>Linkers, loaders and libraries were covered in Lesson 058.</span></div>
+            <div><strong>Boundary</strong><span>Choosing translation approaches is covered in Lesson 060.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Error diagnosis tool</h2>
+            <p>Select a symptom and classify the most likely error type.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Symptom
+              <select id="scenarioInput">
+                <option value="missing">Translator reports: expected ) before ENDIF</option>
+                <option value="double">Program runs but doubles every price by mistake</option>
+                <option value="zero">Program crashes when denominator is 0</option>
+                <option value="file">Program starts but fails because a file is missing</option>
+                <option value="offbyone">Loop runs one fewer time than intended</option>
+                <option value="line">Diagnostic points to the line after the real missing symbol</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Diagnose</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Diagnose from code behaviour</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="syntax">Syntax</button>
+            <button class="tab" type="button" data-example="logic">Logic</button>
+            <button class="tab" type="button" data-example="runtime">Runtime</button>
+            <button class="tab" type="button" data-example="diagnostic">Diagnostic</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant-check questions</h2>
+            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the almost-right answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Answer first, then reveal the CIE-style mark scheme</h2>
+            <p>These are original Cambridge-style questions. The mark schemes include strict wording notes and follow-through guidance.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Error diagnosis memory map</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Syntax</strong><span>Grammar invalid; translator can detect before successful running.</span></div>
+            <div><strong>Logic</strong><span>Program runs but algorithm gives wrong output.</span></div>
+            <div><strong>Runtime</strong><span>Program fails during execution.</span></div>
+            <div><strong>Compiler</strong><span>May report a list of errors after translation attempt.</span></div>
+            <div><strong>Interpreter</strong><span>May stop at the statement being executed.</span></div>
+            <div><strong>Exam rule</strong><span>Classify, justify with evidence, then give a relevant example.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear output, not vague revision</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Error evidence table</strong>
+              <span>Create a table for syntax, logic and runtime errors: when noticed, symptom, example and how to detect it.</span>
+            </article>
+            <article>
+              <strong>Task 2: Classification set</strong>
+              <span>Write five short code-behaviour scenarios and classify each error type with one-sentence evidence.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Explain how translation diagnostics help programmers find errors, and why logic errors may still require testing.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

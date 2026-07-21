@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 046 | Assembly language basics and mnemonics</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
+        <h1>Assembly language basics and mnemonics</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#assembly">Assembly language</a>
+        <a href="#mnemonics">Mnemonics</a>
+        <a href="#structure">Line structure</a>
+        <a href="#assembler">Assembler</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Instruction parser</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 046 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
+            <h2>Assembly is readable machine thinking, not friendly small talk.</h2>
+            <p>
+              Assembly language is a low-level language that uses mnemonics such as
+              LOAD, ADD and JMP to represent machine-code instructions. It is closer
+              to the processor than high-level language, but it still needs an
+              assembler before the CPU can execute it.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>assembly language, mnemonic and assembler</span></div>
+              <div><strong>Identify</strong><span>mnemonics, operands, labels and comments in simple lines</span></div>
+              <div><strong>Explain</strong><span>how assembly maps to machine code and why it is processor-specific</span></div>
+            </div>
+          </div>
+          <div class="assembly-card" aria-label="Assembly language sketch">
+            <pre><code>LOOP: LOAD  total
+      ADD   value
+      STORE total
+      JMP   LOOP</code></pre>
+            <p>Mnemonics make the operation readable; the assembler makes it executable.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Keep the example instruction set tiny. The goal is vocabulary and mapping, not real architecture syntax.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam answers often lose marks by calling assembly "machine code" or calling an assembler a compiler.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Assembly is low-level and uses mnemonics, but it is not directly executed as text by the CPU.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which part of `ADD 90` is the mnemonic?</h2>
+            <p>Click the best answer. The mnemonic is the readable operation, not the number doing the heavy lifting.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="add">ADD</button>
+            <button class="choice-card" type="button" data-hook="ninety">90</button>
+            <button class="choice-card" type="button" data-hook="both">ADD 90</button>
+            <button class="choice-card" type="button" data-hook="cpu">CPU</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click one. Ask: which part represents the operation?
+          </div>
+        </section>
+
+        <section class="panel" id="assembly">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>What assembly language is</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <strong>Low-level language</strong>
+              <span>Assembly language is close to machine code and closely linked to a processor's instruction set.</span>
+            </article>
+            <article>
+              <strong>Uses mnemonics</strong>
+              <span>Human-readable abbreviations represent machine-code operations.</span>
+            </article>
+            <article>
+              <strong>Processor-specific</strong>
+              <span>Assembly syntax and available instructions depend on the target architecture.</span>
+            </article>
+            <article>
+              <strong>Needs translation</strong>
+              <span>An assembler converts assembly language into machine code.</span>
+            </article>
+          </div>
+          <div class="callout">Chinese support: assembly language = 汇编语言；mnemonic = 助记符；assembler = 汇编器；label = 标签；directive = 伪指令/指示语句。</div>
+        </section>
+
+        <section class="panel" id="mnemonics">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Mnemonics represent operations</h2>
+          </div>
+          <div class="mnemonic-table" role="table" aria-label="Mnemonic examples">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Mnemonic</div>
+              <div role="columnheader">Likely operation</div>
+              <div role="columnheader">Example</div>
+              <div role="columnheader">Exam-safe wording</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">LOAD</div>
+              <div role="cell">Load a value into a register/ACC.</div>
+              <div role="cell">LOAD count</div>
+              <div role="cell">LOAD is a mnemonic for a machine-code load instruction.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">STORE</div>
+              <div role="cell">Store a register/ACC value in memory.</div>
+              <div role="cell">STORE total</div>
+              <div role="cell">STORE represents an operation that writes a value to memory.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">ADD</div>
+              <div role="cell">Add a value to a register/ACC.</div>
+              <div role="cell">ADD value</div>
+              <div role="cell">ADD is easier to read than a binary opcode for addition.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">JMP</div>
+              <div role="cell">Change program flow to another address/label.</div>
+              <div role="cell">JMP LOOP</div>
+              <div role="cell">JMP maps to a machine-code branch/jump instruction.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="structure">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Structure of a simple assembly line</h2>
+          </div>
+          <div class="line-card">
+            <code>LOOP: ADD value ; add next item</code>
+            <div class="line-grid">
+              <span><strong>LOOP:</strong> label</span>
+              <span><strong>ADD</strong> mnemonic</span>
+              <span><strong>value</strong> operand</span>
+              <span><strong>; add next item</strong> comment</span>
+            </div>
+          </div>
+          <div class="structure-grid">
+            <article>
+              <h3>Label</h3>
+              <p>A symbolic name for an address or line, often used by jump/branch instructions.</p>
+            </article>
+            <article>
+              <h3>Operand</h3>
+              <p>The value, address, register or label used by the instruction.</p>
+            </article>
+            <article>
+              <h3>Comment</h3>
+              <p>Text for human readers. Comments are ignored by the assembler.</p>
+            </article>
+            <article>
+              <h3>Directive</h3>
+              <p>An instruction to the assembler, not a CPU instruction. It may reserve storage or define constants.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="assembler">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Assembler: text to machine code</h2>
+          </div>
+          <div class="flow-grid">
+            <article><strong>1. Read source</strong><span>Assembly source contains mnemonics, labels, operands, comments and directives.</span></article>
+            <article><strong>2. Resolve labels</strong><span>Labels are replaced with actual addresses or offsets.</span></article>
+            <article><strong>3. Translate mnemonics</strong><span>Mnemonics are converted to binary opcodes and operands are encoded.</span></article>
+            <article><strong>4. Output object/machine code</strong><span>The generated machine code can be loaded and executed by the processor.</span></article>
+          </div>
+          <div class="trap-card inline-card">
+            <h3>Common trap</h3>
+            <p>An assembler translates assembly to machine code. A compiler usually translates high-level language to lower-level code.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Assembly language as a low-level language using mnemonics.</span></div>
+            <div><strong>Covered</strong><span>Mnemonics, operands, labels, comments and directives in simple assembly lines.</span></div>
+            <div><strong>Covered</strong><span>Assembler translating assembly source into machine code.</span></div>
+            <div><strong>Covered</strong><span>Differences between assembly language, machine code and high-level language.</span></div>
+            <div><strong>Not this lesson</strong><span>Addressing modes and detailed operand interpretation are covered in Lesson 047.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Assembly instruction parser</h2>
+            <p>Select a line and identify its mnemonic, operand and translation role.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Assembly line
+              <select id="lineInput">
+                <option value="load">LOAD count</option>
+                <option value="add">ADD value</option>
+                <option value="jump">LOOP: JMP START</option>
+                <option value="comment">STORE total ; save result</option>
+                <option value="directive">COUNT: DAT 5</option>
+              </select>
+            </label>
+            <button type="button" id="parseBtn">Parse line</button>
+          </div>
+          <div class="result-box" id="parseResult" aria-live="polite"></div>
+          <div class="method-box" id="parseMethod"></div>
+          <div class="reject-box" id="parseTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Read assembly like a structured sentence</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="parse">Parse</button>
+            <button class="tab" type="button" data-example="translate">Translate concept</button>
+            <button class="tab" type="button" data-example="compare">Compare languages</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+            <p>Use exact vocabulary. The CPU will not be offended, but the mark scheme might be.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the assembly misconception</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeList"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>CIE-style questions with expandable mark schemes</h2>
+            <p>These are original Cambridge-style questions. MS wording is strict about assembler vs compiler and assembly vs machine code.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Readable, low-level, still translated</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Assembly</strong><span>Low-level language close to machine code.</span></div>
+            <div><strong>Mnemonic</strong><span>Readable abbreviation for an operation, e.g. ADD.</span></div>
+            <div><strong>Operand</strong><span>Value, address, register or label used by instruction.</span></div>
+            <div><strong>Label</strong><span>Symbolic name for an address or line.</span></div>
+            <div><strong>Assembler</strong><span>Translates assembly into machine code.</span></div>
+            <div><strong>Machine code</strong><span>Binary instructions executed by the CPU.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Make assembly vocabulary exam-ready</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Define assembly language, mnemonic, assembler, label and directive in one sentence each.</li>
+            <li>Annotate these lines: `START: LOAD count`, `ADD value`, `STORE total ; save answer`, `JMP START`.</li>
+            <li>Write a 5-mark answer: "Explain how an assembler translates assembly language into machine code."</li>
+            <li>Compare assembly language and machine code using the words mnemonic, binary and execute.</li>
+            <li>Correct this sentence: "Assembly is high-level machine code that is run directly by the CPU."</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

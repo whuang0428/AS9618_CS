@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 089 | Section 8 review: designing and querying relational data</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
+        <h1>Section 8 review: designing and querying relational data</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#map">Retrieval map</a>
+        <a href="#design">Design review</a>
+        <a href="#sql">SQL review</a>
+        <a href="#protection">Protection review</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Question classifier</a>
+        <a href="#tracer">SQL tracer</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 089 | 45 minutes | Paper 1 Section 8 | stage review</p>
+            <h2>The first mark is often hidden in choosing the right toolbox.</h2>
+            <p>
+              This review lesson mixes relational database design, keys, normalisation, SQL and database protection.
+              The goal is not to reread notes politely. The goal is to identify the topic, answer with precise terms,
+              and repair weak responses into mark-worthy ones.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Recognise</strong><span>which Section 8 concept a question is testing</span></div>
+              <div><strong>Apply</strong><span>design rules, SQL clauses and protection controls to scenarios</span></div>
+              <div><strong>Improve</strong><span>answers using Cambridge-style marking language</span></div>
+            </div>
+          </div>
+          <div class="sql-visual" aria-label="Review visual">
+            <span class="keyword">Design</span><span>entities, tables, keys, relationships</span>
+            <span class="keyword">Query</span><span>SELECT, WHERE, ORDER BY, GROUP BY, joins</span>
+            <span class="keyword">Change</span><span>INSERT, UPDATE, DELETE</span>
+            <span class="keyword">Protect</span><span>validation, verification, security, backup</span>
+            <p>Mixed questions are less scary when you label the tool before using it.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Pause before answering: underline the command word, topic clue and scenario data. Then choose the Section 8 tool.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>In review questions, students often know facts but answer the wrong topic. Topic recognition protects marks.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not write generic benefits such as "faster" or "better". Explain the mechanism and consequence in the scenario.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which mental toolbox should open first?</h2>
+            <p>Reading a database question without identifying the topic is like opening every app on your laptop and hoping one of them writes SQL.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="normalise">A table stores repeated book details for every loan.</button>
+            <button class="choice-card" type="button" data-hook="sql">Output current loans where Returned is FALSE.</button>
+            <button class="choice-card" type="button" data-hook="verify">Check a typed email against a paper form.</button>
+            <button class="choice-card" type="button" data-hook="key">Choose a field that uniquely identifies each member.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose any card to identify the topic first.
+          </div>
+        </section>
+
+        <section class="panel" id="map">
+          <div class="section-title">
+            <p class="eyebrow">Retrieval map</p>
+            <h2>Section 8 knowledge map</h2>
+          </div>
+          <div class="retrieval-grid">
+            <article><strong>Data and DBMS</strong><span>data vs information; DBMS roles; avoiding flat-file limitations</span></article>
+            <article><strong>Tables and keys</strong><span>records, fields, data types, constraints, primary keys and foreign keys</span></article>
+            <article><strong>Design</strong><span>entity-relationship modelling and normalisation to reduce duplication</span></article>
+            <article><strong>SQL retrieval</strong><span><code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, <code>ORDER BY</code>, aggregates and joins</span></article>
+            <article><strong>SQL modification</strong><span><code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, field/value matching and safe <code>WHERE</code></span></article>
+            <article><strong>Protection</strong><span>validation, verification, security controls, backups and restore testing</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="design">
+          <div class="section-title">
+            <p class="eyebrow">Design review</p>
+            <h2>Relational design: what earns marks?</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Primary key</strong><span>Uniquely identifies a record in one table. It must be unique and reliable.</span></article>
+            <article><strong>Foreign key</strong><span>Stores a value that matches a primary key in another table, creating a relationship.</span></article>
+            <article><strong>Normalisation</strong><span>Separates repeated data into related tables to reduce duplication and update errors.</span></article>
+          </div>
+          <div class="callout">Chinese support: review = 复习；identify the topic = 识别题型；mechanism = 机制；consequence = 结果/影响。</div>
+        </section>
+
+        <section class="panel" id="sql">
+          <div class="section-title">
+            <p class="eyebrow">SQL review</p>
+            <h2>SQL clauses: choose the clause that matches the request</h2>
+          </div>
+          <div class="data-table sql-table" role="table" aria-label="SQL clause review">
+            <div class="table-row table-head" role="row"><div>Request clue</div><div>Use</div><div>Example</div></div>
+            <div class="table-row" role="row"><div>output fields</div><div><code>SELECT</code></div><div><code>SELECT Title, Borrower</code></div></div>
+            <div class="table-row" role="row"><div>filter rows</div><div><code>WHERE</code></div><div><code>WHERE Returned = FALSE</code></div></div>
+            <div class="table-row" role="row"><div>sort rows</div><div><code>ORDER BY</code></div><div><code>ORDER BY Price DESC</code></div></div>
+            <div class="table-row" role="row"><div>summary per group</div><div><code>GROUP BY</code></div><div><code>GROUP BY Category</code></div></div>
+            <div class="table-row" role="row"><div>related tables</div><div>join condition</div><div><code>Loan.BookID = Book.BookID</code></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="protection">
+          <div class="section-title">
+            <p class="eyebrow">Protection review</p>
+            <h2>Do not swap the security vocabulary</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Validation</strong><span>Checks data follows rules, such as range, type, format or presence.</span></article>
+            <article><strong>Verification</strong><span>Checks entered data matches a source, using proofreading or double entry.</span></article>
+            <article><strong>Security and backup</strong><span>Security restricts access; backup enables recovery after loss or corruption.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This is the Section 8 review checkpoint</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Lessons 078-088: DBMS roles, relational design, keys, ER modelling, normalisation, SQL retrieval, SQL modification and data protection.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 090 starts wider Paper 1 review, beginning with representation and communication. This page stays within Section 8.</span></div>
+            <div><strong>Assessment rhythm</strong><span>Stage review with mixed retrieval, timed response practice and Cambridge-style mark scheme checking.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive question classifier</p>
+            <h2>Identify the topic before answering</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Mixed question clue
+              <select id="classifierInput">
+                <option value="flat">A spreadsheet repeats a student's address on every activity booking.</option>
+                <option value="pk">A question asks which field uniquely identifies a loan record.</option>
+                <option value="join">A query must output StudentName and BookTitle from different tables.</option>
+                <option value="group">A query asks for number of books in each category.</option>
+                <option value="backup">A server fails and the club needs to restore yesterday's records.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+          </div>
+          <div class="feedback" id="classifyResult">Choose a clue and classify the topic.</div>
+        </section>
+
+        <section class="panel" id="tracer">
+          <div class="section-title">
+            <p class="eyebrow">Interactive SQL tracer</p>
+            <h2>Trace one mixed SQL result</h2>
+          </div>
+          <div class="data-table book-table" role="table" aria-label="Book table">
+            <div class="table-row table-head" role="row"><div>BookID</div><div>Title</div><div>Category</div><div>Copies</div></div>
+            <div class="table-row" role="row"><div>B01</div><div>Networks</div><div>Computing</div><div>4</div></div>
+            <div class="table-row" role="row"><div>B02</div><div>Poems</div><div>Literature</div><div>7</div></div>
+            <div class="table-row" role="row"><div>B03</div><div>Databases</div><div>Computing</div><div>3</div></div>
+            <div class="table-row" role="row"><div>B04</div><div>Drama</div><div>Literature</div><div>2</div></div>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Query
+              <select id="queryInput">
+                <option value="q1">SELECT Title FROM Book WHERE Category = 'Computing'</option>
+                <option value="q2">SELECT Title, Copies FROM Book ORDER BY Copies DESC</option>
+                <option value="q3">SELECT Category, COUNT(*) FROM Book GROUP BY Category</option>
+                <option value="q4">SELECT Category, SUM(Copies) FROM Book GROUP BY Category</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="queryBtn">Trace result</button>
+          </div>
+          <div class="result-table" id="queryResult">Choose a query to see the result.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Annotate where the marks are</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="design">Design</button>
+            <button class="tab" type="button" data-example="sql">SQL</button>
+            <button class="tab" type="button" data-example="protect">Protection</button>
+            <button class="tab" type="button" data-example="improve">Improve answer</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Mixed retrieval check</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Rewrite weak review answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style stage review with expandable MS</h2>
+            <p>These questions mix Section 8 topics. The mark schemes reward precise terms, method and scenario consequence.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Stage review checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Label the topic</strong><span>Design, SQL, modification or protection.</span></div>
+            <div><strong>Use exact terms</strong><span>Primary key, foreign key, validation, verification, aggregate, join.</span></div>
+            <div><strong>Give consequence</strong><span>Explain what error is reduced, what data is protected or what output is produced.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Retrieval grid</strong>
+              <span>Create a 12-cell retrieval grid covering DBMS, keys, relationships, normalisation, SQL and data protection.</span>
+            </article>
+            <article>
+              <strong>Task 2: Timed SQL</strong>
+              <span>Write one query using <code>WHERE</code>, one using <code>ORDER BY</code>, one using <code>GROUP BY</code> and one using a join.</span>
+            </article>
+            <article>
+              <strong>Task 3: Improve a weak answer</strong>
+              <span>Rewrite: "Validation is good because it makes data correct." Include one named check, a mechanism and a limitation.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

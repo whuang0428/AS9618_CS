@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 006 | Binary fractions and precision limits</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
+        <h1>Binary fractions and precision limits</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#point">Binary point</a>
+        <a href="#convert">Conversion</a>
+        <a href="#precision">Precision</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Converter</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 006 | 45 minutes | Informal questioning</p>
+            <h2>The binary point is not decoration. It moves the weights.</h2>
+            <p>
+              This lesson extends place value to fractional positions such as `1/2`, `1/4`
+              and `1/8`, then uses simple examples to explain why some denary fractions
+              cannot be represented exactly in a fixed number of binary places.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div>
+                <strong>Identify</strong>
+                <span>binary fractional place values after the binary point</span>
+              </div>
+              <div>
+                <strong>Convert</strong>
+                <span>simple fixed-point binary fractions and denary fractions</span>
+              </div>
+              <div>
+                <strong>Explain</strong>
+                <span>precision limits, truncation, rounding and representation error</span>
+              </div>
+            </div>
+          </div>
+          <div class="binary-display" aria-label="Binary fraction focus">
+            <span>10.101₂</span>
+            <p>`10.101₂` is not ten point one hundred and one. Binary is less dramatic, but more strict.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Read the point aloud as “binary point”, then label every column before calculating.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Computer systems store numbers using limited bits, so some fractions are approximations rather than exact values.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not treat `0.1₂` as one tenth. It is one half because the first place after the point is `2⁻¹`.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which value is `0.1₂`?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="one-tenth">0.1₁₀</button>
+            <button class="choice-card" type="button" data-hook="half">0.5₁₀</button>
+            <button class="choice-card" type="button" data-hook="one">1₁₀</button>
+            <button class="choice-card" type="button" data-hook="unknown">It cannot be known</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick an answer. The first binary fractional place is worth `1/2`, not `1/10`.
+          </div>
+        </section>
+
+        <section class="panel" id="point">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Binary fractional place value</h2>
+          </div>
+          <div class="table-wrap">
+            <table class="place-table" aria-label="Binary fractional place value table">
+              <thead>
+                <tr>
+                  <th>Place</th>
+                  <th>2²</th>
+                  <th>2¹</th>
+                  <th>2⁰</th>
+                  <th class="point-cell">.</th>
+                  <th>2⁻¹</th>
+                  <th>2⁻²</th>
+                  <th>2⁻³</th>
+                  <th>2⁻⁴</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Value</th>
+                  <td>4</td>
+                  <td>2</td>
+                  <td>1</td>
+                  <td class="point-cell">.</td>
+                  <td>1/2</td>
+                  <td>1/4</td>
+                  <td>1/8</td>
+                  <td>1/16</td>
+                </tr>
+                <tr>
+                  <th>Example `10.101₂`</th>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>0</td>
+                  <td class="point-cell">.</td>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="worked-line">
+            `10.101₂ = 2 + 1/2 + 1/8 = 2.625₁₀`
+          </div>
+        </section>
+
+        <section class="guidance-grid compact" aria-label="Fraction guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make students point to each active place value before they write the final denary value.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Bits to the right of the point get smaller from left to right: `1/2`, `1/4`, `1/8`, `1/16`.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="convert">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Converting simple binary fractions</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Binary fraction to denary</h3>
+              <ol>
+                <li>Write the place values above and below the point.</li>
+                <li>Add the values for every `1` bit.</li>
+                <li>Keep the base label until the final answer.</li>
+                <li>State whether the answer is exact.</li>
+              </ol>
+            </article>
+            <article>
+              <h3>Denary fraction to binary</h3>
+              <ol>
+                <li>Use `1/2`, `1/4`, `1/8`, `1/16` as target values.</li>
+                <li>Subtract a target value when it fits.</li>
+                <li>Write `1` for a used value and `0` for a skipped value.</li>
+                <li>Stop when the remainder is zero or the bit limit is reached.</li>
+              </ol>
+            </article>
+          </div>
+          <div class="callout">Example: `0.625₁₀ = 0.101₂` because `0.5 + 0.125 = 0.625`.</div>
+        </section>
+
+        <section class="panel" id="precision">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Precision limits: why computers sometimes approximate</h2>
+          </div>
+          <div class="precision-grid">
+            <article>
+              <h3>Exact</h3>
+              <p>`0.75₁₀ = 0.11₂` exactly because `1/2 + 1/4 = 3/4`.</p>
+            </article>
+            <article>
+              <h3>Limited precision</h3>
+              <p>With four fractional bits, `0.1₁₀` becomes approximately `0.0001₂`, which is `0.0625₁₀`.</p>
+            </article>
+            <article>
+              <h3>Error</h3>
+              <p>Representation error is the difference between the intended value and the stored approximation.</p>
+            </article>
+          </div>
+          <div class="callout warning">
+            This lesson uses fixed fractional places only. Mantissa, exponent and floating-point normalisation belong to later A Level content.
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson does and does not claim</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>AS support</strong><span>Reinforces binary place value and representation accuracy from Section 1.</span></div>
+            <div><strong>Useful exam language</strong><span>Use terms such as exact value, approximation, precision, truncation and rounding carefully.</span></div>
+            <div><strong>Boundary</strong><span>Do not answer AS integer-conversion questions with floating-point mantissa/exponent methods.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Fixed binary fraction converter</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Direction
+              <select id="convertMode">
+                <option value="binaryToDenary">Binary fraction to denary</option>
+                <option value="denaryToBinary">Denary fraction to binary</option>
+              </select>
+            </label>
+            <label>
+              Value
+              <input id="convertValue" type="text" value="10.101" />
+            </label>
+            <label>
+              Fractional bits
+              <select id="precisionBits">
+                <option value="4">4 bits</option>
+                <option value="6">6 bits</option>
+                <option value="8">8 bits</option>
+              </select>
+            </label>
+            <button type="button" id="convertBtn">Convert</button>
+          </div>
+          <div class="result-box" id="convertResult" aria-live="polite"></div>
+          <div class="method-box" id="convertMethod"></div>
+          <div class="bit-visual" id="bitVisual" aria-label="Binary fraction bit visual"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="binary">10.101₂ to denary</button>
+            <button class="tab" type="button" data-example="denary">0.625₁₀ to binary</button>
+            <button class="tab" type="button" data-example="precision">0.1₁₀ with 4 bits</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Find the quiet arithmetic bug</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">`0.1₂ = 0.1₁₀`</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">`0.1₂ = 1/2 = 0.5₁₀`. The first binary fractional place is not tenths.</p>
+            </article>
+            <article>
+              <p class="wrong">`0.101₂ = 1/2 + 1/4 = 0.75₁₀`</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">The middle bit is 0, so skip `1/4`. `0.101₂ = 1/2 + 1/8 = 0.625₁₀`.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>
+              Use the buttons under each question to expand the CIE-style mark scheme.
+              These are original questions written in Cambridge style, not copied past-paper items.
+            </p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Keep the point under control</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>Binary fractional places are `1/2`, `1/4`, `1/8`, `1/16`...</span></div>
+            <div><strong>2</strong><span>Convert by adding active place values or subtracting target fractions.</span></div>
+            <div><strong>3</strong><span>Limited bits can force truncation or rounding, creating representation error.</span></div>
+            <div><strong>4</strong><span>Do not mix fixed binary fractions with later floating-point normalisation.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks, not “revise everything”</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Convert `0.11₂`, `10.01₂` and `11.101₂` to denary.</li>
+            <li>Convert `0.25₁₀`, `0.875₁₀` and `2.625₁₀` to binary.</li>
+            <li>Using four fractional bits, approximate `0.3₁₀` by repeated subtraction and state the error.</li>
+            <li>Write a 4-mark explanation of why limited binary places can cause precision loss.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Binary to denary:</strong> `0.11₂ = 0.75₁₀`; `10.01₂ = 2.25₁₀`; `11.101₂ = 3.625₁₀`.</p>
+            <p><strong>Denary to binary:</strong> `0.25₁₀ = 0.01₂`; `0.875₁₀ = 0.111₂`; `2.625₁₀ = 10.101₂`.</p>
+            <p><strong>0.3 with four fractional bits:</strong> `0.0100₂ = 0.25₁₀`, error `0.05`; if rounding to nearest four bits, `0.0101₂ = 0.3125₁₀`, error `0.0125`.</p>
+            <p><strong>Explanation focus:</strong> a fixed number of bits may stop before the exact fraction is reached, so the stored value is an approximation.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

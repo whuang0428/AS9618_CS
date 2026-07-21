@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 008 | Bitmap images, pixels, resolution and colour depth</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
+        <h1>Bitmap images: pixels, resolution and colour depth</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#pixels">Pixels</a>
+        <a href="#resolution">Resolution</a>
+        <a href="#depth">Colour depth</a>
+        <a href="#formula">File size</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Calculator</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 008 | 45 minutes | Informal questioning</p>
+            <h2>A bitmap image is a grid of tiny colour decisions.</h2>
+            <p>
+              A bitmap stores an image as pixels. Each pixel is assigned a colour code.
+              Resolution tells us how many pixels are stored, and colour depth tells us
+              how many bits are used for each pixel.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div>
+                <strong>Define</strong>
+                <span>pixel, bitmap, resolution and colour depth</span>
+              </div>
+              <div>
+                <strong>Calculate</strong>
+                <span>image file size in bits and bytes, ignoring metadata</span>
+              </div>
+              <div>
+                <strong>Explain</strong>
+                <span>quality and storage trade-offs when parameters change</span>
+              </div>
+            </div>
+          </div>
+          <div class="image-display" aria-label="Bitmap pixel focus">
+            <div class="pixel-icon" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <p>`100 × 80 × 8` is not a secret password. It is a bitmap size calculation.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Keep asking: “How many pixels?” then “How many bits per pixel?” The formula follows naturally.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Image quality, storage space and download time are linked through resolution and colour depth.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not write width × height × colour depth and then call the answer bytes. That product is in bits.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>What is stored for one pixel?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="photo">A tiny photograph</button>
+            <button class="choice-card" type="button" data-hook="colour">A binary colour code</button>
+            <button class="choice-card" type="button" data-hook="word">The word “red”</button>
+            <button class="choice-card" type="button" data-hook="camera">The camera lens</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick an answer. A bitmap is less poetic than a painting: it stores codes for pixels.
+          </div>
+        </section>
+
+        <section class="panel" id="pixels">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Bitmap images are pixel grids</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <h3>Bitmap</h3>
+              <p>An image represented as a grid of pixels, where each pixel has a stored colour value.</p>
+            </article>
+            <article>
+              <h3>Pixel</h3>
+              <p>The smallest addressable picture element in a bitmap image.</p>
+            </article>
+            <article>
+              <h3>Metadata</h3>
+              <p>Extra data about the file, such as dimensions or format. Exam calculations often say to ignore it.</p>
+            </article>
+          </div>
+          <div class="callout">
+            Chinese support: bitmap = 位图；pixel = 像素；resolution = 分辨率；colour depth = 色深。
+          </div>
+        </section>
+
+        <section class="panel" id="resolution">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Resolution: width × height</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Pixel dimensions</h3>
+              <p>`100 × 80` means 100 pixels across and 80 pixels down.</p>
+              <p>Total pixels: `100 × 80 = 8000`.</p>
+            </article>
+            <article>
+              <h3>Quality effect</h3>
+              <p>Higher resolution can show more detail because more pixels are stored.</p>
+              <p>It also increases file size if colour depth stays the same.</p>
+            </article>
+          </div>
+          <div class="pixel-demo" id="pixelDemo" aria-label="Pixel grid demonstration"></div>
+          <div class="feedback" id="pixelDemoText">Click pixels to toggle them. Each square is one stored picture element.</div>
+        </section>
+
+        <section class="panel" id="depth">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Colour depth: bits per pixel</h2>
+          </div>
+          <div class="depth-grid">
+            <article>
+              <h3>1-bit colour</h3>
+              <p>`2¹ = 2` possible colours. Useful for black/white examples.</p>
+            </article>
+            <article>
+              <h3>4-bit colour</h3>
+              <p>`2⁴ = 16` possible colours.</p>
+            </article>
+            <article>
+              <h3>8-bit colour</h3>
+              <p>`2⁸ = 256` possible colours.</p>
+            </article>
+            <article>
+              <h3>24-bit colour</h3>
+              <p>`2²⁴ = 16 777 216` possible colours.</p>
+            </article>
+          </div>
+          <div class="callout warning">
+            Higher colour depth allows more possible colours, but it does not magically improve a low-quality original image.
+          </div>
+        </section>
+
+        <section class="panel" id="formula">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Bitmap file size formula</h2>
+          </div>
+          <div class="formula-box">
+            <strong>file size in bits = width × height × colour depth</strong>
+            <span>file size in bytes = bits ÷ 8</span>
+          </div>
+          <div class="worked-line">
+            `100 × 80 × 8 = 64 000 bits = 8000 bytes`
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>How bitmap images are represented using pixels and binary colour values.</span></div>
+            <div><strong>Covered</strong><span>Resolution, colour depth and uncompressed bitmap size calculations.</span></div>
+            <div><strong>Boundary</strong><span>Compression, metadata and detailed file formats are handled separately.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Bitmap file size calculator</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Width / pixels
+              <input id="widthInput" type="number" min="1" value="100" />
+            </label>
+            <label>
+              Height / pixels
+              <input id="heightInput" type="number" min="1" value="80" />
+            </label>
+            <label>
+              Colour depth / bits
+              <select id="depthInput">
+                <option value="1">1 bit</option>
+                <option value="4">4 bits</option>
+                <option value="8" selected>8 bits</option>
+                <option value="16">16 bits</option>
+                <option value="24">24 bits</option>
+              </select>
+            </label>
+            <button type="button" id="calculateBtn">Calculate</button>
+          </div>
+          <div class="result-box" id="calcResult" aria-live="polite"></div>
+          <div class="method-box" id="calcMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="basic">100 × 80, 8-bit</button>
+            <button class="tab" type="button" data-example="depth">Colour depth effect</button>
+            <button class="tab" type="button" data-example="resolution">Resolution effect</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the file size mistake</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">`100 × 80 × 8 = 64 000 bytes`</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">The formula first gives bits. `64 000 bits ÷ 8 = 8000 bytes`.</p>
+            </article>
+            <article>
+              <p class="wrong">“Doubling width only adds a small amount because height is unchanged.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">If height and colour depth stay the same, doubling width doubles the number of pixels and doubles the file size.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>
+              Use the buttons under each question to expand the CIE-style mark scheme.
+              These are original questions written in Cambridge style, not copied past-paper items.
+            </p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Every pixel costs bits</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>A bitmap stores an image as a grid of pixels.</span></div>
+            <div><strong>2</strong><span>Resolution is the pixel dimensions: width × height.</span></div>
+            <div><strong>3</strong><span>Colour depth is the number of bits used to store each pixel colour.</span></div>
+            <div><strong>4</strong><span>Bits = width × height × colour depth; bytes = bits ÷ 8.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Define bitmap, pixel, resolution and colour depth.</li>
+            <li>Calculate the size of a `200 × 150` image using 8-bit colour depth, ignoring metadata.</li>
+            <li>Calculate how many colours can be represented with 12-bit colour depth.</li>
+            <li>Write a 4-mark explanation of how increasing colour depth affects quality and file size.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Definitions:</strong> bitmap = pixel grid image; pixel = smallest addressable picture element; resolution = width × height in pixels; colour depth = bits per pixel.</p>
+            <p><strong>Image size:</strong> `200 × 150 × 8 = 240 000 bits = 30 000 bytes`.</p>
+            <p><strong>Colours:</strong> `2¹² = 4096` possible colours.</p>
+            <p><strong>Explanation focus:</strong> higher colour depth allows more possible colours but uses more bits per pixel, increasing file size.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

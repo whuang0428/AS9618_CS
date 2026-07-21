@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 062 | Security goals: confidentiality, integrity, availability and authenticity</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
+        <h1>Security goals: confidentiality, integrity, availability and authenticity</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#risk-chain">Risk chain</a>
+        <a href="#confidentiality">Confidentiality</a>
+        <a href="#integrity">Integrity</a>
+        <a href="#availability">Availability</a>
+        <a href="#authenticity">Authenticity</a>
+        <a href="#controls">Controls</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Goal tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 062 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
+            <h2>Security is not one word. It is a set of goals that protect different things.</h2>
+            <p>
+              A control is only a good answer if it protects the right security goal in the scenario.
+              This lesson separates confidentiality, integrity, availability and authenticity, then maps each goal to suitable controls.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>confidentiality, integrity, availability and authenticity</span></div>
+              <div><strong>Classify</strong><span>risks and controls using the correct security goal</span></div>
+              <div><strong>Justify</strong><span>why a safeguard fits the asset, threat and impact</span></div>
+            </div>
+          </div>
+          <div class="security-card" aria-label="Security goal map">
+            <div class="security-stack">
+              <span>Confidentiality: only authorised viewing</span>
+              <span>Integrity: accurate and unchanged data</span>
+              <span>Availability: accessible when needed</span>
+              <span>Authenticity: identity or origin is genuine</span>
+            </div>
+            <p>Encryption is useful. It is not a universal spell for every problem.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every scenario, name the asset, threat, vulnerability, impact and control before choosing the security goal.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Many answers lose marks because the control is real but protects the wrong goal for the scenario.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not answer "encryption" automatically. It protects confidentiality, but not availability or poor user behaviour by itself.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>If the school password is <code>Password123</code>, is the problem the hacker or our optimism?</h2>
+            <p>Click the best diagnosis. The password is not weak; it is practically waving a small flag.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="vulnerability">It is a vulnerability that increases risk to confidentiality and authenticity.</button>
+            <button class="choice-card" type="button" data-hook="threat">The password itself is the attacker.</button>
+            <button class="choice-card" type="button" data-hook="availability">It only affects availability.</button>
+            <button class="choice-card" type="button" data-hook="encryption">Encryption alone fixes all password problems.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. A good security answer separates threat, vulnerability and control.
+          </div>
+        </section>
+
+        <section class="panel" id="risk-chain">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Use the risk chain before naming a control</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Asset</strong><span>Something valuable that needs protection, such as exam marks, passwords or customer records.</span></article>
+            <article><strong>Threat</strong><span>A possible cause of harm, such as unauthorised access, data corruption or service failure.</span></article>
+            <article><strong>Vulnerability</strong><span>A weakness that a threat could exploit, such as weak passwords or poor permissions.</span></article>
+            <article><strong>Control</strong><span>A safeguard that reduces likelihood or impact, such as access rights, backups or authentication.</span></article>
+          </div>
+          <div class="callout">Chinese support: asset = 资产；threat = 威胁；vulnerability = 漏洞/弱点；control = 控制措施；risk = 风险。</div>
+        </section>
+
+        <section class="panel" id="confidentiality">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Confidentiality protects data from unauthorised access</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Goal</strong><span>Only authorised users should be able to view or access the data.</span></article>
+            <article><strong>Risk</strong><span>Personal details, passwords or exam marks are viewed by unauthorised people.</span></article>
+            <article><strong>Controls</strong><span>Access rights, authentication, encryption and least privilege can support confidentiality.</span></article>
+            <article><strong>Exam wording</strong><span>Say who is prevented from reading what, and why they are unauthorised.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="integrity">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Integrity protects data from unauthorised or accidental alteration</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Goal</strong><span>Data should remain accurate, complete and unaltered unless changed by an authorised process.</span></article>
+            <article><strong>Risk</strong><span>Exam marks, bank balances or stock levels are changed incorrectly.</span></article>
+            <article><strong>Controls</strong><span>Validation, verification, access rights, checksums, hashes and audit trails can support integrity.</span></article>
+            <article><strong>Exam wording</strong><span>Explain how the control detects, prevents or records an incorrect change.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="availability">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Availability keeps systems and data accessible when needed</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Goal</strong><span>Authorised users should be able to access data and services when required.</span></article>
+            <article><strong>Risk</strong><span>Hardware failure, network failure or overload prevents legitimate use.</span></article>
+            <article><strong>Controls</strong><span>Backups, redundancy, disaster recovery, UPS and monitoring can support availability.</span></article>
+            <article><strong>Exam wording</strong><span>State what remains accessible or recoverable, and for whom.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="authenticity">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Authenticity checks that identity or data origin is genuine</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Goal</strong><span>Users, devices, messages or files should be verified as genuine.</span></article>
+            <article><strong>Risk</strong><span>An attacker pretends to be a valid user, sender or website.</span></article>
+            <article><strong>Controls</strong><span>Authentication, digital certificates, digital signatures and multi-factor authentication can support authenticity.</span></article>
+            <article><strong>Exam wording</strong><span>Say what identity or source is being verified, not just "make it secure".</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="controls">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>One control can support more than one goal, but not every goal</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Security goal comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Control</div>
+              <div role="columnheader">Often supports</div>
+              <div role="columnheader">Why</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Encryption</div>
+              <div role="cell">Confidentiality</div>
+              <div role="cell">Makes data unreadable without the correct key.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Access rights</div>
+              <div role="cell">Confidentiality and integrity</div>
+              <div role="cell">Limits who can view or alter data.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Backup</div>
+              <div role="cell">Availability</div>
+              <div role="cell">Allows recovery if data is lost or corrupted.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Hash/checksum</div>
+              <div role="cell">Integrity</div>
+              <div role="cell">Can detect whether data has changed.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Digital certificate</div>
+              <div role="cell">Authenticity</div>
+              <div role="cell">Helps verify identity or origin of a website/entity.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Confidentiality, integrity, availability and authenticity.</span></div>
+            <div><strong>Covered</strong><span>Asset, threat, vulnerability, impact and control as a risk chain.</span></div>
+            <div><strong>Covered</strong><span>Matching controls to security goals with scenario consequences.</span></div>
+            <div><strong>Boundary</strong><span>Section 5 software review ended in Lesson 061.</span></div>
+            <div><strong>Boundary</strong><span>Specific malware and social engineering types are covered in Lesson 063.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Security goal classifier</h2>
+            <p>Select a risk or control and identify the main security goal.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="readmarks">Unauthorised student views exam marks</option>
+                <option value="editmarks">Exam marks are changed without permission</option>
+                <option value="serverdown">Students cannot access the learning platform during class</option>
+                <option value="fakebank">User must verify that a banking website is genuine</option>
+                <option value="backup">Nightly backups allow recovery after disk failure</option>
+                <option value="weakpass">Weak password allows someone to log in as another user</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Classify</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Risk, goal, control, consequence</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="confidentiality">Confidentiality</button>
+            <button class="tab" type="button" data-example="integrity">Integrity</button>
+            <button class="tab" type="button" data-example="availability">Availability</button>
+            <button class="tab" type="button" data-example="authenticity">Authenticity</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant-check questions</h2>
+            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the almost-right answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Answer first, then reveal the CIE-style mark scheme</h2>
+            <p>These are original Cambridge-style questions. The mark schemes reward strict goal-control linkage.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Security goal memory map</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Confidentiality</strong><span>Prevent unauthorised viewing/access.</span></div>
+            <div><strong>Integrity</strong><span>Prevent or detect unauthorised/incorrect change.</span></div>
+            <div><strong>Availability</strong><span>Keep data/services accessible to authorised users.</span></div>
+            <div><strong>Authenticity</strong><span>Verify identity or origin is genuine.</span></div>
+            <div><strong>Risk chain</strong><span>Asset, threat, vulnerability, impact, control.</span></div>
+            <div><strong>Exam rule</strong><span>Control + mechanism + protected goal + scenario consequence.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear output, not vague revision</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: CIAA flashcards</strong>
+              <span>Create four flashcards: one for each security goal, with definition, risk example and suitable control.</span>
+            </article>
+            <article>
+              <strong>Task 2: School database risk table</strong>
+              <span>For exam marks, student addresses and login accounts, identify asset, threat, vulnerability, impact and control.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Explain two different risks to an online school system and recommend one control for each, linking each control to a security goal.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 003 | Hexadecimal notation and binary grouping</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
+        <h1>Hexadecimal notation and binary grouping</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#digits">Hex digits</a>
+        <a href="#grouping">Grouping</a>
+        <a href="#padding">Padding</a>
+        <a href="#converter">Converter</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 003 | 45 minutes | Informal questioning</p>
+            <h2>Hexadecimal is binary, packed into neat groups of four.</h2>
+            <p>
+              This lesson converts between binary and hexadecimal using nibbles. The exam skill is
+              grouping accurately from the right, mapping each 4-bit group to one hex digit, and
+              labelling the base clearly.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div>
+                <strong>Map</strong>
+                <span>4-bit binary nibbles to hexadecimal digits 0-9 and A-F</span>
+              </div>
+              <div>
+                <strong>Convert</strong>
+                <span>binary to hexadecimal and hexadecimal to binary</span>
+              </div>
+              <div>
+                <strong>Explain</strong>
+                <span>why grouping into four bits works and where padding is used</span>
+              </div>
+            </div>
+          </div>
+          <div class="binary-display" aria-label="Hexadecimal lesson focus">
+            <span>1101 0110₂</span>
+            <p>Two nibbles. Two hex digits. One compact value: D6₁₆.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Start with a long binary value and ask why humans might want a shorter notation.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Hexadecimal is common in memory addresses, machine code displays and colour values.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not convert the whole binary number to denary first unless the question asks for denary.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which is easier to copy accurately: `11010110₂` or `D6₁₆`?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="binary">The binary value</button>
+            <button class="choice-card" type="button" data-hook="hex">The hex value</button>
+            <button class="choice-card" type="button" data-hook="same">They are unrelated</button>
+            <button class="choice-card" type="button" data-hook="depends">It depends on whether I know the code</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick an answer. The shorter notation is useful only if the mapping is reliable.
+          </div>
+        </section>
+
+        <section class="panel" id="digits">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Hexadecimal digits: 0-9 then A-F</h2>
+          </div>
+          <div class="hex-table" aria-label="Hexadecimal digit table">
+            <div class="hex-cell header">Denary</div>
+            <div class="hex-cell">0</div><div class="hex-cell">1</div><div class="hex-cell">2</div><div class="hex-cell">3</div>
+            <div class="hex-cell">4</div><div class="hex-cell">5</div><div class="hex-cell">6</div><div class="hex-cell">7</div>
+            <div class="hex-cell">8</div><div class="hex-cell">9</div><div class="hex-cell">10</div><div class="hex-cell">11</div>
+            <div class="hex-cell">12</div><div class="hex-cell">13</div><div class="hex-cell">14</div><div class="hex-cell">15</div>
+            <div class="hex-cell header">Hex</div>
+            <div class="hex-cell">0</div><div class="hex-cell">1</div><div class="hex-cell">2</div><div class="hex-cell">3</div>
+            <div class="hex-cell">4</div><div class="hex-cell">5</div><div class="hex-cell">6</div><div class="hex-cell">7</div>
+            <div class="hex-cell">8</div><div class="hex-cell">9</div><div class="hex-cell accent">A</div><div class="hex-cell accent">B</div>
+            <div class="hex-cell accent">C</div><div class="hex-cell accent">D</div><div class="hex-cell accent">E</div><div class="hex-cell accent">F</div>
+          </div>
+          <div class="vocab-strip" aria-label="Key vocabulary">
+            <span><b>hexadecimal</b> 十六进制</span>
+            <span><b>nibble</b> 4-bit group</span>
+            <span><b>binary</b> 二进制</span>
+            <span><b>base label</b> 数制标记</span>
+          </div>
+        </section>
+
+        <section class="panel" id="grouping">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>One hex digit represents one nibble</h2>
+          </div>
+          <div class="nibble-grid">
+            <article>
+              <h3>Why four bits?</h3>
+              <p>Four bits can represent 16 patterns: from `0000₂` to `1111₂`. Hexadecimal has exactly 16 digits: `0` to `F`.</p>
+            </article>
+            <article>
+              <h3>Binary to hex</h3>
+              <p>Group the binary value into nibbles from the right. Convert each nibble separately.</p>
+            </article>
+            <article>
+              <h3>Hex to binary</h3>
+              <p>Replace each hex digit with its 4-bit binary nibble. Keep all four bits for each digit.</p>
+            </article>
+          </div>
+          <div class="callout">`1101₂ = D₁₆` and `0110₂ = 6₁₆`, so `1101 0110₂ = D6₁₆`.</div>
+        </section>
+
+        <section class="guidance-grid compact" aria-label="Grouping guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Say "group from the right" before every binary-to-hex example until it becomes automatic.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Grouping from the left gives the wrong answer when the number of bits is not a multiple of four.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="padding">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Padding with leading zeros</h2>
+          </div>
+          <div class="padding-grid">
+            <article>
+              <h3>When padding is needed</h3>
+              <p>If the leftmost group has fewer than four bits, add leading zeros to complete the nibble.</p>
+            </article>
+            <article>
+              <h3>Example</h3>
+              <p class="range-value">101101₂ → 0010 1101₂ → 2D₁₆</p>
+              <p>The value does not change because leading zeros do not add active place values.</p>
+            </article>
+            <article>
+              <h3>Base labels</h3>
+              <p>`10` could mean denary ten or binary two. Use base labels when the notation could be ambiguous.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="converter">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Binary and hexadecimal converter</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Direction
+              <select id="convertMode">
+                <option value="binaryToHex">Binary to hexadecimal</option>
+                <option value="hexToBinary">Hexadecimal to binary</option>
+              </select>
+            </label>
+            <label>
+              Value
+              <input id="convertValue" type="text" value="11010110" />
+            </label>
+            <button type="button" id="convertBtn">Convert</button>
+          </div>
+          <div class="result-box" id="convertResult" aria-live="polite"></div>
+          <div class="method-box" id="convertMethod"></div>
+          <div class="nibble-visual" id="nibbleVisual" aria-label="Nibble grouping visual"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="binary">1101 0110₂ to hex</button>
+            <button class="tab" type="button" data-example="hex">A7₁₆ to binary</button>
+            <button class="tab" type="button" data-example="padding">101101₂ to hex</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button type="button" id="checkPractice">Check answers</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel mistake-panel">
+          <div class="section-title">
+            <p class="eyebrow">Debug the mistakes</p>
+            <h2>Find the trap, fix the answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <h3>Mistake 1</h3>
+              <p class="wrong">101101₂ = B₁₆ because 1011₂ is B₁₆</p>
+              <button type="button" class="reveal" data-reveal="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">Group from the right: 101101₂ → 0010 1101₂ → 2D₁₆.</p>
+            </article>
+            <article>
+              <h3>Mistake 2</h3>
+              <p class="wrong">A7₁₆ = 1010 111₂</p>
+              <button type="button" class="reveal" data-reveal="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">Each hex digit needs four bits: A = 1010 and 7 = 0111, so A7₁₆ = 1010 0111₂.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Past-paper style</p>
+            <h2>Original exam-style questions</h2>
+          </div>
+          <div class="exam-grid" id="examGrid"></div>
+          <p class="source-note">
+            These are original Cambridge-style questions, not copied Cambridge past paper text.
+            Use the buttons under each question to expand the CIE-style mark scheme.
+          </p>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What must survive until the exam?</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>One hex digit represents exactly four binary bits.</span></div>
+            <div><strong>2</strong><span>Binary to hex groups bits from the right into nibbles.</span></div>
+            <div><strong>3</strong><span>Hex to binary keeps four bits for every hex digit.</span></div>
+          </div>
+          <div class="exit-ticket">
+            <label for="exitTicket">Exit ticket</label>
+            <textarea id="exitTicket" rows="3" placeholder="The key point about hexadecimal grouping is..., and a common mistake is..."></textarea>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks, not vague revision</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Convert these binary values to hexadecimal: `11110000₂`, `10101010₂`, `101101₂`.</li>
+            <li>Convert these hexadecimal values to binary: `3C₁₆`, `B7₁₆`, `0F₁₆`.</li>
+            <li>Write a 3-mark explanation of why binary is grouped into four bits when converting to hexadecimal.</li>
+            <li>Extension: find one real-world example of hexadecimal notation and explain why compact notation helps.</li>
+          </ol>
+        </section>
+
+        <section class="panel homework-support">
+          <div class="section-title">
+            <p class="eyebrow">Homework support</p>
+            <h2>Check only after attempting</h2>
+          </div>
+          <button
+            type="button"
+            class="reveal"
+            data-reveal="homeworkAnswers"
+            data-open-label="Show homework answers"
+            data-close-label="Hide homework answers"
+          >
+            Show homework answers
+          </button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Binary to hex:</strong> `11110000₂ = F0₁₆`; `10101010₂ = AA₁₆`; `101101₂ = 2D₁₆`.</p>
+            <p><strong>Hex to binary:</strong> `3C₁₆ = 0011 1100₂`; `B7₁₆ = 1011 0111₂`; `0F₁₆ = 0000 1111₂`.</p>
+            <p><strong>Explanation focus:</strong> four bits create 16 possible values, matching the 16 hexadecimal digits.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

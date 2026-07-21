@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 146 | Section 12 review: software development case study</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 12</p>
+        <h1>Section 12 review: software development case study</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#case">Case study</a>
+        <a href="#lifecycle">Lifecycle map</a>
+        <a href="#analysis">Analysis</a>
+        <a href="#design">Design</a>
+        <a href="#testing">Testing</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#commands">Command words</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#case-tool">Case tool</a>
+        <a href="#answer-tool">Answer improver</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Mistakes</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 146 | 45 minutes | Paper 2 Section 12 | stage review</p>
+            <h2>Review is not rereading. Review is choosing the right tool under exam pressure.</h2>
+            <p>
+              This review lesson uses one case study to connect requirements, design documentation, implementation,
+              testing, maintenance and evaluation. Chinese support: review 复习, case study 案例, evidence 证据,
+              mark scheme 评分标准, consequence 后果。
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Recognise</strong><span>which Section 12 concept a question is testing</span></div>
+              <div><strong>Apply</strong><span>software development vocabulary to one scenario</span></div>
+              <div><strong>Improve</strong><span>weak answers using mark scheme evidence</span></div>
+            </div>
+          </div>
+          <div class="review-visual" aria-label="Section 12 review visual">
+            <div><strong>Analysis</strong><span>what is needed?</span><em>requirements and criteria</em></div>
+            <div><strong>Design</strong><span>how will it work?</span><em>algorithm, data, interface</em></div>
+            <div><strong>Testing</strong><span>does it behave?</span><em>test data and expected results</em></div>
+            <div><strong>Evaluation</strong><span>was it successful?</span><em>evidence against criteria</em></div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Before answering, name the mental toolbox: analysis, design, implementation, testing, maintenance or evaluation.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Mixed Section 12 questions punish generic answers. The same case study can ask for requirements in one part and evaluation in the next.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not write the lifecycle as a memorised list. Marks come from selecting the right stage and explaining it in the scenario.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which mental toolbox should open first?</h2>
+            <p>Question stem: “A teacher says the system should be easy to use. Explain how this should be improved before design begins.”</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="testing">Testing</button>
+            <button class="choice-card" type="button" data-hook="analysis">Requirements analysis</button>
+            <button class="choice-card" type="button" data-hook="maintenance">Maintenance</button>
+            <button class="choice-card" type="button" data-hook="changeover">Changeover</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Pick the stage that improves vague user needs before design.</div>
+        </section>
+
+        <section class="panel" id="case">
+          <div class="section-title">
+            <p class="eyebrow">Case study</p>
+            <h2>School activity sign-up system</h2>
+          </div>
+          <div class="case-card">
+            <p>
+              A school wants a system for students to sign up for after-school activities. Students can view activities,
+              reserve a place, cancel a reservation and see a waiting list. Staff can create activities, set capacity,
+              view registers and close sign-ups. The school wants the system ready before the new term.
+            </p>
+          </div>
+          <div class="callout">Every review task on this page uses this case. That forces answers to be specific instead of floating around as textbook fog.</div>
+        </section>
+
+        <section class="panel" id="lifecycle">
+          <div class="section-title">
+            <p class="eyebrow">Lifecycle map</p>
+            <h2>One scenario, many stages</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Lifecycle map">
+            <div class="table-row table-head"><div>Stage</div><div>Output</div><div>Case study example</div><div>Risk if weak</div></div>
+            <div class="table-row"><div>Analysis</div><div>requirements and success criteria</div><div>reserve a place; prevent overbooking</div><div>wrong problem is solved</div></div>
+            <div class="table-row"><div>Design</div><div>algorithms, data dictionary, interface plans</div><div>waiting-list algorithm and ActivityID field</div><div>developers make inconsistent choices</div></div>
+            <div class="table-row"><div>Implementation</div><div>working configured system</div><div>student portal and staff screens installed</div><div>system cannot be used in school</div></div>
+            <div class="table-row"><div>Testing</div><div>test cases and evidence</div><div>capacity 20 accepts 20, rejects 21</div><div>faults remain hidden</div></div>
+            <div class="table-row"><div>Evaluation</div><div>judgement against criteria</div><div>95% sign-ups complete under target time</div><div>success is guessed, not proven</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="analysis">
+          <div class="section-title">
+            <p class="eyebrow">Analysis review</p>
+            <h2>From vague request to measurable criteria</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Analysis review examples">
+            <div class="table-row table-head"><div>Weak wording</div><div>Stronger requirement</div><div>Success criterion</div></div>
+            <div class="table-row"><div>easy sign-up</div><div>students can reserve a place using activity list, confirm button and student ID</div><div>90% of trial students reserve a place in under 2 minutes</div></div>
+            <div class="table-row"><div>avoid too many students</div><div>system prevents reservations above activity capacity</div><div>all tests at capacity plus one are rejected</div></div>
+            <div class="table-row"><div>staff need reports</div><div>staff can print or export a register for each activity</div><div>register includes all confirmed students and waiting-list status</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="design">
+          <div class="section-title">
+            <p class="eyebrow">Design review</p>
+            <h2>Design answers must name the artefact</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Algorithm</h3><p>Describe how the system checks capacity and places extra students on a waiting list.</p></article>
+            <article><h3>Data dictionary</h3><p>Define ActivityID, StudentID, Capacity, PlacesTaken and WaitingListPosition.</p></article>
+            <article><h3>Interface</h3><p>Show activity list, reserve/cancel controls, confirmation prompts and validation messages.</p></article>
+          </div>
+          <div class="callout">Cambridge-style pseudocode is suitable for algorithm design. Java can support implementation practice, but final code is not the whole design document.</div>
+        </section>
+
+        <section class="panel" id="testing">
+          <div class="section-title">
+            <p class="eyebrow">Testing review</p>
+            <h2>Test cases need data, expected result and purpose</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Testing review examples">
+            <div class="table-row table-head"><div>Rule</div><div>Test data</div><div>Expected result</div><div>Data type</div></div>
+            <div class="table-row"><div>activity capacity is 20</div><div>20th reservation</div><div>accepted</div><div>boundary valid</div></div>
+            <div class="table-row"><div>activity capacity is 20</div><div>21st reservation</div><div>added to waiting list or rejected by rule</div><div>boundary invalid</div></div>
+            <div class="table-row"><div>StudentID must be numeric</div><div>AB12</div><div>rejected with message</div><div>abnormal</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="evaluation">
+          <div class="section-title">
+            <p class="eyebrow">Maintenance and evaluation review</p>
+            <h2>After release, classify changes and judge success with evidence</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Maintenance examples</h3>
+              <ul>
+                <li>Corrective: fix a crash when cancelling a reservation.</li>
+                <li>Adaptive: change the system for a new two-term activity structure.</li>
+                <li>Perfective: make the activity search faster or clearer.</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Evaluation evidence</h3>
+              <ul>
+                <li>Timing logs from sign-up tasks.</li>
+                <li>User survey results linked to success criteria.</li>
+                <li>Test records showing capacity rules were met.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="commands">
+          <div class="section-title">
+            <p class="eyebrow">Command words</p>
+            <h2>Match response depth to the command</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Command words">
+            <div class="table-row table-head"><div>Command</div><div>What to do</div><div>Weak answer pattern</div></div>
+            <div class="table-row"><div>State</div><div>give a precise term or fact</div><div>writing a paragraph without the keyword</div></div>
+            <div class="table-row"><div>Describe</div><div>say what it is like or how it works</div><div>naming only</div></div>
+            <div class="table-row"><div>Explain</div><div>give cause and consequence in context</div><div>saying “it is better”</div></div>
+            <div class="table-row"><div>Evaluate</div><div>make a judgement using evidence</div><div>listing features with no conclusion</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>This review connects all main Section 12 ideas</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>requirements, success criteria and stakeholder needs</span></div>
+            <div><strong>Covered</strong><span>design documentation: algorithms, data dictionaries and interfaces</span></div>
+            <div><strong>Covered</strong><span>implementation, changeover, testing and test data</span></div>
+            <div><strong>Covered</strong><span>maintenance classification and evaluation against evidence</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="case-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive case tool</p>
+            <h2>Identify the Section 12 concept</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Case detail
+              <select id="caseSelect">
+                <option value="capacity">The system must prevent activity reservations above capacity</option>
+                <option value="field">ActivityID is a STRING of length 5 and must be unique</option>
+                <option value="run">The old paper sign-up sheet and new system are used together for two weeks</option>
+                <option value="judge">Trial data shows 92% of students signed up in under 2 minutes</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="caseBtn">Identify concept</button>
+          </div>
+          <div id="caseOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="answer-tool">
+          <div class="section-title">
+            <p class="eyebrow">Answer improver</p>
+            <h2>Turn a weak line into a mark-worthy line</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Weak answer
+              <select id="answerSelect">
+                <option value="easy">The system should be easy to use.</option>
+                <option value="test">Test it to see if it works.</option>
+                <option value="maintain">Maintenance makes it better.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="answerBtn">Improve answer</button>
+          </div>
+          <div id="answerOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Annotate what earns the mark</h2>
+          </div>
+          <div class="tab-row" role="tablist" aria-label="Worked examples">
+            <button class="tab-button active" type="button" data-example="requirements">Requirements</button>
+            <button class="tab-button" type="button" data-example="testing">Testing</button>
+            <button class="tab-button" type="button" data-example="evaluation">Evaluation</button>
+          </div>
+          <div id="exampleOutput" class="example-output"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short retrieval before the longer questions</h2>
+          </div>
+          <div id="practiceList" class="practice-list"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the review answer</h2>
+          </div>
+          <div id="mistakeList" class="mistake-grid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Mixed Section 12 questions with expandable MS</h2>
+            <p>These are original AS-style questions. The mark schemes use Cambridge-style precision, not copied past-paper wording.</p>
+          </div>
+          <div id="examList" class="exam-list"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>The review rule</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Name</strong><span>identify the stage or concept first</span></div>
+            <div><strong>Context</strong><span>use the activity sign-up scenario, not generic wording</span></div>
+            <div><strong>Evidence</strong><span>link to test result, criterion, user need or consequence</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Complete one full Section 12 case-study response pack</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write three requirements and two measurable success criteria for the activity sign-up system.</li>
+            <li>Create one data dictionary entry and one algorithm outline for the waiting-list feature.</li>
+            <li>Write four test cases for capacity, including normal, boundary and abnormal data.</li>
+            <li>Answer one 6-mark evaluation question using evidence and a clear judgement.</li>
+          </ol>
+          <div class="callout">Marking focus: precise Section 12 vocabulary, case-specific examples, and no unsupported “better/easier/faster” claims.</div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

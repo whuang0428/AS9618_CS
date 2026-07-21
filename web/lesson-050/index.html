@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 050 | Pipelining and why faster is not always simpler</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
+        <h1>Pipelining and why faster is not always simpler</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Core idea</a>
+        <a href="#compare">Before/after</a>
+        <a href="#timing">Timing</a>
+        <a href="#hazards">Hazards</a>
+        <a href="#stalls">Stalls</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Pipeline tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 050 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
+            <h2>A pipeline is an instruction assembly line.</h2>
+            <p>
+              Pipelining overlaps the stages of the fetch-decode-execute cycle.
+              While one instruction is being executed, another can be decoded and
+              a later one can be fetched. It improves throughput, but hazards and
+              stalls mean it is not free speed.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Describe</strong><span>how instruction pipelining overlaps fetch, decode and execute</span></div>
+              <div><strong>Explain</strong><span>throughput, pipeline fill/drain and why one instruction is not magically instant</span></div>
+              <div><strong>Identify</strong><span>data, control and resource hazards that can cause stalls</span></div>
+            </div>
+          </div>
+          <div class="pipeline-card" aria-label="Pipeline sketch">
+            <div class="pipe-row"><span>Cycle 1</span><strong>F1</strong><em></em><em></em></div>
+            <div class="pipe-row"><span>Cycle 2</span><strong>F2</strong><strong>D1</strong><em></em></div>
+            <div class="pipe-row"><span>Cycle 3</span><strong>F3</strong><strong>D2</strong><strong>E1</strong></div>
+            <p>Different instructions, different stages, same clock cycle.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use a sandwich shop analogy only for 30 seconds, then return to fetch, decode and execute. The mark scheme prefers CPU words to lunch words.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style answers reward the distinction between throughput and the time for one instruction to pass through all stages.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Pipelining does not execute three stages of the same instruction at the same time. It overlaps stages from different instructions.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A CPU has fetch, decode and execute units. Can it work on three instructions in one cycle?</h2>
+            <p>Click the best answer. The trick is that each instruction must still pass through the stages in order.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="overlap">Yes, if different instructions are in different pipeline stages</button>
+            <button class="choice-card" type="button" data-hook="same">Yes, the same instruction can be fetched, decoded and executed at once</button>
+            <button class="choice-card" type="button" data-hook="never">No, CPUs can only touch one instruction at any time</button>
+            <button class="choice-card" type="button" data-hook="cache">Only if the instruction is stored in cache forever</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Pipelining is about overlapping different instructions, not skipping stages.
+          </div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Pipelining overlaps instruction-cycle stages</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <strong>Pipeline</strong>
+              <span>A processor technique where multiple instructions are at different stages of execution at the same time.</span>
+            </article>
+            <article>
+              <strong>Fetch</strong>
+              <span>The next instruction is fetched from memory using the program counter and memory registers.</span>
+            </article>
+            <article>
+              <strong>Decode</strong>
+              <span>The control unit interprets the instruction and prepares required operands/control signals.</span>
+            </article>
+            <article>
+              <strong>Execute</strong>
+              <span>The instruction is carried out, such as arithmetic, memory access or a branch.</span>
+            </article>
+          </div>
+          <div class="callout">Chinese support: pipeline = 流水线；throughput = 吞吐量；latency = 延迟；stall = 停顿；hazard = 流水线风险/冲突。</div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Without and with pipelining</h2>
+          </div>
+          <div class="compare-grid">
+            <article>
+              <h3>Without pipelining</h3>
+              <p>Instruction 1 completes fetch, decode and execute before instruction 2 begins.</p>
+              <div class="mini-timeline">
+                <span>I1: F D E</span>
+                <span>I2: F D E</span>
+                <span>I3: F D E</span>
+              </div>
+              <p>Three instructions with three stages each may take nine stage slots.</p>
+            </article>
+            <article>
+              <h3>With pipelining</h3>
+              <p>Instruction 2 can be fetched while instruction 1 is decoded; instruction 3 can be fetched while instruction 1 executes.</p>
+              <div class="mini-timeline piped">
+                <span>C1: F1</span>
+                <span>C2: F2 D1</span>
+                <span>C3: F3 D2 E1</span>
+                <span>C4: D3 E2</span>
+                <span>C5: E3</span>
+              </div>
+              <p>After the pipeline fills, one instruction can complete per cycle in the ideal case.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="timing">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Throughput improves, but latency still exists</h2>
+          </div>
+          <div class="timing-grid">
+            <article><strong>Latency</strong><span>The time for one instruction to pass from fetch through decode to execute.</span></article>
+            <article><strong>Throughput</strong><span>The number of instructions completed per unit time once the pipeline is full.</span></article>
+            <article><strong>Fill</strong><span>The early cycles before every pipeline stage is occupied.</span></article>
+            <article><strong>Drain</strong><span>The final cycles when no new instructions enter but existing ones finish.</span></article>
+          </div>
+          <div class="why-card inline-card">
+            <h3>Why this matters</h3>
+            <p>Exam wording may ask "why performance can improve" rather than "why every instruction is faster". Answer with throughput.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="hazards">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Pipeline hazards: why faster is not always simpler</h2>
+          </div>
+          <div class="hazard-table" role="table" aria-label="Pipeline hazards">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Hazard</div>
+              <div role="columnheader">Cause</div>
+              <div role="columnheader">Consequence</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Data hazard</div>
+              <div role="cell">An instruction needs a result that a previous instruction has not produced yet.</div>
+              <div role="cell">The pipeline may stall until the needed value is available.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Control hazard</div>
+              <div role="cell">A branch or jump changes which instruction should be fetched next.</div>
+              <div role="cell">Incorrectly fetched instructions may need to be discarded or the pipeline may wait.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Resource hazard</div>
+              <div role="cell">Two stages need the same hardware resource in the same cycle.</div>
+              <div role="cell">One stage may wait, reducing the ideal performance gain.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="stalls">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Stalls and flushes reduce the ideal gain</h2>
+          </div>
+          <div class="stall-grid">
+            <article>
+              <strong>Stall</strong>
+              <span>The pipeline pauses one or more stages because an instruction cannot safely continue yet.</span>
+            </article>
+            <article>
+              <strong>Flush</strong>
+              <span>Incorrect or unwanted instructions are removed from the pipeline, often after a branch decision.</span>
+            </article>
+            <article>
+              <strong>Dependency</strong>
+              <span>One instruction depends on the result or effect of an earlier instruction.</span>
+            </article>
+            <article>
+              <strong>Ideal case</strong>
+              <span>Pipeline is full, stages are balanced, no hazards occur and instructions complete regularly.</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Instruction pipelining as overlapping fetch, decode and execute stages.</span></div>
+            <div><strong>Covered</strong><span>Throughput improvement in the ideal case after the pipeline fills.</span></div>
+            <div><strong>Covered</strong><span>Why latency for a single instruction is not eliminated.</span></div>
+            <div><strong>Covered</strong><span>Data, control and resource hazards at AS explanation depth.</span></div>
+            <div><strong>Covered</strong><span>Stalls/flushes and why pipelining may not reach ideal performance.</span></div>
+            <div><strong>Not this lesson</strong><span>Section 4 mixed review and timed exam correction are covered in Lesson 051.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Pipeline scenario analyser</h2>
+            <p>Select a scenario and see whether the pipeline can run smoothly or must stall/flush.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="smooth">Three independent instructions</option>
+                <option value="data">Instruction 2 needs the result of Instruction 1</option>
+                <option value="branch">Instruction 1 is a branch/jump</option>
+                <option value="resource">Fetch and memory access need the same memory resource</option>
+              </select>
+            </label>
+            <button type="button" id="simulateBtn">Analyse</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Trace the overlap and the limitation</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="ideal">Ideal pipeline</button>
+            <button class="tab" type="button" data-example="data">Data hazard</button>
+            <button class="tab" type="button" data-example="branch">Branch hazard</button>
+            <button class="tab" type="button" data-example="compare">Throughput vs latency</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+            <p>Use precise words. "The CPU does more things" is a warm-up, not an exam answer.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the pipeline explanation</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeList"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>CIE-style questions with expandable mark schemes</h2>
+            <p>These are original Cambridge-style questions. MS notes are strict about overlap, throughput, hazards, stalls and branch effects.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Pipelining improves throughput, not by magic</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Pipeline</strong><span>Different instructions occupy different stages at the same time.</span></div>
+            <div><strong>Throughput</strong><span>More instructions can be completed per unit time in the ideal case.</span></div>
+            <div><strong>Latency</strong><span>A single instruction still passes through all required stages.</span></div>
+            <div><strong>Hazard</strong><span>A dependency, branch or resource conflict can disrupt smooth flow.</span></div>
+            <div><strong>Stall/flush</strong><span>Waiting or discarding instructions reduces performance gain.</span></div>
+            <div><strong>Exam habit</strong><span>Say what overlaps and why the ideal gain may not happen.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Make pipeline answers exact</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Define pipelining, throughput, latency and stall in one sentence each.</li>
+            <li>Draw a 3-stage pipeline table for three independent instructions using F, D and E.</li>
+            <li>Explain why a branch instruction may reduce pipeline performance.</li>
+            <li>Write a 5-mark answer: "Explain how pipelining can improve CPU performance."</li>
+            <li>Correct this sentence: "Pipelining makes one instruction complete all stages at the same time."</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

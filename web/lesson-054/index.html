@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 054 | User interfaces: command line, graphical, menu-driven and natural language</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
+        <h1>User interfaces: command line, graphical, menu-driven and natural language</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Core idea</a>
+        <a href="#cli">CLI</a>
+        <a href="#gui">GUI</a>
+        <a href="#menu">Menu-driven</a>
+        <a href="#natural">Natural language</a>
+        <a href="#compare">Comparison</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Interface tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 054 | 45 minutes | Paper 1 Section 5 | System software</p>
+            <h2>An interface is the conversation style between user and computer.</h2>
+            <p>
+              A user interface lets a person interact with a computer system.
+              Different interfaces suit different users, tasks and environments.
+              The exam rewards specific advantages and limitations, not "GUI is nicer".
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>CLI, GUI, menu-driven and natural language interfaces</span></div>
+              <div><strong>Compare</strong><span>advantages and limitations for realistic scenarios</span></div>
+              <div><strong>Justify</strong><span>which interface is suitable for a given user and task</span></div>
+            </div>
+          </div>
+          <div class="ui-card" aria-label="Interface types sketch">
+            <div class="ui-stack">
+              <span>CLI: type commands</span>
+              <span>GUI: windows, icons, menus, pointer</span>
+              <span>Menu-driven: choose from options</span>
+              <span>Natural language: speak or type ordinary language</span>
+            </div>
+            <p>The best interface is not the fanciest one. It is the one that fits the task.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For each interface, use the same sentence frame: user action, system response, advantage, limitation.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Scenario questions often ask for suitability. Students must link interface features to the user, not just list features.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not write that GUI is always best. CLI can be efficient for expert users and automation.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A technician needs to rename 500 files with one command. Which interface is likely best?</h2>
+            <p>Click the best answer. Dragging 500 files one by one is a hobby, not a workflow.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="cli">Command line interface</button>
+            <button class="choice-card" type="button" data-hook="gui">Graphical interface only</button>
+            <button class="choice-card" type="button" data-hook="menu">A three-button menu with no batch option</button>
+            <button class="choice-card" type="button" data-hook="natural">Natural language interface with vague wording</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Efficient interface choice depends on user skill and task type.
+          </div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>A user interface allows interaction with a computer system</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>User interface</strong><span>The method by which a user communicates with a computer system.</span></article>
+            <article><strong>Usability</strong><span>How easy and effective an interface is for a specific user and task.</span></article>
+            <article><strong>Accessibility</strong><span>How well an interface can be used by people with different needs or abilities.</span></article>
+            <article><strong>Context</strong><span>The environment, user skill level and task determine suitability.</span></article>
+          </div>
+          <div class="callout">Chinese support: user interface = 用户界面；command line = 命令行；graphical = 图形化；menu-driven = 菜单驱动；natural language = 自然语言。</div>
+        </section>
+
+        <section class="panel" id="cli">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Command line interface: precise text commands</h2>
+          </div>
+          <div class="interface-grid">
+            <article><strong>How it works</strong><span>The user types commands and parameters at a prompt.</span></article>
+            <article><strong>Advantages</strong><span>Fast for experts, supports automation/scripts, can use fewer system resources.</span></article>
+            <article><strong>Limitations</strong><span>Users must know exact commands; errors can occur from mistyped syntax.</span></article>
+            <article><strong>Good fit</strong><span>System administration, batch operations, remote servers and repeatable tasks.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="gui">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Graphical user interface: visual objects and pointer actions</h2>
+          </div>
+          <div class="interface-grid">
+            <article><strong>How it works</strong><span>Uses windows, icons, menus and a pointer/touch input.</span></article>
+            <article><strong>Advantages</strong><span>Intuitive for many users, easy to learn, supports visual feedback and direct manipulation.</span></article>
+            <article><strong>Limitations</strong><span>Can use more memory/processing power; repetitive actions may be slower than commands.</span></article>
+            <article><strong>Good fit</strong><span>General desktop use, creative work, browsing files and visual tasks.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="menu">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Menu-driven interface: choose from fixed options</h2>
+          </div>
+          <div class="interface-grid">
+            <article><strong>How it works</strong><span>The user selects from displayed options, often step by step.</span></article>
+            <article><strong>Advantages</strong><span>Reduces memorisation, restricts invalid choices, useful for simple repeated tasks.</span></article>
+            <article><strong>Limitations</strong><span>Can be slow for expert users; limited to available options; nested menus can frustrate users.</span></article>
+            <article><strong>Good fit</strong><span>ATMs, ticket machines, phone menus and kiosks.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="natural">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Natural language interface: ordinary language input</h2>
+          </div>
+          <div class="interface-grid">
+            <article><strong>How it works</strong><span>The user speaks or types instructions in ordinary human language.</span></article>
+            <article><strong>Advantages</strong><span>Can be accessible, hands-free and intuitive for simple requests.</span></article>
+            <article><strong>Limitations</strong><span>May misinterpret ambiguous wording, accents, noise or context.</span></article>
+            <article><strong>Good fit</strong><span>Voice assistants, search queries, smart speakers and accessibility support.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Compare interface suitability by scenario</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Interface comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Scenario</div>
+              <div role="columnheader">Likely suitable interface</div>
+              <div role="columnheader">Reason</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Expert admin repeats a file operation</div>
+              <div role="cell">CLI</div>
+              <div role="cell">Commands/scripts are efficient for repeatable precise tasks.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Novice edits photos</div>
+              <div role="cell">GUI</div>
+              <div role="cell">Visual feedback and direct manipulation support the task.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Customer buys a train ticket</div>
+              <div role="cell">Menu-driven</div>
+              <div role="cell">Fixed choices guide the user and reduce input errors.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Driver asks for directions hands-free</div>
+              <div role="cell">Natural language</div>
+              <div role="cell">Speech input can be used without touching the device.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purpose of a user interface.</span></div>
+            <div><strong>Covered</strong><span>Command line, graphical, menu-driven and natural language interfaces.</span></div>
+            <div><strong>Covered</strong><span>Advantages, limitations and suitable scenarios for each interface type.</span></div>
+            <div><strong>Boundary</strong><span>Detailed OS resource management was covered in Lesson 053.</span></div>
+            <div><strong>Boundary</strong><span>Utility software tools are covered in Lesson 055.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Interface selector</h2>
+            <p>Select a scenario and classify the most suitable interface.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="admin">Expert renames many files repeatedly</option>
+                <option value="photo">Novice edits and arranges photos</option>
+                <option value="atm">Customer withdraws cash from an ATM</option>
+                <option value="voice">User controls a smart speaker by speech</option>
+                <option value="server">Technician manages a remote server with low bandwidth</option>
+                <option value="kiosk">Museum visitor chooses an exhibit guide</option>
+              </select>
+            </label>
+            <button type="button" id="simulateBtn">Choose interface</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Choose the interface and justify the trade-off</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="cli">CLI admin</button>
+            <button class="tab" type="button" data-example="gui">GUI novice</button>
+            <button class="tab" type="button" data-example="menu">Menu kiosk</button>
+            <button class="tab" type="button" data-example="natural">Voice assistant</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+            <p>Type the interface type or key term. Use exact vocabulary.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the interface claim</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeList"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>CIE-style questions with expandable mark schemes</h2>
+            <p>These are original Cambridge-style questions. MS notes are strict about scenario-linked advantages and limitations.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Interface choice depends on task and user</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>CLI</strong><span>Typed commands; efficient for experts and automation.</span></div>
+            <div><strong>GUI</strong><span>Visual objects; easier for many users and visual tasks.</span></div>
+            <div><strong>Menu-driven</strong><span>Fixed options; guides users through limited choices.</span></div>
+            <div><strong>Natural language</strong><span>Speech/text in ordinary language; useful but can misinterpret.</span></div>
+            <div><strong>Suitability</strong><span>Depends on user skill, task, environment and constraints.</span></div>
+            <div><strong>Exam habit</strong><span>Give one advantage and one limitation tied to the scenario.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Make interface comparisons scenario-specific</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Define CLI, GUI, menu-driven interface and natural language interface.</li>
+            <li>Create a comparison table with one advantage and one limitation for each interface.</li>
+            <li>Write a 4-mark answer recommending an interface for a public ticket machine.</li>
+            <li>Correct this sentence: "GUI is always the best interface because it has pictures."</li>
+            <li>Find one real device/app for each interface type and explain why it fits.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

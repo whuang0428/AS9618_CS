@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 001 | Bits, bytes, nibbles and storage units</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
+        <h1>Bits, bytes, nibbles and storage units</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#knowledge">Knowledge</a>
+        <a href="#coverage">Coverage</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Your turn</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 001 | 45 minutes | Informal questioning</p>
+            <h2>Raw bits are tiny. Exams make them measurable.</h2>
+            <p>
+              This lesson builds the storage unit ladder, compares decimal and binary prefixes,
+              and practises Cambridge-style conversion explanations without losing marks to lonely units.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div>
+                <strong>Define</strong>
+                <span>bit, nibble, byte, kB, KiB, MB, MiB, GB, GiB, TB, TiB</span>
+              </div>
+              <div>
+                <strong>Convert</strong>
+                <span>between storage units using 8, 1000 and 1024 correctly</span>
+              </div>
+              <div>
+                <strong>Explain</strong>
+                <span>why MB and MiB are not the same measurement</span>
+              </div>
+            </div>
+          </div>
+          <div class="binary-display" aria-label="Binary warm-up display">
+            <span>00000111</span>
+            <p>Number? character? colour value? The representation decides.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Start with the binary string and ask what it could mean before naming the topic.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam marks often depend on choosing the right unit system before doing arithmetic.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>同一串 bit 可以代表数值、字符、颜色或指令；单位只告诉你数据大小，不自动说明含义。</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Is `00000111` a number, a colour, or just eight dramatic digits?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="number">It is a number</button>
+            <button class="choice-card" type="button" data-hook="colour">It is a colour value</button>
+            <button class="choice-card" type="button" data-hook="character">It is a character code</button>
+            <button class="choice-card" type="button" data-hook="context">It depends on context</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick an answer. The bits are waiting politely.
+          </div>
+        </section>
+
+        <section class="guidance-grid compact" aria-label="Warm-up guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>The strongest answer is "it depends on context": storage units measure data size; representation gives data meaning.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not treat binary digits as decoration. Every bit can matter once a representation is chosen.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="knowledge">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>The storage ladder</h2>
+          </div>
+          <div class="ladder" id="ladder">
+            <div class="ladder-step"><strong>bit</strong><span>0 or 1</span></div>
+            <div class="ladder-step"><strong>nibble</strong><span>4 bits</span></div>
+            <div class="ladder-step"><strong>byte</strong><span>8 bits = 2 nibbles</span></div>
+            <div class="ladder-step"><strong>KiB</strong><span>1024 bytes</span></div>
+            <div class="ladder-step"><strong>MiB</strong><span>1024 KiB</span></div>
+            <div class="ladder-step"><strong>GiB</strong><span>1024 MiB</span></div>
+            <div class="ladder-step"><strong>TiB</strong><span>1024 GiB</span></div>
+          </div>
+          <div class="vocab-strip" aria-label="Key vocabulary">
+            <span><b>binary</b> 二进制</span>
+            <span><b>denary</b> 十进制</span>
+            <span><b>hexadecimal</b> 十六进制</span>
+            <span><b>prefix</b> 前缀</span>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Binary magnitudes: powers of two, not a decorative 1024</h2>
+          </div>
+          <div class="magnitude-grid">
+            <div>
+              <h3>What the phrase means</h3>
+              <p>
+                A binary magnitude is a size based on powers of two. Storage questions often
+                use 2<sup>10</sup>, 2<sup>20</sup>, 2<sup>30</sup> and 2<sup>40</sup>.
+              </p>
+            </div>
+            <div>
+              <h3>Calculator-free anchors</h3>
+              <ul>
+                <li>2<sup>10</sup> = 1024</li>
+                <li>2<sup>20</sup> = 1,048,576</li>
+                <li>2<sup>30</sup> = 1,073,741,824</li>
+                <li>2<sup>40</sup> = 1,099,511,627,776</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Exam consequence</h3>
+              <p>
+                If a question says KiB, MiB, GiB or TiB, use 1024 between adjacent units.
+                If it says kB, MB, GB or TB, use 1000 unless the question states otherwise.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Decimal prefixes vs binary prefixes</h2>
+          </div>
+          <div class="compare-grid">
+            <div class="compare-column decimal">
+              <h3>Decimal prefixes</h3>
+              <p>Often used by storage manufacturers.</p>
+              <ul>
+                <li>1 kB = 1000 bytes</li>
+                <li>1 MB = 1000 kB</li>
+                <li>1 GB = 1000 MB</li>
+                <li>1 TB = 1000 GB</li>
+              </ul>
+            </div>
+            <div class="compare-column binary">
+              <h3>Binary prefixes</h3>
+              <p>Used when sizes are based on powers of two.</p>
+              <ul>
+                <li>1 KiB = 1024 bytes</li>
+                <li>1 MiB = 1024 KiB</li>
+                <li>1 GiB = 1024 MiB</li>
+                <li>1 TiB = 1024 GiB</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout">Exam habit: read the prefix before calculating.</div>
+        </section>
+
+        <section class="panel coverage-panel" id="coverage">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers, and what belongs in later lessons</h2>
+          </div>
+          <div class="coverage-grid">
+            <div>
+              <h3>Covered in Lesson 001</h3>
+              <ul class="check-list">
+                <li>Understanding binary magnitudes</li>
+                <li>Difference between binary prefixes and decimal prefixes</li>
+                <li>kibi/kilo, mebi/mega, gibi/giga, tebi/tera</li>
+                <li>bit, nibble and byte as required foundation vocabulary</li>
+                <li>File-size style calculations with units and working</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Deliberately covered later in Section 1</h3>
+              <ul class="next-list">
+                <li>Binary, denary and hexadecimal conversions: Lessons 002-003</li>
+                <li>Binary addition, carries and overflow: Lesson 004</li>
+                <li>Sign and magnitude, one&apos;s complement and two&apos;s complement: Lesson 005</li>
+                <li>Binary fractions and precision limits: Lesson 006</li>
+                <li>Character sets, sound, images and compression: Lessons 007-013</li>
+              </ul>
+            </div>
+          </div>
+          <p class="source-note">
+            Syllabus alignment note: this page is Lesson 001 of Section 1, not the whole
+            Information representation unit.
+          </p>
+        </section>
+
+        <section class="guidance-grid compact" aria-label="Prefix guidance">
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>The syllabus explicitly expects the contrast between kibi/kilo, mebi/mega, gibi/giga and tebi/tera.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>decimal prefixes 按 1000 进位；binary prefixes 按 1024 进位。MiB is not just a fancy spelling of MB.</p>
+          </article>
+        </section>
+
+        <section class="panel interactive" id="converter">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Storage converter</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Value
+              <input id="convertValue" type="number" min="0" step="any" value="2048" />
+            </label>
+            <label>
+              From
+              <select id="fromUnit"></select>
+            </label>
+            <label>
+              To
+              <select id="toUnit"></select>
+            </label>
+            <button type="button" id="convertBtn">Convert</button>
+          </div>
+          <div class="result-box" id="convertResult" aria-live="polite"></div>
+          <div class="method-box" id="convertMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="icon">2048-bit icon</button>
+            <button class="tab" type="button" data-example="file">5 MiB file</button>
+            <button class="tab" type="button" data-example="drive">32 GB drive</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="guidance-grid compact" aria-label="Worked example guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Read each worked example line by line: source unit, operation, target unit, then reason.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not guess MB/MiB from memory. Read the prefix, choose 1000 or 1024, then calculate.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button type="button" id="checkPractice">Check answers</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel mistake-panel">
+          <div class="section-title">
+            <p class="eyebrow">Debug the mistakes</p>
+            <h2>Find the trap, fix the answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <div>
+              <h3>Mistake 1</h3>
+              <p class="wrong">8 bytes = 8 bits</p>
+              <button type="button" class="reveal" data-reveal="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">8 bytes = 64 bits because 1 byte = 8 bits.</p>
+            </div>
+            <div>
+              <h3>Mistake 2</h3>
+              <p class="wrong">2 MiB = 2000 KiB</p>
+              <button type="button" class="reveal" data-reveal="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">2 MiB = 2048 KiB because MiB to KiB uses x1024.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Past-paper style</p>
+            <h2>Original exam-style questions</h2>
+          </div>
+          <div class="exam-grid" id="examGrid"></div>
+          <p class="source-note">
+            These are original past-paper-style questions, not copied Cambridge past paper text.
+            Use the buttons under each question to expand the CIE-style mark scheme.
+          </p>
+        </section>
+
+        <section class="guidance-grid compact" aria-label="Marking guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use the MS buttons after attempting each question. The goal is to compare wording, method and units against the mark points.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Method marks can survive an arithmetic slip, but using 1000 where KiB/MiB requires 1024 is a different error.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What must survive until the exam?</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>bit = 0 or 1; nibble = 4 bits; byte = 8 bits</span></div>
+            <div><strong>2</strong><span>kB/MB/GB/TB use 1000; KiB/MiB/GiB/TiB use 1024</span></div>
+            <div><strong>3</strong><span>Conversions need visible working and units</span></div>
+          </div>
+          <div class="exit-ticket">
+            <label for="exitTicket">Exit ticket</label>
+            <textarea id="exitTicket" rows="3" placeholder="The key point about storage units is..., and a common mistake is..."></textarea>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks, not vague revision</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a two-column vocabulary table for bit, nibble, byte, kB, KiB, MB, MiB, GB, GiB, TB, TiB.</li>
+            <li>Show working for: 6 bytes to bits; 8192 bytes to KiB; 3 MiB to bits; 1 TiB to GiB.</li>
+            <li>Write a 4-mark explanation: why can a 512 GB drive display as fewer GiB?</li>
+            <li>Extension: find one real file on your device and report its size in MB and approximate MiB.</li>
+          </ol>
+        </section>
+
+        <section class="panel homework-support">
+          <div class="section-title">
+            <p class="eyebrow">Homework support</p>
+            <h2>Check only after attempting</h2>
+          </div>
+          <button
+            type="button"
+            class="reveal"
+            data-reveal="homeworkAnswers"
+            data-open-label="Show homework answers"
+            data-close-label="Hide homework answers"
+          >
+            Show homework answers
+          </button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Calculation answers:</strong> 6 bytes = 48 bits; 8192 bytes = 8 KiB; 3 MiB = 25,165,824 bits; 1 TiB = 1024 GiB.</p>
+            <p><strong>4-mark explanation focus:</strong> credit decimal vs binary prefixes, 1000 vs 1024, same byte count with different scale, and context.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

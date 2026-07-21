@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 108 | Nested loops and table-style problems</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>Nested loops and table-style problems</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#model">Nested model</a>
+        <a href="#table">Table traversal</a>
+        <a href="#reset">Reset rules</a>
+        <a href="#counting">Counting steps</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#chooser">Pattern chooser</a>
+        <a href="#simulator">Loop simulator</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 108 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
+            <h2>Nested loops are loops with roommates. Everyone needs their own job.</h2>
+            <p>
+              A nested loop places one loop inside another. This is useful when a problem has rows and columns,
+              repeated groups, tables of inputs or every-pair comparisons. The outer loop usually chooses the row or
+              group; the inner loop processes each item inside that row or group.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>when a problem needs an outer and inner loop</span></div>
+              <div><strong>Trace</strong><span>row, column and accumulator variables in nested loops</span></div>
+              <div><strong>Place</strong><span>initialisation, reset and output statements at the correct level</span></div>
+            </div>
+          </div>
+          <div class="nested-visual" aria-label="Nested loop visual">
+            <div class="grid-demo">
+              <span>R1C1</span><span>R1C2</span><span>R1C3</span>
+              <span>R2C1</span><span>R2C2</span><span>R2C3</span>
+              <span>R3C1</span><span>R3C2</span><span>R3C3</span>
+            </div>
+            <div class="loop-cards">
+              <div><strong>Outer loop</strong><span>Row 1, Row 2, Row 3</span></div>
+              <div><strong>Inner loop</strong><span>Column 1, Column 2, Column 3</span></div>
+            </div>
+            <p>Three rows times three columns means nine cell visits. Nested loops make that structure visible.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Point to the table and ask: "What changes slowly? What changes quickly?" Slow is usually the outer loop.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style questions often mark the loop headers, correct indentation, reset position and total number of iterations.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Resetting a row total outside the outer loop gives one grand running total, not a separate total for each row.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>How many stickers are checked?</h2>
+            <p>A classroom chart has 3 rows and 4 columns. An algorithm checks every cell. How many cell checks happen?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="seven">7</button>
+            <button class="choice-card" type="button" data-hook="twelve">12</button>
+            <button class="choice-card" type="button" data-hook="three">3</button>
+            <button class="choice-card" type="button" data-hook="four">4</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose rows multiplied by columns.</div>
+        </section>
+
+        <section class="panel" id="model">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Outer loop first, inner loop second</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Core structure</h3>
+              <pre><code>FOR Row &lt;- 1 TO 3
+    FOR Column &lt;- 1 TO 4
+        OUTPUT Row, Column
+    NEXT Column
+NEXT Row</code></pre>
+              <p>The inner loop completes all columns for one row before the outer loop moves to the next row.</p>
+            </article>
+            <article>
+              <h3>Trace idea</h3>
+              <div class="data-table mini-table" role="table" aria-label="Nested loop trace">
+                <div class="table-row table-head" role="row"><div>Row</div><div>Column sequence</div></div>
+                <div class="table-row" role="row"><div>1</div><div>1, 2, 3, 4</div></div>
+                <div class="table-row" role="row"><div>2</div><div>1, 2, 3, 4</div></div>
+                <div class="table-row" role="row"><div>3</div><div>1, 2, 3, 4</div></div>
+              </div>
+              <div class="callout">Chinese support: nested loop = 嵌套循环；outer loop = 外层循环；inner loop = 内层循环。</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="table">
+          <div class="section-title">
+            <p class="eyebrow">Table traversal</p>
+            <h2>Table-style problems usually scan row by row</h2>
+          </div>
+          <div class="data-table pattern-table" role="table" aria-label="Nested loop table patterns">
+            <div class="table-row table-head" role="row"><div>Problem type</div><div>Outer loop</div><div>Inner loop</div><div>Typical output</div></div>
+            <div class="table-row" role="row"><div>Grid / table</div><div>rows</div><div>columns</div><div>cell coordinates or cell values</div></div>
+            <div class="table-row" role="row"><div>Class marks</div><div>students</div><div>subjects/tests</div><div>row total or average per student</div></div>
+            <div class="table-row" role="row"><div>Multiplication table</div><div>first factor</div><div>second factor</div><div>product for each pair</div></div>
+            <div class="table-row" role="row"><div>Every pair</div><div>first item</div><div>second item</div><div>comparison or match result</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="reset">
+          <div class="section-title">
+            <p class="eyebrow">Reset rules</p>
+            <h2>Put row-level variables inside the outer loop</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Correct: row total resets for each row</h3>
+              <pre><code>GrandTotal &lt;- 0
+FOR Row &lt;- 1 TO 3
+    RowTotal &lt;- 0
+    FOR Column &lt;- 1 TO 4
+        INPUT Mark
+        RowTotal &lt;- RowTotal + Mark
+    NEXT Column
+    OUTPUT RowTotal
+    GrandTotal &lt;- GrandTotal + RowTotal
+NEXT Row
+OUTPUT GrandTotal</code></pre>
+            </article>
+            <article>
+              <h3>Why placement matters</h3>
+              <p>`RowTotal &lt;- 0` must happen once for each row. If it is before the outer loop, RowTotal keeps carrying earlier rows.</p>
+              <div class="callout">A row variable resets at the start of each outer-loop pass. A grand total resets before all rows begin.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="counting">
+          <div class="section-title">
+            <p class="eyebrow">Counting steps</p>
+            <h2>Total visits = outer repetitions x inner repetitions</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Example</h3>
+              <pre><code>FOR Row &lt;- 1 TO 2
+    FOR Column &lt;- 1 TO 3
+        OUTPUT "*"
+    NEXT Column
+NEXT Row</code></pre>
+            </article>
+            <article>
+              <h3>Count it</h3>
+              <p>The `OUTPUT "*"` statement runs 2 x 3 = 6 times. The inner loop runs fully for Row 1, then fully again for Row 2.</p>
+              <div class="callout">Do not add 2 + 3. Nested loop visits multiply when every inner loop runs for every outer loop value.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Indentation is evidence in nested loops</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>FOR Row &lt;- 1 TO 3
+    FOR Column &lt;- 1 TO 4
+        Product &lt;- Row * Column
+        OUTPUT Product
+    NEXT Column
+NEXT Row</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>for (int row = 1; row &lt;= 3; row++) {
+    for (int column = 1; column &lt;= 4; column++) {
+        int product = row * column;
+        System.out.println(product);
+    }
+}</code></pre>
+            </article>
+          </div>
+          <div class="callout">Exam reminder: Java braces and semicolons are not Cambridge pseudocode. Use clear `FOR`, `NEXT`, indentation and assignment arrows in Paper 2 answers.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson covers nested-loop algorithm patterns</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Nested loops, outer/inner loop roles, table traversal, row/column trace, row total reset, grand total, iteration counts and Cambridge pseudocode indentation.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 107 covered string traversal. Lesson 109 covers algorithm efficiency at AS level. Section 10 two-dimensional arrays are treated later.</span></div>
+            <div><strong>Paper 2 note</strong><span>Show the loop structure and variable placement. A vague "repeat for all cells" is not enough for full marks.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Interactive pattern chooser</p>
+            <h2>Choose the outer and inner loop</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="chooserInput">
+                <option value="seating">Check every seat in 5 rows of 8 seats.</option>
+                <option value="marks">Input 3 test marks for each of 4 students.</option>
+                <option value="table">Output a 1 to 10 multiplication table.</option>
+                <option value="pairs">Compare each team with each other team.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="chooserBtn">Identify</button>
+          </div>
+          <div class="feedback" id="chooserResult">Choose a scenario to identify loop roles.</div>
+        </section>
+
+        <section class="panel" id="simulator">
+          <div class="section-title">
+            <p class="eyebrow">Interactive loop simulator</p>
+            <h2>Trace nested-loop visits</h2>
+          </div>
+          <div class="converter-grid three-col">
+            <label>
+              Rows
+              <select id="rowsInput">
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </label>
+            <label>
+              Columns
+              <select id="colsInput">
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Trace</button>
+          </div>
+          <div class="trace-output" id="simulateResult">Choose row and column counts, then trace cell visits.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Nested-loop traces</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="coordinates">Cell coordinates</button>
+            <button class="tab" type="button" data-example="row-total">Row totals</button>
+            <button class="tab" type="button" data-example="multiplication">Multiplication table</button>
+            <button class="tab" type="button" data-example="mistake">Reset placement</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Nested-loop precision</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix nested-loop mistakes</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style nested-loop questions with expandable MS</h2>
+            <p>These questions target loop roles, iteration counts, trace rows, reset placement and strict pseudocode structure.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Nested-loop checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Outer</strong><span>Controls the larger group, usually rows, students or first factor.</span></div>
+            <div><strong>Inner</strong><span>Runs completely for each outer-loop value, usually columns or repeated items.</span></div>
+            <div><strong>Placement</strong><span>Reset row-level values inside the outer loop; reset grand totals before all rows.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Trace visits</strong>
+              <span>Trace the sequence of `(Row, Column)` pairs for 4 rows and 3 columns. State how many cells are processed.</span>
+            </article>
+            <article>
+              <strong>Task 2: Pseudocode</strong>
+              <span>Write Cambridge-style pseudocode to input 5 marks for each of 3 students and output each student's total.</span>
+            </article>
+            <article>
+              <strong>Task 3: Correction</strong>
+              <span>Explain why `RowTotal &lt;- 0` must be inside the outer loop when calculating a separate total for each row.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

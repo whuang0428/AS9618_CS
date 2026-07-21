@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 131 | Parameters: by value and by reference in pseudocode</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
+        <h1>Parameters: by value and by reference</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#terms">Terms</a>
+        <a href="#value">By value</a>
+        <a href="#reference">BYREF</a>
+        <a href="#compare">Compare</a>
+        <a href="#trace">Trace table</a>
+        <a href="#use">When to use</a>
+        <a href="#java">Java support</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#simulator">Trace simulator</a>
+        <a href="#chooser">Mode chooser</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 131 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
+            <h2>Does the subroutine get a copy, or the original?</h2>
+            <p>
+              A parameter can receive a copied value, or it can be linked to the caller's variable using
+              <code>BYREF</code>. That one word decides whether a change inside the procedure survives after the
+              call. In other words, this is the lesson where a variable can leave the room and come back wearing
+              a new value.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>parameter, argument, by value and by reference</span></div>
+              <div><strong>Trace</strong><span>caller variables before, during and after a subroutine call</span></div>
+              <div><strong>Write</strong><span>Cambridge-style headers using typed parameters and <code>BYREF</code></span></div>
+            </div>
+          </div>
+          <div class="pass-visual" aria-label="By value and BYREF visual">
+            <div><strong>By value</strong><span>copy only</span><em>original unchanged</em></div>
+            <div><strong>BYREF</strong><span>linked variable</span><em>original may change</em></div>
+            <div><strong>Exam trace</strong><span>before → call → after</span><em>show final caller values</em></div>
+            <p>Cambridge pseudocode uses <code>BYREF</code>; Java syntax is support only.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make every trace answer end with the caller's variable value. That is where many marks are won or lost.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 questions often test whether a procedure updates data outside itself, especially in trace and debug tasks.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Changing a parameter inside a procedure does not automatically change the argument. It only does that with <code>BYREF</code>.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Will <code>Score</code> change?</h2>
+            <p>Start with <code>Score = 9</code>. After this call, what is the caller's <code>Score</code>?</p>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Version A</h3>
+              <pre><code>PROCEDURE Increase(Score : INTEGER)
+    Score &lt;- Score + 1
+ENDPROCEDURE
+
+CALL Increase(Score)</code></pre>
+            </article>
+            <article>
+              <h3>Version B</h3>
+              <pre><code>PROCEDURE Increase(BYREF Score : INTEGER)
+    Score &lt;- Score + 1
+ENDPROCEDURE
+
+CALL Increase(Score)</code></pre>
+            </article>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="a9">Version A leaves caller Score as 9</button>
+            <button class="choice-card" type="button" data-hook="a10">Version A changes caller Score to 10</button>
+            <button class="choice-card" type="button" data-hook="b9">Version B leaves caller Score as 9</button>
+            <button class="choice-card" type="button" data-hook="b10">Version B changes caller Score to 10</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose one claim and check the passing mode.</div>
+        </section>
+
+        <section class="panel" id="terms">
+          <div class="section-title">
+            <p class="eyebrow">Parameter and argument</p>
+            <h2>The header names the parameter. The call supplies the argument.</h2>
+            <p>Chinese support: parameter 参数, argument 实参, procedure 过程, caller 调用者。</p>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Parameter in the procedure header</h3>
+              <pre><code>PROCEDURE DisplayMessage(Message : STRING)
+    OUTPUT Message
+ENDPROCEDURE</code></pre>
+              <p><code>Message</code> is the parameter. It is a named input expected by the procedure.</p>
+            </article>
+            <article>
+              <h3>Argument in the call</h3>
+              <pre><code>CALL DisplayMessage("Ready")
+
+Text &lt;- "Saved"
+CALL DisplayMessage(Text)</code></pre>
+              <p><code>"Ready"</code> and <code>Text</code> are arguments. They are the actual values supplied.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="value">
+          <div class="section-title">
+            <p class="eyebrow">Passing by value</p>
+            <h2>By value means the subroutine works with a copy</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>PROCEDURE AddOne(Number : INTEGER)
+    Number &lt;- Number + 1
+ENDPROCEDURE
+
+X &lt;- 5
+CALL AddOne(X)
+OUTPUT X</code></pre>
+            </article>
+            <article>
+              <h3>Trace reasoning</h3>
+              <div class="trace-list">
+                <div><strong>Before call</strong><span><code>X = 5</code></span></div>
+                <div><strong>Inside procedure</strong><span>local <code>Number</code> becomes <code>6</code></span></div>
+                <div><strong>After call</strong><span>caller's <code>X</code> is still <code>5</code></span></div>
+              </div>
+              <div class="callout">No <code>BYREF</code> means do not update the original caller variable.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="reference">
+          <div class="section-title">
+            <p class="eyebrow">Passing by reference</p>
+            <h2><code>BYREF</code> links the parameter back to the caller's variable</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>PROCEDURE AddOne(BYREF Number : INTEGER)
+    Number &lt;- Number + 1
+ENDPROCEDURE
+
+X &lt;- 5
+CALL AddOne(X)
+OUTPUT X</code></pre>
+            </article>
+            <article>
+              <h3>Trace reasoning</h3>
+              <div class="trace-list">
+                <div><strong>Before call</strong><span><code>X = 5</code></span></div>
+                <div><strong>Inside procedure</strong><span><code>Number</code> is linked to <code>X</code></span></div>
+                <div><strong>After call</strong><span>caller's <code>X</code> becomes <code>6</code></span></div>
+              </div>
+              <div class="callout"><code>BYREF</code> is useful when a procedure must update the caller's variable directly.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Side-by-side comparison</p>
+            <h2>Same procedure body, different final result</h2>
+          </div>
+          <div class="data-table compare-table" role="table" aria-label="By value and BYREF comparison">
+            <div class="table-row table-head"><div>Feature</div><div>By value</div><div>By reference</div></div>
+            <div class="table-row"><div>Header clue</div><div><code>Number : INTEGER</code></div><div><code>BYREF Number : INTEGER</code></div></div>
+            <div class="table-row"><div>What is passed</div><div>a copy of the value</div><div>a reference to the caller's variable</div></div>
+            <div class="table-row"><div>Change inside subroutine</div><div>affects local parameter only</div><div>can affect original variable</div></div>
+            <div class="table-row"><div>Typical exam wording</div><div>value is passed to a parameter</div><div>procedure updates the value of the argument</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Trace table</p>
+            <h2>Follow caller value, parameter value and passing mode</h2>
+          </div>
+          <div class="data-table trace-table" role="table" aria-label="Trace table">
+            <div class="table-row table-head"><div>Step</div><div>Caller variable</div><div>Parameter</div><div>Reason</div></div>
+            <div class="table-row"><div>Before call</div><div><code>X = 5</code></div><div>not created yet</div><div>main algorithm owns <code>X</code></div></div>
+            <div class="table-row"><div>By value call</div><div><code>X = 5</code></div><div><code>Number = 5</code></div><div>parameter receives a copy</div></div>
+            <div class="table-row"><div>By value after increment</div><div><code>X = 5</code></div><div><code>Number = 6</code></div><div>only copy changes</div></div>
+            <div class="table-row"><div>BYREF after increment</div><div><code>X = 6</code></div><div><code>Number</code> linked to <code>X</code></div><div>change is applied to original variable</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="use">
+          <div class="section-title">
+            <p class="eyebrow">When to use BYREF</p>
+            <h2>Use it when the procedure must deliberately update caller data</h2>
+          </div>
+          <div class="use-grid">
+            <article>
+              <h3>Good use</h3>
+              <p><code>IncrementScore(BYREF Score : INTEGER)</code> updates a stored score in the main algorithm.</p>
+            </article>
+            <article>
+              <h3>Good use</h3>
+              <p><code>Swap(BYREF A : INTEGER, BYREF B : INTEGER)</code> must change both original variables.</p>
+            </article>
+            <article>
+              <h3>Avoid if unnecessary</h3>
+              <p>If the subroutine only needs to read a value, by value is clearer and reduces accidental changes.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="java">
+          <div class="section-title">
+            <p class="eyebrow">Java support only</p>
+            <h2>Do not replace Cambridge <code>BYREF</code> with Java syntax</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge exam answer format</h3>
+              <pre><code>PROCEDURE Increase(BYREF Score : INTEGER)
+    Score &lt;- Score + 1
+ENDPROCEDURE</code></pre>
+            </article>
+            <article>
+              <h3>Java support note</h3>
+              <pre><code>// Java support example only, not exam pseudocode
+static void increase(int score) {
+    score = score + 1;
+}</code></pre>
+              <p>Java primitive parameters are passed by value. Do not use this as evidence that Cambridge <code>BYREF</code> is absent.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>What this lesson covers from Section 11</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Subroutine parameters</strong><span>typed parameters in procedure headers and function-style reasoning</span></div>
+            <div><strong>By value</strong><span>copies a value; caller variable is not changed by local assignment</span></div>
+            <div><strong>By reference</strong><span><code>BYREF</code> allows the subroutine to change the original caller variable</span></div>
+            <div><strong>Trace and debugging</strong><span>before/inside/after-call values, missing <code>BYREF</code>, and swap procedures</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="simulator">
+          <div class="section-title">
+            <p class="eyebrow">Interactive trace simulator</p>
+            <h2>Predict the final caller value</h2>
+            <p>Enter a starting value and choose the passing mode. The procedure runs <code>Number &lt;- Number + 1</code>.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Starting value of caller variable X
+              <input id="startValue" type="number" min="-999" max="999" step="1" value="5" />
+            </label>
+            <label>
+              Passing mode
+              <select id="passMode">
+                <option value="value">by value</option>
+                <option value="ref">BYREF</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="traceBtn">Trace call</button>
+          </div>
+          <div class="trace-output" id="traceResult" aria-live="polite">Choose a mode and trace the call.</div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Mode chooser</p>
+            <h2>Which passing mode should the procedure use?</h2>
+            <p>Select a scenario to see the exam reasoning.</p>
+          </div>
+          <div class="scenario-grid" id="scenarioGrid"></div>
+          <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Trace before you explain</h2>
+          </div>
+          <div class="tabs" id="exampleTabs" role="tablist"></div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short answers, strict terms</h2>
+            <p>Type the final value or keyword. Use <code>BYREF</code> where the question asks for Cambridge syntax.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Find the exact misconception</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Answer, then expand the MS</h2>
+            <p>Questions are original Cambridge-style practice. Marking notes are deliberately strict about wording and final values.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Three sentences to leave with</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>By value</strong><span>The parameter receives a copy; local changes do not alter the caller variable.</span></div>
+            <div><strong>BYREF</strong><span>The parameter is linked to the caller variable; changes can be visible after the call.</span></div>
+            <div><strong>Exam answer</strong><span>State the mechanism, trace the final values, and use Cambridge pseudocode keywords.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Trace, write, explain</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Trace the by-value and <code>BYREF</code> versions of <code>AddOne</code> for starting values <code>0</code>, <code>12</code> and <code>-3</code>. Show before, inside and after-call values.</li>
+            <li>Write Cambridge-style pseudocode for <code>PROCEDURE Reset(BYREF Count : INTEGER)</code> that sets <code>Count</code> to <code>0</code>, then show one valid call.</li>
+            <li>Write a 4-mark explanation: compare passing by value and passing by reference, including one example where <code>BYREF</code> is necessary.</li>
+            <li>Correct this bug in two sentences: a swap procedure uses <code>PROCEDURE Swap(A : INTEGER, B : INTEGER)</code> and the caller values do not change.</li>
+          </ol>
+          <div class="callout">
+            Marking focus: use the terms parameter, argument, caller variable, by value, by reference and <code>BYREF</code> accurately.
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

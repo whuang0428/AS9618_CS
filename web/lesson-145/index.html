@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 145 | Testing, implementation, maintenance, and evaluation</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 12</p>
+        <h1>Testing, implementation, maintenance, and evaluation</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#implementation">Implementation</a>
+        <a href="#changeover">Changeover</a>
+        <a href="#testing">Testing</a>
+        <a href="#test-data">Test data</a>
+        <a href="#maintenance">Maintenance</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#stage-tool">Stage chooser</a>
+        <a href="#data-tool">Test data tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Mistakes</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 145 | 45 minutes | Paper 2 Section 12 | 5-minute quiz</p>
+            <h2>A system is not finished when it runs once. It is finished when it is tested, delivered, maintained and evaluated.</h2>
+            <p>
+              This lesson connects the later software development stages: implementation, testing, maintenance and evaluation.
+              Chinese support: implementation 实施, testing 测试, test data 测试数据, maintenance 维护, evaluation 评价。
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Distinguish</strong><span>implementation, testing, maintenance and evaluation</span></div>
+              <div><strong>Classify</strong><span>test data and maintenance types</span></div>
+              <div><strong>Explain</strong><span>how evidence links back to requirements and success criteria</span></div>
+            </div>
+          </div>
+          <div class="lifecycle-visual" aria-label="Lifecycle visual">
+            <div><strong>Implementation</strong><span>build and install</span><em>from design to working system</em></div>
+            <div><strong>Testing</strong><span>find faults</span><em>normal, abnormal, boundary</em></div>
+            <div><strong>Maintenance</strong><span>change after release</span><em>corrective, adaptive, perfective</em></div>
+            <div><strong>Evaluation</strong><span>judge success</span><em>compare with criteria</em></div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use the phrase “evidence beats vibes”. Every later lifecycle stage should produce evidence, not just confidence.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge answers often need cause and consequence: what is tested, why that test is useful, and how the result affects release or maintenance.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Testing checks for faults. Evaluation judges whether the final system meets requirements and success criteria. They overlap, but they are not the same answer.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>The booking system runs once. Can we release it?</h2>
+            <p>Pick the best response before the keyboard gets too proud of itself.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="ship">Yes, one successful run proves it is correct.</button>
+            <button class="choice-card" type="button" data-hook="test">No, it needs planned testing with normal, abnormal and boundary data.</button>
+            <button class="choice-card" type="button" data-hook="pretty">Yes, if the interface looks modern.</button>
+            <button class="choice-card" type="button" data-hook="wait">No, but only because users always complain.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the answer that gives evidence-based reasoning.</div>
+        </section>
+
+        <section class="panel" id="implementation">
+          <div class="section-title">
+            <p class="eyebrow">Implementation</p>
+            <h2>Implementation turns the design into a working system</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Build</h3><p>Program modules, create files or databases, implement interfaces and connect components.</p></article>
+            <article><h3>Install</h3><p>Put the system into the user environment, configure hardware, accounts, permissions and data.</p></article>
+            <article><h3>Document</h3><p>Prepare user instructions and technical notes so the system can be used and supported.</p></article>
+          </div>
+          <div class="callout">Implementation should follow the design documentation. If implementation silently changes the design, testing may no longer match the intended system.</div>
+        </section>
+
+        <section class="panel" id="changeover">
+          <div class="section-title">
+            <p class="eyebrow">Implementation strategies</p>
+            <h2>Changeover methods balance risk, cost and speed</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Changeover methods">
+            <div class="table-row table-head"><div>Method</div><div>Idea</div><div>Advantage</div><div>Risk or cost</div></div>
+            <div class="table-row"><div>Direct</div><div>old system stops; new system starts immediately</div><div>fast and cheaper</div><div>high risk if new system fails</div></div>
+            <div class="table-row"><div>Parallel</div><div>old and new run together for a time</div><div>outputs can be compared</div><div>expensive and more work</div></div>
+            <div class="table-row"><div>Phased</div><div>new system introduced one part at a time</div><div>faults are contained</div><div>takes longer</div></div>
+            <div class="table-row"><div>Pilot</div><div>new system trialled in one department or group</div><div>real feedback with limited risk</div><div>may not reveal every issue</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="testing">
+          <div class="section-title">
+            <p class="eyebrow">Testing</p>
+            <h2>Testing is planned evidence that the system behaves as expected</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Testing stages">
+            <div class="table-row table-head"><div>Type</div><div>Focus</div><div>Example</div><div>Evidence</div></div>
+            <div class="table-row"><div>Unit testing</div><div>one module or subroutine</div><div>check clash detection function</div><div>actual output compared with expected output</div></div>
+            <div class="table-row"><div>Integration testing</div><div>modules working together</div><div>booking form sends data to save module</div><div>data passes correctly between parts</div></div>
+            <div class="table-row"><div>System testing</div><div>whole system</div><div>complete booking workflow</div><div>end-to-end results</div></div>
+            <div class="table-row"><div>Acceptance testing</div><div>user needs and success criteria</div><div>teacher completes booking under target time</div><div>user trial records</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="test-data">
+          <div class="section-title">
+            <p class="eyebrow">Test data</p>
+            <h2>Good testing uses different categories of data</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Test data categories">
+            <div class="table-row table-head"><div>Category</div><div>Meaning</div><div>Room capacity example</div><div>Expected result</div></div>
+            <div class="table-row"><div>Normal</div><div>valid typical data</div><div>24 students for capacity 30</div><div>accepted</div></div>
+            <div class="table-row"><div>Boundary</div><div>valid or invalid data at the edge</div><div>30 and 31 for capacity 30</div><div>30 accepted; 31 rejected</div></div>
+            <div class="table-row"><div>Abnormal</div><div>invalid data of wrong type or outside rules</div><div>minus 4 or “many”</div><div>rejected with message</div></div>
+            <div class="table-row"><div>Extreme</div><div>largest or smallest valid value</div><div>1 and 30 if valid range is 1 to 30</div><div>accepted</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="maintenance">
+          <div class="section-title">
+            <p class="eyebrow">Maintenance</p>
+            <h2>Maintenance changes a system after it has been delivered</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Corrective</h3><p>Fixing faults found after release, such as a booking clash that was not rejected.</p></article>
+            <article><h3>Adaptive</h3><p>Changing the system because the environment changes, such as a new timetable structure.</p></article>
+            <article><h3>Perfective</h3><p>Improving performance, usability or features, such as faster room search.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" id="evaluation">
+          <div class="section-title">
+            <p class="eyebrow">Evaluation</p>
+            <h2>Evaluation judges the final system against requirements and success criteria</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Evaluation evidence">
+            <div class="table-row table-head"><div>Success criterion</div><div>Evidence</div><div>Evaluation judgement</div></div>
+            <div class="table-row"><div>teachers create booking in under 2 minutes</div><div>8 out of 10 trial users met the target</div><div>criterion met, but training may help remaining users</div></div>
+            <div class="table-row"><div>reject double bookings</div><div>all clash test cases rejected invalid bookings</div><div>criterion met for tested cases</div></div>
+            <div class="table-row"><div>search within 2 seconds</div><div>95 of 100 searches completed within target</div><div>criterion met if target was 95%</div></div>
+          </div>
+          <div class="callout">Evaluation should be evidence-based. “Users liked it” is weak unless it is connected to a measured survey, task result or success criterion.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>This lesson covers the later stages of Section 12</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>implementation activities and changeover methods</span></div>
+            <div><strong>Covered</strong><span>unit, integration, system and acceptance testing</span></div>
+            <div><strong>Covered</strong><span>normal, abnormal, boundary and extreme test data</span></div>
+            <div><strong>Covered</strong><span>corrective, adaptive and perfective maintenance; evaluation against success criteria</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="stage-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive stage chooser</p>
+            <h2>Which lifecycle stage is being described?</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Scenario
+              <select id="stageSelect">
+                <option value="build">Programmers create modules from the design documents</option>
+                <option value="compare">Actual output is compared with expected output</option>
+                <option value="fix">A fault found after release is corrected</option>
+                <option value="judge">The final system is compared with success criteria</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="stageBtn">Identify stage</button>
+          </div>
+          <div id="stageOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="data-tool">
+          <div class="section-title">
+            <p class="eyebrow">Test data classifier</p>
+            <h2>Classify input for NumberOfStudents, valid range 1 to 30</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Test value
+              <select id="dataSelect">
+                <option value="24">24</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="text">many</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="dataBtn">Classify data</button>
+          </div>
+          <div id="dataOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From test plan to evaluation judgement</h2>
+          </div>
+          <div class="tab-row" role="tablist" aria-label="Worked examples">
+            <button class="tab-button active" type="button" data-example="testcase">Test case</button>
+            <button class="tab-button" type="button" data-example="changeover">Changeover</button>
+            <button class="tab-button" type="button" data-example="evaluation">Evaluation</button>
+          </div>
+          <div id="exampleOutput" class="example-output"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Answer, check, then reveal the model answer if needed</h2>
+          </div>
+          <div id="practiceList" class="practice-list"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the lifecycle mix-up</h2>
+          </div>
+          <div id="mistakeList" class="mistake-grid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Cambridge-style questions with expandable MS</h2>
+            <p>These are original AS-style questions. The mark schemes use Cambridge-style precision, not copied past-paper wording.</p>
+          </div>
+          <div id="examList" class="exam-list"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What to remember</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Testing</strong><span>planned test data, expected results and actual results</span></div>
+            <div><strong>Maintenance</strong><span>corrective, adaptive and perfective changes after release</span></div>
+            <div><strong>Evaluation</strong><span>judgement against requirements and success criteria using evidence</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Complete a release evidence pack for a booking system</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write four test cases for NumberOfStudents, including normal, boundary and abnormal data.</li>
+            <li>Choose one changeover method for a school booking system and justify it with one advantage and one risk.</li>
+            <li>Classify three maintenance requests as corrective, adaptive or perfective, with a reason for each.</li>
+            <li>Write a 6-mark evaluation paragraph using at least two success criteria and evidence.</li>
+          </ol>
+          <div class="callout">Marking focus: named stage, specific evidence, and a consequence. Avoid “better” unless you say better at what.</div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

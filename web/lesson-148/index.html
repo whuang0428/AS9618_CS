@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 148 | Paper 2 review: programming constructs and file handling</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Sections 9-12</p>
+        <h1>Paper 2 review: programming constructs and file handling</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#constructs">Constructs</a>
+        <a href="#selection">Selection</a>
+        <a href="#iteration">Iteration</a>
+        <a href="#subprograms">Subprograms</a>
+        <a href="#validation">Validation</a>
+        <a href="#files">File handling</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#construct-tool">Construct tool</a>
+        <a href="#file-tool">File mode tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Mistakes</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 148 | 45 minutes | Paper 2 review | informal questioning</p>
+            <h2>Programming review is grammar plus logic. Syntax is the spelling; control flow is the story.</h2>
+            <p>
+              This lesson reviews programming constructs and file handling in Cambridge-style pseudocode: sequence,
+              selection, iteration, subprograms, validation, file modes and end-of-file loops. Chinese support:
+              construct 构造, parameter 参数, return value 返回值, file mode 文件模式, validation 验证。
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Recognise</strong><span>constructs from mixed pseudocode snippets</span></div>
+              <div><strong>Apply</strong><span>file read/write/append patterns correctly</span></div>
+              <div><strong>Explain</strong><span>validation and subprogram choices with precise terms</span></div>
+            </div>
+          </div>
+          <div class="review-visual" aria-label="Programming constructs review visual">
+            <div><strong>Selection</strong><span>IF / CASE</span><em>choose a path</em></div>
+            <div><strong>Iteration</strong><span>FOR / WHILE / REPEAT</span><em>repeat safely</em></div>
+            <div><strong>Subprogram</strong><span>PROCEDURE / FUNCTION</span><em>reuse logic</em></div>
+            <div><strong>File</strong><span>READ / WRITE / APPEND</span><em>persist data</em></div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>When reviewing code, ask: “What changes the path, what repeats, what stores, and what crosses the file boundary?”</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 answers lose marks when students know the idea but write the wrong construct or file mode. Precision is not decoration here.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Java syntax can help you practise, but Cambridge pseudocode is the exam language. Do not answer file questions with Java libraries unless asked.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which file mode should be used?</h2>
+            <p>Scenario: add one new quiz score to the end of an existing file without deleting old scores.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="read">READ</button>
+            <button class="choice-card" type="button" data-hook="write">WRITE</button>
+            <button class="choice-card" type="button" data-hook="append">APPEND</button>
+            <button class="choice-card" type="button" data-hook="close">CLOSEFILE</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Pick the mode that preserves existing records and adds a new one.</div>
+        </section>
+
+        <section class="panel" id="constructs">
+          <div class="section-title">
+            <p class="eyebrow">Programming constructs</p>
+            <h2>Constructs control the order in which statements run</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Programming constructs">
+            <div class="table-row table-head"><div>Construct</div><div>Meaning</div><div>Cambridge-style signal</div><div>Common trap</div></div>
+            <div class="table-row"><div>Sequence</div><div>statements run in order</div><div>one statement after another</div><div>assuming hidden jumps</div></div>
+            <div class="table-row"><div>Selection</div><div>choose a branch</div><div>IF / ELSE / CASE</div><div>missing ELSE or ENDIF</div></div>
+            <div class="table-row"><div>Iteration</div><div>repeat statements</div><div>FOR / WHILE / REPEAT</div><div>off-by-one loop bounds</div></div>
+            <div class="table-row"><div>Subprogram</div><div>named reusable block</div><div>PROCEDURE / FUNCTION</div><div>confusing return value with output</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="selection">
+          <div class="section-title">
+            <p class="eyebrow">Selection review</p>
+            <h2>Use IF for decisions, CASE for clean multi-way choices</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>IF example</h3>
+              <pre><code>IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit needed"
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>CASE example</h3>
+              <pre><code>CASE MenuChoice OF
+    1 : CALL AddScore()
+    2 : CALL DisplayScores()
+    3 : CALL SaveScores()
+    OTHERWISE : OUTPUT "Invalid choice"
+ENDCASE</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="iteration">
+          <div class="section-title">
+            <p class="eyebrow">Iteration review</p>
+            <h2>Choose the loop by what is known before the loop starts</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Loop choice">
+            <div class="table-row table-head"><div>Loop</div><div>Use when</div><div>Example</div></div>
+            <div class="table-row"><div>FOR</div><div>number of repetitions is known</div><div>process 30 scores</div></div>
+            <div class="table-row"><div>WHILE</div><div>condition is checked before each repetition</div><div>read until end of file</div></div>
+            <div class="table-row"><div>REPEAT UNTIL</div><div>body must run at least once</div><div>keep asking until valid input</div></div>
+          </div>
+          <div class="callout">Boundary warning: if a loop says 1 to 5, there are five iterations. The loop counter is not just decorative furniture.</div>
+        </section>
+
+        <section class="panel" id="subprograms">
+          <div class="section-title">
+            <p class="eyebrow">Procedures and functions</p>
+            <h2>Subprograms reduce repetition and make code testable</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Procedure</h3>
+              <pre><code>PROCEDURE DisplayMessage(Message : STRING)
+    OUTPUT Message
+ENDPROCEDURE</code></pre>
+              <p>A procedure performs an action and does not have to return a value.</p>
+            </article>
+            <article>
+              <h3>Function</h3>
+              <pre><code>FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
+    IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
+        RETURN TRUE
+    ELSE
+        RETURN FALSE
+    ENDIF
+ENDFUNCTION</code></pre>
+              <p>A function returns a value that can be used in an expression.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="validation">
+          <div class="section-title">
+            <p class="eyebrow">Validation review</p>
+            <h2>Validation rejects unsuitable input before it damages the logic</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Validation examples">
+            <div class="table-row table-head"><div>Check</div><div>Rule</div><div>Example</div></div>
+            <div class="table-row"><div>Range check</div><div>value is between limits</div><div>mark from 0 to 100 inclusive</div></div>
+            <div class="table-row"><div>Type check</div><div>value has expected data type</div><div>mark must be integer</div></div>
+            <div class="table-row"><div>Presence check</div><div>value is not blank</div><div>student name required</div></div>
+            <div class="table-row"><div>Length check</div><div>value has correct number of characters</div><div>StudentID length is 8</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="files">
+          <div class="section-title">
+            <p class="eyebrow">File handling review</p>
+            <h2>Open the file in the correct mode, process records, then close it</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Read pattern</h3>
+              <pre><code>OPENFILE "Scores.txt" FOR READ
+WHILE NOT EOF("Scores.txt")
+    READFILE "Scores.txt", Line
+    OUTPUT Line
+ENDWHILE
+CLOSEFILE "Scores.txt"</code></pre>
+            </article>
+            <article>
+              <h3>Append pattern</h3>
+              <pre><code>OPENFILE "Scores.txt" FOR APPEND
+WRITEFILE "Scores.txt", NewScore
+CLOSEFILE "Scores.txt"</code></pre>
+              <p>APPEND preserves existing records. WRITE is usually for creating or replacing file contents.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>This review covers programming constructs and file handling</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>sequence, selection, iteration and loop choice</span></div>
+            <div><strong>Covered</strong><span>procedures, functions, parameters and return values</span></div>
+            <div><strong>Covered</strong><span>validation checks and testable input rules</span></div>
+            <div><strong>Covered</strong><span>file modes, EOF loops, READFILE, WRITEFILE and CLOSEFILE</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="construct-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive construct tool</p>
+            <h2>Identify the construct from the scenario</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Scenario
+              <select id="constructSelect">
+                <option value="pass">choose pass or resit based on Mark</option>
+                <option value="scores">process exactly 30 scores</option>
+                <option value="menu">choose one action from menu options 1 to 4</option>
+                <option value="valid">keep asking until a valid mark is entered</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="constructBtn">Identify</button>
+          </div>
+          <div id="constructOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="file-tool">
+          <div class="section-title">
+            <p class="eyebrow">File mode chooser</p>
+            <h2>Choose READ, WRITE or APPEND</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Task
+              <select id="fileSelect">
+                <option value="read">display all existing scores</option>
+                <option value="append">add one new score to the end</option>
+                <option value="write">create a new report file from scratch</option>
+                <option value="close">finish file processing safely</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="fileBtn">Choose mode</button>
+          </div>
+          <div id="fileOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Review patterns that turn into marks</h2>
+          </div>
+          <div class="tab-row" role="tablist" aria-label="Worked examples">
+            <button class="tab-button active" type="button" data-example="loop">Loop choice</button>
+            <button class="tab-button" type="button" data-example="function">Function</button>
+            <button class="tab-button" type="button" data-example="file">File handling</button>
+          </div>
+          <div id="exampleOutput" class="example-output"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short retrieval before exam-style questions</h2>
+          </div>
+          <div id="practiceList" class="practice-list"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the construct or file-mode error</h2>
+          </div>
+          <div id="mistakeList" class="mistake-grid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Programming constructs and file handling questions with expandable MS</h2>
+            <p>These are original AS-style questions. The mark schemes use Cambridge-style precision, not copied past-paper wording.</p>
+          </div>
+          <div id="examList" class="exam-list"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What to remember</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Construct</strong><span>selection chooses, iteration repeats, sequence orders</span></div>
+            <div><strong>Subprogram</strong><span>procedure performs; function returns</span></div>
+            <div><strong>File mode</strong><span>READ reads, WRITE creates/replaces, APPEND adds</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Complete a Paper 2 programming constructs review sheet</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write one IF, one CASE, one FOR loop and one REPEAT UNTIL loop in Cambridge-style pseudocode.</li>
+            <li>Write a function that validates a mark from 0 to 100 and returns BOOLEAN.</li>
+            <li>Write pseudocode to append one new score to a file without deleting existing scores.</li>
+            <li>Answer one 6-mark question explaining why file mode and CLOSEFILE matter.</li>
+          </ol>
+          <div class="callout">Marking focus: correct construct, correct file mode, and clear expected behaviour. Java is support only.</div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

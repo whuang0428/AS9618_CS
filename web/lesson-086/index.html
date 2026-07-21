@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 086 | SQL joins using related tables</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
+        <h1>SQL joins using related tables</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#relationships">Relationships</a>
+        <a href="#join">Join conditions</a>
+        <a href="#aliases">Aliases</a>
+        <a href="#trace">Trace results</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#builder">Join builder</a>
+        <a href="#runner">Result runner</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 086 | 45 minutes | Paper 1 Section 8 | informal questioning</p>
+            <h2>A join is the database version of introducing two people who already have the same ID card.</h2>
+            <p>
+              This lesson shows how related tables are joined using matching key fields. You will read table
+              relationships, write join conditions, trace joined rows and avoid the classic exam mistake:
+              naming three tables but forgetting how they are connected.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Connect</strong><span>tables using primary key and foreign key fields</span></div>
+              <div><strong>Write</strong><span>SQL joins with clear table-qualified field names</span></div>
+              <div><strong>Trace</strong><span>which rows appear in a joined result</span></div>
+            </div>
+          </div>
+          <div class="sql-visual" aria-label="SQL join visual">
+            <span class="keyword">Student.StudentID</span><span>= Loan.StudentID</span>
+            <span class="keyword">Loan.BookID</span><span>= Book.BookID</span>
+            <p>Do not just invite tables to the party. Tell SQL how they know each other.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Draw the relationship path before writing SQL. The join path is the plan; the query is the final sentence.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style mark schemes often credit the correct join condition separately from SELECT and FROM.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p><code>Student.StudentID = Book.BookID</code> looks tidy but is logically wrong. Join fields must represent the same item.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which condition correctly links students to their loans?</h2>
+            <p>If a table relationship is a bridge, a wrong join is a bridge drawn in pencil over a lake. Dramatic, not useful.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="studentLoan">Student.StudentID = Loan.StudentID</button>
+            <button class="choice-card" type="button" data-hook="studentBook">Student.StudentID = Book.BookID</button>
+            <button class="choice-card" type="button" data-hook="title">Student.StudentName = Book.Title</button>
+            <button class="choice-card" type="button" data-hook="category">Loan.StudentID = Book.Category</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose the condition where both fields store the same kind of value.
+          </div>
+        </section>
+
+        <section class="panel" id="relationships">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Related tables use primary keys and foreign keys</h2>
+            <p>A join combines rows when matching key fields refer to the same real-world item.</p>
+          </div>
+          <div class="relationship-map">
+            <article>
+              <h3>Student</h3>
+              <p><code>StudentID</code> primary key</p>
+              <p><code>StudentName</code>, <code>TutorGroup</code></p>
+            </article>
+            <div class="connector">1 to many<br /><code>StudentID</code></div>
+            <article>
+              <h3>Loan</h3>
+              <p><code>LoanID</code> primary key</p>
+              <p><code>StudentID</code>, <code>BookID</code> foreign keys</p>
+            </article>
+            <div class="connector">many to 1<br /><code>BookID</code></div>
+            <article>
+              <h3>Book</h3>
+              <p><code>BookID</code> primary key</p>
+              <p><code>Title</code>, <code>Category</code></p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: primary key = 主键；foreign key = 外键；join = 连接/关联查询；related tables = 相关联的数据表。</div>
+        </section>
+
+        <section class="panel" id="join">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Join conditions say which fields match</h2>
+            <p>For this lesson, use explicit join conditions. The key idea is not the exact SQL flavour; it is the matching relationship.</p>
+          </div>
+          <div class="answer-frame">
+            <strong>Three-table pattern:</strong>
+            <span><code>FROM Student, Loan, Book WHERE Student.StudentID = Loan.StudentID AND Loan.BookID = Book.BookID</code></span>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Correct match</strong><span><code>Student.StudentID = Loan.StudentID</code> because both values identify the same student.</span></article>
+            <article><strong>Correct match</strong><span><code>Loan.BookID = Book.BookID</code> because both values identify the same book.</span></article>
+            <article><strong>Extra filter</strong><span>Use another <code>AND</code> condition for a filter, such as <code>Loan.Returned = FALSE</code>.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="aliases">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Table-qualified names and aliases prevent ambiguity</h2>
+            <p>If two tables have a field with the same name, write the table name or alias before the field.</p>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Full name</strong><span><code>Student.StudentID</code> clearly means the field from Student.</span></article>
+            <article><strong>Alias</strong><span><code>Student AS S</code> lets you write <code>S.StudentID</code>.</span></article>
+            <article><strong>Exam caution</strong><span>Only use aliases if they make the query clear. Do not hide the join logic.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Trace joined rows from small tables</h2>
+          </div>
+          <div class="table-stack">
+            <div class="data-table student-table" role="table" aria-label="Student table">
+              <div class="table-row table-head" role="row"><div>StudentID</div><div>StudentName</div><div>TutorGroup</div></div>
+              <div class="table-row" role="row"><div>S01</div><div>Amira</div><div>12A</div></div>
+              <div class="table-row" role="row"><div>S02</div><div>Leo</div><div>12B</div></div>
+              <div class="table-row" role="row"><div>S03</div><div>Maya</div><div>12A</div></div>
+            </div>
+            <div class="data-table loan-table" role="table" aria-label="Loan table">
+              <div class="table-row table-head" role="row"><div>LoanID</div><div>StudentID</div><div>BookID</div><div>Returned</div></div>
+              <div class="table-row" role="row"><div>L01</div><div>S01</div><div>B01</div><div>FALSE</div></div>
+              <div class="table-row" role="row"><div>L02</div><div>S02</div><div>B02</div><div>TRUE</div></div>
+              <div class="table-row" role="row"><div>L03</div><div>S03</div><div>B03</div><div>FALSE</div></div>
+              <div class="table-row" role="row"><div>L04</div><div>S01</div><div>B03</div><div>TRUE</div></div>
+            </div>
+            <div class="data-table book-table" role="table" aria-label="Book table">
+              <div class="table-row table-head" role="row"><div>BookID</div><div>Title</div><div>Category</div></div>
+              <div class="table-row" role="row"><div>B01</div><div>Networks</div><div>Computing</div></div>
+              <div class="table-row" role="row"><div>B02</div><div>Poems</div><div>Literature</div></div>
+              <div class="table-row" role="row"><div>B03</div><div>Databases</div><div>Computing</div></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson covers related-table joins</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Primary key, foreign key, relationship path, two-table join, three-table join, table-qualified fields, aliases and tracing joined output.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 085 covered sorting and aggregates. Lesson 087 covers <code>INSERT</code>, <code>UPDATE</code> and <code>DELETE</code>. This lesson focuses on <code>SELECT</code> joins.</span></div>
+            <div><strong>Assessment rhythm</strong><span>Includes informal questioning, short quiz items and strict Cambridge-style mark schemes.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive join builder</p>
+            <h2>Choose the join path for the request</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              English request
+              <select id="builderInput">
+                <option value="studentLoans">Show StudentName and LoanID for all loans.</option>
+                <option value="loanTitles">Show LoanID and Title for all loans.</option>
+                <option value="currentBooks">Show StudentName and Title for current loans only.</option>
+                <option value="computingBorrowers">Show StudentName for students who borrowed Computing books.</option>
+                <option value="aliasCurrent">Use aliases to show StudentName and Title for current loans.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="builderBtn">Build SQL</button>
+          </div>
+          <pre class="sql-output" id="builderResult">Choose a request, then build the SQL.</pre>
+          <div class="feedback" id="builderReason">The output will show which relationship path is needed.</div>
+        </section>
+
+        <section class="panel" id="runner">
+          <div class="section-title">
+            <p class="eyebrow">Interactive result runner</p>
+            <h2>Run preset joins against the sample tables</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Query
+              <select id="queryInput">
+                <option value="q1">StudentName and LoanID for all loans</option>
+                <option value="q2">LoanID and Title for all loans</option>
+                <option value="q3">StudentName and Title for current loans</option>
+                <option value="q4">StudentName for Computing loans</option>
+                <option value="q5">StudentName, Title and TutorGroup for returned loans</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="queryBtn">Run join</button>
+          </div>
+          <div class="result-table" id="queryResult">Choose a query to see the joined result.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Build the relationship path first</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="twoTable">Two-table join</button>
+            <button class="tab" type="button" data-example="threeTable">Three-table join</button>
+            <button class="tab" type="button" data-example="filter">Join plus filter</button>
+            <button class="tab" type="button" data-example="alias">Alias version</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short quiz and core checks</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair weak join logic</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style practice with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about join paths and requested fields.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Join checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Identify keys</strong><span>Find the primary key and matching foreign key fields.</span></div>
+            <div><strong>Write conditions</strong><span>Use one join condition for each relationship bridge.</span></div>
+            <div><strong>Output exactly</strong><span>Select only the fields requested by the question.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Draw the path</strong>
+              <span>Draw the relationship path from <code>Student</code> to <code>Book</code> through <code>Loan</code>. Label each primary key and foreign key.</span>
+            </article>
+            <article>
+              <strong>Task 2: Write three joins</strong>
+              <span>Write SQL for: all student loans; all loan titles; current loan titles with student names.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark correction</strong>
+              <span>Correct this query and explain the errors: <code>SELECT * FROM Student, Book WHERE Student.StudentID = Book.BookID;</code></span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 040 | Section 3 review: compare, justify, calculate</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
+        <h1>Section 3 review: compare, justify, calculate</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#map">Topic map</a>
+        <a href="#skills">Exam skills</a>
+        <a href="#checkpoint">Checkpoint</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Question sorter</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 040 | 45 minutes | Paper 1 Section 3 | Stage review + monthly checkpoint</p>
+            <h2>Review is not rereading. Review is catching your brain pretending it remembers.</h2>
+            <p>
+              This lesson reviews Section 3: hardware, storage, embedded systems,
+              sensors and actuators, logic gates, Boolean expressions, hardware
+              selection, and reliability. You will identify the topic, choose the
+              right method, answer under time pressure, then improve the answer.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Recognise</strong><span>which Section 3 topic a mixed question is testing</span></div>
+              <div><strong>Apply</strong><span>compare, justify and calculate methods accurately</span></div>
+              <div><strong>Correct</strong><span>weak answers using CIE-style marking cues</span></div>
+            </div>
+          </div>
+          <div class="review-card" aria-label="Review sequence">
+            <span>recognise -> retrieve -> answer -> correct</span>
+            <p>The first mark often comes from opening the right mental toolbox before writing.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Before answering, label the question type: compare, justify, calculate, trace or describe.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Mixed review exposes false confidence. A student may know logic gates but still answer a sensor question like a hardware-selection question.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Rereading notes feels productive. Timed retrieval and correction are what actually reveal missing marks.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Three mixed questions are on the board. Which mental toolbox opens first?</h2>
+            <p>Click a question. Your job is not to answer yet; first identify what kind of Section 3 thinking it needs.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="logic">Complete Q = A AND NOT B for A=1, B=0</button>
+            <button class="choice-card" type="button" data-hook="sensor">Explain how a greenhouse fan is controlled automatically</button>
+            <button class="choice-card" type="button" data-hook="storage">Compare SSD and HDD for a delivery device</button>
+            <button class="choice-card" type="button" data-hook="reliability">Explain why a UPS is used in a server room</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click one. The review skill is topic recognition before answer production.
+          </div>
+        </section>
+
+        <section class="panel" id="map">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Section 3 topic map</h2>
+          </div>
+          <div class="topic-table" role="table" aria-label="Section 3 review map">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Topic</div>
+              <div role="columnheader">Core idea</div>
+              <div role="columnheader">Common question verb</div>
+              <div role="columnheader">Mark-winning habit</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Primary / secondary storage</div>
+              <div role="cell">RAM, ROM, cache, virtual memory, SSD, HDD, optical, solid-state</div>
+              <div role="cell">compare, describe, justify</div>
+              <div role="cell">Link speed, volatility, capacity, durability or cost to the scenario.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Embedded systems</div>
+              <div role="cell">Dedicated systems built into larger devices</div>
+              <div role="cell">describe, explain</div>
+              <div role="cell">Mention dedicated purpose, limited interface and real-world control.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Sensors and actuators</div>
+              <div role="cell">Input readings, processing, thresholds, output action and feedback</div>
+              <div role="cell">describe, explain</div>
+              <div role="cell">Use the chain sensor -> processor -> actuator -> feedback.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Logic gates and truth tables</div>
+              <div role="cell">NOT, AND, OR, NAND, NOR, XOR; Boolean expressions</div>
+              <div role="cell">complete, trace, calculate</div>
+              <div role="cell">Show intermediate columns and exact 0/1 outputs.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Hardware selection and reliability</div>
+              <div role="cell">Choosing hardware for user needs and environment</div>
+              <div role="cell">justify, evaluate, compare</div>
+              <div role="cell">Use feature -> need -> consequence or risk -> mitigation -> consequence.</div>
+            </div>
+          </div>
+          <div class="callout">Chinese support: retrieval = 提取记忆；justify = 论证；compare = 比较；calculate = 计算；correction = 纠错。</div>
+        </section>
+
+        <section class="panel" id="skills">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Three review skills: compare, justify, calculate</h2>
+          </div>
+          <div class="skill-grid">
+            <article><strong>Compare</strong><span>Give both sides and use the same criterion, e.g. SSD is faster than HDD, but HDD may be cheaper per GB.</span></article>
+            <article><strong>Justify</strong><span>Name a choice, name a feature, link it to the user's need, then explain the consequence.</span></article>
+            <article><strong>Calculate / trace</strong><span>Show working: input values, intermediate result, final output.</span></article>
+            <article><strong>Describe</strong><span>Use a sequence, such as sensor reading -> comparison -> output signal -> actuator.</span></article>
+            <article><strong>Explain</strong><span>Include cause and effect, not only a definition.</span></article>
+            <article><strong>Correct</strong><span>Find the missing mark, then rewrite the answer with specific wording.</span></article>
+          </div>
+          <div class="callout">Exam answer frame: "Because [feature], it meets [need], so [practical consequence]."</div>
+        </section>
+
+        <section class="panel" id="checkpoint">
+          <div class="section-title">
+            <p class="eyebrow">Monthly checkpoint</p>
+            <h2>Short timed review structure</h2>
+          </div>
+          <div class="checkpoint-grid">
+            <article><strong>3 minutes</strong><span>Classify five questions by topic and command word.</span></article>
+            <article><strong>8 minutes</strong><span>Answer one 6-mark scenario question.</span></article>
+            <article><strong>5 minutes</strong><span>Complete one truth table or Boolean trace.</span></article>
+            <article><strong>7 minutes</strong><span>Mark with MS, identify missing marks, rewrite one answer.</span></article>
+          </div>
+          <div class="callout">The checkpoint is included as lesson practice, not a midterm or final exam.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this review covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Primary/secondary storage characteristics and selection.</span></div>
+            <div><strong>Covered</strong><span>Embedded systems, sensors, actuators and control systems.</span></div>
+            <div><strong>Covered</strong><span>Logic gates, truth tables and Boolean expression tracing.</span></div>
+            <div><strong>Covered</strong><span>Hardware selection, environmental risks and reliability.</span></div>
+            <div><strong>Checkpoint</strong><span>Mixed Section 3 review with quiz and monthly assessment-style practice.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Question sorter</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Mixed question
+              <select id="questionInput">
+                <option value="q1">Compare RAM and ROM.</option>
+                <option value="q2">Describe how a greenhouse fan is controlled automatically.</option>
+                <option value="q3">Complete Q = (A OR B) AND NOT C for A=1, B=0, C=0.</option>
+                <option value="q4">Justify hardware for a delivery driver.</option>
+                <option value="q5">Explain how a UPS improves reliability in a server room.</option>
+              </select>
+            </label>
+            <button type="button" id="sortBtn">Sort question</button>
+          </div>
+          <div class="result-box" id="sortResult" aria-live="polite"></div>
+          <div class="method-box" id="sortMethod"></div>
+          <div class="reject-box" id="sortTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Annotate what earns marks</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="compare">Compare</button>
+            <button class="tab" type="button" data-example="justify">Justify</button>
+            <button class="tab" type="button" data-example="calculate">Calculate</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check quiz</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Rewrite weak review answers</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"SSD is better than HDD because it is faster and good."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">SSD has faster access times than HDD, so it is more suitable as a working drive for video editing where large files need to load and preview quickly. HDD may still be suitable for cheaper bulk archive storage.</p>
+            </article>
+            <article>
+              <p class="wrong">"The sensor turns on the fan."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">The temperature sensor inputs a reading. The processor compares it with a threshold. If the reading is too high, an output signal activates the fan motor/actuator.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Section 3 mixed questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. The MS highlights whether the question rewards comparison, justification, calculation or sequence.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Section 3 review in six exam habits</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Recognise</strong><span>Identify topic and command word first.</span></div>
+            <div><strong>Retrieve</strong><span>Recall definitions without looking at notes.</span></div>
+            <div><strong>Compare</strong><span>Use the same criterion for both sides.</span></div>
+            <div><strong>Justify</strong><span>Link feature to need and consequence.</span></div>
+            <div><strong>Calculate</strong><span>Show intermediate logic or method.</span></div>
+            <div><strong>Correct</strong><span>Rewrite one weak answer using MS wording.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Complete a one-page Section 3 retrieval grid: storage, embedded systems, sensors, logic gates, hardware selection and reliability.</li>
+            <li>Answer one 6-mark justify question about hardware for a delivery driver using feature -> need -> consequence.</li>
+            <li>Complete a truth table for Q = (A NAND B) OR C and show intermediate columns.</li>
+            <li>Rewrite two weak answers from your notes using the relevant MS wording.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Retrieval grid:</strong> no full sentences at first; use keywords, then close notes and explain aloud.</p>
+            <p><strong>Justify:</strong> handheld scanner/smartphone, GPS, mobile data, battery life, rugged casing.</p>
+            <p><strong>Truth table:</strong> add A AND B, A NAND B, then final OR with C.</p>
+            <p><strong>Rewrite:</strong> remove vague words such as better/easier/good unless a cause and consequence follow.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

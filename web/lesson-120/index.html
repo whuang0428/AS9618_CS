@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 120 | Text files: reading, writing and appending</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
+        <h1>Text files: reading, writing and appending</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Concept</a>
+        <a href="#lifecycle">File lifecycle</a>
+        <a href="#modes">Modes</a>
+        <a href="#read">Read loop</a>
+        <a href="#write">Write/append</a>
+        <a href="#records">Text records</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#mode-lab">Mode lab</a>
+        <a href="#reader">Read trace</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 120 | 45 minutes | Paper 2 Section 10 | 5-minute quiz and monthly checkpoint</p>
+            <h2>Text files let data survive after the program ends.</h2>
+            <p>
+              Variables disappear when a program stops. A text file stores characters on secondary storage, so a program
+              can read existing lines, write a new file, or append extra lines. The exam focus is not drama; it is the
+              exact file mode, loop condition and close-file step.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Read</strong><span>use OPENFILE, EOF, READFILE and CLOSEFILE</span></div>
+              <div><strong>Write</strong><span>create or replace file contents carefully</span></div>
+              <div><strong>Append</strong><span>add new lines without removing existing lines</span></div>
+            </div>
+          </div>
+          <div class="file-visual" aria-label="Text file visual">
+            <div class="file-card">
+              <strong>Scores.txt</strong>
+              <span>Ali,72</span>
+              <span>Bea,64</span>
+              <span>Chen,85</span>
+            </div>
+            <div class="file-caption">OPENFILE "Scores.txt" FOR READ</div>
+            <p>Open. Process line by line. Close. The file does not enjoy being left open.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Keep saying what is in the file and what is in a variable. A line in a file is not automatically a variable.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 often asks for a file algorithm: open with the correct mode, loop until EOF, process each line and close.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p><code>WRITE</code> can replace file contents. Use <code>APPEND</code> when existing lines must remain.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Why did the program forget the scores?</h2>
+            <p>A program stores scores in variables, then closes. The next time it runs, the scores are gone. What should it use?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="variable">More variables</button>
+            <button class="choice-card" type="button" data-hook="array">A larger array only</button>
+            <button class="choice-card" type="button" data-hook="file">A text file</button>
+            <button class="choice-card" type="button" data-hook="print">Print the screen</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the option that keeps data after the program has stopped.</div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Concept</p>
+            <h2>A text file stores characters, usually processed one line at a time</h2>
+            <p>Chinese support: text file 是“文本文件”；persistent storage 是“持久化存储”；append 是“追加”。</p>
+          </div>
+          <div class="data-table concept-table" role="table" aria-label="Text file concepts">
+            <div class="table-row table-head" role="row"><div>Term</div><div>Meaning</div><div>Exam clue</div></div>
+            <div class="table-row" role="row"><div>Text file</div><div>file containing character data</div><div><code>"Scores.txt"</code></div></div>
+            <div class="table-row" role="row"><div>Read</div><div>get data from an existing file</div><div><code>FOR READ</code></div></div>
+            <div class="table-row" role="row"><div>Write</div><div>store data to a file, often replacing previous contents</div><div><code>FOR WRITE</code></div></div>
+            <div class="table-row" role="row"><div>Append</div><div>add data to the end of an existing file</div><div><code>FOR APPEND</code></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="lifecycle">
+          <div class="section-title">
+            <p class="eyebrow">File lifecycle</p>
+            <h2>Open, process, close</h2>
+          </div>
+          <div class="flow-grid">
+            <div><strong>1. Open</strong><span>choose READ, WRITE or APPEND</span></div>
+            <div><strong>2. Process</strong><span>READFILE or WRITEFILE using variables</span></div>
+            <div><strong>3. Close</strong><span>release the file and finalise changes</span></div>
+          </div>
+          <div class="callout">A file algorithm without <code>CLOSEFILE</code> is like leaving the exam hall without submitting the answer booklet.</div>
+        </section>
+
+        <section class="panel" id="modes">
+          <div class="section-title">
+            <p class="eyebrow">File modes</p>
+            <h2>Choose the mode before touching the file</h2>
+          </div>
+          <div class="data-table modes-table" role="table" aria-label="File modes">
+            <div class="table-row table-head" role="row"><div>Mode</div><div>Use when</div><div>Risk if wrong</div></div>
+            <div class="table-row" role="row"><div><code>READ</code></div><div>existing file contents are needed</div><div>cannot write new lines</div></div>
+            <div class="table-row" role="row"><div><code>WRITE</code></div><div>creating/replacing output contents</div><div>old contents may be overwritten</div></div>
+            <div class="table-row" role="row"><div><code>APPEND</code></div><div>adding new data to the end</div><div>old lines remain, so duplicates are possible</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="read">
+          <div class="section-title">
+            <p class="eyebrow">Read loop</p>
+            <h2>Use EOF so the loop stops at the end of the file</h2>
+          </div>
+          <pre><code>OPENFILE "Scores.txt" FOR READ
+WHILE NOT EOF("Scores.txt")
+    READFILE "Scores.txt", Line
+    OUTPUT Line
+ENDWHILE
+CLOSEFILE "Scores.txt"</code></pre>
+          <div class="callout">The file line is read into <code>Line</code>. Only after that can the program output, split or validate it.</div>
+        </section>
+
+        <section class="panel" id="write">
+          <div class="section-title">
+            <p class="eyebrow">Write and append</p>
+            <h2>Write creates a new result; append adds to the existing story</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Write a new report</h3>
+              <pre><code>OPENFILE "Report.txt" FOR WRITE
+WRITEFILE "Report.txt", "Pass count: " &amp; Count
+CLOSEFILE "Report.txt"</code></pre>
+            </article>
+            <article>
+              <h3>Append a new score</h3>
+              <pre><code>OPENFILE "Scores.txt" FOR APPEND
+WRITEFILE "Scores.txt", "Dina,91"
+CLOSEFILE "Scores.txt"</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="records">
+          <div class="section-title">
+            <p class="eyebrow">Text records</p>
+            <h2>A text line often represents one record</h2>
+            <p>In simple exam-style examples, one line may contain fields separated by a comma. The delimiter must be consistent.</p>
+          </div>
+          <div class="data-table records-table" role="table" aria-label="Text record example">
+            <div class="table-row table-head" role="row"><div>Line</div><div>Field 1</div><div>Field 2</div></div>
+            <div class="table-row" role="row"><div><code>Ali,72</code></div><div>Name = Ali</div><div>Mark = 72</div></div>
+            <div class="table-row" role="row"><div><code>Bea,64</code></div><div>Name = Bea</div><div>Mark = 64</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Cambridge pseudocode is the exam answer format</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>OPENFILE "Scores.txt" FOR READ
+WHILE NOT EOF("Scores.txt")
+    READFILE "Scores.txt", Line
+    OUTPUT Line
+ENDWHILE
+CLOSEFILE "Scores.txt"</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>try (Scanner file = new Scanner(new File("Scores.txt"))) {
+    while (file.hasNextLine()) {
+        String line = file.nextLine();
+        System.out.println(line);
+    }
+}</code></pre>
+            </article>
+          </div>
+          <div class="callout">Use Java to understand implementation ideas, not to replace Cambridge pseudocode keywords in Paper 2.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers and what it leaves outside</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>text files, READ/WRITE/APPEND modes, EOF-controlled reading, WRITEFILE, CLOSEFILE and line-based records.</span></div>
+            <div><strong>Boundary</strong><span>This lesson does not teach binary files, databases or exception handling in a full programming language.</span></div>
+            <div><strong>Checkpoint</strong><span>Use the practice section as the 5-minute quiz and the exam-style section as a monthly assessment checkpoint.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="mode-lab">
+          <div class="section-title">
+            <p class="eyebrow">Interactive mode lab</p>
+            <h2>Choose the correct file mode</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="modeScenario">
+                <option value="read">Display all existing scores</option>
+                <option value="write">Create a fresh summary report</option>
+                <option value="append">Add one new score to the existing file</option>
+              </select>
+            </label>
+            <label>
+              Mode
+              <select id="modeChoice">
+                <option value="READ">READ</option>
+                <option value="WRITE">WRITE</option>
+                <option value="APPEND">APPEND</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="modeBtn">Check mode</button>
+          </div>
+          <div class="trace-output" id="modeResult">Choose a scenario and a mode.</div>
+        </section>
+
+        <section class="panel" id="reader">
+          <div class="section-title">
+            <p class="eyebrow">Interactive read trace</p>
+            <h2>Step through a WHILE NOT EOF loop</h2>
+          </div>
+          <div class="trace-actions">
+            <button class="primary-button" type="button" id="readStepBtn">Read next line</button>
+            <button class="answer-toggle" type="button" id="resetReadBtn">Reset</button>
+          </div>
+          <div class="trace-output" id="readTrace">File is open. No line has been read yet.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>File algorithms that earn marks</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="read">Read</button>
+            <button class="tab" type="button" data-example="write">Write</button>
+            <button class="tab" type="button" data-example="append">Append</button>
+            <button class="tab" type="button" data-example="count">Count from file</button>
+          </div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Ten quick file-handling checks</h2>
+            <p>Type a concise answer, then check. Each question also has its own answer button.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix common text-file errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style questions with expandable MS</h2>
+            <p>These questions focus on file modes, EOF loops, line variables, output files and strict file-operation wording.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Text file checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Mode</strong><span>READ, WRITE or APPEND must match the task.</span></div>
+            <div><strong>Loop</strong><span>use EOF when reading unknown numbers of lines.</span></div>
+            <div><strong>Close</strong><span>close every file after processing.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Write complete file pseudocode</h2>
+          </div>
+          <ol class="homework-list">
+            <li>
+              <strong>Task 1: Read and output</strong>
+              <span>Write pseudocode to open <code>"Names.txt"</code>, read each line until EOF, output each line, and close the file.</span>
+            </li>
+            <li>
+              <strong>Task 2: Append safely</strong>
+              <span>Write pseudocode to append <code>"Mina,78"</code> to <code>"Scores.txt"</code> without deleting existing scores.</span>
+            </li>
+            <li>
+              <strong>Task 3: Explain the trap</strong>
+              <span>Write a 5-mark explanation of why <code>FOR WRITE</code> is not suitable when the old contents must remain.</span>
+            </li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

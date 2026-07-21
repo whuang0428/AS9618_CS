@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 034 | Sensors, actuators and control systems</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
+        <h1>Sensors, actuators and control systems</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#sensors">Sensors</a>
+        <a href="#actuators">Actuators</a>
+        <a href="#control">Control systems</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Control tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 034 | 45 minutes | Paper 1 Section 3</p>
+            <h2>Control systems are where data stops being a spreadsheet and starts moving the world.</h2>
+            <p>
+              This lesson focuses on sensors, actuators and control systems. You will
+              practise describing how physical measurements become input data, how a
+              processor applies a rule, and how actuators create output action.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>common sensors and the quantities they detect</span></div>
+              <div><strong>Explain</strong><span>how actuators produce physical output</span></div>
+              <div><strong>Trace</strong><span>control loops using thresholds and repeated readings</span></div>
+            </div>
+          </div>
+          <div class="system-card" aria-label="Control system chain">
+            <span>sense -> compare -> act -> sense again</span>
+            <p>The sensor is the messenger. The actuator does the heavy lifting. Mixing them up is how exam marks quietly leave the room.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every system, force a full sentence: sensor detects X, processor compares with Y, actuator does Z.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style answers reward sequence. Listing "temperature sensor, fan" is weaker than explaining the rule that connects them.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A closed-loop system uses feedback from sensors. An open-loop system acts without checking the result.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A greenhouse gets too hot. Does the temperature sensor cool the greenhouse, or does it just report the bad news?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="sensor">Sensor detects temperature</button>
+            <button class="choice-card" type="button" data-hook="compare">Processor compares with threshold</button>
+            <button class="choice-card" type="button" data-hook="actuator">Actuator starts fan or opens vent</button>
+            <button class="choice-card" type="button" data-hook="feedback">New readings check whether action worked</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click one part. The exam wants the mechanism, not a dramatic biography of the fan.
+          </div>
+        </section>
+
+        <section class="panel" id="sensors">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Sensors capture physical data</h2>
+          </div>
+          <div class="device-table wide" role="table" aria-label="Sensors and measurements">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Sensor</div>
+              <div role="columnheader">Detects</div>
+              <div role="columnheader">Example system</div>
+              <div role="columnheader">Exam warning</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Temperature</div>
+              <div role="cell">Heat / temperature value</div>
+              <div role="cell">Greenhouse fan, thermostat, freezer alarm</div>
+              <div role="cell">It detects temperature; it does not cool the room.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Light</div>
+              <div role="cell">Light intensity</div>
+              <div role="cell">Street lights, phone brightness</div>
+              <div role="cell">The output may be a lamp, not the sensor.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Pressure</div>
+              <div role="cell">Force/pressure level</div>
+              <div role="cell">Burglar mat, weighing scale, tyre pressure</div>
+              <div role="cell">Name what pressure means in context.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Motion / proximity</div>
+              <div role="cell">Movement or nearby object/person</div>
+              <div role="cell">Automatic doors, security lights, parking sensors</div>
+              <div role="cell">Do not say it identifies intent; it detects presence/distance.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Humidity / moisture</div>
+              <div role="cell">Water content in air/soil</div>
+              <div role="cell">Irrigation system, greenhouse monitoring</div>
+              <div role="cell">The actuator might be pump/valve, not the sensor.</div>
+            </div>
+          </div>
+          <div class="callout">Chinese support: sensor = 传感器；physical quantity = 物理量；threshold = 阈值；reading = 读数。</div>
+        </section>
+
+        <section class="panel" id="actuators">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Actuators turn output signals into physical action</h2>
+          </div>
+          <div class="criteria-grid">
+            <article><strong>Motor</strong><span>Creates movement, such as opening a door or spinning a fan.</span></article>
+            <article><strong>Valve</strong><span>Controls flow of water, gas or air.</span></article>
+            <article><strong>Heater</strong><span>Changes temperature by producing heat.</span></article>
+            <article><strong>Light</strong><span>Turns visual warning or illumination on/off.</span></article>
+            <article><strong>Lock / brake</strong><span>Controls physical safety or movement.</span></article>
+          </div>
+          <div class="callout">An actuator receives an output signal. It does not decide the rule; the processor/controller does that.</div>
+        </section>
+
+        <section class="panel" id="control">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Control systems use rules and feedback</h2>
+          </div>
+          <div class="loop-grid" aria-label="Closed-loop control">
+            <div><strong>Input</strong><span>Sensor reads the physical condition.</span></div>
+            <div><strong>Decision</strong><span>Processor compares the reading with a threshold or rule.</span></div>
+            <div><strong>Output</strong><span>Signal is sent to an actuator.</span></div>
+            <div><strong>Feedback</strong><span>New sensor readings check the result.</span></div>
+          </div>
+          <div class="device-table" role="table" aria-label="Open and closed loop comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Type</div>
+              <div role="columnheader">How it behaves</div>
+              <div role="columnheader">Example</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Open-loop</div>
+              <div role="cell">Carries out action without checking the output/result.</div>
+              <div role="cell">Basic timer turns sprinkler on for 5 minutes.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Closed-loop</div>
+              <div role="cell">Uses sensor feedback to adjust action.</div>
+              <div role="cell">Soil moisture sensor controls irrigation pump.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Common sensors and the physical quantities they detect.</span></div>
+            <div><strong>Covered</strong><span>Actuators as output devices that cause physical action.</span></div>
+            <div><strong>Covered</strong><span>Control-loop sequence using sensor readings, thresholds, decisions and feedback.</span></div>
+            <div><strong>Covered</strong><span>Open-loop vs closed-loop distinction at AS level.</span></div>
+            <div><strong>Boundary</strong><span>Detailed logic gates begin in Lesson 035.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Match the sensor and actuator</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="greenhouse">Greenhouse cools itself when too hot</option>
+                <option value="irrigation">Irrigation starts when soil is too dry</option>
+                <option value="street">Street light turns on when it is dark</option>
+                <option value="parking">Car warns when obstacle is close</option>
+                <option value="freezer">Freezer alarm sounds if temperature rises</option>
+                <option value="door">Automatic door opens when a person approaches</option>
+              </select>
+            </label>
+            <button type="button" id="chooseBtn">Explain system</button>
+          </div>
+          <div class="result-box" id="componentResult" aria-live="polite"></div>
+          <div class="method-box" id="componentMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Writing full control explanations</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="greenhouse">Greenhouse</button>
+            <button class="tab" type="button" data-example="irrigation">Irrigation</button>
+            <button class="tab" type="button" data-example="parking">Parking sensor</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak control answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"The light sensor turns on the street lamp."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">The light sensor detects light intensity. The controller compares it with a threshold. The lamp is switched on by an output signal/actuator if it is dark enough.</p>
+            </article>
+            <article>
+              <p class="wrong">"Closed-loop means the system repeats the same action forever."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">Closed-loop means the system uses feedback from sensors to adjust the action. It may stop, start or change output depending on new readings.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on naming the sensor, rule, actuator and feedback accurately.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Control systems in six exam sentences</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Sensor</strong><span>Input device that detects a physical quantity.</span></div>
+            <div><strong>Processor</strong><span>Compares readings with rules or thresholds.</span></div>
+            <div><strong>Actuator</strong><span>Output device that causes physical action.</span></div>
+            <div><strong>Threshold</strong><span>Boundary value used to decide an action.</span></div>
+            <div><strong>Open-loop</strong><span>Acts without checking the result.</span></div>
+            <div><strong>Closed-loop</strong><span>Uses feedback readings to adjust action.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a table of five sensors: what each detects and one system that uses it.</li>
+            <li>Write a 5-mark explanation for a street light controlled by a light sensor.</li>
+            <li>Compare open-loop and closed-loop control using irrigation as the example.</li>
+            <li>Rewrite this weak sentence: "The sensor starts the pump."</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Sensor table:</strong> include temperature, light, pressure, motion/proximity and moisture/humidity.</p>
+            <p><strong>Street light:</strong> light sensor reads intensity; controller compares with threshold; lamp output turns on/off; readings repeat.</p>
+            <p><strong>Irrigation:</strong> open-loop timer waters for fixed time; closed-loop uses moisture feedback to decide when to pump.</p>
+            <p><strong>Correction:</strong> the sensor detects dryness; the controller decides; the pump/valve actuator starts.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

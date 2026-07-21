@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 017 | Client-server and peer-to-peer models</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
+        <h1>Client-server and peer-to-peer models</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#roles">Roles</a>
+        <a href="#compare">Comparison</a>
+        <a href="#usecases">Use cases</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Model tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 017 | 45 minutes | Paper 1 Section 2</p>
+            <h2>Who serves, who asks, and who secretly does both?</h2>
+            <p>
+              Network models describe roles. In a client-server model, clients request
+              services from one or more servers. In a peer-to-peer model, devices can
+              act as both clients and servers, sharing resources directly with each other.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>client, server and peer using precise network vocabulary</span></div>
+              <div><strong>Compare</strong><span>client-server and peer-to-peer models by management, cost and reliability</span></div>
+              <div><strong>Choose</strong><span>a suitable model for realistic school, office and sharing scenarios</span></div>
+            </div>
+          </div>
+          <div class="model-card" aria-label="Network model concept">
+            <span>request -> service -> response</span>
+            <p>A server is not “the big computer”. It is the device or software providing a service.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask students to label roles before judging the model: who requests, who stores, who controls, who shares?</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge questions often ask for advantages and disadvantages; marks depend on linking each point to a model feature.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Client-server and peer-to-peer are not topologies. They describe how services and resources are organised.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A student downloads a file from a school file server. What is the student's computer?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="client">Client</button>
+            <button class="choice-card" type="button" data-hook="server">Server</button>
+            <button class="choice-card" type="button" data-hook="peer">Peer only</button>
+            <button class="choice-card" type="button" data-hook="router">Router</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick the role. The device requesting a service is the client, even if it looks very important on a desk.
+          </div>
+        </section>
+
+        <section class="panel" id="roles">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Core roles</h2>
+          </div>
+          <div class="role-grid">
+            <article>
+              <h3>Client</h3>
+              <p>A client requests a service or resource, such as a web page, file, login or print job.</p>
+            </article>
+            <article>
+              <h3>Server</h3>
+              <p>A server provides a service or resource to clients, often with central control over data and access.</p>
+            </article>
+            <article>
+              <h3>Peer</h3>
+              <p>A peer can request and provide resources directly, so devices share responsibility instead of relying on one central server.</p>
+            </article>
+            <article>
+              <h3>Service</h3>
+              <p>A service is the function provided, such as file storage, authentication, email, printing or web hosting.</p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: client = 客户端；server = 服务器；peer = 对等节点；service = 服务。</div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Client-server vs peer-to-peer</h2>
+          </div>
+          <div class="compare-table" role="table" aria-label="Client-server and peer-to-peer comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Feature</div>
+              <div role="columnheader">Client-server</div>
+              <div role="columnheader">Peer-to-peer</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Control</div>
+              <div role="cell">Centralised management, security, backups and permissions.</div>
+              <div role="cell">Decentralised control; each peer may manage its own resources.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Cost</div>
+              <div role="cell">May need dedicated server hardware, software and administration.</div>
+              <div role="cell">Can be cheaper for small networks because no dedicated server is required.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Reliability</div>
+              <div role="cell">Server failure may affect many clients unless redundancy is used.</div>
+              <div role="cell">No single central server, but availability depends on peers being online.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Typical use</div>
+              <div role="cell">School login, file server, web server, email server.</div>
+              <div role="cell">Small file sharing, local collaboration, distributed sharing.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="usecases">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Scenario choices</h2>
+          </div>
+          <div class="scenario-grid">
+            <article>
+              <h3>School accounts</h3>
+              <p>Client-server fits because logins, permissions and backups can be centrally managed.</p>
+            </article>
+            <article>
+              <h3>Small home sharing</h3>
+              <p>Peer-to-peer may fit when a few devices share files directly without a dedicated server.</p>
+            </article>
+            <article>
+              <h3>Public web app</h3>
+              <p>Client-server fits because many clients request data from managed servers.</p>
+            </article>
+            <article>
+              <h3>Distributed file sharing</h3>
+              <p>Peer-to-peer can spread sharing across peers, reducing reliance on one central source.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Client, server, peer and service roles.</span></div>
+            <div><strong>Covered</strong><span>Client-server and peer-to-peer features, advantages and disadvantages.</span></div>
+            <div><strong>Covered</strong><span>Scenario justification using cost, control, security, backup and availability.</span></div>
+            <div><strong>Boundary</strong><span>Protocol details, packet structure and routing are handled in later Section 2 lessons.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Network model recommendation helper</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="school">School network with accounts and permissions</option>
+                <option value="home">Three home computers sharing files directly</option>
+                <option value="web">Public website serving many users</option>
+                <option value="distributed">Distributed file sharing with many peers</option>
+              </select>
+            </label>
+            <button type="button" id="recommendBtn">Recommend</button>
+          </div>
+          <div class="result-box" id="recommendResult" aria-live="polite"></div>
+          <div class="method-box" id="recommendMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="school">School server</button>
+            <button class="tab" type="button" data-example="home">Home sharing</button>
+            <button class="tab" type="button" data-example="failure">Failure analysis</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak model answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">“Client-server is better because it is faster.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">Client-server can be suitable because data, access rights and backups can be centrally managed; do not claim "faster" unless performance is explained.</p>
+            </article>
+            <article>
+              <p class="wrong">“Peer-to-peer means every computer is connected to every other computer.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">Peer-to-peer describes the role of devices: peers can request and provide resources. It is not the same as mesh topology.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Give model feature plus scenario consequence.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Model = roles and control</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>A client requests a service; a server provides a service.</span></div>
+            <div><strong>2</strong><span>Client-server gives central control but depends heavily on server availability.</span></div>
+            <div><strong>3</strong><span>Peer-to-peer can be cheaper and decentralised, but is harder to manage consistently.</span></div>
+            <div><strong>4</strong><span>Do not confuse network model with physical or logical topology.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write definitions for client, server and peer. Include one example service for each model.</li>
+            <li>Compare client-server and peer-to-peer using cost, management and reliability.</li>
+            <li>Choose a model for a school network with 600 users and justify it with two reasons.</li>
+            <li>Write a 5-mark answer explaining one advantage and one disadvantage of peer-to-peer networking.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Definitions:</strong> focus on request/provide roles, not device size.</p>
+            <p><strong>Comparison:</strong> use a basis such as central management, cost, backups, security or availability.</p>
+            <p><strong>School:</strong> client-server is likely suitable because accounts, permissions and backups need central control.</p>
+            <p><strong>P2P answer:</strong> one advantage could be lower cost; one disadvantage could be harder security/backup management.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

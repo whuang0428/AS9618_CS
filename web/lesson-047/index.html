@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 047 | Addressing modes and operand interpretation</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
+        <h1>Addressing modes and operand interpretation</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Core idea</a>
+        <a href="#modes">Addressing modes</a>
+        <a href="#effective">Effective address</a>
+        <a href="#arrays">Indexing</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Mode simulator</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 047 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
+            <h2>The operand is not always the thing you want. Sometimes it is a treasure map.</h2>
+            <p>
+              Addressing modes tell the CPU how to interpret an operand. The same
+              number can be used as the actual value, as a memory address, as a
+              pointer to another address, or as part of an indexed address calculation.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>immediate, direct, indirect and indexed addressing</span></div>
+              <div><strong>Calculate</strong><span>effective addresses and fetched values in simple examples</span></div>
+              <div><strong>Correct</strong><span>operand interpretation errors in exam-style wording</span></div>
+            </div>
+          </div>
+          <div class="mode-card" aria-label="Addressing mode sketch">
+            <div class="mode-stack">
+              <span>#20 -> value 20</span>
+              <span>20 -> memory[20]</span>
+              <span>(20) -> memory[memory[20]]</span>
+              <span>BASE + IX -> array element</span>
+            </div>
+            <p>Same number, different meaning. That is the lesson.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use a tiny memory table and keep the operand constant. Students see that the addressing mode changes the interpretation.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Many marks come from explaining whether the operand is a value, an address or a pointer.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Students treat every operand as data. Direct and indirect addressing often use the operand as an address.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>`LOAD #20` and `LOAD 20` look similar. Do they mean the same thing?</h2>
+            <p>Click the best answer. The hash is tiny, but it can save a whole mark.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="no">No: #20 is a value, 20 is an address</button>
+            <button class="choice-card" type="button" data-hook="yes">Yes: both load the number 20</button>
+            <button class="choice-card" type="button" data-hook="binary">Only if 20 is written in binary</button>
+            <button class="choice-card" type="button" data-hook="register">Only if ACC is empty</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click one. The addressing mode tells the CPU how to interpret the operand.
+          </div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Addressing mode means operand interpretation</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <strong>Operand</strong>
+              <span>The part of an instruction that supplies data, an address, a register or another reference.</span>
+            </article>
+            <article>
+              <strong>Addressing mode</strong>
+              <span>The rule used to interpret the operand and locate the data needed by the instruction.</span>
+            </article>
+            <article>
+              <strong>Effective address</strong>
+              <span>The actual memory address used after applying the addressing mode.</span>
+            </article>
+            <article>
+              <strong>Fetched value</strong>
+              <span>The final data value obtained or used by the instruction after interpretation.</span>
+            </article>
+          </div>
+          <div class="callout">Chinese support: addressing mode = 寻址方式；operand = 操作数；effective address = 有效地址；pointer = 指针/指向地址的值。</div>
+        </section>
+
+        <section class="panel" id="modes">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Four common addressing modes</h2>
+          </div>
+          <div class="mode-table" role="table" aria-label="Addressing modes">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Mode</div>
+              <div role="columnheader">Operand means</div>
+              <div role="columnheader">Example</div>
+              <div role="columnheader">Exam-safe wording</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Immediate</div>
+              <div role="cell">The actual value to use.</div>
+              <div role="cell">LOAD #20</div>
+              <div role="cell">The operand is the value 20 itself.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Direct</div>
+              <div role="cell">The memory address of the value.</div>
+              <div role="cell">LOAD 20</div>
+              <div role="cell">The CPU loads the value stored at memory address 20.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Indirect</div>
+              <div role="cell">The address of a memory location that stores another address.</div>
+              <div role="cell">LOAD (20)</div>
+              <div role="cell">The CPU looks at address 20 to find the address of the actual value.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Indexed</div>
+              <div role="cell">Base address plus an index register or offset.</div>
+              <div role="cell">LOAD 100, IX</div>
+              <div role="cell">The effective address is base address 100 plus the index value.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="effective">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Effective address: where the CPU actually reads</h2>
+          </div>
+          <div class="memory-table" role="table" aria-label="Example memory table">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Address</div>
+              <div role="columnheader">Stored value</div>
+              <div role="columnheader">Note</div>
+            </div>
+            <div class="table-row" role="row"><div role="cell">20</div><div role="cell">70</div><div role="cell">Can be a data value or pointer, depending on mode.</div></div>
+            <div class="table-row" role="row"><div role="cell">70</div><div role="cell">999</div><div role="cell">Used by indirect example.</div></div>
+            <div class="table-row" role="row"><div role="cell">100</div><div role="cell">11</div><div role="cell">Start of an array-like block.</div></div>
+            <div class="table-row" role="row"><div role="cell">103</div><div role="cell">44</div><div role="cell">Used when base 100 and IX = 3.</div></div>
+          </div>
+          <div class="trace-grid">
+            <article><strong>LOAD #20</strong><span>Use value 20 directly. No memory lookup for the operand value.</span></article>
+            <article><strong>LOAD 20</strong><span>Read memory[20], so the value loaded is 70.</span></article>
+            <article><strong>LOAD (20)</strong><span>Read memory[20] to get address 70, then read memory[70] to get 999.</span></article>
+            <article><strong>LOAD 100, IX=3</strong><span>Effective address = 100 + 3 = 103, so value loaded is memory[103] = 44.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="arrays">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Indexed addressing and arrays</h2>
+          </div>
+          <div class="array-grid">
+            <article>
+              <strong>Base address</strong>
+              <span>The start address of a block of related values, such as an array.</span>
+            </article>
+            <article>
+              <strong>Index register</strong>
+              <span>A register holding an offset from the base address.</span>
+            </article>
+            <article>
+              <strong>Effective address</strong>
+              <span>Calculated as base address + index/offset.</span>
+            </article>
+            <article>
+              <strong>Why useful</strong>
+              <span>Changing the index can access different array elements without changing the instruction's base address.</span>
+            </article>
+          </div>
+          <div class="trap-card inline-card">
+            <h3>Common trap</h3>
+            <p>Indexed addressing does not mean "convert the operand into an index number". It calculates an effective address using a base and an offset.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purpose of addressing modes as rules for interpreting operands.</span></div>
+            <div><strong>Covered</strong><span>Immediate, direct, indirect and indexed addressing.</span></div>
+            <div><strong>Covered</strong><span>Effective address and fetched value calculations using a memory table.</span></div>
+            <div><strong>Covered</strong><span>Why indexed addressing is useful for arrays or repeated data structures.</span></div>
+            <div><strong>Not this lesson</strong><span>Interrupt handling and interrupt service routines are covered in Lesson 048.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Addressing mode simulator</h2>
+            <p>Use the memory table above: memory[20] = 70, memory[70] = 999, memory[103] = 44, and IX = 3.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Instruction
+              <select id="modeInput">
+                <option value="immediate">LOAD #20</option>
+                <option value="direct">LOAD 20</option>
+                <option value="indirect">LOAD (20)</option>
+                <option value="indexed">LOAD 100, IX</option>
+                <option value="direct103">LOAD 103</option>
+              </select>
+            </label>
+            <button type="button" id="simulateBtn">Simulate</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Trace the operand interpretation</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="compare">Compare modes</button>
+            <button class="tab" type="button" data-example="indirect">Indirect trace</button>
+            <button class="tab" type="button" data-example="indexed">Indexed array</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+            <p>Be precise. "The CPU just kind of goes there" is not a valid addressing mode.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the operand interpretation</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeList"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>CIE-style questions with expandable mark schemes</h2>
+            <p>These are original Cambridge-style questions. MS wording distinguishes address, value, pointer and effective address.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Operand meaning depends on mode</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Immediate</strong><span>Operand is the value itself.</span></div>
+            <div><strong>Direct</strong><span>Operand is the address of the value.</span></div>
+            <div><strong>Indirect</strong><span>Operand points to an address that stores the actual address.</span></div>
+            <div><strong>Indexed</strong><span>Effective address = base + index/offset.</span></div>
+            <div><strong>Effective address</strong><span>The actual address used after interpretation.</span></div>
+            <div><strong>Exam habit</strong><span>State what the operand represents before calculating.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Make addressing mode traces exact</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Define immediate, direct, indirect and indexed addressing in one sentence each.</li>
+            <li>Using memory[40] = 88 and memory[88] = 123, explain the difference between `LOAD #40`, `LOAD 40` and `LOAD (40)`.</li>
+            <li>For base address 200 and index register 6, calculate the effective address and explain why indexed addressing is useful for arrays.</li>
+            <li>Write a 5-mark answer: "Explain the difference between direct and indirect addressing."</li>
+            <li>Correct this sentence: "In immediate addressing, the operand is always a memory address."</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

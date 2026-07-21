@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 012 | Compression: lossless vs lossy</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
+        <h1>Compression: lossless vs lossy</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#purpose">Purpose</a>
+        <a href="#lossless">Lossless</a>
+        <a href="#lossy">Lossy</a>
+        <a href="#ratio">Ratio</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Calculator</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 012 | 45 minutes | Informal questioning</p>
+            <h2>Compression makes files smaller, but the method matters.</h2>
+            <p>
+              Compression reduces file size so files take less storage and transfer faster.
+              Lossless compression allows exact reconstruction. Lossy compression permanently
+              removes data, usually aiming to remove data that is less noticeable.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div>
+                <strong>Define</strong>
+                <span>compression, lossless compression and lossy compression</span>
+              </div>
+              <div>
+                <strong>Choose</strong>
+                <span>suitable compression for text, images, sound and backups</span>
+              </div>
+              <div>
+                <strong>Calculate</strong>
+                <span>compressed size, saved space and compression ratio</span>
+              </div>
+            </div>
+          </div>
+          <div class="compress-card" aria-label="Compression focus">
+            <span>AAAAAABBBBCCCCCCCC</span>
+            <p>Repeated data is friendly to compression. Random-looking data may be less cooperative.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask first: “Must the original be recovered exactly?” That usually decides lossless vs lossy.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>The wrong compression choice can damage data, waste bandwidth or make a file unusable for its purpose.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Compression does not guarantee a smaller file. Overhead and lack of patterns can limit the benefit.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which file must use lossless compression?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="photo">Holiday photo for a website</button>
+            <button class="choice-card" type="button" data-hook="backup">Database backup</button>
+            <button class="choice-card" type="button" data-hook="music">Streaming music preview</button>
+            <button class="choice-card" type="button" data-hook="thumbnail">Tiny image thumbnail</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick an answer. The word “must” is doing a lot of work here.
+          </div>
+        </section>
+
+        <section class="panel" id="purpose">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Why compress data?</h2>
+          </div>
+          <div class="purpose-grid">
+            <article>
+              <h3>Less storage</h3>
+              <p>Smaller files use less disk or memory space.</p>
+            </article>
+            <article>
+              <h3>Faster transfer</h3>
+              <p>Smaller files need less bandwidth and may download or upload faster.</p>
+            </article>
+            <article>
+              <h3>Trade-off</h3>
+              <p>Compression and decompression may require processing time.</p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: compression = 压缩；decompression = 解压；reconstruct = 还原。</div>
+        </section>
+
+        <section class="panel" id="lossless">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Lossless compression: exact reconstruction</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Definition</h3>
+              <p>Lossless compression reduces file size while allowing the original data to be restored exactly.</p>
+            </article>
+            <article>
+              <h3>Suitable uses</h3>
+              <p>Text files, program files, spreadsheets, databases, medical records and backups.</p>
+            </article>
+          </div>
+          <div class="callout warning">If one changed bit could change meaning or break the file, lossless is the safer answer.</div>
+        </section>
+
+        <section class="panel" id="lossy">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Lossy compression: smaller, but not exact</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Definition</h3>
+              <p>Lossy compression reduces file size by permanently removing some data.</p>
+            </article>
+            <article>
+              <h3>Suitable uses</h3>
+              <p>Images, video and sound where small quality loss may be acceptable.</p>
+            </article>
+          </div>
+          <div class="callout warning">Lossy is not suitable when exact reconstruction is required.</div>
+        </section>
+
+        <section class="panel" id="ratio">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Compression ratio and saved space</h2>
+          </div>
+          <div class="formula-box">
+            <strong>compression ratio = original size : compressed size</strong>
+            <span>percentage saved = ((original - compressed) ÷ original) × 100</span>
+          </div>
+          <div class="worked-line">Example: `1000 KB → 250 KB` gives ratio `4:1` and `75%` saved.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purpose of compression and the difference between lossless and lossy.</span></div>
+            <div><strong>Covered</strong><span>Choosing suitable compression by scenario and calculating simple ratios.</span></div>
+            <div><strong>Boundary</strong><span>Run-length encoding and dictionary-style methods are taught in Lesson 013.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Compression result calculator</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Original size
+              <input id="originalInput" type="number" min="1" value="1000" />
+            </label>
+            <label>
+              Compressed size
+              <input id="compressedInput" type="number" min="1" value="250" />
+            </label>
+            <label>
+              Unit
+              <select id="unitInput">
+                <option value="bytes">bytes</option>
+                <option value="KB" selected>KB</option>
+                <option value="MiB">MiB</option>
+              </select>
+            </label>
+            <button type="button" id="calculateBtn">Calculate</button>
+          </div>
+          <div class="result-box" id="calcResult" aria-live="polite"></div>
+          <div class="method-box" id="calcMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="lossless">Choose lossless</button>
+            <button class="tab" type="button" data-example="lossy">Choose lossy</button>
+            <button class="tab" type="button" data-example="ratio">Calculate ratio</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Correct the compression myth</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">“Lossless compression always gives the smallest possible file.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">Lossless keeps exact reconstruction, but the file may not shrink much if there are few patterns or if overhead is high.</p>
+            </article>
+            <article>
+              <p class="wrong">“Lossy compression is fine for database backups because it saves space.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">Backups must be restored exactly. Lossy compression permanently removes data, so it is unsuitable.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>
+              Use the buttons under each question to expand the CIE-style mark scheme.
+              These are original questions written in Cambridge style, not copied past-paper items.
+            </p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Compression choices depend on purpose</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>Compression reduces file size for storage or transfer.</span></div>
+            <div><strong>2</strong><span>Lossless allows exact reconstruction of the original data.</span></div>
+            <div><strong>3</strong><span>Lossy permanently removes data and may reduce quality.</span></div>
+            <div><strong>4</strong><span>Compression is not guaranteed to make every file smaller.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Define compression, lossless compression and lossy compression.</li>
+            <li>Choose lossless or lossy for: database backup, website photo, source code file and music stream. Give one reason for each.</li>
+            <li>A file reduces from 2400 KB to 600 KB. Calculate the ratio and percentage saved.</li>
+            <li>Write a 4-mark explanation of why lossy compression is unsuitable for a legal document archive.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Definitions:</strong> compression reduces file size; lossless restores the original exactly; lossy permanently removes some data.</p>
+            <p><strong>Choices:</strong> backup and source code need lossless; website photo and music stream may use lossy if quality loss is acceptable.</p>
+            <p><strong>Calculation:</strong> `2400:600 = 4:1`; saved `1800/2400 × 100 = 75%`.</p>
+            <p><strong>Explanation focus:</strong> legal documents must preserve exact content, so lossy removal of data could alter evidence or meaning.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

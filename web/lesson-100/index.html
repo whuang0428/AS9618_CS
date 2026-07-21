@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 100 | Flowcharts and pseudocode notation</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>Flowcharts and pseudocode notation</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#flowcharts">Flowcharts</a>
+        <a href="#pseudocode">Pseudocode</a>
+        <a href="#notation">Notation rules</a>
+        <a href="#equivalence">Equivalent forms</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#symbol-tool">Symbol tool</a>
+        <a href="#structure-tool">Structure tool</a>
+        <a href="#converter">Mini converter</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 100 | 45 minutes | Paper 2 Section 9 | 5-minute quiz checkpoint</p>
+            <h2>Same algorithm, two notations: one draws the route, one writes the instructions.</h2>
+            <p>
+              Flowcharts show algorithm structure visually. Cambridge-style pseudocode expresses the same logic in
+              structured text. This lesson focuses on correct symbols, readable pseudocode and translating between the
+              two without slipping into Java syntax.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Recognise</strong><span>standard flowchart symbols for input/output, process, decision and start/end</span></div>
+              <div><strong>Write</strong><span>Cambridge-style pseudocode using INPUT, OUTPUT, IF, ELSE, ENDIF and loops</span></div>
+              <div><strong>Translate</strong><span>represent the same algorithm as a flowchart or pseudocode outline</span></div>
+            </div>
+          </div>
+          <div class="notation-visual" aria-label="Flowchart and pseudocode visual">
+            <div class="terminal">START</div>
+            <div class="flow-arrow">↓</div>
+            <div class="io">INPUT Mark</div>
+            <div class="flow-arrow">↓</div>
+            <div class="decision">Mark &gt;= 50?</div>
+            <div class="flow-split"><span>Yes → Pass</span><span>No → Resit</span></div>
+            <p>Flowchart question: which path? Pseudocode question: which branch?</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask students to say the structure before syntax: sequence, selection or iteration. The notation should then feel less random.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 awards marks for clear logic. Correct notation helps the examiner see the condition, branch, loop and output.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A diamond is for a decision, not for every exciting moment in the algorithm. Flowchart shapes have jobs.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>The vending machine is not impressed by vague arrows</h2>
+            <p>Classify each step from a vending machine algorithm. If every box is a rectangle, the decision has escaped.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="start">Begin the algorithm</button>
+            <button class="choice-card" type="button" data-hook="input">Enter selected drink code</button>
+            <button class="choice-card" type="button" data-hook="decision">Is enough money inserted?</button>
+            <button class="choice-card" type="button" data-hook="output">Display "Collect drink"</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose a step to classify its flowchart symbol.</div>
+        </section>
+
+        <section class="panel" id="flowcharts">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Flowcharts use symbols to show control flow</h2>
+          </div>
+          <div class="symbol-table" role="table" aria-label="Flowchart symbols">
+            <div class="table-row table-head" role="row"><div>Symbol</div><div>Meaning</div><div>Example</div></div>
+            <div class="table-row" role="row"><div><span class="mini terminal">START/END</span></div><div>terminator</div><div>start or stop the algorithm</div></div>
+            <div class="table-row" role="row"><div><span class="mini io">INPUT/OUTPUT</span></div><div>data entering or leaving</div><div>INPUT Mark, OUTPUT Average</div></div>
+            <div class="table-row" role="row"><div><span class="mini process">Process</span></div><div>calculation or assignment</div><div>Total ← Total + Mark</div></div>
+            <div class="table-row" role="row"><div><span class="mini decision">Decision?</span></div><div>yes/no condition</div><div>Mark &gt;= 50?</div></div>
+            <div class="table-row" role="row"><div><span class="mini arrow">→</span></div><div>flow line</div><div>shows the next step</div></div>
+          </div>
+          <div class="callout">Chinese support: flowchart = 流程图；terminator = 开始/结束符；decision = 判断；flow line = 流向线。</div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Cambridge-style pseudocode uses structured keywords</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Selection</h3>
+              <pre><code>INPUT Mark
+IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit"
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>Count-controlled iteration</h3>
+              <pre><code>Total &lt;- 0
+FOR Count &lt;- 1 TO 5
+    INPUT Mark
+    Total &lt;- Total + Mark
+NEXT Count
+OUTPUT Total</code></pre>
+            </article>
+          </div>
+          <div class="callout">Exam reminder: use Cambridge-style keywords. Java braces, semicolons, `System.out.println` and `&&` are implementation support, not the expected pseudocode style.</div>
+        </section>
+
+        <section class="panel" id="notation">
+          <div class="section-title">
+            <p class="eyebrow">Notation rules</p>
+            <h2>Readable notation earns marks more easily</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>One entry</strong><span>Flowcharts should have a clear start and a clear direction of travel.</span></article>
+            <article><strong>Decision labels</strong><span>Decision outputs should be labelled, usually Yes/No or True/False.</span></article>
+            <article><strong>Indentation</strong><span>Indented pseudocode shows which statements belong inside a branch or loop.</span></article>
+            <article><strong>Matching endings</strong><span>Use ENDIF, NEXT, ENDWHILE or equivalent to close a structure clearly.</span></article>
+            <article><strong>Meaningful names</strong><span>Use Mark, Total, Count, Found instead of X1 unless the question gives X1.</span></article>
+            <article><strong>No mixed syntax</strong><span>Do not mix Java braces with Cambridge pseudocode keywords in the same answer.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="equivalence">
+          <div class="section-title">
+            <p class="eyebrow">Equivalent forms</p>
+            <h2>A diamond becomes IF...THEN...ELSE</h2>
+          </div>
+          <div class="equivalence-grid">
+            <article>
+              <h3>Flowchart idea</h3>
+              <div class="mini-flow">
+                <span class="io">INPUT Age</span>
+                <span class="decision">Age &gt;= 11 AND Age &lt;= 18?</span>
+                <span class="split">Yes: OUTPUT "Valid" | No: OUTPUT "Invalid"</span>
+              </div>
+            </article>
+            <article>
+              <h3>Pseudocode equivalent</h3>
+              <pre><code>INPUT Age
+IF Age &gt;= 11 AND Age &lt;= 18 THEN
+    OUTPUT "Valid"
+ELSE
+    OUTPUT "Invalid"
+ENDIF</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson focuses on representation of algorithms</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Flowchart symbols, control-flow direction, decision branches, Cambridge pseudocode keywords, indentation and equivalent flowchart/pseudocode forms.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 101 focuses on trace tables and dry runs. This page uses tiny traces only to check notation, not full trace-table technique.</span></div>
+            <div><strong>Paper 2 note</strong><span>Cambridge pseudocode remains the exam standard. Java appears only as a contrast to prevent syntax confusion.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="symbol-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive symbol tool</p>
+            <h2>Choose the correct flowchart symbol</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Algorithm step
+              <select id="symbolInput">
+                <option value="start">Start the algorithm</option>
+                <option value="input">Input a mark</option>
+                <option value="calc">Total ← Total + Mark</option>
+                <option value="decision">Mark >= 50?</option>
+                <option value="output">Output "Pass"</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="symbolBtn">Show symbol</button>
+          </div>
+          <div class="feedback" id="symbolResult">Choose a step to see the matching symbol and reason.</div>
+        </section>
+
+        <section class="panel" id="structure-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive structure tool</p>
+            <h2>Match scenario to pseudocode structure</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario clue
+              <select id="structureInput">
+                <option value="selection">Output Pass or Resit based on a mark</option>
+                <option value="for">Input exactly five marks</option>
+                <option value="while">Input numbers until -1 is entered</option>
+                <option value="sequence">Input length and width, then calculate area</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="structureBtn">Match structure</button>
+          </div>
+          <div class="answer-frame" id="structureResult">Choose a clue to see the likely structure.</div>
+        </section>
+
+        <section class="panel" id="converter">
+          <div class="section-title">
+            <p class="eyebrow">Interactive mini converter</p>
+            <h2>Convert a flowchart pattern into pseudocode</h2>
+          </div>
+          <div class="builder-grid">
+            <label>
+              Pattern
+              <select id="patternInput">
+                <option value="pass">Decision: Mark >= 50?</option>
+                <option value="valid">Decision: Age in range 11-18?</option>
+                <option value="total">Loop: input 5 marks and total them</option>
+                <option value="sentinel">Loop: input until -1</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="convertBtn">Convert</button>
+          </div>
+          <div class="answer-frame" id="convertResult">Choose a pattern to generate Cambridge-style pseudocode.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Notation choices in common problems</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="pass">Pass/resit</button>
+            <button class="tab" type="button" data-example="average">Average</button>
+            <button class="tab" type="button" data-example="sentinel">Sentinel loop</button>
+            <button class="tab" type="button" data-example="validation">Validation</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Flowchart and pseudocode notation</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix notation mistakes</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style notation questions with expandable MS</h2>
+            <p>These questions target symbols, pseudocode structure and translation between representations. MS uses strict Cambridge-style expectations.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Notation checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Symbols</strong><span>Use terminator, input/output, process, decision and flow lines for the correct jobs.</span></div>
+            <div><strong>Keywords</strong><span>Use Cambridge-style INPUT, OUTPUT, IF, ELSE, ENDIF, FOR, NEXT and WHILE structures.</span></div>
+            <div><strong>Clarity</strong><span>Label branches, indent blocks and keep Java syntax out of exam pseudocode answers.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Symbol audit</strong>
+              <span>Draw a small flowchart for pass/resit. Label each symbol with its purpose: terminator, input/output, process or decision.</span>
+            </article>
+            <article>
+              <strong>Task 2: Pseudocode rewrite</strong>
+              <span>Write Cambridge-style pseudocode for validating an age from 11 to 18 inclusive. Include INPUT, IF, ELSE and ENDIF.</span>
+            </article>
+            <article>
+              <strong>Task 3: Translation</strong>
+              <span>Convert a count-controlled flowchart for five marks into pseudocode using FOR...TO...NEXT and a running Total.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

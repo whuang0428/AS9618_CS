@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 068 | Firewalls, proxies, and network monitoring</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
+        <h1>Firewalls, proxies, and network monitoring</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#core">Core idea</a>
+        <a href="#firewall">Firewall</a>
+        <a href="#rules">Rules</a>
+        <a href="#proxy">Proxy</a>
+        <a href="#monitoring">Monitoring</a>
+        <a href="#limits">Limits</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Rule checker</a>
+        <a href="#event-tool">Event tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 068 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
+            <h2>Network security is not just one locked door.</h2>
+            <p>
+              Firewalls filter traffic using rules. Proxies sit between client and destination to forward,
+              filter, cache or log requests. Network monitoring observes traffic and events so unusual
+              behaviour can be detected and investigated.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Explain</strong><span>how firewalls, proxies and monitoring work</span></div>
+              <div><strong>Apply</strong><span>rules and logs to realistic network scenarios</span></div>
+              <div><strong>Evaluate</strong><span>benefits and limits without claiming any control is magic</span></div>
+            </div>
+          </div>
+          <div class="network-card" aria-label="Network control map">
+            <div class="network-stack">
+              <span>Firewall -> allow/block traffic</span>
+              <span>Proxy -> intermediary request handler</span>
+              <span>Monitoring -> observe and alert</span>
+              <span>Logs -> evidence for investigation</span>
+            </div>
+            <p>A firewall is a filter, not a cybersecurity force field.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use three words for each control: position, mechanism, limitation.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam answers should say what traffic is inspected or logged and what decision is made.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Monitoring detects suspicious activity; it does not automatically prevent every attack unless linked to a response.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A school blocks outgoing traffic to port 25 except from the mail server. What control is doing the work?</h2>
+            <p>The network is saying, "Not everyone gets to run their own postal service from a backpack."</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="firewall">Firewall rule, because traffic is allowed or blocked by port/source</button>
+            <button class="choice-card" type="button" data-hook="proxy">Proxy, because all network controls are proxies</button>
+            <button class="choice-card" type="button" data-hook="hashing">Hashing, because the port number is checked</button>
+            <button class="choice-card" type="button" data-hook="validation">Validation, because the number 25 is in range</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. The clue is filtering by traffic rule.
+          </div>
+        </section>
+
+        <section class="panel" id="core">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Network controls sit between traffic and risk</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Traffic</strong><span>Data packets or requests moving across a network.</span></article>
+            <article><strong>Rule</strong><span>A condition that allows, blocks or logs traffic based on properties.</span></article>
+            <article><strong>Log</strong><span>A record of events, traffic, blocked attempts or user activity.</span></article>
+            <article><strong>Alert</strong><span>A warning generated when traffic or behaviour matches a suspicious pattern.</span></article>
+          </div>
+          <div class="callout">Chinese support: firewall = 防火墙；proxy = 代理服务器；network monitoring = 网络监控；log = 日志。</div>
+        </section>
+
+        <section class="panel" id="firewall">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Firewalls filter traffic using rules</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Purpose</strong><span>Control traffic entering or leaving a network/device.</span></article>
+            <article><strong>Checks</strong><span>Can inspect source/destination IP address, port number, protocol or connection state.</span></article>
+            <article><strong>Decision</strong><span>Allow, deny, reject or log traffic depending on rule match.</span></article>
+            <article><strong>Placement</strong><span>Can protect a network boundary or run on an individual host.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="rules">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Firewall rules should be specific and ordered</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Firewall rule examples">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Rule</div>
+              <div role="columnheader">Meaning</div>
+              <div role="columnheader">Reason</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Allow HTTPS from internal users to internet</div>
+              <div role="cell">Permit web traffic on port 443.</div>
+              <div role="cell">Needed for secure website access.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Block inbound unknown traffic</div>
+              <div role="cell">Deny unsolicited external connections.</div>
+              <div role="cell">Reduces unauthorised access attempts.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Allow admin only from management subnet</div>
+              <div role="cell">Restrict sensitive admin ports by source.</div>
+              <div role="cell">Limits attack surface and misuse.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Log repeated denied connections</div>
+              <div role="cell">Record unusual or repeated blocked attempts.</div>
+              <div role="cell">Supports monitoring and investigation.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="proxy">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>A proxy acts as an intermediary</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Forward requests</strong><span>Client sends request to proxy; proxy requests the resource from the destination.</span></article>
+            <article><strong>Filtering</strong><span>Can block sites, content types, categories or requests that break policy.</span></article>
+            <article><strong>Caching</strong><span>Can store copies of frequently requested resources to reduce bandwidth and latency.</span></article>
+            <article><strong>Logging</strong><span>Can record user requests for audit, investigation or policy enforcement.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="monitoring">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Network monitoring watches for patterns and evidence</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Traffic volume</strong><span>Unusual spikes may suggest DoS, malware activity or misconfiguration.</span></article>
+            <article><strong>Connection attempts</strong><span>Repeated failed access attempts may suggest probing or brute force activity.</span></article>
+            <article><strong>Alerts</strong><span>Monitoring systems can notify staff when thresholds or signatures are triggered.</span></article>
+            <article><strong>Investigation</strong><span>Logs help reconstruct what happened, when, and from where.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="limits">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Controls reduce risk but have limits</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Firewall limit</strong><span>Allowed traffic can still carry attacks, and rules may be misconfigured.</span></article>
+            <article><strong>Proxy limit</strong><span>Encrypted traffic and unmanaged devices can reduce visibility if not configured properly.</span></article>
+            <article><strong>Monitoring limit</strong><span>Alerts need review and response; too many false positives can be ignored.</span></article>
+            <article><strong>Layering</strong><span>Use with authentication, permissions, patching, encryption and user training.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers, and what it deliberately leaves for later</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Firewalls, rule-based traffic filtering, proxies, caching/filtering/logging, network monitoring, alerts and limitations.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 069 will cover data validation and verification rather than network traffic controls.</span></div>
+            <div><strong>Exam focus</strong><span>State what is inspected, what decision is made, and what risk is reduced.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive firewall rule checker</p>
+            <h2>Allow, block or log?</h2>
+            <p>Select traffic and compare the decision with the reason and common wrong answer.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Traffic event
+              <select id="scenarioInput">
+                <option value="https">Internal user opens an HTTPS website on port 443.</option>
+                <option value="sshExternal">Unknown internet host tries SSH to a school server.</option>
+                <option value="mailServer">School mail server sends SMTP on port 25.</option>
+                <option value="studentSmtp">Student laptop sends SMTP directly on port 25.</option>
+                <option value="adminSubnet">Admin connects from management subnet to admin panel.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Check rule</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="event-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive event classifier</p>
+            <h2>Which control is most relevant?</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Event
+              <select id="eventInput">
+                <option value="category">Block social media during exam hours.</option>
+                <option value="cache">Reduce repeated downloads of the same update file.</option>
+                <option value="spike">Alert staff to a sudden traffic spike.</option>
+                <option value="logs">Find which account repeatedly attempted a blocked site.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="eventBtn">Classify</button>
+          </div>
+          <div class="result-box" id="eventResult" aria-live="polite"></div>
+          <div class="method-box" id="eventReason"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four model answers with mechanism and limitation</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="firewall">Firewall</button>
+            <button class="tab" type="button" data-example="proxy">Proxy</button>
+            <button class="tab" type="button" data-example="monitoring">Monitoring</button>
+            <button class="tab" type="button" data-example="layered">Layered controls</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short answers: name the control and mechanism</h2>
+            <p>Type a concise answer. Use the local answer button if you need a model response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the sentence before it loses marks</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style questions with expandable MS</h2>
+            <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Each control has a different job</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Firewall</strong><span>Filters traffic by rules such as port, protocol, address or state.</span></div>
+            <div><strong>Proxy</strong><span>Acts as intermediary for requests; can filter, cache and log.</span></div>
+            <div><strong>Monitoring</strong><span>Observes traffic/events and produces alerts or evidence.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks, not vague revision fog</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Rule table</strong>
+              <span>Create five firewall rules for a school network. For each, state allow/block/log and the reason.</span>
+            </article>
+            <article>
+              <strong>Task 2: Proxy vs monitoring</strong>
+              <span>Write one paragraph explaining how a proxy can enforce web policy and one paragraph explaining how monitoring helps incident response.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "Explain how firewalls, proxies and network monitoring can reduce network security risks. Include one limitation." Use mechanism-first wording.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

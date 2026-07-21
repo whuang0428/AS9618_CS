@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 002 | Binary place value and denary conversion</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
+        <h1>Binary place value and denary conversion</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#knowledge">Place value</a>
+        <a href="#methods">Methods</a>
+        <a href="#range">Range</a>
+        <a href="#converter">Converter</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 002 | 45 minutes | Informal questioning</p>
+            <h2>Binary is place value with only two digits.</h2>
+            <p>
+              This lesson converts between positive denary integers and 8-bit binary values.
+              The core exam skill is showing which place values are counted, not just producing
+              a number that looks plausible.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div>
+                <strong>Read</strong>
+                <span>8-bit binary using place values from 128 to 1</span>
+              </div>
+              <div>
+                <strong>Convert</strong>
+                <span>binary to denary and denary to binary with working</span>
+              </div>
+              <div>
+                <strong>Check</strong>
+                <span>range, leading zeros and base labels in exam answers</span>
+              </div>
+            </div>
+          </div>
+          <div class="binary-display" aria-label="Binary lesson focus">
+            <span>10110110₂</span>
+            <p>Which place values are switched on?</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Start by reading the bits left to right with the place-value row visible.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>CIE-style calculation marks often reward visible columns and base labels.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not count every column. Only count a place value when the bit above it is 1.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Is `10110110₂` closer to 100 or 200?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="low">Closer to 100</button>
+            <button class="choice-card" type="button" data-hook="high">Closer to 200</button>
+            <button class="choice-card" type="button" data-hook="unknown">Impossible without columns</button>
+            <button class="choice-card" type="button" data-hook="decimal">It is already denary</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick an answer. Then prove it with place values.
+          </div>
+        </section>
+
+        <section class="panel" id="knowledge">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>8-bit binary place values</h2>
+          </div>
+          <div class="place-table" aria-label="8-bit binary place value table">
+            <div class="table-row header">
+              <span>Bit position</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span><span>0</span>
+            </div>
+            <div class="table-row">
+              <span>Place value</span><span>128</span><span>64</span><span>32</span><span>16</span><span>8</span><span>4</span><span>2</span><span>1</span>
+            </div>
+            <div class="table-row sample">
+              <span>Example bits</span><span>1</span><span>0</span><span>1</span><span>1</span><span>0</span><span>1</span><span>1</span><span>0</span>
+            </div>
+            <div class="table-row active">
+              <span>Count?</span><span>yes</span><span>no</span><span>yes</span><span>yes</span><span>no</span><span>yes</span><span>yes</span><span>no</span>
+            </div>
+          </div>
+          <div class="callout">`10110110₂ = 128 + 32 + 16 + 4 + 2 = 182₁₀`</div>
+          <div class="vocab-strip" aria-label="Key vocabulary">
+            <span><b>binary</b> 二进制</span>
+            <span><b>denary</b> 十进制</span>
+            <span><b>place value</b> 位值</span>
+            <span><b>most significant bit</b> 最高有效位</span>
+            <span><b>least significant bit</b> 最低有效位</span>
+          </div>
+        </section>
+
+        <section class="panel" id="methods">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge points 2-3</p>
+            <h2>Two conversion directions, two reliable methods</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Binary to denary</h3>
+              <ol>
+                <li>Write the place-value row: 128, 64, 32, 16, 8, 4, 2, 1.</li>
+                <li>Place the binary digits under the row.</li>
+                <li>Add only the values with a `1` above them.</li>
+                <li>Label the answer as denary.</li>
+              </ol>
+            </article>
+            <article>
+              <h3>Denary to binary</h3>
+              <ol>
+                <li>Start at 128 and move right.</li>
+                <li>Write `1` if the place value fits into the remaining number.</li>
+                <li>Subtract that place value when a `1` is used.</li>
+                <li>Write `0` when it does not fit.</li>
+              </ol>
+            </article>
+          </div>
+        </section>
+
+        <section class="guidance-grid compact" aria-label="Conversion guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For denary to binary, say the remaining value out loud after each subtraction.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Students often add a zero column or skip a column. Eight-bit answers need exactly eight bits.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="range">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Range and leading zeros</h2>
+          </div>
+          <div class="range-grid">
+            <article>
+              <h3>Smallest 8-bit value</h3>
+              <p class="range-value">00000000₂ = 0₁₀</p>
+              <p>All place values are off.</p>
+            </article>
+            <article>
+              <h3>Largest 8-bit value</h3>
+              <p class="range-value">11111111₂ = 255₁₀</p>
+              <p>All place values are on: 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1.</p>
+            </article>
+            <article>
+              <h3>Leading zeros</h3>
+              <p class="range-value">00000111₂ = 111₂ = 7₁₀</p>
+              <p>Leading zeros preserve fixed bit width; they do not change the value.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="converter">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>8-bit binary and denary converter</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Direction
+              <select id="convertMode">
+                <option value="binaryToDenary">Binary to denary</option>
+                <option value="denaryToBinary">Denary to binary</option>
+              </select>
+            </label>
+            <label>
+              Value
+              <input id="convertValue" type="text" value="10110110" />
+            </label>
+            <button type="button" id="convertBtn">Convert</button>
+          </div>
+          <div class="result-box" id="convertResult" aria-live="polite"></div>
+          <div class="method-box" id="convertMethod"></div>
+          <div class="bit-visual" id="bitVisual" aria-label="Interactive place-value visual"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="binary">10110110₂ to denary</button>
+            <button class="tab" type="button" data-example="denary">77 to binary</button>
+            <button class="tab" type="button" data-example="zero">Leading zeros</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button type="button" id="checkPractice">Check answers</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel mistake-panel">
+          <div class="section-title">
+            <p class="eyebrow">Debug the mistakes</p>
+            <h2>Find the trap, fix the answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <h3>Mistake 1</h3>
+              <p class="wrong">10110110₂ = 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1</p>
+              <button type="button" class="reveal" data-reveal="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">Only columns with a `1` are counted: 128 + 32 + 16 + 4 + 2 = 182.</p>
+            </article>
+            <article>
+              <h3>Mistake 2</h3>
+              <p class="wrong">7₁₀ = 1111111₂</p>
+              <button type="button" class="reveal" data-reveal="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">As an 8-bit value, 7 is `00000111₂`. Leading zeros keep the bit width.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Past-paper style</p>
+            <h2>Original exam-style questions</h2>
+          </div>
+          <div class="exam-grid" id="examGrid"></div>
+          <p class="source-note">
+            These are original Cambridge-style questions, not copied Cambridge past paper text.
+            Use the buttons under each question to expand the CIE-style mark scheme.
+          </p>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What must survive until the exam?</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>Binary place values double from right to left.</span></div>
+            <div><strong>2</strong><span>Binary to denary means adding only the active columns.</span></div>
+            <div><strong>3</strong><span>8-bit positive integers range from 0 to 255.</span></div>
+          </div>
+          <div class="exit-ticket">
+            <label for="exitTicket">Exit ticket</label>
+            <textarea id="exitTicket" rows="3" placeholder="The key point about binary place value is..., and a common mistake is..."></textarea>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks, not vague revision</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Convert these binary values to denary, showing columns: `01010101₂`, `11100010₂`, `00011111₂`.</li>
+            <li>Convert these denary values to 8-bit binary: `19`, `104`, `250`.</li>
+            <li>Write a 3-mark explanation of why `00001010₂` and `1010₂` have the same value but not the same bit width.</li>
+            <li>Extension: create one wrong solution and annotate exactly where the mistake happens.</li>
+          </ol>
+        </section>
+
+        <section class="panel homework-support">
+          <div class="section-title">
+            <p class="eyebrow">Homework support</p>
+            <h2>Check only after attempting</h2>
+          </div>
+          <button
+            type="button"
+            class="reveal"
+            data-reveal="homeworkAnswers"
+            data-open-label="Show homework answers"
+            data-close-label="Hide homework answers"
+          >
+            Show homework answers
+          </button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Binary to denary:</strong> `01010101₂ = 85`; `11100010₂ = 226`; `00011111₂ = 31`.</p>
+            <p><strong>Denary to 8-bit binary:</strong> `19 = 00010011₂`; `104 = 01101000₂`; `250 = 11111010₂`.</p>
+            <p><strong>Explanation focus:</strong> leading zeros do not change value, but they preserve fixed 8-bit width.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

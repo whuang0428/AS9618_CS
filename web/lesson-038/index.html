@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 038 | Hardware selection for different users</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
+        <h1>Hardware selection for different users</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#categories">Categories</a>
+        <a href="#criteria">Criteria</a>
+        <a href="#users">User needs</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Selector</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 038 | 45 minutes | Paper 1 Section 3</p>
+            <h2>Good hardware is not the fanciest box. It is the box that fits the job.</h2>
+            <p>
+              This lesson focuses on selecting suitable hardware for different
+              users and scenarios. You will classify hardware, compare alternatives,
+              and justify choices using features, user needs and consequences.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Classify</strong><span>hardware as input, output, storage, processing or communication</span></div>
+              <div><strong>Compare</strong><span>alternatives using speed, capacity, cost and reliability</span></div>
+              <div><strong>Justify</strong><span>hardware choices for specific user needs</span></div>
+            </div>
+          </div>
+          <div class="hardware-card" aria-label="Hardware selection formula">
+            <span>feature -> need -> consequence</span>
+            <p>"It is better" earns very little. "It is portable, so the delivery driver can scan parcels at the door" earns marks.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make each recommendation use this chain: device feature, user need, practical result.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style hardware questions reward suitability. A named device without scenario-specific justification is usually only half an answer.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not recommend the most powerful hardware by default. A librarian does not need a gaming GPU to scan barcodes, even if the GPU looks lonely.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Phone, keyboard, USB drive: which captures data, which stores data, and which just makes humans feel in control?</h2>
+            <p>Click a classification. The correct answer depends on the role in the system, not the object's personality.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="phone">Phone camera captures image data</button>
+            <button class="choice-card" type="button" data-hook="keyboard">Keyboard enters text commands</button>
+            <button class="choice-card" type="button" data-hook="usb">USB flash drive stores files</button>
+            <button class="choice-card" type="button" data-hook="trap">A monitor stores the final result</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Start by classifying the device's job: input, output, storage, processing or communication.
+          </div>
+        </section>
+
+        <section class="panel" id="categories">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Classify the hardware before choosing it</h2>
+          </div>
+          <div class="device-table" role="table" aria-label="Hardware categories">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Category</div>
+              <div role="columnheader">Purpose</div>
+              <div role="columnheader">Examples</div>
+              <div role="columnheader">Selection question</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Input</div>
+              <div role="cell">Captures data or commands.</div>
+              <div role="cell">Keyboard, barcode reader, camera, touchscreen, sensor</div>
+              <div role="cell">How fast and accurate must data entry be?</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Output</div>
+              <div role="cell">Presents information or produces an action.</div>
+              <div role="cell">Monitor, printer, speaker, projector, actuator</div>
+              <div role="cell">Does the user need visual, printed, audio or physical output?</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Storage</div>
+              <div role="cell">Stores programs and data.</div>
+              <div role="cell">SSD, HDD, optical disc, flash storage</div>
+              <div role="cell">Is speed, capacity, portability or durability most important?</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Processing</div>
+              <div role="cell">Carries out instructions and calculations.</div>
+              <div role="cell">CPU, GPU, microcontroller</div>
+              <div role="cell">How complex or time-critical is the processing task?</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Communication</div>
+              <div role="cell">Connects devices or networks.</div>
+              <div role="cell">NIC, Wi-Fi adapter, Bluetooth module, router</div>
+              <div role="cell">Does the user need mobility, range, speed or reliability?</div>
+            </div>
+          </div>
+          <div class="callout">Chinese support: suitability = 适用性；reliability = 可靠性；durability = 耐用性；portability = 便携性。</div>
+        </section>
+
+        <section class="panel" id="criteria">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Choose using criteria, not vibes</h2>
+          </div>
+          <div class="criteria-grid">
+            <article><strong>Speed</strong><span>Needed for real-time input, rapid searches, video editing or low-delay output.</span></article>
+            <article><strong>Capacity</strong><span>Needed for large files, media archives, backups or databases.</span></article>
+            <article><strong>Cost</strong><span>Matters when many devices must be purchased or the user has a fixed budget.</span></article>
+            <article><strong>Durability</strong><span>Important for mobile, outdoor or high-use environments.</span></article>
+            <article><strong>Accuracy</strong><span>Important for barcode scanning, sensors, medical data and attendance records.</span></article>
+            <article><strong>Compatibility</strong><span>Hardware must connect to existing software, ports, networks and operating systems.</span></article>
+          </div>
+          <div class="callout">Exam sentence frame: "I would choose X because it has Y, which matters for Z, so the user can..."</div>
+        </section>
+
+        <section class="panel" id="users">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Different users value different trade-offs</h2>
+          </div>
+          <div class="user-grid">
+            <article><strong>Librarian</strong><span>Needs fast, accurate item input and reliable local/network database access.</span></article>
+            <article><strong>Delivery driver</strong><span>Needs portable, durable, wireless hardware and quick barcode/QR capture.</span></article>
+            <article><strong>Video editor</strong><span>Needs high-speed storage, strong CPU/GPU performance and colour-accurate display.</span></article>
+            <article><strong>Weather station</strong><span>Needs accurate sensors, durable enclosure, low power use and stable communication.</span></article>
+          </div>
+          <div class="callout">A strong answer rejects one tempting unsuitable option. This proves the choice was evaluated, not guessed.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Hardware categories: input, output, storage, processing and communication.</span></div>
+            <div><strong>Covered</strong><span>Scenario-based suitability using speed, capacity, cost, reliability, portability and accuracy.</span></div>
+            <div><strong>Covered</strong><span>Comparing at least two alternatives and rejecting an unsuitable option.</span></div>
+            <div><strong>Covered</strong><span>Exam-style justification using feature, need and consequence.</span></div>
+            <div><strong>Boundary</strong><span>Environmental and reliability considerations continue in Lesson 039.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Hardware selector</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              User scenario
+              <select id="scenarioInput">
+                <option value="attendance">School attendance system</option>
+                <option value="library">Library checkout desk</option>
+                <option value="delivery">Delivery driver</option>
+                <option value="editor">Video editor</option>
+                <option value="weather">Remote weather station</option>
+              </select>
+            </label>
+            <button type="button" id="recommendBtn">Recommend hardware</button>
+          </div>
+          <div class="result-box" id="recommendation" aria-live="polite"></div>
+          <div class="method-box" id="justification"></div>
+          <div class="reject-box" id="rejection"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Write recommendations that earn marks</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="attendance">Attendance</button>
+            <button class="tab" type="button" data-example="delivery">Delivery</button>
+            <button class="tab" type="button" data-example="editor">Video editor</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak hardware recommendation</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"Use an SSD because it is better."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">Use an SSD because it has faster access times than an HDD, which helps a video editor load large project files and preview footage with less delay.</p>
+            </article>
+            <article>
+              <p class="wrong">"A delivery driver should use a desktop computer because it is powerful."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">A handheld scanner or smartphone is more suitable because it is portable, can connect wirelessly and can scan parcels at the delivery location.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on matching a feature to a user need and explaining the consequence.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Hardware selection in six exam sentences</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Classify</strong><span>Know whether the device inputs, outputs, stores, processes or communicates.</span></div>
+            <div><strong>Compare</strong><span>Use criteria such as speed, capacity, durability and cost.</span></div>
+            <div><strong>Context</strong><span>Different users have different priorities.</span></div>
+            <div><strong>Justify</strong><span>Link feature to need and consequence.</span></div>
+            <div><strong>Reject</strong><span>Explain why a tempting alternative is unsuitable.</span></div>
+            <div><strong>Precision</strong><span>Avoid vague words like better unless you explain why.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Design a hardware setup for a library checkout desk. Include two input devices, one output device and one storage/processing choice.</li>
+            <li>Write a 6-mark answer recommending hardware for a delivery driver who scans parcels and collects signatures.</li>
+            <li>Compare SSD and HDD for a video editor using speed, capacity, cost and reliability.</li>
+            <li>Rewrite this weak sentence: "Use a touchscreen because it is easier."</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Library:</strong> barcode scanner, keyboard/touchscreen, receipt printer/display, networked computer with reliable storage.</p>
+            <p><strong>Delivery:</strong> handheld scanner or smartphone, GPS, mobile data, durable case and battery life.</p>
+            <p><strong>SSD vs HDD:</strong> SSD is faster and more shock-resistant; HDD may be cheaper per GB for bulk archive storage.</p>
+            <p><strong>Rewrite:</strong> specify the feature, such as direct selection reducing training time for non-specialist users.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

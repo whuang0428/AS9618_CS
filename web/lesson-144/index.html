@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 144 | Design documentation: algorithms, data dictionaries, and interfaces</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 12</p>
+        <h1>Design documentation: algorithms, data dictionaries, and interfaces</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#purpose">Purpose</a>
+        <a href="#algorithms">Algorithms</a>
+        <a href="#dictionary">Data dictionary</a>
+        <a href="#interfaces">Interfaces</a>
+        <a href="#traceability">Traceability</a>
+        <a href="#lifecycle">Lifecycle use</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#chooser">Artefact chooser</a>
+        <a href="#dictionary-tool">Dictionary tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Mistakes</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 144 | 45 minutes | Paper 2 Section 12 | informal questioning</p>
+            <h2>Design documentation is the bridge between “what users need” and “what developers build”.</h2>
+            <p>
+              This lesson focuses on three design artefacts: algorithm designs, data dictionaries and interface designs.
+              Chinese support: design documentation 设计文档, algorithm design 算法设计, data dictionary 数据字典,
+              interface design 界面设计, traceability 可追踪性。
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>which design artefact fits a scenario</span></div>
+              <div><strong>Describe</strong><span>algorithm, data dictionary and interface design contents</span></div>
+              <div><strong>Link</strong><span>requirements to implementation, testing and maintenance</span></div>
+            </div>
+          </div>
+          <div class="design-visual" aria-label="Design documentation visual">
+            <div><strong>Requirement</strong><span>reject double bookings</span><em>what is needed</em></div>
+            <div><strong>Algorithm</strong><span>check existing records</span><em>processing rule</em></div>
+            <div><strong>Data dictionary</strong><span>RoomID : STRING(6)</span><em>data rule</em></div>
+            <div><strong>Interface</strong><span>date, time, room controls</span><em>user interaction</em></div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask one repeat question throughout: “Which document would stop two developers from making different assumptions?”</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Design documentation gives developers, testers and maintainers a shared plan. Without it, the project may look active while quietly drifting away from the requirements.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Requirements say what the system must do. Design documentation says how the system will be structured before implementation begins.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which document says RoomID is a STRING of length 6 and must not be blank?</h2>
+            <p>Scenario: a school room booking system. Pick the most precise artefact.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="requirements">Requirements specification</button>
+            <button class="choice-card" type="button" data-hook="dictionary">Data dictionary</button>
+            <button class="choice-card" type="button" data-hook="interface">Interface sketch</button>
+            <button class="choice-card" type="button" data-hook="code">Java implementation</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the artefact that defines data item rules.</div>
+        </section>
+
+        <section class="panel" id="purpose">
+          <div class="section-title">
+            <p class="eyebrow">Design documentation purpose</p>
+            <h2>Design documents translate requirements into a buildable plan</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Before coding</h3><p>They decide data structures, processing logic and user interaction before the implementation language takes over.</p></article>
+            <article><h3>For testers</h3><p>They provide expected rules and interface behaviour so tests can check more than “it seems fine”.</p></article>
+            <article><h3>For maintenance</h3><p>They help future developers understand why the system works in a particular way.</p></article>
+          </div>
+          <div class="callout">A useful design document is specific enough to guide construction, but not just a pasted block of final program code.</div>
+        </section>
+
+        <section class="panel" id="algorithms">
+          <div class="section-title">
+            <p class="eyebrow">Algorithm design documents</p>
+            <h2>Algorithm designs describe the processing steps</h2>
+            <p>They may use Cambridge-style pseudocode, flowcharts or structure diagrams. Java can support learning, but the exam standard remains Cambridge pseudocode.</p>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode design</h3>
+              <pre><code>SET ClashFound TO FALSE
+FOR EACH Booking IN BookingList
+    IF Booking.RoomID = NewRoomID AND Booking.Date = NewDate THEN
+        IF times overlap THEN
+            SET ClashFound TO TRUE
+        ENDIF
+    ENDIF
+NEXT Booking</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>// Java support example, not exam pseudocode
+boolean clashFound = false;
+for (Booking booking : bookingList) {
+  if (booking.roomId.equals(newRoomId)
+      && booking.date.equals(newDate)
+      && timesOverlap(booking, newBooking)) {
+    clashFound = true;
+  }
+}</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="dictionary">
+          <div class="section-title">
+            <p class="eyebrow">Data dictionary</p>
+            <h2>A data dictionary defines each data item consistently</h2>
+          </div>
+          <div class="data-table six-col" role="table" aria-label="Data dictionary examples">
+            <div class="table-row table-head"><div>Name</div><div>Type</div><div>Size</div><div>Format</div><div>Validation</div><div>Purpose</div></div>
+            <div class="table-row"><div>RoomID</div><div>STRING</div><div>6</div><div>letter plus digits</div><div>not blank; exists in room file</div><div>identifies the room</div></div>
+            <div class="table-row"><div>BookingDate</div><div>DATE</div><div>fixed</div><div>YYYY-MM-DD</div><div>school day; not in past</div><div>date of booking</div></div>
+            <div class="table-row"><div>StartTime</div><div>TIME</div><div>fixed</div><div>HH:MM</div><div>valid period start time</div><div>booking start</div></div>
+            <div class="table-row"><div>StaffID</div><div>STRING</div><div>8</div><div>staff code</div><div>must match staff record</div><div>person making booking</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="interfaces">
+          <div class="section-title">
+            <p class="eyebrow">Interface designs</p>
+            <h2>Interface designs show how users will enter data and navigate the system</h2>
+          </div>
+          <div class="interface-mock" aria-label="Interface design mock-up">
+            <div class="mock-title">Create room booking</div>
+            <label>Date <span>calendar control</span></label>
+            <label>Period <span>drop-down list</span></label>
+            <label>Room <span>searchable list</span></label>
+            <button type="button">Check availability</button>
+            <p>Error message area: “Room already booked for this time.”</p>
+          </div>
+          <div class="callout">Interface design is not just “make the screen pretty”. It specifies controls, navigation, prompts, validation messages and user feedback.</div>
+        </section>
+
+        <section class="panel" id="traceability">
+          <div class="section-title">
+            <p class="eyebrow">Linking requirements to design</p>
+            <h2>Traceability keeps the design connected to the original need</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Traceability examples">
+            <div class="table-row table-head"><div>Requirement</div><div>Algorithm design</div><div>Data dictionary</div><div>Interface design</div></div>
+            <div class="table-row"><div>Prevent double booking</div><div>compare requested time with existing bookings</div><div>RoomID, date, start and end times</div><div>availability check button and clash message</div></div>
+            <div class="table-row"><div>Only staff can book</div><div>check user role before saving</div><div>StaffID and Role fields</div><div>login screen and disabled guest action</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="lifecycle">
+          <div class="section-title">
+            <p class="eyebrow">Using design docs later</p>
+            <h2>Design documentation supports implementation, testing and maintenance</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Implementation</h3><p>Developers know which data fields, algorithms and interface behaviours to build.</p></article>
+            <article><h3>Testing</h3><p>Testers compare actual behaviour with the designed rules, validation and expected messages.</p></article>
+            <article><h3>Maintenance</h3><p>Future changes are safer because developers can see existing data rules and processing assumptions.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>This lesson covers design documentation for Section 12</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>purpose of design documentation in the development lifecycle</span></div>
+            <div><strong>Covered</strong><span>algorithm designs, data dictionaries and interface designs</span></div>
+            <div><strong>Covered</strong><span>how design documents support implementation, testing and maintenance</span></div>
+            <div><strong>Not this lesson</strong><span>writing a full program, full testing tables or maintenance release planning</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Interactive artefact chooser</p>
+            <h2>Pick the best document for the job</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Scenario
+              <select id="artefactSelect">
+                <option value="steps">Show how to detect overlapping bookings</option>
+                <option value="field">Define BookingDate as DATE with a fixed format</option>
+                <option value="screen">Show the controls on the booking form</option>
+                <option value="need">State that staff must be able to cancel bookings</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="artefactBtn">Choose artefact</button>
+          </div>
+          <div id="artefactOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="dictionary-tool">
+          <div class="section-title">
+            <p class="eyebrow">Data dictionary checker</p>
+            <h2>Inspect a field definition</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Data item
+              <select id="fieldSelect">
+                <option value="RoomID">RoomID</option>
+                <option value="BookingDate">BookingDate</option>
+                <option value="StartTime">StartTime</option>
+                <option value="StaffID">StaffID</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="fieldBtn">Show definition</button>
+          </div>
+          <div id="fieldOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Three ways design documentation earns marks</h2>
+          </div>
+          <div class="tab-row" role="tablist" aria-label="Worked examples">
+            <button class="tab-button active" type="button" data-example="algorithm">Algorithm design</button>
+            <button class="tab-button" type="button" data-example="dictionary">Data dictionary</button>
+            <button class="tab-button" type="button" data-example="interface">Interface design</button>
+          </div>
+          <div id="exampleOutput" class="example-output"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Answer, check, then reveal the model answer if needed</h2>
+          </div>
+          <div id="practiceList" class="practice-list"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the answer before the examiner has to</h2>
+          </div>
+          <div id="mistakeList" class="mistake-grid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Cambridge-style questions with expandable MS</h2>
+            <p>These are original AS-style questions. The mark schemes use Cambridge-style precision, not copied past-paper wording.</p>
+          </div>
+          <div id="examList" class="exam-list"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What to remember</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Algorithm design</strong><span>processing steps before coding</span></div>
+            <div><strong>Data dictionary</strong><span>names, types, sizes, formats, validation and purpose</span></div>
+            <div><strong>Interface design</strong><span>controls, navigation, feedback and validation messages</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Produce a mini design pack for a library loan system</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write one algorithm design for checking whether a book can be loaned.</li>
+            <li>Create a data dictionary with at least five fields, including type, size or format, validation and purpose.</li>
+            <li>Sketch or describe one interface screen, including controls, navigation and one validation message.</li>
+            <li>Write a 6-mark exam answer explaining how your design documents would help implementation and testing.</li>
+          </ol>
+          <div class="callout">Marking focus: specific artefacts, clear links to requirements, and no “it makes it better” without explaining how.</div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

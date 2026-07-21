@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 021 | HTTP, HTTPS, FTP, SMTP, POP3 and IMAP in context</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
+        <h1>HTTP, HTTPS, FTP, SMTP, POP3 and IMAP in context</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#web">Web protocols</a>
+        <a href="#file">File transfer</a>
+        <a href="#email">Email protocols</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Protocol tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 021 | 45 minutes | Informal questioning</p>
+            <h2>Protocols are not alphabet soup if you pair them with jobs.</h2>
+            <p>
+              This lesson matches common application protocols to their context:
+              web pages, secure web pages, file transfer, sending email and receiving
+              email. The exam usually rewards the job, not just expanding the acronym.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Match</strong><span>HTTP, HTTPS, FTP, SMTP, POP3 and IMAP to correct uses</span></div>
+              <div><strong>Compare</strong><span>HTTP vs HTTPS and POP3 vs IMAP in context</span></div>
+              <div><strong>Explain</strong><span>which protocol is used at each step of realistic web and email workflows</span></div>
+            </div>
+          </div>
+          <div class="protocol-card" aria-label="Protocol matching concept">
+            <span>web | secure web | files | send mail | receive mail</span>
+            <p>The acronym is the label. The use case earns the mark.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask for verbs: view, secure, transfer, send, download, synchronise. The verb usually reveals the protocol.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Protocol questions often use short scenarios. Students must identify the context and avoid swapping SMTP with POP3/IMAP.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>SMTP sends email. POP3 and IMAP retrieve/access email. A mailbox is not delivered by wishful thinking.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A student sends homework by email, then checks the same mailbox on a phone and laptop. Which pair matters most?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="smtpimap">SMTP to send, IMAP to synchronise mailbox access</button>
+            <button class="choice-card" type="button" data-hook="ftphttp">FTP to send email, HTTP to receive it</button>
+            <button class="choice-card" type="button" data-hook="popsecure">POP3 encrypts every web page</button>
+            <button class="choice-card" type="button" data-hook="dns">DNS stores the email messages</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick the pair that separates sending email from synchronised mailbox access.
+          </div>
+        </section>
+
+        <section class="panel" id="web">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>HTTP and HTTPS</h2>
+          </div>
+          <div class="compare-table" role="table" aria-label="HTTP and HTTPS comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Protocol</div>
+              <div role="columnheader">Use</div>
+              <div role="columnheader">Exam distinction</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">HTTP</div>
+              <div role="cell">Transfers web pages and web resources between browser and web server.</div>
+              <div role="cell">Does not provide the same secure encrypted connection as HTTPS.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">HTTPS</div>
+              <div role="cell">Secure version of HTTP used for encrypted web communication.</div>
+              <div role="cell">Helps protect data such as logins, payments and form submissions in transit.</div>
+            </div>
+          </div>
+          <div class="callout">Chinese support: secure connection = 安全连接；encryption = 加密；web resource = 网页资源。</div>
+        </section>
+
+        <section class="panel" id="file">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>FTP for file transfer</h2>
+          </div>
+          <div class="file-card">
+            <h3>FTP: File Transfer Protocol</h3>
+            <p>FTP is used to transfer files between a client and a server, such as uploading website files or downloading files from a file server.</p>
+            <p>Do not use FTP as a generic answer for “anything on the internet”. It is specifically about file transfer.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="email">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Email protocols: SMTP, POP3 and IMAP</h2>
+          </div>
+          <div class="email-flow">
+            <article>
+              <h3>SMTP</h3>
+              <p>Used to send email from a client to a mail server and between mail servers.</p>
+            </article>
+            <article>
+              <h3>POP3</h3>
+              <p>Used to download email from a mail server to a client, often removing it from the server depending on settings.</p>
+            </article>
+            <article>
+              <h3>IMAP</h3>
+              <p>Used to access and synchronise email stored on a mail server across multiple devices.</p>
+            </article>
+          </div>
+          <div class="trap-card inline">
+            <h3>Common trap</h3>
+            <p>IMAP is usually better for multiple devices because messages and folders stay on the server and remain synchronised.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>HTTP for web pages and HTTPS for secure encrypted web communication.</span></div>
+            <div><strong>Covered</strong><span>FTP for file transfer between client and server.</span></div>
+            <div><strong>Covered</strong><span>SMTP for sending email; POP3 and IMAP for receiving/accessing email.</span></div>
+            <div><strong>Boundary</strong><span>Packet structure, DNS and IP/MAC addressing were covered in earlier lessons and are only referenced here.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Protocol choice helper</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Task
+              <select id="taskInput">
+                <option value="web">View a normal web page</option>
+                <option value="secure">Submit login details on a website</option>
+                <option value="file">Upload files to a server</option>
+                <option value="sendmail">Send an email message</option>
+                <option value="downloadmail">Download email to one computer</option>
+                <option value="syncmail">Keep email folders synchronised on phone and laptop</option>
+              </select>
+            </label>
+            <button type="button" id="chooseBtn">Choose protocol</button>
+          </div>
+          <div class="result-box" id="protocolResult" aria-live="polite"></div>
+          <div class="method-box" id="protocolMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="web">Secure web</button>
+            <button class="tab" type="button" data-example="email">Email journey</button>
+            <button class="tab" type="button" data-example="files">File transfer</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak protocol answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">“SMTP is used to read email from the server.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">SMTP is used to send email. POP3 or IMAP is used to retrieve/access email from a mail server.</p>
+            </article>
+            <article>
+              <p class="wrong">“HTTPS just means the page is faster.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">HTTPS is the secure version of HTTP and uses encryption to protect web communication in transit.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on correct protocol and correct context.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Match the protocol to the job</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>HTTP</strong><span>Web page/resource transfer.</span></div>
+            <div><strong>HTTPS</strong><span>Secure encrypted web communication.</span></div>
+            <div><strong>FTP</strong><span>File transfer between client and server.</span></div>
+            <div><strong>SMTP</strong><span>Sending email.</span></div>
+            <div><strong>POP3</strong><span>Downloading email to a client.</span></div>
+            <div><strong>IMAP</strong><span>Synchronised mailbox access across devices.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create six flashcards: HTTP, HTTPS, FTP, SMTP, POP3 and IMAP. Each card must include one use case.</li>
+            <li>Draw an email journey showing SMTP for sending and POP3/IMAP for receiving/accessing.</li>
+            <li>Explain why IMAP is usually suitable when a user reads email on multiple devices.</li>
+            <li>Write a 5-mark answer comparing HTTP and HTTPS.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Flashcards:</strong> include the job, not only the full name.</p>
+            <p><strong>Email journey:</strong> SMTP sends; POP3 downloads; IMAP synchronises/accesses server mailbox.</p>
+            <p><strong>IMAP:</strong> mention messages/folders remain on server and changes sync across devices.</p>
+            <p><strong>HTTP/HTTPS:</strong> both transfer web pages; HTTPS adds encryption/security for data in transit.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

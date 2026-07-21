@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 007 | Character sets: ASCII and Unicode</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
+        <h1>Character sets: ASCII, extended ASCII and Unicode</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Character set</a>
+        <a href="#ascii">ASCII</a>
+        <a href="#unicode">Unicode</a>
+        <a href="#encoding">Encoding</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Inspector</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 007 | 45 minutes | Informal questioning</p>
+            <h2>Text is numbers wearing a very convincing disguise.</h2>
+            <p>
+              Computers store characters as binary values. A character set defines which
+              characters are available and which numeric code is assigned to each character.
+              This lesson compares ASCII, extended ASCII and Unicode without asking anyone
+              to memorise a table like a very small, very boring phone book.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div>
+                <strong>Define</strong>
+                <span>character set and character code using precise wording</span>
+              </div>
+              <div>
+                <strong>Compare</strong>
+                <span>ASCII, extended ASCII and Unicode by range and purpose</span>
+              </div>
+              <div>
+                <strong>Explain</strong>
+                <span>why Unicode supports more languages and symbols</span>
+              </div>
+            </div>
+          </div>
+          <div class="binary-display" aria-label="Character encoding focus">
+            <span>A = 65</span>
+            <p>`A` is displayed as a letter, but stored using a binary code such as `01000001`.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Keep the chain visible: character → code point / code value → binary storage → displayed symbol.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Wrong encoding can turn meaningful text into broken symbols, especially across languages and systems.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not say Unicode is “just bigger ASCII”. It is a much larger character set designed for global text.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Can standard ASCII store `你`?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="yes">Yes, every character is text</button>
+            <button class="choice-card" type="button" data-hook="no">No, standard ASCII is too limited</button>
+            <button class="choice-card" type="button" data-hook="emoji">Only if it is an emoji</button>
+            <button class="choice-card" type="button" data-hook="font">Only if the font is pretty</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick an answer. The issue is not artistic talent; it is whether the character set contains the character.
+          </div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>What a character set actually does</h2>
+          </div>
+          <div class="concept-flow">
+            <article>
+              <strong>Character</strong>
+              <span>A visible symbol such as `A`, `?`, `é`, `你` or `€`.</span>
+            </article>
+            <article>
+              <strong>Character set</strong>
+              <span>A defined collection of characters and the code assigned to each character.</span>
+            </article>
+            <article>
+              <strong>Character code</strong>
+              <span>The numeric value used to represent a character inside the computer.</span>
+            </article>
+            <article>
+              <strong>Binary storage</strong>
+              <span>The numeric code is stored using bits, for example `65₁₀ = 01000001₂`.</span>
+            </article>
+          </div>
+          <div class="callout">
+            Chinese support: character set = 字符集；character code = 字符编码值；encoding = 编码方式。
+          </div>
+        </section>
+
+        <section class="panel" id="ascii">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>ASCII and extended ASCII</h2>
+          </div>
+          <div class="compare-grid">
+            <article>
+              <h3>Standard ASCII</h3>
+              <p>Uses 7 bits, so it can represent `2⁷ = 128` possible codes.</p>
+              <p>It covers common English letters, digits, punctuation and control characters.</p>
+            </article>
+            <article>
+              <h3>Extended ASCII</h3>
+              <p>Uses 8 bits, so it can represent `2⁸ = 256` possible codes.</p>
+              <p>It adds extra characters, but still cannot cover the world’s writing systems.</p>
+            </article>
+          </div>
+          <div class="table-wrap">
+            <table class="code-table" aria-label="Small ASCII example table">
+              <thead>
+                <tr>
+                  <th>Character</th>
+                  <th>Denary code</th>
+                  <th>8-bit binary</th>
+                  <th>Exam note</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>A</td>
+                  <td>65</td>
+                  <td>01000001</td>
+                  <td>Example only; no need to memorise.</td>
+                </tr>
+                <tr>
+                  <td>B</td>
+                  <td>66</td>
+                  <td>01000010</td>
+                  <td>Codes are numeric values.</td>
+                </tr>
+                <tr>
+                  <td>a</td>
+                  <td>97</td>
+                  <td>01100001</td>
+                  <td>Uppercase and lowercase have different codes.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="guidance-grid compact" aria-label="ASCII guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask students why `A` and `a` cannot share a code. The display may look related, but the stored values must distinguish them.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Font changes appearance. A character set defines which character a code represents. These are not the same thing.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="unicode">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Unicode: more characters, more global use</h2>
+          </div>
+          <div class="unicode-grid">
+            <article>
+              <h3>Purpose</h3>
+              <p>Unicode is designed to represent characters from many languages and symbol systems.</p>
+            </article>
+            <article>
+              <h3>Scale</h3>
+              <p>Unicode supports far more characters than ASCII, including Chinese characters and many symbols.</p>
+            </article>
+            <article>
+              <h3>Trade-off</h3>
+              <p>More possible characters may require more bits per character, depending on the encoding used.</p>
+            </article>
+          </div>
+          <div class="callout warning">
+            Emoji are not magic stickers. They are characters with assigned Unicode code points, then rendered by software and fonts.
+          </div>
+        </section>
+
+        <section class="panel" id="encoding">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Character set vs encoding</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Character set</h3>
+              <p>Defines the characters and their code points or code values.</p>
+              <p>Example idea: `A` has a defined code in ASCII and Unicode.</p>
+            </article>
+            <article>
+              <h3>Encoding</h3>
+              <p>Defines how those codes are stored as bytes.</p>
+              <p>For AS exam answers, keep this distinction simple unless the question gives a specific encoding.</p>
+            </article>
+          </div>
+          <div class="callout">
+            A good exam sentence: “Unicode can represent a wider range of characters, so it is more suitable for multilingual text.”
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>How character data is represented in binary using character sets.</span></div>
+            <div><strong>Covered</strong><span>ASCII, extended ASCII and Unicode as contrasting character sets.</span></div>
+            <div><strong>Not required</strong><span>Memorising ASCII codes or Unicode code points.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Character inspector</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Character
+              <input id="charInput" type="text" value="A" maxlength="2" />
+            </label>
+            <button type="button" id="inspectBtn">Inspect</button>
+          </div>
+          <div class="result-box" id="inspectResult" aria-live="polite"></div>
+          <div class="method-box" id="inspectMethod"></div>
+          <div class="byte-visual" id="byteVisual" aria-label="Character byte visual"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="ascii">A in ASCII</button>
+            <button class="tab" type="button" data-example="capacity">7-bit vs 8-bit</button>
+            <button class="tab" type="button" data-example="unicode">Unicode choice</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Correct the almost-right answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">“ASCII can store all languages because every character is just binary.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">All stored data is binary, but the character set must contain the character. Standard ASCII only has 128 codes.</p>
+            </article>
+            <article>
+              <p class="wrong">“A font is the same thing as a character set.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">A font controls appearance. A character set maps characters to codes.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>
+              Use the buttons under each question to expand the CIE-style mark scheme.
+              These are original questions written in Cambridge style, not copied past-paper items.
+            </p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Text storage needs a rulebook</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>A character set maps characters to numeric codes.</span></div>
+            <div><strong>2</strong><span>Standard ASCII uses 7 bits and has 128 possible codes.</span></div>
+            <div><strong>3</strong><span>Extended ASCII uses 8 bits and has 256 possible codes.</span></div>
+            <div><strong>4</strong><span>Unicode supports a much wider range of global characters and symbols.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Define character set, character code and encoding in one sentence each.</li>
+            <li>Explain why standard ASCII cannot represent all written languages.</li>
+            <li>Calculate the number of possible codes for 7-bit and 8-bit character sets.</li>
+            <li>Write a 4-mark comparison of ASCII and Unicode for a multilingual website.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Definitions:</strong> character set maps characters to numeric codes; character code is the assigned numeric value; encoding stores codes as bytes.</p>
+            <p><strong>ASCII limitation:</strong> standard ASCII has only 128 possible codes, so it cannot include characters from all languages.</p>
+            <p><strong>Capacity:</strong> `2⁷ = 128`; `2⁸ = 256`.</p>
+            <p><strong>Comparison focus:</strong> ASCII is suitable for basic English text; Unicode is more suitable for multilingual text because it supports many more characters.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

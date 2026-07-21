@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 115 | One-dimensional arrays</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
+        <h1>One-dimensional arrays</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#model">Array model</a>
+        <a href="#declare">Declare</a>
+        <a href="#access">Access/update</a>
+        <a href="#traversal">Traversal</a>
+        <a href="#trace">Trace</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#lookup">Index lookup</a>
+        <a href="#builder">Loop builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 115 | 45 minutes | Paper 2 Section 10 | 5-minute quiz</p>
+            <h2>An array is a row of labelled lockers.</h2>
+            <p>
+              A one-dimensional array stores multiple values of the same type under one identifier. Each element is
+              accessed using an index. Instead of writing <code>Score1</code>, <code>Score2</code>, <code>Score3</code>
+              and hoping nobody asks for <code>Score30</code>, use <code>Scores[Index]</code> and let a loop do the walking.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Declare</strong><span>one-dimensional arrays with suitable bounds and type</span></div>
+              <div><strong>Access</strong><span>read and update individual elements using an index</span></div>
+              <div><strong>Traverse</strong><span>use loops to input, output, total or search array elements</span></div>
+            </div>
+          </div>
+          <div class="array-visual" aria-label="One-dimensional array visual">
+            <div class="array-strip">
+              <span class="index">1</span><span class="cell">42</span>
+              <span class="index">2</span><span class="cell">67</span>
+              <span class="index">3</span><span class="cell">55</span>
+              <span class="index">4</span><span class="cell">81</span>
+              <span class="index">5</span><span class="cell">49</span>
+            </div>
+            <div class="array-caption">Scores[3] is 55</div>
+            <p>One identifier. Many elements. One index at a time.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Always ask: what is the lower bound, what is the upper bound, and does the loop visit every valid index exactly once?</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 often awards marks for correct array declaration, index use, loop bounds and avoiding out-of-range access.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p><code>Scores</code> names the whole array. <code>Scores[Index]</code> accesses one element. The brackets are not decoration.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Would you really create 30 score variables?</h2>
+            <p>A class has 30 test scores. Which approach scales cleanly?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="many">Score1, Score2, ..., Score30</button>
+            <button class="choice-card" type="button" data-hook="array">Scores[1:30]</button>
+            <button class="choice-card" type="button" data-hook="string">One long STRING</button>
+            <button class="choice-card" type="button" data-hook="constant">A constant called Score</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the structure that supports indexed access and looping.</div>
+        </section>
+
+        <section class="panel" id="model">
+          <div class="section-title">
+            <p class="eyebrow">Array model</p>
+            <h2>A one-dimensional array is a linear collection</h2>
+          </div>
+          <div class="triage-grid">
+            <article>
+              <h3>Same identifier</h3>
+              <p>All elements belong to one array name.</p>
+              <pre><code>Scores</code></pre>
+            </article>
+            <article>
+              <h3>Same type</h3>
+              <p>At AS level, an array stores elements of the same data type.</p>
+              <pre><code>ARRAY[1:5] OF INTEGER</code></pre>
+            </article>
+            <article>
+              <h3>Indexed access</h3>
+              <p>An index selects one element.</p>
+              <pre><code>Scores[3]
+Scores[Index]</code></pre>
+            </article>
+          </div>
+          <div class="callout">Chinese support: array 是一组同类型数据；index 是位置编号；element 是某一个具体格子里的值。</div>
+        </section>
+
+        <section class="panel" id="declare">
+          <div class="section-title">
+            <p class="eyebrow">Declare arrays</p>
+            <h2>Bounds say which indexes are valid</h2>
+          </div>
+          <div class="data-table syntax-table" role="table" aria-label="Array declaration syntax">
+            <div class="table-row table-head" role="row"><div>Purpose</div><div>Cambridge-style pseudocode</div><div>Valid indexes</div></div>
+            <div class="table-row" role="row"><div>Five integer scores</div><div><code>DECLARE Scores : ARRAY[1:5] OF INTEGER</code></div><div>1, 2, 3, 4, 5</div></div>
+            <div class="table-row" role="row"><div>Ten names</div><div><code>DECLARE Names : ARRAY[1:10] OF STRING</code></div><div>1 to 10 inclusive</div></div>
+            <div class="table-row" role="row"><div>Seven temperatures</div><div><code>DECLARE Temp : ARRAY[1:7] OF REAL</code></div><div>1 to 7 inclusive</div></div>
+            <div class="table-row" role="row"><div>Boolean flags</div><div><code>DECLARE Present : ARRAY[1:30] OF BOOLEAN</code></div><div>1 to 30 inclusive</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="access">
+          <div class="section-title">
+            <p class="eyebrow">Access and update</p>
+            <h2>The index points to exactly one element</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Read one element</h3>
+              <pre><code>OUTPUT Scores[3]</code></pre>
+              <p>Outputs the element at index 3, not the whole array.</p>
+            </article>
+            <article>
+              <h3>Update one element</h3>
+              <pre><code>Scores[3] &lt;- Scores[3] + 5</code></pre>
+              <p>Reads the old value at index 3, adds 5, and stores it back into the same element.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="traversal">
+          <div class="section-title">
+            <p class="eyebrow">Traversal</p>
+            <h2>Use a loop to visit every element</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Input all scores</h3>
+              <pre><code>FOR Index &lt;- 1 TO 5
+    INPUT Scores[Index]
+NEXT Index</code></pre>
+            </article>
+            <article>
+              <h3>Total all scores</h3>
+              <pre><code>Total &lt;- 0
+FOR Index &lt;- 1 TO 5
+    Total &lt;- Total + Scores[Index]
+NEXT Index
+OUTPUT Total</code></pre>
+            </article>
+          </div>
+          <div class="callout">The loop bounds must match the declared array bounds. If the array is 1:5, index 0 and index 6 are out of range.</div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Trace</p>
+            <h2>Trace the index and the element value</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Example array</h3>
+              <div class="data-table trace-table" role="table" aria-label="Array trace values">
+                <div class="table-row table-head" role="row"><div>Index</div><div>1</div><div>2</div><div>3</div><div>4</div></div>
+                <div class="table-row" role="row"><div>Score</div><div>10</div><div>20</div><div>30</div><div>40</div></div>
+              </div>
+            </article>
+            <article>
+              <h3>Trace loop</h3>
+              <pre><code>Total &lt;- 0
+FOR Index &lt;- 1 TO 4
+    Total &lt;- Total + Scores[Index]
+NEXT Index</code></pre>
+              <div class="data-table mini-table" role="table" aria-label="Array total trace">
+                <div class="table-row table-head" role="row"><div>Index</div><div>Scores[Index]</div><div>Total</div></div>
+                <div class="table-row" role="row"><div>1</div><div>10</div><div>10</div></div>
+                <div class="table-row" role="row"><div>2</div><div>20</div><div>30</div></div>
+                <div class="table-row" role="row"><div>3</div><div>30</div><div>60</div></div>
+                <div class="table-row" role="row"><div>4</div><div>40</div><div>100</div></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Cambridge bounds and Java indexes are not the same habit</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>DECLARE Scores : ARRAY[1:5] OF INTEGER
+
+FOR Index &lt;- 1 TO 5
+    INPUT Scores[Index]
+NEXT Index</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>int[] scores = new int[5];
+
+for (int index = 0; index &lt; 5; index++) {
+    scores[index] = input.nextInt();
+}</code></pre>
+            </article>
+          </div>
+          <div class="callout">Paper 2 reminder: Cambridge pseudocode may use bounds such as <code>ARRAY[1:5]</code>. Do not import Java's zero-based indexing unless the question states it.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers and what it leaves for later</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>one-dimensional array purpose, declaration, bounds, element access, update, traversal, total calculation, simple search and out-of-range errors.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 116 covers two-dimensional arrays. Records, files, stacks and queues are not introduced here.</span></div>
+            <div><strong>Paper 2 note</strong><span>Marks often require the array identifier, square brackets, correct index variable and loop bounds matching the declared array.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="lookup">
+          <div class="section-title">
+            <p class="eyebrow">Interactive index lookup</p>
+            <h2>Access one element</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Index
+              <select id="indexInput">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="lookupBtn">Read Scores[Index]</button>
+          </div>
+          <div class="trace-output" id="lookupResult">Array: Scores[1:5] = 42, 67, 55, 81, 49.</div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive loop builder</p>
+            <h2>Generate a common one-dimensional array pattern</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Task
+              <select id="builderInput">
+                <option value="declare">declare five integer scores</option>
+                <option value="input">input all scores</option>
+                <option value="output">output all scores</option>
+                <option value="total">calculate total</option>
+                <option value="search">search for a target</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="builderBtn">Build</button>
+          </div>
+          <div class="trace-output" id="builderResult">Choose a task to generate Cambridge-style pseudocode.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Array patterns you can reuse</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="declare">Declare and input</button>
+            <button class="tab" type="button" data-example="total">Total and average</button>
+            <button class="tab" type="button" data-example="search">Linear search</button>
+            <button class="tab" type="button" data-example="update">Update element</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Ten quick array checks</h2>
+            <p>Answer briefly, then use Show answer to compare with stricter wording.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix common array errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style array questions with expandable MS</h2>
+            <p>These questions focus on declaration, indexed access, loop bounds, traversal, search and trace values.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>One-dimensional array checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Declare</strong><span>state the identifier, bounds and element type.</span></div>
+            <div><strong>Access</strong><span>use square brackets with a valid index to read or update one element.</span></div>
+            <div><strong>Traverse</strong><span>use loop bounds that match the declared array bounds.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear consolidation tasks</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Declaration and input</strong>
+              <span>Declare an array called Rainfall that stores seven REAL values, then write pseudocode to input all seven values.</span>
+            </article>
+            <article>
+              <strong>Task 2: Total and average</strong>
+              <span>Extend Task 1 to calculate and output total rainfall and average rainfall.</span>
+            </article>
+            <article>
+              <strong>Task 3: Error check</strong>
+              <span>Explain why Rainfall[0] and Rainfall[8] are invalid if the array is declared as ARRAY[1:7] OF REAL.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

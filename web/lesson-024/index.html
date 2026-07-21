@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 024 | Internet, intranet, extranet and cloud services</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
+        <h1>Internet, intranet, extranet and cloud services</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#networks">Network types</a>
+        <a href="#cloud">Cloud services</a>
+        <a href="#compare">Comparison</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Choice tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 024 | 45 minutes | Paper 1 Section 2</p>
+            <h2>Not every network is “the internet”, and not every cloud is weather.</h2>
+            <p>
+              This lesson compares public, private and partner-access networks, then
+              explains cloud services as remote computing resources delivered over a
+              network. The exam rewards access control, ownership, purpose and trade-offs.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Distinguish</strong><span>internet, intranet and extranet by access and purpose</span></div>
+              <div><strong>Explain</strong><span>cloud storage/software/infrastructure as remote services</span></div>
+              <div><strong>Evaluate</strong><span>benefits and risks such as collaboration, cost, security and dependence on connection</span></div>
+            </div>
+          </div>
+          <div class="cloud-card" aria-label="Network access concept">
+            <span>public | private | partner | remote service</span>
+            <p>Who can access it? Who controls it? Where is the service?</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use three questions for every scenario: who can access it, what is shared, and who controls the system?</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam answers often lose marks by saying "private internet". Use intranet or extranet when access is restricted.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Cloud service does not mean "stored nowhere". It means stored or processed on remote servers accessed over a network.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A school shares staff policies internally, then shares selected timetable data with a bus company. What changed?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="extranet">From intranet to extranet, because an approved external organisation gets access</button>
+            <button class="choice-card" type="button" data-hook="internet">It became the internet, because two organisations are involved</button>
+            <button class="choice-card" type="button" data-hook="cloud">It became cloud computing, because data moved somewhere</button>
+            <button class="choice-card" type="button" data-hook="router">It became a router, because traffic crosses a boundary</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick the answer that focuses on access rights, not just the number of organisations.
+          </div>
+        </section>
+
+        <section class="panel" id="networks">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Internet, intranet and extranet</h2>
+            <p>These terms describe access scope and purpose. The spelling difference is small; the exam difference is not.</p>
+          </div>
+          <div class="network-grid">
+            <article class="network-type">
+              <h3>Internet</h3>
+              <p>A global public network of interconnected networks. It allows public services such as websites, email and online platforms.</p>
+              <ul>
+                <li><strong>Access:</strong> public, though individual services may still require login.</li>
+                <li><strong>Use case:</strong> public website, online search, public cloud service access.</li>
+              </ul>
+            </article>
+            <article class="network-type">
+              <h3>Intranet</h3>
+              <p>A private network used within an organisation, often using web technologies but restricted to authorised users.</p>
+              <ul>
+                <li><strong>Access:</strong> internal staff or members only.</li>
+                <li><strong>Use case:</strong> staff policies, internal forms, private school resources.</li>
+              </ul>
+            </article>
+            <article class="network-type">
+              <h3>Extranet</h3>
+              <p>A private network that allows controlled access to selected external users or organisations.</p>
+              <ul>
+                <li><strong>Access:</strong> authorised internal users plus selected partners/customers/suppliers.</li>
+                <li><strong>Use case:</strong> supplier portal, parent portal, business partner data sharing.</li>
+              </ul>
+            </article>
+          </div>
+          <div class="callout">Chinese support: public network = 公共网络；private network = 私有网络；authorised user = 授权用户；partner = 合作方。</div>
+        </section>
+
+        <section class="panel" id="cloud">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Cloud services</h2>
+            <p>Cloud services provide storage, software or computing resources from remote servers over a network. The user does not need to own all the local infrastructure.</p>
+          </div>
+          <div class="service-grid">
+            <article class="service-card">
+              <h3>Cloud storage</h3>
+              <p>Files are stored on remote servers and accessed from different devices over a network.</p>
+              <p><strong>Example:</strong> a student saves project files online and opens them at home and school.</p>
+            </article>
+            <article class="service-card">
+              <h3>Cloud software</h3>
+              <p>Applications run through a browser or client while data and updates are managed by the provider.</p>
+              <p><strong>Example:</strong> collaborative documents or email systems.</p>
+            </article>
+            <article class="service-card">
+              <h3>Cloud infrastructure</h3>
+              <p>Servers, processing power or databases are rented from a provider instead of bought and maintained locally.</p>
+              <p><strong>Example:</strong> hosting a school portal on remote servers.</p>
+            </article>
+          </div>
+          <div class="trap-card inline">
+            <h3>Common trap</h3>
+            <p>Cloud advantages are not automatic. A strong answer links the benefit or risk to a scenario: remote access, collaboration, backup, scalability, provider dependence, security, privacy or internet connection.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Compare by access, not by buzzword</h2>
+          </div>
+          <div class="compare-table" role="table" aria-label="Network and cloud comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Concept</div>
+              <div role="columnheader">Access / control</div>
+              <div role="columnheader">Exam distinction</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Internet</div>
+              <div role="cell">Global public network; services may be public or login-protected.</div>
+              <div role="cell">Do not call every online service an intranet.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Intranet</div>
+              <div role="cell">Private internal network controlled by one organisation.</div>
+              <div role="cell">Restricted to authorised internal users.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Extranet</div>
+              <div role="cell">Private controlled access extended to selected external users.</div>
+              <div role="cell">Not fully public; access is still controlled.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Cloud service</div>
+              <div role="cell">Remote provider resources accessed over a network.</div>
+              <div role="cell">Discuss benefits and risks, not just "online".</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Internet as a global public network of interconnected networks.</span></div>
+            <div><strong>Covered</strong><span>Intranet as a private internal organisation network.</span></div>
+            <div><strong>Covered</strong><span>Extranet as controlled private access for selected external users.</span></div>
+            <div><strong>Covered</strong><span>Cloud services, with benefits and risks linked to real contexts.</span></div>
+            <div><strong>Boundary</strong><span>Routers, switches, gateways and access points were covered in Lesson 023.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Network/service choice helper</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="public">A company publishes product pages for anyone to view</option>
+                <option value="staff">Staff access internal policies and forms only inside the organisation</option>
+                <option value="supplier">A supplier logs in to see selected stock levels</option>
+                <option value="files">A student opens the same files at home and school from remote storage</option>
+                <option value="scale">A startup rents servers during busy periods instead of buying hardware</option>
+                <option value="risk">A hospital considers storing patient records with a remote provider</option>
+              </select>
+            </label>
+            <button type="button" id="chooseBtn">Choose concept</button>
+          </div>
+          <div class="result-box" id="choiceResult" aria-live="polite"></div>
+          <div class="method-box" id="choiceMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="school">School portal</button>
+            <button class="tab" type="button" data-example="supplier">Supplier portal</button>
+            <button class="tab" type="button" data-example="cloud">Cloud migration</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak network/cloud answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"An intranet is just a smaller internet."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">An intranet is a private internal network controlled by an organisation and restricted to authorised internal users.</p>
+            </article>
+            <article>
+              <p class="wrong">"Cloud storage means the files are stored in the air, so no one owns the hardware."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">Cloud storage uses remote servers owned or managed by a provider. Users access files over a network.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Strong answers name the concept and link it to access control, ownership, benefit or risk.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Access scope is the shortcut</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Internet</strong><span>Global public network of interconnected networks.</span></div>
+            <div><strong>Intranet</strong><span>Private internal network for authorised users inside an organisation.</span></div>
+            <div><strong>Extranet</strong><span>Controlled private access for selected external users or partners.</span></div>
+            <div><strong>Cloud</strong><span>Remote storage/software/infrastructure accessed over a network.</span></div>
+            <div><strong>Benefits</strong><span>Remote access, collaboration, scalability, lower local maintenance, backup.</span></div>
+            <div><strong>Risks</strong><span>Dependence on connection/provider, privacy, security, ongoing cost, compliance.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a comparison table for internet, intranet and extranet. Include access, owner/control and one example.</li>
+            <li>Write a 4-mark answer explaining why a school might use an intranet for staff documents.</li>
+            <li>Write a 4-mark answer explaining why a supplier portal is an extranet, not the public internet.</li>
+            <li>Evaluate two benefits and two risks of moving school file storage to a cloud service.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Comparison table:</strong> focus on access scope: public, internal-only, selected external users.</p>
+            <p><strong>Intranet:</strong> mention private internal access, organisation control and staff-only resources.</p>
+            <p><strong>Extranet:</strong> mention controlled access for suppliers/partners, not open public access.</p>
+            <p><strong>Cloud:</strong> pair each benefit or risk with a scenario consequence.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

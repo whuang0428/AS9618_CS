@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 043 | Registers: PC, CIR, MAR, MDR, ACC and status register</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
+        <h1>Registers: PC, CIR, MAR, MDR, ACC and status register</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#purpose">Register purpose</a>
+        <a href="#main-registers">Main registers</a>
+        <a href="#acc-status">ACC and status</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Role mapper</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 043 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
+            <h2>Registers are tiny, fast, and annoyingly specific.</h2>
+            <p>
+              Registers are small storage locations inside the CPU. Cambridge questions
+              rarely reward "it stores data" by itself. They want the exact register,
+              the exact temporary value, and the reason it matters during processing.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>the roles of PC, CIR, MAR, MDR, ACC and status register</span></div>
+              <div><strong>Apply</strong><span>register roles to fetch and execute scenarios</span></div>
+              <div><strong>Correct</strong><span>common PC/MAR/MDR/CIR and flag misconceptions</span></div>
+            </div>
+          </div>
+          <div class="register-card" aria-label="Register sketch">
+            <div class="register-stack">
+              <span>PC -> address of next instruction</span>
+              <span>MAR -> address being accessed</span>
+              <span>MDR -> data/instruction transfer</span>
+              <span>CIR -> current instruction</span>
+              <span>ACC -> intermediate ALU result</span>
+              <span>SR -> flags</span>
+            </div>
+            <p>Small storage, strict jobs. That is the whole exam mood.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use the sentence frame: "The [register] holds [specific item] while [specific CPU action] happens."</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Register questions are usually definition marks plus application marks. A vague answer loses both.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>MAR and MDR are not twins. MAR is for addresses; MDR is for the data or instruction being transferred.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which register is holding the address, and which is holding the actual thing?</h2>
+            <p>Click the pair that keeps the exam marker calm. The CPU is organised; our answers should be too.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="mar-mdr">MAR = address, MDR = data/instruction</button>
+            <button class="choice-card" type="button" data-hook="mdr-mar">MDR = address, MAR = data/instruction</button>
+            <button class="choice-card" type="button" data-hook="pc-cir">PC = current instruction, CIR = next address</button>
+            <button class="choice-card" type="button" data-hook="acc-status">ACC = flags, status register = result</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click one. The warm-up is really a MAR/MDR identity check.
+          </div>
+        </section>
+
+        <section class="panel" id="purpose">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Why registers exist</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <strong>Inside the CPU</strong>
+              <span>Registers are located inside the processor, so they can be accessed very quickly.</span>
+            </article>
+            <article>
+              <strong>Small capacity</strong>
+              <span>They hold only a small amount of data, usually one value, address, instruction or set of flags.</span>
+            </article>
+            <article>
+              <strong>Temporary role</strong>
+              <span>They hold values needed immediately during fetch, decode or execute.</span>
+            </article>
+            <article>
+              <strong>Specific jobs</strong>
+              <span>Different registers are designed for different temporary values.</span>
+            </article>
+          </div>
+          <div class="callout">Chinese support: register = 寄存器；temporary = 临时的；address = 地址；flag = 标志位；intermediate result = 中间结果。</div>
+        </section>
+
+        <section class="panel" id="main-registers">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>The six register roles</h2>
+          </div>
+          <div class="register-table" role="table" aria-label="Register roles">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Register</div>
+              <div role="columnheader">Full name</div>
+              <div role="columnheader">What it holds</div>
+              <div role="columnheader">Exam-safe sentence</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">PC</div>
+              <div role="cell">Program Counter</div>
+              <div role="cell">Address of the next instruction to be fetched.</div>
+              <div role="cell">The PC is updated so the CPU knows where to fetch the next instruction.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">CIR</div>
+              <div role="cell">Current Instruction Register</div>
+              <div role="cell">Instruction currently being decoded/executed.</div>
+              <div role="cell">The CIR holds the fetched instruction while the CU decodes it.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">MAR</div>
+              <div role="cell">Memory Address Register</div>
+              <div role="cell">Address of a memory location being accessed.</div>
+              <div role="cell">The MAR holds the memory address that is placed on the address bus.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">MDR</div>
+              <div role="cell">Memory Data Register</div>
+              <div role="cell">Data or instruction being transferred to/from memory.</div>
+              <div role="cell">The MDR temporarily holds the value read from memory or being written to memory.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">ACC</div>
+              <div role="cell">Accumulator</div>
+              <div role="cell">Intermediate or final result of ALU operations.</div>
+              <div role="cell">The ACC stores the result produced by the ALU during processing.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">SR</div>
+              <div role="cell">Status register</div>
+              <div role="cell">Flags showing information about the result or CPU state.</div>
+              <div role="cell">The status register stores flags such as zero, carry, overflow or negative.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="acc-status">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>ACC and status register: execute-stage evidence</h2>
+          </div>
+          <div class="component-grid">
+            <article>
+              <h3>Accumulator (ACC)</h3>
+              <p>The accumulator commonly holds intermediate results from the ALU. For example, after adding two values, the result may be stored in the ACC.</p>
+            </article>
+            <article>
+              <h3>Status register</h3>
+              <p>The status register holds flags that describe the outcome of an operation or the processor state.</p>
+            </article>
+            <article>
+              <h3>Zero flag</h3>
+              <p>Can be set when an operation result is zero. Useful after comparisons or subtraction.</p>
+            </article>
+            <article>
+              <h3>Carry / overflow flags</h3>
+              <p>Can indicate a carry out or arithmetic overflow. Exact flag names vary by architecture, but the exam idea is that flags record result conditions.</p>
+            </article>
+          </div>
+          <div class="trap-card inline-card">
+            <h3>Common trap</h3>
+            <p>The status register does not store the calculation result itself. It stores flags about the result.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purpose of CPU registers as small, fast temporary storage locations.</span></div>
+            <div><strong>Covered</strong><span>Roles of PC, CIR, MAR, MDR, ACC and status register.</span></div>
+            <div><strong>Covered</strong><span>MAR/MDR distinction and PC/CIR distinction in fetch/decode traces.</span></div>
+            <div><strong>Covered</strong><span>ACC as ALU result storage and status register as flag storage.</span></div>
+            <div><strong>Not this lesson</strong><span>Interrupt handling, pipelining and detailed instruction-set architecture are left for later Section 4 lessons.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Register role mapper</h2>
+            <p>Select a register to check what it holds, when it is used and the wording trap.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Register
+              <select id="registerInput">
+                <option value="pc">PC</option>
+                <option value="cir">CIR</option>
+                <option value="mar">MAR</option>
+                <option value="mdr">MDR</option>
+                <option value="acc">ACC</option>
+                <option value="sr">Status register</option>
+              </select>
+            </label>
+            <button type="button" id="mapBtn">Map role</button>
+          </div>
+          <div class="result-box" id="mapResult" aria-live="polite"></div>
+          <div class="method-box" id="mapMethod"></div>
+          <div class="reject-box" id="mapTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Use the register when it does work</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="fetch">Fetch roles</button>
+            <button class="tab" type="button" data-example="addition">ACC and flags</button>
+            <button class="tab" type="button" data-example="compare">Compare registers</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+            <p>Answer with the register name or full name. The page will not accept "the little CPU box thing", even though that has emotional honesty.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair the register role</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeList"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>CIE-style questions with expandable mark schemes</h2>
+            <p>These are original Cambridge-style questions. MS wording separates definition marks from role-in-context marks.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>One line per register</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>PC</strong><span>Address of next instruction.</span></div>
+            <div><strong>CIR</strong><span>Current instruction being decoded/executed.</span></div>
+            <div><strong>MAR</strong><span>Memory address being accessed.</span></div>
+            <div><strong>MDR</strong><span>Data/instruction transferred to or from memory.</span></div>
+            <div><strong>ACC</strong><span>Intermediate or final ALU result.</span></div>
+            <div><strong>Status register</strong><span>Flags about result or CPU state.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Make each register answer-ready</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a six-row table for PC, CIR, MAR, MDR, ACC and status register. Include full name, what it holds and one exam-safe sentence.</li>
+            <li>Answer a 6-mark question: "Describe the roles of three registers used during the fetch-decode-execute cycle."</li>
+            <li>Write a short trace of an addition instruction that uses ACC and status register flags.</li>
+            <li>Correct these pairs: "PC holds current instruction"; "MDR holds the memory address"; "status register holds the result".</li>
+            <li>Make five flashcards that include English term first and Chinese support second.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

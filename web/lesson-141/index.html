@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 141 | Section 11 review: writing complete program fragments</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
+        <h1>Section 11 review: writing complete program fragments</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#review-map">Review map</a>
+        <a href="#fragment">Fragment anatomy</a>
+        <a href="#validation">Validation</a>
+        <a href="#arrays">Arrays and loops</a>
+        <a href="#subroutines">Subroutines</a>
+        <a href="#files">Files</a>
+        <a href="#debugging">Debugging</a>
+        <a href="#java">Java support</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#builder">Fragment builder</a>
+        <a href="#checklist">Mark checklist</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Mistakes</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 141 | 45 minutes | Paper 2 Section 11 | stage review</p>
+            <h2>A complete fragment is not a pile of keywords. It is a small program with a job.</h2>
+            <p>
+              This review lesson turns Section 11 skills into complete Cambridge-style pseudocode fragments. A strong answer
+              reads the scenario, chooses the right constructs, uses meaningful identifiers, handles input sensibly and produces
+              the required output. Chinese support: fragment 片段, construct 结构, identifier 标识符, review 复习。
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Select</strong><span>the correct Section 11 tools for a mixed task</span></div>
+              <div><strong>Write</strong><span>complete program fragments in Cambridge-style pseudocode</span></div>
+              <div><strong>Mark</strong><span>answers against strict Cambridge-style points</span></div>
+            </div>
+          </div>
+          <div class="review-visual" aria-label="Program fragment visual">
+            <div><strong>Input</strong><span>read required data</span><em>INPUT / READFILE</em></div>
+            <div><strong>Process</strong><span>select, loop, calculate</span><em>IF / FOR / WHILE</em></div>
+            <div><strong>Structure</strong><span>use arrays and modules</span><em>FUNCTION / PROCEDURE</em></div>
+            <div><strong>Output</strong><span>show or write result</span><em>OUTPUT / WRITEFILE</em></div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Before writing code, state the fragment's job in one sentence. If the job is fuzzy, the pseudocode usually becomes a soup with line numbers.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 mixed questions reward integrated logic: input, control flow, data structures, subroutines and output working together.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Students often write isolated lines that do not connect. Marks are earned when variables are initialised, updated, used and output consistently.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which mental toolbox opens first?</h2>
+            <p>Task: “Read 10 marks into an array, count how many are pass marks, then output the count.”</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="database">SQL SELECT</button>
+            <button class="choice-card" type="button" data-hook="array">Array + loop + selection</button>
+            <button class="choice-card" type="button" data-hook="file">File append only</button>
+            <button class="choice-card" type="button" data-hook="html">HTML form</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the Section 11 tools needed by the scenario.</div>
+        </section>
+
+        <section class="panel" id="review-map">
+          <div class="section-title">
+            <p class="eyebrow">Review map</p>
+            <h2>Section 11 tools become stronger when combined</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Section 11 review map">
+            <div class="table-row table-head"><div>Need</div><div>Likely construct</div><div>Evidence in answer</div><div>Common slip</div></div>
+            <div class="table-row"><div>repeat known number of times</div><div><code>FOR</code></div><div>start, end and <code>NEXT</code></div><div>wrong loop bounds</div></div>
+            <div class="table-row"><div>make a decision</div><div><code>IF</code></div><div>condition, branches, <code>ENDIF</code></div><div>missing ELSE when needed</div></div>
+            <div class="table-row"><div>store several values</div><div>array</div><div>index used consistently</div><div>mixing index bases</div></div>
+            <div class="table-row"><div>reuse logic</div><div>function/procedure</div><div>parameters and return/output</div><div>Java method syntax</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="fragment">
+          <div class="section-title">
+            <p class="eyebrow">Fragment anatomy</p>
+            <h2>A complete fragment has setup, logic and result</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Pass-count fragment</h3>
+              <pre><code>PassCount &lt;- 0
+FOR Index &lt;- 1 TO 10
+    INPUT Marks[Index]
+    IF Marks[Index] &gt;= 50 THEN
+        PassCount &lt;- PassCount + 1
+    ENDIF
+NEXT Index
+OUTPUT PassCount</code></pre>
+            </article>
+            <article>
+              <h3>Why it is complete</h3>
+              <ul>
+                <li>counter is initialised before the loop</li>
+                <li>array element is input before it is tested</li>
+                <li>selection updates the counter only for pass marks</li>
+                <li>final result is output after the loop</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="validation">
+          <div class="section-title">
+            <p class="eyebrow">Validation</p>
+            <h2>Review fragments often need input checks</h2>
+          </div>
+          <pre><code>REPEAT
+    INPUT Mark
+    IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
+        Valid &lt;- TRUE
+    ELSE
+        OUTPUT "Enter a mark from 0 to 100"
+        Valid &lt;- FALSE
+    ENDIF
+UNTIL Valid = TRUE</code></pre>
+        </section>
+
+        <section class="panel" id="arrays">
+          <div class="section-title">
+            <p class="eyebrow">Arrays and loops</p>
+            <h2>Arrays need consistent indexing and meaningful loop bounds</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Array loop checks">
+            <div class="table-row table-head"><div>Question wording</div><div>Good answer feature</div><div>Mark-risk</div></div>
+            <div class="table-row"><div>10 marks</div><div><code>FOR Index &lt;- 1 TO 10</code></div><div>looping 0 to 10 gives 11 iterations</div></div>
+            <div class="table-row"><div>highest score</div><div>initialise <code>Highest</code> before comparing</div><div>uninitialised comparison</div></div>
+            <div class="table-row"><div>total and average</div><div>update <code>Total</code> inside loop, divide after loop</div><div>average inside loop too early</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="subroutines">
+          <div class="section-title">
+            <p class="eyebrow">Subroutines</p>
+            <h2>Use functions for returned values and procedures for actions</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Function</h3>
+              <pre><code>FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN
+    RETURN Mark &gt;= 50
+ENDFUNCTION</code></pre>
+            </article>
+            <article>
+              <h3>Procedure</h3>
+              <pre><code>PROCEDURE DisplayResult(Name : STRING, Passed : BOOLEAN)
+    OUTPUT Name
+    OUTPUT Passed
+ENDPROCEDURE</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="files">
+          <div class="section-title">
+            <p class="eyebrow">Files</p>
+            <h2>File fragments need open, process and close</h2>
+          </div>
+          <pre><code>OPENFILE "Scores.txt" FOR READ
+WHILE NOT EOF("Scores.txt")
+    READFILE "Scores.txt", Line
+    OUTPUT Line
+ENDWHILE
+CLOSEFILE "Scores.txt"</code></pre>
+        </section>
+
+        <section class="panel" id="debugging">
+          <div class="section-title">
+            <p class="eyebrow">Debugging awareness</p>
+            <h2>Review answers should be traceable</h2>
+            <p>A well-written fragment can be traced: values change in clear places, conditions are testable, and outputs are easy to predict.</p>
+          </div>
+          <div class="callout">If you cannot trace your own fragment with a small example, the examiner probably cannot rescue it for you either.</div>
+        </section>
+
+        <section class="panel" id="java">
+          <div class="section-title">
+            <p class="eyebrow">Java support only</p>
+            <h2>Java can support practice; the review answer should be Cambridge pseudocode</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>for (int index = 0; index &lt; 10; index++) {
+    if (marks[index] &gt;= 50) {
+        passCount++;
+    }
+}</code></pre>
+            </article>
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>FOR Index &lt;- 1 TO 10
+    IF Marks[Index] &gt;= 50 THEN
+        PassCount &lt;- PassCount + 1
+    ENDIF
+NEXT Index</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>This stage review integrates Section 11 programming skills</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>selection, loops, arrays, counters, totals, validation, subroutines and files</span></div>
+            <div><strong>Covered</strong><span>complete fragment structure and Cambridge-style marking language</span></div>
+            <div><strong>Not this lesson</strong><span>new syntax or full Java implementation</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive fragment builder</p>
+            <h2>Choose a scenario and inspect the skeleton</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Scenario
+              <select id="scenarioSelect">
+                <option value="pass">Count pass marks in an array</option>
+                <option value="valid">Input a valid mark</option>
+                <option value="file">Read and output every file line</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="buildBtn">Build skeleton</button>
+          </div>
+          <div id="builderOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="checklist">
+          <div class="section-title">
+            <p class="eyebrow">Mark checklist</p>
+            <h2>Use a checklist before calling a fragment finished</h2>
+          </div>
+          <div id="checklistOutput" class="checklist-grid"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Annotate which lines earn marks</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab-button active" type="button" data-example="pass">Pass counter</button>
+            <button class="tab-button" type="button" data-example="max">Highest mark</button>
+            <button class="tab-button" type="button" data-example="file">File output</button>
+          </div>
+          <div id="exampleOutput" class="example-output"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant checking: review vocabulary and fragment logic</h2>
+          </div>
+          <div id="practiceList" class="practice-list"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Turn weak fragments into mark-worthy ones</h2>
+          </div>
+          <div id="mistakeList" class="mistake-grid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Cambridge-style review questions with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. They do not copy past paper questions.</p>
+          </div>
+          <div id="examList" class="exam-list"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What to remember</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Read</strong><span>identify the required input, process and output before coding</span></div>
+            <div><strong>Connect</strong><span>make variables flow consistently through the fragment</span></div>
+            <div><strong>Check</strong><span>trace a small case and compare against the question</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Timed Section 11 review</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write a complete fragment to input 20 marks, validate each mark, and output the average.</li>
+            <li>Write a complete fragment to read names from a file and count how many names start with "A".</li>
+            <li>Mark your own answer using the checklist, then rewrite the weakest five lines.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 014 | Choosing data representation for a real system</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
+        <h1>Choosing data representation for a real system</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#framework">Framework</a>
+        <a href="#cases">System cases</a>
+        <a href="#tradeoffs">Trade-offs</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Decision tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 014 | 45 minutes | Informal questioning</p>
+            <h2>Good representation is not “use more bits everywhere”.</h2>
+            <p>
+              Real systems choose representations based on range, accuracy, storage,
+              compatibility, transfer speed and whether exact reconstruction is required.
+              This lesson combines number, text, image, sound and compression choices.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Select</strong><span>appropriate representation for a given system requirement</span></div>
+              <div><strong>Justify</strong><span>trade-offs using precise Section 1 vocabulary</span></div>
+              <div><strong>Apply</strong><span>calculations and explanation to exam-style scenarios</span></div>
+            </div>
+          </div>
+          <div class="system-card" aria-label="Representation decision focus">
+            <span>range + accuracy + storage + purpose</span>
+            <p>The best answer is the one that fits the system, not the one with the biggest number.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Force every recommendation to include a reason and a consequence. “Use Unicode” is not enough.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Scenario questions reward decisions that match constraints, not memorised definitions pasted into the answer.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Higher resolution, higher colour depth or higher sample rate may waste storage if the system does not need it.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A weather sensor stores temperatures from -40°C to +60°C. Which representation issue matters first?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="unsigned">Use unsigned only</button>
+            <button class="choice-card" type="button" data-hook="signed">Need signed values / range</button>
+            <button class="choice-card" type="button" data-hook="unicode">Use Unicode</button>
+            <button class="choice-card" type="button" data-hook="lossy">Use lossy compression</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick an answer. Negative temperatures are a quiet hint that unsigned storage may be wrong.
+          </div>
+        </section>
+
+        <section class="panel" id="framework">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>A decision framework</h2>
+          </div>
+          <div class="framework-grid">
+            <article><h3>1. What data?</h3><p>Integer, signed value, text, image, sound or repeated data.</p></article>
+            <article><h3>2. What range?</h3><p>Check minimum, maximum, precision and whether negative values are possible.</p></article>
+            <article><h3>3. What quality?</h3><p>Choose resolution, colour depth, sample rate or sample resolution only as high as needed.</p></article>
+            <article><h3>4. What constraints?</h3><p>Storage, bandwidth, compatibility, exact reconstruction and processing cost.</p></article>
+          </div>
+          <div class="callout">Chinese support: requirement = 需求；constraint = 限制条件；trade-off = 权衡。</div>
+        </section>
+
+        <section class="panel" id="cases">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>System cases</h2>
+          </div>
+          <div class="case-grid">
+            <article>
+              <h3>Multilingual chat app</h3>
+              <p>Use Unicode so messages can include characters from many languages.</p>
+            </article>
+            <article>
+              <h3>Sensor logger</h3>
+              <p>Use enough bits and signed representation if values may be negative.</p>
+            </article>
+            <article>
+              <h3>Website thumbnail</h3>
+              <p>Lower resolution and lossy compression may be acceptable to reduce transfer time.</p>
+            </article>
+            <article>
+              <h3>Legal archive</h3>
+              <p>Use lossless compression because exact reconstruction is required.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="tradeoffs">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Useful trade-off sentences</h2>
+          </div>
+          <div class="tradeoff-grid">
+            <article><h3>Range</h3><p>More bits increase the possible range but require more storage per value.</p></article>
+            <article><h3>Image quality</h3><p>Higher resolution or colour depth can improve detail or colour range but increases file size.</p></article>
+            <article><h3>Sound quality</h3><p>Higher sample rate or sample resolution can improve accuracy but increases file size.</p></article>
+            <article><h3>Compression</h3><p>Lossless preserves exact data; lossy can reduce size more but loses data permanently.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Integrated application of Section 1 representation ideas.</span></div>
+            <div><strong>Covered</strong><span>Scenario justification using number, text, image, sound and compression choices.</span></div>
+            <div><strong>Boundary</strong><span>This is not a new formula lesson; it is a decision and justification lesson.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Representation decision helper</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="chat">Multilingual chat app</option>
+                <option value="sensor">Temperature sensor logger</option>
+                <option value="thumbnail">Website thumbnail</option>
+                <option value="archive">Legal document archive</option>
+              </select>
+            </label>
+            <button type="button" id="recommendBtn">Recommend</button>
+          </div>
+          <div class="result-box" id="recommendResult" aria-live="polite"></div>
+          <div class="method-box" id="recommendMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="sensor">Sensor logger</button>
+            <button class="tab" type="button" data-example="chat">Chat app</button>
+            <button class="tab" type="button" data-example="archive">Archive</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Improve the weak justification</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">“Use Unicode because it is better.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">Use Unicode because it supports a wider range of characters, making it suitable for multilingual text.</p>
+            </article>
+            <article>
+              <p class="wrong">“Use maximum image quality for every thumbnail.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">A thumbnail is small on screen, so lower resolution or lossy compression may be acceptable and reduces file size / transfer time.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Use the buttons under each question to expand the CIE-style mark scheme.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Fit the representation to the job</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>Start from the system requirement, not from a favourite keyword.</span></div>
+            <div><strong>2</strong><span>Range, precision, quality and exact reconstruction all affect representation choice.</span></div>
+            <div><strong>3</strong><span>Higher settings increase storage unless another factor changes.</span></div>
+            <div><strong>4</strong><span>Strong exam answers include cause and consequence.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>For a parking sensor storing distances from 0 to 255 cm, choose a suitable integer representation and justify it.</li>
+            <li>For a multilingual school website, explain why Unicode is suitable.</li>
+            <li>For a photo gallery thumbnail, justify one setting that could be reduced to save space.</li>
+            <li>Write a 6-mark answer choosing representations for a hospital document archive.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Parking sensor:</strong> 8-bit unsigned integer is enough for 0-255 if no negative values or fractions are needed.</p>
+            <p><strong>Website:</strong> Unicode supports many languages and symbols, so it fits multilingual text.</p>
+            <p><strong>Thumbnail:</strong> lower resolution or lossy compression can reduce file size because the image is displayed small.</p>
+            <p><strong>Archive:</strong> use lossless compression and suitable character encoding because exact reconstruction and legal accuracy are required.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

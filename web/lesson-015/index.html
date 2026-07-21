@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 015 | Section 1 review under exam timing</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
+        <h1>Section 1 review under exam timing</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#triage">Question triage</a>
+        <a href="#methods">Method bank</a>
+        <a href="#sprint">Timed sprint</a>
+        <a href="#tool">Triage tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 015 | 45 minutes | Section 1 stage review</p>
+            <h2>Fast answers still need slow-thinking method.</h2>
+            <p>
+              Section 1 questions look varied, but most marks come from a small set of
+              repeatable decisions: identify the representation, choose the correct
+              method, show units, and write a consequence that fits the scenario.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Recognise</strong><span>which Section 1 tool a question is testing</span></div>
+              <div><strong>Calculate</strong><span>storage, number base and file-size answers under time pressure</span></div>
+              <div><strong>Correct</strong><span>answers using CIE-style marking language</span></div>
+            </div>
+          </div>
+          <div class="system-card" aria-label="Review focus">
+            <span>read -> choose -> calculate -> check</span>
+            <p>The stopwatch is not the enemy. The missing unit usually is.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Before solving, name the topic. A student who starts every question with arithmetic is already halfway into a trap.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge marking rewards visible method, correct units and scenario links. A bare final answer is a very brave way to lose marks.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Mixing decimal prefixes with binary prefixes: MB is based on powers of 1000; MiB is based on powers of 1024.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Four questions walk into an exam. Which one steals the most marks?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="units">A file-size answer with no unit</button>
+            <button class="choice-card" type="button" data-hook="binary">A binary conversion with working</button>
+            <button class="choice-card" type="button" data-hook="lossless">A compression answer linked to exact reconstruction</button>
+            <button class="choice-card" type="button" data-hook="unicode">A Unicode answer linked to multilingual text</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick the most dangerous answer. Hint: the examiner cannot infer a missing unit just because the calculator looked confident.
+          </div>
+        </section>
+
+        <section class="panel" id="triage">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Question triage: choose the toolbox first</h2>
+          </div>
+          <div class="triage-grid">
+            <article>
+              <h3>Number bases</h3>
+              <p>Look for binary, denary, hexadecimal, place values, carries, overflow or two's complement.</p>
+            </article>
+            <article>
+              <h3>Text representation</h3>
+              <p>Look for ASCII, Unicode, character set, character code, multilingual text or symbols.</p>
+            </article>
+            <article>
+              <h3>Images and sound</h3>
+              <p>Look for resolution, colour depth, sampling rate, sample resolution, duration and file size.</p>
+            </article>
+            <article>
+              <h3>Compression</h3>
+              <p>Look for lossless, lossy, exact reconstruction, reduced quality, RLE or repeated data.</p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: triage = 先判断题型；method = 解题方法；unit = 单位；follow-through = 后续步骤跟随前一步。</div>
+        </section>
+
+        <section class="panel" id="methods">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Section 1 method bank</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Storage units</h3>
+              <p>1 KiB = 1024 bytes. 1 MiB = 1024 KiB. Decimal prefixes use 1000, binary prefixes use 1024.</p>
+            </article>
+            <article>
+              <h3>Binary to denary</h3>
+              <p>Add active place values. For 8-bit unsigned, range is 0 to 255.</p>
+            </article>
+            <article>
+              <h3>File size</h3>
+              <p>Image bits = width x height x colour depth. Sound bits = sample rate x sample resolution x duration x channels.</p>
+            </article>
+            <article>
+              <h3>Compression choice</h3>
+              <p>Lossless allows exact reconstruction. Lossy removes data permanently but can reduce file size more.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="sprint">
+          <div class="section-title">
+            <p class="eyebrow">Timed section</p>
+            <h2>Six-minute review sprint</h2>
+            <p>Use the timer for a short retrieval round. The goal is not panic; the goal is clean method under a clock.</p>
+          </div>
+          <div class="timer-card">
+            <div class="timer-display" id="timerDisplay">06:00</div>
+            <div class="timer-actions">
+              <button type="button" id="startTimer">Start</button>
+              <button type="button" id="pauseTimer">Pause</button>
+              <button type="button" id="resetTimer">Reset</button>
+            </div>
+          </div>
+          <ol class="sprint-list">
+            <li>Convert <code>10101100</code> to denary.</li>
+            <li>Calculate the size in bits of a 100 x 50 bitmap image with 8-bit colour depth.</li>
+            <li>State why Unicode is suitable for a multilingual app.</li>
+            <li>Choose lossless or lossy compression for a legal document archive and justify the choice.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="sprintAnswers">Show sprint answers</button>
+          <div class="answer-panel" id="sprintAnswers">
+            <p><strong>1:</strong> 172, because 128 + 32 + 8 + 4 = 172.</p>
+            <p><strong>2:</strong> 100 x 50 x 8 = 40 000 bits.</p>
+            <p><strong>3:</strong> Unicode supports a wider range of characters, so it can represent many languages.</p>
+            <p><strong>4:</strong> Lossless, because the document must be reconstructed exactly.</p>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Question triage helper</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Exam clue
+              <select id="clueInput">
+                <option value="mib">MiB, KiB, bytes</option>
+                <option value="image">resolution and colour depth</option>
+                <option value="sound">sampling rate and duration</option>
+                <option value="negative">negative binary value</option>
+                <option value="exact">exact reconstruction</option>
+              </select>
+            </label>
+            <button type="button" id="triageBtn">Choose method</button>
+          </div>
+          <div class="result-box" id="triageResult" aria-live="polite"></div>
+          <div class="method-box" id="triageMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="units">Units</button>
+            <button class="tab" type="button" data-example="image">Image size</button>
+            <button class="tab" type="button" data-example="explain">Scenario answer</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Mixed practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair common review answers</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">“The image file is 240000.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">State the unit and method: 200 x 150 x 8 = 240 000 bits, which is 30 000 bytes.</p>
+            </article>
+            <article>
+              <p class="wrong">“Lossless is better because it is higher quality.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">Lossless is suitable when exact reconstruction is required; it is not automatically better for every purpose.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Each mark scheme uses strict Cambridge-style credit points. Expand only after attempting the question.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>The Section 1 survival checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>Identify the representation topic before solving.</span></div>
+            <div><strong>2</strong><span>Show method for calculations; do not jump to a lonely answer.</span></div>
+            <div><strong>3</strong><span>Write units: bits, bytes, KiB, MiB, colours, samples per second.</span></div>
+            <div><strong>4</strong><span>For explanations, include cause and consequence in the given scenario.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a one-page Section 1 formula sheet with one example for each formula.</li>
+            <li>Complete the four exam-style questions again without looking at the MS.</li>
+            <li>Write one improved answer for every mistake you made in the practice section.</li>
+            <li>Prepare five flashcards: binary conversion, image file size, sound file size, Unicode, lossless/lossy.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework success criteria</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Formula sheet:</strong> must include units and one substituted example, not only symbols.</p>
+            <p><strong>Exam redo:</strong> mark with M1/B1/A1 points and correct missing units.</p>
+            <p><strong>Corrections:</strong> each improved answer should say what changed and why it now earns the mark.</p>
+            <p><strong>Flashcards:</strong> front = prompt; back = definition, method and one common trap.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

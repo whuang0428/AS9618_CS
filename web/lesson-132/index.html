@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 132 | Scope, lifetime, and local/global variables</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
+        <h1>Scope, lifetime, and local/global variables</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#scope">Scope</a>
+        <a href="#lifetime">Lifetime</a>
+        <a href="#local">Local variables</a>
+        <a href="#global">Global variables</a>
+        <a href="#shadowing">Same name trap</a>
+        <a href="#compare">Compare</a>
+        <a href="#java">Java support</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#simulator">Trace simulator</a>
+        <a href="#chooser">Variable chooser</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 132 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
+            <h2>Variables have borders. Some passports are very local.</h2>
+            <p>
+              Scope is where an identifier can be used. Lifetime is how long its value exists while the program runs.
+              Local variables belong to a subroutine or block; global variables can be accessed more widely. The exam
+              point is not just naming them, but tracing which variable is being changed.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>scope, lifetime, local variable and global variable</span></div>
+              <div><strong>Trace</strong><span>variable values inside and outside subroutines</span></div>
+              <div><strong>Correct</strong><span>bugs caused by inaccessible variables or accidental global changes</span></div>
+            </div>
+          </div>
+          <div class="scope-visual" aria-label="Scope visual">
+            <div><strong>Global</strong><span>visible widely</span><em>longer lifetime</em></div>
+            <div><strong>Local</strong><span>inside subroutine</span><em>created on call</em></div>
+            <div><strong>Trace</strong><span>which variable?</span><em>name alone is not enough</em></div>
+            <p>A variable can share a name with another variable and still be a different storage location.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask students to draw a box around each subroutine. If a variable is declared inside the box, keep it inside the box.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 trace questions often use local and global variables to test whether candidates follow the actual data, not just the names.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A local variable with the same name as a global variable does not automatically change the global variable.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which <code>Count</code> is being output?</h2>
+            <p>Two variables can have the same name in different scopes. This is where casual reading gets expensive.</p>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Code fragment</h3>
+              <pre><code>Count &lt;- 10
+
+PROCEDURE ShowCount()
+    Count &lt;- 3
+    OUTPUT Count
+ENDPROCEDURE
+
+CALL ShowCount()
+OUTPUT Count</code></pre>
+            </article>
+            <article>
+              <h3>Assumption for this warm-up</h3>
+              <p>The assignment inside <code>ShowCount</code> creates or uses a local <code>Count</code> for the procedure.</p>
+              <p>Predict the two outputs before pressing a choice.</p>
+            </article>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="3-3">Outputs 3 then 3</button>
+            <button class="choice-card" type="button" data-hook="3-10">Outputs 3 then 10</button>
+            <button class="choice-card" type="button" data-hook="10-3">Outputs 10 then 3</button>
+            <button class="choice-card" type="button" data-hook="error">Always gives an error</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the output pair.</div>
+        </section>
+
+        <section class="panel" id="scope">
+          <div class="section-title">
+            <p class="eyebrow">Scope</p>
+            <h2>Scope means where a variable or identifier can be accessed</h2>
+            <p>Chinese support: scope 作用域, access 访问, identifier 标识符。</p>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Inside scope</h3>
+              <pre><code>PROCEDURE DisplayTotal()
+    Total &lt;- 25
+    OUTPUT Total
+ENDPROCEDURE</code></pre>
+              <p><code>Total</code> is accessible inside <code>DisplayTotal</code>.</p>
+            </article>
+            <article>
+              <h3>Outside scope</h3>
+              <pre><code>CALL DisplayTotal()
+OUTPUT Total</code></pre>
+              <p>If <code>Total</code> was local to the procedure, the main algorithm cannot use it directly.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="lifetime">
+          <div class="section-title">
+            <p class="eyebrow">Lifetime</p>
+            <h2>Lifetime means how long a variable exists during execution</h2>
+          </div>
+          <div class="timeline">
+            <div><strong>Main program starts</strong><span>global variables may be created and keep their values</span></div>
+            <div><strong>Procedure is called</strong><span>local variables are created for that call</span></div>
+            <div><strong>Procedure ends</strong><span>local variables are destroyed or become inaccessible</span></div>
+            <div><strong>Main continues</strong><span>global variables still exist unless the program ends</span></div>
+          </div>
+          <div class="callout">A local variable's lifetime is usually one subroutine call. It is not a tiny global variable in disguise.</div>
+        </section>
+
+        <section class="panel" id="local">
+          <div class="section-title">
+            <p class="eyebrow">Local variables</p>
+            <h2>Local variables are declared inside a subroutine or block</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>PROCEDURE CalculateBonus(Mark : INTEGER)
+    Bonus &lt;- Mark DIV 10
+    OUTPUT Bonus
+ENDPROCEDURE</code></pre>
+            </article>
+            <article>
+              <h3>Reasoning</h3>
+              <div class="trace-list">
+                <div><strong><code>Mark</code></strong><span>parameter local to this procedure call</span></div>
+                <div><strong><code>Bonus</code></strong><span>local variable used only inside the procedure</span></div>
+                <div><strong>After call</strong><span><code>Bonus</code> is not directly available in the main algorithm</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="global">
+          <div class="section-title">
+            <p class="eyebrow">Global variables</p>
+            <h2>Global variables are declared outside subroutines and can be accessed widely</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>Total &lt;- 0
+
+PROCEDURE AddScore(Score : INTEGER)
+    Total &lt;- Total + Score
+ENDPROCEDURE</code></pre>
+            </article>
+            <article>
+              <h3>Reasoning</h3>
+              <p><code>Total</code> is declared outside the procedure, so it is global in this fragment.</p>
+              <div class="callout">Global variables can make updates convenient, but they can also make tracing harder because many parts of a program may change the value.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="shadowing">
+          <div class="section-title">
+            <p class="eyebrow">Same name trap</p>
+            <h2>A local variable can hide a global variable with the same name</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Trace this carefully</h3>
+              <pre><code>Score &lt;- 50
+
+PROCEDURE ChangeScore()
+    Score &lt;- 80
+    OUTPUT Score
+ENDPROCEDURE
+
+CALL ChangeScore()
+OUTPUT Score</code></pre>
+            </article>
+            <article>
+              <h3>Exam explanation</h3>
+              <p>If the procedure's <code>Score</code> is local, the procedure outputs <code>80</code>, but the main program still outputs the global <code>50</code>.</p>
+              <p>The name is the same; the storage location is not. Same label, different locker.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Compare</p>
+            <h2>Local and global variables differ by accessibility and lifetime</h2>
+          </div>
+          <div class="data-table compare-table" role="table" aria-label="Local and global comparison">
+            <div class="table-row table-head"><div>Feature</div><div>Local variable</div><div>Global variable</div></div>
+            <div class="table-row"><div>Declared</div><div>inside a subroutine or block</div><div>outside subroutines</div></div>
+            <div class="table-row"><div>Scope</div><div>limited to that subroutine or block</div><div>available more widely in the program</div></div>
+            <div class="table-row"><div>Lifetime</div><div>usually while the subroutine call is active</div><div>usually while the program is running</div></div>
+            <div class="table-row"><div>Main risk</div><div>using it outside scope</div><div>unexpected changes from different program parts</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="java">
+          <div class="section-title">
+            <p class="eyebrow">Java support only</p>
+            <h2>Java helps illustrate scope, but Cambridge pseudocode remains the answer format</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>PROCEDURE PrintLocal()
+    Value &lt;- 7
+    OUTPUT Value
+ENDPROCEDURE</code></pre>
+            </article>
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>static void printLocal() {
+    int value = 7;
+    System.out.println(value);
+}</code></pre>
+              <p>Do not answer Paper 2 with Java braces, semicolons or access modifiers unless the question specifically asks for Java.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>What this lesson covers from Section 11</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Scope</strong><span>where a variable or identifier can be accessed</span></div>
+            <div><strong>Lifetime</strong><span>how long a variable exists during execution</span></div>
+            <div><strong>Local/global variables</strong><span>declaration position, accessibility and trace consequences</span></div>
+            <div><strong>Debugging</strong><span>same-name variables, inaccessible locals and risky global updates</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="simulator">
+          <div class="section-title">
+            <p class="eyebrow">Interactive trace simulator</p>
+            <h2>Trace local versus global updates</h2>
+            <p>Start with a global <code>Count</code>. The procedure sets <code>Count &lt;- NewValue</code>. Choose whether that procedure variable is local or global.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Global Count before call
+              <input id="globalInput" type="number" step="1" value="10" />
+            </label>
+            <label>
+              Procedure assignment value
+              <input id="localInput" type="number" step="1" value="3" />
+            </label>
+            <label>
+              Procedure variable scope
+              <select id="scopeMode">
+                <option value="local">local Count</option>
+                <option value="global">global Count</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="traceBtn">Trace</button>
+          </div>
+          <div class="trace-output" id="traceResult" aria-live="polite">Choose values and trace the final global Count.</div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Variable chooser</p>
+            <h2>Should this be local or global?</h2>
+            <p>Select a scenario to see the recommended scope and exam reasoning.</p>
+          </div>
+          <div class="scenario-grid" id="scenarioGrid"></div>
+          <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Trace the variable, not just the name</h2>
+          </div>
+          <div class="tabs" id="exampleTabs" role="tablist"></div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Definitions and trace values</h2>
+            <p>Use exact vocabulary for definitions. For trace questions, type the final value or key term.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Find the scope error</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Answer first, then expand the MS</h2>
+            <p>Questions are original Cambridge-style practice. MS notes are strict about scope, lifetime and final values.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Three statements to keep</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Scope</strong><span>where an identifier can be accessed in the program.</span></div>
+            <div><strong>Lifetime</strong><span>how long a variable exists while the program executes.</span></div>
+            <div><strong>Trace rule</strong><span>same name does not always mean same variable.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Define, trace, correct</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write definitions for scope, lifetime, local variable and global variable. Add one Chinese support note for the hardest term.</li>
+            <li>Trace the same-name <code>Score</code> example twice: once where the procedure variable is local, once where it updates the global variable.</li>
+            <li>Write one Cambridge-style procedure that uses a local variable correctly and explain why the variable should not be global.</li>
+            <li>Answer a 4-mark question: explain two problems caused by unnecessary global variables, using a trace or debugging example.</li>
+          </ol>
+          <div class="callout">Marking focus: definitions need mechanism, not slogans. "Global is everywhere" is too vague unless access and lifetime are explained.</div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

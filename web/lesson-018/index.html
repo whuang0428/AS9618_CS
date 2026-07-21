@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 018 | Packet switching, routing and packet structure</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
+        <h1>Packet switching, routing and packet structure</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#switching">Packet switching</a>
+        <a href="#structure">Packet structure</a>
+        <a href="#routing">Routing</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Route tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 018 | 45 minutes | Paper 1 Section 2</p>
+            <h2>The internet does not send your file as one heroic lump.</h2>
+            <p>
+              Data is split into packets. Each packet carries control information and
+              payload, may travel by different routes, and is reassembled at the
+              destination using sequence information and error checks.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Explain</strong><span>why packet switching splits data into packets</span></div>
+              <div><strong>Identify</strong><span>source address, destination address, sequence number, checksum and payload</span></div>
+              <div><strong>Trace</strong><span>routing, out-of-order arrival and retransmission in scenarios</span></div>
+            </div>
+          </div>
+          <div class="packet-card" aria-label="Packet concept">
+            <span>header | payload | trailer</span>
+            <p>The payload is the gift. The header is the address label. Do not post a parcel with only vibes.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Keep the physical analogy short, then switch to exam wording: packet, header, payload, route, sequence number, checksum.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Network explanation marks often come from naming the metadata and explaining exactly what it is used for.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Packets do not have to follow the same path or arrive in order. That is why sequence numbers matter.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A 30 MB video is sent across a network. Why split it into packets?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="routes">Packets can be routed and handled separately</button>
+            <button class="choice-card" type="button" data-hook="hide">So the file becomes invisible</button>
+            <button class="choice-card" type="button" data-hook="one">So it must use one fixed path</button>
+            <button class="choice-card" type="button" data-hook="noaddress">So addresses are not needed</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick the answer that helps networks share capacity and recover from problems.
+          </div>
+        </section>
+
+        <section class="panel" id="switching">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Packet switching</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <h3>Split</h3>
+              <p>A message or file is divided into smaller packets before transmission.</p>
+            </article>
+            <article>
+              <h3>Share</h3>
+              <p>Packets from many users can share network links instead of one message reserving a whole route.</p>
+            </article>
+            <article>
+              <h3>Route</h3>
+              <p>Each packet can be routed independently through available paths.</p>
+            </article>
+            <article>
+              <h3>Reassemble</h3>
+              <p>The destination uses sequence numbers to put packets back in the correct order.</p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: packet = 数据包；payload = 有效载荷/实际数据；routing = 路由；reassemble = 重新组装。</div>
+        </section>
+
+        <section class="panel" id="structure">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Packet structure</h2>
+          </div>
+          <div class="packet-diagram" aria-label="Packet structure diagram">
+            <div class="packet-part header">
+              <h3>Header</h3>
+              <p>Source address, destination address, sequence number, protocol/control data.</p>
+            </div>
+            <div class="packet-part payload">
+              <h3>Payload</h3>
+              <p>The actual data being sent, such as part of a file or message.</p>
+            </div>
+            <div class="packet-part trailer">
+              <h3>Trailer</h3>
+              <p>Error-checking information such as checksum, depending on the protocol.</p>
+            </div>
+          </div>
+          <div class="trap-card inline">
+            <h3>Common trap</h3>
+            <p>Do not describe the header as “extra information” only. Name what is inside it and what each item does.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="routing">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Routing and arrival</h2>
+          </div>
+          <div class="route-grid">
+            <article><strong>Router decision</strong><span>Routers forward packets based on destination address and routing information.</span></article>
+            <article><strong>Different paths</strong><span>Packets from the same message may take different routes through the network.</span></article>
+            <article><strong>Out of order</strong><span>Packets may arrive in a different order because routes have different delays.</span></article>
+            <article><strong>Error handling</strong><span>Checksum/error checks can detect corruption; missing/corrupt packets may be requested again.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purpose of packet switching and independent packet routing.</span></div>
+            <div><strong>Covered</strong><span>Packet components: header, payload and trailer/error checking.</span></div>
+            <div><strong>Covered</strong><span>Sequence numbers, checksums, out-of-order arrival and retransmission.</span></div>
+            <div><strong>Boundary</strong><span>Detailed named protocols and layered models are handled in later lessons.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Packet route simulator</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Network condition
+              <select id="routeInput">
+                <option value="normal">Normal route</option>
+                <option value="congested">One route is congested</option>
+                <option value="lost">One packet is lost</option>
+                <option value="corrupt">One packet is corrupt</option>
+              </select>
+            </label>
+            <button type="button" id="routeBtn">Simulate</button>
+          </div>
+          <div class="route-visual" id="routeVisual" aria-live="polite"></div>
+          <div class="result-box" id="routeResult"></div>
+          <div class="method-box" id="routeMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="structure">Packet structure</button>
+            <button class="tab" type="button" data-example="order">Out-of-order arrival</button>
+            <button class="tab" type="button" data-example="checksum">Checksum</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak packet answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">“Packets arrive in order because the internet sends them one by one.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">Packets may take different routes and arrive out of order. Sequence numbers allow the destination to reassemble them correctly.</p>
+            </article>
+            <article>
+              <p class="wrong">“A packet only contains data.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">A packet contains payload plus control information such as source address, destination address, sequence number and error-checking data.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Cambridge-style answers must name the packet item and its purpose.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Packets need labels, order and checks</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>Packet switching splits data into smaller packets for transmission.</span></div>
+            <div><strong>2</strong><span>Headers carry metadata such as source, destination and sequence number.</span></div>
+            <div><strong>3</strong><span>Packets may take different routes and arrive out of order.</span></div>
+            <div><strong>4</strong><span>Checksums/error checks help detect corruption; missing packets may be resent.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Draw a packet and label header, payload and trailer. Add one example item inside each where appropriate.</li>
+            <li>Explain why sequence numbers are needed if packets may arrive out of order.</li>
+            <li>Write a 4-mark answer explaining two advantages of packet switching.</li>
+            <li>Write a 5-mark answer explaining how a receiver can detect and respond to missing or corrupt packets.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Packet drawing:</strong> include named metadata, not only "extra information".</p>
+            <p><strong>Sequence numbers:</strong> link them to reassembly in correct order.</p>
+            <p><strong>Advantages:</strong> mention sharing links, alternative routes and avoiding one large transmission failure.</p>
+            <p><strong>Error response:</strong> mention checksum/error check and retransmission request.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 042 | The fetch-decode-execute cycle</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
+        <h1>The fetch-decode-execute cycle</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#cycle">Cycle overview</a>
+        <a href="#fetch">Fetch stage</a>
+        <a href="#decode">Decode and execute</a>
+        <a href="#registers">Register roles</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Step sequencer</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 042 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
+            <h2>The CPU follows a routine. It is not improvising jazz with your instructions.</h2>
+            <p>
+              The fetch-decode-execute cycle is the repeated process used by a CPU to
+              obtain an instruction from memory, interpret it, and carry it out.
+              Cambridge questions often test the exact register sequence, not just the
+              three headline words.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Trace</strong><span>the fetch stage using PC, MAR, MDR and CIR</span></div>
+              <div><strong>Explain</strong><span>what decode and execute do in the cycle</span></div>
+              <div><strong>Correct</strong><span>common sequence and register-role errors</span></div>
+            </div>
+          </div>
+          <div class="fde-card" aria-label="Fetch decode execute cycle">
+            <div class="cycle-ring">
+              <span>FETCH</span>
+              <span>DECODE</span>
+              <span>EXECUTE</span>
+            </div>
+            <p>Repeat until the program stops, an interrupt is handled, or something has gone very exam-question-shaped.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Teach the fetch stage as a route: PC gives address, MAR holds address, MDR receives instruction, CIR holds current instruction.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Marks are often awarded for the correct register and the correct action. A correct name with the wrong job is not enough.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Students write "PC stores the instruction". It does not. The PC stores the address of the next instruction.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A CPU wants the next instruction. Where does it look first?</h2>
+            <p>Click the best answer. The PC is not dramatic; it simply points to the next instruction like a very serious bookmark.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="pc">Program Counter</button>
+            <button class="choice-card" type="button" data-hook="alu">ALU</button>
+            <button class="choice-card" type="button" data-hook="cir">CIR</button>
+            <button class="choice-card" type="button" data-hook="ssd">Secondary storage</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click one. The first fetch question is usually about where the address comes from.
+          </div>
+        </section>
+
+        <section class="panel" id="cycle">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>The cycle in one clean sentence</h2>
+          </div>
+          <div class="cycle-grid">
+            <article>
+              <strong>Fetch</strong>
+              <span>The CPU gets the next instruction from main memory using the address stored in the PC.</span>
+            </article>
+            <article>
+              <strong>Decode</strong>
+              <span>The CU interprets the instruction in the CIR and identifies the operation and any operands needed.</span>
+            </article>
+            <article>
+              <strong>Execute</strong>
+              <span>The CPU carries out the instruction, for example using the ALU, accessing memory, or changing the PC.</span>
+            </article>
+          </div>
+          <div class="callout">Chinese support: fetch = 取指；decode = 译码；execute = 执行；operand = 操作数；instruction = 指令。</div>
+        </section>
+
+        <section class="panel" id="fetch">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Fetch stage: the register sequence</h2>
+            <p>This is the part students must be able to trace precisely.</p>
+          </div>
+          <div class="sequence-table" role="table" aria-label="Fetch stage sequence">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Step</div>
+              <div role="columnheader">Action</div>
+              <div role="columnheader">Register / bus focus</div>
+              <div role="columnheader">Exam-safe wording</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">1</div>
+              <div role="cell">Address copied from PC to MAR.</div>
+              <div role="cell">PC -> MAR</div>
+              <div role="cell">The PC contains the address of the next instruction; this address is copied to the MAR.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">2</div>
+              <div role="cell">Address sent to memory.</div>
+              <div role="cell">Address bus</div>
+              <div role="cell">The address in the MAR is placed on the address bus.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">3</div>
+              <div role="cell">Memory read signal is sent.</div>
+              <div role="cell">Control bus</div>
+              <div role="cell">The CU sends a read signal on the control bus.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">4</div>
+              <div role="cell">Instruction is returned to CPU.</div>
+              <div role="cell">Data bus -> MDR</div>
+              <div role="cell">The instruction from memory is transferred on the data bus to the MDR.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">5</div>
+              <div role="cell">Instruction copied into CIR.</div>
+              <div role="cell">MDR -> CIR</div>
+              <div role="cell">The instruction is copied from the MDR to the CIR for decoding.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">6</div>
+              <div role="cell">PC updated.</div>
+              <div role="cell">PC increment</div>
+              <div role="cell">The PC is incremented so it points to the next instruction, unless the instruction changes the sequence.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="decode">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Decode and execute are not filler words</h2>
+          </div>
+          <div class="component-grid">
+            <article>
+              <h3>Decode</h3>
+              <p>The control unit interprets the instruction in the CIR. It identifies the opcode, decides what operation is required, and identifies any operands or addresses needed.</p>
+            </article>
+            <article>
+              <h3>Execute: arithmetic or logic</h3>
+              <p>If the instruction is arithmetic or logical, the ALU performs the operation and a result may be stored in a register.</p>
+            </article>
+            <article>
+              <h3>Execute: memory access</h3>
+              <p>If the instruction needs data from memory, the CPU uses buses and registers to read from or write to the required memory address.</p>
+            </article>
+            <article>
+              <h3>Execute: branch</h3>
+              <p>If the instruction is a branch/jump, the PC may be changed to a different address rather than just continuing with the next instruction.</p>
+            </article>
+          </div>
+          <div class="trap-card inline-card">
+            <h3>Common trap</h3>
+            <p>"Execute" does not always mean "ALU does maths". Some instructions move data, access memory or change the PC.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="registers">
+          <div class="section-title">
+            <p class="eyebrow">Register roles</p>
+            <h2>The four fetch-stage names you cannot blur together</h2>
+          </div>
+          <div class="register-grid">
+            <article><strong>PC</strong><span>Program Counter: stores the address of the next instruction to be fetched.</span></article>
+            <article><strong>MAR</strong><span>Memory Address Register: stores the address of the memory location being accessed.</span></article>
+            <article><strong>MDR</strong><span>Memory Data Register: stores data or an instruction being transferred to or from memory.</span></article>
+            <article><strong>CIR</strong><span>Current Instruction Register: stores the instruction currently being decoded/executed.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purpose of the fetch-decode-execute cycle.</span></div>
+            <div><strong>Covered</strong><span>Fetch sequence using PC, MAR, MDR, CIR, address bus, data bus and control bus.</span></div>
+            <div><strong>Covered</strong><span>Decode stage as instruction interpretation by the control unit.</span></div>
+            <div><strong>Covered</strong><span>Execute stage with ALU, memory access and branch examples.</span></div>
+            <div><strong>Not this lesson</strong><span>Interrupt handling and detailed status register flags are covered in later Section 4 lessons.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Fetch stage sequencer</h2>
+            <p>Select a step and check what moves, where it moves, and which register or bus matters.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Fetch step
+              <select id="stepInput">
+                <option value="s1">1. PC to MAR</option>
+                <option value="s2">2. Address to memory</option>
+                <option value="s3">3. Read signal</option>
+                <option value="s4">4. Instruction to MDR</option>
+                <option value="s5">5. MDR to CIR</option>
+                <option value="s6">6. Increment PC</option>
+              </select>
+            </label>
+            <button type="button" id="stepBtn">Show step</button>
+          </div>
+          <div class="result-box" id="stepResult" aria-live="polite"></div>
+          <div class="method-box" id="stepMethod"></div>
+          <div class="reject-box" id="stepTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Trace the mechanism, not just the slogan</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="fetch">Fetch trace</button>
+            <button class="tab" type="button" data-example="branch">Branch instruction</button>
+            <button class="tab" type="button" data-example="compare">Weak vs strong</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+            <p>Short answers are fine; vague answers are not. A register name without a role is just alphabet soup.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the sequence</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeList"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>CIE-style questions with expandable mark schemes</h2>
+            <p>These are original Cambridge-style questions. MS wording is strict about register roles and sequence.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Fetch, decode, execute, repeat</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Fetch</strong><span>Use PC address to get the instruction from memory into the CIR.</span></div>
+            <div><strong>Decode</strong><span>The CU interprets the instruction and identifies operation/operands.</span></div>
+            <div><strong>Execute</strong><span>The CPU carries out the operation, possibly using ALU, memory or PC changes.</span></div>
+            <div><strong>PC</strong><span>Holds the address of the next instruction.</span></div>
+            <div><strong>MAR/MDR</strong><span>MAR holds address; MDR holds transferred data or instruction.</span></div>
+            <div><strong>CIR</strong><span>Holds the current instruction for decoding/execution.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Make the cycle sequence exam-ready</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write the fetch stage as six numbered steps using PC, MAR, MDR, CIR, address bus, data bus and control bus.</li>
+            <li>Answer a 5-mark question: "Describe the fetch stage of the fetch-decode-execute cycle."</li>
+            <li>Create a two-column table comparing PC, MAR, MDR and CIR. One column must state what each register holds.</li>
+            <li>Write two execute-stage examples: one ALU instruction and one branch instruction.</li>
+            <li>Correct this sentence: "The PC stores the instruction and sends it to the CIR."</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 112 | Section 9 review: from scenario to pseudocode</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>Section 9 review: from scenario to pseudocode</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#retrieval">Retrieval map</a>
+        <a href="#triage">Scenario triage</a>
+        <a href="#patterns">Pattern choice</a>
+        <a href="#trace">Trace clinic</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Topic classifier</a>
+        <a href="#fixer">Answer fixer</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 112 | 45 minutes | Paper 2 Section 9 | stage review</p>
+            <h2>Read the scenario. Find the pattern. Write the marks.</h2>
+            <p>
+              Section 9 questions rarely say, "Please use a sentinel-controlled loop with a running total." They
+              describe a situation and expect you to recognise the algorithm hiding inside it. This review lesson
+              connects decomposition, IPOC, trace tables, searches, sorts, loops and Cambridge pseudocode conventions.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Diagnose</strong><span>identify the likely Section 9 topic from command words and scenario clues</span></div>
+              <div><strong>Design</strong><span>convert requirements into IPOC, variables, control structures and pseudocode</span></div>
+              <div><strong>Upgrade</strong><span>rewrite vague answers into mark-worthy answers with strict Cambridge wording</span></div>
+            </div>
+          </div>
+          <div class="scenario-visual" aria-label="Review visual">
+            <div class="review-card">
+              <strong>Scenario</strong>
+              <span>Input values until -1. Ignore the sentinel. Output count, total and average.</span>
+            </div>
+            <div class="flow-strip">
+              <span>IPOC</span><span>Pattern</span><span>Pseudocode</span><span>Trace</span><span>MS</span>
+            </div>
+            <div class="review-card">
+              <strong>Answer shape</strong>
+              <span>Initialise -> input before test -> WHILE valid -> update -> input next -> output after loop</span>
+            </div>
+            <p>If the paragraph feels long, it is probably trying to hide a short algorithm.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Read once for the story, then read again for marks: inputs, conditions, variables, loop type and final output.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Section 9 rewards mechanism. A correct label may start an answer, but marks usually come from how the algorithm works.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>"Use a loop" is not enough. Name the loop type and connect it to wording such as exactly, until, while or for each.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which toolbox should you open?</h2>
+            <p>A question says: "The list is already sorted. Find whether a target value is present using as few comparisons as possible."</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="linear">Linear search</button>
+            <button class="choice-card" type="button" data-hook="binary">Binary search</button>
+            <button class="choice-card" type="button" data-hook="bubble">Bubble sort</button>
+            <button class="choice-card" type="button" data-hook="average">Running average</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the algorithm pattern signalled by "sorted" and "few comparisons".</div>
+        </section>
+
+        <section class="panel" id="retrieval">
+          <div class="section-title">
+            <p class="eyebrow">Retrieval map</p>
+            <h2>Section 9 in one page</h2>
+            <p>Chinese support: 复习不是重新抄笔记，而是快速识别题目在考哪一种算法思维。</p>
+          </div>
+          <div class="data-table retrieval-table" role="table" aria-label="Section 9 review map">
+            <div class="table-row table-head" role="row"><div>Topic</div><div>Signal words</div><div>Expected mechanism</div><div>Typical mark trap</div></div>
+            <div class="table-row" role="row"><div>IPOC / decomposition</div><div>scenario, requirements, constraints</div><div>break problem into inputs, processing, outputs and rules</div><div>copying the story without design decisions</div></div>
+            <div class="table-row" role="row"><div>Trace tables</div><div>dry run, trace, values after each loop</div><div>update variables row by row in execution order</div><div>jumping to final answer and missing intermediate states</div></div>
+            <div class="table-row" role="row"><div>Selection and iteration</div><div>if, otherwise, exactly, until, while</div><div>choose IF, FOR or WHILE from the wording</div><div>using a fixed loop when count is unknown</div></div>
+            <div class="table-row" role="row"><div>Search and sort</div><div>find, sorted, order, compare adjacent</div><div>linear/binary search, bubble/insertion sort</div><div>forgetting binary search needs sorted data</div></div>
+            <div class="table-row" role="row"><div>Running variables</div><div>total, count, maximum, minimum, average</div><div>initialise, update inside loop, output after loop</div><div>initialising maximum to 0 without a stated non-negative range</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="triage">
+          <div class="section-title">
+            <p class="eyebrow">Scenario triage</p>
+            <h2>Turn question wording into an algorithm plan</h2>
+          </div>
+          <div class="triage-grid">
+            <article>
+              <h3>Step 1: Output first</h3>
+              <p>Ask: what must be displayed, returned or stored at the end? The final output tells you which variables need to exist.</p>
+              <pre><code>Output needed: average rainfall
+
+Therefore:
+Total is needed
+Count is needed
+Average &lt;- Total / Count</code></pre>
+            </article>
+            <article>
+              <h3>Step 2: Stop condition</h3>
+              <p>Ask: does the question state a fixed number of values, or does input continue until a condition is met?</p>
+              <pre><code>Exactly 7 days      -> FOR Day &lt;- 1 TO 7
+Until -1 entered   -> WHILE Value &lt;&gt; -1</code></pre>
+            </article>
+            <article>
+              <h3>Step 3: Update placement</h3>
+              <p>Updates go inside the loop; final outputs normally go after the loop. The exam enjoys catching students who swap those two.</p>
+              <pre><code>Total &lt;- Total + Reading
+Count &lt;- Count + 1
+
+// after the loop
+Average &lt;- Total / Count
+OUTPUT Average</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="patterns">
+          <div class="section-title">
+            <p class="eyebrow">Pattern choice</p>
+            <h2>Match the scenario to the correct algorithm pattern</h2>
+          </div>
+          <div class="data-table pattern-table" role="table" aria-label="Algorithm pattern choices">
+            <div class="table-row table-head" role="row"><div>Scenario clue</div><div>Pattern</div><div>Core pseudocode feature</div><div>One precise explanation</div></div>
+            <div class="table-row" role="row"><div>exactly 10 readings</div><div>Count-controlled loop</div><div><code>FOR Index &lt;- 1 TO 10</code></div><div>The number of repetitions is known before the loop starts.</div></div>
+            <div class="table-row" role="row"><div>until 0 is entered</div><div>Condition-controlled loop</div><div><code>WHILE Value &lt;&gt; 0</code></div><div>The number of repetitions depends on input values.</div></div>
+            <div class="table-row" role="row"><div>find whether target is in unsorted data</div><div>Linear search</div><div>compare each item with target</div><div>There is no ordering that allows values to be skipped safely.</div></div>
+            <div class="table-row" role="row"><div>find target in sorted data efficiently</div><div>Binary search</div><div>halve the search range</div><div>The sorted order makes it possible to discard half the remaining data.</div></div>
+            <div class="table-row" role="row"><div>put items into order by adjacent swaps</div><div>Bubble sort</div><div>compare and swap neighbours</div><div>Large items move towards the end after repeated passes.</div></div>
+            <div class="table-row" role="row"><div>build a sorted left section</div><div>Insertion sort</div><div>insert next item into its correct position</div><div>Each pass keeps the processed section sorted.</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Trace clinic</p>
+            <h2>Marks are often lost between two lines of pseudocode</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Sentinel trace</h3>
+              <p>Input values are 4, 6, 0. The sentinel 0 stops the loop and must not be counted.</p>
+              <div class="data-table mini-table" role="table" aria-label="Sentinel trace">
+                <div class="table-row table-head" role="row"><div>Input</div><div>Total</div><div>Count</div><div>Reason</div></div>
+                <div class="table-row" role="row"><div>start</div><div>0</div><div>0</div><div>initialise</div></div>
+                <div class="table-row" role="row"><div>4</div><div>4</div><div>1</div><div>valid data</div></div>
+                <div class="table-row" role="row"><div>6</div><div>10</div><div>2</div><div>valid data</div></div>
+                <div class="table-row" role="row"><div>0</div><div>10</div><div>2</div><div>stop, do not process</div></div>
+              </div>
+            </article>
+            <article>
+              <h3>Maximum trace warning</h3>
+              <p>If readings may be negative, <code>Maximum &lt;- 0</code> can produce an impossible answer.</p>
+              <pre><code>Inputs: -8, -3, -5
+Wrong initial Maximum &lt;- 0
+Output: 0   // not in the input data
+
+Better:
+INPUT Reading
+Maximum &lt;- Reading</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Paper 2 wants readable Cambridge-style pseudocode</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style answer</h3>
+              <pre><code>Total &lt;- 0
+Count &lt;- 0
+INPUT Value
+WHILE Value &lt;&gt; -1
+    Total &lt;- Total + Value
+    Count &lt;- Count + 1
+    INPUT Value
+ENDWHILE
+Average &lt;- Total / Count
+OUTPUT Average</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>int total = 0;
+int count = 0;
+int value = input.nextInt();
+while (value != -1) {
+    total += value;
+    count++;
+    value = input.nextInt();
+}
+double average = (double) total / count;</code></pre>
+            </article>
+          </div>
+          <div class="callout">Chinese support: Java 可以帮助你测试思路，但 Cambridge pseudocode 才是 Paper 2 的作答格式。</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this review consolidates</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>algorithmic thinking, decomposition, abstraction, IPOC, pseudocode readability, trace tables, selection, iteration, validation logic, search, sort, running totals, counts, maximum/minimum and efficiency explanation.</span></div>
+            <div><strong>Boundary</strong><span>This lesson closes Section 9. Lesson 113 begins Section 10 data types, so arrays, records and file handling are not expanded here beyond simple list-style examples.</span></div>
+            <div><strong>Paper 2 note</strong><span>Use precise mechanisms: sorted data enables binary search; sentinel values stop input; count-controlled loops need a known number of repetitions.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive topic classifier</p>
+            <h2>Practise choosing the correct Section 9 tool</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario clue
+              <select id="classifierInput">
+                <option value="fixedLoop">Input exactly 12 scores and calculate the total.</option>
+                <option value="sentinel">Input values until -1 is entered.</option>
+                <option value="binarySearch">A sorted list must be searched using few comparisons.</option>
+                <option value="bubble">The algorithm compares adjacent items and swaps if they are in the wrong order.</option>
+                <option value="trace">Complete a table showing variable values after each loop iteration.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="classifierBtn">Classify</button>
+          </div>
+          <div class="trace-output" id="classifierResult">Choose a clue, then classify the topic and reasoning.</div>
+        </section>
+
+        <section class="panel" id="fixer">
+          <div class="section-title">
+            <p class="eyebrow">Interactive answer fixer</p>
+            <h2>Turn vague answers into mark-worthy answers</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Weak answer
+              <select id="fixerInput">
+                <option value="binary">Binary search is faster.</option>
+                <option value="loop">Use a loop.</option>
+                <option value="max">Set Maximum to 0.</option>
+                <option value="output">Output the average inside the loop.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="fixerBtn">Improve</button>
+          </div>
+          <div class="trace-output" id="fixerResult">Choose a weak answer to see a stricter version.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Review examples across Section 9</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="rainfall">Rainfall IPOC</button>
+            <button class="tab" type="button" data-example="sentinelTrace">Sentinel trace</button>
+            <button class="tab" type="button" data-example="searchSort">Search or sort</button>
+            <button class="tab" type="button" data-example="msUpgrade">MS upgrade</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Ten quick Section 9 decisions</h2>
+            <p>Answer briefly. Then use Show answer to compare your wording with a stricter version.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Correct the habits that lose marks</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style Section 9 review questions with expandable MS</h2>
+            <p>MS guidance uses CIE-style strictness: award mechanism, reject vague claims, and apply FT only when the candidate's earlier method is logically consistent.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Section 9 review checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Read</strong><span>extract input, processing, output and constraints before writing pseudocode.</span></div>
+            <div><strong>Choose</strong><span>match scenario wording to FOR, WHILE, IF, search, sort or running-variable pattern.</span></div>
+            <div><strong>Prove</strong><span>trace the algorithm, test boundary cases and write explanations with a cause and consequence.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear consolidation tasks</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Mixed-topic sorter</strong>
+              <span>Create a two-column table with eight original scenario clues. For each, name the Section 9 topic and one reason for your choice.</span>
+            </article>
+            <article>
+              <strong>Task 2: Full pseudocode response</strong>
+              <span>Write Cambridge-style pseudocode for: input scores until -1 is entered, ignore -1, output the count of scores at least 50 and the total number of valid scores.</span>
+            </article>
+            <article>
+              <strong>Task 3: Mark-scheme self-check</strong>
+              <span>Annotate your pseudocode with at least six mark points: initialisation, first input, loop condition, sentinel handling, update, next input and final output.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

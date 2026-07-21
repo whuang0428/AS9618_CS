@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 053 | Operating system roles: process, memory, file and device management</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
+        <h1>Operating system roles: process, memory, file and device management</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Core idea</a>
+        <a href="#process">Process</a>
+        <a href="#memory">Memory</a>
+        <a href="#file">File</a>
+        <a href="#device">Device</a>
+        <a href="#services">Other services</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">OS role tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 053 | 45 minutes | Paper 1 Section 5 | System software</p>
+            <h2>The operating system is the resource referee.</h2>
+            <p>
+              Programs want CPU time, memory, files and devices. The operating system
+              coordinates those requests so applications can run without each one
+              grabbing the whole machine and yelling "mine".
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Describe</strong><span>process, memory, file and device management roles</span></div>
+              <div><strong>Apply</strong><span>OS roles to realistic user and application scenarios</span></div>
+              <div><strong>Correct</strong><span>confusions between OS, utilities, applications and hardware</span></div>
+            </div>
+          </div>
+          <div class="os-card" aria-label="Operating system role sketch">
+            <div class="os-stack">
+              <span>Applications request resources</span>
+              <span>OS manages access</span>
+              <span>Hardware is used safely</span>
+              <span>User sees a usable system</span>
+            </div>
+            <p>The OS does not do your homework. It makes the computer able to run the homework app.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use one scenario at a time: a music app opens, saves a file and prints. Ask which OS role is active at each step.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam answers need a role plus a service. "The OS manages things" is a start, not a complete mark.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>An OS role is not the same as a utility tool. Antivirus and backup are utilities; process scheduling and memory allocation are OS roles.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A video editor, browser and music player are open. Who decides who gets CPU time?</h2>
+            <p>Click the best answer. The browser may think it deserves everything, but the OS has the clipboard.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="os">The operating system scheduler / process management</button>
+            <button class="choice-card" type="button" data-hook="printer">The printer driver</button>
+            <button class="choice-card" type="button" data-hook="spreadsheet">Spreadsheet software</button>
+            <button class="choice-card" type="button" data-hook="random">Whichever app asks most loudly</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Multitasking needs controlled allocation of CPU time.
+          </div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>An OS manages resources and provides services</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <strong>Process management</strong>
+              <span>Controls running programs/processes and allocates processor time.</span>
+            </article>
+            <article>
+              <strong>Memory management</strong>
+              <span>Allocates memory to programs and helps prevent one process accessing another's memory incorrectly.</span>
+            </article>
+            <article>
+              <strong>File management</strong>
+              <span>Organises, stores, retrieves and controls access to files and directories.</span>
+            </article>
+            <article>
+              <strong>Device management</strong>
+              <span>Controls communication with peripherals using drivers, buffers and queues.</span>
+            </article>
+          </div>
+          <div class="callout">Chinese support: process management = 进程管理；memory management = 内存管理；file management = 文件管理；device management = 设备管理；scheduler = 调度程序。</div>
+        </section>
+
+        <section class="panel" id="process">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Process management: sharing processor time</h2>
+          </div>
+          <div class="role-grid">
+            <article><strong>Process</strong><span>A program in execution, with its own state and resources.</span></article>
+            <article><strong>Scheduling</strong><span>Decides which process gets CPU time and when.</span></article>
+            <article><strong>Multitasking</strong><span>Allows several processes to appear to run at the same time by sharing CPU time.</span></article>
+            <article><strong>State tracking</strong><span>Keeps information such as running, ready or blocked/waiting status.</span></article>
+          </div>
+          <div class="why-card inline-card">
+            <h3>Why this matters</h3>
+            <p>When an app freezes, it may be waiting for I/O, blocked, or not receiving CPU time. The OS must track and manage that behaviour.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="memory">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Memory management: allocate, protect, reuse</h2>
+          </div>
+          <div class="memory-flow" aria-label="Memory management flow">
+            <div><strong>1. Program starts</strong><span>The OS allocates memory for code, data and stack/working space.</span></div>
+            <div><strong>2. Program runs</strong><span>The OS tracks which memory blocks are in use.</span></div>
+            <div><strong>3. Protection</strong><span>The OS helps stop processes overwriting each other's memory.</span></div>
+            <div><strong>4. Program ends</strong><span>The OS releases memory so it can be reused.</span></div>
+          </div>
+          <div class="trap-card inline-card">
+            <h3>Common trap</h3>
+            <p>Memory management is not the same as file storage. RAM holds running program data; files are stored and organised on storage devices.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="file">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>File management: names, folders, access and storage</h2>
+          </div>
+          <div class="file-grid">
+            <article><strong>Directory structure</strong><span>Organises files into folders/directories so users and applications can locate them.</span></article>
+            <article><strong>Metadata</strong><span>Stores information such as file name, type, size, location and timestamps.</span></article>
+            <article><strong>Access control</strong><span>Uses permissions to control who can read, write or execute files.</span></article>
+            <article><strong>File operations</strong><span>Provides services to create, open, save, move, copy and delete files.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="device">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Device management: drivers, buffers and queues</h2>
+          </div>
+          <div class="device-table" role="table" aria-label="Device management roles">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Feature</div>
+              <div role="columnheader">Purpose</div>
+              <div role="columnheader">Example</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Device driver</div>
+              <div role="cell">Software that allows the OS to communicate with a specific device.</div>
+              <div role="cell">Printer driver translates OS print requests into commands the printer understands.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Buffer</div>
+              <div role="cell">Temporary storage used when devices and CPU work at different speeds.</div>
+              <div role="cell">Keyboard buffer stores keystrokes before a program reads them.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Queue</div>
+              <div role="cell">Orders requests waiting for a device.</div>
+              <div role="cell">Print queue stores documents waiting to print.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Interrupt handling</div>
+              <div role="cell">Responds when a device needs attention.</div>
+              <div role="cell">Printer signals that it is ready for more data.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="services">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Other OS services at overview level</h2>
+          </div>
+          <div class="service-grid">
+            <article><strong>User interface</strong><span>Provides a way for users to interact with the system; Lesson 054 expands interface types.</span></article>
+            <article><strong>Security</strong><span>Supports user accounts, authentication and access rights.</span></article>
+            <article><strong>Error handling</strong><span>Detects and reports system or application errors where possible.</span></article>
+            <article><strong>Application support</strong><span>Provides common services/APIs so applications do not control hardware directly.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Operating system as resource manager and service provider.</span></div>
+            <div><strong>Covered</strong><span>Process management, scheduling and multitasking.</span></div>
+            <div><strong>Covered</strong><span>Memory allocation, protection and release.</span></div>
+            <div><strong>Covered</strong><span>File organisation, metadata, permissions and operations.</span></div>
+            <div><strong>Covered</strong><span>Device drivers, buffers, queues and device interrupts.</span></div>
+            <div><strong>Boundary</strong><span>User interface types are covered in Lesson 054.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>OS role classifier</h2>
+            <p>Select a scenario and identify the operating system role being tested.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="process">A game and browser both need CPU time</option>
+                <option value="memory">A program starts and needs RAM allocated</option>
+                <option value="file">A user saves a document into a folder</option>
+                <option value="device">A document waits in a print queue</option>
+                <option value="security">A user account is denied access to a file</option>
+                <option value="error">An application crashes and an error message is shown</option>
+              </select>
+            </label>
+            <button type="button" id="simulateBtn">Classify</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Name the OS role and justify it</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="slow">Slow laptop</button>
+            <button class="tab" type="button" data-example="print">Print job</button>
+            <button class="tab" type="button" data-example="save">Save file</button>
+            <button class="tab" type="button" data-example="memory">Memory conflict</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+            <p>Type the exact OS role or feature. The best answers are boringly precise.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the OS role confusion</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeList"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>CIE-style questions with expandable mark schemes</h2>
+            <p>These are original Cambridge-style questions. MS notes are strict about role, mechanism and user/system consequence.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>The OS manages resources so applications can run</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Process</strong><span>Schedules and tracks running programs/processes.</span></div>
+            <div><strong>Memory</strong><span>Allocates, protects and releases RAM.</span></div>
+            <div><strong>File</strong><span>Organises, stores and controls access to files.</span></div>
+            <div><strong>Device</strong><span>Uses drivers, buffers and queues to manage peripherals.</span></div>
+            <div><strong>Services</strong><span>Provides interface, security, error handling and APIs.</span></div>
+            <div><strong>Exam habit</strong><span>Name the role, describe the mechanism, then state the benefit.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Connect each OS role to a real scenario</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Define process management, memory management, file management and device management.</li>
+            <li>Create a four-column table: user action, OS role, mechanism, benefit.</li>
+            <li>Write a 5-mark answer explaining how an OS manages a print job.</li>
+            <li>Correct this sentence: "The application decides exactly where in memory every other program is stored."</li>
+            <li>Prepare one example each of a CLI, GUI, menu-driven interface and natural language interface for Lesson 054.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 083 | Normalisation: avoiding duplication and update problems</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
+        <h1>Normalisation: avoiding duplication and update problems</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#purpose">Purpose</a>
+        <a href="#redundancy">Redundancy</a>
+        <a href="#anomalies">Anomalies</a>
+        <a href="#normal-forms">Normal forms</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#detector">Redundancy detector</a>
+        <a href="#classifier">Anomaly classifier</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 083 | 45 minutes | Paper 1 Section 8 | Database design</p>
+            <h2>Normalisation is database tidying with consequences. It stops one changed email from becoming a treasure hunt.</h2>
+            <p>
+              This lesson explains why database designers normalise data: to reduce unnecessary duplication,
+              avoid update, insertion and deletion anomalies, and keep related data in appropriate tables.
+              We focus on design reasoning, not SQL queries.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Detect</strong><span>repeated data and dependency problems in a table</span></div>
+              <div><strong>Explain</strong><span>update, insertion and deletion anomalies</span></div>
+              <div><strong>Improve</strong><span>a weak table design by separating related data</span></div>
+            </div>
+          </div>
+          <div class="normalise-visual" aria-label="Normalisation visual">
+            <div class="bad-table">One big table<br /><span>Member + Course + Tutor repeated</span></div>
+            <div class="arrow">-></div>
+            <div class="good-tables">
+              <span>Member</span>
+              <span>Course</span>
+              <span>Enrolment</span>
+            </div>
+            <p>Store each fact in the right place, then link it when needed.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make students circle repeated facts first. The normalisation argument becomes much easier once the duplicated fact is visible.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style answers need cause and consequence: repeated data causes anomalies; separating tables reduces the risk.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not say normalisation removes every duplicate value. Some key values repeat as links; unnecessary repeated facts are the target.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A tutor's email appears in 38 course rows. The tutor changes email. What can go wrong?</h2>
+            <p>The database now has 38 chances to be wrong. Very generous. Terrible design.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="update">Some rows are updated and others are not</button>
+            <button class="choice-card" type="button" data-hook="binary">The email becomes binary</button>
+            <button class="choice-card" type="button" data-hook="faster">Queries automatically become faster</button>
+            <button class="choice-card" type="button" data-hook="format">The email changes font</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose the database design problem.
+          </div>
+        </section>
+
+        <section class="panel" id="purpose">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Purpose of normalisation</h2>
+            <p>Normalisation is the process of organising data into well-structured tables to reduce unnecessary redundancy and improve data integrity.</p>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Reduce redundancy</strong><span>A fact such as TutorEmail is stored once in Tutor, not repeated in every course row.</span></article>
+            <article><strong>Improve integrity</strong><span>Fewer repeated facts means fewer chances for inconsistent versions.</span></article>
+            <article><strong>Prevent anomalies</strong><span>Insertion, update and deletion problems become less likely.</span></article>
+            <article><strong>Clarify dependencies</strong><span>Fields should depend on the key of their own table, not on unrelated fields.</span></article>
+          </div>
+          <div class="callout">Chinese support: normalisation = 规范化；redundancy = 冗余；anomaly = 异常；dependency = 依赖关系。</div>
+        </section>
+
+        <section class="panel" id="redundancy">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Spot unnecessary repeated facts</h2>
+            <p>A repeated linking value can be correct. Repeating descriptive facts about another entity is usually the warning sign.</p>
+          </div>
+          <div class="bad-data-table" role="table" aria-label="Unnormalised enrolment table">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">StudentID</div>
+              <div role="columnheader">StudentName</div>
+              <div role="columnheader">CourseID</div>
+              <div role="columnheader">CourseTitle</div>
+              <div role="columnheader">TutorEmail</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">S0234</div><div role="cell">Amira Chen</div><div role="cell">C10</div><div role="cell">Python</div><div role="cell" class="repeat">tutor@school.edu</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">S0318</div><div role="cell">Leo Singh</div><div role="cell">C10</div><div role="cell">Python</div><div role="cell" class="repeat">tutor@school.edu</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">S0440</div><div role="cell">Maya Patel</div><div role="cell">C10</div><div role="cell">Python</div><div role="cell" class="repeat">tutor@school.edu</div>
+            </div>
+          </div>
+          <div class="answer-frame">
+            <strong>Exam sentence:</strong>
+            <span><code>CourseTitle</code> and <code>TutorEmail</code> depend on <code>CourseID</code>, so repeating them in every enrolment row creates redundancy and possible update anomalies.</span>
+          </div>
+        </section>
+
+        <section class="panel" id="anomalies">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Three anomaly types</h2>
+          </div>
+          <div class="anomaly-grid">
+            <article><strong>Update anomaly</strong><span>A repeated fact is updated in some rows but not others, so inconsistent data remains.</span></article>
+            <article><strong>Insertion anomaly</strong><span>A new fact cannot be stored until another unrelated fact exists, such as a new course with no enrolled student.</span></article>
+            <article><strong>Deletion anomaly</strong><span>Deleting a row accidentally removes the only stored copy of a separate fact.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="normal-forms">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Normal form idea, without turning the lesson into a maze</h2>
+            <p>AS-level questions usually expect the purpose and effect of normalisation more than a formal proof. Still, the normal form idea helps explain the method.</p>
+          </div>
+          <div class="normal-form-grid">
+            <article><strong>1NF</strong><span>Values are atomic; each field stores one value, not a repeating list.</span></article>
+            <article><strong>2NF idea</strong><span>Non-key fields should depend on the whole key, not part of a composite key.</span></article>
+            <article><strong>3NF idea</strong><span>Non-key fields should not depend on other non-key fields.</span></article>
+          </div>
+          <div class="callout">Keep this practical: identify the fact, decide which entity it describes, then move it to that table.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson completes the design-before-SQL block</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Normalisation purpose, redundancy, data integrity, functional dependency idea, 1NF/2NF/3NF overview, update/insertion/deletion anomalies and decomposition into related tables.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 084 starts SQL SELECT/FROM/WHERE. This lesson does not require writing SQL queries.</span></div>
+            <div><strong>Exam focus</strong><span>Explain the problem caused by repeated data and the effect of splitting data into linked tables.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="detector">
+          <div class="section-title">
+            <p class="eyebrow">Interactive redundancy detector</p>
+            <h2>Which fact should be moved?</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Repeated fact
+              <select id="redundancyInput">
+                <option value="courseTitle">CourseTitle repeats for every student enrolled on the same CourseID.</option>
+                <option value="studentId">StudentID appears in several enrolment rows because a student takes several courses.</option>
+                <option value="orderId">OrderID appears in several order-line rows for the same order.</option>
+                <option value="tutorEmail">TutorEmail repeats for every course taught by the same tutor.</option>
+                <option value="membershipId">MembershipID is unique in each Membership row.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="redundancyBtn">Detect</button>
+          </div>
+          <div class="result-box" id="redundancyResult">Choose a repeated fact to classify it.</div>
+          <div class="feedback" id="redundancyReason">Not every repeated value is bad; repeated descriptive facts are the bigger warning.</div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive anomaly classifier</p>
+            <h2>Classify the problem</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="anomalyInput">
+                <option value="update">TutorEmail is changed in two rows but missed in one row.</option>
+                <option value="insert">A new course cannot be stored until at least one student enrols.</option>
+                <option value="delete">Deleting the last enrolment row for C10 removes the only copy of CourseTitle.</option>
+                <option value="atomic">A PhoneNumbers field stores three phone numbers in one cell.</option>
+                <option value="validLink">CourseID repeats as a foreign key in Enrolment rows.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="anomalyBtn">Classify</button>
+          </div>
+          <div class="result-box" id="anomalyResult">Choose a scenario to classify the design issue.</div>
+          <div class="feedback" id="anomalyReason">Name the anomaly and explain the mechanism.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From one bad table to linked tables</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="course">Course enrolments</button>
+            <button class="tab" type="button" data-example="order">Order lines</button>
+            <button class="tab" type="button" data-example="phone">1NF issue</button>
+            <button class="tab" type="button" data-example="judge">Judgement answer</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short-answer checks</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair weak normalisation explanations</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style practice with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about anomaly type and cause.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Normalisation checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Find repeated facts</strong><span>Ask whether a descriptive fact belongs to another entity.</span></div>
+            <div><strong>Name the anomaly</strong><span>Update, insertion and deletion anomalies explain the risk.</span></div>
+            <div><strong>Split and link</strong><span>Move data into related tables and use keys to preserve links.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Identify problems</strong>
+              <span>Given Enrolment(StudentID, StudentName, CourseID, CourseTitle, TutorEmail), list two repeated facts and name one anomaly each could cause.</span>
+            </article>
+            <article>
+              <strong>Task 2: Decompose</strong>
+              <span>Propose Student, Course and Enrolment tables for the same data. State one primary key and one foreign key for each relevant table.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "Explain why normalisation can improve data integrity in a school course database." Include redundancy and two anomaly types.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

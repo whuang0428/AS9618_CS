@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 147 | Paper 2 review: algorithm design and data structures</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Sections 9-12</p>
+        <h1>Paper 2 review: algorithm design and data structures</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#strategy">Review strategy</a>
+        <a href="#trace">Dry run</a>
+        <a href="#algorithms">Algorithms</a>
+        <a href="#structures">Data structures</a>
+        <a href="#selection">Structure choice</a>
+        <a href="#files">Files</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#trace-tool">Trace tool</a>
+        <a href="#structure-tool">Structure chooser</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Mistakes</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 147 | 45 minutes | Paper 2 review | informal questioning</p>
+            <h2>Paper 2 rewards method. Guessing is just a very confident way to donate marks.</h2>
+            <p>
+              This review connects algorithm design and data structures: dry running, pseudocode, arrays, records,
+              files, stacks, queues and choosing the right structure. Chinese support: dry run 手工运行,
+              trace table 跟踪表, data structure 数据结构, boundary test 边界测试。
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Trace</strong><span>pseudocode accurately using a table</span></div>
+              <div><strong>Select</strong><span>appropriate data structures for scenarios</span></div>
+              <div><strong>Write</strong><span>exam answers with method, evidence and precise terms</span></div>
+            </div>
+          </div>
+          <div class="review-visual" aria-label="Paper 2 review visual">
+            <div><strong>Algorithm</strong><span>sequence, selection, iteration</span><em>show the steps</em></div>
+            <div><strong>Trace</strong><span>variables after each loop</span><em>do not skip rows</em></div>
+            <div><strong>Structure</strong><span>array, record, stack, queue</span><em>fit the access pattern</em></div>
+            <div><strong>Evidence</strong><span>expected output</span><em>answer like a mark scheme</em></div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every mixed question, ask: “Am I tracing, designing, choosing a structure, or explaining a test?”</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Algorithm questions often give partial marks for method. A neat trace table can rescue marks even when the final answer goes sideways.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not answer data structure questions with syntax alone. Explain why the structure matches the required access pattern.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>What is the first move?</h2>
+            <p>Question stem: “Trace the algorithm and state the final value of Total.”</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="guess">Guess the final output from the variable names</button>
+            <button class="choice-card" type="button" data-hook="trace">Create a trace table with loop counter and Total</button>
+            <button class="choice-card" type="button" data-hook="java">Rewrite it in Java first</button>
+            <button class="choice-card" type="button" data-hook="essay">Explain why algorithms are useful</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Pick the method that matches a trace question.</div>
+        </section>
+
+        <section class="panel" id="strategy">
+          <div class="section-title">
+            <p class="eyebrow">Review strategy</p>
+            <h2>Choose the tool before writing the answer</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Review strategy">
+            <div class="table-row table-head"><div>Question signal</div><div>Tool</div><div>Evidence</div><div>Common loss</div></div>
+            <div class="table-row"><div>trace / dry run</div><div>trace table</div><div>variable values after each step</div><div>skipping loop iterations</div></div>
+            <div class="table-row"><div>design an algorithm</div><div>pseudocode</div><div>inputs, process, output</div><div>writing vague English only</div></div>
+            <div class="table-row"><div>choose a data structure</div><div>scenario matching</div><div>access pattern and operations</div><div>naming without reason</div></div>
+            <div class="table-row"><div>test an algorithm</div><div>test cases</div><div>normal, boundary, abnormal data</div><div>missing expected result</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Dry run</p>
+            <h2>Trace tables turn moving code into visible evidence</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>SET Total TO 0
+FOR Index TO 1 TO 4
+    IF Scores[Index] &gt; 50 THEN
+        SET Total TO Total + Scores[Index]
+    ENDIF
+NEXT Index
+OUTPUT Total</code></pre>
+            </article>
+            <article>
+              <h3>Trace focus</h3>
+              <p>For Scores = [40, 65, 50, 80], track Index, condition result and Total. Notice that greater than 50 does not include 50.</p>
+              <div class="callout">Exam habit: update the variable only when the assignment statement actually runs.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="algorithms">
+          <div class="section-title">
+            <p class="eyebrow">Algorithm design review</p>
+            <h2>Good pseudocode is precise enough to trace</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Inputs</h3><p>State the data being read, such as target name, score list or file record.</p></article>
+            <article><h3>Process</h3><p>Use sequence, selection and iteration with clear variable updates.</p></article>
+            <article><h3>Output</h3><p>State exactly what is displayed, returned or stored.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" id="structures">
+          <div class="section-title">
+            <p class="eyebrow">Data structures review</p>
+            <h2>Choose structures by how the data is used</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Data structure review">
+            <div class="table-row table-head"><div>Structure</div><div>Use when</div><div>Core operation</div><div>Trap</div></div>
+            <div class="table-row"><div>1D array</div><div>fixed list of same-type items</div><div>index access</div><div>forgetting bounds</div></div>
+            <div class="table-row"><div>2D array</div><div>table/grid data</div><div>row and column access</div><div>mixing row and column</div></div>
+            <div class="table-row"><div>Record</div><div>one item has different fields</div><div>field access</div><div>using many separate arrays unnecessarily</div></div>
+            <div class="table-row"><div>Stack</div><div>last-in, first-out</div><div>push and pop</div><div>confusing with queue</div></div>
+            <div class="table-row"><div>Queue</div><div>first-in, first-out</div><div>enqueue and dequeue</div><div>removing newest item</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="selection">
+          <div class="section-title">
+            <p class="eyebrow">Structure choice</p>
+            <h2>The reason matters more than the name</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Structure choice examples">
+            <div class="table-row table-head"><div>Scenario</div><div>Likely structure</div><div>Reason</div></div>
+            <div class="table-row"><div>store 30 daily temperatures</div><div>1D array</div><div>same type, indexed by day</div></div>
+            <div class="table-row"><div>store student name, ID and mark</div><div>record</div><div>related fields of different types</div></div>
+            <div class="table-row"><div>undo recent edits</div><div>stack</div><div>most recent action is undone first</div></div>
+            <div class="table-row"><div>print jobs waiting</div><div>queue</div><div>first job added should print first</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="files">
+          <div class="section-title">
+            <p class="eyebrow">Files and records</p>
+            <h2>Persistent data needs clear read/write logic</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Pseudocode pattern</h3>
+              <pre><code>OPENFILE "Scores.txt" FOR READ
+WHILE NOT EOF("Scores.txt")
+    READFILE "Scores.txt", StudentRecord
+    OUTPUT StudentRecord.Name
+ENDWHILE
+CLOSEFILE "Scores.txt"</code></pre>
+            </article>
+            <article>
+              <h3>Review note</h3>
+              <p>File questions often test the sequence: open, read or write, loop until end of file, then close. Keep the file mode clear.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>This review covers Paper 2 algorithm and structure skills</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>trace tables, pseudocode logic, sequence, selection and iteration</span></div>
+            <div><strong>Covered</strong><span>arrays, records, stacks, queues and file handling patterns</span></div>
+            <div><strong>Covered</strong><span>test data choice and explanation in algorithm scenarios</span></div>
+            <div><strong>Next lessons</strong><span>programming constructs, file handling practice and timed pseudocode clinic</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="trace-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive trace tool</p>
+            <h2>Calculate Total for the selected score list</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Scores
+              <select id="traceSelect">
+                <option value="a">40, 65, 50, 80</option>
+                <option value="b">55, 51, 49, 70</option>
+                <option value="c">50, 50, 50, 51</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="traceBtn">Show trace</button>
+          </div>
+          <div id="traceOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="structure-tool">
+          <div class="section-title">
+            <p class="eyebrow">Data structure chooser</p>
+            <h2>Choose the structure and explain why</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Scenario
+              <select id="structureSelect">
+                <option value="temps">30 daily temperatures</option>
+                <option value="student">student name, ID and mark</option>
+                <option value="undo">undo recent edits</option>
+                <option value="printer">printer job list</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="structureBtn">Choose</button>
+          </div>
+          <div id="structureOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Mark-worthy response patterns</h2>
+          </div>
+          <div class="tab-row" role="tablist" aria-label="Worked examples">
+            <button class="tab-button active" type="button" data-example="trace">Trace</button>
+            <button class="tab-button" type="button" data-example="structure">Structure</button>
+            <button class="tab-button" type="button" data-example="test">Test data</button>
+          </div>
+          <div id="exampleOutput" class="example-output"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short retrieval before exam-style questions</h2>
+          </div>
+          <div id="practiceList" class="practice-list"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the Paper 2 answer</h2>
+          </div>
+          <div id="mistakeList" class="mistake-grid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Mixed algorithm and data structure questions with expandable MS</h2>
+            <p>These are original AS-style questions. The mark schemes use Cambridge-style precision, not copied past-paper wording.</p>
+          </div>
+          <div id="examList" class="exam-list"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Three marks-saving habits</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Trace visibly</strong><span>write intermediate variable values</span></div>
+            <div><strong>Justify choices</strong><span>link structures to operations</span></div>
+            <div><strong>Use Cambridge style</strong><span>pseudocode for exam answers, Java only as support</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Complete a Paper 2 algorithm review sheet</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Trace two loops and include a complete trace table for each.</li>
+            <li>Write one algorithm using selection and iteration to find the largest value in an array.</li>
+            <li>Choose data structures for four scenarios and justify each choice.</li>
+            <li>Write one 6-mark answer explaining normal, boundary and abnormal test data for your algorithm.</li>
+          </ol>
+          <div class="callout">Marking focus: complete method, precise structure choice, and expected results for any test data.</div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

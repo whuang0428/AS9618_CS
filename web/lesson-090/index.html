@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 090 | Paper 1 review: representation and communication</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Sections 1-2</p>
+        <h1>Paper 1 review: representation and communication</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#map">Retrieval map</a>
+        <a href="#representation">Representation</a>
+        <a href="#communication">Communication</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Classifier</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 090 | 45 minutes | Paper 1 Sections 1-2 | 5-minute quiz</p>
+            <h2>Review is not rereading. Review is making your brain retrieve receipts.</h2>
+            <p>
+              This lesson reviews two high-calculation/high-explanation areas: information representation and
+              communication. You will classify mixed prompts, run file-size calculations, and turn vague network
+              explanations into mark-worthy answers.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Calculate</strong><span>storage, image and sound file sizes with correct units</span></div>
+              <div><strong>Explain</strong><span>network concepts using precise cause and consequence</span></div>
+              <div><strong>Correct</strong><span>common exam mistakes in conversion, protocols and packet answers</span></div>
+            </div>
+          </div>
+          <div class="sql-visual" aria-label="Review visual">
+            <span class="keyword">Represent</span><span>bits, bytes, hex, text, images, sound, compression</span>
+            <span class="keyword">Calculate</span><span>width x height x depth; sample rate x resolution x time</span>
+            <span class="keyword">Communicate</span><span>LAN/WAN, packets, protocols, addresses, media</span>
+            <p>If a calculation has no units, it is just a number wearing a suspicious hat.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Before solving, label the question: conversion, file size, compression, network model, packet or protocol.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 1 rewards exact method and units. A correct idea with a missing conversion can lose the final mark.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Bandwidth is not latency. More bandwidth moves more data per second; lower latency reduces delay.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which toolbox should open first?</h2>
+            <p>Mixed review questions look chaotic until you name the tool. After that, the chaos at least fills in an exam grid nicely.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="image">A 640 x 480 image uses 24-bit colour depth.</button>
+            <button class="choice-card" type="button" data-hook="packet">A file is split into numbered pieces before transmission.</button>
+            <button class="choice-card" type="button" data-hook="unicode">A symbol is stored using a character code.</button>
+            <button class="choice-card" type="button" data-hook="dns">A user types a URL and needs the server IP address.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose a card to identify the topic and first method.
+          </div>
+        </section>
+
+        <section class="panel" id="map">
+          <div class="section-title">
+            <p class="eyebrow">Retrieval map</p>
+            <h2>Sections 1-2 knowledge map</h2>
+          </div>
+          <div class="retrieval-grid">
+            <article><strong>Number bases</strong><span>binary, denary, hexadecimal, two's complement, overflow and precision limits</span></article>
+            <article><strong>Storage units</strong><span>bit, nibble, byte, KiB, MiB, GiB, TiB and careful base-2 conversions</span></article>
+            <article><strong>Text</strong><span>ASCII, Unicode, character sets and why more characters require more bit patterns</span></article>
+            <article><strong>Images and sound</strong><span>resolution, colour depth, sample rate, sample resolution, duration and metadata</span></article>
+            <article><strong>Compression</strong><span>lossless, lossy, run-length encoding and dictionary-style compression</span></article>
+            <article><strong>Communication</strong><span>LAN/WAN, client-server, peer-to-peer, packets, protocols, IP/MAC/DNS and media</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="representation">
+          <div class="section-title">
+            <p class="eyebrow">Representation review</p>
+            <h2>Calculation formulas worth retrieving cold</h2>
+          </div>
+          <div class="data-table formula-table" role="table" aria-label="Representation formulas">
+            <div class="table-row table-head" role="row"><div>Question type</div><div>Core method</div><div>Exam reminder</div></div>
+            <div class="table-row" role="row"><div>Image size</div><div><code>width x height x colour depth</code></div><div>Answer starts in bits; convert carefully.</div></div>
+            <div class="table-row" role="row"><div>Sound size</div><div><code>sample rate x sample resolution x duration</code></div><div>Include channels if stereo is stated.</div></div>
+            <div class="table-row" role="row"><div>Binary place value</div><div>sum active powers of 2</div><div>Check bit width and leading zeros.</div></div>
+            <div class="table-row" role="row"><div>Hex conversion</div><div>group binary into 4-bit nibbles</div><div>Do not treat hex as denary digits.</div></div>
+          </div>
+          <div class="callout">Chinese support: colour depth = 色深；sample rate = 采样率；sample resolution = 采样精度；latency = 延迟。</div>
+        </section>
+
+        <section class="panel" id="communication">
+          <div class="section-title">
+            <p class="eyebrow">Communication review</p>
+            <h2>Explanation answers need mechanism and consequence</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Packets</strong><span>Data is split into packets, each with address/control data, then reassembled at the destination.</span></article>
+            <article><strong>Protocols</strong><span>Rules that define how devices format, transmit and interpret data.</span></article>
+            <article><strong>DNS</strong><span>Translates a domain name into an IP address so a device can locate the server.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This review covers Paper 1 Sections 1-2</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Information representation calculations, text/image/sound representation, compression, network concepts, packet switching, protocols, addresses, DNS, media and performance.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 091 reviews hardware and processor fundamentals. This lesson does not cover CPU architecture or system software.</span></div>
+            <div><strong>Assessment rhythm</strong><span>5-minute quiz, mixed retrieval, timed calculation and Cambridge-style mark scheme checking.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive question classifier</p>
+            <h2>Identify the topic and first move</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Mixed question clue
+              <select id="classifierInput">
+                <option value="image">Calculate storage for a 1024 x 768 image with 16-bit colour depth.</option>
+                <option value="sound">Calculate storage for 30 seconds of 44 100 Hz, 16-bit mono sound.</option>
+                <option value="rle">Compress AAAAABBCC using run-length encoding.</option>
+                <option value="packet">Explain why a large file is divided into packets.</option>
+                <option value="dns">Explain the role of DNS when a URL is entered.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+          </div>
+          <div class="feedback" id="classifyResult">Choose a clue and classify the topic.</div>
+        </section>
+
+        <section class="panel" id="calculator">
+          <div class="section-title">
+            <p class="eyebrow">Interactive calculation checker</p>
+            <h2>Calculate image or sound storage</h2>
+          </div>
+          <div class="input-grid">
+            <label>
+              Type
+              <select id="calcType">
+                <option value="image">Image</option>
+                <option value="sound">Sound</option>
+              </select>
+            </label>
+            <label>Value A <input type="number" id="valueA" value="640" /></label>
+            <label>Value B <input type="number" id="valueB" value="480" /></label>
+            <label>Bits/sample or depth <input type="number" id="valueC" value="24" /></label>
+            <button class="primary-button" type="button" id="calcBtn">Calculate</button>
+          </div>
+          <div class="callout">For image: A = width, B = height, C = colour depth. For sound: A = sample rate, B = duration seconds, C = sample resolution.</div>
+          <div class="result-table" id="calcResult">Run a calculation to see bits, bytes and KiB/MiB.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Annotate method marks, not just answers</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="image">Image size</button>
+            <button class="tab" type="button" data-example="sound">Sound size</button>
+            <button class="tab" type="button" data-example="packet">Packets</button>
+            <button class="tab" type="button" data-example="dns">DNS</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>5-minute quiz and mixed retrieval</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair weak Paper 1 answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style review with expandable MS</h2>
+            <p>These questions mix representation calculations and communication explanations. The MS rewards method, units and exact mechanism.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Review checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Label</strong><span>Recognise the topic before solving.</span></div>
+            <div><strong>Method</strong><span>Show calculation steps and units for representation questions.</span></div>
+            <div><strong>Mechanism</strong><span>Explain what happens and why in communication questions.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Calculation set</strong>
+              <span>Complete two image file-size calculations and two sound file-size calculations. Show bits, bytes and final unit conversion.</span>
+            </article>
+            <article>
+              <strong>Task 2: Communication explanations</strong>
+              <span>Write 3-mark explanations for packet switching, DNS and HTTPS. Each answer must include mechanism and consequence.</span>
+            </article>
+            <article>
+              <strong>Task 3: Improve weak answers</strong>
+              <span>Rewrite: "Bandwidth and latency are both about speed." Use precise definitions and a scenario.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

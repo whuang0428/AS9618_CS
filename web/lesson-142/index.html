@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 142 | Software development lifecycle models</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 12</p>
+        <h1>Software development lifecycle models</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#purpose">Purpose</a>
+        <a href="#stages">Lifecycle stages</a>
+        <a href="#waterfall">Waterfall</a>
+        <a href="#iterative">Iterative</a>
+        <a href="#agile">Agile</a>
+        <a href="#compare">Comparison</a>
+        <a href="#artefacts">Artefacts</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#model-tool">Model selector</a>
+        <a href="#order-tool">Order checker</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Mistakes</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 142 | 45 minutes | Paper 2 Section 12 | informal questioning</p>
+            <h2>The lifecycle is not a poster. It is how a project avoids becoming an expensive shrug.</h2>
+            <p>
+              Software development lifecycle models describe how software is planned, produced, tested, evaluated and maintained.
+              The key idea is not memorising stage names like a spell; it is explaining why each stage matters and when feedback
+              may send the project back to an earlier stage. Chinese support: lifecycle 生命周期, requirements 需求, maintenance 维护。
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Order</strong><span>analysis, design, implementation, testing, evaluation and maintenance</span></div>
+              <div><strong>Compare</strong><span>waterfall, iterative and agile-style development ideas</span></div>
+              <div><strong>Explain</strong><span>how weak requirements or skipped testing affect the final system</span></div>
+            </div>
+          </div>
+          <div class="lifecycle-visual" aria-label="Lifecycle visual">
+            <div><strong>Analysis</strong><span>requirements</span><em>ask before coding</em></div>
+            <div><strong>Design</strong><span>solution plan</span><em>interfaces, data, algorithms</em></div>
+            <div><strong>Implementation</strong><span>build</span><em>code the design</em></div>
+            <div><strong>Testing</strong><span>evidence</span><em>find faults, feed back</em></div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every stage, ask: “What is produced, who uses it, and what goes wrong if it is weak?”</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Section 12 answers often need explanation, not code. The marks come from linking lifecycle activity to project risk.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>The lifecycle is not always a one-way checklist. Testing, evaluation and maintenance can reveal a need to revisit design or requirements.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A client says: “Make a user-friendly booking system.” What should happen first?</h2>
+            <p>The keyboard is ready. The requirements are not. Choose the sensible first move.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="code">Start coding screens</button>
+            <button class="choice-card" type="button" data-hook="ask">Analyse requirements with the client</button>
+            <button class="choice-card" type="button" data-hook="test">Run acceptance testing</button>
+            <button class="choice-card" type="button" data-hook="maintain">Begin maintenance</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the stage that turns vague wishes into usable requirements.</div>
+        </section>
+
+        <section class="panel" id="purpose">
+          <div class="section-title">
+            <p class="eyebrow">Purpose</p>
+            <h2>Lifecycle models give structure to a software project</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Plan</h3><p>Identify the problem, users, requirements and constraints before building.</p></article>
+            <article><h3>Control</h3><p>Make progress visible through stages, documents and review points.</p></article>
+            <article><h3>Improve</h3><p>Use testing and evaluation to identify faults or missing requirements.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" id="stages">
+          <div class="section-title">
+            <p class="eyebrow">Lifecycle stages</p>
+            <h2>Common stages and what each produces</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Lifecycle stages">
+            <div class="table-row table-head"><div>Stage</div><div>Main activity</div><div>Typical artefact</div><div>Risk if weak</div></div>
+            <div class="table-row"><div>Analysis</div><div>find user needs and requirements</div><div>requirements specification</div><div>wrong system is built</div></div>
+            <div class="table-row"><div>Design</div><div>plan data, interface and algorithms</div><div>design specification</div><div>implementation lacks direction</div></div>
+            <div class="table-row"><div>Implementation</div><div>code the system</div><div>program modules</div><div>design not realised correctly</div></div>
+            <div class="table-row"><div>Testing</div><div>find faults and check requirements</div><div>test plan/results</div><div>faults reach users</div></div>
+            <div class="table-row"><div>Evaluation</div><div>judge whether objectives were met</div><div>evaluation report</div><div>unmet needs are ignored</div></div>
+            <div class="table-row"><div>Maintenance</div><div>fix, adapt or improve after release</div><div>updates/change log</div><div>system becomes unsuitable</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="waterfall">
+          <div class="section-title">
+            <p class="eyebrow">Waterfall model</p>
+            <h2>Waterfall moves through stages in a planned sequence</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Useful when</h3>
+              <p>Requirements are stable, the project is well understood, and documentation/sign-off are important.</p>
+            </article>
+            <article>
+              <h3>Risk</h3>
+              <p>Late requirement changes can be costly because earlier stages may need to be revisited.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="iterative">
+          <div class="section-title">
+            <p class="eyebrow">Iterative development</p>
+            <h2>Iterative models build, review and refine through cycles</h2>
+          </div>
+          <div class="cycle-strip" aria-label="Iterative cycle">
+            <span>Analyse</span><span>Design</span><span>Build</span><span>Test</span><span>Review</span>
+          </div>
+          <div class="callout">Each iteration can improve requirements, design or implementation. The loop is not indecision; it is controlled learning.</div>
+        </section>
+
+        <section class="panel" id="agile">
+          <div class="section-title">
+            <p class="eyebrow">Agile-style idea</p>
+            <h2>Agile development emphasises short cycles and user feedback</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Frequent delivery</h3><p>Small working increments are produced and reviewed.</p></article>
+            <article><h3>User feedback</h3><p>Users can comment early, before the wrong system becomes large.</p></article>
+            <article><h3>Change handling</h3><p>Changing requirements can be handled more flexibly than in a rigid sequence.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Comparison</p>
+            <h2>Choose a model based on the project, not a favourite buzzword</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Lifecycle model comparison">
+            <div class="table-row table-head"><div>Situation</div><div>Suitable approach</div><div>Reason</div></div>
+            <div class="table-row"><div>stable legal payroll rules</div><div>waterfall or structured model</div><div>clear requirements and documentation matter</div></div>
+            <div class="table-row"><div>new app with uncertain user preferences</div><div>iterative/agile-style model</div><div>feedback can refine requirements</div></div>
+            <div class="table-row"><div>safety-critical control system</div><div>planned lifecycle with strong testing</div><div>risk and evidence need tight control</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="artefacts">
+          <div class="section-title">
+            <p class="eyebrow">Artefacts</p>
+            <h2>Exam answers often mention documents or outputs from stages</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Lifecycle artefacts">
+            <div class="table-row table-head"><div>Document/output</div><div>Stage</div><div>Use</div></div>
+            <div class="table-row"><div>requirements specification</div><div>analysis</div><div>states what system must do</div></div>
+            <div class="table-row"><div>design specification</div><div>design</div><div>guides implementation</div></div>
+            <div class="table-row"><div>test plan and results</div><div>testing</div><div>provide evidence against expected results</div></div>
+            <div class="table-row"><div>user documentation</div><div>implementation/release</div><div>helps users operate the system</div></div>
+            <div class="table-row"><div>maintenance log</div><div>maintenance</div><div>records fixes and changes</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>This lesson introduces Section 12 software development lifecycle models</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>lifecycle stages, artefacts, waterfall, iterative and agile-style ideas</span></div>
+            <div><strong>Covered</strong><span>why feedback loops matter during testing, evaluation and maintenance</span></div>
+            <div><strong>Not this lesson</strong><span>detailed project management charts, coding techniques or full testing plans</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="model-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive model selector</p>
+            <h2>Choose a project situation and compare model suitability</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Situation
+              <select id="modelSelect">
+                <option value="stable">Stable requirements, formal sign-off required</option>
+                <option value="uncertain">Unclear user preferences, early feedback needed</option>
+                <option value="critical">High-risk system, strong evidence and testing needed</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="modelBtn">Suggest model</button>
+          </div>
+          <div id="modelOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="order-tool">
+          <div class="section-title">
+            <p class="eyebrow">Stage order checker</p>
+            <h2>Spot the stage that should usually happen first</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Pair
+              <select id="orderSelect">
+                <option value="analysis-design">Analysis or design?</option>
+                <option value="design-code">Design or implementation?</option>
+                <option value="test-maintain">Testing or maintenance?</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="orderBtn">Check order</button>
+          </div>
+          <div id="orderOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Apply the lifecycle to realistic project decisions</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab-button active" type="button" data-example="booking">Booking system</button>
+            <button class="tab-button" type="button" data-example="change">Changing requirements</button>
+            <button class="tab-button" type="button" data-example="maintenance">Maintenance</button>
+          </div>
+          <div id="exampleOutput" class="example-output"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant checking: lifecycle terms and consequences</h2>
+          </div>
+          <div id="practiceList" class="practice-list"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix weak lifecycle explanations</h2>
+          </div>
+          <div id="mistakeList" class="mistake-grid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Cambridge-style lifecycle questions with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. They do not copy past paper questions.</p>
+          </div>
+          <div id="examList" class="exam-list"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What to remember</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Stages</strong><span>analysis, design, implementation, testing, evaluation and maintenance</span></div>
+            <div><strong>Models</strong><span>waterfall is planned; iterative/agile-style models use cycles and feedback</span></div>
+            <div><strong>Marks</strong><span>link each stage to an artefact, a user, and a risk if skipped</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Use the lifecycle, do not just list it</h2>
+          </div>
+          <ol class="homework-list">
+            <li>For a school booking system, write two measurable requirements and state which lifecycle stage produces them.</li>
+            <li>Compare waterfall and iterative development for a mobile app with uncertain user preferences.</li>
+            <li>Answer a 6-mark question explaining why testing and evaluation may send a project back to design.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

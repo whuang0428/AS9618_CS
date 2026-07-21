@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 025 | Network performance, latency, bandwidth and congestion</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
+        <h1>Network performance, latency, bandwidth and congestion</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concepts">Core terms</a>
+        <a href="#factors">Performance factors</a>
+        <a href="#calculation">Calculation</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Estimator</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 025 | 45 minutes | 5-minute quiz</p>
+            <h2>"Fast internet" is not one thing. It is several bottlenecks wearing one coat.</h2>
+            <p>
+              This lesson explains how bandwidth, latency and congestion affect network
+              performance. Students learn to diagnose a scenario, perform simple transfer
+              time calculations, and write precise Cambridge-style explanations.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>bandwidth, latency, congestion, throughput and packet loss in context</span></div>
+              <div><strong>Calculate</strong><span>simple transfer time using file size and bandwidth</span></div>
+              <div><strong>Explain</strong><span>why a network feels slow using cause, symptom and consequence</span></div>
+            </div>
+          </div>
+          <div class="performance-card" aria-label="Network performance concept">
+            <span>capacity + delay + traffic = user experience</span>
+            <p>Bandwidth is the pipe size. Latency is the wait. Congestion is the queue.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask students to describe the symptom first: slow download, laggy call, delayed page load or dropped video frames.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam questions reward exact causes. "The network is slow" is a complaint, not an explanation.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>High bandwidth does not remove latency. A huge road still has travel time, and sometimes everyone decided to drive at once.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A video call looks sharp but everyone replies two seconds late. Which factor is most suspicious?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="latency">Latency, because delay matters even if the picture quality is good</button>
+            <button class="choice-card" type="button" data-hook="bandwidth">Bandwidth, because all problems are bandwidth if we say it confidently</button>
+            <button class="choice-card" type="button" data-hook="storage">Cloud storage, because video files are large</button>
+            <button class="choice-card" type="button" data-hook="hex">Hexadecimal, because two seconds is basically 10₂ seconds</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick the factor that explains delay rather than image quality.
+          </div>
+        </section>
+
+        <section class="panel" id="concepts">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Core performance terms</h2>
+          </div>
+          <div class="concept-grid">
+            <article class="concept-card">
+              <h3>Bandwidth</h3>
+              <p>The maximum amount of data that can be transmitted over a connection per second.</p>
+              <p><strong>Typical units:</strong> bits per second, Mbps, Gbps.</p>
+            </article>
+            <article class="concept-card">
+              <h3>Latency</h3>
+              <p>The delay before data starts to arrive or before a response is received.</p>
+              <p><strong>Typical units:</strong> milliseconds (ms).</p>
+            </article>
+            <article class="concept-card">
+              <h3>Congestion</h3>
+              <p>Occurs when too much data is trying to use part of a network, causing queues, delay or packet loss.</p>
+              <p><strong>Symptom:</strong> performance worsens when many users/devices compete.</p>
+            </article>
+            <article class="concept-card">
+              <h3>Throughput</h3>
+              <p>The actual amount of data successfully transferred per second, often lower than theoretical bandwidth.</p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: bandwidth = 带宽；latency = 延迟；congestion = 拥塞；throughput = 实际吞吐量；packet loss = 丢包。</div>
+        </section>
+
+        <section class="panel" id="factors">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Factors that affect performance</h2>
+            <p>Good answers name a factor and explain its effect. "It becomes slower" needs a cause.</p>
+          </div>
+          <div class="factor-grid">
+            <article>
+              <h3>Transmission medium</h3>
+              <p>Fibre may provide high bandwidth and low interference; wireless may vary with distance, obstacles and interference.</p>
+            </article>
+            <article>
+              <h3>Number of users</h3>
+              <p>More users can share the same capacity, increasing congestion and reducing throughput per user.</p>
+            </article>
+            <article>
+              <h3>Distance and route</h3>
+              <p>Longer physical distance and more hops can increase latency.</p>
+            </article>
+            <article>
+              <h3>Hardware and server load</h3>
+              <p>Slow routers, overloaded servers or weak wireless access points can become bottlenecks.</p>
+            </article>
+            <article>
+              <h3>Packet loss and retransmission</h3>
+              <p>If packets are lost, data may need to be resent, increasing delay and reducing effective throughput.</p>
+            </article>
+            <article>
+              <h3>Protocol overhead</h3>
+              <p>Error checking, encryption and headers are useful, but they add extra data or processing.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="calculation">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Simple transfer time calculation</h2>
+          </div>
+          <div class="formula-box">
+            <p><strong>Transfer time = file size in bits / bandwidth in bits per second</strong></p>
+            <p>Remember: <code>1 byte = 8 bits</code>. A 50 MB file is not 50 Mb. That capital B is doing real work.</p>
+          </div>
+          <div class="worked-mini">
+            <h3>Mini example</h3>
+            <p>A 25 MB file is downloaded over a 10 Mbps link.</p>
+            <ol>
+              <li>Convert file size: <code>25 MB x 8 = 200 Mb</code>.</li>
+              <li>Divide by bandwidth: <code>200 Mb / 10 Mbps = 20 seconds</code>.</li>
+              <li>This is an ideal estimate; real throughput may be lower due to congestion and overhead.</li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Bandwidth as network capacity/data rate and transfer-time calculation.</span></div>
+            <div><strong>Covered</strong><span>Latency as delay affecting response time, calls, gaming and remote access.</span></div>
+            <div><strong>Covered</strong><span>Congestion as excessive traffic causing queues, packet loss and lower throughput.</span></div>
+            <div><strong>Covered</strong><span>Factors affecting performance: users, distance, medium, hardware, server load and retransmission.</span></div>
+            <div><strong>Boundary</strong><span>Transmission media were introduced in Lesson 022; this lesson focuses on performance effects.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Transfer time estimator</h2>
+          </div>
+          <div class="calculator-grid">
+            <label>
+              File size
+              <input type="number" min="0" step="0.1" id="fileSizeInput" value="25" />
+            </label>
+            <label>
+              Unit
+              <select id="fileUnitInput">
+                <option value="MB">MB</option>
+                <option value="MiB">MiB</option>
+                <option value="Mb">Mb</option>
+              </select>
+            </label>
+            <label>
+              Bandwidth (Mbps)
+              <input type="number" min="0" step="0.1" id="bandwidthInput" value="10" />
+            </label>
+            <label>
+              Latency estimate (ms)
+              <input type="number" min="0" step="1" id="latencyInput" value="40" />
+            </label>
+            <button type="button" id="calculateBtn">Estimate</button>
+          </div>
+          <div class="result-box" id="calcResult" aria-live="polite"></div>
+          <div class="method-box" id="calcMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="download">Download time</button>
+            <button class="tab" type="button" data-example="gaming">Gaming delay</button>
+            <button class="tab" type="button" data-example="congestion">Shared network</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak performance answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"Bandwidth is how quickly the first bit arrives."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">That describes latency. Bandwidth is the maximum amount of data that can be transmitted per second.</p>
+            </article>
+            <article>
+              <p class="wrong">"A 40 MB file over 20 Mbps takes 2 seconds."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">40 MB = 320 Mb. 320 Mb / 20 Mbps = 16 seconds, before real-world overheads.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Marks come from precise terms, correct units and cause-to-effect explanation.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Diagnose the bottleneck</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Bandwidth</strong><span>Capacity/data rate, usually measured in bits per second.</span></div>
+            <div><strong>Latency</strong><span>Delay before response/data arrival, usually measured in milliseconds.</span></div>
+            <div><strong>Congestion</strong><span>Too much traffic for network capacity, causing queues, loss and delay.</span></div>
+            <div><strong>Throughput</strong><span>Actual successful transfer rate, often below theoretical bandwidth.</span></div>
+            <div><strong>Calculation</strong><span>Transfer time = file size in bits / bandwidth in bits per second.</span></div>
+            <div><strong>Exam answer</strong><span>State cause -> explain symptom -> link to scenario consequence.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create flashcards for bandwidth, latency, congestion, throughput and packet loss. Include units where useful.</li>
+            <li>Calculate the ideal transfer time for a 120 MB file over a 24 Mbps connection. Show byte-to-bit conversion.</li>
+            <li>Write a 4-mark answer explaining why a video call can lag even when the connection has high bandwidth.</li>
+            <li>Write a 5-mark answer explaining how congestion affects a school network at lunchtime.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Calculation:</strong> 120 MB x 8 = 960 Mb; 960 Mb / 24 Mbps = 40 seconds.</p>
+            <p><strong>Video call:</strong> mention latency/jitter, not just bandwidth.</p>
+            <p><strong>Congestion:</strong> many users share capacity, queues form, throughput drops, packets may be delayed or lost.</p>
+            <p><strong>Marking:</strong> units matter. MB and Mb are different.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

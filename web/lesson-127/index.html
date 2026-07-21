@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 127 | IF, CASE and nested selection</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
+        <h1>IF, CASE and nested selection</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#if">IF</a>
+        <a href="#case">CASE</a>
+        <a href="#nested">Nested IF</a>
+        <a href="#choice">IF or CASE</a>
+        <a href="#trace">Trace</a>
+        <a href="#java">Java support</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#path">Path tracer</a>
+        <a href="#chooser">Construct chooser</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 127 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
+            <h2>Selection is the algorithm saying, "Depends."</h2>
+            <p>
+              IF handles conditions. CASE handles clear choices from one expression. Nested selection handles decisions
+              inside decisions. The exam skill is not just writing keywords; it is making every possible input land on
+              the correct path without falling through a missing ELSE like a badly labelled lift.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Write</strong><span>IF, CASE and nested IF in Cambridge-style pseudocode</span></div>
+              <div><strong>Choose</strong><span>the most suitable selection structure for a scenario</span></div>
+              <div><strong>Trace</strong><span>which branch runs for normal, boundary and invalid inputs</span></div>
+            </div>
+          </div>
+          <div class="selection-visual" aria-label="Selection visual">
+            <div><strong>IF</strong><span>true path / false path</span></div>
+            <div><strong>CASE</strong><span>choice A / B / OTHERWISE</span></div>
+            <div><strong>Nested</strong><span>decision inside a decision</span></div>
+            <p>Every branch needs a reason to exist and a way to end.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask students to name the condition and predict the output before checking the syntax.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Selection errors often appear only on boundary or invalid test data, exactly where exam questions like to stand.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>CASE is not a magic replacement for every IF. It works best when one expression has clear discrete values.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which output appears?</h2>
+            <p>Given <code>Mark = 50</code>, click the branch that should run.</p>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Pseudocode</h3>
+              <pre><code>IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit needed"
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>Choose the path</h3>
+              <div class="hook-grid">
+                <button class="choice-card" type="button" data-hook="pass">Pass branch</button>
+                <button class="choice-card" type="button" data-hook="resit">Resit branch</button>
+                <button class="choice-card" type="button" data-hook="both">Both branches</button>
+                <button class="choice-card" type="button" data-hook="none">No branch</button>
+              </div>
+            </article>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the branch for Mark = 50.</div>
+        </section>
+
+        <section class="panel" id="if">
+          <div class="section-title">
+            <p class="eyebrow">IF selection</p>
+            <h2>Use IF when a Boolean condition decides the route</h2>
+            <p>Chinese support: condition 条件, branch 分支, boundary value 边界值。</p>
+          </div>
+          <div class="data-table if-table" role="table" aria-label="IF selection forms">
+            <div class="table-row table-head"><div>Form</div><div>Use when</div><div>Cambridge-style pattern</div></div>
+            <div class="table-row"><div>IF only</div><div>action is needed only when condition is true</div><div><code>IF Found THEN ... ENDIF</code></div></div>
+            <div class="table-row"><div>IF...ELSE</div><div>two paths are needed</div><div><code>IF Mark &gt;= 50 THEN ... ELSE ... ENDIF</code></div></div>
+            <div class="table-row"><div>Nested IF</div><div>a second decision depends on the first decision</div><div><code>IF Age &gt;= 18 THEN IF Member THEN ... ENDIF ENDIF</code></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="case">
+          <div class="section-title">
+            <p class="eyebrow">CASE selection</p>
+            <h2>Use CASE for clear values of one expression</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Menu choice</h3>
+              <pre><code>INPUT Choice
+CASE Choice OF
+    1 : OUTPUT "Add record"
+    2 : OUTPUT "Delete record"
+    3 : OUTPUT "Search"
+    OTHERWISE OUTPUT "Invalid choice"
+ENDCASE</code></pre>
+            </article>
+            <article>
+              <h3>Why CASE fits</h3>
+              <p>One variable, <code>Choice</code>, is compared with several discrete values. OTHERWISE handles unexpected input.</p>
+              <div class="callout">If each branch needs a different complex condition, IF is usually clearer than CASE.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="nested">
+          <div class="section-title">
+            <p class="eyebrow">Nested selection</p>
+            <h2>A decision inside another decision</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Discount example</h3>
+              <pre><code>IF Age &gt;= 18 THEN
+    IF Member = TRUE THEN
+        Discount &lt;- 0.20
+    ELSE
+        Discount &lt;- 0.10
+    ENDIF
+ELSE
+    Discount &lt;- 0.05
+ENDIF</code></pre>
+            </article>
+            <article>
+              <h3>Trace the paths</h3>
+              <div class="data-table trace-table" role="table" aria-label="Nested IF paths">
+                <div class="table-row table-head"><div>Age</div><div>Member</div><div>Discount</div></div>
+                <div class="table-row"><div>20</div><div>TRUE</div><div>0.20</div></div>
+                <div class="table-row"><div>20</div><div>FALSE</div><div>0.10</div></div>
+                <div class="table-row"><div>17</div><div>TRUE</div><div>0.05</div></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="choice">
+          <div class="section-title">
+            <p class="eyebrow">Choosing IF or CASE</p>
+            <h2>Start with the shape of the decision</h2>
+          </div>
+          <div class="data-table choose-table" role="table" aria-label="IF CASE choice">
+            <div class="table-row table-head"><div>Situation</div><div>Usually better</div><div>Reason</div></div>
+            <div class="table-row"><div>Pass if mark is at least 50</div><div>IF</div><div>uses a relational comparison</div></div>
+            <div class="table-row"><div>Menu option 1, 2, 3 or invalid</div><div>CASE</div><div>one variable has discrete values</div></div>
+            <div class="table-row"><div>Adult members get one discount; adult non-members another</div><div>Nested IF</div><div>second decision depends on the first</div></div>
+            <div class="table-row"><div>Grade A/B/C/D with ranges of marks</div><div>IF or nested IF</div><div>ranges require comparisons</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Trace method</p>
+            <h2>Test normal, boundary and invalid values</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Normal</strong><span>a typical value in a branch, for example Mark = 72</span></div>
+            <div><strong>Boundary</strong><span>a value on the edge, for example Mark = 50</span></div>
+            <div><strong>Invalid</strong><span>a value that should be rejected or handled by OTHERWISE</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="java">
+          <div class="section-title">
+            <p class="eyebrow">Java support only</p>
+            <h2>Same idea, different syntax</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>CASE Choice OF
+    1 : OUTPUT "Add"
+    2 : OUTPUT "Delete"
+    OTHERWISE OUTPUT "Invalid"
+ENDCASE</code></pre>
+            </article>
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>switch (choice) {
+    case 1 -> System.out.println("Add");
+    case 2 -> System.out.println("Delete");
+    default -> System.out.println("Invalid");
+}</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>IF</strong><span>Boolean conditions, true/false paths, ELSE, ENDIF and boundary tests</span></div>
+            <div><strong>CASE</strong><span>discrete choices, OTHERWISE, ENDCASE and menu-style decisions</span></div>
+            <div><strong>Nested selection</strong><span>decisions inside decisions, indentation, closing every IF</span></div>
+            <div><strong>Paper 2 style</strong><span>Cambridge pseudocode first; Java switch/if is support only</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="path">
+          <div class="section-title">
+            <p class="eyebrow">Interactive path tracer</p>
+            <h2>Trace a nested IF</h2>
+          </div>
+          <div class="converter-grid">
+            <label for="ageInput">
+              Age
+              <input id="ageInput" type="number" value="20" />
+            </label>
+            <label for="memberSelect">
+              Member
+              <select id="memberSelect">
+                <option value="true">TRUE</option>
+                <option value="false">FALSE</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="traceBtn">Trace path</button>
+          </div>
+          <div class="trace-output" id="traceResult">Enter values to trace which branch runs.</div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Construct chooser</p>
+            <h2>IF, CASE or nested IF?</h2>
+          </div>
+          <div class="converter-grid two-control">
+            <label for="scenarioSelect">
+              Scenario
+              <select id="scenarioSelect"></select>
+            </label>
+            <button class="primary-button" type="button" id="chooseBtn">Choose</button>
+          </div>
+          <div class="trace-output" id="chooseResult">Choose a scenario to see the recommended selection structure.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Selection examples with trace thinking</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="ifPass">IF pass mark</button>
+            <button class="tab" type="button" data-example="caseMenu">CASE menu</button>
+            <button class="tab" type="button" data-example="nestedDiscount">Nested discount</button>
+            <button class="tab" type="button" data-example="rangeGrade">Grade ranges</button>
+          </div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>10 quick checks</h2>
+            <p>Use short answers for the check box. Expand the answer for full wording.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Selection mistakes that cost marks</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>IF, CASE and nested selection</h2>
+            <p>Original Cambridge-style questions. Try first, then expand the MS.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Selection checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Condition</strong><span>What exact expression decides the path?</span></div>
+            <div><strong>Coverage</strong><span>Do all normal, boundary and invalid inputs have a route?</span></div>
+            <div><strong>Closure</strong><span>Are IF, CASE and nested blocks closed correctly?</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Selection practice</h2>
+          </div>
+          <ol class="homework-list">
+            <li><strong>IF task</strong><span>Write pseudocode for a login attempt: output Allowed only if UsernameFound = TRUE and PasswordCorrect = TRUE.</span></li>
+            <li><strong>CASE task</strong><span>Write a menu CASE for choices 1 to 4 and an OTHERWISE invalid choice branch.</span></li>
+            <li><strong>Trace task</strong><span>Trace the nested discount example for Age = 18 / Member = TRUE and Age = 17 / Member = FALSE.</span></li>
+            <li><strong>Boundary task</strong><span>Write three test values for a grade boundary at 70 and state the expected branch for each.</span></li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

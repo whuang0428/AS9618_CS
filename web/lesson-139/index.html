@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 139 | Robust program design: validation and modularity</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
+        <h1>Robust program design: validation and modularity</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#robust">Robust design</a>
+        <a href="#validation">Validation</a>
+        <a href="#checks">Check types</a>
+        <a href="#modularity">Modularity</a>
+        <a href="#parameters">Parameters</a>
+        <a href="#integration">Combine ideas</a>
+        <a href="#java">Java support</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#validator">Validator</a>
+        <a href="#module-tool">Module chooser</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Mistakes</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 139 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
+            <h2>Robust programs expect trouble and still behave politely.</h2>
+            <p>
+              Robust design means writing programs that cope with invalid input, reduce avoidable errors and remain easy to
+              understand. This lesson links <strong>validation</strong> with <strong>modularity</strong>: check data before using it,
+              and split the solution into clear procedures and functions. Chinese support: robust 健壮的, validation 验证,
+              modularity 模块化, parameter 参数。
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Validate</strong><span>input using range, type, length and presence checks</span></div>
+              <div><strong>Modularise</strong><span>split a program into focused procedures/functions</span></div>
+              <div><strong>Justify</strong><span>how robust design improves reliability and maintainability</span></div>
+            </div>
+          </div>
+          <div class="robust-visual" aria-label="Robust design visual">
+            <div><strong>INPUT</strong><span>Mark</span><em>do not trust it yet</em></div>
+            <div><strong>VALIDATE</strong><span>0 to 100</span><em>reject impossible data</em></div>
+            <div><strong>PROCESS</strong><span>CalculateGrade()</span><em>single clear job</em></div>
+            <div><strong>OUTPUT</strong><span>Grade</span><em>after checks pass</em></div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Keep asking: “What could go wrong with this input?” Then ask: “Which module should be responsible for handling it?”</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam answers often need causes and consequences: validation prevents invalid data being processed; modularity makes code easier to test and maintain.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Validation is not the same as verification. Validation checks whether data is reasonable; verification checks whether data was copied or entered accurately.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A user enters <code>banana</code> as a mark. What should a robust program do first?</h2>
+            <p>The program should not attempt arithmetic with fruit. Choose the strongest first action.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="calculate">Calculate grade immediately</button>
+            <button class="choice-card" type="button" data-hook="validate">Validate the input type and range</button>
+            <button class="choice-card" type="button" data-hook="ignore">Ignore the input and output A</button>
+            <button class="choice-card" type="button" data-hook="verify">Ask another user to verify the mark</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the action that prevents invalid data being processed.</div>
+        </section>
+
+        <section class="panel" id="robust">
+          <div class="section-title">
+            <p class="eyebrow">Robust design</p>
+            <h2>A robust program handles expected misuse without collapsing</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Input checks</h3><p>Reject or handle invalid values before they affect processing.</p></article>
+            <article><h3>Clear modules</h3><p>Give each procedure or function one focused responsibility.</p></article>
+            <article><h3>Useful messages</h3><p>Tell the user what is wrong and what valid input is expected.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" id="validation">
+          <div class="section-title">
+            <p class="eyebrow">Validation</p>
+            <h2>Validation checks whether data is acceptable for the program</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>REPEAT
+    INPUT Mark
+    IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
+        Valid &lt;- TRUE
+    ELSE
+        OUTPUT "Enter a mark from 0 to 100"
+        Valid &lt;- FALSE
+    ENDIF
+UNTIL Valid = TRUE</code></pre>
+            </article>
+            <article>
+              <h3>Reasoning</h3>
+              <p>The loop repeats until acceptable data is entered. The program does not calculate a grade from invalid data.</p>
+              <div class="callout">Robustness is not guessing what the user meant. It is refusing bad data with a calm face.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="checks">
+          <div class="section-title">
+            <p class="eyebrow">Validation check types</p>
+            <h2>Pick the check that matches the rule</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Validation checks">
+            <div class="table-row table-head"><div>Check</div><div>Use</div><div>Example</div><div>Rejects</div></div>
+            <div class="table-row"><div>Range check</div><div>value inside limits</div><div>0 to 100</div><div>-1, 101</div></div>
+            <div class="table-row"><div>Type check</div><div>correct data type</div><div>INTEGER mark</div><div>"banana"</div></div>
+            <div class="table-row"><div>Length check</div><div>correct number of characters</div><div>password 8 to 20</div><div>short or very long password</div></div>
+            <div class="table-row"><div>Presence check</div><div>required data exists</div><div>name not blank</div><div>empty input</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="modularity">
+          <div class="section-title">
+            <p class="eyebrow">Modularity</p>
+            <h2>Modular design splits a solution into smaller named parts</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Less robust structure</h3>
+              <p>All input, validation, calculation and output in one long block. Harder to test, reuse and debug.</p>
+            </article>
+            <article>
+              <h3>More robust structure</h3>
+              <pre><code>Mark &lt;- GetValidMark()
+Grade &lt;- CalculateGrade(Mark)
+OUTPUT Grade</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="parameters">
+          <div class="section-title">
+            <p class="eyebrow">Parameters and return values</p>
+            <h2>Pass data into a module and return only what is needed</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Module responsibilities">
+            <div class="table-row table-head"><div>Module</div><div>Responsibility</div><div>Returns / effect</div></div>
+            <div class="table-row"><div><code>GetValidMark()</code></div><div>input and validate mark</div><div>valid integer mark</div></div>
+            <div class="table-row"><div><code>CalculateGrade(Mark)</code></div><div>turn mark into grade</div><div>grade character/string</div></div>
+            <div class="table-row"><div><code>DisplayResult(Grade)</code></div><div>format output</div><div>output to screen</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="integration">
+          <div class="section-title">
+            <p class="eyebrow">Combine ideas</p>
+            <h2>Validation and modularity support each other</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Function example</h3>
+              <pre><code>FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
+    IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
+        RETURN TRUE
+    ELSE
+        RETURN FALSE
+    ENDIF
+ENDFUNCTION</code></pre>
+            </article>
+            <article>
+              <h3>Why this is robust</h3>
+              <p>The validation rule is written once and can be tested separately. Other code can call the function instead of repeating the condition.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="java">
+          <div class="section-title">
+            <p class="eyebrow">Java support only</p>
+            <h2>Java methods can model modularity, but Cambridge pseudocode remains the exam format</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
+    RETURN Mark &gt;= 0 AND Mark &lt;= 100
+ENDFUNCTION</code></pre>
+            </article>
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>static boolean isValidMark(int mark) {
+    return mark &gt;= 0 &amp;&amp; mark &lt;= 100;
+}</code></pre>
+            </article>
+          </div>
+          <div class="callout">Use Java to practise running code, but use Cambridge-style pseudocode when the exam asks for algorithm design.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>This lesson covers robust design through validation and modularity</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>range, type, length and presence checks</span></div>
+            <div><strong>Covered</strong><span>procedures/functions, parameters and return values for modularity</span></div>
+            <div><strong>Not this lesson</strong><span>full software lifecycle models and formal test plans</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="validator">
+          <div class="section-title">
+            <p class="eyebrow">Interactive validator</p>
+            <h2>Check whether a mark input is robustly acceptable</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Input
+              <input id="markInput" type="text" value="banana" />
+            </label>
+            <button class="primary-button" type="button" id="validateBtn">Validate</button>
+          </div>
+          <div class="trace-output" id="validateOutput" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="module-tool">
+          <div class="section-title">
+            <p class="eyebrow">Module chooser</p>
+            <h2>Choose a module for each responsibility</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Responsibility
+              <select id="moduleSelect">
+                <option value="input">Get and validate a mark</option>
+                <option value="grade">Calculate the grade from a valid mark</option>
+                <option value="output">Display the result</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="moduleBtn">Choose module</button>
+          </div>
+          <div id="moduleOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Design robust code one responsibility at a time</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab-button active" type="button" data-example="validate">Validation loop</button>
+            <button class="tab-button" type="button" data-example="module">Module split</button>
+            <button class="tab-button" type="button" data-example="explain">Explain benefits</button>
+          </div>
+          <div id="exampleOutput" class="example-output"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant checking: answer first, reveal second</h2>
+          </div>
+          <div id="practiceList" class="practice-list"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix weak design decisions</h2>
+          </div>
+          <div id="mistakeList" class="mistake-grid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Cambridge-style wording with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. They do not copy past paper questions.</p>
+          </div>
+          <div id="examList" class="exam-list"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What to remember</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Validation</strong><span>checks that input is acceptable before processing</span></div>
+            <div><strong>Modularity</strong><span>splits code into focused procedures and functions</span></div>
+            <div><strong>Robustness</strong><span>makes programs more reliable, testable and maintainable</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Design before coding</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write Cambridge-style pseudocode for <code>GetValidAge()</code>, where age must be an integer from 11 to 18 inclusive.</li>
+            <li>Split a quiz program into at least four named procedures/functions and state each responsibility.</li>
+            <li>Answer a 6-mark question explaining how validation and modularity both improve robust program design.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

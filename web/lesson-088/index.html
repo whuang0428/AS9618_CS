@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 088 | Validation, verification, security and backup in databases</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
+        <h1>Validation, verification, security and backup in databases</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#validation">Validation</a>
+        <a href="#verification">Verification</a>
+        <a href="#security">Security</a>
+        <a href="#backup">Backup</a>
+        <a href="#trace">Scenario table</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#classifier">Classifier</a>
+        <a href="#checker">Input checker</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 088 | 45 minutes | Paper 1 Section 8 | informal questioning</p>
+            <h2>Bad data enters quietly. Good database controls make it show ID at the door.</h2>
+            <p>
+              This lesson separates four ideas that students often blur together:
+              <code>validation</code>, <code>verification</code>, <code>security</code> and <code>backup</code>.
+              You will choose suitable controls for a database and explain what each control can and cannot guarantee.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Check input</strong><span>apply validation rules such as range, type, presence and format checks</span></div>
+              <div><strong>Confirm accuracy</strong><span>distinguish verification from validation using realistic examples</span></div>
+              <div><strong>Protect data</strong><span>explain access controls, passwords, encryption and backup/recovery</span></div>
+            </div>
+          </div>
+          <div class="sql-visual" aria-label="Database protection visual">
+            <span class="keyword">Validation</span><span>Is it reasonable?</span>
+            <span class="keyword">Verification</span><span>Does it match the source?</span>
+            <span class="keyword">Security</span><span>Who can access it?</span>
+            <span class="keyword">Backup</span><span>Can it be restored?</span>
+            <p>Four different jobs. One messy database trying to survive Monday morning.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use the question "what problem is being prevented?" to choose the correct term before writing the answer.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style questions often reject swapped terms: validation is not the same as verification.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Validation can reject impossible data, but it cannot prove the data is true. A valid phone number can still belong to the wrong person.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A student types age 216 for a school club member. Which control should catch it first?</h2>
+            <p>The database should not need a philosophy degree to decide that 216 is not a likely student age.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="range">Range check on Age</button>
+            <button class="choice-card" type="button" data-hook="double">Double entry of surname</button>
+            <button class="choice-card" type="button" data-hook="password">Password on the database</button>
+            <button class="choice-card" type="button" data-hook="backup">Daily backup</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose the control that checks whether an input value is sensible for the field.
+          </div>
+        </section>
+
+        <section class="panel" id="validation">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Validation checks whether input is sensible or acceptable</h2>
+            <p>Validation applies rules before data is accepted into the database. It reduces errors but cannot prove truth.</p>
+          </div>
+          <div class="data-table rule-table" role="table" aria-label="Validation checks">
+            <div class="table-row table-head" role="row"><div>Check</div><div>Purpose</div><div>Example</div></div>
+            <div class="table-row" role="row"><div>Range check</div><div>Checks a value is within limits</div><div>Age must be 11 to 19</div></div>
+            <div class="table-row" role="row"><div>Type check</div><div>Checks data has the correct data type</div><div>PaymentAmount must be numeric</div></div>
+            <div class="table-row" role="row"><div>Presence check</div><div>Checks required data is not blank</div><div>StudentID must be entered</div></div>
+            <div class="table-row" role="row"><div>Format check</div><div>Checks data follows a pattern</div><div>Email contains suitable structure</div></div>
+            <div class="table-row" role="row"><div>Length check</div><div>Checks number of characters</div><div>Postcode length is acceptable</div></div>
+          </div>
+          <div class="callout">Chinese support: validation = 验证输入是否合理；range check = 范围检查；presence check = 存在性检查。</div>
+        </section>
+
+        <section class="panel" id="verification">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Verification checks data has been copied accurately</h2>
+            <p>Verification compares entered data with the source or repeats entry to reduce transcription errors.</p>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Double entry</strong><span>The same data is entered twice and compared. Useful for passwords or email addresses.</span></article>
+            <article><strong>Proofreading</strong><span>A person checks entered data against the original source document.</span></article>
+            <article><strong>Key distinction</strong><span>Verification checks copying accuracy; it does not decide whether the original source was true.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="security">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Database security restricts access and protects confidentiality</h2>
+            <p>Security controls reduce unauthorised access, accidental damage and inappropriate disclosure of data.</p>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Access rights</strong><span>Different users can view or edit only the data they need.</span></article>
+            <article><strong>Authentication</strong><span>Usernames, passwords and multi-factor methods check user identity.</span></article>
+            <article><strong>Encryption</strong><span>Data is encoded so it is unreadable without the correct key.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="backup">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Backups allow data recovery after loss or corruption</h2>
+            <p>A backup is a separate copy of data kept so the database can be restored after failure, deletion or corruption.</p>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Frequency</strong><span>How often backups are made, such as daily or hourly.</span></article>
+            <article><strong>Location</strong><span>Copies should be stored separately, often off-site or in secure cloud storage.</span></article>
+            <article><strong>Testing</strong><span>A backup is only useful if restoration is tested. Untested backup plans are optimistic fiction.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Scenario table</p>
+            <h2>ClubMember database: spot the protection needed</h2>
+          </div>
+          <div class="data-table member-table" role="table" aria-label="ClubMember table">
+            <div class="table-row table-head" role="row">
+              <div>MemberID</div><div>Name</div><div>Age</div><div>Email</div><div>Payment</div>
+            </div>
+            <div class="table-row" role="row"><div>M01</div><div>Amira Khan</div><div>16</div><div>amira@example.com</div><div>Paid</div></div>
+            <div class="table-row" role="row"><div>M02</div><div>Leo Chen</div><div>216</div><div>leo.example.com</div><div>Paid</div></div>
+            <div class="table-row" role="row"><div>M03</div><div></div><div>15</div><div>maya@example.com</div><div>Unpaid</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson completes the database protection layer</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Validation checks, verification methods, security controls, access rights, encryption, backup purpose, backup frequency and restore testing.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 087 covered SQL data modification. Lesson 089 is the Section 8 review across relational design and SQL.</span></div>
+            <div><strong>Assessment rhythm</strong><span>Includes informal questioning, classification practice and strict Cambridge-style mark schemes.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive classifier</p>
+            <h2>Choose the correct database protection idea</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="age">Reject Age = 216 before saving the record.</option>
+                <option value="emailCopy">Check the typed email address against the paper form.</option>
+                <option value="rights">Only office staff can edit PaymentStatus.</option>
+                <option value="lost">Restore the database after the server storage fails.</option>
+                <option value="encrypt">Make stolen database files unreadable without a key.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+          </div>
+          <div class="feedback" id="classifyResult">Choose a scenario to classify it.</div>
+        </section>
+
+        <section class="panel" id="checker">
+          <div class="section-title">
+            <p class="eyebrow">Interactive input checker</p>
+            <h2>Run simple validation checks</h2>
+          </div>
+          <div class="input-grid">
+            <label>Age <input type="number" id="ageInput" value="216" /></label>
+            <label>Email <input type="text" id="emailInput" value="leo.example.com" /></label>
+            <label>MemberID <input type="text" id="memberInput" value="" /></label>
+            <button class="primary-button" type="button" id="checkBtn">Check inputs</button>
+          </div>
+          <div class="result-table" id="checkResult">Run the checks to see validation feedback.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Choose the control that matches the problem</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="validation">Validation</button>
+            <button class="tab" type="button" data-example="verification">Verification</button>
+            <button class="tab" type="button" data-example="security">Security</button>
+            <button class="tab" type="button" data-example="backup">Backup</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short quiz and core checks</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair weak protection answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style practice with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about using the correct term and consequence.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Protection checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Validation</strong><span>Checks input is sensible before it is accepted.</span></div>
+            <div><strong>Verification</strong><span>Checks entered data matches the source.</span></div>
+            <div><strong>Security and backup</strong><span>Control access and recover data after loss.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Four-control table</strong>
+              <span>Create a table with one example each of validation, verification, security and backup for a school club database.</span>
+            </article>
+            <article>
+              <strong>Task 2: Explain limitations</strong>
+              <span>Write two sentences explaining why validation does not prove data is accurate.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark response</strong>
+              <span>Answer: "Explain how a school could reduce errors and protect a database of student medical details." Use at least three named controls.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

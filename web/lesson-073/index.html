@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 073 | Privacy, surveillance, and data protection</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 7</p>
+        <h1>Privacy, surveillance, and data protection</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#surveillance">Surveillance</a>
+        <a href="#protection">Data protection</a>
+        <a href="#principles">Principles</a>
+        <a href="#method">Answer method</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#scanner">Privacy scanner</a>
+        <a href="#checklist">Protection checklist</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 073 | 45 minutes | Paper 1 Section 7 | Ethics and ownership</p>
+            <h2>Data can be useful. It can also become a diary someone never agreed to write.</h2>
+            <p>
+              This lesson focuses on privacy, surveillance and data protection. Students learn how to
+              analyse what data is collected, why it is collected, who can access it, how long it is kept
+              and what safeguards reduce ethical risk.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Explain</strong><span>privacy, surveillance, personal data and sensitive data</span></div>
+              <div><strong>Assess</strong><span>risks caused by monitoring, tracking and over-collection</span></div>
+              <div><strong>Recommend</strong><span>data protection safeguards with scenario-specific reasons</span></div>
+            </div>
+          </div>
+          <div class="privacy-card" aria-label="Privacy impact chain">
+            <div class="privacy-stack">
+              <span>What data?</span>
+              <span>Why collect it?</span>
+              <span>Who can access it?</span>
+              <span>How long kept?</span>
+              <span>What could go wrong?</span>
+              <span>What safeguards?</span>
+            </div>
+            <p>If the answer to "why do you need this data?" is "because we can", the red flag has arrived early.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every monitoring scenario, ask students to separate useful purpose from unnecessary data collection.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam answers need consequences: privacy loss, misuse, discrimination, reduced trust, or improved safety with safeguards.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not write "data protection means encrypt everything" only. Protection also includes consent, limits, access control, retention and accountability.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A fitness app asks for step count, heart rate, location, contacts and microphone access. Which request is most suspicious for its stated purpose?</h2>
+            <p>The app counting your steps probably does not need to hear your lunch plans.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="microphone">Microphone access, because it is not clearly needed for fitness tracking</button>
+            <button class="choice-card" type="button" data-hook="steps">Step count, because fitness apps should not collect any data</button>
+            <button class="choice-card" type="button" data-hook="heart">Heart rate, because all health data is useless</button>
+            <button class="choice-card" type="button" data-hook="contacts">Contacts, because friends may also enjoy exercise</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Look for purpose limitation and data minimisation.
+          </div>
+        </section>
+
+        <section class="panel" id="privacy">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Privacy is control over personal information</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Privacy</strong><span>The ability to control how personal information is collected, used and shared.</span></article>
+            <article><strong>Personal data</strong><span>Data that can identify a person directly or indirectly.</span></article>
+            <article><strong>Sensitive data</strong><span>Data that could cause greater harm if misused, such as health, biometric or location data.</span></article>
+            <article><strong>Consent</strong><span>A clear agreement to a specific use of data, based on understandable information.</span></article>
+          </div>
+          <div class="callout">Chinese support: privacy = 隐私；personal data = 个人数据；sensitive data = 敏感数据；consent = 同意/授权。</div>
+        </section>
+
+        <section class="panel" id="surveillance">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Surveillance can protect people, but it changes behaviour and trust</h2>
+          </div>
+          <div class="risk-table" role="table" aria-label="Surveillance trade-offs">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Monitoring example</div>
+              <div role="columnheader">Possible benefit</div>
+              <div role="columnheader">Privacy concern</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">CCTV with analytics</div>
+              <div role="cell">Deter crime and support emergency response.</div>
+              <div role="cell">May track people who have done nothing wrong.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">School device monitoring</div>
+              <div role="cell">Detect unsafe websites, bullying or misuse.</div>
+              <div role="cell">May record personal activity if scope is unclear.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Workplace productivity tracking</div>
+              <div role="cell">Identify workload issues and bottlenecks.</div>
+              <div role="cell">May create pressure and reduce trust.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="protection">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Data protection reduces misuse and unnecessary exposure</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Data minimisation</strong><span>Collect only what is necessary for the stated purpose.</span></article>
+            <article><strong>Purpose limitation</strong><span>Use data only for the purpose users were told about.</span></article>
+            <article><strong>Access control</strong><span>Limit who can view, edit or export personal data.</span></article>
+            <article><strong>Retention limit</strong><span>Delete data when it is no longer needed.</span></article>
+            <article><strong>Transparency</strong><span>Explain what data is collected, why and how it is used.</span></article>
+            <article><strong>Security</strong><span>Protect data using measures such as encryption, authentication and audit trails.</span></article>
+            <article><strong>Accuracy</strong><span>Keep personal data correct and allow errors to be corrected.</span></article>
+            <article><strong>Accountability</strong><span>Record and justify processing decisions so misuse can be investigated.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="principles">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Good answers link a principle to a concrete risk</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Data protection principles">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Principle</div>
+              <div role="columnheader">Plain English</div>
+              <div role="columnheader">Scenario use</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Fair and lawful use</div>
+              <div role="cell">Do not mislead users or use data in unexpected harmful ways.</div>
+              <div role="cell">A health app should not secretly sell location patterns.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Data minimisation</div>
+              <div role="cell">Collect less when less is enough.</div>
+              <div role="cell">A step counter may not need contacts or microphone access.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Retention</div>
+              <div role="cell">Do not keep personal data forever by default.</div>
+              <div role="cell">CCTV footage should be deleted after a defined period unless needed.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Access and security</div>
+              <div role="cell">Only authorised people should access protected data.</div>
+              <div role="cell">School monitoring logs should be restricted to safeguarding staff.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="method">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Use a privacy impact answer structure</h2>
+          </div>
+          <div class="flow-grid">
+            <article><strong>1. Data</strong><span>Name the personal or sensitive data being collected.</span></article>
+            <article><strong>2. Purpose</strong><span>Explain why the organisation claims it is needed.</span></article>
+            <article><strong>3. Risk</strong><span>Describe misuse, over-collection, surveillance or unfair effect.</span></article>
+            <article><strong>4. Safeguard</strong><span>Recommend a specific protection and link it to the risk.</span></article>
+          </div>
+          <div class="answer-frame">
+            <strong>Answer frame:</strong>
+            <span>The system collects [data] for [purpose]. This may affect privacy because [risk]. A suitable safeguard is [control], which reduces the risk by [mechanism].</span>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson covers privacy and data protection, not IP law</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Privacy, personal data, sensitive data, surveillance, consent, transparency, data minimisation, purpose limitation, retention, access control and safeguards.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 074 covers intellectual property, copyright, patents and licensing. This lesson only mentions them as outside scope.</span></div>
+            <div><strong>Exam focus</strong><span>Do not say "privacy is bad/good". Explain purpose, risk, stakeholder impact and protection.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="scanner">
+          <div class="section-title">
+            <p class="eyebrow">Interactive privacy scanner</p>
+            <h2>Find the privacy risk in a data collection scenario</h2>
+            <p>Select a scenario and compare data collected, risk and safeguard.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="fitness">Fitness app asks for microphone and contacts.</option>
+                <option value="school">School monitors all browsing on student devices.</option>
+                <option value="cctv">City uses CCTV analytics in public spaces.</option>
+                <option value="workplace">Employer tracks every keystroke and screenshot.</option>
+                <option value="shop">Shop uses facial recognition for theft prevention.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="scanBtn">Scan risk</button>
+          </div>
+          <div class="result-box" id="scanResult" aria-live="polite"></div>
+          <div class="method-box" id="scanRisk"></div>
+          <div class="reject-box" id="scanSafeguard"></div>
+        </section>
+
+        <section class="panel" id="checklist">
+          <div class="section-title">
+            <p class="eyebrow">Interactive data protection checklist</p>
+            <h2>Choose a weak policy and see what is missing</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Weak policy
+              <select id="policyInput">
+                <option value="forever">Keep all user logs forever because storage is cheap.</option>
+                <option value="everyone">Allow all staff to download full customer records.</option>
+                <option value="hidden">Collect location data without mentioning it in the app.</option>
+                <option value="extra">Collect contacts for a single-player fitness challenge.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="policyBtn">Check principle</button>
+          </div>
+          <div class="result-box" id="policyResult" aria-live="polite"></div>
+          <div class="method-box" id="policyReason"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four model answers with privacy impact reasoning</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="fitness">Fitness app</button>
+            <button class="tab" type="button" data-example="school">School monitoring</button>
+            <button class="tab" type="button" data-example="city">Public CCTV</button>
+            <button class="tab" type="button" data-example="workplace">Workplace tracking</button>
+          </div>
+          <div class="example-box" id="exampleBox" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Check the vocabulary before writing full explanations</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix privacy answers that are too vague or too absolute</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Cambridge-style privacy and data protection questions with expandable MS</h2>
+            <p>Attempt first. Then open the mark scheme and check whether your answer links data, purpose, risk and safeguard.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Privacy and data protection in six exam-ready ideas</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Privacy</strong><span>People should have control over personal information.</span></div>
+            <div><strong>Surveillance</strong><span>Monitoring can protect people but may reduce privacy and trust.</span></div>
+            <div><strong>Minimisation</strong><span>Collect only what is necessary for a clear purpose.</span></div>
+            <div><strong>Transparency</strong><span>Tell users what is collected, why and how it is used.</span></div>
+            <div><strong>Retention</strong><span>Do not keep personal data longer than needed.</span></div>
+            <div><strong>Safeguards</strong><span>Use access control, encryption, audit trails and accountability.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Practise privacy impact analysis</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Data audit table</strong>
+              <span>Choose one app or school system. Make a table with columns: data collected, purpose, privacy risk, protection, retention period.</span>
+            </article>
+            <article>
+              <strong>Task 2: Rewrite a weak answer</strong>
+              <span>Rewrite: "The app should not collect data because privacy." Add the exact data, purpose, stakeholder, risk and one safeguard.</span>
+            </article>
+            <article>
+              <strong>Task 3: Timed response</strong>
+              <span>Answer in 8 minutes: "Evaluate the use of monitoring software in a school." Include one benefit, one privacy concern and two safeguards.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

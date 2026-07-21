@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 099 | Decomposition and abstraction</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>Decomposition and abstraction</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#decomposition">Decomposition</a>
+        <a href="#abstraction">Abstraction</a>
+        <a href="#pattern">Design pattern</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#sorter">Task sorter</a>
+        <a href="#filter">Abstraction filter</a>
+        <a href="#builder">Module builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 099 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
+            <h2>Big problems stop being scary when you give each part a sensible job.</h2>
+            <p>
+              Decomposition breaks a problem into smaller sub-problems. Abstraction keeps the important details and
+              ignores details that do not affect the algorithm. Together, they help you plan before writing Cambridge-style
+              pseudocode. Java remains a support language only; it is not the required exam pseudocode format.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Decompose</strong><span>split a problem into input, validation, processing and output modules</span></div>
+              <div><strong>Abstract</strong><span>keep algorithm-relevant details and ignore decorative or implementation details</span></div>
+              <div><strong>Justify</strong><span>explain why modular design improves readability, testing and correction</span></div>
+            </div>
+          </div>
+          <div class="decomp-visual" aria-label="Decomposition and abstraction visual">
+            <div class="big-problem">School event booking system</div>
+            <div class="arrow">break into</div>
+            <div class="module-grid">
+              <span>Input details</span>
+              <span>Validate age</span>
+              <span>Check places</span>
+              <span>Calculate cost</span>
+              <span>Output result</span>
+            </div>
+            <p>Abstraction asks: does the algorithm need the poster colour? No. Does it need the number of places left? Yes.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use verbs for sub-problems: input, validate, calculate, search, count, output. Verbs make modules behave.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 often rewards clear planning. A correct decomposition can reveal the loop, selection and variables before code starts.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not call every tiny line a module. A useful sub-problem has a clear purpose and can be tested or explained separately.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Plan a school trip without causing a spreadsheet incident</h2>
+            <p>A teacher asks for a program to manage trip bookings. Which details affect the algorithm, and which details are noise?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="places">Number of places left</button>
+            <button class="choice-card" type="button" data-hook="font">Poster font used on the noticeboard</button>
+            <button class="choice-card" type="button" data-hook="age">Student age for eligibility</button>
+            <button class="choice-card" type="button" data-hook="weather">Whether the sky looks dramatic in the photo</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose a detail to decide whether abstraction should keep it or ignore it.
+          </div>
+        </section>
+
+        <section class="panel" id="decomposition">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Decomposition: split the problem into sub-problems</h2>
+          </div>
+          <div class="data-table concept-table" role="table" aria-label="Decomposition examples">
+            <div class="table-row table-head" role="row"><div>Problem</div><div>Possible sub-problems</div><div>Why this helps</div></div>
+            <div class="table-row" role="row"><div>Calculate class average</div><div>Input marks, validate marks, total marks, calculate average, output average</div><div>Each part has a clear variable and test case</div></div>
+            <div class="table-row" role="row"><div>Login check</div><div>Input username/password, check blank input, compare stored details, output access decision</div><div>Selection and validation are easier to locate</div></div>
+            <div class="table-row" role="row"><div>Process ticket sales</div><div>Input ticket type, validate type, calculate price, update places, output confirmation</div><div>Business rules are separated from input/output</div></div>
+          </div>
+          <div class="callout">Chinese support: decomposition = 分解，把大问题拆成更小、更容易解决的部分；sub-problem = 子问题。</div>
+        </section>
+
+        <section class="panel" id="abstraction">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Abstraction: keep the details that affect the algorithm</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Keep</strong><span>inputs, ranges, counts, limits, required outputs and stopping conditions.</span></article>
+            <article><strong>Ignore</strong><span>visual style, real-world decoration and details that do not change the logic.</span></article>
+            <article><strong>Name</strong><span>use meaningful identifiers such as Mark, TotalCost, PlacesLeft and IsValid.</span></article>
+            <article><strong>Model</strong><span>represent the real situation using variables, constants, arrays and records when needed.</span></article>
+            <article><strong>Check</strong><span>ask whether removing a detail would change the algorithm's result.</span></article>
+            <article><strong>Explain</strong><span>state why a detail is relevant or irrelevant, not just that it is "important".</span></article>
+          </div>
+          <div class="callout">A good abstraction is not vague. It is deliberately selective. 选择性保留关键细节，不是随便省略。</div>
+        </section>
+
+        <section class="panel" id="pattern">
+          <div class="section-title">
+            <p class="eyebrow">Design pattern</p>
+            <h2>From scenario to algorithm plan</h2>
+          </div>
+          <div class="step-strip">
+            <div><strong>1</strong><span>Read the scenario and underline the required output.</span></div>
+            <div><strong>2</strong><span>List inputs and constraints.</span></div>
+            <div><strong>3</strong><span>Decompose into sub-problems with verb-based names.</span></div>
+            <div><strong>4</strong><span>Abstract away details that do not affect logic.</span></div>
+            <div><strong>5</strong><span>Write Cambridge-style pseudocode for each part.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Modules can be planned in pseudocode without Java syntax</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>PROCEDURE ValidateMark(Mark)
+    IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
+        OUTPUT "Valid"
+    ELSE
+        OUTPUT "Invalid"
+    ENDIF
+ENDPROCEDURE</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>static void validateMark(int mark) {
+    if (mark &gt;= 0 &amp;&amp; mark &lt;= 100) {
+        System.out.println("Valid");
+    } else {
+        System.out.println("Invalid");
+    }
+}</code></pre>
+            </article>
+          </div>
+          <div class="callout">Exam reminder: Java braces, `static void` and `System.out.println` help implementation practice, but Cambridge pseudocode is the Paper 2 answer format.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson deepens Paper 2 Section 9 planning</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Decomposition, abstraction, sub-problems, relevant/irrelevant details, modular planning and scenario-to-algorithm reasoning.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 100 focuses on flowchart and pseudocode notation. This page uses pseudocode only to show how decomposed parts can be represented.</span></div>
+            <div><strong>Paper 2 note</strong><span>Cambridge pseudocode remains the exam standard. Java appears only as a support comparison.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="sorter">
+          <div class="section-title">
+            <p class="eyebrow">Interactive task sorter</p>
+            <h2>Classify the design move</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Design statement
+              <select id="sorterInput">
+                <option value="split">Split booking into input, validation, payment and confirmation.</option>
+                <option value="ignore">Ignore the colour of the printed ticket.</option>
+                <option value="keep">Keep PlacesLeft because it controls whether booking is possible.</option>
+                <option value="bad">Create a separate module for each single assignment line.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="sorterBtn">Classify</button>
+          </div>
+          <div class="feedback" id="sorterResult">Choose a statement to see whether it is decomposition, abstraction or a trap.</div>
+        </section>
+
+        <section class="panel" id="filter">
+          <div class="section-title">
+            <p class="eyebrow">Interactive abstraction filter</p>
+            <h2>Keep or ignore details</h2>
+          </div>
+          <div class="filter-grid" id="filterGrid"></div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive module builder</p>
+            <h2>Generate a decomposition plan</h2>
+          </div>
+          <div class="builder-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="average">Class average from marks</option>
+                <option value="booking">Event booking with limited places</option>
+                <option value="login">Login attempt check</option>
+                <option value="shop">Small shop receipt total</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="buildBtn">Build plan</button>
+          </div>
+          <div class="answer-frame" id="builderResult">Choose a scenario to generate sub-problems and abstraction choices.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From messy scenario to clean plan</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="average">Class average</button>
+            <button class="tab" type="button" data-example="booking">Booking</button>
+            <button class="tab" type="button" data-example="login">Login</button>
+            <button class="tab" type="button" data-example="receipt">Receipt</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Decomposition and abstraction vocabulary</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix weak planning decisions</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style planning questions with expandable MS</h2>
+            <p>These questions target decomposition, abstraction, modular planning and precise explanation. MS uses strict Cambridge-style expectations.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Planning checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Decompose</strong><span>Split the task into meaningful sub-problems with a clear purpose.</span></div>
+            <div><strong>Abstract</strong><span>Keep only details that affect inputs, processing, outputs or constraints.</span></div>
+            <div><strong>Connect</strong><span>Show how the sub-problems combine into one complete algorithm.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Decomposition plan</strong>
+              <span>Choose a vending machine, quiz scoring system or library loan system. Write five sub-problems using verb-based names.</span>
+            </article>
+            <article>
+              <strong>Task 2: Abstraction table</strong>
+              <span>List eight scenario details. Mark each as keep or ignore, then give one sentence explaining the algorithmic reason.</span>
+            </article>
+            <article>
+              <strong>Task 3: Exam paragraph</strong>
+              <span>Answer: "Explain how decomposition and abstraction help when designing an algorithm." Write 6-8 precise lines with examples.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

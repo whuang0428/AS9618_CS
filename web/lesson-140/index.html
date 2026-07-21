@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 140 | Converting Java habits into Cambridge pseudocode</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
+        <h1>Converting Java habits into Cambridge pseudocode</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#standard">Exam standard</a>
+        <a href="#assignment">Assignment</a>
+        <a href="#io">Input/output</a>
+        <a href="#selection">Selection</a>
+        <a href="#loops">Loops</a>
+        <a href="#arrays">Arrays</a>
+        <a href="#subroutines">Subroutines</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#converter">Converter</a>
+        <a href="#spotter">Java spotter</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Mistakes</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#checkpoint">Checkpoint</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 140 | 45 minutes | Paper 2 Section 11 | 5-minute quiz and monthly checkpoint</p>
+            <h2>Java can help you practise. It must not hijack your pseudocode answer.</h2>
+            <p>
+              Cambridge pseudocode is designed for clear algorithm expression. Java is stricter about syntax, braces,
+              semicolons and library calls. This lesson trains you to translate Java habits into Cambridge-style pseudocode
+              without losing the algorithm. Chinese support: pseudocode 伪代码, assignment 赋值, syntax 语法, library call 库调用。
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Translate</strong><span>common Java syntax into Cambridge-style pseudocode</span></div>
+              <div><strong>Remove</strong><span>Java-only details such as braces, semicolons and class wrappers</span></div>
+              <div><strong>Write</strong><span>clear exam answers using pseudocode conventions</span></div>
+            </div>
+          </div>
+          <div class="syntax-visual" aria-label="Java to pseudocode visual">
+            <div><strong>Java</strong><span>System.out.println(x);</span><em>language-specific</em></div>
+            <div><strong>Pseudocode</strong><span>OUTPUT x</span><em>exam-friendly</em></div>
+            <div><strong>Java</strong><span>if (...) { }</span><em>braces and condition syntax</em></div>
+            <div><strong>Pseudocode</strong><span>IF ... THEN / ENDIF</span><em>structured keywords</em></div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Translate the idea, not every symbol. The exam is testing algorithm design, not whether a semicolon survived the journey.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 marks reward clear pseudocode logic. Java-only syntax can obscure the algorithm and may not match Cambridge conventions.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p><code>System.out.println()</code>, <code>public static void main</code>, braces and semicolons are Java habits, not Cambridge pseudocode requirements.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which answer is Cambridge-style pseudocode?</h2>
+            <p>Question: output the value stored in <code>Total</code>.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="java">System.out.println(Total);</button>
+            <button class="choice-card" type="button" data-hook="pseudo">OUTPUT Total</button>
+            <button class="choice-card" type="button" data-hook="console">console.log(Total)</button>
+            <button class="choice-card" type="button" data-hook="print">print(Total);</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the form expected in Cambridge-style pseudocode.</div>
+        </section>
+
+        <section class="panel" id="standard">
+          <div class="section-title">
+            <p class="eyebrow">Exam standard</p>
+            <h2>Cambridge pseudocode uses readable algorithm keywords</h2>
+            <p>It is not Java with the class declaration removed. It has its own conventions for assignment, input/output, loops, selection and subroutines.</p>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Java and pseudocode comparison">
+            <div class="table-row table-head"><div>Purpose</div><div>Java habit</div><div>Cambridge-style pseudocode</div></div>
+            <div class="table-row"><div>Assignment</div><div><code>total = total + mark;</code></div><div><code>Total &lt;- Total + Mark</code></div></div>
+            <div class="table-row"><div>Output</div><div><code>System.out.println(total);</code></div><div><code>OUTPUT Total</code></div></div>
+            <div class="table-row"><div>Selection</div><div><code>if (...) { ... }</code></div><div><code>IF ... THEN ... ENDIF</code></div></div>
+            <div class="table-row"><div>Loop</div><div><code>for (...) { ... }</code></div><div><code>FOR ... TO ... NEXT</code></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="assignment">
+          <div class="section-title">
+            <p class="eyebrow">Assignment</p>
+            <h2>Use the assignment arrow for storing a value</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>total = total + mark;</code></pre>
+            </article>
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>Total &lt;- Total + Mark</code></pre>
+            </article>
+          </div>
+          <div class="callout">A single equals sign can be read as assignment in Java, but Cambridge pseudocode normally uses the left arrow.</div>
+        </section>
+
+        <section class="panel" id="io">
+          <div class="section-title">
+            <p class="eyebrow">Input and output</p>
+            <h2>Replace library calls with algorithm keywords</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>Scanner input = new Scanner(System.in);
+mark = input.nextInt();
+System.out.println(mark);</code></pre>
+            </article>
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>INPUT Mark
+OUTPUT Mark</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="selection">
+          <div class="section-title">
+            <p class="eyebrow">Selection</p>
+            <h2>Use <code>IF</code>, <code>THEN</code>, <code>ELSE</code>, <code>ENDIF</code></h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>if (mark &gt;= 50) {
+    System.out.println("Pass");
+} else {
+    System.out.println("Resit needed");
+}</code></pre>
+            </article>
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit needed"
+ENDIF</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="loops">
+          <div class="section-title">
+            <p class="eyebrow">Loops</p>
+            <h2>Choose the loop keyword that matches the logic</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Loop translations">
+            <div class="table-row table-head"><div>Java habit</div><div>Meaning</div><div>Pseudocode form</div><div>Warning</div></div>
+            <div class="table-row"><div><code>for (int i = 1; i &lt;= 5; i++)</code></div><div>known count</div><div><code>FOR I &lt;- 1 TO 5</code></div><div>do not keep Java brackets</div></div>
+            <div class="table-row"><div><code>while (valid == false)</code></div><div>repeat while condition true</div><div><code>WHILE Valid = FALSE</code></div><div>end with <code>ENDWHILE</code></div></div>
+            <div class="table-row"><div><code>do { ... } while (...)</code></div><div>post-condition loop</div><div><code>REPEAT ... UNTIL ...</code></div><div>condition may be inverted</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="arrays">
+          <div class="section-title">
+            <p class="eyebrow">Arrays</p>
+            <h2>Use Cambridge array notation consistently</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>scores[0] = 72;
+System.out.println(scores[0]);</code></pre>
+            </article>
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>Scores[1] &lt;- 72
+OUTPUT Scores[1]</code></pre>
+            </article>
+          </div>
+          <div class="callout">Cambridge examples often use 1-based indexing unless a question defines otherwise. Follow the question's stated indexing.</div>
+        </section>
+
+        <section class="panel" id="subroutines">
+          <div class="section-title">
+            <p class="eyebrow">Subroutines</p>
+            <h2>Use <code>PROCEDURE</code> and <code>FUNCTION</code> instead of Java method wrappers</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>static boolean isValidMark(int mark) {
+    return mark &gt;= 0 &amp;&amp; mark &lt;= 100;
+}</code></pre>
+            </article>
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
+    RETURN Mark &gt;= 0 AND Mark &lt;= 100
+ENDFUNCTION</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>This lesson covers Java-to-pseudocode conversion for Section 11</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>assignment, input/output, selection, loops, arrays and subroutines</span></div>
+            <div><strong>Covered</strong><span>common Java leakage: braces, semicolons, class wrappers and library calls</span></div>
+            <div><strong>Not this lesson</strong><span>new Java syntax, IDE debugging and full program implementation</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="converter">
+          <div class="section-title">
+            <p class="eyebrow">Interactive converter</p>
+            <h2>Choose a Java habit and convert it</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Java habit
+              <select id="convertSelect">
+                <option value="output">System.out.println(Total);</option>
+                <option value="assign">total = total + mark;</option>
+                <option value="if">if (mark >= 50) { ... }</option>
+                <option value="for">for (int i = 1; i &lt;= 5; i++)</option>
+                <option value="function">static boolean isValidMark(int mark)</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="convertBtn">Convert</button>
+          </div>
+          <div id="convertOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="spotter">
+          <div class="section-title">
+            <p class="eyebrow">Java spotter</p>
+            <h2>Spot the Java-only syntax in an exam answer</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Suspicious answer fragment
+              <select id="spotSelect">
+                <option value="semicolon">OUTPUT Total;</option>
+                <option value="brace">IF Mark >= 50 {</option>
+                <option value="main">public static void main(String[] args)</option>
+                <option value="scanner">Scanner input = new Scanner(System.in);</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="spotBtn">Explain</button>
+          </div>
+          <div id="spotOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Translate by purpose, not punctuation</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab-button active" type="button" data-example="if">IF statement</button>
+            <button class="tab-button" type="button" data-example="loop">FOR loop</button>
+            <button class="tab-button" type="button" data-example="function">Function</button>
+          </div>
+          <div id="exampleOutput" class="example-output"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant checking: short conversion answers</h2>
+          </div>
+          <div id="practiceList" class="practice-list"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Remove Java leakage before it costs marks</h2>
+          </div>
+          <div id="mistakeList" class="mistake-grid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Cambridge-style wording with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. They do not copy past paper questions.</p>
+          </div>
+          <div id="examList" class="exam-list"></div>
+        </section>
+
+        <section class="panel" id="checkpoint">
+          <div class="section-title">
+            <p class="eyebrow">Monthly checkpoint</p>
+            <h2>5-minute quiz focus</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Conversion</h3><p>Translate one Java selection, one loop and one output statement.</p></article>
+            <article><h3>Explanation</h3><p>Explain why Java syntax is support only, not the Paper 2 answer format.</p></article>
+            <article><h3>Accuracy</h3><p>Check that the algorithm meaning is unchanged after conversion.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What to remember</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Use keywords</strong><span>INPUT, OUTPUT, IF, FOR, WHILE, PROCEDURE and FUNCTION</span></div>
+            <div><strong>Remove Java noise</strong><span>no class wrapper, braces, semicolons or Java library calls required</span></div>
+            <div><strong>Preserve logic</strong><span>the converted pseudocode must keep the same algorithmic meaning</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Translate cleanly</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Convert a Java grade program containing input, selection and output into Cambridge-style pseudocode.</li>
+            <li>Write five “Java habit -> pseudocode convention” flashcards, including assignment, output and subroutine syntax.</li>
+            <li>Answer a 6-mark question explaining why Java support examples must not replace Cambridge pseudocode in Paper 2.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

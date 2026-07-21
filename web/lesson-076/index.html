@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 076 | Environmental and social impacts of computing</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 7</p>
+        <h1>Environmental and social impacts of computing</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#environment">Environment</a>
+        <a href="#ewaste">E-waste</a>
+        <a href="#social">Social impacts</a>
+        <a href="#digital-divide">Digital divide</a>
+        <a href="#method">Answer method</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#analyser">Impact analyser</a>
+        <a href="#builder">Response builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 076 | 45 minutes | Paper 1 Section 7 | Ethics and ownership</p>
+            <h2>Computing changes the world. Sometimes the electricity bill is only the first clue.</h2>
+            <p>
+              Computing affects energy use, e-waste, work, access to services, communication, inclusion and
+              inequality. Good exam answers balance benefits with harms and connect each point to a specific
+              stakeholder or consequence.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Explain</strong><span>environmental impacts such as energy use, emissions and e-waste</span></div>
+              <div><strong>Analyse</strong><span>social impacts including work, access, inclusion and inequality</span></div>
+              <div><strong>Evaluate</strong><span>write balanced answers with realistic mitigations</span></div>
+            </div>
+          </div>
+          <div class="impact-card" aria-label="Impact analysis chain">
+            <div class="impact-stack">
+              <span>Technology</span>
+              <span>Stakeholders</span>
+              <span>Benefit</span>
+              <span>Harm</span>
+              <span>Mitigation</span>
+              <span>Judgement</span>
+            </div>
+            <p>"Technology improves life" is not an answer. It is a poster waiting for evidence.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make every answer name a stakeholder and a consequence. "Society" alone is usually too foggy.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Environmental and social impact questions reward balanced evaluation, not a list of dramatic opinions.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not claim computing is simply good or bad for the environment. The impact depends on use, energy source, lifespan and disposal.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A company moves meetings online and buys new laptops for every worker. Is this environmentally positive?</h2>
+            <p>The answer has more branches than a badly planned flowchart.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="balanced">It may reduce travel, but device manufacture, energy use and e-waste also matter</button>
+            <button class="choice-card" type="button" data-hook="alwaysGood">Yes, because online meetings have no environmental cost</button>
+            <button class="choice-card" type="button" data-hook="alwaysBad">No, because all computers are bad for the environment</button>
+            <button class="choice-card" type="button" data-hook="onlyCost">Only the price of laptops matters</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Look for more than one impact.
+          </div>
+        </section>
+
+        <section class="panel" id="environment">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Environmental impacts include energy use and resource consumption</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Energy use</strong><span>Devices, networks and data centres consume electricity during operation.</span></article>
+            <article><strong>Carbon emissions</strong><span>Emissions depend on electricity source, device manufacture and transport.</span></article>
+            <article><strong>Resource extraction</strong><span>Manufacturing hardware requires metals, rare materials, water and energy.</span></article>
+            <article><strong>Lifespan</strong><span>Short upgrade cycles increase manufacturing and disposal impact.</span></article>
+          </div>
+          <div class="callout">Chinese support: environmental impact = 环境影响；energy use = 能源使用；carbon emissions = 碳排放；resource extraction = 资源开采。</div>
+        </section>
+
+        <section class="panel" id="ewaste">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>E-waste is an ethical issue, not just a rubbish-bin issue</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>E-waste</strong><span>Discarded electronic devices and components.</span></article>
+            <article><strong>Toxic materials</strong><span>Some components contain harmful substances that can pollute soil or water if mishandled.</span></article>
+            <article><strong>Recycling</strong><span>Responsible recycling can recover materials and reduce landfill, but must be managed safely.</span></article>
+            <article><strong>Reuse and repair</strong><span>Extending device life reduces demand for new manufacturing.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="social">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Social impacts affect work, communication and daily life</h2>
+          </div>
+          <div class="risk-table" role="table" aria-label="Social impact table">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Computing change</div>
+              <div role="columnheader">Possible benefit</div>
+              <div role="columnheader">Possible harm</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Remote work</div>
+              <div role="cell">Less commuting, flexible work, access to wider jobs.</div>
+              <div role="cell">Isolation, blurred work-life boundaries, unequal home access.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Automation</div>
+              <div role="cell">Efficiency, safer handling of dangerous or repetitive tasks.</div>
+              <div role="cell">Job displacement, need for retraining, deskilling.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Online services</div>
+              <div role="cell">Access to education, banking, healthcare and communication.</div>
+              <div role="cell">Excludes users without devices, internet, skills or accessible design.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="digital-divide">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>The digital divide is about access, skills and inclusion</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Device access</strong><span>Some users cannot afford suitable hardware.</span></article>
+            <article><strong>Connectivity</strong><span>Reliable high-speed internet is not equally available.</span></article>
+            <article><strong>Digital skills</strong><span>Users may lack confidence or training to use online systems.</span></article>
+            <article><strong>Accessibility</strong><span>Systems should support users with disabilities or different needs.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="method">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Use a balanced impact structure</h2>
+          </div>
+          <div class="flow-grid">
+            <article><strong>1. Change</strong><span>Name the computing change, such as automation or online services.</span></article>
+            <article><strong>2. Benefit</strong><span>Explain a positive impact for a named stakeholder.</span></article>
+            <article><strong>3. Harm</strong><span>Explain a negative impact with a realistic consequence.</span></article>
+            <article><strong>4. Mitigation</strong><span>Suggest a practical way to reduce harm.</span></article>
+          </div>
+          <div class="answer-frame">
+            <strong>Answer frame:</strong>
+            <span>[Technology] benefits [stakeholder] because [reason]. However, it may harm [stakeholder] by [consequence]. This can be reduced by [mitigation].</span>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson finishes Section 7 new content</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Energy use, carbon emissions, resource use, e-waste, recycling, remote work, automation, online services, digital divide, accessibility and mitigation.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 077 reviews Section 7 evaluation answers. Lesson 078 starts Section 8 databases.</span></div>
+            <div><strong>Exam focus</strong><span>Balance benefit and harm, then link each point to a named stakeholder and a realistic consequence.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="analyser">
+          <div class="section-title">
+            <p class="eyebrow">Interactive impact analyser</p>
+            <h2>Classify the impact and choose a mitigation</h2>
+            <p>Select a scenario and compare the positive impact, negative impact and mitigation.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="remoteWork">Company moves most meetings online.</option>
+                <option value="dataCentre">Business expands cloud data storage.</option>
+                <option value="newDevices">School replaces tablets every two years.</option>
+                <option value="automation">Factory automates repetitive assembly tasks.</option>
+                <option value="onlineBanking">Bank closes branches and moves services online.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="analyseBtn">Analyse</button>
+          </div>
+          <div class="result-box" id="analyseResult" aria-live="polite"></div>
+          <div class="method-box" id="analyseBenefit"></div>
+          <div class="reject-box" id="analyseMitigation"></div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive balanced response builder</p>
+            <h2>Build a mark-worthy evaluation sentence</h2>
+          </div>
+          <div class="builder-grid">
+            <label>
+              Technology
+              <select id="techInput">
+                <option value="automation">automation</option>
+                <option value="remote">remote work</option>
+                <option value="online">online public services</option>
+              </select>
+            </label>
+            <label>
+              Benefit
+              <select id="benefitInput">
+                <option value="efficiency">improves efficiency and reduces repetitive work</option>
+                <option value="travel">reduces travel and commuting</option>
+                <option value="access">improves access for some users</option>
+              </select>
+            </label>
+            <label>
+              Harm
+              <select id="harmInput">
+                <option value="jobs">may displace workers who need retraining</option>
+                <option value="isolation">may increase isolation or blur work-life boundaries</option>
+                <option value="divide">may exclude users without devices, internet or skills</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="buildBtn">Build</button>
+          </div>
+          <div class="result-box" id="buildResult" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four model answers with balanced impacts</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="remote">Remote work</button>
+            <button class="tab" type="button" data-example="ewaste">E-waste</button>
+            <button class="tab" type="button" data-example="automation">Automation</button>
+            <button class="tab" type="button" data-example="divide">Digital divide</button>
+          </div>
+          <div class="example-box" id="exampleBox" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Check vocabulary before writing full evaluations</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix answers that make one-sided claims</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Cambridge-style environmental and social impact questions with expandable MS</h2>
+            <p>Attempt first. Then check whether each point includes a stakeholder, consequence and realistic mitigation where appropriate.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Environmental and social impacts in six exam-ready ideas</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Energy</strong><span>Devices, networks and data centres use electricity.</span></div>
+            <div><strong>E-waste</strong><span>Short device lifespans create disposal and toxic-material risks.</span></div>
+            <div><strong>Work</strong><span>Automation and remote work can help some workers and harm others.</span></div>
+            <div><strong>Access</strong><span>Online services can improve access but widen the digital divide.</span></div>
+            <div><strong>Mitigation</strong><span>Use recycling, repair, efficient design, training and inclusive access.</span></div>
+            <div><strong>Balance</strong><span>Give both benefit and harm before reaching a judgement.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Practise balanced impact evaluation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Impact table</strong>
+              <span>Choose one technology: online learning, automation, cloud storage or remote work. Make a table with environmental benefit, environmental harm, social benefit, social harm and mitigation.</span>
+            </article>
+            <article>
+              <strong>Task 2: Rewrite weak claims</strong>
+              <span>Rewrite: "Online services are better because they are convenient." Add stakeholder, exclusion risk, environmental consideration and one mitigation.</span>
+            </article>
+            <article>
+              <strong>Task 3: Timed response</strong>
+              <span>Answer in 8 minutes: "Evaluate the environmental and social impacts of replacing face-to-face services with online services." Include a balanced conclusion.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

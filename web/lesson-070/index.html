@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 070 | Backup strategies, disaster recovery, and audit trails</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
+        <h1>Backup strategies, disaster recovery, and audit trails</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#core">Core idea</a>
+        <a href="#backups">Backups</a>
+        <a href="#strategy">Strategy</a>
+        <a href="#recovery">Recovery</a>
+        <a href="#audit-trails">Audit trails</a>
+        <a href="#compare">Compare</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Strategy tool</a>
+        <a href="#rpo-tool">RPO/RTO tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 070 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
+            <h2>Backups are useful only if recovery actually works.</h2>
+            <p>
+              Backup strategies create recoverable copies of data. Disaster recovery plans describe how an
+              organisation restores systems after serious failure. Audit trails record who did what, when and
+              where, so changes can be investigated instead of guessed with dramatic keyboard pointing.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Explain</strong><span>backup strategies, disaster recovery and audit trails</span></div>
+              <div><strong>Compare</strong><span>full, incremental, onsite, offsite and cloud backups</span></div>
+              <div><strong>Apply</strong><span>recovery objectives and audit trail evidence to scenarios</span></div>
+            </div>
+          </div>
+          <div class="recovery-card" aria-label="Recovery map">
+            <div class="recovery-stack">
+              <span>Backup -> copy data</span>
+              <span>Restore -> recover usable data</span>
+              <span>DR plan -> restore service</span>
+              <span>Audit trail -> trace actions</span>
+            </div>
+            <p>A backup nobody tests is a motivational poster, not a recovery plan.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every scenario ask: what can be lost, how much loss is acceptable, and how fast must service return?</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam answers need a specific strategy. "Make a backup" is a start, not a finished answer.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Audit trails are not backups. They show events and accountability; they do not restore deleted files by themselves.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A ransomware attack encrypts the main server and the connected backup drive. What was wrong with the backup strategy?</h2>
+            <p>The backup was "safe" in the same way a spare key taped to the front door is secure.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="offsite">The backup was not isolated/offsite, so the same incident affected it</button>
+            <button class="choice-card" type="button" data-hook="audit">An audit trail was missing, so files could not be restored</button>
+            <button class="choice-card" type="button" data-hook="validation">Validation should have checked the encrypted files were valid</button>
+            <button class="choice-card" type="button" data-hook="frequency">Daily backups are always enough, regardless of connection</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Look for the shared failure point.
+          </div>
+        </section>
+
+        <section class="panel" id="core">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Recovery planning is about availability, integrity and accountability</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Backup</strong><span>A separate copy of data that can be used to restore the original after loss or corruption.</span></article>
+            <article><strong>Restore</strong><span>The process of recovering data or systems from a backup.</span></article>
+            <article><strong>Disaster recovery</strong><span>Planned actions to restore systems and services after a major incident.</span></article>
+            <article><strong>Audit trail</strong><span>A chronological record of actions, changes and access events.</span></article>
+          </div>
+          <div class="callout">Chinese support: backup = 备份；restore = 恢复；disaster recovery = 灾难恢复；audit trail = 审计追踪/审计日志。</div>
+        </section>
+
+        <section class="panel" id="backups">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Backup type affects speed, storage and recovery complexity</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Full backup</strong><span>Copies all selected data. Simple to restore, but uses more time and storage.</span></article>
+            <article><strong>Incremental backup</strong><span>Copies only data changed since the last backup. Faster and smaller, but restore may need a chain.</span></article>
+            <article><strong>Differential idea</strong><span>Copies changes since last full backup. Useful comparison, though full/incremental is the main contrast here.</span></article>
+            <article><strong>Testing</strong><span>Backups must be tested by restoring sample data, not only by checking that a file exists.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="strategy">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>A strategy defines location, frequency, retention and security</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Onsite</strong><span>Fast to access, but vulnerable to the same fire, flood, theft or ransomware incident.</span></article>
+            <article><strong>Offsite</strong><span>Stored in a different physical location, reducing site-wide disaster risk.</span></article>
+            <article><strong>Cloud</strong><span>Remote provider storage; useful for offsite copies but needs network access and access control.</span></article>
+            <article><strong>Retention</strong><span>How long versions are kept, so accidental deletion or corruption can be rolled back.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="recovery">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Disaster recovery is more than data copying</h2>
+          </div>
+          <div class="flow-grid">
+            <article><strong>1. Identify incident</strong><span>Detect failure, confirm scope and prevent further damage.</span></article>
+            <article><strong>2. Communicate</strong><span>Notify staff/users and assign responsibilities.</span></article>
+            <article><strong>3. Restore systems</strong><span>Recover data, applications, hardware/network access and configuration.</span></article>
+            <article><strong>4. Test and review</strong><span>Check service works, document lessons and improve the plan.</span></article>
+          </div>
+          <div class="callout">Useful exam language: RPO = how much data loss is acceptable; RTO = how quickly service must be restored.</div>
+        </section>
+
+        <section class="panel" id="audit-trails">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Audit trails support accountability and investigation</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Who</strong><span>User ID, account, device or process involved.</span></article>
+            <article><strong>What</strong><span>Action such as login, read, edit, delete, approve or restore.</span></article>
+            <article><strong>When/where</strong><span>Timestamp, location, device or IP address.</span></article>
+            <article><strong>Use</strong><span>Trace errors, detect misuse, investigate incidents and prove compliance.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Compare by purpose, not by "security word"</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Backup recovery audit comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Control</div>
+              <div role="columnheader">Main purpose</div>
+              <div role="columnheader">Limitation</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Backup</div>
+              <div role="cell">Restore data after deletion, corruption, hardware failure or ransomware.</div>
+              <div role="cell">May be too old, corrupted, inaccessible or affected by same incident.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Disaster recovery plan</div>
+              <div role="cell">Restore systems and services in a planned order after major disruption.</div>
+              <div role="cell">Needs testing, clear roles and updated documentation.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Audit trail</div>
+              <div role="cell">Record actions for accountability, investigation and evidence.</div>
+              <div role="cell">Does not restore data by itself and must be protected from tampering.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers, and what it deliberately leaves for later</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Backup purpose, full/incremental backups, onsite/offsite/cloud, frequency, retention, restore testing, disaster recovery, RPO/RTO and audit trails.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 071 reviews Section 6 by matching risks to controls across the whole security unit.</span></div>
+            <div><strong>Exam focus</strong><span>Link each control to the risk: data loss, service disruption or accountability.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive backup strategy selector</p>
+            <h2>Choose a proportionate strategy</h2>
+            <p>Select a scenario and compare the recommendation with the reason and common wrong answer.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="school">School database updated throughout each day.</option>
+                <option value="photos">Small design studio archives finished project photos monthly.</option>
+                <option value="hospital">Hospital patient system must recover quickly after failure.</option>
+                <option value="ransomware">Ransomware can reach connected drives.</option>
+                <option value="laptop">Teacher laptop contains local coursework files.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Recommend</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="rpo-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive recovery objective tool</p>
+            <h2>Match backup frequency to acceptable data loss</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Maximum acceptable data loss
+              <select id="rpoInput">
+                <option value="hour">About one hour</option>
+                <option value="day">About one day</option>
+                <option value="week">About one week</option>
+                <option value="none">No meaningful data loss acceptable</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="rpoBtn">Suggest</button>
+          </div>
+          <div class="result-box" id="rpoResult" aria-live="polite"></div>
+          <div class="method-box" id="rpoReason"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four model answers with risk-control matching</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="ransomware">Ransomware</button>
+            <button class="tab" type="button" data-example="hospital">Hospital</button>
+            <button class="tab" type="button" data-example="audit">Audit trail</button>
+            <button class="tab" type="button" data-example="testing">Testing</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short answers: recovery and evidence</h2>
+            <p>Type a concise answer. Use the local answer button if you need a model response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the sentence before it loses marks</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style questions with expandable MS</h2>
+            <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Recovery needs copies, plans and evidence</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Backups</strong><span>Recover data if copies are current, isolated and tested.</span></div>
+            <div><strong>DR plan</strong><span>Restores systems, people, communication and priorities.</span></div>
+            <div><strong>Audit trails</strong><span>Show who did what, when and where.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks, not vague revision fog</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Strategy table</strong>
+              <span>Design a backup strategy for a school database: type, location, frequency, retention, security and restore testing.</span>
+            </article>
+            <article>
+              <strong>Task 2: Disaster recovery sequence</strong>
+              <span>Write six ordered recovery actions after a ransomware attack. Include communication and testing restored data.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "Explain how backup strategies and audit trails help an organisation recover from and investigate data loss." Use precise consequences.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

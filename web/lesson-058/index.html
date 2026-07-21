@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 058 | Linkers, loaders and libraries</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
+        <h1>Linkers, loaders and libraries</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Core idea</a>
+        <a href="#libraries">Libraries</a>
+        <a href="#linkers">Linkers</a>
+        <a href="#loaders">Loaders</a>
+        <a href="#static-dynamic">Static/dynamic</a>
+        <a href="#compare">Comparison</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Pipeline tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 058 | 45 minutes | Paper 1 Section 5 | System software</p>
+            <h2>Object code is not always ready to run. It may still need friends, addresses and memory.</h2>
+            <p>
+              After compilation, a program may depend on other object modules and library routines.
+              Linkers combine the pieces. Loaders place the program into memory and prepare it for execution.
+              Libraries provide reusable routines so programmers do not rewrite common code from scratch.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Describe</strong><span>the purpose of libraries, linkers and loaders</span></div>
+              <div><strong>Sequence</strong><span>object code, linking, executable code, loading and execution</span></div>
+              <div><strong>Apply</strong><span>static/dynamic linking ideas and common exam traps</span></div>
+            </div>
+          </div>
+          <div class="link-card" aria-label="Linking and loading pathway">
+            <div class="link-stack">
+              <span>object modules</span>
+              <span>+ library routines</span>
+              <span>linker -> executable</span>
+              <span>loader -> memory</span>
+              <span>program runs</span>
+            </div>
+            <p>The executable does not appear by wishing politely at object code.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use a build pipeline: compiler creates object code, linker resolves references, loader prepares memory.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Marks often depend on separating linker and loader roles. "Makes it run" is too vague for full credit.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not say a library is a folder of books. It is reusable program code such as routines or modules.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Your object file calls <code>SQRT()</code>, but the routine is not inside your code. What helps?</h2>
+            <p>Click the best answer. The computer will not invent square root because it feels mathematical today.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="linker">A linker connects the object code to the library routine.</button>
+            <button class="choice-card" type="button" data-hook="loader">A loader writes the missing routine.</button>
+            <button class="choice-card" type="button" data-hook="syntax">Syntax analysis creates the library.</button>
+            <button class="choice-card" type="button" data-hook="antivirus">Antivirus scans the missing routine into existence.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. External references need to be resolved before the program can run correctly.
+          </div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>The post-compilation pathway connects code and prepares execution</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Object code</strong><span>Translated output from compilation or assembly, not always a complete executable.</span></article>
+            <article><strong>External reference</strong><span>A call to code or data defined in another module or library.</span></article>
+            <article><strong>Executable file</strong><span>A program file with required code linked and arranged for execution.</span></article>
+            <article><strong>In memory</strong><span>Code and data must be placed into main memory before the CPU can execute it.</span></article>
+          </div>
+          <div class="callout">Chinese support: linker = 连接器；loader = 装入程序；library = 库；library routine = 库例程；object module = 目标模块；executable = 可执行文件。</div>
+        </section>
+
+        <section class="panel" id="libraries">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Libraries provide reusable routines and modules</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Purpose</strong><span>Provide pre-written, tested routines that programs can use.</span></article>
+            <article><strong>Examples</strong><span>Mathematical functions, input/output routines, graphics or string-handling routines.</span></article>
+            <article><strong>Benefits</strong><span>Saves development time, reduces duplication and may improve reliability.</span></article>
+            <article><strong>Requirement</strong><span>Calls to library routines must be linked or made available at run time.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="linkers">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Linkers combine object modules and resolve references</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Input</strong><span>Object code modules and required library routines or references.</span></article>
+            <article><strong>Action</strong><span>Resolves external references between modules and libraries.</span></article>
+            <article><strong>Output</strong><span>Produces executable code or a linked object file.</span></article>
+            <article><strong>Error</strong><span>Can report unresolved external references if a required routine cannot be found.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="loaders">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Loaders place executable code into memory</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Input</strong><span>An executable program or loadable program image.</span></article>
+            <article><strong>Action</strong><span>Loads code and data into main memory and prepares it to run.</span></article>
+            <article><strong>Addresses</strong><span>May allocate memory and adjust addresses depending on where the program is loaded.</span></article>
+            <article><strong>Boundary</strong><span>A loader does not translate source code or combine object modules.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="static-dynamic">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Static and dynamic linking affect when library code is connected</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Static linking</strong><span>Library code is copied into the executable at link time.</span></article>
+            <article><strong>Static trade-off</strong><span>Executable can be more self-contained but may be larger.</span></article>
+            <article><strong>Dynamic linking</strong><span>Library code is linked at load time or run time from a shared library.</span></article>
+            <article><strong>Dynamic trade-off</strong><span>Can reduce duplication, but the required shared library must be available and compatible.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Compare the roles without blending them</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Linker loader library comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Item</div>
+              <div role="columnheader">Main role</div>
+              <div role="columnheader">Typical input</div>
+              <div role="columnheader">Typical output/result</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Library</div>
+              <div role="cell">Stores reusable routines/modules.</div>
+              <div role="cell">Calls from a program.</div>
+              <div role="cell">Routine code can be linked or used at run time.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Linker</div>
+              <div role="cell">Combines object modules and resolves external references.</div>
+              <div role="cell">Object files and library references.</div>
+              <div role="cell">Executable/linked object code.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Loader</div>
+              <div role="cell">Places executable program into main memory.</div>
+              <div role="cell">Executable file/program image.</div>
+              <div role="cell">Program ready for execution in memory.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purpose of linkers, loaders and libraries in system software.</span></div>
+            <div><strong>Covered</strong><span>Object modules, external references, executable code and memory loading.</span></div>
+            <div><strong>Covered</strong><span>Static and dynamic linking at AS explanation level.</span></div>
+            <div><strong>Boundary</strong><span>Compilation stages were covered in Lesson 057.</span></div>
+            <div><strong>Boundary</strong><span>Error types and diagnostics are covered in Lesson 059.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Post-compilation pipeline selector</h2>
+            <p>Select a situation and identify whether it involves a library, linker or loader.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Situation
+              <select id="scenarioInput">
+                <option value="math">A program calls a pre-written square root routine</option>
+                <option value="combine">Several object modules must become one executable</option>
+                <option value="missing">Build fails because a referenced routine cannot be found</option>
+                <option value="memory">The executable must be placed into RAM before running</option>
+                <option value="static">Library code is copied into the executable file</option>
+                <option value="dynamic">A shared library is used when the program loads</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Classify</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From object files to running program</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="library">Library</button>
+            <button class="tab" type="button" data-example="linker">Linker</button>
+            <button class="tab" type="button" data-example="loader">Loader</button>
+            <button class="tab" type="button" data-example="dynamic">Dynamic linking</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant-check questions</h2>
+            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the almost-right answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Answer first, then reveal the CIE-style mark scheme</h2>
+            <p>These are original Cambridge-style questions. The mark schemes include strict wording notes and follow-through guidance.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Post-compilation memory map</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Library</strong><span>Reusable routines/modules that programs can call.</span></div>
+            <div><strong>Linker</strong><span>Combines object code and resolves external references.</span></div>
+            <div><strong>Loader</strong><span>Places executable code into memory and prepares it to run.</span></div>
+            <div><strong>Static</strong><span>Library code copied into executable at link time.</span></div>
+            <div><strong>Dynamic</strong><span>Shared library linked at load/run time.</span></div>
+            <div><strong>Exam rule</strong><span>Use the correct stage: compile, link, load, execute.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear output, not vague revision</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Role table</strong>
+              <span>Create a table for library, linker and loader: input, action, output/result, one exam trap.</span>
+            </article>
+            <article>
+              <strong>Task 2: Pipeline explanation</strong>
+              <span>Write a 6-mark answer explaining how object modules and library routines become a running program.</span>
+            </article>
+            <article>
+              <strong>Task 3: Static vs dynamic</strong>
+              <span>Write two advantages and two limitations across static and dynamic linking. Use precise wording about file size, sharing and availability.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

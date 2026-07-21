@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 013 | Run-length encoding and dictionary-style compression</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
+        <h1>Run-length encoding and dictionary-style compression</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#rle">RLE</a>
+        <a href="#dictionary">Dictionary</a>
+        <a href="#effectiveness">Effectiveness</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">RLE tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 013 | 45 minutes | Informal questioning</p>
+            <h2>Compression likes patterns. Randomness is less polite.</h2>
+            <p>
+              This lesson shows two lossless compression ideas: run-length encoding
+              stores repeated runs as count plus value, while dictionary-style compression
+              replaces repeated patterns with shorter references.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div>
+                <strong>Encode</strong>
+                <span>simple repeated data using run-length encoding</span>
+              </div>
+              <div>
+                <strong>Decode</strong>
+                <span>RLE strings back to the original data</span>
+              </div>
+              <div>
+                <strong>Explain</strong>
+                <span>when RLE and dictionary-style compression are effective</span>
+              </div>
+            </div>
+          </div>
+          <div class="compress-card" aria-label="RLE focus">
+            <span>AAAAAABBBBCCCCCCCC → 6A4B8C</span>
+            <p>Great when runs are long. Less impressive when the data refuses to repeat.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make students count runs aloud. Most mistakes come from one run too many or one run too few.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge questions often test the mechanism, not just the name of the compression method.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>RLE can make alternating data larger because every short run still needs a count and value.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which string is most suitable for RLE?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="runs">AAAAAABBBBBBCCCC</button>
+            <button class="choice-card" type="button" data-hook="alternating">ABABABABABAB</button>
+            <button class="choice-card" type="button" data-hook="random">Q7MZP2KX</button>
+            <button class="choice-card" type="button" data-hook="short">ABC</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick an answer. RLE likes long repeated runs, not a keyboard having a restless day.
+          </div>
+        </section>
+
+        <section class="panel" id="rle">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Run-length encoding</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Encoding rule</h3>
+              <p>Replace each consecutive run with `count + value`.</p>
+              <p class="mini-formula">`AAAAAABBBBCCCCCCCC → 6A4B8C`</p>
+            </article>
+            <article>
+              <h3>Decoding rule</h3>
+              <p>Expand each count and value back into repeated data.</p>
+              <p class="mini-formula">`3A2B1C → AAABBC`</p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: run = 连续重复段；encode = 编码；decode = 解码。</div>
+        </section>
+
+        <section class="panel" id="dictionary">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Dictionary-style compression</h2>
+          </div>
+          <div class="dictionary-grid">
+            <article>
+              <h3>Idea</h3>
+              <p>Find repeated patterns and store them once in a dictionary.</p>
+            </article>
+            <article>
+              <h3>Reference</h3>
+              <p>Replace later occurrences with a shorter code or pointer to the dictionary entry.</p>
+            </article>
+            <article>
+              <h3>Example</h3>
+              <p>`COMPUTER COMPUTER COMPUTER` can store `COMPUTER` once, then use references.</p>
+            </article>
+          </div>
+          <div class="dictionary-demo">
+            <div><strong>Dictionary</strong><span>`#1 = COMPUTER`</span></div>
+            <div><strong>Compressed form</strong><span>`#1 #1 #1`</span></div>
+            <div><strong>Decoded form</strong><span>`COMPUTER COMPUTER COMPUTER`</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="effectiveness">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>When does it help?</h2>
+          </div>
+          <div class="effect-grid">
+            <article>
+              <h3>RLE helps</h3>
+              <p>Long repeated runs, simple graphics, repeated pixels or repeated characters.</p>
+            </article>
+            <article>
+              <h3>RLE struggles</h3>
+              <p>Alternating or random-looking data with very short runs.</p>
+            </article>
+            <article>
+              <h3>Dictionary helps</h3>
+              <p>Repeated words, phrases, byte patterns or sequences across the file.</p>
+            </article>
+          </div>
+          <div class="callout warning">Both methods are lossless if the dictionary and encoded data allow exact reconstruction.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>RLE encoding and decoding for simple repeated data.</span></div>
+            <div><strong>Covered</strong><span>Dictionary-style replacement of repeated patterns.</span></div>
+            <div><strong>Boundary</strong><span>Detailed named algorithms such as LZW internals are not required here.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>RLE encoder and decoder</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Mode
+              <select id="modeInput">
+                <option value="encode" selected>Encode original data</option>
+                <option value="decode">Decode RLE data</option>
+              </select>
+            </label>
+            <label>
+              Data
+              <input id="dataInput" type="text" value="AAAAAABBBBCCCCCCCC" />
+            </label>
+            <button type="button" id="convertBtn">Convert</button>
+          </div>
+          <div class="result-box" id="convertResult" aria-live="polite"></div>
+          <div class="method-box" id="convertMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="encode">RLE encode</button>
+            <button class="tab" type="button" data-example="decode">RLE decode</button>
+            <button class="tab" type="button" data-example="dictionary">Dictionary style</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the run count</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">`AAAAAABBBBCCCCCCCC → 5A4B8C`</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">There are six `A` characters, so the correct encoding is `6A4B8C`.</p>
+            </article>
+            <article>
+              <p class="wrong">“RLE is always smaller because it is compression.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">RLE can be larger for data such as `ABABAB`, because each short run needs its own count and value.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>
+              Use the buttons under each question to expand the CIE-style mark scheme.
+              These are original questions written in Cambridge style, not copied past-paper items.
+            </p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Patterns are the target</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>RLE stores repeated runs as count plus value.</span></div>
+            <div><strong>2</strong><span>Dictionary-style compression stores repeated patterns once and references them.</span></div>
+            <div><strong>3</strong><span>Both can be lossless if exact reconstruction is possible.</span></div>
+            <div><strong>4</strong><span>Compression is effective only when the replacement is shorter than the original plus overhead.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>RLE encode `AAAABBCCCCDDDDDD`.</li>
+            <li>Decode `2A3B4C1D`.</li>
+            <li>Explain why `ABABABAB` is not a good candidate for simple RLE.</li>
+            <li>Write a 4-mark explanation of how dictionary-style compression can reduce file size.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Task 1:</strong> `4A2B4C6D`.</p>
+            <p><strong>Task 2:</strong> `AABBBCCCCD`.</p>
+            <p><strong>Task 3:</strong> simple RLE creates many short runs, so the encoded form may not be shorter.</p>
+            <p><strong>Task 4 focus:</strong> repeated patterns are stored once in a dictionary; later occurrences are replaced by shorter references; the original can be reconstructed using the dictionary.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

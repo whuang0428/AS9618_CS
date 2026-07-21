@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 149 | Paper 2 timed pseudocode practice</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Sections 9-12</p>
+        <h1>Paper 2 timed pseudocode practice</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#timing">Timing</a>
+        <a href="#method">Method</a>
+        <a href="#constructs">Constructs</a>
+        <a href="#trace">Trace check</a>
+        <a href="#quality">Quality checklist</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#timer-tool">Timer tool</a>
+        <a href="#skeleton-tool">Skeleton builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Mistakes</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 149 | 45 minutes | Paper 2 review | timed practice</p>
+            <h2>Timed pseudocode is not about writing fast. It is about not wasting the first two minutes.</h2>
+            <p>
+              This lesson trains timed Cambridge-style pseudocode answers: reading the task, planning variables, choosing
+              constructs, writing a clear solution, and checking edge cases. Chinese support: timed practice 限时训练,
+              pseudocode 伪代码, skeleton 骨架, edge case 边界情况, mark allocation 分值分配。
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Plan</strong><span>pseudocode answers under time pressure</span></div>
+              <div><strong>Write</strong><span>clear Cambridge-style algorithms using core constructs</span></div>
+              <div><strong>Check</strong><span>logic, boundary cases and mark-scheme evidence</span></div>
+            </div>
+          </div>
+          <div class="timed-visual" aria-label="Timed practice visual">
+            <div><strong>Read</strong><span>30-60 sec</span><em>inputs, outputs, constraints</em></div>
+            <div><strong>Plan</strong><span>60-90 sec</span><em>variables and loop shape</em></div>
+            <div><strong>Write</strong><span>main time</span><em>clear pseudocode</em></div>
+            <div><strong>Check</strong><span>last 60 sec</span><em>boundaries and outputs</em></div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use the mantra: inputs, storage, loop, condition, output. If one is missing, the answer is probably leaking marks.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Timed questions reward readable structure. Markers can award method marks only when the logic is visible enough to follow.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not write final answers in Java syntax. Java can support practice, but Cambridge pseudocode remains the exam answer format.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>What should happen before writing the first line?</h2>
+            <p>Question stem: “Write an algorithm to count valid marks in a file.”</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="code">Start writing lines immediately</button>
+            <button class="choice-card" type="button" data-hook="plan">Identify inputs, outputs, variables and file mode</button>
+            <button class="choice-card" type="button" data-hook="java">Translate the problem into Java first</button>
+            <button class="choice-card" type="button" data-hook="essay">Explain what an algorithm is</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the move that saves marks under time pressure.</div>
+        </section>
+
+        <section class="panel" id="timing">
+          <div class="section-title">
+            <p class="eyebrow">Timing strategy</p>
+            <h2>Spend time according to marks</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Timing strategy">
+            <div class="table-row table-head"><div>Marks</div><div>Read and plan</div><div>Write</div><div>Check</div></div>
+            <div class="table-row"><div>4 marks</div><div>30 seconds</div><div>3 minutes</div><div>30 seconds</div></div>
+            <div class="table-row"><div>6 marks</div><div>60 seconds</div><div>5 minutes</div><div>60 seconds</div></div>
+            <div class="table-row"><div>8 marks</div><div>90 seconds</div><div>7 minutes</div><div>90 seconds</div></div>
+            <div class="table-row"><div>10 marks</div><div>2 minutes</div><div>9 minutes</div><div>2 minutes</div></div>
+          </div>
+          <div class="callout">If planning feels slow, remember that rewriting a confused answer is slower.</div>
+        </section>
+
+        <section class="panel" id="method">
+          <div class="section-title">
+            <p class="eyebrow">Timed method</p>
+            <h2>The four-pass approach</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>1. Decode</h3><p>Underline inputs, outputs, constraints and any required data structure or file.</p></article>
+            <article><h3>2. Skeleton</h3><p>Write the outer shape first: initialisation, loop, selection, output.</p></article>
+            <article><h3>3. Fill</h3><p>Add conditions, assignments, function calls and file statements.</p></article>
+            <article><h3>4. Check</h3><p>Trace one normal and one boundary case; confirm the output happens once in the right place.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" id="constructs">
+          <div class="section-title">
+            <p class="eyebrow">Construct bank</p>
+            <h2>Choose the smallest construct that fits the task</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Construct bank">
+            <div class="table-row table-head"><div>Task signal</div><div>Likely construct</div><div>Why</div><div>Check</div></div>
+            <div class="table-row"><div>exactly N items</div><div>FOR</div><div>known repetition count</div><div>bounds include all items</div></div>
+            <div class="table-row"><div>until file ends</div><div>WHILE NOT EOF</div><div>unknown record count</div><div>read inside loop</div></div>
+            <div class="table-row"><div>validate input</div><div>REPEAT UNTIL</div><div>prompt runs at least once</div><div>loop stops when valid</div></div>
+            <div class="table-row"><div>several menu options</div><div>CASE</div><div>clear multi-way branch</div><div>include OTHERWISE</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Trace check</p>
+            <h2>Trace a tiny case before trusting a big answer</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Prompt</h3>
+              <p>Write an algorithm to count values in Scores that are greater than or equal to 50.</p>
+              <pre><code>SET Count TO 0
+FOR Index TO 1 TO 4
+    IF Scores[Index] &gt;= 50 THEN
+        SET Count TO Count + 1
+    ENDIF
+NEXT Index
+OUTPUT Count</code></pre>
+            </article>
+            <article>
+              <h3>Fast check</h3>
+              <p>Use Scores = [49, 50, 72, 20]. Expected Count is 2. If your trace gives 1, your condition probably excluded 50.</p>
+              <div class="callout">Checking one boundary value often catches the most expensive mistake.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="quality">
+          <div class="section-title">
+            <p class="eyebrow">Quality checklist</p>
+            <h2>Before moving on, ask six questions</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Inputs</strong><span>Where does the data come from: user, array or file?</span></div>
+            <div><strong>Initialisation</strong><span>Are counters, totals and flags set before use?</span></div>
+            <div><strong>Loop</strong><span>Does the loop include the correct items and stop safely?</span></div>
+            <div><strong>Selection</strong><span>Are boundary conditions correct, such as greater than or equal to?</span></div>
+            <div><strong>Output</strong><span>Is the final result output once, after processing?</span></div>
+            <div><strong>File handling</strong><span>Are OPENFILE, READFILE or WRITEFILE and CLOSEFILE used correctly?</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>This timed practice covers core Paper 2 pseudocode skills</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>timed answer planning, mark allocation and check strategy</span></div>
+            <div><strong>Covered</strong><span>sequence, selection, iteration, arrays and counters</span></div>
+            <div><strong>Covered</strong><span>file input/output patterns and EOF loops</span></div>
+            <div><strong>Covered</strong><span>boundary checking, trace checking and mark-scheme style correction</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="timer-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive timing tool</p>
+            <h2>Choose a mark value and plan the response</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Question size
+              <select id="timerSelect">
+                <option value="4">4-mark short algorithm</option>
+                <option value="6">6-mark standard pseudocode</option>
+                <option value="8">8-mark file or array algorithm</option>
+                <option value="10">10-mark extended problem</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="timerBtn">Show plan</button>
+          </div>
+          <div id="timerOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="skeleton-tool">
+          <div class="section-title">
+            <p class="eyebrow">Skeleton builder</p>
+            <h2>Build the outer shape before details</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Task
+              <select id="skeletonSelect">
+                <option value="count">Count passing marks in an array</option>
+                <option value="file">Read all records from a file</option>
+                <option value="validate">Validate mark input</option>
+                <option value="largest">Find largest value in an array</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="skeletonBtn">Show skeleton</button>
+          </div>
+          <div id="skeletonOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Timed answer patterns</h2>
+          </div>
+          <div class="tab-row" role="tablist" aria-label="Worked examples">
+            <button class="tab-button active" type="button" data-example="count">Count</button>
+            <button class="tab-button" type="button" data-example="file">File</button>
+            <button class="tab-button" type="button" data-example="validate">Validate</button>
+          </div>
+          <div id="exampleOutput" class="example-output"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Fast recall before timed writing</h2>
+          </div>
+          <div id="practiceList" class="practice-list"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the timed-answer mistake</h2>
+          </div>
+          <div id="mistakeList" class="mistake-grid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Timed pseudocode questions with expandable MS</h2>
+            <p>These are original AS-style questions. The mark schemes use Cambridge-style precision, not copied past-paper wording.</p>
+          </div>
+          <div id="examList" class="exam-list"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>The timed pseudocode routine</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Plan</strong><span>inputs, variables, loop, condition, output</span></div>
+            <div><strong>Write</strong><span>Cambridge-style pseudocode with visible method</span></div>
+            <div><strong>Check</strong><span>normal and boundary case before moving on</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Complete two timed pseudocode responses</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Set a 7-minute timer and write pseudocode to count valid marks in an array.</li>
+            <li>Set an 8-minute timer and write pseudocode to read records from a file and output selected records.</li>
+            <li>For each answer, add a trace check using one normal and one boundary case.</li>
+            <li>Mark your answer using the checklist: input, initialisation, loop, condition, output and file handling.</li>
+          </ol>
+          <div class="callout">Marking focus: visible method, correct loop boundaries, correct file mode and final output in the right place.</div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 110 | Cambridge pseudocode conventions and exam readability</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>Cambridge pseudocode conventions and exam readability</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#notation">Core notation</a>
+        <a href="#structure">Block structure</a>
+        <a href="#readability">Readability</a>
+        <a href="#java">Java traps</a>
+        <a href="#conversion">Conversion routine</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Notation checker</a>
+        <a href="#cleaner">Java cleaner</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 110 | 45 minutes | Paper 2 Section 9 | 5-minute quiz</p>
+            <h2>Pseudocode is not Java wearing a fake moustache.</h2>
+            <p>
+              Cambridge pseudocode is the exam answer format. Java can support implementation practice, but Paper 2
+              rewards clear algorithm expression: assignment arrows, readable identifiers, correct block endings,
+              indentation and logic that a marker can follow without running a compiler.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Use</strong><span>Cambridge-style assignment, input, output, selection and loop notation</span></div>
+              <div><strong>Improve</strong><span>readability through indentation, identifiers and block endings</span></div>
+              <div><strong>Convert</strong><span>Java-like fragments into exam-appropriate pseudocode</span></div>
+            </div>
+          </div>
+          <div class="pseudo-visual" aria-label="Pseudocode visual">
+            <div class="compare-card">
+              <strong>Cambridge-style</strong>
+              <pre><code>Total &lt;- Total + Mark
+IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ENDIF</code></pre>
+            </div>
+            <div class="compare-card warning">
+              <strong>Java support only</strong>
+              <pre><code>total = total + mark;
+if (mark &gt;= 50) {
+    System.out.println("Pass");
+}</code></pre>
+            </div>
+            <p>Same logic, different answer style. In Paper 2, make the algorithm readable first.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask students to mark their own pseudocode with three colours: assignment, block boundaries and variable names.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style marking rewards clear intent. Ambiguous braces, missing ENDIFs or overwritten variables can hide correct logic.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A runnable Java answer is not automatically a good Paper 2 pseudocode answer. Syntax habits can cost clarity marks.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which line looks most like Cambridge-style assignment?</h2>
+            <p>The algorithm adds `Mark` to `Total`. Choose the clearest Paper 2 style.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="arrow">Total &lt;- Total + Mark</button>
+            <button class="choice-card" type="button" data-hook="equals">Total = Total + Mark;</button>
+            <button class="choice-card" type="button" data-hook="plus">Total++Mark</button>
+            <button class="choice-card" type="button" data-hook="print">System.out.println(Total)</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the notation that clearly assigns a new value to Total.</div>
+        </section>
+
+        <section class="panel" id="notation">
+          <div class="section-title">
+            <p class="eyebrow">Core notation</p>
+            <h2>Use the symbols that make algorithm intent visible</h2>
+          </div>
+          <div class="data-table pattern-table" role="table" aria-label="Cambridge pseudocode notation">
+            <div class="table-row table-head" role="row"><div>Idea</div><div>Cambridge-style pseudocode</div><div>Java support only</div><div>Exam note</div></div>
+            <div class="table-row" role="row"><div>Assignment</div><div>`Total &lt;- Total + 1`</div><div>`total = total + 1;`</div><div>`&lt;-` shows value is stored</div></div>
+            <div class="table-row" role="row"><div>Input</div><div>`INPUT Mark`</div><div>`scanner.nextInt()`</div><div>name the value being read</div></div>
+            <div class="table-row" role="row"><div>Output</div><div>`OUTPUT Total`</div><div>`System.out.println(total);`</div><div>state what is displayed</div></div>
+            <div class="table-row" role="row"><div>Selection</div><div>`IF ... THEN ... ELSE ... ENDIF`</div><div>`if (...) { ... } else { ... }`</div><div>close the block clearly</div></div>
+            <div class="table-row" role="row"><div>Loops</div><div>`FOR ... NEXT` / `WHILE ... ENDWHILE`</div><div>`for (...) {}` / `while (...) {}`</div><div>show loop boundaries</div></div>
+          </div>
+          <div class="callout">Chinese support: assignment = 赋值；indentation = 缩进；block ending = 代码块结束标记。</div>
+        </section>
+
+        <section class="panel" id="structure">
+          <div class="section-title">
+            <p class="eyebrow">Block structure</p>
+            <h2>Every opening should have a visible ending</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Readable selection</h3>
+              <pre><code>IF Mark &gt;= 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Resit"
+ENDIF</code></pre>
+              <p>`ENDIF` makes the selection boundary clear.</p>
+            </article>
+            <article>
+              <h3>Readable loop</h3>
+              <pre><code>FOR Index &lt;- 1 TO 5
+    INPUT Mark
+    Total &lt;- Total + Mark
+NEXT Index</code></pre>
+              <p>`NEXT Index` shows which loop is ending, useful when loops are nested.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="readability">
+          <div class="section-title">
+            <p class="eyebrow">Readability</p>
+            <h2>A marker should not need detective training</h2>
+          </div>
+          <div class="data-table readability-table" role="table" aria-label="Readability features">
+            <div class="table-row table-head" role="row"><div>Feature</div><div>Weak answer</div><div>Improved answer</div><div>Why it helps</div></div>
+            <div class="table-row" role="row"><div>Identifier</div><div>`x`, `y`, `z`</div><div>`Mark`, `Total`, `PassCount`</div><div>purpose is visible</div></div>
+            <div class="table-row" role="row"><div>Indentation</div><div>all lines aligned</div><div>nested lines indented</div><div>block ownership is clear</div></div>
+            <div class="table-row" role="row"><div>Output position</div><div>inside loop by accident</div><div>after loop when final result required</div><div>avoids repeated output</div></div>
+            <div class="table-row" role="row"><div>Condition</div><div>`IF good THEN`</div><div>`IF Mark &gt;= 50 THEN`</div><div>test is precise</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="java">
+          <div class="section-title">
+            <p class="eyebrow">Java traps</p>
+            <h2>Keep Java syntax out of Paper 2 unless Java is explicitly requested</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Java-like answer</h3>
+              <pre><code>for (int i = 0; i &lt; 5; i++) {
+    if (marks[i] &gt;= 50) {
+        passCount++;
+    }
+}</code></pre>
+            </article>
+            <article>
+              <h3>Cambridge-style version</h3>
+              <pre><code>PassCount &lt;- 0
+FOR Index &lt;- 1 TO 5
+    IF Mark[Index] &gt;= 50 THEN
+        PassCount &lt;- PassCount + 1
+    ENDIF
+NEXT Index</code></pre>
+            </article>
+          </div>
+          <div class="callout">Java arrays often use 0-based indexing. Cambridge-style teaching examples here use readable 1-based positions unless the question defines otherwise.</div>
+        </section>
+
+        <section class="panel" id="conversion">
+          <div class="section-title">
+            <p class="eyebrow">Conversion routine</p>
+            <h2>Convert meaning first, syntax second</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>1. State the goal</strong><span>Example: input five marks and count how many are at least 50.</span></div>
+            <div><strong>2. Choose variables</strong><span>`Mark`, `Index`, `PassCount` are clearer than `m`, `i`, `pc` in first drafts.</span></div>
+            <div><strong>3. Write Cambridge blocks</strong><span>Use `FOR/NEXT`, `IF/ENDIF`, `&lt;-`, `INPUT`, `OUTPUT`.</span></div>
+            <div><strong>4. Trace once</strong><span>Check that each variable changes where the indentation says it changes.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson consolidates Paper 2 pseudocode readability</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Assignment notation, input/output, IF/ELSE/ENDIF, FOR/NEXT, WHILE/ENDWHILE, indentation, variable naming, Java-to-pseudocode conversion and trace readability.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 109 covered efficiency reasoning. Lesson 111 moves to designing full algorithms from word problems.</span></div>
+            <div><strong>Paper 2 note</strong><span>Cambridge pseudocode is the expected exam style. Java appears only as support unless a question explicitly asks for Java.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive notation checker</p>
+            <h2>Identify the convention</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Code fragment
+              <select id="checkerInput">
+                <option value="assignment">Total &lt;- Total + Mark</option>
+                <option value="output">OUTPUT Total</option>
+                <option value="selection">IF Mark &gt;= 50 THEN ... ENDIF</option>
+                <option value="java">System.out.println(total);</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="checkerBtn">Check</button>
+          </div>
+          <div class="feedback" id="checkerResult">Choose a fragment to classify it.</div>
+        </section>
+
+        <section class="panel" id="cleaner">
+          <div class="section-title">
+            <p class="eyebrow">Interactive Java cleaner</p>
+            <h2>Convert Java-like syntax into Cambridge-style pseudocode</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Java-like fragment
+              <select id="cleanerInput">
+                <option value="assign">total = total + mark;</option>
+                <option value="print">System.out.println(total);</option>
+                <option value="if">if (mark &gt;= 50) { passCount++; }</option>
+                <option value="for">for (int i = 1; i &lt;= 5; i++) { input mark; }</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="cleanerBtn">Convert</button>
+          </div>
+          <div class="trace-output" id="cleanerResult">Choose a fragment to convert.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Readable pseudocode transformations</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="assignment">Assignment and output</button>
+            <button class="tab" type="button" data-example="selection">Selection block</button>
+            <button class="tab" type="button" data-example="loop">Loop block</button>
+            <button class="tab" type="button" data-example="full">Full clean-up</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Exam-readable pseudocode</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix pseudocode readability problems</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style pseudocode questions with expandable MS</h2>
+            <p>These questions target notation, block endings, indentation, variable naming and Java-to-pseudocode conversion.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Pseudocode readability checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Notation</strong><span>Use `&lt;-`, `INPUT`, `OUTPUT`, `IF/ENDIF`, `FOR/NEXT`, `WHILE/ENDWHILE`.</span></div>
+            <div><strong>Layout</strong><span>Indent block contents and show where each selection or loop ends.</span></div>
+            <div><strong>Clarity</strong><span>Choose meaningful identifiers and avoid Java-only punctuation unless asked.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Conversion</strong>
+              <span>Convert this Java-like fragment into Cambridge-style pseudocode: `if (mark &gt;= 50) { passCount++; }`.</span>
+            </article>
+            <article>
+              <strong>Task 2: Readability edit</strong>
+              <span>Rewrite a 6-line algorithm using meaningful variable names, correct indentation and visible block endings.</span>
+            </article>
+            <article>
+              <strong>Task 3: Mini algorithm</strong>
+              <span>Write Cambridge-style pseudocode to input 5 marks, total them, and output the final total.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

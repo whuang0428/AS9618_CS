@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 103 | Validation algorithms and defensive input handling</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>Validation algorithms and defensive input handling</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#validation">Validation</a>
+        <a href="#checks">Check types</a>
+        <a href="#defensive">Defensive loops</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Check classifier</a>
+        <a href="#tester">Input tester</a>
+        <a href="#builder">Validation builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 103 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
+            <h2>Validation is the polite bouncer at the algorithm door.</h2>
+            <p>
+              Validation checks whether input is acceptable before it is processed. Defensive input handling repeats
+              input until valid data is supplied, so later calculations do not have to wrestle with nonsense. The aim is
+              not to prove the data is true; it is to check it follows the rules.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>range, presence, length, type/format and check digit validation</span></div>
+              <div><strong>Write</strong><span>Cambridge-style validation loops using WHILE or REPEAT...UNTIL</span></div>
+              <div><strong>Explain</strong><span>why validation reduces errors but does not guarantee data is correct</span></div>
+            </div>
+          </div>
+          <div class="validation-visual" aria-label="Validation pipeline visual">
+            <div>INPUT Age</div>
+            <span>check rule</span>
+            <div>Age &gt;= 11 AND Age &lt;= 18?</div>
+            <span>if invalid</span>
+            <div>Ask again</div>
+            <span>if valid</span>
+            <div>Process Age</div>
+            <p>Invalid input should be rejected before it sneaks into the calculation wearing a fake moustache.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Separate the rule from the loop: first write the valid condition, then decide how to repeat input.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 often gives a rule such as 0-100 or 8 characters. The marks come from applying the rule precisely.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Validation checks acceptability, not truth. A valid age of 15 might still be typed by someone who is actually 16.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>The school form that accepts age 900</h2>
+            <p>Which validation rule would stop a student entering 900 as their age?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="presence">Presence check</button>
+            <button class="choice-card" type="button" data-hook="range">Range check</button>
+            <button class="choice-card" type="button" data-hook="length">Length check</button>
+            <button class="choice-card" type="button" data-hook="format">Format check</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the best validation rule.</div>
+        </section>
+
+        <section class="panel" id="validation">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Validation checks whether input follows a rule</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>What validation does</h3>
+              <p>Validation rejects unacceptable input before processing. It can check range, presence, length, type, format, existence or check digit rules.</p>
+              <div class="callout">Chinese support: validation = 有效性检查；defensive input = 防御式输入。</div>
+            </article>
+            <article>
+              <h3>What validation does not do</h3>
+              <p>Validation does not prove input is true. It checks whether input is reasonable or follows the expected pattern.</p>
+              <div class="callout">Example: age 15 passes a school-age range check, but it might still be a lie.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="checks">
+          <div class="section-title">
+            <p class="eyebrow">Validation check types</p>
+            <h2>Match the rule to the risk</h2>
+          </div>
+          <div class="data-table concept-table" role="table" aria-label="Validation check types">
+            <div class="table-row table-head" role="row"><div>Check</div><div>Purpose</div><div>Example</div></div>
+            <div class="table-row" role="row"><div>Range check</div><div>value is within allowed limits</div><div>Mark &gt;= 0 AND Mark &lt;= 100</div></div>
+            <div class="table-row" role="row"><div>Presence check</div><div>field is not blank</div><div>Name &lt;&gt; ""</div></div>
+            <div class="table-row" role="row"><div>Length check</div><div>input has required number of characters</div><div>LENGTH(Postcode) &lt;= 8</div></div>
+            <div class="table-row" role="row"><div>Type / format check</div><div>input matches expected type or pattern</div><div>Date has form DD/MM/YYYY</div></div>
+            <div class="table-row" role="row"><div>Check digit</div><div>detects many typing errors in a code</div><div>barcode or ISBN-style code</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="defensive">
+          <div class="section-title">
+            <p class="eyebrow">Defensive input handling</p>
+            <h2>Reject bad input, then ask again</h2>
+          </div>
+          <div class="step-strip">
+            <div><strong>1</strong><span>Input the value.</span></div>
+            <div><strong>2</strong><span>Test the validation condition.</span></div>
+            <div><strong>3</strong><span>If invalid, output a helpful message.</span></div>
+            <div><strong>4</strong><span>Repeat input until valid.</span></div>
+            <div><strong>5</strong><span>Process only the accepted value.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Use Cambridge-style validation loops in the exam</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>REPEAT
+    INPUT Mark
+    IF Mark &lt; 0 OR Mark &gt; 100 THEN
+        OUTPUT "Invalid mark"
+    ENDIF
+UNTIL Mark &gt;= 0 AND Mark &lt;= 100</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>do {
+    mark = input.nextInt();
+    if (mark &lt; 0 || mark &gt; 100) {
+        System.out.println("Invalid mark");
+    }
+} while (mark &lt; 0 || mark &gt; 100);</code></pre>
+            </article>
+          </div>
+          <div class="callout">Exam reminder: Cambridge pseudocode uses keywords such as REPEAT, UNTIL, IF, THEN, ENDIF, INPUT and OUTPUT. Java syntax is support only.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson focuses on valid input before processing</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Validation purpose, range/presence/length/type/format/check digit checks, defensive loops, invalid messages and precise Boolean conditions.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 104 covers linear and binary search. This page does not teach searching algorithms.</span></div>
+            <div><strong>Paper 2 note</strong><span>Cambridge pseudocode is the exam standard. Java appears only as a support comparison.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive check classifier</p>
+            <h2>Choose the validation type</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Rule
+              <select id="classifierInput">
+                <option value="range">Mark must be 0 to 100 inclusive.</option>
+                <option value="presence">Surname must not be blank.</option>
+                <option value="length">Password must be at least 8 characters.</option>
+                <option value="format">Date must be entered as DD/MM/YYYY.</option>
+                <option value="digit">Barcode uses final digit to detect typing errors.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+          </div>
+          <div class="feedback" id="classifyResult">Choose a rule to classify it.</div>
+        </section>
+
+        <section class="panel" id="tester">
+          <div class="section-title">
+            <p class="eyebrow">Interactive input tester</p>
+            <h2>Test a mark against 0-100</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Mark
+              <input id="markInput" type="number" value="50" />
+            </label>
+            <button class="primary-button" type="button" id="testBtn">Test mark</button>
+          </div>
+          <div class="feedback" id="testResult">Enter a mark and test whether it is valid.</div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive validation builder</p>
+            <h2>Generate a Cambridge-style validation loop</h2>
+          </div>
+          <div class="builder-grid">
+            <label>
+              Scenario
+              <select id="builderInput">
+                <option value="mark">Mark 0-100</option>
+                <option value="age">Age 11-18</option>
+                <option value="name">Name not blank</option>
+                <option value="password">Password length at least 8</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="buildBtn">Build loop</button>
+          </div>
+          <div class="answer-frame" id="builderResult">Choose a scenario to generate pseudocode.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Validation patterns</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="range">Range</button>
+            <button class="tab" type="button" data-example="presence">Presence</button>
+            <button class="tab" type="button" data-example="length">Length</button>
+            <button class="tab" type="button" data-example="format">Format</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Validation precision</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix validation mistakes</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style validation questions with expandable MS</h2>
+            <p>These questions target validation rules, defensive loops and precise Boolean conditions. MS uses strict Cambridge-style expectations.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Validation checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Rule</strong><span>State the exact acceptable condition.</span></div>
+            <div><strong>Loop</strong><span>Repeat input while invalid or until valid.</span></div>
+            <div><strong>Limit</strong><span>Validation checks acceptability, not real-world truth.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Validation table</strong>
+              <span>For mark, date, password and surname, name the best validation check and write the valid condition.</span>
+            </article>
+            <article>
+              <strong>Task 2: Pseudocode loop</strong>
+              <span>Write Cambridge-style pseudocode that repeatedly inputs an age until it is from 11 to 18 inclusive.</span>
+            </article>
+            <article>
+              <strong>Task 3: Explanation</strong>
+              <span>Explain why validation can reject impossible data but cannot prove that a user told the truth.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

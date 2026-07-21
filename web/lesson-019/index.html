@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 019 | Protocols and layered communication</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
+        <h1>Protocols and layered communication</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#protocols">Protocols</a>
+        <a href="#rules">Protocol rules</a>
+        <a href="#layers">Layers</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Diagnostic tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 019 | 45 minutes | Paper 1 Section 2</p>
+            <h2>Communication works because everyone agrees on the rules.</h2>
+            <p>
+              A protocol is a set of rules for communication. Layered communication
+              separates a network task into levels, so each layer handles a specific
+              job and passes data to the next layer.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>protocol and explain why agreed rules are needed</span></div>
+              <div><strong>Identify</strong><span>common protocol rules: format, timing, error control and addressing</span></div>
+              <div><strong>Explain</strong><span>why layered communication simplifies network design</span></div>
+            </div>
+          </div>
+          <div class="protocol-card" aria-label="Protocol concept">
+            <span>rules -> layers -> communication</span>
+            <p>Without protocols, the network is just devices shouting politely incompatible nonsense.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make students finish this sentence: “The protocol tells the devices how to...” Vague “it connects things” is not enough.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam answers need functions of protocols and benefits of layers, not just names of protocols.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A protocol is not a device, a cable or a topology. It is a rule set used by communicating systems.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Two devices try to send data. One expects bytes in groups of 8; the other sends random-length chunks. What is missing?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="protocol">An agreed protocol</button>
+            <button class="choice-card" type="button" data-hook="bigger">A bigger monitor</button>
+            <button class="choice-card" type="button" data-hook="topology">A star topology</button>
+            <button class="choice-card" type="button" data-hook="storage">More secondary storage</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick the answer about shared rules. The devices need agreement before they need confidence.
+          </div>
+        </section>
+
+        <section class="panel" id="protocols">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>What a protocol is</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <h3>Definition</h3>
+              <p>A protocol is a set of rules that governs how data is transmitted and received.</p>
+            </article>
+            <article>
+              <h3>Shared meaning</h3>
+              <p>Both sender and receiver follow the same rules, so messages can be interpreted correctly.</p>
+            </article>
+            <article>
+              <h3>Interoperability</h3>
+              <p>Different devices and software can communicate if they implement the same protocol.</p>
+            </article>
+            <article>
+              <h3>Reliability</h3>
+              <p>Protocols can specify error checking, acknowledgements and retransmission rules.</p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: protocol = 协议/规则集合；interoperability = 互操作性；acknowledgement = 确认信息。</div>
+        </section>
+
+        <section class="panel" id="rules">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>What protocol rules can specify</h2>
+          </div>
+          <div class="rule-grid">
+            <article><strong>Data format</strong><span>How data is structured, encoded or framed.</span></article>
+            <article><strong>Addressing</strong><span>How sender and receiver are identified.</span></article>
+            <article><strong>Timing</strong><span>When data can be sent and how long to wait for responses.</span></article>
+            <article><strong>Error control</strong><span>How errors are detected and how retransmission is handled.</span></article>
+            <article><strong>Flow control</strong><span>How to stop a fast sender overwhelming a slow receiver.</span></article>
+            <article><strong>Connection rules</strong><span>How communication starts, continues and ends.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="layers">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Layered communication</h2>
+          </div>
+          <div class="layer-stack" aria-label="Layered communication stack">
+            <div><strong>Application layer idea</strong><span>What the user or application wants to do, such as send a web request.</span></div>
+            <div><strong>Transport layer idea</strong><span>Breaks data into segments, manages reliability or delivery style.</span></div>
+            <div><strong>Network layer idea</strong><span>Adds logical addressing and routing between networks.</span></div>
+            <div><strong>Link/physical layer idea</strong><span>Moves frames or bits across the local medium.</span></div>
+          </div>
+          <div class="encapsulation-box">
+            <h3>Encapsulation and de-encapsulation</h3>
+            <p>As data moves down layers, each layer may add control information. At the receiver, layers remove and interpret that control information in reverse order.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Protocol definition and reasons protocols are required.</span></div>
+            <div><strong>Covered</strong><span>Protocol rules such as format, addressing, timing and error control.</span></div>
+            <div><strong>Covered</strong><span>Layered communication, encapsulation and benefits of separating responsibilities.</span></div>
+            <div><strong>Boundary</strong><span>Named application protocols such as HTTP/HTTPS/FTP/SMTP are handled in later lessons.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Communication diagnostic helper</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Symptom
+              <select id="symptomInput">
+                <option value="format">Receiver cannot interpret message format</option>
+                <option value="timeout">Sender waits forever for a reply</option>
+                <option value="corrupt">Corrupt data is accepted as if correct</option>
+                <option value="layer">A network card changes but apps still work</option>
+              </select>
+            </label>
+            <button type="button" id="diagnoseBtn">Diagnose</button>
+          </div>
+          <div class="result-box" id="diagnoseResult" aria-live="polite"></div>
+          <div class="method-box" id="diagnoseMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="protocol">Protocol rule</button>
+            <button class="tab" type="button" data-example="layers">Layer benefit</button>
+            <button class="tab" type="button" data-example="encapsulation">Encapsulation</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak protocol answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">“A protocol is a program that makes the internet faster.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">A protocol is a set of rules for communication, such as how data is formatted, addressed, checked and acknowledged.</p>
+            </article>
+            <article>
+              <p class="wrong">“Layering is useful because it adds more steps.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">Layering is useful because each layer handles a specific responsibility, so layers can be developed, replaced or troubleshot more independently.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Strong answers name the rule and explain its communication purpose.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Protocols are rules; layers divide responsibility</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>A protocol is a set of agreed communication rules.</span></div>
+            <div><strong>2</strong><span>Rules may cover format, timing, addressing, error control and flow control.</span></div>
+            <div><strong>3</strong><span>Layering separates complex communication into manageable responsibilities.</span></div>
+            <div><strong>4</strong><span>Encapsulation adds control information; de-encapsulation removes and interprets it.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write a precise definition of protocol and give three types of rule a protocol may specify.</li>
+            <li>Explain two benefits of using layers in network communication.</li>
+            <li>Draw a four-layer communication stack and write one responsibility for each layer.</li>
+            <li>Write a 5-mark answer explaining encapsulation and de-encapsulation.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Protocol:</strong> include “rules” and “communication”, then examples such as format, timing and error checking.</p>
+            <p><strong>Layer benefits:</strong> mention reduced complexity, standard interfaces and easier replacement/troubleshooting.</p>
+            <p><strong>Stack:</strong> do not memorise only names; attach a responsibility to each layer.</p>
+            <p><strong>Encapsulation:</strong> describe adding control data at sender and removing it at receiver.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

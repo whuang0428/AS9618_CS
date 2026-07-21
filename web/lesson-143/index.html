@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 143 | Requirements analysis and success criteria</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 12</p>
+        <h1>Requirements analysis and success criteria</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#analysis">Analysis</a>
+        <a href="#functional">Functional</a>
+        <a href="#non-functional">Non-functional</a>
+        <a href="#success">Success criteria</a>
+        <a href="#acceptance">Acceptance tests</a>
+        <a href="#stakeholders">Stakeholders</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#rewriter">Requirement rewriter</a>
+        <a href="#criteria-tool">Criteria checker</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Mistakes</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 143 | 45 minutes | Paper 2 Section 12 | informal questioning</p>
+            <h2>“User-friendly” is a wish. A success criterion is something you can test.</h2>
+            <p>
+              Requirements analysis finds out what a system must do and how success will be judged. Strong requirements are
+              clear, measurable and linked to users. Weak requirements sound pleasant but cannot be tested. Chinese support:
+              requirement 需求, stakeholder 利益相关者, success criteria 成功标准, acceptance test 验收测试。
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Classify</strong><span>functional and non-functional requirements</span></div>
+              <div><strong>Rewrite</strong><span>vague requests as measurable success criteria</span></div>
+              <div><strong>Link</strong><span>requirements to acceptance tests and later evaluation</span></div>
+            </div>
+          </div>
+          <div class="req-visual" aria-label="Requirement analysis visual">
+            <div><strong>Vague</strong><span>easy to use</span><em>too slippery to test</em></div>
+            <div><strong>Requirement</strong><span>book a room</span><em>what the system does</em></div>
+            <div><strong>Criterion</strong><span>under 3 clicks</span><em>measurable target</em></div>
+            <div><strong>Acceptance test</strong><span>try sample booking</span><em>evidence</em></div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>When a requirement contains words like “quick”, “easy” or “secure”, ask: “How would we prove that?”</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Analysis feeds design, testing and evaluation. If requirements are vague, later stages can look busy while building the wrong thing.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A requirement says what the system must do. A success criterion says how we decide whether it has done it well enough.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which statement is a measurable success criterion?</h2>
+            <p>Scenario: a school room booking system.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="nice">The system should be nice.</button>
+            <button class="choice-card" type="button" data-hook="fast">A teacher can complete a booking in under 2 minutes.</button>
+            <button class="choice-card" type="button" data-hook="modern">The system should feel modern.</button>
+            <button class="choice-card" type="button" data-hook="good">The system should work well.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the statement that can be tested with evidence.</div>
+        </section>
+
+        <section class="panel" id="analysis">
+          <div class="section-title">
+            <p class="eyebrow">Requirements analysis</p>
+            <h2>Analysis turns user needs into a requirements specification</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Gather</h3><p>Use interviews, questionnaires, observation or document analysis to find needs.</p></article>
+            <article><h3>Clarify</h3><p>Remove ambiguity by asking about users, tasks, data, constraints and priorities.</p></article>
+            <article><h3>Specify</h3><p>Write requirements that can guide design and later testing.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" id="functional">
+          <div class="section-title">
+            <p class="eyebrow">Functional requirements</p>
+            <h2>Functional requirements describe what the system must do</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Functional requirement examples">
+            <div class="table-row table-head"><div>Vague request</div><div>Functional requirement</div><div>Why stronger</div></div>
+            <div class="table-row"><div>manage bookings</div><div>allow teachers to create, edit and cancel room bookings</div><div>states actions and user</div></div>
+            <div class="table-row"><div>avoid clashes</div><div>reject a booking if the room is already booked for that time</div><div>states exact rule</div></div>
+            <div class="table-row"><div>show information</div><div>display a timetable for a selected room and date</div><div>states output and filter</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="non-functional">
+          <div class="section-title">
+            <p class="eyebrow">Non-functional requirements</p>
+            <h2>Non-functional requirements describe qualities or constraints</h2>
+          </div>
+          <div class="data-table three-col" role="table" aria-label="Non-functional requirement examples">
+            <div class="table-row table-head"><div>Quality</div><div>Measurable requirement</div><div>Possible evidence</div></div>
+            <div class="table-row"><div>performance</div><div>room search results display within 2 seconds</div><div>timed test</div></div>
+            <div class="table-row"><div>usability</div><div>a new teacher can create a booking in under 2 minutes after one demonstration</div><div>user trial</div></div>
+            <div class="table-row"><div>security</div><div>only staff with valid login credentials can create bookings</div><div>access test</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="success">
+          <div class="section-title">
+            <p class="eyebrow">Success criteria</p>
+            <h2>Success criteria make evaluation possible</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Weak</h3>
+              <p>“The system should be easy to use.”</p>
+            </article>
+            <article>
+              <h3>Stronger</h3>
+              <p>“At least 8 out of 10 teachers can create a booking without help in under 2 minutes.”</p>
+            </article>
+          </div>
+          <div class="callout">A success criterion should be specific enough that two people can test it and reach the same conclusion.</div>
+        </section>
+
+        <section class="panel" id="acceptance">
+          <div class="section-title">
+            <p class="eyebrow">Acceptance tests</p>
+            <h2>Acceptance tests check whether requirements are met</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Acceptance test examples">
+            <div class="table-row table-head"><div>Requirement</div><div>Test data/action</div><div>Expected result</div><div>Evidence</div></div>
+            <div class="table-row"><div>reject double booking</div><div>try to book Room 12 at an occupied time</div><div>booking rejected with message</div><div>test result screenshot/log</div></div>
+            <div class="table-row"><div>search within 2 seconds</div><div>search all rooms for Monday period 3</div><div>results shown within 2 seconds</div><div>timed test</div></div>
+            <div class="table-row"><div>staff-only bookings</div><div>try booking as guest account</div><div>access denied</div><div>security test result</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="stakeholders">
+          <div class="section-title">
+            <p class="eyebrow">Stakeholders</p>
+            <h2>Different users reveal different requirements</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Teachers</h3><p>Need quick booking and clear room availability.</p></article>
+            <article><h3>Admin staff</h3><p>Need reports, conflict resolution and permission controls.</p></article>
+            <article><h3>IT support</h3><p>Need backup, user management and maintainable configuration.</p></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>This lesson covers requirements analysis and success criteria in Section 12</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>requirements specification, functional and non-functional requirements</span></div>
+            <div><strong>Covered</strong><span>measurable success criteria, acceptance tests and stakeholder needs</span></div>
+            <div><strong>Not this lesson</strong><span>detailed interface design, implementation, testing tables or maintenance planning</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="rewriter">
+          <div class="section-title">
+            <p class="eyebrow">Interactive rewriter</p>
+            <h2>Turn vague requests into stronger requirements</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Vague request
+              <select id="rewriteSelect">
+                <option value="easy">Make it easy to use</option>
+                <option value="fast">Make it fast</option>
+                <option value="safe">Make it secure</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="rewriteBtn">Rewrite</button>
+          </div>
+          <div id="rewriteOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="criteria-tool">
+          <div class="section-title">
+            <p class="eyebrow">Criteria checker</p>
+            <h2>Is the criterion testable?</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Criterion
+              <select id="criteriaSelect">
+                <option value="vague">The system should be reliable.</option>
+                <option value="measurable">The system should process a booking request in under 3 seconds.</option>
+                <option value="opinion">The interface should look beautiful.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="criteriaBtn">Check</button>
+          </div>
+          <div id="criteriaOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From request to requirement to acceptance test</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab-button active" type="button" data-example="booking">Booking</button>
+            <button class="tab-button" type="button" data-example="library">Library</button>
+            <button class="tab-button" type="button" data-example="security">Security</button>
+          </div>
+          <div id="exampleOutput" class="example-output"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant checking: requirement language</h2>
+          </div>
+          <div id="practiceList" class="practice-list"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix weak analysis answers</h2>
+          </div>
+          <div id="mistakeList" class="mistake-grid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Cambridge-style requirements questions with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. They do not copy past paper questions.</p>
+          </div>
+          <div id="examList" class="exam-list"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What to remember</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Requirement</strong><span>states what the system must do or what quality it must have</span></div>
+            <div><strong>Criterion</strong><span>states how success will be judged</span></div>
+            <div><strong>Acceptance test</strong><span>provides evidence that a requirement has been met</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Make vague requests testable</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write three functional and three non-functional requirements for a school booking system.</li>
+            <li>For each non-functional requirement, write one measurable success criterion and one acceptance test.</li>
+            <li>Rewrite the vague request “make it reliable” into two testable criteria.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

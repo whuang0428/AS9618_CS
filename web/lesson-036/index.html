@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 036 | Truth tables and Boolean expressions</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
+        <h1>Truth tables and Boolean expressions</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#expressions">Expressions</a>
+        <a href="#table-method">Table method</a>
+        <a href="#precedence">Precedence</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Expression tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 036 | 45 minutes | Paper 1 Section 3</p>
+            <h2>A truth table is a receipt: every input row must pay for its output.</h2>
+            <p>
+              This lesson moves from individual logic gates to complete Boolean
+              expressions. You will construct truth tables systematically, add
+              intermediate columns, and use them to prove the final output.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Translate</strong><span>Boolean expressions into intermediate steps</span></div>
+              <div><strong>Complete</strong><span>truth tables for two-input and three-input expressions</span></div>
+              <div><strong>Justify</strong><span>outputs using row-by-row working</span></div>
+            </div>
+          </div>
+          <div class="gate-card" aria-label="Boolean expression">
+            <span>Q = (A AND B) OR NOT C</span>
+            <p>The brackets are not decoration. They tell the table what to do first.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make students say the column plan before filling numbers: inputs, intermediate gate outputs, final Q.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge-style mark schemes often award method marks for intermediate columns even when the final output contains an error.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Students often skip intermediate columns. That turns a logic question into mental arithmetic with a dramatic chance of wrongness.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A door opens when a card is valid AND either the PIN is correct OR the supervisor override is active.</h2>
+            <p>Click the row that opens the door. The door accepts Boolean evidence, not persuasive eyebrows.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="open">Card = 1, PIN = 0, Override = 1</button>
+            <button class="choice-card" type="button" data-hook="closed1">Card = 0, PIN = 1, Override = 1</button>
+            <button class="choice-card" type="button" data-hook="closed2">Card = 1, PIN = 0, Override = 0</button>
+            <button class="choice-card" type="button" data-hook="open2">Card = 1, PIN = 1, Override = 0</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Rule: Q = Card AND (PIN OR Override). There are two opening rows here.
+          </div>
+        </section>
+
+        <section class="panel" id="expressions">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Boolean expressions describe gate behaviour</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <strong>Variables</strong>
+              <span>A, B and C represent input signals. Each row assigns them 0 or 1.</span>
+            </article>
+            <article>
+              <strong>Operators</strong>
+              <span>NOT, AND, OR, NAND, NOR and XOR describe the logic applied.</span>
+            </article>
+            <article>
+              <strong>Intermediate columns</strong>
+              <span>Each bracketed part or gate output should get its own column.</span>
+            </article>
+            <article>
+              <strong>Final output</strong>
+              <span>Q is the final result after all intermediate columns have been combined.</span>
+            </article>
+          </div>
+          <div class="callout">Chinese support: Boolean expression = 布尔表达式；intermediate column = 中间列；evaluate = 求值；precedence = 优先级。</div>
+        </section>
+
+        <section class="panel" id="table-method">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>A reliable truth-table method</h2>
+          </div>
+          <div class="method-list">
+            <div><strong>1. Count inputs</strong><span>n inputs produce 2^n rows. Two inputs give 4 rows; three inputs give 8 rows.</span></div>
+            <div><strong>2. List input combinations</strong><span>Use a systematic order such as 000, 001, 010, 011, 100, 101, 110, 111.</span></div>
+            <div><strong>3. Add intermediate columns</strong><span>One column for each gate result, such as A AND B or NOT C.</span></div>
+            <div><strong>4. Fill final Q</strong><span>Use the intermediate columns to avoid guessing the final output.</span></div>
+          </div>
+          <div class="mini-table" role="table" aria-label="Three input row order">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">A</div><div role="columnheader">B</div><div role="columnheader">C</div><div role="columnheader">Row number</div>
+            </div>
+            <div class="table-row" role="row"><div>0</div><div>0</div><div>0</div><div>1</div></div>
+            <div class="table-row" role="row"><div>0</div><div>0</div><div>1</div><div>2</div></div>
+            <div class="table-row" role="row"><div>0</div><div>1</div><div>0</div><div>3</div></div>
+            <div class="table-row" role="row"><div>0</div><div>1</div><div>1</div><div>4</div></div>
+            <div class="table-row" role="row"><div>1</div><div>0</div><div>0</div><div>5</div></div>
+            <div class="table-row" role="row"><div>1</div><div>0</div><div>1</div><div>6</div></div>
+            <div class="table-row" role="row"><div>1</div><div>1</div><div>0</div><div>7</div></div>
+            <div class="table-row" role="row"><div>1</div><div>1</div><div>1</div><div>8</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="precedence">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Brackets and NOT usually come before the final combination</h2>
+          </div>
+          <div class="priority-grid">
+            <article><strong>Brackets first</strong><span>For (A OR B) AND C, complete A OR B before the AND with C.</span></article>
+            <article><strong>NOT next</strong><span>For A AND NOT B, invert B before applying AND.</span></article>
+            <article><strong>Then combine</strong><span>Use AND, OR or XOR to combine the prepared columns.</span></article>
+            <article><strong>Check one row</strong><span>Pick one row and explain it in words to catch swapped columns.</span></article>
+          </div>
+          <div class="callout">Do not assume a hidden priority when the expression is unclear. In exam answers, use brackets or intermediate columns to remove ambiguity.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Boolean expressions using AS-level logic operators.</span></div>
+            <div><strong>Covered</strong><span>Truth-table construction for two and three input variables.</span></div>
+            <div><strong>Covered</strong><span>Intermediate columns for compound expressions.</span></div>
+            <div><strong>Covered</strong><span>Method marks, strict row order and final-output checking.</span></div>
+            <div><strong>Boundary</strong><span>Drawing full logic circuits from requirements is developed in Lesson 037.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Build a truth table from an expression</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Expression
+              <select id="expressionInput">
+                <option value="expr1">Q = (A AND B) OR NOT C</option>
+                <option value="expr2">Q = (A OR B) AND C</option>
+                <option value="expr3">Q = (A XOR B) AND NOT C</option>
+                <option value="expr4">Q = NOT (A OR B)</option>
+                <option value="expr5">Q = (A NAND B) OR C</option>
+              </select>
+            </label>
+            <button type="button" id="buildBtn">Build table</button>
+          </div>
+          <div class="result-box" id="expressionRule" aria-live="polite"></div>
+          <div class="truth-table-wrap" id="truthTable"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Show the column plan</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="three">Three-input expression</button>
+            <button class="tab" type="button" data-example="brackets">Brackets first</button>
+            <button class="tab" type="button" data-example="derive">Derive expression</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak truth-table method</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"For three inputs, I only need six rows because there are three letters and two values."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">Three inputs require 2^3 = 8 rows. Each input can be 0 or 1, and every combination must appear exactly once.</p>
+            </article>
+            <article>
+              <p class="wrong">"I can fill Q directly for Q = (A AND B) OR NOT C without showing working."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">Add intermediate columns for A AND B and NOT C. Cambridge-style marking can credit those columns and they reduce row errors.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on systematic rows, intermediate columns and correct final Q values.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Truth tables in six exam sentences</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Rows</strong><span>n inputs give 2^n combinations.</span></div>
+            <div><strong>Order</strong><span>Use a systematic binary count.</span></div>
+            <div><strong>Columns</strong><span>Show intermediate gate outputs.</span></div>
+            <div><strong>Brackets</strong><span>Evaluate bracketed parts first.</span></div>
+            <div><strong>NOT</strong><span>Invert before combining.</span></div>
+            <div><strong>Q</strong><span>Final output must follow from the previous columns.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Complete the full truth table for Q = (A OR B) AND NOT C.</li>
+            <li>Complete the full truth table for Q = (A XOR B) OR C.</li>
+            <li>Write one paragraph explaining why intermediate columns are useful in exam answers.</li>
+            <li>Given this rule, "alarm sounds if motion is detected and the system is armed", define variables and write a Boolean expression.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>First table:</strong> use columns A, B, C, A OR B, NOT C, Q.</p>
+            <p><strong>Second table:</strong> use columns A, B, C, A XOR B, Q.</p>
+            <p><strong>Paragraph:</strong> mention method marks, reduced errors and clear evidence for final Q.</p>
+            <p><strong>Alarm expression:</strong> for example, let M = motion detected and A = system armed, then Alarm = M AND A.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

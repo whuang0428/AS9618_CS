@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 052 | System software overview: operating systems, utility software and translators</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
+        <h1>System software overview: operating systems, utility software and translators</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Core idea</a>
+        <a href="#categories">Categories</a>
+        <a href="#os">Operating system</a>
+        <a href="#utility">Utility software</a>
+        <a href="#translators">Translators</a>
+        <a href="#pathway">Translation pathway</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Classifier</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 052 | 45 minutes | Paper 1 Section 5 | System software</p>
+            <h2>System software keeps the computer useful before the apps arrive.</h2>
+            <p>
+              System software manages the computer, supports application software
+              and helps programs run. This lesson separates operating systems,
+              utility software and language translators so students do not put
+              every program into the same digital drawer.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Classify</strong><span>operating systems, utility software and language translators</span></div>
+              <div><strong>Explain</strong><span>how system software supports hardware, applications and users</span></div>
+              <div><strong>Compare</strong><span>compiler, interpreter and assembler at overview level</span></div>
+            </div>
+          </div>
+          <div class="system-card" aria-label="System software sketch">
+            <div class="system-stack">
+              <span>Hardware</span>
+              <span>System software</span>
+              <span>Application software</span>
+              <span>User tasks</span>
+            </div>
+            <p>The OS is not the app. The translator is not the source code. The utility is not magic cleaning spray.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Keep asking: is this software managing the computer, maintaining it, or translating a program?</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Section 5 answers often fail because students name software but do not state the service it provides.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not call a word processor an operating system. Application software performs user tasks; system software supports the system.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A user writes `PRINT("Hello")`. The CPU wants machine code. Who translates?</h2>
+            <p>Click the best answer. The processor is powerful, but it is not fluent in every high-level language.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="translator">A language translator such as a compiler or interpreter</button>
+            <button class="choice-card" type="button" data-hook="word">A word processor</button>
+            <button class="choice-card" type="button" data-hook="antivirus">Antivirus software</button>
+            <button class="choice-card" type="button" data-hook="monitor">The monitor</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Source code must be translated into code the processor can execute.
+          </div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>System software supports the running and maintenance of the computer</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <strong>System software</strong>
+              <span>Software that manages hardware, supports applications and helps maintain the computer system.</span>
+            </article>
+            <article>
+              <strong>Operating system</strong>
+              <span>System software that manages resources and provides an interface and services for users and applications.</span>
+            </article>
+            <article>
+              <strong>Utility software</strong>
+              <span>System software that performs maintenance, protection or optimisation tasks.</span>
+            </article>
+            <article>
+              <strong>Translator</strong>
+              <span>System software that converts source code into code that can be executed or further processed.</span>
+            </article>
+          </div>
+          <div class="callout">Chinese support: system software = 系统软件；operating system = 操作系统；utility software = 实用程序；translator = 语言翻译程序。</div>
+        </section>
+
+        <section class="panel" id="categories">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>System software versus application software</h2>
+          </div>
+          <div class="compare-grid">
+            <article>
+              <h3>System software</h3>
+              <p>Runs, manages or maintains the computer system. It provides services that applications depend on.</p>
+              <ul>
+                <li>Operating system</li>
+                <li>Utility software</li>
+                <li>Language translators</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Application software</h3>
+              <p>Helps the user perform a specific task, such as writing a document, editing a video or browsing the web.</p>
+              <ul>
+                <li>Word processor</li>
+                <li>Spreadsheet</li>
+                <li>Web browser</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="os">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Operating system: the main coordinator</h2>
+          </div>
+          <div class="role-grid">
+            <article><strong>User interface</strong><span>Provides a way for users to interact with the computer, such as GUI or command line.</span></article>
+            <article><strong>Resource management</strong><span>Allocates and controls hardware resources such as processor time, memory and devices.</span></article>
+            <article><strong>File services</strong><span>Provides file organisation, storage access and permission support.</span></article>
+            <article><strong>Application services</strong><span>Provides services and APIs that application software can use.</span></article>
+          </div>
+          <div class="trap-card inline-card">
+            <h3>Boundary</h3>
+            <p>Detailed process, memory, file and device management are developed in Lesson 053. Here the OS is introduced as the main system coordinator.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="utility">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Utility software: maintenance and protection tools</h2>
+          </div>
+          <div class="utility-table" role="table" aria-label="Utility software examples">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Utility</div>
+              <div role="columnheader">Purpose</div>
+              <div role="columnheader">Exam-safe wording</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Antivirus</div>
+              <div role="cell">Detects, quarantines or removes malware.</div>
+              <div role="cell">Protects the system from malicious software.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Backup</div>
+              <div role="cell">Creates copies of files/data.</div>
+              <div role="cell">Allows recovery after data loss, corruption or hardware failure.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Compression</div>
+              <div role="cell">Reduces file size.</div>
+              <div role="cell">Saves storage space or reduces transmission time.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Disk/file tools</div>
+              <div role="cell">Manage storage, clean temporary files or check disks.</div>
+              <div role="cell">Maintains storage organisation and may improve usability.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="translators">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Language translators: source code to executable behaviour</h2>
+          </div>
+          <div class="translator-grid">
+            <article>
+              <strong>Compiler</strong>
+              <span>Translates the whole source program before execution, often producing object or executable code.</span>
+            </article>
+            <article>
+              <strong>Interpreter</strong>
+              <span>Translates and executes source code statement by statement, often useful during development and debugging.</span>
+            </article>
+            <article>
+              <strong>Assembler</strong>
+              <span>Translates assembly language mnemonics into machine code for a specific processor.</span>
+            </article>
+          </div>
+          <div class="trap-card inline-card">
+            <h3>Common trap</h3>
+            <p>An interpreter is not a "bad compiler". It is a different translation approach with different trade-offs.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="pathway">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Translation pathway</h2>
+          </div>
+          <div class="pathway-grid">
+            <div><strong>High-level source code</strong><span>Human-readable instructions such as Python, Java or pseudocode-like code.</span></div>
+            <div><strong>Translator</strong><span>Compiler/interpreter converts or executes the source language.</span></div>
+            <div><strong>Object / executable / machine code</strong><span>Low-level code that the processor can execute directly or as part of a build process.</span></div>
+            <div><strong>Error feedback</strong><span>Syntax and translation errors must be reported so the programmer can correct them.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>System software as software supporting the computer system.</span></div>
+            <div><strong>Covered</strong><span>Operating system, utility software and language translators as categories.</span></div>
+            <div><strong>Covered</strong><span>Difference between system software and application software.</span></div>
+            <div><strong>Covered</strong><span>Compiler, interpreter and assembler at overview level.</span></div>
+            <div><strong>Boundary</strong><span>Detailed OS roles begin in Lesson 053.</span></div>
+            <div><strong>Boundary</strong><span>Detailed compiler/interpreter comparison continues later in Section 5.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>System software classifier</h2>
+            <p>Select a scenario and classify the software type before reading the explanation.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="os">The software allocates memory and processor time to programs</option>
+                <option value="backup">The software creates copies of user files for recovery</option>
+                <option value="compiler">The software translates a complete high-level program before it runs</option>
+                <option value="interpreter">The software runs source code line by line during testing</option>
+                <option value="assembler">The software converts assembly mnemonics into machine code</option>
+                <option value="app">The software helps a user write an essay</option>
+              </select>
+            </label>
+            <button type="button" id="simulateBtn">Classify</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Choose the category, then justify it</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="classify">Classify software</button>
+            <button class="tab" type="button" data-example="compiler">Choose compiler</button>
+            <button class="tab" type="button" data-example="interpreter">Choose interpreter</button>
+            <button class="tab" type="button" data-example="utility">Choose utility</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+            <p>Type short answers. Classification questions reward exact category names.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the system software confusion</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeList"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>CIE-style questions with expandable mark schemes</h2>
+            <p>These are original Cambridge-style questions. MS notes are strict about category, purpose and consequence.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>System software supports the system</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>OS</strong><span>Manages resources and provides services/interface.</span></div>
+            <div><strong>Utility</strong><span>Maintains, protects or optimises the system.</span></div>
+            <div><strong>Translator</strong><span>Converts source code into executable or lower-level code.</span></div>
+            <div><strong>Compiler</strong><span>Translates the whole program before execution.</span></div>
+            <div><strong>Interpreter</strong><span>Translates and executes statement by statement.</span></div>
+            <div><strong>Exam habit</strong><span>Name the category, then state its purpose and consequence.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Build a clean Section 5 vocabulary base</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Define system software, operating system, utility software and language translator.</li>
+            <li>Create a table with six examples: two OS roles, two utilities and two translators.</li>
+            <li>Write a 4-mark answer explaining why a compiler may be suitable for distributing a finished program.</li>
+            <li>Correct this sentence: "A spreadsheet is system software because it runs on the computer."</li>
+            <li>Prepare three questions you expect in Lesson 053 about operating system roles.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

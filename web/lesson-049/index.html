@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 049 | Performance factors: cores, cache, clock speed and word length</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
+        <h1>Performance factors: cores, cache, clock speed and word length</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Core idea</a>
+        <a href="#clock">Clock speed</a>
+        <a href="#cores">Cores</a>
+        <a href="#cache">Cache</a>
+        <a href="#word">Word length</a>
+        <a href="#limits">Limits</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Performance tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 049 | 45 minutes | Paper 1 Section 4 | Processor fundamentals</p>
+            <h2>Faster hardware is not a magic speed potion.</h2>
+            <p>
+              Processor performance depends on several interacting factors. Clock
+              speed, number of cores, cache size and word length can improve performance,
+              but only when the workload and software can actually benefit from them.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Explain</strong><span>how clock speed, cores, cache and word length affect performance</span></div>
+              <div><strong>Judge</strong><span>when a factor may not improve performance</span></div>
+              <div><strong>Write</strong><span>Cambridge-style cause-and-consequence answers</span></div>
+            </div>
+          </div>
+          <div class="performance-card" aria-label="Performance factors sketch">
+            <div class="perf-stack">
+              <span>Clock speed: cycles per second</span>
+              <span>Cores: parallel execution</span>
+              <span>Cache: faster repeated access</span>
+              <span>Word length: bits processed at once</span>
+            </div>
+            <p>Performance is a team sport. One superstar part can still meet a bottleneck.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Every explanation should end with a condition. "More cores helps" is weak; "more cores helps if tasks can be split" earns marks.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam answers must explain mechanism and limitation. Vague phrases like "better performance" are usually not enough.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not rank CPUs using one number only. A higher clock speed does not guarantee a faster system in every task.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A laptop has twice as many cores. Will every program run twice as fast?</h2>
+            <p>Click the best answer. The CPU marketing department may be optimistic; the exam mark scheme is not.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="depends">Not always: the program must be able to use the extra cores</button>
+            <button class="choice-card" type="button" data-hook="yes">Yes: twice the cores always means twice the speed</button>
+            <button class="choice-card" type="button" data-hook="cache">Only if cache is removed</button>
+            <button class="choice-card" type="button" data-hook="word">Only if word length becomes 1 bit</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Performance answers need a cause, a consequence and a sensible condition.
+          </div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Performance factor means a hardware feature that can affect processing speed</h2>
+          </div>
+          <div class="concept-grid">
+            <article>
+              <strong>Clock speed</strong>
+              <span>How many clock cycles the CPU can perform per second, commonly measured in Hz/GHz.</span>
+            </article>
+            <article>
+              <strong>Cores</strong>
+              <span>Processing units that can execute instructions independently, allowing parallel work.</span>
+            </article>
+            <article>
+              <strong>Cache</strong>
+              <span>Small, fast memory close to the CPU storing frequently or recently used data/instructions.</span>
+            </article>
+            <article>
+              <strong>Word length</strong>
+              <span>The number of bits the CPU can process as a unit in one operation/register word.</span>
+            </article>
+          </div>
+          <div class="callout">Chinese support: clock speed = 时钟频率；core = 核心；cache = 高速缓存；word length = 字长；bottleneck = 瓶颈。</div>
+        </section>
+
+        <section class="panel" id="clock">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Clock speed: more cycles per second</h2>
+          </div>
+          <div class="factor-grid">
+            <article>
+              <strong>Mechanism</strong>
+              <span>A higher clock speed means more fetch-decode-execute cycle steps can be started per second, if other parts keep up.</span>
+            </article>
+            <article>
+              <strong>Example</strong>
+              <span>3.6 GHz means 3.6 billion clock cycles per second, not automatically 3.6 billion completed programs.</span>
+            </article>
+            <article>
+              <strong>Limitation</strong>
+              <span>Memory access, heat, power use and CPU architecture can limit the real improvement.</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="cores">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Cores: more independent processing units</h2>
+          </div>
+          <div class="compare-grid">
+            <article>
+              <h3>Where extra cores help</h3>
+              <ul>
+                <li>Several programs running at the same time.</li>
+                <li>Tasks that can be split into parallel threads.</li>
+                <li>Background tasks while a foreground task remains responsive.</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Where extra cores may not help much</h3>
+              <ul>
+                <li>A single-threaded program that cannot be divided.</li>
+                <li>A task waiting for disk, network or memory.</li>
+                <li>Software that was not designed for parallel processing.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="cache">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Cache: reduce slow memory access</h2>
+          </div>
+          <div class="cache-flow" aria-label="Cache access flow">
+            <div><strong>1. CPU requests data</strong><span>The CPU needs an instruction or data item.</span></div>
+            <div><strong>2. Cache checked first</strong><span>Cache is much faster than main memory.</span></div>
+            <div><strong>3. Cache hit</strong><span>If found, access is fast and the CPU waits less.</span></div>
+            <div><strong>4. Cache miss</strong><span>If not found, data is fetched from slower main memory and may be copied into cache.</span></div>
+          </div>
+          <div class="trap-card inline-card">
+            <h3>Common trap</h3>
+            <p>Cache is not the same as RAM capacity. It is smaller, faster and used to reduce repeated slow access to main memory.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="word">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Word length: bits processed as a unit</h2>
+          </div>
+          <div class="word-table" role="table" aria-label="Word length effects">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Effect</div>
+              <div role="columnheader">Explanation</div>
+              <div role="columnheader">Exam-safe wording</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Larger values</div>
+              <div role="cell">More bits can represent larger numbers in one word.</div>
+              <div role="cell">A longer word can process larger data values in a single operation.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">More precision</div>
+              <div role="cell">More bits can support greater numeric precision where relevant.</div>
+              <div role="cell">Useful for calculations needing larger or more precise operands.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Addressing</div>
+              <div role="cell">In some architectures, word/register/address size can affect addressable memory.</div>
+              <div role="cell">Do not claim this without linking it to the architecture or address size.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Limitation</div>
+              <div role="cell">Longer word length alone does not make all programs faster.</div>
+              <div role="cell">The software and data type must benefit from the larger word.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="limits">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Performance is limited by bottlenecks</h2>
+          </div>
+          <div class="limit-grid">
+            <article><strong>Memory bottleneck</strong><span>A fast CPU still waits if data arrives slowly from memory.</span></article>
+            <article><strong>Software bottleneck</strong><span>Single-threaded code cannot fully use many cores.</span></article>
+            <article><strong>Heat and power</strong><span>Higher clock speed can require more power and produce more heat.</span></article>
+            <article><strong>Architecture</strong><span>Different CPU designs may do different amounts of work per clock cycle.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Clock speed as cycles per second and its performance effect.</span></div>
+            <div><strong>Covered</strong><span>Number of cores and why parallelisable tasks benefit more.</span></div>
+            <div><strong>Covered</strong><span>Cache as small fast memory reducing main-memory access time.</span></div>
+            <div><strong>Covered</strong><span>Word length as the number of bits processed as a unit.</span></div>
+            <div><strong>Covered</strong><span>Why no single factor guarantees better performance in all tasks.</span></div>
+            <div><strong>Not this lesson</strong><span>Instruction pipelining and pipeline hazards are covered in Lesson 050.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Performance factor selector</h2>
+            <p>Select a scenario and see which factor is most relevant. This is not a benchmark; it is an exam-answer thinking tool.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="single">Single-threaded program doing one long calculation</option>
+                <option value="multi">Video export split into many parallel tasks</option>
+                <option value="loop">Program repeatedly reads the same array data</option>
+                <option value="large">Program works with very large integer values</option>
+                <option value="memory">CPU often waits for data from main memory</option>
+              </select>
+            </label>
+            <button type="button" id="simulateBtn">Analyse</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Explain the factor and the condition</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="clock">Clock speed</button>
+            <button class="tab" type="button" data-example="cores">Cores</button>
+            <button class="tab" type="button" data-example="cache">Cache</button>
+            <button class="tab" type="button" data-example="word">Word length</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">5-minute quiz</p>
+            <h2>Practice with instant checking</h2>
+            <p>Short answers are accepted, but "faster" without the reason is still wearing a disguise.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the performance claim</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeList"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>CIE-style questions with expandable mark schemes</h2>
+            <p>These are original Cambridge-style questions. MS notes are strict about mechanism, scenario and limitations.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Explain performance with conditions</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Clock speed</strong><span>More cycles per second can allow more instructions to be processed.</span></div>
+            <div><strong>Cores</strong><span>More cores help when work can be run in parallel.</span></div>
+            <div><strong>Cache</strong><span>Fast memory reduces repeated access to slower main memory.</span></div>
+            <div><strong>Word length</strong><span>More bits can be processed as a unit for suitable data.</span></div>
+            <div><strong>Bottleneck</strong><span>The slowest limiting part may reduce the real benefit.</span></div>
+            <div><strong>Exam habit</strong><span>State factor, mechanism, condition and consequence.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Turn vague performance claims into mark-worthy explanations</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Define clock speed, cache, core and word length in one sentence each.</li>
+            <li>Write a 4-mark answer explaining why more cores may not speed up a single-threaded program.</li>
+            <li>Explain how cache can improve performance when a program repeatedly accesses the same data.</li>
+            <li>Correct this sentence: "A 4 GHz CPU is always faster than a 3 GHz CPU."</li>
+            <li>Choose one real task, such as gaming, video export or web browsing, and identify the most likely performance bottleneck.</li>
+          </ol>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 023 | Network hardware: switches, routers, access points and gateways</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
+        <h1>Network hardware: switches, routers, access points and gateways</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#lan">Switches</a>
+        <a href="#routing">Routers</a>
+        <a href="#wireless">Access points</a>
+        <a href="#gateway">Gateways</a>
+        <a href="#compare">Comparison</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Hardware tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 023 | 45 minutes | Paper 1 Section 2</p>
+            <h2>Packets do not wander politely. Hardware tells them where to go.</h2>
+            <p>
+              This lesson separates common network devices by job: switching inside a
+              LAN, routing between networks, joining wireless devices to a network, and
+              connecting networks that use different protocols or formats.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>switch, router, wireless access point and gateway from a scenario</span></div>
+              <div><strong>Explain</strong><span>how MAC addresses, IP addresses and protocol conversion fit the hardware role</span></div>
+              <div><strong>Justify</strong><span>which device is needed when a network path fails or expands</span></div>
+            </div>
+          </div>
+          <div class="network-card" aria-label="Network hardware path">
+            <span>device -> switch -> router -> gateway</span>
+            <p>Same network, different network, different rules.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make every answer use a verb: connect, forward, route, provide wireless access, translate. The verb stops acronym soup.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Hardware questions often hide in network diagrams. Students must link the device to the boundary it handles.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A wireless access point is not automatically a router. It lets wireless devices join a network; routing is a different job.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A tablet joins the school WiFi, then opens a website outside school. Which devices are likely involved?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="aprouter">Access point for wireless access, router for another network</button>
+            <button class="choice-card" type="button" data-hook="switchonly">Only a switch, because all traffic is local</button>
+            <button class="choice-card" type="button" data-hook="gatewayonly">Only a gateway, because the word sounds official</button>
+            <button class="choice-card" type="button" data-hook="ftp">FTP, because the website contains files</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose the answer that separates wireless access from routing to another network.
+          </div>
+        </section>
+
+        <section class="panel" id="lan">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Switches: forwarding inside a LAN</h2>
+          </div>
+          <div class="device-grid">
+            <article class="device-card">
+              <h3>Switch</h3>
+              <p>A switch connects devices on a local area network and forwards frames to the correct device.</p>
+              <ul>
+                <li><strong>Uses:</strong> MAC addresses to decide which port should receive the frame.</li>
+                <li><strong>Why useful:</strong> reduces unnecessary traffic compared with sending every frame everywhere.</li>
+                <li><strong>Exam wording:</strong> say "within a LAN" and "MAC address" when the scenario is local device-to-device traffic.</li>
+              </ul>
+            </article>
+            <article class="device-card diagram-card">
+              <h3>LAN idea</h3>
+              <p><code>PC A</code> -> <code>switch</code> -> <code>PC B</code></p>
+              <p>The switch is the traffic desk inside the local network. It does not decide the route across the wider internet.</p>
+            </article>
+          </div>
+          <div class="callout">Chinese support: switch = 交换机；frame = 帧；port = 端口；MAC address = MAC 地址。</div>
+        </section>
+
+        <section class="panel" id="routing">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Routers: forwarding between networks</h2>
+          </div>
+          <div class="device-grid">
+            <article class="device-card">
+              <h3>Router</h3>
+              <p>A router connects different networks and forwards packets towards their destination.</p>
+              <ul>
+                <li><strong>Uses:</strong> IP addresses and routing information to choose a path.</li>
+                <li><strong>Common role:</strong> connects a LAN to the internet or to another network.</li>
+                <li><strong>Careful wording:</strong> a router does not simply "make WiFi". Some home boxes combine router and access point functions, but the jobs are distinct.</li>
+              </ul>
+            </article>
+            <article class="device-card diagram-card">
+              <h3>Between networks</h3>
+              <p><code>LAN</code> -> <code>router</code> -> <code>internet / WAN</code></p>
+              <p>Inside the LAN, MAC-address forwarding matters. Between networks, IP-address routing matters.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="wireless">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Wireless access points: joining wireless devices</h2>
+          </div>
+          <div class="device-card">
+            <h3>Wireless access point</h3>
+            <p>A wireless access point allows wireless devices to connect to a network using radio waves, often linking them to a wired LAN.</p>
+            <ul>
+              <li><strong>Good exam phrase:</strong> provides wireless access to a network.</li>
+              <li><strong>Not enough:</strong> "it gives internet". Internet access may also require a router and wider network connection.</li>
+              <li><strong>Security link:</strong> access points can use authentication and encryption, but this lesson focuses on their network role.</li>
+            </ul>
+          </div>
+          <div class="callout">Chinese support: wireless access point = 无线接入点；authentication = 身份验证；radio waves = 无线电波。</div>
+        </section>
+
+        <section class="panel" id="gateway">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Gateways: connecting different network rules</h2>
+          </div>
+          <div class="device-card">
+            <h3>Gateway</h3>
+            <p>A gateway connects networks that may use different protocols, data formats or communication standards, translating where needed.</p>
+            <ul>
+              <li><strong>Useful when:</strong> two systems need to communicate but do not use the same rules.</li>
+              <li><strong>Default gateway note:</strong> in many LANs, the default gateway is the device used to send traffic outside the local network, often a router.</li>
+              <li><strong>Exam trap:</strong> do not use "gateway" as a fancy synonym for every network device.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Compare by job and boundary</h2>
+          </div>
+          <div class="compare-table" role="table" aria-label="Network hardware comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Device</div>
+              <div role="columnheader">Main job</div>
+              <div role="columnheader">Address / rule focus</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Switch</div>
+              <div role="cell">Connects devices and forwards frames inside a LAN.</div>
+              <div role="cell">Uses MAC addresses / ports.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Router</div>
+              <div role="cell">Connects different networks and forwards packets between them.</div>
+              <div role="cell">Uses IP addresses / routing table.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Access point</div>
+              <div role="cell">Allows wireless devices to connect to a network.</div>
+              <div role="cell">Uses radio waves / WiFi access.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Gateway</div>
+              <div role="cell">Connects networks using different protocols or formats.</div>
+              <div role="cell">Performs protocol/format translation where needed.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purpose of switches in a LAN and their use of MAC addresses/ports.</span></div>
+            <div><strong>Covered</strong><span>Purpose of routers in connecting networks and using IP addresses/routing information.</span></div>
+            <div><strong>Covered</strong><span>Purpose of wireless access points for wireless network access.</span></div>
+            <div><strong>Covered</strong><span>Purpose of gateways for connecting networks that use different protocols or formats.</span></div>
+            <div><strong>Boundary</strong><span>Transmission media were covered in Lesson 022; bandwidth and latency are reviewed again in Lesson 025.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Network hardware choice helper</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="lan">Forward traffic from one PC to another in the same LAN</option>
+                <option value="internet">Connect the school LAN to the internet</option>
+                <option value="wifi">Allow tablets to join the network wirelessly</option>
+                <option value="different">Connect two networks that use different protocols</option>
+                <option value="mac">Forward a frame using a MAC address table</option>
+                <option value="default">Send traffic outside the local subnet</option>
+              </select>
+            </label>
+            <button type="button" id="chooseBtn">Choose hardware</button>
+          </div>
+          <div class="result-box" id="hardwareResult" aria-live="polite"></div>
+          <div class="method-box" id="hardwareMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="school">School internet path</button>
+            <button class="tab" type="button" data-example="wifi">Adding WiFi</button>
+            <button class="tab" type="button" data-example="gateway">Protocol mismatch</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak hardware answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"A switch sends packets across the internet using IP addresses."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">A switch forwards frames inside a LAN, usually using MAC addresses. A router forwards packets between networks using IP addresses.</p>
+            </article>
+            <article>
+              <p class="wrong">"An access point and a router are the same thing."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">An access point provides wireless access to a network. A router connects different networks and chooses paths for packets.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Marks usually come from the role plus the correct boundary: LAN, between networks, wireless access or protocol translation.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Name the device, then name the job</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Switch</strong><span>Forwards frames inside a LAN using MAC addresses/ports.</span></div>
+            <div><strong>Router</strong><span>Forwards packets between networks using IP addresses/routing information.</span></div>
+            <div><strong>Access point</strong><span>Allows wireless devices to connect to a network.</span></div>
+            <div><strong>Gateway</strong><span>Connects networks with different protocols or formats and may translate.</span></div>
+            <div><strong>Trap</strong><span>Combined home devices can perform several roles; exam answers should separate the roles.</span></div>
+            <div><strong>Best answer</strong><span>Device + job + address/rule + scenario.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a four-row table for switch, router, wireless access point and gateway. Include job, address/rule focus and one scenario.</li>
+            <li>Draw a path from a wireless tablet to a website outside school. Label where the access point, switch and router may appear.</li>
+            <li>Write a 4-mark answer explaining why a router is needed to connect a LAN to the internet.</li>
+            <li>Write a 4-mark answer explaining why a gateway may be needed when two networks use different protocols.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Table:</strong> switch = MAC/LAN; router = IP/between networks; access point = wireless access; gateway = translation/different rules.</p>
+            <p><strong>Tablet path:</strong> tablet -> access point -> switch/LAN -> router -> outside network/internet.</p>
+            <p><strong>Router answer:</strong> include different networks, IP addresses and forwarding/routing packets.</p>
+            <p><strong>Gateway answer:</strong> include different protocols/formats and translation, not just "connects things".</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

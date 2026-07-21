@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 020 | IP addresses, MAC addresses, DNS and URLs</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 2</p>
+        <h1>IP addresses, MAC addresses, DNS and URLs</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#addresses">Addresses</a>
+        <a href="#dns">DNS</a>
+        <a href="#urls">URLs</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Lookup tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 020 | 45 minutes | 5-minute quiz + monthly checkpoint</p>
+            <h2>Names are for humans. Addresses are for routing.</h2>
+            <p>
+              A browser may start with a URL, but networks need addresses. DNS resolves
+              domain names to IP addresses, IP addresses identify devices on networks,
+              and MAC addresses identify network interfaces on a local network.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Distinguish</strong><span>IP addresses, MAC addresses, domain names and URLs</span></div>
+              <div><strong>Trace</strong><span>how DNS helps a browser find a web server</span></div>
+              <div><strong>Diagnose</strong><span>addressing and name-resolution problems using precise vocabulary</span></div>
+            </div>
+          </div>
+          <div class="address-card" aria-label="Addressing concept">
+            <span>URL -> DNS -> IP -> MAC</span>
+            <p>The browser likes names. The network prefers numbers. The local link wants hardware addresses.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make students say what each identifier is used for. “It identifies a computer” is often too vague for full marks.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Addressing questions reward clear distinctions: human-readable URL, domain name lookup, IP routing, local MAC delivery.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>DNS does not store web pages. DNS resolves a domain name to an IP address.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>You type <code>www.cambridgeinternational.org</code>. What must happen before packets can be routed to the server?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="dns">DNS resolves the domain name to an IP address</button>
+            <button class="choice-card" type="button" data-hook="mac">The web page becomes a MAC address</button>
+            <button class="choice-card" type="button" data-hook="storage">The browser adds more RAM</button>
+            <button class="choice-card" type="button" data-hook="topology">The URL changes the network topology</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick the step that turns a human-readable name into a routable address.
+          </div>
+        </section>
+
+        <section class="panel" id="addresses">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>IP address vs MAC address</h2>
+          </div>
+          <div class="compare-table" role="table" aria-label="IP and MAC comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Feature</div>
+              <div role="columnheader">IP address</div>
+              <div role="columnheader">MAC address</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Main use</div>
+              <div role="cell">Logical address used to identify a device on a network and route packets between networks.</div>
+              <div role="cell">Hardware address used to identify a network interface on a local network.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Change</div>
+              <div role="cell">Can change, for example when joining a different network or using DHCP.</div>
+              <div role="cell">Normally fixed to the network interface by the manufacturer, though it can sometimes be spoofed.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Example</div>
+              <div role="cell"><code>192.168.1.24</code> or an IPv6 address.</div>
+              <div role="cell"><code>3C:52:82:AA:19:F0</code></div>
+            </div>
+          </div>
+          <div class="callout">Chinese support: logical address = 逻辑地址；hardware address = 硬件地址；network interface = 网络接口。</div>
+        </section>
+
+        <section class="panel" id="dns">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>DNS: name to IP address</h2>
+          </div>
+          <div class="flow-grid">
+            <article><strong>1. URL entered</strong><span>The user enters a URL containing a domain name.</span></article>
+            <article><strong>2. DNS lookup</strong><span>The device asks a DNS server to resolve the domain name.</span></article>
+            <article><strong>3. IP returned</strong><span>The DNS server returns the IP address for that domain name.</span></article>
+            <article><strong>4. Packets sent</strong><span>Packets can now be addressed and routed to the web server.</span></article>
+          </div>
+          <div class="trap-card inline">
+            <h3>Common trap</h3>
+            <p>DNS failure may stop a domain name working even if the server is still reachable by IP address.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="urls">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>URL components</h2>
+          </div>
+          <div class="url-card">
+            <code>https://www.example.org/resources/page.html</code>
+            <div class="url-parts">
+              <div><strong>Protocol / scheme</strong><span><code>https</code> tells the browser which communication protocol to use.</span></div>
+              <div><strong>Domain name</strong><span><code>www.example.org</code> is resolved by DNS to an IP address.</span></div>
+              <div><strong>Path</strong><span><code>/resources/page.html</code> identifies the resource on the server.</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purpose and distinction of IP addresses and MAC addresses.</span></div>
+            <div><strong>Covered</strong><span>DNS resolving domain names to IP addresses.</span></div>
+            <div><strong>Covered</strong><span>URL components: protocol/scheme, domain name and path.</span></div>
+            <div><strong>Boundary</strong><span>Detailed HTTP/HTTPS operation and email/file-transfer protocols are handled in Lesson 021.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Addressing diagnostic helper</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Symptom
+              <select id="symptomInput">
+                <option value="dns">Domain name does not work, but IP address works</option>
+                <option value="local">Device cannot be found on local Ethernet/Wi-Fi link</option>
+                <option value="route">Packets need to cross several networks</option>
+                <option value="url">User typed only part of a web address</option>
+              </select>
+            </label>
+            <button type="button" id="diagnoseBtn">Diagnose</button>
+          </div>
+          <div class="result-box" id="diagnoseResult" aria-live="polite"></div>
+          <div class="method-box" id="diagnoseMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="dns">DNS lookup</button>
+            <button class="tab" type="button" data-example="address">IP vs MAC</button>
+            <button class="tab" type="button" data-example="url">URL parts</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="checkpoint">
+          <div class="section-title">
+            <p class="eyebrow">Monthly checkpoint</p>
+            <h2>5-minute mini assessment</h2>
+            <p>Use this as a short checkpoint before moving to named protocols. Expand the answer key after attempting.</p>
+          </div>
+          <ol class="homework-list">
+            <li>Explain why DNS is needed when a user enters a URL.</li>
+            <li>State one difference between an IP address and a MAC address.</li>
+            <li>Identify the domain name in <code>https://store.example.com/products/item7</code>.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="checkpointAnswers">Show checkpoint answers</button>
+          <div class="answer-panel" id="checkpointAnswers">
+            <p><strong>1:</strong> DNS resolves the domain name in the URL to an IP address so packets can be routed to the server.</p>
+            <p><strong>2:</strong> IP is a logical network address that can change; MAC is a hardware/interface address used locally.</p>
+            <p><strong>3:</strong> <code>store.example.com</code>.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak addressing answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">“DNS stores websites.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">DNS stores records that map domain names to IP addresses. The web content is stored on web servers.</p>
+            </article>
+            <article>
+              <p class="wrong">“A MAC address is used to route packets across the internet.”</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">A MAC address identifies a network interface on a local network. IP addresses are used for routing between networks.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Strong answers name the identifier and its exact purpose.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Use the right identifier for the right job</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>A URL identifies a resource and can include protocol, domain name and path.</span></div>
+            <div><strong>2</strong><span>DNS resolves domain names to IP addresses.</span></div>
+            <div><strong>3</strong><span>IP addresses support logical addressing and routing between networks.</span></div>
+            <div><strong>4</strong><span>MAC addresses identify network interfaces on a local network.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Draw the URL -> DNS -> IP -> MAC journey for opening a web page.</li>
+            <li>Write two differences between an IP address and a MAC address.</li>
+            <li>Break down <code>https://news.example.net/world/story.html</code> into protocol, domain name and path.</li>
+            <li>Write a 5-mark answer explaining why DNS is useful and what happens if DNS lookup fails.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Journey:</strong> start with user-readable URL, then DNS lookup, then IP routing, then local MAC delivery.</p>
+            <p><strong>IP/MAC:</strong> compare use, scope and whether it normally changes.</p>
+            <p><strong>URL:</strong> protocol = <code>https</code>, domain = <code>news.example.net</code>, path = <code>/world/story.html</code>.</p>
+            <p><strong>DNS answer:</strong> mention domain-to-IP resolution and the consequence that names may not resolve.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

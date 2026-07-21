@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 136 | File handling patterns in pseudocode and Java</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
+        <h1>File handling patterns in pseudocode and Java</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#purpose">Purpose</a>
+        <a href="#modes">File modes</a>
+        <a href="#read">Read pattern</a>
+        <a href="#write">Write pattern</a>
+        <a href="#append">Append pattern</a>
+        <a href="#eof">EOF loop</a>
+        <a href="#close">Close files</a>
+        <a href="#java">Java support</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#builder">Pattern builder</a>
+        <a href="#chooser">Mode chooser</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 136 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
+            <h2>Open the file. Use the file. Close the file. The file is not a mind reader.</h2>
+            <p>
+              File handling lets a program store data between runs. Cambridge-style pseudocode uses commands such as
+              <code>OPENFILE</code>, <code>READFILE</code>, <code>WRITEFILE</code>, <code>EOF</code> and
+              <code>CLOSEFILE</code>. The pattern matters: choose the correct mode, process the file safely, then close it.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Choose</strong><span>READ, WRITE or APPEND based on the scenario</span></div>
+              <div><strong>Write</strong><span>Cambridge-style file handling patterns with <code>EOF</code> and <code>CLOSEFILE</code></span></div>
+              <div><strong>Separate</strong><span>exam pseudocode from Java file handling syntax</span></div>
+            </div>
+          </div>
+          <div class="file-visual" aria-label="File handling visual">
+            <div><strong>OPENFILE</strong><span>choose mode</span><em>READ / WRITE / APPEND</em></div>
+            <div><strong>READFILE / WRITEFILE</strong><span>process data</span><em>line by line or record by record</em></div>
+            <div><strong>CLOSEFILE</strong><span>finish safely</span><em>release the file</em></div>
+            <p>Skipping <code>CLOSEFILE</code> is like leaving the classroom door open and hoping the exam board finds it charming.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make students highlight the file mode before writing the loop. The mode decides what operations make sense.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 file questions reward the pattern: open in the correct mode, loop until EOF when reading, process records, then close.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p><code>WRITE</code> may overwrite existing contents. Use <code>APPEND</code> when new data must be added to the end.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which file mode keeps old scores and adds a new score?</h2>
+            <p>The file already contains previous scores. The program must add one more line without deleting the old data.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="read">FOR READ</button>
+            <button class="choice-card" type="button" data-hook="write">FOR WRITE</button>
+            <button class="choice-card" type="button" data-hook="append">FOR APPEND</button>
+            <button class="choice-card" type="button" data-hook="close">CLOSEFILE first</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the mode for adding to the end of an existing file.</div>
+        </section>
+
+        <section class="panel" id="purpose">
+          <div class="section-title">
+            <p class="eyebrow">Purpose</p>
+            <h2>Files store data outside the running program</h2>
+            <p>Chinese support: file 文件, record 记录, read 读取, write 写入, append 追加, end of file 文件末尾。</p>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Volatile variable</h3>
+              <p>A variable value is lost when the program ends unless it is saved elsewhere.</p>
+            </article>
+            <article>
+              <h3>Persistent file</h3>
+              <p>A file such as <code>Scores.txt</code> can keep records for the next time the program runs.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="modes">
+          <div class="section-title">
+            <p class="eyebrow">File modes</p>
+            <h2>The mode controls what the program intends to do with the file</h2>
+          </div>
+          <div class="data-table compare-table" role="table" aria-label="File modes">
+            <div class="table-row table-head"><div>Mode</div><div>Use</div><div>Exam warning</div></div>
+            <div class="table-row"><div><code>FOR READ</code></div><div>read existing data from a file</div><div>do not use it to add new records</div></div>
+            <div class="table-row"><div><code>FOR WRITE</code></div><div>write new file contents</div><div>may overwrite existing contents</div></div>
+            <div class="table-row"><div><code>FOR APPEND</code></div><div>add new data to the end of an existing file</div><div>keeps previous records</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="read">
+          <div class="section-title">
+            <p class="eyebrow">Read pattern</p>
+            <h2>Read every line using <code>WHILE NOT EOF</code></h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>OPENFILE "Scores.txt" FOR READ
+WHILE NOT EOF("Scores.txt")
+    READFILE "Scores.txt", Line
+    OUTPUT Line
+ENDWHILE
+CLOSEFILE "Scores.txt"</code></pre>
+            </article>
+            <article>
+              <h3>Trace idea</h3>
+              <div class="trace-list">
+                <div><strong>Open</strong><span>prepare <code>Scores.txt</code> for reading</span></div>
+                <div><strong>EOF check</strong><span>continue while records remain</span></div>
+                <div><strong>Read</strong><span>store one line in <code>Line</code></span></div>
+                <div><strong>Close</strong><span>release the file after the loop</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="write">
+          <div class="section-title">
+            <p class="eyebrow">Write pattern</p>
+            <h2><code>FOR WRITE</code> writes new contents</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>OPENFILE "Report.txt" FOR WRITE
+WRITEFILE "Report.txt", "Name,Mark"
+WRITEFILE "Report.txt", "Ada,72"
+CLOSEFILE "Report.txt"</code></pre>
+            </article>
+            <article>
+              <h3>Reasoning</h3>
+              <p>Use <code>FOR WRITE</code> when the program is creating or replacing the file contents.</p>
+              <div class="callout">If old contents must be preserved, <code>FOR WRITE</code> is the suspicious choice. It may wipe the slate clean with too much confidence.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="append">
+          <div class="section-title">
+            <p class="eyebrow">Append pattern</p>
+            <h2><code>FOR APPEND</code> adds new data to the end</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>OPENFILE "Scores.txt" FOR APPEND
+WRITEFILE "Scores.txt", "Lin,85"
+CLOSEFILE "Scores.txt"</code></pre>
+            </article>
+            <article>
+              <h3>Reasoning</h3>
+              <p>Use <code>FOR APPEND</code> when previous records should remain and new records should be added after them.</p>
+              <div class="screen-box mono">
+                <p>Ada,72</p>
+                <p>Lin,85</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="eof">
+          <div class="section-title">
+            <p class="eyebrow">EOF loop</p>
+            <h2><code>EOF</code> prevents reading past the end of the file</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Count records</h3>
+              <pre><code>Count &lt;- 0
+OPENFILE "Orders.txt" FOR READ
+WHILE NOT EOF("Orders.txt")
+    READFILE "Orders.txt", OrderLine
+    Count &lt;- Count + 1
+ENDWHILE
+CLOSEFILE "Orders.txt"
+OUTPUT Count</code></pre>
+            </article>
+            <article>
+              <h3>Common trace</h3>
+              <p>If <code>Orders.txt</code> has 3 lines, the loop runs 3 times and <code>Count</code> becomes <code>3</code>.</p>
+              <div class="callout">Do not put <code>READFILE</code> after the EOF check has already failed.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="close">
+          <div class="section-title">
+            <p class="eyebrow">Closing files</p>
+            <h2><code>CLOSEFILE</code> completes the pattern</h2>
+          </div>
+          <div class="pattern-grid">
+            <article><strong>Reliability</strong><span>Data written to a file should be properly finished and released.</span></article>
+            <article><strong>Resources</strong><span>The operating system can free the file handle or lock.</span></article>
+            <article><strong>Exam pattern</strong><span>Questions often expect <code>CLOSEFILE</code> after reading or writing.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="java">
+          <div class="section-title">
+            <p class="eyebrow">Java support only</p>
+            <h2>Java file handling helps understanding, but does not replace pseudocode</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>OPENFILE "Scores.txt" FOR READ
+WHILE NOT EOF("Scores.txt")
+    READFILE "Scores.txt", Line
+    OUTPUT Line
+ENDWHILE
+CLOSEFILE "Scores.txt"</code></pre>
+            </article>
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>try (Scanner file = new Scanner(new File("Scores.txt"))) {
+    while (file.hasNextLine()) {
+        System.out.println(file.nextLine());
+    }
+}</code></pre>
+              <p>Do not use <code>Scanner</code>, braces or <code>hasNextLine()</code> as a Cambridge pseudocode answer.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>What this lesson covers from Section 11</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>File modes</strong><span><code>READ</code>, <code>WRITE</code> and <code>APPEND</code> scenarios</span></div>
+            <div><strong>Read pattern</strong><span><code>OPENFILE</code>, <code>WHILE NOT EOF</code>, <code>READFILE</code> and <code>CLOSEFILE</code></span></div>
+            <div><strong>Write pattern</strong><span><code>WRITEFILE</code> for writing or appending records</span></div>
+            <div><strong>Java boundary</strong><span>Java file handling is support only; Cambridge pseudocode remains the exam answer format</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive pattern builder</p>
+            <h2>Generate the core file pattern</h2>
+            <p>Choose a task and compare the pattern. This is a scaffold, not a replacement for understanding.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              File name
+              <input id="fileInput" type="text" value="Scores.txt" maxlength="24" />
+            </label>
+            <label>
+              Task
+              <select id="taskInput">
+                <option value="read">read all lines</option>
+                <option value="count">count records</option>
+                <option value="write">write new file</option>
+                <option value="append">append one record</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="buildBtn">Build</button>
+          </div>
+          <div class="trace-output" id="builderResult" aria-live="polite">Choose a task and build the pattern.</div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Mode chooser</p>
+            <h2>Which mode should the program use?</h2>
+            <p>Select a scenario to see the mode and exam reasoning.</p>
+          </div>
+          <div class="scenario-grid" id="scenarioGrid"></div>
+          <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Trace the file operation pattern</h2>
+          </div>
+          <div class="tabs" id="exampleTabs" role="tablist"></div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short answers, exact commands</h2>
+            <p>Type the mode, command or final trace value.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Find the file handling error</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Answer first, then expand the MS</h2>
+            <p>Questions are original Cambridge-style practice. MS notes are strict about mode, EOF and close-file steps.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Three rules to keep</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Mode first</strong><span><code>READ</code>, <code>WRITE</code> and <code>APPEND</code> mean different things.</span></div>
+            <div><strong>EOF loop</strong><span>Use <code>WHILE NOT EOF</code> when reading all records.</span></div>
+            <div><strong>Close</strong><span>Finish the pattern with <code>CLOSEFILE</code>.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Read, write, append</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write Cambridge-style pseudocode to read every line from <code>Names.txt</code> and output it.</li>
+            <li>Write pseudocode to count records in <code>Orders.txt</code> and output the count.</li>
+            <li>Write pseudocode to append <code>"Ada,72"</code> to <code>Scores.txt</code> without deleting existing records.</li>
+            <li>Answer a 4-mark question explaining why Java <code>Scanner</code> syntax should not replace Cambridge file pseudocode.</li>
+          </ol>
+          <div class="callout">Marking focus: use the correct file mode, include the file command sequence, and close the file.</div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

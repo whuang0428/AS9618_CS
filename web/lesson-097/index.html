@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 097 | Paper 1 mock review and correction clinic</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Sections 1-8</p>
+        <h1>Paper 1 mock review and correction clinic</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#diagnosis">Diagnosis</a>
+        <a href="#clinic">Correction clinic</a>
+        <a href="#coverage">Coverage map</a>
+        <a href="#routine">Review routine</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#score">Score analyser</a>
+        <a href="#error">Error classifier</a>
+        <a href="#rewrite">Rewrite builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 097 | 45 minutes | Paper 1 Sections 1-8 | stage review</p>
+            <h2>A mock is not a verdict. It is an expensive diagnostic report, so use it properly.</h2>
+            <p>
+              This clinic turns a Paper 1 mock into targeted correction. You will classify lost marks, rewrite weak
+              answers, identify section-level gaps and build a practical repair plan before Paper 2 begins. The goal
+              is not to feel bad about a number; it is to make the next number less dramatic.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Diagnose</strong><span>classify lost marks by topic, command word and answer flaw</span></div>
+              <div><strong>Repair</strong><span>rewrite weak answers using precise Cambridge-style language</span></div>
+              <div><strong>Plan</strong><span>set focused next steps for Paper 1 maintenance alongside Paper 2</span></div>
+            </div>
+          </div>
+          <div class="sql-visual" aria-label="Mock correction clinic visual">
+            <span class="keyword">Lost mark</span><span>topic gap, command error, method error, wording issue</span>
+            <span class="keyword">Correction</span><span>term, mechanism, context, unit, judgement</span>
+            <span class="keyword">Action</span><span>retry, flashcard, worked example, timed drill</span>
+            <p>Do not just circle the mark. Put it on trial and ask what evidence was missing.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Treat each lost mark as data. Name the error type before rewriting the answer.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Reviewing a mock by only checking the final score wastes the most useful feedback in the course.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>"I knew that" is not a correction. The question is whether the answer on the page earned the mark.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Why was the mark lost?</h2>
+            <p>Mock review begins with diagnosis. A wrong answer without a diagnosis is just a sad souvenir.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="topic">Answered encryption when the question asked authentication.</button>
+            <button class="choice-card" type="button" data-hook="command">Listed points for an evaluate question but gave no judgement.</button>
+            <button class="choice-card" type="button" data-hook="method">Used image file-size formula for a sound question.</button>
+            <button class="choice-card" type="button" data-hook="wording">Wrote "secure" without saying how the control works.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose a card to classify the lost mark.
+          </div>
+        </section>
+
+        <section class="panel" id="diagnosis">
+          <div class="section-title">
+            <p class="eyebrow">Diagnosis</p>
+            <h2>Four common sources of lost marks</h2>
+          </div>
+          <div class="data-table clinic-table" role="table" aria-label="Mock diagnosis categories">
+            <div class="table-row table-head" role="row"><div>Error type</div><div>What it looks like</div><div>Repair move</div></div>
+            <div class="table-row" role="row"><div>Topic gap</div><div>wrong section or wrong concept</div><div>re-label the syllabus area and write the first correct keyword</div></div>
+            <div class="table-row" role="row"><div>Command error</div><div>state/describe/explain/compare/evaluate answered with wrong depth</div><div>reshape the answer to match the command word</div></div>
+            <div class="table-row" role="row"><div>Method error</div><div>calculation, SQL, trace or logic method is wrong/incomplete</div><div>write formula, clause skeleton or register sequence before final answer</div></div>
+            <div class="table-row" role="row"><div>Wording issue</div><div>vague terms such as better, secure, efficient, fast</div><div>add mechanism, scenario consequence, unit or strict term</div></div>
+          </div>
+          <div class="callout">Chinese support: diagnosis = 诊断；correction = 修正；lost mark = 失分点；evidence = 得分证据；repair move = 补救动作。</div>
+        </section>
+
+        <section class="panel" id="clinic">
+          <div class="section-title">
+            <p class="eyebrow">Correction clinic</p>
+            <h2>The rewrite protocol</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>1. Label</strong><span>Write the section/topic and command word beside the question.</span></article>
+            <article><strong>2. Locate</strong><span>Underline the exact missing mark: term, method, mechanism, context or judgement.</span></article>
+            <article><strong>3. Rewrite</strong><span>Write a new answer, not a note saying "be more careful".</span></article>
+            <article><strong>4. Mark</strong><span>Use B/M/A labels to show why the corrected answer earns marks.</span></article>
+            <article><strong>5. Drill</strong><span>Create one similar question and answer it under a time limit.</span></article>
+            <article><strong>6. Track</strong><span>Record whether the issue is knowledge, method, wording or timing.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="coverage">
+          <div class="section-title">
+            <p class="eyebrow">Coverage map</p>
+            <h2>Paper 1 correction checklist</h2>
+          </div>
+          <div class="retrieval-grid">
+            <article><strong>Section 1</strong><span>units, binary/hex, image/sound file size, compression method and units</span></article>
+            <article><strong>Section 2</strong><span>network types, protocols, packets, addressing, hardware and performance</span></article>
+            <article><strong>Sections 3-4</strong><span>hardware choice, memory/storage, logic, registers, FDE, interrupts, performance</span></article>
+            <article><strong>Section 5</strong><span>OS roles, utilities, translators, errors, linkers/loaders/libraries</span></article>
+            <article><strong>Section 6</strong><span>threats, CIA, authentication, access rights, encryption, hashing, firewalls, backup</span></article>
+            <article><strong>Sections 7-8</strong><span>ethics, ownership, environmental/social impact, relational design, SQL, validation/verification</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="routine">
+          <div class="section-title">
+            <p class="eyebrow">Review routine</p>
+            <h2>How to use the mock after today</h2>
+          </div>
+          <div class="data-table clinic-table" role="table" aria-label="Review routine">
+            <div class="table-row table-head" role="row"><div>Step</div><div>Action</div><div>Output</div></div>
+            <div class="table-row" role="row"><div>Same day</div><div>classify every lost mark</div><div>error tally by topic and flaw</div></div>
+            <div class="table-row" role="row"><div>Next 48 hours</div><div>rewrite the top five weak answers</div><div>corrected answers with MS labels</div></div>
+            <div class="table-row" role="row"><div>Next week</div><div>retry similar questions under time</div><div>evidence that the error has changed</div></div>
+            <div class="table-row" role="row"><div>Maintenance</div><div>mix one Paper 1 drill into Paper 2 weeks</div><div>no silent decay while programming starts</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This is the final Paper 1 review checkpoint before Paper 2</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Mock diagnosis and correction across Paper 1 Sections 1-8: representation, communication, hardware, processor fundamentals, system software, security, ethics and databases.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 098 starts Paper 2 algorithmic thinking. Paper 1 will continue as spaced maintenance, not the main new-content stream.</span></div>
+            <div><strong>Assessment rhythm</strong><span>Stage review with correction clinic, targeted rewrite, self-marking and Cambridge-style MS review.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="score">
+          <div class="section-title">
+            <p class="eyebrow">Interactive score analyser</p>
+            <h2>Turn a score into a repair priority</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Mock score band
+              <select id="scoreInput">
+                <option value="high">High score but several wording losses</option>
+                <option value="middle">Middle score with mixed topic gaps</option>
+                <option value="low">Low score with many blanks</option>
+                <option value="timing">Good knowledge but unfinished paper</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="scoreBtn">Analyse</button>
+          </div>
+          <div class="answer-frame" id="scoreResult">Choose a score pattern to see the repair priority.</div>
+        </section>
+
+        <section class="panel" id="error">
+          <div class="section-title">
+            <p class="eyebrow">Interactive error classifier</p>
+            <h2>Classify the flaw before rewriting</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Weak mock answer
+              <select id="errorInput">
+                <option value="unit">"The image size is 480000."</option>
+                <option value="compare">"A compiler translates code. An interpreter translates code."</option>
+                <option value="security">"Use a firewall because it stops all hacking."</option>
+                <option value="sql">"SELECT * FROM Book GROUP BY Category" for count per category.</option>
+                <option value="ethics">"Surveillance is good because it catches criminals."</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="errorBtn">Classify error</button>
+          </div>
+          <div class="feedback" id="errorResult">Choose a weak answer to classify the correction need.</div>
+        </section>
+
+        <section class="panel" id="rewrite">
+          <div class="section-title">
+            <p class="eyebrow">Interactive rewrite builder</p>
+            <h2>Build a corrected answer sentence</h2>
+          </div>
+          <div class="builder-grid">
+            <label>
+              Missing focus
+              <select id="focusInput">
+                <option value="mechanism">mechanism</option>
+                <option value="context">context</option>
+                <option value="unit">unit</option>
+                <option value="judgement">judgement</option>
+              </select>
+            </label>
+            <label>
+              Topic
+              <select id="topicInput">
+                <option value="encryption">encryption</option>
+                <option value="cache">cache</option>
+                <option value="sql">SQL aggregate</option>
+                <option value="ethics">ethics evaluation</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="rewriteBtn">Build repair</button>
+          </div>
+          <div class="answer-frame" id="rewriteResult">Choose a focus and topic to generate a repair model.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Mock answers repaired with mark evidence</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="calc">Calculation</button>
+            <button class="tab" type="button" data-example="compare">Compare</button>
+            <button class="tab" type="button" data-example="security">Security</button>
+            <button class="tab" type="button" data-example="ethics">Ethics</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Correction vocabulary check</h2>
+            <p>Type concise correction terms. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair typical mock-review mistakes</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style correction clinic set with expandable MS</h2>
+            <p>These questions are designed for post-mock repair. Attempt, mark strictly, then rewrite one answer for full credit.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Mock correction checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Diagnose</strong><span>Do not just record the score; classify each lost mark.</span></div>
+            <div><strong>Rewrite</strong><span>Produce a corrected answer with visible mark evidence.</span></div>
+            <div><strong>Maintain</strong><span>Carry Paper 1 into Paper 2 weeks through spaced micro-drills.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Error tally</strong>
+              <span>Create a table of your mock lost marks: section, command word, error type and one-sentence correction.</span>
+            </article>
+            <article>
+              <strong>Task 2: Five rewrites</strong>
+              <span>Rewrite your five highest-value lost answers. Add B/M/A labels showing why each corrected answer earns marks.</span>
+            </article>
+            <article>
+              <strong>Task 3: Maintenance plan</strong>
+              <span>Schedule three 12-minute Paper 1 micro-drills during the first Paper 2 week: one calculation, one explanation, one database/ethics item.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

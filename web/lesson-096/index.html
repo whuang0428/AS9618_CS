@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 096 | Paper 1 extended-response practice</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Sections 1-8</p>
+        <h1>Paper 1 extended-response practice</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#map">Question map</a>
+        <a href="#structure">Structure</a>
+        <a href="#balance">Balance</a>
+        <a href="#marking">Marking focus</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#planner">Response planner</a>
+        <a href="#builder">Paragraph builder</a>
+        <a href="#checker">Mark checker</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 096 | 45 minutes | Paper 1 Sections 1-8 | extended-response practice</p>
+            <h2>Long answers do not need more words. They need more distinct marks.</h2>
+            <p>
+              This lesson practises 6-8 mark Paper 1 responses. You will plan before writing, separate points,
+              apply them to the scenario and add balanced judgement where the command word requires it. The focus
+              is not sounding impressive; it is making every sentence earn its seat.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Plan</strong><span>split extended-response marks into distinct answer points</span></div>
+              <div><strong>Develop</strong><span>write mechanism, scenario consequence and limitation where needed</span></div>
+              <div><strong>Evaluate</strong><span>balance benefits, risks, safeguards and judgement in discuss/evaluate questions</span></div>
+            </div>
+          </div>
+          <div class="sql-visual" aria-label="Extended response visual">
+            <span class="keyword">Point</span><span>accurate term or claim</span>
+            <span class="keyword">Develop</span><span>mechanism, cause, contrast or method</span>
+            <span class="keyword">Apply</span><span>link to scenario, stakeholder or data</span>
+            <span class="keyword">Judge</span><span>condition, limitation or conclusion</span>
+            <p>A six-mark answer is not one large sentence wearing a smart jacket.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Plan the marks in the margin: three developed points, or benefit-concern-safeguard-judgement.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Extended questions reward coverage, precision and application. A fluent paragraph can still miss half the marks.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Repeating the same idea with new adjectives is not a new point. The examiner has seen that trick before lunch.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which answer structure fits?</h2>
+            <p>Before writing, decide whether the question wants explanation, comparison, justification or evaluation.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="security">Explain three security measures for student records. [6]</button>
+            <button class="choice-card" type="button" data-hook="compare">Compare cloud storage and local storage for a business. [6]</button>
+            <button class="choice-card" type="button" data-hook="ethics">Evaluate using facial recognition in school. [8]</button>
+            <button class="choice-card" type="button" data-hook="database">Explain why a relational database is better than one flat file. [6]</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose a card to identify the response structure.
+          </div>
+        </section>
+
+        <section class="panel" id="map">
+          <div class="section-title">
+            <p class="eyebrow">Question map</p>
+            <h2>Extended-response topics across Paper 1</h2>
+          </div>
+          <div class="retrieval-grid">
+            <article><strong>Representation choice</strong><span>justify storage, compression, image/sound settings and file-size trade-offs</span></article>
+            <article><strong>Communication</strong><span>compare networks, models, protocols, media and cloud services in context</span></article>
+            <article><strong>Hardware/processor</strong><span>explain component roles, FDE cycle, interrupts and performance factors</span></article>
+            <article><strong>System software</strong><span>compare translators, OS roles, utility software and development choices</span></article>
+            <article><strong>Security</strong><span>explain threats, controls, limitations and data integrity consequences</span></article>
+            <article><strong>Ethics/databases</strong><span>evaluate impacts and design relational data/SQL solutions with justification</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="structure">
+          <div class="section-title">
+            <p class="eyebrow">Structure</p>
+            <h2>Three reliable extended-response shapes</h2>
+          </div>
+          <div class="data-table structure-table" role="table" aria-label="Extended response structures">
+            <div class="table-row table-head" role="row"><div>Question type</div><div>Plan</div><div>Sentence pattern</div></div>
+            <div class="table-row" role="row"><div>Explain three...</div><div>3 x named point + mechanism + consequence</div><div>Control X works by..., so in this scenario...</div></div>
+            <div class="table-row" role="row"><div>Compare...</div><div>3 paired contrasts</div><div>A does..., whereas B does..., which matters because...</div></div>
+            <div class="table-row" role="row"><div>Evaluate/discuss...</div><div>benefit + concern + safeguard + judgement</div><div>Although..., however..., therefore only if...</div></div>
+          </div>
+          <div class="callout">Chinese support: extended response = 扩展回答；distinct point = 独立得分点；balanced judgement = 平衡判断；limitation = 局限。</div>
+        </section>
+
+        <section class="panel" id="balance">
+          <div class="section-title">
+            <p class="eyebrow">Balance</p>
+            <h2>Evaluation is not just "good and bad"</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Stakeholder</strong><span>Name who is affected: student, staff, customer, business, public, developer.</span></article>
+            <article><strong>Benefit</strong><span>Explain the advantage and who receives it.</span></article>
+            <article><strong>Concern</strong><span>Explain harm, risk, fairness, privacy, legal or environmental issue.</span></article>
+            <article><strong>Safeguard</strong><span>Add condition, limit, policy, access control, transparency or testing.</span></article>
+            <article><strong>Judgement</strong><span>Reach a conclusion using provided that, unless, only if or because.</span></article>
+            <article><strong>Scenario</strong><span>Use the actual organisation, users and data in the question.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="marking">
+          <div class="section-title">
+            <p class="eyebrow">Marking focus</p>
+            <h2>How extended marks usually appear</h2>
+          </div>
+          <div class="data-table structure-table" role="table" aria-label="Marking focus">
+            <div class="table-row table-head" role="row"><div>Mark type</div><div>What earns it</div><div>What loses it</div></div>
+            <div class="table-row" role="row"><div>B mark</div><div>accurate named point or fact</div><div>vague wording such as "secure" or "efficient"</div></div>
+            <div class="table-row" role="row"><div>M mark</div><div>method, mechanism, comparison or logical development</div><div>keyword with no explanation</div></div>
+            <div class="table-row" role="row"><div>A mark</div><div>application, consequence, judgement or correct final result</div><div>generic answer that ignores the scenario</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This extended practice samples Paper 1 Sections 1-8</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Extended explanation and evaluation across representation, communication, hardware, processor fundamentals, system software, security, ethics and databases.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 097 is the Paper 1 mock review and correction clinic. This page trains extended-response construction.</span></div>
+            <div><strong>Assessment rhythm</strong><span>Planning, paragraph building, mark checking, repair of weak responses and Cambridge-style MS review.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="planner">
+          <div class="section-title">
+            <p class="eyebrow">Interactive response planner</p>
+            <h2>Choose a structure before writing</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Question type
+              <select id="plannerInput">
+                <option value="security">Explain three security measures. [6]</option>
+                <option value="compare">Compare two technologies. [6]</option>
+                <option value="evaluate">Evaluate an ethical decision. [8]</option>
+                <option value="database">Explain relational database benefits. [6]</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="planBtn">Plan response</button>
+          </div>
+          <div class="answer-frame" id="planResult">Choose a question type to see a compact plan.</div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive paragraph builder</p>
+            <h2>Build one developed paragraph</h2>
+          </div>
+          <div class="builder-grid">
+            <label>
+              Point
+              <select id="pointInput">
+                <option value="encryption">Encryption protects data sent over a network</option>
+                <option value="cache">Cache can improve processor performance</option>
+                <option value="normalisation">Normalisation improves database design</option>
+                <option value="mfa">MFA improves authentication</option>
+              </select>
+            </label>
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="school records">school records</option>
+                <option value="student tablets">student tablets</option>
+                <option value="library database">library database</option>
+                <option value="online banking">online banking</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="buildBtn">Build paragraph</button>
+          </div>
+          <div class="answer-frame" id="builderResult">Choose options, then build a paragraph.</div>
+        </section>
+
+        <section class="panel" id="checker">
+          <div class="section-title">
+            <p class="eyebrow">Interactive mark-focus checker</p>
+            <h2>What is missing from the answer?</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Weak answer
+              <select id="checkerInput">
+                <option value="secure">"Encryption is useful because it makes data secure."</option>
+                <option value="compare">"A compiler translates code. An interpreter translates code."</option>
+                <option value="ethics">"Facial recognition is good because it is fast."</option>
+                <option value="database">"Relational databases are better because they are organised."</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="checkBtn">Check focus</button>
+          </div>
+          <div class="feedback" id="checkResult">Choose a weak answer to identify the missing mark focus.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Extended responses with marks annotated</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="security">Security</button>
+            <button class="tab" type="button" data-example="compare">Compare</button>
+            <button class="tab" type="button" data-example="ethics">Evaluate</button>
+            <button class="tab" type="button" data-example="database">Database</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Extended-response planning vocabulary</h2>
+            <p>Type concise planning terms. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair weak extended answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style extended-response set with expandable MS</h2>
+            <p>These questions are designed for 6-8 mark practice. The MS rewards distinct points, development, scenario links and judgement.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Extended-response checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Plan marks</strong><span>Break the answer into distinct points before writing.</span></div>
+            <div><strong>Develop</strong><span>Add mechanism, contrast, scenario consequence or limitation.</span></div>
+            <div><strong>Judge</strong><span>For evaluate/discuss, include benefit, concern, safeguard and conclusion.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Plan two responses</strong>
+              <span>Choose two 6-mark Paper 1 questions. Write only the plan: point, mechanism and scenario link for each mark pair.</span>
+            </article>
+            <article>
+              <strong>Task 2: Write one full answer</strong>
+              <span>Answer one 8-mark ethics or security question in 10 minutes. Use benefit, concern, safeguard and judgement if relevant.</span>
+            </article>
+            <article>
+              <strong>Task 3: Mark and repair</strong>
+              <span>Highlight each distinct mark in your answer. Rewrite any repeated or vague sentence into a developed point.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

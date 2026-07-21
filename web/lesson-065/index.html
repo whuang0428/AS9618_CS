@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 065 | Authentication: passwords, biometrics, tokens, and MFA</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 6</p>
+        <h1>Authentication: passwords, biometrics, tokens, and MFA</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#core">Authentication</a>
+        <a href="#factors">Factors</a>
+        <a href="#passwords">Passwords</a>
+        <a href="#biometrics">Biometrics</a>
+        <a href="#tokens">Tokens</a>
+        <a href="#mfa">MFA</a>
+        <a href="#compare">Compare</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Auth tool</a>
+        <a href="#password-tool">Password tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 065 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
+            <h2>Authentication asks: are you really who you claim to be?</h2>
+            <p>
+              Authentication verifies identity before access is granted. Passwords, biometrics and tokens
+              each prove identity in a different way. Multi-factor authentication combines different factor
+              types so one stolen secret is not enough.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Distinguish</strong><span>authentication from authorisation and access rights</span></div>
+              <div><strong>Compare</strong><span>passwords, biometrics, tokens and MFA using precise advantages and risks</span></div>
+              <div><strong>Recommend</strong><span>authentication choices for realistic security scenarios</span></div>
+            </div>
+          </div>
+          <div class="auth-card" aria-label="Authentication factors">
+            <div class="factor-stack">
+              <span>Know: password / PIN</span>
+              <span>Have: token / card / phone</span>
+              <span>Are: fingerprint / face / iris</span>
+              <span>MFA: combine different factor types</span>
+            </div>
+            <p>Two passwords are two secrets, not two factors. The exam will notice.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use this distinction: authentication proves identity; authorisation decides what that identity may do.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Many answers list "passwords are secure" without saying why, how they fail, or why MFA changes the risk.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A fingerprint is convenient but not magic. If copied or falsely accepted, it cannot be changed like a password.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A website asks for a password and then a code from your phone. What is the security idea?</h2>
+            <p>The site is not being needy; it is checking two different kinds of evidence.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="mfa">MFA, because it combines something you know and something you have</button>
+            <button class="choice-card" type="button" data-hook="two-passwords">Two passwords, because any two checks are two factors</button>
+            <button class="choice-card" type="button" data-hook="authorisation">Authorisation, because it decides file permissions</button>
+            <button class="choice-card" type="button" data-hook="encryption">Encryption, because a phone code hides data</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Look for different factor types.
+          </div>
+        </section>
+
+        <section class="panel" id="core">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Authentication is identity checking</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Authentication</strong><span>Verifies that a user, device or process is who it claims to be.</span></article>
+            <article><strong>Claim</strong><span>The identity presented, such as a username, account or device ID.</span></article>
+            <article><strong>Credential</strong><span>Evidence used to prove the claim, such as a password, biometric or token.</span></article>
+            <article><strong>Authorisation</strong><span>Decides what an authenticated user is allowed to access or change.</span></article>
+          </div>
+          <div class="callout">Chinese support: authentication = 认证身份；authorisation = 授权权限；credential = 凭据/身份证明。</div>
+        </section>
+
+        <section class="panel" id="factors">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Authentication factors: know, have, are</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Something you know</strong><span>Password, passphrase or PIN. Risk: guessed, reused, shared or phished.</span></article>
+            <article><strong>Something you have</strong><span>Security token, smart card or one-time code device. Risk: lost, stolen or unavailable.</span></article>
+            <article><strong>Something you are</strong><span>Biometric characteristic such as fingerprint, face, iris or voice. Risk: false acceptance or privacy concerns.</span></article>
+            <article><strong>Factor type</strong><span>Two checks only become MFA when they come from different factor categories.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="passwords">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Passwords: cheap, familiar and often ruined by humans</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Strength</strong><span>Longer passwords or passphrases with less predictable structure are harder to guess.</span></article>
+            <article><strong>Weakness</strong><span>Users may reuse, share, write down or choose predictable passwords.</span></article>
+            <article><strong>Storage</strong><span>Systems should not store plaintext passwords; hashes are commonly used for verification.</span></article>
+            <article><strong>Control</strong><span>Password policy, lockout/rate limiting, user education and MFA reduce risk.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="biometrics">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Biometrics: convenient identity evidence from physical or behavioural features</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Examples</strong><span>Fingerprint, face, iris, retina, voice or typing pattern.</span></article>
+            <article><strong>Advantage</strong><span>Difficult to forget, lose or share casually; quick for users.</span></article>
+            <article><strong>Limitation</strong><span>Requires sensors and stored biometric templates; may raise privacy concerns.</span></article>
+            <article><strong>Error types</strong><span>False reject blocks a valid user; false accept allows an unauthorised user.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="tokens">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Tokens: proof that the user has a specific device or object</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Hardware token</strong><span>A physical device, card or key used during login.</span></article>
+            <article><strong>Software token</strong><span>An app or service that generates a one-time code.</span></article>
+            <article><strong>One-time code</strong><span>A code valid for a short time or single login attempt.</span></article>
+            <article><strong>Limitation</strong><span>Tokens can be lost, stolen, damaged, out of battery or unavailable without a phone/network.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="mfa">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>MFA combines different factor types</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Definition</strong><span>Multi-factor authentication requires evidence from two or more different factor categories.</span></article>
+            <article><strong>Example</strong><span>Password plus phone app code: something you know plus something you have.</span></article>
+            <article><strong>Benefit</strong><span>If a password is stolen, the attacker still needs the second factor.</span></article>
+            <article><strong>Cost</strong><span>More setup, recovery problems and user friction if a device is unavailable.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 7</p>
+            <h2>Compare methods by evidence, risk and context</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Authentication comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Method</div>
+              <div role="columnheader">Evidence</div>
+              <div role="columnheader">Strengths and limitations</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Password/PIN</div>
+              <div role="cell">Something the user knows.</div>
+              <div role="cell">Low cost and familiar; can be guessed, reused, shared, phished or forgotten.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Biometric</div>
+              <div role="cell">Something the user is.</div>
+              <div role="cell">Convenient and hard to forget; needs sensors and may have false accepts/rejects or privacy concerns.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Token</div>
+              <div role="cell">Something the user has.</div>
+              <div role="cell">Useful second factor; can be lost, stolen, damaged or unavailable.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">MFA</div>
+              <div role="cell">Two or more different factor categories.</div>
+              <div role="cell">Reduces account takeover risk; increases setup, support and recovery complexity.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers, and what it deliberately leaves for later</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Authentication, passwords, biometrics, tokens, MFA, factor categories, advantages, limitations and exam comparisons.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 066 will focus on access rights, permissions and least privilege after authentication succeeds.</span></div>
+            <div><strong>Exam focus</strong><span>State the method, classify the factor, then explain why it fits the scenario.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive selector</p>
+            <h2>Choose the authentication approach for the scenario</h2>
+            <p>Select a scenario and compare suitable evidence, benefit and limitation.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="student">School portal for normal homework access.</option>
+                <option value="bank">Online banking login from a new device.</option>
+                <option value="lab">Secure laboratory door used by authorised staff.</option>
+                <option value="shared">Shared classroom computer used by many students.</option>
+                <option value="remote">Remote staff accessing company systems from home.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Recommend</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="password-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive password check</p>
+            <h2>Estimate password quality without collecting real passwords</h2>
+            <p>Use a practice string only. Never type a real password into lesson tools, screenshots or chat.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Practice password
+              <input type="text" id="passwordInput" placeholder="Try: CorrectHorseBatteryStaple27" autocomplete="off" />
+            </label>
+            <button class="primary-button" type="button" id="passwordBtn">Check</button>
+          </div>
+          <div class="result-box" id="passwordResult" aria-live="polite"></div>
+          <div class="method-box" id="passwordAdvice"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four model answers with method and trade-off</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="password">Password</button>
+            <button class="tab" type="button" data-example="biometric">Biometric</button>
+            <button class="tab" type="button" data-example="token">Token</button>
+            <button class="tab" type="button" data-example="mfa">MFA</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short answers: classify the method and factor</h2>
+            <p>Type a concise answer. Use the local answer button if you need a model response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the sentence before it loses marks</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style questions with expandable MS</h2>
+            <p>Answer first. Then open the mark scheme and compare wording strictly.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Authentication is about identity evidence</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Authentication</strong><span>Verifies identity; authorisation controls allowed actions.</span></div>
+            <div><strong>Factors</strong><span>Know, have and are are different categories of evidence.</span></div>
+            <div><strong>MFA</strong><span>Combines different factor types to reduce single-credential failure.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks, not vague revision fog</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Factor table</strong>
+              <span>Create a table for password, fingerprint, phone code and security token. For each, state the factor category, one advantage and one limitation.</span>
+            </article>
+            <article>
+              <strong>Task 2: Scenario recommendation</strong>
+              <span>Recommend an authentication method for online banking, a school library account and a secure lab door. Give one reason and one trade-off for each.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "Explain why MFA can reduce the risk of unauthorised access, and describe two possible limitations." Use precise factor vocabulary.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

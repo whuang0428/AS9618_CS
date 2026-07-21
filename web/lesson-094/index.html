@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 094 | Paper 1 mixed question strategy</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Sections 1-8</p>
+        <h1>Paper 1 mixed question strategy</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#map">Paper map</a>
+        <a href="#strategy">Strategy</a>
+        <a href="#commands">Command words</a>
+        <a href="#answer">Answer frames</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Classifier</a>
+        <a href="#decoder">Command decoder</a>
+        <a href="#builder">Answer builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 094 | 45 minutes | Paper 1 Sections 1-8 | mixed review strategy</p>
+            <h2>Mixed questions are not random. They are organised chaos with mark schemes.</h2>
+            <p>
+              This lesson trains the strategy for Paper 1 mixed questions. You will classify the syllabus area,
+              read the command word, choose the method, and write answers with mechanism, context and consequence.
+              The content spans representation, communication, hardware, processor fundamentals, system software,
+              security, ethics and databases.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Classify</strong><span>use clues to identify which Paper 1 section is being tested</span></div>
+              <div><strong>Decode</strong><span>match command words to the expected answer shape</span></div>
+              <div><strong>Construct</strong><span>write concise mark-worthy responses under mixed-topic pressure</span></div>
+            </div>
+          </div>
+          <div class="sql-visual" aria-label="Mixed question strategy visual">
+            <span class="keyword">1</span><span>Topic clue: representation, network, CPU, OS, security, ethics, database</span>
+            <span class="keyword">2</span><span>Command word: state, describe, explain, compare, justify, evaluate</span>
+            <span class="keyword">3</span><span>Response: term, method, mechanism, context, consequence</span>
+            <p>Do not answer the question you revised. Answer the question they actually asked.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Before writing, mark the question with three labels: topic, command word and required output.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 1 often tests familiar knowledge in unfamiliar scenarios. Strategy turns recognition into marks.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A correct keyword is not a complete answer. "Encryption" starts the answer; mechanism and consequence earn the rest.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>What is the first move?</h2>
+            <p>Four questions walk into an exam. Only one wants a calculation, one wants comparison, one wants SQL, and one wants judgement.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="calc">Calculate the file size of a bitmap image.</button>
+            <button class="choice-card" type="button" data-hook="compare">Compare compiler and interpreter.</button>
+            <button class="choice-card" type="button" data-hook="sql">Write a query to output books in each category.</button>
+            <button class="choice-card" type="button" data-hook="evaluate">Discuss using surveillance cameras in a town centre.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose a card to identify the required response shape.
+          </div>
+        </section>
+
+        <section class="panel" id="map">
+          <div class="section-title">
+            <p class="eyebrow">Paper map</p>
+            <h2>Paper 1 sections and question clues</h2>
+          </div>
+          <div class="retrieval-grid">
+            <article><strong>Section 1</strong><span>binary/hex, storage units, images, sound, compression, file size calculations</span></article>
+            <article><strong>Section 2</strong><span>LAN/WAN, packets, protocols, IP/MAC/DNS, hardware, performance</span></article>
+            <article><strong>Section 3</strong><span>input/output/storage, RAM/ROM/cache, embedded systems, logic gates</span></article>
+            <article><strong>Section 4</strong><span>CPU, registers, buses, FDE cycle, interrupts, performance factors</span></article>
+            <article><strong>Sections 5-6</strong><span>OS roles, utilities, translators, errors, security threats and controls</span></article>
+            <article><strong>Sections 7-8</strong><span>ethics, ownership, impacts, relational design, SQL and data protection</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="strategy">
+          <div class="section-title">
+            <p class="eyebrow">Mixed question strategy</p>
+            <h2>The 30-second annotation routine</h2>
+          </div>
+          <div class="data-table strategy-table" role="table" aria-label="Mixed question strategy">
+            <div class="table-row table-head" role="row"><div>Step</div><div>What to mark</div><div>Why it protects marks</div></div>
+            <div class="table-row" role="row"><div>1. Topic clue</div><div>underline the syllabus clue: register, packet, licence, primary key, etc.</div><div>prevents using the wrong mental toolbox</div></div>
+            <div class="table-row" role="row"><div>2. Command word</div><div>circle state, describe, explain, compare, justify or evaluate</div><div>sets depth and answer structure</div></div>
+            <div class="table-row" role="row"><div>3. Output type</div><div>calculation, table, SQL, diagram label, prose explanation</div><div>prevents writing paragraphs when a method/result is needed</div></div>
+            <div class="table-row" role="row"><div>4. Context link</div><div>name the school, business, network, database or user from the scenario</div><div>turns generic knowledge into applied marks</div></div>
+          </div>
+          <div class="callout">Chinese support: command word = 指令词；mechanism = 机制；context = 题目情境；consequence = 结果/影响；follow-through = 后续得分。</div>
+        </section>
+
+        <section class="panel" id="commands">
+          <div class="section-title">
+            <p class="eyebrow">Command words</p>
+            <h2>What each command word usually demands</h2>
+          </div>
+          <div class="data-table command-table" role="table" aria-label="Command word review">
+            <div class="table-row table-head" role="row"><div>Command</div><div>Answer shape</div><div>Weak answer pattern</div></div>
+            <div class="table-row" role="row"><div>State / identify</div><div>one precise term or value</div><div>writing a paragraph and hiding the answer</div></div>
+            <div class="table-row" role="row"><div>Describe</div><div>what happens or what it is</div><div>saying only why it is useful</div></div>
+            <div class="table-row" role="row"><div>Explain</div><div>cause plus consequence, usually with because/so that</div><div>listing a keyword without mechanism</div></div>
+            <div class="table-row" role="row"><div>Compare</div><div>paired differences using both items</div><div>two isolated descriptions with no contrast</div></div>
+            <div class="table-row" role="row"><div>Justify / evaluate</div><div>choice plus reason, limitation or judgement</div><div>opinion without scenario evidence</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="answer">
+          <div class="section-title">
+            <p class="eyebrow">Answer frames</p>
+            <h2>Use the smallest frame that fits the command</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Calculation</strong><span>write formula, substitute values, show unit conversion, state final unit.</span></article>
+            <article><strong>Comparison</strong><span>Item A does X whereas item B does Y; link to scenario if asked.</span></article>
+            <article><strong>Security control</strong><span>threat, control, mechanism, consequence, limitation if needed.</span></article>
+            <article><strong>Processor trace</strong><span>name register/bus, state transfer/action, then next step.</span></article>
+            <article><strong>Ethics evaluation</strong><span>stakeholder, benefit, concern, safeguard and justified judgement.</span></article>
+            <article><strong>SQL</strong><span>SELECT fields, FROM table(s), WHERE filter, GROUP BY/ORDER BY if required.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This review spans Paper 1 Sections 1-8</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Topic recognition across representation, communication, hardware, processor fundamentals, system software, security, ethics/ownership and databases.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 095 moves into timed short-answer practice. This page teaches strategy, not a full timed paper.</span></div>
+            <div><strong>Assessment rhythm</strong><span>Classifier drills, command-word decoding, answer-frame building and Cambridge-style mixed questions.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive question classifier</p>
+            <h2>Choose the section and first method</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Question clue
+              <select id="classifierInput">
+                <option value="bitmap">Image has 1024 x 768 pixels and 24-bit colour depth.</option>
+                <option value="packet">Data is split into packets and routed across a WAN.</option>
+                <option value="fde">The PC is copied to the MAR during instruction fetch.</option>
+                <option value="translator">Source code is translated one statement at a time.</option>
+                <option value="licence">A company modifies open-source code under licence terms.</option>
+                <option value="sql">A query must output total sales for each region.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+          </div>
+          <div class="feedback" id="classifyResult">Choose a clue and classify the topic.</div>
+        </section>
+
+        <section class="panel" id="decoder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive command decoder</p>
+            <h2>Decode the command word before writing</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Command word
+              <select id="commandInput">
+                <option value="state">State one advantage of lossless compression.</option>
+                <option value="describe">Describe the fetch part of the FDE cycle.</option>
+                <option value="explain">Explain why MFA improves account security.</option>
+                <option value="compare">Compare compiler and interpreter.</option>
+                <option value="justify">Justify using SSD storage in a tablet.</option>
+                <option value="evaluate">Evaluate the use of surveillance cameras in public spaces.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="decodeBtn">Decode</button>
+          </div>
+          <div class="answer-frame" id="decodeResult">Choose a command word to see the expected answer shape.</div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive answer builder</p>
+            <h2>Build a mechanism-context-consequence sentence</h2>
+          </div>
+          <div class="builder-grid">
+            <label>
+              Topic
+              <select id="topicInput">
+                <option value="encryption">encryption</option>
+                <option value="cache">cache</option>
+                <option value="normalisation">normalisation</option>
+                <option value="firewall">firewall</option>
+              </select>
+            </label>
+            <label>
+              Context
+              <select id="contextInput">
+                <option value="school">school records system</option>
+                <option value="tablet">student tablet</option>
+                <option value="library">library database</option>
+                <option value="network">company network</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="buildBtn">Build answer</button>
+          </div>
+          <div class="answer-frame" id="builderResult">Choose options, then build a sentence.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four mixed questions with strategy annotations</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="calc">Calculation</button>
+            <button class="tab" type="button" data-example="processor">Processor</button>
+            <button class="tab" type="button" data-example="security">Security</button>
+            <button class="tab" type="button" data-example="ethics">Evaluation</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Strategy retrieval check</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair weak mixed-question approaches</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style mixed review with expandable MS</h2>
+            <p>These questions sample the response shapes used across Paper 1. The MS rewards classification, method, precision and scenario links.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Mixed-question checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Label first</strong><span>Topic, command word and output type before writing.</span></div>
+            <div><strong>Answer shape</strong><span>Calculation, comparison, explanation, SQL, trace or evaluation.</span></div>
+            <div><strong>Mark phrase</strong><span>Use mechanism, context and consequence, not only a memorised keyword.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Annotation drill</strong>
+              <span>Choose eight Paper 1 questions from your notes. For each, label topic, command word and output type before answering.</span>
+            </article>
+            <article>
+              <strong>Task 2: Rewrite weak answers</strong>
+              <span>Rewrite three one-keyword answers into full mechanism-context-consequence answers.</span>
+            </article>
+            <article>
+              <strong>Task 3: Mixed mini-set</strong>
+              <span>Create one calculation, one comparison, one SQL question and one evaluation question. Add a 3-point mark scheme for each.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

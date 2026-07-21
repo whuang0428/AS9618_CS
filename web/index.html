@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Computer Science | Lesson Web Index</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | 2027-2029 AS</p>
+        <h1>Lesson Web Index</h1>
+      </div>
+      <a class="home-link" href="#course-map">Course map</a>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <div>
+          <p class="lesson-meta">150 lessons | 45 minutes each | Paper 1 Sections 1-8 | Paper 2 Sections 9-12</p>
+          <h2>Open any lesson, search by topic, or follow the course sequence.</h2>
+          <p>
+            This is the teaching/self-study web version of the AS9618 course pack. Each lesson is an independent static page
+            with explanation, examples, practice, mistake correction and expandable mark schemes.
+          </p>
+        </div>
+        <div class="stats-grid" aria-label="Course stats">
+          <div><strong>150</strong><span>lesson pages</span></div>
+          <div><strong>12</strong><span>syllabus sections</span></div>
+          <div><strong>2</strong><span>AS papers</span></div>
+          <div><strong>0</strong><span>Student/Teacher mode split</span></div>
+        </div>
+      </section>
+
+      <section class="toolbar" aria-label="Lesson controls">
+        <label>
+          Search lessons
+          <input id="searchInput" type="search" placeholder="Try binary, database, pseudocode, security..." />
+        </label>
+        <label>
+          Filter unit
+          <select id="unitFilter"></select>
+        </label>
+        <button type="button" id="clearBtn">Clear</button>
+      </section>
+
+      <section class="panel" id="course-map">
+        <div class="section-title">
+          <p class="eyebrow">Course map</p>
+          <h2>Lesson allocation</h2>
+        </div>
+        <div id="unitList" class="unit-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <p class="eyebrow">Lesson links</p>
+          <h2 id="resultHeading">All lessons</h2>
+        </div>
+        <div id="lessonGrid" class="lesson-grid" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script src="./index.js"></script>
+  </body>
+</html>

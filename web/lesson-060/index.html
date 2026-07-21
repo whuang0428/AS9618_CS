@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 060 | Choosing translation approaches for development and deployment</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
+        <h1>Choosing translation approaches for development and deployment</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#decision">Decision frame</a>
+        <a href="#development">Development</a>
+        <a href="#deployment">Deployment</a>
+        <a href="#lowlevel">Low-level code</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#diagnostics">Diagnostics</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Choice tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 060 | 45 minutes | Paper 1 Section 5 | System software</p>
+            <h2>The best translator depends on the stage, the code, and the job.</h2>
+            <p>
+              This lesson pulls together translators, compilation stages, linkers, loaders and diagnostics.
+              The exam usually gives a scenario; the answer must choose a suitable approach and justify it with precise technical reasons.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Choose</strong><span>compiler, interpreter or assembler for realistic scenarios</span></div>
+              <div><strong>Justify</strong><span>development, deployment and low-level programming decisions</span></div>
+              <div><strong>Connect</strong><span>translation choices to linking, loading and diagnostics</span></div>
+            </div>
+          </div>
+          <div class="choice-card-visual" aria-label="Translation choice sketch">
+            <div class="choice-stack">
+              <span>Development? interpreter may help</span>
+              <span>Distribution? compiler often fits</span>
+              <span>Assembly code? assembler</span>
+              <span>Object modules? linker</span>
+              <span>Ready to run? loader</span>
+            </div>
+            <p>Do not pick the fanciest word. Pick the tool that matches the evidence.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use a decision chain: code type, stage of work, required output, and error feedback needed.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Section 5 comparison questions often mix several tools. Marks come from separating their roles cleanly.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not recommend an assembler for every low-level-looking task. Assemblers translate assembly language only.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A beginner wants to test one statement at a time and see errors quickly. Which approach fits best?</h2>
+            <p>Click the best answer. The debugger is not a personality trait; it is a workflow.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="interpreter">Use an interpreter during development.</button>
+            <button class="choice-card" type="button" data-hook="compiler">Use only a compiler because all programs should be final immediately.</button>
+            <button class="choice-card" type="button" data-hook="assembler">Use an assembler for the high-level source code.</button>
+            <button class="choice-card" type="button" data-hook="loader">Use a loader to find syntax errors.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Match the tool to the stage of work.
+          </div>
+        </section>
+
+        <section class="panel" id="decision">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>A good translator choice starts with four questions</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>What code?</strong><span>High-level source code, assembly language, object modules or executable code?</span></article>
+            <article><strong>What stage?</strong><span>Development, testing, deployment, linking or running?</span></article>
+            <article><strong>What output?</strong><span>Immediate execution, object code, executable code or program loaded in memory?</span></article>
+            <article><strong>What feedback?</strong><span>Line-by-line diagnostics, a compiler error list, linker errors or runtime messages?</span></article>
+          </div>
+          <div class="callout">Chinese support: development = 开发阶段；deployment = 部署/发布阶段；translation approach = 翻译方式；diagnostics = 诊断信息；executable = 可执行文件。</div>
+        </section>
+
+        <section class="panel" id="development">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>During development, an interpreter can support rapid testing</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Useful when</strong><span>The programmer wants immediate feedback while writing and testing code.</span></article>
+            <article><strong>Mechanism</strong><span>Translates and executes statements as the program runs.</span></article>
+            <article><strong>Benefit</strong><span>Can stop at or near the statement with an error, helping debugging.</span></article>
+            <article><strong>Trade-off</strong><span>Execution may be slower and source code/interpreter may be needed.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="deployment">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>For deployment, a compiler often produces a distributable executable</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Useful when</strong><span>A finished program will be distributed to users or run many times.</span></article>
+            <article><strong>Mechanism</strong><span>Translates the whole high-level program before execution.</span></article>
+            <article><strong>Benefit</strong><span>Executable/object code can run without giving users the source code.</span></article>
+            <article><strong>Trade-off</strong><span>Compilation must complete before running; errors may be reported as a list.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="lowlevel">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>For assembly language, use an assembler</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Input</strong><span>Assembly language mnemonics for a specific processor.</span></article>
+            <article><strong>Output</strong><span>Machine code/object code.</span></article>
+            <article><strong>Use case</strong><span>Low-level code close to hardware or processor instructions.</span></article>
+            <article><strong>Boundary</strong><span>Assembler is not the correct tool for Java, Python or Cambridge pseudocode.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="pipeline">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>After translation, linking and loading may still be needed</h2>
+          </div>
+          <div class="pipeline-table" role="table" aria-label="Translation pipeline">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Stage</div>
+              <div role="columnheader">Tool</div>
+              <div role="columnheader">Precise role</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">High-level source to object/executable code</div>
+              <div role="cell">Compiler</div>
+              <div role="cell">Translates whole program before execution.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">High-level source during execution</div>
+              <div role="cell">Interpreter</div>
+              <div role="cell">Translates and executes statement by statement.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Assembly to machine code</div>
+              <div role="cell">Assembler</div>
+              <div role="cell">Translates mnemonics into machine code.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Object modules to executable</div>
+              <div role="cell">Linker</div>
+              <div role="cell">Combines modules and resolves external references.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Executable to memory</div>
+              <div role="cell">Loader</div>
+              <div role="cell">Places code/data into main memory ready to run.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="diagnostics">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 6</p>
+            <h2>Error feedback affects the best choice during development</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Compiler</strong><span>May provide a list of syntax/translation errors after trying to compile.</span></article>
+            <article><strong>Interpreter</strong><span>May stop at the current statement, useful for step-by-step testing.</span></article>
+            <article><strong>Linker</strong><span>May report unresolved external references after object code exists.</span></article>
+            <article><strong>Testing</strong><span>Logic errors may still need test data and tracing regardless of translator.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Choosing compiler, interpreter or assembler for scenarios.</span></div>
+            <div><strong>Covered</strong><span>Development versus deployment trade-offs and diagnostics.</span></div>
+            <div><strong>Covered</strong><span>How linking/loading fit after translation.</span></div>
+            <div><strong>Boundary</strong><span>Detailed error categories were covered in Lesson 059.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 061 reviews Section 5 rather than introducing a new software tool.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Translation approach selector</h2>
+            <p>Select a scenario and identify the most suitable tool or approach.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="debug">Student wants line-by-line feedback while coding</option>
+                <option value="deploy">Company distributes a finished program without source code</option>
+                <option value="assembly">Programmer writes processor mnemonics</option>
+                <option value="modules">Object modules refer to routines in a library</option>
+                <option value="run">Executable must be placed in memory</option>
+                <option value="logic">Program compiles but gives wrong tax calculation</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Choose</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Scenario choice with exam wording</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="debug">Development</button>
+            <button class="tab" type="button" data-example="deploy">Deployment</button>
+            <button class="tab" type="button" data-example="assembly">Assembly</button>
+            <button class="tab" type="button" data-example="pipeline">Pipeline</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant-check questions</h2>
+            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the almost-right answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Answer first, then reveal the CIE-style mark scheme</h2>
+            <p>These are original Cambridge-style questions. The mark schemes include strict wording notes and follow-through guidance.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Choice memory map</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Interpreter</strong><span>Development, rapid feedback, statement-by-statement execution.</span></div>
+            <div><strong>Compiler</strong><span>Deployment, whole program translation, executable/object code.</span></div>
+            <div><strong>Assembler</strong><span>Assembly mnemonics into machine code.</span></div>
+            <div><strong>Linker</strong><span>Object modules and libraries into linked executable code.</span></div>
+            <div><strong>Loader</strong><span>Executable into main memory ready to run.</span></div>
+            <div><strong>Testing</strong><span>Still needed for logic errors and scenario confidence.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear output, not vague revision</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Decision table</strong>
+              <span>Create a table for compiler, interpreter, assembler, linker and loader: input, output/result, best scenario and one limitation.</span>
+            </article>
+            <article>
+              <strong>Task 2: 6-mark answer</strong>
+              <span>Compare using an interpreter during development with using a compiler for final deployment.</span>
+            </article>
+            <article>
+              <strong>Task 3: Mixed pipeline</strong>
+              <span>Explain how high-level source code can become a running program, including compilation, linking and loading.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

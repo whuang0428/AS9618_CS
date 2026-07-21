@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 082 | Entity-relationship modelling</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 8</p>
+        <h1>Entity-relationship modelling</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#entities">Entities</a>
+        <a href="#attributes">Attributes</a>
+        <a href="#cardinality">Cardinality</a>
+        <a href="#participation">Participation</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#parser">Scenario parser</a>
+        <a href="#checker">Cardinality checker</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 082 | 45 minutes | Paper 1 Section 8 | ER modelling</p>
+            <h2>An ER model is a map before the database is built. Tables without a map are just furniture in the dark.</h2>
+            <p>
+              This lesson turns scenario text into an entity-relationship model. You will identify entities,
+              choose attributes, mark keys, and describe cardinality such as one-to-many and many-to-many.
+              The goal is a clear design model, not SQL statements or normalisation rules.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>entities and attributes from a scenario</span></div>
+              <div><strong>Model</strong><span>relationships with cardinality and optional/mandatory participation</span></div>
+              <div><strong>Critique</strong><span>weak ER diagrams using precise database vocabulary</span></div>
+            </div>
+          </div>
+          <div class="er-visual" aria-label="Entity relationship visual">
+            <div class="entity-box">
+              <strong>Student</strong>
+              <span class="pk">StudentID</span>
+              <span>Name</span>
+            </div>
+            <div class="cardinality-line">1..1 borrows 0..*</div>
+            <div class="entity-box">
+              <strong>Loan</strong>
+              <span class="pk">LoanID</span>
+              <span>StudentID</span>
+              <span>BookID</span>
+            </div>
+            <p>Chinese support: entity = 实体；attribute = 属性；cardinality = 基数/数量关系。</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Read the nouns first for entities, then ask which facts describe each noun, then decide how many records can connect.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>ER modelling questions reward careful reading. A small word like "many" or "optional" can change the relationship.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not turn every noun into an entity. "Address" is often an attribute unless the scenario stores separate address records.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A library stores students, books and loans. Which one is most likely a relationship event?</h2>
+            <p>A loan is the plot twist: a student and a book meet, briefly, with paperwork.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="student">Student</button>
+            <button class="choice-card" type="button" data-hook="book">Book</button>
+            <button class="choice-card" type="button" data-hook="loan">Loan</button>
+            <button class="choice-card" type="button" data-hook="title">BookTitle</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose the item that connects two main entities.
+          </div>
+        </section>
+
+        <section class="panel" id="entities">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Entities are things the database stores data about</h2>
+            <p>An entity is a person, object, event or concept about which data is stored. In a relational design, an entity often becomes a table.</p>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Person</strong><span>Student, Customer, Doctor, Teacher.</span></article>
+            <article><strong>Object</strong><span>Book, Product, Vehicle, Equipment.</span></article>
+            <article><strong>Event</strong><span>Loan, Appointment, Order, Booking.</span></article>
+            <article><strong>Concept</strong><span>Course, Club, Department, Module.</span></article>
+          </div>
+          <div class="callout">Exam wording: say why it is an entity. "Student is an entity because the system stores multiple facts about each student."</div>
+        </section>
+
+        <section class="panel" id="attributes">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Attributes describe an entity</h2>
+            <p>An attribute is a property stored about an entity. It often becomes a field in the table for that entity.</p>
+          </div>
+          <div class="attribute-table" role="table" aria-label="Entity attribute examples">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Entity</div>
+              <div role="columnheader">Possible attributes</div>
+              <div role="columnheader">Not usually an attribute here</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Student</div>
+              <div role="cell">StudentID, Name, DateOfBirth, TutorGroup</div>
+              <div role="cell">BookTitle, LoanDate</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Book</div>
+              <div role="cell">BookID, ISBN, Title, Author</div>
+              <div role="cell">StudentName, ReturnDate</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Loan</div>
+              <div role="cell">LoanID, StudentID, BookID, DateBorrowed, DateReturned</div>
+              <div role="cell">StudentDateOfBirth, BookAuthor if already stored in Book</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="cardinality">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Cardinality describes how many records may be linked</h2>
+            <p>Cardinality states how many records in one entity can be associated with records in another entity.</p>
+          </div>
+          <div class="cardinality-grid">
+            <article><strong>One-to-one</strong><span>One record in A links to one record in B. Example: one person has one passport in a simplified model.</span></article>
+            <article><strong>One-to-many</strong><span>One record in A links to many records in B. Example: one customer can place many orders.</span></article>
+            <article><strong>Many-to-many</strong><span>Many records in A link to many records in B. Usually resolved by a linking entity.</span></article>
+          </div>
+          <div class="diagram-row">
+            <div class="entity-mini">Student</div>
+            <div class="diagram-line">1 -> many</div>
+            <div class="entity-mini">Loan</div>
+          </div>
+        </section>
+
+        <section class="panel" id="participation">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Optional and mandatory participation</h2>
+            <p>Participation describes whether a record must be linked. This is often written using minimum and maximum values such as 0..* or 1..1.</p>
+          </div>
+          <div class="participation-grid">
+            <article><strong>0..*</strong><span>Optional many: a student may have no loans, or many loans.</span></article>
+            <article><strong>1..*</strong><span>Mandatory many: an order must have at least one order line.</span></article>
+            <article><strong>0..1</strong><span>Optional one: a member may have zero or one parking permit.</span></article>
+            <article><strong>1..1</strong><span>Mandatory one: each loan must refer to exactly one student.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson models relationships before implementation</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Entities, attributes, relationship names, cardinality, optional/mandatory participation, linking entity for many-to-many relationships and ER model critique.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 083 covers normalisation and duplication problems. This lesson may mention linking entities, but it does not teach normal forms.</span></div>
+            <div><strong>Exam focus</strong><span>Use scenario wording to justify cardinality. Do not guess one-to-many just because it is common.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="parser">
+          <div class="section-title">
+            <p class="eyebrow">Interactive scenario parser</p>
+            <h2>Identify entities and attributes</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="library">A library records students, books and each loan.</option>
+                <option value="clinic">A clinic records patients, doctors and appointments.</option>
+                <option value="shop">A shop records customers, orders and products.</option>
+                <option value="club">A school records students, clubs and club memberships.</option>
+                <option value="parking">A company records employees and optional parking permits.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="scenarioBtn">Parse scenario</button>
+          </div>
+          <div class="result-box" id="scenarioResult">Choose a scenario to identify likely entities.</div>
+          <div class="feedback" id="scenarioReason">The answer will separate entities from attributes and relationship events.</div>
+        </section>
+
+        <section class="panel" id="checker">
+          <div class="section-title">
+            <p class="eyebrow">Interactive cardinality checker</p>
+            <h2>Choose the relationship type</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Relationship wording
+              <select id="cardinalityInput">
+                <option value="customerOrders">One customer can place many orders; each order is placed by one customer.</option>
+                <option value="studentsClubs">A student can join many clubs; a club can have many students.</option>
+                <option value="orderLines">Each order must contain at least one order line; each order line belongs to one order.</option>
+                <option value="personPassport">One person has one passport in this simplified system.</option>
+                <option value="studentLoans">A student may have no loans or many loans; each loan has exactly one student.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="cardinalityBtn">Check cardinality</button>
+          </div>
+          <div class="result-box" id="cardinalityResult">Choose wording to classify the cardinality.</div>
+          <div class="feedback" id="cardinalityReason">Look for "one", "many", "must" and "may".</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Turn words into an ER model</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="library">Library</button>
+            <button class="tab" type="button" data-example="clinic">Clinic</button>
+            <button class="tab" type="button" data-example="club">Many-to-many</button>
+            <button class="tab" type="button" data-example="critique">Critique</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Short-answer checks</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Repair weak ER modelling decisions</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style practice with expandable MS</h2>
+            <p>These are original questions written in Cambridge style. The mark schemes are strict about entities, attributes and cardinality justification.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>ER modelling checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Entities</strong><span>Things the system stores data about; often become tables.</span></div>
+            <div><strong>Attributes</strong><span>Facts stored about each entity; often become fields.</span></div>
+            <div><strong>Relationships</strong><span>Links between entities with cardinality and participation.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Model a scenario</strong>
+              <span>A music school stores students, teachers, instruments and lesson bookings. Identify four entities, two attributes for each, and two relationships with cardinality.</span>
+            </article>
+            <article>
+              <strong>Task 2: Critique</strong>
+              <span>Explain why making "PhoneNumber" an entity may be poor design if only one phone number is stored for each student.</span>
+            </article>
+            <article>
+              <strong>Task 3: 6-mark answer</strong>
+              <span>Answer: "Explain how an ER model helps design a relational database for a library loan system." Include entities, attributes and cardinality.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

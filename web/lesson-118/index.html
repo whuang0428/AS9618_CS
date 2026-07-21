@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 118 | Records and composite data</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 10</p>
+        <h1>Records and composite data</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Concept</a>
+        <a href="#declare">Declare</a>
+        <a href="#access">Access/update</a>
+        <a href="#array-vs-record">Array vs record</a>
+        <a href="#trace">Trace</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#lookup">Field lookup</a>
+        <a href="#builder">Type builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 118 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
+            <h2>A record keeps related facts together without pretending they are the same type.</h2>
+            <p>
+              Arrays are excellent when many values share one type and are accessed by index. A record is different:
+              it groups related fields that may have different data types. A student record can store a name, date of
+              birth, exam mark and enrolment status in one composite value.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>record, field and composite data using accurate vocabulary</span></div>
+              <div><strong>Declare</strong><span>record types and variables in Cambridge-style pseudocode</span></div>
+              <div><strong>Access</strong><span>read and update fields using dot notation</span></div>
+            </div>
+          </div>
+          <div class="record-visual" aria-label="Record visual">
+            <div class="record-card">
+              <strong>TStudent</strong>
+              <span>Name : STRING</span>
+              <span>DateOfBirth : DATE</span>
+              <span>Mark : INTEGER</span>
+              <span>Enrolled : BOOLEAN</span>
+            </div>
+            <div class="record-caption">Student1.Mark &lt;- 72</div>
+            <p>One record. Several named fields. Different types allowed.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask whether the values describe one thing. If yes, a record may be clearer than separate variables.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 can ask students to define a record type, declare a record variable, and access fields correctly.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A record is not an array. Use field names such as <code>Student1.Name</code>, not indexes such as <code>Student1[1]</code>.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>What should hold one student's details?</h2>
+            <p>A student has a name, date of birth, mark and enrolment status. Which structure is most suitable for one student?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="array">ARRAY[1:4] OF STRING</button>
+            <button class="choice-card" type="button" data-hook="record">RECORD / user-defined type</button>
+            <button class="choice-card" type="button" data-hook="integer">INTEGER</button>
+            <button class="choice-card" type="button" data-hook="constant">CONSTANT Student = 1</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the structure that can group different fields with different types.</div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Concept</p>
+            <h2>Composite data groups fields into one type</h2>
+            <p>Chinese support: record 是“记录”；field 是“字段”；composite data 是“由多个部分组合成的数据”。</p>
+          </div>
+          <div class="data-table concept-table" role="table" aria-label="Record concepts">
+            <div class="table-row table-head" role="row"><div>Term</div><div>Meaning</div><div>Example</div></div>
+            <div class="table-row" role="row"><div>Record</div><div>a composite structure containing named fields</div><div><code>TStudent</code></div></div>
+            <div class="table-row" role="row"><div>Field</div><div>one named item inside a record</div><div><code>Name</code>, <code>Mark</code></div></div>
+            <div class="table-row" role="row"><div>Composite data</div><div>data made from several components</div><div>student details grouped together</div></div>
+            <div class="table-row" role="row"><div>Dot notation</div><div>access to one field of a record variable</div><div><code>Student1.Mark</code></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="declare">
+          <div class="section-title">
+            <p class="eyebrow">Declare records</p>
+            <h2>Define the type, then declare variables that use it</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Record type</h3>
+              <pre><code>TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE DateOfBirth : DATE
+    DECLARE Mark : INTEGER
+    DECLARE Enrolled : BOOLEAN
+ENDTYPE</code></pre>
+            </article>
+            <article>
+              <h3>Record variable</h3>
+              <pre><code>DECLARE Student1 : TStudent
+
+Student1.Name &lt;- "Ali"
+Student1.Mark &lt;- 72</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="access">
+          <div class="section-title">
+            <p class="eyebrow">Access and update</p>
+            <h2>Use the field name, not a numeric index</h2>
+          </div>
+          <div class="data-table access-table" role="table" aria-label="Record field access">
+            <div class="table-row table-head" role="row"><div>Task</div><div>Pseudocode</div><div>Effect</div></div>
+            <div class="table-row" role="row"><div>Read field</div><div><code>OUTPUT Student1.Name</code></div><div>outputs the Name field</div></div>
+            <div class="table-row" role="row"><div>Update field</div><div><code>Student1.Mark &lt;- 80</code></div><div>changes only the Mark field</div></div>
+            <div class="table-row" role="row"><div>Test field</div><div><code>IF Student1.Enrolled = TRUE THEN</code></div><div>uses Boolean field in selection</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="array-vs-record">
+          <div class="section-title">
+            <p class="eyebrow">Array vs record</p>
+            <h2>Same type and index, or mixed fields and names?</h2>
+          </div>
+          <div class="data-table compare-table" role="table" aria-label="Array versus record">
+            <div class="table-row table-head" role="row"><div>Feature</div><div>Array</div><div>Record</div></div>
+            <div class="table-row" role="row"><div>Elements / fields</div><div>usually same type</div><div>can be different types</div></div>
+            <div class="table-row" role="row"><div>Access</div><div>index: <code>Scores[3]</code></div><div>field name: <code>Student1.Mark</code></div></div>
+            <div class="table-row" role="row"><div>Best for</div><div>many similar values</div><div>several facts about one entity</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Trace</p>
+            <h2>Trace the field that changes</h2>
+          </div>
+          <div class="data-table trace-table" role="table" aria-label="Record trace">
+            <div class="table-row table-head" role="row"><div>Statement</div><div>Name</div><div>Mark</div><div>Enrolled</div></div>
+            <div class="table-row" role="row"><div>Student1.Name &lt;- "Ali"</div><div>Ali</div><div>-</div><div>-</div></div>
+            <div class="table-row" role="row"><div>Student1.Mark &lt;- 72</div><div>Ali</div><div>72</div><div>-</div></div>
+            <div class="table-row" role="row"><div>Student1.Enrolled &lt;- TRUE</div><div>Ali</div><div>72</div><div>TRUE</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Same modelling idea, different syntax</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>TYPE TBook
+    DECLARE Title : STRING
+    DECLARE Pages : INTEGER
+    DECLARE Available : BOOLEAN
+ENDTYPE
+
+DECLARE Book1 : TBook
+Book1.Available &lt;- TRUE</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>class Book {
+    String title;
+    int pages;
+    boolean available;
+}
+
+Book book1 = new Book();
+book1.available = true;</code></pre>
+            </article>
+          </div>
+          <div class="callout">Paper 2 reminder: Java class syntax is support only. Cambridge pseudocode should use clear TYPE/ENDTYPE-style record notation when required.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers and what it leaves for later</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>record purpose, fields, composite data, record type declarations, record variables, field access and field updates.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 119 covers arrays of records. This lesson uses one record variable and does not traverse record collections.</span></div>
+            <div><strong>Paper 2 note</strong><span>Marks often require a correct TYPE definition, field declarations with suitable types, and dot notation for field access.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="lookup">
+          <div class="section-title">
+            <p class="eyebrow">Interactive field lookup</p>
+            <h2>Read one field from a record</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Field
+              <select id="fieldInput">
+                <option value="Name">Name</option>
+                <option value="DateOfBirth">DateOfBirth</option>
+                <option value="Mark">Mark</option>
+                <option value="Enrolled">Enrolled</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="fieldBtn">Read Student1.Field</button>
+          </div>
+          <div class="trace-output" id="fieldResult">Student1 has Name, DateOfBirth, Mark and Enrolled fields.</div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive type builder</p>
+            <h2>Generate a record declaration</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="builderInput">
+                <option value="student">student details</option>
+                <option value="book">library book</option>
+                <option value="booking">booking details</option>
+                <option value="product">product stock item</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="builderBtn">Build type</button>
+          </div>
+          <div class="trace-output" id="builderResult">Choose a scenario to generate Cambridge-style pseudocode.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Record modelling patterns</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="student">Student record</button>
+            <button class="tab" type="button" data-example="book">Book record</button>
+            <button class="tab" type="button" data-example="update">Field update</button>
+            <button class="tab" type="button" data-example="compare">Array vs record</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Ten quick record checks</h2>
+            <p>Answer briefly, then use Show answer to compare with strict wording.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix common record errors</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style record questions with expandable MS</h2>
+            <p>These questions focus on record declaration, field types, dot notation, and array-vs-record reasoning.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Record checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Group</strong><span>use a record for several related fields about one entity.</span></div>
+            <div><strong>Name</strong><span>access a field by name using dot notation.</span></div>
+            <div><strong>Type</strong><span>each field has its own suitable data type.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear consolidation tasks</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Define a record</strong>
+              <span>Create a record type called TMember with fields MemberID, Name, DateJoined and HasOverdueBook. Choose suitable types.</span>
+            </article>
+            <article>
+              <strong>Task 2: Field access</strong>
+              <span>Declare Member1 as TMember, assign values to all fields, then output Member1.Name and Member1.HasOverdueBook.</span>
+            </article>
+            <article>
+              <strong>Task 3: Explain</strong>
+              <span>Write a 4-mark explanation of why a record is more suitable than an array for one member's mixed-type details.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

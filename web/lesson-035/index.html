@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 035 | Logic gates: NOT, AND, OR, NAND, NOR, XOR</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
+        <h1>Logic gates: NOT, AND, OR, NAND, NOR, XOR</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#signals">Binary signals</a>
+        <a href="#gates">Logic gates</a>
+        <a href="#symbols">Symbols</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Truth-table tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 035 | 45 minutes | Paper 1 Section 3</p>
+            <h2>Logic gates are tiny decision machines: no mood, no maybe, just 0 or 1.</h2>
+            <p>
+              This lesson introduces the six AS-level logic gates: NOT, AND, OR,
+              NAND, NOR and XOR. You will read gate rules, complete truth tables,
+              and translate ordinary conditions into Boolean logic.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Identify</strong><span>the purpose of each named logic gate</span></div>
+              <div><strong>Complete</strong><span>truth tables for one-input and two-input gates</span></div>
+              <div><strong>Compare</strong><span>OR and XOR without using everyday language</span></div>
+            </div>
+          </div>
+          <div class="gate-card" aria-label="Logic gate expression">
+            <span>Q = (A AND B) OR NOT C</span>
+            <p>If this looks like a sentence with wires, that is exactly the point.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Always ask for three things: the English rule, the Boolean expression, and one tested row from the truth table.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Cambridge questions often combine gates. Students lose marks when they know gate names but cannot apply the exact output rule.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>OR means at least one input is 1. XOR means exactly one input is 1. They are not the same gate wearing different shoes.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>The classroom door opens if the teacher has a key AND today is not an exam.</h2>
+            <p>Click the condition that would make the output 1. The door is strict; it does not accept emotional arguments.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="open">Key = 1, Exam = 0</button>
+            <button class="choice-card" type="button" data-hook="locked1">Key = 0, Exam = 0</button>
+            <button class="choice-card" type="button" data-hook="locked2">Key = 1, Exam = 1</button>
+            <button class="choice-card" type="button" data-hook="locked3">Key = 0, Exam = 1</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Rule: Output = Key AND NOT Exam. Try one row first, then trust the table.
+          </div>
+        </section>
+
+        <section class="panel" id="signals">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Logic gates use binary signals</h2>
+          </div>
+          <div class="binary-grid">
+            <article>
+              <strong>0</strong>
+              <span>False, off, no signal, condition not met</span>
+            </article>
+            <article>
+              <strong>1</strong>
+              <span>True, on, signal present, condition met</span>
+            </article>
+            <article>
+              <strong>Input</strong>
+              <span>A value entering the gate, usually labelled A, B or C.</span>
+            </article>
+            <article>
+              <strong>Output</strong>
+              <span>The result produced by the gate, often labelled Q or X.</span>
+            </article>
+          </div>
+          <div class="callout">Chinese support: logic gate = 逻辑门；Boolean = 布尔；truth table = 真值表；output = 输出。</div>
+        </section>
+
+        <section class="panel" id="gates">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>The six gate rules</h2>
+          </div>
+          <div class="gate-table" role="table" aria-label="Logic gate rules">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Gate</div>
+              <div role="columnheader">Expression</div>
+              <div role="columnheader">Output is 1 when...</div>
+              <div role="columnheader">Common exam wording</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">NOT</div>
+              <div role="cell">Q = NOT A</div>
+              <div role="cell">A is 0.</div>
+              <div role="cell">Inverts the input.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">AND</div>
+              <div role="cell">Q = A AND B</div>
+              <div role="cell">A and B are both 1.</div>
+              <div role="cell">All conditions must be true.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">OR</div>
+              <div role="cell">Q = A OR B</div>
+              <div role="cell">At least one input is 1.</div>
+              <div role="cell">One or both conditions are true.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">NAND</div>
+              <div role="cell">Q = NOT (A AND B)</div>
+              <div role="cell">Not both inputs are 1.</div>
+              <div role="cell">Inverse of AND.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">NOR</div>
+              <div role="cell">Q = NOT (A OR B)</div>
+              <div role="cell">Both inputs are 0.</div>
+              <div role="cell">Inverse of OR.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">XOR</div>
+              <div role="cell">Q = A XOR B</div>
+              <div role="cell">Exactly one input is 1.</div>
+              <div role="cell">Inputs are different.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="symbols">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Recognise gate symbols and the inversion bubble</h2>
+          </div>
+          <div class="symbol-grid" aria-label="Gate symbols">
+            <article><span class="symbol">NOT</span><strong>Triangle + bubble</strong><p>One input. Bubble means inversion.</p></article>
+            <article><span class="symbol">AND</span><strong>Flat left, curved right</strong><p>Output 1 only when all inputs are 1.</p></article>
+            <article><span class="symbol">OR</span><strong>Curved input side</strong><p>Output 1 when at least one input is 1.</p></article>
+            <article><span class="symbol">NAND</span><strong>AND + bubble</strong><p>Complete AND first, then invert.</p></article>
+            <article><span class="symbol">NOR</span><strong>OR + bubble</strong><p>Complete OR first, then invert.</p></article>
+            <article><span class="symbol">XOR</span><strong>OR with extra curved line</strong><p>Output 1 when inputs differ.</p></article>
+          </div>
+          <div class="callout">Exam habit: if a symbol has a small bubble at the output, say "then invert the result" before writing the final column.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>NOT, AND, OR, NAND, NOR and XOR gate behaviour.</span></div>
+            <div><strong>Covered</strong><span>Binary input and output values as 0/1 or false/true.</span></div>
+            <div><strong>Covered</strong><span>Truth tables for one-input and two-input gates.</span></div>
+            <div><strong>Covered</strong><span>Common confusion between OR and XOR.</span></div>
+            <div><strong>Boundary</strong><span>Full multi-gate circuit construction continues in Lesson 036 and Lesson 037.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Generate a truth table</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Gate
+              <select id="gateInput">
+                <option value="NOT">NOT</option>
+                <option value="AND">AND</option>
+                <option value="OR">OR</option>
+                <option value="NAND">NAND</option>
+                <option value="NOR">NOR</option>
+                <option value="XOR">XOR</option>
+              </select>
+            </label>
+            <button type="button" id="truthBtn">Build table</button>
+          </div>
+          <div class="result-box" id="gateRule" aria-live="polite"></div>
+          <div class="truth-table-wrap" id="truthTable"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From condition to table</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="compound">Compound expression</button>
+            <button class="tab" type="button" data-example="xor">XOR vs OR</button>
+            <button class="tab" type="button" data-example="nand">NAND from AND</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak logic answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"OR is true only when one input is true."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">OR is true when at least one input is 1, so 01, 10 and 11 all produce 1. The phrase "only one" describes XOR, not OR.</p>
+            </article>
+            <article>
+              <p class="wrong">"NAND means A and B, so it is true only when both are 1."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">NAND is NOT AND. First find A AND B, then invert it. NAND is 0 only when both inputs are 1.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on exact gate behaviour and correct truth-table rows.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Six gate rules in exam language</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>NOT</strong><span>Inverts a single input.</span></div>
+            <div><strong>AND</strong><span>1 only when all inputs are 1.</span></div>
+            <div><strong>OR</strong><span>1 when at least one input is 1.</span></div>
+            <div><strong>NAND</strong><span>Inverse of AND.</span></div>
+            <div><strong>NOR</strong><span>Inverse of OR.</span></div>
+            <div><strong>XOR</strong><span>1 when exactly one input is 1.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Write the truth table for each gate: NOT, AND, OR, NAND, NOR and XOR.</li>
+            <li>Complete the full truth table for Q = (A AND B) OR NOT C, including intermediate columns.</li>
+            <li>Write a 4-mark comparison of OR and XOR using exact input combinations.</li>
+            <li>Create one real-life rule that uses AND and one that uses OR, then translate both into Boolean expressions.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Gate tables:</strong> NOT has two rows; the two-input gates have four rows: 00, 01, 10, 11.</p>
+            <p><strong>Compound expression:</strong> include columns for A AND B, NOT C, then final OR.</p>
+            <p><strong>OR vs XOR:</strong> OR gives 1 for 01, 10, 11; XOR gives 1 only for 01 and 10.</p>
+            <p><strong>Expressions:</strong> keep variables short, such as Key, Exam, Rain, Sensor.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 150 | Paper 2 mock review and correction clinic</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Sections 9-12</p>
+        <h1>Paper 2 mock review and correction clinic</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#triage">Triage</a>
+        <a href="#correction">Correction workflow</a>
+        <a href="#sections">Section map</a>
+        <a href="#marking">Mark recovery</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#error-tool">Error classifier</a>
+        <a href="#rewrite-tool">Rewrite tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Mistakes</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 150 | 45 minutes | Paper 2 review | correction clinic</p>
+            <h2>A mock paper is not a verdict. It is a diagnostic scan with marks attached.</h2>
+            <p>
+              This final Paper 2 lesson turns mock mistakes into a correction plan. It covers error classification,
+              mark recovery, answer rewriting and final review strategy across Sections 9-12. Chinese support:
+              mock review 模考复盘, correction 订正, diagnostic 诊断, mark recovery 找回分数, precision 精确性。
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Diagnose</strong><span>lost marks by error type</span></div>
+              <div><strong>Rewrite</strong><span>weak answers into mark-worthy answers</span></div>
+              <div><strong>Prioritise</strong><span>final revision actions for Paper 2</span></div>
+            </div>
+          </div>
+          <div class="clinic-visual" aria-label="Correction clinic visual">
+            <div><strong>Find</strong><span>lost mark</span><em>which requirement was missed?</em></div>
+            <div><strong>Classify</strong><span>knowledge or method</span><em>what type of error?</em></div>
+            <div><strong>Rewrite</strong><span>better answer</span><em>use mark-scheme language</em></div>
+            <div><strong>Practise</strong><span>similar question</span><em>prove it transfers</em></div>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use the line: “The mark you lost is information. The mark you lose again is a revision decision.”</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 mistakes often repeat: missing initialisation, vague explanations, wrong file mode, no expected result, or Java syntax in pseudocode answers.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not only copy the model answer. Write why your original answer did not earn the mark, then write the corrected rule.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A student lost a mark for “use a stack because it stores data”. What kind of error is this?</h2>
+            <p>Choose the most useful diagnosis.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="arithmetic">Arithmetic error</button>
+            <button class="choice-card" type="button" data-hook="justification">Missing justification</button>
+            <button class="choice-card" type="button" data-hook="syntax">File syntax error</button>
+            <button class="choice-card" type="button" data-hook="timing">Time management only</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Pick the error type that points to the best correction.</div>
+        </section>
+
+        <section class="panel" id="triage">
+          <div class="section-title">
+            <p class="eyebrow">Mock triage</p>
+            <h2>Sort errors before trying to fix everything</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Error triage table">
+            <div class="table-row table-head"><div>Error type</div><div>Looks like</div><div>Correction action</div><div>Fast retest</div></div>
+            <div class="table-row"><div>Knowledge</div><div>wrong term or concept</div><div>relearn definition and contrast pair</div><div>two quick retrieval prompts</div></div>
+            <div class="table-row"><div>Method</div><div>trace skipped or algorithm incomplete</div><div>write steps as checklist</div><div>similar short problem</div></div>
+            <div class="table-row"><div>Precision</div><div>vague wording such as “better”</div><div>add cause, context and consequence</div><div>rewrite one sentence</div></div>
+            <div class="table-row"><div>Exam technique</div><div>missed command word or marks</div><div>match answer depth to command</div><div>mark allocation drill</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="correction">
+          <div class="section-title">
+            <p class="eyebrow">Correction workflow</p>
+            <h2>The four-line correction format</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>1. Original</h3><p>Copy the sentence or pseudocode line that failed.</p></article>
+            <article><h3>2. Mark lost</h3><p>Name the exact mark: missing M1, B1 or A1.</p></article>
+            <article><h3>3. Rule</h3><p>Write the general rule that would prevent the error next time.</p></article>
+            <article><h3>4. Retest</h3><p>Answer a similar mini-question without looking at the model answer.</p></article>
+          </div>
+          <div class="callout">A good correction is reusable. “I forgot” is honest, but it is not a strategy.</div>
+        </section>
+
+        <section class="panel" id="sections">
+          <div class="section-title">
+            <p class="eyebrow">Paper 2 section map</p>
+            <h2>Know which skill the mark scheme is testing</h2>
+          </div>
+          <div class="data-table four-col" role="table" aria-label="Paper 2 section map">
+            <div class="table-row table-head"><div>Section</div><div>Core skill</div><div>Common lost mark</div><div>Correction target</div></div>
+            <div class="table-row"><div>9</div><div>algorithm design and problem-solving</div><div>missing input/output or loop condition</div><div>write full algorithm skeleton</div></div>
+            <div class="table-row"><div>10</div><div>data types and structures</div><div>name structure without reason</div><div>link to access pattern</div></div>
+            <div class="table-row"><div>11</div><div>programming and file handling</div><div>wrong file mode or no CLOSEFILE</div><div>use correct file pattern</div></div>
+            <div class="table-row"><div>12</div><div>software development</div><div>generic lifecycle explanation</div><div>answer in scenario with evidence</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="marking">
+          <div class="section-title">
+            <p class="eyebrow">Mark recovery</p>
+            <h2>Translate feedback into a repeatable checklist</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Pseudocode</strong><span>initialise variables, process all items, output after the loop, close files</span></div>
+            <div><strong>Trace</strong><span>show intermediate values and include boundary conditions</span></div>
+            <div><strong>Data structures</strong><span>justify with LIFO, FIFO, index access or grouped fields</span></div>
+            <div><strong>Explanations</strong><span>use point, reason, context and consequence</span></div>
+            <div><strong>Testing</strong><span>include data, expected result and why the case is useful</span></div>
+            <div><strong>Evaluation</strong><span>compare evidence with success criteria and make a judgement</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>This clinic reviews all Paper 2 strands</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>algorithm design, trace checking and timed pseudocode correction</span></div>
+            <div><strong>Covered</strong><span>data structures, ADT justification and test data wording</span></div>
+            <div><strong>Covered</strong><span>programming constructs, file handling and validation errors</span></div>
+            <div><strong>Covered</strong><span>software development, requirements, testing, maintenance and evaluation answers</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="error-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive error classifier</p>
+            <h2>Diagnose the lost mark</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Mock feedback
+              <select id="errorSelect">
+                <option value="file">Opened file for WRITE when adding a new record</option>
+                <option value="trace">Final output correct but no trace values shown</option>
+                <option value="stack">Said stack stores data, but did not mention LIFO</option>
+                <option value="eval">Said users liked it, but did not compare with success criteria</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="errorBtn">Classify</button>
+          </div>
+          <div id="errorOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="rewrite-tool">
+          <div class="section-title">
+            <p class="eyebrow">Answer rewrite tool</p>
+            <h2>Rewrite the weak answer into a mark-worthy sentence</h2>
+          </div>
+          <div class="tool-grid">
+            <label>
+              Weak answer
+              <select id="rewriteSelect">
+                <option value="stack">Use a stack because it stores data.</option>
+                <option value="test">Use boundary data because it is better.</option>
+                <option value="eval">The system is good because users like it.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="rewriteBtn">Rewrite</button>
+          </div>
+          <div id="rewriteOutput" class="trace-output" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From lost mark to correction</h2>
+          </div>
+          <div class="tab-row" role="tablist" aria-label="Worked examples">
+            <button class="tab-button active" type="button" data-example="pseudocode">Pseudocode</button>
+            <button class="tab-button" type="button" data-example="structure">Structure</button>
+            <button class="tab-button" type="button" data-example="evaluation">Evaluation</button>
+          </div>
+          <div id="exampleOutput" class="example-output"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Final short retrieval</h2>
+          </div>
+          <div id="practiceList" class="practice-list"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Correct the repeated error</h2>
+          </div>
+          <div id="mistakeList" class="mistake-grid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Mock correction clinic questions with expandable MS</h2>
+            <p>These are original AS-style questions. The mark schemes use Cambridge-style precision, not copied past-paper wording.</p>
+          </div>
+          <div id="examList" class="exam-list"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Final Paper 2 correction rule</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Diagnose</strong><span>knowledge, method, precision or technique</span></div>
+            <div><strong>Rewrite</strong><span>use exact mark-scheme language and scenario detail</span></div>
+            <div><strong>Retest</strong><span>prove the correction works on a similar question</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Final correction pack</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Choose three lost marks from a mock or practice paper and classify each error type.</li>
+            <li>For each lost mark, write the original answer, the missing mark, the correction rule and a rewritten answer.</li>
+            <li>Complete one similar retest question for each corrected error.</li>
+            <li>Write a one-page final Paper 2 checklist covering pseudocode, data structures, file handling and software development explanations.</li>
+          </ol>
+          <div class="callout">Marking focus: corrected answer plus transfer. If the same error appears again, the correction was too passive.</div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

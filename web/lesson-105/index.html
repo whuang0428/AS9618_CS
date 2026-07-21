@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 105 | Bubble sort and insertion sort</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>Bubble sort and insertion sort</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#bubble">Bubble sort</a>
+        <a href="#insertion">Insertion sort</a>
+        <a href="#compare">Comparison</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#chooser">Sort chooser</a>
+        <a href="#bubble-tool">Bubble pass</a>
+        <a href="#insert-tool">Insertion step</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 105 | 45 minutes | Paper 2 Section 9 | 5-minute quiz</p>
+            <h2>Sorting is not magic; it is disciplined comparison with receipts.</h2>
+            <p>
+              Bubble sort repeatedly compares adjacent items and swaps them if they are in the wrong order. Insertion
+              sort takes the next item and inserts it into the correct place in the already sorted left section. You will
+              trace both methods step by step using Cambridge-style algorithm reasoning.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Trace</strong><span>bubble sort passes and insertion sort movements accurately</span></div>
+              <div><strong>Compare</strong><span>how adjacent swaps differ from inserting into a sorted section</span></div>
+              <div><strong>Explain</strong><span>common trace errors, stopping points and algorithm behaviour</span></div>
+            </div>
+          </div>
+          <div class="sort-visual" aria-label="Sorting visual">
+            <div class="array-line">
+              <span>5</span><span>1</span><span>4</span><span>2</span>
+            </div>
+            <div class="sort-card">
+              <strong>Bubble sort first pass</strong>
+              <span>[1, 4, 2, 5]</span>
+            </div>
+            <div class="sort-card">
+              <strong>Insertion sort first movement</strong>
+              <span>take 1, insert before 5 → [1, 5, 4, 2]</span>
+            </div>
+            <p>Bubble sort pushes large values right. Insertion sort builds a sorted left-hand section.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make students say the rule before moving a number: adjacent swap for bubble, insert into sorted left part for insertion.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 sorting questions usually mark the intermediate states. The final sorted list alone is not enough.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not sort by intuition. Use the named algorithm's exact movement rule, or the trace stops matching the method.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Four cards, two legal ways to tidy them</h2>
+            <p>Starting from [5, 1, 4, 2], which statement describes bubble sort's first comparison?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="swap">Compare 5 and 1, then swap them.</button>
+            <button class="choice-card" type="button" data-hook="insert">Take 1 and insert it into the left section.</button>
+            <button class="choice-card" type="button" data-hook="middle">Start from the middle value.</button>
+            <button class="choice-card" type="button" data-hook="search">Find the target value first.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the bubble sort first action.</div>
+        </section>
+
+        <section class="panel" id="bubble">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Bubble sort: compare adjacent items and swap if needed</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Core rule</h3>
+              <p>Compare neighbouring items from left to right. If the left item is larger than the right item, swap them. After one full pass, the largest item has moved to the end.</p>
+              <div class="callout">Chinese support: bubble sort = 冒泡排序；adjacent = 相邻的；swap = 交换。</div>
+            </article>
+            <article>
+              <h3>First pass on [5, 1, 4, 2]</h3>
+              <pre><code>[5, 1, 4, 2]
+compare 5 and 1 -> swap: [1, 5, 4, 2]
+compare 5 and 4 -> swap: [1, 4, 5, 2]
+compare 5 and 2 -> swap: [1, 4, 2, 5]</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="insertion">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Insertion sort: insert the next item into the sorted left section</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Core rule</h3>
+              <p>Treat the first item as sorted. Take the next item, move larger items in the sorted section right, then insert the item into its correct position.</p>
+              <div class="callout">Chinese support: insertion sort = 插入排序；sorted section = 已排序部分。</div>
+            </article>
+            <article>
+              <h3>First movements on [5, 1, 4, 2]</h3>
+              <pre><code>sorted left: [5]
+take 1 -> insert before 5: [1, 5, 4, 2]
+take 4 -> insert between 1 and 5: [1, 4, 5, 2]
+take 2 -> insert between 1 and 4: [1, 2, 4, 5]</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Comparison</p>
+            <h2>Same final list, different route</h2>
+          </div>
+          <div class="data-table concept-table" role="table" aria-label="Bubble and insertion comparison">
+            <div class="table-row table-head" role="row"><div>Feature</div><div>Bubble sort</div><div>Insertion sort</div></div>
+            <div class="table-row" role="row"><div>Main action</div><div>compare adjacent items and swap</div><div>take next item and insert into sorted left section</div></div>
+            <div class="table-row" role="row"><div>After early work</div><div>large items move towards the right end</div><div>left side becomes sorted</div></div>
+            <div class="table-row" role="row"><div>Trace evidence</div><div>show comparisons and swaps in a pass</div><div>show key item movements and insertion point</div></div>
+            <div class="table-row" role="row"><div>Exam trap</div><div>jumping straight to sorted list</div><div>moving the wrong direction through sorted section</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Trace Cambridge-style algorithms, not Java syntax habits</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Bubble sort outline</h3>
+              <pre><code>FOR Pass &lt;- 1 TO Length - 1
+    FOR Index &lt;- 1 TO Length - Pass
+        IF List[Index] &gt; List[Index + 1] THEN
+            Temp &lt;- List[Index]
+            List[Index] &lt;- List[Index + 1]
+            List[Index + 1] &lt;- Temp
+        ENDIF
+    NEXT Index
+NEXT Pass</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>for (int pass = 0; pass &lt; list.length - 1; pass++) {
+    for (int index = 0; index &lt; list.length - pass - 1; index++) {
+        if (list[index] &gt; list[index + 1]) {
+            int temp = list[index];
+            list[index] = list[index + 1];
+            list[index + 1] = temp;
+        }
+    }
+}</code></pre>
+            </article>
+          </div>
+          <div class="callout">Exam reminder: Java uses 0-based array indexes and braces; Cambridge pseudocode examples often use 1-based indexing and keywords such as FOR, IF, ENDIF and NEXT.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson focuses on sorting, not searching</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Bubble sort, insertion sort, adjacent comparison, swaps, sorted left section, passes, trace states and algorithm comparison.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 106 covers maximum, minimum, count and total. This page does not teach accumulator algorithms beyond sorting traces.</span></div>
+            <div><strong>Paper 2 note</strong><span>Cambridge pseudocode is the exam standard. Java appears only as a support comparison.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Interactive sort chooser</p>
+            <h2>Identify the method from the movement</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Movement clue
+              <select id="chooserInput">
+                <option value="bubble">Compare 5 and 1, then swap adjacent items.</option>
+                <option value="insert">Take 4 and insert it between 1 and 5.</option>
+                <option value="bubble-end">After a pass, the largest item is at the right end.</option>
+                <option value="insert-left">The left-hand section is kept sorted.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="chooserBtn">Identify</button>
+          </div>
+          <div class="feedback" id="chooserResult">Choose a clue to classify it.</div>
+        </section>
+
+        <section class="panel" id="bubble-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive bubble pass</p>
+            <h2>Trace one full bubble pass</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Starting list
+              <select id="bubbleInput">
+                <option value="5142">[5, 1, 4, 2]</option>
+                <option value="3124">[3, 1, 2, 4]</option>
+                <option value="4312">[4, 3, 1, 2]</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="bubbleBtn">Show pass</button>
+          </div>
+          <div class="trace-output" id="bubbleResult">Choose a list to trace a pass.</div>
+        </section>
+
+        <section class="panel" id="insert-tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive insertion step</p>
+            <h2>Trace insertion sort movements</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Starting list
+              <select id="insertInput">
+                <option value="5142">[5, 1, 4, 2]</option>
+                <option value="3124">[3, 1, 2, 4]</option>
+                <option value="4312">[4, 3, 1, 2]</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="insertBtn">Show movements</button>
+          </div>
+          <div class="trace-output" id="insertResult">Choose a list to trace insertion movements.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Sorting traces</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="bubble-pass">Bubble first pass</button>
+            <button class="tab" type="button" data-example="bubble-full">Bubble full trace</button>
+            <button class="tab" type="button" data-example="insert-first">Insertion first movement</button>
+            <button class="tab" type="button" data-example="insert-full">Insertion full trace</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Sorting trace accuracy</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix sorting mistakes</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style sorting questions with expandable MS</h2>
+            <p>These questions target sorting traces, comparison of methods and strict algorithm wording.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Sorting checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Bubble</strong><span>Compare adjacent items; swap if left is greater; largest item moves right each pass.</span></div>
+            <div><strong>Insertion</strong><span>Take next item; insert it into the correct position in the sorted left section.</span></div>
+            <div><strong>Trace</strong><span>Show intermediate states. The final sorted list alone is not enough.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Bubble trace</strong>
+              <span>Show two passes of bubble sort on [6, 2, 5, 1]. Record every comparison and swap.</span>
+            </article>
+            <article>
+              <strong>Task 2: Insertion trace</strong>
+              <span>Trace insertion sort on [6, 2, 5, 1]. Show the sorted left section after each insertion.</span>
+            </article>
+            <article>
+              <strong>Task 3: Comparison paragraph</strong>
+              <span>Explain the difference between bubble sort and insertion sort using the words adjacent, swap, insert and sorted section.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

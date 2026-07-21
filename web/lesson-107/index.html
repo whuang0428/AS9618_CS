@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 107 | String-processing algorithms</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>String-processing algorithms</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#model">String model</a>
+        <a href="#patterns">Core patterns</a>
+        <a href="#trace">Tracing strings</a>
+        <a href="#build">Building output</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#classifier">Pattern chooser</a>
+        <a href="#scanner">String scanner</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 107 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
+            <h2>A string is a queue of characters pretending to be one thing.</h2>
+            <p>
+              String-processing algorithms treat text as individual characters that can be inspected one at a time.
+              Today you will trace loops that count characters, find a target, validate a simple pattern and build a
+              new string. The final answer is not "use a function"; the marks are in the loop, condition and update.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Scan</strong><span>each character in a string using a controlled loop</span></div>
+              <div><strong>Process</strong><span>count, search, validate or build output from characters</span></div>
+              <div><strong>Trace</strong><span>index, character, flag and count changes accurately</span></div>
+            </div>
+          </div>
+          <div class="string-visual" aria-label="String visual">
+            <div class="string-word">"COMPUTER"</div>
+            <div class="char-grid">
+              <div><strong>1</strong><span>C</span></div>
+              <div><strong>2</strong><span>O</span></div>
+              <div><strong>3</strong><span>M</span></div>
+              <div><strong>4</strong><span>P</span></div>
+              <div><strong>5</strong><span>U</span></div>
+              <div><strong>6</strong><span>T</span></div>
+              <div><strong>7</strong><span>E</span></div>
+              <div><strong>8</strong><span>R</span></div>
+            </div>
+            <p>Paper 2 often gives marks for index movement and character tests, not for saying "the program checks the word".</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Make the class say the current index and current character before applying the IF condition.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>String questions frequently reward loop bounds, character extraction, comparison, flag updates and final output separately.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not confuse Java's 0-based indexing with Cambridge-style pseudocode examples that often use positions 1 to LENGTH(String).</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which letter does the algorithm inspect first?</h2>
+            <p>For the string "DATA", a Cambridge-style loop starts with `Index &lt;- 1`. Which character is inspected first?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="d">D</button>
+            <button class="choice-card" type="button" data-hook="a">A</button>
+            <button class="choice-card" type="button" data-hook="zero">Position 0</button>
+            <button class="choice-card" type="button" data-hook="all">The whole word at once</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the first character for a 1-based pseudocode trace.</div>
+        </section>
+
+        <section class="panel" id="model">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>A string algorithm needs position, character and stopping point</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Concrete model</h3>
+              <p>In Cambridge-style reasoning, text is processed by taking one character at a time from a known position.</p>
+              <pre><code>Word &lt;- "DATA"
+FOR Index &lt;- 1 TO LENGTH(Word)
+    Character &lt;- character at position Index
+    OUTPUT Character
+NEXT Index</code></pre>
+            </article>
+            <article>
+              <h3>Trace for "DATA"</h3>
+              <div class="data-table mini-table" role="table" aria-label="DATA trace">
+                <div class="table-row table-head" role="row"><div>Index</div><div>Character</div></div>
+                <div class="table-row" role="row"><div>1</div><div>D</div></div>
+                <div class="table-row" role="row"><div>2</div><div>A</div></div>
+                <div class="table-row" role="row"><div>3</div><div>T</div></div>
+                <div class="table-row" role="row"><div>4</div><div>A</div></div>
+              </div>
+              <div class="callout">Chinese support: string = 字符串；character = 字符；index/position = 下标/位置。</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="patterns">
+          <div class="section-title">
+            <p class="eyebrow">Core patterns</p>
+            <h2>Most AS string algorithms are four familiar patterns</h2>
+          </div>
+          <div class="data-table pattern-table" role="table" aria-label="String processing patterns">
+            <div class="table-row table-head" role="row"><div>Pattern</div><div>State variable</div><div>Typical condition</div><div>Output</div></div>
+            <div class="table-row" role="row"><div>Count</div><div>`Count`</div><div>`Character = Target`</div><div>number of matches</div></div>
+            <div class="table-row" role="row"><div>Search</div><div>`Found` flag</div><div>`Character = Target`</div><div>true/false or position</div></div>
+            <div class="table-row" role="row"><div>Validate</div><div>`Valid` flag</div><div>character is allowed / not allowed</div><div>valid or invalid</div></div>
+            <div class="table-row" role="row"><div>Build</div><div>`NewString`</div><div>copy or transform selected characters</div><div>constructed text</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="trace">
+          <div class="section-title">
+            <p class="eyebrow">Tracing strings</p>
+            <h2>Trace the current character, not just the final result</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Example: count letter A in "DATA"</h3>
+              <pre><code>Count &lt;- 0
+FOR Index &lt;- 1 TO LENGTH(Word)
+    Character &lt;- character at position Index
+    IF Character = "A" THEN
+        Count &lt;- Count + 1
+    ENDIF
+NEXT Index
+OUTPUT Count</code></pre>
+            </article>
+            <article>
+              <h3>What the trace must show</h3>
+              <p>For "DATA", the inspected characters are D, A, T, A. Count changes only on the two A characters, so the final count is 2.</p>
+              <div class="callout">Do not increase Count for every character unless the question asks for string length.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="build">
+          <div class="section-title">
+            <p class="eyebrow">Building output</p>
+            <h2>Some algorithms construct a new string one character at a time</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Remove spaces from a string</h3>
+              <pre><code>NewString &lt;- ""
+FOR Index &lt;- 1 TO LENGTH(Text)
+    Character &lt;- character at position Index
+    IF Character &lt;&gt; " " THEN
+        NewString &lt;- NewString &amp; Character
+    ENDIF
+NEXT Index
+OUTPUT NewString</code></pre>
+            </article>
+            <article>
+              <h3>Why concatenation matters</h3>
+              <p>For "A S", the algorithm appends A, skips the space, then appends S. The result is "AS".</p>
+              <div class="callout">Chinese support: concatenate = 连接字符串。The `&amp;` symbol here means join strings in pseudocode-style notation.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Keep exam pseudocode readable and avoid Java indexing leakage</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>VowelCount &lt;- 0
+FOR Index &lt;- 1 TO LENGTH(Word)
+    Character &lt;- character at position Index
+    IF Character = "A" OR Character = "E" OR Character = "I" OR Character = "O" OR Character = "U" THEN
+        VowelCount &lt;- VowelCount + 1
+    ENDIF
+NEXT Index
+OUTPUT VowelCount</code></pre>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>int vowelCount = 0;
+for (int index = 0; index &lt; word.length(); index++) {
+    char character = word.charAt(index);
+    if ("AEIOU".indexOf(character) &gt;= 0) {
+        vowelCount++;
+    }
+}</code></pre>
+            </article>
+          </div>
+          <div class="callout">Exam reminder: Java uses `charAt(0)` for the first character. Do not copy Java braces, semicolons or 0-based loop bounds into Cambridge pseudocode unless the question asks for Java.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson covers string-processing algorithm patterns</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Character-by-character traversal, length-based loop bounds, count, search flag, validation flag, string construction, trace tables and pseudocode/Java contrast.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 106 covered numeric accumulators. Lesson 108 covers nested loops and table-style problems. Built-in string functions are treated later in Section 11.</span></div>
+            <div><strong>Paper 2 note</strong><span>Show mechanism: position, extracted character, comparison, update and final output.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive pattern chooser</p>
+            <h2>Identify the string-processing pattern</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Task clue
+              <select id="chooserInput">
+                <option value="count">Find how many times "A" appears in a word.</option>
+                <option value="search">Find whether a password contains "#".</option>
+                <option value="validate">Check that every character is a digit.</option>
+                <option value="build">Create a copy of a string with spaces removed.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="chooserBtn">Identify</button>
+          </div>
+          <div class="feedback" id="chooserResult">Choose a clue to classify it.</div>
+        </section>
+
+        <section class="panel" id="scanner">
+          <div class="section-title">
+            <p class="eyebrow">Interactive string scanner</p>
+            <h2>Trace character processing</h2>
+          </div>
+          <div class="converter-grid three-col">
+            <label>
+              Text
+              <select id="textInput">
+                <option value="DATA">DATA</option>
+                <option value="COMPUTER">COMPUTER</option>
+                <option value="A S LEVEL">A S LEVEL</option>
+              </select>
+            </label>
+            <label>
+              Operation
+              <select id="operationInput">
+                <option value="countA">Count A</option>
+                <option value="findE">Find first E</option>
+                <option value="removeSpaces">Remove spaces</option>
+                <option value="countVowels">Count vowels</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="scanBtn">Trace</button>
+          </div>
+          <div class="trace-output" id="scanResult">Choose text and operation, then trace the string.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>String-processing traces</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="count-a">Count A</button>
+            <button class="tab" type="button" data-example="find-e">Find first E</button>
+            <button class="tab" type="button" data-example="remove-spaces">Build without spaces</button>
+            <button class="tab" type="button" data-example="validate-digits">Validate digits</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>String algorithm precision</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix string-processing mistakes</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style string questions with expandable MS</h2>
+            <p>These questions target loop bounds, character extraction, flags, counters, construction and strict pseudocode wording.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>String-processing checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Position</strong><span>Loop through each character from the first position to the string length.</span></div>
+            <div><strong>State</strong><span>Use Count, Found, Valid or NewString depending on the task.</span></div>
+            <div><strong>Evidence</strong><span>Trace current character and variable changes; final output alone is rarely enough.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Trace table</strong>
+              <span>Trace an algorithm that counts the letter `S` in `ASSESS`. Show Index, Character and Count after each character.</span>
+            </article>
+            <article>
+              <strong>Task 2: Pseudocode</strong>
+              <span>Write Cambridge-style pseudocode to check whether a string contains the character `@`. Output `Found` or `Not found`.</span>
+            </article>
+            <article>
+              <strong>Task 3: Build algorithm</strong>
+              <span>Write pseudocode to create a new string containing only the non-space characters from an input string.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

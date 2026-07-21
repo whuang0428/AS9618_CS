@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 109 | Algorithm efficiency at AS level</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
+        <h1>Algorithm efficiency at AS level</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#measure">What to measure</a>
+        <a href="#cases">Best/worst cases</a>
+        <a href="#search">Search comparison</a>
+        <a href="#loops">Loop growth</a>
+        <a href="#pseudocode">Pseudocode vs Java</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#chooser">Efficiency chooser</a>
+        <a href="#estimator">Step estimator</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 109 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
+            <h2>Fast is not a vibe. Count the work.</h2>
+            <p>
+              Algorithm efficiency at AS level means comparing how much work an algorithm does as the input size grows.
+              We mainly use step counts, comparisons, loop repetitions, memory used and best/worst case reasoning. You
+              do not need a university-level proof; you do need a precise explanation that matches the algorithm.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Measure</strong><span>comparisons, loop repetitions, assignments and memory use</span></div>
+              <div><strong>Compare</strong><span>linear search, binary search, simple loops and nested loops</span></div>
+              <div><strong>Explain</strong><span>best case, worst case and input-size effects clearly</span></div>
+            </div>
+          </div>
+          <div class="efficiency-visual" aria-label="Efficiency visual">
+            <div class="scale-line">
+              <div><strong>n = 8</strong><span>linear: up to 8 checks</span><span>binary: up to 4 checks</span></div>
+              <div><strong>n = 64</strong><span>linear: up to 64 checks</span><span>binary: up to 7 checks</span></div>
+            </div>
+            <div class="growth-grid">
+              <span>1 loop: n</span>
+              <span>2 nested loops: n x n</span>
+              <span>binary search: repeatedly halve</span>
+            </div>
+            <p>The exam reward is usually the reason, not the slogan "more efficient".</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Replace "faster" with a countable sentence: "This uses fewer comparisons because..."</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 may ask students to choose or justify an algorithm. Marks depend on linking the method to work done.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Binary search is not automatically valid. It only works when the data is sorted and random/midpoint access is available.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Where would you search for page 512?</h2>
+            <p>A book has 1000 numbered pages. You need page 512. Which strategy is usually more efficient?</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="linear">Check page 1, then 2, then 3...</button>
+            <button class="choice-card" type="button" data-hook="binary">Open near the middle and halve the search area.</button>
+            <button class="choice-card" type="button" data-hook="random">Open random pages until lucky.</button>
+            <button class="choice-card" type="button" data-hook="sort">Alphabetically sort the pages first.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the strategy that reduces the remaining search space fastest.</div>
+        </section>
+
+        <section class="panel" id="measure">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge explanation</p>
+            <h2>Efficiency is about resources used</h2>
+          </div>
+          <div class="data-table pattern-table" role="table" aria-label="Efficiency measures">
+            <div class="table-row table-head" role="row"><div>Measure</div><div>What to count</div><div>Exam wording</div><div>Trap</div></div>
+            <div class="table-row" role="row"><div>Time</div><div>comparisons, loop repetitions, steps</div><div>fewer checks / fewer iterations</div><div>"faster" without reason</div></div>
+            <div class="table-row" role="row"><div>Space</div><div>extra variables, arrays, copied data</div><div>uses less memory / no extra list</div><div>ignoring memory when data is copied</div></div>
+            <div class="table-row" role="row"><div>Input size</div><div>number of items, characters, rows, columns</div><div>as n increases, work increases...</div><div>testing only one tiny example</div></div>
+            <div class="table-row" role="row"><div>Case</div><div>best, average or worst scenario</div><div>target at start / absent / middle</div><div>using best case as if always true</div></div>
+          </div>
+          <div class="callout">Chinese support: efficiency = 效率；time complexity idea = 随输入规模增长的运行时间；space = 额外内存。</div>
+        </section>
+
+        <section class="panel" id="cases">
+          <div class="section-title">
+            <p class="eyebrow">Best and worst cases</p>
+            <h2>The same algorithm can behave differently on different inputs</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Linear search</h3>
+              <pre><code>Found &lt;- FALSE
+Index &lt;- 1
+WHILE Found = FALSE AND Index &lt;= Length
+    IF List[Index] = Target THEN
+        Found &lt;- TRUE
+    ELSE
+        Index &lt;- Index + 1
+    ENDIF
+ENDWHILE</code></pre>
+            </article>
+            <article>
+              <h3>Case language</h3>
+              <p>Best case: target is first, so only 1 comparison. Worst case: target is last or absent, so all n items may be checked.</p>
+              <div class="callout">Do not say "linear search is always slow". It can be quick in the best case, but grows linearly in the worst case.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="search">
+          <div class="section-title">
+            <p class="eyebrow">Search comparison</p>
+            <h2>Linear search checks one by one; binary search halves a sorted list</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Linear search on 8 items</h3>
+              <p>Worst case: check item 1, 2, 3, 4, 5, 6, 7, 8. That is up to 8 comparisons.</p>
+              <pre><code>[3, 8, 11, 18, 25, 31, 40, 52]
+target 52 -> 8 comparisons</code></pre>
+            </article>
+            <article>
+              <h3>Binary search on sorted 8 items</h3>
+              <p>Compare the middle item, discard half, repeat. For 8 items, the target is found or ruled out in about 4 checks.</p>
+              <pre><code>[3, 8, 11, 18, 25, 31, 40, 52]
+middle 18 -> search right
+middle 31 -> search right
+middle 40 -> search right
+middle 52 -> found</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="loops">
+          <div class="section-title">
+            <p class="eyebrow">Loop growth</p>
+            <h2>Loops reveal how work grows</h2>
+          </div>
+          <div class="data-table loop-table" role="table" aria-label="Loop growth examples">
+            <div class="table-row table-head" role="row"><div>Structure</div><div>Example</div><div>Work for n items</div><div>AS-level explanation</div></div>
+            <div class="table-row" role="row"><div>Single loop</div><div>total all marks</div><div>n additions</div><div>one step per item</div></div>
+            <div class="table-row" role="row"><div>Nested loop</div><div>n rows and n columns</div><div>n x n visits</div><div>inner loop repeats for every outer value</div></div>
+            <div class="table-row" role="row"><div>Halving</div><div>binary search</div><div>few comparisons</div><div>remaining search area is halved each time</div></div>
+            <div class="table-row" role="row"><div>Repeated passes</div><div>bubble sort</div><div>many comparisons</div><div>several passes through the list</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Pseudocode vs Java</p>
+            <h2>Efficiency explanations are language-independent</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style reasoning</h3>
+              <pre><code>FOR Index &lt;- 1 TO Length
+    IF List[Index] = Target THEN
+        Found &lt;- TRUE
+    ENDIF
+NEXT Index</code></pre>
+              <p>This loop can perform up to `Length` comparisons.</p>
+            </article>
+            <article>
+              <h3>Java support only</h3>
+              <pre><code>for (int index = 0; index &lt; list.length; index++) {
+    if (list[index] == target) {
+        found = true;
+    }
+}</code></pre>
+              <p>Java syntax changes the notation, not the number of item comparisons.</p>
+            </article>
+          </div>
+          <div class="callout">Exam reminder: explain the algorithm's work, not the programming language's punctuation.</div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson covers AS-level efficiency reasoning</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered now</strong><span>Time and space resources, input size, best/worst case, comparison counts, linear search, binary search, simple loops, nested loops and sorting-pass intuition.</span></div>
+            <div><strong>Boundary</strong><span>This page avoids formal Big O proof. Lesson 110 moves back to Cambridge pseudocode conventions and exam readability.</span></div>
+            <div><strong>Paper 2 note</strong><span>Use measurable language: comparisons, loop repetitions, sorted precondition, memory use and effect of larger input size.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Interactive efficiency chooser</p>
+            <h2>Choose the better explanation</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="chooserInput">
+                <option value="sortedSearch">Find a target in a sorted list of 1000 values.</option>
+                <option value="unsortedSearch">Find a target in an unsorted list of 1000 values.</option>
+                <option value="table">Process every cell in a 20 by 20 table.</option>
+                <option value="copy">Make a copy of a 500-item list before processing it.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="chooserBtn">Explain</button>
+          </div>
+          <div class="feedback" id="chooserResult">Choose a scenario to see an efficiency explanation.</div>
+        </section>
+
+        <section class="panel" id="estimator">
+          <div class="section-title">
+            <p class="eyebrow">Interactive step estimator</p>
+            <h2>Estimate the work</h2>
+          </div>
+          <div class="converter-grid three-col">
+            <label>
+              Input size n
+              <select id="sizeInput">
+                <option value="8">8</option>
+                <option value="16">16</option>
+                <option value="64">64</option>
+                <option value="100">100</option>
+              </select>
+            </label>
+            <label>
+              Algorithm pattern
+              <select id="patternInput">
+                <option value="linear">Linear search worst case</option>
+                <option value="binary">Binary search worst case</option>
+                <option value="nested">n by n nested loop</option>
+                <option value="bubble">Bubble sort rough comparisons</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="estimateBtn">Estimate</button>
+          </div>
+          <div class="trace-output" id="estimateResult">Choose a size and pattern, then estimate the number of steps.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Efficiency comparisons</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="linear">Linear search cases</button>
+            <button class="tab" type="button" data-example="binary">Binary search trace</button>
+            <button class="tab" type="button" data-example="nested">Nested loop count</button>
+            <button class="tab" type="button" data-example="space">Space trade-off</button>
+          </div>
+          <article class="example-box" id="exampleBox" aria-live="polite"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Efficiency language</h2>
+            <p>Type concise answers. Use Show answer after committing to a response.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix vague efficiency claims</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Original Cambridge-style efficiency questions with expandable MS</h2>
+            <p>These questions target measurable comparisons, preconditions, best/worst cases and strict explanation wording.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Efficiency checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Count</strong><span>Use comparisons, loop iterations, passes or memory use, not just "fast".</span></div>
+            <div><strong>Condition</strong><span>State preconditions such as sorted data for binary search.</span></div>
+            <div><strong>Case</strong><span>Separate best, worst and average cases when the algorithm behaves differently.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks for consolidation</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Search comparison</strong>
+              <span>For a sorted list of 64 values, compare worst-case linear search and binary search using number of comparisons.</span>
+            </article>
+            <article>
+              <strong>Task 2: Loop count</strong>
+              <span>Explain how many times an inner statement runs in a nested loop with 12 rows and 5 columns.</span>
+            </article>
+            <article>
+              <strong>Task 3: Correction paragraph</strong>
+              <span>Rewrite this vague claim with evidence: "Binary search is better because it is faster."</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 005 | Signed binary representations</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
+        <h1>Signed binary: sign-and-magnitude, one’s complement and two’s complement</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#systems">Systems</a>
+        <a href="#twos">Two’s comp</a>
+        <a href="#range">Range</a>
+        <a href="#converter">Converter</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 005 | 45 minutes | Informal questioning</p>
+            <h2>A leading 1 does not always mean the same thing.</h2>
+            <p>
+              This lesson compares signed binary representations and focuses on converting
+              values using 8-bit two’s complement, the method most often needed for binary
+              arithmetic and exam explanation.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div>
+                <strong>Compare</strong>
+                <span>sign-and-magnitude, one’s complement and two’s complement</span>
+              </div>
+              <div>
+                <strong>Convert</strong>
+                <span>denary values from -128 to +127 using 8-bit two’s complement</span>
+              </div>
+              <div>
+                <strong>Explain</strong>
+                <span>range, sign bit and why two’s complement has one zero</span>
+              </div>
+            </div>
+          </div>
+          <div class="binary-display" aria-label="Signed binary focus">
+            <span>11101001₂</span>
+            <p>Is this 233, -23, or something else? It depends on the representation.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Always ask: "Which representation is being used?" before interpreting a leading 1.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>The same bit pattern can represent different values under unsigned and signed schemes.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not read every leading 1 as “negative” unless the question states a signed representation.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>What does `11101001₂` represent?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="unsigned">233 unsigned</button>
+            <button class="choice-card" type="button" data-hook="twos">-23 in two’s complement</button>
+            <button class="choice-card" type="button" data-hook="signmag">-105 in sign-and-magnitude</button>
+            <button class="choice-card" type="button" data-hook="depends">It depends on representation</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Pick an answer. The trick is that more than one can be true in a different representation.
+          </div>
+        </section>
+
+        <section class="panel" id="systems">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Three ways to represent negative binary values</h2>
+          </div>
+          <div class="system-grid">
+            <article>
+              <h3>Sign-and-magnitude</h3>
+              <p>The leftmost bit is the sign: `0` positive, `1` negative. The remaining bits store the magnitude.</p>
+              <p class="range-value">Example: `10010111₂` = -23</p>
+            </article>
+            <article>
+              <h3>One’s complement</h3>
+              <p>Start with the positive binary value and invert every bit to make the negative value.</p>
+              <p class="range-value">`00010111₂` → `11101000₂` = -23</p>
+            </article>
+            <article>
+              <h3>Two’s complement</h3>
+              <p>Invert every bit, then add 1. This gives one zero and a range from -128 to +127.</p>
+              <p class="range-value">`11101000₂ + 1 = 11101001₂` = -23</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="guidance-grid compact" aria-label="Representation guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Use sign-and-magnitude as a comparison, then spend more time on one’s and two’s complement because they are explicit syllabus terms.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Sign-and-magnitude, one’s complement and two’s complement do not interpret the same 8 bits in the same way.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="twos">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Two’s complement method</h2>
+          </div>
+          <div class="method-grid">
+            <article>
+              <h3>Positive denary to negative two’s complement</h3>
+              <ol>
+                <li>Write the positive magnitude in 8-bit binary.</li>
+                <li>Invert every bit.</li>
+                <li>Add 1.</li>
+                <li>Label the result as two’s complement.</li>
+              </ol>
+            </article>
+            <article>
+              <h3>Two’s complement binary to denary</h3>
+              <ol>
+                <li>If the leftmost bit is 0, convert as normal positive binary.</li>
+                <li>If the leftmost bit is 1, subtract 256 from the unsigned value.</li>
+                <li>Alternatively: invert, add 1, then add a negative sign.</li>
+                <li>State the representation in the answer.</li>
+              </ol>
+            </article>
+          </div>
+          <div class="callout">For 8-bit two’s complement, a quick decode is: unsigned value - 256 when the MSB is 1.</div>
+        </section>
+
+        <section class="panel" id="range">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>8-bit signed ranges and zero</h2>
+          </div>
+          <div class="range-grid">
+            <article>
+              <h3>Sign-and-magnitude</h3>
+              <p class="range-value">-127 to +127</p>
+              <p>Has two zeros: `00000000₂` and `10000000₂`.</p>
+            </article>
+            <article>
+              <h3>One’s complement</h3>
+              <p class="range-value">-127 to +127</p>
+              <p>Also has two zeros: `00000000₂` and `11111111₂`.</p>
+            </article>
+            <article>
+              <h3>Two’s complement</h3>
+              <p class="range-value">-128 to +127</p>
+              <p>Has one zero and one extra negative value.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="converter">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>8-bit two’s complement converter</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Direction
+              <select id="convertMode">
+                <option value="denaryToTwos">Denary to two’s complement</option>
+                <option value="twosToDenary">Two’s complement to denary</option>
+              </select>
+            </label>
+            <label>
+              Value
+              <input id="convertValue" type="text" value="-23" />
+            </label>
+            <button type="button" id="convertBtn">Convert</button>
+          </div>
+          <div class="result-box" id="convertResult" aria-live="polite"></div>
+          <div class="method-box" id="convertMethod"></div>
+          <div class="bit-visual" id="bitVisual" aria-label="Two's complement bit visual"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge examples</p>
+            <h2>Worked examples</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="negative">-23 to two’s comp</button>
+            <button class="tab" type="button" data-example="decode">11101001₂ to denary</button>
+            <button class="tab" type="button" data-example="compare">Compare representations</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button type="button" id="checkPractice">Check answers</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel mistake-panel">
+          <div class="section-title">
+            <p class="eyebrow">Debug the mistakes</p>
+            <h2>Find the trap, fix the answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <h3>Mistake 1</h3>
+              <p class="wrong">-23 in two’s complement is `11101000₂`</p>
+              <button type="button" class="reveal" data-reveal="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">`11101000₂` is one’s complement for -23. Two’s complement adds 1, so the answer is `11101001₂`.</p>
+            </article>
+            <article>
+              <h3>Mistake 2</h3>
+              <p class="wrong">`10000000₂` in two’s complement is negative zero</p>
+              <button type="button" class="reveal" data-reveal="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">Two’s complement has one zero. `10000000₂` represents -128.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Past-paper style</p>
+            <h2>Original exam-style questions</h2>
+          </div>
+          <div class="exam-grid" id="examGrid"></div>
+          <p class="source-note">
+            These are original Cambridge-style questions, not copied Cambridge past paper text.
+            Use the buttons under each question to expand the CIE-style mark scheme.
+          </p>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>What must survive until the exam?</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>1</strong><span>One’s complement inverts bits; two’s complement inverts bits and adds 1.</span></div>
+            <div><strong>2</strong><span>8-bit two’s complement range is -128 to +127.</span></div>
+            <div><strong>3</strong><span>A bit pattern needs a representation before it has a signed value.</span></div>
+          </div>
+          <div class="exit-ticket">
+            <label for="exitTicket">Exit ticket</label>
+            <textarea id="exitTicket" rows="3" placeholder="The key point about signed binary is..., and a common mistake is..."></textarea>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks, not vague revision</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Convert `-18`, `-64` and `-1` into 8-bit two’s complement.</li>
+            <li>Convert `11110010₂`, `11000000₂` and `01111111₂` from 8-bit two’s complement to denary.</li>
+            <li>Write a 4-mark explanation comparing one’s complement and two’s complement.</li>
+            <li>Extension: explain why two’s complement has a range of -128 to +127, not -127 to +127.</li>
+          </ol>
+        </section>
+
+        <section class="panel homework-support">
+          <div class="section-title">
+            <p class="eyebrow">Homework support</p>
+            <h2>Check only after attempting</h2>
+          </div>
+          <button
+            type="button"
+            class="reveal"
+            data-reveal="homeworkAnswers"
+            data-open-label="Show homework answers"
+            data-close-label="Hide homework answers"
+          >
+            Show homework answers
+          </button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Denary to two’s complement:</strong> `-18 = 11101110₂`; `-64 = 11000000₂`; `-1 = 11111111₂`.</p>
+            <p><strong>Two’s complement to denary:</strong> `11110010₂ = -14`; `11000000₂ = -64`; `01111111₂ = 127`.</p>
+            <p><strong>Explanation focus:</strong> one’s complement inverts bits and has two zeros; two’s complement adds 1 and has one zero plus the extra value -128.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

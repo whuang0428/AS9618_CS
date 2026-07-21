@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 056 | Compilers, interpreters and assemblers</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 5</p>
+        <h1>Compilers, interpreters and assemblers</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#concept">Core idea</a>
+        <a href="#compiler">Compiler</a>
+        <a href="#interpreter">Interpreter</a>
+        <a href="#assembler">Assembler</a>
+        <a href="#compare">Comparison</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Translator tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 056 | 45 minutes | Paper 1 Section 5 | System software</p>
+            <h2>Source code is written for humans. Machine code is what the processor runs.</h2>
+            <p>
+              Translator software converts programs from one language level to another.
+              Compilers, interpreters and assemblers all translate, but they do it at different levels and with different trade-offs.
+              The exam rewards accurate comparison, not "compiler makes code work".
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>compiler, interpreter and assembler using precise vocabulary</span></div>
+              <div><strong>Compare</strong><span>translation timing, output and error reporting</span></div>
+              <div><strong>Choose</strong><span>a suitable translator for development, deployment or assembly code</span></div>
+            </div>
+          </div>
+          <div class="translator-card" aria-label="Translator pathway sketch">
+            <div class="code-stack">
+              <span>High-level source code</span>
+              <span class="arrow">translator software</span>
+              <span>Object / executable / machine code</span>
+            </div>
+            <p>Translation is not decoration. CPUs do not politely guess Python.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask four questions for each translator: input, output, when translation happens, and how errors are reported.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Scenario questions often contrast development with distribution. The best answer links translator behaviour to the scenario.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not call an interpreter a weak compiler. They are different translation approaches with different uses.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A processor receives <code>PRINT("Hello")</code>. Will it run that directly?</h2>
+            <p>Click the best answer. Processors are fast, but they are not bilingual by vibes.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="machine">No, it must be translated into machine code.</button>
+            <button class="choice-card" type="button" data-hook="english">Yes, because PRINT is readable English.</button>
+            <button class="choice-card" type="button" data-hook="assembler">Only if an assembler reads the high-level code.</button>
+            <button class="choice-card" type="button" data-hook="os">Yes, because the operating system understands all programs.</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. The processor executes machine code instructions.
+          </div>
+        </section>
+
+        <section class="panel" id="concept">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Translator software converts program code into another form</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Source code</strong><span>The program as written by the programmer, usually in a high-level or assembly language.</span></article>
+            <article><strong>Object code</strong><span>Translated code produced by a compiler or assembler, often close to machine code.</span></article>
+            <article><strong>Machine code</strong><span>Binary instructions that can be executed directly by the processor.</span></article>
+            <article><strong>Translator</strong><span>System software that converts code from one language level to another.</span></article>
+          </div>
+          <div class="callout">Chinese support: compiler = 编译器；interpreter = 解释器；assembler = 汇编器；source code = 源代码；object code = 目标代码；machine code = 机器码。</div>
+        </section>
+
+        <section class="panel" id="compiler">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>A compiler translates the whole high-level program before execution</h2>
+          </div>
+          <div class="translator-grid">
+            <article><strong>Input</strong><span>High-level language source code.</span></article>
+            <article><strong>Output</strong><span>Object code or executable code after translation.</span></article>
+            <article><strong>Advantages</strong><span>Executable can run without source code; repeated execution may be faster after compilation.</span></article>
+            <article><strong>Limitations</strong><span>Errors are often reported after compilation, so debugging may involve checking a list of errors.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="interpreter">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>An interpreter translates and executes statements as the program runs</h2>
+          </div>
+          <div class="translator-grid">
+            <article><strong>Input</strong><span>High-level language source code.</span></article>
+            <article><strong>Output</strong><span>No separate permanent object code is normally produced.</span></article>
+            <article><strong>Advantages</strong><span>Useful during development because errors can be found statement by statement.</span></article>
+            <article><strong>Limitations</strong><span>Program may run more slowly because translation happens during execution; source code is needed.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="assembler">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>An assembler translates assembly language into machine code</h2>
+          </div>
+          <div class="translator-grid">
+            <article><strong>Input</strong><span>Assembly language mnemonics such as <code>LDA</code>, <code>ADD</code> or <code>STA</code>.</span></article>
+            <article><strong>Output</strong><span>Machine code/object code that the processor can execute.</span></article>
+            <article><strong>Purpose</strong><span>Allows low-level programming using mnemonic instructions instead of raw binary.</span></article>
+            <article><strong>Boundary</strong><span>It does not translate high-level languages such as Python, Java or pseudocode.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Comparison: same goal, different route</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Translator comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Translator</div>
+              <div role="columnheader">Input</div>
+              <div role="columnheader">Output / execution behaviour</div>
+              <div role="columnheader">Typical use</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Compiler</div>
+              <div role="cell">High-level source code</div>
+              <div role="cell">Produces object/executable code before the program is run.</div>
+              <div role="cell">Distribution, repeated execution, protecting source code.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Interpreter</div>
+              <div role="cell">High-level source code</div>
+              <div role="cell">Translates and executes statement by statement; normally no separate object code.</div>
+              <div role="cell">Development, testing, learning and rapid debugging.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Assembler</div>
+              <div role="cell">Assembly language</div>
+              <div role="cell">Converts mnemonics into machine code/object code.</div>
+              <div role="cell">Low-level code for specific processor instructions.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purpose of translator software as system software.</span></div>
+            <div><strong>Covered</strong><span>Compiler, interpreter and assembler definitions.</span></div>
+            <div><strong>Covered</strong><span>Comparison by input, output, execution and error feedback.</span></div>
+            <div><strong>Boundary</strong><span>Detailed compilation stages are covered in Lesson 057.</span></div>
+            <div><strong>Boundary</strong><span>Linkers, loaders and libraries are covered in Lesson 058.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Translator selector</h2>
+            <p>Select a scenario and classify the most suitable translator.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="deploy">Distribute a finished program without source code</option>
+                <option value="debug">Find errors while writing a program line by line</option>
+                <option value="assembly">Convert assembly mnemonics for a processor</option>
+                <option value="repeat">Run the same program many times after translation</option>
+                <option value="student">Beginner testing each statement interactively</option>
+                <option value="wrongasm">Translate Java source code with an assembler</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="simulateBtn">Choose</button>
+          </div>
+          <div class="result-box" id="simulateResult" aria-live="polite"></div>
+          <div class="method-box" id="simulateMethod"></div>
+          <div class="reject-box" id="simulateTrap"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Choose the translator, then justify the trade-off</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="compiler">Compiler</button>
+            <button class="tab" type="button" data-example="interpreter">Interpreter</button>
+            <button class="tab" type="button" data-example="assembler">Assembler</button>
+            <button class="tab" type="button" data-example="compare">Compare</button>
+          </div>
+          <div class="example-box" id="exampleBox"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice</p>
+            <h2>Instant-check questions</h2>
+            <p>Type a short answer, then check. Reveal the expected wording only after trying.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the almost-right answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Answer first, then reveal the CIE-style mark scheme</h2>
+            <p>These are original Cambridge-style questions. The mark schemes include strict wording notes and follow-through guidance.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Translator memory map</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Compiler</strong><span>Whole high-level program before execution, produces object/executable code.</span></div>
+            <div><strong>Interpreter</strong><span>Translates and executes high-level code statement by statement.</span></div>
+            <div><strong>Assembler</strong><span>Assembly language mnemonics into machine code.</span></div>
+            <div><strong>Development</strong><span>Interpreter can help with line-by-line testing.</span></div>
+            <div><strong>Deployment</strong><span>Compiler can distribute executable code without source code.</span></div>
+            <div><strong>Exam rule</strong><span>Always name input, output and scenario consequence.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear output, not vague revision</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Three translator flashcards</strong>
+              <span>For compiler, interpreter and assembler, write input, output, one advantage and one limitation.</span>
+            </article>
+            <article>
+              <strong>Task 2: Scenario answer</strong>
+              <span>Write a 6-mark answer comparing an interpreter during development with a compiler for distributing a finished program.</span>
+            </article>
+            <article>
+              <strong>Task 3: Precision check</strong>
+              <span>Underline the exact words source code, object code, machine code, statement by statement and assembly language where relevant.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

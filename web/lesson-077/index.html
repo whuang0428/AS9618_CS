@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 077 | Section 7 review: balanced evaluation answers</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 7</p>
+        <h1>Section 7 review: balanced evaluation answers</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#map">Topic map</a>
+        <a href="#structure">Answer structure</a>
+        <a href="#marking">Marking focus</a>
+        <a href="#compare">Common contrasts</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#classifier">Topic classifier</a>
+        <a href="#builder">Paragraph builder</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 077 | 45 minutes | Paper 1 Section 7 | Stage review</p>
+            <h2>A balanced answer is not sitting on the fence. It is showing both sides, then choosing with evidence.</h2>
+            <p>
+              This review lesson connects Section 7: ethics, privacy, surveillance, data protection,
+              intellectual property, licensing, open-source/proprietary trade-offs, environmental impacts
+              and social impacts. The goal is to turn topic knowledge into mark-worthy evaluation answers.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Classify</strong><span>identify which Section 7 topic a scenario is testing</span></div>
+              <div><strong>Balance</strong><span>write benefit, concern, stakeholder, safeguard and judgement</span></div>
+              <div><strong>Improve</strong><span>convert vague opinion into mark-scheme language</span></div>
+            </div>
+          </div>
+          <div class="review-card" aria-label="Evaluation chain">
+            <div class="review-stack">
+              <span>Scenario</span>
+              <span>Stakeholder</span>
+              <span>Benefit</span>
+              <span>Concern</span>
+              <span>Safeguard</span>
+              <span>Judgement</span>
+            </div>
+            <p>"It depends" earns nothing until you explain what it depends on.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For each mixed question, first label the topic. Then force one point for and one point against before the judgement.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Section 7 marks often reward evaluation quality: stakeholders, consequences, conditions and precise topic vocabulary.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Do not answer ethics, privacy, IP and environmental questions with the same generic "it is good and bad" paragraph.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Which topic is being tested: "A city uses cameras and facial recognition to identify people in public spaces"?</h2>
+            <p>If your answer is "computers", technically yes, but the mark scheme has already left the room.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="privacy">Privacy, surveillance and ethical evaluation</button>
+            <button class="choice-card" type="button" data-hook="ip">Copyright and licensing</button>
+            <button class="choice-card" type="button" data-hook="database">Relational databases and primary keys</button>
+            <button class="choice-card" type="button" data-hook="binary">Binary representation</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. The first skill is opening the correct mental folder.
+          </div>
+        </section>
+
+        <section class="panel" id="map">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Section 7 topic map</h2>
+          </div>
+          <div class="risk-table" role="table" aria-label="Section 7 topic map">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Topic</div>
+              <div role="columnheader">Trigger words</div>
+              <div role="columnheader">Useful answer focus</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Ethical decisions</div>
+              <div role="cell">stakeholders, consent, fairness, responsibility, proportionality</div>
+              <div role="cell">benefits, harms, rights, responsibilities and justified judgement</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Privacy/data protection</div>
+              <div role="cell">personal data, monitoring, surveillance, retention, access, consent</div>
+              <div role="cell">data collected, purpose, risk, safeguard and transparency</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">IP/licensing</div>
+              <div role="cell">copyright, patent, licence, ownership, attribution, infringement</div>
+              <div role="cell">what is protected, who owns it, permission and consequences</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Software ownership</div>
+              <div role="cell">open source, proprietary, support, cost, source code, lock-in</div>
+              <div role="cell">scenario trade-offs and licence obligations</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Environmental/social impact</div>
+              <div role="cell">energy, e-waste, automation, remote work, digital divide</div>
+              <div role="cell">benefit, harm, stakeholder, mitigation and judgement</div>
+            </div>
+          </div>
+          <div class="callout">Chinese support: balanced evaluation = 平衡评价；stakeholder = 利益相关者；safeguard = 保护措施；judgement = 判断/结论。</div>
+        </section>
+
+        <section class="panel" id="structure">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>The five-part evaluation answer</h2>
+          </div>
+          <div class="flow-grid">
+            <article><strong>1. Context</strong><span>Use the actual scenario, not a memorised opening sentence.</span></article>
+            <article><strong>2. Benefit</strong><span>Explain one advantage for a named stakeholder.</span></article>
+            <article><strong>3. Concern</strong><span>Explain one risk, harm or right that may be affected.</span></article>
+            <article><strong>4. Safeguard</strong><span>Suggest a condition, limit, policy or technical measure.</span></article>
+            <article><strong>5. Judgement</strong><span>Reach a supported conclusion using "if", "provided that" or "unless".</span></article>
+          </div>
+          <div class="answer-frame">
+            <strong>Answer frame:</strong>
+            <span>Although [benefit] helps [stakeholder], [concern] may harm [stakeholder]. Therefore, [decision] is justified only if [condition/safeguard].</span>
+          </div>
+        </section>
+
+        <section class="panel" id="marking">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>What Cambridge-style marking usually rewards</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Precise term</strong><span>privacy, copyright, e-waste, digital divide, open source, stakeholder.</span></article>
+            <article><strong>Scenario link</strong><span>Explain how the issue affects the school, company, user or worker in the question.</span></article>
+            <article><strong>Consequence</strong><span>Say what happens: exclusion, legal risk, privacy loss, job displacement, reduced emissions.</span></article>
+            <article><strong>Balance</strong><span>Include both benefit and concern before final judgement in evaluate/discuss questions.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>Common contrasts that stop vague answers</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="Section 7 contrasts">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Contrast</div>
+              <div role="columnheader">Difference</div>
+              <div role="columnheader">Trap</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Privacy vs security</div>
+              <div role="cell">Privacy concerns control of personal data; security protects systems/data from threats.</div>
+              <div role="cell">Encryption alone does not answer every privacy ethics question.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Copyright vs licence</div>
+              <div role="cell">Copyright protects the work; a licence grants permission under conditions.</div>
+              <div role="cell">Free to access does not mean free to reuse.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Open source vs no owner</div>
+              <div role="cell">Open source gives code access and permissions; copyright and licence terms still apply.</div>
+              <div role="cell">Do not say open source has no copyright.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Environmental vs social</div>
+              <div role="cell">Environmental affects resources/emissions/e-waste; social affects people, jobs, access and inclusion.</div>
+              <div role="cell">A strong answer can include both, but labels them clearly.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson reviews Section 7 and stops before databases</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Ethics, stakeholders, privacy, surveillance, data protection, IP, copyright, patents, licensing, open-source/proprietary trade-offs, environmental and social impacts.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 078 starts Section 8: data, information, databases and DBMS roles.</span></div>
+            <div><strong>Exam focus</strong><span>For discuss/evaluate questions, combine precise topic knowledge with balanced judgement.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="classifier">
+          <div class="section-title">
+            <p class="eyebrow">Interactive topic classifier</p>
+            <h2>Identify the Section 7 topic before answering</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="healthApp">A health app collects location and sleep data.</option>
+                <option value="repoCode">A company copies code from a public repository.</option>
+                <option value="schoolTablets">A school replaces textbooks with tablets.</option>
+                <option value="openSource">A hospital considers open-source software for a critical system.</option>
+                <option value="factoryAutomation">A factory automates repetitive tasks.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+          </div>
+          <div class="result-box" id="classifyResult" aria-live="polite"></div>
+          <div class="method-box" id="classifyReason"></div>
+          <div class="reject-box" id="classifyTrap"></div>
+        </section>
+
+        <section class="panel" id="builder">
+          <div class="section-title">
+            <p class="eyebrow">Interactive paragraph builder</p>
+            <h2>Build a balanced Section 7 answer</h2>
+          </div>
+          <div class="builder-grid">
+            <label>
+              Benefit
+              <select id="benefitInput">
+                <option value="safety">improves safety or safeguarding</option>
+                <option value="access">improves access or convenience</option>
+                <option value="cost">reduces cost or increases efficiency</option>
+              </select>
+            </label>
+            <label>
+              Concern
+              <select id="concernInput">
+                <option value="privacy">may reduce privacy or increase surveillance</option>
+                <option value="fairness">may treat some groups unfairly</option>
+                <option value="environment">may increase energy use or e-waste</option>
+              </select>
+            </label>
+            <label>
+              Safeguard
+              <select id="safeguardInput">
+                <option value="transparent">clear information and consent are provided</option>
+                <option value="limits">use is limited to a clear purpose</option>
+                <option value="review">human review, appeal or support is available</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="buildBtn">Build</button>
+          </div>
+          <div class="result-box" id="buildResult" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four mixed Section 7 answers with mark annotations</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="privacy">Privacy</button>
+            <button class="tab" type="button" data-example="ip">IP</button>
+            <button class="tab" type="button" data-example="software">Software</button>
+            <button class="tab" type="button" data-example="impact">Impact</button>
+          </div>
+          <div class="example-box" id="exampleBox" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Retrieve key vocabulary before timed writing</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix weak Section 7 evaluation answers</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Mixed Section 7 review questions with expandable MS</h2>
+            <p>Attempt first. Then check whether your answer has topic vocabulary, stakeholder impact, balance and judgement.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Section 7 review in six exam-ready habits</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Classify</strong><span>Identify the topic before writing.</span></div>
+            <div><strong>Name stakeholders</strong><span>Use specific groups, not only "people".</span></div>
+            <div><strong>Balance</strong><span>Give benefit and concern in discuss/evaluate answers.</span></div>
+            <div><strong>Use terms</strong><span>Privacy, licence, e-waste and digital divide earn more than vague labels.</span></div>
+            <div><strong>Add safeguards</strong><span>Use transparency, limits, access control, training, repair or review.</span></div>
+            <div><strong>Judge</strong><span>Conclude with conditions based on the scenario.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Prepare for mixed Section 7 questions</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Topic sorter</strong>
+              <span>Create 15 scenario cards and label each as ethics, privacy, IP/licensing, software ownership, environmental impact or social impact.</span>
+            </article>
+            <article>
+              <strong>Task 2: Rewrite weak answers</strong>
+              <span>Rewrite five weak claims into balanced paragraphs using: benefit, concern, stakeholder, safeguard, judgement.</span>
+            </article>
+            <article>
+              <strong>Task 3: Timed review response</strong>
+              <span>Answer in 10 minutes: "Evaluate the use of computer-based monitoring in a school." Include privacy, safety and one safeguard.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 074 | Intellectual property, copyright, patents, and licensing</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 7</p>
+        <h1>Intellectual property, copyright, patents, and licensing</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#ip">IP basics</a>
+        <a href="#copyright">Copyright</a>
+        <a href="#patents">Patents</a>
+        <a href="#licensing">Licensing</a>
+        <a href="#compare">Compare</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#matcher">Licence matcher</a>
+        <a href="#checker">IP checker</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 074 | 45 minutes | Paper 1 Section 7 | Ethics and ownership</p>
+            <h2>If you can download it, that does not mean you own it.</h2>
+            <p>
+              Intellectual property protects creations of the mind. In Computer Science this includes
+              software code, algorithms, designs, documentation, media and inventions. The exam skill is
+              to distinguish ownership, copyright, patent protection and licence conditions.
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>intellectual property, copyright, patent and licence</span></div>
+              <div><strong>Distinguish</strong><span>ownership from permission to use, copy or modify</span></div>
+              <div><strong>Apply</strong><span>licensing and infringement ideas to computing scenarios</span></div>
+            </div>
+          </div>
+          <div class="ip-card" aria-label="IP decision chain">
+            <div class="ip-stack">
+              <span>Who created it?</span>
+              <span>Who owns it?</span>
+              <span>What is protected?</span>
+              <span>What licence applies?</span>
+              <span>What use is allowed?</span>
+              <span>What is infringement?</span>
+            </div>
+            <p>A licence is not a decorative scroll. It is the rulebook you agreed to read later.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every scenario, separate "I can access it" from "I have permission to copy, modify or distribute it".</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Exam answers need legal/ethical vocabulary plus consequences: infringement, loss of revenue, liability, attribution or licence breach.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>Free to download does not always mean free to reuse commercially, modify or redistribute.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A student copies code from an online repository into coursework. The repository is public. Is the copying automatically allowed?</h2>
+            <p>Public code is like a glass shop window: visible, not automatically yours to carry home.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="licence">No. The licence and coursework rules decide what use is allowed</button>
+            <button class="choice-card" type="button" data-hook="public">Yes. Public means nobody owns it</button>
+            <button class="choice-card" type="button" data-hook="rename">Yes, if the variable names are changed</button>
+            <button class="choice-card" type="button" data-hook="private">No, because only private repositories can have licences</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Choose one. Look for ownership and permission, not just visibility.
+          </div>
+        </section>
+
+        <section class="panel" id="ip">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>Intellectual property protects created ideas and expressions</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Intellectual property</strong><span>Creations of the mind that may be legally protected, such as software, designs and inventions.</span></article>
+            <article><strong>Owner</strong><span>The person or organisation holding legal rights to control use of the work.</span></article>
+            <article><strong>Infringement</strong><span>Using protected work without permission or outside licence conditions.</span></article>
+            <article><strong>Attribution</strong><span>Giving credit to the creator or source when required.</span></article>
+          </div>
+          <div class="callout">Chinese support: intellectual property = 知识产权；owner = 所有者；infringement = 侵权；attribution = 署名/注明来源。</div>
+        </section>
+
+        <section class="panel" id="copyright">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Copyright protects expression, including software code</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Copyright</strong><span>Protects original expression such as source code, documentation, graphics or text.</span></article>
+            <article><strong>Automatic protection</strong><span>Copyright usually exists when the work is created; registration is not always needed for protection.</span></article>
+            <article><strong>Restricted acts</strong><span>Copying, distributing, adapting or using beyond permission can breach copyright.</span></article>
+            <article><strong>Fair use/dealing caution</strong><span>Exceptions are limited and context-specific; do not assume every educational use is allowed.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="patents">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>Patents protect inventions, not every line of code</h2>
+          </div>
+          <div class="concept-grid">
+            <article><strong>Patent</strong><span>A legal right protecting an invention for a limited time, often requiring novelty and inventive step.</span></article>
+            <article><strong>Invention</strong><span>A new technical solution, product or process; software patent rules vary by jurisdiction.</span></article>
+            <article><strong>Disclosure</strong><span>Patent applications normally require public description of the invention.</span></article>
+            <article><strong>Limitation</strong><span>Patents are expensive and time-limited; they do not protect all ideas or ordinary code automatically.</span></article>
+          </div>
+        </section>
+
+        <section class="panel" id="licensing">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 4</p>
+            <h2>A licence grants permission under conditions</h2>
+          </div>
+          <div class="risk-table" role="table" aria-label="Licence condition table">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Licence idea</div>
+              <div role="columnheader">What it allows or limits</div>
+              <div role="columnheader">Exam caution</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Proprietary licence</div>
+              <div role="cell">Usually permits use under conditions but restricts copying, modification or redistribution.</div>
+              <div role="cell">Paying for software usually buys permission to use, not ownership of the code.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Open-source licence</div>
+              <div role="cell">Allows source code access and certain rights to use, modify and share.</div>
+              <div role="cell">Still has conditions such as attribution or sharing changes under the same licence.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Creative Commons style</div>
+              <div role="cell">Often used for media/text; may require attribution or block commercial use.</div>
+              <div role="cell">Check exact terms; symbols are not decoration.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 5</p>
+            <h2>Do not confuse protection type with permission type</h2>
+          </div>
+          <div class="comparison-table" role="table" aria-label="IP comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Concept</div>
+              <div role="columnheader">Protects / controls</div>
+              <div role="columnheader">Common misconception</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Copyright</div>
+              <div role="cell">Original expression, including source code and media.</div>
+              <div role="cell">Changing a few names does not automatically avoid infringement.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Patent</div>
+              <div role="cell">An invention or technical process for a limited time.</div>
+              <div role="cell">Not every software idea or algorithm is patentable.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Licence</div>
+              <div role="cell">Permission to use protected work under conditions.</div>
+              <div role="cell">A licence does not always transfer ownership.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Ownership</div>
+              <div role="cell">Legal control over rights to the work.</div>
+              <div role="cell">Using software is not the same as owning its source code.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>This lesson covers IP, not the full open-source/proprietary trade-off</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Intellectual property, ownership, copyright, patents, licences, attribution, infringement and licence conditions.</span></div>
+            <div><strong>Boundary</strong><span>Lesson 075 compares open-source and proprietary software trade-offs in more depth.</span></div>
+            <div><strong>Exam focus</strong><span>State what is protected, who owns it, what permission exists and what consequence follows if terms are breached.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="matcher">
+          <div class="section-title">
+            <p class="eyebrow">Interactive licence matcher</p>
+            <h2>Choose the likely permission issue</h2>
+            <p>Select a scenario and compare the relevant IP concept with the common trap.</p>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="publicRepo">Public repository has no visible licence file.</option>
+                <option value="stockPhoto">A website says a stock image is free for personal use only.</option>
+                <option value="companyApp">Employee writes code for a company app during paid work.</option>
+                <option value="patentMethod">A startup invents a new technical compression method.</option>
+                <option value="library">A developer uses an open-source library requiring attribution.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="matchBtn">Check issue</button>
+          </div>
+          <div class="result-box" id="matchResult" aria-live="polite"></div>
+          <div class="method-box" id="matchReason"></div>
+          <div class="reject-box" id="matchTrap"></div>
+        </section>
+
+        <section class="panel" id="checker">
+          <div class="section-title">
+            <p class="eyebrow">Interactive IP decision checker</p>
+            <h2>Does this use sound permitted?</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Proposed use
+              <select id="useInput">
+                <option value="copyVariables">Copy code and change variable names.</option>
+                <option value="readLicence">Use a library after checking and following its licence.</option>
+                <option value="buyOwnership">Buy one app licence and claim ownership of source code.</option>
+                <option value="creditOnly">Use non-commercial media commercially with attribution only.</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="useBtn">Judge</button>
+          </div>
+          <div class="result-box" id="useResult" aria-live="polite"></div>
+          <div class="method-box" id="useReason"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Four model answers for IP and licensing scenarios</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="repo">Public repository</button>
+            <button class="tab" type="button" data-example="employee">Employee code</button>
+            <button class="tab" type="button" data-example="patent">Patent idea</button>
+            <button class="tab" type="button" data-example="licence">Licence breach</button>
+          </div>
+          <div class="example-box" id="exampleBox" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>Check core vocabulary before writing scenario answers</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix IP answers that confuse access, ownership and permission</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Cambridge-style IP questions with expandable MS</h2>
+            <p>Attempt first. Then open the mark scheme and check whether your answer uses precise IP vocabulary and scenario consequences.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>IP and licensing in six exam-ready ideas</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>IP</strong><span>Protects creations such as software, media, designs and inventions.</span></div>
+            <div><strong>Copyright</strong><span>Protects original expression, including source code.</span></div>
+            <div><strong>Patent</strong><span>Protects inventions for a limited time if requirements are met.</span></div>
+            <div><strong>Licence</strong><span>Gives permission under conditions; it may not transfer ownership.</span></div>
+            <div><strong>Infringement</strong><span>Using protected work without permission can breach rights or licence terms.</span></div>
+            <div><strong>Exam habit</strong><span>Say what is protected, what use is allowed and what consequence follows.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Practise permission-based reasoning</h2>
+          </div>
+          <div class="homework-list">
+            <article>
+              <strong>Task 1: Licence audit</strong>
+              <span>Find three software/media items you use. For each, state owner/source, licence or terms, allowed use, restricted use and attribution requirement.</span>
+            </article>
+            <article>
+              <strong>Task 2: Rewrite a weak answer</strong>
+              <span>Rewrite: "It is online so anyone can copy it." Add ownership, copyright/licence condition, possible infringement and consequence.</span>
+            </article>
+            <article>
+              <strong>Task 3: Timed response</strong>
+              <span>Answer in 8 minutes: "A company uses code from an online repository in a commercial product. Discuss IP and licensing issues." Include at least three precise terms.</span>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

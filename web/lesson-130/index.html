@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 130 | Procedures and functions</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
+        <h1>Procedures and functions</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#procedure">Procedure</a>
+        <a href="#function">Function</a>
+        <a href="#compare">Compare</a>
+        <a href="#parameters">Parameters</a>
+        <a href="#calls">Calls</a>
+        <a href="#java">Java support</a>
+        <a href="#audit">Coverage audit</a>
+        <a href="#returner">Return simulator</a>
+        <a href="#chooser">Chooser</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#summary">Summary</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 130 | 45 minutes | Paper 2 Section 11 | 5-minute quiz</p>
+            <h2>Procedures do a job. Functions do a job and bring back a value.</h2>
+            <p>
+              Subroutines make algorithms reusable and easier to test. A procedure may display a menu or update data.
+              A function must return a value that can be stored, output or used in an expression. If a function forgets
+              to return, it is less "mysterious abstraction" and more "empty shopping bag".
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Define</strong><span>procedure, function, parameter, call and return value</span></div>
+              <div><strong>Write</strong><span>Cambridge-style PROCEDURE and FUNCTION declarations</span></div>
+              <div><strong>Choose</strong><span>procedure or function based on whether a value must be returned</span></div>
+            </div>
+          </div>
+          <div class="routine-visual" aria-label="Procedure and function visual">
+            <div><strong>PROCEDURE</strong><span>performs actions</span></div>
+            <div><strong>FUNCTION</strong><span>RETURNS a value</span></div>
+            <div><strong>Parameter</strong><span>input value passed in</span></div>
+            <p>Good subroutines reduce repeated code without hiding the algorithm's logic.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>Ask whether the subroutine's result must be used later. If yes, students should think function.</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Paper 2 questions often ask students to complete headers, calls, parameters and return statements precisely.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>A procedure can output something, but outputting is not the same as returning a value to the caller.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>Procedure or function?</h2>
+            <p>The subroutine must calculate VAT and allow the main program to store the result. Choose the better option.</p>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="procedure">PROCEDURE CalculateVAT(Price)</button>
+            <button class="choice-card" type="button" data-hook="function">FUNCTION CalculateVAT(Price : REAL) RETURNS REAL</button>
+            <button class="choice-card" type="button" data-hook="output">PROCEDURE DisplayVAT(Price)</button>
+            <button class="choice-card" type="button" data-hook="java">static void calculateVAT(double price)</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the subroutine that returns a value.</div>
+        </section>
+
+        <section class="panel" id="procedure">
+          <div class="section-title">
+            <p class="eyebrow">Procedure</p>
+            <h2>A procedure performs actions and does not have to return a value</h2>
+            <p>Chinese support: procedure 过程, call 调用, parameter 参数, return 返回。</p>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>PROCEDURE DisplayMenu()
+    OUTPUT "1. Add score"
+    OUTPUT "2. Quit"
+ENDPROCEDURE
+
+CALL DisplayMenu()</code></pre>
+            </article>
+            <article>
+              <h3>When it fits</h3>
+              <p>Use a procedure when the algorithm needs an action such as output, input, updating a structure or repeated commands.</p>
+              <div class="callout">A procedure may change data, but it is not used as an expression like <code>Total &lt;- DisplayMenu()</code>.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="function">
+          <div class="section-title">
+            <p class="eyebrow">Function</p>
+            <h2>A function returns a value to the caller</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>FUNCTION CalculateVAT(Price : REAL) RETURNS REAL
+    RETURN Price * 0.20
+ENDFUNCTION
+
+VAT &lt;- CalculateVAT(120.00)</code></pre>
+            </article>
+            <article>
+              <h3>When it fits</h3>
+              <p>Use a function when a calculated, searched or checked result must be used later in the algorithm.</p>
+              <div class="callout">A function should have a return type and a RETURN statement that matches that type.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="compare">
+          <div class="section-title">
+            <p class="eyebrow">Procedure vs function</p>
+            <h2>The mark-winning difference is the returned value</h2>
+          </div>
+          <div class="data-table compare-table" role="table" aria-label="Procedure and function comparison">
+            <div class="table-row table-head"><div>Feature</div><div>Procedure</div><div>Function</div></div>
+            <div class="table-row"><div>Main purpose</div><div>perform an action</div><div>return a value</div></div>
+            <div class="table-row"><div>Header</div><div><code>PROCEDURE Name(...)</code></div><div><code>FUNCTION Name(...) RETURNS Type</code></div></div>
+            <div class="table-row"><div>End keyword</div><div><code>ENDPROCEDURE</code></div><div><code>ENDFUNCTION</code></div></div>
+            <div class="table-row"><div>Typical call</div><div><code>CALL DisplayMenu()</code></div><div><code>VAT &lt;- CalculateVAT(Price)</code></div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="parameters">
+          <div class="section-title">
+            <p class="eyebrow">Parameters and arguments</p>
+            <h2>Parameters receive values passed into a subroutine</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Parameter in the header</h3>
+              <pre><code>FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN
+    IF Mark &gt;= 50 THEN
+        RETURN TRUE
+    ELSE
+        RETURN FALSE
+    ENDIF
+ENDFUNCTION</code></pre>
+            </article>
+            <article>
+              <h3>Argument in the call</h3>
+              <pre><code>Result &lt;- IsPass(67)
+
+IF IsPass(StudentMark) THEN
+    OUTPUT "Pass"
+ENDIF</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="calls">
+          <div class="section-title">
+            <p class="eyebrow">Calls and returned values</p>
+            <h2>Function calls can appear where a value is needed</h2>
+          </div>
+          <div class="data-table call-table" role="table" aria-label="Subroutine calls">
+            <div class="table-row table-head"><div>Call</div><div>Valid?</div><div>Reason</div></div>
+            <div class="table-row"><div><code>CALL DisplayMenu()</code></div><div>yes</div><div>procedure call performs an action</div></div>
+            <div class="table-row"><div><code>VAT &lt;- CalculateVAT(Price)</code></div><div>yes</div><div>function return value is stored</div></div>
+            <div class="table-row"><div><code>Total &lt;- DisplayMenu()</code></div><div>no</div><div>procedure does not return a value</div></div>
+            <div class="table-row"><div><code>OUTPUT CalculateVAT(Price)</code></div><div>yes</div><div>function return value can be output</div></div>
+          </div>
+        </section>
+
+        <section class="panel" id="java">
+          <div class="section-title">
+            <p class="eyebrow">Java support only</p>
+            <h2>Java method syntax is not Cambridge pseudocode</h2>
+          </div>
+          <div class="code-grid">
+            <article>
+              <h3>Cambridge-style pseudocode</h3>
+              <pre><code>FUNCTION CalculateVAT(Price : REAL) RETURNS REAL
+    RETURN Price * 0.20
+ENDFUNCTION</code></pre>
+            </article>
+            <article>
+              <h3>Java support example only</h3>
+              <pre><code>static double calculateVAT(double price) {
+    return price * 0.20;
+}</code></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Procedures</strong><span>PROCEDURE, ENDPROCEDURE, CALL and action-focused subroutines</span></div>
+            <div><strong>Functions</strong><span>FUNCTION, RETURNS, RETURN, ENDFUNCTION and returned values</span></div>
+            <div><strong>Parameters</strong><span>typed parameters, arguments, calls and value use</span></div>
+            <div><strong>Exam risks</strong><span>missing RETURN, wrong return type, using Java syntax, confusing output with return</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="returner">
+          <div class="section-title">
+            <p class="eyebrow">Interactive return simulator</p>
+            <h2>Calculate a function return value</h2>
+          </div>
+          <div class="converter-grid two-control">
+            <label for="priceInput">
+              Price
+              <input id="priceInput" type="number" value="120" step="0.01" />
+            </label>
+            <button class="primary-button" type="button" id="returnBtn">Return VAT</button>
+          </div>
+          <div class="trace-output" id="returnResult">Use <code>CalculateVAT(Price)</code> to return <code>Price * 0.20</code>.</div>
+        </section>
+
+        <section class="panel" id="chooser">
+          <div class="section-title">
+            <p class="eyebrow">Subroutine chooser</p>
+            <h2>Procedure or function?</h2>
+          </div>
+          <div class="converter-grid two-control">
+            <label for="scenarioSelect">
+              Scenario
+              <select id="scenarioSelect"></select>
+            </label>
+            <button class="primary-button" type="button" id="chooseBtn">Choose</button>
+          </div>
+          <div class="trace-output" id="chooseResult">Choose a scenario to see the better subroutine type.</div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>Subroutine examples with exam wording</h2>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Worked example tabs">
+            <button class="tab active" type="button" data-example="menu">Display menu</button>
+            <button class="tab" type="button" data-example="vat">Calculate VAT</button>
+            <button class="tab" type="button" data-example="pass">Boolean function</button>
+            <button class="tab" type="button" data-example="refactor">Remove repetition</button>
+          </div>
+          <div class="example-output" id="exampleOutput"></div>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Practice with instant checking</p>
+            <h2>10 quick checks</h2>
+            <p>Use short answers for checking. Expand the answer for fuller marking wording.</p>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Subroutine mistakes that cost marks</h2>
+          </div>
+          <div class="mistake-grid" id="mistakeGrid"></div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Procedures, functions, calls and return values</h2>
+            <p>Original Cambridge-style questions. Try first, then expand the MS.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Subroutine checklist</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Procedure</strong><span>Does a job; call it for its actions.</span></div>
+            <div><strong>Function</strong><span>Returns a value; use that value in the caller.</span></div>
+            <div><strong>Parameters</strong><span>Pass values in and match the expected data types.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Subroutine practice</h2>
+          </div>
+          <ol class="homework-list">
+            <li><strong>Procedure task</strong><span>Write <code>PROCEDURE DisplayHeader()</code> that outputs a title and two menu lines.</span></li>
+            <li><strong>Function task</strong><span>Write <code>FUNCTION CalculateAverage(Total : REAL, Count : INTEGER) RETURNS REAL</code>.</span></li>
+            <li><strong>Call task</strong><span>Show how the main program stores the returned average and outputs it.</span></li>
+            <li><strong>Debug task</strong><span>Correct a function that has a return type but no RETURN statement.</span></li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

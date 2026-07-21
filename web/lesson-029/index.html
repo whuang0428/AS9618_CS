@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AS9618 Lesson 029 | Output devices and user feedback</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 3</p>
+        <h1>Output devices and user feedback</h1>
+      </div>
+      <div class="action-panel" aria-label="Page controls">
+        <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="lesson-nav" aria-label="Lesson navigation">
+        <a href="#overview">Overview</a>
+        <a href="#hook">Warm-up</a>
+        <a href="#purpose">Output purpose</a>
+        <a href="#devices">Output devices</a>
+        <a href="#feedback">Feedback types</a>
+        <a href="#audit">Syllabus audit</a>
+        <a href="#tool">Choice tool</a>
+        <a href="#examples">Examples</a>
+        <a href="#practice">Practice</a>
+        <a href="#debug">Debugging</a>
+        <a href="#exam">Exam-style</a>
+        <a href="#homework">Homework</a>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="hero" id="overview">
+          <div class="hero-copy">
+            <p class="lesson-meta">Lesson 029 | 45 minutes | Paper 1 Section 3</p>
+            <h2>Output is how the computer stops silently thinking and actually tells someone.</h2>
+            <p>
+              This lesson focuses on output devices and user feedback. You will learn how
+              to choose an output device for a scenario, explain the form of output, and
+              avoid vague answers such as "use a screen because it is good".
+            </p>
+            <div class="objective-grid" aria-label="Learning objectives">
+              <div><strong>Describe</strong><span>the purpose of common output devices</span></div>
+              <div><strong>Compare</strong><span>visual, audio, printed and physical output</span></div>
+              <div><strong>Justify</strong><span>output choices using audience, environment, permanence and urgency</span></div>
+            </div>
+          </div>
+          <div class="system-card" aria-label="Output feedback chain">
+            <span>processed data -> output device -> user/action</span>
+            <p>A warning nobody can notice is not feedback; it is just decoration with extra electricity.</p>
+          </div>
+        </section>
+
+        <section class="guidance-grid" aria-label="Lesson guidance">
+          <article class="teaching-cue">
+            <h3>Teaching cue</h3>
+            <p>For every output device, ask: who receives the output, in what form, and why that form suits the situation?</p>
+          </article>
+          <article class="why-card">
+            <h3>Why this matters</h3>
+            <p>Hardware questions often require justification. "Speaker" is not enough; "speaker because the warning must be noticed without looking at a screen" is exam-shaped.</p>
+          </article>
+          <article class="trap-card">
+            <h3>Common trap</h3>
+            <p>An actuator is an output device when it causes physical movement or action. It does not display information like a monitor.</p>
+          </article>
+        </section>
+
+        <section class="panel" id="hook">
+          <div class="section-title">
+            <p class="eyebrow">Warm-up hook</p>
+            <h2>A car detects an obstacle. It beeps, flashes a dashboard warning, vibrates the steering wheel and may apply the brakes. Which outputs are being used?</h2>
+          </div>
+          <div class="hook-grid">
+            <button class="choice-card" type="button" data-hook="speaker">Speaker gives audio warning</button>
+            <button class="choice-card" type="button" data-hook="screen">Display gives visual feedback</button>
+            <button class="choice-card" type="button" data-hook="haptic">Haptic motor gives physical feedback</button>
+            <button class="choice-card" type="button" data-hook="actuator">Actuator causes braking action</button>
+          </div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">
+            Click one output. The useful exam habit is linking output form to user need or physical action.
+          </div>
+        </section>
+
+        <section class="panel" id="purpose">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 1</p>
+            <h2>What output devices do</h2>
+          </div>
+          <div class="flow-grid">
+            <article><strong>1. Present</strong><span>Output devices present processed data to a user, such as text, images or sound.</span></article>
+            <article><strong>2. Record</strong><span>Some output creates a physical record, such as a printout or receipt.</span></article>
+            <article><strong>3. Act</strong><span>Actuators convert computer output into physical movement or control.</span></article>
+          </div>
+          <div class="callout">Chinese support: output device = 输出设备；user feedback = 用户反馈；actuator = 执行器；hard copy = 硬拷贝/纸质输出。</div>
+        </section>
+
+        <section class="panel" id="devices">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 2</p>
+            <h2>Common output devices and when they fit</h2>
+          </div>
+          <div class="device-table" role="table" aria-label="Output devices comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Device</div>
+              <div role="columnheader">Output form</div>
+              <div role="columnheader">Good use</div>
+              <div role="columnheader">Exam warning</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Monitor / screen</div>
+              <div role="cell">Visual soft copy</div>
+              <div role="cell">Live results, interfaces, dashboards, maps</div>
+              <div role="cell">Not suitable when permanent paper evidence is required</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Printer</div>
+              <div role="cell">Hard copy on paper or labels</div>
+              <div role="cell">Receipts, reports, tickets, labels</div>
+              <div role="cell">Usually slower and uses consumables</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Speaker / buzzer</div>
+              <div role="cell">Audio output</div>
+              <div role="cell">Warnings, accessibility, spoken instructions</div>
+              <div role="cell">May be unsuitable in noisy or quiet environments</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Projector</div>
+              <div role="cell">Large visual display</div>
+              <div role="cell">Classroom, meeting room, large audience</div>
+              <div role="cell">Needs suitable surface and lighting conditions</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Actuator</div>
+              <div role="cell">Physical movement/action</div>
+              <div role="cell">Opening valves, moving motors, applying brakes</div>
+              <div role="cell">It outputs action, not information for reading</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="feedback">
+          <div class="section-title">
+            <p class="eyebrow">Knowledge point 3</p>
+            <h2>User feedback must fit the situation</h2>
+          </div>
+          <div class="compare-table" role="table" aria-label="Feedback types comparison">
+            <div class="table-row table-head" role="row">
+              <div role="columnheader">Feedback type</div>
+              <div role="columnheader">Strength</div>
+              <div role="columnheader">Limitation</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Visual</div>
+              <div role="cell">Detailed information, menus, diagrams, maps.</div>
+              <div role="cell">User must be able to see and look at the display.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Audio</div>
+              <div role="cell">Immediate warning without needing to look.</div>
+              <div role="cell">Can be missed in noise or disruptive in quiet spaces.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Printed</div>
+              <div role="cell">Permanent portable evidence.</div>
+              <div role="cell">Not ideal for rapidly changing information.</div>
+            </div>
+            <div class="table-row" role="row">
+              <div role="cell">Physical action</div>
+              <div role="cell">Controls the real world automatically.</div>
+              <div role="cell">Needs safety controls because it changes the environment.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="audit">
+          <div class="section-title">
+            <p class="eyebrow">Syllabus coverage audit</p>
+            <h2>What this lesson covers</h2>
+          </div>
+          <div class="audit-list">
+            <div><strong>Covered</strong><span>Purpose of output devices and user feedback.</span></div>
+            <div><strong>Covered</strong><span>Visual, audio, printed and physical output.</span></div>
+            <div><strong>Covered</strong><span>Device suitability using urgency, permanence, audience, environment, cost and accessibility.</span></div>
+            <div><strong>Covered</strong><span>Examples including monitor, printer, speaker, projector, buzzer, haptic motor and actuator.</span></div>
+            <div><strong>Boundary</strong><span>Input devices were Lesson 028. Sensors and control systems return in Lesson 034.</span></div>
+          </div>
+        </section>
+
+        <section class="panel interactive" id="tool">
+          <div class="section-title">
+            <p class="eyebrow">Interactive tool</p>
+            <h2>Choose the output device</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Scenario
+              <select id="scenarioInput">
+                <option value="receipt">A shop must give customers a transaction record</option>
+                <option value="driver">A driver needs route directions while moving</option>
+                <option value="alarm">A factory worker must notice an urgent warning</option>
+                <option value="classroom">A teacher shows a diagram to a whole class</option>
+                <option value="greenhouse">A system opens a vent when it gets too hot</option>
+                <option value="exam">An exam office displays candidate seat numbers during entry</option>
+              </select>
+            </label>
+            <button type="button" id="chooseBtn">Recommend device</button>
+          </div>
+          <div class="result-box" id="componentResult" aria-live="polite"></div>
+          <div class="method-box" id="componentMethod"></div>
+        </section>
+
+        <section class="panel" id="examples">
+          <div class="section-title">
+            <p class="eyebrow">Worked examples</p>
+            <h2>From device name to scenario-linked output</h2>
+          </div>
+          <div class="example-tabs" role="tablist" aria-label="Worked examples">
+            <button class="tab active" type="button" data-example="receipt">Receipt printer</button>
+            <button class="tab" type="button" data-example="alarm">Warning system</button>
+            <button class="tab" type="button" data-example="greenhouse">Actuator</button>
+          </div>
+          <article class="example-box" id="exampleBox"></article>
+        </section>
+
+        <section class="panel" id="practice">
+          <div class="section-title">
+            <p class="eyebrow">Your turn</p>
+            <h2>Practice with instant checking</h2>
+          </div>
+          <div class="practice-list" id="practiceList"></div>
+          <button class="primary-button" type="button" id="checkPractice">Check practice</button>
+          <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
+        </section>
+
+        <section class="panel" id="debug">
+          <div class="section-title">
+            <p class="eyebrow">Mistake debugging</p>
+            <h2>Fix the weak output answer</h2>
+          </div>
+          <div class="mistake-grid">
+            <article>
+              <p class="wrong">"Use a printer because it is better."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
+              <p class="answer" id="mistake1">This is too vague. A stronger answer is: use a printer because it produces a hard copy receipt that the customer can keep as evidence of the transaction.</p>
+            </article>
+            <article>
+              <p class="wrong">"A sensor is an output device because it tells the system the temperature."</p>
+              <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
+              <p class="answer" id="mistake2">A sensor is an input device because it captures data from the environment. An actuator is an output device when it opens a vent or turns a motor in response.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="exam">
+          <div class="section-title">
+            <p class="eyebrow">Exam-style questions</p>
+            <h2>Questions with expandable MS</h2>
+            <p>Attempt first, then expand the mark scheme. Credit depends on output form and scenario-linked suitability.</p>
+          </div>
+          <div class="exam-list" id="examList"></div>
+        </section>
+
+        <section class="panel summary-panel" id="summary">
+          <div class="section-title">
+            <p class="eyebrow">Summary</p>
+            <h2>Output choices depend on who needs the result</h2>
+          </div>
+          <div class="summary-grid">
+            <div><strong>Output device</strong><span>Presents processed data or causes a physical action.</span></div>
+            <div><strong>Screen</strong><span>Best for changing visual information and interaction.</span></div>
+            <div><strong>Printer</strong><span>Best for permanent hard copy output.</span></div>
+            <div><strong>Speaker</strong><span>Best for alerts or information that can be heard.</span></div>
+            <div><strong>Actuator</strong><span>Best when the system must physically control something.</span></div>
+            <div><strong>Suitability</strong><span>Link output form to urgency, permanence, audience and environment.</span></div>
+          </div>
+        </section>
+
+        <section class="panel" id="homework">
+          <div class="section-title">
+            <p class="eyebrow">Homework</p>
+            <h2>Clear tasks</h2>
+          </div>
+          <ol class="homework-list">
+            <li>Create a table of five output devices, the form of output, and one suitable scenario.</li>
+            <li>Write a 4-mark answer explaining why a printer is suitable for receipts but not ideal for live traffic directions.</li>
+            <li>Choose two output methods for a hospital alarm system and justify each choice.</li>
+            <li>Write one sentence explaining why an actuator is an output device.</li>
+          </ol>
+          <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
+          <div class="answer-panel" id="homeworkAnswers">
+            <p><strong>Device table:</strong> include monitor -> visual soft copy; printer -> hard copy; speaker -> audio; projector -> large visual output; actuator -> physical action.</p>
+            <p><strong>Printer comparison:</strong> receipts need permanent paper evidence; traffic directions change quickly and need live visual/audio feedback.</p>
+            <p><strong>Hospital alarm:</strong> combine audio warning for urgency with visual display/light for location or message detail.</p>
+            <p><strong>Actuator:</strong> it converts a computer output signal into physical movement or control.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
