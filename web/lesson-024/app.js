@@ -81,7 +81,7 @@ const examQuestions = [
       { mark: "B1", text: "internet is global/public/interconnected networks" },
       { mark: "B1", text: "intranet is private/internal to an organisation" },
       { mark: "B1", text: "intranet access restricted to authorised users/staff" },
-      { mark: "B1", text: "clear comparison of access/control, not only spelling/name difference" },
+      { mark: "B1", text: "contrasts internet access across public interconnected networks with organisation-controlled intranet access" },
     ],
     strict: [
       "Do not accept 'intranet is a small internet' for full credit.",

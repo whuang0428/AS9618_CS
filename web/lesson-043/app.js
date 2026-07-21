@@ -115,7 +115,7 @@ const examQuestions = [
       "Do not accept PC holds the instruction.",
       "Do not accept MAR holds the instruction value.",
       "Allow data/instruction wording for MDR because instructions are transferred as data values.",
-      "FT: award each register role independently if other parts of the sequence are weak.",
+      "Award each register role independently if other parts of the sequence are weak.",
     ],
   },
   {
@@ -133,7 +133,6 @@ const examQuestions = [
       "Do not award marks for simply expanding the abbreviations without roles.",
       "Do not accept PC holds the current instruction.",
       "Allow 'instruction being decoded' or 'instruction being executed' for CIR.",
-      "FT: mark PC and CIR statements separately.",
     ],
   },
   {
@@ -152,18 +151,16 @@ const examQuestions = [
       "Do not accept status register stores the actual arithmetic result.",
       "Do not require all listed flag examples.",
       "Allow 'flag register' if role matches status register.",
-      "FT: award ACC and status register marks independently.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "A CPU executes an instruction that adds two values and produces zero. Explain the possible roles of ACC and the status register.",
     answer: "The ALU performs the addition. The accumulator may store the result of the addition as an intermediate or final value. Since the result is zero, the zero flag in the status register may be set. Other flags may also be updated depending on the operation and architecture. The status register records conditions about the result, which can be used by later instructions such as a conditional branch.",
     marking: [
       { mark: "B1", text: "ALU performs the addition" },
       { mark: "B1", text: "ACC stores result/intermediate result" },
-      { mark: "B1", text: "result is zero" },
       { mark: "B1", text: "zero flag/status flag set or updated" },
       { mark: "B1", text: "status register stores flags/conditions about result" },
       { mark: "B1", text: "flags may be used by later/conditional instructions" },
@@ -172,7 +169,6 @@ const examQuestions = [
       "Do not award zero flag mark if candidate says ACC is the zero flag.",
       "Do not require exact binary values.",
       "Allow 'may be set' because flag behaviour depends on architecture.",
-      "FT: if candidate says result stored in a general register, still award status-register marks if flags are correct.",
     ],
   },
   {
@@ -181,7 +177,7 @@ const examQuestions = [
     prompt: "A candidate writes: 'MAR stores the current instruction and MDR stores the address.' Explain why this is incorrect and give the correct roles.",
     answer: "This is incorrect because MAR and MDR have been swapped. The MAR stores the memory address being accessed. This address is placed on the address bus. The MDR stores the data or instruction being transferred to or from memory. During fetch, the instruction read from memory is placed in the MDR before being copied to the CIR.",
     marking: [
-      { mark: "B1", text: "identifies that MAR/MDR roles are swapped or statement is incorrect" },
+      { mark: "B1", text: "CIR, rather than MAR, holds the current instruction" },
       { mark: "B1", text: "MAR stores memory address being accessed" },
       { mark: "B1", text: "address in MAR placed on address bus" },
       { mark: "B1", text: "MDR stores data/instruction being transferred" },
@@ -192,7 +188,6 @@ const examQuestions = [
       "Do not accept 'MAR stores memory' without address wording.",
       "Do not accept 'MDR stores address data' if address/value distinction is unclear.",
       "Allow answers that explain only read or only write transfer if MDR role is clear.",
-      "FT: award correction marks even if the candidate does not quote the original statement.",
     ],
   },
 ];

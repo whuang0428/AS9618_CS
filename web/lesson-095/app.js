@@ -138,15 +138,15 @@ const examQuestions = [
     ],
     strict: [
       "Do not award final A1 without byte/bytes unit unless clearly implied by working.",
-      "Allow FT from incorrect bit total if division by 8 is shown.",
       "Do not multiply by 2 channels because the question says one channel.",
       "Allow 320 KB only if decimal KB conversion is clearly stated; bytes answer is expected.",
+      "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
     ],
   },
   {
     title: "Question 2",
     marks: "3 marks",
-    prompt: "Describe two pieces of information that may be included in a packet header.",
+    prompt: "Describe three pieces of information that may be included in a packet header.",
     answer: "A packet header may contain the source address, destination address and a sequence number so packets can be routed and reassembled in the correct order.",
     marking: [
       { mark: "B1", text: "source address" },
@@ -157,7 +157,6 @@ const examQuestions = [
       "Do not award more than one mark for vague 'address' unless source/destination is distinguished.",
       "Allow checksum/control information as an alternative valid header item.",
       "Do not accept payload data as header information.",
-      "FT: no FT needed; points are independent.",
     ],
   },
   {
@@ -168,14 +167,13 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "cache stores frequently used data/instructions" },
       { mark: "B1", text: "cache is faster/closer to CPU than RAM" },
-      { mark: "M1", text: "reduces need to access slower main memory" },
-      { mark: "A1", text: "links to improved performance for repeated/reused data or instructions" },
+      { mark: "B1", text: "reduces need to access slower main memory" },
+      { mark: "B1", text: "links to improved performance for repeated/reused data or instructions" },
     ],
     strict: [
       "Do not accept cache as the same as RAM.",
       "Allow 'between CPU and RAM' if faster access role is clear.",
       "Do not award full credit for generic 'makes it faster' without mechanism.",
-      "FT: performance mark can follow from valid faster-access mechanism.",
     ],
   },
   {
@@ -186,14 +184,13 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "validation checks data against rules" },
       { mark: "B1", text: "verification checks against original/source data" },
-      { mark: "M1", text: "valid validation example such as type/range/format/presence" },
-      { mark: "A1", text: "valid verification example such as proofreading/double entry and comparative wording" },
+      { mark: "B1", text: "valid validation example such as type/range/format/presence" },
+      { mark: "B1", text: "valid verification example such as proofreading/double entry and comparative wording" },
     ],
     strict: [
       "Do not accept 'validation proves data is correct'.",
       "Allow spell check only if clearly used as a format/presence rule, not proof of truth.",
       "Do not accept authentication as verification in this data-entry context.",
-      "FT: examples can follow from correct definitions.",
     ],
   },
   {
@@ -203,17 +200,16 @@ const examQuestions = [
     answer: "Authentication such as MFA can check user identity before access, reducing unauthorised logins. Access rights can restrict student records to staff who need them, limiting unauthorised viewing or editing. Encryption can encode stored or transmitted records so they are unreadable without the correct key if intercepted or stolen. Backups can also allow records to be restored after loss or corruption.",
     marking: [
       { mark: "B1", text: "names valid measure such as authentication/MFA/access rights/encryption/backup" },
-      { mark: "A1", text: "explains mechanism of first measure in context" },
+      { mark: "B1", text: "explains mechanism of first measure in context" },
       { mark: "B1", text: "names second valid measure" },
-      { mark: "A1", text: "explains mechanism of second measure in context" },
+      { mark: "B1", text: "explains mechanism of second measure in context" },
       { mark: "B1", text: "names third valid measure" },
-      { mark: "A1", text: "explains mechanism of third measure in context" },
+      { mark: "B1", text: "explains mechanism of third measure in context" },
     ],
     strict: [
       "Do not award explanation marks for generic 'keeps it safe'.",
       "Allow firewall/anti-malware/audit trails if mechanism is correct and relevant.",
       "Do not count the same measure twice under different wording.",
-      "FT: explanation marks can follow from any valid named security/data integrity measure.",
     ],
   },
 ];

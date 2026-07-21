@@ -105,7 +105,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 #### Q2 [2]
 
 - **B1** Unicode represents a much larger range of characters/scripts
-- **A1** users can store/display characters from many languages consistently
+- **B1** users can store/display characters from many languages consistently
 
 **Guidance:** Do not accept only 'Unicode uses more bits'.
 
@@ -121,7 +121,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **M1** 100 x 50 x 8 bits, then divides by 8
 - **A1** 5000 bytes
 
-**Guidance:** FT a correct byte conversion from an incorrect pixel total.
+**Guidance:** Allow FT from the candidate's earlier incorrect pixel total only when the subsequent conversion to bytes is correct.
 
 #### Q5 [2]
 
@@ -1160,7 +1160,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 #### Q1 [2]
 
 - **B1** applies developed benefits/risks to the stated scenario
-- **B1** reaches a balanced justified judgement/condition
+- **B1** reaches a justified judgement that uses the stated scenario evidence or conditions
 
 **Guidance:** Do not award 'write more'.
 
@@ -1211,7 +1211,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 1. State two columns needed in a trace table for Total <- Total + Value[Index]. **[2]**
 2. Choose WHILE or REPEAT for input that must occur at least once and justify. **[2]**
 3. Write the valid-range condition for Mark from 0 to 100 inclusive. **[2]**
-4. State the index returned by zero-based linear search for 9 in [4,9,2]. **[2]**
+4. Trace zero-based linear search for 9 in [4,9,2] and state the returned index. **[2]**
 5. After one ascending bubble-sort pass through [5,2,4,1], state the list. **[2]**
 
 ### Answer Key / Mark Scheme
@@ -1249,7 +1249,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **M1** performs the adjacent comparisons/swaps consistently
 - **A1** [2,4,1,5]
 
-**Guidance:** FT one early swap error only when later comparisons remain adjacent.
+**Guidance:** Allow FT from the candidate's earlier incorrect list only when every subsequent comparison remains adjacent and follows ascending bubble sort.
 
 ---
 
@@ -1417,7 +1417,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 #### Q4 [2]
 
 - **B1** each element keeps related fields for one student together
-- **B1** loop/index can process/search all students consistently
+- **B1** keeping each student's fields in one record reduces the risk of fields for different students becoming misaligned
 
 **Guidance:** Do not accept only 'stores more data'.
 
@@ -1444,7 +1444,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ### Questions
 
-1. State one requirement when reading a CSV record containing Name,Age. **[2]**
+1. State two requirements when reading a CSV record containing Name,Age. **[2]**
 2. Choose a stack or queue for printer jobs and justify. **[2]**
 3. State the two fields required in an array-based linked-list node. **[2]**
 4. Choose an array or linked list for frequent insertion between playlist items and justify. **[2]**

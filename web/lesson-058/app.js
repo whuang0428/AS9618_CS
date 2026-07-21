@@ -114,16 +114,15 @@ const examQuestions = [
     answer: "A linker combines object modules produced by compilation or assembly with other object modules and required library routines or references. It resolves external references or symbols, for example a call from one module to a routine in another module. The linker can produce executable code or a linked object file. If a required routine cannot be found, a linker error such as an unresolved external reference may be reported.",
     marking: [
       { mark: "B1", text: "combines object modules/object code" },
-      { mark: "M1", text: "includes or connects required library routines/modules" },
+      { mark: "B1", text: "includes or connects required library routines/modules" },
       { mark: "B1", text: "resolves external references/symbols between modules" },
       { mark: "B1", text: "produces executable/linked object code" },
-      { mark: "A1", text: "unresolved external/reference linker error described" },
+      { mark: "B1", text: "unresolved external/reference linker error described" },
     ],
     strict: [
       "Do not accept 'translates source code' as a linker role.",
       "Do not award loader marks for saying only 'puts program in memory'.",
       "Allow references to addresses/symbols if linked to modules or libraries.",
-      "FT: award output mark if the candidate has clearly described linking even with weak terminology.",
     ],
   },
   {
@@ -133,15 +132,14 @@ const examQuestions = [
     answer: "A loader places the executable program code and required data into main memory. It may allocate memory and adjust addresses depending on where the program is loaded. It prepares the program for execution by the processor. It does not translate source code or combine object modules; those are compiler/linker roles.",
     marking: [
       { mark: "B1", text: "loads/places executable program code into main memory/RAM" },
-      { mark: "M1", text: "loads required data or program image, or allocates memory" },
+      { mark: "B1", text: "loads required data or program image, or allocates memory" },
       { mark: "B1", text: "may relocate/adjust addresses" },
-      { mark: "A1", text: "prepares program for execution or distinguishes from compiler/linker role" },
+      { mark: "B1", text: "prepares program for execution or distinguishes from compiler/linker role" },
     ],
     strict: [
       "Do not accept 'loads the website/app' without memory/execution idea.",
       "Do not accept source-code translation as loader role.",
       "Allow RAM for main memory.",
-      "FT: award preparation mark if the memory-loading mechanism is clear.",
     ],
   },
   {
@@ -151,15 +149,14 @@ const examQuestions = [
     answer: "A library contains pre-written reusable routines or modules, such as mathematical, input/output or graphics routines. Programmers use libraries so they do not need to write common routines from scratch. This can save development time and reduce duplication. Library routines may also be tested and reliable, but they must be linked or available when the program runs.",
     marking: [
       { mark: "B1", text: "library contains pre-written/reusable routines/modules" },
-      { mark: "M1", text: "valid example such as maths, I/O, graphics or string routines" },
+      { mark: "B1", text: "valid example such as maths, I/O, graphics or string routines" },
       { mark: "B1", text: "saves development time / avoids rewriting common code / reduces duplication" },
-      { mark: "A1", text: "tested/reliable code or need to link/make available at run time" },
+      { mark: "B1", text: "tested/reliable code or need to link/make available at run time" },
     ],
     strict: [
       "Do not accept 'stores data files' as the main purpose of a program library.",
       "Do not require a specific named routine if the example type is clear.",
       "Allow API references only if reusable code/routines are described.",
-      "FT: award benefit mark for a valid benefit even if the example is omitted.",
     ],
   },
   {
@@ -169,16 +166,15 @@ const examQuestions = [
     answer: "In static linking, required library code is copied into the executable at link time. This can make the executable more self-contained, but the file may be larger and duplicate library code across programs. In dynamic linking, the program uses a shared library at load time or run time. This can reduce duplication and allow programs to share library code, but the correct compatible library must be available.",
     marking: [
       { mark: "B1", text: "static linking copies/includes library code into executable at link time" },
-      { mark: "M1", text: "static advantage or limitation such as self-contained or larger executable" },
+      { mark: "B1", text: "static advantage or limitation such as self-contained or larger executable" },
       { mark: "B1", text: "dynamic linking uses shared library at load/run time" },
-      { mark: "M1", text: "dynamic advantage such as reduced duplication/shared updates/smaller executable" },
-      { mark: "A1", text: "dynamic limitation such as missing/incompatible library prevents correct running" },
+      { mark: "B1", text: "dynamic advantage such as reduced duplication/shared updates/smaller executable" },
+      { mark: "B1", text: "dynamic limitation such as missing/incompatible library prevents correct running" },
     ],
     strict: [
       "Do not accept 'static means not moving' or 'dynamic means faster' without linking context.",
       "Do not require both load time and run time; either is acceptable for dynamic linking.",
       "Allow shared object/DLL style examples if explained.",
-      "FT: award trade-off marks independently for each linking method.",
     ],
   },
   {
@@ -188,17 +184,16 @@ const examQuestions = [
     answer: "The object files need to be linked. The linker combines the object modules and resolves references between them, including references to graphics library routines. It produces executable or linked code, or reports an unresolved external reference if a required routine cannot be found. The loader then places the executable code and required data into main memory, may adjust addresses, and prepares the program for execution by the processor.",
     marking: [
       { mark: "B1", text: "object files/modules must be linked" },
-      { mark: "M1", text: "linker combines object modules" },
+      { mark: "B1", text: "linker combines object modules" },
       { mark: "B1", text: "linker resolves references to graphics library routines/external references" },
       { mark: "B1", text: "linker produces executable/linked code or reports unresolved reference" },
-      { mark: "M1", text: "loader places executable/program/data into main memory" },
-      { mark: "A1", text: "loader prepares execution / adjusts addresses / CPU can execute" },
+      { mark: "B1", text: "loader places executable/program/data into main memory" },
+      { mark: "B1", text: "loader prepares execution / adjusts addresses / CPU can execute" },
     ],
     strict: [
       "Do not award compiler-stage marks unless linked to existing object files in the scenario.",
       "Do not merge linker and loader into one vague 'runs it' statement for full marks.",
       "Allow RAM for main memory.",
-      "FT: if library named is different but used as an external routine, award reference marks.",
     ],
   },
 ];

@@ -114,17 +114,17 @@ const examQuestions = [
     answer: "During development, an interpreter may be suitable because it translates and executes statements as the program runs, so the programmer can test small parts and receive feedback near the faulty statement. For the finished program, a compiler may be suitable because it translates the whole high-level program before execution and can produce object or executable code. The executable can be distributed to users without providing the source code and may run repeatedly without retranslation.",
     marking: [
       { mark: "B1", text: "interpreter selected for development" },
-      { mark: "M1", text: "interpreter translates/executes statement by statement" },
+      { mark: "B1", text: "interpreter translates/executes statement by statement" },
       { mark: "B1", text: "development benefit such as quick feedback/debugging/testing small parts" },
       { mark: "B1", text: "compiler selected for finished/deployed program" },
-      { mark: "M1", text: "compiler translates whole program before execution and/or produces object/executable code" },
-      { mark: "A1", text: "deployment benefit such as source code not needed or repeated execution without retranslation" },
+      { mark: "B1", text: "compiler translates whole program before execution and/or produces object/executable code" },
+      { mark: "B1", text: "deployment benefit such as source code not needed or repeated execution without retranslation" },
     ],
     strict: [
       "Do not accept 'compiler is better' without scenario-linked reason.",
       "Do not award interpreter marks for producing standalone executable code.",
       "Allow line by line for statement by statement.",
-      "FT: award each stage independently if one choice is wrong but the other is correct.",
+      "Award each stage independently if one choice is wrong but the other is correct.",
     ],
   },
   {
@@ -134,16 +134,16 @@ const examQuestions = [
     answer: "An assembler translates assembly language mnemonics into machine code or object code. A linker combines object modules and resolves external references, including references to library routines, to produce linked/executable code. A loader places executable code and data into main memory and prepares the program for execution. They act at different points in the process, so their roles should not be merged.",
     marking: [
       { mark: "B1", text: "assembler translates assembly language/mnemonics" },
-      { mark: "M1", text: "assembler output is machine code/object code" },
+      { mark: "B1", text: "assembler output is machine code/object code" },
       { mark: "B1", text: "linker combines object modules and/or resolves external references" },
       { mark: "B1", text: "loader places executable/program/data into main memory" },
-      { mark: "A1", text: "prepares for execution or clearly distinguishes the sequence/roles" },
+      { mark: "B1", text: "prepares for execution or clearly distinguishes the sequence/roles" },
     ],
     strict: [
       "Do not accept assembler as translator of all high-level source code.",
       "Do not accept linker as loading into memory unless resolving/combining is also clear.",
       "Allow RAM for main memory.",
-      "FT: award each tool role independently.",
+      "Award each tool role independently.",
     ],
   },
   {
@@ -153,15 +153,14 @@ const examQuestions = [
     answer: "The problem is likely a logic error because the program can be translated and run but the algorithm or formula gives the wrong result. A compiler may not detect this because the code can be syntactically valid and still have the wrong calculation. Changing from a compiler to an interpreter would not automatically correct the algorithm. The programmer should test with known data, trace variable values or debug the calculation.",
     marking: [
       { mark: "B1", text: "logic error identified or described" },
-      { mark: "M1", text: "program translates/runs but result/calculation is wrong" },
+      { mark: "B1", text: "program translates/runs but result/calculation is wrong" },
       { mark: "B1", text: "translator may not detect intended algorithm/formula error" },
-      { mark: "A1", text: "testing/tracing/debugging with known data suggested" },
+      { mark: "B1", text: "testing/tracing/debugging with known data suggested" },
     ],
     strict: [
       "Do not accept syntax error if the program compiles successfully in the scenario.",
       "Do not accept 'use a better compiler' as a fix without testing/algorithm change.",
       "Allow dry run as tracing.",
-      "FT: award testing mark if a valid logic-error investigation method is given.",
     ],
   },
   {
@@ -171,16 +170,15 @@ const examQuestions = [
     answer: "The object modules must be linked. The linker combines the object modules and resolves external references to library routines. This produces linked or executable code, or reports unresolved references if a required routine is missing. The loader then places the executable code and required data into main memory and prepares it for execution by the processor.",
     marking: [
       { mark: "B1", text: "object modules must be linked" },
-      { mark: "M1", text: "linker combines object modules" },
+      { mark: "B1", text: "linker combines object modules" },
       { mark: "B1", text: "linker resolves external/library references" },
       { mark: "B1", text: "loader places executable/program/data into main memory" },
-      { mark: "A1", text: "program is prepared for execution or CPU can execute it" },
+      { mark: "B1", text: "program is prepared for execution or CPU can execute it" },
     ],
     strict: [
       "Do not award compiler-stage marks as the program is already compiled into object modules.",
       "Do not merge linker and loader into one vague 'runs it' statement.",
       "Allow RAM for main memory.",
-      "FT: award loader marks even if the linker output wording is weak but executable context is clear.",
     ],
   },
   {
@@ -190,17 +188,17 @@ const examQuestions = [
     answer: "For a high-level program for final distribution, a compiler is suitable because it translates the whole program before execution and can produce executable/object code that runs without source code. For an assembly-language routine, an assembler is suitable because it translates assembly mnemonics into machine code. For a beginner testing code statement by statement, an interpreter is suitable because it translates and executes statements during running and can provide immediate feedback near errors.",
     marking: [
       { mark: "B1", text: "compiler selected for final distribution" },
-      { mark: "M1", text: "compiler justification linked to whole program/executable/object code/source code not needed" },
+      { mark: "B1", text: "compiler justification linked to whole program/executable/object code/source code not needed" },
       { mark: "B1", text: "assembler selected for assembly-language routine" },
-      { mark: "M1", text: "assembler justification linked to mnemonics/machine code" },
+      { mark: "B1", text: "assembler justification linked to mnemonics/machine code" },
       { mark: "B1", text: "interpreter selected for statement-by-statement beginner testing" },
-      { mark: "A1", text: "interpreter justification linked to statement-by-statement execution/immediate error feedback" },
+      { mark: "B1", text: "interpreter justification linked to statement-by-statement execution/immediate error feedback" },
     ],
     strict: [
       "Do not award selection mark if the tool is matched to the wrong scenario.",
       "Do not accept vague 'faster/easier' without technical mechanism.",
       "Allow line-by-line for statement-by-statement.",
-      "FT: award each scenario independently.",
+      "Award each scenario independently.",
     ],
   },
 ];

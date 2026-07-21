@@ -47,18 +47,15 @@ const practice = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
+    marks: "2 marks",
     prompt: "Add 00110101₂ and 00010110₂ using 8-bit binary addition. Show the result.",
-    answer: "01001011₂",
+    answer: "Align all eight bits and add with carries: 00110101₂ + 00010110₂ = 01001011₂. The denary check is 53 + 22 = 75.",
     marking: [
-      { mark: "M1", text: "aligns both 8-bit binary values correctly" },
-      { mark: "M1", text: "shows or applies carries correctly in the low-order columns" },
-      { mark: "M1", text: "continues addition correctly across all 8 bits" },
+      { mark: "M1", text: "shows a correct binary addition method, including carries" },
       { mark: "A1", text: "01001011" },
     ],
     strict: [
       "Do not award A1 if the result has fewer than 8 bits and no clear 8-bit context.",
-      "Allow FT for one arithmetic slip if the carry method is clear.",
       "No overflow explanation is required unless stated.",
     ],
   },
@@ -66,7 +63,7 @@ const examQuestions = [
     title: "Question 2",
     marks: "4 marks",
     prompt: "Add 11110000₂ and 00010000₂. State whether overflow occurs.",
-    answer: "00000000₂ with carry-out 1; overflow occurs.",
+    answer: "11110000₂ + 00010000₂ = 1 00000000₂. The stored 8-bit result is 00000000₂ with carry-out 1, so unsigned overflow occurs.",
     marking: [
       { mark: "M1", text: "adds the binary values to produce a carry-out beyond bit 7" },
       { mark: "A1", text: "8-bit result 00000000" },
@@ -100,7 +97,7 @@ const examQuestions = [
     title: "Question 4",
     marks: "4 marks",
     prompt: "Add 11001010₂ and 01110101₂ using 8-bit binary addition and identify overflow.",
-    answer: "00111111₂ with a carry-out; overflow occurs.",
+    answer: "11001010₂ + 01110101₂ = 1 00111111₂. The stored 8-bit result is 00111111₂ with carry-out 1, so unsigned overflow occurs.",
     marking: [
       { mark: "M1", text: "shows a correct carry process / carry row" },
       { mark: "A1", text: "8-bit result 00111111" },

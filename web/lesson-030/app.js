@@ -87,7 +87,6 @@ const examQuestions = [
       "Do not accept only 'RAM is temporary, ROM is permanent' for full credit without purpose or power-state detail.",
       "Do not accept ROM as normal long-term user file storage.",
       "Allow BIOS/UEFI as examples of firmware/startup instructions.",
-      "FT: award correct volatility marks even if the purpose explanation is weak.",
     ],
   },
   {
@@ -105,7 +104,6 @@ const examQuestions = [
       "Do not award full credit for only saying 'cache makes it faster'.",
       "Do not accept cache as permanent file storage.",
       "Allow 'instructions likely to be needed soon' as frequently/recently used data.",
-      "FT: if candidate refers to RAM as main memory, award where meaning is clear.",
     ],
   },
   {
@@ -124,7 +122,6 @@ const examQuestions = [
       "Do not accept virtual memory as extra physical RAM.",
       "Do not accept that virtual memory is faster than RAM.",
       "Allow paging/swapping terminology if used correctly.",
-      "FT: if secondary storage is named as SSD/HDD, award if role as virtual memory is clear.",
     ],
   },
   {
@@ -142,7 +139,6 @@ const examQuestions = [
       "Do not award a mark for 'ROM is memory' without a role.",
       "Do not require detailed boot sequence beyond startup/loading OS.",
       "Allow BIOS/UEFI as examples.",
-      "FT: award non-volatility mark independently from boot explanation.",
     ],
   },
   {
@@ -161,7 +157,6 @@ const examQuestions = [
       "Do not accept an unqualified 'yes, more RAM is always faster' for evaluation credit.",
       "Do not award virtual memory mark unless slower secondary storage access is implied or stated.",
       "Allow examples such as gaming, video editing or many browser tabs if linked to memory demand.",
-      "FT: award balanced evaluation marks for any coherent workload-based explanation.",
     ],
   },
 ];

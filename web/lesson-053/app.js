@@ -117,16 +117,15 @@ const examQuestions = [
     answer: "The operating system treats running programs as processes. It uses process management and scheduling to decide which process receives processor time. It tracks process states such as running, ready or waiting. It can switch between processes so several applications appear to run at the same time. This allows multitasking and prevents one application from permanently taking control of the CPU.",
     marking: [
       { mark: "B1", text: "running programs are treated as processes" },
-      { mark: "M1", text: "scheduler/process management allocates CPU/processor time" },
+      { mark: "B1", text: "scheduler/process management allocates CPU/processor time" },
       { mark: "B1", text: "tracks process states such as running/ready/waiting" },
-      { mark: "M1", text: "switches between processes / supports multitasking" },
-      { mark: "A1", text: "prevents one process monopolising CPU or improves responsiveness" },
+      { mark: "B1", text: "switches between processes / supports multitasking" },
+      { mark: "B1", text: "prevents one process monopolising CPU or improves responsiveness" },
     ],
     strict: [
       "Do not accept 'the apps choose themselves' for scheduling.",
       "Do not require named scheduling algorithms.",
       "Allow task for process if the running-program idea is clear.",
-      "FT: award multitasking mark if CPU-time sharing is clearly implied.",
     ],
   },
   {
@@ -136,16 +135,15 @@ const examQuestions = [
     answer: "Memory management allocates memory to programs when they run. The OS keeps track of which memory areas are free and which are in use. It helps protect memory so that one process does not incorrectly access or overwrite another process's data. When a program ends, the OS can release its memory for reuse. This helps programs run reliably and makes efficient use of RAM.",
     marking: [
       { mark: "B1", text: "allocates memory/RAM to programs or processes" },
-      { mark: "M1", text: "tracks free and used memory areas" },
+      { mark: "B1", text: "tracks free and used memory areas" },
       { mark: "B1", text: "protects processes from accessing/overwriting each other's memory" },
-      { mark: "M1", text: "releases/deallocates memory when no longer needed" },
-      { mark: "A1", text: "benefit such as reliability, stability or efficient RAM use" },
+      { mark: "B1", text: "releases/deallocates memory when no longer needed" },
+      { mark: "B1", text: "benefit such as reliability, stability or efficient RAM use" },
     ],
     strict: [
       "Do not accept file storage management as memory management unless RAM is referenced.",
       "Do not require virtual memory for full credit.",
       "Allow main memory for RAM.",
-      "FT: award benefit mark if allocation and protection are both implied.",
     ],
   },
   {
@@ -155,16 +153,15 @@ const examQuestions = [
     answer: "The operating system provides file management services. It stores the file in a directory/folder structure and records metadata such as file name, type, size, location and timestamps. It provides operations such as create, save, open, move and delete. It can check permissions to decide whether the user may access or modify the file. This allows files to be organised, found and protected.",
     marking: [
       { mark: "B1", text: "identifies file management as the OS role" },
-      { mark: "M1", text: "uses directory/folder structure or file path to organise files" },
+      { mark: "B1", text: "uses directory/folder structure or file path to organise files" },
       { mark: "B1", text: "records valid metadata such as name/type/size/location/date" },
-      { mark: "M1", text: "provides file operations such as save/open/delete/move" },
-      { mark: "A1", text: "checks permissions/access rights or protects files" },
+      { mark: "B1", text: "provides file operations such as save/open/delete/move" },
+      { mark: "B1", text: "checks permissions/access rights or protects files" },
     ],
     strict: [
       "Do not accept memory management alone for saved files.",
       "Do not require all metadata examples; one valid example is enough for B1.",
       "Allow access control for permissions.",
-      "FT: award organisation mark if a clear folder/path idea is described.",
     ],
   },
   {
@@ -175,16 +172,15 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "identifies device management" },
       { mark: "B1", text: "device/printer driver enables communication with specific printer" },
-      { mark: "M1", text: "print queue orders jobs waiting for printer" },
-      { mark: "M1", text: "buffer temporarily stores data due to speed difference" },
+      { mark: "B1", text: "print queue orders jobs waiting for printer" },
+      { mark: "B1", text: "buffer temporarily stores data due to speed difference" },
       { mark: "B1", text: "interrupt/status signal used when printer needs attention/is ready" },
-      { mark: "A1", text: "benefit such as applications continue or shared device access is controlled" },
+      { mark: "B1", text: "benefit such as applications continue or shared device access is controlled" },
     ],
     strict: [
       "Do not accept that the application sends raw commands directly to printer hardware without OS/device support.",
       "Do not require both buffer and queue for all device examples, but this printer scenario supports both.",
       "Allow spooler if clearly described as queuing/managing print jobs.",
-      "FT: award benefit mark if at least two device-management mechanisms are described.",
     ],
   },
   {
@@ -194,17 +190,16 @@ const examQuestions = [
     answer: "Process management controls programs that are running. It schedules CPU time, tracks process states and supports multitasking. Memory management allocates RAM to processes, tracks which memory is in use and protects one process's memory from another. File management organises files and directories, stores metadata, provides operations such as save/open/delete and controls access permissions. They are different OS roles because they manage CPU execution, main memory and stored files respectively.",
     marking: [
       { mark: "B1", text: "process management described as managing running programs/processes" },
-      { mark: "M1", text: "process mechanism such as scheduling CPU time or tracking states" },
+      { mark: "B1", text: "process mechanism such as scheduling CPU time or tracking states" },
       { mark: "B1", text: "memory management described as allocating/protecting RAM/main memory" },
-      { mark: "M1", text: "memory mechanism such as tracking used/free memory or preventing overwrite" },
+      { mark: "B1", text: "memory mechanism such as tracking used/free memory or preventing overwrite" },
       { mark: "B1", text: "file management described as organising/storing/accessing files/directories" },
-      { mark: "A1", text: "clear comparison distinguishing CPU execution, RAM and stored files" },
+      { mark: "B1", text: "distinguishes process management of CPU execution, memory management of RAM and file management of persistent files" },
     ],
     strict: [
       "Do not accept three names with no role explanation.",
       "Do not confuse file storage with RAM for the memory mark.",
       "Allow task management for process management if running-program idea is clear.",
-      "FT: award comparison mark if at least two roles are clearly distinguished.",
     ],
   },
 ];

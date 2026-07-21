@@ -121,8 +121,6 @@ const examQuestions = [
     strict: [
       "Do not merge all three roles into 'they connect to the internet'.",
       "Do not say the access point must be the router; combined home devices are not a reason to blur roles.",
-      "FT may be allowed for a scenario link after a wrong device name, but do not award the identification mark.",
-      "Do not award a mark for a vague answer that does not identify the required technical point.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },

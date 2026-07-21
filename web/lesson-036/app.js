@@ -102,39 +102,36 @@ const practice = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
+    marks: "4 marks",
     prompt: "Complete the truth table for Q = A AND NOT B.",
     answer: "Rows: A B NOT B Q. 00 1 0; 01 0 0; 10 1 1; 11 0 0.",
     marking: [
       { mark: "B1", text: "includes all four input combinations for A and B" },
-      { mark: "M1", text: "adds or implies NOT B column" },
-      { mark: "A1", text: "NOT B values are 1,0,1,0 for B values 0,1,0,1" },
-      { mark: "M1", text: "applies AND between A and NOT B" },
-      { mark: "A1", text: "final Q values are 0,0,1,0 in matching row order" },
+      { mark: "B1", text: "includes a NOT B intermediate column" },
+      { mark: "B1", text: "NOT B values are 1,0,1,0 for B values 0,1,0,1" },
+      { mark: "B1", text: "final Q values are 0,0,1,0 in matching row order" },
     ],
     strict: [
-      "Do not award final A1 if row order is unclear and Q values cannot be matched to inputs.",
+      "Do not award the final output mark if row order is unclear and Q values cannot be matched to inputs.",
       "Allow True/False if consistently mapped to 1/0.",
-      "FT: award method mark for AND if candidate uses their NOT B column consistently.",
+      "Allow FT from the candidate's earlier intermediate logic value only when the final operation is applied correctly.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
+    marks: "4 marks",
     prompt: "Complete the truth table for Q = (A OR B) AND C.",
     answer: "Using rows 000,001,010,011,100,101,110,111: A OR B values are 0,0,1,1,1,1,1,1 and Q values are 0,0,0,1,0,1,0,1.",
     marking: [
       { mark: "B1", text: "all eight input rows for A, B and C are present" },
-      { mark: "M1", text: "adds or uses intermediate column A OR B" },
-      { mark: "A1", text: "A OR B column correct" },
-      { mark: "M1", text: "combines A OR B with C using AND" },
-      { mark: "A1", text: "final Q values correct for at least four rows" },
-      { mark: "A1", text: "all final Q values correct and matched to rows" },
+      { mark: "B1", text: "A OR B intermediate column is correct" },
+      { mark: "B1", text: "final Q values are correct for at least four matching rows" },
+      { mark: "B1", text: "all eight final Q values are correct and matched to rows" },
     ],
     strict: [
       "Do not accept six rows for a three-input table.",
-      "Do not award both final A marks if intermediate column contradicts final Q.",
-      "FT: award final method marks when Q follows candidate's A OR B column with C correctly.",
+      "Do not award both output marks if fewer than four Q values are correct.",
+      "Allow FT from the candidate's earlier intermediate logic value only when the final operation is applied correctly.",
     ],
   },
   {
@@ -151,25 +148,22 @@ const examQuestions = [
     strict: [
       "Do not accept only 'it is easier' without explaining why.",
       "Allow examples such as A AND B or NOT C as intermediate columns.",
-      "FT: award explanation marks even if no specific expression is named.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
+    marks: "3 marks",
     prompt: "For Q = (A XOR B) AND NOT C, find Q when A = 0, B = 1 and C = 0. Show working.",
     answer: "A XOR B = 1 because the inputs differ. NOT C = 1. Q = 1 AND 1 = 1.",
     marking: [
-      { mark: "M1", text: "attempts A XOR B using A=0 and B=1" },
-      { mark: "A1", text: "A XOR B = 1" },
-      { mark: "M1", text: "attempts NOT C using C=0" },
-      { mark: "A1", text: "NOT C = 1" },
-      { mark: "A1", text: "final Q = 1" },
+      { mark: "B1", text: "A XOR B = 1" },
+      { mark: "B1", text: "NOT C = 1" },
+      { mark: "B1", text: "final Q = 1" },
     ],
     strict: [
-      "Do not award XOR A1 if answer treats XOR as OR without considering exactly-one behaviour.",
+      "Do not award XOR answer mark if answer treats XOR as OR without considering exactly-one behaviour.",
       "Allow 'inputs are different' for the XOR explanation.",
-      "FT: award final A1 if candidate correctly ANDs their two intermediate values.",
+      "Allow FT from the candidate's earlier intermediate logic value only when the final operation is applied correctly.",
     ],
   },
   {
@@ -188,7 +182,6 @@ const examQuestions = [
     strict: [
       "Do not award expression mark if brackets are omitted and meaning becomes ambiguous.",
       "Allow alternative variable letters if clearly defined.",
-      "FT: award variable-definition marks even if expression contains a logic error.",
     ],
   },
 ];

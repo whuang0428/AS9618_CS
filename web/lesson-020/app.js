@@ -120,14 +120,13 @@ const examQuestions = [
   },
   {
     title: "Question 4",
-    marks: "4 marks",
+    marks: "3 marks",
     prompt: "Identify the protocol/scheme, domain name and path in the URL https://store.example.com/products/item7.",
     answer: "Protocol/scheme: https. Domain name: store.example.com. Path: /products/item7.",
     marking: [
       { mark: "B1", text: "identifies https as protocol/scheme" },
       { mark: "B1", text: "identifies store.example.com as domain name" },
       { mark: "B1", text: "identifies /products/item7 as path" },
-      { mark: "B1", text: "does not include protocol or path as part of domain name" },
     ],
     strict: [
       "Do not require explanation of HTTPS operation.",

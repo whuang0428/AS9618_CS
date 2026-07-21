@@ -103,7 +103,6 @@ const examQuestions = [
       "Do not award pseudocode style mark for Java-only declarations such as int Count;.",
       "Allow equivalent variable capitalisation if identifiers are clear.",
       "Do not accept CHAR for Name unless only one character is required.",
-      "FT: type marks can follow candidate's equivalent identifiers.",
     ],
   },
   {
@@ -123,12 +122,11 @@ const examQuestions = [
       "Do not award first-element mark for Scores[0] when bounds are 1:30.",
       "Allow another clear array name if consistent.",
       "Do not accept Java new int[30] as the pseudocode declaration.",
-      "FT: assignment mark can follow candidate's declared lower bound.",
     ],
   },
   {
     title: "Question 3",
-    marks: "7 marks",
+    marks: "6 marks",
     prompt: "Define a Cambridge-style record type TBook with fields ISBN, Title and Pages. Choose suitable data types and declare Book1 as TBook.",
     answer: "TYPE TBook\n    DECLARE ISBN : STRING\n    DECLARE Title : STRING\n    DECLARE Pages : INTEGER\nENDTYPE\n\nDECLARE Book1 : TBook",
     marking: [
@@ -136,20 +134,18 @@ const examQuestions = [
       { mark: "B1", text: "declares ISBN as STRING" },
       { mark: "B1", text: "declares Title as STRING" },
       { mark: "B1", text: "declares Pages as INTEGER" },
-      { mark: "M1", text: "uses field declarations inside the record" },
-      { mark: "A1", text: "closes record using ENDTYPE" },
-      { mark: "A1", text: "declares Book1 as TBook" },
+      { mark: "B1", text: "closes record using ENDTYPE" },
+      { mark: "B1", text: "declares Book1 as TBook" },
     ],
     strict: [
       "Do not award record syntax marks for Java class syntax alone.",
       "Allow BookID instead of ISBN only if field meaning remains clear.",
       "Do not accept INTEGER for ISBN if explanation depends on preserving leading zeroes or hyphens.",
-      "FT: Book1 declaration can follow candidate's valid record type name.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
+    marks: "4 marks",
     prompt: "A student writes the pseudocode statement Total = Total + Score to update Total. Explain the weakness and give a corrected statement.",
     answer: "The weakness is that = is normally used for equality checks in pseudocode conditions, so the assignment is unclear. The corrected assignment statement is Total <- Total + Score.",
     marking: [
@@ -157,13 +153,12 @@ const examQuestions = [
       { mark: "M1", text: "explains = can be confused with equality testing in pseudocode" },
       { mark: "A1", text: "uses <- as assignment operator" },
       { mark: "A1", text: "gives corrected Total <- Total + Score" },
-      { mark: "B1", text: "uses clear pseudocode wording" },
     ],
     strict: [
       "Do not award correction mark for Java-style Total += Score;.",
       "Allow explanation that <- stores the new value in Total.",
       "Do not accept only 'syntax is wrong' without stating the assignment issue.",
-      "FT: corrected statement can follow candidate's equivalent variable names.",
+      "Allow an equivalent variable if it is used consistently.",
     ],
   },
   {
@@ -184,7 +179,6 @@ const examQuestions = [
       "Do not require exact identifier capitalisation if meaning is clear.",
       "Allow ARRAY[0:19] only if candidate explicitly chooses zero-based pseudocode bounds consistently.",
       "Do not accept final, double, boolean or String[] as pseudocode type syntax without conversion.",
-      "FT: array type mark can follow candidate's chosen array identifier and bounds.",
     ],
   },
 ];

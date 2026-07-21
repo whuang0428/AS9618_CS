@@ -231,7 +231,6 @@ const examQuestions = [
       "Do not award the SELECT mark for SELECT * unless the required fields are also explicitly identified.",
       "Allow unqualified field names if there is no ambiguity in the candidate answer.",
       "Do not accept Student.StudentID = Loan.LoanID.",
-      "FT: award the method mark for a clear attempted Student-to-Loan join even if table qualification is incomplete.",
     ],
   },
   {
@@ -250,7 +249,6 @@ const examQuestions = [
       "Do not accept a direct join between Student.StudentID and Book.BookID.",
       "Do not require INNER JOIN syntax; comma-style FROM with WHERE join conditions is acceptable.",
       "Allow aliases if they are declared and used consistently.",
-      "FT: final answer mark depends on both relationships being represented.",
     ],
   },
   {
@@ -270,17 +268,14 @@ const examQuestions = [
       "Do not accept Returned = TRUE for current loans in this question.",
       "Do not award the filter method mark if Returned is used as an output field only.",
       "Allow Returned = 0 if the answer clearly treats it as false.",
-      "FT: filter accuracy mark can follow through from a valid join query with minor SELECT error.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
+    marks: "3 marks",
     prompt: "A query uses FROM Student AS S, Loan AS L. Write the join condition linking these aliases and explain why it is needed.",
     answer: "S.StudentID = L.StudentID. It is needed so each loan is matched with the correct student record rather than being combined with unrelated student records.",
     marking: [
-      { mark: "B1", text: "uses alias S for Student" },
-      { mark: "B1", text: "uses alias L for Loan" },
       { mark: "A1", text: "correct condition S.StudentID = L.StudentID" },
       { mark: "M1", text: "explains that the condition matches related records" },
       { mark: "A1", text: "explains consequence of omitting it: unrelated/incorrect combinations" },
@@ -289,7 +284,6 @@ const examQuestions = [
       "Do not accept Student.StudentID = Loan.StudentID if the answer is specifically asked to use aliases, unless aliases are also clearly mapped.",
       "Allow reversed condition L.StudentID = S.StudentID.",
       "Do not award explanation marks for vague claims such as 'it is faster' without relation matching.",
-      "FT: explanation may be credited if the condition has minor syntax error but correct fields are named.",
     ],
   },
   {
@@ -299,17 +293,16 @@ const examQuestions = [
     answer: "The query selects all fields instead of only StudentName and Title. It also joins Student directly to Book using unrelated fields and omits the Loan bridge table. A corrected query is SELECT Student.StudentName, Book.Title FROM Student, Loan, Book WHERE Student.StudentID = Loan.StudentID AND Loan.BookID = Book.BookID;",
     marking: [
       { mark: "B1", text: "identifies SELECT * outputs too many fields" },
-      { mark: "M1", text: "corrects output to StudentName and Title" },
+      { mark: "B1", text: "corrects output to StudentName and Title" },
       { mark: "B1", text: "identifies Student to Book direct join is wrong / Loan bridge is missing" },
-      { mark: "M1", text: "adds Loan table to the query" },
-      { mark: "M1", text: "adds both correct join conditions through Loan" },
-      { mark: "A1", text: "complete corrected query" },
+      { mark: "B1", text: "adds Loan table to the query" },
+      { mark: "B1", text: "adds both correct join conditions through Loan" },
+      { mark: "B1", text: "complete corrected query" },
     ],
     strict: [
       "Do not award the join correction mark for only adding Book.BookID without Loan.BookID.",
       "Allow INNER JOIN syntax if both relationships are correct.",
       "Do not require a semicolon.",
-      "FT: complete query mark requires requested fields and a valid Student-Loan-Book path.",
     ],
   },
 ];

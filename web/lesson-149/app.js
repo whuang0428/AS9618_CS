@@ -142,7 +142,6 @@ const examQuestions = [
       "Do not award condition mark for greater than 50 only; 50 must be included.",
       "Allow clear Cambridge-style pseudocode or structured English.",
       "Do not require exact variable names.",
-      "FT: if loop bounds have a minor error, credit valid counting method where clear.",
     ],
   },
   {
@@ -163,7 +162,6 @@ const examQuestions = [
       "Do not award open-file mark if file is opened for WRITE or APPEND.",
       "Allow record field notation such as ScoreRecord.Score if consistent.",
       "Do not accept outputting every record without condition for the selection mark.",
-      "FT: if EOF loop has a small syntax issue, credit read/condition/output steps if the intent is clear.",
     ],
   },
   {
@@ -184,12 +182,11 @@ const examQuestions = [
       "inclusive means both 0 and 100 are accepted.",
       "Allow WHILE loop if repeated input and stopping condition are correct.",
       "Do not award both boundary marks for vague 'check range' without limits.",
-      "FT: if error message is missing, credit valid loop and boundary logic where present.",
     ],
   },
   {
     title: "Question 4",
-    marks: "8 marks",
+    marks: "7 marks",
     prompt: "Write pseudocode to find the largest value in an array Values[1:20].",
     answer: "Set Largest to Values[1]. Loop Index from 2 to 20. If Values[Index] is greater than Largest, set Largest to Values[Index]. After all values have been checked, output Largest.",
     marking: [
@@ -200,13 +197,11 @@ const examQuestions = [
       { mark: "A1", text: "updates Largest when current value is greater" },
       { mark: "M1", text: "continues until all 20 values have been considered" },
       { mark: "A1", text: "outputs Largest after loop" },
-      { mark: "A1", text: "logic works for negative values as well as positive values" },
     ],
     strict: [
       "Do not award final robustness mark if Largest is initialised to 0 without evidence values are non-negative.",
       "Allow loop from 1 to 20 if initialisation and comparison still produce correct result.",
       "Do not require exact array notation if indexing is clear.",
-      "FT: credit comparison/update logic even with minor loop-bound error.",
     ],
   },
   {
@@ -226,7 +221,6 @@ const examQuestions = [
       "Do not award full marks for 'read it again' without a specific checking method.",
       "Allow checking loop bounds, initialisation or counters as equivalent structural checks.",
       "Do not require file handling point if question clearly has no file, but credit when included as a general timed checklist.",
-      "FT: credit any valid checking step tied to preventing a specific pseudocode error.",
     ],
   },
 ];

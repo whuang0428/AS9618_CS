@@ -123,21 +123,19 @@ const mistakes = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
+    marks: "4 marks",
     prompt: "Describe how a firewall can reduce security risks on a school network.",
     answer: "A firewall filters traffic entering or leaving the network using rules. The rules may inspect source or destination IP address, port number, protocol or connection state. Unwanted traffic, such as unsolicited inbound connections to admin services, can be blocked or logged. This reduces the risk of unauthorised access attempts and provides evidence for investigation, but allowed traffic may still need other controls.",
     marking: [
       { mark: "B1", text: "firewall filters/controls network traffic" },
-      { mark: "M1", text: "rules inspect valid property such as IP/port/protocol/state" },
+      { mark: "B1", text: "rules inspect valid property such as IP/port/protocol/state" },
       { mark: "B1", text: "traffic can be allowed/blocked/rejected/logged" },
-      { mark: "M1", text: "risk reduced linked to unauthorised access/unwanted traffic" },
-      { mark: "A1", text: "valid limitation or need for other controls/logging" },
+      { mark: "B1", text: "risk reduced linked to unauthorised access/unwanted traffic" },
     ],
     strict: [
       "Do not accept 'makes the network secure' without mechanism.",
       "Do not award rule mark for only saying 'checks data' without property.",
       "Allow host-based or network firewall if filtering role is clear.",
-      "FT: award risk mark if blocking unwanted traffic is described.",
     ],
   },
   {
@@ -147,16 +145,15 @@ const examQuestions = [
     answer: "A proxy server acts as an intermediary between a client and a destination server. It can filter web requests by checking URLs, categories or content against a policy and blocking unsuitable requests. It can cache frequently requested resources so later requests can be served faster and use less bandwidth. It can also log requests for audit and investigation.",
     marking: [
       { mark: "B1", text: "proxy described as intermediary between client and destination/server" },
-      { mark: "M1", text: "filtering function described with URL/category/content/policy" },
-      { mark: "A1", text: "filtering consequence such as blocking unsuitable sites/policy enforcement" },
-      { mark: "M1", text: "caching or logging function described" },
-      { mark: "A1", text: "valid consequence of caching/logging such as bandwidth reduction/audit/investigation" },
+      { mark: "B1", text: "filtering function described with URL/category/content/policy" },
+      { mark: "B1", text: "filtering consequence such as blocking unsuitable sites/policy enforcement" },
+      { mark: "B1", text: "caching or logging function described" },
+      { mark: "B1", text: "valid consequence of caching/logging such as bandwidth reduction/audit/investigation" },
     ],
     strict: [
       "Do not accept proxy as only 'a firewall' without intermediary idea.",
       "Do not award caching mark for backing up files.",
       "Allow anonymity/masking internal addresses as an additional valid proxy function.",
-      "FT: award function marks independently.",
     ],
   },
   {
@@ -167,15 +164,14 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "valid monitored item such as traffic volume/source/destination/connections/failed attempts" },
       { mark: "B1", text: "second distinct monitored item" },
-      { mark: "M1", text: "comparison with thresholds/patterns/signatures or unusual behaviour" },
-      { mark: "M1", text: "alerts or notifications generated for staff/response" },
-      { mark: "A1", text: "logs used for investigation/evidence/source/time identification" },
+      { mark: "B1", text: "comparison with thresholds/patterns/signatures or unusual behaviour" },
+      { mark: "B1", text: "alerts or notifications generated for staff/response" },
+      { mark: "B1", text: "logs used for investigation/evidence/source/time identification" },
     ],
     strict: [
       "Do not accept only 'watch the network' without what is monitored.",
       "Do not say monitoring automatically fixes the attack unless response is described.",
       "Allow bandwidth usage, failed login attempts or denied connections as monitored items.",
-      "FT: award investigation mark if log evidence is clear.",
     ],
   },
   {
@@ -185,17 +181,16 @@ const examQuestions = [
     answer: "A firewall filters traffic based on rules, such as source or destination address, port number or protocol. It can allow, block or log traffic at a network boundary or host. A proxy acts as an intermediary between a client and destination server. It can forward requests, filter web access, cache resources and log user requests. Both can reduce risk and provide logs, but neither guarantees safety because misconfiguration or allowed traffic can still cause problems.",
     marking: [
       { mark: "B1", text: "firewall filters traffic using rules" },
-      { mark: "M1", text: "valid firewall rule property or decision, e.g. IP/port/protocol/allow/block/log" },
+      { mark: "B1", text: "valid firewall rule property or decision, e.g. IP/port/protocol/allow/block/log" },
       { mark: "B1", text: "proxy is intermediary between client and destination" },
-      { mark: "M1", text: "valid proxy function such as forward/filter/cache/log" },
+      { mark: "B1", text: "valid proxy function such as forward/filter/cache/log" },
       { mark: "B1", text: "valid similarity such as both reduce risk/control access/log traffic" },
-      { mark: "A1", text: "valid limitation such as misconfiguration/allowed traffic/need for layered controls" },
+      { mark: "B1", text: "valid limitation such as misconfiguration/allowed traffic/need for layered controls" },
     ],
     strict: [
       "Do not make proxy and firewall identical for all marks.",
       "Do not award firewall property for proxy-only web category filtering unless firewall role is stated.",
       "Allow content filtering firewall as extra detail, but proxy intermediary mark must be separate.",
-      "FT: award comparison marks independently.",
     ],
   },
   {
@@ -205,17 +200,17 @@ const examQuestions = [
     answer: "A proxy server can block unsuitable websites by checking requested URLs or categories against the school's policy. The proxy can also cache frequently downloaded resources so repeated downloads use less bandwidth and load faster. Network monitoring can detect unusual traffic spikes by observing traffic volume and comparing it with normal behaviour or thresholds. Alerts and logs can help staff investigate the source and take action.",
     marking: [
       { mark: "B1", text: "proxy recommended for blocking unsuitable websites" },
-      { mark: "M1", text: "proxy filtering mechanism linked to URL/category/policy" },
+      { mark: "B1", text: "proxy filtering mechanism linked to URL/category/policy" },
       { mark: "B1", text: "proxy caching recommended for repeated downloads" },
-      { mark: "M1", text: "caching consequence linked to bandwidth/speed/reduced repeated external requests" },
+      { mark: "B1", text: "caching consequence linked to bandwidth/speed/reduced repeated external requests" },
       { mark: "B1", text: "network monitoring recommended for unusual traffic spikes" },
-      { mark: "A1", text: "monitoring mechanism linked to thresholds/alerts/logs/investigation" },
+      { mark: "B1", text: "monitoring mechanism linked to thresholds/alerts/logs/investigation" },
     ],
     strict: [
       "Do not award caching marks for backup or file storage unrelated to repeated requests.",
       "Do not award monitoring mark for validation of user input.",
       "Allow firewall as additional control, but proxy and monitoring are required by the scenario.",
-      "FT: award each scenario requirement independently.",
+      "Award each scenario requirement independently.",
     ],
   },
 ];

@@ -128,7 +128,6 @@ const examQuestions = [
       "Do not award full marks for Java code copied unchanged.",
       "Allow equivalent variable capitalisation if consistent.",
       "Do not require exact indentation, but the branches must be clear.",
-      "FT: if the condition is copied with correct meaning but minor notation differs, award branch marks where clear.",
     ],
   },
   {
@@ -149,7 +148,6 @@ const examQuestions = [
       "Do not award inclusive end mark if the answer loops only to 4.",
       "Allow Index instead of I if used consistently.",
       "Do not accept Java loop syntax alone as Cambridge pseudocode.",
-      "FT: if the loop variable name changes, array reference marks can follow the candidate's variable.",
     ],
   },
   {
@@ -159,17 +157,16 @@ const examQuestions = [
     answer: "Java is a programming language with language-specific syntax such as braces, semicolons, class wrappers and library calls. Cambridge pseudocode uses readable algorithm keywords such as INPUT, OUTPUT, IF, ENDIF and FUNCTION. Copying Java may obscure the algorithm and may not meet the expected pseudocode conventions.",
     marking: [
       { mark: "B1", text: "states Java has language-specific syntax" },
-      { mark: "A1", text: "gives a suitable Java-specific example such as braces, semicolons, main method or System.out.println" },
+      { mark: "B1", text: "gives a suitable Java-specific example such as braces, semicolons, main method or System.out.println" },
       { mark: "B1", text: "states Cambridge pseudocode uses algorithmic keywords/conventions" },
-      { mark: "A1", text: "gives a suitable pseudocode example such as INPUT, OUTPUT, IF/ENDIF or FUNCTION" },
-      { mark: "M1", text: "explains copied Java may not match the required answer format" },
-      { mark: "A1", text: "links clear pseudocode to communicating the algorithm rather than language syntax" },
+      { mark: "B1", text: "gives a suitable pseudocode example such as INPUT, OUTPUT, IF/ENDIF or FUNCTION" },
+      { mark: "B1", text: "explains copied Java may not match the required answer format" },
+      { mark: "B1", text: "links clear pseudocode to communicating the algorithm rather than language syntax" },
     ],
     strict: [
       "Do not award full marks for saying only 'Java is wrong'.",
       "Allow 'exam standard' or 'Cambridge convention' as wording for required format.",
       "Do not accept claims that Java can never be used for learning; Java is support only here.",
-      "FT: examples may vary if they clearly contrast Java and pseudocode.",
     ],
   },
   {
@@ -190,7 +187,6 @@ const examQuestions = [
       "Do not award final structure mark for Java-only static boolean syntax.",
       "Allow direct RETURN Mark >= 0 AND Mark <= 100 if the function header is clear.",
       "Do not accept OR for the valid range condition.",
-      "FT: return marks can follow candidate's consistent condition where appropriate.",
     ],
   },
   {
@@ -200,17 +196,16 @@ const examQuestions = [
     answer: "The semicolon after OUTPUT Total is a Java/C-style habit and should be removed. The brace after the IF condition is Java-style block syntax. The corrected pseudocode should use IF Mark >= 50 THEN, then OUTPUT \"Pass\", and close with ENDIF.",
     marking: [
       { mark: "B1", text: "identifies semicolon as unnecessary Java/C-style punctuation" },
-      { mark: "A1", text: "corrects output to OUTPUT Total" },
+      { mark: "B1", text: "corrects output to OUTPUT Total" },
       { mark: "B1", text: "identifies brace as Java-style block syntax" },
-      { mark: "A1", text: "uses THEN after IF condition" },
+      { mark: "B1", text: "uses THEN after IF condition" },
       { mark: "B1", text: "keeps OUTPUT Pass in the true branch" },
-      { mark: "A1", text: "closes the IF block with ENDIF or clear equivalent" },
+      { mark: "B1", text: "closes the IF block with ENDIF or clear equivalent" },
     ],
     strict: [
       "Do not penalise harmless capitalisation differences.",
       "Allow removal of semicolon without naming Java if the correction is clear.",
       "Do not award brace correction mark unless a pseudocode block ending is supplied.",
-      "FT: branch marks can follow a corrected condition if the structure is clear.",
     ],
   },
 ];

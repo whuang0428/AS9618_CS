@@ -88,9 +88,9 @@ const examQuestions = [
     prompt: "A school network has 600 users, shared storage and managed user accounts. Explain why a client-server model is suitable.",
     answer: "A client-server model is suitable because the school can centrally manage accounts, permissions and shared files on servers. Backups and updates can also be controlled centrally. This helps maintain security and consistency for many users, although the school must manage server cost and availability.",
     marking: [
-      { mark: "B1", text: "identifies client-server as suitable" },
       { mark: "B1", text: "central management of accounts/permissions" },
       { mark: "B1", text: "central shared storage/backups/updates" },
+      { mark: "B1", text: "consistent access-control or security policies can be applied centrally" },
       { mark: "B1", text: "links to many users / school scenario" },
       { mark: "B1", text: "balanced point such as server cost or server availability" },
     ],
@@ -116,7 +116,6 @@ const examQuestions = [
       "Do not compare by topology shape.",
       "Do not say peer-to-peer is always insecure.",
       "Award points only where linked to the correct model.",
-      "Do not award a mark for a vague answer that does not identify the required technical point.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },

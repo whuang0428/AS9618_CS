@@ -115,7 +115,6 @@ const examQuestions = [
       "Do not accept immediate as simply 'faster' without operand meaning.",
       "Do not accept direct addressing as using operand as the actual data value.",
       "Allow equivalent notation for immediate addressing if clear.",
-      "FT: award direct mark even if immediate example syntax differs.",
     ],
   },
   {
@@ -134,7 +133,7 @@ const examQuestions = [
       "Do not award full marks if answer stops at 70 as the loaded value.",
       "Do not require the term pointer if the two-stage lookup is clear.",
       "Allow bracket notation or words describing indirect addressing.",
-      "FT: if first lookup value is copied incorrectly, award second lookup method if used consistently.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
@@ -153,7 +152,6 @@ const examQuestions = [
       "Do not accept indexed addressing as simply sorting data into an index.",
       "Do not require arrays if another repeated data structure example is valid.",
       "Allow offset instead of index register if calculation is clear.",
-      "FT: award usefulness mark if tied to repeated access even with weak example.",
     ],
   },
   {
@@ -173,7 +171,7 @@ const examQuestions = [
       "Do not award immediate value mark if candidate looks up memory[40].",
       "Do not award indirect final value mark if candidate stops at 88.",
       "Allow equivalent notation for brackets/indirection.",
-      "FT: award each instruction independently.",
+      "Award each instruction independently.",
     ],
   },
   {
@@ -192,7 +190,6 @@ const examQuestions = [
       "Do not accept 'because the CPU chooses randomly' or vague wording.",
       "Do not require indexed addressing for full credit.",
       "Allow 'effective address' wording for direct/indirect distinction.",
-      "FT: award conclusion mark if at least two modes are correctly contrasted.",
     ],
   },
 ];

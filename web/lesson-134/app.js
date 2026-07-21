@@ -139,7 +139,6 @@ const examQuestions = [
       "Do not award Q mark for 3.833 or other real division result.",
       "Allow remainder explanation using 23 = 6 * 3 + 5.",
       "Do not accept MOD as another name for division.",
-      "FT: order mark can follow candidate's Q and R only if both are clearly identified.",
     ],
   },
   {
@@ -159,7 +158,7 @@ const examQuestions = [
       "Do not award hours calculation mark for real division only.",
       "Allow variable names such as WholeHours and RemainingMinutes.",
       "Do not accept Java % alone as Cambridge pseudocode for MOD.",
-      "FT: output mark can follow candidate's equivalent variable names.",
+      "Allow an equivalent variable if it is used consistently.",
     ],
   },
   {
@@ -179,7 +178,6 @@ const examQuestions = [
       "Do not award condition mark for Number DIV 2 = 0.",
       "Allow TRUE/FALSE assignment instead of output if logic is clear.",
       "Do not accept testing only the last digit unless the MOD method is also explained.",
-      "FT: branch marks can follow a candidate's equivalent parity labels.",
     ],
   },
   {
@@ -199,7 +197,7 @@ const examQuestions = [
       "Do not award final mark for 12 or 4 if caused by ignoring precedence.",
       "Allow use of brackets in working if it preserves the original order of operations.",
       "Do not accept a final answer with no working for full marks.",
-      "FT: later arithmetic marks can follow one earlier arithmetic slip if method remains correct.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
@@ -220,7 +218,6 @@ const examQuestions = [
       "Do not award last digit mark for DIV 10.",
       "Allow any clear variable names.",
       "Do not accept string slicing as the intended arithmetic-operator solution unless question allows it.",
-      "FT: output marks can follow candidate's equivalent calculated variables.",
     ],
   },
 ];

@@ -49,7 +49,7 @@ const examQuestions = [
     title: "Question 1",
     marks: "4 marks",
     prompt: "Calculate the size in bytes of a 10-second stereo sound clip sampled at 8000 Hz with 16-bit sample resolution.",
-    answer: "320 000 bytes",
+    answer: "8000 x 16 x 10 x 2 = 2 560 000 bits. 2 560 000 / 8 = 320 000 bytes.",
     marking: [
       { mark: "M1", text: "uses sampling rate 8000 and duration 10 seconds" },
       { mark: "M1", text: "multiplies by 16 bits per sample" },
@@ -66,7 +66,7 @@ const examQuestions = [
     title: "Question 2",
     marks: "3 marks",
     prompt: "Convert 160 000 bytes to KiB.",
-    answer: "156.25 KiB",
+    answer: "1 KiB = 1024 bytes, so 160 000 / 1024 = 156.25 KiB.",
     marking: [
       { mark: "M1", text: "uses 1024 bytes per KiB" },
       { mark: "M1", text: "divides 160 000 by 1024" },
@@ -100,7 +100,7 @@ const examQuestions = [
     title: "Question 4",
     marks: "4 marks",
     prompt: "A 60-second stereo clip is sampled at 44 100 Hz using 16-bit sample resolution. Calculate the uncompressed size in MiB.",
-    answer: "approximately 10.09 MiB",
+    answer: "44 100 x 16 x 60 x 2 = 84 672 000 bits. Divide by 8 to obtain 10 584 000 bytes, then divide by 1 048 576 to obtain approximately 10.09 MiB.",
     marking: [
       { mark: "M1", text: "uses 44 100 × 16 × 60 × 2" },
       { mark: "A1", text: "84 672 000 bits / 10 584 000 bytes" },
@@ -109,9 +109,8 @@ const examQuestions = [
     ],
     strict: [
       "Do not divide by 1000 × 1000 for MiB.",
-      "Allow FT for MiB conversion from candidate's byte value if method is correct.",
       "Answer may be rounded sensibly if working is shown.",
-      "Do not award a mark for a vague answer that does not identify the required technical point.",
+      "Allow FT from the candidate's earlier byte total only when it is subsequently divided by 1 048 576 to obtain MiB.",
     ],
   },
   {

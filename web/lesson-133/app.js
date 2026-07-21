@@ -125,21 +125,19 @@ const mistakes = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
+    marks: "3 marks",
     prompt: "Trace the output.\n\nWord <- \"NETWORK\"\nPart <- LEFT(Word, 3)\nPart <- LCASE(Part)\nOUTPUT Part",
     answer: "LEFT(\"NETWORK\", 3) returns \"NET\". LCASE(\"NET\") returns \"net\". The output is net.",
     marking: [
       { mark: "B1", text: "identifies LEFT(Word, 3) returns NET" },
       { mark: "M1", text: "applies LCASE to NET" },
       { mark: "A1", text: "states final output is net" },
-      { mark: "B1", text: "keeps returned string values in correct order" },
-      { mark: "B1", text: "uses accurate string function terminology" },
     ],
     strict: [
       "Do not award final output mark for NET.",
       "Allow quotation marks around returned strings.",
       "Do not accept Java method syntax alone.",
-      "FT: case conversion mark can follow candidate's LEFT result if LCASE is applied consistently.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
@@ -159,7 +157,6 @@ const examQuestions = [
       "Do not award comparison mark for > 8 because exactly 8 should be accepted.",
       "Allow variable names other than Password if clear.",
       "Do not accept counting only alphabetic letters unless stated in the question.",
-      "FT: output marks can follow candidate's equivalent valid/invalid messages.",
     ],
   },
   {
@@ -179,7 +176,6 @@ const examQuestions = [
       "Do not award MID result mark for M in Java index 4 style.",
       "Allow characters shown with or without quotation marks.",
       "Do not accept a single combined output unless both parts are clearly shown.",
-      "FT: RIGHT mark is independent of any error in MID.",
     ],
   },
   {
@@ -200,12 +196,11 @@ const examQuestions = [
       "Do not award extraction mark for RIGHT(Surname, 3).",
       "Allow conversion before extraction if the final first three letters are lower case.",
       "Do not accept Java String method calls alone as Cambridge pseudocode.",
-      "FT: concatenation mark can follow candidate's equivalent extracted surname part.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
+    marks: "4 marks",
     prompt: "A candidate writes Part <- Word.substring(0, 3) in a Cambridge pseudocode answer. Explain the problem and give a corrected Cambridge-style expression.",
     answer: "The problem is that substring(0, 3) is Java-style method syntax and uses zero-based indexes. Cambridge-style pseudocode should use a clear string function such as Part <- LEFT(Word, 3) to get the first three characters.",
     marking: [
@@ -213,14 +208,12 @@ const examQuestions = [
       { mark: "M1", text: "explains Java indexes start at 0 or differ from the course pseudocode position convention" },
       { mark: "M1", text: "states the intended result is the first three characters" },
       { mark: "A1", text: "gives corrected expression using LEFT(Word, 3) or equivalent" },
-      { mark: "B1", text: "uses assignment to Part or otherwise stores/uses the returned value" },
-      { mark: "B1", text: "keeps explanation focused on pseudocode format and returned value" },
     ],
     strict: [
       "Do not award correction mark for another Java expression.",
       "Allow MID(Word, 1, 3) as an equivalent Cambridge-style correction.",
       "Do not accept only 'syntax error' without explaining the pseudocode/Java difference.",
-      "FT: assignment mark can follow candidate's equivalent variable name.",
+      "Allow an equivalent variable if it is used consistently.",
     ],
   },
 ];

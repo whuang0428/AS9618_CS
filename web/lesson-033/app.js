@@ -74,20 +74,18 @@ const practice = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
+    marks: "3 marks",
     prompt: "Define an embedded system and give one example.",
     answer: "An embedded system is a computer system built into a larger device and designed to perform a specific task or set of tasks. An example is the control system inside a washing machine, traffic light controller, microwave oven or automatic door.",
     marking: [
       { mark: "B1", text: "computer/control system built into a larger device" },
       { mark: "B1", text: "designed for a specific/dedicated task" },
       { mark: "B1", text: "valid embedded-system example" },
-      { mark: "B1", text: "example linked to a control or device function" },
     ],
     strict: [
       "Do not accept only 'a small computer' for full definition credit.",
       "Do not accept a general-purpose laptop/desktop as the example unless embedded in a larger control system.",
       "Allow examples such as car engine control, washing machine, microwave, traffic lights or thermostat.",
-      "FT: if definition is weak, still award valid example marks where appropriate.",
     ],
   },
   {
@@ -106,7 +104,6 @@ const examQuestions = [
       "Do not award actuator mark if answer says the sensor turns the fan on by itself.",
       "Do not require actual code or a numeric threshold.",
       "Allow processor/controller in place of microcontroller if role is clear.",
-      "FT: award later loop marks if the initial sensor/process roles are clear.",
     ],
   },
   {
@@ -124,7 +121,6 @@ const examQuestions = [
       "Do not accept 'sensor acts' unless action role is assigned to an actuator.",
       "Do not accept 'actuator measures' as its main role.",
       "Allow examples such as motor, valve, fan, heater, lock or brake.",
-      "FT: award example-based marks if input/output role is clear.",
     ],
   },
   {
@@ -143,7 +139,6 @@ const examQuestions = [
       "Do not award full credit for only listing sensor and motor.",
       "Do not say the sensor opens the door without controller/actuator roles.",
       "Allow safety sensor/light beam if linked to safe closing.",
-      "FT: award valid sequence marks even if terminology is not perfect.",
     ],
   },
   {
@@ -162,7 +157,6 @@ const examQuestions = [
       "Do not accept only size comparison such as 'embedded is smaller'.",
       "Do not require all microcontroller details for the hardware mark.",
       "Allow named examples if they support the comparison.",
-      "FT: award comparison marks where contrast is explicit.",
     ],
   },
 ];

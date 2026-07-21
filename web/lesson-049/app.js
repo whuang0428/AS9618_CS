@@ -113,16 +113,15 @@ const examQuestions = [
     answer: "Clock speed is the number of clock cycles per second. A higher clock speed can allow more instruction-cycle steps to be performed per second, which may improve performance. However, CPUs may have different architectures and may do different amounts of work per cycle. Performance may also be limited by memory access, cache misses, cores or the type of workload, so clock speed alone does not guarantee a faster computer.",
     marking: [
       { mark: "B1", text: "clock speed is cycles per second / frequency of the processor clock" },
-      { mark: "M1", text: "higher clock speed can allow more instruction-cycle steps/instructions to be processed per second" },
+      { mark: "B1", text: "higher clock speed can allow more instruction-cycle steps/instructions to be processed per second" },
       { mark: "B1", text: "identifies architecture/work per cycle as another factor" },
       { mark: "B1", text: "identifies a valid bottleneck such as memory/cache/I/O/workload" },
-      { mark: "A1", text: "concludes that clock speed alone does not guarantee overall faster performance" },
+      { mark: "B1", text: "concludes that clock speed alone does not guarantee overall faster performance" },
     ],
     strict: [
       "Do not accept 'clock speed is how fast the computer is' as a definition.",
       "Do not award full marks for vague 'other things matter' without naming a factor.",
       "Allow Hz/GHz as evidence of cycles per second.",
-      "FT: award conclusion if at least one valid limiting factor is explained.",
     ],
   },
   {
@@ -132,15 +131,14 @@ const examQuestions = [
     answer: "More cores provide more independent processing units, so different tasks or threads can be executed in parallel. This can improve performance when software can divide the work, such as video export or several programs running at once. It may not improve a single-threaded program much because that program cannot make full use of the extra cores.",
     marking: [
       { mark: "B1", text: "cores are independent processing units / can execute instructions independently" },
-      { mark: "M1", text: "more cores can allow parallel execution of tasks/threads" },
+      { mark: "B1", text: "more cores can allow parallel execution of tasks/threads" },
       { mark: "B1", text: "valid scenario where parallelism helps" },
-      { mark: "A1", text: "explains limitation for single-threaded or non-parallelisable software" },
+      { mark: "B1", text: "explains limitation for single-threaded or non-parallelisable software" },
     ],
     strict: [
       "Do not accept 'more cores always means faster' for the limitation mark.",
       "Do not require the word thread if independent tasks are clearly described.",
       "Allow multitasking as a valid scenario.",
-      "FT: award parallelism mark even if the example is weak but technically possible.",
     ],
   },
   {
@@ -151,15 +149,14 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "cache is small fast memory close to/inside the CPU" },
       { mark: "B1", text: "stores frequently/recently used data or instructions" },
-      { mark: "M1", text: "cache hit means requested item is found in cache" },
-      { mark: "A1", text: "access from cache is faster than from main memory / reduces waiting time" },
+      { mark: "B1", text: "cache hit means requested item is found in cache" },
+      { mark: "B1", text: "access from cache is faster than from main memory / reduces waiting time" },
       { mark: "B1", text: "cache miss requires access to slower main memory" },
     ],
     strict: [
       "Do not accept cache as permanent backing storage.",
       "Do not accept 'cache increases RAM size' as a benefit.",
       "Allow 'locality' only if linked to repeated/frequent access.",
-      "FT: award speed benefit if cache hit idea is clearly implied.",
     ],
   },
   {
@@ -169,15 +166,14 @@ const examQuestions = [
     answer: "Word length is the number of bits the CPU can process as a unit. A longer word can allow larger data values or more bits to be processed in a single operation. This may improve performance for calculations or data types that benefit from the larger word. However, longer word length does not make all programs faster because the workload and architecture must be able to use it.",
     marking: [
       { mark: "B1", text: "word length is the number of bits processed as a unit / in a word/register" },
-      { mark: "M1", text: "larger word can process more bits or larger operands in one operation" },
+      { mark: "B1", text: "larger word can process more bits or larger operands in one operation" },
       { mark: "B1", text: "valid benefit such as larger values, precision or fewer operations for suitable data" },
-      { mark: "A1", text: "recognises limitation that not all programs/workloads benefit" },
+      { mark: "B1", text: "recognises limitation that not all programs/workloads benefit" },
     ],
     strict: [
       "Do not accept word length as number of characters in a password or source-code word.",
       "Do not award limitation if answer says longer word is always faster.",
       "Allow reference to addressable memory only if linked to architecture/address size.",
-      "FT: award benefit mark if the meaning of word length is clear from context.",
     ],
   },
   {
@@ -187,17 +183,16 @@ const examQuestions = [
     answer: "A higher clock speed can improve performance because the CPU can perform more clock cycles per second. However, this alone is not enough to prove Computer A is faster. Computer B may have more cores and perform better on parallel tasks, a larger or more effective cache reducing main-memory access time, or a word length better suited to the workload. The actual performance depends on the program, CPU architecture and bottlenecks such as memory or I/O, so the statement is too simplistic.",
     marking: [
       { mark: "B1", text: "higher clock speed can improve performance through more cycles per second" },
-      { mark: "M1", text: "states that clock speed alone is insufficient for judging performance" },
+      { mark: "B1", text: "states that clock speed alone is insufficient for judging performance" },
       { mark: "B1", text: "explains relevance of cores for parallel/multitasking workloads" },
       { mark: "B1", text: "explains relevance of cache reducing memory access time" },
       { mark: "B1", text: "explains relevance of word length or CPU architecture/workload" },
-      { mark: "A1", text: "reasoned conclusion that actual performance depends on task and bottlenecks" },
+      { mark: "B1", text: "reasoned conclusion that actual performance depends on task and bottlenecks" },
     ],
     strict: [
       "Do not accept a list of factors without linking at least one to performance.",
       "Do not award conclusion if it only repeats 'A is faster'.",
       "Allow other valid factors if tied to the scenario.",
-      "FT: award discussion marks for Computer B advantages even if Computer A's clock speed is described weakly.",
     ],
   },
 ];

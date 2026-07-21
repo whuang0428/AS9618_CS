@@ -177,27 +177,24 @@ const mistakes = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "6 marks",
+    marks: "4 marks",
     prompt: "A school stores library loans in one flat file. StudentName, TutorGroup and BookTitle are repeated for every loan. Explain two advantages of using a relational database design instead.",
     answer: "Student data can be stored once in a Student table and linked to Loan using StudentID, reducing duplication. If a tutor group changes, only one Student record needs updating, reducing inconsistency. Book data can also be stored once in a Book table and linked using BookID, so each loan references the correct book without repeating all book details.",
     marking: [
       { mark: "B1", text: "identifies reduced data duplication" },
-      { mark: "A1", text: "applies duplication to repeated student/book details" },
+      { mark: "B1", text: "applies duplication to repeated student/book details" },
       { mark: "B1", text: "identifies reduced update inconsistency / easier update" },
-      { mark: "A1", text: "explains single update reduces conflicting copies" },
-      { mark: "M1", text: "describes use of related tables with keys" },
-      { mark: "A1", text: "uses suitable key example such as StudentID or BookID linking Loan" },
+      { mark: "B1", text: "explains single update reduces conflicting copies" },
     ],
     strict: [
       "Do not award full credit for vague 'more efficient' without cause and consequence.",
       "Allow reduced storage if linked to less repeated data.",
       "Do not accept 'primary keys stop duplication' unless table separation or relationship is explained.",
-      "FT: key example can follow through from any sensible entity names.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
+    marks: "4 marks",
     prompt: "The Book table has fields BookID, Title, Category and Copies. Write an SQL query to output each Category and the total number of Copies in that category.",
     answer: "SELECT Category, SUM(Copies) FROM Book GROUP BY Category;",
     marking: [
@@ -205,13 +202,11 @@ const examQuestions = [
       { mark: "B1", text: "uses SUM(Copies)" },
       { mark: "B1", text: "FROM Book" },
       { mark: "M1", text: "GROUP BY Category" },
-      { mark: "A1", text: "complete grouped aggregate query" },
     ],
     strict: [
       "Do not accept COUNT(Copies) for total copies.",
       "Do not award GROUP BY mark for ORDER BY Category.",
       "Allow field order SUM(Copies), Category unless output order is specified.",
-      "FT: final mark can follow through from a valid alternative numeric field if grouping is correct.",
     ],
   },
   {
@@ -231,7 +226,6 @@ const examQuestions = [
       "Do not accept direct join Student.StudentID = Book.BookID.",
       "Allow INNER JOIN syntax if relationships and filter are correct.",
       "Do not require semicolon.",
-      "FT: filter mark can be awarded if joins are mostly correct and Returned condition is clear.",
     ],
   },
   {
@@ -244,34 +238,29 @@ const examQuestions = [
       { mark: "B1", text: "gives valid validation example" },
       { mark: "B1", text: "defines verification as source/copying check" },
       { mark: "B1", text: "gives valid verification example" },
-      { mark: "A1", text: "states limitation: neither proves real-world truth / both only reduce errors" },
+      { mark: "B1", text: "states limitation: neither proves real-world truth / both only reduce errors" },
     ],
     strict: [
       "Do not award example marks if both examples are validation checks.",
       "Allow double entry as a verification method.",
       "Do not accept 'verification is security' as a valid distinction.",
-      "FT: limitation mark can be awarded if distinction is mostly correct.",
     ],
   },
   {
     title: "Question 5",
-    marks: "7 marks",
+    marks: "4 marks",
     prompt: "A student writes: SELECT * FROM Book GROUP BY Category; for the request 'output each Category and the number of books in that category'. Identify and correct the errors.",
     answer: "SELECT * outputs all fields instead of only Category and the count. GROUP BY Category groups the records but an aggregate function is missing. A corrected query is SELECT Category, COUNT(*) FROM Book GROUP BY Category;",
     marking: [
       { mark: "B1", text: "identifies SELECT * outputs too many / wrong fields" },
       { mark: "B1", text: "identifies missing COUNT aggregate" },
-      { mark: "B1", text: "retains Category as output group label" },
-      { mark: "M1", text: "uses COUNT(*) or valid count aggregate" },
-      { mark: "B1", text: "retains FROM Book" },
-      { mark: "M1", text: "retains/uses GROUP BY Category correctly" },
-      { mark: "A1", text: "complete corrected query" },
+      { mark: "B1", text: "corrects output to Category and COUNT(*) or another valid count aggregate" },
+      { mark: "B1", text: "complete corrected query retains FROM Book and GROUP BY Category" },
     ],
     strict: [
       "Do not award count mark for SUM(Copies), because the request asks for number of books.",
       "Allow COUNT(BookID) if BookID is a non-null key field.",
       "Do not require a semicolon.",
-      "FT: final mark depends on a count aggregate and grouping by Category.",
     ],
   },
 ];

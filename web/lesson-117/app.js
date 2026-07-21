@@ -125,7 +125,6 @@ const examQuestions = [
       "Do not award condition mark for IF Scores >= 50 without index.",
       "Allow > 49 as equivalent condition.",
       "Do not award final output mark if only running counts are output inside the loop.",
-      "FT: output mark can follow from candidate's count variable.",
     ],
   },
   {
@@ -146,7 +145,6 @@ const examQuestions = [
       "Award values in iteration order.",
       "Allow trace table format.",
       "Do not award final mark if 49 is counted as passing.",
-      "FT: later count values may follow from one earlier condition slip if consistent.",
     ],
   },
   {
@@ -168,12 +166,11 @@ const examQuestions = [
       "Do not award comparison mark for comparing Codes without an index.",
       "Allow early exit if logic remains correct.",
       "Do not require exact output strings if meaning is clear.",
-      "FT: final output can follow from candidate's flag variable.",
     ],
   },
   {
     title: "Question 4",
-    marks: "7 marks",
+    marks: "6 marks",
     prompt: "Write pseudocode to add 5 to every value in Marks[1:10] that is below 40.",
     answer: "FOR Index <- 1 TO 10\n    IF Marks[Index] < 40 THEN\n        Marks[Index] <- Marks[Index] + 5\n    ENDIF\nNEXT Index",
     marking: [
@@ -183,33 +180,30 @@ const examQuestions = [
       { mark: "A1", text: "updates the same indexed element" },
       { mark: "A1", text: "adds 5 to existing value, not replaces with 5" },
       { mark: "B1", text: "does not change values that are 40 or above" },
-      { mark: "B1", text: "uses clear Cambridge-style loop and assignment syntax" },
     ],
     strict: [
       "Do not award update mark if assignment is Marks[Index] <- 5.",
       "Allow <= 39 for integer marks.",
       "Do not award condition mark if the whole array is compared.",
-      "FT: syntax mark can follow from equivalent valid loop variable names.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "A student initialises Count <- 0 inside the loop used to count negative values in Data[1:50]. Explain the error and correct it.",
     answer: "The error is that Count is reset to 0 on every iteration, so previous negative values that were counted are lost. Count should be initialised once before the loop. Inside the loop, the algorithm should test Data[Index] < 0 and increment Count only when that condition is true.",
     marking: [
       { mark: "B1", text: "identifies Count is reset each iteration" },
-      { mark: "M1", text: "explains previous count is lost" },
+      { mark: "B1", text: "explains previous count is lost" },
       { mark: "B1", text: "states Count should be initialised before the loop" },
-      { mark: "M1", text: "uses indexed condition Data[Index] < 0" },
-      { mark: "A1", text: "increments Count only when condition is true" },
-      { mark: "A1", text: "clear corrected algorithm logic" },
+      { mark: "B1", text: "uses indexed condition Data[Index] < 0" },
+      { mark: "B1", text: "increments Count only when condition is true" },
     ],
     strict: [
       "Do not accept only 'it is in the wrong place' without explaining reset/loss.",
       "Allow negative test phrased as less than zero.",
       "Do not award indexed condition mark for testing Data without index.",
-      "FT: correction may follow candidate's equivalent counter name.",
+      "Allow an equivalent counter if it is used consistently.",
     ],
   },
 ];

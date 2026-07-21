@@ -104,7 +104,6 @@ const examQuestions = [
       "Do not accept iteration for area unless repeated calculations are stated.",
       "Allow loop for iteration.",
       "Do not require the word nested if the combined structure is clear.",
-      "FT: accept candidate's structure if the stated task has been reasonably reinterpreted.",
     ],
   },
   {
@@ -124,7 +123,6 @@ const examQuestions = [
       "Do not award style mark for Java-only syntax.",
       "Allow Mark > 49 if integer marks are implied.",
       "Do not require exact output wording if meaning is equivalent.",
-      "FT: branch output marks can follow from candidate's stated condition.",
     ],
   },
   {
@@ -144,27 +142,24 @@ const examQuestions = [
       "Do not award full credit if Total is reset inside the loop.",
       "Allow WHILE with a correctly updated counter.",
       "Do not require exact variable names.",
-      "FT: output mark can follow from candidate's total variable.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "A program inputs five marks and counts how many are at least 50. Explain how sequence, selection and iteration are all used.",
     answer: "Sequence is used to initialise PassCount before the loop and to output the final count after the loop. Iteration is used because five marks are input and processed using repeated steps. Selection is used inside the loop to test whether each Mark is at least 50; if true, PassCount is increased.",
     marking: [
       { mark: "B1", text: "identifies initialisation/output as sequence" },
       { mark: "B1", text: "identifies repeated processing of five marks as iteration" },
       { mark: "B1", text: "identifies Mark >= 50 test as selection" },
-      { mark: "M1", text: "explains selection occurs inside the loop" },
-      { mark: "M1", text: "explains PassCount is updated only when condition is true" },
-      { mark: "A1", text: "uses the mark-counting context clearly" },
+      { mark: "B1", text: "explains selection occurs inside the loop" },
+      { mark: "B1", text: "explains PassCount is updated only when condition is true" },
     ],
     strict: [
       "Do not accept generic definitions only; answer must refer to this problem.",
       "Allow CountPasses or similar variable names.",
       "Do not require full pseudocode.",
-      "FT: update explanation can follow from candidate's condition.",
     ],
   },
   {
@@ -174,16 +169,15 @@ const examQuestions = [
     answer: "If Count is not updated in a WHILE loop, the loop condition may never become false, causing an infinite loop or incorrect number of repetitions. Since exactly five repetitions are required, a FOR Count <- 1 TO 5 ... NEXT Count loop is safer and clearer.",
     marking: [
       { mark: "B1", text: "identifies missing Count update" },
-      { mark: "M1", text: "explains condition may never become false / infinite loop risk" },
+      { mark: "B1", text: "explains condition may never become false / infinite loop risk" },
       { mark: "B1", text: "recognises five repetitions are known in advance" },
       { mark: "B1", text: "suggests FOR loop / count-controlled loop" },
-      { mark: "A1", text: "gives clear Cambridge-style FOR...TO...NEXT idea" },
+      { mark: "B1", text: "gives clear Cambridge-style FOR...TO...NEXT idea" },
     ],
     strict: [
       "Do not accept only 'WHILE is wrong' without explanation.",
       "Allow WHILE as a possible solution if Count is correctly updated, but safer structure must be count-controlled.",
       "Do not require complete pseudocode.",
-      "FT: infinite-loop explanation can follow from candidate's condition.",
     ],
   },
 ];

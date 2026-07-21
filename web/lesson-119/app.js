@@ -86,7 +86,7 @@ const mistakes = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "7 marks",
+    marks: "6 marks",
     prompt: "A school stores 30 students. Each student has Name, Mark and Enrolled fields. Define a suitable record type and declare an array to store all 30 students.",
     answer: "TYPE TStudent\n    DECLARE Name : STRING\n    DECLARE Mark : INTEGER\n    DECLARE Enrolled : BOOLEAN\nENDTYPE\n\nDECLARE Students : ARRAY[1:30] OF TStudent",
     marking: [
@@ -94,20 +94,18 @@ const examQuestions = [
       { mark: "B1", text: "declares Name as STRING" },
       { mark: "B1", text: "declares Mark as INTEGER or suitable numeric type" },
       { mark: "B1", text: "declares Enrolled as BOOLEAN" },
-      { mark: "M1", text: "declares an array with suitable bounds for 30 students" },
-      { mark: "M1", text: "uses the record type as the array element type" },
-      { mark: "A1", text: "uses clear Cambridge-style pseudocode syntax" },
+      { mark: "B1", text: "declares an array with suitable bounds for 30 students" },
+      { mark: "B1", text: "uses the record type as the array element type" },
     ],
     strict: [
       "Do not award the array-of-records mark for three separate arrays only.",
       "Allow equivalent field names if meaning is clear.",
       "Do not accept ARRAY[1:30] OF STRING as it cannot store all fields with suitable types.",
-      "FT: array declaration marks can follow from a candidate's valid record type name.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "Write pseudocode to output the names of all students whose Mark is 70 or more.",
     answer: "FOR Index <- 1 TO 30\n    IF Students[Index].Mark >= 70 THEN\n        OUTPUT Students[Index].Name\n    ENDIF\nNEXT Index",
     marking: [
@@ -116,18 +114,16 @@ const examQuestions = [
       { mark: "A1", text: "uses correct comparison with 70 or more" },
       { mark: "M1", text: "outputs the Name field from the same indexed record" },
       { mark: "A1", text: "places output inside the IF condition" },
-      { mark: "B1", text: "uses clear loop termination such as NEXT Index" },
     ],
     strict: [
       "Do not award field-access marks for Students.Mark[Index].",
       "Allow > 69 as equivalent to >= 70 for integer marks.",
       "Do not award full marks if the code outputs every name regardless of mark.",
-      "FT: output field mark can follow from candidate's chosen loop variable.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "Write pseudocode to count the number of students where Enrolled is TRUE, then output the count.",
     answer: "Count <- 0\nFOR Index <- 1 TO 30\n    IF Students[Index].Enrolled = TRUE THEN\n        Count <- Count + 1\n    ENDIF\nNEXT Index\nOUTPUT Count",
     marking: [
@@ -136,33 +132,29 @@ const examQuestions = [
       { mark: "M1", text: "tests the Enrolled field of the current indexed record" },
       { mark: "A1", text: "increments Count only when the condition is met" },
       { mark: "B1", text: "outputs Count after the loop" },
-      { mark: "A1", text: "uses consistent variable names and bounds" },
     ],
     strict: [
       "Do not award initialisation mark if Count is reset inside the loop.",
       "Allow IF Students[Index].Enrolled THEN if Boolean syntax is otherwise clear.",
       "Do not accept counting Name or Mark field instead of Enrolled.",
-      "FT: loop and output marks can follow an alternative suitable array identifier.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "A student writes Students.Name[Index] <- \"Ali\". Explain the error and give the corrected assignment for record 5.",
     answer: "The error is that the array index must select one record before a field is accessed. Students.Name[Index] treats Name like an array field. The corrected assignment is Students[5].Name <- \"Ali\".",
     marking: [
       { mark: "B1", text: "identifies Students is an array of records" },
-      { mark: "M1", text: "explains the index must select an array element / record first" },
-      { mark: "A1", text: "explains the field is accessed after the indexed record" },
+      { mark: "B1", text: "explains the index must select an array element / record first" },
+      { mark: "B1", text: "explains the field is accessed after the indexed record" },
       { mark: "B1", text: "gives corrected Students[5].Name access" },
-      { mark: "A1", text: "assigns Ali to the Name field" },
-      { mark: "B1", text: "uses clear assignment syntax" },
+      { mark: "B1", text: "assigns Ali to the Name field" },
     ],
     strict: [
       "Do not award correction mark for Students[Name].5 or Students.Name[5].",
       "Allow another valid record index only if the answer also explicitly addresses record 5.",
       "Do not accept only 'syntax is wrong' without explaining order of access.",
-      "FT: corrected statement can follow candidate's array identifier.",
     ],
   },
   {
@@ -183,7 +175,6 @@ const examQuestions = [
       "Do not award update mark for changing every student's mark.",
       "Allow early loop exit if logically correct and clearly shown.",
       "Do not accept searching Students[Index] without naming the Name field.",
-      "FT: Found logic marks can follow a candidate's equivalent Boolean flag.",
     ],
   },
 ];

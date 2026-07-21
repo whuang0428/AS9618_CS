@@ -109,21 +109,19 @@ const mistakes = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
+    marks: "3 marks",
     prompt: "Define confidentiality, integrity and availability.",
     answer: "Confidentiality means data is only accessible to authorised users and is protected from unauthorised viewing. Integrity means data remains accurate, complete and protected from unauthorised or accidental alteration. Availability means data or services are accessible to authorised users when required. These goals protect different aspects of a system, so the control must match the risk.",
     marking: [
       { mark: "B1", text: "confidentiality linked to authorised access / preventing unauthorised viewing" },
       { mark: "B1", text: "integrity linked to accuracy/completeness/no unauthorised alteration" },
       { mark: "B1", text: "availability linked to authorised users accessing data/services when needed" },
-      { mark: "M1", text: "clear distinction between at least two goals" },
-      { mark: "A1", text: "control must match risk/security goal or valid example" },
     ],
     strict: [
       "Do not accept 'confidentiality means secure' without access/viewing idea.",
       "Do not accept integrity as secrecy.",
       "Allow accessible/usable when needed for availability.",
-      "FT: award each definition independently.",
+      "Award each definition independently.",
     ],
   },
   {
@@ -133,17 +131,16 @@ const examQuestions = [
     answer: "One risk is that an unauthorised user views exam marks. A suitable control is access rights with strong authentication, so only authorised staff can view the records; this protects confidentiality. Another risk is that marks are changed accidentally or without permission. A suitable control is validation, restricted edit permissions or an audit trail; this protects integrity because it prevents, detects or records incorrect changes.",
     marking: [
       { mark: "B1", text: "valid risk to exam marks such as unauthorised viewing" },
-      { mark: "M1", text: "suitable control for first risk such as access rights/authentication/encryption" },
-      { mark: "A1", text: "first control linked to confidentiality with reason" },
+      { mark: "B1", text: "suitable control for first risk such as access rights/authentication/encryption" },
+      { mark: "B1", text: "first control linked to confidentiality with reason" },
       { mark: "B1", text: "second distinct valid risk such as unauthorised/incorrect alteration or loss of access" },
-      { mark: "M1", text: "suitable control for second risk such as validation/audit trail/backup/restricted permissions" },
-      { mark: "A1", text: "second control linked to correct goal such as integrity or availability with reason" },
+      { mark: "B1", text: "suitable control for second risk such as validation/audit trail/backup/restricted permissions" },
+      { mark: "B1", text: "second control linked to correct goal such as integrity or availability with reason" },
     ],
     strict: [
       "Do not award both risk marks for repeated wording of the same risk.",
       "Do not accept a control without linking it to the stated risk.",
       "Allow backups for availability if the second risk is data loss or service failure.",
-      "FT: if a different school-data asset is used, award if the risk/control/goal link is valid.",
     ],
   },
   {
@@ -153,34 +150,31 @@ const examQuestions = [
     answer: "Encryption converts plaintext into ciphertext so unauthorised users cannot read the data without the key, so it mainly protects confidentiality. It does not by itself ensure that data is available after a disk failure, so backups or redundancy may be needed. It also does not prove that data has not been changed unless combined with other checks such as hashes or digital signatures. Therefore the control must match the security goal in the scenario.",
     marking: [
       { mark: "B1", text: "encryption described as plaintext to ciphertext / unreadable without key" },
-      { mark: "M1", text: "confidentiality identified as main goal protected" },
+      { mark: "B1", text: "confidentiality identified as main goal protected" },
       { mark: "B1", text: "valid risk not solved by encryption such as availability after failure or weak permissions" },
-      { mark: "A1", text: "suitable alternative goal/control or conclusion that control must match risk" },
+      { mark: "B1", text: "suitable alternative goal/control or conclusion that control must match risk" },
     ],
     strict: [
       "Do not accept 'encryption is bad' as a limitation.",
       "Do not require technical encryption algorithm detail.",
       "Allow 'does not restore data' for availability limitation.",
-      "FT: award alternative-control mark if the example is technically valid.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
+    marks: "4 marks",
     prompt: "Describe authenticity and explain one control that can support it.",
     answer: "Authenticity means that the identity of a user, device, message, website or file origin can be verified as genuine. A digital certificate can support authenticity by helping a browser verify that a website is associated with the claimed organisation. Multi-factor authentication can also support authenticity by requiring more than one form of evidence before accepting a user's identity. This reduces impersonation risk.",
     marking: [
       { mark: "B1", text: "authenticity linked to identity/origin being genuine" },
-      { mark: "M1", text: "valid object of verification such as user, website, message, file or device" },
       { mark: "B1", text: "valid control such as digital certificate/digital signature/MFA/authentication" },
-      { mark: "M1", text: "mechanism of control explained, e.g. verifies claimed identity/source or uses multiple factors" },
-      { mark: "A1", text: "consequence such as reducing impersonation/spoofing/fake-source risk" },
+      { mark: "B1", text: "mechanism of control explained, e.g. verifies claimed identity/source or uses multiple factors" },
+      { mark: "B1", text: "consequence such as reducing impersonation/spoofing/fake-source risk" },
     ],
     strict: [
       "Do not accept 'authenticity means password' without verification idea.",
       "Do not require both certificate and MFA; one valid control is enough.",
       "Allow authentication process if linked to authenticity goal.",
-      "FT: award control mechanism if the goal definition is weak but example is valid.",
     ],
   },
   {
@@ -190,17 +184,17 @@ const examQuestions = [
     answer: "Customer records read by an unauthorised employee is a confidentiality issue because private data is accessed by someone who should not view it. Stock values altered incorrectly is an integrity issue because the accuracy and correctness of the data has been damaged. A website offline during a sale is an availability issue because authorised customers or staff cannot access the service when required.",
     marking: [
       { mark: "B1", text: "unauthorised reading classified as confidentiality" },
-      { mark: "M1", text: "confidentiality justification linked to unauthorised access/viewing of private data" },
+      { mark: "B1", text: "confidentiality justification linked to unauthorised access/viewing of private data" },
       { mark: "B1", text: "incorrect stock alteration classified as integrity" },
-      { mark: "M1", text: "integrity justification linked to accuracy/correctness/unauthorised alteration" },
+      { mark: "B1", text: "integrity justification linked to accuracy/correctness/unauthorised alteration" },
       { mark: "B1", text: "offline website classified as availability" },
-      { mark: "A1", text: "availability justification linked to authorised users unable to access service when needed" },
+      { mark: "B1", text: "availability justification linked to authorised users unable to access service when needed" },
     ],
     strict: [
       "Do not award justification mark for repeating only the goal name.",
       "Do not classify altered stock as confidentiality unless viewing is the stated harm.",
       "Allow service unavailable for offline website.",
-      "FT: award each scenario independently.",
+      "Award each scenario independently.",
     ],
   },
 ];

@@ -81,8 +81,8 @@ const examQuestions = [
     ],
     strict: [
       "Do not award final A1 if the unit is missing or incorrect.",
-      "Allow FT for division by 8 from an incorrect bits total if the method is clear.",
       "Do not include metadata unless stated in the question.",
+      "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
     ],
   },
   {
@@ -98,9 +98,7 @@ const examQuestions = [
     ],
     strict: [
       "Do not divide by 8 because the question asks for bits.",
-      "Allow FT for arithmetic error after correct substitution.",
       "Do not confuse sample resolution with sampling rate.",
-      "Do not award a mark for a vague answer that does not identify the required technical point.",
     ],
   },
   {
@@ -115,7 +113,6 @@ const examQuestions = [
     ],
     strict: [
       "Do not accept 10110101 as denary.",
-      "Allow FT from one place-value error only if method is visible.",
       "No sign bit is involved because the question says unsigned.",
     ],
   },

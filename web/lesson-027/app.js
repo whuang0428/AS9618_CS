@@ -91,7 +91,7 @@ const examQuestions = [
   },
   {
     title: "Question 2",
-    marks: "5 marks",
+    marks: "6 marks",
     prompt: "A school attendance system scans student ID cards and records entry. Recommend one input device, one storage choice and one output device, justifying each.",
     answer: "An ID card reader or barcode/QR scanner is suitable as an input device because it captures student IDs quickly and accurately. Non-volatile secondary storage such as an SSD/database is suitable because attendance records must be kept after power is off. A screen or speaker is suitable as output because it gives immediate feedback such as accepted or not recognised.",
     marking: [
@@ -99,7 +99,8 @@ const examQuestions = [
       { mark: "B1", text: "input justification linked to quick/accurate capture of student ID" },
       { mark: "B1", text: "suitable secondary/non-volatile storage choice" },
       { mark: "B1", text: "storage justification linked to persistent attendance records" },
-      { mark: "B1", text: "suitable output device with feedback justification" },
+      { mark: "B1", text: "suitable output device such as screen or speaker" },
+      { mark: "B1", text: "output justification linked to immediate accepted/not-recognised feedback" },
     ],
     strict: [
       "Do not award justification marks for vague 'it is better'.",

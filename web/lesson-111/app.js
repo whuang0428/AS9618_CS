@@ -101,16 +101,15 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "identifies input as five marks" },
       { mark: "B1", text: "identifies output as count of marks at least 50" },
-      { mark: "M1", text: "process compares each mark with 50" },
-      { mark: "M1", text: "process increments count when condition is true" },
+      { mark: "B1", text: "process compares each mark with 50" },
+      { mark: "B1", text: "process increments count when condition is true" },
       { mark: "B1", text: "chooses count-controlled / FOR loop" },
-      { mark: "A1", text: "justifies loop choice using exactly five marks" },
+      { mark: "B1", text: "justifies loop choice using exactly five marks" },
     ],
     strict: [
       "Do not accept 'calculate marks' as a process without comparison or count.",
       "Allow PassCount or Count as variable wording.",
       "Do not award loop justification mark for only naming FOR.",
-      "FT: loop type can follow from candidate's interpreted fixed count.",
     ],
   },
   {
@@ -132,7 +131,6 @@ const examQuestions = [
       "Do not award sentinel mark if 0 is added before stopping.",
       "Allow REPEAT UNTIL if the 0 is not processed.",
       "Do not award final-output mark if output is only inside the loop.",
-      "FT: output mark can follow from candidate's total variable.",
     ],
   },
   {
@@ -153,7 +151,6 @@ const examQuestions = [
       "Do not accept initialising Highest to 0 if no non-negative range is stated.",
       "Allow Maximum for Highest.",
       "Do not require full pseudocode if question asks for design explanation.",
-      "FT: update marks can follow from candidate's chosen highest variable.",
     ],
   },
   {
@@ -174,27 +171,24 @@ const examQuestions = [
       "Do not award comparison mark for checking whether the whole password equals @.",
       "Allow early exit if logically correct.",
       "Do not require exact phrase 'character at position' if current character is clear.",
-      "FT: final output can follow from candidate's flag variable.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "A student says: 'I can solve any word problem by writing code immediately.' Evaluate this approach.",
     answer: "This is a weak approach because the student may miss the required output, constraints or stopping condition. A better approach is to identify inputs, processing, outputs and constraints first, then choose sequence, selection and iteration. The algorithm should be traced with suitable test data to check that variables update correctly and that outputs are in the correct position.",
     marking: [
       { mark: "B1", text: "recognises immediate coding can miss requirements" },
       { mark: "B1", text: "mentions required output or constraints/stopping condition" },
-      { mark: "M1", text: "recommends IPOC / identifying inputs, processing, outputs and constraints" },
-      { mark: "M1", text: "recommends choosing control structures before coding" },
-      { mark: "A1", text: "mentions trace or test data to verify design" },
-      { mark: "A1", text: "clear evaluative conclusion linked to word-problem design" },
+      { mark: "B1", text: "recommends IPOC / identifying inputs, processing, outputs and constraints" },
+      { mark: "B1", text: "recommends choosing control structures before coding" },
+      { mark: "B1", text: "mentions trace or test data to verify design" },
     ],
     strict: [
       "Do not accept only 'planning is better' without mechanism.",
       "Allow decomposition language instead of IPOC.",
       "Do not require Java discussion.",
-      "FT: conclusion can follow from candidate's valid design-process points.",
     ],
   },
 ];

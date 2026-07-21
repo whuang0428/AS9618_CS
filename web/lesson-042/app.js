@@ -114,7 +114,6 @@ const examQuestions = [
       "Do not accept PC contains the instruction.",
       "Do not award MDR mark if candidate says MAR holds the instruction value.",
       "Allow PC increment before or after CIR copy if the sequence remains logically valid.",
-      "FT: award later marks if candidate uses their earlier address consistently, but do not credit wrong register roles.",
     ],
   },
   {
@@ -132,7 +131,7 @@ const examQuestions = [
       "Do not accept a list of register names without roles.",
       "Do not accept PC as holding data or instruction without address wording.",
       "Allow 'memory buffer register' only if the role matches MDR.",
-      "FT: mark each register independently.",
+      "Mark each register independently.",
     ],
   },
   {
@@ -151,7 +150,6 @@ const examQuestions = [
       "Do not require the word opcode if operation is clearly identified.",
       "Do not accept 'decode means convert binary to denary'.",
       "Allow branch/jump as execute example when PC update is clear.",
-      "FT: if CIR is omitted, award other decode/execution marks where accurate.",
     ],
   },
   {
@@ -171,7 +169,6 @@ const examQuestions = [
       "Do not award M1 if 204 is described as the instruction rather than the address.",
       "Do not require exact next address because instruction length may vary by architecture.",
       "Allow MDR and CIR as two separate statements or one combined statement.",
-      "FT: if candidate carries a wrong address consistently, only award bus/register role marks that remain correct.",
     ],
   },
   {
@@ -191,7 +188,6 @@ const examQuestions = [
       "Do not accept 'branch stops the cycle' unless program termination is specifically described.",
       "Do not require assembly-language syntax.",
       "Allow unconditional jump if the PC change is clear.",
-      "FT: award PC-change marks even if condition wording is weak.",
     ],
   },
 ];

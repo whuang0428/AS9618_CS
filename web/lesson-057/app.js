@@ -114,16 +114,15 @@ const examQuestions = [
     answer: "Lexical analysis reads the source code as a stream of characters and groups characters into tokens. Tokens may include identifiers, keywords, operators and constants/literals. The stage may remove unnecessary whitespace and comments. It can detect invalid characters or symbols before later compiler stages use the token stream.",
     marking: [
       { mark: "B1", text: "source code/characters are scanned or read" },
-      { mark: "M1", text: "characters are grouped into tokens" },
+      { mark: "B1", text: "characters are grouped into tokens" },
       { mark: "B1", text: "valid token examples such as identifiers, keywords, operators or literals" },
       { mark: "B1", text: "comments/extra whitespace may be removed" },
-      { mark: "A1", text: "valid lexical error or token stream output described" },
+      { mark: "B1", text: "valid lexical error or token stream output described" },
     ],
     strict: [
       "Do not accept grammar checking as lexical analysis.",
       "Do not award token mark for saying only 'splits code up' without meaningful units.",
       "Allow constants for literals.",
-      "FT: award token examples if the candidate uses a correct source-code example.",
     ],
   },
   {
@@ -133,15 +132,14 @@ const examQuestions = [
     answer: "Syntax analysis checks whether the sequence of tokens follows the grammar rules of the programming language, for example whether brackets or statement structure are valid. Semantic analysis checks the meaning of the program, such as whether variables have been declared, whether scope is valid and whether data types are compatible. A program can be syntactically correct but semantically invalid.",
     marking: [
       { mark: "B1", text: "syntax analysis checks grammar/structure of token sequence" },
-      { mark: "M1", text: "valid syntax example such as brackets, expression form or statement structure" },
+      { mark: "B1", text: "valid syntax example such as brackets, expression form or statement structure" },
       { mark: "B1", text: "semantic analysis checks meaning/context" },
-      { mark: "A1", text: "valid semantic example such as type compatibility, declarations or scope" },
+      { mark: "B1", text: "valid semantic example such as type compatibility, declarations or scope" },
     ],
     strict: [
       "Do not accept 'syntax is spelling and semantic is grammar' as a correct distinction.",
       "Do not require exact phrase token sequence if grammar checking is clear.",
       "Allow parse tree reference for syntax analysis.",
-      "FT: award semantic example even if syntax explanation is weak, if the semantic example is accurate.",
     ],
   },
   {
@@ -151,16 +149,15 @@ const examQuestions = [
     answer: "A symbol table stores information about identifiers used in a program. This may include variable or procedure names, data types, scope and memory location/address information. The compiler can use the symbol table during semantic analysis to check whether identifiers have been declared and whether operations use compatible types. It is not the same as the object code output.",
     marking: [
       { mark: "B1", text: "stores information about identifiers/names" },
-      { mark: "M1", text: "valid stored item such as type, scope, address/location or kind of identifier" },
+      { mark: "B1", text: "valid stored item such as type, scope, address/location or kind of identifier" },
       { mark: "B1", text: "used by compiler during checking/semantic analysis" },
       { mark: "B1", text: "checks declarations or undeclared identifiers" },
-      { mark: "A1", text: "checks type compatibility/scope or states it is not object code" },
+      { mark: "B1", text: "checks type compatibility and/or identifier scope" },
     ],
     strict: [
       "Do not accept 'stores all the program code' as symbol table role.",
       "Do not award address/location mark unless linked to identifier information.",
       "Allow variable table if identifier information is clearly described.",
-      "FT: award use mark if the stored data item is valid but the stage name is omitted.",
     ],
   },
   {
@@ -172,14 +169,13 @@ const examQuestions = [
       { mark: "B1", text: "lexical analysis produces tokens from source code" },
       { mark: "B1", text: "syntax analysis checks grammar/structure" },
       { mark: "B1", text: "semantic analysis checks meaning/types/declarations/scope" },
-      { mark: "M1", text: "code generation produces object/target code" },
-      { mark: "A1", text: "optimisation described as efficiency improvement without changing behaviour or valid staged sequence" },
+      { mark: "B1", text: "code generation produces object/target code" },
+      { mark: "B1", text: "optimisation may improve efficiency without changing program behaviour" },
     ],
     strict: [
       "Do not award code generation mark for linker/loader descriptions.",
       "Do not require every compiler implementation to use identical internal stages.",
       "Allow parse tree/intermediate representation as part of the explanation.",
-      "FT: award stage marks independently even if the order has one minor error.",
     ],
   },
   {
@@ -189,17 +185,16 @@ const examQuestions = [
     answer: "An invalid character @ in an identifier is a lexical issue because lexical analysis recognises valid tokens and characters. A missing ENDIF is a syntax issue because the token sequence does not match the grammar of the control structure. Adding a STRING value to an INTEGER variable is a semantic issue because the statement may have a valid grammatical form but the meaning/type compatibility is invalid.",
     marking: [
       { mark: "B1", text: "invalid @ classified as lexical" },
-      { mark: "M1", text: "lexical justification linked to invalid character/token recognition" },
+      { mark: "B1", text: "lexical justification linked to invalid character/token recognition" },
       { mark: "B1", text: "missing ENDIF classified as syntax" },
-      { mark: "M1", text: "syntax justification linked to grammar/statement structure" },
+      { mark: "B1", text: "syntax justification linked to grammar/statement structure" },
       { mark: "B1", text: "STRING to INTEGER classified as semantic" },
-      { mark: "A1", text: "semantic justification linked to type compatibility/meaning" },
+      { mark: "B1", text: "semantic justification linked to type compatibility/meaning" },
     ],
     strict: [
       "Do not award justification mark for repeating the stage name only.",
       "Do not accept semantic for missing ENDIF unless a clear language-specific context justifies it.",
       "Allow 'parsing error' for syntax issue.",
-      "FT: if one classification is wrong, award other independent correct classifications and justifications.",
     ],
   },
 ];

@@ -83,7 +83,7 @@ const examQuestions = [
     title: "Question 3",
     marks: "4 marks",
     prompt: "A file is compressed from 2400 KB to 600 KB. Calculate the compression ratio and the percentage saved.",
-    answer: "4:1 and 75%",
+    answer: "The compression ratio is 2400:600 = 4:1. The amount saved is 2400 - 600 = 1800 KB, so the percentage saved is 1800 / 2400 x 100 = 75%.",
     marking: [
       { mark: "M1", text: "uses original:compressed as 2400:600" },
       { mark: "A1", text: "simplifies ratio to 4:1" },
@@ -92,8 +92,8 @@ const examQuestions = [
     ],
     strict: [
       "Do not accept 1:4 for compression ratio in this wording.",
-      "Allow FT for percentage if based correctly on candidate's compressed size.",
       "Unit KB is not needed in the ratio.",
+      "Allow FT for the percentage saved from the candidate's earlier compressed-size value only when the percentage method is otherwise correct.",
     ],
   },
   {

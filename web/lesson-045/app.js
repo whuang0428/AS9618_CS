@@ -113,7 +113,6 @@ const examQuestions = [
       "Do not accept instruction set as high-level program library.",
       "Do not accept machine code as assembly mnemonics.",
       "Allow 'CPU' for processor.",
-      "FT: mark instruction set and machine code definitions independently.",
     ],
   },
   {
@@ -132,26 +131,24 @@ const examQuestions = [
       "Do not accept operand as the operation.",
       "Do not require all operand forms; one valid form such as address can earn the mark.",
       "Allow operation examples such as ADD, LOAD, STORE, JMP.",
-      "FT: award operand role if it is clearly contrasted with opcode.",
     ],
   },
   {
     title: "Question 3",
     marks: "5 marks",
     prompt: "A simplified CPU uses 4 opcode bits followed by 8 operand bits. Opcode 0011 means ADD. Decode 0011 01011010.",
-    answer: "The opcode is the first 4 bits, 0011, which means ADD. The operand is the last 8 bits, 01011010. This operand is 90 in denary. Therefore the instruction means ADD using the value/address represented by 90, depending on the instruction format.",
+    answer: "The opcode is the first 4 bits, 0011, which means ADD. The operand is the last 8 bits, 01011010. Converting the operand gives 64 + 16 + 8 + 2 = 90. Therefore the instruction means ADD using the value/address represented by 90, depending on the instruction format.",
     marking: [
       { mark: "M1", text: "splits instruction into 0011 and 01011010" },
-      { mark: "B1", text: "identifies 0011 as opcode" },
-      { mark: "B1", text: "states opcode means ADD" },
+      { mark: "B1", text: "identifies opcode 0011 as ADD" },
+      { mark: "M1", text: "converts operand using relevant binary place values" },
       { mark: "A1", text: "converts 01011010 to 90" },
-      { mark: "A1", text: "interprets instruction as ADD using operand 90" },
+      { mark: "B1", text: "interprets instruction as ADD using operand 90" },
     ],
     strict: [
       "Do not award final interpretation if candidate treats operand as opcode.",
       "Allow operand to be described as address 90 if consistent with the simplified format.",
       "Do not require leading subscript notation.",
-      "FT: if binary-to-denary conversion is wrong, award interpretation mark using their operand value if method is otherwise correct.",
     ],
   },
   {
@@ -170,7 +167,6 @@ const examQuestions = [
       "Do not accept only 'the processor is different' without instruction set explanation.",
       "Do not require named architectures.",
       "Allow 'CPU cannot decode the opcode' for recognition/execution mark.",
-      "FT: award translation mark if the need follows from compatibility problem.",
     ],
   },
   {
@@ -190,7 +186,6 @@ const examQuestions = [
       "Do not accept assembly as high-level language.",
       "Do not accept machine code as needing an assembler before execution.",
       "Allow examples of mnemonics such as ADD, LOAD, JMP.",
-      "FT: award comparison marks where a valid paired contrast is made.",
     ],
   },
 ];

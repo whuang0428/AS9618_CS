@@ -114,16 +114,15 @@ const examQuestions = [
     answer: "A compiler translates the whole high-level source program into object code or executable machine code before the program is run. An advantage is that the compiled program can be run repeatedly without translating the source code each time, and the source code does not need to be supplied to the user. A disadvantage is that errors may be reported after compilation, so the programmer may need to work through a list of error messages before the program can run.",
     marking: [
       { mark: "B1", text: "translates high-level source code" },
-      { mark: "M1", text: "whole program translated before execution" },
+      { mark: "B1", text: "whole program translated before execution" },
       { mark: "B1", text: "produces object/executable/machine code" },
-      { mark: "A1", text: "valid advantage such as repeated execution without retranslation/source code not needed" },
+      { mark: "B1", text: "valid advantage such as repeated execution without retranslation/source code not needed" },
       { mark: "B1", text: "valid disadvantage such as compilation required before running or error list after compilation" },
     ],
     strict: [
       "Do not accept 'turns code into code' without source/object or machine code distinction.",
       "Do not award output mark for saying only 'it runs the program'.",
       "Allow executable code for object code if context is clear.",
-      "FT: award advantage mark if the compiler role has been described imprecisely but the advantage is technically valid.",
     ],
   },
   {
@@ -133,15 +132,14 @@ const examQuestions = [
     answer: "An interpreter translates and executes high-level source code statement by statement as the program runs. During development this can help the programmer test small parts of the program and locate errors near the statement being executed. It may give quicker feedback for debugging. A limitation is that the program may run more slowly than compiled code because translation occurs during execution.",
     marking: [
       { mark: "B1", text: "interpreter translates/executes high-level source code" },
-      { mark: "M1", text: "statement by statement / line by line during execution" },
+      { mark: "B1", text: "statement by statement / line by line during execution" },
       { mark: "B1", text: "helps locate or diagnose errors during development" },
-      { mark: "A1", text: "valid limitation or consequence such as slower execution/source code needed" },
+      { mark: "B1", text: "valid limitation or consequence such as slower execution/source code needed" },
     ],
     strict: [
       "Do not accept 'finds all errors' because logic errors may remain.",
       "Do not accept compiler-only features such as producing a standalone executable.",
       "Allow line by line as equivalent to statement by statement.",
-      "FT: award development mark if debugging context is clearly linked to interpreter behaviour.",
     ],
   },
   {
@@ -151,15 +149,14 @@ const examQuestions = [
     answer: "An assembler translates assembly language into machine code or object code. Assembly language uses mnemonic instructions and labels that are easier for programmers to write than raw binary machine code. The resulting machine code can be executed by the processor. An assembler is not used to translate high-level languages such as Java or Python.",
     marking: [
       { mark: "B1", text: "translates assembly language" },
-      { mark: "M1", text: "into machine code/object code" },
+      { mark: "B1", text: "into machine code/object code" },
       { mark: "B1", text: "assembly language contains mnemonics/low-level instructions" },
-      { mark: "A1", text: "machine code can be executed by processor or high-level-language boundary stated" },
+      { mark: "B1", text: "machine code can be executed by processor or high-level-language boundary stated" },
     ],
     strict: [
       "Do not accept high-level source code as assembler input.",
       "Do not accept 'assembler is assembly language' as a role.",
       "Allow examples of mnemonics such as LDA/ADD if linked to assembly.",
-      "FT: award output mark if assembly input is implied by a correct mnemonic example.",
     ],
   },
   {
@@ -169,17 +166,16 @@ const examQuestions = [
     answer: "Both are translator programs for high-level language source code. A compiler translates the whole program before execution and usually produces object or executable code. An interpreter translates and executes the program statement by statement as it runs and normally does not produce a separate permanent object code file. Compiled programs may run faster after translation and can be distributed without source code. Interpreters can be useful for development because errors may be identified as the relevant statement is executed.",
     marking: [
       { mark: "B1", text: "both translate high-level/source code" },
-      { mark: "M1", text: "compiler translates whole program before execution" },
+      { mark: "B1", text: "compiler translates whole program before execution" },
       { mark: "B1", text: "compiler produces object/executable code" },
-      { mark: "M1", text: "interpreter translates/executes statement by statement during execution" },
+      { mark: "B1", text: "interpreter translates/executes statement by statement during execution" },
       { mark: "B1", text: "interpreter normally does not produce separate permanent object code" },
-      { mark: "A1", text: "valid comparative advantage/use case linked to development or deployment" },
+      { mark: "B1", text: "valid comparative advantage/use case linked to development or deployment" },
     ],
     strict: [
       "Do not award comparison marks for vague faster/easier without mechanism.",
       "Do not require the exact phrase 'permanent object code' if the idea is clear.",
       "Allow line by line for statement by statement.",
-      "FT: award use-case mark for a valid scenario even if one earlier technical term is slightly weak.",
     ],
   },
   {
@@ -189,17 +185,16 @@ const examQuestions = [
     answer: "For distributing a finished game, a compiler is suitable because it can produce executable/object code and users do not need the source code. For testing a beginner's program interactively, an interpreter is suitable because it translates and executes statements one at a time, helping locate errors during development. For translating assembly language, an assembler is suitable because it converts assembly mnemonics into machine code for the processor.",
     marking: [
       { mark: "B1", text: "compiler selected for distributing finished game" },
-      { mark: "M1", text: "compiler justification linked to executable/object code or source code not needed" },
+      { mark: "B1", text: "compiler justification linked to executable/object code or source code not needed" },
       { mark: "B1", text: "interpreter selected for interactive testing" },
-      { mark: "M1", text: "interpreter justification linked to statement-by-statement execution or debugging" },
+      { mark: "B1", text: "interpreter justification linked to statement-by-statement execution or debugging" },
       { mark: "B1", text: "assembler selected for assembly language" },
-      { mark: "A1", text: "assembler justification linked to mnemonics or machine code output" },
+      { mark: "B1", text: "assembler justification linked to mnemonics or machine code output" },
     ],
     strict: [
       "Do not award selection mark if the translator is matched to the wrong scenario.",
       "Do not accept 'compiler is faster' alone without deployment or translation context.",
       "Allow low-level assembly code as assembly language.",
-      "FT: award justification marks for technically suitable alternatives only when the scenario fit is explicit.",
     ],
   },
 ];

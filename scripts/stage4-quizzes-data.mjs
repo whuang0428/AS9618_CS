@@ -24,9 +24,9 @@ export const quizzes = [
   ]),
   quiz(10, "Codes, graphics and sound", ["1.1", "1.2"], [
     q2("Write denary 59 in BCD.", p("B1", "5 is encoded as 0101"), p("A1", "9 is encoded as 1001; 0101 1001"), "Do not accept pure binary 00111011."),
-    q2("Explain one reason Unicode is used instead of ASCII for a worldwide messaging system.", p("B1", "Unicode represents a much larger range of characters/scripts"), p("A1", "users can store/display characters from many languages consistently"), "Do not accept only 'Unicode uses more bits'."),
+    q2("Explain one reason Unicode is used instead of ASCII for a worldwide messaging system.", p("B1", "Unicode represents a much larger range of characters/scripts"), p("B1", "users can store/display characters from many languages consistently"), "Do not accept only 'Unicode uses more bits'."),
     q2("State two items stored for a vector drawing object.", p("B1", "one valid property such as object type/coordinates/dimensions"), p("B1", "a second valid property such as line/fill colour or transformation"), "Do not award pixel colour depth as an object property."),
-    q2("Calculate the pixel data in bytes for a 100 x 50 bitmap with 8-bit colour depth.", p("M1", "100 x 50 x 8 bits, then divides by 8"), p("A1", "5000 bytes"), "FT a correct byte conversion from an incorrect pixel total."),
+    q2("Calculate the pixel data in bytes for a 100 x 50 bitmap with 8-bit colour depth.", p("M1", "100 x 50 x 8 bits, then divides by 8"), p("A1", "5000 bytes"), "Allow FT from the candidate's earlier incorrect pixel total only when the subsequent conversion to bytes is correct."),
     q2("Distinguish sampling rate from sample resolution.", p("B1", "sampling rate is samples taken per second"), p("B1", "sample resolution is bits/levels used for each sample amplitude"), "Do not reverse time frequency and amplitude precision."),
   ]),
   quiz(15, "Multimedia size and compression", ["1.2", "1.3"], [
@@ -149,7 +149,7 @@ export const quizzes = [
     q2("Explain referential integrity for Loan.MemberID referencing Member.MemberID.", p("B1", "each non-null foreign-key value must match an existing Member key"), p("B1", "prevents a loan referring to a non-existent member"), "Do not state that MemberID must be unique in Loan."),
   ]),
   quiz(100, "Paper 1 response skills and algorithm foundations", ["1-9"], [
-    q2("For an 8-mark evaluate question, state two features required beyond listing facts.", p("B1", "applies developed benefits/risks to the stated scenario"), p("B1", "reaches a balanced justified judgement/condition"), "Do not award 'write more'."),
+    q2("For an 8-mark evaluate question, state two features required beyond listing facts.", p("B1", "applies developed benefits/risks to the stated scenario"), p("B1", "reaches a justified judgement that uses the stated scenario evidence or conditions"), "Do not award 'write more'."),
     q2("State one correction action after a mock-paper misconception is identified.", p("B1", "rewrites the technical statement using the correct syllabus concept"), p("B1", "re-attempts/marks a related question to prove the correction"), "Do not accept only 'read the notes'."),
     q2("Complete an identifier-table row for Count, used to store the number of valid inputs.", p("B1", "data type INTEGER"), p("B1", "purpose states number/count of valid inputs"), "Allow another meaningful identifier only if purpose and type match."),
     q2("Distinguish decomposition from abstraction.", p("B1", "decomposition breaks a problem into smaller subproblems"), p("B1", "abstraction removes irrelevant detail/focuses on essential features"), "Do not define both as simplification without distinction."),
@@ -159,8 +159,8 @@ export const quizzes = [
     q2("State two columns needed in a trace table for Total <- Total + Value[Index].", p("B1", "Index/current element column"), p("B1", "Total column showing its value after each update"), "Allow Value[Index] as a separate valid column when Index is implicit."),
     q2("Choose WHILE or REPEAT for input that must occur at least once and justify.", p("B1", "REPEAT"), p("B1", "condition is tested after the body so input occurs at least once"), "Allow WHILE only when initial input is correctly placed before the loop."),
     q2("Write the valid-range condition for Mark from 0 to 100 inclusive.", p("B1", "Mark >= 0"), p("B1", "AND Mark <= 100"), "Do not accept OR for the valid condition."),
-    q2("State the index returned by zero-based linear search for 9 in [4,9,2].", p("M1", "compares 4 then 9 and stops"), p("A1", "index 1"), "Do not return position 2 unless one-based indexing is declared."),
-    q2("After one ascending bubble-sort pass through [5,2,4,1], state the list.", p("M1", "performs the adjacent comparisons/swaps consistently"), p("A1", "[2,4,1,5]"), "FT one early swap error only when later comparisons remain adjacent."),
+    q2("Trace zero-based linear search for 9 in [4,9,2] and state the returned index.", p("M1", "compares 4 then 9 and stops"), p("A1", "index 1"), "Do not return position 2 unless one-based indexing is declared."),
+    q2("After one ascending bubble-sort pass through [5,2,4,1], state the list.", p("M1", "performs the adjacent comparisons/swaps consistently"), p("A1", "[2,4,1,5]"), "Allow FT from the candidate's earlier incorrect list only when every subsequent comparison remains adjacent and follows ascending bubble sort."),
   ]),
   quiz(110, "Algorithm patterns and pseudocode quality", ["9.2"], [
     q2("State suitable initial values for finding the maximum and total of Array[1:10].", p("B1", "Maximum <- Array[1]"), p("B1", "Total <- 0"), "Do not initialise Maximum to 0 unless the data range guarantees it is valid."),
@@ -180,11 +180,11 @@ export const quizzes = [
     q2("State the indexes of the top-left and bottom-right cells in Grid[1:3,1:4].", p("B1", "top-left Grid[1,1]"), p("B1", "bottom-right Grid[3,4]"), "Do not reverse row and column bounds."),
     q2("Write one statement to add 1 to the occurrence count stored at Count[Index].", p("B1", "references Count[Index] consistently"), p("A1", "Count[Index] <- Count[Index] + 1"), "Do not increment Index instead of the array element."),
     q2("Distinguish a record from an array.", p("B1", "record groups named fields that may have different types"), p("B1", "array stores indexed elements of one declared type"), "Award a matched contrast."),
-    q2("State one advantage of an array of records for storing 100 students.", p("B1", "each element keeps related fields for one student together"), p("B1", "loop/index can process/search all students consistently"), "Do not accept only 'stores more data'."),
+    q2("State one advantage of an array of records for storing 100 students.", p("B1", "each element keeps related fields for one student together"), p("B1", "keeping each student's fields in one record reduces the risk of fields for different students becoming misaligned"), "Do not accept only 'stores more data'."),
     q2("Distinguish WRITE mode from APPEND mode for a text file.", p("B1", "WRITE creates/overwrites content from the start"), p("B1", "APPEND adds after existing content"), "Do not state that APPEND edits any middle record."),
   ]),
   quiz(125, "Structured files and abstract data types", ["10.3", "10.4"], [
-    q2("State one requirement when reading a CSV record containing Name,Age.", p("B1", "splits/parses fields using the delimiter in the expected order"), p("B1", "converts Age to the required numeric type/validates it"), "Do not treat the whole line as two fields without parsing."),
+    q2("State two requirements when reading a CSV record containing Name,Age.", p("B1", "splits/parses fields using the delimiter in the expected order"), p("B1", "converts Age to the required numeric type/validates it"), "Do not treat the whole line as two fields without parsing."),
     q2("Choose a stack or queue for printer jobs and justify.", p("B1", "queue"), p("B1", "FIFO processes the earliest submitted job first"), "Do not award stack without a changed scenario."),
     q2("State the two fields required in an array-based linked-list node.", p("B1", "data/value field"), p("B1", "next index/pointer field"), "Allow parallel arrays or an array of records."),
     q2("Choose an array or linked list for frequent insertion between playlist items and justify.", p("B1", "linked list"), p("B1", "links can be changed without shifting all later contiguous elements"), "Do not award the structure without an insertion-related reason."),

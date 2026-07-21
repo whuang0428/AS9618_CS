@@ -177,15 +177,14 @@ const examQuestions = [
     answer: "A primary key is a field, or combination of fields, that uniquely identifies each record in a table and should not be null. A foreign key is a field in one table that references the primary key in another table, creating a link between the tables.",
     marking: [
       { mark: "B1", text: "primary key is a field/fields in a table" },
-      { mark: "M1", text: "primary key uniquely identifies each record / is unique and not null" },
+      { mark: "B1", text: "primary key uniquely identifies each record / is unique and not null" },
       { mark: "B1", text: "foreign key is a field in another/related table" },
-      { mark: "A1", text: "foreign key references a primary key / links tables" },
+      { mark: "B1", text: "foreign key references a primary key / links tables" },
     ],
     strict: [
       "Do not accept only 'a key field' without unique identification for primary key.",
       "Do not accept foreign key as 'a second primary key' without reference idea.",
       "Allow 'attribute' for field.",
-      "FT: award link mark if reference to another table is clearly implied.",
     ],
   },
   {
@@ -197,15 +196,14 @@ const examQuestions = [
       { mark: "B1", text: "StudentID identified as primary key in Student" },
       { mark: "B1", text: "LoanID identified as primary key in Loan" },
       { mark: "B1", text: "StudentID in Loan identified as foreign key" },
-      { mark: "M1", text: "foreign key references StudentID in Student / links Loan to Student" },
+      { mark: "B1", text: "foreign key references StudentID in Student / links Loan to Student" },
       { mark: "B1", text: "one-to-many relationship identified" },
-      { mark: "A1", text: "relationship explained: one student can have many loans; each loan belongs to one student" },
+      { mark: "B1", text: "relationship explained: one student can have many loans; each loan belongs to one student" },
     ],
     strict: [
       "Do not award StudentID as primary key in Loan unless candidate also explains composite/alternate design; not intended here.",
       "Do not award foreign key mark if table location is not clear.",
       "Allow 1:M for one-to-many.",
-      "FT: relationship explanation can follow correctly identified keys.",
     ],
   },
   {
@@ -216,15 +214,14 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "names may not be unique / duplicate names possible" },
       { mark: "B1", text: "names may change or be entered inconsistently" },
-      { mark: "M1", text: "primary key must uniquely identify records" },
-      { mark: "M1", text: "primary key should be stable/not null" },
-      { mark: "A1", text: "StudentID or allocated ID suggested as better key with reason" },
+      { mark: "B1", text: "primary key must uniquely identify records" },
+      { mark: "B1", text: "primary key should be stable/not null" },
+      { mark: "B1", text: "StudentID or allocated ID suggested as better key with reason" },
     ],
     strict: [
       "Do not accept 'Name is text' as a reason by itself.",
       "Do not require both change and formatting for the second B mark; either is enough.",
       "Allow candidate number or student number as equivalent allocated ID.",
-      "FT: better-key mark depends on a valid explanation of uniqueness or stability.",
     ],
   },
   {
@@ -234,17 +231,16 @@ const examQuestions = [
     answer: "ClubID is the primary key in Club because it uniquely identifies each club record. ClubID in Membership is a foreign key because it references ClubID in Club. It links each membership record to the club the student joined. ClubID may appear many times in Membership because many students can join the same club.",
     marking: [
       { mark: "B1", text: "ClubID identified as primary key in Club" },
-      { mark: "M1", text: "primary key uniqueness for club records explained" },
+      { mark: "B1", text: "primary key uniqueness for club records explained" },
       { mark: "B1", text: "ClubID identified as foreign key in Membership" },
-      { mark: "M1", text: "foreign key references Club.ClubID / links membership to club" },
+      { mark: "B1", text: "foreign key references Club.ClubID / links membership to club" },
       { mark: "B1", text: "ClubID may repeat in Membership" },
-      { mark: "A1", text: "repeat explained by many students/memberships for one club" },
+      { mark: "B1", text: "repeat explained by many students/memberships for one club" },
     ],
     strict: [
       "Do not accept that ClubID must be unique in Membership.",
       "Do not award foreign key reference mark if only 'it is used to find club' is given without table link.",
       "Allow 'same ClubID occurs in several membership rows' for repeat mark.",
-      "FT: if table names are swapped, only award marks that remain logically correct.",
     ],
   },
   {
@@ -254,17 +250,16 @@ const examQuestions = [
     answer: "Referential integrity means that a foreign key value must match an existing primary key value in the referenced table. In a library database, StudentID in Loan should match an existing StudentID in Student. This prevents a loan being stored for a student who does not exist. If a Loan record contains StudentID S9999 but there is no S9999 in Student, the DBMS should reject the record or require the student record first.",
     marking: [
       { mark: "B1", text: "foreign key value must match/reference existing primary key value" },
-      { mark: "M1", text: "referenced table idea included" },
+      { mark: "B1", text: "referenced table idea included" },
       { mark: "B1", text: "StudentID in Loan as foreign key example" },
       { mark: "B1", text: "StudentID in Student as primary key example" },
-      { mark: "M1", text: "prevents orphan/non-existent student loan record" },
-      { mark: "A1", text: "invalid value example or DBMS rejection action" },
+      { mark: "B1", text: "prevents orphan/non-existent student loan record" },
+      { mark: "B1", text: "invalid value example or DBMS rejection action" },
     ],
     strict: [
       "Do not accept 'keeps data correct' without reference matching idea.",
       "Do not require the term orphan record, but accept it if used correctly.",
       "Allow Book/Loan example if primary and foreign key roles are clear.",
-      "FT: rejection example can follow any valid foreign-key mismatch.",
     ],
   },
 ];

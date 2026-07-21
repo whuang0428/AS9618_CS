@@ -163,7 +163,7 @@ const examQuestions = [
       "Do not award final A1 if answer is labelled bytes instead of KiB.",
       "Allow colour spelling as color.",
       "Do not require metadata to be included unless specified.",
-      "FT: conversion marks can follow through from an earlier arithmetic error.",
+      "Allow FT from the candidate's earlier bit total only when the subsequent conversions to bytes and KiB are correct.",
     ],
   },
   {
@@ -182,7 +182,6 @@ const examQuestions = [
       "Do not multiply by 2 channels because mono is stated.",
       "Allow 2.5 MiB if rounding is clear.",
       "Do not accept MB if binary conversion to MiB was requested.",
-      "FT: final mark can follow through from a correct conversion method.",
     ],
   },
   {
@@ -193,14 +192,13 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "states characters are represented by character codes / bit patterns" },
       { mark: "B1", text: "states Unicode has more possible codes / uses more bits than ASCII" },
-      { mark: "M1", text: "links more codes to more representable characters" },
-      { mark: "A1", text: "applies to many languages/symbols or wider character set" },
+      { mark: "B1", text: "links more codes to more representable characters" },
+      { mark: "B1", text: "applies to many languages/symbols or wider character set" },
     ],
     strict: [
       "Do not accept 'Unicode is newer' without explaining code capacity.",
       "Allow reference to ASCII being 7-bit or limited if accurate.",
       "Do not require exact bit lengths for Unicode.",
-      "FT: application mark can follow from a correct comparison.",
     ],
   },
   {
@@ -211,35 +209,32 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "file/data is split into packets" },
       { mark: "B1", text: "packets include address/control/sequence information" },
-      { mark: "M1", text: "packets are routed independently / may take different routes" },
-      { mark: "M1", text: "destination reassembles packets in order" },
-      { mark: "A1", text: "mentions error checking/retransmission or handling missing/corrupt packets" },
+      { mark: "B1", text: "packets are routed independently / may take different routes" },
+      { mark: "B1", text: "destination reassembles packets in order" },
+      { mark: "B1", text: "mentions error checking/retransmission or handling missing/corrupt packets" },
     ],
     strict: [
       "Do not award routing mark for only saying 'sent through wires'.",
       "Allow header/trailer wording for control information.",
       "Do not require all packets to take different routes.",
-      "FT: reassembly mark can be awarded if splitting into packets is clear.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "A student says: 'Bandwidth and latency both mean the network is fast.' Explain why this is weak, using a video call as an example.",
     answer: "Bandwidth is the amount of data that can be transferred per second, while latency is the delay before data is received. A video call needs enough bandwidth to carry audio and video data without reducing quality. It also needs low latency so speech and video arrive with little delay. The answer is weak because the two terms affect performance in different ways.",
     marking: [
       { mark: "B1", text: "defines bandwidth as data transfer capacity/rate" },
       { mark: "B1", text: "defines latency as delay" },
-      { mark: "M1", text: "applies bandwidth to amount/quality of audio-video data" },
-      { mark: "M1", text: "applies latency to delay in conversation/video" },
-      { mark: "A1", text: "explicitly contrasts the two terms" },
-      { mark: "A1", text: "explains why the original statement is vague/weak" },
+      { mark: "B1", text: "applies bandwidth to amount/quality of audio-video data" },
+      { mark: "B1", text: "applies latency to delay in conversation/video" },
+      { mark: "B1", text: "explicitly contrasts the two terms" },
     ],
     strict: [
       "Do not accept 'bandwidth is speed' as a full definition without data per second.",
       "Do not accept latency as amount of data.",
       "Allow lag as explanation of latency if delay is clear.",
-      "FT: application marks can follow from mostly correct definitions.",
     ],
   },
 ];

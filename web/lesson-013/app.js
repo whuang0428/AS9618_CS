@@ -49,7 +49,7 @@ const examQuestions = [
     title: "Question 1",
     marks: "3 marks",
     prompt: "Use run-length encoding to encode AAAAAABBBBCCCCCCCC.",
-    answer: "6A4B8C",
+    answer: "The data contains runs of six A characters, four B characters and eight C characters. Using count-symbol pairs gives 6A4B8C.",
     marking: [
       { mark: "B1", text: "correctly encodes six A characters as 6A" },
       { mark: "B1", text: "correctly encodes four B characters as 4B" },
@@ -65,7 +65,7 @@ const examQuestions = [
     title: "Question 2",
     marks: "3 marks",
     prompt: "Decode the run-length encoded data 3A2B1C.",
-    answer: "AAABBC",
+    answer: "Expand each count-symbol pair: 3A -> AAA, 2B -> BB and 1C -> C. The decoded data is AAABBC.",
     marking: [
       { mark: "B1", text: "expands 3A to AAA" },
       { mark: "B1", text: "expands 2B to BB" },

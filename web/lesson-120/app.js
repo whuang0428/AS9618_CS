@@ -84,7 +84,7 @@ const mistakes = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "Write pseudocode to open Scores.txt for reading, output every line in the file, and close the file.",
     answer: "OPENFILE \"Scores.txt\" FOR READ\nWHILE NOT EOF(\"Scores.txt\")\n    READFILE \"Scores.txt\", Line\n    OUTPUT Line\nENDWHILE\nCLOSEFILE \"Scores.txt\"",
     marking: [
@@ -93,18 +93,16 @@ const examQuestions = [
       { mark: "M1", text: "reads a line using READFILE into a variable" },
       { mark: "A1", text: "outputs the variable read from the file" },
       { mark: "B1", text: "closes the file using CLOSEFILE" },
-      { mark: "A1", text: "orders operations correctly: open before read, close after loop" },
     ],
     strict: [
       "Do not award READFILE mark if no receiving variable is shown.",
       "Allow equivalent variable names such as ThisLine.",
       "Do not accept FOR WRITE for a read-only task.",
-      "FT: output mark can follow from candidate's chosen line variable.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
+    marks: "4 marks",
     prompt: "A new score line \"Dina,91\" must be added to Scores.txt without removing existing data. Write suitable pseudocode.",
     answer: "OPENFILE \"Scores.txt\" FOR APPEND\nWRITEFILE \"Scores.txt\", \"Dina,91\"\nCLOSEFILE \"Scores.txt\"",
     marking: [
@@ -112,13 +110,11 @@ const examQuestions = [
       { mark: "M1", text: "uses WRITEFILE to write the new line" },
       { mark: "A1", text: "writes the correct line Dina,91 or equivalent new score data" },
       { mark: "B1", text: "closes the file" },
-      { mark: "A1", text: "does not use WRITE mode when existing data must remain" },
     ],
     strict: [
       "Do not award mode mark for FOR WRITE.",
       "Allow NewLine variable if it is clearly assigned the new score before writing.",
       "Do not accept READFILE for adding the new line.",
-      "FT: close-file mark can follow a candidate's file name.",
     ],
   },
   {
@@ -138,27 +134,23 @@ const examQuestions = [
       "Do not award initialisation mark if Count is reset inside the loop.",
       "Allow output before CLOSEFILE if file processing is otherwise complete.",
       "Do not accept counting characters unless the question is reinterpreted explicitly and correctly.",
-      "FT: increment mark can follow a candidate's equivalent counter variable.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
+    marks: "4 marks",
     prompt: "A student writes OUTPUT Line before READFILE has been used in the loop. Explain the error and correct the order of statements.",
     answer: "The error is that Line does not yet contain the next file line. The program must read from the file into Line before Line is processed. Correct order inside the loop:\nREADFILE \"Scores.txt\", Line\nOUTPUT Line",
     marking: [
       { mark: "B1", text: "states Line is a variable used to hold file data" },
-      { mark: "M1", text: "explains Line must be assigned by READFILE before processing" },
-      { mark: "A1", text: "identifies OUTPUT before READFILE as the wrong order" },
+      { mark: "B1", text: "explains Line must be assigned by READFILE before processing" },
       { mark: "B1", text: "gives READFILE before OUTPUT" },
-      { mark: "A1", text: "uses a suitable file name and line variable" },
       { mark: "B1", text: "keeps the correction inside the file-reading loop or clearly implies it" },
     ],
     strict: [
       "Do not award explanation marks for only saying 'syntax error'.",
       "Allow display/print instead of output if pseudocode meaning is clear.",
       "Do not accept reading after output as a correction.",
-      "FT: variable-name marks can follow the candidate's original variable.",
     ],
   },
   {
@@ -179,7 +171,6 @@ const examQuestions = [
       "Do not award output-file mark if WRITEFILE writes back to the input file only.",
       "Allow a parsed field comparison if PASS is stored as a status field.",
       "Do not accept opening PassList.txt for READ when writing output.",
-      "FT: condition and write marks can follow a candidate's equivalent status value.",
     ],
   },
 ];

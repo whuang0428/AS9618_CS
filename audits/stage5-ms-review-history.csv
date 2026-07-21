@@ -1,0 +1,964 @@
+id,Draft,Checked,Revised,Approved,review_route
+L001-Q1,Complete,Complete,Complete,Complete,Standard
+L001-Q2,Complete,Complete,Complete,Complete,Standard
+L001-Q3,Complete,Complete,Complete,Complete,Standard
+L001-Q4,Complete,Complete,Complete,Complete,Standard
+L001-Q5,Complete,Complete,Complete,Complete,Standard
+L002-Q1,Complete,Complete,Complete,Complete,Standard
+L002-Q2,Complete,Complete,Complete,Complete,Standard
+L002-Q3,Complete,Complete,Complete,Complete,Standard
+L002-Q4,Complete,Complete,Complete,Complete,Standard
+L002-Q5,Complete,Complete,Complete,Complete,Standard
+L003-Q1,Complete,Complete,Complete,Complete,Standard
+L003-Q2,Complete,Complete,Complete,Complete,Standard
+L003-Q3,Complete,Complete,Complete,Complete,Standard
+L003-Q4,Complete,Complete,Complete,Complete,Standard
+L003-Q5,Complete,Complete,Complete,Complete,Standard
+L004-Q1,Complete,Complete,Complete,Complete,Standard
+L004-Q2,Complete,Complete,Complete,Complete,Standard
+L004-Q3,Complete,Complete,Complete,Complete,Standard
+L004-Q4,Complete,Complete,Complete,Complete,Standard
+L004-Q5,Complete,Complete,Complete,Complete,Standard
+L005-Q1,Complete,Complete,Complete,Complete,Standard
+L005-Q2,Complete,Complete,Complete,Complete,Standard
+L005-Q3,Complete,Complete,Complete,Complete,Standard
+L005-Q4,Complete,Complete,Complete,Complete,Standard
+L005-Q5,Complete,Complete,Complete,Complete,Standard
+L006-Q1,Complete,Complete,Complete,Complete,Standard
+L006-Q2,Complete,Complete,Complete,Complete,Standard
+L006-Q3,Complete,Complete,Complete,Complete,Standard
+L006-Q4,Complete,Complete,Complete,Complete,Standard
+L006-Q5,Complete,Complete,Complete,Complete,Standard
+L007-Q1,Complete,Complete,Complete,Complete,Standard
+L007-Q2,Complete,Complete,Complete,Complete,Standard
+L007-Q3,Complete,Complete,Complete,Complete,Standard
+L007-Q4,Complete,Complete,Complete,Complete,Standard
+L007-Q5,Complete,Complete,Complete,Complete,Standard
+L008-Q1,Complete,Complete,Complete,Complete,Standard
+L008-Q2,Complete,Complete,Complete,Complete,Standard
+L008-Q3,Complete,Complete,Complete,Complete,Standard
+L008-Q4,Complete,Complete,Complete,Complete,Standard
+L008-Q5,Complete,Complete,Complete,Complete,Standard
+L009-Q1,Complete,Complete,Complete,Complete,Standard
+L009-Q2,Complete,Complete,Complete,Complete,Standard
+L009-Q3,Complete,Complete,Complete,Complete,Standard
+L009-Q4,Complete,Complete,Complete,Complete,Standard
+L009-Q5,Complete,Complete,Complete,Complete,Standard
+L010-Q1,Complete,Complete,Complete,Complete,Standard
+L010-Q2,Complete,Complete,Complete,Complete,Standard
+L010-Q3,Complete,Complete,Complete,Complete,Standard
+L010-Q4,Complete,Complete,Complete,Complete,Standard
+L010-Q5,Complete,Complete,Complete,Complete,Standard
+L011-Q1,Complete,Complete,Complete,Complete,Standard
+L011-Q2,Complete,Complete,Complete,Complete,Standard
+L011-Q3,Complete,Complete,Complete,Complete,Standard
+L011-Q4,Complete,Complete,Complete,Complete,Standard
+L011-Q5,Complete,Complete,Complete,Complete,Standard
+L012-Q1,Complete,Complete,Complete,Complete,Standard
+L012-Q2,Complete,Complete,Complete,Complete,Standard
+L012-Q3,Complete,Complete,Complete,Complete,Standard
+L012-Q4,Complete,Complete,Complete,Complete,Standard
+L012-Q5,Complete,Complete,Complete,Complete,Standard
+L013-Q1,Complete,Complete,Complete,Complete,Standard
+L013-Q2,Complete,Complete,Complete,Complete,Standard
+L013-Q3,Complete,Complete,Complete,Complete,Standard
+L013-Q4,Complete,Complete,Complete,Complete,Standard
+L013-Q5,Complete,Complete,Complete,Complete,Standard
+L014-Q1,Complete,Complete,Complete,Complete,Standard
+L014-Q2,Complete,Complete,Complete,Complete,Standard
+L014-Q3,Complete,Complete,Complete,Complete,Standard
+L014-Q4,Complete,Complete,Complete,Complete,Standard
+L014-Q5,Complete,Complete,Complete,Complete,Standard
+L015-Q1,Complete,Complete,Complete,Complete,Standard
+L015-Q2,Complete,Complete,Complete,Complete,Standard
+L015-Q3,Complete,Complete,Complete,Complete,Standard
+L015-Q4,Complete,Complete,Complete,Complete,Standard
+L015-Q5,Complete,Complete,Complete,Complete,Standard
+L016-Q1,Complete,Complete,Complete,Complete,Standard
+L016-Q2,Complete,Complete,Complete,Complete,Standard
+L016-Q3,Complete,Complete,Complete,Complete,Standard
+L016-Q4,Complete,Complete,Complete,Complete,Standard
+L016-Q5,Complete,Complete,Complete,Complete,Standard
+L017-Q1,Complete,Complete,Complete,Complete,Standard
+L017-Q2,Complete,Complete,Complete,Complete,Standard
+L017-Q3,Complete,Complete,Complete,Complete,Standard
+L017-Q4,Complete,Complete,Complete,Complete,Standard
+L017-Q5,Complete,Complete,Complete,Complete,Standard
+L018-Q1,Complete,Complete,Complete,Complete,Standard
+L018-Q2,Complete,Complete,Complete,Complete,Standard
+L018-Q3,Complete,Complete,Complete,Complete,Standard
+L018-Q4,Complete,Complete,Complete,Complete,Standard
+L018-Q5,Complete,Complete,Complete,Complete,Standard
+L019-Q1,Complete,Complete,Complete,Complete,Standard
+L019-Q2,Complete,Complete,Complete,Complete,Standard
+L019-Q3,Complete,Complete,Complete,Complete,Standard
+L019-Q4,Complete,Complete,Complete,Complete,Standard
+L019-Q5,Complete,Complete,Complete,Complete,Standard
+L020-Q1,Complete,Complete,Complete,Complete,Standard
+L020-Q2,Complete,Complete,Complete,Complete,Standard
+L020-Q3,Complete,Complete,Complete,Complete,Standard
+L020-Q4,Complete,Complete,Complete,Complete,Standard
+L020-Q5,Complete,Complete,Complete,Complete,Standard
+L021-Q1,Complete,Complete,Complete,Complete,Standard
+L021-Q2,Complete,Complete,Complete,Complete,Standard
+L021-Q3,Complete,Complete,Complete,Complete,Standard
+L021-Q4,Complete,Complete,Complete,Complete,Standard
+L021-Q5,Complete,Complete,Complete,Complete,Standard
+L022-Q1,Complete,Complete,Complete,Complete,Standard
+L022-Q2,Complete,Complete,Complete,Complete,Standard
+L022-Q3,Complete,Complete,Complete,Complete,Standard
+L022-Q4,Complete,Complete,Complete,Complete,Standard
+L022-Q5,Complete,Complete,Complete,Complete,Standard
+L023-Q1,Complete,Complete,Complete,Complete,Standard
+L023-Q2,Complete,Complete,Complete,Complete,Standard
+L023-Q3,Complete,Complete,Complete,Complete,Standard
+L023-Q4,Complete,Complete,Complete,Complete,Standard
+L023-Q5,Complete,Complete,Complete,Complete,Standard
+L024-Q1,Complete,Complete,Complete,Complete,Standard
+L024-Q2,Complete,Complete,Complete,Complete,Standard
+L024-Q3,Complete,Complete,Complete,Complete,Standard
+L024-Q4,Complete,Complete,Complete,Complete,Standard
+L024-Q5,Complete,Complete,Complete,Complete,Standard
+L025-Q1,Complete,Complete,Complete,Complete,Standard
+L025-Q2,Complete,Complete,Complete,Complete,Standard
+L025-Q3,Complete,Complete,Complete,Complete,Standard
+L025-Q4,Complete,Complete,Complete,Complete,Standard
+L025-Q5,Complete,Complete,Complete,Complete,Standard
+L026-Q1,Complete,Complete,Complete,Complete,Standard
+L026-Q2,Complete,Complete,Complete,Complete,Standard
+L026-Q3,Complete,Complete,Complete,Complete,Standard
+L026-Q4,Complete,Complete,Complete,Complete,Standard
+L026-Q5,Complete,Complete,Complete,Complete,Standard
+L027-Q1,Complete,Complete,Complete,Complete,Standard
+L027-Q2,Complete,Complete,Complete,Complete,Standard
+L027-Q3,Complete,Complete,Complete,Complete,Standard
+L027-Q4,Complete,Complete,Complete,Complete,Standard
+L027-Q5,Complete,Complete,Complete,Complete,Standard
+L028-Q1,Complete,Complete,Complete,Complete,Standard
+L028-Q2,Complete,Complete,Complete,Complete,Standard
+L028-Q3,Complete,Complete,Complete,Complete,Standard
+L028-Q4,Complete,Complete,Complete,Complete,Standard
+L028-Q5,Complete,Complete,Complete,Complete,Standard
+L029-Q1,Complete,Complete,Complete,Complete,Standard
+L029-Q2,Complete,Complete,Complete,Complete,Standard
+L029-Q3,Complete,Complete,Complete,Complete,Standard
+L029-Q4,Complete,Complete,Complete,Complete,Standard
+L029-Q5,Complete,Complete,Complete,Complete,Standard
+L030-Q1,Complete,Complete,Complete,Complete,Standard
+L030-Q2,Complete,Complete,Complete,Complete,Standard
+L030-Q3,Complete,Complete,Complete,Complete,Standard
+L030-Q4,Complete,Complete,Complete,Complete,Standard
+L030-Q5,Complete,Complete,Complete,Complete,Standard
+L031-Q1,Complete,Complete,Complete,Complete,Standard
+L031-Q2,Complete,Complete,Complete,Complete,Standard
+L031-Q3,Complete,Complete,Complete,Complete,Standard
+L031-Q4,Complete,Complete,Complete,Complete,Standard
+L031-Q5,Complete,Complete,Complete,Complete,Standard
+L032-Q1,Complete,Complete,Complete,Complete,Standard
+L032-Q2,Complete,Complete,Complete,Complete,Standard
+L032-Q3,Complete,Complete,Complete,Complete,Standard
+L032-Q4,Complete,Complete,Complete,Complete,Standard
+L032-Q5,Complete,Complete,Complete,Complete,Standard
+L033-Q1,Complete,Complete,Complete,Complete,Standard
+L033-Q2,Complete,Complete,Complete,Complete,Standard
+L033-Q3,Complete,Complete,Complete,Complete,Standard
+L033-Q4,Complete,Complete,Complete,Complete,Standard
+L033-Q5,Complete,Complete,Complete,Complete,Standard
+L034-Q1,Complete,Complete,Complete,Complete,Standard
+L034-Q2,Complete,Complete,Complete,Complete,Standard
+L034-Q3,Complete,Complete,Complete,Complete,Standard
+L034-Q4,Complete,Complete,Complete,Complete,Standard
+L034-Q5,Complete,Complete,Complete,Complete,Standard
+L035-Q1,Complete,Complete,Complete,Complete,Standard
+L035-Q2,Complete,Complete,Complete,Complete,Standard
+L035-Q3,Complete,Complete,Complete,Complete,Standard
+L035-Q4,Complete,Complete,Complete,Complete,Standard
+L035-Q5,Complete,Complete,Complete,Complete,Standard
+L036-Q1,Complete,Complete,Complete,Complete,Standard
+L036-Q2,Complete,Complete,Complete,Complete,Standard
+L036-Q3,Complete,Complete,Complete,Complete,Standard
+L036-Q4,Complete,Complete,Complete,Complete,Standard
+L036-Q5,Complete,Complete,Complete,Complete,Standard
+L037-Q1,Complete,Complete,Complete,Complete,Standard
+L037-Q2,Complete,Complete,Complete,Complete,Standard
+L037-Q3,Complete,Complete,Complete,Complete,Standard
+L037-Q4,Complete,Complete,Complete,Complete,Standard
+L037-Q5,Complete,Complete,Complete,Complete,Standard
+L038-Q1,Complete,Complete,Complete,Complete,Standard
+L038-Q2,Complete,Complete,Complete,Complete,Standard
+L038-Q3,Complete,Complete,Complete,Complete,Standard
+L038-Q4,Complete,Complete,Complete,Complete,Standard
+L038-Q5,Complete,Complete,Complete,Complete,Standard
+L039-Q1,Complete,Complete,Complete,Complete,Standard
+L039-Q2,Complete,Complete,Complete,Complete,Standard
+L039-Q3,Complete,Complete,Complete,Complete,Standard
+L039-Q4,Complete,Complete,Complete,Complete,Standard
+L039-Q5,Complete,Complete,Complete,Complete,Standard
+L040-Q1,Complete,Complete,Complete,Complete,Standard
+L040-Q2,Complete,Complete,Complete,Complete,Standard
+L040-Q3,Complete,Complete,Complete,Complete,Standard
+L040-Q4,Complete,Complete,Complete,Complete,Standard
+L040-Q5,Complete,Complete,Complete,Complete,Standard
+L041-Q1,Complete,Complete,Complete,Complete,Standard
+L041-Q2,Complete,Complete,Complete,Complete,Standard
+L041-Q3,Complete,Complete,Complete,Complete,Standard
+L041-Q4,Complete,Complete,Complete,Complete,Standard
+L041-Q5,Complete,Complete,Complete,Complete,Standard
+L042-Q1,Complete,Complete,Complete,Complete,Standard
+L042-Q2,Complete,Complete,Complete,Complete,Standard
+L042-Q3,Complete,Complete,Complete,Complete,Standard
+L042-Q4,Complete,Complete,Complete,Complete,Standard
+L042-Q5,Complete,Complete,Complete,Complete,Standard
+L043-Q1,Complete,Complete,Complete,Complete,Standard
+L043-Q2,Complete,Complete,Complete,Complete,Standard
+L043-Q3,Complete,Complete,Complete,Complete,Standard
+L043-Q4,Complete,Complete,Complete,Complete,Standard
+L043-Q5,Complete,Complete,Complete,Complete,Standard
+L044-Q1,Complete,Complete,Complete,Complete,Standard
+L044-Q2,Complete,Complete,Complete,Complete,Standard
+L044-Q3,Complete,Complete,Complete,Complete,Standard
+L044-Q4,Complete,Complete,Complete,Complete,Standard
+L044-Q5,Complete,Complete,Complete,Complete,Standard
+L045-Q1,Complete,Complete,Complete,Complete,Standard
+L045-Q2,Complete,Complete,Complete,Complete,Standard
+L045-Q3,Complete,Complete,Complete,Complete,Standard
+L045-Q4,Complete,Complete,Complete,Complete,Standard
+L045-Q5,Complete,Complete,Complete,Complete,Standard
+L046-Q1,Complete,Complete,Complete,Complete,Standard
+L046-Q2,Complete,Complete,Complete,Complete,Standard
+L046-Q3,Complete,Complete,Complete,Complete,Standard
+L046-Q4,Complete,Complete,Complete,Complete,Standard
+L046-Q5,Complete,Complete,Complete,Complete,Standard
+L047-Q1,Complete,Complete,Complete,Complete,Standard
+L047-Q2,Complete,Complete,Complete,Complete,Standard
+L047-Q3,Complete,Complete,Complete,Complete,Standard
+L047-Q4,Complete,Complete,Complete,Complete,Standard
+L047-Q5,Complete,Complete,Complete,Complete,Standard
+L048-Q1,Complete,Complete,Complete,Complete,Standard
+L048-Q2,Complete,Complete,Complete,Complete,Standard
+L048-Q3,Complete,Complete,Complete,Complete,Standard
+L048-Q4,Complete,Complete,Complete,Complete,Standard
+L048-Q5,Complete,Complete,Complete,Complete,Standard
+L049-Q1,Complete,Complete,Complete,Complete,Standard
+L049-Q2,Complete,Complete,Complete,Complete,Standard
+L049-Q3,Complete,Complete,Complete,Complete,Standard
+L049-Q4,Complete,Complete,Complete,Complete,Standard
+L049-Q5,Complete,Complete,Complete,Complete,Standard
+L050-Q1,Complete,Complete,Complete,Complete,Standard
+L050-Q2,Complete,Complete,Complete,Complete,Standard
+L050-Q3,Complete,Complete,Complete,Complete,Standard
+L050-Q4,Complete,Complete,Complete,Complete,Standard
+L050-Q5,Complete,Complete,Complete,Complete,Standard
+L051-Q1,Complete,Complete,Complete,Complete,Standard
+L051-Q2,Complete,Complete,Complete,Complete,Standard
+L051-Q3,Complete,Complete,Complete,Complete,Standard
+L051-Q4,Complete,Complete,Complete,Complete,Standard
+L051-Q5,Complete,Complete,Complete,Complete,Standard
+L052-Q1,Complete,Complete,Complete,Complete,Specialist: System Software
+L052-Q2,Complete,Complete,Complete,Complete,Specialist: System Software
+L052-Q3,Complete,Complete,Complete,Complete,Specialist: System Software
+L052-Q4,Complete,Complete,Complete,Complete,Specialist: System Software
+L052-Q5,Complete,Complete,Complete,Complete,Specialist: System Software
+L053-Q1,Complete,Complete,Complete,Complete,Specialist: System Software
+L053-Q2,Complete,Complete,Complete,Complete,Specialist: System Software
+L053-Q3,Complete,Complete,Complete,Complete,Specialist: System Software
+L053-Q4,Complete,Complete,Complete,Complete,Specialist: System Software
+L053-Q5,Complete,Complete,Complete,Complete,Specialist: System Software
+L054-Q1,Complete,Complete,Complete,Complete,Specialist: System Software
+L054-Q2,Complete,Complete,Complete,Complete,Specialist: System Software
+L054-Q3,Complete,Complete,Complete,Complete,Specialist: System Software
+L054-Q4,Complete,Complete,Complete,Complete,Specialist: System Software
+L054-Q5,Complete,Complete,Complete,Complete,Specialist: System Software
+L055-Q1,Complete,Complete,Complete,Complete,Specialist: System Software
+L055-Q2,Complete,Complete,Complete,Complete,Specialist: System Software
+L055-Q3,Complete,Complete,Complete,Complete,Specialist: System Software
+L055-Q4,Complete,Complete,Complete,Complete,Specialist: System Software
+L055-Q5,Complete,Complete,Complete,Complete,Specialist: System Software
+L056-Q1,Complete,Complete,Complete,Complete,Specialist: System Software
+L056-Q2,Complete,Complete,Complete,Complete,Specialist: System Software
+L056-Q3,Complete,Complete,Complete,Complete,Specialist: System Software
+L056-Q4,Complete,Complete,Complete,Complete,Specialist: System Software
+L056-Q5,Complete,Complete,Complete,Complete,Specialist: System Software
+L057-Q1,Complete,Complete,Complete,Complete,Specialist: System Software
+L057-Q2,Complete,Complete,Complete,Complete,Specialist: System Software
+L057-Q3,Complete,Complete,Complete,Complete,Specialist: System Software
+L057-Q4,Complete,Complete,Complete,Complete,Specialist: System Software
+L057-Q5,Complete,Complete,Complete,Complete,Specialist: System Software
+L058-Q1,Complete,Complete,Complete,Complete,Specialist: System Software
+L058-Q2,Complete,Complete,Complete,Complete,Specialist: System Software
+L058-Q3,Complete,Complete,Complete,Complete,Specialist: System Software
+L058-Q4,Complete,Complete,Complete,Complete,Specialist: System Software
+L058-Q5,Complete,Complete,Complete,Complete,Specialist: System Software
+L059-Q1,Complete,Complete,Complete,Complete,Specialist: System Software
+L059-Q2,Complete,Complete,Complete,Complete,Specialist: System Software
+L059-Q3,Complete,Complete,Complete,Complete,Specialist: System Software
+L059-Q4,Complete,Complete,Complete,Complete,Specialist: System Software
+L059-Q5,Complete,Complete,Complete,Complete,Specialist: System Software
+L060-Q1,Complete,Complete,Complete,Complete,Specialist: System Software
+L060-Q2,Complete,Complete,Complete,Complete,Specialist: System Software
+L060-Q3,Complete,Complete,Complete,Complete,Specialist: System Software
+L060-Q4,Complete,Complete,Complete,Complete,Specialist: System Software
+L060-Q5,Complete,Complete,Complete,Complete,Specialist: System Software
+L061-Q1,Complete,Complete,Complete,Complete,Specialist: System Software
+L061-Q2,Complete,Complete,Complete,Complete,Specialist: System Software
+L061-Q3,Complete,Complete,Complete,Complete,Specialist: System Software
+L061-Q4,Complete,Complete,Complete,Complete,Specialist: System Software
+L061-Q5,Complete,Complete,Complete,Complete,Specialist: System Software
+L062-Q1,Complete,Complete,Complete,Complete,Specialist: Security
+L062-Q2,Complete,Complete,Complete,Complete,Specialist: Security
+L062-Q3,Complete,Complete,Complete,Complete,Specialist: Security
+L062-Q4,Complete,Complete,Complete,Complete,Specialist: Security
+L062-Q5,Complete,Complete,Complete,Complete,Specialist: Security
+L063-Q1,Complete,Complete,Complete,Complete,Specialist: Security
+L063-Q2,Complete,Complete,Complete,Complete,Specialist: Security
+L063-Q3,Complete,Complete,Complete,Complete,Specialist: Security
+L063-Q4,Complete,Complete,Complete,Complete,Specialist: Security
+L063-Q5,Complete,Complete,Complete,Complete,Specialist: Security
+L064-Q1,Complete,Complete,Complete,Complete,Specialist: Security
+L064-Q2,Complete,Complete,Complete,Complete,Specialist: Security
+L064-Q3,Complete,Complete,Complete,Complete,Specialist: Security
+L064-Q4,Complete,Complete,Complete,Complete,Specialist: Security
+L064-Q5,Complete,Complete,Complete,Complete,Specialist: Security
+L065-Q1,Complete,Complete,Complete,Complete,Specialist: Security
+L065-Q2,Complete,Complete,Complete,Complete,Specialist: Security
+L065-Q3,Complete,Complete,Complete,Complete,Specialist: Security
+L065-Q4,Complete,Complete,Complete,Complete,Specialist: Security
+L065-Q5,Complete,Complete,Complete,Complete,Specialist: Security
+L066-Q1,Complete,Complete,Complete,Complete,Specialist: Security
+L066-Q2,Complete,Complete,Complete,Complete,Specialist: Security
+L066-Q3,Complete,Complete,Complete,Complete,Specialist: Security
+L066-Q4,Complete,Complete,Complete,Complete,Specialist: Security
+L066-Q5,Complete,Complete,Complete,Complete,Specialist: Security
+L067-Q1,Complete,Complete,Complete,Complete,Specialist: Security
+L067-Q2,Complete,Complete,Complete,Complete,Specialist: Security
+L067-Q3,Complete,Complete,Complete,Complete,Specialist: Security
+L067-Q4,Complete,Complete,Complete,Complete,Specialist: Security
+L067-Q5,Complete,Complete,Complete,Complete,Specialist: Security
+L068-Q1,Complete,Complete,Complete,Complete,Specialist: Security
+L068-Q2,Complete,Complete,Complete,Complete,Specialist: Security
+L068-Q3,Complete,Complete,Complete,Complete,Specialist: Security
+L068-Q4,Complete,Complete,Complete,Complete,Specialist: Security
+L068-Q5,Complete,Complete,Complete,Complete,Specialist: Security
+L069-Q1,Complete,Complete,Complete,Complete,Specialist: Security
+L069-Q2,Complete,Complete,Complete,Complete,Specialist: Security
+L069-Q3,Complete,Complete,Complete,Complete,Specialist: Security
+L069-Q4,Complete,Complete,Complete,Complete,Specialist: Security
+L069-Q5,Complete,Complete,Complete,Complete,Specialist: Security
+L070-Q1,Complete,Complete,Complete,Complete,Specialist: Security
+L070-Q2,Complete,Complete,Complete,Complete,Specialist: Security
+L070-Q3,Complete,Complete,Complete,Complete,Specialist: Security
+L070-Q4,Complete,Complete,Complete,Complete,Specialist: Security
+L070-Q5,Complete,Complete,Complete,Complete,Specialist: Security
+L071-Q1,Complete,Complete,Complete,Complete,Specialist: Security
+L071-Q2,Complete,Complete,Complete,Complete,Specialist: Security
+L071-Q3,Complete,Complete,Complete,Complete,Specialist: Security
+L071-Q4,Complete,Complete,Complete,Complete,Specialist: Security
+L071-Q5,Complete,Complete,Complete,Complete,Specialist: Security
+L072-Q1,Complete,Complete,Complete,Complete,Specialist: Ethics
+L072-Q2,Complete,Complete,Complete,Complete,Specialist: Ethics
+L072-Q3,Complete,Complete,Complete,Complete,Specialist: Ethics
+L072-Q4,Complete,Complete,Complete,Complete,Specialist: Ethics
+L072-Q5,Complete,Complete,Complete,Complete,Specialist: Ethics
+L073-Q1,Complete,Complete,Complete,Complete,Specialist: Ethics
+L073-Q2,Complete,Complete,Complete,Complete,Specialist: Ethics
+L073-Q3,Complete,Complete,Complete,Complete,Specialist: Ethics
+L073-Q4,Complete,Complete,Complete,Complete,Specialist: Ethics
+L073-Q5,Complete,Complete,Complete,Complete,Specialist: Ethics
+L074-Q1,Complete,Complete,Complete,Complete,Specialist: Ethics
+L074-Q2,Complete,Complete,Complete,Complete,Specialist: Ethics
+L074-Q3,Complete,Complete,Complete,Complete,Specialist: Ethics
+L074-Q4,Complete,Complete,Complete,Complete,Specialist: Ethics
+L074-Q5,Complete,Complete,Complete,Complete,Specialist: Ethics
+L075-Q1,Complete,Complete,Complete,Complete,Specialist: Ethics
+L075-Q2,Complete,Complete,Complete,Complete,Specialist: Ethics
+L075-Q3,Complete,Complete,Complete,Complete,Specialist: Ethics
+L075-Q4,Complete,Complete,Complete,Complete,Specialist: Ethics
+L075-Q5,Complete,Complete,Complete,Complete,Specialist: Ethics
+L076-Q1,Complete,Complete,Complete,Complete,Specialist: Ethics
+L076-Q2,Complete,Complete,Complete,Complete,Specialist: Ethics
+L076-Q3,Complete,Complete,Complete,Complete,Specialist: Ethics
+L076-Q4,Complete,Complete,Complete,Complete,Specialist: Ethics
+L076-Q5,Complete,Complete,Complete,Complete,Specialist: Ethics
+L077-Q1,Complete,Complete,Complete,Complete,Specialist: Ethics
+L077-Q2,Complete,Complete,Complete,Complete,Specialist: Ethics
+L077-Q3,Complete,Complete,Complete,Complete,Specialist: Ethics
+L077-Q4,Complete,Complete,Complete,Complete,Specialist: Ethics
+L077-Q5,Complete,Complete,Complete,Complete,Specialist: Ethics
+L078-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L078-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L078-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L078-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L078-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L079-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L079-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L079-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L079-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L079-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L080-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L080-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L080-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L080-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L080-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L081-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L081-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L081-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L081-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L081-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L082-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L082-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L082-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L082-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L082-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L083-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L083-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L083-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L083-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L083-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L084-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L084-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L084-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L084-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L084-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L085-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L085-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L085-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L085-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L085-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L086-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L086-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L086-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L086-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L086-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L087-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L087-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L087-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L087-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L087-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L088-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L088-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L088-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L088-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L088-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L089-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L089-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L089-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L089-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L089-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L090-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L090-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L090-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L090-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L090-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L091-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L091-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L091-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L091-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L091-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L092-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L092-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L092-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L092-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L092-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L093-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L093-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L093-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L093-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L093-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L094-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L094-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L094-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L094-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L094-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L095-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L095-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L095-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L095-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L095-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L096-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L096-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L096-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L096-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L096-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L097-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+L097-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+L097-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+L097-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+L097-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+L098-Q1,Complete,Complete,Complete,Complete,Standard
+L098-Q2,Complete,Complete,Complete,Complete,Standard
+L098-Q3,Complete,Complete,Complete,Complete,Standard
+L098-Q4,Complete,Complete,Complete,Complete,Standard
+L098-Q5,Complete,Complete,Complete,Complete,Standard
+L099-Q1,Complete,Complete,Complete,Complete,Standard
+L099-Q2,Complete,Complete,Complete,Complete,Standard
+L099-Q3,Complete,Complete,Complete,Complete,Standard
+L099-Q4,Complete,Complete,Complete,Complete,Standard
+L099-Q5,Complete,Complete,Complete,Complete,Standard
+L100-Q1,Complete,Complete,Complete,Complete,Standard
+L100-Q2,Complete,Complete,Complete,Complete,Standard
+L100-Q3,Complete,Complete,Complete,Complete,Standard
+L100-Q4,Complete,Complete,Complete,Complete,Standard
+L100-Q5,Complete,Complete,Complete,Complete,Standard
+L101-Q1,Complete,Complete,Complete,Complete,Standard
+L101-Q2,Complete,Complete,Complete,Complete,Standard
+L101-Q3,Complete,Complete,Complete,Complete,Standard
+L101-Q4,Complete,Complete,Complete,Complete,Standard
+L101-Q5,Complete,Complete,Complete,Complete,Standard
+L102-Q1,Complete,Complete,Complete,Complete,Standard
+L102-Q2,Complete,Complete,Complete,Complete,Standard
+L102-Q3,Complete,Complete,Complete,Complete,Standard
+L102-Q4,Complete,Complete,Complete,Complete,Standard
+L102-Q5,Complete,Complete,Complete,Complete,Standard
+L103-Q1,Complete,Complete,Complete,Complete,Standard
+L103-Q2,Complete,Complete,Complete,Complete,Standard
+L103-Q3,Complete,Complete,Complete,Complete,Standard
+L103-Q4,Complete,Complete,Complete,Complete,Standard
+L103-Q5,Complete,Complete,Complete,Complete,Standard
+L104-Q1,Complete,Complete,Complete,Complete,Standard
+L104-Q2,Complete,Complete,Complete,Complete,Standard
+L104-Q3,Complete,Complete,Complete,Complete,Standard
+L104-Q4,Complete,Complete,Complete,Complete,Standard
+L104-Q5,Complete,Complete,Complete,Complete,Standard
+L105-Q1,Complete,Complete,Complete,Complete,Standard
+L105-Q2,Complete,Complete,Complete,Complete,Standard
+L105-Q3,Complete,Complete,Complete,Complete,Standard
+L105-Q4,Complete,Complete,Complete,Complete,Standard
+L105-Q5,Complete,Complete,Complete,Complete,Standard
+L106-Q1,Complete,Complete,Complete,Complete,Standard
+L106-Q2,Complete,Complete,Complete,Complete,Standard
+L106-Q3,Complete,Complete,Complete,Complete,Standard
+L106-Q4,Complete,Complete,Complete,Complete,Standard
+L106-Q5,Complete,Complete,Complete,Complete,Standard
+L107-Q1,Complete,Complete,Complete,Complete,Standard
+L107-Q2,Complete,Complete,Complete,Complete,Standard
+L107-Q3,Complete,Complete,Complete,Complete,Standard
+L107-Q4,Complete,Complete,Complete,Complete,Standard
+L107-Q5,Complete,Complete,Complete,Complete,Standard
+L108-Q1,Complete,Complete,Complete,Complete,Standard
+L108-Q2,Complete,Complete,Complete,Complete,Standard
+L108-Q3,Complete,Complete,Complete,Complete,Standard
+L108-Q4,Complete,Complete,Complete,Complete,Standard
+L108-Q5,Complete,Complete,Complete,Complete,Standard
+L109-Q1,Complete,Complete,Complete,Complete,Standard
+L109-Q2,Complete,Complete,Complete,Complete,Standard
+L109-Q3,Complete,Complete,Complete,Complete,Standard
+L109-Q4,Complete,Complete,Complete,Complete,Standard
+L109-Q5,Complete,Complete,Complete,Complete,Standard
+L110-Q1,Complete,Complete,Complete,Complete,Standard
+L110-Q2,Complete,Complete,Complete,Complete,Standard
+L110-Q3,Complete,Complete,Complete,Complete,Standard
+L110-Q4,Complete,Complete,Complete,Complete,Standard
+L110-Q5,Complete,Complete,Complete,Complete,Standard
+L111-Q1,Complete,Complete,Complete,Complete,Standard
+L111-Q2,Complete,Complete,Complete,Complete,Standard
+L111-Q3,Complete,Complete,Complete,Complete,Standard
+L111-Q4,Complete,Complete,Complete,Complete,Standard
+L111-Q5,Complete,Complete,Complete,Complete,Standard
+L112-Q1,Complete,Complete,Complete,Complete,Standard
+L112-Q2,Complete,Complete,Complete,Complete,Standard
+L112-Q3,Complete,Complete,Complete,Complete,Standard
+L112-Q4,Complete,Complete,Complete,Complete,Standard
+L112-Q5,Complete,Complete,Complete,Complete,Standard
+L113-Q1,Complete,Complete,Complete,Complete,Standard
+L113-Q2,Complete,Complete,Complete,Complete,Standard
+L113-Q3,Complete,Complete,Complete,Complete,Standard
+L113-Q4,Complete,Complete,Complete,Complete,Standard
+L113-Q5,Complete,Complete,Complete,Complete,Standard
+L114-Q1,Complete,Complete,Complete,Complete,Standard
+L114-Q2,Complete,Complete,Complete,Complete,Standard
+L114-Q3,Complete,Complete,Complete,Complete,Standard
+L114-Q4,Complete,Complete,Complete,Complete,Standard
+L114-Q5,Complete,Complete,Complete,Complete,Standard
+L115-Q1,Complete,Complete,Complete,Complete,Standard
+L115-Q2,Complete,Complete,Complete,Complete,Standard
+L115-Q3,Complete,Complete,Complete,Complete,Standard
+L115-Q4,Complete,Complete,Complete,Complete,Standard
+L115-Q5,Complete,Complete,Complete,Complete,Standard
+L116-Q1,Complete,Complete,Complete,Complete,Standard
+L116-Q2,Complete,Complete,Complete,Complete,Standard
+L116-Q3,Complete,Complete,Complete,Complete,Standard
+L116-Q4,Complete,Complete,Complete,Complete,Standard
+L116-Q5,Complete,Complete,Complete,Complete,Standard
+L117-Q1,Complete,Complete,Complete,Complete,Standard
+L117-Q2,Complete,Complete,Complete,Complete,Standard
+L117-Q3,Complete,Complete,Complete,Complete,Standard
+L117-Q4,Complete,Complete,Complete,Complete,Standard
+L117-Q5,Complete,Complete,Complete,Complete,Standard
+L118-Q1,Complete,Complete,Complete,Complete,Standard
+L118-Q2,Complete,Complete,Complete,Complete,Standard
+L118-Q3,Complete,Complete,Complete,Complete,Standard
+L118-Q4,Complete,Complete,Complete,Complete,Standard
+L118-Q5,Complete,Complete,Complete,Complete,Standard
+L119-Q1,Complete,Complete,Complete,Complete,Standard
+L119-Q2,Complete,Complete,Complete,Complete,Standard
+L119-Q3,Complete,Complete,Complete,Complete,Standard
+L119-Q4,Complete,Complete,Complete,Complete,Standard
+L119-Q5,Complete,Complete,Complete,Complete,Standard
+L120-Q1,Complete,Complete,Complete,Complete,Standard
+L120-Q2,Complete,Complete,Complete,Complete,Standard
+L120-Q3,Complete,Complete,Complete,Complete,Standard
+L120-Q4,Complete,Complete,Complete,Complete,Standard
+L120-Q5,Complete,Complete,Complete,Complete,Standard
+L121-Q1,Complete,Complete,Complete,Complete,Standard
+L121-Q2,Complete,Complete,Complete,Complete,Standard
+L121-Q3,Complete,Complete,Complete,Complete,Standard
+L121-Q4,Complete,Complete,Complete,Complete,Standard
+L121-Q5,Complete,Complete,Complete,Complete,Standard
+L122-Q1,Complete,Complete,Complete,Complete,Standard
+L122-Q2,Complete,Complete,Complete,Complete,Standard
+L122-Q3,Complete,Complete,Complete,Complete,Standard
+L122-Q4,Complete,Complete,Complete,Complete,Standard
+L122-Q5,Complete,Complete,Complete,Complete,Standard
+L123-Q1,Complete,Complete,Complete,Complete,Standard
+L123-Q2,Complete,Complete,Complete,Complete,Standard
+L123-Q3,Complete,Complete,Complete,Complete,Standard
+L123-Q4,Complete,Complete,Complete,Complete,Standard
+L123-Q5,Complete,Complete,Complete,Complete,Standard
+L124-Q1,Complete,Complete,Complete,Complete,Standard
+L124-Q2,Complete,Complete,Complete,Complete,Standard
+L124-Q3,Complete,Complete,Complete,Complete,Standard
+L124-Q4,Complete,Complete,Complete,Complete,Standard
+L124-Q5,Complete,Complete,Complete,Complete,Standard
+L125-Q1,Complete,Complete,Complete,Complete,Standard
+L125-Q2,Complete,Complete,Complete,Complete,Standard
+L125-Q3,Complete,Complete,Complete,Complete,Standard
+L125-Q4,Complete,Complete,Complete,Complete,Standard
+L125-Q5,Complete,Complete,Complete,Complete,Standard
+L126-Q1,Complete,Complete,Complete,Complete,Standard
+L126-Q2,Complete,Complete,Complete,Complete,Standard
+L126-Q3,Complete,Complete,Complete,Complete,Standard
+L126-Q4,Complete,Complete,Complete,Complete,Standard
+L126-Q5,Complete,Complete,Complete,Complete,Standard
+L127-Q1,Complete,Complete,Complete,Complete,Standard
+L127-Q2,Complete,Complete,Complete,Complete,Standard
+L127-Q3,Complete,Complete,Complete,Complete,Standard
+L127-Q4,Complete,Complete,Complete,Complete,Standard
+L127-Q5,Complete,Complete,Complete,Complete,Standard
+L128-Q1,Complete,Complete,Complete,Complete,Standard
+L128-Q2,Complete,Complete,Complete,Complete,Standard
+L128-Q3,Complete,Complete,Complete,Complete,Standard
+L128-Q4,Complete,Complete,Complete,Complete,Standard
+L128-Q5,Complete,Complete,Complete,Complete,Standard
+L129-Q1,Complete,Complete,Complete,Complete,Standard
+L129-Q2,Complete,Complete,Complete,Complete,Standard
+L129-Q3,Complete,Complete,Complete,Complete,Standard
+L129-Q4,Complete,Complete,Complete,Complete,Standard
+L129-Q5,Complete,Complete,Complete,Complete,Standard
+L130-Q1,Complete,Complete,Complete,Complete,Standard
+L130-Q2,Complete,Complete,Complete,Complete,Standard
+L130-Q3,Complete,Complete,Complete,Complete,Standard
+L130-Q4,Complete,Complete,Complete,Complete,Standard
+L130-Q5,Complete,Complete,Complete,Complete,Standard
+L131-Q1,Complete,Complete,Complete,Complete,Standard
+L131-Q2,Complete,Complete,Complete,Complete,Standard
+L131-Q3,Complete,Complete,Complete,Complete,Standard
+L131-Q4,Complete,Complete,Complete,Complete,Standard
+L131-Q5,Complete,Complete,Complete,Complete,Standard
+L132-Q1,Complete,Complete,Complete,Complete,Standard
+L132-Q2,Complete,Complete,Complete,Complete,Standard
+L132-Q3,Complete,Complete,Complete,Complete,Standard
+L132-Q4,Complete,Complete,Complete,Complete,Standard
+L132-Q5,Complete,Complete,Complete,Complete,Standard
+L133-Q1,Complete,Complete,Complete,Complete,Standard
+L133-Q2,Complete,Complete,Complete,Complete,Standard
+L133-Q3,Complete,Complete,Complete,Complete,Standard
+L133-Q4,Complete,Complete,Complete,Complete,Standard
+L133-Q5,Complete,Complete,Complete,Complete,Standard
+L134-Q1,Complete,Complete,Complete,Complete,Standard
+L134-Q2,Complete,Complete,Complete,Complete,Standard
+L134-Q3,Complete,Complete,Complete,Complete,Standard
+L134-Q4,Complete,Complete,Complete,Complete,Standard
+L134-Q5,Complete,Complete,Complete,Complete,Standard
+L135-Q1,Complete,Complete,Complete,Complete,Standard
+L135-Q2,Complete,Complete,Complete,Complete,Standard
+L135-Q3,Complete,Complete,Complete,Complete,Standard
+L135-Q4,Complete,Complete,Complete,Complete,Standard
+L135-Q5,Complete,Complete,Complete,Complete,Standard
+L136-Q1,Complete,Complete,Complete,Complete,Standard
+L136-Q2,Complete,Complete,Complete,Complete,Standard
+L136-Q3,Complete,Complete,Complete,Complete,Standard
+L136-Q4,Complete,Complete,Complete,Complete,Standard
+L136-Q5,Complete,Complete,Complete,Complete,Standard
+L137-Q1,Complete,Complete,Complete,Complete,Standard
+L137-Q2,Complete,Complete,Complete,Complete,Standard
+L137-Q3,Complete,Complete,Complete,Complete,Standard
+L137-Q4,Complete,Complete,Complete,Complete,Standard
+L137-Q5,Complete,Complete,Complete,Complete,Standard
+L138-Q1,Complete,Complete,Complete,Complete,Standard
+L138-Q2,Complete,Complete,Complete,Complete,Standard
+L138-Q3,Complete,Complete,Complete,Complete,Standard
+L138-Q4,Complete,Complete,Complete,Complete,Standard
+L138-Q5,Complete,Complete,Complete,Complete,Standard
+L139-Q1,Complete,Complete,Complete,Complete,Standard
+L139-Q2,Complete,Complete,Complete,Complete,Standard
+L139-Q3,Complete,Complete,Complete,Complete,Standard
+L139-Q4,Complete,Complete,Complete,Complete,Standard
+L139-Q5,Complete,Complete,Complete,Complete,Standard
+L140-Q1,Complete,Complete,Complete,Complete,Standard
+L140-Q2,Complete,Complete,Complete,Complete,Standard
+L140-Q3,Complete,Complete,Complete,Complete,Standard
+L140-Q4,Complete,Complete,Complete,Complete,Standard
+L140-Q5,Complete,Complete,Complete,Complete,Standard
+L141-Q1,Complete,Complete,Complete,Complete,Standard
+L141-Q2,Complete,Complete,Complete,Complete,Standard
+L141-Q3,Complete,Complete,Complete,Complete,Standard
+L141-Q4,Complete,Complete,Complete,Complete,Standard
+L141-Q5,Complete,Complete,Complete,Complete,Standard
+L142-Q1,Complete,Complete,Complete,Complete,Standard
+L142-Q2,Complete,Complete,Complete,Complete,Standard
+L142-Q3,Complete,Complete,Complete,Complete,Standard
+L142-Q4,Complete,Complete,Complete,Complete,Standard
+L142-Q5,Complete,Complete,Complete,Complete,Standard
+L143-Q1,Complete,Complete,Complete,Complete,Standard
+L143-Q2,Complete,Complete,Complete,Complete,Standard
+L143-Q3,Complete,Complete,Complete,Complete,Standard
+L143-Q4,Complete,Complete,Complete,Complete,Standard
+L143-Q5,Complete,Complete,Complete,Complete,Standard
+L144-Q1,Complete,Complete,Complete,Complete,Standard
+L144-Q2,Complete,Complete,Complete,Complete,Standard
+L144-Q3,Complete,Complete,Complete,Complete,Standard
+L144-Q4,Complete,Complete,Complete,Complete,Standard
+L144-Q5,Complete,Complete,Complete,Complete,Standard
+L145-Q1,Complete,Complete,Complete,Complete,Standard
+L145-Q2,Complete,Complete,Complete,Complete,Standard
+L145-Q3,Complete,Complete,Complete,Complete,Standard
+L145-Q4,Complete,Complete,Complete,Complete,Standard
+L145-Q5,Complete,Complete,Complete,Complete,Standard
+L146-Q1,Complete,Complete,Complete,Complete,Standard
+L146-Q2,Complete,Complete,Complete,Complete,Standard
+L146-Q3,Complete,Complete,Complete,Complete,Standard
+L146-Q4,Complete,Complete,Complete,Complete,Standard
+L146-Q5,Complete,Complete,Complete,Complete,Standard
+L147-Q1,Complete,Complete,Complete,Complete,Standard
+L147-Q2,Complete,Complete,Complete,Complete,Standard
+L147-Q3,Complete,Complete,Complete,Complete,Standard
+L147-Q4,Complete,Complete,Complete,Complete,Standard
+L147-Q5,Complete,Complete,Complete,Complete,Standard
+L148-Q1,Complete,Complete,Complete,Complete,Standard
+L148-Q2,Complete,Complete,Complete,Complete,Standard
+L148-Q3,Complete,Complete,Complete,Complete,Standard
+L148-Q4,Complete,Complete,Complete,Complete,Standard
+L148-Q5,Complete,Complete,Complete,Complete,Standard
+L149-Q1,Complete,Complete,Complete,Complete,Standard
+L149-Q2,Complete,Complete,Complete,Complete,Standard
+L149-Q3,Complete,Complete,Complete,Complete,Standard
+L149-Q4,Complete,Complete,Complete,Complete,Standard
+L149-Q5,Complete,Complete,Complete,Complete,Standard
+L150-Q1,Complete,Complete,Complete,Complete,Standard
+L150-Q2,Complete,Complete,Complete,Complete,Standard
+L150-Q3,Complete,Complete,Complete,Complete,Standard
+L150-Q4,Complete,Complete,Complete,Complete,Standard
+L150-Q5,Complete,Complete,Complete,Complete,Standard
+AQ005-Q1,Complete,Complete,Complete,Complete,Standard
+AQ005-Q2,Complete,Complete,Complete,Complete,Standard
+AQ005-Q3,Complete,Complete,Complete,Complete,Standard
+AQ005-Q4,Complete,Complete,Complete,Complete,Standard
+AQ005-Q5,Complete,Complete,Complete,Complete,Standard
+AQ010-Q1,Complete,Complete,Complete,Complete,Standard
+AQ010-Q2,Complete,Complete,Complete,Complete,Standard
+AQ010-Q3,Complete,Complete,Complete,Complete,Standard
+AQ010-Q4,Complete,Complete,Complete,Complete,Standard
+AQ010-Q5,Complete,Complete,Complete,Complete,Standard
+AQ015-Q1,Complete,Complete,Complete,Complete,Standard
+AQ015-Q2,Complete,Complete,Complete,Complete,Standard
+AQ015-Q3,Complete,Complete,Complete,Complete,Standard
+AQ015-Q4,Complete,Complete,Complete,Complete,Standard
+AQ015-Q5,Complete,Complete,Complete,Complete,Standard
+AQ020-Q1,Complete,Complete,Complete,Complete,Standard
+AQ020-Q2,Complete,Complete,Complete,Complete,Standard
+AQ020-Q3,Complete,Complete,Complete,Complete,Standard
+AQ020-Q4,Complete,Complete,Complete,Complete,Standard
+AQ020-Q5,Complete,Complete,Complete,Complete,Standard
+AQ025-Q1,Complete,Complete,Complete,Complete,Standard
+AQ025-Q2,Complete,Complete,Complete,Complete,Standard
+AQ025-Q3,Complete,Complete,Complete,Complete,Standard
+AQ025-Q4,Complete,Complete,Complete,Complete,Standard
+AQ025-Q5,Complete,Complete,Complete,Complete,Standard
+AQ030-Q1,Complete,Complete,Complete,Complete,Standard
+AQ030-Q2,Complete,Complete,Complete,Complete,Standard
+AQ030-Q3,Complete,Complete,Complete,Complete,Standard
+AQ030-Q4,Complete,Complete,Complete,Complete,Standard
+AQ030-Q5,Complete,Complete,Complete,Complete,Standard
+AQ035-Q1,Complete,Complete,Complete,Complete,Standard
+AQ035-Q2,Complete,Complete,Complete,Complete,Standard
+AQ035-Q3,Complete,Complete,Complete,Complete,Standard
+AQ035-Q4,Complete,Complete,Complete,Complete,Standard
+AQ035-Q5,Complete,Complete,Complete,Complete,Standard
+AQ040-Q1,Complete,Complete,Complete,Complete,Standard
+AQ040-Q2,Complete,Complete,Complete,Complete,Standard
+AQ040-Q3,Complete,Complete,Complete,Complete,Standard
+AQ040-Q4,Complete,Complete,Complete,Complete,Standard
+AQ040-Q5,Complete,Complete,Complete,Complete,Standard
+AQ045-Q1,Complete,Complete,Complete,Complete,Standard
+AQ045-Q2,Complete,Complete,Complete,Complete,Standard
+AQ045-Q3,Complete,Complete,Complete,Complete,Standard
+AQ045-Q4,Complete,Complete,Complete,Complete,Standard
+AQ045-Q5,Complete,Complete,Complete,Complete,Standard
+AQ050-Q1,Complete,Complete,Complete,Complete,Standard
+AQ050-Q2,Complete,Complete,Complete,Complete,Standard
+AQ050-Q3,Complete,Complete,Complete,Complete,Standard
+AQ050-Q4,Complete,Complete,Complete,Complete,Standard
+AQ050-Q5,Complete,Complete,Complete,Complete,Standard
+AQ055-Q1,Complete,Complete,Complete,Complete,Specialist: System Software
+AQ055-Q2,Complete,Complete,Complete,Complete,Specialist: System Software
+AQ055-Q3,Complete,Complete,Complete,Complete,Specialist: System Software
+AQ055-Q4,Complete,Complete,Complete,Complete,Specialist: System Software
+AQ055-Q5,Complete,Complete,Complete,Complete,Specialist: System Software
+AQ060-Q1,Complete,Complete,Complete,Complete,Specialist: System Software
+AQ060-Q2,Complete,Complete,Complete,Complete,Specialist: System Software
+AQ060-Q3,Complete,Complete,Complete,Complete,Specialist: System Software
+AQ060-Q4,Complete,Complete,Complete,Complete,Specialist: System Software
+AQ060-Q5,Complete,Complete,Complete,Complete,Specialist: System Software
+AQ065-Q1,Complete,Complete,Complete,Complete,Specialist: Security
+AQ065-Q2,Complete,Complete,Complete,Complete,Specialist: Security
+AQ065-Q3,Complete,Complete,Complete,Complete,Specialist: Security
+AQ065-Q4,Complete,Complete,Complete,Complete,Specialist: Security
+AQ065-Q5,Complete,Complete,Complete,Complete,Specialist: Security
+AQ070-Q1,Complete,Complete,Complete,Complete,Specialist: Security
+AQ070-Q2,Complete,Complete,Complete,Complete,Specialist: Security
+AQ070-Q3,Complete,Complete,Complete,Complete,Specialist: Security
+AQ070-Q4,Complete,Complete,Complete,Complete,Specialist: Security
+AQ070-Q5,Complete,Complete,Complete,Complete,Specialist: Security
+AQ075-Q1,Complete,Complete,Complete,Complete,Specialist: Ethics
+AQ075-Q2,Complete,Complete,Complete,Complete,Specialist: Ethics
+AQ075-Q3,Complete,Complete,Complete,Complete,Specialist: Ethics
+AQ075-Q4,Complete,Complete,Complete,Complete,Specialist: Ethics
+AQ075-Q5,Complete,Complete,Complete,Complete,Specialist: Ethics
+AQ080-Q1,Complete,Complete,Complete,Complete,Specialist: Ethics
+AQ080-Q2,Complete,Complete,Complete,Complete,Specialist: Ethics
+AQ080-Q3,Complete,Complete,Complete,Complete,Specialist: Ethics
+AQ080-Q4,Complete,Complete,Complete,Complete,Specialist: Ethics
+AQ080-Q5,Complete,Complete,Complete,Complete,Specialist: Ethics
+AQ085-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+AQ085-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+AQ085-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+AQ085-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+AQ085-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+AQ090-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+AQ090-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+AQ090-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+AQ090-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+AQ090-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+AQ095-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+AQ095-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+AQ095-Q3,Complete,Complete,Complete,Complete,Specialist: Databases
+AQ095-Q4,Complete,Complete,Complete,Complete,Specialist: Databases
+AQ095-Q5,Complete,Complete,Complete,Complete,Specialist: Databases
+AQ100-Q1,Complete,Complete,Complete,Complete,Standard
+AQ100-Q2,Complete,Complete,Complete,Complete,Standard
+AQ100-Q3,Complete,Complete,Complete,Complete,Standard
+AQ100-Q4,Complete,Complete,Complete,Complete,Standard
+AQ100-Q5,Complete,Complete,Complete,Complete,Standard
+AQ105-Q1,Complete,Complete,Complete,Complete,Standard
+AQ105-Q2,Complete,Complete,Complete,Complete,Standard
+AQ105-Q3,Complete,Complete,Complete,Complete,Standard
+AQ105-Q4,Complete,Complete,Complete,Complete,Standard
+AQ105-Q5,Complete,Complete,Complete,Complete,Standard
+AQ110-Q1,Complete,Complete,Complete,Complete,Standard
+AQ110-Q2,Complete,Complete,Complete,Complete,Standard
+AQ110-Q3,Complete,Complete,Complete,Complete,Standard
+AQ110-Q4,Complete,Complete,Complete,Complete,Standard
+AQ110-Q5,Complete,Complete,Complete,Complete,Standard
+AQ115-Q1,Complete,Complete,Complete,Complete,Standard
+AQ115-Q2,Complete,Complete,Complete,Complete,Standard
+AQ115-Q3,Complete,Complete,Complete,Complete,Standard
+AQ115-Q4,Complete,Complete,Complete,Complete,Standard
+AQ115-Q5,Complete,Complete,Complete,Complete,Standard
+AQ120-Q1,Complete,Complete,Complete,Complete,Standard
+AQ120-Q2,Complete,Complete,Complete,Complete,Standard
+AQ120-Q3,Complete,Complete,Complete,Complete,Standard
+AQ120-Q4,Complete,Complete,Complete,Complete,Standard
+AQ120-Q5,Complete,Complete,Complete,Complete,Standard
+AQ125-Q1,Complete,Complete,Complete,Complete,Standard
+AQ125-Q2,Complete,Complete,Complete,Complete,Standard
+AQ125-Q3,Complete,Complete,Complete,Complete,Standard
+AQ125-Q4,Complete,Complete,Complete,Complete,Standard
+AQ125-Q5,Complete,Complete,Complete,Complete,Standard
+AQ130-Q1,Complete,Complete,Complete,Complete,Standard
+AQ130-Q2,Complete,Complete,Complete,Complete,Standard
+AQ130-Q3,Complete,Complete,Complete,Complete,Standard
+AQ130-Q4,Complete,Complete,Complete,Complete,Standard
+AQ130-Q5,Complete,Complete,Complete,Complete,Standard
+AQ135-Q1,Complete,Complete,Complete,Complete,Standard
+AQ135-Q2,Complete,Complete,Complete,Complete,Standard
+AQ135-Q3,Complete,Complete,Complete,Complete,Standard
+AQ135-Q4,Complete,Complete,Complete,Complete,Standard
+AQ135-Q5,Complete,Complete,Complete,Complete,Standard
+AQ140-Q1,Complete,Complete,Complete,Complete,Standard
+AQ140-Q2,Complete,Complete,Complete,Complete,Standard
+AQ140-Q3,Complete,Complete,Complete,Complete,Standard
+AQ140-Q4,Complete,Complete,Complete,Complete,Standard
+AQ140-Q5,Complete,Complete,Complete,Complete,Standard
+AQ145-Q1,Complete,Complete,Complete,Complete,Standard
+AQ145-Q2,Complete,Complete,Complete,Complete,Standard
+AQ145-Q3,Complete,Complete,Complete,Complete,Standard
+AQ145-Q4,Complete,Complete,Complete,Complete,Standard
+AQ145-Q5,Complete,Complete,Complete,Complete,Standard
+AQ150-Q1,Complete,Complete,Complete,Complete,Standard
+AQ150-Q2,Complete,Complete,Complete,Complete,Standard
+AQ150-Q3,Complete,Complete,Complete,Complete,Standard
+AQ150-Q4,Complete,Complete,Complete,Complete,Standard
+AQ150-Q5,Complete,Complete,Complete,Complete,Standard
+AM020-Q1,Complete,Complete,Complete,Complete,Standard
+AM020-Q2,Complete,Complete,Complete,Complete,Standard
+AM020-Q3,Complete,Complete,Complete,Complete,Standard
+AM020-Q4,Complete,Complete,Complete,Complete,Standard
+AM020-Q5,Complete,Complete,Complete,Complete,Standard
+AM040-Q1,Complete,Complete,Complete,Complete,Standard
+AM040-Q2,Complete,Complete,Complete,Complete,Standard
+AM040-Q3,Complete,Complete,Complete,Complete,Standard
+AM040-Q4,Complete,Complete,Complete,Complete,Standard
+AM040-Q5,Complete,Complete,Complete,Complete,Standard
+AM060-Q1,Complete,Complete,Complete,Complete,Specialist: System Software
+AM060-Q2,Complete,Complete,Complete,Complete,Specialist: System Software
+AM060-Q3,Complete,Complete,Complete,Complete,Specialist: System Software
+AM060-Q4,Complete,Complete,Complete,Complete,Specialist: System Software
+AM060-Q5,Complete,Complete,Complete,Complete,Specialist: System Software
+AM080-Q1,Complete,Complete,Complete,Complete,Specialist: Security
+AM080-Q2,Complete,Complete,Complete,Complete,Specialist: Security
+AM080-Q3,Complete,Complete,Complete,Complete,Specialist: Security
+AM080-Q4,Complete,Complete,Complete,Complete,Specialist: Security
+AM080-Q5,Complete,Complete,Complete,Complete,Specialist: Security
+AM100-Q1,Complete,Complete,Complete,Complete,Standard
+AM100-Q2,Complete,Complete,Complete,Complete,Standard
+AM100-Q3,Complete,Complete,Complete,Complete,Standard
+AM100-Q4,Complete,Complete,Complete,Complete,Standard
+AM100-Q5,Complete,Complete,Complete,Complete,Standard
+AM120-Q1,Complete,Complete,Complete,Complete,Standard
+AM120-Q2,Complete,Complete,Complete,Complete,Standard
+AM120-Q3,Complete,Complete,Complete,Complete,Standard
+AM120-Q4,Complete,Complete,Complete,Complete,Standard
+AM120-Q5,Complete,Complete,Complete,Complete,Standard
+AM140-Q1,Complete,Complete,Complete,Complete,Standard
+AM140-Q2,Complete,Complete,Complete,Complete,Standard
+AM140-Q3,Complete,Complete,Complete,Complete,Standard
+AM140-Q4,Complete,Complete,Complete,Complete,Standard
+AM140-Q5,Complete,Complete,Complete,Complete,Standard
+AR015-Q1,Complete,Complete,Complete,Complete,Standard
+AR015-Q2,Complete,Complete,Complete,Complete,Standard
+AR026-Q1,Complete,Complete,Complete,Complete,Standard
+AR026-Q2,Complete,Complete,Complete,Complete,Standard
+AR040-Q1,Complete,Complete,Complete,Complete,Standard
+AR040-Q2,Complete,Complete,Complete,Complete,Standard
+AR051-Q1,Complete,Complete,Complete,Complete,Standard
+AR051-Q2,Complete,Complete,Complete,Complete,Standard
+AR061-Q1,Complete,Complete,Complete,Complete,Specialist: System Software
+AR061-Q2,Complete,Complete,Complete,Complete,Specialist: System Software
+AR071-Q1,Complete,Complete,Complete,Complete,Specialist: Security
+AR071-Q2,Complete,Complete,Complete,Complete,Specialist: Security
+AR077-Q1,Complete,Complete,Complete,Complete,Specialist: Ethics
+AR077-Q2,Complete,Complete,Complete,Complete,Specialist: Ethics
+AR089-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+AR089-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+AR097-Q1,Complete,Complete,Complete,Complete,Specialist: Databases
+AR097-Q2,Complete,Complete,Complete,Complete,Specialist: Databases
+AR112-Q1,Complete,Complete,Complete,Complete,Standard
+AR112-Q2,Complete,Complete,Complete,Complete,Standard
+AR125-Q1,Complete,Complete,Complete,Complete,Standard
+AR125-Q2,Complete,Complete,Complete,Complete,Standard
+AR141-Q1,Complete,Complete,Complete,Complete,Standard
+AR141-Q2,Complete,Complete,Complete,Complete,Standard
+AR146-Q1,Complete,Complete,Complete,Complete,Standard
+AR146-Q2,Complete,Complete,Complete,Complete,Standard
+AR150-Q1,Complete,Complete,Complete,Complete,Standard
+AR150-Q2,Complete,Complete,Complete,Complete,Standard

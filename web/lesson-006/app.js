@@ -49,7 +49,7 @@ const examQuestions = [
     title: "Question 1",
     marks: "3 marks",
     prompt: "Convert 10.101₂ to denary. Show your working.",
-    answer: "2.625₁₀",
+    answer: "10.101₂ = 2 + 1/2 + 1/8 = 2 + 0.5 + 0.125 = 2.625₁₀.",
     marking: [
       { mark: "M1", text: "identifies correct active place values, e.g. 2, 1/2 and 1/8" },
       { mark: "M1", text: "adds active place values correctly" },
@@ -65,7 +65,7 @@ const examQuestions = [
     title: "Question 2",
     marks: "3 marks",
     prompt: "Convert 0.625₁₀ to binary.",
-    answer: "0.101₂",
+    answer: "0.625 = 1/2 + 1/8. The 1/2 and 1/8 columns are 1 and the 1/4 column is 0, so the result is 0.101₂.",
     marking: [
       { mark: "M1", text: "uses 1/2 as the first fractional place and selects it" },
       { mark: "M1", text: "skips 1/4 and selects 1/8, or equivalent repeated-multiplication method" },
@@ -74,7 +74,6 @@ const examQuestions = [
     strict: [
       "Do not accept 0.625 written unchanged as a binary answer.",
       "Allow 0.1010 if trailing zero is clearly only a fixed-width pad.",
-      "FT may be awarded for a correct method following one arithmetic slip.",
     ],
   },
   {
@@ -101,14 +100,13 @@ const examQuestions = [
     prompt: "Using four fractional bits, approximate 0.3₁₀ by truncation and state the representation error.",
     answer: "0.0100₂ = 0.25₁₀, error = 0.05",
     marking: [
-      { mark: "M1", text: "tests fractional place values 1/2, 1/4, 1/8, 1/16" },
-      { mark: "M1", text: "selects 1/4 and rejects 1/2, 1/8, 1/16 for truncation after four places" },
-      { mark: "A1", text: "0.0100" },
-      { mark: "A1", text: "error 0.05" },
+      { mark: "B1", text: "tests fractional place values 1/2, 1/4, 1/8, 1/16" },
+      { mark: "B1", text: "selects 1/4 and rejects 1/2, 1/8, 1/16 for truncation after four places" },
+      { mark: "B1", text: "0.0100" },
+      { mark: "B1", text: "error 0.05" },
     ],
     strict: [
-      "Do not award final A1 for rounded answer 0.0101; the question specifies truncation.",
-      "Allow FT for the error if it is calculated consistently from the candidate's four-bit truncated value.",
+      "Do not award final answer mark for rounded answer 0.0101; the question specifies truncation.",
       "The answer must show four fractional bits or clearly state four-bit truncation.",
     ],
   },

@@ -75,22 +75,19 @@ const practice = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "6 marks",
+    marks: "4 marks",
     prompt: "A school wants a computer-based attendance system. Recommend two pieces of hardware and justify each choice.",
-    answer: "An RFID/barcode reader can capture student IDs quickly and accurately, reducing queues and typing errors. A networked computer/tablet can send attendance records to the central database so staff can access updated records. A display can show confirmation that the record has been accepted.",
+    answer: "An RFID/barcode reader can capture student IDs quickly and accurately, reducing queues and typing errors. A networked computer or tablet can send attendance records to the central database so staff can access updated records.",
     marking: [
       { mark: "B1", text: "suitable input device such as RFID/barcode reader named" },
       { mark: "B1", text: "justification linked to fast/accurate capture of student ID" },
       { mark: "B1", text: "suitable processing/storage/network device named" },
       { mark: "B1", text: "justification linked to storing/updating/accessing attendance records" },
-      { mark: "B1", text: "suitable output device named, if used as second/extra choice" },
-      { mark: "B1", text: "output justification linked to confirmation/feedback" },
     ],
     strict: [
       "Do not award justification marks for vague statements such as 'it is better' without a scenario link.",
-      "Do not require all three devices; award for any two well-justified suitable choices up to max marks.",
+      "Award one identification mark and one linked justification mark for each of two suitable choices.",
       "Allow biometric reader if privacy/security concerns are not being assessed in this question.",
-      "FT: award justification where the named hardware is imprecise but the role is clearly suitable.",
     ],
   },
   {
@@ -108,7 +105,6 @@ const examQuestions = [
     strict: [
       "Do not award rejection mark for saying desktop is 'bad' without explaining portability or data capture issue.",
       "Allow smartphone, tablet or handheld scanner if role is clear.",
-      "FT: award benefits for a rugged laptop only if portability and field use are clearly justified.",
     ],
   },
   {
@@ -125,7 +121,6 @@ const examQuestions = [
     strict: [
       "Do not accept 'SSD is better' without a criterion.",
       "Allow discussion of reliability/durability if linked to lack of moving parts.",
-      "FT: award comparison marks if the candidate compares criteria even with a weak final recommendation.",
     ],
   },
   {
@@ -144,7 +139,6 @@ const examQuestions = [
       "Do not award sensor mark for generic 'input device' unless environmental measurement is clear.",
       "Do not require brand names or exact model specifications.",
       "Allow solar power/battery discussion if linked to remote use.",
-      "FT: award communication mark for any plausible wireless method with a clear role.",
     ],
   },
   {
@@ -161,7 +155,6 @@ const examQuestions = [
     strict: [
       "Do not accept only a list of devices with no user/task link.",
       "Allow any valid user scenario from the syllabus-level hardware context.",
-      "FT: award consequence mark if the impact follows logically from the candidate's example.",
     ],
   },
 ];

@@ -111,12 +111,11 @@ const examQuestions = [
       "Do not award expression mark if armed is omitted from the expression.",
       "Do not accept A AND D OR W without brackets unless the intended order is made clear.",
       "Allow alternative variable letters if clearly defined.",
-      "FT: award variable marks even if the expression is incorrect.",
     ],
   },
   {
     title: "Question 2",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "Describe the gate sequence needed for Alarm = A AND (D OR W).",
     answer: "Inputs D and W are connected to an OR gate. The output of the OR gate is connected to an AND gate with input A. The output of the AND gate is Alarm.",
     marking: [
@@ -125,13 +124,11 @@ const examQuestions = [
       { mark: "B1", text: "A is used as another input to AND" },
       { mark: "B1", text: "OR output feeds into AND gate" },
       { mark: "B1", text: "final AND output is Alarm" },
-      { mark: "B1", text: "sequence matches expression order / bracketed part first" },
     ],
     strict: [
       "Do not award full credit for listing gates without showing how they connect.",
       "Do not accept a final OR gate for this expression.",
       "Allow labelled intermediate output if the sequence is clear.",
-      "FT: award connection marks from a candidate's defined variables if consistent.",
     ],
   },
   {
@@ -149,7 +146,6 @@ const examQuestions = [
     strict: [
       "Do not award expression mark if NOT is applied to the hot condition.",
       "Allow 'override inactive' as a variable only if the expression remains logically clear.",
-      "FT: award AND method mark if candidate combines their defined hot and override-related conditions consistently.",
     ],
   },
   {
@@ -166,26 +162,22 @@ const examQuestions = [
     strict: [
       "Do not accept 'XOR is better' without a logical reason.",
       "Allow truth-table row examples instead of prose.",
-      "FT: award comparison marks where both gates' 11 row is clearly contrasted.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
+    marks: "4 marks",
     prompt: "For Unlock = C AND NOT E, verify the output when C = 1 and E = 1, and explain what this means in the original scenario.",
     answer: "E = 1, so NOT E = 0. C AND NOT E = 1 AND 0 = 0. Unlock is 0, meaning the door remains locked because the emergency stop is active even though the card is valid.",
     marking: [
-      { mark: "M1", text: "attempts NOT E using E=1" },
-      { mark: "A1", text: "NOT E = 0" },
-      { mark: "M1", text: "applies AND between C and NOT E" },
-      { mark: "A1", text: "final Unlock output is 0" },
-      { mark: "B1", text: "explains door remains locked / output is off" },
-      { mark: "B1", text: "links reason to emergency stop being active" },
+      { mark: "B1", text: "NOT E = 0" },
+      { mark: "B1", text: "applies AND between C and NOT E" },
+      { mark: "B1", text: "final Unlock output is 0" },
+      { mark: "B1", text: "explains the door remains locked because the emergency stop is active" },
     ],
     strict: [
       "Do not award final output mark if NOT is ignored.",
       "Allow 'false' for 0 if notation is consistent.",
-      "FT: award scenario explanation if it follows the candidate's calculated output.",
     ],
   },
 ];

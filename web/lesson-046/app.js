@@ -107,31 +107,29 @@ const examQuestions = [
       "Do not accept assembly as a high-level language.",
       "Do not accept mnemonic as the operand/data value.",
       "Allow valid mnemonic examples such as JMP, STORE, SUB.",
-      "FT: mark assembly and mnemonic definitions independently.",
     ],
   },
   {
     title: "Question 2",
     marks: "5 marks",
     prompt: "Explain the purpose of an assembler.",
-    answer: "An assembler translates assembly language source code into machine code or object code. It converts mnemonics into binary opcodes, encodes operands, and resolves labels into addresses. The resulting machine code can be loaded and executed by the processor.",
+    answer: "An assembler translates assembly language source code into machine code. It converts mnemonics into binary opcodes, encodes operands, and resolves labels into addresses. The translated code can then be linked or loaded as required before the processor executes the resulting machine code.",
     marking: [
       { mark: "B1", text: "assembler translates assembly language" },
-      { mark: "B1", text: "output is machine code/object code" },
+      { mark: "B1", text: "output is machine code or an object-code module" },
       { mark: "B1", text: "mnemonics converted into opcodes/binary instructions" },
       { mark: "B1", text: "labels/symbolic addresses resolved or operands encoded" },
-      { mark: "B1", text: "output can be executed by CPU/processor" },
+      { mark: "B1", text: "translated code can be linked/loaded as required for processor execution" },
     ],
     strict: [
       "Do not accept compiler unless clearly described as assembler-like for assembly language.",
       "Do not accept assembler as the CPU component that executes instructions.",
       "Allow two-pass assembler explanation if accurate.",
-      "FT: award translation output mark even if label resolution is omitted.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
+    marks: "4 marks",
     prompt: "For the line `LOOP: ADD value ; add next item`, identify the label, mnemonic, operand and comment.",
     answer: "LOOP is the label. ADD is the mnemonic. value is the operand. The comment is 'add next item', which is for the programmer and is ignored by the assembler.",
     marking: [
@@ -139,13 +137,12 @@ const examQuestions = [
       { mark: "B1", text: "ADD identified as mnemonic" },
       { mark: "B1", text: "value identified as operand" },
       { mark: "B1", text: "add next item identified as comment" },
-      { mark: "B1", text: "comment ignored by assembler / for human reader" },
     ],
     strict: [
       "Do not require the colon as part of the label name.",
       "Do not award mnemonic mark if candidate says value is the operation.",
       "Allow comment including the semicolon.",
-      "FT: mark each line part independently.",
+      "Mark each line part independently.",
     ],
   },
   {
@@ -165,7 +162,6 @@ const examQuestions = [
       "Do not accept assembly as directly executed by CPU as text.",
       "Do not accept machine code as mnemonics.",
       "Allow labels/operands as symbolic features of assembly.",
-      "FT: award paired comparison marks where roles are clear.",
     ],
   },
   {
@@ -185,7 +181,6 @@ const examQuestions = [
       "Do not require discussion of every architecture.",
       "Do not accept interpreted by CPU as correct wording.",
       "Allow 'not portable' if linked to instruction set/processor.",
-      "FT: award correction marks even if candidate does not quote the original statement.",
     ],
   },
 ];

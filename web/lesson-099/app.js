@@ -131,7 +131,7 @@ const mistakes = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
+    marks: "4 marks",
     prompt: "A program is required to process event bookings. It must input the number of requested places, check if enough places are available, calculate the total cost and output a booking decision. Decompose this problem into four suitable sub-problems.",
     answer: "Suitable sub-problems include input booking request / requested places, check available places, calculate total cost, update places left and output booking decision. The names should describe the purpose of each part.",
     marking: [
@@ -139,13 +139,11 @@ const examQuestions = [
       { mark: "B1", text: "identifies check available places / validation sub-problem" },
       { mark: "B1", text: "identifies calculate total cost sub-problem" },
       { mark: "B1", text: "identifies output booking decision/confirmation sub-problem" },
-      { mark: "A1", text: "sub-problems are clearly named and logically ordered" },
     ],
     strict: [
       "Do not award a mark for vague names such as DoStuff unless purpose is explained.",
       "Allow update PlacesLeft as an additional valid sub-problem.",
       "Do not require procedure syntax.",
-      "FT: logical order mark can follow from candidate's valid chosen sub-problems.",
     ],
   },
   {
@@ -159,13 +157,12 @@ const examQuestions = [
       { mark: "B1", text: "identifies PlacesLeft or TicketPrice as relevant" },
       { mark: "B1", text: "identifies a suitable irrelevant detail such as poster colour" },
       { mark: "B1", text: "identifies a second suitable irrelevant detail such as room decoration" },
-      { mark: "A1", text: "explains relevance in terms of algorithm logic, not personal preference" },
+      { mark: "B1", text: "explains relevance in terms of algorithm logic, not personal preference" },
     ],
     strict: [
       "Do not accept 'important details' alone without saying relevant to the algorithm.",
       "Allow other details if clearly tied to decision, calculation, input or output.",
       "Do not award irrelevant-detail marks for details that affect the stated output.",
-      "FT: explanation mark can follow from candidate's own relevant/irrelevant examples.",
     ],
   },
   {
@@ -176,16 +173,15 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "states problem is split into smaller tasks/sub-problems" },
       { mark: "B1", text: "links named modules to clear purposes" },
-      { mark: "M1", text: "explains validation can be checked before processing" },
-      { mark: "M1", text: "explains calculation modules can be traced/tested" },
-      { mark: "M1", text: "explains errors can be located/corrected more easily" },
-      { mark: "A1", text: "uses the class-average context rather than a generic claim only" },
+      { mark: "B1", text: "explains validation can be checked before processing" },
+      { mark: "B1", text: "explains calculation modules can be traced/tested" },
+      { mark: "B1", text: "explains errors can be located/corrected more easily" },
+      { mark: "B1", text: "uses the class-average context rather than a generic claim only" },
     ],
     strict: [
       "Do not award repeated vague claims such as 'it is better' without cause.",
       "Allow maintainability/readability if linked to a named sub-problem.",
       "Do not require every listed module to be discussed.",
-      "FT: testing explanation can follow from an alternative valid decomposition.",
     ],
   },
   {
@@ -198,18 +194,17 @@ const examQuestions = [
       { mark: "B1", text: "states EnteredPassword is relevant" },
       { mark: "B1", text: "states stored username/password values are relevant" },
       { mark: "B1", text: "gives a suitable irrelevant interface/detail example" },
-      { mark: "A1", text: "explains relevance using comparison/access decision" },
+      { mark: "B1", text: "explains relevance using comparison/access decision" },
     ],
     strict: [
       "Do not require discussion of hashing/encryption; this is an abstraction question.",
       "Allow credential values/records as a grouped explanation.",
       "Do not accept ignoring passwords because they are private; privacy does not make them irrelevant to this algorithm.",
-      "FT: relevance explanation can follow from candidate's chosen login condition.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "Write a short Cambridge-style pseudocode outline for a decomposed mark-processing algorithm using procedures InputMark, ValidateMark and OutputResult. Java syntax is not required.",
     answer: "CALL InputMark(Mark)\nCALL ValidateMark(Mark, IsValid)\nIF IsValid = TRUE THEN\n    CALL OutputResult(Mark)\nELSE\n    OUTPUT \"Invalid mark\"\nENDIF",
     marking: [
@@ -218,13 +213,11 @@ const examQuestions = [
       { mark: "B1", text: "includes ValidateMark or validation module" },
       { mark: "M1", text: "uses selection based on validation result" },
       { mark: "A1", text: "outputs valid result or invalid message on correct branch" },
-      { mark: "B1", text: "avoids Java-only syntax such as braces, static void and System.out.println" },
     ],
     strict: [
       "Do not penalise if candidate writes PROCEDURE definitions instead of CALL outline, provided modules are clear.",
       "Allow IsValid, Valid or equivalent Boolean flag.",
       "Do not award final style mark for Java-only code.",
-      "FT: branch output can follow from candidate's stated validation condition.",
     ],
   },
 ];

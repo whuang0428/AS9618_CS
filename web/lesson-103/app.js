@@ -77,7 +77,6 @@ const examQuestions = [
       "Do not accept OR for the valid condition.",
       "Allow equivalent comparisons such as Mark > -1 AND Mark < 101 if integer marks are clear.",
       "Do not require full pseudocode.",
-      "FT: inclusivity mark can follow from candidate's stated limits.",
     ],
   },
   {
@@ -97,31 +96,28 @@ const examQuestions = [
       "Do not award termination mark if invalid ages are accepted.",
       "Allow WHILE version if it correctly repeats input until valid.",
       "Do not require exact wording of error message.",
-      "FT: message mark can follow from candidate's invalid condition.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
+    marks: "4 marks",
     prompt: "Explain the difference between validation and proving that data is true. Use an age example.",
     answer: "Validation checks whether data follows a rule or is acceptable for processing. It does not prove the data is true. For example, an age of 15 passes a range check for 11-18, but the user might not really be 15.",
     marking: [
       { mark: "B1", text: "states validation checks data against a rule" },
-      { mark: "B1", text: "states validation checks acceptability for processing" },
-      { mark: "M1", text: "states validation does not prove truth/accuracy" },
+      { mark: "B1", text: "states validation does not prove truth/accuracy" },
       { mark: "B1", text: "gives valid age range example" },
-      { mark: "A1", text: "explains the example clearly in context" },
+      { mark: "B1", text: "explains the example clearly in context" },
     ],
     strict: [
       "Do not accept 'validation makes data correct'.",
       "Allow other realistic examples if acceptability vs truth is clear.",
       "Do not require discussion of verification.",
-      "FT: example mark can follow from candidate's chosen rule.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "For each input, name a suitable validation check: surname must not be blank; password at least 8 characters; date in DD/MM/YYYY; barcode final digit detects errors; score 1 to 5.",
     answer: "Surname: presence check. Password: length check. Date: format check. Barcode final digit: check digit. Score 1 to 5: range check.",
     marking: [
@@ -130,13 +126,11 @@ const examQuestions = [
       { mark: "B1", text: "date identified as format check" },
       { mark: "B1", text: "barcode identified as check digit" },
       { mark: "B1", text: "score identified as range check" },
-      { mark: "A1", text: "uses validation terminology accurately across all examples" },
     ],
     strict: [
       "Do not accept type check for DD/MM/YYYY unless format/pattern is also clear.",
       "Allow size check for length check if meaning is clear.",
       "Do not award check digit for simply checking a digit exists.",
-      "FT: terminology accuracy mark can follow from candidate's alternative accepted terms.",
     ],
   },
   {
@@ -146,16 +140,15 @@ const examQuestions = [
     answer: "The condition can never be true because a mark cannot be less than 0 and greater than 100 at the same time. To detect an invalid mark outside the range, use Mark < 0 OR Mark > 100. The valid condition would be Mark >= 0 AND Mark <= 100.",
     marking: [
       { mark: "B1", text: "identifies AND condition can never be true" },
-      { mark: "M1", text: "explains value cannot be below lower limit and above upper limit simultaneously" },
-      { mark: "A1", text: "correct invalid condition uses OR" },
+      { mark: "B1", text: "explains value cannot be below lower limit and above upper limit simultaneously" },
+      { mark: "B1", text: "correct invalid condition uses OR" },
       { mark: "B1", text: "gives correct valid condition using AND" },
-      { mark: "A1", text: "uses inclusive limits correctly" },
+      { mark: "B1", text: "uses inclusive limits correctly" },
     ],
     strict: [
       "Do not accept Mark < 0 OR Mark < 100 as corrected invalid condition.",
       "Allow equivalent integer comparisons if limits remain 0 and 100 inclusive.",
       "Do not require full loop pseudocode.",
-      "FT: valid condition mark can follow from candidate's corrected limits.",
     ],
   },
 ];

@@ -87,7 +87,6 @@ const examQuestions = [
     strict: [
       "Do not accept 'SSD is better' without a criterion and scenario link.",
       "Allow external HDD as archive storage if role is clear.",
-      "FT: award matched comparison marks even if final recommendation is weak.",
     ],
   },
   {
@@ -105,25 +104,22 @@ const examQuestions = [
     strict: [
       "Do not award actuator mark if the answer says the sensor cools the greenhouse.",
       "Do not require exact numeric threshold.",
-      "FT: award sequence marks if the control flow is clear even with simple wording.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
+    marks: "3 marks",
     prompt: "For Q = (A NAND B) OR C, find Q when A=1, B=1 and C=0. Show working.",
     answer: "A AND B = 1. A NAND B = 0 because NAND is the inverse of AND. Q = 0 OR 0 = 0.",
     marking: [
-      { mark: "M1", text: "attempts A AND B using A=1 and B=1" },
-      { mark: "A1", text: "A AND B = 1" },
-      { mark: "M1", text: "inverts AND result for NAND" },
-      { mark: "A1", text: "A NAND B = 0" },
-      { mark: "A1", text: "final Q = 0" },
+      { mark: "B1", text: "A AND B = 1" },
+      { mark: "B1", text: "A NAND B = 0" },
+      { mark: "B1", text: "final Q = 0" },
     ],
     strict: [
       "Do not accept NAND as the same as AND.",
       "Allow direct statement that NAND is 0 only when both inputs are 1.",
-      "FT: award final mark if candidate correctly ORs their NAND result with C.",
+      "Allow FT from the candidate's earlier intermediate logic value only when the final operation is applied correctly.",
     ],
   },
   {
@@ -142,7 +138,6 @@ const examQuestions = [
     strict: [
       "Do not award marks for desktop hardware unless field use is still clearly supported.",
       "Do not accept vague 'easy to use' without a feature and consequence.",
-      "FT: award any valid hardware choice if linked to the driver's task.",
     ],
   },
   {
@@ -164,7 +159,6 @@ const examQuestions = [
       "Do not award reliability marks for generic 'good hardware' without a risk or consequence.",
       "Do not require brand names or exact specifications.",
       "Allow any plausible wireless method if remote transfer is clear.",
-      "FT: award marks across the answer; this is a mixed Section 3 checkpoint question.",
     ],
   },
 ];

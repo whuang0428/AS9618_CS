@@ -88,7 +88,6 @@ const examQuestions = [
       "Do not award full credit for only saying 'SSD is better'.",
       "Do not require every possible characteristic; credit valid scenario-linked characteristics.",
       "Allow HDD only if justified for capacity/cost and the portability weakness is acknowledged.",
-      "FT: award linked reasoning for another plausible storage choice if internally consistent.",
     ],
   },
   {
@@ -106,7 +105,6 @@ const examQuestions = [
       "Do not accept 'cheap is good' without linking to large capacity.",
       "Do not award storage type mark for RAM/cache.",
       "Allow cost per TB wording as equivalent.",
-      "FT: award trade-off marks for any coherent high-capacity storage comparison.",
     ],
   },
   {
@@ -125,7 +123,6 @@ const examQuestions = [
       "Do not accept 'SSD is more reliable' unless durability cause is stated.",
       "Do not accept 'HDD is cheaper' without linking to capacity or cost per GB for full cost credit.",
       "Allow modern SSD/HDD qualifications if the general trade-off is clear.",
-      "FT: award comparison marks where either side is correctly contrasted.",
     ],
   },
   {
@@ -143,7 +140,6 @@ const examQuestions = [
       "Do not award limitation mark for an advantage repeated negatively without explanation.",
       "Do not accept that USB flash is volatile.",
       "Allow memory card if scenario is adapted with a reader and portability is clear.",
-      "FT: award portability marks for any suitable removable medium.",
     ],
   },
   {
@@ -163,7 +159,6 @@ const examQuestions = [
       "Do not award full marks for one storage device with one generic reason for both roles.",
       "Do not accept optical disc for active editing unless a special case is strongly justified.",
       "Allow external SSD/HDD if role and characteristics are clear.",
-      "FT: award separate role marks even if one recommendation is weak.",
     ],
   },
 ];

@@ -109,16 +109,15 @@ const examQuestions = [
     answer: "Instruction pipelining divides instruction processing into stages such as fetch, decode and execute. Different instructions can be in different stages at the same time, for example one instruction executing while another is being decoded and another is being fetched. Once the pipeline is full, this can increase throughput because instructions may complete more frequently. Each instruction still passes through the required stages.",
     marking: [
       { mark: "B1", text: "pipelining divides instruction processing into stages such as fetch/decode/execute" },
-      { mark: "M1", text: "different instructions can be processed in different stages at the same time" },
+      { mark: "B1", text: "different instructions can be processed in different stages at the same time" },
       { mark: "B1", text: "valid example of overlap such as execute/decode/fetch in same cycle" },
-      { mark: "A1", text: "increases throughput / more instructions completed per unit time" },
+      { mark: "B1", text: "increases throughput / more instructions completed per unit time" },
       { mark: "B1", text: "recognises each instruction still passes through required stages" },
     ],
     strict: [
       "Do not accept that the same instruction is fetched, decoded and executed simultaneously.",
       "Do not award throughput mark for vague 'it is faster' without explaining more completions per time.",
       "Allow three-stage or more detailed pipeline stage examples.",
-      "FT: award overlap mark if the stages are named incorrectly but the different-instruction idea is clear.",
     ],
   },
   {
@@ -129,14 +128,13 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "latency is time for one instruction to pass through stages / complete" },
       { mark: "B1", text: "throughput is number of instructions completed per unit time" },
-      { mark: "M1", text: "pipelining improves throughput by overlapping different instructions" },
-      { mark: "A1", text: "individual instruction still has to pass through stages so latency is not eliminated" },
+      { mark: "B1", text: "pipelining improves throughput by overlapping different instructions" },
+      { mark: "B1", text: "individual instruction still has to pass through stages so latency is not eliminated" },
     ],
     strict: [
       "Do not accept latency as internet delay unless linked to instruction processing.",
       "Do not accept throughput as clock speed alone.",
       "Allow 'rate of completion' for throughput.",
-      "FT: award distinction mark if candidate correctly contrasts one instruction with many instructions.",
     ],
   },
   {
@@ -146,8 +144,8 @@ const examQuestions = [
     answer: "A branch instruction may change the program counter and therefore the next instruction to fetch. The pipeline may have already fetched instructions that follow the branch in sequence. If the branch is taken, those fetched instructions may be wrong and must be flushed or discarded. The processor then fetches from the correct address, causing a delay or stall. This reduces the ideal throughput gain from pipelining.",
     marking: [
       { mark: "B1", text: "branch may change the program counter / next instruction address" },
-      { mark: "M1", text: "pipeline may have already fetched following instructions" },
-      { mark: "A1", text: "wrong instructions may need to be flushed/discarded" },
+      { mark: "B1", text: "pipeline may have already fetched following instructions" },
+      { mark: "B1", text: "wrong instructions may need to be flushed/discarded" },
       { mark: "B1", text: "pipeline may stall or wait while correct instruction is fetched" },
       { mark: "B1", text: "therefore throughput/performance gain is reduced" },
     ],
@@ -155,7 +153,6 @@ const examQuestions = [
       "Do not accept 'branch means a tree branch in memory'.",
       "Do not require branch prediction terminology.",
       "Allow control hazard as a named reason if explained.",
-      "FT: award reduced-performance mark if a valid flush or stall has been described.",
     ],
   },
   {
@@ -165,15 +162,14 @@ const examQuestions = [
     answer: "A data hazard occurs when an instruction depends on data or a result from an earlier instruction that has not yet been produced or written back. If the later instruction continues too soon, it may use an incorrect value. The processor may need to stall the pipeline until the value is available, reducing the ideal performance gain.",
     marking: [
       { mark: "B1", text: "data hazard involves dependency between instructions" },
-      { mark: "M1", text: "later instruction needs a result/data from an earlier instruction" },
+      { mark: "B1", text: "later instruction needs a result/data from an earlier instruction" },
       { mark: "B1", text: "result/data is not yet available" },
-      { mark: "A1", text: "pipeline may stall/wait, reducing performance/throughput" },
+      { mark: "B1", text: "pipeline may stall/wait, reducing performance/throughput" },
     ],
     strict: [
       "Do not accept 'data hazard means data is dangerous' without dependency.",
       "Do not require write-back terminology.",
       "Allow data dependency as equivalent if pipeline consequence is described.",
-      "FT: award stall mark if the dependency is described but not named.",
     ],
   },
   {
@@ -183,17 +179,16 @@ const examQuestions = [
     answer: "Pipelining can make a processor faster by allowing different instructions to be at different stages of the fetch-decode-execute cycle at the same time. This can increase throughput once the pipeline is full. However, it does not make a single instruction skip stages, and the pipeline needs time to fill and drain. Data hazards, branch/control hazards and resource conflicts can cause stalls or flushes. Therefore pipelining can improve performance in suitable conditions, but it does not always achieve the ideal speed-up.",
     marking: [
       { mark: "B1", text: "pipelining overlaps stages of different instructions" },
-      { mark: "M1", text: "can increase throughput once pipeline is full" },
+      { mark: "B1", text: "can increase throughput once pipeline is full" },
       { mark: "B1", text: "single instruction still goes through required stages / latency not removed" },
       { mark: "B1", text: "fill/drain overhead identified" },
       { mark: "B1", text: "valid hazard/stall/flush/resource conflict limitation" },
-      { mark: "A1", text: "reasoned conclusion that it can improve performance but not always ideal/guaranteed" },
+      { mark: "B1", text: "reasoned conclusion that it can improve performance but not always ideal/guaranteed" },
     ],
     strict: [
       "Do not award full marks for simply saying 'yes, faster'.",
       "Do not require all three hazard types if one valid limitation is explained.",
       "Allow branch hazard, data hazard or structural/resource hazard as valid examples.",
-      "FT: award conclusion if candidate has given at least one valid benefit and one valid limitation.",
     ],
   },
 ];

@@ -112,7 +112,7 @@ const mistakes = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "Trace the sequence of cells visited by nested loops: FOR Row <- 1 TO 2 and FOR Column <- 1 TO 3. Show Row and Column for each visit.",
     answer: "Visit 1 Row 1 Column 1\nVisit 2 Row 1 Column 2\nVisit 3 Row 1 Column 3\nVisit 4 Row 2 Column 1\nVisit 5 Row 2 Column 2\nVisit 6 Row 2 Column 3",
     marking: [
@@ -121,18 +121,16 @@ const examQuestions = [
       { mark: "M1", text: "shows Row changes to 2 after Column 3" },
       { mark: "M1", text: "shows Columns 1 to 3 repeat for Row 2" },
       { mark: "A1", text: "all six visits are in the correct order" },
-      { mark: "B1", text: "states or implies total of 6 visits" },
     ],
     strict: [
       "Do not award full marks for only stating 6 visits when a trace is required.",
       "Allow equivalent coordinate format such as (1,1), (1,2).",
       "Do not accept changing Row before the inner loop completes.",
-      "FT: later visits can follow from a candidate's previous valid nested-loop order.",
     ],
   },
   {
     title: "Question 2",
-    marks: "7 marks",
+    marks: "6 marks",
     prompt: "Write Cambridge-style pseudocode to input 4 marks for each of 3 students and output the total for each student.",
     answer: "FOR Student <- 1 TO 3\n    StudentTotal <- 0\n    FOR MarkNumber <- 1 TO 4\n        INPUT Mark\n        StudentTotal <- StudentTotal + Mark\n    NEXT MarkNumber\n    OUTPUT StudentTotal\nNEXT Student",
     marking: [
@@ -142,13 +140,11 @@ const examQuestions = [
       { mark: "M1", text: "inputs Mark inside inner loop" },
       { mark: "A1", text: "updates StudentTotal with each Mark" },
       { mark: "A1", text: "outputs StudentTotal after inner loop and before next student" },
-      { mark: "B1", text: "uses clear Cambridge-style nested loop structure / indentation" },
     ],
     strict: [
       "Do not award row-total reset mark if StudentTotal is reset before the outer loop only.",
       "Allow WHILE loops if counters are correctly controlled.",
       "Do not award Cambridge notation mark for Java-only braces and semicolons.",
-      "FT: output mark can follow from candidate's chosen total variable.",
     ],
   },
   {
@@ -160,15 +156,14 @@ const examQuestions = [
       { mark: "B1", text: "identifies two dimensions / rows and columns" },
       { mark: "B1", text: "outer loop linked to rows" },
       { mark: "B1", text: "inner loop linked to columns" },
-      { mark: "M1", text: "explains inner loop runs for each outer loop value" },
-      { mark: "A1", text: "calculates 5 x 6 = 30 visits" },
-      { mark: "A1", text: "links loop variables to processing each cell / table location" },
+      { mark: "B1", text: "explains inner loop runs for each outer loop value" },
+      { mark: "B1", text: "calculates 5 x 6 = 30 visits" },
+      { mark: "B1", text: "links loop variables to processing each cell / table location" },
     ],
     strict: [
       "Do not accept only 'it is easier' without mechanism.",
       "Allow rows/columns reversed if the explanation is consistent.",
       "Do not require array terminology.",
-      "FT: visit count can follow from candidate's stated dimensions if method is multiplication.",
     ],
   },
   {
@@ -178,16 +173,15 @@ const examQuestions = [
     answer: "The error is that RowTotal is not reset for each row, so totals from previous rows carry into later row outputs. RowTotal should be set to 0 inside the outer loop before the inner loop begins. This resets the row-level accumulator once per row while still allowing the inner loop to add each column value.",
     marking: [
       { mark: "B1", text: "identifies RowTotal is reset in the wrong place" },
-      { mark: "M1", text: "explains previous row values carry over" },
-      { mark: "A1", text: "places RowTotal <- 0 inside outer loop before inner loop" },
-      { mark: "M1", text: "explains reset should happen once per row" },
-      { mark: "A1", text: "connects correction to separate row totals" },
+      { mark: "B1", text: "explains previous row values carry over" },
+      { mark: "B1", text: "places RowTotal <- 0 inside outer loop before inner loop" },
+      { mark: "B1", text: "explains reset should happen once per row" },
+      { mark: "B1", text: "connects correction to separate row totals" },
     ],
     strict: [
       "Do not award full marks for only saying 'move it'.",
       "Allow 'student total' or 'line total' for row total.",
       "Do not place reset inside inner loop; that loses earlier cells in the row.",
-      "FT: consequence mark can follow from candidate's identified reset level.",
     ],
   },
   {
@@ -200,14 +194,13 @@ const examQuestions = [
       { mark: "B1", text: "gives suitable single-loop example" },
       { mark: "B1", text: "describes nested loop as loop inside another loop" },
       { mark: "B1", text: "gives suitable nested-loop/table-style example" },
-      { mark: "M1", text: "explains inner loop completes for each outer value" },
-      { mark: "A1", text: "mentions multiplication of iteration counts or equivalent consequence" },
+      { mark: "B1", text: "explains inner loop completes for each outer value" },
+      { mark: "B1", text: "mentions multiplication of iteration counts or equivalent consequence" },
     ],
     strict: [
       "Do not accept 'nested is harder' as a comparison.",
       "Allow row/column, student/mark or multiplication-table examples.",
       "Do not require Big O notation.",
-      "FT: final consequence can follow from candidate's valid examples.",
     ],
   },
 ];

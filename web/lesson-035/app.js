@@ -118,7 +118,7 @@ const examQuestions = [
     strict: [
       "Do not award a row mark if the input row is missing or ambiguous.",
       "Allow True/False if used consistently and mapped correctly to 1/0.",
-      "FT: award marks for correct outputs if row order is different but clearly labelled.",
+      "Award marks for correct outputs if row order is different but clearly labelled.",
     ],
   },
   {
@@ -135,47 +135,41 @@ const examQuestions = [
     strict: [
       "Do not accept vague everyday wording such as 'one or the other' unless the 1,1 case is made clear.",
       "Allow 'inputs are different' for XOR.",
-      "FT: if candidate swaps 0/1 labels throughout, only award if the logical distinction is still explicit.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
+    marks: "3 marks",
     prompt: "For Q = (A AND B) OR NOT C, find Q when A = 1, B = 0 and C = 0. Show your working.",
     answer: "A AND B = 0. NOT C = 1. Q = 0 OR 1 = 1.",
     marking: [
-      { mark: "M1", text: "attempts A AND B using given A and B" },
-      { mark: "A1", text: "A AND B = 0" },
-      { mark: "M1", text: "attempts NOT C using given C" },
-      { mark: "A1", text: "NOT C = 1" },
-      { mark: "A1", text: "final output Q = 1" },
+      { mark: "B1", text: "A AND B = 0" },
+      { mark: "B1", text: "NOT C = 1" },
+      { mark: "B1", text: "final output Q = 1" },
     ],
     strict: [
-      "Do not award final A1 from unsupported guessing if intermediate work contradicts it.",
+      "Do not award final answer mark from unsupported guessing if intermediate work contradicts it.",
       "Allow equivalent True/False notation if clearly mapped.",
-      "FT: award final mark from candidate's intermediate values if OR operation is correctly applied.",
+      "Allow FT from the candidate's earlier intermediate logic value only when the final operation is applied correctly.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
+    marks: "2 marks",
     prompt: "State the output rule for NAND and complete the row A = 1, B = 1.",
     answer: "NAND is NOT AND / inverse of AND. For A = 1 and B = 1, AND gives 1, so NAND gives Q = 0.",
     marking: [
       { mark: "B1", text: "NAND described as NOT AND or inverse of AND" },
-      { mark: "M1", text: "applies AND to A=1 and B=1" },
-      { mark: "A1", text: "intermediate AND result is 1" },
-      { mark: "A1", text: "final NAND output is 0" },
+      { mark: "B1", text: "for A=1 and B=1, the NAND output is 0" },
     ],
     strict: [
       "Do not accept 'same as AND' for the rule mark.",
       "Allow direct statement 'NAND is 0 only when both inputs are 1'.",
-      "FT: if intermediate AND is wrong, award only the method mark where the inversion process is shown.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "A door unlocks only if a card is valid and the emergency stop is not active. Define variables and write a Boolean expression for the output Unlock.",
     answer: "Let C represent card valid and E represent emergency stop active. Unlock = C AND NOT E. The output is 1 only when C = 1 and E = 0.",
     marking: [
@@ -184,12 +178,10 @@ const examQuestions = [
       { mark: "M1", text: "uses AND to require the card condition and emergency condition together" },
       { mark: "M1", text: "uses NOT on the emergency stop condition" },
       { mark: "A1", text: "correct expression such as Unlock = C AND NOT E" },
-      { mark: "B1", text: "states output is 1 only when card is valid and emergency stop is not active" },
     ],
     strict: [
       "Do not award expression mark if NOT is applied to the card instead of the emergency stop.",
       "Allow alternative variable letters if defined clearly.",
-      "FT: award variable definition marks even if the expression is incorrect.",
     ],
   },
 ];

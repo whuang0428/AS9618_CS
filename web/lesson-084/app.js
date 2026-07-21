@@ -190,7 +190,6 @@ const examQuestions = [
       "Do not award SELECT mark for SELECT * unless all required fields are also clearly specified.",
       "Do not require semicolon.",
       "Allow field order Borrower, Title unless question specifies order.",
-      "FT: WHERE mark can be awarded if table/SELECT clause has minor syntax error but condition is clear.",
     ],
   },
   {
@@ -208,7 +207,6 @@ const examQuestions = [
       "Do not award A1 if Computing is treated as a field name without quotes and no alternative string notation.",
       "Do not award SELECT mark for extra fields unless the mark scheme allows additional fields; here it asks for Title.",
       "Allow double quotes if used consistently for string literal.",
-      "FT: condition method mark may be awarded even if quotes are missing.",
     ],
   },
   {
@@ -226,7 +224,6 @@ const examQuestions = [
       "Do not accept DaysOverdue >= 7 because 'more than 7' excludes 7.",
       "Do not quote the whole comparison as a string.",
       "Allow Title, LoanID order unless question requires order.",
-      "FT: A1 depends on a condition involving DaysOverdue.",
     ],
   },
   {
@@ -245,27 +242,23 @@ const examQuestions = [
       "Do not accept Price <= 10.00 for 'less than 10.00'.",
       "Do not require 10.00 rather than 10 if numeric meaning is same.",
       "Do not award SELECT mark for Title only or BookID only.",
-      "FT: numeric value mark can be awarded if query has minor clause-order issue but condition is clear.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
+    marks: "4 marks",
     prompt: "A student writes SELECT * FROM Loan WHERE Borrower = Leo; for the request: output Title and DaysOverdue for loans borrowed by Leo. Identify and correct two errors.",
     answer: "The first error is SELECT * because it outputs all fields instead of only Title and DaysOverdue. It should be SELECT Title, DaysOverdue. The second error is Leo is a text value and should be quoted as 'Leo'. A corrected query is SELECT Title, DaysOverdue FROM Loan WHERE Borrower = 'Leo';",
     marking: [
       { mark: "B1", text: "identifies SELECT * outputs all fields / wrong selected fields" },
-      { mark: "M1", text: "corrects to SELECT Title, DaysOverdue" },
+      { mark: "B1", text: "corrects to SELECT Title, DaysOverdue" },
       { mark: "B1", text: "identifies Leo is a string/text value" },
-      { mark: "M1", text: "corrects to Borrower = 'Leo'" },
-      { mark: "B1", text: "retains correct FROM Loan" },
-      { mark: "A1", text: "complete corrected query with SELECT, FROM and WHERE" },
+      { mark: "B1", text: "corrects to Borrower = 'Leo'" },
     ],
     strict: [
       "Do not award correction mark for only saying 'do not use star' without fields.",
       "Allow double quotes around Leo if used as string literal.",
       "Do not penalise missing semicolon.",
-      "FT: full-query mark requires both main corrections present.",
     ],
   },
 ];

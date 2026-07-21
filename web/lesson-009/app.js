@@ -49,7 +49,7 @@ const examQuestions = [
     title: "Question 1",
     marks: "4 marks",
     prompt: "An image is 100 pixels wide and 80 pixels high. It uses 8-bit colour depth. Calculate the file size in bytes, ignoring metadata.",
-    answer: "8000 bytes",
+    answer: "100 x 80 = 8000 pixels. 8000 x 8 = 64 000 bits. 64 000 / 8 = 8000 bytes.",
     marking: [
       { mark: "M1", text: "calculates number of pixels as 100 × 80" },
       { mark: "M1", text: "multiplies by 8 bits per pixel" },
@@ -59,14 +59,14 @@ const examQuestions = [
     strict: [
       "Do not award final A1 for 64 000 bytes.",
       "Do not add metadata because the question says ignoring metadata.",
-      "Allow FT for bytes if the bit total follows a correct method.",
+      "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
     ],
   },
   {
     title: "Question 2",
     marks: "4 marks",
     prompt: "The image in Question 1 has 512 bytes of metadata. Calculate the total file size in bytes if metadata is included.",
-    answer: "8512 bytes",
+    answer: "Use the 8000-byte pixel data from Question 1 and add the 512-byte metadata: 8000 + 512 = 8512 bytes.",
     marking: [
       { mark: "M1", text: "uses or calculates pixel data size as 8000 bytes" },
       { mark: "M1", text: "identifies metadata size as 512 bytes" },
@@ -76,8 +76,7 @@ const examQuestions = [
     strict: [
       "Do not multiply metadata by colour depth.",
       "Metadata is already given in bytes.",
-      "Allow FT from an incorrect pixel-data byte value if 512 is added correctly.",
-      "Do not award a mark for a vague answer that does not identify the required technical point.",
+      "Allow FT from the candidate's answer to Question 1 only when 512 bytes of metadata is subsequently added.",
     ],
   },
   {
@@ -119,7 +118,7 @@ const examQuestions = [
     title: "Question 5",
     marks: "4 marks",
     prompt: "A bitmap image is 128 × 128 pixels and uses 8-bit colour depth. It also stores 1024 bytes of metadata. Calculate the total file size in KiB.",
-    answer: "17 KiB",
+    answer: "128 x 128 x 8 = 131 072 bits. 131 072 / 8 = 16 384 bytes of pixel data. Add 1024 bytes of metadata to obtain 17 408 bytes. 17 408 / 1024 = 17 KiB.",
     marking: [
       { mark: "M1", text: "calculates pixel data bits as 128 × 128 × 8" },
       { mark: "A1", text: "16 384 bytes for pixel data" },
@@ -129,7 +128,7 @@ const examQuestions = [
     strict: [
       "Do not accept 17.408 KiB from division by 1000.",
       "Do not ignore metadata because the question says it is stored and asks for total file size.",
-      "Allow FT if the final KiB value follows correctly from the candidate's byte total.",
+      "Allow FT from the candidate's earlier pixel-data total only when metadata is added and the resulting bytes are subsequently converted to KiB.",
     ],
   },
 ];

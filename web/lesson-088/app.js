@@ -149,20 +149,18 @@ const mistakes = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "4 marks",
+    marks: "3 marks",
     prompt: "A database stores the age of students in a school club. Explain how validation could reduce errors in the Age field.",
     answer: "A range check could be used so Age must be within a sensible range, for example 11 to 19. This would reject values such as 216 before they are stored. Validation reduces invalid input but does not prove the age belongs to the correct student.",
     marking: [
       { mark: "B1", text: "names a suitable validation check, e.g. range check" },
       { mark: "B1", text: "states a sensible allowed range or limit for Age" },
-      { mark: "M1", text: "explains invalid values are rejected before storage" },
-      { mark: "A1", text: "states limitation: validation does not prove the data is true/accurate" },
+      { mark: "B1", text: "explains invalid values are rejected before storage" },
     ],
     strict: [
       "Do not award validation check mark for verification methods such as proofreading.",
       "Allow any sensible age range for school students.",
       "Do not accept vague 'checks it is correct' without describing a rule.",
-      "FT: limitation mark can be awarded if a valid validation example is given.",
     ],
   },
   {
@@ -172,34 +170,31 @@ const examQuestions = [
     answer: "Proofreading can be used by comparing the entered contact details with the paper form. Double entry can be used by entering the same contact details twice and comparing the two entries.",
     marking: [
       { mark: "B1", text: "identifies proofreading / visual check against source" },
-      { mark: "A1", text: "explains comparison with the original paper form" },
+      { mark: "B1", text: "explains comparison with the original paper form" },
       { mark: "B1", text: "identifies double entry" },
-      { mark: "A1", text: "explains two entries are compared for a match" },
+      { mark: "B1", text: "explains two entries are compared for a match" },
     ],
     strict: [
       "Do not award marks for validation checks such as range or type check.",
       "Allow equivalent wording such as checking against source document.",
       "Do not require both methods if question only asks for one; here two are required.",
-      "FT: explanation mark follows the named verification method.",
     ],
   },
   {
     title: "Question 3",
-    marks: "5 marks",
+    marks: "4 marks",
     prompt: "A school database stores medical details. Explain two security measures that could protect the data.",
     answer: "Access rights can restrict medical details to authorised staff only, reducing unauthorised viewing or editing. Encryption can make stored or transmitted data unreadable without the correct key if files are copied or intercepted.",
     marking: [
       { mark: "B1", text: "names access rights / permissions / user privileges" },
-      { mark: "A1", text: "explains restriction to authorised users or required role" },
+      { mark: "B1", text: "explains restriction to authorised users or required role" },
       { mark: "B1", text: "names encryption or authentication as a security measure" },
-      { mark: "A1", text: "explains how the second measure protects confidentiality/access" },
-      { mark: "M1", text: "applies answer to sensitive medical details" },
+      { mark: "B1", text: "explains how the second measure protects confidentiality/access" },
     ],
     strict: [
       "Do not award full credit for generic 'make it secure' without mechanism.",
       "Allow strong passwords or multi-factor authentication if linked to authorised access.",
       "Do not accept backup as a security measure unless linked only to availability/recovery, not confidentiality.",
-      "FT: application mark can follow from any two valid security measures.",
     ],
   },
   {
@@ -209,7 +204,7 @@ const examQuestions = [
     answer: "A backup is needed so data can be restored after loss, corruption or hardware failure. A good backup plan makes backups regularly and stores copies separately from the main system. The restore process should also be tested.",
     marking: [
       { mark: "B1", text: "states backup is a separate copy / used for recovery" },
-      { mark: "A1", text: "explains recovery after loss, corruption, deletion or failure" },
+      { mark: "B1", text: "explains recovery after loss, corruption, deletion or failure" },
       { mark: "B1", text: "gives suitable feature such as regular frequency" },
       { mark: "B1", text: "gives second feature such as off-site storage or restore testing" },
     ],
@@ -217,12 +212,11 @@ const examQuestions = [
       "Do not accept backup as preventing the original failure.",
       "Allow cloud or off-site storage if separation from main system is clear.",
       "Do not require the terms full/incremental unless taught in the local course.",
-      "FT: feature marks can be awarded even if recovery explanation is weak.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "A student says: 'Validation and verification are the same because both check data.' Explain why this is wrong, using one example of each.",
     answer: "Validation checks whether input follows rules before it is accepted, for example a range check rejecting Age = 216. Verification checks whether entered data matches a source, for example proofreading an email address against a paper form. They are different because validation checks reasonableness or format, while verification checks copying accuracy.",
     marking: [
@@ -230,14 +224,12 @@ const examQuestions = [
       { mark: "B1", text: "gives valid validation example" },
       { mark: "B1", text: "defines verification as checking against source or repeated entry" },
       { mark: "B1", text: "gives valid verification example" },
-      { mark: "M1", text: "explicitly contrasts rule checking with copying/source accuracy" },
-      { mark: "A1", text: "answer is applied to database data and avoids saying either method proves truth" },
+      { mark: "B1", text: "explicitly contrasts rule checking with copying/source accuracy" },
     ],
     strict: [
       "Do not award contrast mark if both examples are validation checks.",
       "Allow double entry as the verification example.",
       "Do not accept 'verification is more secure' without explanation.",
-      "FT: example marks can follow from correct definitions even if terminology order is reversed.",
     ],
   },
 ];

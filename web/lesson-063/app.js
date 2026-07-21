@@ -114,16 +114,15 @@ const examQuestions = [
     answer: "A virus is malware that attaches to a host file or program and often spreads when that host is run, copied or shared. A worm is malware that self-replicates, often across a network, without needing to attach to a host file. Both can damage data, consume resources or install further malware, but the key difference is the method of propagation.",
     marking: [
       { mark: "B1", text: "virus described as malware attached to host file/program" },
-      { mark: "M1", text: "virus spread linked to running/copying/sharing infected host" },
+      { mark: "B1", text: "virus spread linked to running/copying/sharing infected host" },
       { mark: "B1", text: "worm described as self-replicating malware" },
-      { mark: "M1", text: "worm spread linked to network or no host file required" },
-      { mark: "A1", text: "valid shared impact or clear propagation comparison" },
+      { mark: "B1", text: "worm spread linked to network or no host file required" },
+      { mark: "B1", text: "valid shared impact or clear propagation comparison" },
     ],
     strict: [
       "Do not accept 'both are viruses' as comparison.",
       "Do not award worm mark for host-file attachment only.",
       "Allow 'replicates itself' for self-replicating.",
-      "FT: award impact mark if both mechanisms are partly described.",
     ],
   },
   {
@@ -133,15 +132,14 @@ const examQuestions = [
     answer: "A Trojan is malware disguised as legitimate or useful software. A user may install or run it because they believe it is safe. Once installed, it may open a backdoor, change permissions, download further malware or send credentials to an attacker. This can allow unauthorised access to the device or data.",
     marking: [
       { mark: "B1", text: "Trojan disguised as legitimate/useful software" },
-      { mark: "M1", text: "user is tricked into installing/running it" },
+      { mark: "B1", text: "user is tricked into installing/running it" },
       { mark: "B1", text: "valid malicious action such as backdoor/credential theft/further malware" },
-      { mark: "A1", text: "consequence linked to unauthorised access to device/data/account" },
+      { mark: "B1", text: "consequence linked to unauthorised access to device/data/account" },
     ],
     strict: [
       "Do not require self-replication for Trojan.",
       "Do not accept 'Trojan is a virus' without disguise mechanism.",
       "Allow remote access tool/backdoor if malicious context is clear.",
-      "FT: award consequence mark if the malicious action is valid but term is weak.",
     ],
   },
   {
@@ -151,16 +149,15 @@ const examQuestions = [
     answer: "Ransomware is malware that encrypts or locks files or systems and demands payment for restoring access. It mainly threatens availability because authorised users cannot access their data. Offline or isolated backups can reduce impact because data can be restored without relying on the attacker. Patching, anti-malware, restricted permissions and user training can reduce the chance of infection or limit what files can be encrypted.",
     marking: [
       { mark: "B1", text: "ransomware encrypts/locks files or systems" },
-      { mark: "M1", text: "payment/ransom demanded for access/restoration" },
+      { mark: "B1", text: "payment/ransom demanded for access/restoration" },
       { mark: "B1", text: "availability impact described" },
       { mark: "B1", text: "valid control such as offline backups with recovery explanation" },
-      { mark: "A1", text: "second valid control with mechanism, e.g. patching/anti-malware/least privilege/training" },
+      { mark: "B1", text: "second valid control with mechanism, e.g. patching/anti-malware/least privilege/training" },
     ],
     strict: [
       "Do not accept paying ransom as a reliable control.",
       "Do not award backup mark without recovery idea.",
       "Allow confidentiality impact only as an additional point, not the main ransomware definition.",
-      "FT: award controls independently if ransomware definition is weak but scenario is clear.",
     ],
   },
   {
@@ -170,16 +167,15 @@ const examQuestions = [
     answer: "Social engineering is a method of manipulating people into revealing confidential information or performing an unsafe action. It may use trust, urgency, authority, curiosity or fear. Controls include user training so users recognise suspicious requests, verification procedures such as calling a known number before sharing information, multi-factor authentication to reduce damage from stolen passwords, and reporting routes for suspicious contact.",
     marking: [
       { mark: "B1", text: "manipulates/tricks people rather than only exploiting software" },
-      { mark: "M1", text: "user reveals information or performs unsafe action" },
+      { mark: "B1", text: "user reveals information or performs unsafe action" },
       { mark: "B1", text: "valid persuasion method such as urgency/authority/trust/fear/curiosity" },
       { mark: "B1", text: "first valid control with mechanism, e.g. training/verification/MFA/reporting" },
-      { mark: "A1", text: "second distinct valid control with mechanism" },
+      { mark: "B1", text: "second distinct valid control with mechanism" },
     ],
     strict: [
       "Do not accept only 'hacking people' without manipulation/action idea.",
       "Do not award both control marks for repeated wording of training only.",
       "Allow security awareness training as user training.",
-      "FT: award controls if they reduce human-manipulation risk even when example differs.",
     ],
   },
   {
@@ -189,17 +185,17 @@ const examQuestions = [
     answer: "Malicious code that records keystrokes is spyware or a keylogger because it secretly monitors user input and can steal credentials. Files locked with a payment demand is ransomware because access is denied until a ransom is demanded, mainly affecting availability. An urgent caller asking for a password is social engineering because the attacker uses pressure or authority to manipulate a person into revealing confidential information.",
     marking: [
       { mark: "B1", text: "keystroke recording classified as spyware/keylogger" },
-      { mark: "M1", text: "justification linked to secret monitoring or credential capture" },
+      { mark: "B1", text: "justification linked to secret monitoring or credential capture" },
       { mark: "B1", text: "locked files/payment demand classified as ransomware" },
-      { mark: "M1", text: "justification linked to files locked/encrypted and ransom/payment demand" },
+      { mark: "B1", text: "justification linked to files locked/encrypted and ransom/payment demand" },
       { mark: "B1", text: "urgent caller/password request classified as social engineering" },
-      { mark: "A1", text: "justification linked to manipulating person using urgency/authority to reveal information" },
+      { mark: "B1", text: "justification linked to manipulating person using urgency/authority to reveal information" },
     ],
     strict: [
       "Do not award justification marks for repeating only the threat name.",
       "Do not classify urgent caller as malware unless software is involved.",
       "Allow keylogger as a type/example of spyware.",
-      "FT: award each classification independently.",
+      "Award each classification independently.",
     ],
   },
 ];

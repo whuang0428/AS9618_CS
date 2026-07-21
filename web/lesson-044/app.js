@@ -114,7 +114,7 @@ const examQuestions = [
       "Do not accept 'bus carries information' for all three without distinguishing roles.",
       "Do not accept address bus carries data value.",
       "Allow instructions on data bus because instructions are transferred as bit patterns.",
-      "FT: award each bus independently.",
+      "Award each bus independently.",
     ],
   },
   {
@@ -133,7 +133,6 @@ const examQuestions = [
       "Do not award read-signal mark if answer puts read command on data bus.",
       "Do not require MDR unless the question asks for registers.",
       "Allow instruction read as a valid memory read.",
-      "FT: if the address is wrong but used consistently as a location, award valid bus role marks.",
     ],
   },
   {
@@ -152,34 +151,29 @@ const examQuestions = [
       "Do not accept data bus for the address.",
       "Do not accept address bus for the value being stored.",
       "Allow any sensible ordering of address/data/control if roles are clear.",
-      "FT: award write operation mark if the candidate clearly stores data even with weak sequence.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
+    marks: "2 marks",
     prompt: "A processor has a 16-bit address bus. Calculate the maximum number of different memory addresses it can represent.",
     answer: "An n-bit address bus can represent 2^n addresses. For n = 16, 2^16 = 65,536. Therefore it can represent 65,536 different memory addresses.",
     marking: [
-      { mark: "M1", text: "uses 2^n method for address bus width" },
-      { mark: "M1", text: "substitutes n = 16" },
-      { mark: "A1", text: "calculates 2^16 = 65,536" },
-      { mark: "A1", text: "states addresses/locations, not bytes unless location size is specified" },
+      { mark: "M1", text: "uses 2^16 for the number of address patterns" },
+      { mark: "A1", text: "65,536 different addresses/locations" },
     ],
     strict: [
       "Do not award full marks for 16 x 2 or 16^2.",
       "Do not require conversion to KiB unless memory location size is specified.",
       "Allow 65536 without comma.",
-      "FT: if candidate uses 2^n but arithmetic error occurs, award method marks.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "A candidate writes: 'The address bus carries instructions, the data bus carries addresses, and the control bus stores data.' Explain why this is incorrect and give the correct roles.",
     answer: "The statement is incorrect because the bus roles are confused. The address bus carries the address of the memory or I/O location being accessed. The data bus carries the data or instructions being transferred. The control bus carries control signals such as read or write; it does not store data. Buses transfer signals rather than permanently storing values.",
     marking: [
-      { mark: "B1", text: "identifies bus roles are confused/incorrect" },
       { mark: "B1", text: "address bus carries address/location" },
       { mark: "B1", text: "data bus carries data/instructions being transferred" },
       { mark: "B1", text: "control bus carries control signals" },
@@ -190,7 +184,6 @@ const examQuestions = [
       "Do not accept 'control bus controls the computer' without signal wording.",
       "Do not reject instructions on data bus if the answer explains they are transferred as data.",
       "Allow 'commands' for control signals only if read/write/control meaning is clear.",
-      "FT: award correction marks even if candidate does not quote the original statement.",
     ],
   },
 ];

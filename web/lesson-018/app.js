@@ -105,7 +105,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Describe three items of information that may be stored in a packet header and explain why one of them is needed.",
+    prompt: "Describe three items of information that may be stored in a packet header and explain why two of them are needed.",
     answer: "A header may contain the source address, destination address and sequence number. The destination address is needed so routers know where to forward the packet. The sequence number is needed so the receiver can reassemble packets in the correct order.",
     marking: [
       { mark: "B1", text: "source address" },

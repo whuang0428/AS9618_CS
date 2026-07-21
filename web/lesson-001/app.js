@@ -93,7 +93,7 @@ const examQuestions = [
     title: "Question 1",
     marks: "3 marks",
     prompt: "A file header has a size of 16 KiB. Calculate the number of bits used to store the file header. Show your working.",
-    answer: "131,072 bits",
+    answer: "16 KiB = 16 x 1024 = 16 384 bytes. 16 384 x 8 = 131 072 bits.",
     marking: [
       { mark: "M1", text: "uses 1 KiB = 1024 bytes, e.g. 16 x 1024 or 16,384 bytes" },
       { mark: "M1", text: "uses 1 byte = 8 bits, e.g. multiplies byte value by 8" },
@@ -102,7 +102,7 @@ const examQuestions = [
     strict: [
       "Do not award the first M1 for using 1000 instead of 1024.",
       "Final A1 requires the correct unit, or clear working that unambiguously shows bits.",
-      "Allow FT for the second M1 if an incorrect byte value is multiplied by 8.",
+      "Allow FT from the candidate's earlier byte total only when that total is subsequently multiplied by 8 to obtain bits.",
     ],
   },
   {
@@ -126,7 +126,7 @@ const examQuestions = [
     title: "Question 3",
     marks: "3 marks",
     prompt: "A backup contains 2400 files. Each file is 2 MiB. Calculate the total backup size in GiB.",
-    answer: "4.6875 GiB, approximately 4.69 GiB",
+    answer: "2400 x 2 MiB = 4800 MiB. 4800 / 1024 = 4.6875 GiB, approximately 4.69 GiB.",
     marking: [
       { mark: "M1", text: "calculates total size in MiB: 2400 x 2 = 4800 MiB" },
       { mark: "M1", text: "converts MiB to GiB by dividing by 1024" },
@@ -135,14 +135,14 @@ const examQuestions = [
     strict: [
       "Do not award the second M1 for dividing by 1000.",
       "Final answer must be in GiB.",
-      "Allow FT from an incorrect total MiB value if the conversion method is correct.",
+      "Allow FT from the candidate's earlier total in MiB only when it is subsequently divided by 1024 to obtain GiB.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
     prompt: "A download page says a file is 700 MB. An operating system reports size using MiB. Explain why the displayed number may be different.",
-    answer: "MB uses decimal powers of 1000, while MiB uses binary powers of 1024, so the same byte count is expressed with different numerical values.",
+    answer: "MB uses decimal powers of 1000, while MiB uses binary powers of 1024. The same byte count is therefore expressed using different numerical scales, so the operating system's number in MiB is lower even though no data has disappeared.",
     marking: [
       { mark: "B1", text: "MB is a decimal prefix / uses powers of 1000" },
       { mark: "B1", text: "MiB is a binary prefix / uses powers of 1024" },

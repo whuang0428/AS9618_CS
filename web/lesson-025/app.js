@@ -52,9 +52,9 @@ const examQuestions = [
     answer: "Bandwidth is the amount of data that can be transmitted per second, often measured in Mbps or Gbps. Latency is the delay before data starts to arrive or before a response is received, often measured in milliseconds. A connection can have high bandwidth but still have high latency.",
     marking: [
       { mark: "B1", text: "bandwidth is data capacity/rate per second" },
-      { mark: "B1", text: "valid bandwidth unit such as bps/Mbps/Gbps" },
+      { mark: "B1", text: "higher bandwidth allows more data to be transferred in a given time" },
       { mark: "B1", text: "latency is delay/response time" },
-      { mark: "B1", text: "valid latency unit such as milliseconds or clear comparison that they are different" },
+      { mark: "B1", text: "high latency causes a longer wait for a response even when bandwidth is high" },
     ],
     strict: [
       "Do not accept only 'bandwidth is speed' without data-rate idea.",
@@ -75,7 +75,6 @@ const examQuestions = [
     ],
     strict: [
       "Do not award final A1 if answer is 3 seconds from confusing MB with Mb.",
-      "FT: allow method mark if their converted file size is consistently divided by 25.",
       "Ignore real-world overheads unless the question asks for actual transfer time.",
     ],
   },

@@ -49,7 +49,7 @@ const examQuestions = [
     title: "Question 1",
     marks: "4 marks",
     prompt: "Calculate the size in bytes of a 10-second mono sound clip sampled at 8000 Hz with 16-bit sample resolution.",
-    answer: "160 000 bytes",
+    answer: "8000 x 16 x 10 x 1 = 1 280 000 bits. 1 280 000 / 8 = 160 000 bytes.",
     marking: [
       { mark: "M1", text: "uses sampling rate 8000 samples per second" },
       { mark: "M1", text: "multiplies by sample resolution 16 bits" },
@@ -100,7 +100,7 @@ const examQuestions = [
     title: "Question 4",
     marks: "4 marks",
     prompt: "A 5-second mono sound clip is sampled at 4000 Hz using 8-bit sample resolution. Calculate its size in bytes.",
-    answer: "20 000 bytes",
+    answer: "4000 x 8 x 5 x 1 = 160 000 bits. 160 000 / 8 = 20 000 bytes.",
     marking: [
       { mark: "M1", text: "uses 4000 samples per second" },
       { mark: "M1", text: "multiplies by 8 bits per sample" },
@@ -110,8 +110,7 @@ const examQuestions = [
     strict: [
       "Allow 160 000 bits as intermediate working.",
       "Do not include compression or metadata.",
-      "Allow FT if byte conversion follows correctly from candidate's bit value.",
-      "Do not award a mark for a vague answer that does not identify the required technical point.",
+      "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
     ],
   },
   {

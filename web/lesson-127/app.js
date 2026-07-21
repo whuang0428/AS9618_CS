@@ -123,7 +123,7 @@ const examQuestions = [
       "Do not award Pass range accuracy if Mark >= 50 is tested before Mark >= 80 without excluding 80 or more.",
       "Allow ELSE IF style if logic and closure are clear.",
       "Do not accept Mark > 50 for the pass boundary.",
-      "FT: output marks can follow candidate's equivalent grade labels if ranges are clear.",
+      "Allow an equivalent grade labels if it is used consistently.",
     ],
   },
   {
@@ -143,7 +143,6 @@ const examQuestions = [
       "Do not award invalid-choice mark if no OTHERWISE/default branch is present.",
       "Allow DISPLAY or PRINT instead of OUTPUT.",
       "Do not accept Java switch syntax alone as Cambridge pseudocode.",
-      "FT: action marks can follow candidate's chosen menu labels if mapped consistently.",
     ],
   },
   {
@@ -163,7 +162,6 @@ const examQuestions = [
       "Do not award inner-test mark for the Age = 16 case if the candidate still applies Member.",
       "Allow percentages 10% and 5% instead of decimals.",
       "Do not accept 0.20 for Age = 18, Member = FALSE.",
-      "FT: final discount marks can follow a clearly traced equivalent nested structure.",
     ],
   },
   {
@@ -173,21 +171,20 @@ const examQuestions = [
     answer: "CASE is more suitable when one expression has several discrete values, such as a menu choice. Nested IF is more suitable when decisions depend on earlier decisions or when ranges and different conditions must be tested.",
     marking: [
       { mark: "B1", text: "states CASE is based on one expression or variable" },
-      { mark: "A1", text: "states CASE suits discrete values such as menu choices" },
+      { mark: "B1", text: "states CASE suits discrete values such as menu choices" },
       { mark: "B1", text: "states nested IF can test different conditions or dependent decisions" },
-      { mark: "A1", text: "states nested IF suits ranges or decisions inside decisions" },
+      { mark: "B1", text: "states nested IF suits ranges or decisions inside decisions" },
       { mark: "B1", text: "uses a relevant example for at least one structure" },
     ],
     strict: [
       "Do not award comparison marks for simply saying one is easier.",
       "Allow switch-style description only if CASE idea is clear and pseudocode context is maintained.",
       "Do not accept that CASE is always better for many branches.",
-      "FT: examples may differ if they match the stated suitability.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
+    marks: "4 marks",
     prompt: "A student writes pseudocode for two nested IF statements but uses only one ENDIF. Explain the error and give the correction.",
     answer: "Each IF statement must be closed. In nested selection, the inner IF needs its own ENDIF and the outer IF also needs an ENDIF, so two ENDIF statements are required unless an equivalent clear structure is used.",
     marking: [
@@ -195,14 +192,11 @@ const examQuestions = [
       { mark: "M1", text: "explains the inner IF must be closed" },
       { mark: "M1", text: "explains the outer IF must be closed" },
       { mark: "A1", text: "states two ENDIF statements are required" },
-      { mark: "B1", text: "links the issue to nested selection structure" },
-      { mark: "A1", text: "explains that missing closure can change or obscure control flow" },
     ],
     strict: [
       "Do not award full correction for 'add ENDIF' without identifying inner and outer IF closure.",
       "Allow a corrected pseudocode fragment if it clearly closes both IF blocks.",
       "Do not accept Java braces as the correction in a Cambridge pseudocode answer.",
-      "FT: closure marks can follow candidate's equivalent nested block labels.",
     ],
   },
 ];

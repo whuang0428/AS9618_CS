@@ -52,7 +52,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **M1** divides by 2^20
 - **A1** 0.5859375 MiB / approximately 0.586 MiB
 
-**Guidance:** FT a candidate's pixel total through correct unit conversions.
+**Guidance:** Allow FT from the candidate's earlier incorrect pixel total only when the candidate then multiplies by colour depth and converts bits to bytes and bytes to MiB correctly.
 
 #### Q3 [6]
 
@@ -151,7 +151,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **B1** battery plus solar or other realistic power provision
 - **B1** weatherproof enclosure/environmental protection
 - **B1** local buffering/storage handles connection loss
-- **B1** coherent justification links components into one system
+- **B1** explains the data path from sensor input through processing/local storage to remote transmission
 
 **Guidance:** Do not award a list of devices without scenario-linked reasons.
 
@@ -206,7 +206,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **A1** final 28
 - **A1** 00011100
 
-**Guidance:** FT a wrong arithmetic value through a correct eight-bit LSL where representable.
+**Guidance:** Allow FT from the candidate's earlier ACC value only when the subsequent subtraction and eight-bit LSL are applied correctly.
 
 #### Q3 [6]
 
@@ -287,12 +287,12 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q3 [6]
 
-- **B1** bias/discrimination risk identified
-- **B1** representative data/fairness testing/human review mitigates bias
-- **B1** privacy/excessive data collection risk identified
-- **B1** minimisation/access/consent/retention control mitigates privacy risk
-- **B1** one stakeholder consequence is developed
-- **B1** professional accountability/audit/appeal is applied
+- **B1** identifies bias/discrimination caused by unrepresentative historical training data
+- **B1** explains a consequence such as qualified applicants being unfairly rejected
+- **B1** gives a matching control such as representative data, fairness testing or human review
+- **B1** identifies privacy risk from collecting or retaining excessive applicant data
+- **B1** explains a consequence such as unauthorised disclosure or use beyond recruitment
+- **B1** gives a matching control such as data minimisation, access control, consent or retention limits
 
 **Guidance:** Do not award generic 'AI may be bad' claims.
 
@@ -316,7 +316,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **B1** proprietary product may provide contracted support/certified updates
 - **B1** proprietary licence restricts copying/modification and may add cost/vendor dependence
 - **B1** copyright and licence conditions still apply to either model
-- **A1** balanced recommendation linked to reliability, security and examination context
+- **B1** recommends one licence model and justifies it using examination reliability/security plus support, cost or supplier dependence
 
 **Guidance:** Do not award a product preference without developed licence and context reasoning.
 
@@ -349,7 +349,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **M1** divides by 2^20
 - **A1** approximately 0.916 MiB
 
-**Guidance:** FT the candidate's bit total through correct conversions.
+**Guidance:** Allow FT from the candidate's earlier incorrect bit total only when the candidate then divides by 8 and by 2^20 correctly.
 
 #### Q2 [6]
 
@@ -437,7 +437,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **B1** swap flag is true / swaps occurred
 - **B1** another pass is required because earlier items may remain out of order
 
-**Guidance:** Follow through a single early comparison error if subsequent adjacent comparisons are consistent.
+**Guidance:** Allow FT from the candidate's earlier list after one comparison error only when every subsequent comparison remains adjacent and follows ascending bubble sort.
 
 #### Q3 [6]
 
@@ -459,7 +459,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **B1** closes file
 - **B1** inputs target ID and searches only populated elements
 - **B1** compares record ID and records found position/state
-- **B1** outputs found record or not-found result and stops/handles duplicate policy coherently
+- **B1** outputs the matching record when found and a not-found result only after all populated elements have been checked
 
 **Guidance:** Use Cambridge file and array conventions; do not accept Java API calls.
 
@@ -472,7 +472,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **B1** array must be sorted in the search order
 - **B1** each comparison can discard half of the remaining search interval
 
-**Guidance:** FT consistent zero-based or one-based indexes when bounds and final position match.
+**Guidance:** Allow zero-based or one-based indexes when the convention is declared and used consistently for all bounds and the final position.
 
 ---
 
@@ -536,16 +536,16 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **B1** RAD uses rapid prototyping/time-boxing/user involvement
 - **B1** RAD speed may conflict with exhaustive safety assurance
 - **B1** recommendation is justified by traceability, risk and requirements stability
-- **B1** testing and corrective/adaptive/perfective maintenance consequence is developed
+- **B1** explains that any post-release change requires regression testing against documented safety requirements
 
-**Guidance:** Do not award a model name without balanced context-specific justification.
+**Guidance:** Do not award a recommendation unless it is justified using safety risk, traceability or requirements stability in the medical context.
 
 #### Q5 [6]
 
 - **B1** opens Results.txt FOR READ
 - **B1** initialises PassCount to 0
 - **M1** loops WHILE NOT EOF and reads each line
-- **A1** increments only when the line/value equals 'PASS'
+- **A1** increments only when the line contains 'PASS' or when a parsed status field equals 'PASS'
 - **B1** closes file and outputs PassCount after the loop
 - **B1** valid debugging check such as trace count/line values or breakpoint inside loop
 

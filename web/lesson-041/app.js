@@ -117,7 +117,6 @@ const examQuestions = [
       "Do not award ALU marks for vague 'does processing' without arithmetic or logic.",
       "Do not award CU control marks if the answer says the CU performs calculations.",
       "Allow named examples of logical operations such as AND, OR, NOT, comparison.",
-      "FT: if ALU/CU labels are swapped, award only marks where the role is clearly attached to the correct component.",
     ],
   },
   {
@@ -135,7 +134,6 @@ const examQuestions = [
       "Do not accept permanent file storage as a register role.",
       "Do not require a named register for this question.",
       "Allow RAM comparison if it is clear that registers are faster and inside the CPU.",
-      "FT: award temporary-holding mark even if the candidate gives only one valid item such as data or address.",
     ],
   },
   {
@@ -155,7 +153,7 @@ const examQuestions = [
       "Do not accept 'bus carries information' for all three without distinguishing roles.",
       "Do not accept address bus carries the data value.",
       "Allow 'instructions' on data bus because instructions are transferred as data values.",
-      "FT: award each bus independently; an error in one bus does not prevent marks for the others.",
+      "Award each bus independently; an error in one bus does not prevent marks for the others.",
     ],
   },
   {
@@ -168,13 +166,12 @@ const examQuestions = [
       { mark: "B1", text: "higher clock speed can affect number of cycles per second" },
       { mark: "B1", text: "processors may perform different work per cycle or have different architecture" },
       { mark: "B1", text: "another valid factor named such as cache, cores, memory access, instruction type" },
-      { mark: "A1", text: "clear conclusion that clock speed alone does not guarantee fastest performance" },
+      { mark: "B1", text: "clear conclusion that clock speed alone does not guarantee fastest performance" },
     ],
     strict: [
       "Do not accept only 'it depends' without naming a factor.",
       "Do not require students to discuss overclocking or heat.",
       "Allow GHz as a measure if cycles per second is implied.",
-      "FT: if clock speed definition is weak, still award valid limitation factors.",
     ],
   },
   {
@@ -194,7 +191,6 @@ const examQuestions = [
       "Do not award ALU mark if answer only says CPU adds without naming ALU.",
       "Do not award address bus mark for carrying the actual value.",
       "Allow registers in plural without naming ACC/MDR if temporary holding is clear.",
-      "FT: award bus role marks independently if the overall sequence is imperfect.",
     ],
   },
 ];

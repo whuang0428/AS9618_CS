@@ -90,12 +90,11 @@ const examQuestions = [
       "Do not award both marks for a consideration unless a scenario-specific consequence is explained.",
       "Do not accept only 'use durable hardware' without naming the environmental risk.",
       "Allow equivalent outdoor protections such as sealed connectors or dust-resistant casing.",
-      "FT: award consequence marks where the candidate's named hardware is plausible for outdoor use.",
     ],
   },
   {
     title: "Question 2",
-    marks: "5 marks",
+    marks: "6 marks",
     prompt: "Explain how a UPS, backup and RAID can improve reliability for a server.",
     answer: "A UPS provides temporary power during a short power cut, allowing the server to continue running or shut down safely. Backup stores copies of data so files can be restored after loss or corruption. RAID can use multiple disks so the system may continue operating after a disk failure, depending on the RAID type.",
     marking: [
@@ -103,13 +102,13 @@ const examQuestions = [
       { mark: "B1", text: "UPS linked to continued operation or safe shutdown" },
       { mark: "B1", text: "backup identified as separate copy of data" },
       { mark: "B1", text: "backup linked to recovery/restoration after failure" },
-      { mark: "B1", text: "RAID linked to multiple disks / tolerance of disk failure" },
+      { mark: "B1", text: "RAID uses multiple disks with redundancy, depending on RAID level" },
+      { mark: "B1", text: "RAID linked to continued operation or data availability after a disk failure" },
     ],
     strict: [
       "Do not accept UPS as a data backup.",
       "Do not accept RAID as a complete replacement for backup.",
       "Allow 'mirroring' for RAID where disk failure tolerance is clear.",
-      "FT: award marks for correct roles even if examples are brief.",
     ],
   },
   {
@@ -126,24 +125,22 @@ const examQuestions = [
     strict: [
       "Do not accept 'portable' alone unless the environmental reliability issue is explained.",
       "Allow protective screen or sealed case if linked to field use.",
-      "FT: award feature marks for suitable handheld-specific hardware even if wording is not technical.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Explain the difference between durability and reliability in a hardware context.",
+    prompt: "Explain the difference between durability and reliability in a hardware context, and explain how they may be related.",
     answer: "Durability is the ability of hardware to resist physical damage, such as shock, dust or moisture. Reliability is the ability of the hardware or system to continue working correctly when required. Durable hardware can improve reliability, but reliability can also depend on backup, redundancy, power protection and maintenance.",
     marking: [
       { mark: "B1", text: "durability linked to resisting physical/environmental damage" },
       { mark: "B1", text: "reliability linked to continuing to work correctly when required" },
       { mark: "B1", text: "recognises durability can contribute to reliability" },
-      { mark: "B1", text: "gives another reliability factor such as backup/redundancy/maintenance/UPS" },
+      { mark: "B1", text: "recognises reliability also depends on factors other than physical durability" },
     ],
     strict: [
       "Do not accept 'durable means reliable' as the full distinction.",
       "Allow examples instead of definitions if the distinction is clear.",
-      "FT: award reliability factor mark even if durability definition is weak.",
     ],
   },
   {
@@ -161,7 +158,6 @@ const examQuestions = [
     strict: [
       "Do not award full marks for naming a barcode scanner only; the dust environment must be addressed.",
       "Allow rugged scanner if linked to factory conditions.",
-      "FT: award maintenance mark if candidate gives a practical scheduled check or cleaning process.",
     ],
   },
 ];

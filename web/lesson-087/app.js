@@ -191,7 +191,6 @@ const examQuestions = [
       "Do not award A1 if the order of values does not match the field list.",
       "Allow omission of field list only if all table fields are supplied in a plausible table order.",
       "Do not require a semicolon.",
-      "FT: values mark can follow through from a stated field order.",
     ],
   },
   {
@@ -209,7 +208,6 @@ const examQuestions = [
       "Do not award WHERE mark if no condition is given.",
       "Do not accept INSERT because the record already exists.",
       "Allow double quotes for text values if used consistently.",
-      "FT: condition accuracy mark depends on a WHERE clause being attempted.",
     ],
   },
   {
@@ -227,7 +225,6 @@ const examQuestions = [
       "Do not accept UPDATE for removing the whole record.",
       "Do not award method mark for DELETE FROM Student with no WHERE when a specific student is requested.",
       "Allow StudentID = S03 only if S03 is clearly treated as a string value in the answer style.",
-      "FT: table mark may be awarded even if the condition has a minor quoting error.",
     ],
   },
   {
@@ -246,27 +243,23 @@ const examQuestions = [
       "Do not award explanation mark for vague 'it is wrong' without saying every row is affected.",
       "Allow equivalent primary-key condition if S01 is clearly identified.",
       "Do not require semicolon.",
-      "FT: corrected statement marks can be awarded even if explanation is incomplete.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "A student writes INSERT INTO Student (StudentID, StudentName) VALUES ('S04', 'Nina', '12C'); Identify and correct two errors.",
+    marks: "4 marks",
+    prompt: "A student writes INSERT INTO Student (StudentID, StudentName) VALUES ('S04', 'Nina', '12C'); Explain the error and write a corrected statement.",
     answer: "The field list contains two fields but the VALUES list contains three values. The TutorGroup field is missing from the field list. Corrected: INSERT INTO Student (StudentID, StudentName, TutorGroup) VALUES ('S04', 'Nina', '12C');",
     marking: [
       { mark: "B1", text: "identifies the number of fields and values does not match" },
       { mark: "B1", text: "identifies TutorGroup is missing from field list or extra value has no matching field" },
-      { mark: "M1", text: "adds TutorGroup to the field list" },
-      { mark: "M1", text: "keeps the corresponding value '12C'" },
-      { mark: "B1", text: "retains valid INSERT INTO Student structure" },
-      { mark: "A1", text: "complete corrected statement with matching fields and values" },
+      { mark: "B1", text: "adds TutorGroup to the field list" },
+      { mark: "B1", text: "complete corrected statement with matching fields and values" },
     ],
     strict: [
       "Do not award complete statement mark if field count and value count still differ.",
       "Allow alternative correction that removes '12C' only if the task did not require TutorGroup; here TutorGroup is required, so prefer adding the field.",
       "Do not penalise missing semicolon.",
-      "FT: value mark can follow through from the candidate's corrected field order.",
     ],
   },
 ];

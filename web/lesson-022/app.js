@@ -78,10 +78,10 @@ const examQuestions = [
     prompt: "A school connects two server rooms that require a high-bandwidth fixed link. Explain why fibre-optic cable may be suitable.",
     answer: "Fibre-optic cable is suitable because it can provide high bandwidth for a fixed link between server rooms. It transmits data as pulses of light and is less affected by electromagnetic interference than copper cable. It can also be suitable over longer distances between buildings.",
     marking: [
-      { mark: "B1", text: "identifies fibre-optic cable as suitable" },
       { mark: "B1", text: "states high bandwidth / high data rate" },
       { mark: "B1", text: "states data is transmitted using light pulses" },
-      { mark: "B1", text: "links to fixed server-room/building scenario or reduced electromagnetic interference/long distance" },
+      { mark: "B1", text: "not affected by electromagnetic interference" },
+      { mark: "B1", text: "low attenuation / suitable over the fixed distance between server rooms or buildings" },
     ],
     strict: [
       "Do not accept only 'fibre is faster' without a feature or scenario link.",
@@ -99,12 +99,11 @@ const examQuestions = [
       { mark: "B1", text: "wireless/radio waves suitable for mobile tablets" },
       { mark: "B1", text: "wired can provide stable/reliable connection" },
       { mark: "B1", text: "wireless can be affected by interference/obstacles/shared bandwidth" },
-      { mark: "B1", text: "clear comparison linked to the classroom scenario" },
+      { mark: "B1", text: "recommends wired links for fixed desktops and wireless links for tablets, linked to stability and mobility" },
     ],
     strict: [
       "Do not award marks for vague 'wired is better' or 'wireless is modern'.",
       "Do not confuse WiFi/radio waves with email or web protocols.",
-      "FT can be allowed if a wrong medium is compared using correct factors, but do not award the identification mark.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },

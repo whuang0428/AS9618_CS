@@ -123,7 +123,7 @@ const mistakes = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
+    marks: "4 marks",
     prompt: "Write Cambridge-style pseudocode that prompts the user to enter a name, inputs the name, and displays Hello followed by the name.",
     answer: "OUTPUT \"Enter name\"\nINPUT Name\nOUTPUT \"Hello \" & Name",
     marking: [
@@ -131,13 +131,12 @@ const examQuestions = [
       { mark: "B1", text: "uses INPUT to read/store Name" },
       { mark: "M1", text: "constructs an output message using fixed text and the variable" },
       { mark: "A1", text: "outputs Hello followed by the entered name" },
-      { mark: "B1", text: "uses Cambridge-style INPUT/OUTPUT rather than Java-only syntax" },
     ],
     strict: [
       "Do not award input mark for OUTPUT \"Enter name\" alone.",
       "Allow different prompt wording if it clearly asks for a name.",
       "Do not accept Scanner-only Java code as Cambridge pseudocode.",
-      "FT: greeting mark can follow candidate's equivalent variable name.",
+      "Allow an equivalent variable if it is used consistently.",
     ],
   },
   {
@@ -157,47 +156,40 @@ const examQuestions = [
       "Do not require exactly one OUTPUT statement if the displayed information is clear.",
       "Allow semantically equivalent punctuation or spacing.",
       "Do not award label marks for outputting only Ada and 72 without context.",
-      "FT: formatting marks can follow candidate's equivalent stored values.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
+    marks: "3 marks",
     prompt: "Identify and correct the error in this fragment.\n\nOUTPUT \"Enter price\"\nTotal <- Price * 1.20\nOUTPUT Total",
-    answer: "The error is that Price is used without being input or assigned. Add INPUT Price after the prompt. A clearer output is OUTPUT \"Total: \" & Total.",
+    answer: "The error is that Price is used without being input or assigned. OUTPUT only displays the prompt; it does not store a value. Add INPUT Price after the prompt and before the calculation.",
     marking: [
       { mark: "B1", text: "identifies that Price has not been input/assigned before use" },
-      { mark: "M1", text: "explains OUTPUT prompt does not store Price" },
-      { mark: "A1", text: "adds INPUT Price after the prompt" },
-      { mark: "B1", text: "keeps the calculation Total <- Price * 1.20 or equivalent" },
-      { mark: "M1", text: "suggests labelled output rather than bare Total" },
-      { mark: "A1", text: "gives a corrected output such as OUTPUT \"Total: \" & Total" },
+      { mark: "B1", text: "explains OUTPUT prompt does not store Price" },
+      { mark: "B1", text: "adds INPUT Price after the prompt" },
     ],
     strict: [
       "Do not award correction mark for assigning Price to the string \"Enter price\".",
       "Allow INPUT Price before the prompt only if the final algorithm clearly reads Price before use, but prompt ordering should be credited cautiously.",
       "Do not accept only Java Scanner syntax as correction.",
-      "FT: labelled output mark can follow candidate's equivalent calculated variable.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "Explain two features of clear output formatting for a list of student marks.",
     answer: "Clear output should include headings or labels so each value has meaning, for example Name and Mark. It should also use consistent order and spacing so repeated records can be compared easily.",
     marking: [
       { mark: "B1", text: "states headings or labels should be included" },
-      { mark: "M1", text: "explains labels give meaning/context to displayed values" },
-      { mark: "A1", text: "gives a relevant example such as Name and Mark" },
+      { mark: "B1", text: "explains labels give meaning/context to displayed values" },
+      { mark: "B1", text: "gives a relevant example such as Name and Mark" },
       { mark: "B1", text: "states consistent order, spacing or alignment should be used" },
-      { mark: "M1", text: "explains this makes repeated records easier to read/compare" },
-      { mark: "A1", text: "links the formatting feature to a student-mark list scenario" },
+      { mark: "B1", text: "explains this makes repeated records easier to read/compare" },
     ],
     strict: [
       "Do not award full marks for vague claims such as 'make it neat' without explaining how.",
       "Allow table-style layout, line breaks or punctuation as formatting features if explained.",
       "Do not accept colour or font features unless the question context supports them.",
-      "FT: examples can follow any school/student record context.",
     ],
   },
   {
@@ -218,7 +210,6 @@ const examQuestions = [
       "Do not award input marks for prompts alone.",
       "Allow prompts but do not require them for all input marks if INPUT statements are clear.",
       "Do not accept adding Quantity and Price for Cost.",
-      "FT: output marks can follow candidate's equivalent calculated cost variable.",
     ],
   },
 ];

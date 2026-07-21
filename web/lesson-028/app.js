@@ -87,7 +87,6 @@ const examQuestions = [
       "Do not award a mark for vague 'it is easier' unless a cause is given.",
       "Do not accept that the barcode reader stores the product data by itself.",
       "Allow QR scanner if the answer describes encoded product data and the scenario supports QR codes.",
-      "FT: if the candidate names a valid automatic reader, award linked advantages that match that device.",
     ],
   },
   {
@@ -100,13 +99,12 @@ const examQuestions = [
       { mark: "B1", text: "OMR detects shaded marks/ticks/positions" },
       { mark: "B1", text: "OCR example linked to printed document/form/passport" },
       { mark: "B1", text: "OMR example linked to prepared form/multiple-choice sheet" },
-      { mark: "B1", text: "clear comparison rather than two unrelated definitions" },
+      { mark: "B1", text: "contrasts OCR output as recognised character data with OMR output as detected predefined mark positions" },
     ],
     strict: [
       "Do not accept 'OCR scans pictures' without character recognition.",
       "Do not accept 'OMR reads words' because OMR detects marks.",
       "Allow handwritten text for OCR only if recognition of characters is clearly stated.",
-      "FT: if examples are swapped, award only marks where the method remains technically correct.",
     ],
   },
   {
@@ -124,7 +122,6 @@ const examQuestions = [
       "Do not award full credit for only naming 'sensor'.",
       "Do not accept keyboard as the best device unless justified for manual occasional readings.",
       "Allow humidity sensor if the response adapts the measured data to greenhouse monitoring.",
-      "FT: award context marks for a wrong device only if the explanation is internally consistent and plausible.",
     ],
   },
   {
@@ -142,7 +139,6 @@ const examQuestions = [
       "Do not accept two advantages with no explanation if the command word is explain.",
       "Do not accept 'more accurate' twice as separate points unless different causes are given.",
       "Allow reliability/consistency for one advantage if linked to a valid cause.",
-      "FT: if manual input is described correctly, award contrast marks where the comparison is clear.",
     ],
   },
   {
@@ -161,7 +157,6 @@ const examQuestions = [
       "Do not award both device marks for two names that perform the same unqualified role without distinction.",
       "Do not accept output devices such as printer or monitor as input methods.",
       "Allow QR reader or NFC reader where the explanation fits the library system.",
-      "FT: if one device is weak, still award valid justification marks for the other correct device.",
     ],
   },
 ];

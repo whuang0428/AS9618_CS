@@ -114,7 +114,6 @@ const examQuestions = [
       "Do not award condition mark if candidate says 50 > 50 is True.",
       "Allow equivalent output wording if it matches the supplied code.",
       "Do not accept 'syntax error' as the identified fault.",
-      "FT: if candidate's trace follows their stated condition consistently, award remaining trace marks where valid.",
     ],
   },
   {
@@ -124,17 +123,16 @@ const examQuestions = [
     answer: "A breakpoint can pause execution inside the loop at the line where Total is updated. Watched variables such as Total, the current item value and the loop counter can be inspected after each iteration. This helps show whether Total is reset, updated with the wrong value or updated the wrong number of times.",
     marking: [
       { mark: "B1", text: "states that a breakpoint pauses execution at a chosen line" },
-      { mark: "M1", text: "places the breakpoint at or near the Total update inside the loop" },
+      { mark: "B1", text: "places the breakpoint at or near the Total update inside the loop" },
       { mark: "B1", text: "names Total as a variable to watch" },
       { mark: "B1", text: "names another relevant variable such as current item value or loop counter" },
-      { mark: "M1", text: "explains that values can be inspected after each iteration" },
-      { mark: "A1", text: "links inspection to finding a specific fault such as reset, wrong value or missed iteration" },
+      { mark: "B1", text: "explains that values can be inspected after each iteration" },
+      { mark: "B1", text: "links inspection to finding a specific fault such as reset, wrong value or missed iteration" },
     ],
     strict: [
       "Do not award full marks for saying only 'it finds the bug'.",
       "Allow 'stop the program' for breakpoint if pause/inspect meaning is clear.",
       "Do not require a named IDE.",
-      "FT: variables may follow the candidate's loop scenario if relevant.",
     ],
   },
   {
@@ -144,16 +142,15 @@ const examQuestions = [
     answer: "Step over executes the next line without entering the called procedure, so it treats the procedure call as one step. Step into enters the procedure so its internal statements can be inspected. Step into is useful when the fault may be inside the procedure.",
     marking: [
       { mark: "B1", text: "states step over executes the call without entering the procedure" },
-      { mark: "M1", text: "explains step over treats the call as one step or returns to the next line" },
+      { mark: "B1", text: "explains step over treats the call as one step or returns to the next line" },
       { mark: "B1", text: "states step into enters the called procedure" },
-      { mark: "M1", text: "explains step into allows internal statements/variables to be inspected" },
-      { mark: "A1", text: "gives a suitable reason for choosing one method in context" },
+      { mark: "B1", text: "explains step into allows internal statements/variables to be inspected" },
+      { mark: "B1", text: "gives a suitable reason for choosing one method in context" },
     ],
     strict: [
       "Do not award both definition marks if the two terms are swapped.",
       "Allow function or subroutine instead of procedure.",
       "Do not accept vague answers about 'going faster' without reference to entering a call.",
-      "FT: context mark can follow any sensible procedure debugging scenario.",
     ],
   },
   {
@@ -174,7 +171,7 @@ const examQuestions = [
       "Do not award final output mark for 3 or 7.",
       "Allow table, structured list or clear sequence of variable values.",
       "Do not require every unchanged value to be repeated if the trace is unambiguous.",
-      "FT: later Count values may follow from one arithmetic slip, but final output must match the candidate's trace.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
@@ -185,16 +182,15 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "states syntax errors are detected before or when attempting execution" },
       { mark: "B1", text: "states breakpoints pause a running program" },
-      { mark: "M1", text: "explains that variable values or conditions can be inspected" },
+      { mark: "B1", text: "explains that variable values or conditions can be inspected" },
       { mark: "B1", text: "identifies logic errors as a suitable target for breakpoints" },
-      { mark: "A1", text: "gives a suitable breakpoint location such as an IF statement or calculation" },
-      { mark: "A1", text: "links the breakpoint to finding a wrong branch/value/result" },
+      { mark: "B1", text: "gives a suitable breakpoint location such as an IF statement or calculation" },
+      { mark: "B1", text: "links the breakpoint to finding a wrong branch/value/result" },
     ],
     strict: [
       "Do not accept 'breakpoints fix syntax errors automatically'.",
       "Allow runtime fault examples if pause and inspect are explained.",
       "Do not award context marks for random breakpoint placement.",
-      "FT: candidate's example may use a loop, condition or procedure if the debugging role is clear.",
     ],
   },
 ];

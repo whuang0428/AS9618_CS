@@ -152,7 +152,7 @@ const examQuestions = [
       "Do not award full marks for final values only if trace rows are required.",
       "Allow equivalent table format.",
       "Do not accept Count as sum of the values.",
-      "FT: later rows can follow from a candidate's previous row if the update rule is applied consistently.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
@@ -172,7 +172,6 @@ const examQuestions = [
       "Do not accept Count <- Count + Mark for counting passes.",
       "Allow WHILE with a correctly controlled counter for five marks.",
       "Do not award Cambridge notation mark for Java-only braces and semicolons.",
-      "FT: output mark can follow from candidate's variable names if consistent.",
     ],
   },
   {
@@ -192,7 +191,6 @@ const examQuestions = [
       "Do not require variable names Highest/Lowest if meanings are clear.",
       "Do not accept initialising Highest to 0 where temperatures may be negative.",
       "Allow loop from 1 to 4 if the first iteration has a valid special case.",
-      "FT: comparison marks can follow from candidate's chosen variable names.",
     ],
   },
   {
@@ -202,16 +200,15 @@ const examQuestions = [
     answer: "Total is not initialised, so the first addition may use an undefined value. There is no new INPUT Number inside the loop, so if the first number is not -1 the loop may never stop. The sentinel -1 must be tested before it is processed, and the next number must be read before the next test.",
     marking: [
       { mark: "B1", text: "identifies Total is not initialised" },
-      { mark: "M1", text: "explains undefined/unknown starting total consequence" },
+      { mark: "B1", text: "explains undefined/unknown starting total consequence" },
       { mark: "B1", text: "identifies missing input inside loop" },
-      { mark: "M1", text: "explains loop may not terminate / same Number repeatedly tested" },
-      { mark: "A1", text: "states sentinel should not be processed and next input is needed before retesting" },
+      { mark: "B1", text: "explains loop may not terminate / same Number repeatedly tested" },
+      { mark: "B1", text: "states sentinel should not be processed and next input is needed before retesting" },
     ],
     strict: [
       "Do not award both mechanism marks for only saying 'it will not work'.",
       "Allow 'infinite loop' for non-termination.",
       "Do not require rewritten pseudocode, but a valid correction can earn explanation marks.",
-      "FT: consequence mark can follow from candidate's identified loop fault.",
     ],
   },
   {
@@ -224,14 +221,13 @@ const examQuestions = [
       { mark: "B1", text: "states total updated by adding value" },
       { mark: "B1", text: "states count initialised to 0" },
       { mark: "B1", text: "states count updated by adding 1" },
-      { mark: "M1", text: "states maximum should be initialised from a real value when range is unknown" },
-      { mark: "A1", text: "clear comparison of update conditions across the three patterns" },
+      { mark: "B1", text: "states maximum should be initialised from a real value when range is unknown" },
+      { mark: "B1", text: "states maximum is updated only when the current value is greater than Maximum" },
     ],
     strict: [
       "Do not accept vague 'they store numbers' for comparison marks.",
       "Allow minimum discussion as an extension, but question requires maximum.",
       "Do not require Big O notation.",
-      "FT: comparison mark can follow from candidate's valid named variables.",
     ],
   },
 ];

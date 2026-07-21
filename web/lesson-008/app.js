@@ -49,7 +49,7 @@ const examQuestions = [
     title: "Question 1",
     marks: "4 marks",
     prompt: "Calculate the file size in bytes of a 100 by 80 pixel bitmap image using 8-bit colour depth. Ignore metadata.",
-    answer: "8000 bytes",
+    answer: "100 x 80 = 8000 pixels. 8000 x 8 = 64 000 bits. 64 000 / 8 = 8000 bytes.",
     marking: [
       { mark: "M1", text: "calculates number of pixels as 100 × 80" },
       { mark: "M1", text: "multiplies by colour depth 8 bits per pixel" },
@@ -58,8 +58,8 @@ const examQuestions = [
     ],
     strict: [
       "Do not award final A1 for 64 000 bytes.",
-      "Allow FT for byte conversion if the candidate's bit total follows a correct method.",
       "Ignore metadata because the question explicitly says to ignore it.",
+      "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
     ],
   },
   {
@@ -116,7 +116,7 @@ const examQuestions = [
     title: "Question 5",
     marks: "4 marks",
     prompt: "Calculate the uncompressed size in bits of a 320 × 240 bitmap using 4-bit colour depth, ignoring metadata.",
-    answer: "307 200 bits",
+    answer: "320 x 240 = 76 800 pixels. 76 800 x 4 = 307 200 bits.",
     marking: [
       { mark: "M1", text: "calculates 320 × 240 pixels" },
       { mark: "A1", text: "76 800 pixels" },
@@ -125,9 +125,8 @@ const examQuestions = [
     ],
     strict: [
       "Do not divide by 8 because the question asks for bits.",
-      "Allow FT from an incorrect pixel count if multiplied by 4.",
       "Do not include metadata or compression.",
-      "Do not award a mark for a vague answer that does not identify the required technical point.",
+      "Allow FT from the candidate's earlier pixel total only when it is subsequently multiplied by the 4-bit colour depth.",
     ],
   },
 ];

@@ -127,17 +127,16 @@ const examQuestions = [
     answer: "Monitoring may help the school protect students from unsafe websites, cyberbullying or misuse of school devices, so it can support safeguarding and responsible use. However, students are stakeholders with privacy interests, and recording all activity may be intrusive if it includes personal browsing or happens without clear notice. Parents and teachers may also be affected because they expect safety and trust. The decision is more justified if monitoring is transparent, limited to school accounts or school time, and data is retained only for a clear purpose.",
     marking: [
       { mark: "B1", text: "valid stakeholder identified, such as students/school/parents/teachers" },
-      { mark: "M1", text: "benefit explained, such as safeguarding/security/preventing misuse" },
+      { mark: "B1", text: "benefit explained, such as safeguarding/security/preventing misuse" },
       { mark: "B1", text: "privacy/trust/consent concern identified" },
-      { mark: "M1", text: "concern explained in scenario, such as intrusive monitoring or unclear collection" },
+      { mark: "B1", text: "concern explained in scenario, such as intrusive monitoring or unclear collection" },
       { mark: "B1", text: "safeguard/condition such as transparency/limited monitoring/retention rules" },
-      { mark: "A1", text: "balanced justified judgement" },
+      { mark: "B1", text: "judges whether laptop monitoring is proportionate by weighing safeguarding benefit against student privacy/trust and the stated safeguards" },
     ],
     strict: [
       "Do not accept a one-word answer such as 'privacy' without explanation.",
       "Do not award both sides for two benefits only; there must be a concern or counterargument.",
       "Allow safety, safeguarding or preventing cyberbullying as benefits if linked to monitoring.",
-      "FT: award judgement mark if the conclusion follows the candidate's earlier valid points.",
     ],
   },
   {
@@ -148,15 +147,14 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "stakeholder defined as person/group affected by decision/system" },
       { mark: "B1", text: "example stakeholder given" },
-      { mark: "M1", text: "benefits and harms may differ between stakeholders" },
-      { mark: "M1", text: "ethical issue identified such as privacy/fairness/accessibility/workload" },
-      { mark: "A1", text: "consequence linked to responsible design/safeguards/reduced harm" },
+      { mark: "B1", text: "benefits and harms may differ between stakeholders" },
+      { mark: "B1", text: "ethical issue identified such as privacy/fairness/accessibility/workload" },
+      { mark: "B1", text: "consequence linked to responsible design/safeguards/reduced harm" },
     ],
     strict: [
       "Do not accept 'people who use it' as the only definition if wider affected groups are ignored in a broad question.",
       "Do not award issue mark for vague 'problems' without naming a concern.",
       "Allow indirect stakeholders such as parents, society or regulators.",
-      "FT: award consequence if it follows a valid stakeholder concern.",
     ],
   },
   {
@@ -166,17 +164,16 @@ const examQuestions = [
     answer: "The algorithm may make shortlisting faster and more consistent, reducing workload for staff and giving applicants quicker responses. However, applicants may be treated unfairly if the algorithm uses biased data or unsuitable criteria. The company also has a responsibility to make decisions transparent enough that unfair exclusion can be challenged. The system may be acceptable as decision support if outcomes are audited and human review or appeal is available, but fully automatic rejection without explanation is ethically weak.",
     marking: [
       { mark: "B1", text: "benefit such as speed/consistency/reduced workload" },
-      { mark: "M1", text: "benefit linked to company/staff/applicants" },
+      { mark: "B1", text: "benefit linked to company/staff/applicants" },
       { mark: "B1", text: "fairness/bias/transparency concern" },
-      { mark: "M1", text: "concern explained using applicant/job context" },
+      { mark: "B1", text: "concern explained using applicant/job context" },
       { mark: "B1", text: "safeguard such as audit/human review/appeal/explanation" },
-      { mark: "A1", text: "balanced judgement about acceptable conditions or limits" },
+      { mark: "B1", text: "judges whether algorithmic shortlisting is acceptable using efficiency/consistency evidence and bias/transparency safeguards" },
     ],
     strict: [
       "Do not accept 'AI is unbiased' as a valid point without evidence.",
       "Do not award evaluation mark for only listing advantages.",
       "Allow consistency as a benefit if linked to same criteria being applied.",
-      "FT: judgement can be for or against if justified by balanced points.",
     ],
   },
   {
@@ -187,15 +184,14 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "benefit of personalised/accurate health advice" },
       { mark: "B1", text: "sensitive/private nature of health or location data identified" },
-      { mark: "M1", text: "harm explained, such as revealing routines/misuse/sharing without expectation" },
+      { mark: "B1", text: "harm explained, such as revealing routines/misuse/sharing without expectation" },
       { mark: "B1", text: "safeguard such as informed consent/transparency/data minimisation/user control" },
-      { mark: "A1", text: "safeguard linked to reducing ethical concern" },
+      { mark: "B1", text: "safeguard linked to reducing ethical concern" },
     ],
     strict: [
       "Do not accept 'collect less data' unless linked to necessity or privacy.",
       "Do not award consent mark for vague 'ask users' without what they are agreeing to.",
       "Allow data retention limits or deletion rights as safeguards.",
-      "FT: award benefit even if candidate focuses mainly on privacy concerns.",
     ],
   },
   {
@@ -205,19 +201,18 @@ const examQuestions = [
     answer: "Monitoring public spaces may improve public safety, help detect crime and support emergency response, benefiting citizens, police and local businesses. However, citizens may feel constantly watched, and the system may collect data about people who have done nothing wrong. There may also be fairness concerns if some groups are monitored more heavily or if automated identification produces false matches. The city should be transparent about the purpose, limit data retention, restrict access, audit use and provide accountability. The system may be justified for clear safety purposes, but broad or secret surveillance without safeguards is not proportionate.",
     marking: [
       { mark: "B1", text: "benefit such as public safety/crime detection/emergency response" },
-      { mark: "M1", text: "benefit linked to stakeholder such as citizens/police/businesses" },
+      { mark: "B1", text: "benefit linked to stakeholder such as citizens/police/businesses" },
       { mark: "B1", text: "privacy/surveillance concern" },
-      { mark: "M1", text: "concern explained, such as constant watching/data about innocent people" },
+      { mark: "B1", text: "concern explained, such as constant watching/data about innocent people" },
       { mark: "B1", text: "fairness/misidentification/discrimination concern" },
       { mark: "B1", text: "safeguard such as transparency/access restriction/retention limit/audit/accountability" },
-      { mark: "M1", text: "safeguard linked to reducing a named concern" },
-      { mark: "A1", text: "balanced judgement about proportionality/conditions" },
+      { mark: "B1", text: "safeguard linked to reducing a named concern" },
+      { mark: "B1", text: "judges whether public-space monitoring is proportionate using safety benefit, privacy/fairness risk and limits on access or retention" },
     ],
     strict: [
       "Do not accept 'cameras are good' or 'cameras are bad' without stakeholder impact.",
       "Do not award both concern marks for repeated wording of privacy only.",
       "Allow examples involving facial recognition if the monitoring system is computer-based.",
-      "FT: judgement mark can be awarded if it is consistent with valid earlier analysis.",
     ],
   },
 ];

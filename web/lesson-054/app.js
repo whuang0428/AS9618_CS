@@ -114,16 +114,15 @@ const examQuestions = [
     answer: "A command line interface allows the user to type text commands at a prompt. It can be fast for expert users and supports scripts or repeated tasks, but users must remember exact commands and syntax errors can occur. A graphical user interface uses visual objects such as windows, icons, menus and a pointer. It is often easier for novice users and visual tasks, but may use more system resources and can be slower for repetitive expert tasks.",
     marking: [
       { mark: "B1", text: "CLI described as typed/text commands at a prompt" },
-      { mark: "M1", text: "valid CLI advantage such as efficiency for experts, scripts or automation" },
+      { mark: "B1", text: "valid CLI advantage such as efficiency for experts, scripts or automation" },
       { mark: "B1", text: "valid CLI limitation such as command knowledge/syntax errors" },
       { mark: "B1", text: "GUI described using visual objects such as windows/icons/menus/pointer" },
-      { mark: "A1", text: "valid GUI advantage or limitation linked to user/task" },
+      { mark: "B1", text: "valid GUI advantage or limitation linked to user/task" },
     ],
     strict: [
       "Do not accept 'CLI is old and GUI is modern' as a technical comparison.",
       "Do not award GUI mark for only saying 'has pictures' without interaction idea.",
       "Allow WIMP terminology for GUI.",
-      "FT: award comparison marks independently for each interface.",
     ],
   },
   {
@@ -133,15 +132,14 @@ const examQuestions = [
     answer: "A menu-driven interface presents a fixed set of options such as withdraw cash, check balance or deposit. Users do not need to remember commands. Invalid choices can be reduced because only available options are shown. The interface can guide many different users through a simple sequence of steps, although it may be slow if many menus are required.",
     marking: [
       { mark: "B1", text: "menu-driven interface presents fixed/displayed options" },
-      { mark: "M1", text: "users do not need to remember commands / easier for public users" },
+      { mark: "B1", text: "users do not need to remember commands / easier for public users" },
       { mark: "B1", text: "reduces invalid choices/input errors" },
-      { mark: "A1", text: "linked to ATM/cash machine scenario or includes valid limitation" },
+      { mark: "B1", text: "guides users through a simple sequence suitable for a public cash machine" },
     ],
     strict: [
       "Do not accept CLI advantages for this public-user scenario unless justified.",
       "Do not require the exact words cash machine if ATM context is clear.",
       "Allow step-by-step guidance as a valid reason.",
-      "FT: award scenario mark if a suitable public kiosk example is used.",
     ],
   },
   {
@@ -151,16 +149,15 @@ const examQuestions = [
     answer: "A command line interface is suitable because technicians are likely to be expert users who know the commands. CLI can use fewer system resources and less bandwidth than a full graphical desktop, which is useful for remote server access. Commands can be precise and repeated or scripted for administration tasks. A limitation is that commands and syntax must be known, and typing mistakes may cause errors.",
     marking: [
       { mark: "B1", text: "CLI selected as suitable interface" },
-      { mark: "M1", text: "technicians/expert users can use known commands" },
+      { mark: "B1", text: "technicians/expert users can use known commands" },
       { mark: "B1", text: "uses fewer resources or less bandwidth than GUI" },
       { mark: "B1", text: "supports precise/repeated/scripted administration tasks" },
-      { mark: "A1", text: "valid limitation such as command memorisation or syntax errors" },
+      { mark: "B1", text: "valid limitation such as command memorisation or syntax errors" },
     ],
     strict: [
       "Do not award full marks for choosing GUI unless scenario-linked reasons are strong.",
       "Do not accept 'CLI is more professional' without mechanism.",
       "Allow remote administration as scenario link.",
-      "FT: award limitation mark even if interface choice is weak but limitation is valid for CLI.",
     ],
   },
   {
@@ -170,15 +167,14 @@ const examQuestions = [
     answer: "A natural language interface allows users to speak or type instructions using ordinary language. One advantage is that it can be intuitive or hands-free, which can help accessibility or use while driving. One limitation is that it may misinterpret ambiguous wording, accents, background noise or missing context, so the wrong action may be taken.",
     marking: [
       { mark: "B1", text: "natural language interface uses ordinary spoken/written language" },
-      { mark: "M1", text: "valid advantage such as intuitive, hands-free or accessible" },
+      { mark: "B1", text: "valid advantage such as intuitive, hands-free or accessible" },
       { mark: "B1", text: "valid limitation such as ambiguity, accent, noise or context" },
-      { mark: "A1", text: "limitation consequence explained, such as misunderstanding/wrong action" },
+      { mark: "B1", text: "limitation consequence explained, such as misunderstanding/wrong action" },
     ],
     strict: [
       "Do not accept 'it talks' without user-language interaction.",
       "Do not accept 'always understands people' as an advantage.",
       "Allow voice interface examples if natural language is clear.",
-      "FT: award consequence mark if a valid limitation is described.",
     ],
   },
   {
@@ -188,17 +184,16 @@ const examQuestions = [
     answer: "For an expert batch file task, a CLI is suitable because typed commands or scripts can carry out repeated operations efficiently. For a public museum kiosk, a menu-driven interface is suitable because visitors can choose from fixed options without learning commands. For a novice arranging photos, a GUI is suitable because visual objects and pointer/touch actions allow direct manipulation of images. In each case the suitability depends on the user's skill and the task.",
     marking: [
       { mark: "B1", text: "CLI selected for expert batch file task" },
-      { mark: "M1", text: "CLI justification linked to commands/scripts/repeated operations" },
+      { mark: "B1", text: "CLI justification linked to commands/scripts/repeated operations" },
       { mark: "B1", text: "menu-driven interface selected for public kiosk" },
-      { mark: "M1", text: "menu justification linked to fixed options/guided public use" },
+      { mark: "B1", text: "menu justification linked to fixed options/guided public use" },
       { mark: "B1", text: "GUI selected for novice photo task" },
-      { mark: "A1", text: "GUI justification linked to visual/direct manipulation or overall suitability conclusion" },
+      { mark: "B1", text: "GUI justification linked to visual/direct manipulation or overall suitability conclusion" },
     ],
     strict: [
       "Do not award selection mark without matching the scenario.",
       "Do not accept a single interface for all scenarios unless each is justified separately.",
       "Allow natural language for kiosk only if a strong accessibility scenario is given.",
-      "FT: award justification marks for any technically suitable alternative with clear scenario reasoning.",
     ],
   },
 ];

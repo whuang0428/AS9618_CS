@@ -98,16 +98,15 @@ const examQuestions = [
     answer: "The processor completes the current instruction, checks or recognises that an interrupt is pending, saves the current processor state such as the program counter, registers and status flags, locates and runs the appropriate interrupt service routine, then restores the saved state and returns to the interrupted program.",
     marking: [
       { mark: "B1", text: "current instruction is completed before the interrupt is serviced" },
-      { mark: "M1", text: "interrupt is checked/recognised/accepted by the processor" },
+      { mark: "B1", text: "interrupt is checked/recognised/accepted by the processor" },
       { mark: "B1", text: "processor state is saved, including valid examples such as PC/registers/status flags" },
-      { mark: "M1", text: "appropriate ISR/interrupt handler is located and executed" },
-      { mark: "A1", text: "saved state is restored and the original program resumes/returns" },
+      { mark: "B1", text: "appropriate ISR/interrupt handler is located and executed" },
+      { mark: "B1", text: "saved state is restored and the original program resumes/returns" },
     ],
     strict: [
       "Do not award full sequence credit if state saving is omitted.",
       "Do not accept 'the CPU stops forever' as resume/return.",
       "Allow context save/context restore as equivalent to processor state saving/restoring.",
-      "FT: if ISR is called a handler, award if the handling role is clear.",
     ],
   },
   {
@@ -118,14 +117,13 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "state contains information needed to continue the interrupted program" },
       { mark: "B1", text: "valid examples of state such as PC, registers or status flags" },
-      { mark: "M1", text: "prevents loss/overwriting of current program information" },
-      { mark: "A1", text: "allows execution to resume from the correct point after the ISR" },
+      { mark: "B1", text: "prevents loss/overwriting of current program information" },
+      { mark: "B1", text: "allows execution to resume from the correct point after the ISR" },
     ],
     strict: [
       "Do not accept vague 'so it remembers things' without linking to continuation/resume.",
       "Do not require stack terminology, but allow stack as where state may be saved.",
       "Allow 'context' for state if clearly processor/program context.",
-      "FT: award resume mark if candidate has already identified a sensible saved item.",
     ],
   },
   {
@@ -136,15 +134,14 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "interrupt-driven input lets the device signal the CPU when an event occurs" },
       { mark: "B1", text: "CPU can do other work until the interrupt occurs" },
-      { mark: "M1", text: "interrupt handling involves ISR/state save/resume or equivalent" },
+      { mark: "B1", text: "interrupt handling involves ISR/state save/resume or equivalent" },
       { mark: "B1", text: "polling means CPU repeatedly checks device/status flag" },
-      { mark: "A1", text: "polling may waste CPU time or interrupts can be more efficient for unpredictable events" },
+      { mark: "B1", text: "polling may waste CPU time or interrupts can be more efficient for unpredictable events" },
     ],
     strict: [
       "Do not accept 'polling is asking people questions' without device/status context.",
       "Do not award efficiency mark unless CPU time/work is referenced.",
       "Allow a balanced answer that notes polling is simpler for some systems.",
-      "FT: award comparison marks independently for interrupt and polling descriptions.",
     ],
   },
   {
@@ -155,14 +152,13 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "ISR is a routine/program/handler for a specific interrupt" },
       { mark: "B1", text: "checks/responds to printer status or printer event" },
-      { mark: "M1", text: "performs an appropriate action such as sending/preparing data or clearing/acknowledging interrupt" },
-      { mark: "A1", text: "returns control/allows return to interrupted program after handling" },
+      { mark: "B1", text: "performs an appropriate action such as sending/preparing data or clearing/acknowledging interrupt" },
+      { mark: "B1", text: "returns control/allows return to interrupted program after handling" },
     ],
     strict: [
       "Do not accept 'the ISR is the interrupt signal' because ISR is a routine, not the signal.",
       "Do not require exact printer-buffer terminology.",
       "Allow 'driver routine' only if the interrupt-handling role is clear.",
-      "FT: award role marks even if candidate uses a different valid I/O device example.",
     ],
   },
   {
@@ -172,17 +168,16 @@ const examQuestions = [
     answer: "Interrupt priority is used when more than one interrupt needs attention, so the processor can handle the most urgent one first. A lower-priority interrupt may wait until a higher-priority interrupt has been serviced. A maskable interrupt can be disabled or delayed by the processor, often because it is less urgent. A non-maskable interrupt cannot normally be ignored and is used for critical events such as serious hardware faults.",
     marking: [
       { mark: "B1", text: "priority ranks interrupts by urgency/importance" },
-      { mark: "M1", text: "higher-priority interrupt may be serviced before lower-priority interrupt" },
+      { mark: "B1", text: "higher-priority interrupt may be serviced before lower-priority interrupt" },
       { mark: "B1", text: "lower-priority interrupt may wait/be delayed" },
       { mark: "B1", text: "maskable interrupt can be disabled/ignored/delayed" },
       { mark: "B1", text: "non-maskable interrupt cannot normally be ignored/disabled" },
-      { mark: "A1", text: "valid critical event example for non-maskable interrupt" },
+      { mark: "B1", text: "valid critical event example for non-maskable interrupt" },
     ],
     strict: [
       "Do not accept 'priority means faster CPU clock speed'.",
       "Do not accept 'maskable means hidden from the user' unless disabling/delaying is also stated.",
       "Allow NMI abbreviation if expanded or clearly explained.",
-      "FT: award maskable and non-maskable marks independently.",
     ],
   },
 ];

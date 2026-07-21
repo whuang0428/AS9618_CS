@@ -119,39 +119,35 @@ const mistakes = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
+    marks: "4 marks",
     prompt: "Describe the purpose of backup software and explain two reasons why a school should use it.",
     answer: "Backup software creates copies of files or systems, usually on another storage device, server or cloud location. A school should use it so deleted or corrupted coursework can be restored from a previous copy. It also helps recover data after hardware failure or malware damage. Backups should be regular and tested so the restored version is recent and usable.",
     marking: [
       { mark: "B1", text: "backup software creates/copies data or system files" },
-      { mark: "M1", text: "copy is stored separately / on another medium / cloud / off-site" },
+      { mark: "B1", text: "copy is stored separately / on another medium / cloud / off-site" },
       { mark: "B1", text: "allows restoration after accidental deletion or corruption" },
       { mark: "B1", text: "allows recovery after hardware failure, malware or similar data loss event" },
-      { mark: "A1", text: "regular/tested/recent backup point linked to reduced data loss" },
     ],
     strict: [
       "Do not accept 'backup makes data secure' without restore/recovery idea.",
       "Do not award separate marks for repeated examples of the same loss event.",
       "Allow cloud backup if restoration is clear.",
-      "FT: award regularity mark if an otherwise valid backup method is described.",
     ],
   },
   {
     title: "Question 2",
-    marks: "4 marks",
+    marks: "3 marks",
     prompt: "Explain why compression software may be used before sending files over a network.",
     answer: "Compression software reduces the file size by encoding the data using fewer bits. A smaller file may need less bandwidth and take less time to upload or download. It may also help the file fit within an attachment or storage limit. If lossy compression is used, some quality or detail may be lost, while lossless compression allows exact reconstruction.",
     marking: [
       { mark: "B1", text: "compression reduces file size / number of bits" },
-      { mark: "M1", text: "less data to transmit so upload/download time or bandwidth use is reduced" },
-      { mark: "B1", text: "valid extra use such as attachment limit or storage saving" },
-      { mark: "A1", text: "valid distinction or limitation involving lossy/lossless compression" },
+      { mark: "B1", text: "less data to transmit so upload/download time or bandwidth use is reduced" },
+      { mark: "B1", text: "reduced transmission time and/or reduced bandwidth requirement explained" },
     ],
     strict: [
       "Do not accept 'makes the file faster' unless transmission or processing context is clear.",
       "Do not accept 'zips it' alone without reduced size idea.",
       "Allow 'smaller file' for B1.",
-      "FT: if candidate says storage rather than network, award storage mark but not network consequence mark.",
     ],
   },
   {
@@ -161,16 +157,15 @@ const examQuestions = [
     answer: "Encryption software converts plaintext customer data into ciphertext using an encryption algorithm and a key. If a laptop is stolen, the data cannot be read by an unauthorised person without the correct key, so confidentiality is protected. A limitation is that encryption does not prevent the laptop being stolen or the file being deleted. If the key is lost, authorised users may also be unable to decrypt the data.",
     marking: [
       { mark: "B1", text: "plaintext/readable data is converted into ciphertext/unreadable form" },
-      { mark: "M1", text: "uses an algorithm and/or key" },
+      { mark: "B1", text: "uses an algorithm and/or key" },
       { mark: "B1", text: "unauthorised user cannot read data without correct key" },
-      { mark: "A1", text: "benefit linked to laptop/customer data scenario or confidentiality" },
+      { mark: "B1", text: "benefit linked to laptop/customer data scenario or confidentiality" },
       { mark: "B1", text: "valid limitation such as no prevention of theft/deletion/malware or key loss" },
     ],
     strict: [
       "Do not accept 'data is hidden' without unreadable/ciphertext idea.",
       "Do not accept encryption as backup or antivirus.",
       "Allow symmetric/asymmetric references if technically correct.",
-      "FT: award limitation mark independently if it is a real limitation of encryption.",
     ],
   },
   {
@@ -180,15 +175,14 @@ const examQuestions = [
     answer: "Defragmentation rearranges file fragments or blocks so parts of a file are stored closer together or contiguously on a magnetic hard disk. This can reduce the amount of movement required by the disk read/write head. As a result, file access can be faster. This explanation is linked to HDDs and should not be stated as the same benefit for SSDs, which have no moving disk head.",
     marking: [
       { mark: "B1", text: "file fragments/blocks are rearranged" },
-      { mark: "M1", text: "parts of a file are made contiguous/closer together" },
+      { mark: "B1", text: "parts of a file are made contiguous/closer together" },
       { mark: "B1", text: "reduces movement of magnetic disk read/write head" },
-      { mark: "A1", text: "access time/performance improvement linked to HDD, or SSD boundary correctly stated" },
+      { mark: "B1", text: "access time/performance improvement linked to HDD, or SSD boundary correctly stated" },
     ],
     strict: [
       "Do not accept 'deletes unnecessary files' as defragmentation.",
       "Do not accept performance mark without mechanism on HDD.",
       "Allow 'hard disk' for magnetic disk if context implies HDD.",
-      "FT: if fragments are described correctly, award mechanism marks even if term defrag is misspelled.",
     ],
   },
   {
@@ -198,17 +192,16 @@ const examQuestions = [
     answer: "For recovering deleted documents, a backup utility is suitable because it can restore a previous copy made before the deletion. For protecting files if a laptop is stolen, encryption is suitable because it converts readable data into ciphertext that cannot be read without the key. For checking a suspicious download, antivirus software is suitable because it scans for malware and can quarantine or remove infected files.",
     marking: [
       { mark: "B1", text: "backup selected for recovering deleted documents" },
-      { mark: "M1", text: "backup justification linked to restoring a previous copy" },
+      { mark: "B1", text: "backup justification linked to restoring a previous copy" },
       { mark: "B1", text: "encryption selected for stolen laptop/files" },
-      { mark: "M1", text: "encryption justification linked to ciphertext/key/unauthorised reading" },
+      { mark: "B1", text: "encryption justification linked to ciphertext/key/unauthorised reading" },
       { mark: "B1", text: "antivirus selected for suspicious download" },
-      { mark: "A1", text: "antivirus justification linked to scanning, quarantine or removal of malware" },
+      { mark: "B1", text: "antivirus justification linked to scanning, quarantine or removal of malware" },
     ],
     strict: [
       "Do not award selection mark if the utility is matched to the wrong scenario.",
       "Do not accept 'secure' as justification unless the mechanism is clear.",
       "Allow anti-malware as antivirus equivalent.",
-      "FT: award justification marks for technically correct alternatives only when scenario fit is explicit.",
     ],
   },
 ];

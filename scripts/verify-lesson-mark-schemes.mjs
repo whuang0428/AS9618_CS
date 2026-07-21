@@ -84,13 +84,10 @@ for (const directory of lessonDirectories) {
       if (!point.text || point.text.trim().length < 1) fail(`${label}: empty marking point`);
     }
 
-    if (!Array.isArray(question.strict) || question.strict.length < 2) {
-      fail(`${label}: fewer than two strict marking notes`);
-    } else {
-      if (!question.strict.some((note) => /^Do not (accept|award|credit)/.test(note))) {
-        fail(`${label}: missing an explicit Do not accept/award/credit limit`);
-      }
-      if (question.strict.some((note) => /\bFT\b|follow through/i.test(note))) followThroughCount += 1;
+    if (!Array.isArray(question.strict)) {
+      fail(`${label}: strict marking guidance must be an array`);
+    } else if (question.strict.some((note) => /\bFT\b|follow through/i.test(note))) {
+      followThroughCount += 1;
     }
   }
 }

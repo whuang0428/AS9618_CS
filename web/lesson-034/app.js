@@ -88,7 +88,6 @@ const examQuestions = [
       "Do not award actuator mark if the answer says the sensor cools the greenhouse.",
       "Do not require a numeric threshold.",
       "Allow microcontroller in place of processor/controller.",
-      "FT: award feedback mark if repeated sensing is described after an initially valid control sequence.",
     ],
   },
   {
@@ -106,7 +105,6 @@ const examQuestions = [
       "Do not accept 'sensor performs the action' for actuator credit.",
       "Do not accept 'actuator measures the environment' as its role.",
       "Allow examples such as motor, pump, valve, heater, lamp or brake.",
-      "FT: award example-based marks if the input/output distinction is clear.",
     ],
   },
   {
@@ -125,7 +123,6 @@ const examQuestions = [
       "Do not accept an answer that identifies the light sensor as the lamp.",
       "Do not require analogue-to-digital conversion unless asked.",
       "Allow LED/street lamp as output device.",
-      "FT: award valid sequence marks even if threshold wording is simple.",
     ],
   },
   {
@@ -134,16 +131,15 @@ const examQuestions = [
     prompt: "Compare open-loop and closed-loop control systems.",
     answer: "An open-loop system carries out an action without using feedback about the result, such as a timer that waters plants for a fixed time. A closed-loop system uses sensor feedback to adjust output, such as a moisture sensor controlling a pump until soil is wet enough.",
     marking: [
-      { mark: "B1", text: "open-loop has no feedback/check of result" },
-      { mark: "B1", text: "valid open-loop example" },
-      { mark: "B1", text: "closed-loop uses sensor feedback" },
-      { mark: "B1", text: "valid closed-loop example linked to adjustment/control" },
+      { mark: "B1", text: "open-loop has no feedback/check of the result" },
+      { mark: "B1", text: "open-loop output is not adjusted in response to the measured result" },
+      { mark: "B1", text: "closed-loop uses sensor feedback about the result" },
+      { mark: "B1", text: "closed-loop uses feedback to adjust or stop the output" },
     ],
     strict: [
       "Do not accept 'closed loop repeats forever' as the definition.",
       "Do not require advanced control theory.",
       "Allow thermostat or greenhouse examples for closed loop.",
-      "FT: award example marks if the feedback distinction is clear.",
     ],
   },
   {
@@ -163,7 +159,6 @@ const examQuestions = [
       "Do not award sensor mark for camera unless distance/proximity detection is made clear.",
       "Do not accept output device alone without processing sequence for full credit.",
       "Allow visual/audio/haptic output if role is clear.",
-      "FT: award output marks for a valid warning method even if sensor example is imprecise.",
     ],
   },
 ];

@@ -93,7 +93,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Match the protocols FTP, SMTP, POP3 and IMAP to their email/file-transfer contexts.",
+    prompt: "Match FTP, SMTP, POP3 and IMAP to their email/file-transfer contexts, then distinguish sending email from receiving or accessing email.",
     answer: "FTP is used for file transfer between a client and server. SMTP is used to send email. POP3 is used to download email from a mail server to a client. IMAP is used to access and synchronise email stored on a mail server across multiple devices.",
     marking: [
       { mark: "B1", text: "FTP matched to file transfer" },
@@ -146,7 +146,7 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "Describe the protocols involved when a user sends an email and then retrieves email from a mail server.",
+    prompt: "Describe the roles of SMTP, POP3 and IMAP when a user sends email and accesses email from a mail server.",
     answer: "SMTP is used to send the email from the user's email client to a mail server and may be used between mail servers. To retrieve/access email, the client may use POP3 to download messages to the device or IMAP to access and synchronise messages stored on the server.",
     marking: [
       { mark: "B1", text: "SMTP used to send email from client to mail server" },

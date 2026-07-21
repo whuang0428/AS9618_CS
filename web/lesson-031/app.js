@@ -81,14 +81,13 @@ const examQuestions = [
       { mark: "B1", text: "magnetic example and valid characteristic" },
       { mark: "B1", text: "optical example and valid characteristic" },
       { mark: "B1", text: "solid-state example and valid characteristic" },
-      { mark: "B1", text: "clear comparison of speed/capacity/cost/durability between at least two media" },
-      { mark: "B1", text: "uses precise storage terminology rather than only product names" },
+      { mark: "B1", text: "compares at least two media using the same criterion, e.g. HDD lower cost per GB than SSD" },
+      { mark: "B1", text: "gives a second cross-media comparison, e.g. SSD has faster access and greater shock resistance than HDD" },
     ],
     strict: [
       "Do not award full credit for only listing HDD, DVD and SSD with no characteristics.",
       "Do not accept RAM/cache as secondary storage media.",
       "Allow flash memory, memory card or USB drive as solid-state examples.",
-      "FT: award valid characteristic marks even if one example is weak, provided the medium is clear.",
     ],
   },
   {
@@ -106,7 +105,6 @@ const examQuestions = [
       "Do not accept only 'SSD is better' without reason.",
       "Do not require all advantages; any valid scenario-linked advantages may score.",
       "Allow note that SSD may cost more per GB as evaluation, but it is not required.",
-      "FT: if candidate says flash storage, award where SSD role is clearly meant.",
     ],
   },
   {
@@ -115,16 +113,15 @@ const examQuestions = [
     prompt: "A company needs to keep very large backups that are rarely accessed. Explain why magnetic tape may be suitable.",
     answer: "Magnetic tape is suitable because it can store very large amounts of data at a relatively low cost. Backups are usually written and restored sequentially, so tape's slower sequential access may be acceptable. It is also suitable for long-term offline storage of backup copies.",
     marking: [
-      { mark: "B1", text: "magnetic tape identified as secondary storage" },
       { mark: "B1", text: "high capacity / stores very large data sets" },
       { mark: "B1", text: "low cost per unit of storage / cost-effective backups" },
       { mark: "B1", text: "sequential/slower access acceptable because backups are rarely accessed" },
+      { mark: "B1", text: "tape can be stored offline or away from the live system as an archive copy" },
     ],
     strict: [
       "Do not accept tape as fastest access medium.",
       "Do not award backup marks for volatile storage such as RAM.",
       "Allow offline/archive security point if linked to backup scenario.",
-      "FT: award capacity/cost marks for another magnetic medium only if the scenario reasoning is plausible.",
     ],
   },
   {
@@ -142,7 +139,6 @@ const examQuestions = [
       "Do not accept two repeated points about speed as two separate limitations.",
       "Do not accept that optical discs are volatile.",
       "Allow limited rewrite capability if explained correctly for read-only/write-once discs.",
-      "FT: award any two valid limitations with explanation where comparison is clear.",
     ],
   },
   {
@@ -161,7 +157,6 @@ const examQuestions = [
       "Do not award full marks for recommending the same device twice without separate scenario reasons.",
       "Do not accept optical disc for active editing unless strongly justified for a special case.",
       "Allow external HDD/SSD if the characteristic and role are clear.",
-      "FT: award trade-off marks for any coherent split between archive and active work.",
     ],
   },
 ];

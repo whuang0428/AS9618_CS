@@ -124,7 +124,7 @@ const examQuestions = [
       "Java declarations alone should not receive the Cambridge syntax mark.",
       "Allow Total as REAL if later values may be decimal.",
       "Do not award initialisation marks for only declaring the variables.",
-      "FT: initialisation marks can follow from candidate's equivalent variable names.",
+      "Allow an equivalent variable if it is used consistently.",
     ],
   },
   {
@@ -135,15 +135,14 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "defines variable as named storage / value can change" },
       { mark: "B1", text: "defines constant as named value / value should not change" },
-      { mark: "M1", text: "applies constant idea to fixed PassMark" },
-      { mark: "A1", text: "gives suitable constant example or declaration" },
-      { mark: "A1", text: "explains benefit such as readability, maintainability or avoiding repeated literals" },
+      { mark: "B1", text: "applies constant idea to fixed PassMark" },
+      { mark: "B1", text: "gives suitable constant example or declaration" },
+      { mark: "B1", text: "explains benefit such as readability, maintainability or avoiding repeated literals" },
     ],
     strict: [
       "Do not accept 'constant is a variable' without stating it should not change.",
       "Allow PassMark <- 50 only if the answer clearly treats it as a fixed named value, but prefer CONSTANT syntax.",
       "Do not award benefit mark for vague 'better' without cause.",
-      "FT: example mark can follow from any sensible fixed value.",
     ],
   },
   {
@@ -160,11 +159,10 @@ const examQuestions = [
       { mark: "A1", text: "final Y = 4 with final X = 13" },
     ],
     strict: [
-      "assignment statements must be traced in order.",
+      "Assignment statements must be traced in order.",
       "Allow a trace table instead of prose.",
       "Do not use original X = 4 when evaluating the final statement if X has already changed.",
-      "FT: final Y may follow from candidate's previous X if arithmetic is consistent.",
-      "Do not award a mark for a vague answer that does not identify the required technical point.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
@@ -174,17 +172,16 @@ const examQuestions = [
     answer: "The error is that the left-hand side of assignment must be a variable that can store a value. Total + Mark is an expression, not a storage location. The corrected statement is Total <- Total + Mark, which evaluates old Total plus Mark and stores the result in Total.",
     marking: [
       { mark: "B1", text: "identifies left side must be a variable/storage location" },
-      { mark: "M1", text: "identifies Total + Mark is an expression" },
-      { mark: "A1", text: "states expression cannot receive/store the assignment result" },
+      { mark: "B1", text: "identifies Total + Mark is an expression" },
+      { mark: "B1", text: "states expression cannot receive/store the assignment result" },
       { mark: "B1", text: "gives corrected statement Total <- Total + Mark" },
-      { mark: "M1", text: "explains right-hand side is evaluated first" },
-      { mark: "A1", text: "explains result is stored in Total" },
+      { mark: "B1", text: "explains right-hand side is evaluated first" },
+      { mark: "B1", text: "explains result is stored in Total" },
     ],
     strict: [
       "Do not award correction mark for reversing to Mark <- Total + Mark.",
       "Allow 'identifier' for variable/storage location.",
       "Do not accept 'syntax is wrong' without explaining direction or expression.",
-      "FT: explanation marks can follow from a logically equivalent running total correction.",
     ],
   },
   {
@@ -204,7 +201,6 @@ const examQuestions = [
       "comparison in IF may use =; assignment should use <-.",
       "Allow equivalent identifier case.",
       "Do not award comparison mark if MaxStudents is assigned a new value inside the IF.",
-      "FT: output mark can follow from candidate's equivalent full-condition variable.",
     ],
   },
 ];

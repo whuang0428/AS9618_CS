@@ -54,7 +54,7 @@ const examQuestions = [
     title: "Question 1",
     marks: "3 marks",
     prompt: "Convert 10110110₂ to denary. Show your working.",
-    answer: "182",
+    answer: "Using 128, 64, 32, 16, 8, 4, 2, 1: 10110110₂ = 128 + 32 + 16 + 4 + 2 = 182₁₀.",
     marking: [
       { mark: "M1", text: "shows correct 8-bit place values, e.g. 128, 64, 32, 16, 8, 4, 2, 1" },
       { mark: "M1", text: "selects/adds the active columns 128 + 32 + 16 + 4 + 2" },
@@ -62,7 +62,6 @@ const examQuestions = [
     ],
     strict: [
       "Do not award M1 for adding all place values without reference to the bit pattern.",
-      "Allow FT for arithmetic slip if the active columns are correct.",
       "Base label is not required for the final denary value if the question wording is clear.",
     ],
   },
@@ -70,7 +69,7 @@ const examQuestions = [
     title: "Question 2",
     marks: "4 marks",
     prompt: "Convert 77₁₀ to 8-bit binary. Show your method.",
-    answer: "01001101₂",
+    answer: "77 = 64 + 8 + 4 + 1, so the 64, 8, 4 and 1 columns are 1. In eight bits the result is 01001101₂.",
     marking: [
       { mark: "M1", text: "uses 8-bit place values from 128 to 1" },
       { mark: "M1", text: "selects 64, 8, 4 and 1" },
@@ -87,7 +86,7 @@ const examQuestions = [
     title: "Question 3",
     marks: "2 marks",
     prompt: "State the range of unsigned 8-bit binary values in denary.",
-    answer: "0 to 255",
+    answer: "For an unsigned 8-bit value, the minimum is 00000000₂ = 0 and the maximum is 11111111₂ = 255, so the range is 0 to 255.",
     marking: [
       { mark: "B1", text: "minimum value is 0" },
       { mark: "B1", text: "maximum value is 255" },
@@ -102,7 +101,7 @@ const examQuestions = [
     title: "Question 4",
     marks: "3 marks",
     prompt: "Explain why 00001010₂ and 1010₂ have the same denary value but are not written with the same number of bits.",
-    answer: "Both have value 10, but 00001010₂ is written with 8 bits while 1010₂ is written with 4 bits.",
+    answer: "Both values equal 10 because leading zeros contribute no value: the active columns are 8 and 2 in each representation. However, 00001010₂ explicitly uses eight bit positions, whereas 1010₂ uses four.",
     marking: [
       { mark: "B1", text: "identifies that leading zeros do not change the denary value" },
       { mark: "B1", text: "states that both values are 10 / both count 8 + 2" },
@@ -121,8 +120,8 @@ const examQuestions = [
     answer: "Correct, because 10000001₂ uses the 128 and 1 columns, and 128 + 1 = 129.",
     marking: [
       { mark: "B1", text: "states that the answer is correct" },
-      { mark: "M1", text: "identifies the active columns as 128 and 1" },
-      { mark: "A1", text: "calculates 128 + 1 = 129" },
+      { mark: "B1", text: "identifies the active columns as 128 and 1" },
+      { mark: "B1", text: "calculates 128 + 1 = 129" },
       { mark: "B1", text: "explains that zero columns are not counted" },
     ],
     strict: [

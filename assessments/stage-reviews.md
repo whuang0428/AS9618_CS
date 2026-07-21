@@ -78,7 +78,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **M1** divides by 8
 - **A1** 64000 bytes
 
-**Guidance:** FT correct conversions.
+**Guidance:** Allow FT from the candidate's earlier incorrect pixel or bit total only when the subsequent conversion to bytes is correct.
 
 #### Q2 [6]
 
@@ -87,7 +87,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **B1** vector stores objects/properties/drawing list
 - **B1** logo shapes can be represented geometrically
 - **B1** vector scales without pixelation
-- **B1** justified choice for both applications
+- **B1** recommends bitmap for the photograph and vector for the logo
 
 **Guidance:** Do not accept only file-size claims.
 
@@ -166,7 +166,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **B1** individual star cable failure affects one node
 - **B1** mesh provides alternative paths
 - **B1** mesh costs more cabling/management
-- **B1** recommendation weighs resilience against cost
+- **B1** recommends mesh for the stated resilience requirement and links this to alternative paths, while acknowledging cost
 
 **Guidance:** No mark for recommendation alone.
 
@@ -245,7 +245,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **B1** HDD uses magnetic platters
 - **B1** head senses magnetic patterns
 - **B1** HDD actuator positions head / optical drive focuses laser
-- **B1** three valid mechanism differences are clear
+- **B1** optical pickup does not contact the disc whereas an HDD head operates very close to the platter
 
 **Guidance:** Do not award generic capacity comparisons only.
 
@@ -303,7 +303,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ### Timed Exam Practice [10]
 
-1. State the effective address for LDX 300 when IX=12 and explain. **[4]**
+1. Calculate the effective address for LDX 300 when IX=12 and explain one use of indexed addressing. **[4]**
 2. Describe interrupt handling from request to resuming the program. **[6]**
 
 ### Answer Key / Mark Scheme
@@ -547,12 +547,12 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q1 [4]
 
-- **B1** guide decisions/standards
-- **B1** protect public interest
-- **B1** support trust/accountability
-- **B1** promote competence/integrity/privacy
+- **B1** states a code guides professional decisions or sets expected standards
+- **B1** explains this supports consistent, accountable conduct
+- **B1** states a code protects clients, users or the public interest
+- **B1** explains this promotes trust by requiring competence, integrity or confidentiality
 
-**Guidance:** Each point must state a purpose or consequence.
+**Guidance:** Award the second mark for each purpose only when its professional or public consequence is explained.
 
 #### Q2 [6]
 
@@ -561,7 +561,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **B1** bias/false match consequence
 - **B1** security/access/retention control
 - **B1** alternative or human review/appeal
-- **B1** balanced context-specific judgement
+- **B1** makes a reasoned recommendation for the school using attendance benefit and biometric privacy or false-match risk
 
 **Guidance:** Do not award a one-sided list as evaluation.
 
@@ -698,7 +698,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ### Timed Exam Practice [10]
 
-1. Improve this answer for two marks: 'Cache makes the CPU faster.' **[4]**
+1. Improve this answer for four marks: 'Cache makes the CPU faster.' **[4]**
 2. A school chooses cloud storage for student records. Discuss benefits, risks and safeguards. **[6]**
 
 ### Answer Key / Mark Scheme
@@ -719,7 +719,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **B1** privacy/jurisdiction/unauthorised access risk
 - **B1** encryption/access rights/MFA safeguard
 - **B1** backup/versioning/recovery safeguard
-- **B1** balanced decision distinguishes public/private deployment
+- **B1** recommends a deployment approach for student records using confidentiality, availability and provider-control evidence
 
 **Guidance:** Discussion requires both sides and context.
 
@@ -947,7 +947,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **M1** IF Data[Index] > 0 THEN increments
 - **A1** closes constructs and outputs/returns Count
 
-**Guidance:** FT declared equivalent bounds.
+**Guidance:** Allow equivalent declared bounds only when they cover all 20 elements exactly once.
 
 #### Q2 [6]
 
@@ -1116,4 +1116,4 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 - **B1** updates array/count/total for valid scores
 - **B1** avoids division by zero and outputs mean when count > 0
 
-**Guidance:** Use Cambridge pseudocode; FT minor syntax where logic is unambiguous.
+**Guidance:** Use Cambridge pseudocode. Do not penalise a minor syntax error when the intended control structure remains unambiguous.

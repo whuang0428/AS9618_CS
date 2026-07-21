@@ -130,7 +130,6 @@ const examQuestions = [
       "Do not award calculation method mark if TotalCost is calculated before inputs are available.",
       "Allow different sensible variable names if used consistently.",
       "Do not accept Java-only syntax as Cambridge pseudocode.",
-      "FT: output mark can follow candidate's calculated variable name.",
     ],
   },
   {
@@ -151,7 +150,6 @@ const examQuestions = [
       "Do not award boundary condition mark for Mark > 50.",
       "Allow >= PassMark if PassMark is defined as 50.",
       "Do not accept an unexplained test value as the boundary explanation.",
-      "FT: output marks can follow reversed messages if the candidate's stated condition is internally consistent, but do not award the boundary accuracy mark.",
     ],
   },
   {
@@ -171,7 +169,7 @@ const examQuestions = [
       "Do not award final output mark for 6 or 15.",
       "Allow a clear trace table instead of prose.",
       "Do not accept only 'adds numbers' without values for trace marks.",
-      "FT: final output can follow a consistent trace if only one arithmetic slip occurs.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
@@ -192,12 +190,11 @@ const examQuestions = [
       "Do not award update mark if Password cannot change inside the loop.",
       "Allow UNTIL-style alternative only if the question is interpreted as at-least-once input and the logic is correct.",
       "Do not accept a FOR loop unless a fixed maximum number of attempts is stated.",
-      "FT: explanation marks can follow a correct condition-controlled loop even if identifiers differ.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "Compare sequence, selection and iteration. Include one pseudocode keyword or structure for each.",
     answer: "Sequence executes statements in order. Selection chooses a path using a condition, for example IF...THEN...ELSE...ENDIF. Iteration repeats a block, for example FOR...NEXT or WHILE...ENDWHILE.",
     marking: [
@@ -206,13 +203,11 @@ const examQuestions = [
       { mark: "A1", text: "gives IF/THEN/ELSE/ENDIF or CASE as selection evidence" },
       { mark: "B1", text: "defines iteration as repetition of a block" },
       { mark: "A1", text: "gives FOR/NEXT, WHILE/ENDWHILE or REPEAT/UNTIL as iteration evidence" },
-      { mark: "B1", text: "uses accurate control-flow terminology" },
     ],
     strict: [
       "Do not award iteration definition mark for a single repeated word without a loop idea.",
       "Allow control structure instead of construct.",
       "Do not accept Java braces alone as pseudocode evidence.",
-      "FT: keyword marks can follow equivalent Cambridge-style pseudocode structures.",
     ],
   },
 ];

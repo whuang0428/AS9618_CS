@@ -87,7 +87,6 @@ const examQuestions = [
       "Do not award a mark for vague 'printer is better' without a cause.",
       "Do not accept that a printer stores the transaction.",
       "Allow label printer where the output purpose is a physical label or record.",
-      "FT: if another valid hard-copy device is named, award linked hard-copy reasoning where appropriate.",
     ],
   },
   {
@@ -106,7 +105,6 @@ const examQuestions = [
       "Do not award input devices such as sensor as output methods.",
       "Do not accept two output names with no justification for an explain/recommend question.",
       "Allow haptic output if linked to workers carrying wearable devices.",
-      "FT: if one output is weak, still award marks for the other valid output and reason.",
     ],
   },
   {
@@ -124,7 +122,6 @@ const examQuestions = [
       "Do not accept 'sensor outputs temperature' unless input role is clear.",
       "Do not accept 'actuator displays data' as the main role.",
       "Allow examples such as motor, valve, heater, brake if linked to physical action.",
-      "FT: award example marks where role is clear even if terminology is imperfect.",
     ],
   },
   {
@@ -142,12 +139,11 @@ const examQuestions = [
       "Do not accept 'screen is easier' without explanation.",
       "Do not award both marks for printer if answer only says it uses paper.",
       "Allow audio as an additional method, but the comparison must still address screen and printer.",
-      "FT: award valid comparison marks if travel scenario is clearly used.",
     ],
   },
   {
     title: "Question 5",
-    marks: "5 marks",
+    marks: "4 marks",
     prompt: "A school hall presentation must be seen and heard by 200 people. Recommend suitable output devices and explain your choices.",
     answer: "A projector or large display is suitable because it shows visual output large enough for the audience to see. Speakers are suitable because they output sound at enough volume for the hall. The choices fit the large audience and presentation context better than a small monitor or headphones.",
     marking: [
@@ -155,13 +151,11 @@ const examQuestions = [
       { mark: "B1", text: "visual justification linked to large audience/visibility" },
       { mark: "B1", text: "suitable audio output such as speakers" },
       { mark: "B1", text: "audio justification linked to volume/hearing across hall" },
-      { mark: "B1", text: "rejects or contrasts unsuitable small/private output" },
     ],
     strict: [
       "Do not award headphones as a suitable main output for the whole hall unless individually issued and justified.",
       "Do not accept monitor alone unless large display visibility is clear.",
       "Allow interactive whiteboard if described as a large shared visual display.",
-      "FT: award context-linked marks for equivalent output devices.",
     ],
   },
 ];

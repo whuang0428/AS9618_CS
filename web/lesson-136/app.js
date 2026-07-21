@@ -142,7 +142,6 @@ const examQuestions = [
       "Do not award READ mode mark for WRITE or APPEND.",
       "Allow equivalent file and variable names if consistent.",
       "Do not accept Java Scanner code alone as Cambridge pseudocode.",
-      "FT: output mark can follow candidate's equivalent read variable.",
     ],
   },
   {
@@ -163,12 +162,11 @@ const examQuestions = [
       "Do not award increment mark if Count is incremented outside the loop only once.",
       "Allow REPEAT/UNTIL only if the EOF logic is safe and clear.",
       "Do not accept counting characters as records unless the question states character records.",
-      "FT: output mark can follow candidate's equivalent counter variable.",
     ],
   },
   {
     title: "Question 3",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "A program must add the record \"Lin,85\" to the end of Scores.txt without deleting existing scores. Write the pseudocode.",
     answer: "OPENFILE \"Scores.txt\" FOR APPEND\nWRITEFILE \"Scores.txt\", \"Lin,85\"\nCLOSEFILE \"Scores.txt\"",
     marking: [
@@ -177,13 +175,12 @@ const examQuestions = [
       { mark: "M1", text: "uses WRITEFILE to write a record" },
       { mark: "A1", text: "writes Lin,85 or equivalent required record" },
       { mark: "B1", text: "closes the file with CLOSEFILE" },
-      { mark: "B1", text: "does not use a mode that would deliberately delete old records" },
     ],
     strict: [
       "Do not award APPEND mark for FOR WRITE.",
       "Allow variable-based record construction if it clearly writes Lin and 85.",
       "Do not require EOF for a single append operation.",
-      "FT: record writing mark can follow candidate's equivalent file name if consistent.",
+      "Allow an equivalent file if it is used consistently.",
     ],
   },
   {
@@ -203,17 +200,15 @@ const examQuestions = [
       "Do not award full marks for saying only 'both write'.",
       "Allow 'adds to existing file' for append if preservation is clear.",
       "Do not accept READ as either write-mode example.",
-      "FT: examples can follow any sensible file scenario.",
     ],
   },
   {
     title: "Question 5",
-    marks: "6 marks",
+    marks: "5 marks",
     prompt: "A candidate writes Java Scanner code for a file-reading question that asks for pseudocode. Explain the problem and name the Cambridge-style commands that should be used.",
     answer: "The problem is that Java Scanner syntax is language-specific and is not Cambridge-style pseudocode. The answer should use OPENFILE for READ, WHILE NOT EOF, READFILE to read each line/record, and CLOSEFILE when finished.",
     marking: [
       { mark: "B1", text: "identifies Scanner as Java/language-specific syntax" },
-      { mark: "M1", text: "explains the question asks for Cambridge-style pseudocode" },
       { mark: "B1", text: "names OPENFILE with FOR READ" },
       { mark: "B1", text: "names EOF / WHILE NOT EOF for loop control" },
       { mark: "B1", text: "names READFILE for reading records" },
@@ -223,7 +218,6 @@ const examQuestions = [
       "Do not award command marks for Java hasNextLine or nextLine alone.",
       "Allow equivalent explanation of language-specific syntax.",
       "Do not require WRITEFILE because this is a file-reading scenario.",
-      "FT: commands can be credited even if the prose example uses a different file name.",
     ],
   },
 ];

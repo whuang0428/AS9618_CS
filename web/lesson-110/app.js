@@ -82,21 +82,18 @@ const mistakes = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
+    marks: "3 marks",
     prompt: "Convert this Java-like fragment into Cambridge-style pseudocode: `total = total + mark; System.out.println(total);`",
     answer: "Total <- Total + Mark\nOUTPUT Total",
     marking: [
-      { mark: "B1", text: "uses meaningful variable names consistently" },
-      { mark: "M1", text: "uses Cambridge-style assignment arrow <-" },
-      { mark: "A1", text: "correct update Total <- Total + Mark" },
-      { mark: "B1", text: "uses OUTPUT keyword" },
-      { mark: "A1", text: "outputs Total after update" },
+      { mark: "M1", text: "uses correct Cambridge-style update Total <- Total + Mark" },
+      { mark: "B1", text: "uses OUTPUT Total" },
+      { mark: "A1", text: "places OUTPUT after the update" },
     ],
     strict: [
       "Do not award assignment notation mark for Java-only equals and semicolon.",
       "Allow lower-case variable names if consistent.",
       "Do not require a surrounding loop.",
-      "FT: output mark can follow from candidate's total variable name.",
     ],
   },
   {
@@ -116,12 +113,11 @@ const examQuestions = [
       "Do not require quotation marks around Pass/Resit if output values are clear.",
       "Allow > 49 for integer marks.",
       "Do not award block-boundary mark for unmatched braces only.",
-      "FT: branch output marks can follow from candidate's condition if logic is consistent.",
     ],
   },
   {
     title: "Question 3",
-    marks: "7 marks",
+    marks: "6 marks",
     prompt: "Write Cambridge-style pseudocode to input five marks and output their total.",
     answer: "Total <- 0\nFOR Index <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\nNEXT Index\nOUTPUT Total",
     marking: [
@@ -131,33 +127,28 @@ const examQuestions = [
       { mark: "A1", text: "updates Total with Total <- Total + Mark" },
       { mark: "B1", text: "uses NEXT / clear loop ending" },
       { mark: "A1", text: "outputs final Total after the loop" },
-      { mark: "B1", text: "uses readable Cambridge-style indentation / notation" },
     ],
     strict: [
       "Do not award final-output mark if OUTPUT Total is inside the loop and only final total is requested.",
       "Allow WHILE with correctly controlled counter.",
       "Do not award notation mark for Java-only for-loop syntax.",
-      "FT: output mark can follow from candidate's chosen accumulator name.",
     ],
   },
   {
     title: "Question 4",
-    marks: "6 marks",
+    marks: "4 marks",
     prompt: "Explain why indentation and meaningful identifiers improve pseudocode readability in an exam answer.",
     answer: "Indentation shows which statements belong inside a selection or loop, so the marker can see the control structure. Meaningful identifiers such as Total, Mark and PassCount show the purpose of each variable. This reduces ambiguity and makes it easier to award marks for initialisation, updates and outputs.",
     marking: [
       { mark: "B1", text: "states indentation shows block/control-structure ownership" },
-      { mark: "M1", text: "explains this helps distinguish inside vs outside loop/IF" },
+      { mark: "B1", text: "explains this helps distinguish inside vs outside loop/IF" },
       { mark: "B1", text: "states meaningful identifiers show variable purpose" },
-      { mark: "M1", text: "explains this reduces ambiguity / helps trace logic" },
-      { mark: "A1", text: "links readability to exam marking / awarding marks" },
-      { mark: "A1", text: "uses relevant pseudocode examples or terminology" },
+      { mark: "B1", text: "explains this reduces ambiguity / helps trace logic" },
     ],
     strict: [
       "Do not accept only 'it looks nicer'.",
       "Allow 'layout' for indentation if meaning is clear.",
       "Do not require specific variable names.",
-      "FT: marking link can follow from any valid readability feature.",
     ],
   },
   {
@@ -177,7 +168,6 @@ const examQuestions = [
       "Do not award separate identification marks for repeated examples of the same feature.",
       "Allow charAt, scanner input or array index examples if corrected clearly.",
       "Do not say Java is never useful; it is support, not the default exam format.",
-      "FT: correction marks can follow from candidate's identified Java features.",
     ],
   },
 ];

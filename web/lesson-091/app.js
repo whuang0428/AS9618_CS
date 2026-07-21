@@ -177,16 +177,15 @@ const examQuestions = [
     answer: "The Program Counter stores the address of the next instruction. This address is copied to the MAR. The instruction is fetched from memory and placed in the MDR. The instruction is copied to the CIR. The PC is incremented to point to the next instruction.",
     marking: [
       { mark: "B1", text: "PC stores address of next instruction" },
-      { mark: "M1", text: "address copied to MAR" },
-      { mark: "M1", text: "instruction/data fetched from memory into MDR" },
-      { mark: "M1", text: "instruction copied to CIR" },
-      { mark: "A1", text: "PC incremented / updated for next instruction" },
+      { mark: "B1", text: "address copied to MAR" },
+      { mark: "B1", text: "instruction/data fetched from memory into MDR" },
+      { mark: "B1", text: "instruction copied to CIR" },
+      { mark: "B1", text: "PC incremented / updated for next instruction" },
     ],
     strict: [
       "Do not accept PC stores the current instruction.",
       "Allow MDR described as memory buffer register if used consistently.",
       "Do not require decode or execute details for this question.",
-      "FT: later transfer marks can follow if register names are mostly correct.",
     ],
   },
   {
@@ -196,15 +195,14 @@ const examQuestions = [
     answer: "Solid-state storage has no moving parts, so it is more resistant to damage if the tablet is moved or knocked. It has fast access times, so apps and files can load quickly. It is also lightweight and uses less power than a magnetic hard disk, which suits a portable battery-powered device.",
     marking: [
       { mark: "B1", text: "states SSD has no moving parts / is solid-state" },
-      { mark: "A1", text: "links this to durability/being moved/knocked in a tablet" },
+      { mark: "B1", text: "links this to durability/being moved/knocked in a tablet" },
       { mark: "B1", text: "states fast access / low power / lightweight" },
-      { mark: "A1", text: "links second characteristic to portable tablet use" },
+      { mark: "B1", text: "links second characteristic to portable tablet use" },
     ],
     strict: [
       "Do not award full credit for saying only 'it is better'.",
       "Allow shock-resistant, durable, fast access or low power as valid characteristics.",
       "Do not require comparison with magnetic disk if suitability is clear.",
-      "FT: scenario link can follow from any correct SSD characteristic.",
     ],
   },
   {
@@ -215,15 +213,14 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "device sends interrupt signal / request for attention" },
       { mark: "B1", text: "processor completes current instruction / checks interrupt" },
-      { mark: "M1", text: "current state/context is saved" },
-      { mark: "M1", text: "appropriate ISR is executed" },
-      { mark: "A1", text: "state restored / original program resumes" },
+      { mark: "B1", text: "current state/context is saved" },
+      { mark: "B1", text: "appropriate ISR is executed" },
+      { mark: "B1", text: "state restored / original program resumes" },
     ],
     strict: [
       "Do not accept an interrupt as an error message only.",
       "Allow priority checking as part of checking the interrupt.",
       "Do not require exact stack terminology.",
-      "FT: resume mark can follow if saving state is clearly implied.",
     ],
   },
   {
@@ -242,7 +239,7 @@ const examQuestions = [
       "Do not accept OR truth table because 11 would be 1 for OR.",
       "Allow row order variations if inputs and outputs are clearly matched.",
       "Do not require Boolean expression unless asked.",
-      "FT: individual row marks are independent.",
+      "Individual row marks are independent.",
     ],
   },
   {
@@ -253,16 +250,15 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "defines clock speed as cycles/instructions per second idea" },
       { mark: "B1", text: "explains cache stores frequently used data/instructions close to CPU" },
-      { mark: "M1", text: "links cache to reduced access to slower RAM" },
+      { mark: "B1", text: "links cache to reduced access to slower RAM" },
       { mark: "B1", text: "explains cores can process tasks in parallel" },
-      { mark: "M1", text: "states parallel benefit depends on workload/software" },
-      { mark: "A1", text: "explicitly states the three factors affect performance differently" },
+      { mark: "B1", text: "states parallel benefit depends on workload/software" },
+      { mark: "B1", text: "explicitly states the three factors affect performance differently" },
     ],
     strict: [
       "Do not accept 'more cores always faster' without workload condition.",
       "Do not accept cache as the same as RAM.",
       "Allow clock speed described as fetch-decode-execute cycles per second.",
-      "FT: final contrast mark can follow from two or more correct distinctions.",
     ],
   },
 ];

@@ -51,7 +51,7 @@ const examQuestions = [
     title: "Question 1",
     marks: "3 marks",
     prompt: "Convert 11010110₂ to hexadecimal. Show your grouping.",
-    answer: "D6₁₆",
+    answer: "Group from the right: 1101 0110. 1101₂ = D₁₆ and 0110₂ = 6₁₆, so the result is D6₁₆.",
     marking: [
       { mark: "M1", text: "groups the binary value into nibbles correctly, e.g. 1101 0110" },
       { mark: "M1", text: "converts 1101₂ to D and 0110₂ to 6" },
@@ -67,7 +67,7 @@ const examQuestions = [
     title: "Question 2",
     marks: "3 marks",
     prompt: "Convert A7₁₆ to binary.",
-    answer: "1010 0111₂",
+    answer: "Convert each hexadecimal digit to four bits: A₁₆ = 1010₂ and 7₁₆ = 0111₂. Therefore A7₁₆ = 1010 0111₂.",
     marking: [
       { mark: "B1", text: "converts A to 1010" },
       { mark: "B1", text: "converts 7 to 0111" },
@@ -83,7 +83,7 @@ const examQuestions = [
     title: "Question 3",
     marks: "3 marks",
     prompt: "Convert 101101₂ to hexadecimal. Show how padding is used.",
-    answer: "2D₁₆",
+    answer: "Group from the right and pad the left group: 101101₂ -> 0010 1101₂. 0010₂ = 2₁₆ and 1101₂ = D₁₆, so the result is 2D₁₆.",
     marking: [
       { mark: "M1", text: "groups from the right, e.g. 10 1101" },
       { mark: "M1", text: "pads the left group with leading zeros, e.g. 0010 1101" },
@@ -92,7 +92,6 @@ const examQuestions = [
     strict: [
       "Do not accept B or 0B; that uses the leftmost four bits incorrectly.",
       "Padding must be leading zeros, not trailing zeros.",
-      "Allow FT if the padded groups are shown correctly but one hex digit is mapped incorrectly.",
     ],
   },
   {
