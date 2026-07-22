@@ -18,7 +18,9 @@
       <nav class="top-actions" aria-label="Course links">
         <a class="home-link" href="./assessments/">Assessment bank</a>
         <a class="home-link" href="./resources/">Resources</a>
-        <a class="home-link" href="#course-map">Course map</a>
+        <button class="home-link" type="button" id="courseMapButton" aria-haspopup="dialog" aria-controls="courseMapDialog">
+          Course map
+        </button>
       </nav>
     </header>
 
@@ -52,14 +54,6 @@
         <button type="button" id="clearBtn">Clear</button>
       </section>
 
-      <section class="panel" id="course-map">
-        <div class="section-title">
-          <p class="eyebrow">Course map</p>
-          <h2>Lesson allocation</h2>
-        </div>
-        <div id="unitList" class="unit-list"></div>
-      </section>
-
       <section class="panel">
         <div class="section-title">
           <p class="eyebrow">Lesson links</p>
@@ -67,6 +61,19 @@
         </div>
         <div id="lessonGrid" class="lesson-grid" aria-live="polite"></div>
       </section>
+
+      <dialog class="course-map-dialog" id="courseMapDialog" aria-labelledby="courseMapTitle">
+        <div class="dialog-header">
+          <div class="section-title">
+            <p class="eyebrow">Course map</p>
+            <h2 id="courseMapTitle">Lesson allocation</h2>
+          </div>
+          <button class="dialog-close" type="button" id="closeCourseMapButton">Close</button>
+        </div>
+        <div class="dialog-body">
+          <div id="unitList" class="unit-list"></div>
+        </div>
+      </dialog>
     </main>
 
     <script src="./index.js"></script>

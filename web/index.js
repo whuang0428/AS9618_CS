@@ -43,6 +43,26 @@ function renderUnits() {
   }).join("");
 }
 
+function setupCourseMapDialog() {
+  const dialog = document.querySelector("#courseMapDialog");
+  const openButton = document.querySelector("#courseMapButton");
+  const closeButton = document.querySelector("#closeCourseMapButton");
+
+  const closeDialog = () => {
+    if (typeof dialog.close === "function") dialog.close();
+    else dialog.removeAttribute("open");
+  };
+
+  openButton.addEventListener("click", () => {
+    if (typeof dialog.showModal === "function") dialog.showModal();
+    else dialog.setAttribute("open", "");
+  });
+  closeButton.addEventListener("click", closeDialog);
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) closeDialog();
+  });
+}
+
 function renderFilter() {
   const filter = document.querySelector("#unitFilter");
   filter.innerHTML = `
@@ -89,6 +109,7 @@ async function hydrateTitles() {
 
 function init() {
   renderUnits();
+  setupCourseMapDialog();
   renderFilter();
   renderLessons();
   document.querySelector("#searchInput").addEventListener("input", renderLessons);

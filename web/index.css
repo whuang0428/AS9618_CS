@@ -117,6 +117,32 @@ input, select {
 .section-title { margin-bottom: 18px; }
 .section-title h2 { margin: 6px 0 10px; letter-spacing: 0; }
 
+.course-map-dialog {
+  width: min(920px, calc(100% - 32px));
+  max-height: min(82vh, 820px);
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  color: var(--ink);
+}
+.course-map-dialog::backdrop { background: rgba(23, 32, 51, 0.58); }
+.dialog-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 22px 24px 14px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+}
+.dialog-header .section-title { margin-bottom: 0; }
+.dialog-close { flex: 0 0 auto; }
+.dialog-body { padding: 22px 24px 26px; }
+
 .unit-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -163,4 +189,6 @@ input, select {
 @media (max-width: 980px) {
   .hero, .toolbar, .unit-list, .lesson-grid { grid-template-columns: 1fr; }
   .topbar { position: static; align-items: flex-start; flex-direction: column; }
+  .course-map-dialog { max-height: calc(100vh - 24px); }
+  .dialog-header, .dialog-body { padding-left: 18px; padding-right: 18px; }
 }
