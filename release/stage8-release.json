@@ -1,0 +1,22 @@
+{
+  "name": "AS9618 Computer Science 2027-2029 AS Course Pack",
+  "version": "1.0.0",
+  "stage": 8,
+  "status": "final",
+  "releaseDate": "2026-07-22",
+  "archiveRoot": "AS9618-CS-2027-2029-v1.0.0",
+  "archiveName": "AS9618-CS-2027-2029-v1.0.0.zip",
+  "entryPoints": {
+    "courseIndex": "web/index.html",
+    "assessmentBank": "web/assessments/index.html",
+    "resourceCentre": "web/resources/index.html",
+    "firstLesson": "web/lesson-001/index.html"
+  },
+  "counts": {
+    "lessons": 150,
+    "webPages": 153,
+    "assessments": 51,
+    "syllabusRequirements": 121,
+    "approvedMarkSchemes": 963
+  }
+}

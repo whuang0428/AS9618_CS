@@ -1,0 +1,63 @@
+/* Stage 6 full-page visual QA fixes.
+   Keep grid content shrinkable and contain long pseudocode on narrow screens. */
+
+.layout,
+.lesson-content {
+  min-width: 0;
+}
+
+.layout > *,
+.lesson-content > *,
+.lesson-content *,
+.lesson-nav > *,
+.hero > *,
+:where([class$="-grid"], [class$="-visual"], [class$="-table"]) > * {
+  min-width: 0;
+}
+
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+code {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100%;
+  }
+
+  .lesson-content,
+  .hero,
+  .guidance-grid,
+  .objective-grid,
+  .summary-grid,
+  .hook-grid,
+  .mistake-grid,
+  .code-grid,
+  .converter-grid,
+  .practice-controls,
+  :where([class$="-grid"], [class$="-visual"]) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .lesson-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .table-row {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .topbar > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .topbar .action-panel {
+    flex-shrink: 0;
+  }
+}

@@ -1,0 +1,94 @@
+/* Stage 7 keyboard and assistive-technology delivery fixes. */
+
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 10000;
+  padding: 10px 14px;
+  border: 3px solid #111827;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #111827;
+  font-weight: 800;
+  text-decoration: none;
+  transform: translateY(-160%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid #f59e0b !important;
+  outline-offset: 3px !important;
+}
+
+[role="tab"][aria-selected="true"] {
+  border-color: currentColor;
+  text-decoration: underline;
+  text-decoration-thickness: 0.14em;
+  text-underline-offset: 0.22em;
+}
+
+.hex-cell.accent {
+  color: #166534 !important;
+}
+
+.carry-out,
+.carry-out strong {
+  color: #b42318 !important;
+}
+
+.place-value {
+  color: #475467 !important;
+}
+
+.stage7-contrast-lesson-012 :where(.icon-button, .tab.active, .primary-button) {
+  border-color: #6d28d9 !important;
+  background: #6d28d9 !important;
+}
+
+:where(.binary-display, .compress-card) > p {
+  padding: 6px 8px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.36) !important;
+  color: #ffffff !important;
+}
+
+.cpu-card .chip-title {
+  padding: 4px 8px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.36) !important;
+}
+
+.db-stack .stack-grid span {
+  background: rgba(0, 0, 0, 0.32) !important;
+}
+
+.normalise-visual .bad-table > span {
+  color: #475467 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (forced-colors: active) {
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline-color: Highlight !important;
+  }
+}
+
+@media print {
+  .skip-link {
+    display: none !important;
+  }
+}
