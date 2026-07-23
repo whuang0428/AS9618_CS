@@ -365,8 +365,6 @@ function renderExam() {
         <h4>CIE-style mark scheme</h4>
         <p><strong>Indicative answer:</strong> ${item.answer}</p>
         <ul>${item.marking.map((mark) => `<li><strong>${mark.mark}</strong> ${mark.text}</li>`).join("")}</ul>
-        <h4>Strict notes</h4>
-        <ul>${item.strict.map((note) => `<li>${note}</li>`).join("")}</ul>
       </div>
     </article>
   `).join("");

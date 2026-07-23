@@ -32,14 +32,13 @@
         <a href="#errors">Overflow/underflow</a>
         <a href="#implementation">Implementation</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#audit">Coverage audit</a>
         <a href="#simulator">Simulator</a>
         <a href="#trace">Trace</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Syllabus completion</a>
+        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -80,10 +79,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Ask which item is allowed to leave next. The answer reveals whether the structure is a stack or a queue.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 can ask for definitions, operation traces, pointer updates, or checks for full and empty structures.</p>
@@ -221,17 +216,6 @@ String item = stack.pop();</code></pre>
           <div class="callout">Java library classes can support understanding, but Paper 2 answers should show the requested ADT operations and checks.</div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>What this lesson covers and what it leaves outside</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered now</strong><span>stack and queue definitions, LIFO/FIFO, core operations, operation tracing, overflow/underflow and implementation-vs-ADT distinction.</span></div>
-            <div><strong>Boundary</strong><span>This lesson introduces ADT behaviour. Detailed circular queue array algorithms can be expanded in a later implementation lesson.</span></div>
-            <div><strong>Paper 2 note</strong><span>Marks are commonly lost by mixing up pop/dequeue order or by ignoring empty/full checks.</span></div>
-          </div>
-        </section>
 
         <section class="panel" id="simulator">
           <div class="section-title">
@@ -316,9 +300,8 @@ String item = stack.pop();</code></pre>
 
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <p class="eyebrow">Extra practice</p>
             <h2>Linked lists and array-based ADT state</h2>
-            <p>Official audit rows: S10.09, S10.10</p>
           </div>
           <div class="stage2-explanation">
             <p>A linked list stores nodes containing data and a pointer/index to the next node; a start pointer identifies the first node and a null value ends the chain. Logical order can differ from physical array order.</p>
@@ -354,7 +337,6 @@ String item = stack.pop();</code></pre>
                 <li><strong>B1</strong> sets its Next to the old start index</li>
                 <li><strong>B1</strong> updates start to the new index / updates free-list head</li>
               </ol>
-              <p><strong>Strict note:</strong> Do not accept shifting every array element as the defining linked-list insertion method.</p>
             </details>
           </article>
         </section>

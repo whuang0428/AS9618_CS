@@ -32,14 +32,13 @@
         <a href="#adt">Stack/queue</a>
         <a href="#decision">Decision table</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#audit">Coverage audit</a>
         <a href="#chooser">Chooser</a>
         <a href="#ranker">Reason ranker</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Syllabus completion</a>
+        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -74,10 +73,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Ask students to underline the access pattern in the scenario before choosing a structure.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Exam questions often ask for a suitable data structure and a reason. The reason usually carries the marks.</p>
@@ -222,17 +217,6 @@ Book[] books = new Book[200];</code></pre>
           <div class="callout">Paper 2 may accept many clear pseudocode styles, but the explanation must still match the scenario.</div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>What this lesson consolidates</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered now</strong><span>choosing among arrays, records, arrays of records, files, stacks and queues using scenario evidence.</span></div>
-            <div><strong>Boundary</strong><span>This lesson is a selection-and-justification lesson; detailed algorithms for each structure belong to previous and later lessons.</span></div>
-            <div><strong>Paper 2 note</strong><span>Credit depends on matching the data structure to the required access, storage and processing behaviour.</span></div>
-          </div>
-        </section>
 
         <section class="panel" id="chooser">
           <div class="section-title">
@@ -324,9 +308,8 @@ Book[] books = new Book[200];</code></pre>
 
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <p class="eyebrow">Extra practice</p>
             <h2>Choosing stack, queue or linked list</h2>
-            <p>Official audit rows: S10.09, S10.10</p>
           </div>
           <div class="stage2-explanation">
             <p>A stack is LIFO with push/pop at the top; a queue is FIFO with enqueue at the rear and dequeue at the front; a linked list supports traversal and insertion/deletion through links.</p>
@@ -362,7 +345,6 @@ Book[] books = new Book[200];</code></pre>
                 <li><strong>B1</strong> queue removes earliest item first / FIFO</li>
                 <li><strong>B1</strong> explains why FIFO gives the wrong access order</li>
               </ol>
-              <p><strong>Strict note:</strong> Do not award the structure name without its access-order consequence.</p>
             </details>
           </article>
         </section>

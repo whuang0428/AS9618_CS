@@ -30,7 +30,6 @@
         <a href="#trace">Tracing strings</a>
         <a href="#build">Building output</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#audit">Coverage audit</a>
         <a href="#classifier">Pattern chooser</a>
         <a href="#scanner">String scanner</a>
         <a href="#examples">Examples</a>
@@ -74,10 +73,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Make the class say the current index and current character before applying the IF condition.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>String questions frequently reward loop bounds, character extraction, comparison, flag updates and final output separately.</p>
@@ -227,17 +222,6 @@ for (int index = 0; index &lt; word.length(); index++) {
           <div class="callout">Exam reminder: Java uses `charAt(0)` for the first character. Do not copy Java braces, semicolons or 0-based loop bounds into Cambridge pseudocode unless the question asks for Java.</div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>This lesson covers string-processing algorithm patterns</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered now</strong><span>Character-by-character traversal, length-based loop bounds, count, search flag, validation flag, string construction, trace tables and pseudocode/Java contrast.</span></div>
-            <div><strong>Boundary</strong><span>Lesson 106 covered numeric accumulators. Lesson 108 covers nested loops and table-style problems. Built-in string functions are treated later in Section 11.</span></div>
-            <div><strong>Paper 2 note</strong><span>Show mechanism: position, extracted character, comparison, update and final output.</span></div>
-          </div>
-        </section>
 
         <section class="panel" id="classifier">
           <div class="section-title">

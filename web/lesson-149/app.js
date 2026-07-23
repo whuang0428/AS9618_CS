@@ -390,10 +390,6 @@ function setupExam() {
         <ul>
           ${item.marking.map((mark) => `<li><strong>${escapeHtml(mark.mark)}</strong> ${escapeHtml(mark.text)}</li>`).join("")}
         </ul>
-        <h4>Strict notes</h4>
-        <ul>
-          ${item.strict.map((note) => `<li>${escapeHtml(note)}</li>`).join("")}
-        </ul>
       </div>
     </article>
   `).join("");

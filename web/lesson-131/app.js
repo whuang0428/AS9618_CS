@@ -464,10 +464,8 @@ function setupExamQuestions() {
           <div class="ms-panel" data-ms="${index}" hidden>
             <h4>Indicative answer</h4>
             <pre><code>${escapeHtml(question.answer)}</code></pre>
-            <h4>Marking guidance</h4>
+            <h4>Mark scheme</h4>
             <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
-            <h4>Strict notes</h4>
-            <ul>${question.strict.map((note) => `<li>${escapeHtml(note)}</li>`).join("")}</ul>
           </div>
         </article>
       `,

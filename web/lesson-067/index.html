@@ -32,14 +32,13 @@
         <a href="#certificates">Certificates</a>
         <a href="#https">HTTPS flow</a>
         <a href="#compare">Compare</a>
-        <a href="#audit">Syllabus audit</a>
         <a href="#tool">Method tool</a>
         <a href="#hash-demo">Hash demo</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Syllabus completion</a>
+        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -72,10 +71,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>For every scenario ask: are we hiding data, checking data, or proving identity?</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>CIE-style answers often reject vague "secure it" wording. Name the method and its mechanism.</p>
@@ -215,17 +210,6 @@
           </div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>What this lesson covers, and what it deliberately leaves for later</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered</strong><span>Encryption, decryption, keys, hashing, password verification, integrity checks, digital certificates, certificate authorities and HTTPS trust.</span></div>
-            <div><strong>Boundary</strong><span>Lesson 068 will handle firewalls, proxies and network monitoring as network controls.</span></div>
-            <div><strong>Exam focus</strong><span>State the method, the mechanism and the exact security goal it supports.</span></div>
-          </div>
-        </section>
 
         <section class="panel" id="tool">
           <div class="section-title">
@@ -254,7 +238,7 @@
         <section class="panel" id="hash-demo">
           <div class="section-title">
             <p class="eyebrow">Interactive hash demo</p>
-            <h2>A tiny teaching hash, not a real security hash</h2>
+            <h2>A tiny demonstration hash, not a real security hash</h2>
             <p>This toy digest shows the idea that a small input change creates a different digest. Real systems use cryptographic hash algorithms.</p>
           </div>
           <div class="converter-grid">
@@ -311,9 +295,8 @@
 
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <p class="eyebrow">Extra practice</p>
             <h2>Digital signatures</h2>
-            <p>Official audit rows: S6.03</p>
           </div>
           <div class="stage2-explanation">
             <p>A sender hashes the message and encrypts the hash with the sender's private key to form a digital signature. The receiver uses the sender's public key to recover/verify the signed hash and independently hashes the received message.</p>
@@ -349,7 +332,6 @@
                 <li><strong>B1</strong> receiver uses sender's public key and hashes received message</li>
                 <li><strong>B1</strong> matching hashes verify integrity and provide evidence of sender authenticity</li>
               </ol>
-              <p><strong>Strict note:</strong> Do not award confidentiality as the purpose of a signature unless separate message encryption is described.</p>
             </details>
           </article>
         </section>

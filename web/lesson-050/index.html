@@ -30,13 +30,12 @@
         <a href="#timing">Timing</a>
         <a href="#hazards">Hazards</a>
         <a href="#stalls">Stalls</a>
-        <a href="#audit">Syllabus audit</a>
         <a href="#tool">Pipeline tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Syllabus completion</a>
+        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -67,10 +66,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Use a sandwich shop analogy only for 30 seconds, then return to fetch, decode and execute. The mark scheme prefers CPU words to lunch words.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Cambridge-style answers reward the distinction between throughput and the time for one instruction to pass through all stages.</p>
@@ -226,20 +221,6 @@
           </div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>What this lesson covers</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered</strong><span>Instruction pipelining as overlapping fetch, decode and execute stages.</span></div>
-            <div><strong>Covered</strong><span>Throughput improvement in the ideal case after the pipeline fills.</span></div>
-            <div><strong>Covered</strong><span>Why latency for a single instruction is not eliminated.</span></div>
-            <div><strong>Covered</strong><span>Data, control and resource hazards at AS explanation depth.</span></div>
-            <div><strong>Covered</strong><span>Stalls/flushes and why pipelining may not reach ideal performance.</span></div>
-            <div><strong>Not this lesson</strong><span>Section 4 mixed review and timed exam correction are covered in Lesson 051.</span></div>
-          </div>
-        </section>
 
         <section class="panel interactive" id="tool">
           <div class="section-title">
@@ -307,9 +288,8 @@
 
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <p class="eyebrow">Extra practice</p>
             <h2>Bit masks and logical shifts</h2>
-            <p>Official audit rows: S4.15</p>
           </div>
           <div class="stage2-explanation">
             <p>AND with a mask tests/clears bits: mask 1 preserves a bit and mask 0 clears it. OR sets selected bits because OR with 1 gives 1. XOR toggles selected bits because XOR with 1 reverses the bit.</p>
@@ -345,7 +325,6 @@
                 <li><strong>B1</strong> mask isolates the selected bit / clears all other positions</li>
                 <li><strong>B1</strong> non-zero result shows the selected bit was set</li>
               </ol>
-              <p><strong>Strict note:</strong> Do not accept a Boolean whole-value AND; the operation is applied independently to corresponding bits.</p>
             </details>
           </article>
         </section>

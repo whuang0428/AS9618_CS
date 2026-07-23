@@ -31,14 +31,13 @@
         <a href="#interfaces">Interfaces</a>
         <a href="#traceability">Traceability</a>
         <a href="#lifecycle">Lifecycle use</a>
-        <a href="#audit">Coverage audit</a>
         <a href="#chooser">Artefact chooser</a>
         <a href="#dictionary-tool">Dictionary tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Mistakes</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Syllabus completion</a>
+        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -68,10 +67,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Ask one repeat question throughout: “Which document would stop two developers from making different assumptions?”</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Design documentation gives developers, testers and maintainers a shared plan. Without it, the project may look active while quietly drifting away from the requirements.</p>
@@ -197,18 +192,6 @@ for (Booking booking : bookingList) {
           </div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Coverage audit</p>
-            <h2>This lesson covers design documentation for Section 12</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered</strong><span>purpose of design documentation in the development lifecycle</span></div>
-            <div><strong>Covered</strong><span>algorithm designs, data dictionaries and interface designs</span></div>
-            <div><strong>Covered</strong><span>how design documents support implementation, testing and maintenance</span></div>
-            <div><strong>Not this lesson</strong><span>writing a full program, full testing tables or maintenance release planning</span></div>
-          </div>
-        </section>
 
         <section class="panel" id="chooser">
           <div class="section-title">
@@ -291,9 +274,8 @@ for (Booking booking : bookingList) {
 
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <p class="eyebrow">Extra practice</p>
             <h2>Structure charts and state-transition diagrams</h2>
-            <p>Official audit rows: S12.02, S12.03</p>
           </div>
           <div class="stage2-explanation">
             <p>A structure chart shows module hierarchy and calls. Boxes name modules; connecting lines show calling relationships; labelled arrows show data or control parameters passed between modules. Reading top-down supports derivation of procedure headers and calls.</p>
@@ -329,7 +311,6 @@ for (Booking booking : bookingList) {
                 <li><strong>B1</strong> valid login transition to LoggedIn and logout transition back</li>
                 <li><strong>B1</strong> three invalid attempts transition from LoggedOut to Locked</li>
               </ol>
-              <p><strong>Strict note:</strong> Do not accept a flowchart of processing steps; marks require persistent states and event-labelled transitions.</p>
             </details>
           </article>
         </section>

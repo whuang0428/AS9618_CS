@@ -13,9 +13,9 @@ Cambridge pseudocode is the exam answer format. Java examples in this course are
 | Condition loop | `WHILE found = FALSE DO ... ENDWHILE` | `while (!found) { ... }` |
 | Array access | `names[1]` or syllabus-approved indexing as taught | `names[0]` in standard Java zero-based arrays |
 
-## Teacher Rule
+## Exam Rule
 
-When students write Paper 2 answers, mark for algorithmic clarity and Cambridge notation. Do not let Java punctuation become the main event. Semicolons are not a personality trait.
+In Paper 2, write algorithms clearly using Cambridge pseudocode. Java punctuation is not part of the required answer format.
 
 ## Conversion Routine
 

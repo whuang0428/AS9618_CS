@@ -29,13 +29,12 @@
         <a href="#modes">Addressing modes</a>
         <a href="#effective">Effective address</a>
         <a href="#arrays">Indexing</a>
-        <a href="#audit">Syllabus audit</a>
         <a href="#tool">Mode simulator</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Syllabus completion</a>
+        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -68,10 +67,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Use a tiny memory table and keep the operand constant. Students see that the addressing mode changes the interpretation.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Many marks come from explaining whether the operand is a value, an address or a pointer.</p>
@@ -217,19 +212,6 @@
           </div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>What this lesson covers</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered</strong><span>Purpose of addressing modes as rules for interpreting operands.</span></div>
-            <div><strong>Covered</strong><span>Immediate, direct, indirect and indexed addressing.</span></div>
-            <div><strong>Covered</strong><span>Effective address and fetched value calculations using a memory table.</span></div>
-            <div><strong>Covered</strong><span>Why indexed addressing is useful for arrays or repeated data structures.</span></div>
-            <div><strong>Not this lesson</strong><span>Interrupt handling and interrupt service routines are covered in Lesson 048.</span></div>
-          </div>
-        </section>
 
         <section class="panel interactive" id="tool">
           <div class="section-title">
@@ -297,9 +279,8 @@
 
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <p class="eyebrow">Extra practice</p>
             <h2>Address-sensitive load, compare and branch instructions</h2>
-            <p>Official audit rows: S4.13</p>
           </div>
           <div class="stage2-explanation">
             <p>LDI follows the address stored at the operand location; LDX adds IX to the operand; LDR uses an address relative to the current instruction/PC. CMI compares with an immediate value, while CMP compares using the instruction-set operand definition.</p>
@@ -335,7 +316,6 @@
                 <li><strong>B1</strong> JPN tests the negative condition/status</li>
                 <li><strong>B1</strong> PC changes to the branch target only when that condition is true</li>
               </ol>
-              <p><strong>Strict note:</strong> Do not accept that indirect addressing simply loads the operand as a literal value.</p>
             </details>
           </article>
         </section>

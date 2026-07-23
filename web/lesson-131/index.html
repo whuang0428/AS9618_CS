@@ -32,7 +32,6 @@
         <a href="#trace">Trace table</a>
         <a href="#use">When to use</a>
         <a href="#java">Java support</a>
-        <a href="#audit">Coverage audit</a>
         <a href="#simulator">Trace simulator</a>
         <a href="#chooser">Mode chooser</a>
         <a href="#examples">Examples</a>
@@ -69,10 +68,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Make every trace answer end with the caller's variable value. That is where many marks are won or lost.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 questions often test whether a procedure updates data outside itself, especially in trace and debug tasks.</p>
@@ -269,18 +264,6 @@ static void increase(int score) {
           </div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Coverage audit</p>
-            <h2>What this lesson covers from Section 11</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Subroutine parameters</strong><span>typed parameters in procedure headers and function-style reasoning</span></div>
-            <div><strong>By value</strong><span>copies a value; caller variable is not changed by local assignment</span></div>
-            <div><strong>By reference</strong><span><code>BYREF</code> allows the subroutine to change the original caller variable</span></div>
-            <div><strong>Trace and debugging</strong><span>before/inside/after-call values, missing <code>BYREF</code>, and swap procedures</span></div>
-          </div>
-        </section>
 
         <section class="panel" id="simulator">
           <div class="section-title">

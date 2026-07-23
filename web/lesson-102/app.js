@@ -313,10 +313,8 @@ function setupExam() {
       <div class="ms-panel" id="ms-${index}">
         <p><strong>Indicative answer:</strong></p>
         <pre><code>${question.answer}</code></pre>
-        <p><strong>Marking points:</strong></p>
+        <p><strong>Mark scheme:</strong></p>
         <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
-        <p><strong>Strict notes:</strong></p>
-        <ul>${question.strict.map((note) => `<li>${note}</li>`).join("")}</ul>
       </div>
     </article>
   `).join("");

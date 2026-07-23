@@ -28,13 +28,12 @@
         <a href="#architecture">CPU architecture</a>
         <a href="#alu-cu">ALU and CU</a>
         <a href="#registers">Registers, buses, clock</a>
-        <a href="#audit">Syllabus audit</a>
         <a href="#tool">CPU mapper</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Syllabus completion</a>
+        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -71,10 +70,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Use a simple job analogy, then leave it quickly: CPU parts are not people; marks come from exact computer roles.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Section 4 questions often reward precise verbs: calculates, coordinates, stores temporarily, transfers, synchronises.</p>
@@ -193,19 +188,6 @@
           </div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>What this lesson covers and deliberately leaves for later</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered</strong><span>Purpose of ALU, CU, registers, buses and clock in CPU architecture.</span></div>
-            <div><strong>Covered</strong><span>Data bus, address bus and control bus roles.</span></div>
-            <div><strong>Covered</strong><span>Clock speed as timing, plus the warning that it is not the only performance factor.</span></div>
-            <div><strong>Light preview</strong><span>PC, CIR, MAR, MDR and ACC are named as registers only; detailed roles come later.</span></div>
-            <div><strong>Not this lesson</strong><span>The full fetch-decode-execute cycle and interrupt handling are covered in following Section 4 lessons.</span></div>
-          </div>
-        </section>
 
         <section class="panel interactive" id="tool">
           <div class="section-title">
@@ -275,9 +257,8 @@
 
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <p class="eyebrow">Extra practice</p>
             <h2>Immediate access store (IAS)</h2>
-            <p>Official audit rows: S4.03</p>
           </div>
           <div class="stage2-explanation">
             <p>The immediate access store is memory directly accessible by the processor for instructions and data currently required. In the stored-program model, instructions and data share this memory and are distinguished by how they are used.</p>
@@ -313,7 +294,6 @@
                 <li><strong>B1</strong> processor can directly access/fetch from it</li>
                 <li><strong>B1</strong> instructions and data share memory in Von Neumann architecture</li>
               </ol>
-              <p><strong>Strict note:</strong> Do not accept 'IAS is cache' or 'IAS is a register'.</p>
             </details>
           </article>
         </section>

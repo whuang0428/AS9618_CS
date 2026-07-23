@@ -309,10 +309,6 @@ function renderExamQuestions() {
           <ul class="ms-list">
             ${question.marking.map((point) => `<li><b>${point.mark}</b> ${point.text}</li>`).join("")}
           </ul>
-          <p class="strict-title">Strict marking notes</p>
-          <ul class="strict-list">
-            ${question.strict.map((note) => `<li>${note}</li>`).join("")}
-          </ul>
         </div>
       </article>
     `;

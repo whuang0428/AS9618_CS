@@ -83,14 +83,14 @@ check((quizMd.match(/^\*\*Assessment objectives:\*\*/gm) ?? []).length === 30, "
 check((monthlyMd.match(/^\*\*Assessment objectives:\*\*/gm) ?? []).length === 7, "Every monthly assessment must show assessment objectives");
 check((reviewMd.match(/^\*\*Assessment objectives:\*\*/gm) ?? []).length === 14, "Every stage review must show assessment objectives");
 check((web.match(/class="assessment"/g) ?? []).length === 51, "Assessment hub must contain 51 assessment cards");
-check(web.includes("Show MS") && web.includes("Show answers") && web.includes("Show corrections"), "Assessment hub expandable answers/MS are incomplete");
+check(web.includes("Show mark scheme") && web.includes("Show answers") && web.includes("Show corrections"), "Assessment hub expandable answers/MS are incomplete");
 check((web.match(/>30 marks</g) ?? []).length === 7, "Assessment hub monthly totals must be 30 marks");
 check((web.match(/>20 marks</g) ?? []).length === 14, "Assessment hub stage-review totals must be 20 marks");
 check((web.match(/>10 marks</g) ?? []).length === 30, "Assessment hub quiz totals must be 10 marks");
 check(home.includes('href="./assessments/"'), "Course index must link to the assessment bank");
 check(home.includes('href="./resources/"'), "Course index must link to the resource centre");
 check((resourceWeb.match(/class="resource-card"/g) ?? []).length === 4, "Resource centre must expose all four resource files");
-for (const label of ["Glossary", "Pseudocode and Java", "Common misconceptions", "Marking conventions"]) {
+for (const label of ["Glossary", "Pseudocode and Java", "Common misconceptions", "Understanding mark schemes"]) {
   check(resourceWeb.includes(label), `Resource centre is missing ${label}`);
 }
 for (const text of [quizMd, monthlyMd, reviewMd]) {

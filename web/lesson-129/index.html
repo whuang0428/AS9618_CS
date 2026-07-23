@@ -31,7 +31,6 @@
         <a href="#validation">Validation</a>
         <a href="#sentinel">Sentinel</a>
         <a href="#java">Java support</a>
-        <a href="#audit">Coverage audit</a>
         <a href="#simulator">Loop simulator</a>
         <a href="#chooser">Loop chooser</a>
         <a href="#examples">Examples</a>
@@ -67,10 +66,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Before tracing the body, ask whether the condition is checked before or after the first pass.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 often uses condition-controlled loops for validation, EOF-style reading and sentinel values.</p>
@@ -246,18 +241,6 @@ ENDWHILE</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Coverage audit</p>
-            <h2>What this lesson covers</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>WHILE</strong><span>pre-condition loops, zero iterations, condition update, ENDWHILE</span></div>
-            <div><strong>REPEAT...UNTIL</strong><span>post-condition loops, at least one iteration, validation pattern</span></div>
-            <div><strong>Trace</strong><span>condition checks, sentinel values, stopping without processing sentinel</span></div>
-            <div><strong>Exam risks</strong><span>infinite loops, reversed conditions, missing input update and Java syntax leakage</span></div>
-          </div>
-        </section>
 
         <section class="panel" id="simulator">
           <div class="section-title">

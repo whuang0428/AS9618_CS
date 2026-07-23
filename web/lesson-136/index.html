@@ -33,7 +33,6 @@
         <a href="#eof">EOF loop</a>
         <a href="#close">Close files</a>
         <a href="#java">Java support</a>
-        <a href="#audit">Coverage audit</a>
         <a href="#builder">Pattern builder</a>
         <a href="#chooser">Mode chooser</a>
         <a href="#examples">Examples</a>
@@ -69,10 +68,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Make students highlight the file mode before writing the loop. The mode decides what operations make sense.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 file questions reward the pattern: open in the correct mode, loop until EOF when reading, process records, then close.</p>
@@ -264,18 +259,6 @@ CLOSEFILE "Scores.txt"</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Coverage audit</p>
-            <h2>What this lesson covers from Section 11</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>File modes</strong><span><code>READ</code>, <code>WRITE</code> and <code>APPEND</code> scenarios</span></div>
-            <div><strong>Read pattern</strong><span><code>OPENFILE</code>, <code>WHILE NOT EOF</code>, <code>READFILE</code> and <code>CLOSEFILE</code></span></div>
-            <div><strong>Write pattern</strong><span><code>WRITEFILE</code> for writing or appending records</span></div>
-            <div><strong>Java boundary</strong><span>Java file handling is support only; Cambridge pseudocode remains the exam answer format</span></div>
-          </div>
-        </section>
 
         <section class="panel" id="builder">
           <div class="section-title">

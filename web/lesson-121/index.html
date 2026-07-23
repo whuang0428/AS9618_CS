@@ -31,7 +31,6 @@
         <a href="#validate">Validate lines</a>
         <a href="#types">Text vs types</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#audit">Coverage audit</a>
         <a href="#parser">CSV parser</a>
         <a href="#validator">Line validator</a>
         <a href="#examples">Examples</a>
@@ -71,10 +70,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Ask: which part is the whole line, which parts are fields, and which symbol separates them?</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 file questions often require a line to be read first, then split or parsed before a field can be tested.</p>
@@ -200,17 +195,6 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           <div class="callout">Notice the index difference: Cambridge-style examples here use <code>Fields[1]</code>; Java arrays are zero-based.</div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>What this lesson covers and what it leaves outside</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered now</strong><span>CSV-style text records, delimiters, field order, splitting/parsing, malformed lines and numeric conversion.</span></div>
-            <div><strong>Boundary</strong><span>This is simple exam-style CSV. Full CSV quoting rules and database import tools are outside this lesson.</span></div>
-            <div><strong>Paper 2 note</strong><span>Marks often require reading a line before parsing, checking field positions, and converting numeric fields.</span></div>
-          </div>
-        </section>
 
         <section class="panel" id="parser">
           <div class="section-title">

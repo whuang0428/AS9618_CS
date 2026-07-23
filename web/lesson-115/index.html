@@ -31,7 +31,6 @@
         <a href="#traversal">Traversal</a>
         <a href="#trace">Trace</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#audit">Coverage audit</a>
         <a href="#lookup">Index lookup</a>
         <a href="#builder">Loop builder</a>
         <a href="#examples">Examples</a>
@@ -72,10 +71,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Always ask: what is the lower bound, what is the upper bound, and does the loop visit every valid index exactly once?</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 often awards marks for correct array declaration, index use, loop bounds and avoiding out-of-range access.</p>
@@ -240,17 +235,6 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="callout">Paper 2 reminder: Cambridge pseudocode may use bounds such as <code>ARRAY[1:5]</code>. Do not import Java's zero-based indexing unless the question states it.</div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>What this lesson covers and what it leaves for later</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered now</strong><span>one-dimensional array purpose, declaration, bounds, element access, update, traversal, total calculation, simple search and out-of-range errors.</span></div>
-            <div><strong>Boundary</strong><span>Lesson 116 covers two-dimensional arrays. Records, files, stacks and queues are not introduced here.</span></div>
-            <div><strong>Paper 2 note</strong><span>Marks often require the array identifier, square brackets, correct index variable and loop bounds matching the declared array.</span></div>
-          </div>
-        </section>
 
         <section class="panel" id="lookup">
           <div class="section-title">

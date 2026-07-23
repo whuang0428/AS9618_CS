@@ -362,10 +362,8 @@ function renderExam() {
         <div class="ms-panel" id="ms-${index}">
           <p><strong>Answer:</strong></p>
           <pre><code>${escapeHtml(question.answer)}</code></pre>
-          <p><strong>Marking guidance:</strong></p>
+          <p><strong>Mark scheme:</strong></p>
           <ul>${question.marking.map((point) => `<li><strong>${escapeHtml(point.mark)}</strong> ${escapeHtml(point.text)}</li>`).join("")}</ul>
-          <p><strong>Strict notes:</strong></p>
-          <ul>${question.strict.map((note) => `<li>${escapeHtml(note)}</li>`).join("")}</ul>
         </div>
       </article>
     `)

@@ -29,13 +29,12 @@
         <a href="#mnemonics">Mnemonics</a>
         <a href="#structure">Line structure</a>
         <a href="#assembler">Assembler</a>
-        <a href="#audit">Syllabus audit</a>
         <a href="#tool">Instruction parser</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Syllabus completion</a>
+        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -67,10 +66,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Keep the example instruction set tiny. The goal is vocabulary and mapping, not real architecture syntax.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Exam answers often lose marks by calling assembly "machine code" or calling an assembler a compiler.</p>
@@ -214,19 +209,6 @@
           </div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>What this lesson covers</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered</strong><span>Assembly language as a low-level language using mnemonics.</span></div>
-            <div><strong>Covered</strong><span>Mnemonics, operands, labels, comments and directives in simple assembly lines.</span></div>
-            <div><strong>Covered</strong><span>Assembler translating assembly source into machine code.</span></div>
-            <div><strong>Covered</strong><span>Differences between assembly language, machine code and high-level language.</span></div>
-            <div><strong>Not this lesson</strong><span>Addressing modes and detailed operand interpretation are covered in Lesson 047.</span></div>
-          </div>
-        </section>
 
         <section class="panel interactive" id="tool">
           <div class="section-title">
@@ -294,9 +276,8 @@
 
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <p class="eyebrow">Extra practice</p>
             <h2>Two-pass assembler and core instruction semantics</h2>
-            <p>Official audit rows: S4.10, S4.13</p>
           </div>
           <div class="stage2-explanation">
             <p>Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.</p>
@@ -332,7 +313,6 @@
                 <li><strong>B1</strong> the forward label address is then available</li>
                 <li><strong>B1</strong> pass 2 translates the instruction/substitutes the address into machine code</li>
               </ol>
-              <p><strong>Strict note:</strong> Do not accept that pass 1 executes the program; both passes translate source.</p>
             </details>
           </article>
         </section>

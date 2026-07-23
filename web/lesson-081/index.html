@@ -29,14 +29,13 @@
         <a href="#foreign">Foreign keys</a>
         <a href="#relationships">Relationships</a>
         <a href="#referential">Referential integrity</a>
-        <a href="#audit">Syllabus audit</a>
         <a href="#key-picker">Key picker</a>
         <a href="#relationship-tool">Relationship tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Syllabus completion</a>
+        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -75,10 +74,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Ask "which row exactly?" for primary keys, then ask "which table does this value point to?" for foreign keys.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Key questions are often mark-scheme strict: name the field, say which table it belongs to, and explain the link.</p>
@@ -188,17 +183,6 @@
           </div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>This lesson covers keys and relationships, not full E-R modelling</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered now</strong><span>Primary key, foreign key, candidate key judgement, uniqueness, non-null values, one-to-one, one-to-many, many-to-many, linking tables and referential integrity.</span></div>
-            <div><strong>Boundary</strong><span>Lesson 082 develops formal entity-relationship modelling and diagram notation. This lesson uses simple table links only.</span></div>
-            <div><strong>Exam focus</strong><span>Always state the key field and the table. "StudentID is a key" is weaker than "StudentID is the primary key in Student and a foreign key in Loan."</span></div>
-          </div>
-        </section>
 
         <section class="panel" id="key-picker">
           <div class="section-title">
@@ -287,9 +271,8 @@
 
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <p class="eyebrow">Extra practice</p>
             <h2>Foreign keys and referential integrity</h2>
-            <p>Official audit rows: S8.02</p>
           </div>
           <div class="stage2-explanation">
             <p>A foreign key is an attribute in one table that refers to a primary/candidate key in another table. Referential integrity requires every non-null foreign-key value to match an existing referenced key.</p>
@@ -325,7 +308,6 @@
                 <li><strong>B1</strong> each foreign-key value must match an existing referenced value (or valid null)</li>
                 <li><strong>B1</strong> prevents orphan/inconsistent relationships</li>
               </ol>
-              <p><strong>Strict note:</strong> Do not accept that foreign-key values must be unique in the child table.</p>
             </details>
           </article>
         </section>

@@ -23,14 +23,14 @@ for (const repair of repairs) {
   expect(repair.practice.length >= 3, `L${number}: fewer than three targeted practice items`);
   expect(repair.marks.length >= 4, `L${number}: fewer than four marking points`);
   expect(repair.strict.startsWith("Do not"), `L${number}: strict note must begin Do not`);
-  expect(occurrence(html, "Stage 2 syllabus completion") === 1, `L${number}: HTML completion module count is not one`);
+  expect(occurrence(html, ">Extra practice<") >= 1, `L${number}: student-facing extra-practice label missing`);
+  expect(!html.includes("Official audit rows:"), `L${number}: internal audit rows are visible in HTML`);
   expect(occurrence(html, 'id="stage2-completion"') === 1, `L${number}: HTML completion id count is not one`);
   expect(html.includes("<summary>Show MS</summary>"), `L${number}: expandable MS missing`);
   expect(html.includes("<summary>Show answer</summary>"), `L${number}: expandable answers missing`);
   expect(occurrence(css, "/* Stage 2 syllabus completion */") === 1, `L${number}: CSS completion block count is not one`);
   expect(occurrence(markdown, "## Stage 2 syllabus completion") === 1, `L${number}: Markdown completion module count is not one`);
   for (const row of repair.rows) {
-    expect(html.includes(row), `L${number}: audit row ${row} missing from HTML`);
     expect(markdown.includes(row), `L${number}: audit row ${row} missing from Markdown`);
   }
 }

@@ -3,7 +3,8 @@ import path from "node:path";
 import { repairs } from "./stage2-repairs-data.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
-const marker = "Stage 2 syllabus completion";
+const htmlMarker = "Extra practice";
+const markdownMarker = "Stage 2 syllabus completion";
 
 function escapeHtml(value) {
   return value
@@ -25,9 +26,8 @@ function htmlFor(repair) {
   return `
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">${marker}</p>
+            <p class="eyebrow">${htmlMarker}</p>
             <h2>${escapeHtml(repair.title)}</h2>
-            <p>Official audit rows: ${escapeHtml(repair.rows.join(", "))}</p>
           </div>
           <div class="stage2-explanation">
 ${paragraphs}
@@ -47,7 +47,6 @@ ${paragraphs}
               <ol class="mark-list">
 ${marks}
               </ol>
-              <p><strong>Strict note:</strong> ${escapeHtml(repair.strict)}</p>
             </details>
           </article>
         </section>
@@ -59,7 +58,7 @@ function markdownFor(repair) {
   const practice = repair.practice.map((item, index) => `${index + 1}. ${item.q}\n   **Answer:** ${item.a}`).join("\n");
   const marks = repair.marks.map((item) => `- **${item[0]}** ${item[1]}`).join("\n");
   return `
-## ${marker}
+## ${markdownMarker}
 
 **Official audit rows:** ${repair.rows.join(", ")}
 **Focus:** ${repair.title}
@@ -110,18 +109,18 @@ for (const repair of repairs) {
   const markdownPath = path.join(root, "lessons", markdownMatches[0]);
   let markdown = fs.readFileSync(markdownPath, "utf8");
 
-  if (!html.includes(marker)) {
+  if (!html.includes('id="stage2-completion"')) {
     const summaryMatch = html.match(/        <section class="[^"]+" id="summary">/);
     if (!summaryMatch) throw new Error(`Summary anchor missing in lesson ${number}`);
     html = html.replace(summaryMatch[0], `${htmlFor(repair)}\n${summaryMatch[0]}`);
-    html = html.replace('<a href="#summary">', '<a href="#stage2-completion">Syllabus completion</a>\n        <a href="#summary">');
+    html = html.replace('<a href="#summary">', '<a href="#stage2-completion">Extra practice</a>\n        <a href="#summary">');
     fs.writeFileSync(htmlPath, html);
   }
   const cssMarker = "/* Stage 2 syllabus completion */";
   const cssBase = styles.includes(cssMarker) ? styles.slice(0, styles.indexOf(cssMarker)).trimEnd() : styles.trimEnd();
   styles = `${cssBase}\n\n${css.trim()}\n`;
   fs.writeFileSync(cssPath, styles);
-  if (!markdown.includes(`## ${marker}`)) {
+  if (!markdown.includes(`## ${markdownMarker}`)) {
     markdown += markdownFor(repair);
   }
   markdown = markdown.replace(/[ \t]+$/gm, "");

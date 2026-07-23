@@ -24,6 +24,16 @@ code {
   overflow-wrap: anywhere;
 }
 
+/* Student pages should size guidance and hero visuals to their actual content. */
+.guidance-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)) !important;
+}
+
+.hero > :not(.hero-copy) {
+  min-height: 0 !important;
+  align-self: start;
+}
+
 @media (max-width: 700px) {
   .layout {
     grid-template-columns: minmax(0, 1fr) !important;

@@ -28,13 +28,12 @@
         <a href="#purpose">Register purpose</a>
         <a href="#main-registers">Main registers</a>
         <a href="#acc-status">ACC and status</a>
-        <a href="#audit">Syllabus audit</a>
         <a href="#tool">Role mapper</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Syllabus completion</a>
+        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -69,10 +68,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Use the sentence frame: "The [register] holds [specific item] while [specific CPU action] happens."</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Register questions are usually definition marks plus application marks. A vague answer loses both.</p>
@@ -206,19 +201,6 @@
           </div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>What this lesson covers</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered</strong><span>Purpose of CPU registers as small, fast temporary storage locations.</span></div>
-            <div><strong>Covered</strong><span>Roles of PC, CIR, MAR, MDR, ACC and status register.</span></div>
-            <div><strong>Covered</strong><span>MAR/MDR distinction and PC/CIR distinction in fetch/decode traces.</span></div>
-            <div><strong>Covered</strong><span>ACC as ALU result storage and status register as flag storage.</span></div>
-            <div><strong>Not this lesson</strong><span>Interrupt handling, pipelining and detailed instruction-set architecture are left for later Section 4 lessons.</span></div>
-          </div>
-        </section>
 
         <section class="panel interactive" id="tool">
           <div class="section-title">
@@ -287,9 +269,8 @@
 
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <p class="eyebrow">Extra practice</p>
             <h2>Index register (IX)</h2>
-            <p>Official audit rows: S4.02</p>
           </div>
           <div class="stage2-explanation">
             <p>The index register stores an offset used to modify an address in an indexed instruction. The effective address is formed by adding the instruction's address operand to the IX value.</p>
@@ -325,7 +306,6 @@
                 <li><strong>B1</strong> offset is added to the instruction/base address</li>
                 <li><strong>B1</strong> allows repeated access to array/list elements</li>
               </ol>
-              <p><strong>Strict note:</strong> Do not accept 240 as the effective address when IX is non-zero.</p>
             </details>
           </article>
         </section>

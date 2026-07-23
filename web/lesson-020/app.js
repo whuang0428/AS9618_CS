@@ -275,8 +275,6 @@ function renderExamQuestions() {
           <h4>CIE-style mark scheme</h4>
           <p><strong>Answer:</strong> ${question.answer}</p>
           <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
-          <h4>Strict notes</h4>
-          <ul>${question.strict.map((note) => `<li>${note}</li>`).join("")}</ul>
         </div>
       </article>
     `;

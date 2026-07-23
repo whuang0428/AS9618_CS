@@ -31,7 +31,6 @@
         <a href="#nested">Nested loops</a>
         <a href="#trace">Trace</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#audit">Coverage audit</a>
         <a href="#lookup">Cell lookup</a>
         <a href="#builder">Loop builder</a>
         <a href="#examples">Examples</a>
@@ -71,10 +70,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Trace the outer loop slowly. Each row value triggers a full run of the inner column loop.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 can ask for array declaration, cell access, nested loop traversal and row/column trace values.</p>
@@ -244,17 +239,6 @@ for (int row = 0; row &lt; 3; row++) {
           <div class="callout">Paper 2 reminder: if the question states <code>ARRAY[1:3, 1:4]</code>, valid row indexes are 1 to 3 and valid column indexes are 1 to 4.</div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>What this lesson covers and what it leaves for later</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered now</strong><span>two-dimensional array purpose, declaration, row/column bounds, cell access, update, nested traversal, total calculation and out-of-range errors.</span></div>
-            <div><strong>Boundary</strong><span>Lesson 115 covered one-dimensional arrays. Later lessons cover records, files, stacks and queues; this lesson does not use record fields or file operations.</span></div>
-            <div><strong>Paper 2 note</strong><span>Marks often require two indexes, correct nested loop bounds, and clear row/column terminology.</span></div>
-          </div>
-        </section>
 
         <section class="panel" id="lookup">
           <div class="section-title">

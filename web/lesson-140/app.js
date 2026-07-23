@@ -380,8 +380,6 @@ function setupExam() {
         <pre><code>${escapeHtml(question.answer)}</code></pre>
         <h4>Mark scheme</h4>
         <ul>${question.marking.map((row) => `<li><strong>${escapeHtml(row.mark)}</strong> ${escapeHtml(row.text)}</li>`).join("")}</ul>
-        <h4>Strict notes</h4>
-        <ul>${question.strict.map((note) => `<li>${escapeHtml(note)}</li>`).join("")}</ul>
       </div>
     </article>
   `).join("");

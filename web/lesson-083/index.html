@@ -29,14 +29,13 @@
         <a href="#redundancy">Redundancy</a>
         <a href="#anomalies">Anomalies</a>
         <a href="#normal-forms">Normal forms</a>
-        <a href="#audit">Syllabus audit</a>
         <a href="#detector">Redundancy detector</a>
         <a href="#classifier">Anomaly classifier</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Syllabus completion</a>
+        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -70,10 +69,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Make students circle repeated facts first. The normalisation argument becomes much easier once the duplicated fact is visible.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Cambridge-style answers need cause and consequence: repeated data causes anomalies; separating tables reduces the risk.</p>
@@ -172,17 +167,6 @@
           <div class="callout">Keep this practical: identify the fact, decide which entity it describes, then move it to that table.</div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>This lesson completes the design-before-SQL block</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered now</strong><span>Normalisation purpose, redundancy, data integrity, functional dependency idea, 1NF/2NF/3NF overview, update/insertion/deletion anomalies and decomposition into related tables.</span></div>
-            <div><strong>Boundary</strong><span>Lesson 084 starts SQL SELECT/FROM/WHERE. This lesson does not require writing SQL queries.</span></div>
-            <div><strong>Exam focus</strong><span>Explain the problem caused by repeated data and the effect of splitting data into linked tables.</span></div>
-          </div>
-        </section>
 
         <section class="panel" id="detector">
           <div class="section-title">
@@ -271,9 +255,8 @@
 
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <p class="eyebrow">Extra practice</p>
             <h2>First, second and third normal form</h2>
-            <p>Official audit rows: S8.04</p>
           </div>
           <div class="stage2-explanation">
             <p>1NF requires atomic values and no repeating groups. 2NF is 1NF with every non-key attribute dependent on the whole primary key, removing partial dependencies. 3NF is 2NF with no non-key attribute dependent on another non-key attribute, removing transitive dependencies.</p>
@@ -309,7 +292,6 @@
                 <li><strong>A1</strong> CUSTOMER(CustomerID, Postcode)</li>
                 <li><strong>A1</strong> POSTCODE(Postcode, Town), with Postcode linked as foreign key</li>
               </ol>
-              <p><strong>Strict note:</strong> Do not award decomposition marks unless primary/foreign-key linkage can reconstruct the relationship.</p>
             </details>
           </article>
         </section>

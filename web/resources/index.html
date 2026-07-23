@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AS9618 Resource Centre</title><link rel="icon" href="data:"><link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="../stage7-accessibility.css?v=3"></head>
 <body><a class="skip-link" href="#main-content">Skip to main content</a><header class="topbar"><div><p class="eyebrow">Cambridge AS9618 Computer Science</p><h1>Resource centre</h1></div><a href="../">Course index</a></header>
-<main id="main-content" tabindex="-1"><section class="intro"><h2>Reference material for teaching and self-study</h2><p>Open a resource when needed. Cambridge pseudocode remains the Paper 2 answer standard; Java is supporting practice only.</p></section><section class="resource-list"><article class="resource-card" id="resource-1"><details open><summary><span>Glossary</span><small>English definitions with Chinese support.</small></summary><div class="resource-content"><h2>Glossary</h2>
+<main id="main-content" tabindex="-1"><section class="intro"><h2>Reference material for study and exam practice</h2><p>Open a resource when needed. Cambridge pseudocode remains the Paper 2 answer standard; Java is supporting practice only.</p></section><section class="resource-list"><article class="resource-card" id="resource-1"><details open><summary><span>Glossary</span><small>English definitions with Chinese support.</small></summary><div class="resource-content"><h2>Glossary</h2>
 <div class="table-wrap"><table><thead><tr>
 <th>Term</th><th>English Definition</th><th>中文支持</th>
 </tr></thead><tbody>
@@ -15,8 +15,8 @@
 </tr></thead><tbody>
 <tr><td>Assignment</td><td><code>total &lt;- total + 1</code></td><td><code>total = total + 1;</code></td></tr><tr><td>Output</td><td><code>OUTPUT total</code></td><td><code>System.out.println(total);</code></td></tr><tr><td>Selection</td><td><code>IF mark &gt;= 50 THEN ... ENDIF</code></td><td><code>if (mark &gt;= 50) { ... }</code></td></tr><tr><td>Count loop</td><td><code>FOR i &lt;- 1 TO 10 ... NEXT i</code></td><td><code>for (int i = 1; i &lt;= 10; i++) { ... }</code></td></tr><tr><td>Condition loop</td><td><code>WHILE found = FALSE DO ... ENDWHILE</code></td><td><code>while (!found) { ... }</code></td></tr><tr><td>Array access</td><td><code>names[1]</code> or syllabus-approved indexing as taught</td><td><code>names[0]</code> in standard Java zero-based arrays</td></tr>
 </tbody></table></div>
-<h3>Teacher Rule</h3>
-<p>When students write Paper 2 answers, mark for algorithmic clarity and Cambridge notation. Do not let Java punctuation become the main event. Semicolons are not a personality trait.</p>
+<h3>Exam Rule</h3>
+<p>In Paper 2, write algorithms clearly using Cambridge pseudocode. Java punctuation is not part of the required answer format.</p>
 <h3>Conversion Routine</h3>
 <ol>
 <li>Write the algorithm in English.</li>
@@ -43,55 +43,52 @@
 <li>&quot;Testing one normal case is enough.&quot; Correction: robust testing includes normal, boundary, and erroneous data.</li>
 <li>&quot;A procedure and function are the same.&quot; Correction: a function returns a value; a procedure performs a task and may not return a value.</li>
 </ul></div></details></article>
-<article class="resource-card" id="resource-4"><details><summary><span>Marking conventions</span><small>Project rules for point-based Cambridge-style marking.</small></summary><div class="resource-content"><h2>Cambridge-Style Marking Conventions</h2>
-<p>This project uses original questions. It does not reproduce Cambridge past-paper questions or claim that its mark schemes are official.</p>
-<p>Calibration sources:</p>
-<ul>
-<li><a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/past-papers/" target="_blank" rel="noreferrer">Cambridge 9618 past papers, examiner reports and specimen papers</a></li>
-<li><a href="https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf" target="_blank" rel="noreferrer">Cambridge 9618 syllabus for 2027-2029, Version 2</a></li>
-</ul>
+<article class="resource-card" id="resource-4"><details><summary><span>Understanding mark schemes</span><small>How to read and use point-based Cambridge-style practice schemes.</small></summary><div class="resource-content"><h2>Understanding Cambridge-Style Mark Schemes</h2>
+<p>Use this guide to interpret the original practice mark schemes in this course and to check your own answers.</p>
 <h3>Point Marking</h3>
 <ul>
 <li><code>B1</code> is an independent fact, identification, definition or explanation point.</li>
 <li><code>M1</code> is a method or process point. The candidate must show the required operation or stage.</li>
 <li><code>A1</code> is an accurate answer or conclusion. It may depend on an earlier <code>M1</code> where the scheme makes that dependency clear.</li>
-<li><code>FT</code> permits follow-through from a candidate's earlier value only when explicitly stated.</li>
-<li>Each listed point is independently testable. A single vague sentence is not stretched across several marks.</li>
+<li><code>FT</code> means that a later method may still earn credit after an earlier incorrect value, but only when the mark scheme explicitly allows it.</li>
+<li>Theory questions normally use independent positive marking points. They do not acquire <code>M1/A1</code> merely because an answer contains several sentences.</li>
+<li><code>M1/A1</code> is reserved for a genuine method-result dependency, such as a calculation, trace or derived program output.</li>
+<li>Each listed point represents separate evidence. A single vague sentence will not normally cover several marks.</li>
 <li>A slash separates acceptable alternatives for one mark; it does not create additional marks.</li>
+<li>Do not repeat information already supplied by the question as if it were a new point.</li>
 </ul>
 <h3>Wording Rules</h3>
 <ul>
 <li>Use the official syllabus term when the question requires a named concept.</li>
-<li>Allow different wording when it conveys the same precise technical meaning.</li>
-<li>Do not credit a keyword that is contradicted or used without the required explanation.</li>
-<li>Do not credit repetition, mirror statements or the same idea rewritten as a second point.</li>
+<li>Different wording is acceptable when it conveys the same precise technical meaning.</li>
+<li>A keyword is not enough if it is contradicted or lacks the required explanation.</li>
+<li>Avoid repetition, mirror statements or the same idea rewritten as a second point.</li>
 <li>For <code>state</code> or <code>identify</code>, do not demand an explanation unless the question asks for one.</li>
 <li>For <code>explain</code>, require a mechanism, reason or cause-consequence link rather than a bare advantage.</li>
 <li>For <code>compare</code>, use matched dimensions; two unrelated descriptions are weaker evidence of comparison.</li>
 <li>For <code>justify</code> or <code>evaluate</code>, require application to the stated scenario and a reasoned decision.</li>
+<li>For <code>discuss</code>, give balanced reasoning and a conclusion where the question requires judgement; an unsupported conclusion is not a separate developed point.</li>
 </ul>
 <h3>Calculation Rules</h3>
 <ul>
 <li>State units in both the question and final answer where relevant.</li>
-<li>Give <code>M1</code> for valid intermediate method stages and <code>A1</code> for the accurate result.</li>
-<li>Permit an alternative valid method that reaches equivalent stages.</li>
-<li>Apply FT only where a later method remains valid using the candidate's earlier value.</li>
-<li>Do not award a correct number in the wrong representation or unit when that distinction is being assessed.</li>
+<li>Show valid intermediate method stages for <code>M1</code> and an accurate result for <code>A1</code>.</li>
+<li>An alternative valid method can earn the same marks when it reaches equivalent stages.</li>
+<li>Use FT only where the later method remains valid with your earlier value.</li>
+<li>Give the result in the requested representation and unit.</li>
 </ul>
 <h3>Programming and SQL</h3>
 <ul>
 <li>Paper 2 answers use Cambridge pseudocode. Java syntax is not accepted as a substitute when pseudocode is requested.</li>
-<li>Award method points for correct control structure, bounds, conditions and data access before the final output point.</li>
-<li>Minor case or harmless layout differences do not lose marks when meaning is unambiguous.</li>
-<li>SQL keywords are case-insensitive. Credit equivalent valid SQL within the syllabus limit of at most two tables.</li>
-<li>Do not overlook a missing <code>WHERE</code> condition when it changes the operation's scope.</li>
+<li>Method points come from correct control structures, bounds, conditions and data access, not only the final output.</li>
+<li>Minor case or harmless layout differences do not normally matter when meaning is unambiguous.</li>
+<li>SQL keywords are case-insensitive. Equivalent valid SQL is acceptable within the syllabus limit of at most two tables.</li>
+<li>Check that a required <code>WHERE</code> condition is present when it changes the operation's scope.</li>
 </ul>
-<h3>Required Guidance</h3>
-<p>Every substantial assessment question should provide at least one explicit instruction such as:</p>
+<h3>Sample Answers</h3>
 <ul>
-<li><code>Allow ...</code> for a valid alternative.</li>
-<li><code>Do not accept ...</code> for a predictable but technically incorrect response.</li>
-<li><code>FT ...</code> for a permitted follow-through rule.</li>
-<li><code>Award ... only when ...</code> where dependency or context is required.</li>
-</ul>
-<p>These instructions are local marking guidance modelled on Cambridge conventions. They are not quotations from an official confidential or public mark scheme.</p></div></details></article></section></main><script src="../stage7-accessibility.js?v=4"></script></body></html>
+<li>Compare a sample answer with every marking point, including intermediate working when method marks are available.</li>
+<li>Treat it as one illustrative complete response, not the only acceptable wording.</li>
+<li>Equivalent technically correct answers are valid unless the syllabus requires a named term, notation or representation.</li>
+<li>In scenario questions, apply the technical point to the stated context; a generic fact alone is not enough for an application mark.</li>
+</ul></div></details></article></section></main><script src="../stage7-accessibility.js?v=4"></script></body></html>

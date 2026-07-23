@@ -34,6 +34,10 @@ for (const definition of pageDefinitions) {
   expect(/<title>[^<]+<\/title>/i.test(html), `${definition.page}: missing page title`);
   expect(occurrences(html, "<h1") === 1, `${definition.page}: expected exactly one h1`);
   expect(occurrences(html, "<main") === 1, `${definition.page}: expected exactly one main element`);
+  expect(!html.includes("Student/Teacher mode split"), `${definition.page}: internal audience split is visible`);
+  expect(!html.includes("Teacher Rule"), `${definition.page}: teacher-facing rule is visible`);
+  expect(!html.includes("<strong>Guidance:</strong>"), `${definition.page}: marker-only guidance is visible`);
+  expect(!html.includes("<strong>Marking:</strong>"), `${definition.page}: marker-only instructions are visible`);
 
   const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]));
   for (const match of html.matchAll(/\bhref="#([^"]+)"/g)) {
@@ -54,6 +58,14 @@ for (const definition of pageDefinitions) {
   if (definition.kind === "lesson") {
     expect(occurrences(html, '<link rel="stylesheet" href="../stage6-qa.css?v=7" />') === 1,
       `${definition.page}: Stage 6 responsive stylesheet link count is not one`);
+    expect(!html.includes('class="teaching-cue"'), `${definition.page}: teacher-facing cue is visible`);
+    expect(!/<p class="eyebrow">(?:Syllabus coverage audit|Coverage audit)<\/p>/.test(html),
+      `${definition.page}: internal coverage audit is visible`);
+    expect(!html.includes("Official audit rows:"), `${definition.page}: internal audit row identifiers are visible`);
+
+    const appPath = path.join(path.dirname(definition.html), "app.js");
+    expect(!/\b(?:question|item)\.strict\.map\(/.test(read(appPath)),
+      `${definition.page}: marker-only strict notes are rendered`);
   }
 }
 
@@ -61,6 +73,8 @@ const stage6Css = read("web/stage6-qa.css");
 expect(stage6Css.includes("Stage 6 full-page visual QA fixes"), "Stage 6 stylesheet marker is missing");
 expect(stage6Css.includes(".lesson-content *"), "Stage 6 stylesheet must keep nested lesson content shrinkable");
 expect(stage6Css.includes("overflow-x: auto"), "Stage 6 stylesheet must contain long pseudocode horizontally");
+expect(stage6Css.includes("repeat(auto-fit"), "Stage 6 stylesheet must let reduced guidance grids fill available width");
+expect(stage6Css.includes(".hero > :not(.hero-copy)"), "Stage 6 stylesheet must remove oversized hero-visual minimum heights");
 
 const scripts = [
   "web/index.js",

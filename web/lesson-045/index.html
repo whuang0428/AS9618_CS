@@ -29,13 +29,12 @@
         <a href="#machine-code">Machine code</a>
         <a href="#opcode">Opcode and operand</a>
         <a href="#compatibility">Compatibility</a>
-        <a href="#audit">Syllabus audit</a>
         <a href="#tool">Decoder</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Syllabus completion</a>
+        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -71,10 +70,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Start with a fake 12-bit instruction format. Students decode meaning before hearing the formal terms.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Questions often separate definition marks from "why can this CPU run/not run this code?" explanation marks.</p>
@@ -228,19 +223,6 @@
           </div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>What this lesson covers</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered</strong><span>Instruction set as instructions a processor can recognise and execute.</span></div>
-            <div><strong>Covered</strong><span>Machine code as binary instructions executed by the CPU.</span></div>
-            <div><strong>Covered</strong><span>Opcode and operand roles in a simplified instruction format.</span></div>
-            <div><strong>Covered</strong><span>Processor compatibility and why machine code depends on the instruction set.</span></div>
-            <div><strong>Not this lesson</strong><span>Assembly language mnemonics are introduced more fully in Lesson 046.</span></div>
-          </div>
-        </section>
 
         <section class="panel interactive" id="tool">
           <div class="section-title">
@@ -308,9 +290,8 @@
 
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <p class="eyebrow">Extra practice</p>
             <h2>Assembly instruction groups</h2>
-            <p>Official audit rows: S4.12</p>
           </div>
           <div class="stage2-explanation">
             <p>Data movement instructions transfer values between memory/registers; input/output instructions communicate with devices; arithmetic instructions change numeric values; compare instructions set status information; branch instructions change the next instruction address.</p>
@@ -346,7 +327,6 @@
                 <li><strong>B1</strong> unconditional branch always changes the next instruction/PC</li>
                 <li><strong>B1</strong> uses a coherent example or sequence</li>
               </ol>
-              <p><strong>Strict note:</strong> Do not accept that CMP itself necessarily jumps to another instruction.</p>
             </details>
           </article>
         </section>

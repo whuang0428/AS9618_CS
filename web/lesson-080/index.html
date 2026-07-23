@@ -29,7 +29,6 @@
         <a href="#fields">Fields</a>
         <a href="#types">Data types</a>
         <a href="#constraints">Constraints</a>
-        <a href="#audit">Syllabus audit</a>
         <a href="#type-tool">Type chooser</a>
         <a href="#constraint-tool">Constraint checker</a>
         <a href="#examples">Examples</a>
@@ -37,7 +36,7 @@
         <a href="#checkpoint">Checkpoint</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Syllabus completion</a>
+        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -67,10 +66,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>For every field, ask: what kind of value is stored, how big can it be, and what values must be rejected?</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Database design marks often come from precise choices: a date field for dates, Boolean for true/false, and a constraint with a clear purpose.</p>
@@ -207,17 +202,6 @@
           </div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>This lesson handles table structure and valid values</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered now</strong><span>Table, record/tuple, field/attribute, value, field name, data type, field size, constraints, common validation checks and data integrity.</span></div>
-            <div><strong>Boundary</strong><span>Lesson 081 develops primary keys, foreign keys and relationships. This lesson may mention identifiers, but does not teach key selection in depth.</span></div>
-            <div><strong>Assessment rhythm</strong><span>This lesson includes a 5-minute quiz and a short monthly checkpoint on Section 8 basics so far.</span></div>
-          </div>
-        </section>
 
         <section class="panel" id="type-tool">
           <div class="section-title">
@@ -319,9 +303,8 @@
 
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <p class="eyebrow">Extra practice</p>
             <h2>Relational terminology and secondary indexes</h2>
-            <p>Official audit rows: S8.02</p>
           </div>
           <div class="stage2-explanation">
             <p>Entity/table and record/tuple and field/attribute are related pairs, but answers should follow the question's context. A candidate key is any minimal field set that uniquely identifies a record; one candidate becomes the primary key, while another may be a secondary/alternate key.</p>
@@ -357,7 +340,6 @@
                 <li><strong>B1</strong> index is a separate lookup structure for faster access</li>
                 <li><strong>B1</strong> index has storage/update cost or need not enforce entity identity</li>
               </ol>
-              <p><strong>Strict note:</strong> Do not accept that an index and a primary key are always the same object.</p>
             </details>
           </article>
         </section>

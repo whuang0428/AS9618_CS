@@ -385,10 +385,6 @@ function renderExamQuestions() {
             <ul>
               ${question.marking.map((mark) => `<li><strong>${mark.mark}:</strong> ${mark.text}</li>`).join("")}
             </ul>
-            <h4>Strict notes</h4>
-            <ul>
-              ${question.strict.map((note) => `<li>${note}</li>`).join("")}
-            </ul>
           </div>
         </article>
       `

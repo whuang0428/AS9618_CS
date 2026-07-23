@@ -28,7 +28,6 @@
         <a href="#point">Binary point</a>
         <a href="#convert">Conversion</a>
         <a href="#precision">Precision</a>
-        <a href="#audit">Syllabus audit</a>
         <a href="#tool">Converter</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
@@ -68,10 +67,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Read the point aloud as “binary point”, then label every column before calculating.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Computer systems store numbers using limited bits, so some fractions are approximations rather than exact values.</p>
@@ -150,10 +145,6 @@
         </section>
 
         <section class="guidance-grid compact" aria-label="Fraction guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Make students point to each active place value before they write the final denary value.</p>
-          </article>
           <article class="trap-card">
             <h3>Common trap</h3>
             <p>Bits to the right of the point get smaller from left to right: `1/2`, `1/4`, `1/8`, `1/16`.</p>
@@ -212,17 +203,6 @@
           </div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>What this lesson does and does not claim</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>AS support</strong><span>Reinforces binary place value and representation accuracy from Section 1.</span></div>
-            <div><strong>Useful exam language</strong><span>Use terms such as exact value, approximation, precision, truncation and rounding carefully.</span></div>
-            <div><strong>Boundary</strong><span>Do not answer AS integer-conversion questions with floating-point mantissa/exponent methods.</span></div>
-          </div>
-        </section>
 
         <section class="panel interactive" id="tool">
           <div class="section-title">
@@ -313,9 +293,8 @@
 
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <p class="eyebrow">Extra practice</p>
             <h2>Binary-coded decimal (BCD)</h2>
-            <p>Official audit rows: S1.02, S1.03, S1.06</p>
           </div>
           <div class="stage2-explanation">
             <p>BCD encodes each denary digit separately in four bits. For example, 59 becomes 0101 1001, not the pure-binary value 00111011.</p>
@@ -351,7 +330,6 @@
                 <li><strong>B1</strong> each displayed denary digit maps directly to one four-bit group</li>
                 <li><strong>B1</strong> reduces conversion work / preserves exact decimal digits for display</li>
               </ol>
-              <p><strong>Strict note:</strong> Do not accept 37, which is the pure-binary interpretation of the whole eight-bit pattern.</p>
             </details>
           </article>
         </section>

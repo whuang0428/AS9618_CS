@@ -28,7 +28,6 @@
         <a href="#protocols">Protocols</a>
         <a href="#rules">Protocol rules</a>
         <a href="#layers">Layers</a>
-        <a href="#audit">Syllabus audit</a>
         <a href="#tool">Diagnostic tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
@@ -59,10 +58,6 @@
         </section>
 
         <section class="guidance-grid" aria-label="Lesson guidance">
-          <article class="teaching-cue">
-            <h3>Teaching cue</h3>
-            <p>Make students finish this sentence: “The protocol tells the devices how to...” Vague “it connects things” is not enough.</p>
-          </article>
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Exam answers need functions of protocols and benefits of layers, not just names of protocols.</p>
@@ -147,18 +142,6 @@
           </div>
         </section>
 
-        <section class="panel" id="audit">
-          <div class="section-title">
-            <p class="eyebrow">Syllabus coverage audit</p>
-            <h2>What this lesson covers</h2>
-          </div>
-          <div class="audit-list">
-            <div><strong>Covered</strong><span>Protocol definition and reasons protocols are required.</span></div>
-            <div><strong>Covered</strong><span>Protocol rules such as format, addressing, timing and error control.</span></div>
-            <div><strong>Covered</strong><span>Layered communication, encapsulation and benefits of separating responsibilities.</span></div>
-            <div><strong>Boundary</strong><span>Named application protocols such as HTTP/HTTPS/FTP/SMTP are handled in later lessons.</span></div>
-          </div>
-        </section>
 
         <section class="panel interactive" id="tool">
           <div class="section-title">
@@ -235,9 +218,8 @@
 
         <section class="panel stage2-completion" id="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Stage 2 syllabus completion</p>
+            <p class="eyebrow">Extra practice</p>
             <h2>Ethernet collisions and CSMA/CD</h2>
-            <p>Official audit rows: S2.11</p>
           </div>
           <div class="stage2-explanation">
             <p>CSMA/CD means Carrier Sense Multiple Access with Collision Detection. A station listens to the shared medium; if idle it transmits, while continuing to detect a collision.</p>
@@ -273,7 +255,6 @@
                 <li><strong>B1</strong> detects a collision and stops transmission</li>
                 <li><strong>B1</strong> waits a random/backoff time before retrying</li>
               </ol>
-              <p><strong>Strict note:</strong> Do not accept collision avoidance: CSMA/CD detects and responds to a collision after transmission has begun.</p>
             </details>
           </article>
         </section>
