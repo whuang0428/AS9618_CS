@@ -6,6 +6,7 @@
     <title>AS9618 Lesson 035 | Logic gates: NOT, AND, OR, NAND, NOR, XOR</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="../student-visuals.css?v=1" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
   </head>
@@ -17,6 +18,7 @@
         <h1>Logic gates: NOT, AND, OR, NAND, NOR, XOR</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
+        <a class="course-home-link" href="../">Course home</a>
         <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
       </div>
     </header>
@@ -28,6 +30,7 @@
         <a href="#signals">Binary signals</a>
         <a href="#gates">Logic gates</a>
         <a href="#symbols">Symbols</a>
+        <a href="#gate-visual">Gate map</a>
         <a href="#tool">Truth-table tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
@@ -177,6 +180,50 @@
             <article><span class="symbol">XOR</span><strong>OR with extra curved line</strong><p>Output 1 when inputs differ.</p></article>
           </div>
           <div class="callout">Exam habit: if a symbol has a small bubble at the output, say "then invert the result" before writing the final column.</div>
+        </section>
+
+        <section class="panel visual-explainer" id="gate-visual">
+          <div class="section-title">
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Six symbols, six exact output rules</h2>
+            <p>Read each symbol from left to right. A small circle on the output means “invert”; the extra curved input line distinguishes XOR from OR.</p>
+          </div>
+          <figure class="concept-figure">
+            <svg class="concept-svg" viewBox="0 0 960 520" role="img" aria-labelledby="gateMapTitle gateMapDesc">
+              <title id="gateMapTitle">Standard symbols and output rules for six logic gates</title>
+              <desc id="gateMapDesc">NOT is a triangle with an output bubble. AND has a flat input side and curved output side. OR has curved sides. NAND and NOR add an output bubble to AND and OR. XOR adds a second curved line on the input side of OR.</desc>
+              <g fill="#fff" stroke="#8da2bd" stroke-width="2">
+                <rect x="20" y="20" width="286" height="220" rx="18" /><rect x="337" y="20" width="286" height="220" rx="18" /><rect x="654" y="20" width="286" height="220" rx="18" />
+                <rect x="20" y="280" width="286" height="220" rx="18" /><rect x="337" y="280" width="286" height="220" rx="18" /><rect x="654" y="280" width="286" height="220" rx="18" />
+              </g>
+              <g fill="none" stroke="#172033" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M74 126 H110 M110 82 L110 170 L196 126 Z M210 126 H256" /><circle cx="204" cy="126" r="8" fill="#fff" />
+                <path d="M383 95 H424 M383 157 H424 M424 76 H464 A50 50 0 0 1 464 176 H424 Z M514 126 H573" />
+                <path d="M697 95 H735 M697 157 H735 M726 76 Q770 126 726 176 Q814 176 846 126 Q814 76 726 76 Z M846 126 H890" />
+                <path d="M66 355 H107 M66 417 H107 M107 336 H147 A50 50 0 0 1 147 436 H107 Z M205 386 H256" /><circle cx="197" cy="386" r="8" fill="#fff" />
+                <path d="M380 355 H418 M380 417 H418 M409 336 Q453 386 409 436 Q497 436 529 386 Q497 336 409 336 Z M545 386 H573" /><circle cx="537" cy="386" r="8" fill="#fff" />
+                <path d="M697 355 H735 M697 417 H735 M716 336 Q760 386 716 436 M726 336 Q770 386 726 436 Q814 436 846 386 Q814 336 726 336 Z M846 386 H890" />
+              </g>
+              <g class="svg-node-label">
+                <text x="163" y="58">NOT</text><text x="480" y="58">AND</text><text x="797" y="58">OR</text>
+                <text x="163" y="318">NAND</text><text x="480" y="318">NOR</text><text x="797" y="318">XOR</text>
+              </g>
+              <g class="svg-node-detail">
+                <text x="163" y="211">Q = NOT A</text><text x="480" y="211">1 only when both are 1</text><text x="797" y="211">1 when at least one is 1</text>
+                <text x="163" y="471">NOT (A AND B)</text><text x="480" y="471">NOT (A OR B)</text><text x="797" y="471">1 when inputs differ</text>
+              </g>
+            </svg>
+            <ol class="visual-steps">
+              <li><strong>NOT</strong><span>One input; output is the opposite value.</span></li>
+              <li><strong>AND / NAND</strong><span>AND tests whether both are 1; NAND inverts that result.</span></li>
+              <li><strong>OR / NOR</strong><span>OR tests whether at least one is 1; NOR inverts that result.</span></li>
+              <li><strong>XOR</strong><span>Output is 1 only when the two inputs are different.</span></li>
+            </ol>
+          </figure>
+          <details class="diagram-check">
+            <summary>Check the diagram: what two visual clues separate NOR from XOR?</summary>
+            <p>NOR has an output bubble. XOR has no output bubble, but it has an extra curved line on the input side.</p>
+          </details>
         </section>
 
 

@@ -15,6 +15,35 @@
   min-width: 0;
 }
 
+/* Persistent student navigation shared by all lesson pages. */
+.topbar .action-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.course-home-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 14px;
+  border: 1px solid var(--accent, #2563eb);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--accent-dark, #1d4ed8);
+  font-weight: 750;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.course-home-link:hover,
+.course-home-link:focus-visible {
+  background: var(--accent-soft, #dbeafe);
+}
+
 pre {
   max-width: 100%;
   overflow-x: auto;
@@ -68,6 +97,19 @@ code {
   }
 
   .topbar .action-panel {
+    width: 100%;
     flex-shrink: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .topbar .action-panel :where(.course-home-link, .icon-button) {
+    width: 100%;
+  }
+}
+
+@media print {
+  .course-home-link {
+    display: none !important;
   }
 }

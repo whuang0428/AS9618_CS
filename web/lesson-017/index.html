@@ -17,6 +17,7 @@
         <h1>Client-server and peer-to-peer models</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
+        <a class="course-home-link" href="../">Course home</a>
         <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
       </div>
     </header>
@@ -26,6 +27,7 @@
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
         <a href="#roles">Roles</a>
+        <a href="#model-visual">Visual model</a>
         <a href="#compare">Comparison</a>
         <a href="#usecases">Use cases</a>
         <a href="#tool">Model tool</a>
@@ -108,6 +110,100 @@
             </article>
           </div>
           <div class="callout">Chinese support: client = 客户端；server = 服务器；peer = 对等节点；service = 服务。</div>
+        </section>
+
+        <section class="panel" id="model-visual">
+          <div class="section-title">
+            <p class="eyebrow">Visual explanation</p>
+            <h2>One model has equal peers; the other has dedicated service roles</h2>
+            <p>Follow the arrows and identify which devices can provide a resource.</p>
+          </div>
+
+          <div class="network-visual-grid">
+            <figure class="network-figure">
+              <h3>Peer-to-peer: every device can request and provide</h3>
+              <div class="peer-visual">
+                <img
+                  src="../assets/diagrams/lesson-017-peer-devices.jpg"
+                  width="1672"
+                  height="941"
+                  loading="lazy"
+                  decoding="async"
+                  alt="Four equally sized computers, each displaying upload and download controls to show that every peer can provide and request files."
+                />
+                <svg class="peer-links" viewBox="0 0 1672 941" aria-hidden="true" focusable="false">
+                  <defs>
+                    <marker id="peerArrow" markerWidth="18" markerHeight="18" refX="9" refY="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+                      <path d="M 0 0 L 18 9 L 0 18 z" fill="#0f766e"></path>
+                    </marker>
+                  </defs>
+                  <path class="peer-link" d="M 500 250 C 720 180 950 180 1165 250"></path>
+                  <path class="peer-link" d="M 410 395 C 360 485 360 545 410 625"></path>
+                  <path class="peer-link" d="M 1260 405 C 1310 490 1310 550 1260 630"></path>
+                  <path class="peer-link" d="M 520 735 C 735 805 945 805 1150 735"></path>
+                </svg>
+              </div>
+              <figcaption>
+                The lines show possible direct sharing between peers. They do not define a physical topology: peer-to-peer describes device roles.
+              </figcaption>
+              <ul class="visual-facts">
+                <li>No dedicated central server is required.</li>
+                <li>Each peer can request a file and provide one.</li>
+                <li>A peer going offline can make its shared resource unavailable.</li>
+              </ul>
+            </figure>
+
+            <figure class="network-figure">
+              <h3>Client-server: clients request a managed service</h3>
+              <svg class="client-server-diagram" viewBox="0 0 560 360" role="img" aria-labelledby="clientServerTitle clientServerDesc">
+                <title id="clientServerTitle">Client-server network model</title>
+                <desc id="clientServerDesc">Four clients exchange requests and responses with one central server that provides a managed service.</desc>
+                <defs>
+                  <marker id="serviceArrow" markerWidth="16" markerHeight="16" refX="8" refY="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+                    <path d="M 0 0 L 16 8 L 0 16 z" fill="#2563eb"></path>
+                  </marker>
+                </defs>
+                <path class="service-link" d="M 150 82 L 225 145"></path>
+                <path class="service-link" d="M 410 82 L 335 145"></path>
+                <path class="service-link" d="M 150 278 L 225 215"></path>
+                <path class="service-link" d="M 410 278 L 335 215"></path>
+                <g class="client-node">
+                  <rect x="35" y="48" width="120" height="68" rx="12"></rect>
+                  <text x="95" y="88">Client</text>
+                </g>
+                <g class="client-node">
+                  <rect x="405" y="48" width="120" height="68" rx="12"></rect>
+                  <text x="465" y="88">Client</text>
+                </g>
+                <g class="client-node">
+                  <rect x="35" y="244" width="120" height="68" rx="12"></rect>
+                  <text x="95" y="284">Client</text>
+                </g>
+                <g class="client-node">
+                  <rect x="405" y="244" width="120" height="68" rx="12"></rect>
+                  <text x="465" y="284">Client</text>
+                </g>
+                <g class="server-node">
+                  <rect x="205" y="128" width="150" height="104" rx="14"></rect>
+                  <text class="server-title" x="280" y="174">Server</text>
+                  <text class="server-subtitle" x="280" y="203">provides service</text>
+                </g>
+              </svg>
+              <figcaption>
+                Requests go to the server and responses return to clients. The server role may be performed by hardware or software.
+              </figcaption>
+              <ul class="visual-facts">
+                <li>Accounts, permissions and backups can be managed centrally.</li>
+                <li>Dedicated server resources and administration add cost.</li>
+                <li>Server failure can affect many clients unless redundancy is used.</li>
+              </ul>
+            </figure>
+          </div>
+
+          <details class="diagram-check">
+            <summary>Check your reading: why is peer-to-peer not the same as mesh?</summary>
+            <p>Peer-to-peer describes what devices do: each peer can request and provide resources. Mesh describes how nodes are connected. A peer-to-peer network does not need every device to connect directly to every other device.</p>
+          </details>
         </section>
 
         <section class="panel" id="compare">

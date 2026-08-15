@@ -1,0 +1,26 @@
+lesson,topic,priority,method,learning_goal,required_facts,status
+017,Client-server and peer-to-peer,High,Hybrid ImageGen plus SVG,Distinguish device service roles,Peers request and provide; no dedicated central server; model is not topology,Approved
+018,Packet switching and routing,High,HTML and SVG,Trace a packet across alternative routes,Packets contain control data; routers choose next hop; packets may take different routes,Approved
+020,IP MAC DNS and URLs,High,HTML and SVG,Separate addressing and naming roles,IP identifies network location; MAC identifies interface; DNS resolves domain names,Approved
+023,Network hardware roles,High,HTML and SVG,Choose hardware for each connection,Switch forwards within LAN; router connects networks; access point provides wireless access,Planned
+031,Magnetic optical and solid-state storage,Medium,ImageGen plus HTML labels,Recognise media and compare mechanisms,HDD uses magnetic moving parts; optical uses laser; SSD uses flash memory,Approved
+034,Sensors actuators and control systems,High,ImageGen plus SVG,Trace a feedback control loop,Sensor input reaches processor; value is compared; actuator changes system; cycle repeats,Approved
+035,Logic gates,High,SVG,Match symbols to Boolean behaviour,Symbols and truth values must match NOT AND OR NAND NOR XOR,Approved
+037,Logic circuits from requirements,High,SVG,Translate a requirement into gates,Gate order matches Boolean expression; output is labelled; no hidden inversions,Planned
+041,CPU architecture,High,SVG,Locate processor components and buses,ALU CU registers and buses have distinct roles,Approved
+042,Fetch decode execute cycle,High,SVG,Sequence the instruction cycle,PC MAR MDR CIR and CU transitions appear in correct order,Approved
+043,Processor registers,High,HTML and SVG,Relate each register to transferred data,PC address; MAR address; MDR data; CIR instruction; ACC result,Planned
+048,Interrupt handling,High,SVG,Explain the interrupt sequence,Current state saved; handler runs; state restored; program resumes,Planned
+050,Pipelining,Medium,SVG,Explain overlapping instruction stages,Stages overlap across instructions; hazards may reduce benefit,Planned
+057,Compilation stages,High,SVG,Trace source code to executable output,Lexical syntax semantic code generation and linking order is accurate,Planned
+067,Encryption hashing and certificates,High,SVG,Separate confidentiality integrity and identity,Encryption is reversible with key; hashing is one-way; certificates bind identity to key,Planned
+081,Primary and foreign keys,High,SVG,Read relationships between tables,Primary key is unique; foreign key references another table key,Planned
+082,Entity-relationship modelling,High,SVG,Interpret entities relationships and cardinality,Entity relationship and one-to-many notation are accurate,Planned
+083,Database normalisation,High,HTML and SVG,See how repeated data causes anomalies,Attributes depend on key; duplication and update anomalies are reduced,Planned
+086,SQL joins,High,HTML and SVG,Trace how related rows combine,Join condition connects matching key values; unmatched rows are not invented,Planned
+100,Flowcharts and pseudocode,Medium,SVG,Connect flowchart symbols to algorithm structure,Start process decision input-output and arrows use standard roles,Planned
+104,Linear and binary search,High,HTML and SVG,Compare search paths,Binary search requires ordered data and repeatedly halves the range,Planned
+105,Bubble and insertion sort,High,HTML and SVG,Trace state changes during sorting,Comparisons swaps and insertion positions follow the named algorithm,Planned
+122,Stacks and queues,High,HTML and SVG,Distinguish LIFO and FIFO operations,Stack push pop at one end; queue enqueue and dequeue at opposite ends,Planned
+131,Value and reference parameters,High,SVG,See whether a call can change the caller value,Value passes a copy; reference permits change to original storage,Planned
+142,Software development lifecycle models,Medium,SVG,Compare stage order and feedback,Waterfall is sequential; iterative models revisit stages,Planned

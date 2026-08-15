@@ -6,6 +6,7 @@
     <title>AS9618 Lesson 041 | CPU architecture: ALU, CU, registers, buses and clock</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="../student-visuals.css?v=1" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
   </head>
@@ -17,6 +18,7 @@
         <h1>CPU architecture: ALU, CU, registers, buses and clock</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
+        <a class="course-home-link" href="../">Course home</a>
         <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
       </div>
     </header>
@@ -26,6 +28,7 @@
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
         <a href="#architecture">CPU architecture</a>
+        <a href="#cpu-map">CPU map</a>
         <a href="#alu-cu">ALU and CU</a>
         <a href="#registers">Registers, buses, clock</a>
         <a href="#tool">CPU mapper</a>
@@ -121,6 +124,53 @@
             </article>
           </div>
           <div class="callout">Chinese support: architecture = 结构/体系结构；processor = 处理器；component = 组成部分；synchronise = 同步。</div>
+        </section>
+
+        <section class="panel visual-explainer" id="cpu-map">
+          <div class="section-title">
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Inside the CPU, outside the CPU, and what connects them</h2>
+            <p>The ALU, CU and registers are processor components. Main memory is outside the CPU; buses carry addresses, data and control signals between them.</p>
+          </div>
+          <figure class="concept-figure">
+            <svg class="concept-svg" viewBox="0 0 960 520" role="img" aria-labelledby="cpuMapTitle cpuMapDesc">
+              <title id="cpuMapTitle">CPU architecture and system buses</title>
+              <desc id="cpuMapDesc">A CPU contains the control unit, arithmetic logic unit, registers and clock. Main memory sits outside the CPU. The address bus points from CPU to memory, while data and control buses carry signals between them.</desc>
+              <defs>
+                <marker id="cpuArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2563eb" /></marker>
+                <marker id="cpuArrowStart" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 0 5 10 10z" fill="#047857" /></marker>
+                <marker id="cpuArrowEnd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#047857" /></marker>
+              </defs>
+              <rect class="svg-node svg-node--ink" x="30" y="40" width="500" height="430" rx="24" />
+              <text class="svg-node-label svg-on-dark" x="280" y="78">CPU</text>
+              <rect class="svg-node svg-node--accent" x="70" y="110" width="190" height="110" rx="16" />
+              <text class="svg-node-label" x="165" y="150">Control unit</text><text class="svg-node-detail" x="165" y="178">coordinates operations</text>
+              <rect class="svg-node svg-node--green" x="300" y="110" width="190" height="110" rx="16" />
+              <text class="svg-node-label" x="395" y="150">ALU</text><text class="svg-node-detail" x="395" y="178">arithmetic and logic</text>
+              <rect class="svg-node svg-node--warm" x="70" y="260" width="420" height="100" rx="16" />
+              <text class="svg-node-label" x="280" y="300">Registers</text><text class="svg-node-detail" x="280" y="330">very small, fast working storage inside the CPU</text>
+              <rect class="svg-node" x="145" y="392" width="270" height="48" rx="16" />
+              <text class="svg-node-label" x="280" y="423">Clock: timing pulses</text>
+              <rect class="svg-node svg-node--accent" x="720" y="155" width="210" height="210" rx="22" />
+              <text class="svg-node-label" x="825" y="220">Main memory</text><text class="svg-node-detail" x="825" y="250">instructions and data</text><text class="svg-node-detail" x="825" y="278">outside the CPU</text>
+              <path class="svg-line" d="M530 175 H720" marker-end="url(#cpuArrow)" />
+              <text class="svg-node-detail" x="625" y="158">address bus →</text>
+              <path class="svg-line svg-line--green" d="M530 260 H720" marker-start="url(#cpuArrowStart)" marker-end="url(#cpuArrowEnd)" />
+              <text class="svg-node-detail" x="625" y="246">↔ data bus</text>
+              <path class="svg-line svg-line--warm" d="M530 345 H720" marker-start="url(#cpuArrowStart)" marker-end="url(#cpuArrowEnd)" />
+              <text class="svg-node-detail" x="625" y="330">↔ control bus</text>
+            </svg>
+            <ol class="visual-steps">
+              <li><strong>CU</strong><span>Coordinates the fetch-decode-execute cycle and sends control signals.</span></li>
+              <li><strong>ALU</strong><span>Performs arithmetic operations, comparisons and Boolean logic.</span></li>
+              <li><strong>Registers + clock</strong><span>Registers hold immediate working values; clock pulses coordinate timing.</span></li>
+              <li><strong>Buses + memory</strong><span>Buses connect the CPU to memory without making memory part of the CPU.</span></li>
+            </ol>
+          </figure>
+          <details class="diagram-check">
+            <summary>Check the diagram: is main memory a register inside the CPU?</summary>
+            <p>No. Registers are small, fast storage locations inside the CPU. Main memory is a separate component connected to the CPU by buses.</p>
+          </details>
         </section>
 
         <section class="panel" id="alu-cu">

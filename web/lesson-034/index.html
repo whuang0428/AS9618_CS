@@ -17,6 +17,7 @@
         <h1>Sensors, actuators and control systems</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
+        <a class="course-home-link" href="../">Course home</a>
         <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
       </div>
     </header>
@@ -151,6 +152,42 @@
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Control systems use rules and feedback</h2>
           </div>
+          <figure class="control-visual">
+            <div class="control-scene">
+              <img
+                src="../assets/diagrams/lesson-034-greenhouse-control.jpg"
+                width="1672"
+                height="941"
+                loading="lazy"
+                decoding="async"
+                alt="A greenhouse containing a temperature sensor, a controller box, and a ventilation fan with an open roof vent."
+              />
+              <svg viewBox="0 0 1672 941" aria-hidden="true" focusable="false">
+                <defs>
+                  <marker id="controlArrow" markerWidth="18" markerHeight="18" refX="9" refY="9" markerUnits="userSpaceOnUse" orient="auto">
+                    <path d="M 0 0 L 18 9 L 0 18 z" fill="#2563eb"></path>
+                  </marker>
+                  <marker id="feedbackArrow" markerWidth="18" markerHeight="18" refX="9" refY="9" markerUnits="userSpaceOnUse" orient="auto">
+                    <path d="M 0 0 L 18 9 L 0 18 z" fill="#0f766e"></path>
+                  </marker>
+                </defs>
+                <path class="control-link" d="M 315 470 C 500 430 630 430 760 470"></path>
+                <path class="control-link" d="M 930 470 C 1075 430 1190 430 1320 450"></path>
+                <path class="feedback-link" d="M 1360 330 C 1160 80 560 80 285 355"></path>
+              </svg>
+              <span class="control-label sensor-label">1 Sensor reads</span>
+              <span class="control-label processor-label">2 Processor compares</span>
+              <span class="control-label actuator-label">3 Fan and vent act</span>
+            </div>
+            <figcaption>The solid arrows show input and output signals. The dashed arrow shows feedback: the changed temperature is measured again.</figcaption>
+          </figure>
+
+          <ol class="control-sequence">
+            <li><strong>Sense:</strong> the temperature sensor produces a reading.</li>
+            <li><strong>Compare:</strong> the controller compares the reading with its threshold.</li>
+            <li><strong>Act:</strong> an output signal switches or adjusts the fan and vent.</li>
+            <li><strong>Repeat:</strong> a new reading checks whether further action is needed.</li>
+          </ol>
           <div class="loop-grid" aria-label="Closed-loop control">
             <div><strong>Input</strong><span>Sensor reads the physical condition.</span></div>
             <div><strong>Decision</strong><span>Processor compares the reading with a threshold or rule.</span></div>
@@ -174,6 +211,10 @@
               <div role="cell">Soil moisture sensor controls irrigation pump.</div>
             </div>
           </div>
+          <details class="diagram-check">
+            <summary>Check your reading: why does the sensor not cool the greenhouse?</summary>
+            <p>The sensor only measures temperature and sends a reading. The controller makes the decision, while the fan or vent is the actuator that changes the physical condition.</p>
+          </details>
         </section>
 
 

@@ -6,6 +6,7 @@
     <title>AS9618 Lesson 042 | The fetch-decode-execute cycle</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="../student-visuals.css?v=1" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
   </head>
@@ -17,6 +18,7 @@
         <h1>The fetch-decode-execute cycle</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
+        <a class="course-home-link" href="../">Course home</a>
         <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
       </div>
     </header>
@@ -26,6 +28,7 @@
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
         <a href="#cycle">Cycle overview</a>
+        <a href="#cycle-visual">Cycle trace</a>
         <a href="#fetch">Fetch stage</a>
         <a href="#decode">Decode and execute</a>
         <a href="#registers">Register roles</a>
@@ -113,6 +116,61 @@
             </article>
           </div>
           <div class="callout">Chinese support: fetch = 取指；decode = 译码；execute = 执行；operand = 操作数；instruction = 指令。</div>
+        </section>
+
+        <section class="panel visual-explainer" id="cycle-visual">
+          <div class="section-title">
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Trace one instruction through the fetch stage</h2>
+            <p>Read left to right. The labels name what is held or transferred, so the register names are tied to a job rather than memorised as a list.</p>
+          </div>
+          <figure class="concept-figure">
+            <svg class="concept-svg" viewBox="0 0 960 510" role="img" aria-labelledby="cycleTraceTitle cycleTraceDesc">
+              <title id="cycleTraceTitle">Fetch, decode and execute register sequence</title>
+              <desc id="cycleTraceDesc">The Program Counter address is copied to the Memory Address Register. Memory is read and returns the instruction to the Memory Data Register. The instruction is copied to the Current Instruction Register, the Program Counter is incremented, the Control Unit decodes the instruction, and the CPU executes it before repeating the cycle.</desc>
+              <defs><marker id="cycleArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2563eb" /></marker></defs>
+              <g>
+                <rect class="svg-node svg-node--accent" x="20" y="100" width="130" height="108" rx="17" />
+                <rect class="svg-node svg-node--warm" x="180" y="100" width="130" height="108" rx="17" />
+                <rect class="svg-node svg-node--ink" x="340" y="100" width="130" height="108" rx="17" />
+                <rect class="svg-node svg-node--green" x="500" y="100" width="130" height="108" rx="17" />
+                <rect class="svg-node svg-node--accent" x="660" y="100" width="130" height="108" rx="17" />
+                <rect class="svg-node svg-node--warm" x="820" y="100" width="120" height="108" rx="17" />
+                <text class="svg-node-label" x="85" y="140">PC</text><text class="svg-node-detail" x="85" y="168">next address</text><text class="svg-node-detail" x="85" y="190">then increment</text>
+                <text class="svg-node-label" x="245" y="140">MAR</text><text class="svg-node-detail" x="245" y="168">address being</text><text class="svg-node-detail" x="245" y="190">accessed</text>
+                <text class="svg-node-label svg-on-dark" x="405" y="140">Memory</text><text class="svg-node-detail svg-on-dark" x="405" y="168">read instruction</text>
+                <text class="svg-node-label" x="565" y="140">MDR</text><text class="svg-node-detail" x="565" y="168">transferred</text><text class="svg-node-detail" x="565" y="190">instruction</text>
+                <text class="svg-node-label" x="725" y="140">CIR</text><text class="svg-node-detail" x="725" y="168">current</text><text class="svg-node-detail" x="725" y="190">instruction</text>
+                <text class="svg-node-label" x="880" y="140">CU</text><text class="svg-node-detail" x="880" y="168">decode</text>
+              </g>
+              <g class="svg-line" marker-end="url(#cycleArrow)">
+                <path d="M150 154 H180" /><path d="M310 154 H340" /><path d="M470 154 H500" /><path d="M630 154 H660" /><path d="M790 154 H820" />
+              </g>
+              <g aria-hidden="true">
+                <circle class="svg-badge" cx="165" cy="118" r="17" /><text class="svg-badge-text" x="165" y="118">1</text>
+                <circle class="svg-badge" cx="325" cy="118" r="17" /><text class="svg-badge-text" x="325" y="118">2</text>
+                <circle class="svg-badge" cx="485" cy="118" r="17" /><text class="svg-badge-text" x="485" y="118">3</text>
+                <circle class="svg-badge" cx="645" cy="118" r="17" /><text class="svg-badge-text" x="645" y="118">4</text>
+                <circle class="svg-badge" cx="805" cy="118" r="17" /><text class="svg-badge-text" x="805" y="118">5</text>
+              </g>
+              <rect class="svg-node svg-node--green" x="298" y="320" width="364" height="104" rx="20" />
+              <text class="svg-node-label" x="480" y="357">Execute</text>
+              <text class="svg-node-detail" x="480" y="385">ALU operation · memory access · data movement · branch</text>
+              <path class="svg-line svg-line--green" d="M880 208 C880 282 660 282 660 320" marker-end="url(#cycleArrow)" />
+              <path class="svg-line svg-line--dashed" d="M298 372 C168 372 85 316 85 208" marker-end="url(#cycleArrow)" />
+              <text class="svg-node-detail" x="178" y="350">repeat for the next instruction</text>
+            </svg>
+            <ol class="visual-steps">
+              <li><strong>1. PC → MAR</strong><span>Copy the address of the next instruction into the MAR.</span></li>
+              <li><strong>2. Memory read</strong><span>Send the address and a read signal; return the instruction to the MDR.</span></li>
+              <li><strong>3. MDR → CIR</strong><span>Move the fetched instruction into the CIR and increment the PC.</span></li>
+              <li><strong>4. Decode, execute, repeat</strong><span>The CU decodes; the CPU performs the instruction; the cycle starts again.</span></li>
+            </ol>
+          </figure>
+          <details class="diagram-check">
+            <summary>Check the diagram: why is the instruction copied to the CIR before decoding?</summary>
+            <p>The CIR holds the current instruction so the control unit can decode its opcode and identify any operands or addresses needed for execution.</p>
+          </details>
         </section>
 
         <section class="panel" id="fetch">

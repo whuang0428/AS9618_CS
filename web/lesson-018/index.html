@@ -6,6 +6,7 @@
     <title>AS9618 Lesson 018 | Packet switching, routing and packet structure</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="../student-visuals.css?v=1" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
   </head>
@@ -17,6 +18,7 @@
         <h1>Packet switching, routing and packet structure</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
+        <a class="course-home-link" href="../">Course home</a>
         <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
       </div>
     </header>
@@ -28,6 +30,7 @@
         <a href="#switching">Packet switching</a>
         <a href="#structure">Packet structure</a>
         <a href="#routing">Routing</a>
+        <a href="#packet-journey">Packet journey</a>
         <a href="#tool">Route tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
@@ -146,6 +149,64 @@
             <article><strong>Out of order</strong><span>Packets may arrive in a different order because routes have different delays.</span></article>
             <article><strong>Error handling</strong><span>Checksum/error checks can detect corruption; missing/corrupt packets may be requested again.</span></article>
           </div>
+        </section>
+
+        <section class="panel visual-explainer" id="packet-journey">
+          <div class="section-title">
+            <p class="eyebrow">Visual explanation</p>
+            <h2>One message, several routes, one reassembled result</h2>
+            <p>Follow the numbered packets. Routers make next-hop decisions, so packets from one message do not need to travel together.</p>
+          </div>
+          <figure class="concept-figure">
+            <svg class="concept-svg" viewBox="0 0 960 500" role="img" aria-labelledby="packetJourneyTitle packetJourneyDesc">
+              <title id="packetJourneyTitle">Packet switching journey across alternative routes</title>
+              <desc id="packetJourneyDesc">A sender splits a message into three numbered packets. Routers send packets one and three on the upper route and packet two on the lower route. The receiver reorders the packets to recreate the message.</desc>
+              <defs>
+                <marker id="packetArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" /></marker>
+              </defs>
+              <rect class="svg-node svg-node--accent" x="24" y="170" width="170" height="150" rx="18" />
+              <text class="svg-node-label" x="109" y="205">Sender</text>
+              <text class="svg-node-detail" x="109" y="234">Message split into</text>
+              <g aria-hidden="true">
+                <rect class="svg-badge" x="53" y="255" width="34" height="34" rx="6" /><text class="svg-badge-text" x="70" y="272">1</text>
+                <rect class="svg-badge" x="92" y="255" width="34" height="34" rx="6" /><text class="svg-badge-text" x="109" y="272">2</text>
+                <rect class="svg-badge" x="131" y="255" width="34" height="34" rx="6" /><text class="svg-badge-text" x="148" y="272">3</text>
+              </g>
+              <rect class="svg-node svg-node--ink" x="270" y="188" width="130" height="114" rx="18" />
+              <text class="svg-node-label svg-on-dark" x="335" y="232">Router A</text>
+              <text class="svg-node-detail svg-on-dark" x="335" y="258">chooses next hop</text>
+              <rect class="svg-node svg-node--accent" x="500" y="68" width="130" height="90" rx="18" />
+              <text class="svg-node-label" x="565" y="108">Router B</text>
+              <text class="svg-node-detail" x="565" y="133">upper route</text>
+              <rect class="svg-node svg-node--warm" x="500" y="342" width="130" height="90" rx="18" />
+              <text class="svg-node-label" x="565" y="382">Router C</text>
+              <text class="svg-node-detail" x="565" y="407">lower route</text>
+              <rect class="svg-node svg-node--green" x="750" y="170" width="186" height="150" rx="18" />
+              <text class="svg-node-label" x="843" y="205">Receiver</text>
+              <text class="svg-node-detail" x="843" y="234">reorders by sequence</text>
+              <text class="svg-node-label" x="843" y="278">1 · 2 · 3</text>
+              <path class="svg-line" d="M194 245 H270" marker-end="url(#packetArrow)" />
+              <path class="svg-line" d="M400 218 C445 218 445 113 500 113" marker-end="url(#packetArrow)" />
+              <path class="svg-line svg-line--warm" d="M400 272 C445 272 445 387 500 387" marker-end="url(#packetArrow)" />
+              <path class="svg-line" d="M630 113 C690 113 690 215 750 215" marker-end="url(#packetArrow)" />
+              <path class="svg-line svg-line--warm" d="M630 387 C690 387 690 275 750 275" marker-end="url(#packetArrow)" />
+              <g aria-hidden="true">
+                <circle class="svg-badge" cx="438" cy="153" r="19" /><text class="svg-badge-text" x="438" y="153">1</text>
+                <circle class="svg-badge" cx="694" cy="158" r="19" /><text class="svg-badge-text" x="694" y="158">3</text>
+                <circle cx="438" cy="342" r="19" fill="#c26710" stroke="#fff" stroke-width="3" /><text class="svg-badge-text" x="438" y="342">2</text>
+              </g>
+            </svg>
+            <ol class="visual-steps">
+              <li><strong>1. Split and label</strong><span>Each packet carries payload plus control data such as addresses and a sequence number.</span></li>
+              <li><strong>2. Choose next hop</strong><span>Each router uses the destination address and routing information.</span></li>
+              <li><strong>3. Travel independently</strong><span>Different routes can produce different arrival times.</span></li>
+              <li><strong>4. Reassemble</strong><span>The receiver uses sequence numbers to restore the original order.</span></li>
+            </ol>
+          </figure>
+          <details class="diagram-check">
+            <summary>Check the diagram: why can packet 2 arrive after packet 3?</summary>
+            <p>Packet 2 can take a different route with a longer delay. The receiver uses sequence numbers to place it back between packets 1 and 3.</p>
+          </details>
         </section>
 
 

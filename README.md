@@ -10,6 +10,8 @@ Syllabus reference used for this pack: Cambridge International AS & A Level Comp
 
 All 150 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit maps all 121 AS requirements to direct teaching and assessment evidence. The assessment bank provides 30 ten-mark quizzes, 7 thirty-mark monthly checkpoints and 14 twenty-mark stage reviews. Stage 5 reviewed and approved all 963 exam-style mark schemes (750 lesson questions and 213 assessment questions); 295 questions in System Software, Security, Ethics and Databases received a specialist second review. Stage 6 completed desktop and mobile full-page QA for all 150 lessons plus the course, assessment and resource hubs. Stage 7 completed keyboard, semantic, contrast and bilingual-language accessibility QA for the same 153 pages. Final Stage 8 provides a versioned, checksummed and source-matched offline release with unified Stage 2-8 verification.
 
+The student web version now provides a persistent `Course home` link on every lesson page. A prioritised visual-explanation register covers 25 abstract concepts. Eight approved visual explanations now cover network models, packet switching, addressing, secondary storage, control systems, logic gates, CPU architecture and the fetch-decode-execute cycle.
+
 ## Course Design
 
 - Target: AS Level only.
@@ -60,9 +62,17 @@ Then open:
 
 Each webpage is self-contained in its own `web/lesson-XXX/` folder and uses local answer/MS toggles rather than a global student/teacher view.
 
+If lesson HTML is regenerated, restore the shared course-home control with the idempotent command:
+
+```bash
+node scripts/apply-student-navigation.mjs
+```
+
 ## Verification
 
 ```bash
+node scripts/verify-student-navigation.mjs
+node scripts/verify-educational-visuals.mjs
 node scripts/verify-stage2.mjs
 node scripts/verify-assessments.mjs
 node scripts/verify-lesson-mark-schemes.mjs

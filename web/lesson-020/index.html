@@ -6,6 +6,7 @@
     <title>AS9618 Lesson 020 | IP addresses, MAC addresses, DNS and URLs</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="../student-visuals.css?v=1" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
   </head>
@@ -17,6 +18,7 @@
         <h1>IP addresses, MAC addresses, DNS and URLs</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
+        <a class="course-home-link" href="../">Course home</a>
         <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
       </div>
     </header>
@@ -28,6 +30,7 @@
         <a href="#addresses">Addresses</a>
         <a href="#dns">DNS</a>
         <a href="#urls">URLs</a>
+        <a href="#address-journey">Address journey</a>
         <a href="#tool">Lookup tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
@@ -144,6 +147,51 @@
               <div><strong>Path</strong><span><code>/resources/page.html</code> identifies the resource on the server.</span></div>
             </div>
           </div>
+        </section>
+
+        <section class="panel visual-explainer" id="address-journey">
+          <div class="section-title">
+            <p class="eyebrow">Visual explanation</p>
+            <h2>From a URL to a packet on the local link</h2>
+            <p>These labels solve different problems. DNS resolves only the domain name; it does not return a web page or a MAC address.</p>
+          </div>
+          <figure class="concept-figure">
+            <svg class="concept-svg" viewBox="0 0 960 470" role="img" aria-labelledby="addressJourneyTitle addressJourneyDesc">
+              <title id="addressJourneyTitle">Roles of URL, DNS, IP address and MAC address</title>
+              <desc id="addressJourneyDesc">The user enters a URL. The domain-name part is sent to DNS, which returns an IP address. The IP address is used for routing between networks, while a MAC address identifies the network interface used for delivery on the current local link.</desc>
+              <defs><marker id="addressArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2563eb" /></marker></defs>
+              <rect class="svg-node svg-node--accent" x="30" y="62" width="250" height="116" rx="18" />
+              <text class="svg-node-label" x="155" y="100">URL entered</text>
+              <text class="svg-node-detail" x="155" y="128">https://learn.example.org/page</text>
+              <text class="svg-node-detail" x="155" y="151">scheme · domain · path</text>
+              <rect class="svg-node svg-node--warm" x="355" y="62" width="250" height="116" rx="18" />
+              <text class="svg-node-label" x="480" y="100">DNS lookup</text>
+              <text class="svg-node-detail" x="480" y="128">learn.example.org</text>
+              <text class="svg-node-detail" x="480" y="151">domain → IP address</text>
+              <rect class="svg-node svg-node--green" x="680" y="62" width="250" height="116" rx="18" />
+              <text class="svg-node-label" x="805" y="100">IP routing</text>
+              <text class="svg-node-detail" x="805" y="128">203.0.113.24</text>
+              <text class="svg-node-detail" x="805" y="151">between networks</text>
+              <path class="svg-line" d="M280 120 H355" marker-end="url(#addressArrow)" />
+              <path class="svg-line" d="M605 120 H680" marker-end="url(#addressArrow)" />
+              <rect class="svg-node svg-node--ink" x="190" y="286" width="580" height="120" rx="18" />
+              <text class="svg-node-label svg-on-dark" x="480" y="325">Current local link</text>
+              <text class="svg-node-detail svg-on-dark" x="480" y="354">A MAC address identifies the network interface for local delivery</text>
+              <text class="svg-node-label svg-on-dark" x="480" y="383">3C:52:82:AA:19:F0</text>
+              <path class="svg-line svg-line--green svg-line--dashed" d="M805 178 C805 240 720 246 720 286" marker-end="url(#addressArrow)" />
+              <text class="svg-node-detail" x="738" y="238">next local hop</text>
+            </svg>
+            <ol class="visual-steps">
+              <li><strong>URL</strong><span>Includes a scheme, domain name and path to a resource.</span></li>
+              <li><strong>DNS</strong><span>Resolves the domain-name part to an IP address.</span></li>
+              <li><strong>IP address</strong><span>Provides a logical network address used for routing.</span></li>
+              <li><strong>MAC address</strong><span>Identifies a network interface for delivery on a local link.</span></li>
+            </ol>
+          </figure>
+          <details class="diagram-check">
+            <summary>Check the diagram: does DNS turn the whole URL into a MAC address?</summary>
+            <p>No. DNS resolves the domain-name part to an IP address. MAC addressing is used separately on a local network link.</p>
+          </details>
         </section>
 
 

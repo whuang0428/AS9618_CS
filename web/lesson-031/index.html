@@ -17,6 +17,7 @@
         <h1>Secondary storage: magnetic, optical and solid-state media</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
+        <a class="course-home-link" href="../">Course home</a>
         <button class="icon-button" type="button" id="printBtn" title="Print lesson">Print</button>
       </div>
     </header>
@@ -27,6 +28,7 @@
         <a href="#hook">Warm-up</a>
         <a href="#purpose">Storage purpose</a>
         <a href="#media">Media types</a>
+        <a href="#storage-visual">Visual guide</a>
         <a href="#compare">Comparison</a>
         <a href="#tool">Choice tool</a>
         <a href="#examples">Examples</a>
@@ -127,6 +129,54 @@
               <p><strong>Limitations:</strong> often higher cost per GB than HDD; finite write cycles.</p>
             </article>
           </div>
+        </section>
+
+        <section class="panel" id="storage-visual">
+          <div class="section-title">
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Look at the storage mechanism before comparing performance</h2>
+            <p>The physical mechanism helps explain speed, durability and suitable uses.</p>
+          </div>
+
+          <figure class="storage-visual">
+            <img
+              src="../assets/diagrams/lesson-031-storage-media.jpg"
+              width="1672"
+              height="941"
+              loading="lazy"
+              decoding="async"
+              alt="An opened magnetic hard disk with platter and actuator arm, an optical disc and drive, and a solid-state drive circuit board with flash-memory chips."
+            />
+            <div class="storage-label-strip" aria-hidden="true">
+              <span>Magnetic</span>
+              <span>Optical</span>
+              <span>Solid-state</span>
+            </div>
+            <figcaption>Three ways to store data when power is off. The illustration identifies the mechanism; the cards below state the exam-safe explanation.</figcaption>
+          </figure>
+
+          <div class="mechanism-grid">
+            <article>
+              <h3>Magnetic HDD</h3>
+              <p>Magnetised areas store data on rotating platters. A moving actuator positions the read/write head.</p>
+              <strong>Consequence:</strong><span> high capacity and low cost per GB, but mechanical parts are vulnerable to shock.</span>
+            </article>
+            <article>
+              <h3>Optical disc</h3>
+              <p>A laser reads changes such as pits and lands on the disc surface.</p>
+              <strong>Consequence:</strong><span> portable and cheap to distribute, but generally slower and lower-capacity.</span>
+            </article>
+            <article>
+              <h3>Solid-state drive</h3>
+              <p>Electronic flash-memory cells store data with no moving parts.</p>
+              <strong>Consequence:</strong><span> fast and shock-resistant, but often costs more per GB than HDD storage.</span>
+            </article>
+          </div>
+
+          <details class="diagram-check">
+            <summary>Check your reading: why is an SSD often suitable for a laptop?</summary>
+            <p>It has no moving parts, so it is more resistant to knocks and vibration, and it normally provides faster access than an HDD. This does not mean an SSD can never fail.</p>
+          </details>
         </section>
 
         <section class="panel" id="compare">
