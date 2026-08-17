@@ -5,10 +5,10 @@ import { fileURLToPath } from "node:url";
 import { deliveryOverrides } from "./stage9-delivery-overrides.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const stylesheet = '    <link rel="stylesheet" href="../lesson-toolbar.css?v=1" />';
+const stylesheet = '    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />';
 const scripts = [
   '    <script src="../course-catalog.js?v=1"></script>',
-  '    <script src="../lesson-toolbar.js?v=1"></script>',
+  '    <script src="../lesson-toolbar.js?v=2"></script>',
 ];
 const optionalIds = new Set([
   "tool", "builder", "simulator", "converter", "checker", "classifier", "chooser", "runner",

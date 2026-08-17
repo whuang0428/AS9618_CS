@@ -10,10 +10,13 @@
   if (!lesson) return;
 
   const sections = [...content.children].filter((element) => element.matches("section[data-delivery-role]"));
+  const lessonNav = document.querySelector(".lesson-nav");
+  const actionPanel = document.querySelector(".topbar .action-panel");
   const toolbar = buildToolbar();
   const status = toolbar.querySelector(".teacher-toolbar__status");
   document.body.append(toolbar);
   document.body.classList.add("has-teacher-toolbar");
+  if (lessonNav && actionPanel) setupContentsToggle();
 
   function lessonHref(number) {
     return number >= 1 && number <= 150 ? `../lesson-${String(number).padStart(3, "0")}/` : "";
@@ -78,6 +81,42 @@
     setTimeout(() => heading.focus({ preventScroll: true }), 0);
     status.textContent = `Moved to ${heading.textContent.trim()}.`;
     toolbar.querySelector(".teacher-toolbar__more").removeAttribute("open");
+  }
+
+  function setupContentsToggle() {
+    const toggle = document.createElement("button");
+    lessonNav.id = "lesson-contents";
+    toggle.type = "button";
+    toggle.className = "course-home-link lesson-contents-toggle";
+    toggle.setAttribute("aria-controls", lessonNav.id);
+    actionPanel.append(toggle);
+
+    function setExpanded(expanded, { announce = true, returnFocus = true } = {}) {
+      const focusWasInside = lessonNav.contains(document.activeElement);
+      lessonNav.hidden = !expanded;
+      document.body.classList.toggle("lesson-nav-collapsed", !expanded);
+      toggle.setAttribute("aria-expanded", String(expanded));
+      toggle.textContent = expanded ? "Hide contents" : "Show contents";
+      if (announce) status.textContent = expanded ? "Lesson contents shown." : "Lesson contents hidden.";
+      if (!expanded && returnFocus && focusWasInside) toggle.focus({ preventScroll: true });
+    }
+
+    toggle.addEventListener("click", () => setExpanded(lessonNav.hidden));
+    lessonNav.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const target = document.getElementById(link.hash.slice(1));
+        if (!target) return;
+        event.preventDefault();
+        const heading = target.querySelector("h2, h3") || target;
+        heading.setAttribute("tabindex", "-1");
+        history.pushState(null, "", link.hash);
+        setExpanded(false, { announce: false, returnFocus: false });
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        setTimeout(() => heading.focus({ preventScroll: true }), 0);
+        status.textContent = `Moved to ${heading.textContent.trim()}. Lesson contents hidden.`;
+      });
+    });
+    setExpanded(false, { announce: false });
   }
 
   toolbar.querySelectorAll("[data-jump]").forEach((button) => button.addEventListener("click", () => jump(button.dataset.jump)));

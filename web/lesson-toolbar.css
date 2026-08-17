@@ -9,6 +9,18 @@ body.has-teacher-toolbar {
   padding-bottom: 94px;
 }
 
+body.lesson-nav-collapsed .layout {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+.lesson-nav[hidden] {
+  display: none !important;
+}
+
+.lesson-contents-toggle {
+  cursor: pointer;
+}
+
 .teacher-toolbar {
   position: fixed;
   z-index: 1000;
@@ -158,12 +170,22 @@ body.has-teacher-toolbar {
   }
 }
 
+@media (max-width: 700px) {
+  .topbar .action-panel .lesson-contents-toggle {
+    grid-column: 1 / -1;
+  }
+}
+
 @media print {
   body.has-teacher-toolbar {
     padding-bottom: 0;
   }
 
   .teacher-toolbar {
+    display: none !important;
+  }
+
+  .lesson-contents-toggle {
     display: none !important;
   }
 }

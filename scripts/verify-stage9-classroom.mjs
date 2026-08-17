@@ -71,9 +71,11 @@ for (const [index, definition] of lessons.entries()) {
   expect(entry?.title === h1, `${definition.page}: catalog title does not match h1`);
   expect(["Paper 1", "Paper 2"].includes(entry?.paper), `${definition.page}: catalog paper is invalid`);
   expect(/^Section \d+$|^Review$/.test(entry?.section ?? ""), `${definition.page}: catalog section is invalid`);
-  expect(count(html, 'href="../lesson-toolbar.css?v=1"') === 1, `${definition.page}: lesson toolbar stylesheet must appear once`);
+  expect(count(html, 'href="../lesson-toolbar.css?v=2"') === 1, `${definition.page}: lesson toolbar stylesheet must appear once`);
   expect(count(html, 'src="../course-catalog.js?v=1"') === 1, `${definition.page}: course catalog script must appear once`);
-  expect(count(html, 'src="../lesson-toolbar.js?v=1"') === 1, `${definition.page}: lesson toolbar script must appear once`);
+  expect(count(html, 'src="../lesson-toolbar.js?v=2"') === 1, `${definition.page}: lesson toolbar script must appear once`);
+  expect(count(html, 'class="lesson-nav"') === 1, `${definition.page}: lesson contents navigation must appear once`);
+  expect(count(html, 'class="action-panel"') === 1, `${definition.page}: page action panel must appear once`);
   expect(!html.includes("classroom-mode.css") && !html.includes("classroom-mode.js"), `${definition.page}: obsolete Classroom Mode assets remain`);
   expect(!/<details\b[^>]*\bopen\b/i.test(html), `${definition.page}: a details answer is open by default`);
 
@@ -112,13 +114,13 @@ expect(homeHtml.includes("./assessments/") && homeHtml.includes("./resources/"),
 
 const toolbarJs = read("web/lesson-toolbar.js");
 const toolbarCss = read("web/lesson-toolbar.css");
-for (const marker of ["teacher-toolbar__previous", "teacher-toolbar__next", "Lesson jumps", "Assessment Bank", "aria-live", "data-jump"]) {
+for (const marker of ["teacher-toolbar__previous", "teacher-toolbar__next", "Lesson jumps", "Assessment Bank", "aria-live", "data-jump", "lesson-contents", "lesson-contents-toggle", "lesson-nav-collapsed", "lessonNav.hidden", "aria-controls", "aria-expanded", "Show contents", "Hide contents", "history.pushState"]) {
   expect(toolbarJs.includes(marker), `Lesson toolbar marker is missing: ${marker}`);
 }
-for (const marker of ["Classroom Mode", "classroom-mode", "teacher-toolbar__mode", "teacher-toolbar__optional", "teacher-toolbar__fullscreen", "requestFullscreen", "localStorage", "delivery-label"]) {
+for (const marker of ["Classroom Mode", "classroom-mode", "teacher-toolbar__mode", "teacher-toolbar__optional", "teacher-toolbar__fullscreen", "requestFullscreen", "localStorage", "sessionStorage", "delivery-label"]) {
   expect(!toolbarJs.includes(marker), `Removed Classroom Mode behavior remains in the lesson toolbar: ${marker}`);
 }
-for (const marker of [".teacher-toolbar", "@media (max-width: 760px)", "padding-bottom"]) {
+for (const marker of [".teacher-toolbar", "body.lesson-nav-collapsed .layout", ".lesson-nav[hidden]", ".lesson-contents-toggle", "@media (max-width: 760px)", "@media (max-width: 700px)", "padding-bottom"]) {
   expect(toolbarCss.includes(marker), `Lesson toolbar stylesheet marker is missing: ${marker}`);
 }
 for (const marker of ["body.classroom-mode", ".classroom-active", ".delivery-label"]) {

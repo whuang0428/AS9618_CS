@@ -60,7 +60,7 @@ Then open:
 - Resource centre: <http://127.0.0.1:8769/resources/>
 - Example lesson: <http://127.0.0.1:8769/lesson-001/>
 
-Each lesson always displays the complete teaching and revision page. Use the fixed bottom toolbar to move between lessons, jump to Warm-up/Core/Practice/Exam/Homework or open the Assessment Bank.
+Each lesson always displays the complete teaching and revision page. The lesson contents navigation is collapsed by default so the teaching content can use the full width; use `Show contents` to open it when needed. Use the fixed bottom toolbar to move between lessons, jump to Warm-up/Core/Practice/Exam/Homework or open the Assessment Bank.
 
 If lesson HTML is regenerated, restore the shared course-home control with the idempotent command:
 
