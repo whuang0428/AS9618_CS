@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css?v=2" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=1" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -117,11 +117,31 @@
         <!-- stage10-explanation:start purpose -->
         <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why sharing becomes useful only when devices can exchange requests</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>How a shared resource becomes useful</h2>
           </div>
-          <div class="explanation-body">
-          <p>A network creates value by giving devices a controlled path for exchanging data. When a computer sends a print job, for example, it does not somehow use the printer from a distance: it packages the request, sends it across a link and identifies the shared printer as the destination. The same mechanism lets users open centrally stored files or send messages. Sharing reduces duplication because one managed resource can answer requests from many authorised devices. Central management works for the same reason: accounts, permissions, updates and backups can be applied at a server or management service rather than configured independently on every machine. This convenience also creates dependence. If the shared service or connecting network fails, many users may lose access at once. A strong explanation therefore links the benefit to the shared communication path and also recognises the new point of failure.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>A device packages a request and names the destination.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>The network carries that request to the shared resource.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>One managed resource can then serve many authorised devices.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>A library serves many readers because requests reach one organised collection.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>If the path or shared service fails, many users lose access together.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end purpose -->
@@ -158,11 +178,31 @@
         <!-- stage10-explanation:start lanwan -->
         <section class="panel explanation-panel" id="explanation-lanwan" data-explains="lanwan" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lanwan">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why area and ownership change the way a network is managed</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why LAN and WAN management differs</h2>
           </div>
-          <div class="explanation-body">
-          <p>LAN and WAN are not labels for fast and slow networks. They describe different scales and management arrangements. A LAN normally covers a limited site and is controlled by one organisation, so that organisation can choose the switches, cabling, wireless access points and security rules. Shorter local links and direct control often make faults easier to locate and upgrades easier to schedule. A WAN connects networks across a much larger area, so traffic may cross infrastructure owned by telecommunications providers. That adds distance, routing decisions and dependence on external services, which can increase latency, cost and troubleshooting complexity. A school network does not become a WAN merely because it uses Wi-Fi, and a WAN is not automatically the public internet. The deciding questions are what geographical area is connected and who controls the infrastructure between the connected sites.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>A LAN usually stays within one organisation's controlled site.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>A WAN crosses distance and often uses provider-owned infrastructure.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>More owners and routes add latency, cost and fault-finding complexity.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>Managing one campus is different from coordinating transport across several cities.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>Wi-Fi does not make a network a WAN; scale and control do.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end lanwan -->
@@ -256,11 +296,31 @@
         <!-- stage10-explanation:start topologies -->
         <section class="panel explanation-panel" id="explanation-topologies" data-explains="topologies" data-explanation-kind="tradeoff" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="topologies">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why physical connection patterns create different costs and failure effects</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why connection patterns change risk</h2>
           </div>
-          <div class="explanation-body">
-          <p>A topology changes network behaviour because it determines the path that data and failures can follow. In a bus, every device depends on one backbone, so little cabling is needed but damage or congestion on that shared path affects the whole network. In a star, each device has its own link to a central switch. One cable failure normally isolates one device, yet switch failure removes the common forwarding point. In a full mesh, every pair of nodes has a direct link, so another path remains when one link fails. That resilience is expensive because the number of links and ports rises rapidly as nodes are added. A hybrid combines topology types, such as connected star segments, to balance local simplicity with wider resilience. No topology is always best: the correct choice follows from required availability, expansion, cost and the consequence of each possible failure.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>The layout determines which physical paths data can follow.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Shared paths reduce cabling but concentrate traffic and failures.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Alternative paths improve resilience but require more links and ports.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>Road layouts trade construction cost against alternative routes after a closure.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>No topology is universally best; cost, scale and failure tolerance decide.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end topologies -->

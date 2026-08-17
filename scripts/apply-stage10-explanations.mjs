@@ -3,7 +3,7 @@ import path from "node:path";
 import { explanations } from "./stage10-explanations-data.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
-const stylesheet = '    <link rel="stylesheet" href="../stage10-explanations.css?v=1" />';
+const stylesheet = '    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />';
 const htmlBlock = /\n?\s*<!-- stage10-explanation:start [^ ]+ -->[\s\S]*?<!-- stage10-explanation:end [^ ]+ -->\n?/g;
 const markdownBlock = /\n?<!-- stage10-explanations:start -->[\s\S]*?<!-- stage10-explanations:end -->\n?/g;
 
@@ -56,17 +56,35 @@ function directSections(source) {
 
 function htmlFor(item) {
   const id = `explanation-${item.targetId}`;
-  const paragraphs = item.paragraphs.map((paragraph) => `          <p>${escapeHtml(paragraph)}</p>`).join("\n");
+  const stepLabels = ["Mechanism", "Reason", "Result"];
+  const steps = item.steps.map((step, index) => `
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">${index + 1}</span>
+                <div><span class="explanation-step-label">${stepLabels[index]}</span><p>${escapeHtml(step)}</p></div>
+              </li>`).join("");
+  const visual = item.visual ? `
+          <figure class="explanation-figure">
+            <img src="${escapeHtml(item.visual.src)}" width="${item.visual.width}" height="${item.visual.height}" loading="lazy" decoding="async" alt="${escapeHtml(item.visual.alt)}" />
+            <figcaption>${escapeHtml(item.visual.caption)}</figcaption>
+          </figure>` : "";
   return `
 
         <!-- stage10-explanation:start ${item.targetId} -->
         <section class="panel explanation-panel" id="${id}" data-explains="${item.targetId}" data-explanation-kind="${item.kind}" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="${item.targetId}">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
+            <p class="eyebrow">Visual explanation</p>
             <h2>${escapeHtml(item.title)}</h2>
           </div>
-          <div class="explanation-body">
-${paragraphs}
+          <div class="explanation-layout${item.visual ? " has-visual" : ""}">
+${visual}
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">${steps}
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>${escapeHtml(item.analogy)}</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>${escapeHtml(item.boundary)}</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end ${item.targetId} -->`;
@@ -74,13 +92,14 @@ ${paragraphs}
 
 function markdownFor(items) {
   const sections = items.map((item) => {
-    const paragraphs = item.paragraphs.join("\n\n");
-    return `### ${item.title}\n\n- **Explains:** \`${item.targetId}\`\n- **Explanation type:** ${item.kind}\n\n${paragraphs}`;
+    const steps = item.steps.map((step, index) => `${index + 1}. ${step}`).join("\n");
+    const visual = item.visual ? `\n- **Visual:** \`${item.visual.src}\` — ${item.visual.caption}` : "";
+    return `### ${item.title}\n\n- **Explains:** \`${item.targetId}\`\n- **Explanation type:** ${item.kind}${visual}\n\n${steps}\n\n- **Analogy:** ${item.analogy}\n- **Boundary:** ${item.boundary}`;
   }).join("\n\n");
   return `
 
 <!-- stage10-explanations:start -->
-## Stage 10 causal explanations
+## Stage 10 visual explanations
 
 ${sections}
 <!-- stage10-explanations:end -->

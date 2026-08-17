@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=1" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -153,11 +153,31 @@
         <!-- stage10-explanation:start logic -->
         <section class="panel explanation-panel" id="explanation-logic" data-explains="logic" data-explanation-kind="synthesis" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="logic">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why hardware answers improve when components are connected into mechanisms</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>How hardware facts become mechanisms</h2>
           </div>
-          <div class="explanation-body">
-          <p>Hardware topics become easier to retrieve when they are organised as cause-and-effect systems rather than isolated definitions. An input device converts a physical event into data; storage keeps the data; buses move values and signals; registers hold the values needed immediately; the control unit coordinates transfers; and the ALU performs the selected operation. Logic gates explain how binary conditions can control those operations at circuit level. During the fetch-decode-execute cycle, each named register matters because of the value it holds and the next transfer it enables. This connected model also improves evaluation questions: choosing a component requires matching its physical or logical mechanism to the scenario, not repeating that it is “fast” or “efficient”. When revising, trace one value from input through storage and processing to output, naming why each component is required at that point.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>Name the component or representation involved.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Explain the operation performed on data or signals.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Link that operation to the observable result or limitation.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>A useful technical answer connects parts like a working machine, not a parts list.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>An isolated definition rarely explains why the stated outcome occurs.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end logic -->

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=1" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -110,11 +110,35 @@
         <!-- stage10-explanation:start purpose -->
         <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why a lifecycle reduces uncertainty instead of merely adding documents</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why a lifecycle reduces uncertainty</h2>
           </div>
-          <div class="explanation-body">
-          <p>Software projects fail when important questions are discovered after expensive decisions have already been made. A development lifecycle gives those questions an organised place: requirements clarify the problem, design decides a solution structure, implementation builds it, testing checks behaviour and evaluation compares the result with the original need. The stages create evidence that can be reviewed before the project commits further time and money. Documentation is useful only when it records decisions, constraints and results that later work depends on; producing documents without using them does not control risk. Different lifecycle models arrange feedback differently, but all try to make uncertainty visible and manageable. The benefit therefore comes from earlier detection, traceable decisions and controlled change, not from following stage names as a ceremonial checklist.</p>
+          <div class="explanation-layout has-visual">
+
+          <figure class="explanation-figure">
+            <img src="../assets/diagrams/stage10-lifecycle-models-analogy.jpg" width="1400" height="768" loading="lazy" decoding="async" alt="Three architectural workflows showing sequential approval, repeated review cycles and incremental construction." />
+            <figcaption>Different project conditions favour different distances between building, review and change.</figcaption>
+          </figure>
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>Each stage asks a different question about need, design or evidence.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Its output makes assumptions visible for review.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Later work proceeds with clearer constraints and acceptance criteria.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>Architectural plans turn assumptions into inspectable decisions before construction.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>Documents help only when they stay accurate and influence decisions.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end purpose -->
@@ -138,11 +162,31 @@
         <!-- stage10-explanation:start stages -->
         <section class="panel explanation-panel" id="explanation-stages" data-explains="stages" data-explanation-kind="process" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stages">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why each lifecycle stage must produce information for the next</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>How one stage supplies the next</h2>
           </div>
-          <div class="explanation-body">
-          <p>Lifecycle stages form a chain of decisions. Analysis turns stakeholder needs into requirements and constraints. Design converts those requirements into data structures, interfaces, algorithms and testable components. Implementation produces the executable system from that design. Testing compares observed behaviour with expected results, while evaluation asks whether the delivered system actually meets the original requirements. Maintenance responds to defects and changed needs after deployment. A stage is incomplete if its output cannot guide or check the next activity; for example, vague requirements make it impossible to decide whether a test has passed. Projects may revisit stages, but the dependency remains: later decisions need reliable earlier information. Explaining this flow is more useful than memorising an order because it shows why missing or weak outputs create rework.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>Analysis defines the problem and required outcomes.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Design translates requirements into components, data and interfaces.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Implementation and testing create and check the resulting system.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>A specification becomes a plan, then a build, then evidence of fitness.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>Feedback may return to an earlier stage when evidence exposes a bad assumption.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end stages -->
@@ -167,11 +211,31 @@
         <!-- stage10-explanation:start waterfall -->
         <section class="panel explanation-panel" id="explanation-waterfall" data-explains="waterfall" data-explanation-kind="tradeoff" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="waterfall">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why sequential planning helps stable projects but resists late change</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why sequence helps and resists change</h2>
           </div>
-          <div class="explanation-body">
-          <p>Waterfall development establishes major requirements and plans stages before moving through them in sequence. This can make budgets, responsibilities and approval points easier to define because each stage has expected outputs. It works best when requirements are well understood and unlikely to change, or when formal documentation and sign-off are required. The same structure creates its main weakness: users may not interact with a working system until late, so a misunderstood requirement can survive through design and implementation before it becomes visible. Returning to earlier decisions then affects many completed artefacts and becomes expensive. Waterfall is therefore not automatically outdated or safe. Its suitability depends on whether early certainty and formal control are more valuable than frequent feedback and adaptation.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>A stage is reviewed before the next major stage begins.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Early agreement supports budgets, contracts and traceable approvals.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Late change crosses completed boundaries and causes expensive rework.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>Changing foundations after upper floors exist is harder than changing a drawing.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>Waterfall suits stable requirements; sequence alone does not guarantee quality.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end waterfall -->
@@ -190,11 +254,31 @@
         <!-- stage10-explanation:start iterative -->
         <section class="panel explanation-panel" id="explanation-iterative" data-explains="iterative" data-explanation-kind="process" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="iterative">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why repeated cycles expose mistakes earlier</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why repeated cycles expose mistakes</h2>
           </div>
-          <div class="explanation-body">
-          <p>Iterative development builds a version, reviews the result and uses the feedback to improve the next version. A working or testable increment turns assumptions into something stakeholders can inspect, so unclear requirements and usability problems can be discovered before the whole system is complete. Each cycle should have a defined goal and feed evidence back into requirements or design; simply rewriting code repeatedly is not a lifecycle method. Iteration reduces the cost of some changes because less unreviewed work depends on the current decision. It can also create scope drift, repeated rework or architectural inconsistency if priorities and quality controls are weak. The advantage comes from short feedback distance, while the management challenge is keeping those cycles aligned with the overall system and budget.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>Build a limited version around a defined goal.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Review evidence from users, tests or prototypes.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Feed the findings into the next improved cycle.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>A model is built, inspected and revised before the full structure is fixed.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>Repeated work without a review goal is rework, not controlled iteration.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end iterative -->
@@ -214,11 +298,31 @@
         <!-- stage10-explanation:start agile -->
         <section class="panel explanation-panel" id="explanation-agile" data-explains="agile" data-explanation-kind="tradeoff" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="agile">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why short feedback cycles help changing requirements</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why short feedback cycles support change</h2>
           </div>
-          <div class="explanation-body">
-          <p>Agile approaches organise work into short increments and involve users or product representatives frequently. Regular feedback helps the team detect when a feature solves the wrong problem and reprioritise before a large amount of dependent work is built. Small increments can deliver useful value earlier and make progress visible to stakeholders. This flexibility requires active stakeholder participation, disciplined testing and a shared understanding of the overall product. Without them, frequent change can become uncontrolled scope growth or fragmented design. Agile does not mean no planning or documentation; it favours enough planning and documentation to support the next decisions and maintain the system. It is most suitable when learning and change are expected and when stakeholders can provide timely, informed feedback.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>A small increment makes assumptions visible quickly.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Frequent stakeholder feedback reprioritises the next increment.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Less unreviewed work depends on a mistaken requirement.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>Regular design reviews correct direction while only a small section is built.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>Agile still requires architecture, testing and available informed stakeholders.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end agile -->
@@ -239,11 +343,31 @@
         <!-- stage10-explanation:start compare -->
         <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why project conditions should choose the lifecycle model</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>How project conditions choose a model</h2>
           </div>
-          <div class="explanation-body">
-          <p>Lifecycle choice is a trade-off between certainty, feedback, regulation, risk and cost of change. Stable requirements, contractual milestones or safety documentation may favour a more sequential model because decisions and approvals must be traceable before construction continues. Uncertain requirements and user-interface work may favour iterative or agile approaches because prototypes and increments generate information that cannot be obtained from documents alone. Team distribution, stakeholder availability and technical dependencies also matter. A model cannot provide feedback if users are unavailable, and rapid iteration cannot safely ignore a hardware component with a long manufacturing lead time. Strong evaluation therefore names a project condition, explains how the model's feedback and planning mechanism responds to it, and states the resulting benefit or limitation. Calling one model simply faster or better is not a justified choice.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>Stable regulated work values traceability and formal approval.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Uncertain user-facing work values short feedback distance.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Dependencies, risk and stakeholder availability constrain the viable choice.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>Choose a planning rhythm that matches how often reliable evidence arrives.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>No lifecycle model is inherently fastest or best for every project.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
@@ -266,11 +390,31 @@
         <!-- stage10-explanation:start artefacts -->
         <section class="panel explanation-panel" id="explanation-artefacts" data-explains="artefacts" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="artefacts">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why lifecycle outputs make decisions testable and traceable</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why artefacts make decisions traceable</h2>
           </div>
-          <div class="explanation-body">
-          <p>Lifecycle artefacts preserve information that later stages need. A requirements specification defines what success means; design documents show how components and data should satisfy those requirements; a test plan connects inputs and expected results to the behaviour being checked; test records show what actually happened. Traceability links these artefacts so a changed requirement can be followed into affected designs, code and tests. This reduces the chance that one document changes while the implemented system remains inconsistent. Artefacts also support maintenance because a future developer can recover the reasoning behind a decision. Their value depends on accuracy and use: an outdated document can mislead more than no document. The purpose is not paperwork itself but a shared, reviewable record of decisions and evidence.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>Requirements define what successful behaviour means.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Designs and tests link implementation choices to those requirements.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Traceability exposes every item affected by a later change.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>A linked evidence trail shows which plans and checks depend on one decision.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>An outdated artefact can mislead more than an absent one.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end artefacts -->

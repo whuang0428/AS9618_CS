@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../student-visuals.css?v=1" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=1" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -131,11 +131,35 @@
         <!-- stage10-explanation:start architecture -->
         <section class="panel explanation-panel" id="explanation-architecture" data-explains="architecture" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="architecture">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why a CPU needs specialised parts instead of one general component</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why a CPU divides specialised work</h2>
           </div>
-          <div class="explanation-body">
-          <p>CPU components cooperate because processing an instruction requires several different jobs. Registers hold the small values and instructions needed immediately. The control unit interprets the current instruction and sends control signals that coordinate transfers and operations. The ALU performs arithmetic and logical work, while buses carry addresses, data and control signals between the CPU, memory and other components. A clock provides repeated timing signals so these state changes occur in an organised sequence rather than colliding unpredictably. Specialisation makes the movement of data explicit: an address is placed where memory can receive it, returned data is held before use, and the selected operation is applied to the correct operands. Saying that the CPU simply “processes data” hides this mechanism. The processor works because each component performs a limited role and the control unit coordinates those roles for every instruction.</p>
+          <div class="explanation-layout has-visual">
+
+          <figure class="explanation-figure">
+            <img src="../assets/diagrams/stage10-cpu-workflow-analogy.jpg" width="1400" height="933" loading="lazy" decoding="async" alt="A textbook-style laboratory workflow with a controller, small holding trays, parallel channels and a processing machine." />
+            <figcaption>A controller coordinates; small trays hold immediate values; distinct channels carry different kinds of signals.</figcaption>
+          </figure>
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>The control unit interprets the current instruction.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>The ALU performs the required arithmetic or logical operation.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Registers and buses hold and move the immediate values.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>A laboratory separates coordination, processing, temporary trays and transport lanes.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>The components form one system; none executes a program alone.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end architecture -->
@@ -221,11 +245,31 @@
         <!-- stage10-explanation:start alu-cu -->
         <section class="panel explanation-panel" id="explanation-alu-cu" data-explains="alu-cu" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="alu-cu">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why the ALU calculates but the control unit coordinates</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why control and calculation are separate</h2>
           </div>
-          <div class="explanation-body">
-          <p>The ALU and control unit are both inside the CPU, but they contribute in different ways. The ALU contains circuits for operations such as addition, subtraction, comparison and Boolean logic. It can produce a result only after it receives operands and an operation to perform. The control unit supplies that coordination. It decodes the instruction in the CIR, identifies the required operation and issues signals that move values between registers, memory and the ALU. This is why the control unit does not itself add two numbers, and the ALU does not decide which instruction should execute next. Their relationship is like selecting and carrying out a command: the control unit determines the sequence and enables the correct pathways; the ALU performs the requested calculation. Confusing the roles produces vague answers because it removes the cause of each component's behaviour.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>The control unit decodes what the instruction demands.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>It sends signals that select data movement and an ALU operation.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>The ALU returns a result and status information.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>A coordinator chooses the operation; a specialist instrument performs it.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>The control unit coordinates calculation but does not replace the ALU.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end alu-cu -->
@@ -267,11 +311,31 @@
         <!-- stage10-explanation:start registers -->
         <section class="panel explanation-panel" id="explanation-registers" data-explains="registers" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="registers">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why registers, buses and the clock must work as one timed system</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>How registers, buses and clock stay aligned</h2>
           </div>
-          <div class="explanation-body">
-          <p>Registers provide named holding places for values that the CPU needs during an instruction. A register is useful because its contents can be accessed and changed quickly, but the value still has to reach the correct destination. Buses provide those routes: the address bus identifies a location, the data bus carries the value, and the control bus carries signals such as read or write. The system clock divides activity into coordinated steps. On a clock event, one component may place a value on a bus while another accepts it, preventing unrelated transfers from being treated as the same operation. A higher clock rate allows more timing cycles per second, but it does not guarantee proportional performance because instruction complexity, memory delay and architecture also matter. The mechanism is therefore timed movement between specialised stores, not a collection of independent components working whenever they choose.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>Registers expose small values needed immediately.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Buses carry values, addresses and control signals on distinct paths.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Clock events determine when components may capture a new state.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>Timed transfer gates stop items arriving halfway through an operation.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>A faster clock helps only when the rest of the architecture can keep up.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end registers -->

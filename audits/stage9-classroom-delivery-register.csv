@@ -224,11 +224,11 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 016,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,eb60c720c9e6702786ef1db48c7f36b243cf75e2a6d6a24443e7607616a93175
 016,3,hook,hook,CORE,ASK,,The classroom printer is shared by 24 computers. What is the actual network purpose?,Classified,e46e9d0d519089000754e5e333ed6c1988dc307349b2db5572d951fe4696eb93
 016,4,purpose,purpose,CORE,TEACH,,Why networks are used,Classified,ad0a15e33b309d7c58d806205454375363654d9a308a11b5873479ea68b68f85
-016,5,explanation-purpose,purpose,CORE,TEACH,,Why sharing becomes useful only when devices can exchange requests,Classified,3f0993b45cc40e3e44796d486f35e2835cb99755906a141b24c8cb9a2b3bec9f
+016,5,explanation-purpose,purpose,CORE,TEACH,,How a shared resource becomes useful,Classified,8a670c2e6862ea9cea73204623ab8e5e4fecd303e0405bd4489ff95415ab36d5
 016,6,lanwan,lanwan,CORE,TEACH,,LAN vs WAN,Classified,507d9018b4979b9f12eb27a0d48b3e9f8a6e996f4fedcdb56301104331501327
-016,7,explanation-lanwan,lanwan,CORE,TEACH,,Why area and ownership change the way a network is managed,Classified,740010c2f93064bf653c28ffc6fb85cebedf9517e5a09cb587d9a8cf5c1b051e
+016,7,explanation-lanwan,lanwan,CORE,TEACH,,Why LAN and WAN management differs,Classified,36b01e3d186479273c644b5f5d7b129df816509085e76bfaa5ded152075c910c
 016,8,topologies,topologies,CORE,TEACH,,Network topologies,Classified,a3e3d7dc3bcdf519ced799d06d767edde6d593cfd2dfdae0e12fd9496165e6c8
-016,9,explanation-topologies,topologies,CORE,TEACH,,Why physical connection patterns create different costs and failure effects,Classified,8f3b8685707565422de903e7533ef763e60517753b2084624c71da4606448329
+016,9,explanation-topologies,topologies,CORE,TEACH,,Why connection patterns change risk,Classified,62d223265742412e047bb42a750cf039c985311c66593386ac5f8448b531014c
 016,10,tool,tool,OPTIONAL,PRACTISE,,Topology recommendation helper,Classified,647943cd83a66844f843bd11c5160eb2d8746b8cc011e895f5fcb08288dd3082
 016,11,examples,examples,CORE,TEACH,,Worked examples,Classified,f36d63e3f0c87e104892224ad8c4eef3f2bf2bf1d26a405a8972dd6cf4386693
 016,12,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
@@ -423,11 +423,11 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 030,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,f1b24bc744931eb4e6c074fe3d46e4341abcaac3d3910d4a1a78d9ef86e754e3
 030,3,hook,hook,CORE,ASK,,"Your laptop has 30 browser tabs, a video call and an IDE open. Which memory areas are being stressed?",Classified,967e0ce29424dd86752197fda2a624bcb9066cdfa09bac0c04cb4a88abfd860b
 030,4,primary,primary,CORE,TEACH,,Primary storage is directly involved in current processing,Classified,83e1ba6ddc9b6e2cf32b31653d2076e6a7f927ccdeffc57990c48f8b531a0c39
-030,5,explanation-primary,primary,CORE,TEACH,,Why primary storage must stay close to current processing,Classified,3ca18af492bb487485535022ebbc0b550d1a24321decf7dda9bea2acb8301c3f
+030,5,explanation-primary,primary,CORE,TEACH,,Why active data stays close to the CPU,Classified,2c29daff6abce97eb84f886e6c7ae86c8883a6ba5d96e2846dd2a443c2db2d2f
 030,6,ram-rom,ram-rom,CORE,TEACH,,"RAM and ROM: similar letters, very different jobs",Classified,ff581ea3d63d5fcd74136301f260c46e8c70d14dfa3a729e70067da4691e2580
-030,7,explanation-ram-rom,ram-rom,CORE,TEACH,,Why RAM is temporary while ROM remains stable,Classified,2930f6f156d84f5b914a17a9fcab283ad044819ba68913776562b89676c63ef6
+030,7,explanation-ram-rom,ram-rom,CORE,TEACH,,Why RAM changes while ROM remains stable,Classified,13cb94905d122d862d7fcdb26986f35dd6b7590913afd4f450d0108c92e587ee
 030,8,cache-vm,cache-vm,CORE,TEACH,,Cache and virtual memory affect performance in opposite directions,Classified,bd2617bd3a6da1a60f536fccab3f44d3f8ef7a9030ee4dc2155eb18a8970147d
-030,9,explanation-cache-vm,cache-vm,CORE,TEACH,,Why cache accelerates access while virtual memory usually slows it,Classified,3e0f8290ba5ca8e86a4c75cef63e0f02cb016afdae7b12e35148a12cdad53269
+030,9,explanation-cache-vm,cache-vm,CORE,TEACH,,Why cache helps and virtual memory slows,Classified,96520ccf51ac86cb6a8e79ee2b029c1d7b7177a2432309fbad40e3f62fa8ea1f
 030,10,tool,tool,OPTIONAL,PRACTISE,,Choose the memory concept,Classified,c35c4d846cd9848e7899344db0ce5ccb9c008078bf0f33a3e60326c376716827
 030,11,examples,examples,CORE,TEACH,,Precise explanations for primary storage,Classified,83eebc978ca100a6cc8d7dc8ef94ee330f70c54bc3f7b1cd92aa45b99d3707d6
 030,12,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
@@ -573,12 +573,12 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 041,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,575a2e8b190ac9ebf22a2dff648edece52e1b129c88b68fdeeb31a625b9dd5ab
 041,3,hook,hook,CORE,ASK,,A computer adds 23 and 19. Which CPU part deserves the credit?,Classified,9f0a55933f79b5e66e32fc0ad6867724921a70fc97e31e3adee53f2fad586a35
 041,4,architecture,architecture,CORE,TEACH,,CPU architecture is about cooperating parts,Classified,a128c4208b76fdceef97f85b93a176c10daea1b65dbe5d05edc6528391de3329
-041,5,explanation-architecture,architecture,CORE,TEACH,,Why a CPU needs specialised parts instead of one general component,Classified,bb3b58362210825db058414706e5a42d8b412a46ac8585dcacb07ca746c05a17
+041,5,explanation-architecture,architecture,CORE,TEACH,,Why a CPU divides specialised work,Classified,3af953bfa538d2eccaf6239786610cbf87b309b521a11d78f698fc98f20cdf86
 041,6,cpu-map,cpu-map,CORE,TEACH,,"Inside the CPU, outside the CPU, and what connects them",Classified,7eed84ff90a2987774597fe00660058ccb46ee4017817a147bbaa8e22ccd481b
 041,7,alu-cu,alu-cu,CORE,TEACH,,ALU and CU: do not swap their jobs,Classified,7a22059fe59c8366904eb6024d5de89b699b20e5117baae2d5bdd69be0343f42
-041,8,explanation-alu-cu,alu-cu,CORE,TEACH,,Why the ALU calculates but the control unit coordinates,Classified,6307503b95a8c3c6c20cbc2bf30a6d9d67180eece16708822ce9aab03a249b83
+041,8,explanation-alu-cu,alu-cu,CORE,TEACH,,Why control and calculation are separate,Classified,92964f9f79ba271f4b3aa4421d1cdf314a61b09918646c0496c634c783446e07
 041,9,registers,registers,CORE,TEACH,,"Registers, buses and clock",Classified,46b726bd6f5b17c99f5caf2d02ee5da20d5f8bbd76588c8e0e6c44fc6bc836d5
-041,10,explanation-registers,registers,CORE,TEACH,,"Why registers, buses and the clock must work as one timed system",Classified,49dfdf7bb2e521040da30e6cbef44bb3b7621f93cec57cd74c005cf4ad7ba539
+041,10,explanation-registers,registers,CORE,TEACH,,"How registers, buses and clock stay aligned",Classified,7f78bb4a489e0d7c2f2aa7387c7b6f7a0dce2dbf58934d19ee14cfafa4b38b9e
 041,11,tool,tool,OPTIONAL,PRACTISE,,CPU component mapper,Classified,b7cfa350f55e3ae17dc30a73ed120e4cd0b05059f71d1f34da5c102aac1aa6ee
 041,12,examples,examples,CORE,TEACH,,Build answers from exact component roles,Classified,13bdbac1f79ad143781d0f7a82d10e51bc9fe0cfa808b930793bee2e2bee531d
 041,13,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,899596224041a9569104d5f8372a9d61427f9a49058c7f266db26dda327a99db
@@ -759,17 +759,17 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 053,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,6e8fe5f6adfcaec043b142cf5ae570919b4121f6ae9b5d1af6bfba0bf6073667
 053,3,hook,hook,CORE,ASK,,"A video editor, browser and music player are open. Who decides who gets CPU time?",Classified,547da1c2830a1ce7e36d16fd2872ab7cc0248cec5fc3241e60c5a7a06286c130
 053,4,concept,concept,CORE,TEACH,,An OS manages resources and provides services,Classified,9dbd2e880aa83c7d3063b37528b542cb513e73b0c96fd9600b31d8c8c4294640
-053,5,explanation-concept,concept,CORE,TEACH,,Why applications need an operating system between them and the hardware,Classified,5f923e293c2a40567ca77920dd701bbb26473bca471c193b39aadc64d558a507
+053,5,explanation-concept,concept,CORE,TEACH,,Why applications need an operating system,Classified,6f2aa3d0af729c1e52abcf9d59f2863338dce1da126376918697c615ffd93967
 053,6,process,process,CORE,TEACH,,Process management: sharing processor time,Classified,b8f4484ce2a626b78f3a2b88b8ec182c991dd5cb303aea82b863eab14b282c10
-053,7,explanation-process,process,CORE,TEACH,,Why sharing processor time creates the appearance of simultaneous programs,Classified,c7b87e8f7d389c67aed8dc7fac74741aaff7ddea36099cba579265a0fc5e0cc7
+053,7,explanation-process,process,CORE,TEACH,,How time-slicing creates apparent simultaneity,Classified,87e81f2d7722d7eb668ed97540014cab57f8704cd7bdbc328d1589e2b8c673ef
 053,8,memory,memory,CORE,TEACH,,"Memory management: allocate, protect, reuse",Classified,6254f882459da815dcd2e063dd9a7a51a7e0589af47bc71809268dc1d95ed20d
-053,9,explanation-memory,memory,CORE,TEACH,,Why memory allocation and protection are both necessary,Classified,a5dadf57d1785ec4460ca2e10447e3d3ade714c9dff3969f714ac646e862ef1f
+053,9,explanation-memory,memory,CORE,TEACH,,Why memory needs allocation and protection,Classified,e2f1c32b8a2a35fec50b602b84a2bed596609abd39882e5ad30ad1666c71bad0
 053,10,file,file,CORE,TEACH,,"File management: names, folders, access and storage",Classified,70ef304fbeccff9a0d377ae1c0f0d4df17af499cd3b5e21fad96f062946fd35b
-053,11,explanation-file,file,CORE,TEACH,,"Why a file system needs names, metadata and access rules",Classified,27a219a2e110a90b8cea78183d4f2e6bb9ee6820503ae1913747825872b70faa
+053,11,explanation-file,file,CORE,TEACH,,Why files need metadata and access rules,Classified,5044a5b2843a07bf6d1a00cab7bf16f06c93308b526911ef001e58c9c675b33d
 053,12,device,device,CORE,TEACH,,"Device management: drivers, buffers and queues",Classified,250aea6f7a58e1d2af797fff735cfe28087f0a0954828bbd34b2727ae737512d
-053,13,explanation-device,device,CORE,TEACH,,"Why drivers, buffers and queues make slow devices manageable",Classified,b22d1a4417cc42ff6a4b87b5bfe577c56544b5cf178c30d89494c28d2024cbf7
+053,13,explanation-device,device,CORE,TEACH,,"Why drivers, buffers and queues work together",Classified,f66dcdfed12df04dae10e4f13d421c359ca8757521acd3ffda3c18fa315269d3
 053,14,services,services,CORE,TEACH,,Other OS services at overview level,Classified,ee98f5707635cc23a1db556d9824bd984c682b5e758273ad9c0d68a3f2dba22c
-053,15,explanation-services,services,CORE,TEACH,,Why operating-system services form one coordinated control layer,Classified,ebd2ce4d2cc561c52f08ee04b7855510c6fefb89781245b430451c90e99ffa7a
+053,15,explanation-services,services,CORE,TEACH,,How OS services form one control layer,Classified,bf98eba777577f64fc35af704906a95c3b95b6955bc08834d3d607eabf6536df
 053,16,tool,tool,OPTIONAL,PRACTISE,,OS role classifier,Classified,47d0a935b667c93947b63c72fcf23394acfd110511d30e6326a8bf613985df19
 053,17,examples,examples,CORE,TEACH,,Name the OS role and justify it,Classified,81c58b154db6ce65aa3b25786e63b1b35c4dfa97d3d4708a18de82d6fc1bf09e
 053,18,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,fd06f342d3d4f93e3ce1f19e296fdf92c5e07e43d30b0847262373cfa584284b
@@ -994,19 +994,19 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 067,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,a26d9927895e61873eafa9ee6862c2ade819a6064c5660c39efd10db7af9708f
 067,3,hook,hook,CORE,ASK,,"A website stores a digest of your password, not the password itself. What method is being used?",Classified,6a4a56a752c3c0a006fa35f04f9b1ad6097deefb760a74dc6cf8f58f3e9a2b8e
 067,4,core,core,CORE,TEACH,,Security methods have different purposes,Classified,9863469f88ebaea5c95477040ba3017d68db00256eba3f383807b84ba5c47086
-067,5,explanation-core,core,CORE,TEACH,,Why security methods cannot substitute for one another,Classified,ac1ee08035b880faacaa5456e68bc13e574f5131473213ffa00ec959f553a2ec
+067,5,explanation-core,core,CORE,TEACH,,Why security methods cannot substitute,Classified,5c4d2faedd09df7298565d93a75b88360b8a89550967c086dc1f6bf9315dc62d
 067,6,encryption,encryption,CORE,TEACH,,Encryption protects confidentiality,Classified,d41e30a19f0496ccbf4ae78340f1d76ad5ca52ade69889f7ff7b83846af5baa7
-067,7,explanation-encryption,encryption,CORE,TEACH,,Why ciphertext protects confidentiality but not every security property,Classified,5871f9b49a073346838ab4ad1899eebf06d54771201154dfcf0a08d84fd5c91b
+067,7,explanation-encryption,encryption,CORE,TEACH,,How encryption protects confidentiality,Classified,80cd9fec2a49efdd7dfba78f1e7fc6e9c54ecb46c2ca0e3c8d6b4e50b46c0951
 067,8,keys,keys,CORE,TEACH,,Keys control who can encrypt or decrypt,Classified,63886d0846758a30596aa7df871d65aa9aad53444a0e5f6d567b159c54786a58
-067,9,explanation-keys,keys,CORE,TEACH,,Why key ownership determines who can perform each cryptographic action,Classified,b2320b0e87e0a4d7b538a3aac268bab9d0a90c8b011671c0ae5dd0c7589f386d
+067,9,explanation-keys,keys,CORE,TEACH,,Why key ownership changes capability,Classified,a84506dd2bbfe71ef537aef8dec9fdda5e722de66a2c97a87edde9aedd645e84
 067,10,hashing,hashing,CORE,TEACH,,"Hashing is one-way comparison, not secret recovery",Classified,ed0e7fec5a910038164e5fc206668ed1e0938020bf18d39b9c99fdc956e9a8f8
-067,11,explanation-hashing,hashing,CORE,TEACH,,Why hashing supports comparison without storing the original value,Classified,581d912a3fd70ecafbebfec6f270d3fb6b50cd343e9572668f382b7f19c11f54
+067,11,explanation-hashing,hashing,CORE,TEACH,,Why a hash supports comparison,Classified,1c1fa6cb1a28aa0abac3e111489a875b5d0e17f0f26ac7574cb21b3daf226f97
 067,12,certificates,certificates,CORE,TEACH,,Digital certificates help authenticate websites,Classified,fd2cb39d47acd6d2226c812224ffc7568a0a3ac20475dfc96c13910d51d71c23
-067,13,explanation-certificates,certificates,CORE,TEACH,,Why a certificate makes a public key more trustworthy,Classified,159ef89311f96d14ee78de345618e80fd35b18f1ad21818a55995b8a36f1e578
+067,13,explanation-certificates,certificates,CORE,TEACH,,How a certificate supports trust,Classified,871658486b19afc6fae39bef168a8d1a23f365aec98cec7d62153ed6162aea29
 067,14,https,https,CORE,TEACH,,HTTPS combines identity checking with encrypted communication,Classified,c33b9ce93635ec52c6a9855bb72e07eb79c721faecd52a534e62b7dbbd946dd8
-067,15,explanation-https,https,CORE,TEACH,,Why HTTPS needs both authentication and encrypted transport,Classified,8e27b088f31cf94e32b7e21bb49a5b87717722858b9041aae3f932e60d5ab619
+067,15,explanation-https,https,CORE,TEACH,,How HTTPS combines trust and privacy,Classified,11e34a58c1c15d71c1d8f2221380a2c9adffa96880b13f4a8d6b8667c3ee2571
 067,16,compare,compare,CORE,TEACH,,"Choose by job, not by favourite buzzword",Classified,0156f9f93522f58cc62c0122d54c1682a1444d741e114ebb487fcda1cc2a0782
-067,17,explanation-compare,compare,CORE,TEACH,,Why the required security property should choose the method,Classified,3ed94e7522ed1a8972512b0e33b6a9d2398b4a138e08c2d704630e9e052e5b06
+067,17,explanation-compare,compare,CORE,TEACH,,How the required property chooses the method,Classified,b146e7c9533ed5ed416d1d591172daae5125b4757144c8d6871e9a21a117d482
 067,18,tool,tool,OPTIONAL,TEACH,,Which security method fits the scenario?,Classified,d4da0071c8fb3cf606106b1ad5c2bc3f69a58edf94fac2381c0aaf44650f7b51
 067,19,hash-demo,hash-demo,CORE,TEACH,,"A tiny demonstration hash, not a real security hash",Classified,55758688e8aa3fb5889bd5db9015cec7cbec759590c52d2b09c7d09704c96e2e
 067,20,examples,examples,CORE,TEACH,,Four model answers with strict method boundaries,Classified,d324a4f29118950da1ef5a510bcaebbacfaca0af1b2867c19194a360e1173243
@@ -1264,13 +1264,13 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 083,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,8c05787014573f5582a1de67956f3162077f2a2f5ae0e8289f8c8a97b8fe79c2
 083,3,hook,hook,CORE,ASK,,A tutor's email appears in 38 course rows. The tutor changes email. What can go wrong?,Classified,ccff001d7746e2b943479ea1a31e411262cca61af8515cb3ff23128532b8d8d9
 083,4,purpose,purpose,CORE,TEACH,,Purpose of normalisation,Classified,02d474125ce3af524aea2399f314367e513ef24770ae9a47ff0913ebf670dadc
-083,5,explanation-purpose,purpose,CORE,TEACH,,Why normalisation protects consistency rather than merely making tables smaller,Classified,81e05eb30a34a1d3998b04a0bbf3b04c4b0711bce521f376e0dc0c5f73391d3d
+083,5,explanation-purpose,purpose,CORE,TEACH,,Why normalisation protects consistency,Classified,14dfa82260fa34e39df2b49c08d6589a82901fb37c53e8bca8a2955101983a40
 083,6,redundancy,redundancy,CORE,TEACH,,Spot unnecessary repeated facts,Classified,a65a64e7383a3e9c31b8a0a695ec7c7d2ff0d39d20951747965da4e15f0f1734
-083,7,explanation-redundancy,redundancy,CORE,TEACH,,Why repeated facts create risk even when every copy starts correctly,Classified,706ca5514cb6187e8ea9164b9423df253c61a913639b9a0b6149817948f07ba6
+083,7,explanation-redundancy,redundancy,CORE,TEACH,,How repeated facts become risky,Classified,a5d44547b23cc1e3704314c3551ff223a575b12cbd07a22ecd3429d946b55e18
 083,8,anomalies,anomalies,CORE,TEACH,,Three anomaly types,Classified,9eee832526a669d26a60b08362791cf97feafe4a29cd7ce1d8ab23ec7cf40300
-083,9,explanation-anomalies,anomalies,CORE,TEACH,,Why one badly structured table produces three different anomalies,Classified,f913ec6aaee82df86a2cf989cdf46e7579dcc3b2c2e17fdaace582e97045ef93
+083,9,explanation-anomalies,anomalies,CORE,TEACH,,Why one structure causes three anomalies,Classified,450b9f46e4088a8d8222fd2dc2d5a66d16fb85c88dea8f2ce0283730d15ba8a7
 083,10,normal-forms,normal-forms,CORE,TEACH,,"Normal form idea, without turning the lesson into a maze",Classified,9cd493a887ac3efa6432fb7f2c59e008cbf434f4cdd0de1692385d35de0356e0
-083,11,explanation-normal-forms,normal-forms,CORE,TEACH,,Why each normal form removes a different dependency problem,Classified,6c6a43ecf7722e29fcc43334e933fcc1415c2b8a2bb339f95f0b10c345e076a3
+083,11,explanation-normal-forms,normal-forms,CORE,TEACH,,How normal forms remove dependency problems,Classified,f72199cb6248b134bf2266dec4ad77bd079ae0e0597fc1cf5a21e96ece77bd2e
 083,12,detector,detector,CORE,TEACH,,Which fact should be moved?,Classified,21af3f4c9879003cc5eae382fb8a530b9f3cb7f73947e8fba0b1d07aca38be78
 083,13,classifier,classifier,OPTIONAL,TEACH,,Classify the problem,Classified,f1b063f9a3f39fe1011bbb844c7df6eecc18282da41fc5bc4c925af118298c0f
 083,14,examples,examples,CORE,TEACH,,From one bad table to linked tables,Classified,870c8c6f6bccbecd7a986dc52fff9bff41e8a872cd1242e7a6075086cf5b0c19
@@ -1394,7 +1394,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 091,5,hardware,hardware,CORE,TEACH,,Choose hardware by matching characteristics to use,Classified,c150d391524ecfb7cfa3ea40b4490602caf2c79bfb7714b5f9c3d1d29642bd59
 091,6,processor,processor,CORE,TEACH,,Registers and buses: the FDE cycle vocabulary,Classified,fcad7895ca574f80439a31ab2aee7813af3439a1bbdc528eafbb728155a9cb8b
 091,7,logic,logic,CORE,TEACH,,Truth table shortcuts,Classified,13d4ffe4d553928ab718cee58e68e615ea5916ad81b78cdd4535aa9e1169c20b
-091,8,explanation-logic,logic,CORE,TEACH,,Why hardware answers improve when components are connected into mechanisms,Classified,8ea6c134bbc2de47262c3fece1cae391b1554884cbf5c9517e4519c924d14353
+091,8,explanation-logic,logic,CORE,TEACH,,How hardware facts become mechanisms,Classified,e83699af0336803a3d141d69e9282d46204bb31555cd6caa9c38bf1debbde638
 091,9,classifier,classifier,OPTIONAL,TEACH,,Identify the topic and first move,Classified,891ecfa6e196e3a1f6ca0b23d1b4ed0f5dff7da72ec6d9a5022461bc05f1ab65
 091,10,fde,fde,CORE,TEACH,,Trace register actions,Classified,aa9f5706150ecced49717a6c90788a96133580fa296191fed720ec59d776959f
 091,11,examples,examples,CORE,TEACH,,Annotate where the marks are,Classified,37aaf842a39c27eca383f35e244cd1aea1b073826a78eaf9b1eadca87276173c
@@ -1616,13 +1616,13 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 105,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,7c30f6108a8d6eb0e1cacd9b475a0f3ee17b9ef781c9e80609cfb53e376fff27
 105,3,hook,hook,CORE,ASK,,"Four cards, two legal ways to tidy them",Classified,e833262d91032566235868bc1d4fabd553a0719c2ac2a263bb73f408a7096e99
 105,4,bubble,bubble,CORE,TEACH,,Bubble sort: compare adjacent items and swap if needed,Classified,b4282aae045583a4b5b6b617019a52cba0bb14344b9a35fbb8db6b811a82aa25
-105,5,explanation-bubble,bubble,CORE,TEACH,,Why bubble sort needs repeated adjacent comparisons,Classified,fabbd52ec249a9934682f6b1dc86e890bd251a3e0007a77a35f4aee975b07a56
+105,5,explanation-bubble,bubble,CORE,TEACH,,Why bubble sort repeats adjacent comparisons,Classified,9001631f51332a73a66643d62d62e02f926632759cb2e3ec33e48b5ae9521202
 105,6,insertion,insertion,CORE,TEACH,,Insertion sort: insert the next item into the sorted left section,Classified,641169e9bfd7b44c40d4113c2aaaf4650a0becf8530dc09cefc54ff383f350ed
-105,7,explanation-insertion,insertion,CORE,TEACH,,Why insertion sort maintains a sorted left section,Classified,f57a25a6f52bb1dda28ba7dc6a53ec5fed5b6502bf06fbf41ce1da318c1144e6
+105,7,explanation-insertion,insertion,CORE,TEACH,,How insertion sort grows a sorted region,Classified,f7a0205d85859a1a3b5de58e5fc0133acdd55e2339c8469cfd3d60e93b604054
 105,8,compare,compare,CORE,TEACH,,"Same final list, different route",Classified,0f2e26e1f25ba9251824b57bd3813c5a3ad8d2b8e7f5a6c489bb7a9480a2edf1
-105,9,explanation-compare,compare,CORE,TEACH,,Why two correct sorting methods move data differently,Classified,a6d69a6570fc7d7d5c58bbd530f0a0f083c9ad16686251fa28d4a843a60f7587
+105,9,explanation-compare,compare,CORE,TEACH,,Why the sorts move data differently,Classified,5634c99e315d3acba613180523cde7f37a5606f3cda2d204d9efb0c89b4c7f68
 105,10,pseudocode,pseudocode,CORE,TEACH,,"Trace Cambridge-style algorithms, not Java syntax habits",Classified,dc0aaeab84175d9eee8635739d2aebcc8b721189d1e4281f2841da1c53b25e11
-105,11,explanation-pseudocode,pseudocode,CORE,TEACH,,Why a trace should follow algorithm state rather than language punctuation,Classified,440c83cbc83f6e219e5cedd52938503cef730f59638cf0a1192e65a35f3ec30f
+105,11,explanation-pseudocode,pseudocode,CORE,TEACH,,Why a trace follows state,Classified,121e49f5700212523928d0e528205aee9df77449409eab6193536260a9eb6d03
 105,12,chooser,chooser,OPTIONAL,TEACH,,Identify the method from the movement,Classified,c2d895f97f7be54aaacd41327a252b46ca8825c41e4d68bb6322b6bb038cd2a9
 105,13,bubble-tool,bubble-tool,CORE,TEACH,,Trace one full bubble pass,Classified,a448bb8a20854de2333af1293c21e168158be42a379584bc8556a6a783714c47
 105,14,insert-tool,insert-tool,CORE,TEACH,,Trace insertion sort movements,Classified,f0f1c3d77b8d276f552cec2ff531274b369b5024e2f04503c1c73ffbfcea2042
@@ -1903,19 +1903,19 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 122,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,663d3fcf358dc116f85f759fb1ed7aebb8d0f98e13202c632fa72b056f944d04
 122,3,hook,hook,CORE,ASK,,Who leaves first?,Classified,0bdf6cf1e7d2607071c815532f2912c2967c94b6237934116ee23e6c700667a4
 122,4,concept,concept,CORE,TEACH,,"ADT means behaviour first, implementation second",Classified,41f0b842a70c924ae77fe4d6a6e38dab81c7015292c849c519045d564eb87524
-122,5,explanation-concept,concept,CORE,TEACH,,Why an ADT is defined by permitted behaviour,Classified,3b28995345d1f14436e3115748e6fb7bdd0925770b3412f7613dc21e75582e28
+122,5,explanation-concept,concept,CORE,TEACH,,Why an ADT is defined by behaviour,Classified,776ea14ba16168947f6a3c045e2f1f3ce22f87ac06ee2c52c0659cc5f2a3659f
 122,6,stack,stack,CORE,TEACH,,Push adds to the top; pop removes from the top,Classified,00eab98dffcf02c2b4c38ac139567eda4ce67999ab524ce960ea45d03a8f6a2e
-122,7,explanation-stack,stack,CORE,TEACH,,Why one accessible end produces LIFO behaviour,Classified,b35a6ff9ccee5269bab8e32dcba03b12b2c277e5d9ce48fa468b9cf7635574a0
+122,7,explanation-stack,stack,CORE,TEACH,,Why one open end creates LIFO,Classified,ca83667b6d0510b2c260a950e26777fb5b5748fe67f3225dab28406ca6385b23
 122,8,queue,queue,CORE,TEACH,,Enqueue adds at the rear; dequeue removes from the front,Classified,e47c8f5971d088fa3547833d95795874d5713a12664fbcdebefc6137ba71994c
-122,9,explanation-queue,queue,CORE,TEACH,,Why separate front and rear positions produce FIFO behaviour,Classified,cc79871fafa73ab9f3002434fe3ec6197b1611b9b9051625588d2d371210ca9c
+122,9,explanation-queue,queue,CORE,TEACH,,Why two ends create FIFO,Classified,cff922283bf3d0e50eef17ac4067c8153a13be1e1a402fa5e6ec9aa31528bb9e
 122,10,operations,operations,CORE,TEACH,,Use the operation name that matches the ADT,Classified,aed8995566e6868b5b30794002fb1a9ea06dfbccd6cde74f46cd656b946b8c5f
-122,11,explanation-operations,operations,CORE,TEACH,,Why operation names protect the meaning of the structure,Classified,b068ef0d05917001d1638524a59fddcf4df4beae4c1bd0f22537474c8256a1e2
+122,11,explanation-operations,operations,CORE,TEACH,,Why operation names preserve meaning,Classified,edaaed02263f0b5373a6aa247353464f3f940abc5dd14730cba9e9df2a4801c7
 122,12,errors,errors,CORE,TEACH,,Check before doing the operation,Classified,cb4ecc3256fc558582f5d6a2028807ac6c7cf31e39f6cb50c8956501a8a89886
-122,13,explanation-errors,errors,CORE,TEACH,,Why overflow and underflow must be checked before changing state,Classified,3c7f0bee257900bbe60b1630b4e8efe6e100d78966e561b1a2901f94be5b79d3
+122,13,explanation-errors,errors,CORE,TEACH,,Why boundary checks come first,Classified,5b90516d625bf13b47ba926bee473c44966456439a827d1b0a2f35d928e8ddcc
 122,14,implementation,implementation,CORE,TEACH,,"An array can store the items, but the ADT rule controls access",Classified,a7b1300868986ed7811b25c5fa199752c43a0d2b174b68d8ede642ef4905ba5d
-122,15,explanation-implementation,implementation,CORE,TEACH,,Why array storage needs pointers to enforce ADT behaviour,Classified,e2347d446d24cf036908d8f4d2c3e1c3b678616ec78380de705753904857aabc
+122,15,explanation-implementation,implementation,CORE,TEACH,,How pointers enforce ADT behaviour,Classified,d444fd73880495a0159241f63a94b2993b3bb7a85de1cedb9bb97403173c25cb
 122,16,pseudocode,pseudocode,CORE,TEACH,,Use Cambridge-style operations in exam answers,Classified,ab4f0bdff076456679420720424666b1c5d4719101461fc9cf31ed55eaefd11f
-122,17,explanation-pseudocode,pseudocode,CORE,TEACH,,Why exam pseudocode should expose the state change clearly,Classified,20dd933860018cd5e3f3d0977a5ddb6ea443572532c1c79a5db35da272a55b04
+122,17,explanation-pseudocode,pseudocode,CORE,TEACH,,Why pseudocode must expose state change,Classified,3877bc952898e4c3a2f9fcb77da8b2cbe650e1df959f791980d70ac60c1b6685
 122,18,simulator,simulator,OPTIONAL,TEACH,,Compare stack and queue behaviour,Classified,bec5c5ecfa589b3d026736214e3476c68f7089d8616a478a7b424f69a4986c3f
 122,19,trace,trace,CORE,TEACH,,Step through a mixed operation sequence,Classified,c20de691ca4024b5f4ef48696425cd2963c3a766c4cc85d2d94c92eb0f1b1f09
 122,20,examples,examples,CORE,TEACH,,ADT traces and checks,Classified,9b9371c384df5bde09897b76831df74990752308a7fa4ec9b9f567d342743495
@@ -2270,19 +2270,19 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 142,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,5ebe929d345d5ff3be5f232ee6734b3137a6715d7a7ecaa22acd4373cc16443e
 142,3,hook,hook,CORE,ASK,,A client says: “Make a user-friendly booking system.” What should happen first?,Classified,c1475afb79fa316132dc092ba08258b235efe4719c30060837556916d60eff07
 142,4,purpose,purpose,CORE,TEACH,,Lifecycle models give structure to a software project,Classified,c3d6e711f34a3f3d0cb8f4e3e067e53affd03b1c91f846b13805be0a6c959292
-142,5,explanation-purpose,purpose,CORE,TEACH,,Why a lifecycle reduces uncertainty instead of merely adding documents,Classified,8736b3501dd84f31cb7834e2182f6f5759446d6237b83bdf4e3add0228056909
+142,5,explanation-purpose,purpose,CORE,TEACH,,Why a lifecycle reduces uncertainty,Classified,7d26838359d8d0c26604278b00609686754e842901ad999d053817550a5448f3
 142,6,stages,stages,CORE,TEACH,,Common stages and what each produces,Classified,82a85316a88c8bd44d8dd319f2add0df8f84a4b8b2f5688fcf48aca12d61a06f
-142,7,explanation-stages,stages,CORE,TEACH,,Why each lifecycle stage must produce information for the next,Classified,c14b9f4b8931022d8803f5f755714593bdf1737a7d3f1a08dfa7a391b58e82ed
+142,7,explanation-stages,stages,CORE,TEACH,,How one stage supplies the next,Classified,43999ffaf197ca93a457d30751c5771816d1a729b25fd663e28bde25566a3fab
 142,8,waterfall,waterfall,CORE,TEACH,,Waterfall moves through stages in a planned sequence,Classified,74dcd81e8ec933ae45506b611c9a4ee5124f36b7746583918f8ce482845ca89b
-142,9,explanation-waterfall,waterfall,CORE,TEACH,,Why sequential planning helps stable projects but resists late change,Classified,7027a5d918c551264548959d32f878ab496ff0c70058d44c752293182e003f06
+142,9,explanation-waterfall,waterfall,CORE,TEACH,,Why sequence helps and resists change,Classified,44a0fce1c462c9579fa4fc15d0605ba65c5ef8a90e2687000f628dc9ca3d0c83
 142,10,iterative,iterative,CORE,TEACH,,"Iterative models build, review and refine through cycles",Classified,20b9f0d2ab45252f58e26dc6f20176f461ec447c86eaeb4082810b7cbda3b3b3
-142,11,explanation-iterative,iterative,CORE,TEACH,,Why repeated cycles expose mistakes earlier,Classified,cd6edbaf3e8f1fcdfa228d013ddce5bd2f1ac67ca852c22b000c27d2e0edbc64
+142,11,explanation-iterative,iterative,CORE,TEACH,,Why repeated cycles expose mistakes,Classified,979d37753aa5d624ba7812f90592d047721a513852a7bd7df1bdf8eeac0f5635
 142,12,agile,agile,CORE,TEACH,,Agile development emphasises short cycles and user feedback,Classified,7bdc7ac8a8c140c866ed40681f4c090b26238b983fe5f681ce617e1a39ebd930
-142,13,explanation-agile,agile,CORE,TEACH,,Why short feedback cycles help changing requirements,Classified,5c293992aea09558a87e62202f51326acfcbed161d3044b0f4911878a09ba088
+142,13,explanation-agile,agile,CORE,TEACH,,Why short feedback cycles support change,Classified,4966dc11897903b01bbafa7e789303d8ecf9d71fe687b71fee68c950b1fda644
 142,14,compare,compare,CORE,TEACH,,"Choose a model based on the project, not a favourite buzzword",Classified,260feb6f5cbaf5f44eadcdd83a4046b030f9d5a8089c53231f217637f37bd1aa
-142,15,explanation-compare,compare,CORE,TEACH,,Why project conditions should choose the lifecycle model,Classified,a60f46f16b7959bc2b3c7508f1b74759a1c65d6bc7558454fedbfaf04184d380
+142,15,explanation-compare,compare,CORE,TEACH,,How project conditions choose a model,Classified,99e8ae2707a22781ca92ff7d36844e3ddf4f443262b723811fce72dd0caf6dfa
 142,16,artefacts,artefacts,CORE,TEACH,,Exam answers often mention documents or outputs from stages,Classified,33d1fcffc11d70be633017d044c11283678752df27d9525f595e5b825e51faf2
-142,17,explanation-artefacts,artefacts,CORE,TEACH,,Why lifecycle outputs make decisions testable and traceable,Classified,471df3bedbb8a25177b670d0a8e5e37a8e0025e8ee23b02d69e4e537a60b4ab2
+142,17,explanation-artefacts,artefacts,CORE,TEACH,,Why artefacts make decisions traceable,Classified,ce48fc95144ebc66d8ff3da763b4d28f2f1769a5f1df5f36d436962ba07df916
 142,18,model-tool,model-tool,CORE,TEACH,,Choose a project situation and compare model suitability,Classified,8124fd1b9701d62dd96d3ae0d136b818f4e06866af80ab58948f9e759ec80888
 142,19,order-tool,order-tool,CORE,TEACH,,Spot the stage that should usually happen first,Classified,72548a30618c482b04a647a77a9858e3fbe8911d023938417efcd68e7599c887
 142,20,examples,examples,CORE,TEACH,,Apply the lifecycle to realistic project decisions,Classified,35081f24b13aa2d43a9ea8f7c33603698427d02d416096bf77ce162f7a2ff267

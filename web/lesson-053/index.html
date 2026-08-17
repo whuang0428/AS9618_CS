@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=1" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -127,11 +127,35 @@
         <!-- stage10-explanation:start concept -->
         <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why applications need an operating system between them and the hardware</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why applications need an operating system</h2>
           </div>
-          <div class="explanation-body">
-          <p>Applications need processor time, memory, files and devices, but allowing every program to control those resources directly would create conflicts and hardware-specific code. The operating system provides managed services between applications and the hardware. An application requests an operation, such as opening a file or sending output to a printer, and the OS checks permissions, selects the correct driver and schedules access to the resource. This common interface means the application does not need separate low-level instructions for every model of storage device or printer. Management also protects one program from another: memory regions can be isolated and device requests can be queued rather than executed simultaneously. The OS is therefore not useful merely because it offers a graphical interface. Its essential role is to coordinate shared resources safely and present predictable services on which applications can depend.</p>
+          <div class="explanation-layout has-visual">
+
+          <figure class="explanation-figure">
+            <img src="../assets/diagrams/stage10-os-resource-management-analogy.jpg" width="1400" height="933" loading="lazy" decoding="async" alt="A textbook-style control centre allocating separated areas, queues and storage blocks to several tasks." />
+            <figcaption>One control layer allocates shared resources while keeping tasks separated.</figcaption>
+          </figure>
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>Applications request services instead of controlling hardware directly.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>The operating system checks and schedules those requests.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Drivers translate approved requests for particular devices.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>A control centre coordinates many users of limited shared infrastructure.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>The OS manages access; it cannot make finite hardware unlimited.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
@@ -156,11 +180,31 @@
         <!-- stage10-explanation:start process -->
         <section class="panel explanation-panel" id="explanation-process" data-explains="process" data-explanation-kind="process" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="process">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why sharing processor time creates the appearance of simultaneous programs</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>How time-slicing creates apparent simultaneity</h2>
           </div>
-          <div class="explanation-body">
-          <p>A processor core can execute only one instruction stream at an instant, yet users expect several applications to remain responsive. The operating system achieves this by scheduling processes. It gives a process a short period of CPU time, records the process state when that period ends or the process waits for input, and then restores another process so execution can continue from its saved point. Rapid switching creates the appearance that programs run together. Priorities and scheduling rules influence which process runs next, preventing one ordinary task from keeping the processor indefinitely. The benefit comes from controlled switching, but switching also has a cost because saving and restoring state performs no user calculation. Multicore processors can genuinely execute more than one stream at once, yet each core still requires scheduling when runnable processes outnumber available cores.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>A running process receives a short interval of CPU time.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Its state is saved before another ready process runs.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Rapid switching keeps several programs responsive.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>One service desk handles many queues by switching between short tasks.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>Switching has overhead; too much switching reduces useful work.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end process -->
@@ -185,11 +229,31 @@
         <!-- stage10-explanation:start memory -->
         <section class="panel explanation-panel" id="explanation-memory" data-explains="memory" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="memory">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why memory allocation and protection are both necessary</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why memory needs allocation and protection</h2>
           </div>
-          <div class="explanation-body">
-          <p>Each running process needs space for its instructions, variables and temporary results. The operating system allocates regions of memory so that programs know where their current data can be stored. It also records which process owns each region and prevents an ordinary process from reading or overwriting another process's memory. Without this protection, one faulty program could corrupt another program or expose private data. When a process ends, the OS marks its regions as available so the same physical memory can be reused. If demand exceeds RAM, memory management may move pages to secondary storage, trading speed for capacity. Allocation alone is not enough: safe reuse requires ownership, address translation and protection rules. This explains why memory management affects both reliability and performance rather than simply reporting how much RAM is installed.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>Each process receives addresses for its code and data.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Protection blocks one process from overwriting another's region.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Released memory can be reassigned safely to later work.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>Separate laboratory benches prevent experiments contaminating each other.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>Isolation must still allow controlled sharing through OS services.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end memory -->
@@ -210,11 +274,31 @@
         <!-- stage10-explanation:start file -->
         <section class="panel explanation-panel" id="explanation-file" data-explains="file" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="file">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why a file system needs names, metadata and access rules</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why files need metadata and access rules</h2>
           </div>
-          <div class="explanation-body">
-          <p>Storage devices contain blocks of data, not naturally meaningful documents and folders. The operating system's file system maps human-readable names and directories to the blocks that store each file. Metadata records properties such as size, location, timestamps and permissions, allowing the OS to find the data and decide whether a user may read or change it. When a file grows, the file system allocates additional free blocks and updates its records; when a file is deleted, those blocks can be returned to the free-space pool. This organisation explains why renaming a file usually does not rewrite all its contents and why a damaged file-system index can make intact blocks difficult to locate. File management is therefore more than displaying folders: it maintains the structured relationship between names, ownership, storage locations and reliable retrieval.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>A name and path let software locate stored content.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Metadata records size, timestamps, type and storage information.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Permissions determine which users may read or change it.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>A catalogue locates an archive item while rules control who may handle it.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>A filename alone neither protects data nor proves its contents.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end file -->
@@ -256,11 +340,31 @@
         <!-- stage10-explanation:start device -->
         <section class="panel explanation-panel" id="explanation-device" data-explains="device" data-explanation-kind="process" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="device">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why drivers, buffers and queues make slow devices manageable</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why drivers, buffers and queues work together</h2>
           </div>
-          <div class="explanation-body">
-          <p>Hardware devices expose different commands and operate at very different speeds. A driver translates the operating system's standard request into instructions understood by a particular device. A buffer temporarily holds data when the producer and consumer cannot transfer at the same rate; for example, a program can place print data in memory while the printer handles it more slowly. A queue records the order of outstanding requests so several programs do not attempt to control the same device at once. Together these mechanisms separate the application's progress from the device's physical timing. The buffer is not permanent storage and it does not make the printer itself faster. It prevents the faster component from waiting for every small transfer, while the queue and driver ensure that requests reach the correct device in a controlled form.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>A driver converts a general request into device-specific commands.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>A buffer absorbs the speed difference between producer and device.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>A queue preserves an orderly sequence of pending requests.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>A loading bay stages deliveries before a slower vehicle can collect them.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>Buffering smooths bursts but cannot remove a permanently overloaded device.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end device -->
@@ -281,11 +385,31 @@
         <!-- stage10-explanation:start services -->
         <section class="panel explanation-panel" id="explanation-services" data-explains="services" data-explanation-kind="synthesis" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="services">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why operating-system services form one coordinated control layer</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>How OS services form one control layer</h2>
           </div>
-          <div class="explanation-body">
-          <p>Security, user interfaces, networking, error handling and system monitoring appear to be separate OS features, but they depend on the same privileged control layer. The operating system knows which user and process made a request, which resource is involved and which policy applies. It can therefore authenticate a user, check authorisation, record an error and present the result through a common interface. Networking services similarly coordinate access to adapters and protocol settings rather than allowing every application unrestricted hardware control. The exact services vary between operating systems, so an exam answer should connect a named service to its mechanism instead of claiming every OS behaves identically. The unifying reason these services belong in the OS is that they require trusted, system-wide information and must arbitrate between multiple programs or users.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>Process, memory, file and device managers track different resources.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Common permissions and scheduling rules coordinate their decisions.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Applications receive a stable service interface above changing hardware.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>Departments share one operating policy instead of issuing conflicting instructions.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>Weak coordination between services can still create deadlock or starvation.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end services -->

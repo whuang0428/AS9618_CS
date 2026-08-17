@@ -107,33 +107,53 @@ Correction prompt: "Show the mechanism, not just the label."
 **Strict note:** Do not award decomposition marks unless primary/foreign-key linkage can reconstruct the relationship.
 
 <!-- stage10-explanations:start -->
-## Stage 10 causal explanations
+## Stage 10 visual explanations
 
-### Why normalisation protects consistency rather than merely making tables smaller
+### Why normalisation protects consistency
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
 
-Normalisation reorganises data so that each independent fact is stored in an appropriate relation and can be referenced through keys. The main goal is consistency, not simply reducing the number of characters stored. If a tutor's email is repeated in every enrolment row, changing one copy while missing another creates contradictory versions of the same fact. Moving tutor details to a Tutor table gives the email one authoritative row, while enrolments store a tutor key. Queries can reconstruct the combined view through that relationship. This design may require joins and can introduce more tables, so it is not automatically faster for every query. Its benefit comes from controlling dependencies: one fact has one intended place to be inserted, updated or deleted, reducing the opportunities for different copies to disagree.
+1. Each fact is stored in a relation where its determinant is clear.
+2. Other tables reference that fact instead of copying it repeatedly.
+3. One update then changes the authoritative value once.
 
-### Why repeated facts create risk even when every copy starts correctly
+- **Analogy:** Keep one catalogue record and let many loans point to it.
+- **Boundary:** Normalisation improves consistency but joins may make some queries more complex.
+
+### How repeated facts become risky
 
 - **Explains:** `redundancy`
 - **Explanation type:** mechanism
 
-Redundancy becomes harmful when the same real-world fact is stored independently in several rows. At the moment of entry, every copy may agree, so the table appears correct. The risk appears when the fact changes. Each copy must be found and updated, and one missed row creates inconsistency. Repetition also wastes storage and makes validation harder because the database cannot easily identify which copy is authoritative. Not every repeated value is unwanted redundancy: many students may legitimately share the same course code, and each enrolment needs that reference. The problem is repeating attributes that depend on a different entity, such as storing the course title and tutor email in every enrolment. Dependency analysis reveals where the fact belongs; keys then preserve the relationship without copying the full fact.
+1. The same real-world fact appears in several rows.
+2. A later update may change only some copies.
+3. Queries then return conflicting versions of one fact.
 
-### Why one badly structured table produces three different anomalies
+- **Analogy:** Several photocopies agree only until someone edits one copy.
+- **Boundary:** Repeated transactional events are valid; repeated descriptive facts cause the risk.
+
+### Why one structure causes three anomalies
 
 - **Explains:** `anomalies`
 - **Explanation type:** tradeoff
 
-Insertion, update and deletion anomalies are different symptoms of the same structural problem: unrelated facts have been forced into one row type. An insertion anomaly occurs when a new fact cannot be stored without inventing another fact, such as being unable to add a course until a student enrols. An update anomaly occurs when one real-world change requires several row changes, allowing copies to disagree. A deletion anomaly occurs when removing the last row for one fact accidentally removes the only stored copy of another, such as deleting the last enrolment and losing the course details. Splitting the table by entity and connecting rows with keys separates the lifecycles of those facts. The anomalies disappear because each entity can be inserted, changed or removed without performing an unrelated operation.
+1. Insertion may require an unrelated fact that is not yet known.
+2. Updating requires finding every repeated copy.
+3. Deleting one event may accidentally remove the only descriptive fact.
 
-### Why each normal form removes a different dependency problem
+- **Analogy:** A form that mixes customers, products and orders ties unrelated lifetimes together.
+- **Boundary:** The anomaly comes from dependency structure, not simply from a large table.
+
+### How normal forms remove dependency problems
 
 - **Explains:** `normal-forms`
 - **Explanation type:** process
 
-Normal forms are checkpoints for dependencies, not a ritual of splitting tables. First normal form requires atomic values and a consistent row structure so that each field contains one value that can be addressed. Second normal form matters when a primary key has several attributes: every non-key attribute must depend on the whole key, otherwise facts about only part of the key belong elsewhere. Third normal form removes transitive dependency, where a non-key attribute determines another non-key attribute. At each step, the misplaced attributes move to a relation whose key actually determines them, and foreign keys preserve the connection. A design should not be split without examining dependencies, because unnecessary tables add joins without correcting a real anomaly. The reason for each decomposition is always the same question: what fact determines this attribute?
+1. 1NF makes stored values atomic within each row and column.
+2. 2NF removes partial dependency on part of a composite key.
+3. 3NF removes dependency on another non-key attribute.
+
+- **Analogy:** Separate mixed filing rules one dependency at a time.
+- **Boundary:** A table with a single-attribute key cannot have a partial-key dependency.
 <!-- stage10-explanations:end -->

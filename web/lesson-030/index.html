@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=1" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -105,11 +105,35 @@
         <!-- stage10-explanation:start primary -->
         <section class="panel explanation-panel" id="explanation-primary" data-explains="primary" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="primary">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why primary storage must stay close to current processing</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why active data stays close to the CPU</h2>
           </div>
-          <div class="explanation-body">
-          <p>The processor can only work efficiently when instructions and current data are available through fast, directly addressable storage. Primary storage provides that working area. Programs are copied from secondary storage into RAM because an SSD or hard disk is designed for persistent capacity, not for supplying every instruction at processor speed. While a program runs, RAM holds its active instructions, data and intermediate results so the CPU can fetch them repeatedly. Registers and cache are even closer and faster, but they are much smaller, so they cannot replace RAM for the whole running program. This layered design balances speed, capacity and cost. Calling primary storage a filing cabinet misses the mechanism: it is the live workspace that feeds current processing. When it is too small, the system must move data between RAM and slower storage more often, which is why performance can fall even though no computation has changed.</p>
+          <div class="explanation-layout has-visual">
+
+          <figure class="explanation-figure">
+            <img src="../assets/diagrams/stage10-memory-hierarchy-analogy.jpg" width="1400" height="933" loading="lazy" decoding="async" alt="A restrained textbook illustration showing immediate trays, a working surface, fixed reference material and distant archive drawers." />
+            <figcaption>Nearer, smaller working areas represent faster access; the archive represents larger but slower storage.</figcaption>
+          </figure>
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>The CPU repeatedly requests current instructions and data.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Nearby electronic storage answers with less delay than secondary storage.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Faster access prevents the processor waiting as often.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>Keep today's papers on the desk, not in a distant archive.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>Closer and faster storage is smaller and more expensive per byte.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end primary -->
@@ -146,11 +170,31 @@
         <!-- stage10-explanation:start ram-rom -->
         <section class="panel explanation-panel" id="explanation-ram-rom" data-explains="ram-rom" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ram-rom">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why RAM is temporary while ROM remains stable</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why RAM changes while ROM remains stable</h2>
           </div>
-          <div class="explanation-body">
-          <p>RAM and ROM serve different jobs because the system needs both changeable working space and stable startup instructions. RAM is read and written continually as applications create variables, load files and produce intermediate results. Its contents are volatile, so removing power clears that temporary electrical state. This is acceptable because the working data can be recreated or loaded again. ROM stores instructions that should remain available when the machine is powered off, such as firmware needed to begin the startup process. Its non-volatile design preserves those instructions without power, while normal operation does not require them to be rewritten constantly. The distinction is therefore not simply that one can be read and the other cannot: modern ROM technologies may be updated under controlled conditions. The important causal difference is how often the contents must change and whether they must survive loss of power.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>RAM holds the changing state of running programs.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>Most RAM needs continuous power to preserve that state.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>ROM retains fixed startup instructions when power is removed.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>A working notepad changes constantly; a printed reference card should not.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>ROM can sometimes be updated, but not as ordinary working memory.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end ram-rom -->
@@ -188,11 +232,31 @@
         <!-- stage10-explanation:start cache-vm -->
         <section class="panel explanation-panel" id="explanation-cache-vm" data-explains="cache-vm" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cache-vm">
           <div class="section-title">
-            <p class="eyebrow">Explanation</p>
-            <h2>Why cache accelerates access while virtual memory usually slows it</h2>
+            <p class="eyebrow">Visual explanation</p>
+            <h2>Why cache helps and virtual memory slows</h2>
           </div>
-          <div class="explanation-body">
-          <p>Cache and virtual memory both affect the apparent amount of useful memory, but they solve opposite problems. Cache keeps copies of recently or frequently used instructions and data in very fast storage close to the CPU. Programs often reuse nearby values, so a cache hit avoids a slower trip to RAM and reduces the time the processor waits. Virtual memory is used when RAM cannot hold all active pages. The operating system moves less active pages to secondary storage and brings them back when required. This prevents an immediate out-of-memory failure, but secondary storage is much slower than RAM, so repeated page movement can make the system feel unresponsive. More cache does not permanently store more user data, and virtual memory does not make a computer faster. Cache exploits locality to reduce access time; virtual memory trades speed for the ability to continue running a larger working set.</p>
+          <div class="explanation-layout">
+
+            <div class="explanation-content">
+              <ol class="explanation-chain" aria-label="Cause and effect sequence">
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">1</span>
+                <div><span class="explanation-step-label">Mechanism</span><p>Cache keeps likely next data close to the CPU.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">2</span>
+                <div><span class="explanation-step-label">Reason</span><p>A cache hit avoids a slower trip to main memory.</p></div>
+              </li>
+              <li>
+                <span class="explanation-step-number" aria-hidden="true">3</span>
+                <div><span class="explanation-step-label">Result</span><p>Virtual memory moves pages to storage when RAM is insufficient.</p></div>
+              </li>
+              </ol>
+              <div class="explanation-notes">
+                <p class="explanation-analogy"><strong>Analogy</strong><span>A desk tray saves a walk; using the archive as desk space creates walks.</span></p>
+                <p class="explanation-boundary"><strong>Boundary</strong><span>Virtual memory increases capacity, not physical RAM speed.</span></p>
+              </div>
+            </div>
           </div>
         </section>
         <!-- stage10-explanation:end cache-vm -->

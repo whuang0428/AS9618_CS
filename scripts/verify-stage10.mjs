@@ -75,19 +75,28 @@ expect(new Set(explanations.map((item) => `${item.lesson}/${item.targetId}`)).si
 
 const prose = new Set();
 for (const item of explanations) {
-  const words = wordCount(item.paragraphs.join(" "));
-  expect(words >= 120 && words <= 220, `${item.lesson}/${item.targetId}: explanation has ${words} words; expected 120-220`);
+  const words = wordCount([...item.steps, item.analogy, item.boundary].join(" "));
+  expect(words >= 35 && words <= 90, `${item.lesson}/${item.targetId}: visual explanation has ${words} words; expected 35-90`);
   expect(["mechanism", "tradeoff", "process", "comparison", "synthesis"].includes(item.kind), `${item.lesson}/${item.targetId}: invalid explanation kind`);
-  for (const paragraph of item.paragraphs) {
-    expect(!prose.has(paragraph), `${item.lesson}/${item.targetId}: duplicate explanation paragraph`);
-    prose.add(paragraph);
+  expect(item.steps.length === 3, `${item.lesson}/${item.targetId}: expected exactly three cause-and-effect steps`);
+  for (const statement of [...item.steps, item.analogy, item.boundary]) {
+    expect(wordCount(statement) <= 20, `${item.lesson}/${item.targetId}: statement is too long for projected teaching`);
+    expect(!prose.has(statement), `${item.lesson}/${item.targetId}: duplicate explanation statement`);
+    prose.add(statement);
+  }
+  if (item.visual) {
+    const assetPath = path.join(root, "web", item.visual.src.replace(/^\.\.\//, ""));
+    expect(fs.existsSync(assetPath), `${item.lesson}/${item.targetId}: visual asset is missing`);
+    if (fs.existsSync(assetPath)) expect(fs.statSync(assetPath).size <= 400_000, `${item.lesson}/${item.targetId}: visual exceeds 400 KB budget`);
+    expect(wordCount(item.visual.alt) >= 8, `${item.lesson}/${item.targetId}: visual alternative text is too weak`);
   }
 }
+expect(explanations.filter((item) => item.visual).length === 5, "Expected five selected academic illustration assets in the pilot");
 
 for (let number = 1; number <= 150; number += 1) {
   const lesson = String(number).padStart(3, "0");
   const html = read(`web/lesson-${lesson}/index.html`);
-  expect(count(html, 'href="../stage10-explanations.css?v=1"') === 1, `Lesson ${lesson}: Stage 10 stylesheet must appear once`);
+  expect(count(html, 'href="../stage10-explanations.css?v=5"') === 1, `Lesson ${lesson}: Stage 10 stylesheet must appear once at v5`);
   const sectionIds = directSectionIds(html);
   const lessonItems = explanations.filter((item) => item.lesson === lesson);
   expect(count(html, 'class="panel explanation-panel"') === lessonItems.length, `Lesson ${lesson}: explanation panel count mismatch`);
@@ -108,7 +117,11 @@ for (let number = 1; number <= 150; number += 1) {
     const markdownName = fs.readdirSync(path.join(root, "lessons")).find((name) => name.startsWith(`${lesson}-`) && name.endsWith(".md"));
     const markdown = read(`lessons/${markdownName}`);
     expect(markdown.includes(`**Explains:** \`${item.targetId}\``), `Lesson ${lesson}: Markdown target ${item.targetId} is missing`);
-    for (const paragraph of item.paragraphs) expect(markdown.includes(paragraph), `Lesson ${lesson}/${item.targetId}: Markdown prose is out of sync`);
+    for (const statement of [...item.steps, item.analogy, item.boundary]) expect(markdown.includes(statement), `Lesson ${lesson}/${item.targetId}: Markdown explanation is out of sync`);
+    expect(html.includes('class="explanation-chain"'), `Lesson ${lesson}/${item.targetId}: visual cause chain is missing`);
+    if (item.visual) {
+      expect(html.includes(`src="${item.visual.src}"`) && html.includes('loading="lazy"'), `Lesson ${lesson}/${item.targetId}: responsive visual is missing or not lazy-loaded`);
+    }
   }
 }
 
@@ -143,4 +156,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`Stage 10 verification passed: ${explanations.length} causal explanations across ten pilot lessons, 150-lesson target coverage and ${visualRows.length} visual audit records.`);
+console.log(`Stage 10 verification passed: ${explanations.length} structured visual explanations, five academic illustration assets, 150-lesson target coverage and ${visualRows.length} visual audit records.`);

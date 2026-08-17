@@ -129,7 +129,7 @@ function injectAssets(source) {
     .replace(/^\s*<script src="\.\.\/lesson-toolbar\.js\?v=\d+"><\/script>\n?/m, "");
 
   const stage7Anchor = '    <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />';
-  const stage10Anchor = '    <link rel="stylesheet" href="../stage10-explanations.css?v=1" />';
+  const stage10Anchor = '    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />';
   const cssAnchor = updated.includes(stage10Anchor) ? stage10Anchor : stage7Anchor;
   const jsAnchor = '    <script src="../stage7-accessibility.js?v=4"></script>';
   if (!updated.includes(stage7Anchor) || !updated.includes(jsAnchor)) {

@@ -73,47 +73,78 @@ Misconception: Students often call every program an operating system. Correction
 Correction prompt: "Show the mechanism, not just the label."
 
 <!-- stage10-explanations:start -->
-## Stage 10 causal explanations
+## Stage 10 visual explanations
 
-### Why applications need an operating system between them and the hardware
+### Why applications need an operating system
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
+- **Visual:** `../assets/diagrams/stage10-os-resource-management-analogy.jpg` — One control layer allocates shared resources while keeping tasks separated.
 
-Applications need processor time, memory, files and devices, but allowing every program to control those resources directly would create conflicts and hardware-specific code. The operating system provides managed services between applications and the hardware. An application requests an operation, such as opening a file or sending output to a printer, and the OS checks permissions, selects the correct driver and schedules access to the resource. This common interface means the application does not need separate low-level instructions for every model of storage device or printer. Management also protects one program from another: memory regions can be isolated and device requests can be queued rather than executed simultaneously. The OS is therefore not useful merely because it offers a graphical interface. Its essential role is to coordinate shared resources safely and present predictable services on which applications can depend.
+1. Applications request services instead of controlling hardware directly.
+2. The operating system checks and schedules those requests.
+3. Drivers translate approved requests for particular devices.
 
-### Why sharing processor time creates the appearance of simultaneous programs
+- **Analogy:** A control centre coordinates many users of limited shared infrastructure.
+- **Boundary:** The OS manages access; it cannot make finite hardware unlimited.
+
+### How time-slicing creates apparent simultaneity
 
 - **Explains:** `process`
 - **Explanation type:** process
 
-A processor core can execute only one instruction stream at an instant, yet users expect several applications to remain responsive. The operating system achieves this by scheduling processes. It gives a process a short period of CPU time, records the process state when that period ends or the process waits for input, and then restores another process so execution can continue from its saved point. Rapid switching creates the appearance that programs run together. Priorities and scheduling rules influence which process runs next, preventing one ordinary task from keeping the processor indefinitely. The benefit comes from controlled switching, but switching also has a cost because saving and restoring state performs no user calculation. Multicore processors can genuinely execute more than one stream at once, yet each core still requires scheduling when runnable processes outnumber available cores.
+1. A running process receives a short interval of CPU time.
+2. Its state is saved before another ready process runs.
+3. Rapid switching keeps several programs responsive.
 
-### Why memory allocation and protection are both necessary
+- **Analogy:** One service desk handles many queues by switching between short tasks.
+- **Boundary:** Switching has overhead; too much switching reduces useful work.
+
+### Why memory needs allocation and protection
 
 - **Explains:** `memory`
 - **Explanation type:** mechanism
 
-Each running process needs space for its instructions, variables and temporary results. The operating system allocates regions of memory so that programs know where their current data can be stored. It also records which process owns each region and prevents an ordinary process from reading or overwriting another process's memory. Without this protection, one faulty program could corrupt another program or expose private data. When a process ends, the OS marks its regions as available so the same physical memory can be reused. If demand exceeds RAM, memory management may move pages to secondary storage, trading speed for capacity. Allocation alone is not enough: safe reuse requires ownership, address translation and protection rules. This explains why memory management affects both reliability and performance rather than simply reporting how much RAM is installed.
+1. Each process receives addresses for its code and data.
+2. Protection blocks one process from overwriting another's region.
+3. Released memory can be reassigned safely to later work.
 
-### Why a file system needs names, metadata and access rules
+- **Analogy:** Separate laboratory benches prevent experiments contaminating each other.
+- **Boundary:** Isolation must still allow controlled sharing through OS services.
+
+### Why files need metadata and access rules
 
 - **Explains:** `file`
 - **Explanation type:** mechanism
 
-Storage devices contain blocks of data, not naturally meaningful documents and folders. The operating system's file system maps human-readable names and directories to the blocks that store each file. Metadata records properties such as size, location, timestamps and permissions, allowing the OS to find the data and decide whether a user may read or change it. When a file grows, the file system allocates additional free blocks and updates its records; when a file is deleted, those blocks can be returned to the free-space pool. This organisation explains why renaming a file usually does not rewrite all its contents and why a damaged file-system index can make intact blocks difficult to locate. File management is therefore more than displaying folders: it maintains the structured relationship between names, ownership, storage locations and reliable retrieval.
+1. A name and path let software locate stored content.
+2. Metadata records size, timestamps, type and storage information.
+3. Permissions determine which users may read or change it.
 
-### Why drivers, buffers and queues make slow devices manageable
+- **Analogy:** A catalogue locates an archive item while rules control who may handle it.
+- **Boundary:** A filename alone neither protects data nor proves its contents.
+
+### Why drivers, buffers and queues work together
 
 - **Explains:** `device`
 - **Explanation type:** process
 
-Hardware devices expose different commands and operate at very different speeds. A driver translates the operating system's standard request into instructions understood by a particular device. A buffer temporarily holds data when the producer and consumer cannot transfer at the same rate; for example, a program can place print data in memory while the printer handles it more slowly. A queue records the order of outstanding requests so several programs do not attempt to control the same device at once. Together these mechanisms separate the application's progress from the device's physical timing. The buffer is not permanent storage and it does not make the printer itself faster. It prevents the faster component from waiting for every small transfer, while the queue and driver ensure that requests reach the correct device in a controlled form.
+1. A driver converts a general request into device-specific commands.
+2. A buffer absorbs the speed difference between producer and device.
+3. A queue preserves an orderly sequence of pending requests.
 
-### Why operating-system services form one coordinated control layer
+- **Analogy:** A loading bay stages deliveries before a slower vehicle can collect them.
+- **Boundary:** Buffering smooths bursts but cannot remove a permanently overloaded device.
+
+### How OS services form one control layer
 
 - **Explains:** `services`
 - **Explanation type:** synthesis
 
-Security, user interfaces, networking, error handling and system monitoring appear to be separate OS features, but they depend on the same privileged control layer. The operating system knows which user and process made a request, which resource is involved and which policy applies. It can therefore authenticate a user, check authorisation, record an error and present the result through a common interface. Networking services similarly coordinate access to adapters and protocol settings rather than allowing every application unrestricted hardware control. The exact services vary between operating systems, so an exam answer should connect a named service to its mechanism instead of claiming every OS behaves identically. The unifying reason these services belong in the OS is that they require trusted, system-wide information and must arbitrate between multiple programs or users.
+1. Process, memory, file and device managers track different resources.
+2. Common permissions and scheduling rules coordinate their decisions.
+3. Applications receive a stable service interface above changing hardware.
+
+- **Analogy:** Departments share one operating policy instead of issuing conflicting instructions.
+- **Boundary:** Weak coordination between services can still create deadlock or starvation.
 <!-- stage10-explanations:end -->

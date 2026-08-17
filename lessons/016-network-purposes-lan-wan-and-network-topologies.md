@@ -107,26 +107,41 @@ Correction prompt: "Show the mechanism, not just the label."
 **Strict note:** Do not accept 'mesh is better' without a packet-path or failure consequence.
 
 <!-- stage10-explanations:start -->
-## Stage 10 causal explanations
+## Stage 10 visual explanations
 
-### Why sharing becomes useful only when devices can exchange requests
+### How a shared resource becomes useful
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
 
-A network creates value by giving devices a controlled path for exchanging data. When a computer sends a print job, for example, it does not somehow use the printer from a distance: it packages the request, sends it across a link and identifies the shared printer as the destination. The same mechanism lets users open centrally stored files or send messages. Sharing reduces duplication because one managed resource can answer requests from many authorised devices. Central management works for the same reason: accounts, permissions, updates and backups can be applied at a server or management service rather than configured independently on every machine. This convenience also creates dependence. If the shared service or connecting network fails, many users may lose access at once. A strong explanation therefore links the benefit to the shared communication path and also recognises the new point of failure.
+1. A device packages a request and names the destination.
+2. The network carries that request to the shared resource.
+3. One managed resource can then serve many authorised devices.
 
-### Why area and ownership change the way a network is managed
+- **Analogy:** A library serves many readers because requests reach one organised collection.
+- **Boundary:** If the path or shared service fails, many users lose access together.
+
+### Why LAN and WAN management differs
 
 - **Explains:** `lanwan`
 - **Explanation type:** comparison
 
-LAN and WAN are not labels for fast and slow networks. They describe different scales and management arrangements. A LAN normally covers a limited site and is controlled by one organisation, so that organisation can choose the switches, cabling, wireless access points and security rules. Shorter local links and direct control often make faults easier to locate and upgrades easier to schedule. A WAN connects networks across a much larger area, so traffic may cross infrastructure owned by telecommunications providers. That adds distance, routing decisions and dependence on external services, which can increase latency, cost and troubleshooting complexity. A school network does not become a WAN merely because it uses Wi-Fi, and a WAN is not automatically the public internet. The deciding questions are what geographical area is connected and who controls the infrastructure between the connected sites.
+1. A LAN usually stays within one organisation's controlled site.
+2. A WAN crosses distance and often uses provider-owned infrastructure.
+3. More owners and routes add latency, cost and fault-finding complexity.
 
-### Why physical connection patterns create different costs and failure effects
+- **Analogy:** Managing one campus is different from coordinating transport across several cities.
+- **Boundary:** Wi-Fi does not make a network a WAN; scale and control do.
+
+### Why connection patterns change risk
 
 - **Explains:** `topologies`
 - **Explanation type:** tradeoff
 
-A topology changes network behaviour because it determines the path that data and failures can follow. In a bus, every device depends on one backbone, so little cabling is needed but damage or congestion on that shared path affects the whole network. In a star, each device has its own link to a central switch. One cable failure normally isolates one device, yet switch failure removes the common forwarding point. In a full mesh, every pair of nodes has a direct link, so another path remains when one link fails. That resilience is expensive because the number of links and ports rises rapidly as nodes are added. A hybrid combines topology types, such as connected star segments, to balance local simplicity with wider resilience. No topology is always best: the correct choice follows from required availability, expansion, cost and the consequence of each possible failure.
+1. The layout determines which physical paths data can follow.
+2. Shared paths reduce cabling but concentrate traffic and failures.
+3. Alternative paths improve resilience but require more links and ports.
+
+- **Analogy:** Road layouts trade construction cost against alternative routes after a closure.
+- **Boundary:** No topology is universally best; cost, scale and failure tolerance decide.
 <!-- stage10-explanations:end -->

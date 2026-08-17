@@ -152,7 +152,7 @@ for (let number = 1; number <= 150; number += 1) {
       rationale: reviewLessons.has(lesson)
         ? "Review lesson: consolidate related ideas into causal synthesis and avoid adding panels to retrieval items or tools."
         : "Core concept: explain mechanism, cause, consequence and boundary instead of repeating the definition.",
-      contentHash: item ? hash(item.paragraphs.join("\n")) : "",
+      contentHash: item ? hash([...item.steps, item.analogy, item.boundary, item.visual?.src ?? ""].join("\n")) : "",
     });
   }
 }
@@ -241,7 +241,7 @@ const visualRows = visuals.map((item) => [item.lesson, item.visualId, item.secti
 fs.writeFileSync(path.join(auditDirectory, "stage10-concept-visual-register.csv"), `${visualHeader.join(",")}\n${visualRows.join("\n")}\n`);
 
 const implementedLessons = new Set(explanations.map((item) => item.lesson));
-const report = `# Stage 10 Concept Accuracy and Explanation Audit\n\n## Current gate\n\n- Explanation targets: ${targets.length} across 150 lessons.\n- Implemented pilot explanations: ${explanations.length} across ${implementedLessons.size} lessons.\n- Visual records: ${visuals.length}; semantic statuses remain explicit and are not inferred from successful rendering.\n- Rollout state: pilot only. Expansion beyond the ten named lessons requires human approval.\n\n## Review rules\n\n- Definitions alone do not satisfy an explanation target. Each implemented panel must connect mechanism, cause, consequence and a boundary or counterexample.\n- Review lessons use causal synthesis rather than one panel per retrieval prompt.\n- SVG, image, CSS and interactive visuals require factual review. Automated checks can verify structure and accessibility, not conceptual truth.\n- Precise connections, sequences and symbols use deterministic SVG or HTML. ImageGen is reserved for concrete scenes and cannot carry exact labels or topology.\n`;
+const report = `# Stage 10 Concept Accuracy and Explanation Audit\n\n## Current gate\n\n- Explanation targets: ${targets.length} across 150 lessons.\n- Implemented pilot explanations: ${explanations.length} across ${implementedLessons.size} lessons.\n- Academic ImageGen assets in the revised pilot: ${explanations.filter((item) => item.visual).length}.\n- Visual records: ${visuals.length}; semantic statuses remain explicit and are not inferred from successful rendering.\n- Rollout state: pilot only. Expansion beyond the ten named lessons requires human approval.\n\n## Review rules\n\n- Definitions alone do not satisfy an explanation target. Each panel uses three concise cause-and-effect steps plus an analogy and a boundary condition.\n- Review lessons use causal synthesis rather than one panel per retrieval prompt.\n- SVG, image, CSS and interactive visuals require factual review. Automated checks can verify structure and accessibility, not conceptual truth.\n- Precise connections, sequences and symbols use deterministic SVG or HTML. ImageGen is restricted to academically styled analogies without labels, topology or exact sequences.\n`;
 fs.writeFileSync(path.join(auditDirectory, "stage10-concept-explanation-report.md"), report);
 
 console.log(`Generated Stage 10 audits: ${targets.length} explanation targets and ${visuals.length} visual records.`);

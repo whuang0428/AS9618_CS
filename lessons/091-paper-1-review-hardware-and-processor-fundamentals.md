@@ -73,12 +73,17 @@ Misconception: Students often revise by rereading notes only. Correction: review
 Correction prompt: "Show the mechanism, not just the label."
 
 <!-- stage10-explanations:start -->
-## Stage 10 causal explanations
+## Stage 10 visual explanations
 
-### Why hardware answers improve when components are connected into mechanisms
+### How hardware facts become mechanisms
 
 - **Explains:** `logic`
 - **Explanation type:** synthesis
 
-Hardware topics become easier to retrieve when they are organised as cause-and-effect systems rather than isolated definitions. An input device converts a physical event into data; storage keeps the data; buses move values and signals; registers hold the values needed immediately; the control unit coordinates transfers; and the ALU performs the selected operation. Logic gates explain how binary conditions can control those operations at circuit level. During the fetch-decode-execute cycle, each named register matters because of the value it holds and the next transfer it enables. This connected model also improves evaluation questions: choosing a component requires matching its physical or logical mechanism to the scenario, not repeating that it is “fast” or “efficient”. When revising, trace one value from input through storage and processing to output, naming why each component is required at that point.
+1. Name the component or representation involved.
+2. Explain the operation performed on data or signals.
+3. Link that operation to the observable result or limitation.
+
+- **Analogy:** A useful technical answer connects parts like a working machine, not a parts list.
+- **Boundary:** An isolated definition rarely explains why the stated outcome occurs.
 <!-- stage10-explanations:end -->

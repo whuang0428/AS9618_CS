@@ -107,54 +107,90 @@ Correction prompt: "Show the mechanism, not just the label."
 **Strict note:** Do not award confidentiality as the purpose of a signature unless separate message encryption is described.
 
 <!-- stage10-explanations:start -->
-## Stage 10 causal explanations
+## Stage 10 visual explanations
 
-### Why security methods cannot substitute for one another
+### Why security methods cannot substitute
 
 - **Explains:** `core`
 - **Explanation type:** comparison
+- **Visual:** `../assets/diagrams/stage10-security-functions-analogy.jpg` — Confidentiality, comparison and identity verification are different jobs, so they require different mechanisms.
 
-Security methods solve different questions. Encryption asks who can read captured data; hashing asks whether a value matches or has changed; a digital certificate helps establish whose public key is being presented. These questions can occur in the same connection, which is why the methods are often used together, but combining them does not erase their separate mechanisms. Encrypting a password for transmission does not provide a safe long-term comparison method by itself, and hashing a message does not keep the message secret. A certificate is also not an encrypted copy of a website. Choosing a method begins with the required property: confidentiality, integrity, authentication or non-repudiation. A precise explanation names the threat, describes how the method changes what an attacker can do and acknowledges what the method does not protect against.
+1. Encryption hides readable content from unauthorised viewers.
+2. Hashing creates a comparison value for integrity checks.
+3. Certificates bind an identity to a public key through trust.
 
-### Why ciphertext protects confidentiality but not every security property
+- **Analogy:** A sealed case, an evidence imprint and verified identity solve different problems.
+- **Boundary:** Using one mechanism does not automatically provide the other properties.
+
+### How encryption protects confidentiality
 
 - **Explains:** `encryption`
 - **Explanation type:** mechanism
 
-Encryption transforms plaintext into ciphertext using an algorithm and a key. Without the appropriate decryption key, an intercepted ciphertext should not reveal the original data feasibly. This protects confidentiality while data are stored or transmitted because observing the bytes is no longer enough to understand their meaning. The mechanism depends on protecting keys and using a sound algorithm; weak keys or stolen keys remove the advantage. Encryption alone does not prove that the sender is genuine, prevent deletion or guarantee that decrypted data are accurate. Other controls are needed for identity, integrity and availability. The causal chain is therefore specific: a secret or controlled key makes captured data unreadable to unauthorised parties. Statements such as “encryption makes a system secure” are too broad because the system can still fail through compromised endpoints, poor permissions or unavailable services.
+1. An algorithm combines plaintext with a key.
+2. The output is ciphertext that lacks readable meaning without the key.
+3. An authorised key reverses the transformation for the recipient.
 
-### Why key ownership determines who can perform each cryptographic action
+- **Analogy:** A locked document case hides the contents while it travels.
+- **Boundary:** Encryption alone does not prove who sent the message or that it is unchanged.
+
+### Why key ownership changes capability
 
 - **Explains:** `keys`
 - **Explanation type:** mechanism
 
-A cryptographic algorithm is normally public; secrecy or authority comes from the key. In symmetric encryption, the same secret key encrypts and decrypts, so both parties need a secure way to obtain it. Anyone who gains that key can usually read and create protected messages. In asymmetric cryptography, a public key can be distributed while the related private key remains controlled by its owner. Data encrypted for confidentiality with the public key can be decrypted with the private key, while a digital signature created with the private key can be checked with the public key. The operations are related but have different purposes. A public key is not evidence of identity by itself, because an attacker could publish a replacement key. Certificates and trusted verification connect a public key to the claimed owner.
+1. A symmetric key can both encrypt and decrypt shared data.
+2. An asymmetric key pair separates public and private operations.
+3. Protecting the private or shared secret preserves the security boundary.
 
-### Why hashing supports comparison without storing the original value
+- **Analogy:** A public deposit slot can be open while only the owner opens the safe.
+- **Boundary:** If a secret key is copied, the algorithm cannot detect the impostor.
+
+### Why a hash supports comparison
 
 - **Explains:** `hashing`
 - **Explanation type:** mechanism
 
-A hash function maps an input of any practical length to a fixed-size digest. A small change to the input should produce a very different digest, while computing the original input from the digest should be infeasible. A system can therefore store a password hash and later hash the submitted password; matching digests provide evidence that the same password was entered without keeping the plaintext password. Secure password storage also uses a unique salt and a deliberately expensive password-hashing function so attackers cannot efficiently test large lists of guesses. Hashing is not encryption because there is no decryption key and no intended reversal step. It supports integrity or comparison, not confidentiality: anyone who sees an unhashed document can still read it, and a digest alone does not identify who created the document.
+1. A hash function maps input data to a fixed-length digest.
+2. A small input change should produce a substantially different digest.
+3. Matching digests provide evidence that the checked data is unchanged.
 
-### Why a certificate makes a public key more trustworthy
+- **Analogy:** Compare a tamper-evident imprint instead of storing the original object.
+- **Boundary:** Hashing is one-way comparison, not encryption and later decryption.
+
+### How a certificate supports trust
 
 - **Explains:** `certificates`
 - **Explanation type:** mechanism
 
-A secure connection needs the server's public key, but receiving a key does not prove who owns it. A digital certificate binds a public key to an identified subject and is signed by a certificate authority. The browser checks the authority's signature, the requested hostname, the validity period and other constraints. If those checks succeed and the authority is trusted, the browser has evidence that the key belongs to the named site rather than an interceptor. The certificate does not guarantee that the website is honest or free of malware; it authenticates the key-to-identity binding under the authority's rules. This mechanism blocks a simple substitution attack because an attacker cannot replace the site's key and also produce a valid authority signature for the same hostname without compromising the trust system.
+1. A certificate contains an identity and its public key.
+2. A trusted authority digitally signs that binding.
+3. Software verifies the signature before trusting the presented key.
 
-### Why HTTPS needs both authentication and encrypted transport
+- **Analogy:** An independent registrar verifies which key belongs to which identity.
+- **Boundary:** A valid certificate does not guarantee that the website itself is honest.
+
+### How HTTPS combines trust and privacy
 
 - **Explains:** `https`
 - **Explanation type:** process
 
-HTTPS uses TLS to establish a protected channel before ordinary HTTP data are exchanged. The server presents a certificate, the client validates the server identity and the two sides establish session keys. Symmetric encryption is then normally used for the data because it is efficient for a long stream, while asymmetric operations support authentication and secure key establishment. Integrity checks allow altered traffic to be detected. These stages explain why HTTPS protects credentials and page contents from simple interception and modification on the network. It does not make every action on the website safe: the authenticated site may still contain insecure application code, collect unnecessary data or be controlled by a legitimate but malicious operator. HTTPS secures the connection to the identified endpoint; it is not a judgement about all content behind that endpoint.
+1. The server presents its certificate and public-key information.
+2. The browser verifies the trust chain and agreed connection details.
+3. Both sides establish session keys for efficient encrypted transport.
 
-### Why the required security property should choose the method
+- **Analogy:** Check the recipient's identity before sending a locked stream of parcels.
+- **Boundary:** HTTPS protects the connection, not unsafe content downloaded through it.
+
+### How the required property chooses the method
 
 - **Explains:** `compare`
 - **Explanation type:** tradeoff
 
-A good security choice starts with the failure that must be prevented. If an eavesdropper must not understand captured data, encryption addresses confidentiality. If a receiver must detect changed data, a cryptographic hash or message-authentication mechanism addresses integrity. If a browser must know which organisation controls a public key, a certificate supports authentication. Digital signatures combine hashing with private-key operations to provide origin and integrity evidence. Real systems use layers because one threat can remain after another is controlled. Adding more methods without a threat model can waste effort or create false confidence. The exam technique follows the engineering logic: name the asset and threat, state the method's mechanism, then link that mechanism to the required property. Do not select a method because its name sounds more advanced.
+1. First identify confidentiality, integrity, authentication or several needs.
+2. Choose the mechanism whose operation creates that property.
+3. Combine methods when the communication needs multiple properties.
+
+- **Analogy:** Choose a lock, evidence seal or identity check according to the threat.
+- **Boundary:** More mechanisms add management cost and do not repair poor key handling.
 <!-- stage10-explanations:end -->
