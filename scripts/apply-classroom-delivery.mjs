@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { deliveryOverrides } from "./stage9-delivery-overrides.mjs";
+import { explanationByKey } from "./stage10-explanations-data.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const stylesheet = '    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />';
@@ -127,9 +128,11 @@ function injectAssets(source) {
     .replace(/^\s*<script src="\.\.\/classroom-mode\.js\?v=\d+"><\/script>\n?/m, "")
     .replace(/^\s*<script src="\.\.\/lesson-toolbar\.js\?v=\d+"><\/script>\n?/m, "");
 
-  const cssAnchor = '    <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />';
+  const stage7Anchor = '    <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />';
+  const stage10Anchor = '    <link rel="stylesheet" href="../stage10-explanations.css?v=1" />';
+  const cssAnchor = updated.includes(stage10Anchor) ? stage10Anchor : stage7Anchor;
   const jsAnchor = '    <script src="../stage7-accessibility.js?v=4"></script>';
-  if (!updated.includes(cssAnchor) || !updated.includes(jsAnchor)) {
+  if (!updated.includes(stage7Anchor) || !updated.includes(jsAnchor)) {
     throw new Error("Shared Stage 7 asset anchors are missing");
   }
   updated = updated.replace(cssAnchor, `${cssAnchor}\n${stylesheet}`);
@@ -161,7 +164,9 @@ for (let number = 1; number <= 150; number += 1) {
     const support = classes.has("guidance-grid") || classes.has("homework-support");
     const defaultGroup = support && previousGroup ? previousGroup : sectionId;
     const key = `lesson-${lessonId}/${sectionId}`;
-    const override = deliveryOverrides[key] ?? {};
+    const explanationTarget = sectionId.startsWith("explanation-") ? sectionId.slice("explanation-".length) : "";
+    const reviewedExplanation = explanationTarget ? explanationByKey[`${lessonId}/${explanationTarget}`] : null;
+    const override = deliveryOverrides[key] ?? (reviewedExplanation ? { role: "CORE", activity: "TEACH", group: explanationTarget } : {});
     const metadata = {
       id: sectionId,
       role: override.role ?? (support && previousMetadata ? previousMetadata.role : inferRole(sectionId, classes)),

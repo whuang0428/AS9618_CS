@@ -105,3 +105,28 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** main memory needs large capacity, making DRAM more economical
 
 **Strict note:** Do not award both comparison marks for merely expanding the abbreviations.
+
+<!-- stage10-explanations:start -->
+## Stage 10 causal explanations
+
+### Why primary storage must stay close to current processing
+
+- **Explains:** `primary`
+- **Explanation type:** mechanism
+
+The processor can only work efficiently when instructions and current data are available through fast, directly addressable storage. Primary storage provides that working area. Programs are copied from secondary storage into RAM because an SSD or hard disk is designed for persistent capacity, not for supplying every instruction at processor speed. While a program runs, RAM holds its active instructions, data and intermediate results so the CPU can fetch them repeatedly. Registers and cache are even closer and faster, but they are much smaller, so they cannot replace RAM for the whole running program. This layered design balances speed, capacity and cost. Calling primary storage a filing cabinet misses the mechanism: it is the live workspace that feeds current processing. When it is too small, the system must move data between RAM and slower storage more often, which is why performance can fall even though no computation has changed.
+
+### Why RAM is temporary while ROM remains stable
+
+- **Explains:** `ram-rom`
+- **Explanation type:** comparison
+
+RAM and ROM serve different jobs because the system needs both changeable working space and stable startup instructions. RAM is read and written continually as applications create variables, load files and produce intermediate results. Its contents are volatile, so removing power clears that temporary electrical state. This is acceptable because the working data can be recreated or loaded again. ROM stores instructions that should remain available when the machine is powered off, such as firmware needed to begin the startup process. Its non-volatile design preserves those instructions without power, while normal operation does not require them to be rewritten constantly. The distinction is therefore not simply that one can be read and the other cannot: modern ROM technologies may be updated under controlled conditions. The important causal difference is how often the contents must change and whether they must survive loss of power.
+
+### Why cache accelerates access while virtual memory usually slows it
+
+- **Explains:** `cache-vm`
+- **Explanation type:** comparison
+
+Cache and virtual memory both affect the apparent amount of useful memory, but they solve opposite problems. Cache keeps copies of recently or frequently used instructions and data in very fast storage close to the CPU. Programs often reuse nearby values, so a cache hit avoids a slower trip to RAM and reduces the time the processor waits. Virtual memory is used when RAM cannot hold all active pages. The operating system moves less active pages to secondary storage and brings them back when required. This prevents an immediate out-of-memory failure, but secondary storage is much slower than RAM, so repeated page movement can make the system feel unresponsive. More cache does not permanently store more user data, and virtual memory does not make a computer faster. Cache exploits locality to reduce access time; virtual memory trades speed for the ability to continue running a larger working set.
+<!-- stage10-explanations:end -->

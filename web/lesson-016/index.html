@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>AS9618 Lesson 016 | Network purposes, LAN, WAN and topologies</title>
     <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=2" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=1" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -51,7 +52,7 @@
             <div class="objective-grid" aria-label="Learning objectives">
               <div><strong>Explain</strong><span>the purposes and advantages of computer networks</span></div>
               <div><strong>Compare</strong><span>LAN and WAN using ownership, geography and infrastructure</span></div>
-              <div><strong>Evaluate</strong><span>bus, star, mesh and ring topology choices for scenarios</span></div>
+              <div><strong>Evaluate</strong><span>bus, star, mesh and hybrid topology choices for scenarios</span></div>
             </div>
           </div>
           <div class="network-card" aria-label="Network concept">
@@ -113,6 +114,18 @@
           <div class="callout">Chinese support: resource sharing = 资源共享；central management = 集中管理；collaboration = 协作。</div>
         </section>
 
+        <!-- stage10-explanation:start purpose -->
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+          <div class="section-title">
+            <p class="eyebrow">Explanation</p>
+            <h2>Why sharing becomes useful only when devices can exchange requests</h2>
+          </div>
+          <div class="explanation-body">
+          <p>A network creates value by giving devices a controlled path for exchanging data. When a computer sends a print job, for example, it does not somehow use the printer from a distance: it packages the request, sends it across a link and identifies the shared printer as the destination. The same mechanism lets users open centrally stored files or send messages. Sharing reduces duplication because one managed resource can answer requests from many authorised devices. Central management works for the same reason: accounts, permissions, updates and backups can be applied at a server or management service rather than configured independently on every machine. This convenience also creates dependence. If the shared service or connecting network fails, many users may lose access at once. A strong explanation therefore links the benefit to the shared communication path and also recognises the new point of failure.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end purpose -->
+
         <section class="panel" id="lanwan" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lanwan">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -142,6 +155,18 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start lanwan -->
+        <section class="panel explanation-panel" id="explanation-lanwan" data-explains="lanwan" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lanwan">
+          <div class="section-title">
+            <p class="eyebrow">Explanation</p>
+            <h2>Why area and ownership change the way a network is managed</h2>
+          </div>
+          <div class="explanation-body">
+          <p>LAN and WAN are not labels for fast and slow networks. They describe different scales and management arrangements. A LAN normally covers a limited site and is controlled by one organisation, so that organisation can choose the switches, cabling, wireless access points and security rules. Shorter local links and direct control often make faults easier to locate and upgrades easier to schedule. A WAN connects networks across a much larger area, so traffic may cross infrastructure owned by telecommunications providers. That adds distance, routing decisions and dependence on external services, which can increase latency, cost and troubleshooting complexity. A school network does not become a WAN merely because it uses Wi-Fi, and a WAN is not automatically the public internet. The deciding questions are what geographical area is connected and who controls the infrastructure between the connected sites.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end lanwan -->
+
         <section class="panel" id="topologies" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="topologies">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -149,27 +174,96 @@
           </div>
           <div class="topology-grid">
             <article>
-              <div class="topology-icon bus"><span></span><span></span><span></span></div>
+              <svg class="topology-svg" viewBox="0 0 240 120" role="img" aria-labelledby="topology-bus-title topology-bus-desc">
+                <title id="topology-bus-title">Bus topology</title>
+                <desc id="topology-bus-desc">Four devices connect by short branches to one shared horizontal backbone cable.</desc>
+                <line class="topology-link" x1="20" y1="78" x2="220" y2="78" />
+                <line class="topology-link" x1="45" y1="42" x2="45" y2="78" />
+                <line class="topology-link" x1="95" y1="42" x2="95" y2="78" />
+                <line class="topology-link" x1="145" y1="42" x2="145" y2="78" />
+                <line class="topology-link" x1="195" y1="42" x2="195" y2="78" />
+                <circle class="topology-node" cx="45" cy="32" r="10" />
+                <circle class="topology-node" cx="95" cy="32" r="10" />
+                <circle class="topology-node" cx="145" cy="32" r="10" />
+                <circle class="topology-node" cx="195" cy="32" r="10" />
+                <text class="topology-label" x="120" y="103">shared backbone</text>
+              </svg>
               <h3>Bus</h3>
-              <p>Devices share one backbone cable. Cheap, but the backbone can become a bottleneck or single point of failure.</p>
+              <p>Devices share one backbone cable. Less cabling reduces cost, but traffic and failures are concentrated on the shared path.</p>
             </article>
             <article>
-              <div class="topology-icon star"><span></span><span></span><span></span><span></span></div>
+              <svg class="topology-svg" viewBox="0 0 240 120" role="img" aria-labelledby="topology-star-title topology-star-desc">
+                <title id="topology-star-title">Star topology</title>
+                <desc id="topology-star-desc">Four devices each have an independent link to one central switch.</desc>
+                <line class="topology-link" x1="120" y1="60" x2="42" y2="26" />
+                <line class="topology-link" x1="120" y1="60" x2="198" y2="26" />
+                <line class="topology-link" x1="120" y1="60" x2="42" y2="94" />
+                <line class="topology-link" x1="120" y1="60" x2="198" y2="94" />
+                <circle class="topology-node" cx="42" cy="26" r="10" />
+                <circle class="topology-node" cx="198" cy="26" r="10" />
+                <circle class="topology-node" cx="42" cy="94" r="10" />
+                <circle class="topology-node" cx="198" cy="94" r="10" />
+                <rect class="topology-switch" x="94" y="44" width="52" height="32" rx="8" />
+                <text class="topology-switch-label" x="120" y="64">switch</text>
+              </svg>
               <h3>Star</h3>
-              <p>Devices connect to a central switch or hub. Easy to add devices, but central device failure affects the network.</p>
+              <p>Each device has an independent link to a central switch. Cable faults are isolated, but switch failure affects every attached device.</p>
             </article>
             <article>
-              <div class="topology-icon mesh"><span></span><span></span><span></span><span></span></div>
-              <h3>Mesh</h3>
-              <p>Devices have multiple paths between them. Reliable and fault tolerant, but expensive and complex to install.</p>
+              <svg class="topology-svg" viewBox="0 0 240 120" role="img" aria-labelledby="topology-mesh-title topology-mesh-desc">
+                <title id="topology-mesh-title">Full mesh topology example</title>
+                <desc id="topology-mesh-desc">Four devices are fully connected: every device has a direct link to each of the other three devices, making six links.</desc>
+                <line class="topology-link" x1="48" y1="26" x2="192" y2="26" />
+                <line class="topology-link" x1="48" y1="94" x2="192" y2="94" />
+                <line class="topology-link" x1="48" y1="26" x2="48" y2="94" />
+                <line class="topology-link" x1="192" y1="26" x2="192" y2="94" />
+                <line class="topology-link" x1="48" y1="26" x2="192" y2="94" />
+                <line class="topology-link" x1="192" y1="26" x2="48" y2="94" />
+                <circle class="topology-node" cx="48" cy="26" r="10" />
+                <circle class="topology-node" cx="192" cy="26" r="10" />
+                <circle class="topology-node" cx="48" cy="94" r="10" />
+                <circle class="topology-node" cx="192" cy="94" r="10" />
+              </svg>
+              <h3>Full mesh example</h3>
+              <p>Every pair of devices has a direct link, creating alternative paths. Reliability increases, but links and ports grow rapidly.</p>
             </article>
             <article>
-              <div class="topology-icon ring"><span></span><span></span><span></span><span></span></div>
-              <h3>Ring</h3>
-              <p>Devices are connected in a loop. Data travels around the ring; a break may disrupt communication unless bypassed.</p>
+              <svg class="topology-svg" viewBox="0 0 240 120" role="img" aria-labelledby="topology-hybrid-title topology-hybrid-desc">
+                <title id="topology-hybrid-title">Hybrid topology</title>
+                <desc id="topology-hybrid-desc">Two star segments are connected together. Each segment has a central switch and three attached devices.</desc>
+                <line class="topology-link topology-link--bridge" x1="82" y1="60" x2="158" y2="60" />
+                <line class="topology-link" x1="64" y1="60" x2="28" y2="24" />
+                <line class="topology-link" x1="64" y1="60" x2="28" y2="96" />
+                <line class="topology-link" x1="64" y1="60" x2="64" y2="18" />
+                <line class="topology-link" x1="176" y1="60" x2="212" y2="24" />
+                <line class="topology-link" x1="176" y1="60" x2="212" y2="96" />
+                <line class="topology-link" x1="176" y1="60" x2="176" y2="18" />
+                <circle class="topology-node" cx="28" cy="24" r="9" />
+                <circle class="topology-node" cx="28" cy="96" r="9" />
+                <circle class="topology-node" cx="64" cy="18" r="9" />
+                <circle class="topology-node" cx="212" cy="24" r="9" />
+                <circle class="topology-node" cx="212" cy="96" r="9" />
+                <circle class="topology-node" cx="176" cy="18" r="9" />
+                <rect class="topology-switch" x="48" y="46" width="34" height="28" rx="7" />
+                <rect class="topology-switch" x="158" y="46" width="36" height="28" rx="7" />
+              </svg>
+              <h3>Hybrid</h3>
+              <p>Two or more topology types are combined. The design can balance local simplicity, expansion and wider resilience.</p>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start topologies -->
+        <section class="panel explanation-panel" id="explanation-topologies" data-explains="topologies" data-explanation-kind="tradeoff" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="topologies">
+          <div class="section-title">
+            <p class="eyebrow">Explanation</p>
+            <h2>Why physical connection patterns create different costs and failure effects</h2>
+          </div>
+          <div class="explanation-body">
+          <p>A topology changes network behaviour because it determines the path that data and failures can follow. In a bus, every device depends on one backbone, so little cabling is needed but damage or congestion on that shared path affects the whole network. In a star, each device has its own link to a central switch. One cable failure normally isolates one device, yet switch failure removes the common forwarding point. In a full mesh, every pair of nodes has a direct link, so another path remains when one link fails. That resilience is expensive because the number of links and ports rises rapidly as nodes are added. A hybrid combines topology types, such as connected star segments, to balance local simplicity with wider resilience. No topology is always best: the correct choice follows from required availability, expansion, cost and the consequence of each possible failure.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end topologies -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
@@ -310,7 +404,7 @@
             <li>Write two precise differences between a LAN and a WAN. Include one example of each.</li>
             <li>For a school computer room, choose a suitable topology and justify it with two reasons.</li>
             <li>For a hospital monitoring system, explain why fault tolerance may be important.</li>
-            <li>Create a four-row comparison table for bus, star, mesh and ring topology.</li>
+            <li>Create a four-row comparison table for bus, star, mesh and hybrid topology.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">

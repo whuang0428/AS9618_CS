@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=1" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -113,6 +114,18 @@
           <div class="callout">Chinese support: normalisation = 规范化；redundancy = 冗余；anomaly = 异常；dependency = 依赖关系。</div>
         </section>
 
+        <!-- stage10-explanation:start purpose -->
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+          <div class="section-title">
+            <p class="eyebrow">Explanation</p>
+            <h2>Why normalisation protects consistency rather than merely making tables smaller</h2>
+          </div>
+          <div class="explanation-body">
+          <p>Normalisation reorganises data so that each independent fact is stored in an appropriate relation and can be referenced through keys. The main goal is consistency, not simply reducing the number of characters stored. If a tutor's email is repeated in every enrolment row, changing one copy while missing another creates contradictory versions of the same fact. Moving tutor details to a Tutor table gives the email one authoritative row, while enrolments store a tutor key. Queries can reconstruct the combined view through that relationship. This design may require joins and can introduce more tables, so it is not automatically faster for every query. Its benefit comes from controlling dependencies: one fact has one intended place to be inserted, updated or deleted, reducing the opportunities for different copies to disagree.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end purpose -->
+
         <section class="panel" id="redundancy" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="redundancy">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -143,6 +156,18 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start redundancy -->
+        <section class="panel explanation-panel" id="explanation-redundancy" data-explains="redundancy" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="redundancy">
+          <div class="section-title">
+            <p class="eyebrow">Explanation</p>
+            <h2>Why repeated facts create risk even when every copy starts correctly</h2>
+          </div>
+          <div class="explanation-body">
+          <p>Redundancy becomes harmful when the same real-world fact is stored independently in several rows. At the moment of entry, every copy may agree, so the table appears correct. The risk appears when the fact changes. Each copy must be found and updated, and one missed row creates inconsistency. Repetition also wastes storage and makes validation harder because the database cannot easily identify which copy is authoritative. Not every repeated value is unwanted redundancy: many students may legitimately share the same course code, and each enrolment needs that reference. The problem is repeating attributes that depend on a different entity, such as storing the course title and tutor email in every enrolment. Dependency analysis reveals where the fact belongs; keys then preserve the relationship without copying the full fact.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end redundancy -->
+
         <section class="panel" id="anomalies" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="anomalies">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -154,6 +179,18 @@
             <article><strong>Deletion anomaly</strong><span>Deleting a row accidentally removes the only stored copy of a separate fact.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start anomalies -->
+        <section class="panel explanation-panel" id="explanation-anomalies" data-explains="anomalies" data-explanation-kind="tradeoff" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="anomalies">
+          <div class="section-title">
+            <p class="eyebrow">Explanation</p>
+            <h2>Why one badly structured table produces three different anomalies</h2>
+          </div>
+          <div class="explanation-body">
+          <p>Insertion, update and deletion anomalies are different symptoms of the same structural problem: unrelated facts have been forced into one row type. An insertion anomaly occurs when a new fact cannot be stored without inventing another fact, such as being unable to add a course until a student enrols. An update anomaly occurs when one real-world change requires several row changes, allowing copies to disagree. A deletion anomaly occurs when removing the last row for one fact accidentally removes the only stored copy of another, such as deleting the last enrolment and losing the course details. Splitting the table by entity and connecting rows with keys separates the lifecycles of those facts. The anomalies disappear because each entity can be inserted, changed or removed without performing an unrelated operation.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end anomalies -->
 
         <section class="panel" id="normal-forms" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="normal-forms">
           <div class="section-title">
@@ -168,6 +205,18 @@
           </div>
           <div class="callout">Keep this practical: identify the fact, decide which entity it describes, then move it to that table.</div>
         </section>
+
+        <!-- stage10-explanation:start normal-forms -->
+        <section class="panel explanation-panel" id="explanation-normal-forms" data-explains="normal-forms" data-explanation-kind="process" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="normal-forms">
+          <div class="section-title">
+            <p class="eyebrow">Explanation</p>
+            <h2>Why each normal form removes a different dependency problem</h2>
+          </div>
+          <div class="explanation-body">
+          <p>Normal forms are checkpoints for dependencies, not a ritual of splitting tables. First normal form requires atomic values and a consistent row structure so that each field contains one value that can be addressed. Second normal form matters when a primary key has several attributes: every non-key attribute must depend on the whole key, otherwise facts about only part of the key belong elsewhere. Third normal form removes transitive dependency, where a non-key attribute determines another non-key attribute. At each step, the misplaced attributes move to a relation whose key actually determines them, and foreign keys preserve the connection. A design should not be split without examining dependencies, because unnecessary tables add joins without correcting a real anomaly. The reason for each decomposition is always the same question: what fact determines this attribute?</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end normal-forms -->
 
 
         <section class="panel" id="detector" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="detector">

@@ -75,6 +75,16 @@ node scripts/generate-course-catalog.mjs
 node scripts/apply-classroom-delivery.mjs
 ```
 
+Stage 10 causal explanations are maintained as explicit reviewed content and synchronised to lesson HTML and Markdown:
+
+```bash
+node scripts/apply-stage10-explanations.mjs
+node scripts/apply-classroom-delivery.mjs
+node scripts/generate-stage10-audits.mjs
+```
+
+The current Stage 10 rollout is deliberately limited to the ten approved pilot lessons: 016, 030, 041, 053, 067, 083, 091, 105, 122 and 142. Each `Explanation` panel is visible by default and explains the mechanism, cause, consequence and limits of its linked concept. The remaining lessons stay listed as `Planned` in the Stage 10 target register until the pilot receives human approval.
+
 ## Verification
 
 ```bash
@@ -87,6 +97,7 @@ node scripts/verify-stage5-mark-schemes.mjs
 node scripts/verify-stage6-qa.mjs
 node scripts/verify-stage7-accessibility.mjs
 node scripts/verify-stage9-classroom.mjs
+node scripts/verify-stage10.mjs
 python3 scripts/build-stage8-release.py
 node scripts/verify-stage8-release.mjs
 ```
@@ -97,7 +108,7 @@ For the complete final acceptance workflow, run:
 node scripts/verify-all.mjs
 ```
 
-This runs every Stage 2-9 verifier, builds `dist/AS9618-CS-2027-2029-v1.0.0.zip`, verifies its sidecar and internal SHA-256 manifests, checks source parity and validates the packaged course inventory. Regenerate an approval register only after repeating the corresponding review.
+This runs every Stage 2-10 verifier, builds `dist/AS9618-CS-2027-2029-v1.0.0.zip`, verifies its sidecar and internal SHA-256 manifests, checks source parity and validates the packaged course inventory. Regenerate an approval register only after repeating the corresponding review.
 
 ## Generated Lesson Count
 

@@ -128,40 +128,45 @@ button { cursor: pointer; }
 .table-row:last-child > div { border-bottom: 0; }
 .table-head { background: var(--accent-soft); color: var(--accent-dark); font-weight: 850; }
 
-.topology-icon {
-  position: relative; height: 92px; margin-bottom: 10px;
-  border: 1px dashed #b8c7dc; border-radius: 8px; background: #f8fafc;
+.topology-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 120px;
+  margin-bottom: 10px;
+  border: 1px dashed #b8c7dc;
+  border-radius: 8px;
+  background: #f8fafc;
 }
-.topology-icon span {
-  position: absolute; width: 14px; height: 14px; border-radius: 50%;
-  background: var(--accent); box-shadow: 0 0 0 4px #dbeafe;
+.topology-link {
+  stroke: #8aa4c5;
+  stroke-width: 4;
+  stroke-linecap: round;
 }
-.topology-icon::before, .topology-icon::after {
-  content: ""; position: absolute; background: #8aa4c5;
+.topology-link--bridge { stroke: var(--green); stroke-width: 6; }
+.topology-node {
+  fill: var(--accent);
+  stroke: #dbeafe;
+  stroke-width: 7;
 }
-.bus::before { left: 18px; right: 18px; top: 44px; height: 3px; }
-.bus span:nth-child(1) { left: 24px; top: 37px; }
-.bus span:nth-child(2) { left: calc(50% - 7px); top: 37px; }
-.bus span:nth-child(3) { right: 24px; top: 37px; }
-.star::before { left: 50%; top: 16px; width: 3px; height: 60px; transform: translateX(-50%); box-shadow: -42px 24px 0 #8aa4c5, 42px 24px 0 #8aa4c5; }
-.star span:nth-child(1) { left: calc(50% - 7px); top: 39px; background: var(--green); }
-.star span:nth-child(2) { left: calc(50% - 7px); top: 12px; }
-.star span:nth-child(3) { left: 25%; top: 62px; }
-.star span:nth-child(4) { right: 25%; top: 62px; }
-.mesh::before { left: 25%; right: 25%; top: 26px; height: 3px; box-shadow: 0 38px 0 #8aa4c5; }
-.mesh::after { left: 31%; top: 20px; width: 3px; height: 54px; transform: rotate(45deg); box-shadow: 38px -38px 0 #8aa4c5; }
-.mesh span:nth-child(1) { left: 24%; top: 20px; }
-.mesh span:nth-child(2) { right: 24%; top: 20px; }
-.mesh span:nth-child(3) { left: 24%; bottom: 20px; }
-.mesh span:nth-child(4) { right: 24%; bottom: 20px; }
-.ring::before {
-  left: calc(50% - 31px); top: 14px; width: 62px; height: 62px;
-  border: 3px solid #8aa4c5; border-radius: 50%; background: transparent;
+.topology-switch {
+  fill: var(--green);
+  stroke: #d1fae5;
+  stroke-width: 5;
 }
-.ring span:nth-child(1) { left: calc(50% - 7px); top: 7px; }
-.ring span:nth-child(2) { right: calc(50% - 38px); top: 39px; }
-.ring span:nth-child(3) { left: calc(50% - 7px); bottom: 7px; }
-.ring span:nth-child(4) { left: calc(50% - 38px); top: 39px; }
+.topology-label {
+  fill: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+  text-anchor: middle;
+}
+.topology-switch-label {
+  fill: #ffffff;
+  font-size: 11px;
+  font-weight: 850;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
 
 .converter-grid {
   display: grid; grid-template-columns: minmax(220px, 1fr) auto; gap: 12px; align-items: end;

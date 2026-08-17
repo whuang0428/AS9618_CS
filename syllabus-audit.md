@@ -75,7 +75,7 @@ The counts in this table are generated from the detailed rows below during verif
 | S2.01 | Understand LAN and WAN characteristics and purposes. | W016 directly compares LAN and WAN. | W016 P/MS. | Complete | - |
 | S2.02 | Explain client-server and peer-to-peer roles, benefits and drawbacks; justify a model for a scenario. | W017 directly covers both models and scenario choice. | W017 P/MS. | Complete | - |
 | S2.03 | Understand thin-client and thick-client differences. | W017 Stage 2 completion; M017 specific completion module. | W017 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S2.04 | Understand bus, star, mesh and hybrid topologies. | W016 covers the named topologies. | W016 P/MS. | Complete | - |
+| S2.04 | Understand bus, star, mesh and hybrid topologies. | W016 uses accessible, fact-checked SVGs for bus, star, a labelled full-mesh example and a two-star hybrid, followed by causal explanation. | W016 P/MS. | Complete | - |
 | S2.05 | Describe how packets are transmitted in each topology and justify topology choice. | W016 Stage 2 completion; M016 specific completion module. | W016 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S2.06 | Understand public and private cloud computing, including benefits and drawbacks. | W024 Stage 2 completion; M024 specific completion module. | W024 worked example, three targeted items and expandable exam-style MS. | Complete | - |
 | S2.07 | Understand wired and wireless networks and compare their characteristics. | W022 directly compares both. | W022 P/MS. | Complete | - |

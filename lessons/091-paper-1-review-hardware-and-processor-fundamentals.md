@@ -71,3 +71,14 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **paper 1 review: hardware and processor fundamentals**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 causal explanations
+
+### Why hardware answers improve when components are connected into mechanisms
+
+- **Explains:** `logic`
+- **Explanation type:** synthesis
+
+Hardware topics become easier to retrieve when they are organised as cause-and-effect systems rather than isolated definitions. An input device converts a physical event into data; storage keeps the data; buses move values and signals; registers hold the values needed immediately; the control unit coordinates transfers; and the ALU performs the selected operation. Logic gates explain how binary conditions can control those operations at circuit level. During the fetch-decode-execute cycle, each named register matters because of the value it holds and the next transfer it enables. This connected model also improves evaluation questions: choosing a component requires matching its physical or logical mechanism to the scenario, not repeating that it is “fast” or “efficient”. When revising, trace one value from input through storage and processing to output, naming why each component is required at that point.
+<!-- stage10-explanations:end -->

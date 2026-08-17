@@ -220,20 +220,23 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 015,11,exam,exam,CORE,EXAM,,Questions with expandable MS,Classified,d70c1f8b13c128da7659f196466cc186b3158ef9844a85e382b9419e4ccbce61
 015,12,summary,summary,CORE,CHECK,,The Section 1 survival checklist,Classified,26d3d99bd5a0520800d7fa2e30cf30af46a724237adfc013da434716c12177e8
 015,13,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks,Classified,83c944b12c6ed188a38f2d79be4b247032676b39c1a655a3bff96f3e12d9baf9
-016,1,overview,overview,CORE,TEACH,,A network is not just “Wi-Fi exists”.,Classified,4a7297afa036af0214f20f10ab5d66ee5e3e4922a3f6d93c473343ef7d3cda5a
+016,1,overview,overview,CORE,TEACH,,A network is not just “Wi-Fi exists”.,Classified,8b0001a2302197c85fb0cdec7d8fd289c4cb9d86361d074ca3fbd84cb0e4cf71
 016,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,eb60c720c9e6702786ef1db48c7f36b243cf75e2a6d6a24443e7607616a93175
 016,3,hook,hook,CORE,ASK,,The classroom printer is shared by 24 computers. What is the actual network purpose?,Classified,e46e9d0d519089000754e5e333ed6c1988dc307349b2db5572d951fe4696eb93
 016,4,purpose,purpose,CORE,TEACH,,Why networks are used,Classified,ad0a15e33b309d7c58d806205454375363654d9a308a11b5873479ea68b68f85
-016,5,lanwan,lanwan,CORE,TEACH,,LAN vs WAN,Classified,507d9018b4979b9f12eb27a0d48b3e9f8a6e996f4fedcdb56301104331501327
-016,6,topologies,topologies,CORE,TEACH,,Network topologies,Classified,baf38a5df2b1d4521a232f44c9901721e6c5bdacc73caa4bdcca05ef087ebdce
-016,7,tool,tool,OPTIONAL,PRACTISE,,Topology recommendation helper,Classified,647943cd83a66844f843bd11c5160eb2d8746b8cc011e895f5fcb08288dd3082
-016,8,examples,examples,CORE,TEACH,,Worked examples,Classified,f36d63e3f0c87e104892224ad8c4eef3f2bf2bf1d26a405a8972dd6cf4386693
-016,9,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
-016,10,debug,debug,CORE,CHECK,,Fix the weak network answer,Classified,30a4ac88135a09cbb7362be9a513f9643ed1057e03381e5189e6dbbadd30dbf6
-016,11,exam,exam,CORE,EXAM,,Questions with expandable MS,Classified,82a33b83099ea3bb8e43d17d0250e81d941809328ca00f46c2aab1729d927e5a
-016,12,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Packet movement through network topologies,Classified,549d36be81e721492b332bc77533db98860deb34785c3656b666018c639e6e13
-016,13,summary,summary,CORE,CHECK,,Network answers need a comparison basis,Classified,9423aaf46ded47d5e96a3114696ed6d65b1d390fbe1103e5ff906dfb12f9ff72
-016,14,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks,Classified,8f185c82abe9721f581ff261eb304673140ba906412dc5f9d7f0786e51e25e01
+016,5,explanation-purpose,purpose,CORE,TEACH,,Why sharing becomes useful only when devices can exchange requests,Classified,3f0993b45cc40e3e44796d486f35e2835cb99755906a141b24c8cb9a2b3bec9f
+016,6,lanwan,lanwan,CORE,TEACH,,LAN vs WAN,Classified,507d9018b4979b9f12eb27a0d48b3e9f8a6e996f4fedcdb56301104331501327
+016,7,explanation-lanwan,lanwan,CORE,TEACH,,Why area and ownership change the way a network is managed,Classified,740010c2f93064bf653c28ffc6fb85cebedf9517e5a09cb587d9a8cf5c1b051e
+016,8,topologies,topologies,CORE,TEACH,,Network topologies,Classified,a3e3d7dc3bcdf519ced799d06d767edde6d593cfd2dfdae0e12fd9496165e6c8
+016,9,explanation-topologies,topologies,CORE,TEACH,,Why physical connection patterns create different costs and failure effects,Classified,8f3b8685707565422de903e7533ef763e60517753b2084624c71da4606448329
+016,10,tool,tool,OPTIONAL,PRACTISE,,Topology recommendation helper,Classified,647943cd83a66844f843bd11c5160eb2d8746b8cc011e895f5fcb08288dd3082
+016,11,examples,examples,CORE,TEACH,,Worked examples,Classified,f36d63e3f0c87e104892224ad8c4eef3f2bf2bf1d26a405a8972dd6cf4386693
+016,12,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
+016,13,debug,debug,CORE,CHECK,,Fix the weak network answer,Classified,30a4ac88135a09cbb7362be9a513f9643ed1057e03381e5189e6dbbadd30dbf6
+016,14,exam,exam,CORE,EXAM,,Questions with expandable MS,Classified,82a33b83099ea3bb8e43d17d0250e81d941809328ca00f46c2aab1729d927e5a
+016,15,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Packet movement through network topologies,Classified,549d36be81e721492b332bc77533db98860deb34785c3656b666018c639e6e13
+016,16,summary,summary,CORE,CHECK,,Network answers need a comparison basis,Classified,9423aaf46ded47d5e96a3114696ed6d65b1d390fbe1103e5ff906dfb12f9ff72
+016,17,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks,Classified,fbd3cc671d8370ea66773d585f2586d887ac8ad9b788aa28e105256a1ce83dcc
 017,1,overview,overview,CORE,TEACH,,"Who serves, who asks, and who secretly does both?",Classified,b0f06235644f389d6dccc4c5e6f9eebd632a92f7367a0d06d2cc2a0d2e5b75f7
 017,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,d2b033740acf7cd0766af06ae9fc24d0eb5dba2bff07d9ab63d4a01e03d5731c
 017,3,hook,hook,CORE,ASK,,A student downloads a file from a school file server. What is the student's computer?,Classified,06c32b9370b834d87f6458fd4741687c25a0f877d84c5bc30c339a679ce84654
@@ -420,16 +423,19 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 030,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,f1b24bc744931eb4e6c074fe3d46e4341abcaac3d3910d4a1a78d9ef86e754e3
 030,3,hook,hook,CORE,ASK,,"Your laptop has 30 browser tabs, a video call and an IDE open. Which memory areas are being stressed?",Classified,967e0ce29424dd86752197fda2a624bcb9066cdfa09bac0c04cb4a88abfd860b
 030,4,primary,primary,CORE,TEACH,,Primary storage is directly involved in current processing,Classified,83e1ba6ddc9b6e2cf32b31653d2076e6a7f927ccdeffc57990c48f8b531a0c39
-030,5,ram-rom,ram-rom,CORE,TEACH,,"RAM and ROM: similar letters, very different jobs",Classified,ff581ea3d63d5fcd74136301f260c46e8c70d14dfa3a729e70067da4691e2580
-030,6,cache-vm,cache-vm,CORE,TEACH,,Cache and virtual memory affect performance in opposite directions,Classified,bd2617bd3a6da1a60f536fccab3f44d3f8ef7a9030ee4dc2155eb18a8970147d
-030,7,tool,tool,OPTIONAL,PRACTISE,,Choose the memory concept,Classified,c35c4d846cd9848e7899344db0ce5ccb9c008078bf0f33a3e60326c376716827
-030,8,examples,examples,CORE,TEACH,,Precise explanations for primary storage,Classified,83eebc978ca100a6cc8d7dc8ef94ee330f70c54bc3f7b1cd92aa45b99d3707d6
-030,9,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
-030,10,debug,debug,CORE,CHECK,,Fix the weak memory answer,Classified,c6f383bc15ffb0986044e0b01e0f88d80a3ed679d7d99e8948502fff84f95c41
-030,11,exam,exam,CORE,EXAM,,Questions with expandable MS,Classified,3df1617b0778b7e61a6a7a461f31081afaa218a0b39149634e8516508a1e4727
-030,12,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,"SRAM, DRAM, PROM, EPROM and EEPROM",Classified,6de6f9b04c04b4c0328b6fe98a49b3a949ca313c102e0f052858f221b65ea437
-030,13,summary,summary,CORE,CHECK,,Primary storage in six exam sentences,Classified,4ddfc54388dfe56d61b71e546c58e9b338bf3d6d1c4dea7799bab2ab49db2bd6
-030,14,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks,Classified,0c5835eb95e57283b0c7d808e90d0164118156515500998b8b87a788086eb589
+030,5,explanation-primary,primary,CORE,TEACH,,Why primary storage must stay close to current processing,Classified,3ca18af492bb487485535022ebbc0b550d1a24321decf7dda9bea2acb8301c3f
+030,6,ram-rom,ram-rom,CORE,TEACH,,"RAM and ROM: similar letters, very different jobs",Classified,ff581ea3d63d5fcd74136301f260c46e8c70d14dfa3a729e70067da4691e2580
+030,7,explanation-ram-rom,ram-rom,CORE,TEACH,,Why RAM is temporary while ROM remains stable,Classified,2930f6f156d84f5b914a17a9fcab283ad044819ba68913776562b89676c63ef6
+030,8,cache-vm,cache-vm,CORE,TEACH,,Cache and virtual memory affect performance in opposite directions,Classified,bd2617bd3a6da1a60f536fccab3f44d3f8ef7a9030ee4dc2155eb18a8970147d
+030,9,explanation-cache-vm,cache-vm,CORE,TEACH,,Why cache accelerates access while virtual memory usually slows it,Classified,3e0f8290ba5ca8e86a4c75cef63e0f02cb016afdae7b12e35148a12cdad53269
+030,10,tool,tool,OPTIONAL,PRACTISE,,Choose the memory concept,Classified,c35c4d846cd9848e7899344db0ce5ccb9c008078bf0f33a3e60326c376716827
+030,11,examples,examples,CORE,TEACH,,Precise explanations for primary storage,Classified,83eebc978ca100a6cc8d7dc8ef94ee330f70c54bc3f7b1cd92aa45b99d3707d6
+030,12,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
+030,13,debug,debug,CORE,CHECK,,Fix the weak memory answer,Classified,c6f383bc15ffb0986044e0b01e0f88d80a3ed679d7d99e8948502fff84f95c41
+030,14,exam,exam,CORE,EXAM,,Questions with expandable MS,Classified,3df1617b0778b7e61a6a7a461f31081afaa218a0b39149634e8516508a1e4727
+030,15,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,"SRAM, DRAM, PROM, EPROM and EEPROM",Classified,6de6f9b04c04b4c0328b6fe98a49b3a949ca313c102e0f052858f221b65ea437
+030,16,summary,summary,CORE,CHECK,,Primary storage in six exam sentences,Classified,4ddfc54388dfe56d61b71e546c58e9b338bf3d6d1c4dea7799bab2ab49db2bd6
+030,17,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks,Classified,0c5835eb95e57283b0c7d808e90d0164118156515500998b8b87a788086eb589
 031,1,overview,overview,CORE,TEACH,,Secondary storage is where data survives the power switch.,Classified,5c3b44375bd0b4b1a0fe1c285af859bf700aeef31b4446d630b89ac6b5080894
 031,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,3985a4248e150e08fe5ba883871b57ed93b879a20efef804186c322b41b9d486
 031,3,hook,hook,CORE,ASK,,"A student stores videos on an external HDD, installs apps on an SSD, shares photos with a flash drive and finds an old DVD. Why are these not all the same?",Classified,b203b72bf6a7b69e0ec607fb5d35416c2b11c41758078c089af5bd29e26c1897
@@ -567,17 +573,20 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 041,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,575a2e8b190ac9ebf22a2dff648edece52e1b129c88b68fdeeb31a625b9dd5ab
 041,3,hook,hook,CORE,ASK,,A computer adds 23 and 19. Which CPU part deserves the credit?,Classified,9f0a55933f79b5e66e32fc0ad6867724921a70fc97e31e3adee53f2fad586a35
 041,4,architecture,architecture,CORE,TEACH,,CPU architecture is about cooperating parts,Classified,a128c4208b76fdceef97f85b93a176c10daea1b65dbe5d05edc6528391de3329
-041,5,cpu-map,cpu-map,CORE,TEACH,,"Inside the CPU, outside the CPU, and what connects them",Classified,7eed84ff90a2987774597fe00660058ccb46ee4017817a147bbaa8e22ccd481b
-041,6,alu-cu,alu-cu,CORE,TEACH,,ALU and CU: do not swap their jobs,Classified,7a22059fe59c8366904eb6024d5de89b699b20e5117baae2d5bdd69be0343f42
-041,7,registers,registers,CORE,TEACH,,"Registers, buses and clock",Classified,46b726bd6f5b17c99f5caf2d02ee5da20d5f8bbd76588c8e0e6c44fc6bc836d5
-041,8,tool,tool,OPTIONAL,PRACTISE,,CPU component mapper,Classified,b7cfa350f55e3ae17dc30a73ed120e4cd0b05059f71d1f34da5c102aac1aa6ee
-041,9,examples,examples,CORE,TEACH,,Build answers from exact component roles,Classified,13bdbac1f79ad143781d0f7a82d10e51bc9fe0cfa808b930793bee2e2bee531d
-041,10,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,899596224041a9569104d5f8372a9d61427f9a49058c7f266db26dda327a99db
-041,11,debug,debug,CORE,CHECK,,Fix the wording before it loses marks,Classified,ea95d5d3eda95e997c9cc00020bca3df7fe7fa802f2f5d3ebce1fbb569e331aa
-041,12,exam,exam,CORE,EXAM,,CIE-style questions with expandable mark schemes,Classified,4a196788e963a03ee52994af4cea220f639cdacee29feda865dd4adcdad71a87
-041,13,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Immediate access store (IAS),Classified,368b7d1ca2b53d761ed4c7672c42ac660e0d62195e18f46ffda593d143ba59a1
-041,14,summary,summary,CORE,CHECK,,"One CPU, several specialised jobs",Classified,093c5c8bb505d10f59cb11931905af653cb7736fe2ecf34e7e863a6bf5d99a1b
-041,15,homework,homework,AFTER_CLASS,HOMEWORK,,Make the architecture answer-ready,Classified,0fa91cc1a2a98b6fb423a7df35497685d4f57832df0c3f3af7fd75994ed42615
+041,5,explanation-architecture,architecture,CORE,TEACH,,Why a CPU needs specialised parts instead of one general component,Classified,bb3b58362210825db058414706e5a42d8b412a46ac8585dcacb07ca746c05a17
+041,6,cpu-map,cpu-map,CORE,TEACH,,"Inside the CPU, outside the CPU, and what connects them",Classified,7eed84ff90a2987774597fe00660058ccb46ee4017817a147bbaa8e22ccd481b
+041,7,alu-cu,alu-cu,CORE,TEACH,,ALU and CU: do not swap their jobs,Classified,7a22059fe59c8366904eb6024d5de89b699b20e5117baae2d5bdd69be0343f42
+041,8,explanation-alu-cu,alu-cu,CORE,TEACH,,Why the ALU calculates but the control unit coordinates,Classified,6307503b95a8c3c6c20cbc2bf30a6d9d67180eece16708822ce9aab03a249b83
+041,9,registers,registers,CORE,TEACH,,"Registers, buses and clock",Classified,46b726bd6f5b17c99f5caf2d02ee5da20d5f8bbd76588c8e0e6c44fc6bc836d5
+041,10,explanation-registers,registers,CORE,TEACH,,"Why registers, buses and the clock must work as one timed system",Classified,49dfdf7bb2e521040da30e6cbef44bb3b7621f93cec57cd74c005cf4ad7ba539
+041,11,tool,tool,OPTIONAL,PRACTISE,,CPU component mapper,Classified,b7cfa350f55e3ae17dc30a73ed120e4cd0b05059f71d1f34da5c102aac1aa6ee
+041,12,examples,examples,CORE,TEACH,,Build answers from exact component roles,Classified,13bdbac1f79ad143781d0f7a82d10e51bc9fe0cfa808b930793bee2e2bee531d
+041,13,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,899596224041a9569104d5f8372a9d61427f9a49058c7f266db26dda327a99db
+041,14,debug,debug,CORE,CHECK,,Fix the wording before it loses marks,Classified,ea95d5d3eda95e997c9cc00020bca3df7fe7fa802f2f5d3ebce1fbb569e331aa
+041,15,exam,exam,CORE,EXAM,,CIE-style questions with expandable mark schemes,Classified,4a196788e963a03ee52994af4cea220f639cdacee29feda865dd4adcdad71a87
+041,16,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Immediate access store (IAS),Classified,368b7d1ca2b53d761ed4c7672c42ac660e0d62195e18f46ffda593d143ba59a1
+041,17,summary,summary,CORE,CHECK,,"One CPU, several specialised jobs",Classified,093c5c8bb505d10f59cb11931905af653cb7736fe2ecf34e7e863a6bf5d99a1b
+041,18,homework,homework,AFTER_CLASS,HOMEWORK,,Make the architecture answer-ready,Classified,0fa91cc1a2a98b6fb423a7df35497685d4f57832df0c3f3af7fd75994ed42615
 042,1,overview,overview,CORE,TEACH,,The CPU follows a routine. It is not improvising jazz with your instructions.,Classified,af13875abf9cd8120e06fab7f8066de303a7c6b44353d1bf7c07a3fda56bd0a7
 042,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,cbcb4eb668400877bc631666b821d1efa6439d9b84c6b155ca123cd3ea85e708
 042,3,hook,hook,CORE,ASK,,A CPU wants the next instruction. Where does it look first?,Classified,b69466c0292c025ac304c8d410bdf335e565bfe1a22783f951a2e6391a3e8044
@@ -750,18 +759,24 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 053,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,6e8fe5f6adfcaec043b142cf5ae570919b4121f6ae9b5d1af6bfba0bf6073667
 053,3,hook,hook,CORE,ASK,,"A video editor, browser and music player are open. Who decides who gets CPU time?",Classified,547da1c2830a1ce7e36d16fd2872ab7cc0248cec5fc3241e60c5a7a06286c130
 053,4,concept,concept,CORE,TEACH,,An OS manages resources and provides services,Classified,9dbd2e880aa83c7d3063b37528b542cb513e73b0c96fd9600b31d8c8c4294640
-053,5,process,process,CORE,TEACH,,Process management: sharing processor time,Classified,b8f4484ce2a626b78f3a2b88b8ec182c991dd5cb303aea82b863eab14b282c10
-053,6,memory,memory,CORE,TEACH,,"Memory management: allocate, protect, reuse",Classified,6254f882459da815dcd2e063dd9a7a51a7e0589af47bc71809268dc1d95ed20d
-053,7,file,file,CORE,TEACH,,"File management: names, folders, access and storage",Classified,70ef304fbeccff9a0d377ae1c0f0d4df17af499cd3b5e21fad96f062946fd35b
-053,8,device,device,CORE,TEACH,,"Device management: drivers, buffers and queues",Classified,250aea6f7a58e1d2af797fff735cfe28087f0a0954828bbd34b2727ae737512d
-053,9,services,services,CORE,TEACH,,Other OS services at overview level,Classified,ee98f5707635cc23a1db556d9824bd984c682b5e758273ad9c0d68a3f2dba22c
-053,10,tool,tool,OPTIONAL,PRACTISE,,OS role classifier,Classified,47d0a935b667c93947b63c72fcf23394acfd110511d30e6326a8bf613985df19
-053,11,examples,examples,CORE,TEACH,,Name the OS role and justify it,Classified,81c58b154db6ce65aa3b25786e63b1b35c4dfa97d3d4708a18de82d6fc1bf09e
-053,12,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,fd06f342d3d4f93e3ce1f19e296fdf92c5e07e43d30b0847262373cfa584284b
-053,13,debug,debug,CORE,CHECK,,Fix the OS role confusion,Classified,3a87ed771aca613a9bd0d3d9fa244f08ea89fd614d45176dd967703f360972e3
-053,14,exam,exam,CORE,EXAM,,CIE-style questions with expandable mark schemes,Classified,4840a9c063d878f2d3df02a3ae30daaab35a07981c49dd5b58d7c9d93314a733
-053,15,summary,summary,CORE,CHECK,,The OS manages resources so applications can run,Classified,d6f31c0deef6edd314ae42c0bf27a39ae1d9ca2db0942433e37ebceea03ebe7c
-053,16,homework,homework,AFTER_CLASS,HOMEWORK,,Connect each OS role to a real scenario,Classified,8af44fac7c1e857a77df9bb197fa7a797baf9e37ab84bd806af4afbcc6bb7623
+053,5,explanation-concept,concept,CORE,TEACH,,Why applications need an operating system between them and the hardware,Classified,5f923e293c2a40567ca77920dd701bbb26473bca471c193b39aadc64d558a507
+053,6,process,process,CORE,TEACH,,Process management: sharing processor time,Classified,b8f4484ce2a626b78f3a2b88b8ec182c991dd5cb303aea82b863eab14b282c10
+053,7,explanation-process,process,CORE,TEACH,,Why sharing processor time creates the appearance of simultaneous programs,Classified,c7b87e8f7d389c67aed8dc7fac74741aaff7ddea36099cba579265a0fc5e0cc7
+053,8,memory,memory,CORE,TEACH,,"Memory management: allocate, protect, reuse",Classified,6254f882459da815dcd2e063dd9a7a51a7e0589af47bc71809268dc1d95ed20d
+053,9,explanation-memory,memory,CORE,TEACH,,Why memory allocation and protection are both necessary,Classified,a5dadf57d1785ec4460ca2e10447e3d3ade714c9dff3969f714ac646e862ef1f
+053,10,file,file,CORE,TEACH,,"File management: names, folders, access and storage",Classified,70ef304fbeccff9a0d377ae1c0f0d4df17af499cd3b5e21fad96f062946fd35b
+053,11,explanation-file,file,CORE,TEACH,,"Why a file system needs names, metadata and access rules",Classified,27a219a2e110a90b8cea78183d4f2e6bb9ee6820503ae1913747825872b70faa
+053,12,device,device,CORE,TEACH,,"Device management: drivers, buffers and queues",Classified,250aea6f7a58e1d2af797fff735cfe28087f0a0954828bbd34b2727ae737512d
+053,13,explanation-device,device,CORE,TEACH,,"Why drivers, buffers and queues make slow devices manageable",Classified,b22d1a4417cc42ff6a4b87b5bfe577c56544b5cf178c30d89494c28d2024cbf7
+053,14,services,services,CORE,TEACH,,Other OS services at overview level,Classified,ee98f5707635cc23a1db556d9824bd984c682b5e758273ad9c0d68a3f2dba22c
+053,15,explanation-services,services,CORE,TEACH,,Why operating-system services form one coordinated control layer,Classified,ebd2ce4d2cc561c52f08ee04b7855510c6fefb89781245b430451c90e99ffa7a
+053,16,tool,tool,OPTIONAL,PRACTISE,,OS role classifier,Classified,47d0a935b667c93947b63c72fcf23394acfd110511d30e6326a8bf613985df19
+053,17,examples,examples,CORE,TEACH,,Name the OS role and justify it,Classified,81c58b154db6ce65aa3b25786e63b1b35c4dfa97d3d4708a18de82d6fc1bf09e
+053,18,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,fd06f342d3d4f93e3ce1f19e296fdf92c5e07e43d30b0847262373cfa584284b
+053,19,debug,debug,CORE,CHECK,,Fix the OS role confusion,Classified,3a87ed771aca613a9bd0d3d9fa244f08ea89fd614d45176dd967703f360972e3
+053,20,exam,exam,CORE,EXAM,,CIE-style questions with expandable mark schemes,Classified,4840a9c063d878f2d3df02a3ae30daaab35a07981c49dd5b58d7c9d93314a733
+053,21,summary,summary,CORE,CHECK,,The OS manages resources so applications can run,Classified,d6f31c0deef6edd314ae42c0bf27a39ae1d9ca2db0942433e37ebceea03ebe7c
+053,22,homework,homework,AFTER_CLASS,HOMEWORK,,Connect each OS role to a real scenario,Classified,8af44fac7c1e857a77df9bb197fa7a797baf9e37ab84bd806af4afbcc6bb7623
 054,1,overview,overview,CORE,TEACH,,An interface is the conversation style between user and computer.,Classified,6325b7fe5d24e047281fe85abe689bddfe4f05e162931c3fd965312cfe58575d
 054,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,344d3e5931c0c212ec9414482015d8aa068b1900e85dbedc457ea4daf5a22bd7
 054,3,hook,hook,CORE,ASK,,A technician needs to rename 500 files with one command. Which interface is likely best?,Classified,dff5f94a6d2e25c3000d3194647b2f1f61f23addae5bf7a806fc16a0bf1cc524
@@ -979,21 +994,28 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 067,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,a26d9927895e61873eafa9ee6862c2ade819a6064c5660c39efd10db7af9708f
 067,3,hook,hook,CORE,ASK,,"A website stores a digest of your password, not the password itself. What method is being used?",Classified,6a4a56a752c3c0a006fa35f04f9b1ad6097deefb760a74dc6cf8f58f3e9a2b8e
 067,4,core,core,CORE,TEACH,,Security methods have different purposes,Classified,9863469f88ebaea5c95477040ba3017d68db00256eba3f383807b84ba5c47086
-067,5,encryption,encryption,CORE,TEACH,,Encryption protects confidentiality,Classified,d41e30a19f0496ccbf4ae78340f1d76ad5ca52ade69889f7ff7b83846af5baa7
-067,6,keys,keys,CORE,TEACH,,Keys control who can encrypt or decrypt,Classified,63886d0846758a30596aa7df871d65aa9aad53444a0e5f6d567b159c54786a58
-067,7,hashing,hashing,CORE,TEACH,,"Hashing is one-way comparison, not secret recovery",Classified,ed0e7fec5a910038164e5fc206668ed1e0938020bf18d39b9c99fdc956e9a8f8
-067,8,certificates,certificates,CORE,TEACH,,Digital certificates help authenticate websites,Classified,fd2cb39d47acd6d2226c812224ffc7568a0a3ac20475dfc96c13910d51d71c23
-067,9,https,https,CORE,TEACH,,HTTPS combines identity checking with encrypted communication,Classified,c33b9ce93635ec52c6a9855bb72e07eb79c721faecd52a534e62b7dbbd946dd8
-067,10,compare,compare,CORE,TEACH,,"Choose by job, not by favourite buzzword",Classified,0156f9f93522f58cc62c0122d54c1682a1444d741e114ebb487fcda1cc2a0782
-067,11,tool,tool,OPTIONAL,TEACH,,Which security method fits the scenario?,Classified,d4da0071c8fb3cf606106b1ad5c2bc3f69a58edf94fac2381c0aaf44650f7b51
-067,12,hash-demo,hash-demo,CORE,TEACH,,"A tiny demonstration hash, not a real security hash",Classified,55758688e8aa3fb5889bd5db9015cec7cbec759590c52d2b09c7d09704c96e2e
-067,13,examples,examples,CORE,TEACH,,Four model answers with strict method boundaries,Classified,d324a4f29118950da1ef5a510bcaebbacfaca0af1b2867c19194a360e1173243
-067,14,practice,practice,CORE,PRACTISE,,Short answers: choose the exact method,Classified,5e3eeb30330aa2cfdd439c7afd2aa6ee532113a52c9aeb0f4254151c1a43040a
-067,15,debug,debug,CORE,CHECK,,Fix the sentence before it loses marks,Classified,e41dd4c8b9f60cfe8101d1d74c1693162680d374b9599fa350ce5b04f10b6d4c
-067,16,exam,exam,CORE,EXAM,,Original Cambridge-style questions with expandable MS,Classified,1eb29f06a2ff351c1867a2484902f72de15d3c420a499124ea4bddfa2309edb4
-067,17,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Digital signatures,Classified,857b5ff3a0f6c84b672e9886a03f47f9fd1f8ff820d2d9012d260c9b9b0b6133
-067,18,summary,summary,CORE,CHECK,,Do not swap the three methods,Classified,03c52f1f59ab7e83e6f3bccc4337e3d9cc0b6d3a60ff67b170cc0792fc96609f
-067,19,homework,homework,AFTER_CLASS,HOMEWORK,,"Clear tasks, not vague revision fog",Classified,dced30363d415fc5db6f9c289432509815518f6f63a7e666e2dc05aa1f6dd54b
+067,5,explanation-core,core,CORE,TEACH,,Why security methods cannot substitute for one another,Classified,ac1ee08035b880faacaa5456e68bc13e574f5131473213ffa00ec959f553a2ec
+067,6,encryption,encryption,CORE,TEACH,,Encryption protects confidentiality,Classified,d41e30a19f0496ccbf4ae78340f1d76ad5ca52ade69889f7ff7b83846af5baa7
+067,7,explanation-encryption,encryption,CORE,TEACH,,Why ciphertext protects confidentiality but not every security property,Classified,5871f9b49a073346838ab4ad1899eebf06d54771201154dfcf0a08d84fd5c91b
+067,8,keys,keys,CORE,TEACH,,Keys control who can encrypt or decrypt,Classified,63886d0846758a30596aa7df871d65aa9aad53444a0e5f6d567b159c54786a58
+067,9,explanation-keys,keys,CORE,TEACH,,Why key ownership determines who can perform each cryptographic action,Classified,b2320b0e87e0a4d7b538a3aac268bab9d0a90c8b011671c0ae5dd0c7589f386d
+067,10,hashing,hashing,CORE,TEACH,,"Hashing is one-way comparison, not secret recovery",Classified,ed0e7fec5a910038164e5fc206668ed1e0938020bf18d39b9c99fdc956e9a8f8
+067,11,explanation-hashing,hashing,CORE,TEACH,,Why hashing supports comparison without storing the original value,Classified,581d912a3fd70ecafbebfec6f270d3fb6b50cd343e9572668f382b7f19c11f54
+067,12,certificates,certificates,CORE,TEACH,,Digital certificates help authenticate websites,Classified,fd2cb39d47acd6d2226c812224ffc7568a0a3ac20475dfc96c13910d51d71c23
+067,13,explanation-certificates,certificates,CORE,TEACH,,Why a certificate makes a public key more trustworthy,Classified,159ef89311f96d14ee78de345618e80fd35b18f1ad21818a55995b8a36f1e578
+067,14,https,https,CORE,TEACH,,HTTPS combines identity checking with encrypted communication,Classified,c33b9ce93635ec52c6a9855bb72e07eb79c721faecd52a534e62b7dbbd946dd8
+067,15,explanation-https,https,CORE,TEACH,,Why HTTPS needs both authentication and encrypted transport,Classified,8e27b088f31cf94e32b7e21bb49a5b87717722858b9041aae3f932e60d5ab619
+067,16,compare,compare,CORE,TEACH,,"Choose by job, not by favourite buzzword",Classified,0156f9f93522f58cc62c0122d54c1682a1444d741e114ebb487fcda1cc2a0782
+067,17,explanation-compare,compare,CORE,TEACH,,Why the required security property should choose the method,Classified,3ed94e7522ed1a8972512b0e33b6a9d2398b4a138e08c2d704630e9e052e5b06
+067,18,tool,tool,OPTIONAL,TEACH,,Which security method fits the scenario?,Classified,d4da0071c8fb3cf606106b1ad5c2bc3f69a58edf94fac2381c0aaf44650f7b51
+067,19,hash-demo,hash-demo,CORE,TEACH,,"A tiny demonstration hash, not a real security hash",Classified,55758688e8aa3fb5889bd5db9015cec7cbec759590c52d2b09c7d09704c96e2e
+067,20,examples,examples,CORE,TEACH,,Four model answers with strict method boundaries,Classified,d324a4f29118950da1ef5a510bcaebbacfaca0af1b2867c19194a360e1173243
+067,21,practice,practice,CORE,PRACTISE,,Short answers: choose the exact method,Classified,5e3eeb30330aa2cfdd439c7afd2aa6ee532113a52c9aeb0f4254151c1a43040a
+067,22,debug,debug,CORE,CHECK,,Fix the sentence before it loses marks,Classified,e41dd4c8b9f60cfe8101d1d74c1693162680d374b9599fa350ce5b04f10b6d4c
+067,23,exam,exam,CORE,EXAM,,Original Cambridge-style questions with expandable MS,Classified,1eb29f06a2ff351c1867a2484902f72de15d3c420a499124ea4bddfa2309edb4
+067,24,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Digital signatures,Classified,857b5ff3a0f6c84b672e9886a03f47f9fd1f8ff820d2d9012d260c9b9b0b6133
+067,25,summary,summary,CORE,CHECK,,Do not swap the three methods,Classified,03c52f1f59ab7e83e6f3bccc4337e3d9cc0b6d3a60ff67b170cc0792fc96609f
+067,26,homework,homework,AFTER_CLASS,HOMEWORK,,"Clear tasks, not vague revision fog",Classified,dced30363d415fc5db6f9c289432509815518f6f63a7e666e2dc05aa1f6dd54b
 068,1,overview,overview,CORE,TEACH,,Network security is not just one locked door.,Classified,288bbc8052114f918d39c79441e0e98a3a473af1f64f7a210774dee743165373
 068,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,46017625b9f2a4fe44e05c1c21af89a0fa024813d7df238c39f5a81dc1c12e98
 068,3,hook,hook,CORE,ASK,,A school blocks outgoing traffic to port 25 except from the mail server. What control is doing the work?,Classified,78d8b06924dabc07cf8fb8ca97f372d2b29587d9f4fdcad7731a0e4bda0b7e16
@@ -1242,18 +1264,22 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 083,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,8c05787014573f5582a1de67956f3162077f2a2f5ae0e8289f8c8a97b8fe79c2
 083,3,hook,hook,CORE,ASK,,A tutor's email appears in 38 course rows. The tutor changes email. What can go wrong?,Classified,ccff001d7746e2b943479ea1a31e411262cca61af8515cb3ff23128532b8d8d9
 083,4,purpose,purpose,CORE,TEACH,,Purpose of normalisation,Classified,02d474125ce3af524aea2399f314367e513ef24770ae9a47ff0913ebf670dadc
-083,5,redundancy,redundancy,CORE,TEACH,,Spot unnecessary repeated facts,Classified,a65a64e7383a3e9c31b8a0a695ec7c7d2ff0d39d20951747965da4e15f0f1734
-083,6,anomalies,anomalies,CORE,TEACH,,Three anomaly types,Classified,9eee832526a669d26a60b08362791cf97feafe4a29cd7ce1d8ab23ec7cf40300
-083,7,normal-forms,normal-forms,CORE,TEACH,,"Normal form idea, without turning the lesson into a maze",Classified,9cd493a887ac3efa6432fb7f2c59e008cbf434f4cdd0de1692385d35de0356e0
-083,8,detector,detector,CORE,TEACH,,Which fact should be moved?,Classified,21af3f4c9879003cc5eae382fb8a530b9f3cb7f73947e8fba0b1d07aca38be78
-083,9,classifier,classifier,OPTIONAL,TEACH,,Classify the problem,Classified,f1b063f9a3f39fe1011bbb844c7df6eecc18282da41fc5bc4c925af118298c0f
-083,10,examples,examples,CORE,TEACH,,From one bad table to linked tables,Classified,870c8c6f6bccbecd7a986dc52fff9bff41e8a872cd1242e7a6075086cf5b0c19
-083,11,practice,practice,CORE,PRACTISE,,Short-answer checks,Classified,e4f7ef0cf7ae4831d289b56b52f6d8139a75ee88bdb1e432e81eebe9799abbcb
-083,12,debug,debug,CORE,CHECK,,Repair weak normalisation explanations,Classified,85b8c8da9ec23c75115eacba918f014950421ef6dbd657ecbb891bf325c9ff5e
-083,13,exam,exam,CORE,EXAM,,Original Cambridge-style practice with expandable MS,Classified,4475896baa96d8539d2f477172665a0ebc349be2cf3b808ae7bc371ac037227a
-083,14,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,"First, second and third normal form",Classified,7490932d2cd4278468c39ffcfd8f852e92c7dc3cac187257577945fad7174848
-083,15,summary,summary,CORE,CHECK,,Normalisation checklist,Classified,f2582c147061b68ca564a5bf351582778a67732d950d5b2a2b0bab031061a83a
-083,16,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,9ca0cebe5626dca9a2fbad770053bb9d24fc6d7575f43ff9900ec822feff7855
+083,5,explanation-purpose,purpose,CORE,TEACH,,Why normalisation protects consistency rather than merely making tables smaller,Classified,81e05eb30a34a1d3998b04a0bbf3b04c4b0711bce521f376e0dc0c5f73391d3d
+083,6,redundancy,redundancy,CORE,TEACH,,Spot unnecessary repeated facts,Classified,a65a64e7383a3e9c31b8a0a695ec7c7d2ff0d39d20951747965da4e15f0f1734
+083,7,explanation-redundancy,redundancy,CORE,TEACH,,Why repeated facts create risk even when every copy starts correctly,Classified,706ca5514cb6187e8ea9164b9423df253c61a913639b9a0b6149817948f07ba6
+083,8,anomalies,anomalies,CORE,TEACH,,Three anomaly types,Classified,9eee832526a669d26a60b08362791cf97feafe4a29cd7ce1d8ab23ec7cf40300
+083,9,explanation-anomalies,anomalies,CORE,TEACH,,Why one badly structured table produces three different anomalies,Classified,f913ec6aaee82df86a2cf989cdf46e7579dcc3b2c2e17fdaace582e97045ef93
+083,10,normal-forms,normal-forms,CORE,TEACH,,"Normal form idea, without turning the lesson into a maze",Classified,9cd493a887ac3efa6432fb7f2c59e008cbf434f4cdd0de1692385d35de0356e0
+083,11,explanation-normal-forms,normal-forms,CORE,TEACH,,Why each normal form removes a different dependency problem,Classified,6c6a43ecf7722e29fcc43334e933fcc1415c2b8a2bb339f95f0b10c345e076a3
+083,12,detector,detector,CORE,TEACH,,Which fact should be moved?,Classified,21af3f4c9879003cc5eae382fb8a530b9f3cb7f73947e8fba0b1d07aca38be78
+083,13,classifier,classifier,OPTIONAL,TEACH,,Classify the problem,Classified,f1b063f9a3f39fe1011bbb844c7df6eecc18282da41fc5bc4c925af118298c0f
+083,14,examples,examples,CORE,TEACH,,From one bad table to linked tables,Classified,870c8c6f6bccbecd7a986dc52fff9bff41e8a872cd1242e7a6075086cf5b0c19
+083,15,practice,practice,CORE,PRACTISE,,Short-answer checks,Classified,e4f7ef0cf7ae4831d289b56b52f6d8139a75ee88bdb1e432e81eebe9799abbcb
+083,16,debug,debug,CORE,CHECK,,Repair weak normalisation explanations,Classified,85b8c8da9ec23c75115eacba918f014950421ef6dbd657ecbb891bf325c9ff5e
+083,17,exam,exam,CORE,EXAM,,Original Cambridge-style practice with expandable MS,Classified,4475896baa96d8539d2f477172665a0ebc349be2cf3b808ae7bc371ac037227a
+083,18,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,"First, second and third normal form",Classified,7490932d2cd4278468c39ffcfd8f852e92c7dc3cac187257577945fad7174848
+083,19,summary,summary,CORE,CHECK,,Normalisation checklist,Classified,f2582c147061b68ca564a5bf351582778a67732d950d5b2a2b0bab031061a83a
+083,20,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,9ca0cebe5626dca9a2fbad770053bb9d24fc6d7575f43ff9900ec822feff7855
 084,1,overview,overview,CORE,TEACH,,"SQL is how you ask a database a precise question. ""Show me stuff"" is not a query; it is a cry for help.",Classified,f28f8596d09fdaef2273848fbe2d00923b8800cd7583f84e49686ae0395d9fa0
 084,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,61d5b03a4b5d17c09bee394348c73624acef4f3ac1b9b8ff5cb2987549f15d9f
 084,3,hook,hook,CORE,ASK,,Find all overdue books without scrolling like a detective in a low-budget movie.,Classified,4cfd58ba8785253e955edc4e558d1314c3ee3771d4232c5455cc89de74b02db0
@@ -1368,14 +1394,15 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 091,5,hardware,hardware,CORE,TEACH,,Choose hardware by matching characteristics to use,Classified,c150d391524ecfb7cfa3ea40b4490602caf2c79bfb7714b5f9c3d1d29642bd59
 091,6,processor,processor,CORE,TEACH,,Registers and buses: the FDE cycle vocabulary,Classified,fcad7895ca574f80439a31ab2aee7813af3439a1bbdc528eafbb728155a9cb8b
 091,7,logic,logic,CORE,TEACH,,Truth table shortcuts,Classified,13d4ffe4d553928ab718cee58e68e615ea5916ad81b78cdd4535aa9e1169c20b
-091,8,classifier,classifier,OPTIONAL,TEACH,,Identify the topic and first move,Classified,891ecfa6e196e3a1f6ca0b23d1b4ed0f5dff7da72ec6d9a5022461bc05f1ab65
-091,9,fde,fde,CORE,TEACH,,Trace register actions,Classified,aa9f5706150ecced49717a6c90788a96133580fa296191fed720ec59d776959f
-091,10,examples,examples,CORE,TEACH,,Annotate where the marks are,Classified,37aaf842a39c27eca383f35e244cd1aea1b073826a78eaf9b1eadca87276173c
-091,11,practice,practice,CORE,PRACTISE,,Mixed retrieval check,Classified,6a18738a3520a009de1810d21ea0a8c5cc0030b3e78185e049db6488391783cc
-091,12,debug,debug,CORE,CHECK,,Repair weak hardware and processor answers,Classified,c1226f37b8cff043cf6106f7aa27103fb0a315d4b9f9adeb2481435520a494d1
-091,13,exam,exam,CORE,EXAM,,Original Cambridge-style review with expandable MS,Classified,24d3f6750185203ff1c3023827c95d0473d4fa2dda6bd276ce713bf988dbf12d
-091,14,summary,summary,CORE,CHECK,,Review checklist,Classified,9ae46a474628cb302837b8e96b9be368b19cca0a9765472d0b52f52682f87f8e
-091,15,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,d1be2efeb9574fb561388a59fe4a68716d958dcdb0f92cce9b9647cd0a8f3ee2
+091,8,explanation-logic,logic,CORE,TEACH,,Why hardware answers improve when components are connected into mechanisms,Classified,8ea6c134bbc2de47262c3fece1cae391b1554884cbf5c9517e4519c924d14353
+091,9,classifier,classifier,OPTIONAL,TEACH,,Identify the topic and first move,Classified,891ecfa6e196e3a1f6ca0b23d1b4ed0f5dff7da72ec6d9a5022461bc05f1ab65
+091,10,fde,fde,CORE,TEACH,,Trace register actions,Classified,aa9f5706150ecced49717a6c90788a96133580fa296191fed720ec59d776959f
+091,11,examples,examples,CORE,TEACH,,Annotate where the marks are,Classified,37aaf842a39c27eca383f35e244cd1aea1b073826a78eaf9b1eadca87276173c
+091,12,practice,practice,CORE,PRACTISE,,Mixed retrieval check,Classified,6a18738a3520a009de1810d21ea0a8c5cc0030b3e78185e049db6488391783cc
+091,13,debug,debug,CORE,CHECK,,Repair weak hardware and processor answers,Classified,c1226f37b8cff043cf6106f7aa27103fb0a315d4b9f9adeb2481435520a494d1
+091,14,exam,exam,CORE,EXAM,,Original Cambridge-style review with expandable MS,Classified,24d3f6750185203ff1c3023827c95d0473d4fa2dda6bd276ce713bf988dbf12d
+091,15,summary,summary,CORE,CHECK,,Review checklist,Classified,9ae46a474628cb302837b8e96b9be368b19cca0a9765472d0b52f52682f87f8e
+091,16,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,d1be2efeb9574fb561388a59fe4a68716d958dcdb0f92cce9b9647cd0a8f3ee2
 092,1,overview,overview,CORE,TEACH,,System software runs the show. Security stops the show becoming a crime scene.,Classified,ed092899d6781993171593471f669ba61f231ff9f5a81e703d7afe4c0b8f690b
 092,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,264339a04d91ed31cacaf7cc8cb62863fd98016734fab7c1345623856de34eec
 092,3,hook,hook,CORE,ASK,,Which topic is being tested?,Classified,8eaa1445daeecfc6a6be36bd77d7c73989ad5d9230ae3d90c3afd5f3072cafd2
@@ -1589,18 +1616,22 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 105,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,7c30f6108a8d6eb0e1cacd9b475a0f3ee17b9ef781c9e80609cfb53e376fff27
 105,3,hook,hook,CORE,ASK,,"Four cards, two legal ways to tidy them",Classified,e833262d91032566235868bc1d4fabd553a0719c2ac2a263bb73f408a7096e99
 105,4,bubble,bubble,CORE,TEACH,,Bubble sort: compare adjacent items and swap if needed,Classified,b4282aae045583a4b5b6b617019a52cba0bb14344b9a35fbb8db6b811a82aa25
-105,5,insertion,insertion,CORE,TEACH,,Insertion sort: insert the next item into the sorted left section,Classified,641169e9bfd7b44c40d4113c2aaaf4650a0becf8530dc09cefc54ff383f350ed
-105,6,compare,compare,CORE,TEACH,,"Same final list, different route",Classified,0f2e26e1f25ba9251824b57bd3813c5a3ad8d2b8e7f5a6c489bb7a9480a2edf1
-105,7,pseudocode,pseudocode,CORE,TEACH,,"Trace Cambridge-style algorithms, not Java syntax habits",Classified,dc0aaeab84175d9eee8635739d2aebcc8b721189d1e4281f2841da1c53b25e11
-105,8,chooser,chooser,OPTIONAL,TEACH,,Identify the method from the movement,Classified,c2d895f97f7be54aaacd41327a252b46ca8825c41e4d68bb6322b6bb038cd2a9
-105,9,bubble-tool,bubble-tool,CORE,TEACH,,Trace one full bubble pass,Classified,a448bb8a20854de2333af1293c21e168158be42a379584bc8556a6a783714c47
-105,10,insert-tool,insert-tool,CORE,TEACH,,Trace insertion sort movements,Classified,f0f1c3d77b8d276f552cec2ff531274b369b5024e2f04503c1c73ffbfcea2042
-105,11,examples,examples,CORE,TEACH,,Sorting traces,Classified,9e97bea039a23c1f586e8d7ab37022e578ab37af8a0f5aa3bad6abd2ffefdb85
-105,12,practice,practice,CORE,PRACTISE,,Sorting trace accuracy,Classified,f2d7acf9510471cda3a4c052f7a86e2d399185b2b5d6660f8d1d0bb2eb1fc54d
-105,13,debug,debug,CORE,CHECK,,Fix sorting mistakes,Classified,f89e06b86c5cccb4defd2f11741421db7fc22517ca4fa9ef464b882418dbdda1
-105,14,exam,exam,CORE,EXAM,,Original Cambridge-style sorting questions with expandable MS,Classified,705e307c37628dc93ad5ddb2b93ac117f84efebabe79171c5d2f7d7abdcc3423
-105,15,summary,summary,CORE,CHECK,,Sorting checklist,Classified,fb3eb125407cad28621c42635ba8f9a79321615ebbb15a248fb946119c101c10
-105,16,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,cb1c7ab0d759491eb8b4657e1f03ac75b986a875ac179fc2e0803e6ec31c361f
+105,5,explanation-bubble,bubble,CORE,TEACH,,Why bubble sort needs repeated adjacent comparisons,Classified,fabbd52ec249a9934682f6b1dc86e890bd251a3e0007a77a35f4aee975b07a56
+105,6,insertion,insertion,CORE,TEACH,,Insertion sort: insert the next item into the sorted left section,Classified,641169e9bfd7b44c40d4113c2aaaf4650a0becf8530dc09cefc54ff383f350ed
+105,7,explanation-insertion,insertion,CORE,TEACH,,Why insertion sort maintains a sorted left section,Classified,f57a25a6f52bb1dda28ba7dc6a53ec5fed5b6502bf06fbf41ce1da318c1144e6
+105,8,compare,compare,CORE,TEACH,,"Same final list, different route",Classified,0f2e26e1f25ba9251824b57bd3813c5a3ad8d2b8e7f5a6c489bb7a9480a2edf1
+105,9,explanation-compare,compare,CORE,TEACH,,Why two correct sorting methods move data differently,Classified,a6d69a6570fc7d7d5c58bbd530f0a0f083c9ad16686251fa28d4a843a60f7587
+105,10,pseudocode,pseudocode,CORE,TEACH,,"Trace Cambridge-style algorithms, not Java syntax habits",Classified,dc0aaeab84175d9eee8635739d2aebcc8b721189d1e4281f2841da1c53b25e11
+105,11,explanation-pseudocode,pseudocode,CORE,TEACH,,Why a trace should follow algorithm state rather than language punctuation,Classified,440c83cbc83f6e219e5cedd52938503cef730f59638cf0a1192e65a35f3ec30f
+105,12,chooser,chooser,OPTIONAL,TEACH,,Identify the method from the movement,Classified,c2d895f97f7be54aaacd41327a252b46ca8825c41e4d68bb6322b6bb038cd2a9
+105,13,bubble-tool,bubble-tool,CORE,TEACH,,Trace one full bubble pass,Classified,a448bb8a20854de2333af1293c21e168158be42a379584bc8556a6a783714c47
+105,14,insert-tool,insert-tool,CORE,TEACH,,Trace insertion sort movements,Classified,f0f1c3d77b8d276f552cec2ff531274b369b5024e2f04503c1c73ffbfcea2042
+105,15,examples,examples,CORE,TEACH,,Sorting traces,Classified,9e97bea039a23c1f586e8d7ab37022e578ab37af8a0f5aa3bad6abd2ffefdb85
+105,16,practice,practice,CORE,PRACTISE,,Sorting trace accuracy,Classified,f2d7acf9510471cda3a4c052f7a86e2d399185b2b5d6660f8d1d0bb2eb1fc54d
+105,17,debug,debug,CORE,CHECK,,Fix sorting mistakes,Classified,f89e06b86c5cccb4defd2f11741421db7fc22517ca4fa9ef464b882418dbdda1
+105,18,exam,exam,CORE,EXAM,,Original Cambridge-style sorting questions with expandable MS,Classified,705e307c37628dc93ad5ddb2b93ac117f84efebabe79171c5d2f7d7abdcc3423
+105,19,summary,summary,CORE,CHECK,,Sorting checklist,Classified,fb3eb125407cad28621c42635ba8f9a79321615ebbb15a248fb946119c101c10
+105,20,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,cb1c7ab0d759491eb8b4657e1f03ac75b986a875ac179fc2e0803e6ec31c361f
 106,1,overview,overview,CORE,TEACH,,"Algorithms remember things. Sadly, only if you initialise the memory first.",Classified,0e6c6497d96a3df5ce6b63e8d10e633227030f517b8ed6f6f767db2a5d22e979
 106,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,56cfa2283b380883159716c23d86d85292e6d8e432a1b504f60e74bb1d14bf04
 106,3,hook,hook,CORE,ASK,,The class scoreboard is not psychic,Classified,6aef744c710cb380d6a4134632553fa140f0e3723432683dac246f4508229923
@@ -1872,21 +1903,28 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 122,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,663d3fcf358dc116f85f759fb1ed7aebb8d0f98e13202c632fa72b056f944d04
 122,3,hook,hook,CORE,ASK,,Who leaves first?,Classified,0bdf6cf1e7d2607071c815532f2912c2967c94b6237934116ee23e6c700667a4
 122,4,concept,concept,CORE,TEACH,,"ADT means behaviour first, implementation second",Classified,41f0b842a70c924ae77fe4d6a6e38dab81c7015292c849c519045d564eb87524
-122,5,stack,stack,CORE,TEACH,,Push adds to the top; pop removes from the top,Classified,00eab98dffcf02c2b4c38ac139567eda4ce67999ab524ce960ea45d03a8f6a2e
-122,6,queue,queue,CORE,TEACH,,Enqueue adds at the rear; dequeue removes from the front,Classified,e47c8f5971d088fa3547833d95795874d5713a12664fbcdebefc6137ba71994c
-122,7,operations,operations,CORE,TEACH,,Use the operation name that matches the ADT,Classified,aed8995566e6868b5b30794002fb1a9ea06dfbccd6cde74f46cd656b946b8c5f
-122,8,errors,errors,CORE,TEACH,,Check before doing the operation,Classified,cb4ecc3256fc558582f5d6a2028807ac6c7cf31e39f6cb50c8956501a8a89886
-122,9,implementation,implementation,CORE,TEACH,,"An array can store the items, but the ADT rule controls access",Classified,a7b1300868986ed7811b25c5fa199752c43a0d2b174b68d8ede642ef4905ba5d
-122,10,pseudocode,pseudocode,CORE,TEACH,,Use Cambridge-style operations in exam answers,Classified,ab4f0bdff076456679420720424666b1c5d4719101461fc9cf31ed55eaefd11f
-122,11,simulator,simulator,OPTIONAL,TEACH,,Compare stack and queue behaviour,Classified,bec5c5ecfa589b3d026736214e3476c68f7089d8616a478a7b424f69a4986c3f
-122,12,trace,trace,CORE,TEACH,,Step through a mixed operation sequence,Classified,c20de691ca4024b5f4ef48696425cd2963c3a766c4cc85d2d94c92eb0f1b1f09
-122,13,examples,examples,CORE,TEACH,,ADT traces and checks,Classified,9b9371c384df5bde09897b76831df74990752308a7fa4ec9b9f567d342743495
-122,14,practice,practice,CORE,PRACTISE,,Ten quick ADT checks,Classified,cd902203bc85bf6b365599e1f0522c506db0c79a0669be630e55bca2ef34da80
-122,15,debug,debug,CORE,CHECK,,Fix common stack and queue errors,Classified,24611786abe872e593469b8d01ee0fe1384b427d2f487e798e7f6a083943d2ec
-122,16,exam,exam,CORE,EXAM,,Original Cambridge-style questions with expandable MS,Classified,6b6cc9f0fb5a2f02151db3f0fdb13b958f57d682e1b60bb24c9e39428195d65d
-122,17,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Linked lists and array-based ADT state,Classified,ea1cf87587dd98d22c6261188d72ea956c5e5e5f97b1db98198d4df6d8dc6018
-122,18,summary,summary,CORE,CHECK,,Stack and queue checklist,Classified,2f22811327638404629ae7120f9d3abec116a2e73bfb3726ae6c41ef216fedda
-122,19,homework,homework,AFTER_CLASS,HOMEWORK,,Trace before you code,Classified,51a23de8ddfc347825069ce1edb9ba9f8fcdc10ed87288191c90764c5a2809c8
+122,5,explanation-concept,concept,CORE,TEACH,,Why an ADT is defined by permitted behaviour,Classified,3b28995345d1f14436e3115748e6fb7bdd0925770b3412f7613dc21e75582e28
+122,6,stack,stack,CORE,TEACH,,Push adds to the top; pop removes from the top,Classified,00eab98dffcf02c2b4c38ac139567eda4ce67999ab524ce960ea45d03a8f6a2e
+122,7,explanation-stack,stack,CORE,TEACH,,Why one accessible end produces LIFO behaviour,Classified,b35a6ff9ccee5269bab8e32dcba03b12b2c277e5d9ce48fa468b9cf7635574a0
+122,8,queue,queue,CORE,TEACH,,Enqueue adds at the rear; dequeue removes from the front,Classified,e47c8f5971d088fa3547833d95795874d5713a12664fbcdebefc6137ba71994c
+122,9,explanation-queue,queue,CORE,TEACH,,Why separate front and rear positions produce FIFO behaviour,Classified,cc79871fafa73ab9f3002434fe3ec6197b1611b9b9051625588d2d371210ca9c
+122,10,operations,operations,CORE,TEACH,,Use the operation name that matches the ADT,Classified,aed8995566e6868b5b30794002fb1a9ea06dfbccd6cde74f46cd656b946b8c5f
+122,11,explanation-operations,operations,CORE,TEACH,,Why operation names protect the meaning of the structure,Classified,b068ef0d05917001d1638524a59fddcf4df4beae4c1bd0f22537474c8256a1e2
+122,12,errors,errors,CORE,TEACH,,Check before doing the operation,Classified,cb4ecc3256fc558582f5d6a2028807ac6c7cf31e39f6cb50c8956501a8a89886
+122,13,explanation-errors,errors,CORE,TEACH,,Why overflow and underflow must be checked before changing state,Classified,3c7f0bee257900bbe60b1630b4e8efe6e100d78966e561b1a2901f94be5b79d3
+122,14,implementation,implementation,CORE,TEACH,,"An array can store the items, but the ADT rule controls access",Classified,a7b1300868986ed7811b25c5fa199752c43a0d2b174b68d8ede642ef4905ba5d
+122,15,explanation-implementation,implementation,CORE,TEACH,,Why array storage needs pointers to enforce ADT behaviour,Classified,e2347d446d24cf036908d8f4d2c3e1c3b678616ec78380de705753904857aabc
+122,16,pseudocode,pseudocode,CORE,TEACH,,Use Cambridge-style operations in exam answers,Classified,ab4f0bdff076456679420720424666b1c5d4719101461fc9cf31ed55eaefd11f
+122,17,explanation-pseudocode,pseudocode,CORE,TEACH,,Why exam pseudocode should expose the state change clearly,Classified,20dd933860018cd5e3f3d0977a5ddb6ea443572532c1c79a5db35da272a55b04
+122,18,simulator,simulator,OPTIONAL,TEACH,,Compare stack and queue behaviour,Classified,bec5c5ecfa589b3d026736214e3476c68f7089d8616a478a7b424f69a4986c3f
+122,19,trace,trace,CORE,TEACH,,Step through a mixed operation sequence,Classified,c20de691ca4024b5f4ef48696425cd2963c3a766c4cc85d2d94c92eb0f1b1f09
+122,20,examples,examples,CORE,TEACH,,ADT traces and checks,Classified,9b9371c384df5bde09897b76831df74990752308a7fa4ec9b9f567d342743495
+122,21,practice,practice,CORE,PRACTISE,,Ten quick ADT checks,Classified,cd902203bc85bf6b365599e1f0522c506db0c79a0669be630e55bca2ef34da80
+122,22,debug,debug,CORE,CHECK,,Fix common stack and queue errors,Classified,24611786abe872e593469b8d01ee0fe1384b427d2f487e798e7f6a083943d2ec
+122,23,exam,exam,CORE,EXAM,,Original Cambridge-style questions with expandable MS,Classified,6b6cc9f0fb5a2f02151db3f0fdb13b958f57d682e1b60bb24c9e39428195d65d
+122,24,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Linked lists and array-based ADT state,Classified,ea1cf87587dd98d22c6261188d72ea956c5e5e5f97b1db98198d4df6d8dc6018
+122,25,summary,summary,CORE,CHECK,,Stack and queue checklist,Classified,2f22811327638404629ae7120f9d3abec116a2e73bfb3726ae6c41ef216fedda
+122,26,homework,homework,AFTER_CLASS,HOMEWORK,,Trace before you code,Classified,51a23de8ddfc347825069ce1edb9ba9f8fcdc10ed87288191c90764c5a2809c8
 123,1,overview,overview,CORE,TEACH,,The best data structure is the one whose access pattern matches the problem.,Classified,771ab67041b518b0ce23a790c5790b4359fe3a5bc841a2ebff2b5eae512d0228
 123,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,162b87dccacd223ca78aaaf27bb5c645aa97258c0c4c9027daa6de6a4c39e6d1
 123,3,hook,hook,CORE,ASK,,Would you store a class register as 28 separate variables?,Classified,558578224a69d987dcaf0a0627d56ffc9c03bc9c1af4812957c179d8a9b0daec
@@ -2232,20 +2270,27 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 142,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,5ebe929d345d5ff3be5f232ee6734b3137a6715d7a7ecaa22acd4373cc16443e
 142,3,hook,hook,CORE,ASK,,A client says: “Make a user-friendly booking system.” What should happen first?,Classified,c1475afb79fa316132dc092ba08258b235efe4719c30060837556916d60eff07
 142,4,purpose,purpose,CORE,TEACH,,Lifecycle models give structure to a software project,Classified,c3d6e711f34a3f3d0cb8f4e3e067e53affd03b1c91f846b13805be0a6c959292
-142,5,stages,stages,CORE,TEACH,,Common stages and what each produces,Classified,82a85316a88c8bd44d8dd319f2add0df8f84a4b8b2f5688fcf48aca12d61a06f
-142,6,waterfall,waterfall,CORE,TEACH,,Waterfall moves through stages in a planned sequence,Classified,74dcd81e8ec933ae45506b611c9a4ee5124f36b7746583918f8ce482845ca89b
-142,7,iterative,iterative,CORE,TEACH,,"Iterative models build, review and refine through cycles",Classified,20b9f0d2ab45252f58e26dc6f20176f461ec447c86eaeb4082810b7cbda3b3b3
-142,8,agile,agile,CORE,TEACH,,Agile development emphasises short cycles and user feedback,Classified,7bdc7ac8a8c140c866ed40681f4c090b26238b983fe5f681ce617e1a39ebd930
-142,9,compare,compare,CORE,TEACH,,"Choose a model based on the project, not a favourite buzzword",Classified,260feb6f5cbaf5f44eadcdd83a4046b030f9d5a8089c53231f217637f37bd1aa
-142,10,artefacts,artefacts,CORE,TEACH,,Exam answers often mention documents or outputs from stages,Classified,33d1fcffc11d70be633017d044c11283678752df27d9525f595e5b825e51faf2
-142,11,model-tool,model-tool,CORE,TEACH,,Choose a project situation and compare model suitability,Classified,8124fd1b9701d62dd96d3ae0d136b818f4e06866af80ab58948f9e759ec80888
-142,12,order-tool,order-tool,CORE,TEACH,,Spot the stage that should usually happen first,Classified,72548a30618c482b04a647a77a9858e3fbe8911d023938417efcd68e7599c887
-142,13,examples,examples,CORE,TEACH,,Apply the lifecycle to realistic project decisions,Classified,35081f24b13aa2d43a9ea8f7c33603698427d02d416096bf77ce162f7a2ff267
-142,14,practice,practice,CORE,PRACTISE,,Instant checking: lifecycle terms and consequences,Classified,71d76b921f8164e95fd43cd9433af70fa933fe21b8c0a0f6e5fa0b616091bd70
-142,15,debug,debug,CORE,CHECK,,Fix weak lifecycle explanations,Classified,e9e19998f7d86230a868b5f05a69dbf1789487882229646f357697586d212f4d
-142,16,exam,exam,CORE,EXAM,,Cambridge-style lifecycle questions with expandable MS,Classified,c30373c15611218c801c4700ee35d322eca8b2b09a6db201703d4f2449c76d2c
-142,17,summary,summary,CORE,CHECK,,What to remember,Classified,efe65b3d6c02113aa001e323f0156eb599c7f90126f298016f40c8d58c412a50
-142,18,homework,homework,AFTER_CLASS,HOMEWORK,,"Use the lifecycle, do not just list it",Classified,ba7b276b538b64ab3b7e8da619da3da74315516d5c477136bcddc5076f6e85a7
+142,5,explanation-purpose,purpose,CORE,TEACH,,Why a lifecycle reduces uncertainty instead of merely adding documents,Classified,8736b3501dd84f31cb7834e2182f6f5759446d6237b83bdf4e3add0228056909
+142,6,stages,stages,CORE,TEACH,,Common stages and what each produces,Classified,82a85316a88c8bd44d8dd319f2add0df8f84a4b8b2f5688fcf48aca12d61a06f
+142,7,explanation-stages,stages,CORE,TEACH,,Why each lifecycle stage must produce information for the next,Classified,c14b9f4b8931022d8803f5f755714593bdf1737a7d3f1a08dfa7a391b58e82ed
+142,8,waterfall,waterfall,CORE,TEACH,,Waterfall moves through stages in a planned sequence,Classified,74dcd81e8ec933ae45506b611c9a4ee5124f36b7746583918f8ce482845ca89b
+142,9,explanation-waterfall,waterfall,CORE,TEACH,,Why sequential planning helps stable projects but resists late change,Classified,7027a5d918c551264548959d32f878ab496ff0c70058d44c752293182e003f06
+142,10,iterative,iterative,CORE,TEACH,,"Iterative models build, review and refine through cycles",Classified,20b9f0d2ab45252f58e26dc6f20176f461ec447c86eaeb4082810b7cbda3b3b3
+142,11,explanation-iterative,iterative,CORE,TEACH,,Why repeated cycles expose mistakes earlier,Classified,cd6edbaf3e8f1fcdfa228d013ddce5bd2f1ac67ca852c22b000c27d2e0edbc64
+142,12,agile,agile,CORE,TEACH,,Agile development emphasises short cycles and user feedback,Classified,7bdc7ac8a8c140c866ed40681f4c090b26238b983fe5f681ce617e1a39ebd930
+142,13,explanation-agile,agile,CORE,TEACH,,Why short feedback cycles help changing requirements,Classified,5c293992aea09558a87e62202f51326acfcbed161d3044b0f4911878a09ba088
+142,14,compare,compare,CORE,TEACH,,"Choose a model based on the project, not a favourite buzzword",Classified,260feb6f5cbaf5f44eadcdd83a4046b030f9d5a8089c53231f217637f37bd1aa
+142,15,explanation-compare,compare,CORE,TEACH,,Why project conditions should choose the lifecycle model,Classified,a60f46f16b7959bc2b3c7508f1b74759a1c65d6bc7558454fedbfaf04184d380
+142,16,artefacts,artefacts,CORE,TEACH,,Exam answers often mention documents or outputs from stages,Classified,33d1fcffc11d70be633017d044c11283678752df27d9525f595e5b825e51faf2
+142,17,explanation-artefacts,artefacts,CORE,TEACH,,Why lifecycle outputs make decisions testable and traceable,Classified,471df3bedbb8a25177b670d0a8e5e37a8e0025e8ee23b02d69e4e537a60b4ab2
+142,18,model-tool,model-tool,CORE,TEACH,,Choose a project situation and compare model suitability,Classified,8124fd1b9701d62dd96d3ae0d136b818f4e06866af80ab58948f9e759ec80888
+142,19,order-tool,order-tool,CORE,TEACH,,Spot the stage that should usually happen first,Classified,72548a30618c482b04a647a77a9858e3fbe8911d023938417efcd68e7599c887
+142,20,examples,examples,CORE,TEACH,,Apply the lifecycle to realistic project decisions,Classified,35081f24b13aa2d43a9ea8f7c33603698427d02d416096bf77ce162f7a2ff267
+142,21,practice,practice,CORE,PRACTISE,,Instant checking: lifecycle terms and consequences,Classified,71d76b921f8164e95fd43cd9433af70fa933fe21b8c0a0f6e5fa0b616091bd70
+142,22,debug,debug,CORE,CHECK,,Fix weak lifecycle explanations,Classified,e9e19998f7d86230a868b5f05a69dbf1789487882229646f357697586d212f4d
+142,23,exam,exam,CORE,EXAM,,Cambridge-style lifecycle questions with expandable MS,Classified,c30373c15611218c801c4700ee35d322eca8b2b09a6db201703d4f2449c76d2c
+142,24,summary,summary,CORE,CHECK,,What to remember,Classified,efe65b3d6c02113aa001e323f0156eb599c7f90126f298016f40c8d58c412a50
+142,25,homework,homework,AFTER_CLASS,HOMEWORK,,"Use the lifecycle, do not just list it",Classified,ba7b276b538b64ab3b7e8da619da3da74315516d5c477136bcddc5076f6e85a7
 143,1,overview,overview,CORE,TEACH,,“User-friendly” is a wish. A success criterion is something you can test.,Classified,60eeae116490e0c9d87949799ddb193c94aeb389ca14211358c963582640a42c
 143,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,025a8f88252d037e172854770f553b0f5047fc86fd9d96117a6983bca32065a6
 143,3,hook,hook,CORE,ASK,,Which statement is a measurable success criterion?,Classified,f34a1a77085a7bfb0fbe3d583947b791376d188bb59993db47f7c99fcc856adf

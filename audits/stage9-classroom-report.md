@@ -9,7 +9,7 @@ Stage 9 makes the shared website teacher-led without removing the complete stude
 | Requirement | Evidence | Status |
 |---|---|---|
 | Static course catalogue | 150 entries generated from lesson `h1` titles; homepage performs no lesson-page fetch | Pass |
-| Delivery classification | all 2,383 direct lesson sections have a role, classroom activity and stable group in `stage9-classroom-delivery-register.csv` | Pass |
+| Delivery classification | all 2,428 direct lesson sections, including the 45 Stage 10 pilot explanations, have a role, classroom activity and stable group in `stage9-classroom-delivery-register.csv` | Pass |
 | Normal lesson rendering | all lesson content remains visible; no presentation mode or delivery-label injection changes the layout | Pass |
 | Teacher toolbar | previous/next lesson boundaries, current lesson identity, quick jumps, collapsible lesson contents and Assessment Bank link | Pass |
 | Assessment filters | type, Paper, Section, AO coverage, command word and mark range with AND behaviour, result count and reset | Pass |
@@ -29,6 +29,7 @@ Stage 9 makes the shared website teacher-led without removing the complete stude
 ## Delivery Notes
 
 - Lesson pages use one continuous normal rendering. Delivery metadata remains internal for auditing and section jumps; it does not add visible labels or hide content.
+- Stage 10 explanation panels share the delivery group of the concept they explain and remain outside the lesson contents navigation. The current rollout is limited to ten pilot lessons pending human approval.
 - Lesson contents state is deliberately not persisted. Every lesson load starts with the navigation hidden so teaching content receives the full available width.
 - AO filtering is assessment-level coverage because the source bank does not claim question-level AO metadata.
 - Section timings are not generated. A timing appears only when a reviewed override supplies one.

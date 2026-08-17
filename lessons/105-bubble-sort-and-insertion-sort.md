@@ -92,3 +92,35 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **bubble sort and insertion sort**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 causal explanations
+
+### Why bubble sort needs repeated adjacent comparisons
+
+- **Explains:** `bubble`
+- **Explanation type:** process
+
+Bubble sort compares neighbouring items because a swap can correct a local inversion without losing any data. During one left-to-right pass in ascending order, whenever the left item is larger, the pair is swapped. The largest remaining item therefore moves one position at a time toward the right until it reaches its final position at the end of that pass. One pass cannot usually sort the whole list because smaller misplaced values may need to move left across several later comparisons. Repeating passes shrinks the unsorted region. If a complete pass makes no swaps, every adjacent pair is already ordered, so the algorithm can stop early. The name “bubble” describes this gradual movement of an extreme value; it does not mean the algorithm compares every possible pair directly.
+
+### Why insertion sort maintains a sorted left section
+
+- **Explains:** `insertion`
+- **Explanation type:** process
+
+Insertion sort treats the left part of the list as already sorted. It takes the next item, saves it, and shifts larger items in the sorted section one position to the right until the correct gap appears. The saved item is then inserted into that gap. Shifting is necessary because writing the item immediately would overwrite a value that still has to be kept. After the insertion, the sorted section has grown by one item and remains ordered, which is the invariant that makes the next step valid. The algorithm can perform well on nearly sorted data because an item that is already close to its position requires few shifts. It still may require many comparisons and movements when small items begin near the end. The mechanism is insertion into a maintained ordered prefix, not repeated swapping of arbitrary pairs.
+
+### Why two correct sorting methods move data differently
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+
+Bubble and insertion sort can produce the same ordered result while following different invariants. Bubble sort uses adjacent comparisons across passes and places an extreme item at the end of the unsorted region. Insertion sort preserves a sorted prefix and places the next item inside it. This difference changes the trace: bubble sort records swaps between neighbours, while insertion sort may save one item and shift several larger values. Both can take a quadratic number of comparisons in difficult cases, so neither is universally efficient for large data sets. On nearly sorted data, insertion sort often performs little movement, and an optimised bubble sort can stop after a pass with no swaps. A comparison is meaningful only when it names the movement, stopping condition or data state that causes the performance difference.
+
+### Why a trace should follow algorithm state rather than language punctuation
+
+- **Explains:** `pseudocode`
+- **Explanation type:** comparison
+
+Cambridge pseudocode expresses the intended algorithm without depending on Java syntax. A trace should therefore follow variable values, comparisons, swaps, loop boundaries and the changing list, not semicolons or type declarations. Java may use zero-based array indexes and library methods, while a pseudocode question may specify different bounds and require the movement to be written explicitly. Copying a remembered Java loop can introduce an off-by-one error even when the sorting idea is correct. Begin with the stated lower and upper bounds, identify which part of the list is already in its final or sorted state, and update that state after each pass or insertion. The language notation is a representation; the algorithm is the sequence of state changes. A correct trace remains correct when rewritten in another language because those state changes are preserved.
+<!-- stage10-explanations:end -->

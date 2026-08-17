@@ -105,3 +105,28 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** instructions and data share memory in Von Neumann architecture
 
 **Strict note:** Do not accept 'IAS is cache' or 'IAS is a register'.
+
+<!-- stage10-explanations:start -->
+## Stage 10 causal explanations
+
+### Why a CPU needs specialised parts instead of one general component
+
+- **Explains:** `architecture`
+- **Explanation type:** mechanism
+
+CPU components cooperate because processing an instruction requires several different jobs. Registers hold the small values and instructions needed immediately. The control unit interprets the current instruction and sends control signals that coordinate transfers and operations. The ALU performs arithmetic and logical work, while buses carry addresses, data and control signals between the CPU, memory and other components. A clock provides repeated timing signals so these state changes occur in an organised sequence rather than colliding unpredictably. Specialisation makes the movement of data explicit: an address is placed where memory can receive it, returned data is held before use, and the selected operation is applied to the correct operands. Saying that the CPU simply “processes data” hides this mechanism. The processor works because each component performs a limited role and the control unit coordinates those roles for every instruction.
+
+### Why the ALU calculates but the control unit coordinates
+
+- **Explains:** `alu-cu`
+- **Explanation type:** comparison
+
+The ALU and control unit are both inside the CPU, but they contribute in different ways. The ALU contains circuits for operations such as addition, subtraction, comparison and Boolean logic. It can produce a result only after it receives operands and an operation to perform. The control unit supplies that coordination. It decodes the instruction in the CIR, identifies the required operation and issues signals that move values between registers, memory and the ALU. This is why the control unit does not itself add two numbers, and the ALU does not decide which instruction should execute next. Their relationship is like selecting and carrying out a command: the control unit determines the sequence and enables the correct pathways; the ALU performs the requested calculation. Confusing the roles produces vague answers because it removes the cause of each component's behaviour.
+
+### Why registers, buses and the clock must work as one timed system
+
+- **Explains:** `registers`
+- **Explanation type:** mechanism
+
+Registers provide named holding places for values that the CPU needs during an instruction. A register is useful because its contents can be accessed and changed quickly, but the value still has to reach the correct destination. Buses provide those routes: the address bus identifies a location, the data bus carries the value, and the control bus carries signals such as read or write. The system clock divides activity into coordinated steps. On a clock event, one component may place a value on a bus while another accepts it, preventing unrelated transfers from being treated as the same operation. A higher clock rate allows more timing cycles per second, but it does not guarantee proportional performance because instruction complexity, memory delay and architecture also matter. The mechanism is therefore timed movement between specialised stores, not a collection of independent components working whenever they choose.
+<!-- stage10-explanations:end -->

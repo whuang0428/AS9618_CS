@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=1" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -121,6 +122,18 @@ compare 5 and 2 -> swap: [1, 4, 2, 5]</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start bubble -->
+        <section class="panel explanation-panel" id="explanation-bubble" data-explains="bubble" data-explanation-kind="process" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bubble">
+          <div class="section-title">
+            <p class="eyebrow">Explanation</p>
+            <h2>Why bubble sort needs repeated adjacent comparisons</h2>
+          </div>
+          <div class="explanation-body">
+          <p>Bubble sort compares neighbouring items because a swap can correct a local inversion without losing any data. During one left-to-right pass in ascending order, whenever the left item is larger, the pair is swapped. The largest remaining item therefore moves one position at a time toward the right until it reaches its final position at the end of that pass. One pass cannot usually sort the whole list because smaller misplaced values may need to move left across several later comparisons. Repeating passes shrinks the unsorted region. If a complete pass makes no swaps, every adjacent pair is already ordered, so the algorithm can stop early. The name “bubble” describes this gradual movement of an extreme value; it does not mean the algorithm compares every possible pair directly.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end bubble -->
+
         <section class="panel" id="insertion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="insertion">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
@@ -142,6 +155,18 @@ take 2 -> insert between 1 and 4: [1, 2, 4, 5]</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start insertion -->
+        <section class="panel explanation-panel" id="explanation-insertion" data-explains="insertion" data-explanation-kind="process" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="insertion">
+          <div class="section-title">
+            <p class="eyebrow">Explanation</p>
+            <h2>Why insertion sort maintains a sorted left section</h2>
+          </div>
+          <div class="explanation-body">
+          <p>Insertion sort treats the left part of the list as already sorted. It takes the next item, saves it, and shifts larger items in the sorted section one position to the right until the correct gap appears. The saved item is then inserted into that gap. Shifting is necessary because writing the item immediately would overwrite a value that still has to be kept. After the insertion, the sorted section has grown by one item and remains ordered, which is the invariant that makes the next step valid. The algorithm can perform well on nearly sorted data because an item that is already close to its position requires few shifts. It still may require many comparisons and movements when small items begin near the end. The mechanism is insertion into a maintained ordered prefix, not repeated swapping of arbitrary pairs.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end insertion -->
+
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Comparison</p>
@@ -155,6 +180,18 @@ take 2 -> insert between 1 and 4: [1, 2, 4, 5]</code></pre>
             <div class="table-row" role="row"><div>Exam trap</div><div>jumping straight to sorted list</div><div>moving the wrong direction through sorted section</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <div class="section-title">
+            <p class="eyebrow">Explanation</p>
+            <h2>Why two correct sorting methods move data differently</h2>
+          </div>
+          <div class="explanation-body">
+          <p>Bubble and insertion sort can produce the same ordered result while following different invariants. Bubble sort uses adjacent comparisons across passes and places an extreme item at the end of the unsorted region. Insertion sort preserves a sorted prefix and places the next item inside it. This difference changes the trace: bubble sort records swaps between neighbours, while insertion sort may save one item and shift several larger values. Both can take a quadratic number of comparisons in difficult cases, so neither is universally efficient for large data sets. On nearly sorted data, insertion sort often performs little movement, and an optimised bubble sort can stop after a pass with no swaps. A comparison is meaningful only when it names the movement, stopping condition or data state that causes the performance difference.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
 
         <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
@@ -189,6 +226,18 @@ NEXT Pass</code></pre>
           </div>
           <div class="callout">Exam reminder: Java uses 0-based array indexes and braces; Cambridge pseudocode examples often use 1-based indexing and keywords such as FOR, IF, ENDIF and NEXT.</div>
         </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <div class="section-title">
+            <p class="eyebrow">Explanation</p>
+            <h2>Why a trace should follow algorithm state rather than language punctuation</h2>
+          </div>
+          <div class="explanation-body">
+          <p>Cambridge pseudocode expresses the intended algorithm without depending on Java syntax. A trace should therefore follow variable values, comparisons, swaps, loop boundaries and the changing list, not semicolons or type declarations. Java may use zero-based array indexes and library methods, while a pseudocode question may specify different bounds and require the movement to be written explicitly. Copying a remembered Java loop can introduce an off-by-one error even when the sorting idea is correct. Begin with the stated lower and upper bounds, identify which part of the list is already in its final or sorted state, and update that state after each pass or insertion. The language notation is a representation; the algorithm is the sequence of state changes. A correct trace remains correct when rewritten in another language because those state changes are preserved.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
 
 
         <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">

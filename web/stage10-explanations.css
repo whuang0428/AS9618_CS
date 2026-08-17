@@ -1,0 +1,86 @@
+.explanation-panel {
+  position: relative;
+  overflow: hidden;
+  border-left: 5px solid var(--accent, #2563eb);
+  background:
+    linear-gradient(135deg, rgba(219, 234, 254, 0.52), rgba(236, 253, 243, 0.38)),
+    var(--panel, #ffffff);
+  scroll-margin-top: 112px;
+}
+
+.explanation-panel::after {
+  content: "WHY";
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  color: rgba(37, 99, 235, 0.1);
+  font-size: clamp(2.2rem, 7vw, 5.5rem);
+  font-weight: 950;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.explanation-panel .section-title,
+.explanation-panel .explanation-body,
+.explanation-panel .explanation-extra {
+  position: relative;
+  z-index: 1;
+}
+
+.explanation-panel .section-title {
+  max-width: 76ch;
+}
+
+.explanation-panel .explanation-body {
+  display: grid;
+  gap: 12px;
+  max-width: 82ch;
+}
+
+.explanation-panel .explanation-body p {
+  margin: 0;
+}
+
+.explanation-panel .explanation-extra {
+  max-width: 82ch;
+  margin-top: 16px;
+  border: 1px solid var(--line, #d9e0ea);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.explanation-panel .explanation-extra summary {
+  min-height: 44px;
+  padding: 11px 14px;
+  color: var(--accent-dark, #1d4ed8);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.explanation-panel .explanation-extra p {
+  margin: 0;
+  padding: 0 14px 14px;
+}
+
+@media (max-width: 980px) {
+  .explanation-panel { scroll-margin-top: 16px; }
+}
+
+@media (max-width: 640px) {
+  .explanation-panel::after {
+    top: 14px;
+    right: 14px;
+    font-size: 2.8rem;
+  }
+}
+
+@media print {
+  .explanation-panel {
+    break-inside: avoid;
+    background: #ffffff;
+    border-left-color: #000000;
+  }
+
+  .explanation-panel::after { display: none; }
+}

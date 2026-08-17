@@ -105,3 +105,35 @@ Correction prompt: "Show the mechanism, not just the label."
 - **A1** POSTCODE(Postcode, Town), with Postcode linked as foreign key
 
 **Strict note:** Do not award decomposition marks unless primary/foreign-key linkage can reconstruct the relationship.
+
+<!-- stage10-explanations:start -->
+## Stage 10 causal explanations
+
+### Why normalisation protects consistency rather than merely making tables smaller
+
+- **Explains:** `purpose`
+- **Explanation type:** mechanism
+
+Normalisation reorganises data so that each independent fact is stored in an appropriate relation and can be referenced through keys. The main goal is consistency, not simply reducing the number of characters stored. If a tutor's email is repeated in every enrolment row, changing one copy while missing another creates contradictory versions of the same fact. Moving tutor details to a Tutor table gives the email one authoritative row, while enrolments store a tutor key. Queries can reconstruct the combined view through that relationship. This design may require joins and can introduce more tables, so it is not automatically faster for every query. Its benefit comes from controlling dependencies: one fact has one intended place to be inserted, updated or deleted, reducing the opportunities for different copies to disagree.
+
+### Why repeated facts create risk even when every copy starts correctly
+
+- **Explains:** `redundancy`
+- **Explanation type:** mechanism
+
+Redundancy becomes harmful when the same real-world fact is stored independently in several rows. At the moment of entry, every copy may agree, so the table appears correct. The risk appears when the fact changes. Each copy must be found and updated, and one missed row creates inconsistency. Repetition also wastes storage and makes validation harder because the database cannot easily identify which copy is authoritative. Not every repeated value is unwanted redundancy: many students may legitimately share the same course code, and each enrolment needs that reference. The problem is repeating attributes that depend on a different entity, such as storing the course title and tutor email in every enrolment. Dependency analysis reveals where the fact belongs; keys then preserve the relationship without copying the full fact.
+
+### Why one badly structured table produces three different anomalies
+
+- **Explains:** `anomalies`
+- **Explanation type:** tradeoff
+
+Insertion, update and deletion anomalies are different symptoms of the same structural problem: unrelated facts have been forced into one row type. An insertion anomaly occurs when a new fact cannot be stored without inventing another fact, such as being unable to add a course until a student enrols. An update anomaly occurs when one real-world change requires several row changes, allowing copies to disagree. A deletion anomaly occurs when removing the last row for one fact accidentally removes the only stored copy of another, such as deleting the last enrolment and losing the course details. Splitting the table by entity and connecting rows with keys separates the lifecycles of those facts. The anomalies disappear because each entity can be inserted, changed or removed without performing an unrelated operation.
+
+### Why each normal form removes a different dependency problem
+
+- **Explains:** `normal-forms`
+- **Explanation type:** process
+
+Normal forms are checkpoints for dependencies, not a ritual of splitting tables. First normal form requires atomic values and a consistent row structure so that each field contains one value that can be addressed. Second normal form matters when a primary key has several attributes: every non-key attribute must depend on the whole key, otherwise facts about only part of the key belong elsewhere. Third normal form removes transitive dependency, where a non-key attribute determines another non-key attribute. At each step, the misplaced attributes move to a relation whose key actually determines them, and foreign keys preserve the connection. A design should not be split without examining dependencies, because unnecessary tables add joins without correcting a real anomaly. The reason for each decomposition is always the same question: what fact determines this attribute?
+<!-- stage10-explanations:end -->

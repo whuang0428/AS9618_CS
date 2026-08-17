@@ -99,4 +99,13 @@ for (const pilot of [
   expect(fs.statSync(pilotAsset).size <= 350 * 1024, `Lesson ${pilot.lesson} generated image exceeds the 350 KB page budget`);
 }
 
-console.log(`Educational visual verification passed: ${rows.length} prioritised concepts, three ImageGen pilots and five code-native diagrams are present.`);
+const comprehensiveRegister = read("audits/stage10-concept-visual-register.csv").trim().split("\n");
+expect(
+  comprehensiveRegister.shift() === "lesson,visual_id,section_id,method,topic,required_facts,source,status,content_hash",
+  "Stage 10 comprehensive visual register header is invalid",
+);
+expect(comprehensiveRegister.length >= rows.length, "Stage 10 visual register must not be smaller than the original priority register");
+expect(comprehensiveRegister.some((line) => line.startsWith("016,") && line.includes(",PilotReview,")), "Lesson 016 corrected topology SVGs are missing from Stage 10 visual review");
+expect(!comprehensiveRegister.some((line) => /,,(?:[^,]*,){3}$/.test(line)), "Stage 10 visual register contains an incomplete record");
+
+console.log(`Educational visual verification passed: ${rows.length} prioritised concepts, ${comprehensiveRegister.length} comprehensive visual records, three ImageGen pilots and five code-native diagrams are present.`);

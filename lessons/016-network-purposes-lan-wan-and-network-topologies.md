@@ -105,3 +105,28 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** mesh can reroute when a link fails
 
 **Strict note:** Do not accept 'mesh is better' without a packet-path or failure consequence.
+
+<!-- stage10-explanations:start -->
+## Stage 10 causal explanations
+
+### Why sharing becomes useful only when devices can exchange requests
+
+- **Explains:** `purpose`
+- **Explanation type:** mechanism
+
+A network creates value by giving devices a controlled path for exchanging data. When a computer sends a print job, for example, it does not somehow use the printer from a distance: it packages the request, sends it across a link and identifies the shared printer as the destination. The same mechanism lets users open centrally stored files or send messages. Sharing reduces duplication because one managed resource can answer requests from many authorised devices. Central management works for the same reason: accounts, permissions, updates and backups can be applied at a server or management service rather than configured independently on every machine. This convenience also creates dependence. If the shared service or connecting network fails, many users may lose access at once. A strong explanation therefore links the benefit to the shared communication path and also recognises the new point of failure.
+
+### Why area and ownership change the way a network is managed
+
+- **Explains:** `lanwan`
+- **Explanation type:** comparison
+
+LAN and WAN are not labels for fast and slow networks. They describe different scales and management arrangements. A LAN normally covers a limited site and is controlled by one organisation, so that organisation can choose the switches, cabling, wireless access points and security rules. Shorter local links and direct control often make faults easier to locate and upgrades easier to schedule. A WAN connects networks across a much larger area, so traffic may cross infrastructure owned by telecommunications providers. That adds distance, routing decisions and dependence on external services, which can increase latency, cost and troubleshooting complexity. A school network does not become a WAN merely because it uses Wi-Fi, and a WAN is not automatically the public internet. The deciding questions are what geographical area is connected and who controls the infrastructure between the connected sites.
+
+### Why physical connection patterns create different costs and failure effects
+
+- **Explains:** `topologies`
+- **Explanation type:** tradeoff
+
+A topology changes network behaviour because it determines the path that data and failures can follow. In a bus, every device depends on one backbone, so little cabling is needed but damage or congestion on that shared path affects the whole network. In a star, each device has its own link to a central switch. One cable failure normally isolates one device, yet switch failure removes the common forwarding point. In a full mesh, every pair of nodes has a direct link, so another path remains when one link fails. That resilience is expensive because the number of links and ports rises rapidly as nodes are added. A hybrid combines topology types, such as connected star segments, to balance local simplicity with wider resilience. No topology is always best: the correct choice follows from required availability, expansion, cost and the consequence of each possible failure.
+<!-- stage10-explanations:end -->
