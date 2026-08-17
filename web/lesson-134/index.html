@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,7 +45,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 134 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
             <h2><code>DIV</code> keeps the quotient. <code>MOD</code> keeps the leftovers.</h2>
@@ -68,7 +69,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 trace questions use <code>DIV</code> and <code>MOD</code> for parity checks, digit extraction, time conversion and array grouping.</p>
@@ -79,7 +80,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Seventeen students. Five seats per row.</h2>
@@ -94,7 +95,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the quotient and remainder.</div>
         </section>
 
-        <section class="panel" id="operators">
+        <section class="panel" id="operators" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="operators">
           <div class="section-title">
             <p class="eyebrow">Arithmetic operators</p>
             <h2>Operators combine values to calculate a result</h2>
@@ -111,7 +112,7 @@
           </div>
         </section>
 
-        <section class="panel" id="division">
+        <section class="panel" id="division" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="division">
           <div class="section-title">
             <p class="eyebrow">Integer division</p>
             <h2><code>DIV</code> returns the whole-number quotient</h2>
@@ -135,7 +136,7 @@ OUTPUT FullRows</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="mod">
+        <section class="panel" id="mod" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="mod">
           <div class="section-title">
             <p class="eyebrow">MOD</p>
             <h2><code>MOD</code> returns the remainder</h2>
@@ -159,7 +160,7 @@ OUTPUT LeftOver</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="relationship">
+        <section class="panel" id="relationship" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="relationship">
           <div class="section-title">
             <p class="eyebrow">Quotient and remainder relationship</p>
             <h2>Use the identity to check your answer</h2>
@@ -171,7 +172,7 @@ OUTPUT LeftOver</code></pre>
           <div class="callout">For positive integers, the remainder is smaller than the divisor. If <code>17 MOD 5</code> becomes <code>5</code>, the remainder has become too enthusiastic.</div>
         </section>
 
-        <section class="panel" id="precedence">
+        <section class="panel" id="precedence" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="precedence">
           <div class="section-title">
             <p class="eyebrow">Precedence</p>
             <h2>Use brackets when the intended order matters</h2>
@@ -192,7 +193,7 @@ OUTPUT Result</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="patterns">
+        <section class="panel" id="patterns" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
           <div class="section-title">
             <p class="eyebrow">Common patterns</p>
             <h2><code>DIV</code> and <code>MOD</code> often appear in practical algorithm tasks</h2>
@@ -204,7 +205,7 @@ OUTPUT Result</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="java">
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
             <h2>Java can support the idea, but Cambridge pseudocode remains the answer format</h2>
@@ -225,7 +226,7 @@ int remainder = number % divisor;</code></pre>
         </section>
 
 
-        <section class="panel" id="calculator">
+        <section class="panel" id="calculator" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="calculator">
           <div class="section-title">
             <p class="eyebrow">Interactive arithmetic calculator</p>
             <h2>Compare <code>/</code>, <code>DIV</code> and <code>MOD</code></h2>
@@ -254,7 +255,7 @@ int remainder = number % divisor;</code></pre>
           <div class="trace-output" id="calcResult" aria-live="polite">Enter values and calculate.</div>
         </section>
 
-        <section class="panel" id="chooser">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
             <p class="eyebrow">Operator chooser</p>
             <h2>Which arithmetic operator fits the task?</h2>
@@ -264,7 +265,7 @@ int remainder = number % divisor;</code></pre>
           <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Trace quotient, remainder and final value</h2>
@@ -273,7 +274,7 @@ int remainder = number % divisor;</code></pre>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short calculations, exact values</h2>
@@ -282,7 +283,7 @@ int remainder = number % divisor;</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Find the exact arithmetic error</h2>
@@ -290,7 +291,7 @@ int remainder = number % divisor;</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then expand the MS</h2>
@@ -299,7 +300,7 @@ int remainder = number % divisor;</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Three rules to keep</h2>
@@ -311,7 +312,7 @@ int remainder = number % divisor;</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Calculate, trace, apply</h2>
@@ -328,6 +329,8 @@ int remainder = number % divisor;</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

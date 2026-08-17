@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -41,7 +42,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 056 | 45 minutes | Paper 1 Section 5 | System software</p>
             <h2>Source code is written for humans. Machine code is what the processor runs.</h2>
@@ -66,7 +67,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Scenario questions often contrast development with distribution. The best answer links translator behaviour to the scenario.</p>
@@ -77,7 +78,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A processor receives <code>PRINT("Hello")</code>. Will it run that directly?</h2>
@@ -94,7 +95,7 @@
           </div>
         </section>
 
-        <section class="panel" id="concept">
+        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Translator software converts program code into another form</h2>
@@ -108,7 +109,7 @@
           <div class="callout">Chinese support: compiler = 编译器；interpreter = 解释器；assembler = 汇编器；source code = 源代码；object code = 目标代码；machine code = 机器码。</div>
         </section>
 
-        <section class="panel" id="compiler">
+        <section class="panel" id="compiler" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compiler">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>A compiler translates the whole high-level program before execution</h2>
@@ -121,7 +122,7 @@
           </div>
         </section>
 
-        <section class="panel" id="interpreter">
+        <section class="panel" id="interpreter" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="interpreter">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>An interpreter translates and executes statements as the program runs</h2>
@@ -134,7 +135,7 @@
           </div>
         </section>
 
-        <section class="panel" id="assembler">
+        <section class="panel" id="assembler" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assembler">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>An assembler translates assembly language into machine code</h2>
@@ -147,7 +148,7 @@
           </div>
         </section>
 
-        <section class="panel" id="compare">
+        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Comparison: same goal, different route</h2>
@@ -181,7 +182,7 @@
         </section>
 
 
-        <section class="panel interactive" id="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Translator selector</h2>
@@ -206,7 +207,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Choose the translator, then justify the trade-off</h2>
@@ -220,7 +221,7 @@
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant-check questions</h2>
@@ -229,7 +230,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the almost-right answers</h2>
@@ -237,7 +238,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then reveal the CIE-style mark scheme</h2>
@@ -246,7 +247,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Translator memory map</h2>
@@ -261,7 +262,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear output, not vague revision</h2>
@@ -284,6 +285,8 @@
       </div>
     </main>
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

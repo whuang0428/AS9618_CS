@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -38,7 +39,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 008 | 45 minutes | Informal questioning</p>
             <h2>A bitmap image is a grid of tiny colour decisions.</h2>
@@ -73,7 +74,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Image quality, storage space and download time are linked through resolution and colour depth.</p>
@@ -84,7 +85,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>What is stored for one pixel?</h2>
@@ -100,7 +101,7 @@
           </div>
         </section>
 
-        <section class="panel" id="pixels">
+        <section class="panel" id="pixels" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pixels">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Bitmap images are pixel grids</h2>
@@ -124,7 +125,7 @@
           </div>
         </section>
 
-        <section class="panel" id="resolution">
+        <section class="panel" id="resolution" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="resolution">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Resolution: width × height</h2>
@@ -145,7 +146,7 @@
           <div class="feedback" id="pixelDemoText">Click pixels to toggle them. Each square is one stored picture element.</div>
         </section>
 
-        <section class="panel" id="depth">
+        <section class="panel" id="depth" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="depth">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Colour depth: bits per pixel</h2>
@@ -173,7 +174,7 @@
           </div>
         </section>
 
-        <section class="panel" id="formula">
+        <section class="panel" id="formula" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="formula">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Bitmap file size formula</h2>
@@ -188,7 +189,7 @@
         </section>
 
 
-        <section class="panel interactive" id="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Bitmap file size calculator</h2>
@@ -218,7 +219,7 @@
           <div class="method-box" id="calcMethod"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
@@ -231,7 +232,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -241,7 +242,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the file size mistake</h2>
@@ -260,7 +261,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -273,7 +274,7 @@
         </section>
 
 
-        <section class="panel stage2-completion" id="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Extra practice</p>
             <h2>Image resolution and screen resolution</h2>
@@ -316,7 +317,7 @@
           </article>
         </section>
 
-        <section class="panel summary-panel" id="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Every pixel costs bits</h2>
@@ -329,7 +330,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks</h2>
@@ -352,6 +353,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

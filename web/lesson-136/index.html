@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -45,7 +46,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 136 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
             <h2>Open the file. Use the file. Close the file. The file is not a mind reader.</h2>
@@ -68,7 +69,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 file questions reward the pattern: open in the correct mode, loop until EOF when reading, process records, then close.</p>
@@ -79,7 +80,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which file mode keeps old scores and adds a new score?</h2>
@@ -94,7 +95,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the mode for adding to the end of an existing file.</div>
         </section>
 
-        <section class="panel" id="purpose">
+        <section class="panel" id="purpose" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
           <div class="section-title">
             <p class="eyebrow">Purpose</p>
             <h2>Files store data outside the running program</h2>
@@ -112,7 +113,7 @@
           </div>
         </section>
 
-        <section class="panel" id="modes">
+        <section class="panel" id="modes" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="modes">
           <div class="section-title">
             <p class="eyebrow">File modes</p>
             <h2>The mode controls what the program intends to do with the file</h2>
@@ -125,7 +126,7 @@
           </div>
         </section>
 
-        <section class="panel" id="read">
+        <section class="panel" id="read" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="read">
           <div class="section-title">
             <p class="eyebrow">Read pattern</p>
             <h2>Read every line using <code>WHILE NOT EOF</code></h2>
@@ -152,7 +153,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="write">
+        <section class="panel" id="write" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="write">
           <div class="section-title">
             <p class="eyebrow">Write pattern</p>
             <h2><code>FOR WRITE</code> writes new contents</h2>
@@ -173,7 +174,7 @@ CLOSEFILE "Report.txt"</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="append">
+        <section class="panel" id="append" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="append">
           <div class="section-title">
             <p class="eyebrow">Append pattern</p>
             <h2><code>FOR APPEND</code> adds new data to the end</h2>
@@ -196,7 +197,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="eof">
+        <section class="panel" id="eof" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="eof">
           <div class="section-title">
             <p class="eyebrow">EOF loop</p>
             <h2><code>EOF</code> prevents reading past the end of the file</h2>
@@ -221,7 +222,7 @@ OUTPUT Count</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="close">
+        <section class="panel" id="close" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="close">
           <div class="section-title">
             <p class="eyebrow">Closing files</p>
             <h2><code>CLOSEFILE</code> completes the pattern</h2>
@@ -233,7 +234,7 @@ OUTPUT Count</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="java">
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
             <h2>Java file handling helps understanding, but does not replace pseudocode</h2>
@@ -261,7 +262,7 @@ CLOSEFILE "Scores.txt"</code></pre>
         </section>
 
 
-        <section class="panel" id="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">
             <p class="eyebrow">Interactive pattern builder</p>
             <h2>Generate the core file pattern</h2>
@@ -286,7 +287,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div class="trace-output" id="builderResult" aria-live="polite">Choose a task and build the pattern.</div>
         </section>
 
-        <section class="panel" id="chooser">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
             <p class="eyebrow">Mode chooser</p>
             <h2>Which mode should the program use?</h2>
@@ -296,7 +297,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Trace the file operation pattern</h2>
@@ -305,7 +306,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short answers, exact commands</h2>
@@ -314,7 +315,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Find the file handling error</h2>
@@ -322,7 +323,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then expand the MS</h2>
@@ -331,7 +332,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Three rules to keep</h2>
@@ -343,7 +344,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Read, write, append</h2>
@@ -360,6 +361,8 @@ CLOSEFILE "Scores.txt"</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

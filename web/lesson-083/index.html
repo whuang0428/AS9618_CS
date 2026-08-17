@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -42,7 +43,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 083 | 45 minutes | Paper 1 Section 8 | Database design</p>
             <h2>Normalisation is database tidying with consequences. It stops one changed email from becoming a treasure hunt.</h2>
@@ -69,7 +70,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Cambridge-style answers need cause and consequence: repeated data causes anomalies; separating tables reduces the risk.</p>
@@ -80,7 +81,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A tutor's email appears in 38 course rows. The tutor changes email. What can go wrong?</h2>
@@ -97,7 +98,7 @@
           </div>
         </section>
 
-        <section class="panel" id="purpose">
+        <section class="panel" id="purpose" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Purpose of normalisation</h2>
@@ -112,7 +113,7 @@
           <div class="callout">Chinese support: normalisation = 规范化；redundancy = 冗余；anomaly = 异常；dependency = 依赖关系。</div>
         </section>
 
-        <section class="panel" id="redundancy">
+        <section class="panel" id="redundancy" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="redundancy">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Spot unnecessary repeated facts</h2>
@@ -142,7 +143,7 @@
           </div>
         </section>
 
-        <section class="panel" id="anomalies">
+        <section class="panel" id="anomalies" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="anomalies">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Three anomaly types</h2>
@@ -154,7 +155,7 @@
           </div>
         </section>
 
-        <section class="panel" id="normal-forms">
+        <section class="panel" id="normal-forms" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="normal-forms">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Normal form idea, without turning the lesson into a maze</h2>
@@ -169,7 +170,7 @@
         </section>
 
 
-        <section class="panel" id="detector">
+        <section class="panel" id="detector" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="detector">
           <div class="section-title">
             <p class="eyebrow">Interactive redundancy detector</p>
             <h2>Which fact should be moved?</h2>
@@ -191,7 +192,7 @@
           <div class="feedback" id="redundancyReason">Not every repeated value is bad; repeated descriptive facts are the bigger warning.</div>
         </section>
 
-        <section class="panel" id="classifier">
+        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
           <div class="section-title">
             <p class="eyebrow">Interactive anomaly classifier</p>
             <h2>Classify the problem</h2>
@@ -213,7 +214,7 @@
           <div class="feedback" id="anomalyReason">Name the anomaly and explain the mechanism.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>From one bad table to linked tables</h2>
@@ -227,7 +228,7 @@
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short-answer checks</h2>
@@ -236,7 +237,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Repair weak normalisation explanations</h2>
@@ -244,7 +245,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style practice with expandable MS</h2>
@@ -254,7 +255,7 @@
         </section>
 
 
-        <section class="panel stage2-completion" id="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Extra practice</p>
             <h2>First, second and third normal form</h2>
@@ -297,7 +298,7 @@
           </article>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Normalisation checklist</h2>
@@ -309,7 +310,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks for consolidation</h2>
@@ -333,6 +334,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

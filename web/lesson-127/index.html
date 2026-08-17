@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 127 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
             <h2>Selection is the algorithm saying, "Depends."</h2>
@@ -66,7 +67,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Selection errors often appear only on boundary or invalid test data, exactly where exam questions like to stand.</p>
@@ -77,7 +78,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which output appears?</h2>
@@ -105,7 +106,7 @@ ENDIF</code></pre>
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the branch for Mark = 50.</div>
         </section>
 
-        <section class="panel" id="if">
+        <section class="panel" id="if" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="if">
           <div class="section-title">
             <p class="eyebrow">IF selection</p>
             <h2>Use IF when a Boolean condition decides the route</h2>
@@ -119,7 +120,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="case">
+        <section class="panel" id="case" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="case">
           <div class="section-title">
             <p class="eyebrow">CASE selection</p>
             <h2>Use CASE for clear values of one expression</h2>
@@ -143,7 +144,7 @@ ENDCASE</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="nested">
+        <section class="panel" id="nested" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="nested">
           <div class="section-title">
             <p class="eyebrow">Nested selection</p>
             <h2>A decision inside another decision</h2>
@@ -173,7 +174,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="choice">
+        <section class="panel" id="choice" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="choice">
           <div class="section-title">
             <p class="eyebrow">Choosing IF or CASE</p>
             <h2>Start with the shape of the decision</h2>
@@ -187,7 +188,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="trace">
+        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
             <p class="eyebrow">Trace method</p>
             <h2>Test normal, boundary and invalid values</h2>
@@ -199,7 +200,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="java">
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
             <h2>Same idea, different syntax</h2>
@@ -225,7 +226,7 @@ ENDCASE</code></pre>
         </section>
 
 
-        <section class="panel" id="path">
+        <section class="panel" id="path" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="path">
           <div class="section-title">
             <p class="eyebrow">Interactive path tracer</p>
             <h2>Trace a nested IF</h2>
@@ -247,7 +248,7 @@ ENDCASE</code></pre>
           <div class="trace-output" id="traceResult">Enter values to trace which branch runs.</div>
         </section>
 
-        <section class="panel" id="chooser">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
             <p class="eyebrow">Construct chooser</p>
             <h2>IF, CASE or nested IF?</h2>
@@ -262,7 +263,7 @@ ENDCASE</code></pre>
           <div class="trace-output" id="chooseResult">Choose a scenario to see the recommended selection structure.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Selection examples with trace thinking</h2>
@@ -276,7 +277,7 @@ ENDCASE</code></pre>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>10 quick checks</h2>
@@ -285,7 +286,7 @@ ENDCASE</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Selection mistakes that cost marks</h2>
@@ -293,7 +294,7 @@ ENDCASE</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>IF, CASE and nested selection</h2>
@@ -302,7 +303,7 @@ ENDCASE</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Selection checklist</h2>
@@ -314,7 +315,7 @@ ENDCASE</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Selection practice</h2>
@@ -330,6 +331,8 @@ ENDCASE</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

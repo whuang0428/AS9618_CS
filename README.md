@@ -1,6 +1,6 @@
 # AS9618 Computer Science 2027-2029 AS Lesson Plans
 
-This repository contains the completed eight-stage teaching and self-study course pack for Cambridge International AS Level Computer Science 9618, syllabus years 2027-2029.
+This repository contains the completed nine-stage classroom teaching and self-study course pack for Cambridge International AS Level Computer Science 9618, syllabus years 2027-2029.
 
 Official qualification page: <https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/>
 
@@ -8,9 +8,9 @@ Syllabus reference used for this pack: Cambridge International AS & A Level Comp
 
 ## Project Status
 
-All 150 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit maps all 121 AS requirements to direct teaching and assessment evidence. The assessment bank provides 30 ten-mark quizzes, 7 thirty-mark monthly checkpoints and 14 twenty-mark stage reviews. Stage 5 reviewed and approved all 963 exam-style mark schemes (750 lesson questions and 213 assessment questions); 295 questions in System Software, Security, Ethics and Databases received a specialist second review. Stage 6 completed desktop and mobile full-page QA for all 150 lessons plus the course, assessment and resource hubs. Stage 7 completed keyboard, semantic, contrast and bilingual-language accessibility QA for the same 153 pages. Final Stage 8 provides a versioned, checksummed and source-matched offline release with unified Stage 2-8 verification.
+All 150 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit maps all 121 AS requirements to direct teaching and assessment evidence. The assessment bank provides 30 ten-mark quizzes, 7 thirty-mark monthly checkpoints and 14 twenty-mark stage reviews. Stage 5 reviewed and approved all 963 exam-style mark schemes (750 lesson questions and 213 assessment questions); 295 questions in System Software, Security, Ethics and Databases received a specialist second review. Stage 6 completed desktop and mobile full-page QA for all 150 lessons plus the course, assessment and resource hubs. Stage 7 completed keyboard, semantic, contrast and bilingual-language accessibility QA for the same 153 pages. Stage 8 provides a versioned, checksummed and source-matched offline release. Stage 9 adds teacher-led Classroom Mode, a fixed lesson toolbar, audited delivery labels, teacher filters in the Assessment Bank and a static 150-lesson catalogue.
 
-The student web version now provides a persistent `Course home` link on every lesson page. A prioritised visual-explanation register covers 25 abstract concepts. Eight approved visual explanations now cover network models, packet switching, addressing, secondary storage, control systems, logic gates, CPU architecture and the fetch-decode-execute cycle.
+The shared web version prioritises classroom teaching while preserving each complete lesson for student preview and revision. Every lesson provides `Course home`, previous/next lesson controls and an opt-in Classroom Mode. A prioritised visual-explanation register covers 25 abstract concepts. Eight approved visual explanations now cover network models, packet switching, addressing, secondary storage, control systems, logic gates, CPU architecture and the fetch-decode-execute cycle.
 
 ## Course Design
 
@@ -28,7 +28,7 @@ The student web version now provides a persistent `Course home` link on every le
 - `course-map.md`: syllabus mapping, pacing, and assessment rhythm.
 - `syllabus-audit.md`: requirement-level coverage evidence, gaps, and fixed repair targets.
 - `stage4-assessment-audit.md`: Stage 4 assessment acceptance criteria and verification evidence.
-- `audits/`: Stage 5 question-level approvals, Stage 6 visual QA, Stage 7 accessibility and Stage 8 release evidence.
+- `audits/`: Stage 5 question-level approvals, Stage 6 visual QA, Stage 7 accessibility, Stage 8 release evidence and the Stage 9 classroom-delivery register.
 - `lessons/`: 150 generated lesson plans undergoing syllabus coverage and content-quality review.
 - `assessments/`: 51 topic-specific assessment items: 30 quizzes, 7 monthly checkpoints and 14 stage reviews, all with answer keys/MS.
 - `resources/`: glossary, pseudocode-Java guide, misconception bank, and Cambridge-style MS conventions.
@@ -60,12 +60,21 @@ Then open:
 - Resource centre: <http://127.0.0.1:8769/resources/>
 - Example lesson: <http://127.0.0.1:8769/lesson-001/>
 
-Each webpage is self-contained in its own `web/lesson-XXX/` folder and uses local answer/MS toggles rather than a global student/teacher view.
+Each lesson keeps the full revision page by default. Use the fixed bottom toolbar to move between lessons, jump to Warm-up/Core/Practice/Exam/Homework, open the Assessment Bank or enter Classroom Mode. Classroom Mode presents one delivery group at a time, excludes optional activities by default and remembers the selected mode on that browser.
+
+Classroom keyboard controls are `←`/`→` for the previous or next delivery group, `R` for the first relevant answer or mark scheme, and `F` for full screen. Shortcuts are ignored while using lesson form controls.
 
 If lesson HTML is regenerated, restore the shared course-home control with the idempotent command:
 
 ```bash
 node scripts/apply-student-navigation.mjs
+```
+
+Then rebuild the static course catalogue and classroom annotations:
+
+```bash
+node scripts/generate-course-catalog.mjs
+node scripts/apply-classroom-delivery.mjs
 ```
 
 ## Verification
@@ -79,6 +88,7 @@ node scripts/verify-lesson-mark-schemes.mjs
 node scripts/verify-stage5-mark-schemes.mjs
 node scripts/verify-stage6-qa.mjs
 node scripts/verify-stage7-accessibility.mjs
+node scripts/verify-stage9-classroom.mjs
 python3 scripts/build-stage8-release.py
 node scripts/verify-stage8-release.mjs
 ```
@@ -89,7 +99,7 @@ For the complete final acceptance workflow, run:
 node scripts/verify-all.mjs
 ```
 
-This runs every Stage 2-7 verifier, builds `dist/AS9618-CS-2027-2029-v1.0.0.zip`, verifies its sidecar and internal SHA-256 manifests, checks source parity and validates the packaged course inventory. Regenerate an approval register only after repeating the corresponding review.
+This runs every Stage 2-9 verifier, builds `dist/AS9618-CS-2027-2029-v1.0.0.zip`, verifies its sidecar and internal SHA-256 manifests, checks source parity and validates the packaged course inventory. Regenerate an approval register only after repeating the corresponding review.
 
 ## Generated Lesson Count
 

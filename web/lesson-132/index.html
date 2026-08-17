@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,7 +45,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 132 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
             <h2>Variables have borders. Some passports are very local.</h2>
@@ -67,7 +68,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 trace questions often use local and global variables to test whether candidates follow the actual data, not just the names.</p>
@@ -78,7 +79,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which <code>Count</code> is being output?</h2>
@@ -112,7 +113,7 @@ OUTPUT Count</code></pre>
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the output pair.</div>
         </section>
 
-        <section class="panel" id="scope">
+        <section class="panel" id="scope" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="scope">
           <div class="section-title">
             <p class="eyebrow">Scope</p>
             <h2>Scope means where a variable or identifier can be accessed</h2>
@@ -136,7 +137,7 @@ OUTPUT Total</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="lifetime">
+        <section class="panel" id="lifetime" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lifetime">
           <div class="section-title">
             <p class="eyebrow">Lifetime</p>
             <h2>Lifetime means how long a variable exists during execution</h2>
@@ -150,7 +151,7 @@ OUTPUT Total</code></pre>
           <div class="callout">A local variable's lifetime is usually one subroutine call. It is not a tiny global variable in disguise.</div>
         </section>
 
-        <section class="panel" id="local">
+        <section class="panel" id="local" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="local">
           <div class="section-title">
             <p class="eyebrow">Local variables</p>
             <h2>Local variables are declared inside a subroutine or block</h2>
@@ -174,7 +175,7 @@ ENDPROCEDURE</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="global">
+        <section class="panel" id="global" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="global">
           <div class="section-title">
             <p class="eyebrow">Global variables</p>
             <h2>Global variables are declared outside subroutines and can be accessed widely</h2>
@@ -196,7 +197,7 @@ ENDPROCEDURE</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="shadowing">
+        <section class="panel" id="shadowing" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="shadowing">
           <div class="section-title">
             <p class="eyebrow">Same name trap</p>
             <h2>A local variable can hide a global variable with the same name</h2>
@@ -222,7 +223,7 @@ OUTPUT Score</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="compare">
+        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Compare</p>
             <h2>Local and global variables differ by accessibility and lifetime</h2>
@@ -236,7 +237,7 @@ OUTPUT Score</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="java">
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
             <h2>Java helps illustrate scope, but Cambridge pseudocode remains the answer format</h2>
@@ -261,7 +262,7 @@ ENDPROCEDURE</code></pre>
         </section>
 
 
-        <section class="panel" id="simulator">
+        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">
           <div class="section-title">
             <p class="eyebrow">Interactive trace simulator</p>
             <h2>Trace local versus global updates</h2>
@@ -288,7 +289,7 @@ ENDPROCEDURE</code></pre>
           <div class="trace-output" id="traceResult" aria-live="polite">Choose values and trace the final global Count.</div>
         </section>
 
-        <section class="panel" id="chooser">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
             <p class="eyebrow">Variable chooser</p>
             <h2>Should this be local or global?</h2>
@@ -298,7 +299,7 @@ ENDPROCEDURE</code></pre>
           <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Trace the variable, not just the name</h2>
@@ -307,7 +308,7 @@ ENDPROCEDURE</code></pre>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Definitions and trace values</h2>
@@ -316,7 +317,7 @@ ENDPROCEDURE</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Find the scope error</h2>
@@ -324,7 +325,7 @@ ENDPROCEDURE</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then expand the MS</h2>
@@ -333,7 +334,7 @@ ENDPROCEDURE</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Three statements to keep</h2>
@@ -345,7 +346,7 @@ ENDPROCEDURE</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Define, trace, correct</h2>
@@ -362,6 +363,8 @@ ENDPROCEDURE</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

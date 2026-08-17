@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 114 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>Assignment is not a maths equals sign. It is an update.</h2>
@@ -67,7 +68,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Trace-table and pseudocode questions often award marks for declaration, initialisation, update and final value.</p>
@@ -78,7 +79,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Can a variable be on both sides?</h2>
@@ -93,7 +94,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Read the arrow as "is set to".</div>
         </section>
 
-        <section class="panel" id="model">
+        <section class="panel" id="model" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
           <div class="section-title">
             <p class="eyebrow">Memory model</p>
             <h2>Identifiers name storage locations</h2>
@@ -121,7 +122,7 @@ Average &lt;- Total / Count</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="declare">
+        <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
           <div class="section-title">
             <p class="eyebrow">Declare variables</p>
             <h2>Declaration gives a name and a type before use</h2>
@@ -136,7 +137,7 @@ Average &lt;- Total / Count</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="constants">
+        <section class="panel" id="constants" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constants">
           <div class="section-title">
             <p class="eyebrow">Constants</p>
             <h2>Name fixed values so the algorithm explains itself</h2>
@@ -162,7 +163,7 @@ ENDIF</code></pre>
           <div class="callout">Exam point: changing a constant later is a contradiction. If it must change during execution, it should be a variable.</div>
         </section>
 
-        <section class="panel" id="assignment">
+        <section class="panel" id="assignment" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assignment">
           <div class="section-title">
             <p class="eyebrow">Assignment</p>
             <h2>Right side first, left side second</h2>
@@ -176,7 +177,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="trace">
+        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
             <p class="eyebrow">Trace</p>
             <h2>Trace assignment one statement at a time</h2>
@@ -205,7 +206,7 @@ Count &lt;- Count + 1</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>The symbol changes, the update idea does not</h2>
@@ -231,7 +232,7 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
         </section>
 
 
-        <section class="panel" id="simulator">
+        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">
           <div class="section-title">
             <p class="eyebrow">Interactive assignment simulator</p>
             <h2>Trace a single assignment</h2>
@@ -250,7 +251,7 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           <div class="trace-output" id="simulateResult">Enter values to see the updated Total.</div>
         </section>
 
-        <section class="panel" id="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">
             <p class="eyebrow">Interactive statement builder</p>
             <h2>Choose the correct statement form</h2>
@@ -272,7 +273,7 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           <div class="trace-output" id="builderResult">Choose a task to generate a Cambridge-style statement.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Declaration, constants and trace examples</h2>
@@ -286,7 +287,7 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Ten quick decisions</h2>
@@ -295,7 +296,7 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix assignment and constant errors</h2>
@@ -303,7 +304,7 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -312,7 +313,7 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Constants, variables and assignment checklist</h2>
@@ -324,7 +325,7 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear consolidation tasks</h2>
@@ -348,6 +349,8 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

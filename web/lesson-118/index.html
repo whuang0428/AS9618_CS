@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 118 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>A record keeps related facts together without pretending they are the same type.</h2>
@@ -71,7 +72,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 can ask students to define a record type, declare a record variable, and access fields correctly.</p>
@@ -82,7 +83,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>What should hold one student's details?</h2>
@@ -97,7 +98,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the structure that can group different fields with different types.</div>
         </section>
 
-        <section class="panel" id="concept">
+        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
           <div class="section-title">
             <p class="eyebrow">Concept</p>
             <h2>Composite data groups fields into one type</h2>
@@ -112,7 +113,7 @@
           </div>
         </section>
 
-        <section class="panel" id="declare">
+        <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
           <div class="section-title">
             <p class="eyebrow">Declare records</p>
             <h2>Define the type, then declare variables that use it</h2>
@@ -137,7 +138,7 @@ Student1.Mark &lt;- 72</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="access">
+        <section class="panel" id="access" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
           <div class="section-title">
             <p class="eyebrow">Access and update</p>
             <h2>Use the field name, not a numeric index</h2>
@@ -150,7 +151,7 @@ Student1.Mark &lt;- 72</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="array-vs-record">
+        <section class="panel" id="array-vs-record" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="array-vs-record">
           <div class="section-title">
             <p class="eyebrow">Array vs record</p>
             <h2>Same type and index, or mixed fields and names?</h2>
@@ -163,7 +164,7 @@ Student1.Mark &lt;- 72</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="trace">
+        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
             <p class="eyebrow">Trace</p>
             <h2>Trace the field that changes</h2>
@@ -176,7 +177,7 @@ Student1.Mark &lt;- 72</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Same modelling idea, different syntax</h2>
@@ -209,7 +210,7 @@ book1.available = true;</code></pre>
         </section>
 
 
-        <section class="panel" id="lookup">
+        <section class="panel" id="lookup" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lookup">
           <div class="section-title">
             <p class="eyebrow">Interactive field lookup</p>
             <h2>Read one field from a record</h2>
@@ -229,7 +230,7 @@ book1.available = true;</code></pre>
           <div class="trace-output" id="fieldResult">Student1 has Name, DateOfBirth, Mark and Enrolled fields.</div>
         </section>
 
-        <section class="panel" id="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">
             <p class="eyebrow">Interactive type builder</p>
             <h2>Generate a record declaration</h2>
@@ -249,7 +250,7 @@ book1.available = true;</code></pre>
           <div class="trace-output" id="builderResult">Choose a scenario to generate Cambridge-style pseudocode.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Record modelling patterns</h2>
@@ -263,7 +264,7 @@ book1.available = true;</code></pre>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Ten quick record checks</h2>
@@ -272,7 +273,7 @@ book1.available = true;</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix common record errors</h2>
@@ -280,7 +281,7 @@ book1.available = true;</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style record questions with expandable MS</h2>
@@ -289,7 +290,7 @@ book1.available = true;</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Record checklist</h2>
@@ -301,7 +302,7 @@ book1.available = true;</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear consolidation tasks</h2>
@@ -325,6 +326,8 @@ book1.available = true;</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

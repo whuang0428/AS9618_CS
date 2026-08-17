@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,7 +45,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 146 | 45 minutes | Paper 2 Section 12 | stage review</p>
             <h2>Review is not rereading. Review is choosing the right tool under exam pressure.</h2>
@@ -67,7 +68,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Mixed Section 12 questions punish generic answers. The same case study can ask for requirements in one part and evaluation in the next.</p>
@@ -78,7 +79,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which mental toolbox should open first?</h2>
@@ -93,7 +94,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Pick the stage that improves vague user needs before design.</div>
         </section>
 
-        <section class="panel" id="case">
+        <section class="panel" id="case" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="case">
           <div class="section-title">
             <p class="eyebrow">Case study</p>
             <h2>School activity sign-up system</h2>
@@ -108,7 +109,7 @@
           <div class="callout">Every review task on this page uses this case. That forces answers to be specific instead of floating around as textbook fog.</div>
         </section>
 
-        <section class="panel" id="lifecycle">
+        <section class="panel" id="lifecycle" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lifecycle">
           <div class="section-title">
             <p class="eyebrow">Lifecycle map</p>
             <h2>One scenario, many stages</h2>
@@ -123,7 +124,7 @@
           </div>
         </section>
 
-        <section class="panel" id="analysis">
+        <section class="panel" id="analysis" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="analysis">
           <div class="section-title">
             <p class="eyebrow">Analysis review</p>
             <h2>From vague request to measurable criteria</h2>
@@ -136,7 +137,7 @@
           </div>
         </section>
 
-        <section class="panel" id="design">
+        <section class="panel" id="design" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="design">
           <div class="section-title">
             <p class="eyebrow">Design review</p>
             <h2>Design answers must name the artefact</h2>
@@ -149,7 +150,7 @@
           <div class="callout">Cambridge-style pseudocode is suitable for algorithm design. Java can support implementation practice, but final code is not the whole design document.</div>
         </section>
 
-        <section class="panel" id="testing">
+        <section class="panel" id="testing" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="testing">
           <div class="section-title">
             <p class="eyebrow">Testing review</p>
             <h2>Test cases need data, expected result and purpose</h2>
@@ -162,7 +163,7 @@
           </div>
         </section>
 
-        <section class="panel" id="evaluation">
+        <section class="panel" id="evaluation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="evaluation">
           <div class="section-title">
             <p class="eyebrow">Maintenance and evaluation review</p>
             <h2>After release, classify changes and judge success with evidence</h2>
@@ -187,7 +188,7 @@
           </div>
         </section>
 
-        <section class="panel" id="commands">
+        <section class="panel" id="commands" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="commands">
           <div class="section-title">
             <p class="eyebrow">Command words</p>
             <h2>Match response depth to the command</h2>
@@ -202,7 +203,7 @@
         </section>
 
 
-        <section class="panel" id="case-tool">
+        <section class="panel" id="case-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="case-tool">
           <div class="section-title">
             <p class="eyebrow">Interactive case tool</p>
             <h2>Identify the Section 12 concept</h2>
@@ -222,7 +223,7 @@
           <div id="caseOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="answer-tool">
+        <section class="panel" id="answer-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="answer-tool">
           <div class="section-title">
             <p class="eyebrow">Answer improver</p>
             <h2>Turn a weak line into a mark-worthy line</h2>
@@ -241,7 +242,7 @@
           <div id="answerOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Annotate what earns the mark</h2>
@@ -254,7 +255,7 @@
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short retrieval before the longer questions</h2>
@@ -262,7 +263,7 @@
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the review answer</h2>
@@ -270,7 +271,7 @@
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Mixed Section 12 questions with expandable MS</h2>
@@ -279,7 +280,7 @@
           <div id="examList" class="exam-list"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>The review rule</h2>
@@ -291,7 +292,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Complete one full Section 12 case-study response pack</h2>
@@ -308,6 +309,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 130 | 45 minutes | Paper 2 Section 11 | 5-minute quiz</p>
             <h2>Procedures do a job. Functions do a job and bring back a value.</h2>
@@ -66,7 +67,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 questions often ask students to complete headers, calls, parameters and return statements precisely.</p>
@@ -77,7 +78,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Procedure or function?</h2>
@@ -92,7 +93,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the subroutine that returns a value.</div>
         </section>
 
-        <section class="panel" id="procedure">
+        <section class="panel" id="procedure" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="procedure">
           <div class="section-title">
             <p class="eyebrow">Procedure</p>
             <h2>A procedure performs actions and does not have to return a value</h2>
@@ -116,7 +117,7 @@ CALL DisplayMenu()</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="function">
+        <section class="panel" id="function" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="function">
           <div class="section-title">
             <p class="eyebrow">Function</p>
             <h2>A function returns a value to the caller</h2>
@@ -138,7 +139,7 @@ VAT &lt;- CalculateVAT(120.00)</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="compare">
+        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Procedure vs function</p>
             <h2>The mark-winning difference is the returned value</h2>
@@ -152,7 +153,7 @@ VAT &lt;- CalculateVAT(120.00)</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="parameters">
+        <section class="panel" id="parameters" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parameters">
           <div class="section-title">
             <p class="eyebrow">Parameters and arguments</p>
             <h2>Parameters receive values passed into a subroutine</h2>
@@ -179,7 +180,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="calls">
+        <section class="panel" id="calls" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="calls">
           <div class="section-title">
             <p class="eyebrow">Calls and returned values</p>
             <h2>Function calls can appear where a value is needed</h2>
@@ -193,7 +194,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="java">
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
             <h2>Java method syntax is not Cambridge pseudocode</h2>
@@ -215,7 +216,7 @@ ENDFUNCTION</code></pre>
         </section>
 
 
-        <section class="panel" id="returner">
+        <section class="panel" id="returner" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="returner">
           <div class="section-title">
             <p class="eyebrow">Interactive return simulator</p>
             <h2>Calculate a function return value</h2>
@@ -230,7 +231,7 @@ ENDFUNCTION</code></pre>
           <div class="trace-output" id="returnResult">Use <code>CalculateVAT(Price)</code> to return <code>Price * 0.20</code>.</div>
         </section>
 
-        <section class="panel" id="chooser">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
             <p class="eyebrow">Subroutine chooser</p>
             <h2>Procedure or function?</h2>
@@ -245,7 +246,7 @@ ENDFUNCTION</code></pre>
           <div class="trace-output" id="chooseResult">Choose a scenario to see the better subroutine type.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Subroutine examples with exam wording</h2>
@@ -259,7 +260,7 @@ ENDFUNCTION</code></pre>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>10 quick checks</h2>
@@ -268,7 +269,7 @@ ENDFUNCTION</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Subroutine mistakes that cost marks</h2>
@@ -276,7 +277,7 @@ ENDFUNCTION</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Procedures, functions, calls and return values</h2>
@@ -285,7 +286,7 @@ ENDFUNCTION</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Subroutine checklist</h2>
@@ -297,7 +298,7 @@ ENDFUNCTION</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Subroutine practice</h2>
@@ -313,6 +314,8 @@ ENDFUNCTION</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

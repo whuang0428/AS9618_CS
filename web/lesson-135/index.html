@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,7 +45,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 135 | 45 minutes | Paper 2 Section 11 | 5-minute quiz</p>
             <h2>Good input gets data in. Good output lets humans understand it.</h2>
@@ -68,7 +69,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 answers often lose marks when candidates output a prompt but never input the value, or calculate correctly but display unclearly.</p>
@@ -79,7 +80,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which line actually stores the user's name?</h2>
@@ -94,7 +95,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the line that reads and stores user data.</div>
         </section>
 
-        <section class="panel" id="input">
+        <section class="panel" id="input" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="input">
           <div class="section-title">
             <p class="eyebrow">INPUT</p>
             <h2><code>INPUT</code> reads data and stores it in a variable</h2>
@@ -117,7 +118,7 @@ INPUT Mark</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="output">
+        <section class="panel" id="output" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="output">
           <div class="section-title">
             <p class="eyebrow">OUTPUT</p>
             <h2><code>OUTPUT</code> displays text, values or expressions</h2>
@@ -141,7 +142,7 @@ OUTPUT "Mark: " &amp; Mark</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="prompts">
+        <section class="panel" id="prompts" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="prompts">
           <div class="section-title">
             <p class="eyebrow">Prompts</p>
             <h2>A good prompt tells the user what to enter and the expected format</h2>
@@ -154,7 +155,7 @@ OUTPUT "Mark: " &amp; Mark</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="formatting">
+        <section class="panel" id="formatting" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="formatting">
           <div class="section-title">
             <p class="eyebrow">Formatting output</p>
             <h2>Formatting means controlling how values are shown</h2>
@@ -178,7 +179,7 @@ OUTPUT "Grade: " &amp; Grade</code></pre>
           <div class="callout">In Cambridge-style pseudocode, clear labels and logical order often matter more than language-specific formatting syntax.</div>
         </section>
 
-        <section class="panel" id="types">
+        <section class="panel" id="types" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="types">
           <div class="section-title">
             <p class="eyebrow">Input type handling</p>
             <h2>Input data must be used with the correct data type</h2>
@@ -199,7 +200,7 @@ OUTPUT "Total: " &amp; Total</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="tables">
+        <section class="panel" id="tables" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tables">
           <div class="section-title">
             <p class="eyebrow">Table-like output</p>
             <h2>Formatted output can make repeated records readable</h2>
@@ -223,7 +224,7 @@ OUTPUT "Lin     85"</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="java">
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
             <h2>Java I/O syntax is not Cambridge pseudocode</h2>
@@ -247,7 +248,7 @@ System.out.println("Mark: " + mark);</code></pre>
         </section>
 
 
-        <section class="panel" id="formatter">
+        <section class="panel" id="formatter" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="formatter">
           <div class="section-title">
             <p class="eyebrow">Interactive output formatter</p>
             <h2>Build a readable result line</h2>
@@ -276,7 +277,7 @@ System.out.println("Mark: " + mark);</code></pre>
           <div class="trace-output" id="formatResult" aria-live="polite">Choose values and format the output.</div>
         </section>
 
-        <section class="panel" id="chooser">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
             <p class="eyebrow">Command chooser</p>
             <h2>Is this input, output, or formatting?</h2>
@@ -286,7 +287,7 @@ System.out.println("Mark: " + mark);</code></pre>
           <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Trace what is stored and what is displayed</h2>
@@ -295,7 +296,7 @@ System.out.println("Mark: " + mark);</code></pre>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short answers, precise commands</h2>
@@ -304,7 +305,7 @@ System.out.println("Mark: " + mark);</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Find the I/O error</h2>
@@ -312,7 +313,7 @@ System.out.println("Mark: " + mark);</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then expand the MS</h2>
@@ -321,7 +322,7 @@ System.out.println("Mark: " + mark);</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Three rules to keep</h2>
@@ -333,7 +334,7 @@ System.out.println("Mark: " + mark);</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Prompt, input, display</h2>
@@ -350,6 +351,8 @@ System.out.println("Mark: " + mark);</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

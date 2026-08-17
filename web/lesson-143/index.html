@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 143 | 45 minutes | Paper 2 Section 12 | informal questioning</p>
             <h2>“User-friendly” is a wish. A success criterion is something you can test.</h2>
@@ -66,7 +67,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Analysis feeds design, testing and evaluation. If requirements are vague, later stages can look busy while building the wrong thing.</p>
@@ -77,7 +78,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which statement is a measurable success criterion?</h2>
@@ -92,7 +93,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the statement that can be tested with evidence.</div>
         </section>
 
-        <section class="panel" id="analysis">
+        <section class="panel" id="analysis" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="analysis">
           <div class="section-title">
             <p class="eyebrow">Requirements analysis</p>
             <h2>Analysis turns user needs into a requirements specification</h2>
@@ -104,7 +105,7 @@
           </div>
         </section>
 
-        <section class="panel" id="functional">
+        <section class="panel" id="functional" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="functional">
           <div class="section-title">
             <p class="eyebrow">Functional requirements</p>
             <h2>Functional requirements describe what the system must do</h2>
@@ -117,7 +118,7 @@
           </div>
         </section>
 
-        <section class="panel" id="non-functional">
+        <section class="panel" id="non-functional" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="non-functional">
           <div class="section-title">
             <p class="eyebrow">Non-functional requirements</p>
             <h2>Non-functional requirements describe qualities or constraints</h2>
@@ -130,7 +131,7 @@
           </div>
         </section>
 
-        <section class="panel" id="success">
+        <section class="panel" id="success" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="success">
           <div class="section-title">
             <p class="eyebrow">Success criteria</p>
             <h2>Success criteria make evaluation possible</h2>
@@ -148,7 +149,7 @@
           <div class="callout">A success criterion should be specific enough that two people can test it and reach the same conclusion.</div>
         </section>
 
-        <section class="panel" id="acceptance">
+        <section class="panel" id="acceptance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="acceptance">
           <div class="section-title">
             <p class="eyebrow">Acceptance tests</p>
             <h2>Acceptance tests check whether requirements are met</h2>
@@ -161,7 +162,7 @@
           </div>
         </section>
 
-        <section class="panel" id="stakeholders">
+        <section class="panel" id="stakeholders" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stakeholders">
           <div class="section-title">
             <p class="eyebrow">Stakeholders</p>
             <h2>Different users reveal different requirements</h2>
@@ -174,7 +175,7 @@
         </section>
 
 
-        <section class="panel" id="rewriter">
+        <section class="panel" id="rewriter" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rewriter">
           <div class="section-title">
             <p class="eyebrow">Interactive rewriter</p>
             <h2>Turn vague requests into stronger requirements</h2>
@@ -193,7 +194,7 @@
           <div id="rewriteOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="criteria-tool">
+        <section class="panel" id="criteria-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="criteria-tool">
           <div class="section-title">
             <p class="eyebrow">Criteria checker</p>
             <h2>Is the criterion testable?</h2>
@@ -212,7 +213,7 @@
           <div id="criteriaOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>From request to requirement to acceptance test</h2>
@@ -225,7 +226,7 @@
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant checking: requirement language</h2>
@@ -233,7 +234,7 @@
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix weak analysis answers</h2>
@@ -241,7 +242,7 @@
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style requirements questions with expandable MS</h2>
@@ -250,7 +251,7 @@
           <div id="examList" class="exam-list"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>
@@ -262,7 +263,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Make vague requests testable</h2>
@@ -277,6 +278,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

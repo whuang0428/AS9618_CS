@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 119 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>An array of records stores many entities that share the same record structure.</h2>
@@ -69,7 +70,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 algorithms often store many related items, then loop through them to find, count or update fields.</p>
@@ -80,7 +81,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>How should we store a class register?</h2>
@@ -95,7 +96,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the structure that stores many students while keeping named fields for each one.</div>
         </section>
 
-        <section class="panel" id="concept">
+        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
           <div class="section-title">
             <p class="eyebrow">Concept</p>
             <h2>One array, many records, same record shape</h2>
@@ -110,7 +111,7 @@
           </div>
         </section>
 
-        <section class="panel" id="declare">
+        <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
           <div class="section-title">
             <p class="eyebrow">Declare</p>
             <h2>Define the record type, then declare the array</h2>
@@ -135,7 +136,7 @@ Students[1].Mark &lt;- 72</code></pre>
           <div class="callout">The record type describes one element. The array declaration creates many elements of that type.</div>
         </section>
 
-        <section class="panel" id="access">
+        <section class="panel" id="access" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
           <div class="section-title">
             <p class="eyebrow">Access pattern</p>
             <h2>Index first, then field name</h2>
@@ -148,7 +149,7 @@ Students[1].Mark &lt;- 72</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="traversal">
+        <section class="panel" id="traversal" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
           <div class="section-title">
             <p class="eyebrow">Traversal</p>
             <h2>A loop visits each record; field access uses the loop index</h2>
@@ -161,7 +162,7 @@ NEXT Index</code></pre>
           <div class="callout">The loop variable chooses the current record. The field name chooses which value to inspect.</div>
         </section>
 
-        <section class="panel" id="operations">
+        <section class="panel" id="operations" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="operations">
           <div class="section-title">
             <p class="eyebrow">Common operations</p>
             <h2>Search, count and update fields</h2>
@@ -174,7 +175,7 @@ NEXT Index</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Same structure, different syntax</h2>
@@ -201,7 +202,7 @@ for (int index = 0; index &lt; 30; index++) {
         </section>
 
 
-        <section class="panel" id="explorer">
+        <section class="panel" id="explorer" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="explorer">
           <div class="section-title">
             <p class="eyebrow">Interactive record explorer</p>
             <h2>Read a field from a selected record</h2>
@@ -228,7 +229,7 @@ for (int index = 0; index &lt; 30; index++) {
           <div class="trace-output" id="fieldResult">Choose an index and a field to read from the array of records.</div>
         </section>
 
-        <section class="panel" id="trace">
+        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
             <p class="eyebrow">Interactive loop trace</p>
             <h2>Count students with marks of 70 or above</h2>
@@ -240,7 +241,7 @@ for (int index = 0; index &lt; 30; index++) {
           <div class="trace-output" id="loopTrace">Ready: Count = 0, Index has not started.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Array-of-record algorithms</h2>
@@ -254,7 +255,7 @@ for (int index = 0; index &lt; 30; index++) {
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Ten quick arrays-of-records checks</h2>
@@ -263,7 +264,7 @@ for (int index = 0; index &lt; 30; index++) {
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix common array-of-record errors</h2>
@@ -271,7 +272,7 @@ for (int index = 0; index &lt; 30; index++) {
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -280,7 +281,7 @@ for (int index = 0; index &lt; 30; index++) {
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Array of records checklist</h2>
@@ -292,7 +293,7 @@ for (int index = 0; index &lt; 30; index++) {
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Produce precise pseudocode, not just a description</h2>
@@ -316,6 +317,8 @@ for (int index = 0; index &lt; 30; index++) {
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

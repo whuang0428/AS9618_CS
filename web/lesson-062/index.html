@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 062 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
             <h2>Security is not one word. It is a set of goals that protect different things.</h2>
@@ -68,7 +69,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Many answers lose marks because the control is real but protects the wrong goal for the scenario.</p>
@@ -79,7 +80,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>If the school password is <code>Password123</code>, is the problem the hacker or our optimism?</h2>
@@ -96,7 +97,7 @@
           </div>
         </section>
 
-        <section class="panel" id="risk-chain">
+        <section class="panel" id="risk-chain" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="risk-chain">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Use the risk chain before naming a control</h2>
@@ -110,7 +111,7 @@
           <div class="callout">Chinese support: asset = 资产；threat = 威胁；vulnerability = 漏洞/弱点；control = 控制措施；risk = 风险。</div>
         </section>
 
-        <section class="panel" id="confidentiality">
+        <section class="panel" id="confidentiality" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="confidentiality">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Confidentiality protects data from unauthorised access</h2>
@@ -123,7 +124,7 @@
           </div>
         </section>
 
-        <section class="panel" id="integrity">
+        <section class="panel" id="integrity" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="integrity">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Integrity protects data from unauthorised or accidental alteration</h2>
@@ -136,7 +137,7 @@
           </div>
         </section>
 
-        <section class="panel" id="availability">
+        <section class="panel" id="availability" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="availability">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Availability keeps systems and data accessible when needed</h2>
@@ -149,7 +150,7 @@
           </div>
         </section>
 
-        <section class="panel" id="authenticity">
+        <section class="panel" id="authenticity" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="authenticity">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Authenticity checks that identity or data origin is genuine</h2>
@@ -162,7 +163,7 @@
           </div>
         </section>
 
-        <section class="panel" id="controls">
+        <section class="panel" id="controls" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>One control can support more than one goal, but not every goal</h2>
@@ -202,7 +203,7 @@
         </section>
 
 
-        <section class="panel interactive" id="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Security goal classifier</h2>
@@ -227,7 +228,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Risk, goal, control, consequence</h2>
@@ -241,7 +242,7 @@
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant-check questions</h2>
@@ -250,7 +251,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the almost-right answers</h2>
@@ -258,7 +259,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then reveal the CIE-style mark scheme</h2>
@@ -268,7 +269,7 @@
         </section>
 
 
-        <section class="panel stage2-completion" id="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Extra practice</p>
             <h2>Security, privacy and data integrity</h2>
@@ -311,7 +312,7 @@
           </article>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Security goal memory map</h2>
@@ -326,7 +327,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear output, not vague revision</h2>
@@ -349,6 +350,8 @@
       </div>
     </main>
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

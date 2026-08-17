@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -41,7 +42,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 082 | 45 minutes | Paper 1 Section 8 | ER modelling</p>
             <h2>An ER model is a map before the database is built. Tables without a map are just furniture in the dark.</h2>
@@ -73,7 +74,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>ER modelling questions reward careful reading. A small word like "many" or "optional" can change the relationship.</p>
@@ -84,7 +85,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A library stores students, books and loans. Which one is most likely a relationship event?</h2>
@@ -101,7 +102,7 @@
           </div>
         </section>
 
-        <section class="panel" id="entities">
+        <section class="panel" id="entities" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="entities">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Entities are things the database stores data about</h2>
@@ -116,7 +117,7 @@
           <div class="callout">Exam wording: say why it is an entity. "Student is an entity because the system stores multiple facts about each student."</div>
         </section>
 
-        <section class="panel" id="attributes">
+        <section class="panel" id="attributes" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="attributes">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Attributes describe an entity</h2>
@@ -146,7 +147,7 @@
           </div>
         </section>
 
-        <section class="panel" id="cardinality">
+        <section class="panel" id="cardinality" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cardinality">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Cardinality describes how many records may be linked</h2>
@@ -164,7 +165,7 @@
           </div>
         </section>
 
-        <section class="panel" id="participation">
+        <section class="panel" id="participation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="participation">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Optional and mandatory participation</h2>
@@ -179,7 +180,7 @@
         </section>
 
 
-        <section class="panel" id="parser">
+        <section class="panel" id="parser" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parser">
           <div class="section-title">
             <p class="eyebrow">Interactive scenario parser</p>
             <h2>Identify entities and attributes</h2>
@@ -201,7 +202,7 @@
           <div class="feedback" id="scenarioReason">The answer will separate entities from attributes and relationship events.</div>
         </section>
 
-        <section class="panel" id="checker">
+        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="checker">
           <div class="section-title">
             <p class="eyebrow">Interactive cardinality checker</p>
             <h2>Choose the relationship type</h2>
@@ -223,7 +224,7 @@
           <div class="feedback" id="cardinalityReason">Look for "one", "many", "must" and "may".</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Turn words into an ER model</h2>
@@ -237,7 +238,7 @@
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short-answer checks</h2>
@@ -246,7 +247,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Repair weak ER modelling decisions</h2>
@@ -254,7 +255,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style practice with expandable MS</h2>
@@ -263,7 +264,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>ER modelling checklist</h2>
@@ -275,7 +276,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks for consolidation</h2>
@@ -299,6 +300,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

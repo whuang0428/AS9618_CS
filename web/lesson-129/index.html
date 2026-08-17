@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 129 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
             <h2>Repeat while a condition says so, not because you feel optimistic.</h2>
@@ -66,7 +67,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 often uses condition-controlled loops for validation, EOF-style reading and sentinel values.</p>
@@ -77,7 +78,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Will the loop run?</h2>
@@ -104,7 +105,7 @@ ENDWHILE</code></pre>
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose whether the WHILE body runs.</div>
         </section>
 
-        <section class="panel" id="while">
+        <section class="panel" id="while" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="while">
           <div class="section-title">
             <p class="eyebrow">WHILE loop</p>
             <h2>Pre-condition loop: check before running</h2>
@@ -131,7 +132,7 @@ OUTPUT "Access granted"</code></pre>
           <div class="callout">A WHILE loop may run zero times if the condition is false before the first iteration.</div>
         </section>
 
-        <section class="panel" id="repeat">
+        <section class="panel" id="repeat" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="repeat">
           <div class="section-title">
             <p class="eyebrow">REPEAT...UNTIL loop</p>
             <h2>Post-condition loop: run once, then check</h2>
@@ -154,7 +155,7 @@ UNTIL Mark &gt;= 0 AND Mark &lt;= 100</code></pre>
           <div class="callout">REPEAT...UNTIL is useful when the body must happen at least once, such as asking for the first input.</div>
         </section>
 
-        <section class="panel" id="compare">
+        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">WHILE vs REPEAT</p>
             <h2>The difference is when the condition is tested</h2>
@@ -168,7 +169,7 @@ UNTIL Mark &gt;= 0 AND Mark &lt;= 100</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="validation">
+        <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
           <div class="section-title">
             <p class="eyebrow">Validation pattern</p>
             <h2>Keep asking until the input is valid</h2>
@@ -192,7 +193,7 @@ ENDWHILE</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="sentinel">
+        <section class="panel" id="sentinel" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sentinel">
           <div class="section-title">
             <p class="eyebrow">Sentinel values</p>
             <h2>A special value can stop the loop</h2>
@@ -221,7 +222,7 @@ OUTPUT Total</code></pre>
           <div class="callout">The sentinel value is used to stop the loop; it should not be included in the calculation.</div>
         </section>
 
-        <section class="panel" id="java">
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
             <h2>Java syntax is support, not Cambridge pseudocode</h2>
@@ -243,7 +244,7 @@ ENDWHILE</code></pre>
         </section>
 
 
-        <section class="panel" id="simulator">
+        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">
           <div class="section-title">
             <p class="eyebrow">Interactive loop simulator</p>
             <h2>Trace a sentinel loop</h2>
@@ -258,7 +259,7 @@ ENDWHILE</code></pre>
           <div class="trace-output" id="traceResult">Enter numbers ending in -1 to trace the loop.</div>
         </section>
 
-        <section class="panel" id="chooser">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
             <p class="eyebrow">Loop chooser</p>
             <h2>WHILE, REPEAT or FOR?</h2>
@@ -273,7 +274,7 @@ ENDWHILE</code></pre>
           <div class="trace-output" id="chooseResult">Choose a scenario to see the most suitable loop.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Condition-controlled loops in common exam patterns</h2>
@@ -287,7 +288,7 @@ ENDWHILE</code></pre>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>10 quick checks</h2>
@@ -296,7 +297,7 @@ ENDWHILE</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Condition mistakes that trap programs</h2>
@@ -304,7 +305,7 @@ ENDWHILE</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>WHILE, REPEAT and trace logic</h2>
@@ -313,7 +314,7 @@ ENDWHILE</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Condition-controlled loop checklist</h2>
@@ -325,7 +326,7 @@ ENDWHILE</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Condition-controlled loop practice</h2>
@@ -341,6 +342,8 @@ ENDWHILE</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

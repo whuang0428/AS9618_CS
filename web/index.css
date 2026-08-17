@@ -77,6 +77,25 @@ button { cursor: pointer; }
 }
 .hero h2 { margin: 6px 0 10px; font-size: clamp(2rem, 4vw, 3.8rem); line-height: 1.03; letter-spacing: 0; }
 .lesson-meta { margin: 0 0 10px; color: var(--muted); font-weight: 700; }
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.hero-actions a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  color: var(--accent-dark);
+  font-weight: 800;
+  text-decoration: none;
+}
+.hero-actions a:first-child { background: var(--accent); color: #ffffff; }
+.hero-actions a:hover, .hero-actions a:focus-visible { background: var(--accent-soft); color: var(--accent-dark); }
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -42,7 +43,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 101 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
             <h2>A trace table is the algorithm's receipt: every variable change must pay rent.</h2>
@@ -73,7 +74,7 @@ OUTPUT Total</code></pre>
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 trace questions reward accuracy, not confidence. The table is the working; the output is only the final receipt.</p>
@@ -84,7 +85,7 @@ OUTPUT Total</code></pre>
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>The coffee shop total that keeps changing</h2>
@@ -99,7 +100,7 @@ OUTPUT Total</code></pre>
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the row that records Total after each item is added.</div>
         </section>
 
-        <section class="panel" id="trace-table">
+        <section class="panel" id="trace-table" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace-table">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
             <h2>A trace table records variables after each change</h2>
@@ -114,7 +115,7 @@ OUTPUT Total</code></pre>
           <div class="callout">Chinese support: trace table = 跟踪表；dry run = 手动执行；variable = 变量；output column = 输出列。</div>
         </section>
 
-        <section class="panel" id="dry-run">
+        <section class="panel" id="dry-run" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dry-run">
           <div class="section-title">
             <p class="eyebrow">Method</p>
             <h2>Dry run: execute the algorithm by hand</h2>
@@ -128,7 +129,7 @@ OUTPUT Total</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="loops">
+        <section class="panel" id="loops" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loops">
           <div class="section-title">
             <p class="eyebrow">Loop tracing</p>
             <h2>Loops make trace tables useful and slightly unforgiving</h2>
@@ -143,7 +144,7 @@ OUTPUT Total</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Trace Cambridge pseudocode in the exam; Java is only a support view</h2>
@@ -172,7 +173,7 @@ System.out.println(total);</code></pre>
         </section>
 
 
-        <section class="panel" id="predictor">
+        <section class="panel" id="predictor" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="predictor">
           <div class="section-title">
             <p class="eyebrow">Interactive output predictor</p>
             <h2>Predict the final output</h2>
@@ -192,7 +193,7 @@ System.out.println(total);</code></pre>
           <div class="feedback" id="predictResult">The pseudocode totals three input numbers and outputs Total.</div>
         </section>
 
-        <section class="panel" id="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">
             <p class="eyebrow">Interactive trace builder</p>
             <h2>Build the trace table rows</h2>
@@ -212,7 +213,7 @@ System.out.println(total);</code></pre>
           <div class="trace-output" id="traceResult">Choose a scenario to generate a trace table.</div>
         </section>
 
-        <section class="panel" id="checker">
+        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="checker">
           <div class="section-title">
             <p class="eyebrow">Interactive dry-run checker</p>
             <h2>Find the first wrong row</h2>
@@ -232,7 +233,7 @@ System.out.println(total);</code></pre>
           <div class="feedback" id="checkerResult">Choose a proposed trace to check it.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Trace common Paper 2 patterns</h2>
@@ -246,7 +247,7 @@ System.out.println(total);</code></pre>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Trace table and dry-run accuracy</h2>
@@ -255,7 +256,7 @@ System.out.println(total);</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix trace-table mistakes</h2>
@@ -263,7 +264,7 @@ System.out.println(total);</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style trace questions with expandable MS</h2>
@@ -272,7 +273,7 @@ System.out.println(total);</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Trace-table checklist</h2>
@@ -284,7 +285,7 @@ System.out.println(total);</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks for consolidation</h2>
@@ -308,6 +309,8 @@ System.out.println(total);</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

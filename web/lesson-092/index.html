@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -41,7 +42,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 092 | 45 minutes | Paper 1 Sections 5-6 | informal questioning</p>
             <h2>System software runs the show. Security stops the show becoming a crime scene.</h2>
@@ -64,7 +65,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>These questions are often wordy. Marks reward precise roles and controls, not dramatic cybersecurity vocabulary.</p>
@@ -75,7 +76,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which topic is being tested?</h2>
@@ -92,7 +93,7 @@
           </div>
         </section>
 
-        <section class="panel" id="map">
+        <section class="panel" id="map" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="map">
           <div class="section-title">
             <p class="eyebrow">Retrieval map</p>
             <h2>Sections 5-6 knowledge map</h2>
@@ -107,7 +108,7 @@
           </div>
         </section>
 
-        <section class="panel" id="software">
+        <section class="panel" id="software" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="software">
           <div class="section-title">
             <p class="eyebrow">System software review</p>
             <h2>OS and utility roles</h2>
@@ -122,7 +123,7 @@
           <div class="callout">Chinese support: operating system = 操作系统；utility software = 实用程序；translator = 翻译程序；authentication = 身份认证。</div>
         </section>
 
-        <section class="panel" id="translators">
+        <section class="panel" id="translators" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="translators">
           <div class="section-title">
             <p class="eyebrow">Translator review</p>
             <h2>Compiler, interpreter and assembler</h2>
@@ -134,7 +135,7 @@
           </div>
         </section>
 
-        <section class="panel" id="security">
+        <section class="panel" id="security" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="security">
           <div class="section-title">
             <p class="eyebrow">Security review</p>
             <h2>Match the control to the threat</h2>
@@ -149,7 +150,7 @@
         </section>
 
 
-        <section class="panel" id="classifier">
+        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
           <div class="section-title">
             <p class="eyebrow">Interactive question classifier</p>
             <h2>Identify the topic and first move</h2>
@@ -170,7 +171,7 @@
           <div class="feedback" id="classifyResult">Choose a clue and classify the topic.</div>
         </section>
 
-        <section class="panel" id="matcher">
+        <section class="panel" id="matcher" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="matcher">
           <div class="section-title">
             <p class="eyebrow">Interactive risk-control matcher</p>
             <h2>Choose the best control</h2>
@@ -191,7 +192,7 @@
           <div class="result-table" id="matchResult">Choose a risk to see a suitable control and justification.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Annotate where the marks are</h2>
@@ -205,7 +206,7 @@
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Mixed retrieval check</h2>
@@ -214,7 +215,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Repair weak system software and security answers</h2>
@@ -222,7 +223,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style review with expandable MS</h2>
@@ -231,7 +232,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Review checklist</h2>
@@ -243,7 +244,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks for consolidation</h2>
@@ -267,6 +268,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

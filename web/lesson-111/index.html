@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 111 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
             <h2>Word problems are not stories. They are algorithms wearing paragraphs.</h2>
@@ -74,7 +75,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Exam questions often award separate marks for input, initialisation, loop control, selection, update and final output.</p>
@@ -85,7 +86,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>What is the required output?</h2>
@@ -100,7 +101,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the value explicitly requested by the question.</div>
         </section>
 
-        <section class="panel" id="ipoc">
+        <section class="panel" id="ipoc" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ipoc">
           <div class="section-title">
             <p class="eyebrow">IPOC reading</p>
             <h2>Turn paragraphs into a design table</h2>
@@ -115,7 +116,7 @@
           <div class="callout">Chinese support: IPOC = Input, Process, Output, Constraints；约束条件决定循环和验证方式。</div>
         </section>
 
-        <section class="panel" id="requirements">
+        <section class="panel" id="requirements" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="requirements">
           <div class="section-title">
             <p class="eyebrow">Requirements</p>
             <h2>Words in the question usually signal a control structure</h2>
@@ -129,7 +130,7 @@
           </div>
         </section>
 
-        <section class="panel" id="structures">
+        <section class="panel" id="structures" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="structures">
           <div class="section-title">
             <p class="eyebrow">Control choice</p>
             <h2>Pick the structure before writing the pseudocode</h2>
@@ -159,7 +160,7 @@ OUTPUT Total</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="trace">
+        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
             <p class="eyebrow">Trace and tests</p>
             <h2>A design is not finished until it survives a trace</h2>
@@ -184,7 +185,7 @@ Count: 0 -> 1 -> 2</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Design in Cambridge pseudocode first; use Java only to support testing</h2>
@@ -216,7 +217,7 @@ for (int index = 0; index &lt; 5; index++) {
         </section>
 
 
-        <section class="panel" id="analyser">
+        <section class="panel" id="analyser" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="analyser">
           <div class="section-title">
             <p class="eyebrow">Interactive scenario analyser</p>
             <h2>Extract the design before writing pseudocode</h2>
@@ -236,7 +237,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="trace-output" id="scenarioResult">Choose a scenario to see the IPOC breakdown.</div>
         </section>
 
-        <section class="panel" id="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">
             <p class="eyebrow">Interactive algorithm builder</p>
             <h2>Choose a scenario and inspect a model answer</h2>
@@ -256,7 +257,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="trace-output" id="builderResult">Choose a target to show Cambridge-style pseudocode.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>From words to pseudocode</h2>
@@ -270,7 +271,7 @@ for (int index = 0; index &lt; 5; index++) {
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Design decisions</h2>
@@ -279,7 +280,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix word-problem design mistakes</h2>
@@ -287,7 +288,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style word-problem questions with expandable MS</h2>
@@ -297,7 +298,7 @@ for (int index = 0; index &lt; 5; index++) {
         </section>
 
 
-        <section class="panel stage2-completion" id="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Extra practice</p>
             <h2>Stepwise refinement</h2>
@@ -340,7 +341,7 @@ for (int index = 0; index &lt; 5; index++) {
           </article>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Word-problem design checklist</h2>
@@ -352,7 +353,7 @@ for (int index = 0; index &lt; 5; index++) {
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks for consolidation</h2>
@@ -376,6 +377,8 @@ for (int index = 0; index &lt; 5; index++) {
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

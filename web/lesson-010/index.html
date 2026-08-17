@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -39,7 +40,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 010 | 45 minutes | 5-minute quiz</p>
             <h2>Sound becomes data when we measure it again and again.</h2>
@@ -78,7 +79,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Better sound quality usually needs more samples or more bits per sample, so file size increases.</p>
@@ -89,7 +90,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which change stores more measurements every second?</h2>
@@ -105,7 +106,7 @@
           </div>
         </section>
 
-        <section class="panel" id="sampling">
+        <section class="panel" id="sampling" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sampling">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Sampling turns an analogue wave into digital values</h2>
@@ -127,7 +128,7 @@
           <div class="callout">Chinese support: sampling = 采样；sample = 样本/采样值；amplitude = 振幅。</div>
         </section>
 
-        <section class="panel" id="rate">
+        <section class="panel" id="rate" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rate">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Sampling rate: samples per second</h2>
@@ -147,7 +148,7 @@
           <div class="sample-strip" id="sampleStrip" aria-label="Sampling rate visual"></div>
         </section>
 
-        <section class="panel" id="resolution">
+        <section class="panel" id="resolution" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="resolution">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Sample resolution: bits per sample</h2>
@@ -168,7 +169,7 @@
           </div>
         </section>
 
-        <section class="panel" id="duration">
+        <section class="panel" id="duration" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="duration">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Duration: how long the sound lasts</h2>
@@ -185,7 +186,7 @@
           </div>
         </section>
 
-        <section class="panel" id="formula">
+        <section class="panel" id="formula" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="formula">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Basic mono sound file size formula</h2>
@@ -198,7 +199,7 @@
         </section>
 
 
-        <section class="panel interactive" id="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Mono sound size calculator</h2>
@@ -226,7 +227,7 @@
           <div class="method-box" id="calcMethod"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
@@ -239,7 +240,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -249,7 +250,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the sound calculation</h2>
@@ -268,7 +269,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -280,7 +281,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel summary-panel" id="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Sound file size has three levers today</h2>
@@ -293,7 +294,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks</h2>
@@ -316,6 +317,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

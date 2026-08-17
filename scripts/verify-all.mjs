@@ -12,6 +12,7 @@ const nodeChecks = [
   "verify-stage5-mark-schemes.mjs",
   "verify-stage6-qa.mjs",
   "verify-stage7-accessibility.mjs",
+  "verify-stage9-classroom.mjs",
 ];
 
 for (const script of nodeChecks) {
@@ -25,4 +26,4 @@ execFileSync("python3", [path.join(root, "scripts", "build-stage8-release.py")],
 console.log("\n[verify-all] verify-stage8-release.mjs");
 execFileSync(process.execPath, [path.join(root, "scripts", "verify-stage8-release.mjs")], { cwd: root, stdio: "inherit" });
 
-console.log("\nAll Stage 2-8 verification and final release checks passed.");
+console.log("\nAll Stage 2-9 verification and final release checks passed.");

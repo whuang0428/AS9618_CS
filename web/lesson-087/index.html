@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 087 | 45 minutes | Paper 1 Section 8 | informal questioning</p>
             <h2>SELECT asks politely. INSERT, UPDATE and DELETE move the furniture.</h2>
@@ -66,7 +67,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Mark schemes credit exact command structure and conditions. A missing <code>WHERE</code> can change every record.</p>
@@ -77,7 +78,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which statement changes only Amira's tutor group?</h2>
@@ -94,7 +95,7 @@
           </div>
         </section>
 
-        <section class="panel" id="dml">
+        <section class="panel" id="dml" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dml">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>INSERT, UPDATE and DELETE are data manipulation commands</h2>
@@ -107,7 +108,7 @@
           </div>
         </section>
 
-        <section class="panel" id="insert">
+        <section class="panel" id="insert" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="insert">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2><code>INSERT INTO</code> adds a record</h2>
@@ -120,7 +121,7 @@
           <div class="callout">Chinese support: insert = 插入/新增；record = 记录；field = 字段；value = 值。</div>
         </section>
 
-        <section class="panel" id="update">
+        <section class="panel" id="update" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="update">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2><code>UPDATE</code> changes existing records</h2>
@@ -137,7 +138,7 @@
           </div>
         </section>
 
-        <section class="panel" id="delete">
+        <section class="panel" id="delete" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="delete">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2><code>DELETE FROM</code> removes records</h2>
@@ -150,7 +151,7 @@
           <div class="callout">Exam caution: <code>DELETE FROM Student;</code> has no <code>WHERE</code>, so it targets every record in the table.</div>
         </section>
 
-        <section class="panel" id="trace">
+        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Trace changes from a small table</h2>
@@ -169,7 +170,7 @@
         </section>
 
 
-        <section class="panel" id="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">
             <p class="eyebrow">Interactive statement builder</p>
             <h2>Choose the right data modification command</h2>
@@ -191,7 +192,7 @@
           <div class="feedback" id="builderReason">The output will show command choice and condition logic.</div>
         </section>
 
-        <section class="panel" id="simulator">
+        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">
           <div class="section-title">
             <p class="eyebrow">Interactive change simulator</p>
             <h2>Preview the result before the database gets nervous</h2>
@@ -213,7 +214,7 @@
           <div class="result-table" id="simulationResult">The after-table will appear here.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Write the command that matches the intention</h2>
@@ -227,7 +228,7 @@
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short quiz and core checks</h2>
@@ -236,7 +237,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Repair weak modification statements</h2>
@@ -244,7 +245,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style practice with expandable MS</h2>
@@ -254,7 +255,7 @@
         </section>
 
 
-        <section class="panel stage2-completion" id="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Extra practice</p>
             <h2>DDL, DML and required SQL data types</h2>
@@ -297,7 +298,7 @@
           </article>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Modification command checklist</h2>
@@ -309,7 +310,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks for consolidation</h2>
@@ -333,6 +334,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

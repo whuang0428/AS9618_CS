@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -45,7 +46,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 141 | 45 minutes | Paper 2 Section 11 | stage review</p>
             <h2>A complete fragment is not a pile of keywords. It is a small program with a job.</h2>
@@ -68,7 +69,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 mixed questions reward integrated logic: input, control flow, data structures, subroutines and output working together.</p>
@@ -79,7 +80,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which mental toolbox opens first?</h2>
@@ -94,7 +95,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the Section 11 tools needed by the scenario.</div>
         </section>
 
-        <section class="panel" id="review-map">
+        <section class="panel" id="review-map" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="review-map">
           <div class="section-title">
             <p class="eyebrow">Review map</p>
             <h2>Section 11 tools become stronger when combined</h2>
@@ -108,7 +109,7 @@
           </div>
         </section>
 
-        <section class="panel" id="fragment">
+        <section class="panel" id="fragment" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fragment">
           <div class="section-title">
             <p class="eyebrow">Fragment anatomy</p>
             <h2>A complete fragment has setup, logic and result</h2>
@@ -137,7 +138,7 @@ OUTPUT PassCount</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="validation">
+        <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
           <div class="section-title">
             <p class="eyebrow">Validation</p>
             <h2>Review fragments often need input checks</h2>
@@ -153,7 +154,7 @@ OUTPUT PassCount</code></pre>
 UNTIL Valid = TRUE</code></pre>
         </section>
 
-        <section class="panel" id="arrays">
+        <section class="panel" id="arrays" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="arrays">
           <div class="section-title">
             <p class="eyebrow">Arrays and loops</p>
             <h2>Arrays need consistent indexing and meaningful loop bounds</h2>
@@ -166,7 +167,7 @@ UNTIL Valid = TRUE</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="subroutines">
+        <section class="panel" id="subroutines" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="subroutines">
           <div class="section-title">
             <p class="eyebrow">Subroutines</p>
             <h2>Use functions for returned values and procedures for actions</h2>
@@ -188,7 +189,7 @@ ENDPROCEDURE</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="files">
+        <section class="panel" id="files" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="files">
           <div class="section-title">
             <p class="eyebrow">Files</p>
             <h2>File fragments need open, process and close</h2>
@@ -201,7 +202,7 @@ ENDWHILE
 CLOSEFILE "Scores.txt"</code></pre>
         </section>
 
-        <section class="panel" id="debugging">
+        <section class="panel" id="debugging" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="debugging">
           <div class="section-title">
             <p class="eyebrow">Debugging awareness</p>
             <h2>Review answers should be traceable</h2>
@@ -210,7 +211,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div class="callout">If you cannot trace your own fragment with a small example, the examiner probably cannot rescue it for you either.</div>
         </section>
 
-        <section class="panel" id="java">
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
             <h2>Java can support practice; the review answer should be Cambridge pseudocode</h2>
@@ -236,7 +237,7 @@ NEXT Index</code></pre>
         </section>
 
 
-        <section class="panel" id="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">
             <p class="eyebrow">Interactive fragment builder</p>
             <h2>Choose a scenario and inspect the skeleton</h2>
@@ -255,7 +256,7 @@ NEXT Index</code></pre>
           <div id="builderOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="checklist">
+        <section class="panel" id="checklist" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checklist">
           <div class="section-title">
             <p class="eyebrow">Mark checklist</p>
             <h2>Use a checklist before calling a fragment finished</h2>
@@ -263,7 +264,7 @@ NEXT Index</code></pre>
           <div id="checklistOutput" class="checklist-grid"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Annotate which lines earn marks</h2>
@@ -276,7 +277,7 @@ NEXT Index</code></pre>
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant checking: review vocabulary and fragment logic</h2>
@@ -284,7 +285,7 @@ NEXT Index</code></pre>
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Turn weak fragments into mark-worthy ones</h2>
@@ -292,7 +293,7 @@ NEXT Index</code></pre>
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style review questions with expandable MS</h2>
@@ -301,7 +302,7 @@ NEXT Index</code></pre>
           <div id="examList" class="exam-list"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>
@@ -313,7 +314,7 @@ NEXT Index</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Timed Section 11 review</h2>
@@ -328,6 +329,8 @@ NEXT Index</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

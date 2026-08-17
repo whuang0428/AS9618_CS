@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,7 +45,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 138 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
             <h2>A debugger is not magic. It is a very patient witness.</h2>
@@ -67,7 +68,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 may ask students to trace an algorithm, identify a logic error, or explain why breakpoints help debugging.</p>
@@ -78,7 +79,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>The pass mark is 50. Which line is best for a breakpoint?</h2>
@@ -93,7 +94,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the line where the branch decision is made.</div>
         </section>
 
-        <section class="panel" id="purpose">
+        <section class="panel" id="purpose" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
           <div class="section-title">
             <p class="eyebrow">Debugging</p>
             <h2>Debugging locates and corrects faults</h2>
@@ -120,7 +121,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="trace">
+        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
             <p class="eyebrow">Trace table</p>
             <h2>A trace table records values after each important step</h2>
@@ -134,7 +135,7 @@ ENDIF</code></pre>
           <div class="callout">The trace shows the actual route through the program. The expected route for 50 should have been Pass.</div>
         </section>
 
-        <section class="panel" id="breakpoint">
+        <section class="panel" id="breakpoint" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="breakpoint">
           <div class="section-title">
             <p class="eyebrow">Breakpoint</p>
             <h2>A breakpoint pauses execution at a chosen line</h2>
@@ -155,7 +156,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="watch">
+        <section class="panel" id="watch" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="watch">
           <div class="section-title">
             <p class="eyebrow">Watch variables</p>
             <h2>Watching variables shows state changes while stepping</h2>
@@ -168,7 +169,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="stepping">
+        <section class="panel" id="stepping" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stepping">
           <div class="section-title">
             <p class="eyebrow">Stepping</p>
             <h2>Step through code one instruction at a time</h2>
@@ -185,7 +186,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="bug">
+        <section class="panel" id="bug" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bug">
           <div class="section-title">
             <p class="eyebrow">Fault example</p>
             <h2>Trace the boundary case to expose a logic error</h2>
@@ -210,7 +211,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="java">
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
             <h2>Java debugging tools help practice, but Cambridge pseudocode remains the exam format</h2>
@@ -239,7 +240,7 @@ if (mark &gt;= 50) {
         </section>
 
 
-        <section class="panel" id="simulator">
+        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">
           <div class="section-title">
             <p class="eyebrow">Interactive trace simulator</p>
             <h2>Run the faulty condition with a chosen mark</h2>
@@ -255,7 +256,7 @@ if (mark &gt;= 50) {
           <div class="trace-output" id="traceOutput" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="chooser">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
             <p class="eyebrow">Breakpoint chooser</p>
             <h2>Select the most useful breakpoint for a suspected fault</h2>
@@ -274,7 +275,7 @@ if (mark &gt;= 50) {
           <div id="breakpointOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Use traces and breakpoints to narrow the fault</h2>
@@ -287,7 +288,7 @@ if (mark &gt;= 50) {
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant checking: answer first, reveal second</h2>
@@ -295,7 +296,7 @@ if (mark &gt;= 50) {
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Debug the debugging plan</h2>
@@ -303,7 +304,7 @@ if (mark &gt;= 50) {
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style wording with expandable MS</h2>
@@ -312,7 +313,7 @@ if (mark &gt;= 50) {
           <div id="examList" class="exam-list"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>
@@ -324,7 +325,7 @@ if (mark &gt;= 50) {
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Make the bug leave footprints</h2>
@@ -339,6 +340,8 @@ if (mark &gt;= 50) {
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

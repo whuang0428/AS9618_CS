@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 115 | 45 minutes | Paper 2 Section 10 | 5-minute quiz</p>
             <h2>An array is a row of labelled lockers.</h2>
@@ -71,7 +72,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 often awards marks for correct array declaration, index use, loop bounds and avoiding out-of-range access.</p>
@@ -82,7 +83,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Would you really create 30 score variables?</h2>
@@ -97,7 +98,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the structure that supports indexed access and looping.</div>
         </section>
 
-        <section class="panel" id="model">
+        <section class="panel" id="model" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
           <div class="section-title">
             <p class="eyebrow">Array model</p>
             <h2>A one-dimensional array is a linear collection</h2>
@@ -123,7 +124,7 @@ Scores[Index]</code></pre>
           <div class="callout">Chinese support: array 是一组同类型数据；index 是位置编号；element 是某一个具体格子里的值。</div>
         </section>
 
-        <section class="panel" id="declare">
+        <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
           <div class="section-title">
             <p class="eyebrow">Declare arrays</p>
             <h2>Bounds say which indexes are valid</h2>
@@ -137,7 +138,7 @@ Scores[Index]</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="access">
+        <section class="panel" id="access" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
           <div class="section-title">
             <p class="eyebrow">Access and update</p>
             <h2>The index points to exactly one element</h2>
@@ -156,7 +157,7 @@ Scores[Index]</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="traversal">
+        <section class="panel" id="traversal" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
           <div class="section-title">
             <p class="eyebrow">Traversal</p>
             <h2>Use a loop to visit every element</h2>
@@ -180,7 +181,7 @@ OUTPUT Total</code></pre>
           <div class="callout">The loop bounds must match the declared array bounds. If the array is 1:5, index 0 and index 6 are out of range.</div>
         </section>
 
-        <section class="panel" id="trace">
+        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
             <p class="eyebrow">Trace</p>
             <h2>Trace the index and the element value</h2>
@@ -210,7 +211,7 @@ NEXT Index</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Cambridge bounds and Java indexes are not the same habit</h2>
@@ -237,7 +238,7 @@ for (int index = 0; index &lt; 5; index++) {
         </section>
 
 
-        <section class="panel" id="lookup">
+        <section class="panel" id="lookup" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lookup">
           <div class="section-title">
             <p class="eyebrow">Interactive index lookup</p>
             <h2>Access one element</h2>
@@ -259,7 +260,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="trace-output" id="lookupResult">Array: Scores[1:5] = 42, 67, 55, 81, 49.</div>
         </section>
 
-        <section class="panel" id="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">
             <p class="eyebrow">Interactive loop builder</p>
             <h2>Generate a common one-dimensional array pattern</h2>
@@ -280,7 +281,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="trace-output" id="builderResult">Choose a task to generate Cambridge-style pseudocode.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Array patterns you can reuse</h2>
@@ -294,7 +295,7 @@ for (int index = 0; index &lt; 5; index++) {
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Ten quick array checks</h2>
@@ -303,7 +304,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix common array errors</h2>
@@ -311,7 +312,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style array questions with expandable MS</h2>
@@ -320,7 +321,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>One-dimensional array checklist</h2>
@@ -332,7 +333,7 @@ for (int index = 0; index &lt; 5; index++) {
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear consolidation tasks</h2>
@@ -356,6 +357,8 @@ for (int index = 0; index &lt; 5; index++) {
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

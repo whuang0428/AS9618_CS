@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 064 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
             <h2>Same target, different route: access, trick, redirect, overload.</h2>
@@ -69,7 +70,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>CIE-style answers reward the mechanism. "It is dangerous" is true, but it is not a full mark machine.</p>
@@ -80,7 +81,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A user types the correct bank URL but lands on a convincing fake banking page. What is the best diagnosis?</h2>
@@ -97,7 +98,7 @@
           </div>
         </section>
 
-        <section class="panel" id="core">
+        <section class="panel" id="core" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Start from mechanism, then discuss impact</h2>
@@ -111,7 +112,7 @@
           <div class="callout">Chinese support: attack vector = 攻击途径；unauthorised access = 未授权访问；availability = 可用性；authenticity = 真实性/身份可信。</div>
         </section>
 
-        <section class="panel" id="hacking">
+        <section class="panel" id="hacking" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="hacking">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Hacking: gaining unauthorised access to a system or data</h2>
@@ -124,7 +125,7 @@
           </div>
         </section>
 
-        <section class="panel" id="phishing">
+        <section class="panel" id="phishing" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="phishing">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Phishing: tricking users into revealing information or visiting a fake page</h2>
@@ -137,7 +138,7 @@
           </div>
         </section>
 
-        <section class="panel" id="pharming">
+        <section class="panel" id="pharming" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pharming">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Pharming: redirecting users to a fake website</h2>
@@ -150,7 +151,7 @@
           </div>
         </section>
 
-        <section class="panel" id="dos">
+        <section class="panel" id="dos" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dos">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Denial-of-service: making a service unavailable</h2>
@@ -163,7 +164,7 @@
           </div>
         </section>
 
-        <section class="panel" id="compare">
+        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>Compare by route and result</h2>
@@ -197,7 +198,7 @@
           </div>
         </section>
 
-        <section class="panel" id="controls">
+        <section class="panel" id="controls" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 7</p>
             <h2>Controls must fit the attack route</h2>
@@ -212,7 +213,7 @@
         </section>
 
 
-        <section class="panel" id="tool">
+        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive classifier</p>
             <h2>Classify the attack by the clue</h2>
@@ -236,7 +237,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Four model answers with the mark-winning mechanism visible</h2>
@@ -250,7 +251,7 @@
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short answers: be precise, then check</h2>
@@ -259,7 +260,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the sentence before it loses marks</h2>
@@ -267,7 +268,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -276,7 +277,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>The four labels are not interchangeable</h2>
@@ -288,7 +289,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks, not vague revision fog</h2>
@@ -312,6 +313,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

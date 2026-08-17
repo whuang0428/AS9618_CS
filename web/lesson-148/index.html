@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 148 | 45 minutes | Paper 2 review | informal questioning</p>
             <h2>Programming review is grammar plus logic. Syntax is the spelling; control flow is the story.</h2>
@@ -66,7 +67,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 answers lose marks when students know the idea but write the wrong construct or file mode. Precision is not decoration here.</p>
@@ -77,7 +78,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which file mode should be used?</h2>
@@ -92,7 +93,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Pick the mode that preserves existing records and adds a new one.</div>
         </section>
 
-        <section class="panel" id="constructs">
+        <section class="panel" id="constructs" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constructs">
           <div class="section-title">
             <p class="eyebrow">Programming constructs</p>
             <h2>Constructs control the order in which statements run</h2>
@@ -106,7 +107,7 @@
           </div>
         </section>
 
-        <section class="panel" id="selection">
+        <section class="panel" id="selection" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selection">
           <div class="section-title">
             <p class="eyebrow">Selection review</p>
             <h2>Use IF for decisions, CASE for clean multi-way choices</h2>
@@ -132,7 +133,7 @@ ENDCASE</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="iteration">
+        <section class="panel" id="iteration" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="iteration">
           <div class="section-title">
             <p class="eyebrow">Iteration review</p>
             <h2>Choose the loop by what is known before the loop starts</h2>
@@ -146,7 +147,7 @@ ENDCASE</code></pre>
           <div class="callout">Boundary warning: if a loop says 1 to 5, there are five iterations. The loop counter is not just decorative furniture.</div>
         </section>
 
-        <section class="panel" id="subprograms">
+        <section class="panel" id="subprograms" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="subprograms">
           <div class="section-title">
             <p class="eyebrow">Procedures and functions</p>
             <h2>Subprograms reduce repetition and make code testable</h2>
@@ -173,7 +174,7 @@ ENDFUNCTION</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="validation">
+        <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
           <div class="section-title">
             <p class="eyebrow">Validation review</p>
             <h2>Validation rejects unsuitable input before it damages the logic</h2>
@@ -187,7 +188,7 @@ ENDFUNCTION</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="files">
+        <section class="panel" id="files" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="files">
           <div class="section-title">
             <p class="eyebrow">File handling review</p>
             <h2>Open the file in the correct mode, process records, then close it</h2>
@@ -213,7 +214,7 @@ CLOSEFILE "Scores.txt"</code></pre>
         </section>
 
 
-        <section class="panel" id="construct-tool">
+        <section class="panel" id="construct-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="construct-tool">
           <div class="section-title">
             <p class="eyebrow">Interactive construct tool</p>
             <h2>Identify the construct from the scenario</h2>
@@ -233,7 +234,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div id="constructOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="file-tool">
+        <section class="panel" id="file-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="file-tool">
           <div class="section-title">
             <p class="eyebrow">File mode chooser</p>
             <h2>Choose READ, WRITE or APPEND</h2>
@@ -253,7 +254,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div id="fileOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Review patterns that turn into marks</h2>
@@ -266,7 +267,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short retrieval before exam-style questions</h2>
@@ -274,7 +275,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the construct or file-mode error</h2>
@@ -282,7 +283,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Programming constructs and file handling questions with expandable MS</h2>
@@ -291,7 +292,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div id="examList" class="exam-list"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>
@@ -303,7 +304,7 @@ CLOSEFILE "Scores.txt"</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Complete a Paper 2 programming constructs review sheet</h2>
@@ -320,6 +321,8 @@ CLOSEFILE "Scores.txt"</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

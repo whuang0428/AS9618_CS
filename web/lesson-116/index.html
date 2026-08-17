@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 116 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>A two-dimensional array is a spreadsheet with rules.</h2>
@@ -70,7 +71,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 can ask for array declaration, cell access, nested loop traversal and row/column trace values.</p>
@@ -81,7 +82,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which seat is it?</h2>
@@ -96,7 +97,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the representation that keeps row and column separate.</div>
         </section>
 
-        <section class="panel" id="model">
+        <section class="panel" id="model" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
           <div class="section-title">
             <p class="eyebrow">2D model</p>
             <h2>Rows and columns create coordinates</h2>
@@ -121,7 +122,7 @@
           <div class="callout">Chinese support: row = 行，column = 列，cell = 某一行某一列交叉处的一个值。</div>
         </section>
 
-        <section class="panel" id="declare">
+        <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
           <div class="section-title">
             <p class="eyebrow">Declare 2D arrays</p>
             <h2>Two dimensions need two ranges</h2>
@@ -134,7 +135,7 @@
           </div>
         </section>
 
-        <section class="panel" id="access">
+        <section class="panel" id="access" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
           <div class="section-title">
             <p class="eyebrow">Access and update</p>
             <h2>A cell needs row and column</h2>
@@ -153,7 +154,7 @@
           </div>
         </section>
 
-        <section class="panel" id="nested">
+        <section class="panel" id="nested" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="nested">
           <div class="section-title">
             <p class="eyebrow">Nested loops</p>
             <h2>Outer row loop, inner column loop</h2>
@@ -181,7 +182,7 @@ OUTPUT Total</code></pre>
           <div class="callout">For a 3 by 4 array, the inner statement runs 3 * 4 = 12 times.</div>
         </section>
 
-        <section class="panel" id="trace">
+        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
             <p class="eyebrow">Trace</p>
             <h2>Trace row and column together</h2>
@@ -210,7 +211,7 @@ OUTPUT Total</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Do not import Java indexing into Cambridge answers</h2>
@@ -241,7 +242,7 @@ for (int row = 0; row &lt; 3; row++) {
         </section>
 
 
-        <section class="panel" id="lookup">
+        <section class="panel" id="lookup" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lookup">
           <div class="section-title">
             <p class="eyebrow">Interactive cell lookup</p>
             <h2>Read Marks[Row, Column]</h2>
@@ -270,7 +271,7 @@ for (int row = 0; row &lt; 3; row++) {
           <div class="trace-output" id="lookupResult">Array: Marks[1:3, 1:4]. Choose a row and column.</div>
         </section>
 
-        <section class="panel" id="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">
             <p class="eyebrow">Interactive loop builder</p>
             <h2>Generate a common 2D array pattern</h2>
@@ -291,7 +292,7 @@ for (int row = 0; row &lt; 3; row++) {
           <div class="trace-output" id="builderResult">Choose a task to generate Cambridge-style pseudocode.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>2D array patterns you can reuse</h2>
@@ -305,7 +306,7 @@ for (int row = 0; row &lt; 3; row++) {
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Ten quick 2D array checks</h2>
@@ -314,7 +315,7 @@ for (int row = 0; row &lt; 3; row++) {
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix common 2D array errors</h2>
@@ -322,7 +323,7 @@ for (int row = 0; row &lt; 3; row++) {
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style 2D array questions with expandable MS</h2>
@@ -331,7 +332,7 @@ for (int row = 0; row &lt; 3; row++) {
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Two-dimensional array checklist</h2>
@@ -343,7 +344,7 @@ for (int row = 0; row &lt; 3; row++) {
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear consolidation tasks</h2>
@@ -367,6 +368,8 @@ for (int row = 0; row &lt; 3; row++) {
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

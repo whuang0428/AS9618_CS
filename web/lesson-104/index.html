@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -42,7 +43,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 104 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
             <h2>Linear search checks politely from the front. Binary search cuts the queue in half.</h2>
@@ -73,7 +74,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 may ask students to trace, compare or justify a search method. "Faster" alone is not enough for the mark.</p>
@@ -84,7 +85,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Find the exam paper in a pile</h2>
@@ -99,7 +100,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose a strategy for unsorted data.</div>
         </section>
 
-        <section class="panel" id="linear">
+        <section class="panel" id="linear" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="linear">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
             <h2>Linear search checks each item in order</h2>
@@ -118,7 +119,7 @@
           </div>
         </section>
 
-        <section class="panel" id="binary">
+        <section class="panel" id="binary" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="binary">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
             <h2>Binary search repeatedly halves a sorted list</h2>
@@ -133,7 +134,7 @@
           <div class="callout">Binary search requires sorted data. 二分搜索必须基于有序数据，否则无法安全排除一半数据。</div>
         </section>
 
-        <section class="panel" id="compare">
+        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Comparison</p>
             <h2>Choosing the right search</h2>
@@ -147,7 +148,7 @@
           </div>
         </section>
 
-        <section class="panel" id="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Cambridge pseudocode is the exam format</h2>
@@ -182,7 +183,7 @@ while (!found &amp;&amp; index &lt; list.length) {
         </section>
 
 
-        <section class="panel" id="classifier">
+        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
           <div class="section-title">
             <p class="eyebrow">Interactive search chooser</p>
             <h2>Pick a suitable search method</h2>
@@ -202,7 +203,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           <div class="feedback" id="classifyResult">Choose a scenario to see a justified method.</div>
         </section>
 
-        <section class="panel" id="linear-tool">
+        <section class="panel" id="linear-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="linear-tool">
           <div class="section-title">
             <p class="eyebrow">Interactive linear trace</p>
             <h2>Trace linear search</h2>
@@ -221,7 +222,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           <div class="trace-output" id="linearResult">Choose a target to trace comparisons.</div>
         </section>
 
-        <section class="panel" id="binary-tool">
+        <section class="panel" id="binary-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="binary-tool">
           <div class="section-title">
             <p class="eyebrow">Interactive binary trace</p>
             <h2>Trace binary search on sorted data</h2>
@@ -240,7 +241,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           <div class="trace-output" id="binaryResult">Choose a target to trace low, mid and high.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Search traces</h2>
@@ -254,7 +255,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Searching accuracy</h2>
@@ -263,7 +264,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix search mistakes</h2>
@@ -271,7 +272,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style search questions with expandable MS</h2>
@@ -280,7 +281,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Search checklist</h2>
@@ -292,7 +293,7 @@ while (!found &amp;&amp; index &lt; list.length) {
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks for consolidation</h2>
@@ -316,6 +317,8 @@ while (!found &amp;&amp; index &lt; list.length) {
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

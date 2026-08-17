@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 100 | 45 minutes | Paper 2 Section 9 | 5-minute quiz checkpoint</p>
             <h2>Same algorithm, two notations: one draws the route, one writes the instructions.</h2>
@@ -69,7 +70,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 awards marks for clear logic. Correct notation helps the examiner see the condition, branch, loop and output.</p>
@@ -80,7 +81,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>The vending machine is not impressed by vague arrows</h2>
@@ -95,7 +96,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose a step to classify its flowchart symbol.</div>
         </section>
 
-        <section class="panel" id="flowcharts">
+        <section class="panel" id="flowcharts" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="flowcharts">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
             <h2>Flowcharts use symbols to show control flow</h2>
@@ -111,7 +112,7 @@
           <div class="callout">Chinese support: flowchart = 流程图；terminator = 开始/结束符；decision = 判断；flow line = 流向线。</div>
         </section>
 
-        <section class="panel" id="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
             <h2>Cambridge-style pseudocode uses structured keywords</h2>
@@ -139,7 +140,7 @@ OUTPUT Total</code></pre>
           <div class="callout">Exam reminder: use Cambridge-style keywords. Java braces, semicolons, `System.out.println` and `&&` are implementation support, not the expected pseudocode style.</div>
         </section>
 
-        <section class="panel" id="notation">
+        <section class="panel" id="notation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="notation">
           <div class="section-title">
             <p class="eyebrow">Notation rules</p>
             <h2>Readable notation earns marks more easily</h2>
@@ -154,7 +155,7 @@ OUTPUT Total</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="equivalence">
+        <section class="panel" id="equivalence" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="equivalence">
           <div class="section-title">
             <p class="eyebrow">Equivalent forms</p>
             <h2>A diamond becomes IF...THEN...ELSE</h2>
@@ -181,7 +182,7 @@ ENDIF</code></pre>
         </section>
 
 
-        <section class="panel" id="symbol-tool">
+        <section class="panel" id="symbol-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="symbol-tool">
           <div class="section-title">
             <p class="eyebrow">Interactive symbol tool</p>
             <h2>Choose the correct flowchart symbol</h2>
@@ -202,7 +203,7 @@ ENDIF</code></pre>
           <div class="feedback" id="symbolResult">Choose a step to see the matching symbol and reason.</div>
         </section>
 
-        <section class="panel" id="structure-tool">
+        <section class="panel" id="structure-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="structure-tool">
           <div class="section-title">
             <p class="eyebrow">Interactive structure tool</p>
             <h2>Match scenario to pseudocode structure</h2>
@@ -222,7 +223,7 @@ ENDIF</code></pre>
           <div class="answer-frame" id="structureResult">Choose a clue to see the likely structure.</div>
         </section>
 
-        <section class="panel" id="converter">
+        <section class="panel" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="converter">
           <div class="section-title">
             <p class="eyebrow">Interactive mini converter</p>
             <h2>Convert a flowchart pattern into pseudocode</h2>
@@ -242,7 +243,7 @@ ENDIF</code></pre>
           <div class="answer-frame" id="convertResult">Choose a pattern to generate Cambridge-style pseudocode.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Notation choices in common problems</h2>
@@ -256,7 +257,7 @@ ENDIF</code></pre>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Flowchart and pseudocode notation</h2>
@@ -265,7 +266,7 @@ ENDIF</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix notation mistakes</h2>
@@ -273,7 +274,7 @@ ENDIF</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style notation questions with expandable MS</h2>
@@ -283,7 +284,7 @@ ENDIF</code></pre>
         </section>
 
 
-        <section class="panel stage2-completion" id="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Extra practice</p>
             <h2>Structured English, flowcharts and pseudocode conversion</h2>
@@ -326,7 +327,7 @@ ENDIF</code></pre>
           </article>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Notation checklist</h2>
@@ -338,7 +339,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks for consolidation</h2>
@@ -362,6 +363,8 @@ ENDIF</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

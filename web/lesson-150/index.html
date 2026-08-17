@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -41,7 +42,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 150 | 45 minutes | Paper 2 review | correction clinic</p>
             <h2>A mock paper is not a verdict. It is a diagnostic scan with marks attached.</h2>
@@ -64,7 +65,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 mistakes often repeat: missing initialisation, vague explanations, wrong file mode, no expected result, or Java syntax in pseudocode answers.</p>
@@ -75,7 +76,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A student lost a mark for “use a stack because it stores data”. What kind of error is this?</h2>
@@ -90,7 +91,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Pick the error type that points to the best correction.</div>
         </section>
 
-        <section class="panel" id="triage">
+        <section class="panel" id="triage" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="triage">
           <div class="section-title">
             <p class="eyebrow">Mock triage</p>
             <h2>Sort errors before trying to fix everything</h2>
@@ -104,7 +105,7 @@
           </div>
         </section>
 
-        <section class="panel" id="correction">
+        <section class="panel" id="correction" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="correction">
           <div class="section-title">
             <p class="eyebrow">Correction workflow</p>
             <h2>The four-line correction format</h2>
@@ -118,7 +119,7 @@
           <div class="callout">A good correction is reusable. “I forgot” is honest, but it is not a strategy.</div>
         </section>
 
-        <section class="panel" id="sections">
+        <section class="panel" id="sections" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sections">
           <div class="section-title">
             <p class="eyebrow">Paper 2 section map</p>
             <h2>Know which skill the mark scheme is testing</h2>
@@ -132,7 +133,7 @@
           </div>
         </section>
 
-        <section class="panel" id="marking">
+        <section class="panel" id="marking" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="marking">
           <div class="section-title">
             <p class="eyebrow">Mark recovery</p>
             <h2>Translate feedback into a repeatable checklist</h2>
@@ -148,7 +149,7 @@
         </section>
 
 
-        <section class="panel" id="error-tool">
+        <section class="panel" id="error-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="error-tool">
           <div class="section-title">
             <p class="eyebrow">Interactive error classifier</p>
             <h2>Diagnose the lost mark</h2>
@@ -168,7 +169,7 @@
           <div id="errorOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="rewrite-tool">
+        <section class="panel" id="rewrite-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rewrite-tool">
           <div class="section-title">
             <p class="eyebrow">Answer rewrite tool</p>
             <h2>Rewrite the weak answer into a mark-worthy sentence</h2>
@@ -187,7 +188,7 @@
           <div id="rewriteOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>From lost mark to correction</h2>
@@ -200,7 +201,7 @@
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Final short retrieval</h2>
@@ -208,7 +209,7 @@
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Correct the repeated error</h2>
@@ -216,7 +217,7 @@
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Mock correction clinic questions with expandable MS</h2>
@@ -225,7 +226,7 @@
           <div id="examList" class="exam-list"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Final Paper 2 correction rule</h2>
@@ -237,7 +238,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Final correction pack</h2>
@@ -254,6 +255,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,7 +45,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 131 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
             <h2>Does the subroutine get a copy, or the original?</h2>
@@ -68,7 +69,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 questions often test whether a procedure updates data outside itself, especially in trace and debug tasks.</p>
@@ -79,7 +80,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Will <code>Score</code> change?</h2>
@@ -112,7 +113,7 @@ CALL Increase(Score)</code></pre>
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose one claim and check the passing mode.</div>
         </section>
 
-        <section class="panel" id="terms">
+        <section class="panel" id="terms" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="terms">
           <div class="section-title">
             <p class="eyebrow">Parameter and argument</p>
             <h2>The header names the parameter. The call supplies the argument.</h2>
@@ -137,7 +138,7 @@ CALL DisplayMessage(Text)</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="value">
+        <section class="panel" id="value" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="value">
           <div class="section-title">
             <p class="eyebrow">Passing by value</p>
             <h2>By value means the subroutine works with a copy</h2>
@@ -165,7 +166,7 @@ OUTPUT X</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="reference">
+        <section class="panel" id="reference" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="reference">
           <div class="section-title">
             <p class="eyebrow">Passing by reference</p>
             <h2><code>BYREF</code> links the parameter back to the caller's variable</h2>
@@ -193,7 +194,7 @@ OUTPUT X</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="compare">
+        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Side-by-side comparison</p>
             <h2>Same procedure body, different final result</h2>
@@ -207,7 +208,7 @@ OUTPUT X</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="trace">
+        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
             <p class="eyebrow">Trace table</p>
             <h2>Follow caller value, parameter value and passing mode</h2>
@@ -221,7 +222,7 @@ OUTPUT X</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="use">
+        <section class="panel" id="use" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="use">
           <div class="section-title">
             <p class="eyebrow">When to use BYREF</p>
             <h2>Use it when the procedure must deliberately update caller data</h2>
@@ -242,7 +243,7 @@ OUTPUT X</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="java">
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
             <h2>Do not replace Cambridge <code>BYREF</code> with Java syntax</h2>
@@ -266,7 +267,7 @@ static void increase(int score) {
         </section>
 
 
-        <section class="panel" id="simulator">
+        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">
           <div class="section-title">
             <p class="eyebrow">Interactive trace simulator</p>
             <h2>Predict the final caller value</h2>
@@ -289,7 +290,7 @@ static void increase(int score) {
           <div class="trace-output" id="traceResult" aria-live="polite">Choose a mode and trace the call.</div>
         </section>
 
-        <section class="panel" id="chooser">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
             <p class="eyebrow">Mode chooser</p>
             <h2>Which passing mode should the procedure use?</h2>
@@ -299,7 +300,7 @@ static void increase(int score) {
           <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Trace before you explain</h2>
@@ -308,7 +309,7 @@ static void increase(int score) {
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short answers, strict terms</h2>
@@ -317,7 +318,7 @@ static void increase(int score) {
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Find the exact misconception</h2>
@@ -325,7 +326,7 @@ static void increase(int score) {
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer, then expand the MS</h2>
@@ -334,7 +335,7 @@ static void increase(int score) {
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Three sentences to leave with</h2>
@@ -346,7 +347,7 @@ static void increase(int score) {
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Trace, write, explain</h2>
@@ -365,6 +366,8 @@ static void increase(int score) {
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

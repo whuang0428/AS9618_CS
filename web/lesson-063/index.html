@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,7 +45,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 063 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
             <h2>Some attacks target software. Some target the person holding the keyboard.</h2>
@@ -71,7 +72,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Many candidates list names of malware but do not describe what each one does. Names alone are low-yield.</p>
@@ -82,7 +83,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A user installs a "free game update" that secretly records keystrokes. What is the best diagnosis?</h2>
@@ -99,7 +100,7 @@
           </div>
         </section>
 
-        <section class="panel" id="concept">
+        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Malware is malicious software; social engineering manipulates people</h2>
@@ -113,7 +114,7 @@
           <div class="callout">Chinese support: malware = 恶意软件；payload = 有害载荷/破坏行为；propagation = 传播方式；social engineering = 社会工程学攻击。</div>
         </section>
 
-        <section class="panel" id="virus">
+        <section class="panel" id="virus" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="virus">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Virus and worm: both can spread, but not in the same way</h2>
@@ -126,7 +127,7 @@
           </div>
         </section>
 
-        <section class="panel" id="trojan">
+        <section class="panel" id="trojan" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trojan">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Trojan: malicious code disguised as legitimate software</h2>
@@ -139,7 +140,7 @@
           </div>
         </section>
 
-        <section class="panel" id="spyware">
+        <section class="panel" id="spyware" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="spyware">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Spyware secretly monitors activity or collects data</h2>
@@ -152,7 +153,7 @@
           </div>
         </section>
 
-        <section class="panel" id="ransomware">
+        <section class="panel" id="ransomware" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ransomware">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Ransomware denies access by encrypting or locking data</h2>
@@ -165,7 +166,7 @@
           </div>
         </section>
 
-        <section class="panel" id="social">
+        <section class="panel" id="social" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="social">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>Social engineering exploits people rather than code</h2>
@@ -178,7 +179,7 @@
           </div>
         </section>
 
-        <section class="panel" id="controls">
+        <section class="panel" id="controls" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 7</p>
             <h2>Match controls to mechanism, not just the word "malware"</h2>
@@ -218,7 +219,7 @@
         </section>
 
 
-        <section class="panel interactive" id="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Threat classifier</h2>
@@ -243,7 +244,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Threat, impact, control</h2>
@@ -257,7 +258,7 @@
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant-check questions</h2>
@@ -266,7 +267,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the almost-right answers</h2>
@@ -274,7 +275,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then reveal the CIE-style mark scheme</h2>
@@ -284,7 +285,7 @@
         </section>
 
 
-        <section class="panel stage2-completion" id="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Extra practice</p>
             <h2>Anti-spyware as a security measure</h2>
@@ -327,7 +328,7 @@
           </article>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Threat memory map</h2>
@@ -342,7 +343,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear output, not vague revision</h2>
@@ -365,6 +366,8 @@
       </div>
     </main>
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -30,8 +30,8 @@ Stage 8 converts the approved seven-stage source tree into the final versioned o
 | Local references | every packaged HTML `href`/`src` target resolves or is an allowed external/reference link | Pass |
 | Archive safety | one root, no duplicates, traversal, encryption, symlinks, `.DS_Store` or cache directories | Pass |
 | Extracted runtime | fresh extraction served locally; hubs plus Lessons 001, 075 and 150 loaded with correct counts, structure and zero local runtime errors | Pass |
-| HTTP request log | homepage hydration requested all 150 lessons; final extracted-package run contained no 4xx/5xx responses | Pass |
-| Unified acceptance | `node scripts/verify-all.mjs` runs Stages 2-7, builds the archive and verifies Stage 8 | Pass |
+| HTTP request log | homepage uses one static course catalogue and makes no lesson-page hydration requests; final extracted-package run contained no 4xx/5xx responses | Pass |
+| Unified acceptance | `node scripts/verify-all.mjs` runs Stages 2-9, builds the archive and verifies Stage 8 packaging | Pass |
 
 ## Handover
 

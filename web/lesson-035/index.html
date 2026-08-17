@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../student-visuals.css?v=1" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -40,7 +41,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 035 | 45 minutes | Paper 1 Section 3</p>
             <h2>Logic gates are tiny decision machines: no mood, no maybe, just 0 or 1.</h2>
@@ -61,7 +62,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Cambridge questions often combine gates. Students lose marks when they know gate names but cannot apply the exact output rule.</p>
@@ -72,7 +73,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>The classroom door opens if the teacher has a key AND today is not an exam.</h2>
@@ -89,7 +90,7 @@
           </div>
         </section>
 
-        <section class="panel" id="signals">
+        <section class="panel" id="signals" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="signals">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Logic gates use binary signals</h2>
@@ -115,7 +116,7 @@
           <div class="callout">Chinese support: logic gate = 逻辑门；Boolean = 布尔；truth table = 真值表；output = 输出。</div>
         </section>
 
-        <section class="panel" id="gates">
+        <section class="panel" id="gates" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="gates">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>The six gate rules</h2>
@@ -166,7 +167,7 @@
           </div>
         </section>
 
-        <section class="panel" id="symbols">
+        <section class="panel" id="symbols" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="symbols">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Recognise gate symbols and the inversion bubble</h2>
@@ -182,7 +183,7 @@
           <div class="callout">Exam habit: if a symbol has a small bubble at the output, say "then invert the result" before writing the final column.</div>
         </section>
 
-        <section class="panel visual-explainer" id="gate-visual">
+        <section class="panel visual-explainer" id="gate-visual" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="gate-visual">
           <div class="section-title">
             <p class="eyebrow">Visual explanation</p>
             <h2>Six symbols, six exact output rules</h2>
@@ -227,7 +228,7 @@
         </section>
 
 
-        <section class="panel interactive" id="tool">
+        <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Generate a truth table</h2>
@@ -250,7 +251,7 @@
           <div class="truth-table-wrap" id="truthTable"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>From condition to table</h2>
@@ -263,7 +264,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -273,7 +274,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the weak logic answer</h2>
@@ -292,7 +293,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
@@ -301,7 +302,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel summary-panel" id="summary">
+        <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Six gate rules in exam language</h2>
@@ -316,7 +317,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks</h2>
@@ -339,6 +340,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

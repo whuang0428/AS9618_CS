@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 070 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
             <h2>Backups are useful only if recovery actually works.</h2>
@@ -69,7 +70,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Exam answers need a specific strategy. "Make a backup" is a start, not a finished answer.</p>
@@ -80,7 +81,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A ransomware attack encrypts the main server and the connected backup drive. What was wrong with the backup strategy?</h2>
@@ -97,7 +98,7 @@
           </div>
         </section>
 
-        <section class="panel" id="core">
+        <section class="panel" id="core" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Recovery planning is about availability, integrity and accountability</h2>
@@ -111,7 +112,7 @@
           <div class="callout">Chinese support: backup = 备份；restore = 恢复；disaster recovery = 灾难恢复；audit trail = 审计追踪/审计日志。</div>
         </section>
 
-        <section class="panel" id="backups">
+        <section class="panel" id="backups" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="backups">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Backup type affects speed, storage and recovery complexity</h2>
@@ -124,7 +125,7 @@
           </div>
         </section>
 
-        <section class="panel" id="strategy">
+        <section class="panel" id="strategy" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="strategy">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>A strategy defines location, frequency, retention and security</h2>
@@ -137,7 +138,7 @@
           </div>
         </section>
 
-        <section class="panel" id="recovery">
+        <section class="panel" id="recovery" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="recovery">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Disaster recovery is more than data copying</h2>
@@ -151,7 +152,7 @@
           <div class="callout">Useful exam language: RPO = how much data loss is acceptable; RTO = how quickly service must be restored.</div>
         </section>
 
-        <section class="panel" id="audit-trails">
+        <section class="panel" id="audit-trails" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="audit-trails">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Audit trails support accountability and investigation</h2>
@@ -164,7 +165,7 @@
           </div>
         </section>
 
-        <section class="panel" id="compare">
+        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>Compare by purpose, not by "security word"</h2>
@@ -194,7 +195,7 @@
         </section>
 
 
-        <section class="panel" id="tool">
+        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive backup strategy selector</p>
             <h2>Choose a proportionate strategy</h2>
@@ -218,7 +219,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="rpo-tool">
+        <section class="panel" id="rpo-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rpo-tool">
           <div class="section-title">
             <p class="eyebrow">Interactive recovery objective tool</p>
             <h2>Match backup frequency to acceptable data loss</h2>
@@ -239,7 +240,7 @@
           <div class="method-box" id="rpoReason"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Four model answers with risk-control matching</h2>
@@ -253,7 +254,7 @@
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short answers: recovery and evidence</h2>
@@ -262,7 +263,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the sentence before it loses marks</h2>
@@ -270,7 +271,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -279,7 +280,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Recovery needs copies, plans and evidence</h2>
@@ -291,7 +292,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks, not vague revision fog</h2>
@@ -315,6 +316,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -37,7 +38,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 005 | 45 minutes | Informal questioning</p>
             <h2>A leading 1 does not always mean the same thing.</h2>
@@ -67,7 +68,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>The same bit pattern can represent different values under unsigned and signed schemes.</p>
@@ -78,7 +79,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>What does `11101001₂` represent?</h2>
@@ -94,7 +95,7 @@
           </div>
         </section>
 
-        <section class="panel" id="systems">
+        <section class="panel" id="systems" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="systems">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Three ways to represent negative binary values</h2>
@@ -118,14 +119,14 @@
           </div>
         </section>
 
-        <section class="guidance-grid compact" aria-label="Representation guidance">
+        <section id="delivery-05" class="guidance-grid compact" aria-label="Representation guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="systems">
           <article class="trap-card">
             <h3>Common trap</h3>
             <p>Sign-and-magnitude, one’s complement and two’s complement do not interpret the same 8 bits in the same way.</p>
           </article>
         </section>
 
-        <section class="panel" id="twos">
+        <section class="panel" id="twos" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="twos">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Two’s complement method</h2>
@@ -153,7 +154,7 @@
           <div class="callout">For 8-bit two’s complement, a quick decode is: unsigned value - 256 when the MSB is 1.</div>
         </section>
 
-        <section class="panel" id="range">
+        <section class="panel" id="range" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="range">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>8-bit signed ranges and zero</h2>
@@ -177,7 +178,7 @@
           </div>
         </section>
 
-        <section class="panel interactive" id="converter">
+        <section class="panel interactive" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="converter">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>8-bit two’s complement converter</h2>
@@ -201,7 +202,7 @@
           <div class="bit-visual" id="bitVisual" aria-label="Two's complement bit visual"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
@@ -214,7 +215,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -224,7 +225,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel mistake-panel">
+        <section id="delivery-11" class="panel mistake-panel" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="delivery-11">
           <div class="section-title">
             <p class="eyebrow">Debug the mistakes</p>
             <h2>Find the trap, fix the answer</h2>
@@ -245,7 +246,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Past-paper style</p>
             <h2>Original exam-style questions</h2>
@@ -257,7 +258,7 @@
           </p>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What must survive until the exam?</h2>
@@ -273,7 +274,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks, not vague revision</h2>
@@ -286,7 +287,7 @@
           </ol>
         </section>
 
-        <section class="panel homework-support">
+        <section id="delivery-15" class="panel homework-support" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework support</p>
             <h2>Check only after attempting</h2>
@@ -310,6 +311,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

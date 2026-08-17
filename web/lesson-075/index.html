@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 075 | 45 minutes | Paper 1 Section 7 | 5-minute quiz</p>
             <h2>Free software is not always free of responsibility.</h2>
@@ -71,7 +72,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Marks come from trade-offs: low cost may mean less formal support; vendor support may mean less control.</p>
@@ -82,7 +83,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A school wants free software for its network servers. Should it automatically choose open source?</h2>
@@ -99,7 +100,7 @@
           </div>
         </section>
 
-        <section class="panel" id="open-source">
+        <section class="panel" id="open-source" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="open-source">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Open-source software makes source code available under a licence</h2>
@@ -113,7 +114,7 @@
           <div class="callout">Chinese support: open source = 开源；source code = 源代码；modify = 修改；redistribute = 再分发。</div>
         </section>
 
-        <section class="panel" id="proprietary">
+        <section class="panel" id="proprietary" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="proprietary">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Proprietary software keeps control with the owner</h2>
@@ -126,7 +127,7 @@
           </div>
         </section>
 
-        <section class="panel" id="tradeoffs">
+        <section class="panel" id="tradeoffs" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tradeoffs">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Compare by factor, not by favourite label</h2>
@@ -160,7 +161,7 @@
           </div>
         </section>
 
-        <section class="panel" id="ownership">
+        <section class="panel" id="ownership" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ownership">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Ownership and licence obligations still matter</h2>
@@ -173,7 +174,7 @@
           </div>
         </section>
 
-        <section class="panel" id="method">
+        <section class="panel" id="method" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="method">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Use a scenario-based comparison structure</h2>
@@ -191,7 +192,7 @@
         </section>
 
 
-        <section class="panel" id="advisor">
+        <section class="panel" id="advisor" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="advisor">
           <div class="section-title">
             <p class="eyebrow">Interactive software choice advisor</p>
             <h2>Match the software type to the scenario</h2>
@@ -215,7 +216,7 @@
           <div class="reject-box" id="adviseTrap"></div>
         </section>
 
-        <section class="panel" id="checker">
+        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="checker">
           <div class="section-title">
             <p class="eyebrow">Interactive trade-off checker</p>
             <h2>Spot the missing qualification</h2>
@@ -236,7 +237,7 @@
           <div class="method-box" id="claimReason"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Four model answers with trade-off reasoning</h2>
@@ -250,7 +251,7 @@
           <div class="example-box" id="exampleBox" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Check vocabulary before writing comparisons</h2>
@@ -258,7 +259,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix answers that sound certain but are not scenario-based</h2>
@@ -266,7 +267,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style software ownership questions with expandable MS</h2>
@@ -276,7 +277,7 @@
         </section>
 
 
-        <section class="panel stage2-completion" id="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Extra practice</p>
             <h2>Shareware and commercial licences</h2>
@@ -319,7 +320,7 @@
           </article>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Open source vs proprietary in six exam-ready ideas</h2>
@@ -334,7 +335,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Practise balanced comparison</h2>
@@ -358,6 +359,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

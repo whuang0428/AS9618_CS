@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,7 +45,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 133 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
             <h2>Strings are arrays of characters wearing quotation marks.</h2>
@@ -68,7 +69,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 often uses strings in validation, searching, formatting and trace questions where one character changes the answer.</p>
@@ -79,7 +80,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>What does <code>MID("MONITOR", 2, 3)</code> return?</h2>
@@ -103,7 +104,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the returned substring.</div>
         </section>
 
-        <section class="panel" id="strings">
+        <section class="panel" id="strings" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="strings">
           <div class="section-title">
             <p class="eyebrow">Strings</p>
             <h2>A string is a sequence of characters</h2>
@@ -124,7 +125,7 @@ OUTPUT Message</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="length">
+        <section class="panel" id="length" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="length">
           <div class="section-title">
             <p class="eyebrow">LENGTH</p>
             <h2><code>LENGTH(String)</code> returns the number of characters</h2>
@@ -147,7 +148,7 @@ OUTPUT Size</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="substring">
+        <section class="panel" id="substring" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="substring">
           <div class="section-title">
             <p class="eyebrow">Substring functions</p>
             <h2>Use substring functions to extract part of a string</h2>
@@ -161,7 +162,7 @@ OUTPUT Size</code></pre>
           <div class="callout">This course uses <code>MID(Text, start, count)</code>. If a paper specifies <code>SUBSTRING</code> or a different convention, follow the convention given in the question.</div>
         </section>
 
-        <section class="panel" id="case">
+        <section class="panel" id="case" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="case">
           <div class="section-title">
             <p class="eyebrow">Case conversion</p>
             <h2><code>UCASE</code> and <code>LCASE</code> normalise text before comparison</h2>
@@ -184,7 +185,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="concat">
+        <section class="panel" id="concat" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concat">
           <div class="section-title">
             <p class="eyebrow">Concatenation</p>
             <h2>Concatenation joins strings to form a new string</h2>
@@ -208,7 +209,7 @@ OUTPUT Username</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="position">
+        <section class="panel" id="position" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="position">
           <div class="section-title">
             <p class="eyebrow">Positions and indexing</p>
             <h2>Exam traces must follow the position convention stated or implied</h2>
@@ -234,7 +235,7 @@ OUTPUT Part</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="java">
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
             <h2>Java method syntax is not Cambridge pseudocode</h2>
@@ -253,7 +254,7 @@ OUTPUT Part</code></pre>
         </section>
 
 
-        <section class="panel" id="lab">
+        <section class="panel" id="lab" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lab">
           <div class="section-title">
             <p class="eyebrow">Interactive string lab</p>
             <h2>Test a built-in function</h2>
@@ -288,7 +289,7 @@ OUTPUT Part</code></pre>
           <div class="trace-output" id="labResult" aria-live="polite">Choose a function and run it.</div>
         </section>
 
-        <section class="panel" id="chooser">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
             <p class="eyebrow">Function chooser</p>
             <h2>Which built-in function fits the job?</h2>
@@ -298,7 +299,7 @@ OUTPUT Part</code></pre>
           <div class="feedback" id="scenarioFeedback">Pick a scenario.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Trace the returned value</h2>
@@ -307,7 +308,7 @@ OUTPUT Part</code></pre>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short answers, exact returns</h2>
@@ -316,7 +317,7 @@ OUTPUT Part</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Find the exact string error</h2>
@@ -324,7 +325,7 @@ OUTPUT Part</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Answer first, then expand the MS</h2>
@@ -333,7 +334,7 @@ OUTPUT Part</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Three useful rules</h2>
@@ -345,7 +346,7 @@ OUTPUT Part</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Trace, build, explain</h2>
@@ -362,6 +363,8 @@ OUTPUT Part</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

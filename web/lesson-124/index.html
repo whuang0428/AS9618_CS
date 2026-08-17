@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,7 +45,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 124 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>Java helps you understand programming, but Cambridge pseudocode is the exam language.</h2>
@@ -75,7 +76,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 marks often depend on clear declarations, suitable data types and correct pseudocode assignment.</p>
@@ -86,7 +87,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which answer belongs in a Paper 2 pseudocode answer?</h2>
@@ -101,7 +102,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the declaration style expected in Cambridge pseudocode.</div>
         </section>
 
-        <section class="panel" id="principle">
+        <section class="panel" id="principle" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="principle">
           <div class="section-title">
             <p class="eyebrow">Core principle</p>
             <h2>Do not mix the two languages inside one answer</h2>
@@ -116,7 +117,7 @@
           </div>
         </section>
 
-        <section class="panel" id="types">
+        <section class="panel" id="types" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="types">
           <div class="section-title">
             <p class="eyebrow">Data type mapping</p>
             <h2>Map concepts, not spelling</h2>
@@ -131,7 +132,7 @@
           </div>
         </section>
 
-        <section class="panel" id="variables">
+        <section class="panel" id="variables" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="variables">
           <div class="section-title">
             <p class="eyebrow">Variables</p>
             <h2>Declare first; initialise separately when needed</h2>
@@ -153,7 +154,7 @@ String name = "Ali";</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="constants">
+        <section class="panel" id="constants" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constants">
           <div class="section-title">
             <p class="eyebrow">Constants</p>
             <h2>Constants are named values that should not change</h2>
@@ -173,7 +174,7 @@ final int PASS_MARK = 40;</code></pre>
           <div class="callout">Java naming conventions may use capitals for constants. Cambridge pseudocode credit comes from clear constant declaration and use.</div>
         </section>
 
-        <section class="panel" id="arrays">
+        <section class="panel" id="arrays" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="arrays">
           <div class="section-title">
             <p class="eyebrow">Arrays</p>
             <h2>Cambridge array bounds are stated explicitly</h2>
@@ -193,7 +194,7 @@ scores[0] = 72;</code></pre>
           <div class="callout">Index warning: if pseudocode declares <code>ARRAY[1:30]</code>, do not automatically use Java's index 0 in the exam answer.</div>
         </section>
 
-        <section class="panel" id="records">
+        <section class="panel" id="records" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="records">
           <div class="section-title">
             <p class="eyebrow">Records</p>
             <h2>Record declarations use TYPE and ENDTYPE</h2>
@@ -220,7 +221,7 @@ Student student1 = new Student();</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="assignment">
+        <section class="panel" id="assignment" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assignment">
           <div class="section-title">
             <p class="eyebrow">Assignment versus comparison</p>
             <h2><code>&lt;-</code> changes a value; <code>=</code> usually tests equality in conditions</h2>
@@ -234,7 +235,7 @@ Student student1 = new Student();</code></pre>
         </section>
 
 
-        <section class="panel" id="converter">
+        <section class="panel" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="converter">
           <div class="section-title">
             <p class="eyebrow">Interactive declaration converter</p>
             <h2>Convert Java-style meaning into pseudocode</h2>
@@ -255,7 +256,7 @@ Student student1 = new Student();</code></pre>
           <div class="trace-output" id="convertResult">Choose a declaration to convert.</div>
         </section>
 
-        <section class="panel" id="sorter">
+        <section class="panel" id="sorter" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sorter">
           <div class="section-title">
             <p class="eyebrow">Syntax sorter</p>
             <h2>Which syntax belongs to which answer style?</h2>
@@ -269,7 +270,7 @@ Student student1 = new Student();</code></pre>
           <div class="feedback" id="sortFeedback" aria-live="polite">Click a statement to identify whether it is pseudocode or Java-style.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Declaration conversions</h2>
@@ -283,7 +284,7 @@ Student student1 = new Student();</code></pre>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Ten quick declaration checks</h2>
@@ -292,7 +293,7 @@ Student student1 = new Student();</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix mixed-syntax answers</h2>
@@ -300,7 +301,7 @@ Student student1 = new Student();</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -309,7 +310,7 @@ Student student1 = new Student();</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Declaration checklist</h2>
@@ -321,7 +322,7 @@ Student student1 = new Student();</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Translate without mixing syntax</h2>
@@ -345,6 +346,8 @@ Student student1 = new Student();</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

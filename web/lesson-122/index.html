@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -45,7 +46,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 122 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>An abstract data type is defined by what you can do with it, not by the box it lives in.</h2>
@@ -79,7 +80,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 can ask for definitions, operation traces, pointer updates, or checks for full and empty structures.</p>
@@ -90,7 +91,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Who leaves first?</h2>
@@ -105,7 +106,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the item that has waited the longest.</div>
         </section>
 
-        <section class="panel" id="concept">
+        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
           <div class="section-title">
             <p class="eyebrow">Concept</p>
             <h2>ADT means behaviour first, implementation second</h2>
@@ -119,7 +120,7 @@
           </div>
         </section>
 
-        <section class="panel" id="stack">
+        <section class="panel" id="stack" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stack">
           <div class="section-title">
             <p class="eyebrow">Stack</p>
             <h2>Push adds to the top; pop removes from the top</h2>
@@ -131,7 +132,7 @@ POP returns C</code></pre>
           <div class="callout">A stack behaves like a pile of plates: the newest item blocks the older items until it is removed.</div>
         </section>
 
-        <section class="panel" id="queue">
+        <section class="panel" id="queue" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="queue">
           <div class="section-title">
             <p class="eyebrow">Queue</p>
             <h2>Enqueue adds at the rear; dequeue removes from the front</h2>
@@ -143,7 +144,7 @@ DEQUEUE returns A</code></pre>
           <div class="callout">A queue behaves like a waiting line: the earliest item is served first.</div>
         </section>
 
-        <section class="panel" id="operations">
+        <section class="panel" id="operations" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="operations">
           <div class="section-title">
             <p class="eyebrow">Operations</p>
             <h2>Use the operation name that matches the ADT</h2>
@@ -156,7 +157,7 @@ DEQUEUE returns A</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="errors">
+        <section class="panel" id="errors" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="errors">
           <div class="section-title">
             <p class="eyebrow">Overflow and underflow</p>
             <h2>Check before doing the operation</h2>
@@ -181,7 +182,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="implementation">
+        <section class="panel" id="implementation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="implementation">
           <div class="section-title">
             <p class="eyebrow">Implementation note</p>
             <h2>An array can store the items, but the ADT rule controls access</h2>
@@ -194,7 +195,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Use Cambridge-style operations in exam answers</h2>
@@ -218,7 +219,7 @@ String item = stack.pop();</code></pre>
         </section>
 
 
-        <section class="panel" id="simulator">
+        <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">
           <div class="section-title">
             <p class="eyebrow">Interactive simulator</p>
             <h2>Compare stack and queue behaviour</h2>
@@ -246,7 +247,7 @@ String item = stack.pop();</code></pre>
           <div class="trace-output" id="simResult">Capacity is 4. Try the same items in both structures.</div>
         </section>
 
-        <section class="panel" id="trace">
+        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
             <p class="eyebrow">Interactive trace</p>
             <h2>Step through a mixed operation sequence</h2>
@@ -258,7 +259,7 @@ String item = stack.pop();</code></pre>
           <div class="trace-output" id="traceOutput">Ready: PUSH A, PUSH B, POP, PUSH C, POP.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>ADT traces and checks</h2>
@@ -272,7 +273,7 @@ String item = stack.pop();</code></pre>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Ten quick ADT checks</h2>
@@ -281,7 +282,7 @@ String item = stack.pop();</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix common stack and queue errors</h2>
@@ -289,7 +290,7 @@ String item = stack.pop();</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -299,7 +300,7 @@ String item = stack.pop();</code></pre>
         </section>
 
 
-        <section class="panel stage2-completion" id="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Extra practice</p>
             <h2>Linked lists and array-based ADT state</h2>
@@ -342,7 +343,7 @@ String item = stack.pop();</code></pre>
           </article>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Stack and queue checklist</h2>
@@ -354,7 +355,7 @@ String item = stack.pop();</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Trace before you code</h2>
@@ -378,6 +379,8 @@ String item = stack.pop();</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

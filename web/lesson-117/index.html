@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,7 +45,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 117 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>Arrays become useful when loops do the repetitive work.</h2>
@@ -69,7 +70,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Mark schemes reward matching bounds, indexed access, correct initialisation and placing updates inside the loop.</p>
@@ -80,7 +81,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>What is the algorithm really doing?</h2>
@@ -95,7 +96,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the pattern that increments a counter only when a condition is true.</div>
         </section>
 
-        <section class="panel" id="patterns">
+        <section class="panel" id="patterns" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
           <div class="section-title">
             <p class="eyebrow">Pattern map</p>
             <h2>Four array algorithm patterns</h2>
@@ -110,7 +111,7 @@
           </div>
         </section>
 
-        <section class="panel" id="traversal">
+        <section class="panel" id="traversal" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
           <div class="section-title">
             <p class="eyebrow">Traversal</p>
             <h2>Visit every element once</h2>
@@ -121,7 +122,7 @@ NEXT Index</code></pre>
           <div class="callout">Traversal is the skeleton. Update, search and count usually add logic inside this skeleton.</div>
         </section>
 
-        <section class="panel" id="update">
+        <section class="panel" id="update" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="update">
           <div class="section-title">
             <p class="eyebrow">Update</p>
             <h2>Change selected elements</h2>
@@ -144,7 +145,7 @@ NEXT Index</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="search">
+        <section class="panel" id="search" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="search">
           <div class="section-title">
             <p class="eyebrow">Search</p>
             <h2>Use a flag to remember whether the target appeared</h2>
@@ -158,7 +159,7 @@ NEXT Index
 OUTPUT Found</code></pre>
         </section>
 
-        <section class="panel" id="count">
+        <section class="panel" id="count" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="count">
           <div class="section-title">
             <p class="eyebrow">Count</p>
             <h2>Increment only when a condition is true</h2>
@@ -172,7 +173,7 @@ NEXT Index
 OUTPUT PassCount</code></pre>
         </section>
 
-        <section class="panel" id="trace">
+        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
             <p class="eyebrow">Trace</p>
             <h2>Trace the index, condition and running variable</h2>
@@ -188,7 +189,7 @@ OUTPUT PassCount</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Same algorithm, different array syntax</h2>
@@ -217,7 +218,7 @@ for (int index = 0; index &lt; 5; index++) {
         </section>
 
 
-        <section class="panel" id="selector">
+        <section class="panel" id="selector" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selector">
           <div class="section-title">
             <p class="eyebrow">Interactive pattern selector</p>
             <h2>Choose a scenario and inspect the matching template</h2>
@@ -238,7 +239,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="trace-output" id="patternResult">Choose a scenario to see the algorithm pattern.</div>
         </section>
 
-        <section class="panel" id="runner">
+        <section class="panel" id="runner" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="runner">
           <div class="section-title">
             <p class="eyebrow">Interactive trace runner</p>
             <h2>Run a count algorithm on the sample scores</h2>
@@ -257,7 +258,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="trace-output" id="traceResult">Scores are 42, 67, 55, 81, 49.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Reusable array algorithms</h2>
@@ -271,7 +272,7 @@ for (int index = 0; index &lt; 5; index++) {
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Ten quick algorithm checks</h2>
@@ -280,7 +281,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix common array algorithm errors</h2>
@@ -288,7 +289,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style array algorithm questions with expandable MS</h2>
@@ -297,7 +298,7 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Array algorithm checklist</h2>
@@ -309,7 +310,7 @@ for (int index = 0; index &lt; 5; index++) {
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear consolidation tasks</h2>
@@ -333,6 +334,8 @@ for (int index = 0; index &lt; 5; index++) {
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

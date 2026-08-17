@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 121 | 45 minutes | Paper 2 Section 10 | informal questioning</p>
             <h2>A CSV-style file gives each text line a predictable structure.</h2>
@@ -70,7 +71,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 file questions often require a line to be read first, then split or parsed before a field can be tested.</p>
@@ -81,7 +82,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which line is useful to a program?</h2>
@@ -96,7 +97,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the line where field boundaries are clear and repeatable.</div>
         </section>
 
-        <section class="panel" id="concept">
+        <section class="panel" id="concept" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
           <div class="section-title">
             <p class="eyebrow">Concept</p>
             <h2>CSV-style means separated fields in a fixed order</h2>
@@ -111,7 +112,7 @@
           </div>
         </section>
 
-        <section class="panel" id="format">
+        <section class="panel" id="format" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="format">
           <div class="section-title">
             <p class="eyebrow">CSV format</p>
             <h2>Design the format before writing code</h2>
@@ -125,7 +126,7 @@
           <div class="callout">The file stores all fields as text. The program gives each position meaning.</div>
         </section>
 
-        <section class="panel" id="parse">
+        <section class="panel" id="parse" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parse">
           <div class="section-title">
             <p class="eyebrow">Parse fields</p>
             <h2>Read the line before splitting it</h2>
@@ -138,7 +139,7 @@ Mark &lt;- STRING_TO_INTEGER(Fields[3])</code></pre>
           <div class="callout"><code>SPLIT</code> is used here as clear Cambridge-style pseudocode for separating a line by a delimiter.</div>
         </section>
 
-        <section class="panel" id="validate">
+        <section class="panel" id="validate" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validate">
           <div class="section-title">
             <p class="eyebrow">Validation</p>
             <h2>A structured file can still contain bad lines</h2>
@@ -151,7 +152,7 @@ Mark &lt;- STRING_TO_INTEGER(Fields[3])</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="types">
+        <section class="panel" id="types" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="types">
           <div class="section-title">
             <p class="eyebrow">Text vs data types</p>
             <h2>CSV fields arrive as text, then become useful values</h2>
@@ -175,7 +176,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Java split helps understanding, but Cambridge pseudocode remains the answer format</h2>
@@ -197,7 +198,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
         </section>
 
 
-        <section class="panel" id="parser">
+        <section class="panel" id="parser" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parser">
           <div class="section-title">
             <p class="eyebrow">Interactive CSV parser</p>
             <h2>Split a line into fields</h2>
@@ -220,7 +221,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           <div class="trace-output" id="parseResult">Enter a line and split it into fields.</div>
         </section>
 
-        <section class="panel" id="validator">
+        <section class="panel" id="validator" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validator">
           <div class="section-title">
             <p class="eyebrow">Interactive validator</p>
             <h2>Check field count and mark type</h2>
@@ -234,7 +235,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           <div class="trace-output" id="validationResult">Choose a sample line to validate.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>CSV parsing patterns</h2>
@@ -248,7 +249,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           <div class="example-output" id="exampleOutput"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Ten quick CSV checks</h2>
@@ -257,7 +258,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix common CSV-style file errors</h2>
@@ -265,7 +266,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -274,7 +275,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>CSV-style checklist</h2>
@@ -286,7 +287,7 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Design and process a CSV-style file</h2>
@@ -310,6 +311,8 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

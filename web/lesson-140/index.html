@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -46,7 +47,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 140 | 45 minutes | Paper 2 Section 11 | 5-minute quiz and monthly checkpoint</p>
             <h2>Java can help you practise. It must not hijack your pseudocode answer.</h2>
@@ -69,7 +70,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 marks reward clear pseudocode logic. Java-only syntax can obscure the algorithm and may not match Cambridge conventions.</p>
@@ -80,7 +81,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which answer is Cambridge-style pseudocode?</h2>
@@ -95,7 +96,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the form expected in Cambridge-style pseudocode.</div>
         </section>
 
-        <section class="panel" id="standard">
+        <section class="panel" id="standard" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="standard">
           <div class="section-title">
             <p class="eyebrow">Exam standard</p>
             <h2>Cambridge pseudocode uses readable algorithm keywords</h2>
@@ -110,7 +111,7 @@
           </div>
         </section>
 
-        <section class="panel" id="assignment">
+        <section class="panel" id="assignment" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assignment">
           <div class="section-title">
             <p class="eyebrow">Assignment</p>
             <h2>Use the assignment arrow for storing a value</h2>
@@ -128,7 +129,7 @@
           <div class="callout">A single equals sign can be read as assignment in Java, but Cambridge pseudocode normally uses the left arrow.</div>
         </section>
 
-        <section class="panel" id="io">
+        <section class="panel" id="io" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="io">
           <div class="section-title">
             <p class="eyebrow">Input and output</p>
             <h2>Replace library calls with algorithm keywords</h2>
@@ -148,7 +149,7 @@ OUTPUT Mark</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="selection">
+        <section class="panel" id="selection" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selection">
           <div class="section-title">
             <p class="eyebrow">Selection</p>
             <h2>Use <code>IF</code>, <code>THEN</code>, <code>ELSE</code>, <code>ENDIF</code></h2>
@@ -173,7 +174,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="loops">
+        <section class="panel" id="loops" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loops">
           <div class="section-title">
             <p class="eyebrow">Loops</p>
             <h2>Choose the loop keyword that matches the logic</h2>
@@ -186,7 +187,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="arrays">
+        <section class="panel" id="arrays" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="arrays">
           <div class="section-title">
             <p class="eyebrow">Arrays</p>
             <h2>Use Cambridge array notation consistently</h2>
@@ -206,7 +207,7 @@ OUTPUT Scores[1]</code></pre>
           <div class="callout">Cambridge examples often use 1-based indexing unless a question defines otherwise. Follow the question's stated indexing.</div>
         </section>
 
-        <section class="panel" id="subroutines">
+        <section class="panel" id="subroutines" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="subroutines">
           <div class="section-title">
             <p class="eyebrow">Subroutines</p>
             <h2>Use <code>PROCEDURE</code> and <code>FUNCTION</code> instead of Java method wrappers</h2>
@@ -228,7 +229,7 @@ ENDFUNCTION</code></pre>
         </section>
 
 
-        <section class="panel" id="converter">
+        <section class="panel" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="converter">
           <div class="section-title">
             <p class="eyebrow">Interactive converter</p>
             <h2>Choose a Java habit and convert it</h2>
@@ -249,7 +250,7 @@ ENDFUNCTION</code></pre>
           <div id="convertOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="spotter">
+        <section class="panel" id="spotter" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="spotter">
           <div class="section-title">
             <p class="eyebrow">Java spotter</p>
             <h2>Spot the Java-only syntax in an exam answer</h2>
@@ -269,7 +270,7 @@ ENDFUNCTION</code></pre>
           <div id="spotOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Translate by purpose, not punctuation</h2>
@@ -282,7 +283,7 @@ ENDFUNCTION</code></pre>
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant checking: short conversion answers</h2>
@@ -290,7 +291,7 @@ ENDFUNCTION</code></pre>
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Remove Java leakage before it costs marks</h2>
@@ -298,7 +299,7 @@ ENDFUNCTION</code></pre>
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style wording with expandable MS</h2>
@@ -307,7 +308,7 @@ ENDFUNCTION</code></pre>
           <div id="examList" class="exam-list"></div>
         </section>
 
-        <section class="panel" id="checkpoint">
+        <section class="panel" id="checkpoint" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checkpoint">
           <div class="section-title">
             <p class="eyebrow">Monthly checkpoint</p>
             <h2>5-minute quiz focus</h2>
@@ -320,7 +321,7 @@ ENDFUNCTION</code></pre>
         </section>
 
 
-        <section class="panel stage2-completion" id="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Extra practice</p>
             <h2>Translate descriptions into Cambridge pseudocode</h2>
@@ -363,7 +364,7 @@ ENDFUNCTION</code></pre>
           </article>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>
@@ -375,7 +376,7 @@ ENDFUNCTION</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Translate cleanly</h2>
@@ -390,6 +391,8 @@ ENDFUNCTION</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

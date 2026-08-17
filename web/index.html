@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Computer Science | Lesson Web Index</title>
+    <title>AS9618 Computer Science | Classroom Teaching and Revision</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./index.css" />
     <link rel="stylesheet" href="./stage7-accessibility.css?v=3" />
@@ -13,7 +13,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | 2027-2029 AS</p>
-        <h1>Lesson Web Index</h1>
+        <h1>Classroom Teaching &amp; Revision</h1>
       </div>
       <nav class="top-actions" aria-label="Course links">
         <a class="home-link" href="./assessments/">Assessment bank</a>
@@ -28,11 +28,16 @@
       <section class="hero">
         <div>
           <p class="lesson-meta">150 lessons | 45 minutes each | Paper 1 Sections 1-8 | Paper 2 Sections 9-12</p>
-          <h2>Open any lesson, search by topic, or follow the course sequence.</h2>
+          <h2>Teach the course, project each lesson, or revise independently.</h2>
           <p>
-            This is the student course and revision version of the AS9618 course pack. Each lesson is an independent static page
-            with explanation, examples, practice, mistake correction and expandable mark schemes.
+            This is the classroom teaching and revision version of the AS9618 course pack. Teachers can open a lesson and switch
+            to Classroom Mode for focused delivery; students can use the same complete page for preview and revision.
           </p>
+          <div class="hero-actions" aria-label="Teaching shortcuts">
+            <a href="#lesson-controls">Choose a lesson</a>
+            <a href="./assessments/">Open Assessment Bank</a>
+            <a href="./resources/">Open Resource Centre</a>
+          </div>
         </div>
         <div class="stats-grid" aria-label="Course stats">
           <div><strong>150</strong><span>lesson pages</span></div>
@@ -42,7 +47,7 @@
         </div>
       </section>
 
-      <section class="toolbar" aria-label="Lesson controls">
+      <section class="toolbar" id="lesson-controls" aria-label="Lesson controls">
         <label>
           Search lessons
           <input id="searchInput" type="search" placeholder="Try binary, database, pseudocode, security..." />
@@ -76,6 +81,7 @@
       </dialog>
     </main>
 
+    <script src="./course-catalog.js?v=1"></script>
     <script src="./index.js"></script>
     <script src="./stage7-accessibility.js?v=4"></script>
   </body>

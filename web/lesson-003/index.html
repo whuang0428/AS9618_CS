@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -37,7 +38,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 003 | 45 minutes | Informal questioning</p>
             <h2>Hexadecimal is binary, packed into neat groups of four.</h2>
@@ -67,7 +68,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Hexadecimal is common in memory addresses, machine code displays and colour values.</p>
@@ -78,7 +79,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which is easier to copy accurately: `11010110₂` or `D6₁₆`?</h2>
@@ -94,7 +95,7 @@
           </div>
         </section>
 
-        <section class="panel" id="digits">
+        <section class="panel" id="digits" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="digits">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Hexadecimal digits: 0-9 then A-F</h2>
@@ -119,7 +120,7 @@
           </div>
         </section>
 
-        <section class="panel" id="grouping">
+        <section class="panel" id="grouping" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="grouping">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>One hex digit represents one nibble</h2>
@@ -141,14 +142,14 @@
           <div class="callout">`1101₂ = D₁₆` and `0110₂ = 6₁₆`, so `1101 0110₂ = D6₁₆`.</div>
         </section>
 
-        <section class="guidance-grid compact" aria-label="Grouping guidance">
+        <section id="delivery-06" class="guidance-grid compact" aria-label="Grouping guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="grouping">
           <article class="trap-card">
             <h3>Common trap</h3>
             <p>Grouping from the left gives the wrong answer when the number of bits is not a multiple of four.</p>
           </article>
         </section>
 
-        <section class="panel" id="padding">
+        <section class="panel" id="padding" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="padding">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Padding with leading zeros</h2>
@@ -170,7 +171,7 @@
           </div>
         </section>
 
-        <section class="panel interactive" id="converter">
+        <section class="panel interactive" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="converter">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
             <h2>Binary and hexadecimal converter</h2>
@@ -194,7 +195,7 @@
           <div class="nibble-visual" id="nibbleVisual" aria-label="Nibble grouping visual"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Knowledge examples</p>
             <h2>Worked examples</h2>
@@ -207,7 +208,7 @@
           <article class="example-box" id="exampleBox"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Your turn</p>
             <h2>Practice with instant checking</h2>
@@ -217,7 +218,7 @@
           <div class="feedback" id="practiceFeedback" aria-live="polite"></div>
         </section>
 
-        <section class="panel mistake-panel">
+        <section id="delivery-11" class="panel mistake-panel" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="delivery-11">
           <div class="section-title">
             <p class="eyebrow">Debug the mistakes</p>
             <h2>Find the trap, fix the answer</h2>
@@ -238,7 +239,7 @@
           </div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Past-paper style</p>
             <h2>Original exam-style questions</h2>
@@ -250,7 +251,7 @@
           </p>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What must survive until the exam?</h2>
@@ -266,7 +267,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks, not vague revision</h2>
@@ -279,7 +280,7 @@
           </ol>
         </section>
 
-        <section class="panel homework-support">
+        <section id="delivery-15" class="panel homework-support" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework support</p>
             <h2>Check only after attempting</h2>
@@ -303,6 +304,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

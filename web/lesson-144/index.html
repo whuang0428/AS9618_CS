@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,7 +45,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 144 | 45 minutes | Paper 2 Section 12 | informal questioning</p>
             <h2>Design documentation is the bridge between “what users need” and “what developers build”.</h2>
@@ -67,7 +68,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Design documentation gives developers, testers and maintainers a shared plan. Without it, the project may look active while quietly drifting away from the requirements.</p>
@@ -78,7 +79,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which document says RoomID is a STRING of length 6 and must not be blank?</h2>
@@ -93,7 +94,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the artefact that defines data item rules.</div>
         </section>
 
-        <section class="panel" id="purpose">
+        <section class="panel" id="purpose" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
           <div class="section-title">
             <p class="eyebrow">Design documentation purpose</p>
             <h2>Design documents translate requirements into a buildable plan</h2>
@@ -106,7 +107,7 @@
           <div class="callout">A useful design document is specific enough to guide construction, but not just a pasted block of final program code.</div>
         </section>
 
-        <section class="panel" id="algorithms">
+        <section class="panel" id="algorithms" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="algorithms">
           <div class="section-title">
             <p class="eyebrow">Algorithm design documents</p>
             <h2>Algorithm designs describe the processing steps</h2>
@@ -139,7 +140,7 @@ for (Booking booking : bookingList) {
           </div>
         </section>
 
-        <section class="panel" id="dictionary">
+        <section class="panel" id="dictionary" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dictionary">
           <div class="section-title">
             <p class="eyebrow">Data dictionary</p>
             <h2>A data dictionary defines each data item consistently</h2>
@@ -153,7 +154,7 @@ for (Booking booking : bookingList) {
           </div>
         </section>
 
-        <section class="panel" id="interfaces">
+        <section class="panel" id="interfaces" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="interfaces">
           <div class="section-title">
             <p class="eyebrow">Interface designs</p>
             <h2>Interface designs show how users will enter data and navigate the system</h2>
@@ -169,7 +170,7 @@ for (Booking booking : bookingList) {
           <div class="callout">Interface design is not just “make the screen pretty”. It specifies controls, navigation, prompts, validation messages and user feedback.</div>
         </section>
 
-        <section class="panel" id="traceability">
+        <section class="panel" id="traceability" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traceability">
           <div class="section-title">
             <p class="eyebrow">Linking requirements to design</p>
             <h2>Traceability keeps the design connected to the original need</h2>
@@ -181,7 +182,7 @@ for (Booking booking : bookingList) {
           </div>
         </section>
 
-        <section class="panel" id="lifecycle">
+        <section class="panel" id="lifecycle" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lifecycle">
           <div class="section-title">
             <p class="eyebrow">Using design docs later</p>
             <h2>Design documentation supports implementation, testing and maintenance</h2>
@@ -194,7 +195,7 @@ for (Booking booking : bookingList) {
         </section>
 
 
-        <section class="panel" id="chooser">
+        <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">
             <p class="eyebrow">Interactive artefact chooser</p>
             <h2>Pick the best document for the job</h2>
@@ -214,7 +215,7 @@ for (Booking booking : bookingList) {
           <div id="artefactOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="dictionary-tool">
+        <section class="panel" id="dictionary-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dictionary-tool">
           <div class="section-title">
             <p class="eyebrow">Data dictionary checker</p>
             <h2>Inspect a field definition</h2>
@@ -234,7 +235,7 @@ for (Booking booking : bookingList) {
           <div id="fieldOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Three ways design documentation earns marks</h2>
@@ -247,7 +248,7 @@ for (Booking booking : bookingList) {
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Answer, check, then reveal the model answer if needed</h2>
@@ -255,7 +256,7 @@ for (Booking booking : bookingList) {
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the answer before the examiner has to</h2>
@@ -263,7 +264,7 @@ for (Booking booking : bookingList) {
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style questions with expandable MS</h2>
@@ -273,7 +274,7 @@ for (Booking booking : bookingList) {
         </section>
 
 
-        <section class="panel stage2-completion" id="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Extra practice</p>
             <h2>Structure charts and state-transition diagrams</h2>
@@ -316,7 +317,7 @@ for (Booking booking : bookingList) {
           </article>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>
@@ -328,7 +329,7 @@ for (Booking booking : bookingList) {
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Produce a mini design pack for a library loan system</h2>
@@ -345,6 +346,8 @@ for (Booking booking : bookingList) {
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

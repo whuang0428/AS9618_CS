@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -42,7 +43,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 107 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
             <h2>A string is a queue of characters pretending to be one thing.</h2>
@@ -73,7 +74,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>String questions frequently reward loop bounds, character extraction, comparison, flag updates and final output separately.</p>
@@ -84,7 +85,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which letter does the algorithm inspect first?</h2>
@@ -99,7 +100,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the first character for a 1-based pseudocode trace.</div>
         </section>
 
-        <section class="panel" id="model">
+        <section class="panel" id="model" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
             <h2>A string algorithm needs position, character and stopping point</h2>
@@ -128,7 +129,7 @@ NEXT Index</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="patterns">
+        <section class="panel" id="patterns" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
           <div class="section-title">
             <p class="eyebrow">Core patterns</p>
             <h2>Most AS string algorithms are four familiar patterns</h2>
@@ -142,7 +143,7 @@ NEXT Index</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="trace">
+        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
             <p class="eyebrow">Tracing strings</p>
             <h2>Trace the current character, not just the final result</h2>
@@ -167,7 +168,7 @@ OUTPUT Count</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="build">
+        <section class="panel" id="build" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="build">
           <div class="section-title">
             <p class="eyebrow">Building output</p>
             <h2>Some algorithms construct a new string one character at a time</h2>
@@ -192,7 +193,7 @@ OUTPUT NewString</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Keep exam pseudocode readable and avoid Java indexing leakage</h2>
@@ -224,7 +225,7 @@ for (int index = 0; index &lt; word.length(); index++) {
         </section>
 
 
-        <section class="panel" id="classifier">
+        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
           <div class="section-title">
             <p class="eyebrow">Interactive pattern chooser</p>
             <h2>Identify the string-processing pattern</h2>
@@ -244,7 +245,7 @@ for (int index = 0; index &lt; word.length(); index++) {
           <div class="feedback" id="chooserResult">Choose a clue to classify it.</div>
         </section>
 
-        <section class="panel" id="scanner">
+        <section class="panel" id="scanner" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="scanner">
           <div class="section-title">
             <p class="eyebrow">Interactive string scanner</p>
             <h2>Trace character processing</h2>
@@ -272,7 +273,7 @@ for (int index = 0; index &lt; word.length(); index++) {
           <div class="trace-output" id="scanResult">Choose text and operation, then trace the string.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>String-processing traces</h2>
@@ -286,7 +287,7 @@ for (int index = 0; index &lt; word.length(); index++) {
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>String algorithm precision</h2>
@@ -295,7 +296,7 @@ for (int index = 0; index &lt; word.length(); index++) {
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix string-processing mistakes</h2>
@@ -303,7 +304,7 @@ for (int index = 0; index &lt; word.length(); index++) {
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style string questions with expandable MS</h2>
@@ -312,7 +313,7 @@ for (int index = 0; index &lt; word.length(); index++) {
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>String-processing checklist</h2>
@@ -324,7 +325,7 @@ for (int index = 0; index &lt; word.length(); index++) {
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks for consolidation</h2>
@@ -348,6 +349,8 @@ for (int index = 0; index &lt; word.length(); index++) {
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

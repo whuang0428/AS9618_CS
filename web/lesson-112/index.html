@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -42,7 +43,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 112 | 45 minutes | Paper 2 Section 9 | stage review</p>
             <h2>Read the scenario. Find the pattern. Write the marks.</h2>
@@ -73,7 +74,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Section 9 rewards mechanism. A correct label may start an answer, but marks usually come from how the algorithm works.</p>
@@ -84,7 +85,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which toolbox should you open?</h2>
@@ -99,7 +100,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the algorithm pattern signalled by "sorted" and "few comparisons".</div>
         </section>
 
-        <section class="panel" id="retrieval">
+        <section class="panel" id="retrieval" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="retrieval">
           <div class="section-title">
             <p class="eyebrow">Retrieval map</p>
             <h2>Section 9 in one page</h2>
@@ -115,7 +116,7 @@
           </div>
         </section>
 
-        <section class="panel" id="triage">
+        <section class="panel" id="triage" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="triage">
           <div class="section-title">
             <p class="eyebrow">Scenario triage</p>
             <h2>Turn question wording into an algorithm plan</h2>
@@ -150,7 +151,7 @@ OUTPUT Average</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="patterns">
+        <section class="panel" id="patterns" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
           <div class="section-title">
             <p class="eyebrow">Pattern choice</p>
             <h2>Match the scenario to the correct algorithm pattern</h2>
@@ -166,7 +167,7 @@ OUTPUT Average</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="trace">
+        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
             <p class="eyebrow">Trace clinic</p>
             <h2>Marks are often lost between two lines of pseudocode</h2>
@@ -197,7 +198,7 @@ Maximum &lt;- Reading</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="pseudocode">
+        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
             <h2>Paper 2 wants readable Cambridge-style pseudocode</h2>
@@ -233,7 +234,7 @@ double average = (double) total / count;</code></pre>
         </section>
 
 
-        <section class="panel" id="classifier">
+        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
           <div class="section-title">
             <p class="eyebrow">Interactive topic classifier</p>
             <h2>Practise choosing the correct Section 9 tool</h2>
@@ -254,7 +255,7 @@ double average = (double) total / count;</code></pre>
           <div class="trace-output" id="classifierResult">Choose a clue, then classify the topic and reasoning.</div>
         </section>
 
-        <section class="panel" id="fixer">
+        <section class="panel" id="fixer" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fixer">
           <div class="section-title">
             <p class="eyebrow">Interactive answer fixer</p>
             <h2>Turn vague answers into mark-worthy answers</h2>
@@ -274,7 +275,7 @@ double average = (double) total / count;</code></pre>
           <div class="trace-output" id="fixerResult">Choose a weak answer to see a stricter version.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Review examples across Section 9</h2>
@@ -288,7 +289,7 @@ double average = (double) total / count;</code></pre>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Ten quick Section 9 decisions</h2>
@@ -297,7 +298,7 @@ double average = (double) total / count;</code></pre>
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Correct the habits that lose marks</h2>
@@ -305,7 +306,7 @@ double average = (double) total / count;</code></pre>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style Section 9 review questions with expandable MS</h2>
@@ -314,7 +315,7 @@ double average = (double) total / count;</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Section 9 review checklist</h2>
@@ -326,7 +327,7 @@ double average = (double) total / count;</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear consolidation tasks</h2>
@@ -350,6 +351,8 @@ double average = (double) total / count;</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

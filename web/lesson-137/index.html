@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,7 +45,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 137 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
             <h2>Testing is not “try three lucky numbers and hope the program behaves”.</h2>
@@ -67,7 +68,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 2 answers need precise test data and expected outcomes. “Test it a lot” is effort, not a mark-worthy method.</p>
@@ -78,7 +79,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A mark must be an integer from 0 to 100 inclusive. Which value is valid boundary data?</h2>
@@ -93,7 +94,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the value at the edge of the valid range.</div>
         </section>
 
-        <section class="panel" id="purpose">
+        <section class="panel" id="purpose" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
           <div class="section-title">
             <p class="eyebrow">Why testing</p>
             <h2>Testing compares actual results with expected results</h2>
@@ -119,7 +120,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="normal">
+        <section class="panel" id="normal" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="normal">
           <div class="section-title">
             <p class="eyebrow">Normal data</p>
             <h2>Normal data is valid, typical data inside the allowed range</h2>
@@ -132,7 +133,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="boundary">
+        <section class="panel" id="boundary" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="boundary">
           <div class="section-title">
             <p class="eyebrow">Boundary data</p>
             <h2>Boundary data tests the edge of a valid range</h2>
@@ -148,7 +149,7 @@ ENDIF</code></pre>
           <div class="callout">Cambridge marking usually rewards precise edge values. “Near the edge” is a direction, not a test case.</div>
         </section>
 
-        <section class="panel" id="erroneous">
+        <section class="panel" id="erroneous" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="erroneous">
           <div class="section-title">
             <p class="eyebrow">Erroneous data</p>
             <h2>Erroneous data is invalid data that should be rejected</h2>
@@ -169,7 +170,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="table">
+        <section class="panel" id="table" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="table">
           <div class="section-title">
             <p class="eyebrow">Test table</p>
             <h2>A clear test table turns thinking into marks</h2>
@@ -184,7 +185,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="validation">
+        <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
           <div class="section-title">
             <p class="eyebrow">Validation vs testing</p>
             <h2>Validation is the check. Testing proves whether the check works.</h2>
@@ -201,7 +202,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="java">
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
             <h2>Java can help you run examples, but Cambridge pseudocode is the exam answer format</h2>
@@ -228,7 +229,7 @@ ENDIF</code></pre>
         </section>
 
 
-        <section class="panel" id="classifier">
+        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
           <div class="section-title">
             <p class="eyebrow">Interactive classifier</p>
             <h2>Classify a test value for the mark rule</h2>
@@ -244,7 +245,7 @@ ENDIF</code></pre>
           <div class="trace-output" id="classifierOutput" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">
             <p class="eyebrow">Test table builder</p>
             <h2>Choose a validation rule and generate a balanced test set</h2>
@@ -263,7 +264,7 @@ ENDIF</code></pre>
           <div id="builderOutput" class="table-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Three ways exam questions ask for testing knowledge</h2>
@@ -276,7 +277,7 @@ ENDIF</code></pre>
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant checking: short answers first, then reveal the answer</h2>
@@ -284,7 +285,7 @@ ENDIF</code></pre>
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the testing plan before the bug writes a memoir</h2>
@@ -292,7 +293,7 @@ ENDIF</code></pre>
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style wording with expandable MS</h2>
@@ -301,7 +302,7 @@ ENDIF</code></pre>
           <div id="examList" class="exam-list"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>
@@ -313,7 +314,7 @@ ENDIF</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Make the expected result impossible to miss</h2>
@@ -328,6 +329,8 @@ ENDIF</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

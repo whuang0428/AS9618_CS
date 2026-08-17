@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +44,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 068 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
             <h2>Network security is not just one locked door.</h2>
@@ -69,7 +70,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Exam answers should say what traffic is inspected or logged and what decision is made.</p>
@@ -80,7 +81,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A school blocks outgoing traffic to port 25 except from the mail server. What control is doing the work?</h2>
@@ -97,7 +98,7 @@
           </div>
         </section>
 
-        <section class="panel" id="core">
+        <section class="panel" id="core" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Network controls sit between traffic and risk</h2>
@@ -111,7 +112,7 @@
           <div class="callout">Chinese support: firewall = 防火墙；proxy = 代理服务器；network monitoring = 网络监控；log = 日志。</div>
         </section>
 
-        <section class="panel" id="firewall">
+        <section class="panel" id="firewall" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="firewall">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Firewalls filter traffic using rules</h2>
@@ -124,7 +125,7 @@
           </div>
         </section>
 
-        <section class="panel" id="rules">
+        <section class="panel" id="rules" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rules">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Firewall rules should be specific and ordered</h2>
@@ -158,7 +159,7 @@
           </div>
         </section>
 
-        <section class="panel" id="proxy">
+        <section class="panel" id="proxy" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="proxy">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>A proxy acts as an intermediary</h2>
@@ -171,7 +172,7 @@
           </div>
         </section>
 
-        <section class="panel" id="monitoring">
+        <section class="panel" id="monitoring" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="monitoring">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Network monitoring watches for patterns and evidence</h2>
@@ -184,7 +185,7 @@
           </div>
         </section>
 
-        <section class="panel" id="limits">
+        <section class="panel" id="limits" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="limits">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>Controls reduce risk but have limits</h2>
@@ -198,7 +199,7 @@
         </section>
 
 
-        <section class="panel" id="tool">
+        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive firewall rule checker</p>
             <h2>Allow, block or log?</h2>
@@ -222,7 +223,7 @@
           <div class="reject-box" id="simulateTrap"></div>
         </section>
 
-        <section class="panel" id="event-tool">
+        <section class="panel" id="event-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="event-tool">
           <div class="section-title">
             <p class="eyebrow">Interactive event classifier</p>
             <h2>Which control is most relevant?</h2>
@@ -243,7 +244,7 @@
           <div class="method-box" id="eventReason"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Four model answers with mechanism and limitation</h2>
@@ -257,7 +258,7 @@
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short answers: name the control and mechanism</h2>
@@ -266,7 +267,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the sentence before it loses marks</h2>
@@ -274,7 +275,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -283,7 +284,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Each control has a different job</h2>
@@ -295,7 +296,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks, not vague revision fog</h2>
@@ -319,6 +320,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

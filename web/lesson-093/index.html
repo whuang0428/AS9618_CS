@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -42,7 +43,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 093 | 45 minutes | Paper 1 Sections 7-8 | informal questioning</p>
             <h2>Ethics needs judgement. Databases need structure. Both punish waffle politely but firmly.</h2>
@@ -65,7 +66,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Paper 1 review questions often mix command words. Topic recognition prevents a correct fact being used in the wrong answer.</p>
@@ -76,7 +77,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Open the correct mental toolbox</h2>
@@ -93,7 +94,7 @@
           </div>
         </section>
 
-        <section class="panel" id="map">
+        <section class="panel" id="map" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="map">
           <div class="section-title">
             <p class="eyebrow">Retrieval map</p>
             <h2>Sections 7-8 knowledge map</h2>
@@ -108,7 +109,7 @@
           </div>
         </section>
 
-        <section class="panel" id="ethics">
+        <section class="panel" id="ethics" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ethics">
           <div class="section-title">
             <p class="eyebrow">Ethics review</p>
             <h2>Evaluation answers need both sides and a condition</h2>
@@ -123,7 +124,7 @@
           <div class="callout">Chinese support: stakeholder = 利益相关者；consent = 同意；licence = 许可；e-waste = 电子垃圾；judgement = 有依据的判断。</div>
         </section>
 
-        <section class="panel" id="databases">
+        <section class="panel" id="databases" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="databases">
           <div class="section-title">
             <p class="eyebrow">Database review</p>
             <h2>Relational design: structure before SQL</h2>
@@ -135,7 +136,7 @@
           </div>
         </section>
 
-        <section class="panel" id="sql">
+        <section class="panel" id="sql" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sql">
           <div class="section-title">
             <p class="eyebrow">SQL review</p>
             <h2>Clause choice is not decoration</h2>
@@ -151,7 +152,7 @@
         </section>
 
 
-        <section class="panel" id="classifier">
+        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
           <div class="section-title">
             <p class="eyebrow">Interactive question classifier</p>
             <h2>Identify the topic and first move</h2>
@@ -172,7 +173,7 @@
           <div class="feedback" id="classifyResult">Choose a clue and classify the answer type.</div>
         </section>
 
-        <section class="panel" id="builder">
+        <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">
             <p class="eyebrow">Interactive judgement builder</p>
             <h2>Build a balanced ethics paragraph</h2>
@@ -207,7 +208,7 @@
           <div class="answer-frame" id="builderResult">Choose options, then build a paragraph.</div>
         </section>
 
-        <section class="panel" id="tracer">
+        <section class="panel" id="tracer" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tracer">
           <div class="section-title">
             <p class="eyebrow">Interactive SQL tracer</p>
             <h2>Trace one customer table query</h2>
@@ -234,7 +235,7 @@
           <div class="result-table" id="queryResult">Choose a query to see the result.</div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Annotate where the marks are</h2>
@@ -248,7 +249,7 @@
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Mixed retrieval check</h2>
@@ -257,7 +258,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Repair weak Section 7-8 answers</h2>
@@ -265,7 +266,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style review with expandable MS</h2>
@@ -274,7 +275,7 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>Review checklist</h2>
@@ -286,7 +287,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks for consolidation</h2>
@@ -310,6 +311,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

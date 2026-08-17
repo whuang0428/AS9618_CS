@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,7 +45,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 069 | 45 minutes | Paper 1 Section 6 | Security, privacy and data integrity</p>
             <h2>Validation asks "is it sensible?" Verification asks "was it copied correctly?"</h2>
@@ -70,7 +71,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Marks are often lost when candidates say validation makes data correct. It only checks against a rule.</p>
@@ -81,7 +82,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A form rejects an age of 302 because the allowed range is 0 to 120. What is happening?</h2>
@@ -98,7 +99,7 @@
           </div>
         </section>
 
-        <section class="panel" id="core">
+        <section class="panel" id="core" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 1</p>
             <h2>Validation and verification protect data quality in different ways</h2>
@@ -112,7 +113,7 @@
           <div class="callout">Chinese support: validation = 合理性/规则检查；verification = 核对/校验录入是否一致；data integrity = 数据完整性。</div>
         </section>
 
-        <section class="panel" id="validation">
+        <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
             <h2>Validation checks whether data obeys a rule</h2>
@@ -125,7 +126,7 @@
           </div>
         </section>
 
-        <section class="panel" id="checks">
+        <section class="panel" id="checks" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checks">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
             <h2>Common validation checks</h2>
@@ -169,7 +170,7 @@
           </div>
         </section>
 
-        <section class="panel" id="verification">
+        <section class="panel" id="verification" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="verification">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
             <h2>Verification checks accuracy against the source</h2>
@@ -182,7 +183,7 @@
           </div>
         </section>
 
-        <section class="panel" id="compare">
+        <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
             <h2>Validation and verification are partners, not synonyms</h2>
@@ -211,7 +212,7 @@
           </div>
         </section>
 
-        <section class="panel" id="limits">
+        <section class="panel" id="limits" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="limits">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
             <h2>Neither method guarantees truth</h2>
@@ -225,7 +226,7 @@
         </section>
 
 
-        <section class="panel" id="tool">
+        <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive validation rule tester</p>
             <h2>Try common validation checks</h2>
@@ -252,7 +253,7 @@
           <div class="method-box" id="checkReason"></div>
         </section>
 
-        <section class="panel" id="verify-tool">
+        <section class="panel" id="verify-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="verify-tool">
           <div class="section-title">
             <p class="eyebrow">Interactive verification selector</p>
             <h2>Which verification method fits?</h2>
@@ -273,7 +274,7 @@
           <div class="method-box" id="verifyReason"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Four model answers showing what is detected</h2>
@@ -287,7 +288,7 @@
           <div class="example-box" id="exampleBox"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
             <h2>Short answers: name the method and its limitation</h2>
@@ -296,7 +297,7 @@
           <div class="practice-list" id="practiceList"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix the sentence before it loses marks</h2>
@@ -304,7 +305,7 @@
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style questions with expandable MS</h2>
@@ -314,7 +315,7 @@
         </section>
 
 
-        <section class="panel stage2-completion" id="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Extra practice</p>
             <h2>Complete validation and verification methods</h2>
@@ -357,7 +358,7 @@
           </article>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>The difference is small in wording and large in marks</h2>
@@ -369,7 +370,7 @@
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Clear tasks, not vague revision fog</h2>
@@ -393,6 +394,8 @@
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>

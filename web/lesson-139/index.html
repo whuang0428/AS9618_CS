@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
+    <link rel="stylesheet" href="../classroom-mode.css?v=1" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,7 +45,7 @@
       </aside>
 
       <div class="lesson-content">
-        <section class="hero" id="overview">
+        <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 139 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
             <h2>Robust programs expect trouble and still behave politely.</h2>
@@ -68,7 +69,7 @@
           </div>
         </section>
 
-        <section class="guidance-grid" aria-label="Lesson guidance">
+        <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
             <p>Exam answers often need causes and consequences: validation prevents invalid data being processed; modularity makes code easier to test and maintain.</p>
@@ -79,7 +80,7 @@
           </article>
         </section>
 
-        <section class="panel" id="hook">
+        <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>A user enters <code>banana</code> as a mark. What should a robust program do first?</h2>
@@ -94,7 +95,7 @@
           <div class="feedback" id="hookFeedback" aria-live="polite">Choose the action that prevents invalid data being processed.</div>
         </section>
 
-        <section class="panel" id="robust">
+        <section class="panel" id="robust" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="robust">
           <div class="section-title">
             <p class="eyebrow">Robust design</p>
             <h2>A robust program handles expected misuse without collapsing</h2>
@@ -106,7 +107,7 @@
           </div>
         </section>
 
-        <section class="panel" id="validation">
+        <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
           <div class="section-title">
             <p class="eyebrow">Validation</p>
             <h2>Validation checks whether data is acceptable for the program</h2>
@@ -132,7 +133,7 @@ UNTIL Valid = TRUE</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="checks">
+        <section class="panel" id="checks" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checks">
           <div class="section-title">
             <p class="eyebrow">Validation check types</p>
             <h2>Pick the check that matches the rule</h2>
@@ -146,7 +147,7 @@ UNTIL Valid = TRUE</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="modularity">
+        <section class="panel" id="modularity" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="modularity">
           <div class="section-title">
             <p class="eyebrow">Modularity</p>
             <h2>Modular design splits a solution into smaller named parts</h2>
@@ -165,7 +166,7 @@ OUTPUT Grade</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="parameters">
+        <section class="panel" id="parameters" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parameters">
           <div class="section-title">
             <p class="eyebrow">Parameters and return values</p>
             <h2>Pass data into a module and return only what is needed</h2>
@@ -178,7 +179,7 @@ OUTPUT Grade</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="integration">
+        <section class="panel" id="integration" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="integration">
           <div class="section-title">
             <p class="eyebrow">Combine ideas</p>
             <h2>Validation and modularity support each other</h2>
@@ -201,7 +202,7 @@ ENDFUNCTION</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="java">
+        <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
             <h2>Java methods can model modularity, but Cambridge pseudocode remains the exam format</h2>
@@ -224,7 +225,7 @@ ENDFUNCTION</code></pre>
         </section>
 
 
-        <section class="panel" id="validator">
+        <section class="panel" id="validator" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validator">
           <div class="section-title">
             <p class="eyebrow">Interactive validator</p>
             <h2>Check whether a mark input is robustly acceptable</h2>
@@ -239,7 +240,7 @@ ENDFUNCTION</code></pre>
           <div class="trace-output" id="validateOutput" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="module-tool">
+        <section class="panel" id="module-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="module-tool">
           <div class="section-title">
             <p class="eyebrow">Module chooser</p>
             <h2>Choose a module for each responsibility</h2>
@@ -258,7 +259,7 @@ ENDFUNCTION</code></pre>
           <div id="moduleOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
-        <section class="panel" id="examples">
+        <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
             <h2>Design robust code one responsibility at a time</h2>
@@ -271,7 +272,7 @@ ENDFUNCTION</code></pre>
           <div id="exampleOutput" class="example-output"></div>
         </section>
 
-        <section class="panel" id="practice">
+        <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice</p>
             <h2>Instant checking: answer first, reveal second</h2>
@@ -279,7 +280,7 @@ ENDFUNCTION</code></pre>
           <div id="practiceList" class="practice-list"></div>
         </section>
 
-        <section class="panel" id="debug">
+        <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
             <h2>Fix weak design decisions</h2>
@@ -287,7 +288,7 @@ ENDFUNCTION</code></pre>
           <div id="mistakeList" class="mistake-grid"></div>
         </section>
 
-        <section class="panel" id="exam">
+        <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Cambridge-style wording with expandable MS</h2>
@@ -296,7 +297,7 @@ ENDFUNCTION</code></pre>
           <div id="examList" class="exam-list"></div>
         </section>
 
-        <section class="panel" id="summary">
+        <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
             <h2>What to remember</h2>
@@ -308,7 +309,7 @@ ENDFUNCTION</code></pre>
           </div>
         </section>
 
-        <section class="panel" id="homework">
+        <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
             <h2>Design before coding</h2>
@@ -323,6 +324,8 @@ ENDFUNCTION</code></pre>
     </main>
 
     <script src="./app.js"></script>
+    <script src="../course-catalog.js?v=1"></script>
+    <script src="../classroom-mode.js?v=1"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>
 </html>
