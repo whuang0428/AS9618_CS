@@ -9,7 +9,7 @@ This offline-delivery release of the Cambridge International AS Level Computer S
 - 150 teacher-facing Markdown lesson plans;
 - 150 interactive lesson webpages plus course, assessment and resource hubs;
 - 30 short quizzes, 7 monthly checkpoints and 14 stage reviews;
-- teacher-led Classroom Mode, fixed lesson navigation and Assessment Bank filters;
+- fixed lesson navigation, section jumps and Assessment Bank filters;
 - resource guides, syllabus audits and question/page approval evidence;
 - verification and deterministic release-building scripts;
 - `MANIFEST.sha256`, covering every other file inside the release archive.

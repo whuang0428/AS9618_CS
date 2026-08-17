@@ -71,9 +71,10 @@ for (const [index, definition] of lessons.entries()) {
   expect(entry?.title === h1, `${definition.page}: catalog title does not match h1`);
   expect(["Paper 1", "Paper 2"].includes(entry?.paper), `${definition.page}: catalog paper is invalid`);
   expect(/^Section \d+$|^Review$/.test(entry?.section ?? ""), `${definition.page}: catalog section is invalid`);
-  expect(count(html, 'href="../classroom-mode.css?v=1"') === 1, `${definition.page}: classroom stylesheet must appear once`);
+  expect(count(html, 'href="../lesson-toolbar.css?v=1"') === 1, `${definition.page}: lesson toolbar stylesheet must appear once`);
   expect(count(html, 'src="../course-catalog.js?v=1"') === 1, `${definition.page}: course catalog script must appear once`);
-  expect(count(html, 'src="../classroom-mode.js?v=1"') === 1, `${definition.page}: classroom script must appear once`);
+  expect(count(html, 'src="../lesson-toolbar.js?v=1"') === 1, `${definition.page}: lesson toolbar script must appear once`);
+  expect(!html.includes("classroom-mode.css") && !html.includes("classroom-mode.js"), `${definition.page}: obsolete Classroom Mode assets remain`);
   expect(!/<details\b[^>]*\bopen\b/i.test(html), `${definition.page}: a details answer is open by default`);
 
   const sections = directSectionTags(html);
@@ -109,13 +110,19 @@ expect(!/\bfetch\s*\(/.test(homeJs), "Homepage must not fetch lesson pages at ru
 expect(homeHtml.includes("Classroom Teaching &amp; Revision"), "Homepage teacher-led positioning is missing");
 expect(homeHtml.includes("./assessments/") && homeHtml.includes("./resources/"), "Homepage teaching shortcuts are incomplete");
 
-const classroomJs = read("web/classroom-mode.js");
-const classroomCss = read("web/classroom-mode.css");
-for (const marker of ["teacher-toolbar__previous", "teacher-toolbar__next", "teacher-toolbar__mode", "teacher-toolbar__optional", "teacher-toolbar__fullscreen", "Assessment Bank", "aria-live", "ArrowLeft", "ArrowRight"]) {
-  expect(classroomJs.includes(marker), `Classroom toolbar marker is missing: ${marker}`);
+const toolbarJs = read("web/lesson-toolbar.js");
+const toolbarCss = read("web/lesson-toolbar.css");
+for (const marker of ["teacher-toolbar__previous", "teacher-toolbar__next", "Lesson jumps", "Assessment Bank", "aria-live", "data-jump"]) {
+  expect(toolbarJs.includes(marker), `Lesson toolbar marker is missing: ${marker}`);
 }
-for (const marker of [".teacher-toolbar", "body.classroom-mode", ".classroom-active", "@media (max-width: 760px)", "padding-bottom"]) {
-  expect(classroomCss.includes(marker), `Classroom stylesheet marker is missing: ${marker}`);
+for (const marker of ["Classroom Mode", "classroom-mode", "teacher-toolbar__mode", "teacher-toolbar__optional", "teacher-toolbar__fullscreen", "requestFullscreen", "localStorage", "delivery-label"]) {
+  expect(!toolbarJs.includes(marker), `Removed Classroom Mode behavior remains in the lesson toolbar: ${marker}`);
+}
+for (const marker of [".teacher-toolbar", "@media (max-width: 760px)", "padding-bottom"]) {
+  expect(toolbarCss.includes(marker), `Lesson toolbar stylesheet marker is missing: ${marker}`);
+}
+for (const marker of ["body.classroom-mode", ".classroom-active", ".delivery-label"]) {
+  expect(!toolbarCss.includes(marker), `Removed Classroom Mode styling remains: ${marker}`);
 }
 
 const assessmentHtml = read("web/assessments/index.html");
@@ -143,4 +150,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`Stage 9 classroom verification passed: 150 catalogued lessons, ${sectionCount} classified sections, 51 assessments and 213 filterable exam questions.`);
+console.log(`Stage 9 teacher-tools verification passed: 150 catalogued lessons, ${sectionCount} classified sections, 51 assessments and 213 filterable exam questions.`);

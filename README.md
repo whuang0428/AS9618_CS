@@ -8,9 +8,9 @@ Syllabus reference used for this pack: Cambridge International AS & A Level Comp
 
 ## Project Status
 
-All 150 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit maps all 121 AS requirements to direct teaching and assessment evidence. The assessment bank provides 30 ten-mark quizzes, 7 thirty-mark monthly checkpoints and 14 twenty-mark stage reviews. Stage 5 reviewed and approved all 963 exam-style mark schemes (750 lesson questions and 213 assessment questions); 295 questions in System Software, Security, Ethics and Databases received a specialist second review. Stage 6 completed desktop and mobile full-page QA for all 150 lessons plus the course, assessment and resource hubs. Stage 7 completed keyboard, semantic, contrast and bilingual-language accessibility QA for the same 153 pages. Stage 8 provides a versioned, checksummed and source-matched offline release. Stage 9 adds teacher-led Classroom Mode, a fixed lesson toolbar, audited delivery labels, teacher filters in the Assessment Bank and a static 150-lesson catalogue.
+All 150 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit maps all 121 AS requirements to direct teaching and assessment evidence. The assessment bank provides 30 ten-mark quizzes, 7 thirty-mark monthly checkpoints and 14 twenty-mark stage reviews. Stage 5 reviewed and approved all 963 exam-style mark schemes (750 lesson questions and 213 assessment questions); 295 questions in System Software, Security, Ethics and Databases received a specialist second review. Stage 6 completed desktop and mobile full-page QA for all 150 lessons plus the course, assessment and resource hubs. Stage 7 completed keyboard, semantic, contrast and bilingual-language accessibility QA for the same 153 pages. Stage 8 provides a versioned, checksummed and source-matched offline release. Stage 9 adds a fixed lesson toolbar, audited delivery metadata, teacher filters in the Assessment Bank and a static 150-lesson catalogue.
 
-The shared web version prioritises classroom teaching while preserving each complete lesson for student preview and revision. Every lesson provides `Course home`, previous/next lesson controls and an opt-in Classroom Mode. A prioritised visual-explanation register covers 25 abstract concepts. Eight approved visual explanations now cover network models, packet switching, addressing, secondary storage, control systems, logic gates, CPU architecture and the fetch-decode-execute cycle.
+The shared web version prioritises classroom teaching while preserving each complete lesson for student preview and revision. Every lesson provides `Course home`, previous/next lesson controls and section shortcuts without changing or hiding lesson content. A prioritised visual-explanation register covers 25 abstract concepts. Eight approved visual explanations now cover network models, packet switching, addressing, secondary storage, control systems, logic gates, CPU architecture and the fetch-decode-execute cycle.
 
 ## Course Design
 
@@ -60,9 +60,7 @@ Then open:
 - Resource centre: <http://127.0.0.1:8769/resources/>
 - Example lesson: <http://127.0.0.1:8769/lesson-001/>
 
-Each lesson keeps the full revision page by default. Use the fixed bottom toolbar to move between lessons, jump to Warm-up/Core/Practice/Exam/Homework, open the Assessment Bank or enter Classroom Mode. Classroom Mode presents one delivery group at a time, excludes optional activities by default and remembers the selected mode on that browser.
-
-Classroom keyboard controls are `←`/`→` for the previous or next delivery group, `R` for the first relevant answer or mark scheme, and `F` for full screen. Shortcuts are ignored while using lesson form controls.
+Each lesson always displays the complete teaching and revision page. Use the fixed bottom toolbar to move between lessons, jump to Warm-up/Core/Practice/Exam/Homework or open the Assessment Bank.
 
 If lesson HTML is regenerated, restore the shared course-home control with the idempotent command:
 
@@ -70,7 +68,7 @@ If lesson HTML is regenerated, restore the shared course-home control with the i
 node scripts/apply-student-navigation.mjs
 ```
 
-Then rebuild the static course catalogue and classroom annotations:
+Then rebuild the static course catalogue, delivery metadata and lesson toolbar references:
 
 ```bash
 node scripts/generate-course-catalog.mjs

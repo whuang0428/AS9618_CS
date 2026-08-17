@@ -5,10 +5,10 @@ import { fileURLToPath } from "node:url";
 import { deliveryOverrides } from "./stage9-delivery-overrides.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const stylesheet = '    <link rel="stylesheet" href="../classroom-mode.css?v=1" />';
+const stylesheet = '    <link rel="stylesheet" href="../lesson-toolbar.css?v=1" />';
 const scripts = [
   '    <script src="../course-catalog.js?v=1"></script>',
-  '    <script src="../classroom-mode.js?v=1"></script>',
+  '    <script src="../lesson-toolbar.js?v=1"></script>',
 ];
 const optionalIds = new Set([
   "tool", "builder", "simulator", "converter", "checker", "classifier", "chooser", "runner",
@@ -122,8 +122,10 @@ function updateStartTag(tag, metadata) {
 function injectAssets(source) {
   let updated = source
     .replace(/^\s*<link rel="stylesheet" href="\.\.\/classroom-mode\.css\?v=\d+" \/>\n?/m, "")
+    .replace(/^\s*<link rel="stylesheet" href="\.\.\/lesson-toolbar\.css\?v=\d+" \/>\n?/m, "")
     .replace(/^\s*<script src="\.\.\/course-catalog\.js\?v=\d+"><\/script>\n?/m, "")
-    .replace(/^\s*<script src="\.\.\/classroom-mode\.js\?v=\d+"><\/script>\n?/m, "");
+    .replace(/^\s*<script src="\.\.\/classroom-mode\.js\?v=\d+"><\/script>\n?/m, "")
+    .replace(/^\s*<script src="\.\.\/lesson-toolbar\.js\?v=\d+"><\/script>\n?/m, "");
 
   const cssAnchor = '    <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />';
   const jsAnchor = '    <script src="../stage7-accessibility.js?v=4"></script>';
@@ -200,4 +202,4 @@ const rows = register.map((entry) => [
 ].map(csv).join(","));
 fs.writeFileSync(path.join(root, "audits", "stage9-classroom-delivery-register.csv"), `${header.join(",")}\n${rows.join("\n")}\n`);
 
-console.log(`Classroom delivery applied: ${changed} lesson pages changed; ${register.length} sections classified.`);
+console.log(`Stage 9 teacher tools applied: ${changed} lesson pages changed; ${register.length} sections classified.`);
