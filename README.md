@@ -62,6 +62,8 @@ Then open:
 
 Each lesson always displays the complete teaching and revision page. The lesson contents navigation is collapsed by default so the teaching content can use the full width; use `Show contents` to open it when needed. Use the fixed bottom toolbar to move between lessons, jump to Warm-up/Core/Practice/Exam/Homework or open the Assessment Bank.
 
+All 153 web pages load `web/academic-theme.css` after their page-specific styles. This shared offline theme supplies the academic editorial typography, colour, spacing and responsive masthead while preserving each lesson's specialised diagrams and interactions. The assessment and resource generators, plus the classroom-delivery pass, retain the theme link when generated HTML is rebuilt.
+
 If lesson HTML is regenerated, restore the shared course-home control with the idempotent command:
 
 ```bash
@@ -88,6 +90,7 @@ Stage 10 now covers all 782 maintained explanation targets across all 150 lesson
 ## Verification
 
 ```bash
+node scripts/verify-academic-theme.mjs
 node scripts/verify-student-navigation.mjs
 node scripts/verify-educational-visuals.mjs
 node scripts/verify-stage2.mjs

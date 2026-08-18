@@ -1,6 +1,8 @@
 # Stage 7 Accessibility and Keyboard Delivery Report
 
-Audit date: 21 July 2026
+Original audit date: 21 July 2026
+
+Academic-theme re-review: 18 August 2026
 
 ## Scope
 
@@ -48,7 +50,7 @@ The shared Stage 7 CSS and JavaScript layer:
 | Language changes | 709 Chinese runs marked `zh-CN`; 0 unmarked Han-text runs | Pass |
 | Text contrast | 41,559 solid-background and 911 composited gradient-background runs checked; 0 final failures | Pass |
 | Target size | 9,798 interactive targets reviewed; nine small native checkboxes have associated 44-84 px-high clickable labels | Pass |
-| Media alternatives | No image elements are present; future images are rejected by the verifier when `alt` is missing | Pass |
+| Media alternatives | The current course contains 782 Stage 10 infographics and three lesson diagrams; all expose text alternatives | Pass |
 | Review integrity | Per-page SHA-256 hashes in `stage7-accessibility-register.csv` | Pass |
 
 The browser host did not expose direct key-injection actions during this audit. Keyboard conformance is therefore evidenced by DOM focus order, native control use, runtime ARIA relationships and the reviewed arrow/Home/End event implementation rather than a synthetic keypress recording.
@@ -67,3 +69,9 @@ node scripts/verify-stage7-accessibility.mjs
 ```
 
 Regenerate the Stage 6 and Stage 7 registers only after repeating their respective browser reviews; both registers intentionally reject changes to approved page HTML, CSS or JavaScript assets.
+
+## Academic Editorial Theme Re-review
+
+The theme re-review confirmed that the final stylesheet remains last in cascade order without suppressing the shared `:focus-visible`, forced-colour or reduced-motion safeguards. Its offline font stacks preserve readable fallbacks, controls retain accessible labels and state, and minimum/maximum marks remain native number inputs. Primary white-background token contrast is 16.79:1 for navy ink, 14.68:1 for body text, 5.82:1 for muted text, 9.21:1 for links and 6.41:1 for semantic green; amber is used as a border rather than normal-size text.
+
+Application-browser checks at 1440 x 900 and 390 x 844 covered all 153 pages with no broken resource, console warning/error or document-level overflow. Representative keyboard-operable controls were exercised through their semantic roles: native dialog, disclosure, search, select, number input, buttons and lesson navigation. Wide infographics and bilingual tables retain local horizontal scrolling at 390 px instead of widening the document.

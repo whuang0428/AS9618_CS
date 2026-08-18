@@ -96,7 +96,7 @@ const cards = resources.map(([title, filename, description], index) => {
 }).join("\n");
 
 const html = `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AS9618 Resource Centre</title><link rel="icon" href="data:"><link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="../stage7-accessibility.css?v=3"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AS9618 Resource Centre</title><link rel="icon" href="data:"><link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="../stage7-accessibility.css?v=3"><link rel="stylesheet" href="../academic-theme.css?v=5"></head>
 <body><a class="skip-link" href="#main-content">Skip to main content</a><header class="topbar"><div><p class="eyebrow">Cambridge AS9618 Computer Science</p><h1>Resource centre</h1></div><a href="../">Course index</a></header>
 <main id="main-content" tabindex="-1"><section class="intro"><h2>Reference material for study and exam practice</h2><p>Open a resource when needed. Cambridge pseudocode remains the Paper 2 answer standard; Java is supporting practice only.</p></section><section class="resource-list">${cards}</section></main><script src="../stage7-accessibility.js?v=4"></script></body></html>`;
 

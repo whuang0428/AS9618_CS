@@ -1,6 +1,8 @@
 # Stage 6 Full-Page Visual QA Report
 
-Audit date: 21 July 2026
+Original audit date: 21 July 2026
+
+Academic-theme re-review: 18 August 2026
 
 ## Scope
 
@@ -48,6 +50,29 @@ The browser review included direct interaction with each shared delivery surface
 - Lesson 001 selected the correct context-dependent warm-up response and converted 8192 bits to 1 KiB;
 - representative screenshots were reviewed for hub, early-course and Paper 2 layouts at desktop and mobile widths, including a formerly overflowing page.
 
+## Academic Editorial Theme Re-review
+
+The shared `web/academic-theme.css` layer was reviewed after it was linked last on all 153 pages. A fresh application-browser pass rendered every page at both 1440 x 900 and 390 x 844. All 306 page/viewport combinations had a non-empty document title, `h1` and main body; exactly one academic-theme link; no broken image; no page-level horizontal overflow; and no console warning or error.
+
+The first mobile re-review isolated two residual document overflows in Lessons 019 and 057. Their 720 px Stage 10 infographics remain horizontally scrollable inside their own figure containers, while the shared theme now clips only document-level overflow. The repeated 153-page mobile pass then reported zero failures. Lesson 001's heading and page controls do not intersect at 390 px; the controls form two columns and the contents toggle spans the full row.
+
+Interaction regression covered course search/clear and the course-map dialog; Lesson 001 contents, warm-up, converter and forward/back navigation; the seven-item monthly assessment filter and mark-scheme disclosure; and resource disclosure plus mobile table scrolling. All passed. The converter check used 8192 bytes to 8 KiB and exposed its calculation method.
+
+### Fidelity ledger
+
+| Accepted concept property | Implemented evidence | Result |
+|---|---|---|
+| Editorial typography | Georgia/Times headings; system sans-serif body and controls; SFMono/Menlo code | Match |
+| White paper and restrained palette | True-white canvas, navy headings/links, charcoal text, cool-grey rules, green/amber semantics | Match |
+| Course-index publication grid | Open hero, ruled controls/catalogue, four equal line icons and the unchanged 150/12/2/45 facts | Match |
+| Lesson academic hierarchy | Institutional masthead, ruled objective columns, flat panels and preserved lesson-specific visuals | Match |
+| Assessment paper layout | Library-style filters, ruled questions and unchanged numeric minimum/maximum mark inputs | Match |
+| Resource reference layout | Bibliographic disclosure rows and locally scrollable bilingual tables | Match |
+| Mobile composition | Separated title/actions, two-column actions, full-width contents toggle and contained wide media | Match |
+| Copy and course data | Above-fold repository copy, lesson titles, ordering, routes and assessment data unchanged | Match |
+
+Intentional deviations are limited to using the repository's real copy and data where concept artwork was illustrative, and using offline system font stacks and inline line icons rather than new image or network-font assets.
+
 ## Reverification
 
 Run from the repository root:
@@ -61,4 +86,3 @@ node scripts/verify-stage6-qa.mjs
 ```
 
 The Stage 6 verifier rejects missing pages or assets, unresolved local links/fragments, missing responsive QA links, JavaScript syntax errors, incomplete approval rows and any change to reviewed page content or its CSS/JavaScript assets.
-

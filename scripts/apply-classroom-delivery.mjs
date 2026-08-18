@@ -6,7 +6,8 @@ import { deliveryOverrides } from "./stage9-delivery-overrides.mjs";
 import { explanationByKey } from "./stage10-explanations-data.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const stylesheet = '    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />';
+const toolbarStylesheet = '    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />';
+const academicThemeStylesheet = '    <link rel="stylesheet" href="../academic-theme.css?v=5" />';
 const scripts = [
   '    <script src="../course-catalog.js?v=1"></script>',
   '    <script src="../lesson-toolbar.js?v=2"></script>',
@@ -124,6 +125,7 @@ function injectAssets(source) {
   let updated = source
     .replace(/^\s*<link rel="stylesheet" href="\.\.\/classroom-mode\.css\?v=\d+" \/>\n?/m, "")
     .replace(/^\s*<link rel="stylesheet" href="\.\.\/lesson-toolbar\.css\?v=\d+" \/>\n?/m, "")
+    .replace(/^\s*<link rel="stylesheet" href="\.\.\/academic-theme\.css\?v=\d+" \/>\n?/m, "")
     .replace(/^\s*<script src="\.\.\/course-catalog\.js\?v=\d+"><\/script>\n?/m, "")
     .replace(/^\s*<script src="\.\.\/classroom-mode\.js\?v=\d+"><\/script>\n?/m, "")
     .replace(/^\s*<script src="\.\.\/lesson-toolbar\.js\?v=\d+"><\/script>\n?/m, "");
@@ -135,7 +137,7 @@ function injectAssets(source) {
   if (!updated.includes(stage7Anchor) || !updated.includes(jsAnchor)) {
     throw new Error("Shared Stage 7 asset anchors are missing");
   }
-  updated = updated.replace(cssAnchor, `${cssAnchor}\n${stylesheet}`);
+  updated = updated.replace(cssAnchor, `${cssAnchor}\n${toolbarStylesheet}\n${academicThemeStylesheet}`);
   updated = updated.replace(jsAnchor, `${scripts.join("\n")}\n${jsAnchor}`);
   return updated;
 }
