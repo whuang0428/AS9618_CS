@@ -105,3 +105,48 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** can be resized without pixelation / loss of shape quality
 
 **Strict note:** Do not accept 'vector has better quality' unless scalability or object-based storage is explained.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### The calculation chain
+
+- **Explains:** `chain`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-009-chain.jpg`
+
+1. 1. Pixels
+2. width × height
+3. pixels × colour depth
+4. 3. Bytes
+5. bits ÷ 8
+6. 4. Metadata
+7. add only if the question includes it
+8. 100 × 80 × 8 = 64 000 bits = 8000 bytes
+
+### Metadata is data about the image, not the pixels themselves
+
+- **Explains:** `metadata`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-009-metadata.jpg`
+
+1. Examples
+2. Width, height, colour depth, file type, date created, camera model, location data or thumbnail data.
+3. Metadata helps software interpret, organise, search or display the image correctly.
+4. Calculation rule
+5. Add metadata size only when the question gives it and asks for total file size.
+6. Exam wording matters: “ignore metadata” means pixel data only.
+
+### Units: do not trip at the finish line
+
+- **Explains:** `units`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-009-units.jpg`
+
+1. Bits to bytes
+2. 8 bits = 1 byte, so divide bits by 8.
+3. Bytes to KiB
+4. 1 KiB = 1024 bytes, so divide bytes by 1024 when binary units are requested.
+5. Rounding
+6. Only round if the question requests it. Otherwise keep an exact value or enough working.
+<!-- stage10-explanations:end -->

@@ -71,3 +71,54 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **section 5 review: precise software comparisons**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Similar terms that the exam likes to separate
+
+- **Explains:** `compare`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-061-compare.jpg`
+
+1. High-value comparisons
+2. Difference that earns marks
+3. Common wrong answer
+4. OS vs utility
+5. OS manages resources; a utility performs a specific maintenance/protection task.
+6. "Both are apps."
+7. Compiler vs interpreter
+8. Compiler translates whole program before execution; interpreter translates/executes statement by statement.
+9. "Interpreter is a bad compiler."
+10. Syntax vs semantic
+11. Syntax checks grammar; semantic checks meaning such as type, scope and declarations.
+12. "Both mean spelling mistakes."
+
+### Turn a weak answer into marks
+
+- **Explains:** `precision`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-061-precision.jpg`
+
+1. Precision rules
+2. Weak "A compiler changes code so it can run." Too vague: no input, output or timing.
+3. Better "A compiler translates the whole high-level source program into object/executable code before execution." Names input, output and timing.
+4. Weak "Encryption makes data safe." Too broad: safe from what?
+5. Better "Encryption converts plaintext into ciphertext using a key so unauthorised users cannot read it." Names mechanism and security goal.
+
+### Section 5 in one screen
+
+- **Explains:** `retrieval`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-061-retrieval.jpg`
+
+1. Retrieval grid
+2. Operating system Manages resources and provides services such as process, memory, file and device management.
+3. Utility software Performs a maintenance/protection task such as backup, compression, encryption, defragmentation or antivirus.
+4. User interface Allows the user to interact with the system: CLI, GUI, menu-driven or natural language.
+5. Compiler Translates a whole high-level program before execution and can produce object/executable code.
+6. Interpreter Translates and executes high-level code statement by statement.
+7. Assembler Translates assembly language mnemonics into machine code/object code.
+8. Compilation stages Lexical analysis, syntax analysis, semantic analysis, code generation and optimisation.
+9. Linker / loader Linker resolves external references; loader places executable code into main memory.
+<!-- stage10-explanations:end -->

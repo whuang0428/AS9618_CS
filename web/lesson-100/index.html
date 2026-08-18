@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -113,6 +113,20 @@
           <div class="callout">Chinese support: flowchart = 流程图；terminator = 开始/结束符；decision = 判断；flow line = 流向线。</div>
         </section>
 
+        <!-- stage10-explanation:start flowcharts -->
+        <section class="panel explanation-panel" id="explanation-flowcharts" data-explains="flowcharts" data-explanation-kind="mechanism" aria-labelledby="explanation-flowcharts-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="flowcharts">
+          <h2 class="explanation-sr-only" id="explanation-flowcharts-title">Flowcharts use symbols to show control flow</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-flowcharts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Flowcharts use symbols to show control flow with a structured visual model." />
+            <figcaption class="explanation-sr-only">Flowcharts use symbols to show control flow: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> START/END</li><li><strong>Lesson fact:</strong> terminator</li><li><strong>Lesson fact:</strong> start or stop the algorithm</li><li><strong>Lesson fact:</strong> INPUT/OUTPUT</li><li><strong>Lesson fact:</strong> data entering or leaving</li><li><strong>Lesson fact:</strong> INPUT Mark, OUTPUT Average</li><li><strong>Lesson fact:</strong> calculation or assignment</li><li><strong>Lesson fact:</strong> Total ← Total + Mark</li><li><strong>Lesson fact:</strong> Decision?</li><li><strong>Lesson fact:</strong> yes/no condition</li><li><strong>Lesson fact:</strong> Mark &gt;= 50?</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end flowcharts -->
+
         <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
@@ -141,6 +155,20 @@ OUTPUT Total</code></pre>
           <div class="callout">Exam reminder: use Cambridge-style keywords. Java braces, semicolons, `System.out.println` and `&&` are implementation support, not the expected pseudocode style.</div>
         </section>
 
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Cambridge-style pseudocode uses structured keywords</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge-style pseudocode uses structured keywords with a structured visual model." />
+            <figcaption class="explanation-sr-only">Cambridge-style pseudocode uses structured keywords: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> Selection</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit&quot;</li><li><strong>Lesson fact:</strong> Count-controlled iteration</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Count &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Mark</li><li><strong>Lesson fact:</strong> NEXT Count</li><li><strong>Lesson fact:</strong> OUTPUT Total</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
+
         <section class="panel" id="notation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="notation">
           <div class="section-title">
             <p class="eyebrow">Notation rules</p>
@@ -155,6 +183,20 @@ OUTPUT Total</code></pre>
             <article><strong>No mixed syntax</strong><span>Do not mix Java braces with Cambridge pseudocode keywords in the same answer.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start notation -->
+        <section class="panel explanation-panel" id="explanation-notation" data-explains="notation" data-explanation-kind="mechanism" aria-labelledby="explanation-notation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="notation">
+          <h2 class="explanation-sr-only" id="explanation-notation-title">Readable notation earns marks more easily</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-notation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Readable notation earns marks more easily with a structured visual model." />
+            <figcaption class="explanation-sr-only">Readable notation earns marks more easily: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Notation rules</li><li><strong>Lesson fact:</strong> One entry Flowcharts should have a clear start and a clear direction of travel.</li><li><strong>Lesson fact:</strong> Decision labels Decision outputs should be labelled, usually Yes/No or True/False.</li><li><strong>Lesson fact:</strong> Indentation Indented pseudocode shows which statements belong inside a branch or loop.</li><li><strong>Lesson fact:</strong> Matching endings Use ENDIF, NEXT, ENDWHILE or equivalent to close a structure clearly.</li><li><strong>Lesson fact:</strong> Meaningful names Use Mark, Total, Count, Found instead of X1 unless the question gives X1.</li><li><strong>Lesson fact:</strong> No mixed syntax Do not mix Java braces with Cambridge pseudocode keywords in the same answer.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end notation -->
 
         <section class="panel" id="equivalence" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="equivalence">
           <div class="section-title">
@@ -182,6 +224,20 @@ ENDIF</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start equivalence -->
+        <section class="panel explanation-panel" id="explanation-equivalence" data-explains="equivalence" data-explanation-kind="mechanism" aria-labelledby="explanation-equivalence-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="equivalence">
+          <h2 class="explanation-sr-only" id="explanation-equivalence-title">A diamond becomes IF...THEN...ELSE</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-equivalence.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A diamond becomes IF...THEN...ELSE with a structured visual model." />
+            <figcaption class="explanation-sr-only">A diamond becomes IF...THEN...ELSE: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Equivalent forms</li><li><strong>Lesson fact:</strong> Flowchart idea</li><li><strong>Lesson fact:</strong> INPUT Age</li><li><strong>Lesson fact:</strong> Age &gt;= 11 AND Age &lt;= 18?</li><li><strong>Lesson fact:</strong> Yes: OUTPUT &quot;Valid&quot; | No: OUTPUT &quot;Invalid&quot;</li><li><strong>Lesson fact:</strong> Pseudocode equivalent</li><li><strong>Lesson fact:</strong> IF Age &gt;= 11 AND Age &lt;= 18 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Valid&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Invalid&quot;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end equivalence -->
+
 
         <section class="panel" id="symbol-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="symbol-tool">
           <div class="section-title">
@@ -204,6 +260,20 @@ ENDIF</code></pre>
           <div class="feedback" id="symbolResult">Choose a step to see the matching symbol and reason.</div>
         </section>
 
+        <!-- stage10-explanation:start symbol-tool -->
+        <section class="panel explanation-panel" id="explanation-symbol-tool" data-explains="symbol-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-symbol-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="symbol-tool">
+          <h2 class="explanation-sr-only" id="explanation-symbol-tool-title">Choose the correct flowchart symbol</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-symbol-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the correct flowchart symbol with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose the correct flowchart symbol: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive symbol tool</li><li><strong>Lesson fact:</strong> Algorithm step</li><li><strong>Lesson fact:</strong> Choose a step to see the matching symbol and reason.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end symbol-tool -->
+
         <section class="panel" id="structure-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="structure-tool">
           <div class="section-title">
             <p class="eyebrow">Interactive structure tool</p>
@@ -223,6 +293,20 @@ ENDIF</code></pre>
           </div>
           <div class="answer-frame" id="structureResult">Choose a clue to see the likely structure.</div>
         </section>
+
+        <!-- stage10-explanation:start structure-tool -->
+        <section class="panel explanation-panel" id="explanation-structure-tool" data-explains="structure-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-structure-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="structure-tool">
+          <h2 class="explanation-sr-only" id="explanation-structure-tool-title">Match scenario to pseudocode structure</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-100-structure-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match scenario to pseudocode structure with a structured visual model." />
+            <figcaption class="explanation-sr-only">Match scenario to pseudocode structure: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive structure tool</li><li><strong>Lesson fact:</strong> Scenario clue</li><li><strong>Lesson fact:</strong> Choose a clue to see the likely structure.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end structure-tool -->
 
         <section class="panel" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="converter">
           <div class="section-title">

@@ -87,3 +87,127 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name. For this lesson, make students contrast that mistake with the exact idea of **pseudocode data declarations vs java declarations**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Cambridge array bounds are stated explicitly
+
+- **Explains:** `arrays`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-arrays.jpg`
+
+1. Cambridge-style pseudocode
+2. DECLARE Scores : ARRAY[1:30] OF INTEGER
+3. Scores[1] <- 72
+4. Java support only
+5. int[] scores = new int[30];
+6. scores[0] = 72;
+7. Index warning: if pseudocode declares ARRAY[1:30] , do not automatically use Java's index 0 in the exam answer.
+
+### <- changes a value; = usually tests equality in conditions
+
+- **Explains:** `assignment`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-assignment.jpg`
+
+1. Assignment versus comparison
+2. Pseudocode
+3. Count <- Count + 1
+4. store a new value in Count
+5. IF Count = 10 THEN
+6. test whether Count equals 10
+7. Java warning
+8. count == 10
+9. Java equality syntax is not the expected pseudocode style
+
+### Constants are named values that should not change
+
+- **Explains:** `constants`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-constants.jpg`
+
+1. Constants
+2. Cambridge-style pseudocode
+3. CONSTANT MaxSize = 100
+4. CONSTANT PassMark = 40
+5. Java support only
+6. final int MAX_SIZE = 100;
+7. final int PASS_MARK = 40;
+8. Java naming conventions may use capitals for constants. Cambridge pseudocode credit comes from clear constant declaration and use.
+
+### Do not mix the two languages inside one answer
+
+- **Explains:** `principle`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-principle.jpg`
+
+1. Core principle
+2. Cambridge-style pseudocode
+3. Java support only
+4. Variable declaration
+5. DECLARE Count : INTEGER
+6. int count;
+7. Assignment
+8. Count <- 0
+9. count = 0;
+10. Array declaration
+11. DECLARE Scores : ARRAY[1:30] OF INTEGER
+12. int[] scores = new int[30];
+
+### Record declarations use TYPE and ENDTYPE
+
+- **Explains:** `records`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-records.jpg`
+
+1. Cambridge-style pseudocode
+2. TYPE TStudent
+3. DECLARE Name : STRING
+4. DECLARE Mark : INTEGER
+5. DECLARE Student1 : TStudent
+6. Java support only
+7. class Student {
+8. String name;
+9. int mark;
+10. Student student1 = new Student();
+
+### Which syntax belongs to which answer style?
+
+- **Explains:** `sorter`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-sorter.jpg`
+
+1. Syntax sorter
+2. Click a statement to identify whether it is pseudocode or Java-style.
+
+### Map concepts, not spelling
+
+- **Explains:** `types`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-types.jpg`
+
+1. Data type mapping
+2. Pseudocode type
+3. Java support example
+4. whole number
+5. decimal number
+6. single character
+7. true/false
+
+### Declare first; initialise separately when needed
+
+- **Explains:** `variables`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-124-variables.jpg`
+
+1. Variables
+2. Cambridge-style pseudocode
+3. DECLARE Count : INTEGER
+4. Count <- 0
+5. DECLARE Name : STRING
+6. Name <- "Ali"
+7. Java support only
+8. int count = 0;
+9. String name = "Ali";
+<!-- stage10-explanations:end -->

@@ -71,3 +71,48 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often assume compression always makes a file smaller. Correction: compression has overhead and depends on patterns in the data. For this lesson, make students contrast that mistake with the exact idea of **run-length encoding and dictionary-style compression**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Dictionary-style compression
+
+- **Explains:** `dictionary`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-013-dictionary.jpg`
+
+1. Find repeated patterns and store them once in a dictionary.
+2. Reference
+3. Replace later occurrences with a shorter code or pointer to the dictionary entry.
+4. COMPUTER COMPUTER COMPUTER can store COMPUTER once, then use references.
+5. Dictionary #1 = COMPUTER
+6. Compressed form #1 #1 #1
+7. Decoded form COMPUTER COMPUTER COMPUTER
+
+### When does it help?
+
+- **Explains:** `effectiveness`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-013-effectiveness.jpg`
+
+1. RLE helps
+2. Long repeated runs, simple graphics, repeated pixels or repeated characters.
+3. RLE struggles
+4. Alternating or random-looking data with very short runs.
+5. Dictionary helps
+6. Repeated words, phrases, byte patterns or sequences across the file.
+7. Both methods are lossless if the dictionary and encoded data allow exact reconstruction.
+
+### Run-length encoding
+
+- **Explains:** `rle`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-013-rle.jpg`
+
+1. Encoding rule
+2. Replace each consecutive run with count + value.
+3. AAAAAABBBBCCCCCCCC → 6A4B8C
+4. Decoding rule
+5. Expand each count and value back into repeated data.
+6. 3A2B1C → AAABBC
+<!-- stage10-explanations:end -->

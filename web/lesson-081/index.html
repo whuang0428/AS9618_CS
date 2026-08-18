@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -132,6 +132,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start primary -->
+        <section class="panel explanation-panel" id="explanation-primary" data-explains="primary" data-explanation-kind="mechanism" aria-labelledby="explanation-primary-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="primary">
+          <h2 class="explanation-sr-only" id="explanation-primary-title">Primary keys uniquely identify records</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-primary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Primary keys uniquely identify records with a structured visual model." />
+            <figcaption class="explanation-sr-only">Primary keys uniquely identify records: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A primary key is a field, or combination of fields, that uniquely identifies each record in a table. It should be unique and not null.</li><li><strong>Lesson fact:</strong> Unique No two records in the table have the same key value.</li><li><strong>Lesson fact:</strong> Not null Every record must have a key value; blank identity is not identity.</li><li><strong>Lesson fact:</strong> Stable A good key is unlikely to change, such as an allocated ID.</li><li><strong>Lesson fact:</strong> Minimal Do not use extra fields when one suitable field is enough.</li><li><strong>Lesson fact:</strong> StudentID</li><li><strong>Lesson fact:</strong> TutorGroup</li><li><strong>Lesson fact:</strong> PhoneNumber</li><li><strong>Lesson fact:</strong> Alex Chen</li><li><strong>Lesson fact:</strong> 02071234567</li><li><strong>Lesson fact:</strong> 02079876543</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end primary -->
+
         <section class="panel" id="foreign" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="foreign">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -159,6 +173,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start foreign -->
+        <section class="panel explanation-panel" id="explanation-foreign" data-explains="foreign" data-explanation-kind="mechanism" aria-labelledby="explanation-foreign-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="foreign">
+          <h2 class="explanation-sr-only" id="explanation-foreign-title">Foreign keys link tables</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-foreign.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Foreign keys link tables with a structured visual model." />
+            <figcaption class="explanation-sr-only">Foreign keys link tables: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A foreign key is a field in one table that references the primary key in another table. It creates a link between related records.</li><li><strong>Lesson fact:</strong> StudentID | Name</li><li><strong>Lesson fact:</strong> S0234 | Alex Chen</li><li><strong>Lesson fact:</strong> S0318 | Maya Patel</li><li><strong>Lesson fact:</strong> StudentID links tables</li><li><strong>Lesson fact:</strong> LoanID | StudentID | BookID</li><li><strong>Lesson fact:</strong> L9001 | S0234 | B144</li><li><strong>Lesson fact:</strong> L9002 | S0234 | B102</li><li><strong>Lesson fact:</strong> Exam sentence:</li><li><strong>Lesson fact:</strong> StudentID is a primary key in Student and a foreign key in Loan , linking each loan to the student who borrowed the book.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end foreign -->
+
         <section class="panel" id="relationships" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="relationships">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -173,6 +201,20 @@
           <div class="callout">Chinese support: primary key = 主键；foreign key = 外键；relationship = 关系；one-to-many = 一对多。</div>
         </section>
 
+        <!-- stage10-explanation:start relationships -->
+        <section class="panel explanation-panel" id="explanation-relationships" data-explains="relationships" data-explanation-kind="mechanism" aria-labelledby="explanation-relationships-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="relationships">
+          <h2 class="explanation-sr-only" id="explanation-relationships-title">Relationships describe how records connect</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-relationships.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Relationships describe how records connect with a structured visual model." />
+            <figcaption class="explanation-sr-only">Relationships describe how records connect: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A relationship describes how records in one table are associated with records in another table.</li><li><strong>Lesson fact:</strong> One-to-one One record in A relates to one record in B. Example: person and passport in a simplified system.</li><li><strong>Lesson fact:</strong> One-to-many One record in A relates to many records in B. Example: one student can have many loans.</li><li><strong>Lesson fact:</strong> Many-to-many Many records in A relate to many in B. Often resolved using a linking table. Example: students and clubs.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end relationships -->
+
         <section class="panel" id="referential" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="referential">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -185,6 +227,20 @@
             <article><strong>Why</strong><span>It prevents orphan records, such as a loan assigned to a non-existent student.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start referential -->
+        <section class="panel explanation-panel" id="explanation-referential" data-explains="referential" data-explanation-kind="mechanism" aria-labelledby="explanation-referential-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="referential">
+          <h2 class="explanation-sr-only" id="explanation-referential-title">Referential integrity</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-referential.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Referential integrity with a structured visual model." />
+            <figcaption class="explanation-sr-only">Referential integrity: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Referential integrity means a foreign key value must match an existing primary key value in the referenced table.</li><li><strong>Lesson fact:</strong> Valid Loan.StudentID = S0234 is valid if Student.StudentID = S0234 exists.</li><li><strong>Lesson fact:</strong> Invalid Loan.StudentID = S9999 is invalid if no student with that ID exists.</li><li><strong>Lesson fact:</strong> Why It prevents orphan records, such as a loan assigned to a non-existent student.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end referential -->
 
 
         <section class="panel" id="key-picker" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="key-picker">
@@ -209,6 +265,20 @@
           <div class="feedback" id="keyReason">A good primary key is unique, not null and stable.</div>
         </section>
 
+        <!-- stage10-explanation:start key-picker -->
+        <section class="panel explanation-panel" id="explanation-key-picker" data-explains="key-picker" data-explanation-kind="mechanism" aria-labelledby="explanation-key-picker-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="key-picker">
+          <h2 class="explanation-sr-only" id="explanation-key-picker-title">Choose the best primary key</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-key-picker.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the best primary key with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose the best primary key: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive key picker</li><li><strong>Lesson fact:</strong> Choose a table to identify the strongest primary key.</li><li><strong>Lesson fact:</strong> A good primary key is unique, not null and stable.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end key-picker -->
+
         <section class="panel" id="relationship-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="relationship-tool">
           <div class="section-title">
             <p class="eyebrow">Interactive relationship classifier</p>
@@ -230,6 +300,20 @@
           <div class="result-box" id="relationshipResult">Choose a scenario to classify the relationship.</div>
           <div class="feedback" id="relationshipReason">Use one-to-one, one-to-many or many-to-many with a scenario reason.</div>
         </section>
+
+        <!-- stage10-explanation:start relationship-tool -->
+        <section class="panel explanation-panel" id="explanation-relationship-tool" data-explains="relationship-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-relationship-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="relationship-tool">
+          <h2 class="explanation-sr-only" id="explanation-relationship-tool-title">Classify the relationship</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-081-relationship-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Classify the relationship with a structured visual model." />
+            <figcaption class="explanation-sr-only">Classify the relationship: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive relationship classifier</li><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> Choose a scenario to classify the relationship.</li><li><strong>Lesson fact:</strong> Use one-to-one, one-to-many or many-to-many with a scenario reason.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end relationship-tool -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

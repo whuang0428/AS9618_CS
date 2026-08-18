@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -118,6 +118,20 @@ CALL DisplayMenu()</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start procedure -->
+        <section class="panel explanation-panel" id="explanation-procedure" data-explains="procedure" data-explanation-kind="mechanism" aria-labelledby="explanation-procedure-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="procedure">
+          <h2 class="explanation-sr-only" id="explanation-procedure-title">A procedure performs actions and does not have to return a value</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-procedure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A procedure performs actions and does not have to return a value with a structured visual model." />
+            <figcaption class="explanation-sr-only">A procedure performs actions and does not have to return a value: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Procedure</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> PROCEDURE DisplayMenu()</li><li><strong>Lesson fact:</strong> OUTPUT &quot;1. Add score&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;2. Quit&quot;</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> CALL DisplayMenu()</li><li><strong>Lesson fact:</strong> When it fits</li><li><strong>Lesson fact:</strong> Use a procedure when the algorithm needs an action such as output, input, updating a structure or repeated commands.</li><li><strong>Lesson fact:</strong> A procedure may change data, but it is not used as an expression like Total &lt;- DisplayMenu() .</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end procedure -->
+
         <section class="panel" id="function" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="function">
           <div class="section-title">
             <p class="eyebrow">Function</p>
@@ -140,6 +154,20 @@ VAT &lt;- CalculateVAT(120.00)</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start function -->
+        <section class="panel explanation-panel" id="explanation-function" data-explains="function" data-explanation-kind="mechanism" aria-labelledby="explanation-function-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="function">
+          <h2 class="explanation-sr-only" id="explanation-function-title">A function returns a value to the caller</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-function.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A function returns a value to the caller with a structured visual model." />
+            <figcaption class="explanation-sr-only">A function returns a value to the caller: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Function</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FUNCTION CalculateVAT(Price : REAL) RETURNS REAL</li><li><strong>Lesson fact:</strong> RETURN Price * 0.20</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li><li><strong>Lesson fact:</strong> VAT &lt;- CalculateVAT(120.00)</li><li><strong>Lesson fact:</strong> When it fits</li><li><strong>Lesson fact:</strong> Use a function when a calculated, searched or checked result must be used later in the algorithm.</li><li><strong>Lesson fact:</strong> A function should have a return type and a RETURN statement that matches that type.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end function -->
+
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Procedure vs function</p>
@@ -153,6 +181,20 @@ VAT &lt;- CalculateVAT(120.00)</code></pre>
             <div class="table-row"><div>Typical call</div><div><code>CALL DisplayMenu()</code></div><div><code>VAT &lt;- CalculateVAT(Price)</code></div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">The mark-winning difference is the returned value</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The mark-winning difference is the returned value with a structured visual model." />
+            <figcaption class="explanation-sr-only">The mark-winning difference is the returned value: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Procedure vs function</li><li><strong>Lesson fact:</strong> Procedure</li><li><strong>Lesson fact:</strong> Function</li><li><strong>Lesson fact:</strong> Main purpose</li><li><strong>Lesson fact:</strong> perform an action</li><li><strong>Lesson fact:</strong> return a value</li><li><strong>Lesson fact:</strong> PROCEDURE Name(...)</li><li><strong>Lesson fact:</strong> FUNCTION Name(...) RETURNS Type</li><li><strong>Lesson fact:</strong> End keyword</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li><li><strong>Lesson fact:</strong> Typical call</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
 
         <section class="panel" id="parameters" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parameters">
           <div class="section-title">
@@ -181,6 +223,20 @@ ENDIF</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start parameters -->
+        <section class="panel explanation-panel" id="explanation-parameters" data-explains="parameters" data-explanation-kind="mechanism" aria-labelledby="explanation-parameters-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parameters">
+          <h2 class="explanation-sr-only" id="explanation-parameters-title">Parameters receive values passed into a subroutine</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-parameters.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Parameters receive values passed into a subroutine with a structured visual model." />
+            <figcaption class="explanation-sr-only">Parameters receive values passed into a subroutine: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Parameters and arguments</li><li><strong>Lesson fact:</strong> Parameter in the header</li><li><strong>Lesson fact:</strong> FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> RETURN TRUE</li><li><strong>Lesson fact:</strong> RETURN FALSE</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li><li><strong>Lesson fact:</strong> Argument in the call</li><li><strong>Lesson fact:</strong> Result &lt;- IsPass(67)</li><li><strong>Lesson fact:</strong> IF IsPass(StudentMark) THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end parameters -->
+
         <section class="panel" id="calls" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="calls">
           <div class="section-title">
             <p class="eyebrow">Calls and returned values</p>
@@ -194,6 +250,20 @@ ENDIF</code></pre>
             <div class="table-row"><div><code>OUTPUT CalculateVAT(Price)</code></div><div>yes</div><div>function return value can be output</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start calls -->
+        <section class="panel explanation-panel" id="explanation-calls" data-explains="calls" data-explanation-kind="mechanism" aria-labelledby="explanation-calls-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="calls">
+          <h2 class="explanation-sr-only" id="explanation-calls-title">Function calls can appear where a value is needed</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-calls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Function calls can appear where a value is needed with a structured visual model." />
+            <figcaption class="explanation-sr-only">Function calls can appear where a value is needed: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Calls and returned values</li><li><strong>Lesson fact:</strong> CALL DisplayMenu()</li><li><strong>Lesson fact:</strong> procedure call performs an action</li><li><strong>Lesson fact:</strong> VAT &lt;- CalculateVAT(Price)</li><li><strong>Lesson fact:</strong> function return value is stored</li><li><strong>Lesson fact:</strong> Total &lt;- DisplayMenu()</li><li><strong>Lesson fact:</strong> procedure does not return a value</li><li><strong>Lesson fact:</strong> OUTPUT CalculateVAT(Price)</li><li><strong>Lesson fact:</strong> function return value can be output</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end calls -->
 
         <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
@@ -216,6 +286,20 @@ ENDFUNCTION</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start java -->
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Java method syntax is not Cambridge pseudocode</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java method syntax is not Cambridge pseudocode with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java method syntax is not Cambridge pseudocode: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FUNCTION CalculateVAT(Price : REAL) RETURNS REAL</li><li><strong>Lesson fact:</strong> RETURN Price * 0.20</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> static double calculateVAT(double price) {</li><li><strong>Lesson fact:</strong> return price * 0.20;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end java -->
+
 
         <section class="panel" id="returner" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="returner">
           <div class="section-title">
@@ -231,6 +315,20 @@ ENDFUNCTION</code></pre>
           </div>
           <div class="trace-output" id="returnResult">Use <code>CalculateVAT(Price)</code> to return <code>Price * 0.20</code>.</div>
         </section>
+
+        <!-- stage10-explanation:start returner -->
+        <section class="panel explanation-panel" id="explanation-returner" data-explains="returner" data-explanation-kind="mechanism" aria-labelledby="explanation-returner-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="returner">
+          <h2 class="explanation-sr-only" id="explanation-returner-title">Calculate a function return value</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-returner.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Calculate a function return value with a structured visual model." />
+            <figcaption class="explanation-sr-only">Calculate a function return value: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive return simulator</li><li><strong>Lesson fact:</strong> Use CalculateVAT(Price) to return Price * 0.20 .</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end returner -->
 
         <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">

@@ -92,3 +92,134 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. For this lesson, make students contrast that mistake with the exact idea of **file handling patterns in pseudocode and java**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### FOR APPEND adds new data to the end
+
+- **Explains:** `append`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-append.jpg`
+
+1. Append pattern
+2. Cambridge-style pseudocode
+3. OPENFILE "Scores.txt" FOR APPEND
+4. WRITEFILE "Scores.txt", "Lin,85"
+5. CLOSEFILE "Scores.txt"
+6. Reasoning
+7. Use FOR APPEND when previous records should remain and new records should be added after them.
+
+### CLOSEFILE completes the pattern
+
+- **Explains:** `close`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-close.jpg`
+
+1. Closing files
+2. Reliability Data written to a file should be properly finished and released.
+3. Resources The operating system can free the file handle or lock.
+4. Exam pattern Questions often expect CLOSEFILE after reading or writing.
+
+### EOF prevents reading past the end of the file
+
+- **Explains:** `eof`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-eof.jpg`
+
+1. EOF loop
+2. Count records
+3. Count <- 0
+4. OPENFILE "Orders.txt" FOR READ
+5. WHILE NOT EOF("Orders.txt")
+6. READFILE "Orders.txt", OrderLine
+7. Count <- Count + 1
+8. ENDWHILE
+9. CLOSEFILE "Orders.txt"
+10. OUTPUT Count
+11. Common trace
+12. If Orders.txt has 3 lines, the loop runs 3 times and Count becomes 3 .
+
+### Java file handling helps understanding, but does not replace pseudocode
+
+- **Explains:** `java`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-java.jpg`
+
+1. Java support only
+2. Cambridge-style pseudocode
+3. OPENFILE "Scores.txt" FOR READ
+4. WHILE NOT EOF("Scores.txt")
+5. READFILE "Scores.txt", Line
+6. OUTPUT Line
+7. ENDWHILE
+8. CLOSEFILE "Scores.txt"
+9. Java support example only
+10. try (Scanner file = new Scanner(new File("Scores.txt"))) {
+11. while (file.hasNextLine()) {
+12. System.out.println(file.nextLine());
+
+### The mode controls what the program intends to do with the file
+
+- **Explains:** `modes`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-modes.jpg`
+
+1. File modes
+2. Exam warning
+3. FOR READ
+4. read existing data from a file
+5. do not use it to add new records
+6. FOR WRITE
+7. write new file contents
+8. may overwrite existing contents
+9. FOR APPEND
+10. add new data to the end of an existing file
+11. keeps previous records
+
+### Files store data outside the running program
+
+- **Explains:** `purpose`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-purpose.jpg`
+
+1. Volatile variable
+2. A variable value is lost when the program ends unless it is saved elsewhere.
+3. Persistent file
+4. A file such as Scores.txt can keep records for the next time the program runs.
+
+### Read every line using WHILE NOT EOF
+
+- **Explains:** `read`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-read.jpg`
+
+1. Read pattern
+2. Cambridge-style pseudocode
+3. OPENFILE "Scores.txt" FOR READ
+4. WHILE NOT EOF("Scores.txt")
+5. READFILE "Scores.txt", Line
+6. OUTPUT Line
+7. ENDWHILE
+8. CLOSEFILE "Scores.txt"
+9. Trace idea
+10. Open prepare Scores.txt for reading
+11. EOF check continue while records remain
+12. Read store one line in Line
+
+### FOR WRITE writes new contents
+
+- **Explains:** `write`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-136-write.jpg`
+
+1. Write pattern
+2. Cambridge-style pseudocode
+3. OPENFILE "Report.txt" FOR WRITE
+4. WRITEFILE "Report.txt", "Name,Mark"
+5. WRITEFILE "Report.txt", "Ada,72"
+6. CLOSEFILE "Report.txt"
+7. Reasoning
+8. Use FOR WRITE when the program is creating or replacing the file contents.
+9. If old contents must be preserved, FOR WRITE is the suspicious choice. It may wipe the slate clean with too much confidence.
+<!-- stage10-explanations:end -->

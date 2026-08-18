@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -114,6 +114,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="process" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">A text file stores characters, usually processed one line at a time</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A text file stores characters, usually processed one line at a time with a structured visual model." />
+            <figcaption class="explanation-sr-only">A text file stores characters, usually processed one line at a time: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Exam clue</li><li><strong>Lesson fact:</strong> Text file</li><li><strong>Lesson fact:</strong> file containing character data</li><li><strong>Lesson fact:</strong> &quot;Scores.txt&quot;</li><li><strong>Lesson fact:</strong> get data from an existing file</li><li><strong>Lesson fact:</strong> FOR READ</li><li><strong>Lesson fact:</strong> store data to a file, often replacing previous contents</li><li><strong>Lesson fact:</strong> FOR WRITE</li><li><strong>Lesson fact:</strong> add data to the end of an existing file</li><li><strong>Lesson fact:</strong> FOR APPEND</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concept -->
+
         <section class="panel" id="lifecycle" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lifecycle">
           <div class="section-title">
             <p class="eyebrow">File lifecycle</p>
@@ -126,6 +140,20 @@
           </div>
           <div class="callout">A file algorithm without <code>CLOSEFILE</code> is like leaving the exam hall without submitting the answer booklet.</div>
         </section>
+
+        <!-- stage10-explanation:start lifecycle -->
+        <section class="panel explanation-panel" id="explanation-lifecycle" data-explains="lifecycle" data-explanation-kind="process" aria-labelledby="explanation-lifecycle-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lifecycle">
+          <h2 class="explanation-sr-only" id="explanation-lifecycle-title">Open, process, close</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-lifecycle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Open, process, close with a structured visual model." />
+            <figcaption class="explanation-sr-only">Open, process, close: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> File lifecycle</li><li><strong>Lesson fact:</strong> 1. Open choose READ, WRITE or APPEND</li><li><strong>Lesson fact:</strong> 2. Process READFILE or WRITEFILE using variables</li><li><strong>Lesson fact:</strong> 3. Close release the file and finalise changes</li><li><strong>Lesson fact:</strong> A file algorithm without CLOSEFILE is like leaving the exam hall without submitting the answer booklet.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lifecycle -->
 
         <section class="panel" id="modes" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="modes">
           <div class="section-title">
@@ -140,6 +168,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start modes -->
+        <section class="panel explanation-panel" id="explanation-modes" data-explains="modes" data-explanation-kind="mechanism" aria-labelledby="explanation-modes-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="modes">
+          <h2 class="explanation-sr-only" id="explanation-modes-title">Choose the mode before touching the file</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-modes.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the mode before touching the file with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose the mode before touching the file: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> File modes</li><li><strong>Lesson fact:</strong> Use when</li><li><strong>Lesson fact:</strong> Risk if wrong</li><li><strong>Lesson fact:</strong> existing file contents are needed</li><li><strong>Lesson fact:</strong> cannot write new lines</li><li><strong>Lesson fact:</strong> creating/replacing output contents</li><li><strong>Lesson fact:</strong> old contents may be overwritten</li><li><strong>Lesson fact:</strong> adding new data to the end</li><li><strong>Lesson fact:</strong> old lines remain, so duplicates are possible</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end modes -->
+
         <section class="panel" id="read" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="read">
           <div class="section-title">
             <p class="eyebrow">Read loop</p>
@@ -153,6 +195,20 @@ ENDWHILE
 CLOSEFILE "Scores.txt"</code></pre>
           <div class="callout">The file line is read into <code>Line</code>. Only after that can the program output, split or validate it.</div>
         </section>
+
+        <!-- stage10-explanation:start read -->
+        <section class="panel explanation-panel" id="explanation-read" data-explains="read" data-explanation-kind="mechanism" aria-labelledby="explanation-read-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="read">
+          <h2 class="explanation-sr-only" id="explanation-read-title">Use EOF so the loop stops at the end of the file</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-read.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use EOF so the loop stops at the end of the file with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use EOF so the loop stops at the end of the file: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Read loop</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.txt&quot; FOR READ</li><li><strong>Lesson fact:</strong> WHILE NOT EOF(&quot;Scores.txt&quot;)</li><li><strong>Lesson fact:</strong> READFILE &quot;Scores.txt&quot;, Line</li><li><strong>Lesson fact:</strong> OUTPUT Line</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Scores.txt&quot;</li><li><strong>Lesson fact:</strong> The file line is read into Line . Only after that can the program output, split or validate it.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end read -->
 
         <section class="panel" id="write" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="write">
           <div class="section-title">
@@ -175,6 +231,20 @@ CLOSEFILE "Scores.txt"</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start write -->
+        <section class="panel explanation-panel" id="explanation-write" data-explains="write" data-explanation-kind="mechanism" aria-labelledby="explanation-write-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="write">
+          <h2 class="explanation-sr-only" id="explanation-write-title">Write creates a new result; append adds to the existing story</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-write.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Write creates a new result; append adds to the existing story with a structured visual model." />
+            <figcaption class="explanation-sr-only">Write creates a new result; append adds to the existing story: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Write and append</li><li><strong>Lesson fact:</strong> Write a new report</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Report.txt&quot; FOR WRITE</li><li><strong>Lesson fact:</strong> WRITEFILE &quot;Report.txt&quot;, &quot;Pass count: &quot; &amp; Count</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Report.txt&quot;</li><li><strong>Lesson fact:</strong> Append a new score</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.txt&quot; FOR APPEND</li><li><strong>Lesson fact:</strong> WRITEFILE &quot;Scores.txt&quot;, &quot;Dina,91&quot;</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Scores.txt&quot;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end write -->
+
         <section class="panel" id="records" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="records">
           <div class="section-title">
             <p class="eyebrow">Text records</p>
@@ -187,6 +257,20 @@ CLOSEFILE "Scores.txt"</code></pre>
             <div class="table-row" role="row"><div><code>Bea,64</code></div><div>Name = Bea</div><div>Mark = 64</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start records -->
+        <section class="panel explanation-panel" id="explanation-records" data-explains="records" data-explanation-kind="mechanism" aria-labelledby="explanation-records-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="records">
+          <h2 class="explanation-sr-only" id="explanation-records-title">A text line often represents one record</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-records.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A text line often represents one record with a structured visual model." />
+            <figcaption class="explanation-sr-only">A text line often represents one record: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Text records</li><li><strong>Lesson fact:</strong> In simple exam-style examples, one line may contain fields separated by a comma. The delimiter must be consistent.</li><li><strong>Lesson fact:</strong> Name = Ali</li><li><strong>Lesson fact:</strong> Mark = 72</li><li><strong>Lesson fact:</strong> Name = Bea</li><li><strong>Lesson fact:</strong> Mark = 64</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end records -->
 
         <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
@@ -216,6 +300,20 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div class="callout">Use Java to understand implementation ideas, not to replace Cambridge pseudocode keywords in Paper 2.</div>
         </section>
 
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Cambridge pseudocode is the exam answer format</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge pseudocode is the exam answer format with a structured visual model." />
+            <figcaption class="explanation-sr-only">Cambridge pseudocode is the exam answer format: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.txt&quot; FOR READ</li><li><strong>Lesson fact:</strong> WHILE NOT EOF(&quot;Scores.txt&quot;)</li><li><strong>Lesson fact:</strong> READFILE &quot;Scores.txt&quot;, Line</li><li><strong>Lesson fact:</strong> OUTPUT Line</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Scores.txt&quot;</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> try (Scanner file = new Scanner(new File(&quot;Scores.txt&quot;))) {</li><li><strong>Lesson fact:</strong> while (file.hasNextLine()) {</li><li><strong>Lesson fact:</strong> String line = file.nextLine();</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
+
 
         <section class="panel" id="mode-lab" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="mode-lab">
           <div class="section-title">
@@ -244,6 +342,20 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div class="trace-output" id="modeResult">Choose a scenario and a mode.</div>
         </section>
 
+        <!-- stage10-explanation:start mode-lab -->
+        <section class="panel explanation-panel" id="explanation-mode-lab" data-explains="mode-lab" data-explanation-kind="mechanism" aria-labelledby="explanation-mode-lab-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="mode-lab">
+          <h2 class="explanation-sr-only" id="explanation-mode-lab-title">Choose the correct file mode</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-mode-lab.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the correct file mode with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose the correct file mode: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive mode lab</li><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> Choose a scenario and a mode.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end mode-lab -->
+
         <section class="panel" id="reader" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="reader">
           <div class="section-title">
             <p class="eyebrow">Interactive read trace</p>
@@ -255,6 +367,20 @@ CLOSEFILE "Scores.txt"</code></pre>
           </div>
           <div class="trace-output" id="readTrace">File is open. No line has been read yet.</div>
         </section>
+
+        <!-- stage10-explanation:start reader -->
+        <section class="panel explanation-panel" id="explanation-reader" data-explains="reader" data-explanation-kind="mechanism" aria-labelledby="explanation-reader-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="reader">
+          <h2 class="explanation-sr-only" id="explanation-reader-title">Step through a WHILE NOT EOF loop</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-120-reader.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Step through a WHILE NOT EOF loop with a structured visual model." />
+            <figcaption class="explanation-sr-only">Step through a WHILE NOT EOF loop: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive read trace</li><li><strong>Lesson fact:</strong> File is open. No line has been read yet.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end reader -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

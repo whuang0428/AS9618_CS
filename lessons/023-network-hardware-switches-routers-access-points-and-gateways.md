@@ -105,3 +105,76 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** router forwards packets between the LAN and internet/other networks
 
 **Strict note:** Do not accept WAP and router as automatically identical devices; award their distinct logical roles.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Compare by job and boundary
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-023-compare.jpg`
+
+1. Main job
+2. Address / rule focus
+3. Connects devices and forwards frames inside a LAN.
+4. Uses MAC addresses / ports.
+5. Connects different networks and forwards packets between them.
+6. Uses IP addresses / routing table.
+7. Access point
+8. Allows wireless devices to connect to a network.
+9. Uses radio waves / WiFi access.
+10. Connects networks using different protocols or formats.
+11. Performs protocol/format translation where needed.
+
+### Gateways: connecting different network rules
+
+- **Explains:** `gateway`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-023-gateway.jpg`
+
+1. A gateway connects networks that may use different protocols, data formats or communication standards, translating where needed.
+2. Useful when: two systems need to communicate but do not use the same rules.
+3. Default gateway note: in many LANs, the default gateway is the device used to send traffic outside the local network, often a router.
+4. Exam trap: do not use "gateway" as a fancy synonym for every network device.
+
+### Switches: forwarding inside a LAN
+
+- **Explains:** `lan`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-023-lan.jpg`
+
+1. A switch connects devices on a local area network and forwards frames to the correct device.
+2. Uses: MAC addresses to decide which port should receive the frame.
+3. Why useful: reduces unnecessary traffic compared with sending every frame everywhere.
+4. Exam wording: say "within a LAN" and "MAC address" when the scenario is local device-to-device traffic.
+5. LAN idea
+6. PC A -> switch -> PC B
+7. The switch is the traffic desk inside the local network. It does not decide the route across the wider internet.
+
+### Routers: forwarding between networks
+
+- **Explains:** `routing`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-023-routing.jpg`
+
+1. A router connects different networks and forwards packets towards their destination.
+2. Uses: IP addresses and routing information to choose a path.
+3. Common role: connects a LAN to the internet or to another network.
+4. Careful wording: a router does not simply "make WiFi". Some home boxes combine router and access point functions, but the jobs are distinct.
+5. Between networks
+6. LAN -> router -> internet / WAN
+7. Inside the LAN, MAC-address forwarding matters. Between networks, IP-address routing matters.
+
+### Wireless access points: joining wireless devices
+
+- **Explains:** `wireless`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-023-wireless.jpg`
+
+1. Wireless access point
+2. A wireless access point allows wireless devices to connect to a network using radio waves, often linking them to a wired LAN.
+3. Good exam phrase: provides wireless access to a network.
+4. Not enough: "it gives internet". Internet access may also require a router and wider network connection.
+5. Security link: access points can use authentication and encryption, but this lesson focuses on their network role.
+<!-- stage10-explanations:end -->

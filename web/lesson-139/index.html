@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -108,6 +108,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start robust -->
+        <section class="panel explanation-panel" id="explanation-robust" data-explains="robust" data-explanation-kind="mechanism" aria-labelledby="explanation-robust-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="robust">
+          <h2 class="explanation-sr-only" id="explanation-robust-title">A robust program handles expected misuse without collapsing</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-robust.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A robust program handles expected misuse without collapsing with a structured visual model." />
+            <figcaption class="explanation-sr-only">A robust program handles expected misuse without collapsing: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Robust design</li><li><strong>Lesson fact:</strong> Input checks</li><li><strong>Lesson fact:</strong> Reject or handle invalid values before they affect processing.</li><li><strong>Lesson fact:</strong> Clear modules</li><li><strong>Lesson fact:</strong> Give each procedure or function one focused responsibility.</li><li><strong>Lesson fact:</strong> Useful messages</li><li><strong>Lesson fact:</strong> Tell the user what is wrong and what valid input is expected.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end robust -->
+
         <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
           <div class="section-title">
             <p class="eyebrow">Validation</p>
@@ -134,6 +148,20 @@ UNTIL Valid = TRUE</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start validation -->
+        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="mechanism" aria-labelledby="explanation-validation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
+          <h2 class="explanation-sr-only" id="explanation-validation-title">Validation checks whether data is acceptable for the program</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation checks whether data is acceptable for the program with a structured visual model." />
+            <figcaption class="explanation-sr-only">Validation checks whether data is acceptable for the program: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Validation</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN</li><li><strong>Lesson fact:</strong> Valid &lt;- TRUE</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Enter a mark from 0 to 100&quot;</li><li><strong>Lesson fact:</strong> Valid &lt;- FALSE</li><li><strong>Lesson fact:</strong> UNTIL Valid = TRUE</li><li><strong>Lesson fact:</strong> Reasoning</li><li><strong>Lesson fact:</strong> The loop repeats until acceptable data is entered. The program does not calculate a grade from invalid data.</li><li><strong>Lesson fact:</strong> Robustness is not guessing what the user meant. It is refusing bad data with a calm face.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end validation -->
+
         <section class="panel" id="checks" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checks">
           <div class="section-title">
             <p class="eyebrow">Validation check types</p>
@@ -147,6 +175,20 @@ UNTIL Valid = TRUE</code></pre>
             <div class="table-row"><div>Presence check</div><div>required data exists</div><div>name not blank</div><div>empty input</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start checks -->
+        <section class="panel explanation-panel" id="explanation-checks" data-explains="checks" data-explanation-kind="mechanism" aria-labelledby="explanation-checks-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checks">
+          <h2 class="explanation-sr-only" id="explanation-checks-title">Pick the check that matches the rule</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-checks.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Pick the check that matches the rule with a structured visual model." />
+            <figcaption class="explanation-sr-only">Pick the check that matches the rule: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Validation check types</li><li><strong>Lesson fact:</strong> Range check</li><li><strong>Lesson fact:</strong> value inside limits</li><li><strong>Lesson fact:</strong> 0 to 100</li><li><strong>Lesson fact:</strong> Type check</li><li><strong>Lesson fact:</strong> correct data type</li><li><strong>Lesson fact:</strong> INTEGER mark</li><li><strong>Lesson fact:</strong> &quot;banana&quot;</li><li><strong>Lesson fact:</strong> Length check</li><li><strong>Lesson fact:</strong> correct number of characters</li><li><strong>Lesson fact:</strong> password 8 to 20</li><li><strong>Lesson fact:</strong> short or very long password</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end checks -->
 
         <section class="panel" id="modularity" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="modularity">
           <div class="section-title">
@@ -167,6 +209,20 @@ OUTPUT Grade</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start modularity -->
+        <section class="panel explanation-panel" id="explanation-modularity" data-explains="modularity" data-explanation-kind="mechanism" aria-labelledby="explanation-modularity-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="modularity">
+          <h2 class="explanation-sr-only" id="explanation-modularity-title">Modular design splits a solution into smaller named parts</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-modularity.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Modular design splits a solution into smaller named parts with a structured visual model." />
+            <figcaption class="explanation-sr-only">Modular design splits a solution into smaller named parts: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Modularity</li><li><strong>Lesson fact:</strong> Less robust structure</li><li><strong>Lesson fact:</strong> All input, validation, calculation and output in one long block. Harder to test, reuse and debug.</li><li><strong>Lesson fact:</strong> More robust structure</li><li><strong>Lesson fact:</strong> Mark &lt;- GetValidMark()</li><li><strong>Lesson fact:</strong> Grade &lt;- CalculateGrade(Mark)</li><li><strong>Lesson fact:</strong> OUTPUT Grade</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end modularity -->
+
         <section class="panel" id="parameters" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parameters">
           <div class="section-title">
             <p class="eyebrow">Parameters and return values</p>
@@ -179,6 +235,20 @@ OUTPUT Grade</code></pre>
             <div class="table-row"><div><code>DisplayResult(Grade)</code></div><div>format output</div><div>output to screen</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start parameters -->
+        <section class="panel explanation-panel" id="explanation-parameters" data-explains="parameters" data-explanation-kind="mechanism" aria-labelledby="explanation-parameters-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parameters">
+          <h2 class="explanation-sr-only" id="explanation-parameters-title">Pass data into a module and return only what is needed</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-parameters.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Pass data into a module and return only what is needed with a structured visual model." />
+            <figcaption class="explanation-sr-only">Pass data into a module and return only what is needed: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Parameters and return values</li><li><strong>Lesson fact:</strong> Responsibility</li><li><strong>Lesson fact:</strong> Returns / effect</li><li><strong>Lesson fact:</strong> GetValidMark()</li><li><strong>Lesson fact:</strong> input and validate mark</li><li><strong>Lesson fact:</strong> valid integer mark</li><li><strong>Lesson fact:</strong> CalculateGrade(Mark)</li><li><strong>Lesson fact:</strong> turn mark into grade</li><li><strong>Lesson fact:</strong> grade character/string</li><li><strong>Lesson fact:</strong> DisplayResult(Grade)</li><li><strong>Lesson fact:</strong> format output</li><li><strong>Lesson fact:</strong> output to screen</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end parameters -->
 
         <section class="panel" id="integration" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="integration">
           <div class="section-title">
@@ -203,6 +273,20 @@ ENDFUNCTION</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start integration -->
+        <section class="panel explanation-panel" id="explanation-integration" data-explains="integration" data-explanation-kind="mechanism" aria-labelledby="explanation-integration-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="integration">
+          <h2 class="explanation-sr-only" id="explanation-integration-title">Validation and modularity support each other</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-integration.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation and modularity support each other with a structured visual model." />
+            <figcaption class="explanation-sr-only">Validation and modularity support each other: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Combine ideas</li><li><strong>Lesson fact:</strong> Function example</li><li><strong>Lesson fact:</strong> FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN</li><li><strong>Lesson fact:</strong> RETURN TRUE</li><li><strong>Lesson fact:</strong> RETURN FALSE</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li><li><strong>Lesson fact:</strong> Why this is robust</li><li><strong>Lesson fact:</strong> The validation rule is written once and can be tested separately. Other code can call the function instead of repeating the condition.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end integration -->
+
         <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
@@ -225,6 +309,20 @@ ENDFUNCTION</code></pre>
           <div class="callout">Use Java to practise running code, but use Cambridge-style pseudocode when the exam asks for algorithm design.</div>
         </section>
 
+        <!-- stage10-explanation:start java -->
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="comparison" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Java methods can model modularity, but Cambridge pseudocode remains the exam format</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java methods can model modularity, but Cambridge pseudocode remains the exam format with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java methods can model modularity, but Cambridge pseudocode remains the exam format: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN</li><li><strong>Lesson fact:</strong> RETURN Mark &gt;= 0 AND Mark &lt;= 100</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> static boolean isValidMark(int mark) {</li><li><strong>Lesson fact:</strong> return mark &gt;= 0 &amp;&amp; mark &lt;= 100;</li><li><strong>Lesson fact:</strong> Use Java to practise running code, but use Cambridge-style pseudocode when the exam asks for algorithm design.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end java -->
+
 
         <section class="panel" id="validator" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validator">
           <div class="section-title">
@@ -240,6 +338,20 @@ ENDFUNCTION</code></pre>
           </div>
           <div class="trace-output" id="validateOutput" aria-live="polite"></div>
         </section>
+
+        <!-- stage10-explanation:start validator -->
+        <section class="panel explanation-panel" id="explanation-validator" data-explains="validator" data-explanation-kind="mechanism" aria-labelledby="explanation-validator-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validator">
+          <h2 class="explanation-sr-only" id="explanation-validator-title">Check whether a mark input is robustly acceptable</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-validator.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Check whether a mark input is robustly acceptable with a structured visual model." />
+            <figcaption class="explanation-sr-only">Check whether a mark input is robustly acceptable: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive validator</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end validator -->
 
         <section class="panel" id="module-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="module-tool">
           <div class="section-title">
@@ -259,6 +371,20 @@ ENDFUNCTION</code></pre>
           </div>
           <div id="moduleOutput" class="trace-output" aria-live="polite"></div>
         </section>
+
+        <!-- stage10-explanation:start module-tool -->
+        <section class="panel explanation-panel" id="explanation-module-tool" data-explains="module-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-module-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="module-tool">
+          <h2 class="explanation-sr-only" id="explanation-module-tool-title">Choose a module for each responsibility</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-139-module-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose a module for each responsibility with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose a module for each responsibility: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Module chooser</li><li><strong>Lesson fact:</strong> Responsibility</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end module-tool -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

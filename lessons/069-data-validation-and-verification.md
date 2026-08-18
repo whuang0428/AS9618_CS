@@ -105,3 +105,96 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** distinguishes validation reasonableness from verification accuracy of copying
 
 **Strict note:** Do not accept 'validation proves the account number is correct'.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Common validation checks
+
+- **Explains:** `checks`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-069-checks.jpg`
+
+1. What it tests
+2. Range check
+3. Value is within allowed limits.
+4. Exam mark must be 0 to 75.
+5. Length check
+6. Number of characters is correct or acceptable.
+7. Student ID must be 8 characters.
+8. Type check
+9. Data uses the expected data type.
+10. Quantity must be an integer.
+11. Format check
+12. Data follows a required pattern.
+
+### Validation and verification are partners, not synonyms
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-069-compare.jpg`
+
+1. Question answered
+2. Validation
+3. Does this data obey the rule?
+4. Reject mark 91 when maximum mark is 75.
+5. Verification
+6. Was this copied or entered correctly?
+7. Compare typed name with the paper form.
+8. Both together
+9. Does it follow rules, and does it match the source?
+10. Check date format, then compare with original application form.
+
+### Validation and verification protect data quality in different ways
+
+- **Explains:** `core`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-069-core.jpg`
+
+1. Validation Checks input data against rules before it is accepted.
+2. Verification Checks that data has been copied, entered or transferred accurately.
+3. Input error A mistake made while entering or transferring data.
+4. Data integrity Data remains accurate, consistent and not accidentally corrupted.
+
+### Neither method guarantees truth
+
+- **Explains:** `limits`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-069-limits.jpg`
+
+1. Validation limit A valid value can still be wrong, such as a valid but incorrect postcode.
+2. Verification limit Data can be copied accurately from a source that was already wrong.
+3. Human factor Visual checks can be skipped or performed carelessly.
+4. Security link Better input quality supports integrity but does not replace access control or backup.
+
+### Validation checks whether data obeys a rule
+
+- **Explains:** `validation`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-069-validation.jpg`
+
+1. Before acceptance Invalid input can be rejected or a warning can be shown.
+2. Rule-based The rule may test type, range, length, format, presence or check digit.
+3. Benefit Reduces obvious errors and prevents unsuitable data entering the system.
+4. Limit Valid data can still be factually wrong, such as an incorrect but possible date.
+
+### Verification checks accuracy against the source
+
+- **Explains:** `verification`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-069-verification.jpg`
+
+1. Double entry Data is entered twice and the two entries are compared.
+2. Visual check A person compares entered data with the original document or screen.
+3. Proofreading Entered text is checked against the source for typing errors.
+4. Transfer check Data copied or transmitted is compared with the original or expected value.
+
+### Which verification method fits?
+
+- **Explains:** `verify-tool`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-069-verify-tool.jpg`
+
+1. Interactive verification selector
+2. Scenario
+<!-- stage10-explanations:end -->

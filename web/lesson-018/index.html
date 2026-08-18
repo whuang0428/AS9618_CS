@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../student-visuals.css?v=1" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -115,6 +115,20 @@
           <div class="callout">Chinese support: packet = 数据包；payload = 有效载荷/实际数据；routing = 路由；reassemble = 重新组装。</div>
         </section>
 
+        <!-- stage10-explanation:start switching -->
+        <section class="panel explanation-panel" id="explanation-switching" data-explains="switching" data-explanation-kind="mechanism" aria-labelledby="explanation-switching-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="switching">
+          <h2 class="explanation-sr-only" id="explanation-switching-title">Packet switching</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-switching.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Packet switching with a structured visual model." />
+            <figcaption class="explanation-sr-only">Packet switching: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A message or file is divided into smaller packets before transmission.</li><li><strong>Lesson fact:</strong> Packets from many users can share network links instead of one message reserving a whole route.</li><li><strong>Lesson fact:</strong> Each packet can be routed independently through available paths.</li><li><strong>Lesson fact:</strong> Reassemble</li><li><strong>Lesson fact:</strong> The destination uses sequence numbers to put packets back in the correct order.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end switching -->
+
         <section class="panel" id="structure" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="structure">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -140,6 +154,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start structure -->
+        <section class="panel explanation-panel" id="explanation-structure" data-explains="structure" data-explanation-kind="mechanism" aria-labelledby="explanation-structure-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="structure">
+          <h2 class="explanation-sr-only" id="explanation-structure-title">Packet structure</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-structure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Packet structure with a structured visual model." />
+            <figcaption class="explanation-sr-only">Packet structure: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Source address, destination address, sequence number, protocol/control data.</li><li><strong>Lesson fact:</strong> The actual data being sent, such as part of a file or message.</li><li><strong>Lesson fact:</strong> Error-checking information such as checksum, depending on the protocol.</li><li><strong>Lesson fact:</strong> Common trap</li><li><strong>Lesson fact:</strong> Do not describe the header as “extra information” only. Name what is inside it and what each item does.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end structure -->
+
         <section class="panel" id="routing" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="routing">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -152,6 +180,20 @@
             <article><strong>Error handling</strong><span>Checksum/error checks can detect corruption; missing/corrupt packets may be requested again.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start routing -->
+        <section class="panel explanation-panel" id="explanation-routing" data-explains="routing" data-explanation-kind="mechanism" aria-labelledby="explanation-routing-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="routing">
+          <h2 class="explanation-sr-only" id="explanation-routing-title">Routing and arrival</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-routing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Routing and arrival with a structured visual model." />
+            <figcaption class="explanation-sr-only">Routing and arrival: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Router decision Routers forward packets based on destination address and routing information.</li><li><strong>Lesson fact:</strong> Different paths Packets from the same message may take different routes through the network.</li><li><strong>Lesson fact:</strong> Out of order Packets may arrive in a different order because routes have different delays.</li><li><strong>Lesson fact:</strong> Error handling Checksum/error checks can detect corruption; missing/corrupt packets may be requested again.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end routing -->
 
         <section class="panel visual-explainer" id="packet-journey" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="packet-journey">
           <div class="section-title">
@@ -210,6 +252,20 @@
             <p>Packet 2 can take a different route with a longer delay. The receiver uses sequence numbers to place it back between packets 1 and 3.</p>
           </details>
         </section>
+
+        <!-- stage10-explanation:start packet-journey -->
+        <section class="panel explanation-panel" id="explanation-packet-journey" data-explains="packet-journey" data-explanation-kind="mechanism" aria-labelledby="explanation-packet-journey-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="packet-journey">
+          <h2 class="explanation-sr-only" id="explanation-packet-journey-title">One message, several routes, one reassembled result</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-018-packet-journey.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One message, several routes, one reassembled result with a structured visual model." />
+            <figcaption class="explanation-sr-only">One message, several routes, one reassembled result: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> Follow the numbered packets. Routers make next-hop decisions, so packets from one message do not need to travel together.</li><li><strong>Lesson fact:</strong> 1. Split and label Each packet carries payload plus control data such as addresses and a sequence number.</li><li><strong>Lesson fact:</strong> 2. Choose next hop Each router uses the destination address and routing information.</li><li><strong>Lesson fact:</strong> 3. Travel independently Different routes can produce different arrival times.</li><li><strong>Lesson fact:</strong> 4. Reassemble The receiver uses sequence numbers to restore the original order.</li><li><strong>Lesson fact:</strong> Check the diagram: why can packet 2 arrive after packet 3?</li><li><strong>Lesson fact:</strong> Packet 2 can take a different route with a longer delay. The receiver uses sequence numbers to place it back between packets 1 and 3.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end packet-journey -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

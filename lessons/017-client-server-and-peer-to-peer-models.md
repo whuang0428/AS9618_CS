@@ -105,3 +105,71 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** develops one point in the call-centre context
 
 **Strict note:** Do not award a mark for 'cheaper' unless the lower client specification or central administration explains why.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Client-server vs peer-to-peer
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-017-compare.jpg`
+
+1. Client-server
+2. Peer-to-peer
+3. Centralised management, security, backups and permissions.
+4. Decentralised control; each peer may manage its own resources.
+5. May need dedicated server hardware, software and administration.
+6. Can be cheaper for small networks because no dedicated server is required.
+7. Reliability
+8. Server failure may affect many clients unless redundancy is used.
+9. No single central server, but availability depends on peers being online.
+10. Typical use
+11. School login, file server, web server, email server.
+12. Small file sharing, local collaboration, distributed sharing.
+
+### One model has equal peers; the other has dedicated service roles
+
+- **Explains:** `model-visual`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-017-model-visual.jpg`
+
+1. Visual explanation
+2. Follow the arrows and identify which devices can provide a resource.
+3. Peer-to-peer: every device can request and provide
+4. The lines show possible direct sharing between peers. They do not define a physical topology: peer-to-peer describes device roles.
+5. No dedicated central server is required.
+6. Each peer can request a file and provide one.
+7. A peer going offline can make its shared resource unavailable.
+8. Client-server: clients request a managed service
+9. Requests go to the server and responses return to clients. The server role may be performed by hardware or software.
+10. Accounts, permissions and backups can be managed centrally.
+11. Dedicated server resources and administration add cost.
+12. Server failure can affect many clients unless redundancy is used.
+
+### Core roles
+
+- **Explains:** `roles`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-017-roles.jpg`
+
+1. A client requests a service or resource, such as a web page, file, login or print job.
+2. A server provides a service or resource to clients, often with central control over data and access.
+3. A peer can request and provide resources directly, so devices share responsibility instead of relying on one central server.
+4. A service is the function provided, such as file storage, authentication, email, printing or web hosting.
+
+### Scenario choices
+
+- **Explains:** `usecases`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-017-usecases.jpg`
+
+1. School accounts
+2. Client-server fits because logins, permissions and backups can be centrally managed.
+3. Small home sharing
+4. Peer-to-peer may fit when a few devices share files directly without a dedicated server.
+5. Public web app
+6. Client-server fits because many clients request data from managed servers.
+7. Distributed file sharing
+8. Peer-to-peer can spread sharing across peers, reducing reliance on one central source.
+<!-- stage10-explanations:end -->

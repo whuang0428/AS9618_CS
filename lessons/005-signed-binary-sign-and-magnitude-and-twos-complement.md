@@ -71,3 +71,55 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes. For this lesson, make students contrast that mistake with the exact idea of **signed binary: sign-and-magnitude and two's complement**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### 8-bit signed ranges and zero
+
+- **Explains:** `range`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-005-range.jpg`
+
+1. Sign-and-magnitude
+2. -127 to +127
+3. Has two zeros: 00000000₂ and 10000000₂.
+4. One’s complement
+5. Also has two zeros: 00000000₂ and 11111111₂.
+6. Two’s complement
+7. -128 to +127
+8. Has one zero and one extra negative value.
+
+### Three ways to represent negative binary values
+
+- **Explains:** `systems`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-005-systems.jpg`
+
+1. Sign-and-magnitude
+2. The leftmost bit is the sign: 0 positive, 1 negative. The remaining bits store the magnitude.
+3. Example: 10010111₂ = -23
+4. One’s complement
+5. Start with the positive binary value and invert every bit to make the negative value.
+6. 00010111₂ → 11101000₂ = -23
+7. Two’s complement
+8. Invert every bit, then add 1. This gives one zero and a range from -128 to +127.
+9. 11101000₂ + 1 = 11101001₂ = -23
+
+### Two’s complement method
+
+- **Explains:** `twos`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-005-twos.jpg`
+
+1. Positive denary to negative two’s complement
+2. Write the positive magnitude in 8-bit binary.
+3. Invert every bit.
+4. Label the result as two’s complement.
+5. Two’s complement binary to denary
+6. If the leftmost bit is 0, convert as normal positive binary.
+7. If the leftmost bit is 1, subtract 256 from the unsigned value.
+8. Alternatively: invert, add 1, then add a negative sign.
+9. State the representation in the answer.
+10. For 8-bit two’s complement, a quick decode is: unsigned value - 256 when the MSB is 1.
+<!-- stage10-explanations:end -->

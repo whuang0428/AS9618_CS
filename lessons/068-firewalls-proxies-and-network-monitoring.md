@@ -71,3 +71,89 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups. For this lesson, make students contrast that mistake with the exact idea of **firewalls, proxies, and network monitoring**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Network controls sit between traffic and risk
+
+- **Explains:** `core`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-068-core.jpg`
+
+1. Traffic Data packets or requests moving across a network.
+2. Rule A condition that allows, blocks or logs traffic based on properties.
+3. Log A record of events, traffic, blocked attempts or user activity.
+4. Alert A warning generated when traffic or behaviour matches a suspicious pattern.
+
+### Which control is most relevant?
+
+- **Explains:** `event-tool`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-068-event-tool.jpg`
+
+1. Interactive event classifier
+
+### Firewalls filter traffic using rules
+
+- **Explains:** `firewall`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-068-firewall.jpg`
+
+1. Purpose Control traffic entering or leaving a network/device.
+2. Checks Can inspect source/destination IP address, port number, protocol or connection state.
+3. Decision Allow, deny, reject or log traffic depending on rule match.
+4. Placement Can protect a network boundary or run on an individual host.
+
+### Controls reduce risk but have limits
+
+- **Explains:** `limits`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-068-limits.jpg`
+
+1. Firewall limit Allowed traffic can still carry attacks, and rules may be misconfigured.
+2. Proxy limit Encrypted traffic and unmanaged devices can reduce visibility if not configured properly.
+3. Monitoring limit Alerts need review and response; too many false positives can be ignored.
+4. Layering Use with authentication, permissions, patching, encryption and user training.
+
+### Network monitoring watches for patterns and evidence
+
+- **Explains:** `monitoring`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-068-monitoring.jpg`
+
+1. Traffic volume Unusual spikes may suggest DoS, malware activity or misconfiguration.
+2. Connection attempts Repeated failed access attempts may suggest probing or brute force activity.
+3. Alerts Monitoring systems can notify staff when thresholds or signatures are triggered.
+4. Investigation Logs help reconstruct what happened, when, and from where.
+
+### A proxy acts as an intermediary
+
+- **Explains:** `proxy`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-068-proxy.jpg`
+
+1. Forward requests Client sends request to proxy; proxy requests the resource from the destination.
+2. Filtering Can block sites, content types, categories or requests that break policy.
+3. Caching Can store copies of frequently requested resources to reduce bandwidth and latency.
+4. Logging Can record user requests for audit, investigation or policy enforcement.
+
+### Firewall rules should be specific and ordered
+
+- **Explains:** `rules`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-068-rules.jpg`
+
+1. Allow HTTPS from internal users to internet
+2. Permit web traffic on port 443.
+3. Needed for secure website access.
+4. Block inbound unknown traffic
+5. Deny unsolicited external connections.
+6. Reduces unauthorised access attempts.
+7. Allow admin only from management subnet
+8. Restrict sensitive admin ports by source.
+9. Limits attack surface and misuse.
+10. Log repeated denied connections
+11. Record unusual or repeated blocked attempts.
+12. Supports monitoring and investigation.
+<!-- stage10-explanations:end -->

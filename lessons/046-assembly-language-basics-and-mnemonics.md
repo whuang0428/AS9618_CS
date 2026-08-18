@@ -105,3 +105,71 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** pass 2 translates the instruction/substitutes the address into machine code
 
 **Strict note:** Do not accept that pass 1 executes the program; both passes translate source.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Assembler: text to machine code
+
+- **Explains:** `assembler`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-046-assembler.jpg`
+
+1. 1. Read source Assembly source contains mnemonics, labels, operands, comments and directives.
+2. 2. Resolve labels Labels are replaced with actual addresses or offsets.
+3. 3. Translate mnemonics Mnemonics are converted to binary opcodes and operands are encoded.
+4. 4. Output object/machine code The generated machine code can be loaded and executed by the processor.
+5. Common trap
+6. An assembler translates assembly to machine code. A compiler usually translates high-level language to lower-level code.
+
+### What assembly language is
+
+- **Explains:** `assembly`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-046-assembly.jpg`
+
+1. Low-level language
+2. Assembly language is close to machine code and closely linked to a processor's instruction set.
+3. Uses mnemonics
+4. Human-readable abbreviations represent machine-code operations.
+5. Processor-specific
+6. Assembly syntax and available instructions depend on the target architecture.
+7. Needs translation
+8. An assembler converts assembly language into machine code.
+
+### Mnemonics represent operations
+
+- **Explains:** `mnemonics`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-046-mnemonics.jpg`
+
+1. Mnemonic
+2. Likely operation
+3. Exam-safe wording
+4. Load a value into a register/ACC.
+5. LOAD count
+6. LOAD is a mnemonic for a machine-code load instruction.
+7. Store a register/ACC value in memory.
+8. STORE total
+9. STORE represents an operation that writes a value to memory.
+10. Add a value to a register/ACC.
+11. ADD value
+12. ADD is easier to read than a binary opcode for addition.
+
+### Structure of a simple assembly line
+
+- **Explains:** `structure`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-046-structure.jpg`
+
+1. LOOP: ADD value ; add next item
+2. LOOP: label
+3. ADD mnemonic
+4. value operand
+5. ; add next item comment
+6. A symbolic name for an address or line, often used by jump/branch instructions.
+7. The value, address, register or label used by the instruction.
+8. Text for human readers. Comments are ignored by the assembler.
+9. Directive
+10. An instruction to the assembler, not a CPU instruction. It may reserve storage or define constants.
+<!-- stage10-explanations:end -->

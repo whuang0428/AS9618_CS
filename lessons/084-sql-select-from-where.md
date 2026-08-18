@@ -71,3 +71,47 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often select every field with `*`. Correction: exam questions usually specify exactly which fields are required. For this lesson, make students contrast that mistake with the exact idea of **sql select, from, where**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### The three foundation clauses
+
+- **Explains:** `clauses`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-084-clauses.jpg`
+
+1. SELECT Names the fields to output, such as Title, DueDate .
+2. FROM Names the table to use, such as Loan .
+3. WHERE Filters records using a condition, such as Returned = FALSE .
+4. Thinking order:
+5. What fields do I need? Which table contains them? Which records should be included?
+
+### WHERE conditions and comparison operators
+
+- **Explains:** `conditions`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-084-conditions.jpg`
+
+1. A WHERE clause tests each record and returns only records where the condition is true.
+2. Operator
+3. equal to
+4. Category = 'Fiction'
+5. not equal to
+6. Status <> 'Returned'
+7. greater than, less than
+8. Price < 10.00
+9. greater/less than or equal to
+10. ExamMark >= 80
+
+### Text values need quotes; numbers usually do not
+
+- **Explains:** `strings`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-084-strings.jpg`
+
+1. Text/string Category = 'Fiction' . The text value is quoted.
+2. Number Price < 10.00 . Numeric values are not quoted in basic exam SQL.
+3. Boolean Returned = FALSE . Use the Boolean value expected by the question/table.
+4. Field names Usually not quoted: SELECT Title , not SELECT 'Title' .
+<!-- stage10-explanations:end -->

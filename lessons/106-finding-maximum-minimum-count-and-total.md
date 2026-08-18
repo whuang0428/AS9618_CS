@@ -92,3 +92,112 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **finding maximum, minimum, count, and total**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### When the number of values is known, use a count-controlled loop
+
+- **Explains:** `fixed`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-106-fixed.jpg`
+
+1. Fixed-count input
+2. Example: total and average of 4 scores
+3. Total <- 0
+4. FOR Index <- 1 TO 4
+5. INPUT Score
+6. Total <- Total + Score
+7. NEXT Index
+8. Average <- Total / 4
+9. OUTPUT Average
+10. Trace focus
+11. For scores 72, 55, 91, 64, the total becomes 72, 127, 218, 282. The average is 70.5.
+12. Do not output the average inside the loop unless the question asks for a running average.
+
+### The starting value decides whether the algorithm is honest
+
+- **Explains:** `initialise`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-106-initialise.jpg`
+
+1. Initialisation
+2. Total and count
+3. Total <- 0
+4. Count <- 0
+5. FOR Index <- 1 TO 4
+6. INPUT Score
+7. Total <- Total + Score
+8. Count <- Count + 1
+9. NEXT Index
+10. Zero is safe because nothing has been added or counted yet.
+11. Maximum and minimum
+12. INPUT Value
+
+### Four running-value patterns
+
+- **Explains:** `patterns`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-106-patterns.jpg`
+
+1. Knowledge explanation
+2. Start with a concrete list, then name the algorithm pattern.
+3. Variable
+4. Update rule
+5. Total <- Total + Value
+6. running sum of values
+7. Count <- Count + 1 when a value is processed or meets a condition
+8. number of items
+9. Maximum
+10. replace when Value > Maximum
+11. largest value seen so far
+12. Minimum
+
+### Use Cambridge assignment and loop keywords in exam answers
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-106-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style pseudocode
+3. Total <- 0
+4. PassCount <- 0
+5. FOR Index <- 1 TO 5
+6. INPUT Mark
+7. Total <- Total + Mark
+8. IF Mark >= 50 THEN
+9. PassCount <- PassCount + 1
+10. NEXT Index
+11. OUTPUT Total
+12. OUTPUT PassCount
+
+### When input stops on a special value, do not process the sentinel
+
+- **Explains:** `sentinel`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-106-sentinel.jpg`
+
+1. Sentinel input
+2. Example: enter numbers until -1
+3. Total <- 0
+4. Count <- 0
+5. INPUT Number
+6. WHILE Number <> -1
+7. Total <- Total + Number
+8. Count <- Count + 1
+9. ENDWHILE
+10. OUTPUT Total
+11. OUTPUT Count
+12. Exam wording
+
+### Watch running variables change
+
+- **Explains:** `trace-tool`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-106-trace-tool.jpg`
+
+1. Interactive trace simulator
+2. Data set
+3. Choose a data set and goal, then trace the algorithm.
+<!-- stage10-explanations:end -->

@@ -71,3 +71,57 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance. For this lesson, make students contrast that mistake with the exact idea of **packet switching, routing, and packet structure**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### One message, several routes, one reassembled result
+
+- **Explains:** `packet-journey`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-018-packet-journey.jpg`
+
+1. Visual explanation
+2. Follow the numbered packets. Routers make next-hop decisions, so packets from one message do not need to travel together.
+3. 1. Split and label Each packet carries payload plus control data such as addresses and a sequence number.
+4. 2. Choose next hop Each router uses the destination address and routing information.
+5. 3. Travel independently Different routes can produce different arrival times.
+6. 4. Reassemble The receiver uses sequence numbers to restore the original order.
+7. Check the diagram: why can packet 2 arrive after packet 3?
+8. Packet 2 can take a different route with a longer delay. The receiver uses sequence numbers to place it back between packets 1 and 3.
+
+### Routing and arrival
+
+- **Explains:** `routing`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-018-routing.jpg`
+
+1. Router decision Routers forward packets based on destination address and routing information.
+2. Different paths Packets from the same message may take different routes through the network.
+3. Out of order Packets may arrive in a different order because routes have different delays.
+4. Error handling Checksum/error checks can detect corruption; missing/corrupt packets may be requested again.
+
+### Packet structure
+
+- **Explains:** `structure`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-018-structure.jpg`
+
+1. Source address, destination address, sequence number, protocol/control data.
+2. The actual data being sent, such as part of a file or message.
+3. Error-checking information such as checksum, depending on the protocol.
+4. Common trap
+5. Do not describe the header as “extra information” only. Name what is inside it and what each item does.
+
+### Packet switching
+
+- **Explains:** `switching`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-018-switching.jpg`
+
+1. A message or file is divided into smaller packets before transmission.
+2. Packets from many users can share network links instead of one message reserving a whole route.
+3. Each packet can be routed independently through available paths.
+4. Reassemble
+5. The destination uses sequence numbers to put packets back in the correct order.
+<!-- stage10-explanations:end -->

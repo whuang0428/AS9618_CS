@@ -92,3 +92,127 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. For this lesson, make students contrast that mistake with the exact idea of **input and output formatting**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Build a readable result line
+
+- **Explains:** `formatter`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-formatter.jpg`
+
+1. Interactive output formatter
+2. Enter values and choose a format. The goal is not decoration; it is clarity.
+3. Choose values and format the output.
+
+### Formatting means controlling how values are shown
+
+- **Explains:** `formatting`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-formatting.jpg`
+
+1. Formatting output
+2. Unformatted
+3. OUTPUT Name
+4. OUTPUT Mark
+5. OUTPUT Grade
+6. Formatted
+7. OUTPUT "Name: " & Name
+8. OUTPUT "Mark: " & Mark
+9. OUTPUT "Grade: " & Grade
+10. Name: Ada
+11. Mark: 72
+12. Grade: B
+
+### INPUT reads data and stores it in a variable
+
+- **Explains:** `input`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-input.jpg`
+
+1. Cambridge-style pseudocode
+2. OUTPUT "Enter mark"
+3. INPUT Mark
+4. Prompt screen shows Enter mark
+5. Input user enters a value such as 72
+6. Storage Mark now stores 72
+
+### Java I/O syntax is not Cambridge pseudocode
+
+- **Explains:** `java`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-java.jpg`
+
+1. Java support only
+2. Cambridge-style pseudocode
+3. OUTPUT "Enter mark"
+4. INPUT Mark
+5. OUTPUT "Mark: " & Mark
+6. Java support example only
+7. Scanner input = new Scanner(System.in);
+8. System.out.print("Enter mark: ");
+9. int mark = input.nextInt();
+10. System.out.println("Mark: " + mark);
+11. Do not copy Scanner , semicolons or Java method calls into Paper 2 pseudocode unless Java is explicitly requested.
+
+### OUTPUT displays text, values or expressions
+
+- **Explains:** `output`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-output.jpg`
+
+1. Display text and values
+2. Name <- "Ada"
+3. Mark <- 72
+4. OUTPUT "Student: " & Name
+5. OUTPUT "Mark: " & Mark
+6. Displayed output
+7. Student: Ada
+8. Mark: 72
+9. Labels make the output meaningful. A lonely 72 on a screen is not a user interface; it is a small mystery.
+
+### A good prompt tells the user what to enter and the expected format
+
+- **Explains:** `prompts`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-prompts.jpg`
+
+1. OUTPUT "Input"
+2. does not say what value is needed
+3. OUTPUT "Enter mark"
+4. states the required data item
+5. OUTPUT "Enter mark 0 to 100"
+6. states expected range and reduces invalid input
+
+### Formatted output can make repeated records readable
+
+- **Explains:** `tables`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-tables.jpg`
+
+1. Table-like output
+2. Pseudocode idea
+3. OUTPUT "Name Mark"
+4. OUTPUT "Ada 72"
+5. OUTPUT "Lin 85"
+6. Displayed output
+7. Name Mark
+8. Headings, spacing and row order make the values interpretable.
+
+### Input data must be used with the correct data type
+
+- **Explains:** `types`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-135-types.jpg`
+
+1. Input type handling
+2. Numeric calculation
+3. OUTPUT "Enter price"
+4. INPUT Price
+5. Total <- Price * 1.20
+6. OUTPUT "Total: " & Total
+7. Reasoning
+8. Price must be treated as numeric for multiplication. If a language reads all input as text, conversion may be needed.
+9. Cambridge pseudocode usually focuses on the algorithm. If the question demands conversion, show it clearly.
+<!-- stage10-explanations:end -->

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -122,6 +122,20 @@
           <div class="worked-line">`100 × 80 × 8 = 64 000 bits = 8000 bytes`</div>
         </section>
 
+        <!-- stage10-explanation:start chain -->
+        <section class="panel explanation-panel" id="explanation-chain" data-explains="chain" data-explanation-kind="mechanism" aria-labelledby="explanation-chain-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="chain">
+          <h2 class="explanation-sr-only" id="explanation-chain-title">The calculation chain</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-009-chain.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The calculation chain with a structured visual model." />
+            <figcaption class="explanation-sr-only">The calculation chain: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 1. Pixels</li><li><strong>Lesson fact:</strong> width × height</li><li><strong>Lesson fact:</strong> pixels × colour depth</li><li><strong>Lesson fact:</strong> 3. Bytes</li><li><strong>Lesson fact:</strong> bits ÷ 8</li><li><strong>Lesson fact:</strong> 4. Metadata</li><li><strong>Lesson fact:</strong> add only if the question includes it</li><li><strong>Lesson fact:</strong> 100 × 80 × 8 = 64 000 bits = 8000 bytes</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end chain -->
+
         <section class="panel" id="metadata" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="metadata">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -144,6 +158,20 @@
           <div class="callout warning">Exam wording matters: “ignore metadata” means pixel data only.</div>
         </section>
 
+        <!-- stage10-explanation:start metadata -->
+        <section class="panel explanation-panel" id="explanation-metadata" data-explains="metadata" data-explanation-kind="mechanism" aria-labelledby="explanation-metadata-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="metadata">
+          <h2 class="explanation-sr-only" id="explanation-metadata-title">Metadata is data about the image, not the pixels themselves</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-009-metadata.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Metadata is data about the image, not the pixels themselves with a structured visual model." />
+            <figcaption class="explanation-sr-only">Metadata is data about the image, not the pixels themselves: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Examples</li><li><strong>Lesson fact:</strong> Width, height, colour depth, file type, date created, camera model, location data or thumbnail data.</li><li><strong>Lesson fact:</strong> Metadata helps software interpret, organise, search or display the image correctly.</li><li><strong>Lesson fact:</strong> Calculation rule</li><li><strong>Lesson fact:</strong> Add metadata size only when the question gives it and asks for total file size.</li><li><strong>Lesson fact:</strong> Exam wording matters: “ignore metadata” means pixel data only.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end metadata -->
+
         <section class="panel" id="units" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="units">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -165,6 +193,20 @@
           </div>
           <div class="callout">Chinese support: metadata = 元数据；header = 文件头；pixel data = 像素数据。</div>
         </section>
+
+        <!-- stage10-explanation:start units -->
+        <section class="panel explanation-panel" id="explanation-units" data-explains="units" data-explanation-kind="mechanism" aria-labelledby="explanation-units-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="units">
+          <h2 class="explanation-sr-only" id="explanation-units-title">Units: do not trip at the finish line</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-009-units.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Units: do not trip at the finish line with a structured visual model." />
+            <figcaption class="explanation-sr-only">Units: do not trip at the finish line: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Bits to bytes</li><li><strong>Lesson fact:</strong> 8 bits = 1 byte, so divide bits by 8.</li><li><strong>Lesson fact:</strong> Bytes to KiB</li><li><strong>Lesson fact:</strong> 1 KiB = 1024 bytes, so divide bytes by 1024 when binary units are requested.</li><li><strong>Lesson fact:</strong> Rounding</li><li><strong>Lesson fact:</strong> Only round if the question requests it. Otherwise keep an exact value or enough working.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end units -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

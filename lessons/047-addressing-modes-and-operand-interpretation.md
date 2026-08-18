@@ -105,3 +105,73 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** PC changes to the branch target only when that condition is true
 
 **Strict note:** Do not accept that indirect addressing simply loads the operand as a literal value.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Indexed addressing and arrays
+
+- **Explains:** `arrays`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-047-arrays.jpg`
+
+1. Base address
+2. The start address of a block of related values, such as an array.
+3. Index register
+4. A register holding an offset from the base address.
+5. Effective address
+6. Calculated as base address + index/offset.
+7. Why useful
+8. Changing the index can access different array elements without changing the instruction's base address.
+9. Common trap
+10. Indexed addressing does not mean "convert the operand into an index number". It calculates an effective address using a base and an offset.
+
+### Addressing mode means operand interpretation
+
+- **Explains:** `concept`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-047-concept.jpg`
+
+1. The part of an instruction that supplies data, an address, a register or another reference.
+2. Addressing mode
+3. The rule used to interpret the operand and locate the data needed by the instruction.
+4. Effective address
+5. The actual memory address used after applying the addressing mode.
+6. Fetched value
+7. The final data value obtained or used by the instruction after interpretation.
+
+### Effective address: where the CPU actually reads
+
+- **Explains:** `effective`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-047-effective.jpg`
+
+1. Stored value
+2. Can be a data value or pointer, depending on mode.
+3. Used by indirect example.
+4. Start of an array-like block.
+5. Used when base 100 and IX = 3.
+6. LOAD #20 Use value 20 directly. No memory lookup for the operand value.
+7. LOAD 20 Read memory[20], so the value loaded is 70.
+8. LOAD (20) Read memory[20] to get address 70, then read memory[70] to get 999.
+9. LOAD 100, IX=3 Effective address = 100 + 3 = 103, so value loaded is memory[103] = 44.
+
+### Four common addressing modes
+
+- **Explains:** `modes`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-047-modes.jpg`
+
+1. Operand means
+2. Exam-safe wording
+3. Immediate
+4. The actual value to use.
+5. LOAD #20
+6. The operand is the value 20 itself.
+7. The memory address of the value.
+8. The CPU loads the value stored at memory address 20.
+9. Indirect
+10. The address of a memory location that stores another address.
+11. LOAD (20)
+12. The CPU looks at address 20 to find the address of the actual value.
+<!-- stage10-explanations:end -->

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -139,6 +139,20 @@ CALL DisplayMessage(Text)</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start terms -->
+        <section class="panel explanation-panel" id="explanation-terms" data-explains="terms" data-explanation-kind="mechanism" aria-labelledby="explanation-terms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="terms">
+          <h2 class="explanation-sr-only" id="explanation-terms-title">The header names the parameter. The call supplies the argument.</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-terms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The header names the parameter. The call supplies the argument. with a structured visual model." />
+            <figcaption class="explanation-sr-only">The header names the parameter. The call supplies the argument.: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Parameter and argument</li><li><strong>Lesson fact:</strong> Parameter in the procedure header</li><li><strong>Lesson fact:</strong> PROCEDURE DisplayMessage(Message : STRING)</li><li><strong>Lesson fact:</strong> OUTPUT Message</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Message is the parameter. It is a named input expected by the procedure.</li><li><strong>Lesson fact:</strong> Argument in the call</li><li><strong>Lesson fact:</strong> CALL DisplayMessage(&quot;Ready&quot;)</li><li><strong>Lesson fact:</strong> Text &lt;- &quot;Saved&quot;</li><li><strong>Lesson fact:</strong> CALL DisplayMessage(Text)</li><li><strong>Lesson fact:</strong> &quot;Ready&quot; and Text are arguments. They are the actual values supplied.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end terms -->
+
         <section class="panel" id="value" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="value">
           <div class="section-title">
             <p class="eyebrow">Passing by value</p>
@@ -166,6 +180,20 @@ OUTPUT X</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start value -->
+        <section class="panel explanation-panel" id="explanation-value" data-explains="value" data-explanation-kind="mechanism" aria-labelledby="explanation-value-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="value">
+          <h2 class="explanation-sr-only" id="explanation-value-title">By value means the subroutine works with a copy</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-value.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining By value means the subroutine works with a copy with a structured visual model." />
+            <figcaption class="explanation-sr-only">By value means the subroutine works with a copy: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Passing by value</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> PROCEDURE AddOne(Number : INTEGER)</li><li><strong>Lesson fact:</strong> Number &lt;- Number + 1</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> CALL AddOne(X)</li><li><strong>Lesson fact:</strong> OUTPUT X</li><li><strong>Lesson fact:</strong> Trace reasoning</li><li><strong>Lesson fact:</strong> Before call X = 5</li><li><strong>Lesson fact:</strong> Inside procedure local Number becomes 6</li><li><strong>Lesson fact:</strong> After call caller's X is still 5</li><li><strong>Lesson fact:</strong> No BYREF means do not update the original caller variable.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end value -->
 
         <section class="panel" id="reference" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="reference">
           <div class="section-title">
@@ -195,6 +223,20 @@ OUTPUT X</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start reference -->
+        <section class="panel explanation-panel" id="explanation-reference" data-explains="reference" data-explanation-kind="mechanism" aria-labelledby="explanation-reference-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="reference">
+          <h2 class="explanation-sr-only" id="explanation-reference-title">BYREF links the parameter back to the caller's variable</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-reference.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining BYREF links the parameter back to the caller's variable with a structured visual model." />
+            <figcaption class="explanation-sr-only">BYREF links the parameter back to the caller's variable: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Passing by reference</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> PROCEDURE AddOne(BYREF Number : INTEGER)</li><li><strong>Lesson fact:</strong> Number &lt;- Number + 1</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> CALL AddOne(X)</li><li><strong>Lesson fact:</strong> OUTPUT X</li><li><strong>Lesson fact:</strong> Trace reasoning</li><li><strong>Lesson fact:</strong> Before call X = 5</li><li><strong>Lesson fact:</strong> Inside procedure Number is linked to X</li><li><strong>Lesson fact:</strong> After call caller's X becomes 6</li><li><strong>Lesson fact:</strong> BYREF is useful when a procedure must update the caller's variable directly.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end reference -->
+
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Side-by-side comparison</p>
@@ -208,6 +250,20 @@ OUTPUT X</code></pre>
             <div class="table-row"><div>Typical exam wording</div><div>value is passed to a parameter</div><div>procedure updates the value of the argument</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Same procedure body, different final result</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same procedure body, different final result with a structured visual model." />
+            <figcaption class="explanation-sr-only">Same procedure body, different final result: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Side-by-side comparison</li><li><strong>Lesson fact:</strong> By value</li><li><strong>Lesson fact:</strong> By reference</li><li><strong>Lesson fact:</strong> Header clue</li><li><strong>Lesson fact:</strong> Number : INTEGER</li><li><strong>Lesson fact:</strong> BYREF Number : INTEGER</li><li><strong>Lesson fact:</strong> What is passed</li><li><strong>Lesson fact:</strong> a copy of the value</li><li><strong>Lesson fact:</strong> a reference to the caller's variable</li><li><strong>Lesson fact:</strong> Change inside subroutine</li><li><strong>Lesson fact:</strong> affects local parameter only</li><li><strong>Lesson fact:</strong> can affect original variable</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
@@ -244,6 +300,20 @@ OUTPUT X</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start use -->
+        <section class="panel explanation-panel" id="explanation-use" data-explains="use" data-explanation-kind="mechanism" aria-labelledby="explanation-use-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="use">
+          <h2 class="explanation-sr-only" id="explanation-use-title">Use it when the procedure must deliberately update caller data</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-use.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use it when the procedure must deliberately update caller data with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use it when the procedure must deliberately update caller data: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> When to use BYREF</li><li><strong>Lesson fact:</strong> Good use</li><li><strong>Lesson fact:</strong> IncrementScore(BYREF Score : INTEGER) updates a stored score in the main algorithm.</li><li><strong>Lesson fact:</strong> Swap(BYREF A : INTEGER, BYREF B : INTEGER) must change both original variables.</li><li><strong>Lesson fact:</strong> Avoid if unnecessary</li><li><strong>Lesson fact:</strong> If the subroutine only needs to read a value, by value is clearer and reduces accidental changes.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end use -->
+
         <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
@@ -266,6 +336,20 @@ static void increase(int score) {
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start java -->
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Do not replace Cambridge BYREF with Java syntax</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-131-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Do not replace Cambridge BYREF with Java syntax with a structured visual model." />
+            <figcaption class="explanation-sr-only">Do not replace Cambridge BYREF with Java syntax: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge exam answer format</li><li><strong>Lesson fact:</strong> PROCEDURE Increase(BYREF Score : INTEGER)</li><li><strong>Lesson fact:</strong> Score &lt;- Score + 1</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Java support note</li><li><strong>Lesson fact:</strong> // Java support example only, not exam pseudocode</li><li><strong>Lesson fact:</strong> static void increase(int score) {</li><li><strong>Lesson fact:</strong> score = score + 1;</li><li><strong>Lesson fact:</strong> Java primitive parameters are passed by value. Do not use this as evidence that Cambridge BYREF is absent.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end java -->
 
 
         <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">

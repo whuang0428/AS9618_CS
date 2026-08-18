@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -121,6 +121,20 @@
           <div class="callout">Chinese support: primary key = 主键；foreign key = 外键；join = 连接/关联查询；related tables = 相关联的数据表。</div>
         </section>
 
+        <!-- stage10-explanation:start relationships -->
+        <section class="panel explanation-panel" id="explanation-relationships" data-explains="relationships" data-explanation-kind="mechanism" aria-labelledby="explanation-relationships-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="relationships">
+          <h2 class="explanation-sr-only" id="explanation-relationships-title">Related tables use primary keys and foreign keys</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-relationships.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Related tables use primary keys and foreign keys with a structured visual model." />
+            <figcaption class="explanation-sr-only">Related tables use primary keys and foreign keys: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A join combines rows when matching key fields refer to the same real-world item.</li><li><strong>Lesson fact:</strong> StudentID primary key</li><li><strong>Lesson fact:</strong> StudentName , TutorGroup</li><li><strong>Lesson fact:</strong> 1 to many</li><li><strong>Lesson fact:</strong> StudentID</li><li><strong>Lesson fact:</strong> LoanID primary key</li><li><strong>Lesson fact:</strong> StudentID , BookID foreign keys</li><li><strong>Lesson fact:</strong> many to 1</li><li><strong>Lesson fact:</strong> BookID primary key</li><li><strong>Lesson fact:</strong> Title , Category</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end relationships -->
+
         <section class="panel" id="join" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="join">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -138,6 +152,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start join -->
+        <section class="panel explanation-panel" id="explanation-join" data-explains="join" data-explanation-kind="mechanism" aria-labelledby="explanation-join-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="join">
+          <h2 class="explanation-sr-only" id="explanation-join-title">Join conditions say which fields match</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-join.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Join conditions say which fields match with a structured visual model." />
+            <figcaption class="explanation-sr-only">Join conditions say which fields match: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> For this lesson, use explicit join conditions. The key idea is not the exact SQL flavour; it is the matching relationship.</li><li><strong>Lesson fact:</strong> Three-table pattern:</li><li><strong>Lesson fact:</strong> FROM Student, Loan, Book WHERE Student.StudentID = Loan.StudentID AND Loan.BookID = Book.BookID</li><li><strong>Lesson fact:</strong> Correct match Student.StudentID = Loan.StudentID because both values identify the same student.</li><li><strong>Lesson fact:</strong> Correct match Loan.BookID = Book.BookID because both values identify the same book.</li><li><strong>Lesson fact:</strong> Extra filter Use another AND condition for a filter, such as Loan.Returned = FALSE .</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end join -->
+
         <section class="panel" id="aliases" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="aliases">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -150,6 +178,20 @@
             <article><strong>Exam caution</strong><span>Only use aliases if they make the query clear. Do not hide the join logic.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start aliases -->
+        <section class="panel explanation-panel" id="explanation-aliases" data-explains="aliases" data-explanation-kind="mechanism" aria-labelledby="explanation-aliases-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="aliases">
+          <h2 class="explanation-sr-only" id="explanation-aliases-title">Table-qualified names and aliases prevent ambiguity</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-086-aliases.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Table-qualified names and aliases prevent ambiguity with a structured visual model." />
+            <figcaption class="explanation-sr-only">Table-qualified names and aliases prevent ambiguity: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> If two tables have a field with the same name, write the table name or alias before the field.</li><li><strong>Lesson fact:</strong> Full name Student.StudentID clearly means the field from Student.</li><li><strong>Lesson fact:</strong> Alias Student AS S lets you write S.StudentID .</li><li><strong>Lesson fact:</strong> Exam caution Only use aliases if they make the query clear. Do not hide the join logic.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end aliases -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">

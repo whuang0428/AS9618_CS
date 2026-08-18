@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -109,6 +109,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start map -->
+        <section class="panel explanation-panel" id="explanation-map" data-explains="map" data-explanation-kind="synthesis" aria-labelledby="explanation-map-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="map">
+          <h2 class="explanation-sr-only" id="explanation-map-title">Sections 3-4 knowledge map</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-091-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sections 3-4 knowledge map with a structured visual model." />
+            <figcaption class="explanation-sr-only">Sections 3-4 knowledge map: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Retrieval map</li><li><strong>Lesson fact:</strong> Computer system input, output, storage, memory, processor and data capture</li><li><strong>Lesson fact:</strong> Storage and memory RAM, ROM, cache, virtual memory, magnetic/optical/solid-state storage</li><li><strong>Lesson fact:</strong> Embedded systems sensors, actuators, microcontrollers and control systems</li><li><strong>Lesson fact:</strong> Logic NOT, AND, OR, NAND, NOR, XOR, truth tables and Boolean expressions</li><li><strong>Lesson fact:</strong> Processor ALU, CU, registers, buses, fetch-decode-execute and addressing modes</li><li><strong>Lesson fact:</strong> Performance clock speed, cores, cache, word length, pipelining and interrupts</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end map -->
+
         <section class="panel" id="hardware" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="hardware">
           <div class="section-title">
             <p class="eyebrow">Hardware review</p>
@@ -124,6 +138,20 @@
           <div class="callout">Chinese support: volatile = 易失性；register = 寄存器；bus = 总线；interrupt = 中断；actuator = 执行器。</div>
         </section>
 
+        <!-- stage10-explanation:start hardware -->
+        <section class="panel explanation-panel" id="explanation-hardware" data-explains="hardware" data-explanation-kind="synthesis" aria-labelledby="explanation-hardware-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="hardware">
+          <h2 class="explanation-sr-only" id="explanation-hardware-title">Choose hardware by matching characteristics to use</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-091-hardware.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose hardware by matching characteristics to use with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose hardware by matching characteristics to use: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Hardware review</li><li><strong>Lesson fact:</strong> Likely choice</li><li><strong>Lesson fact:</strong> Justification phrase</li><li><strong>Lesson fact:</strong> fast temporary access</li><li><strong>Lesson fact:</strong> RAM / cache</li><li><strong>Lesson fact:</strong> volatile memory used while programs run / frequently used data close to CPU</li><li><strong>Lesson fact:</strong> portable durable storage</li><li><strong>Lesson fact:</strong> no moving parts, fast access, resistant to shock</li><li><strong>Lesson fact:</strong> cheap high-capacity archive</li><li><strong>Lesson fact:</strong> magnetic disk</li><li><strong>Lesson fact:</strong> large capacity and lower cost per GiB</li><li><strong>Lesson fact:</strong> automatic physical response</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end hardware -->
+
         <section class="panel" id="processor" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="processor">
           <div class="section-title">
             <p class="eyebrow">Processor review</p>
@@ -135,6 +163,20 @@
             <article><strong>CIR / ACC</strong><span>CIR stores current instruction; ACC stores intermediate arithmetic/logic results.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start processor -->
+        <section class="panel explanation-panel" id="explanation-processor" data-explains="processor" data-explanation-kind="synthesis" aria-labelledby="explanation-processor-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="processor">
+          <h2 class="explanation-sr-only" id="explanation-processor-title">Registers and buses: the FDE cycle vocabulary</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-091-processor.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Registers and buses: the FDE cycle vocabulary with a structured visual model." />
+            <figcaption class="explanation-sr-only">Registers and buses: the FDE cycle vocabulary: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Processor review</li><li><strong>Lesson fact:</strong> PC Stores the address of the next instruction to be fetched.</li><li><strong>Lesson fact:</strong> MAR / MDR MAR stores an address; MDR stores data/instruction being transferred.</li><li><strong>Lesson fact:</strong> CIR / ACC CIR stores current instruction; ACC stores intermediate arithmetic/logic results.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end processor -->
 
         <section class="panel" id="logic" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="logic">
           <div class="section-title">
@@ -151,33 +193,17 @@
         </section>
 
         <!-- stage10-explanation:start logic -->
-        <section class="panel explanation-panel" id="explanation-logic" data-explains="logic" data-explanation-kind="synthesis" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="logic">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>How hardware facts become mechanisms</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-logic" data-explains="logic" data-explanation-kind="synthesis" aria-labelledby="explanation-logic-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="logic">
+          <h2 class="explanation-sr-only" id="explanation-logic-title">How hardware facts become mechanisms</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-091-logic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How hardware facts become mechanisms through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How hardware facts become mechanisms: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Name the component or representation involved.</li><li><strong>Reason:</strong> Explain the operation performed on data or signals.</li><li><strong>Result:</strong> Link that operation to the observable result or limitation.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Name the component or representation involved.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Explain the operation performed on data or signals.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Link that operation to the observable result or limitation.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A useful technical answer connects parts like a working machine, not a parts list.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>An isolated definition rarely explains why the stated outcome occurs.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> A useful technical answer connects parts like a working machine, not a parts list.</p>
+            <p><strong>Boundary:</strong> An isolated definition rarely explains why the stated outcome occurs.</p>
           </div>
         </section>
         <!-- stage10-explanation:end logic -->

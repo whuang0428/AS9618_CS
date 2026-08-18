@@ -71,3 +71,52 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need. For this lesson, make students contrast that mistake with the exact idea of **environmental and reliability considerations in hardware**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Environmental factors change hardware suitability
+
+- **Explains:** `environment`
+- **Explanation type:** tradeoff
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-039-environment.jpg`
+
+1. Possible effect
+2. Suitable protection
+3. Exam warning
+4. Temperature
+5. Overheating can slow, shut down or damage components.
+6. Cooling, heat sinks, ventilation, temperature-rated hardware
+7. Do not just say "fast"; explain heat tolerance or cooling.
+8. Moisture / water
+9. Corrosion or short circuits can stop the system working.
+10. Sealed casing, waterproof enclosure, humidity control
+11. Name what water does to reliability.
+12. Dust / dirt
+
+### Mitigation must match the risk
+
+- **Explains:** `mitigation`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-039-mitigation.jpg`
+
+1. Outdoor weather station Weatherproof casing, low-power controller, battery/solar power and wireless communication.
+2. Hospital workstation Reliable power, backup, regular maintenance and quick replacement to reduce downtime.
+3. Delivery handheld Rugged case, long battery life, mobile data fallback and SSD/flash storage.
+4. Data server Cooling, UPS, RAID, backup, monitoring and controlled access.
+5. A strong answer rejects an unsuitable protection. A UPS helps power cuts; it does not make a sensor waterproof.
+
+### Reliability is about continuing to work correctly
+
+- **Explains:** `reliability`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-039-reliability.jpg`
+
+1. Availability The system is usable when required, such as a checkout system during opening hours.
+2. Redundancy Extra hardware can take over if one component fails, such as a spare disk or power supply.
+3. Backup Copies of data reduce the impact of storage failure or accidental loss.
+4. MTBF Mean time between failures indicates expected reliability, often used for comparing components.
+5. Maintenance Cleaning, updates and replacement schedules reduce unexpected failure.
+6. Monitoring Temperature, battery, disk and network monitoring can warn before failure becomes outage.
+7. Reliability answer frame: "If X fails, Y prevents or reduces the impact, so the user can continue Z."
+<!-- stage10-explanations:end -->

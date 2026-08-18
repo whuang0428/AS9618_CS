@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -121,6 +121,20 @@ ENDIF</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start if -->
+        <section class="panel explanation-panel" id="explanation-if" data-explains="if" data-explanation-kind="mechanism" aria-labelledby="explanation-if-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="if">
+          <h2 class="explanation-sr-only" id="explanation-if-title">Use IF when a Boolean condition decides the route</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-127-if.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use IF when a Boolean condition decides the route with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use IF when a Boolean condition decides the route: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> IF selection</li><li><strong>Lesson fact:</strong> Use when</li><li><strong>Lesson fact:</strong> Cambridge-style pattern</li><li><strong>Lesson fact:</strong> action is needed only when condition is true</li><li><strong>Lesson fact:</strong> IF Found THEN ... ENDIF</li><li><strong>Lesson fact:</strong> IF...ELSE</li><li><strong>Lesson fact:</strong> two paths are needed</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN ... ELSE ... ENDIF</li><li><strong>Lesson fact:</strong> Nested IF</li><li><strong>Lesson fact:</strong> a second decision depends on the first decision</li><li><strong>Lesson fact:</strong> IF Age &gt;= 18 THEN IF Member THEN ... ENDIF ENDIF</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end if -->
+
         <section class="panel" id="case" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="case">
           <div class="section-title">
             <p class="eyebrow">CASE selection</p>
@@ -144,6 +158,20 @@ ENDCASE</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start case -->
+        <section class="panel explanation-panel" id="explanation-case" data-explains="case" data-explanation-kind="mechanism" aria-labelledby="explanation-case-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="case">
+          <h2 class="explanation-sr-only" id="explanation-case-title">Use CASE for clear values of one expression</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-127-case.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use CASE for clear values of one expression with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use CASE for clear values of one expression: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> CASE selection</li><li><strong>Lesson fact:</strong> Menu choice</li><li><strong>Lesson fact:</strong> INPUT Choice</li><li><strong>Lesson fact:</strong> CASE Choice OF</li><li><strong>Lesson fact:</strong> 1 : OUTPUT &quot;Add record&quot;</li><li><strong>Lesson fact:</strong> 2 : OUTPUT &quot;Delete record&quot;</li><li><strong>Lesson fact:</strong> 3 : OUTPUT &quot;Search&quot;</li><li><strong>Lesson fact:</strong> OTHERWISE OUTPUT &quot;Invalid choice&quot;</li><li><strong>Lesson fact:</strong> Why CASE fits</li><li><strong>Lesson fact:</strong> One variable, Choice , is compared with several discrete values. OTHERWISE handles unexpected input.</li><li><strong>Lesson fact:</strong> If each branch needs a different complex condition, IF is usually clearer than CASE.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end case -->
 
         <section class="panel" id="nested" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="nested">
           <div class="section-title">
@@ -175,6 +203,20 @@ ENDIF</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start nested -->
+        <section class="panel explanation-panel" id="explanation-nested" data-explains="nested" data-explanation-kind="mechanism" aria-labelledby="explanation-nested-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="nested">
+          <h2 class="explanation-sr-only" id="explanation-nested-title">A decision inside another decision</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-127-nested.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A decision inside another decision with a structured visual model." />
+            <figcaption class="explanation-sr-only">A decision inside another decision: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Nested selection</li><li><strong>Lesson fact:</strong> Discount example</li><li><strong>Lesson fact:</strong> IF Age &gt;= 18 THEN</li><li><strong>Lesson fact:</strong> IF Member = TRUE THEN</li><li><strong>Lesson fact:</strong> Discount &lt;- 0.20</li><li><strong>Lesson fact:</strong> Discount &lt;- 0.10</li><li><strong>Lesson fact:</strong> Discount &lt;- 0.05</li><li><strong>Lesson fact:</strong> Trace the paths</li><li><strong>Lesson fact:</strong> Discount</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end nested -->
+
         <section class="panel" id="choice" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="choice">
           <div class="section-title">
             <p class="eyebrow">Choosing IF or CASE</p>
@@ -188,6 +230,20 @@ ENDIF</code></pre>
             <div class="table-row"><div>Grade A/B/C/D with ranges of marks</div><div>IF or nested IF</div><div>ranges require comparisons</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start choice -->
+        <section class="panel explanation-panel" id="explanation-choice" data-explains="choice" data-explanation-kind="mechanism" aria-labelledby="explanation-choice-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="choice">
+          <h2 class="explanation-sr-only" id="explanation-choice-title">Start with the shape of the decision</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-127-choice.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Start with the shape of the decision with a structured visual model." />
+            <figcaption class="explanation-sr-only">Start with the shape of the decision: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Choosing IF or CASE</li><li><strong>Lesson fact:</strong> Situation</li><li><strong>Lesson fact:</strong> Usually better</li><li><strong>Lesson fact:</strong> Pass if mark is at least 50</li><li><strong>Lesson fact:</strong> uses a relational comparison</li><li><strong>Lesson fact:</strong> Menu option 1, 2, 3 or invalid</li><li><strong>Lesson fact:</strong> one variable has discrete values</li><li><strong>Lesson fact:</strong> Adult members get one discount; adult non-members another</li><li><strong>Lesson fact:</strong> Nested IF</li><li><strong>Lesson fact:</strong> second decision depends on the first</li><li><strong>Lesson fact:</strong> Grade A/B/C/D with ranges of marks</li><li><strong>Lesson fact:</strong> IF or nested IF</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end choice -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
@@ -226,6 +282,20 @@ ENDCASE</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start java -->
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Same idea, different syntax</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-127-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same idea, different syntax with a structured visual model." />
+            <figcaption class="explanation-sr-only">Same idea, different syntax: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> CASE Choice OF</li><li><strong>Lesson fact:</strong> 1 : OUTPUT &quot;Add&quot;</li><li><strong>Lesson fact:</strong> 2 : OUTPUT &quot;Delete&quot;</li><li><strong>Lesson fact:</strong> OTHERWISE OUTPUT &quot;Invalid&quot;</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> switch (choice) {</li><li><strong>Lesson fact:</strong> case 1 -&gt; System.out.println(&quot;Add&quot;);</li><li><strong>Lesson fact:</strong> case 2 -&gt; System.out.println(&quot;Delete&quot;);</li><li><strong>Lesson fact:</strong> default -&gt; System.out.println(&quot;Invalid&quot;);</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end java -->
+
 
         <section class="panel" id="path" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="path">
           <div class="section-title">
@@ -248,6 +318,20 @@ ENDCASE</code></pre>
           </div>
           <div class="trace-output" id="traceResult">Enter values to trace which branch runs.</div>
         </section>
+
+        <!-- stage10-explanation:start path -->
+        <section class="panel explanation-panel" id="explanation-path" data-explains="path" data-explanation-kind="mechanism" aria-labelledby="explanation-path-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="path">
+          <h2 class="explanation-sr-only" id="explanation-path-title">Trace a nested IF</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-127-path.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace a nested IF with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trace a nested IF: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive path tracer</li><li><strong>Lesson fact:</strong> Enter values to trace which branch runs.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end path -->
 
         <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">

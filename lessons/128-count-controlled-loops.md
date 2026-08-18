@@ -92,3 +92,88 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. For this lesson, make students contrast that mistake with the exact idea of **count-controlled loops**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### FOR loops are natural for fixed array bounds
+
+- **Explains:** `arrays`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-128-arrays.jpg`
+
+1. Array processing
+2. Output all marks
+3. FOR Index <- 1 TO 30
+4. OUTPUT Marks[Index]
+5. NEXT Index
+6. Total all marks
+7. Total <- 0
+8. Total <- Total + Marks[Index]
+9. The loop bounds should match the declared array bounds unless the question gives a reason not to.
+
+### One wrong bound can miss or invent an iteration
+
+- **Explains:** `bounds`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-128-bounds.jpg`
+
+1. Bounds and off-by-one errors
+2. Counter values
+3. Iterations
+4. Common issue
+5. 1, 2, 3, 4, 5
+6. 0, 1, 2, 3, 4
+7. only if array uses 0-based bounds
+8. 1, 2, 3, 4
+9. misses item 5 if five items are required
+
+### Do not confuse the counter with the running total
+
+- **Explains:** `counter`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-128-counter.jpg`
+
+1. Counter and accumulator
+2. Variable
+3. loop counter; controls the current iteration
+4. 1, 2, 3, 4, 5
+5. accumulator; stores a running total
+6. 0, 1, 3, 6, 10, 15
+7. bound; controls where the loop stops
+8. 5 in 1 TO 5
+
+### A FOR loop has a counter, a start value and an end value
+
+- **Explains:** `for`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-128-for.jpg`
+
+1. FOR loop structure
+2. General pattern
+3. FOR Counter <- StartValue TO EndValue
+4. // repeated statements
+5. NEXT Counter
+6. Concrete example
+7. Total <- 0
+8. FOR Count <- 1 TO 5
+9. Total <- Total + Count
+10. NEXT Count
+11. OUTPUT Total
+12. Use a FOR loop when the number of repetitions is known before the loop starts.
+
+### Java for loops are useful, but not the exam answer format
+
+- **Explains:** `java`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-128-java.jpg`
+
+1. Java support only
+2. Cambridge-style pseudocode
+3. FOR Count <- 1 TO 5
+4. OUTPUT Count
+5. NEXT Count
+6. Java support example only
+7. for (int count = 1; count <= 5; count++) {
+8. System.out.println(count);
+<!-- stage10-explanations:end -->

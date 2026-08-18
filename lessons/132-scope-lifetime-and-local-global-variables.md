@@ -92,3 +92,124 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. For this lesson, make students contrast that mistake with the exact idea of **scope, lifetime, and local/global variables**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Local and global variables differ by accessibility and lifetime
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-compare.jpg`
+
+1. Local variable
+2. Global variable
+3. Declared
+4. inside a subroutine or block
+5. outside subroutines
+6. limited to that subroutine or block
+7. available more widely in the program
+8. Lifetime
+9. usually while the subroutine call is active
+10. usually while the program is running
+11. Main risk
+12. using it outside scope
+
+### Global variables are declared outside subroutines and can be accessed widely
+
+- **Explains:** `global`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-global.jpg`
+
+1. Global variables
+2. Cambridge-style pseudocode
+3. Total <- 0
+4. PROCEDURE AddScore(Score : INTEGER)
+5. Total <- Total + Score
+6. ENDPROCEDURE
+7. Reasoning
+8. Total is declared outside the procedure, so it is global in this fragment.
+9. Global variables can make updates convenient, but they can also make tracing harder because many parts of a program may change the value.
+
+### Java helps illustrate scope, but Cambridge pseudocode remains the answer format
+
+- **Explains:** `java`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-java.jpg`
+
+1. Java support only
+2. Cambridge-style pseudocode
+3. PROCEDURE PrintLocal()
+4. Value <- 7
+5. OUTPUT Value
+6. ENDPROCEDURE
+7. Java support example only
+8. static void printLocal() {
+9. int value = 7;
+10. System.out.println(value);
+11. Do not answer Paper 2 with Java braces, semicolons or access modifiers unless the question specifically asks for Java.
+
+### Lifetime means how long a variable exists during execution
+
+- **Explains:** `lifetime`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-lifetime.jpg`
+
+1. Lifetime
+2. Main program starts global variables may be created and keep their values
+3. Procedure is called local variables are created for that call
+4. Procedure ends local variables are destroyed or become inaccessible
+5. Main continues global variables still exist unless the program ends
+6. A local variable's lifetime is usually one subroutine call. It is not a tiny global variable in disguise.
+
+### Local variables are declared inside a subroutine or block
+
+- **Explains:** `local`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-local.jpg`
+
+1. Local variables
+2. Cambridge-style pseudocode
+3. PROCEDURE CalculateBonus(Mark : INTEGER)
+4. Bonus <- Mark DIV 10
+5. OUTPUT Bonus
+6. ENDPROCEDURE
+7. Reasoning
+8. Mark parameter local to this procedure call
+9. Bonus local variable used only inside the procedure
+10. After call Bonus is not directly available in the main algorithm
+
+### Scope means where a variable or identifier can be accessed
+
+- **Explains:** `scope`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-scope.jpg`
+
+1. Inside scope
+2. PROCEDURE DisplayTotal()
+3. Total <- 25
+4. OUTPUT Total
+5. ENDPROCEDURE
+6. Total is accessible inside DisplayTotal .
+7. Outside scope
+8. CALL DisplayTotal()
+9. If Total was local to the procedure, the main algorithm cannot use it directly.
+
+### A local variable can hide a global variable with the same name
+
+- **Explains:** `shadowing`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-shadowing.jpg`
+
+1. Same name trap
+2. Trace this carefully
+3. Score <- 50
+4. PROCEDURE ChangeScore()
+5. Score <- 80
+6. OUTPUT Score
+7. ENDPROCEDURE
+8. CALL ChangeScore()
+9. Exam explanation
+10. If the procedure's Score is local, the procedure outputs 80 , but the main program still outputs the global 50 .
+11. The name is the same; the storage location is not. Same label, different locker.
+<!-- stage10-explanations:end -->

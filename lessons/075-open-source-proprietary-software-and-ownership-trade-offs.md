@@ -105,3 +105,81 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** copying/modification/redistribution restricted
 
 **Strict note:** Do not award 'commercial is better' without a scenario-linked reason.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Match the software type to the scenario
+
+- **Explains:** `advisor`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-advisor.jpg`
+
+1. Interactive software choice advisor
+2. Select a scenario and compare the recommendation with its trade-off.
+3. Scenario
+
+### Use a scenario-based comparison structure
+
+- **Explains:** `method`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-method.jpg`
+
+1. 1. Need Identify the user's priority: cost, support, control, reliability, security or compatibility.
+2. 2. Open source point Explain one benefit or risk linked to that priority.
+3. 3. Proprietary point Explain a contrasting benefit or risk.
+4. 4. Judgement Recommend one option with conditions and trade-offs.
+5. Answer frame:
+6. For [scenario], [option] may be suitable because [factor]. However, [trade-off]. Therefore, the best choice depends on [condition/evidence].
+
+### Open-source software makes source code available under a licence
+
+- **Explains:** `open-source`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-open-source.jpg`
+
+1. Source code available Users can inspect the program code rather than only using compiled software.
+2. Modify Licence may allow users to adapt the code for their own needs.
+3. Redistribute Licence may allow sharing original or modified versions under conditions.
+4. Community Development and support may come from volunteers, companies or mixed communities.
+
+### Ownership and licence obligations still matter
+
+- **Explains:** `ownership`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-ownership.jpg`
+
+1. Copyright remains Open-source software is still protected; the licence grants permissions.
+2. Attribution Some licences require credit or notices to be kept.
+3. Share-alike Some licences require modified versions to be shared under similar terms.
+4. Compliance Organisations must track third-party components and meet licence conditions.
+
+### Proprietary software keeps control with the owner
+
+- **Explains:** `proprietary`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-proprietary.jpg`
+
+1. Closed source Source code is usually not available to users.
+2. Restricted rights Licences often restrict copying, modification and redistribution.
+3. Vendor support Users may receive official updates, warranties, help desk or service agreements.
+4. Vendor lock-in Users may depend on one supplier, format, subscription or ecosystem.
+
+### Compare by factor, not by favourite label
+
+- **Explains:** `tradeoffs`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-tradeoffs.jpg`
+
+1. Open source may offer
+2. Proprietary may offer
+3. Low or no licence fee, but support and training can still cost money.
+4. Licence/subscription cost, but bundled support may reduce operational risk.
+5. More ability to inspect, modify and adapt code.
+6. Less control over internals; vendor controls source and roadmap.
+7. Security
+8. Code can be reviewed publicly, but someone must apply updates and assess trust.
+9. Vendor may provide tested updates, but users must trust closed code and vendor response.
+10. Community help or paid third-party support may vary.
+11. Official support agreements may be clearer for organisations.
+<!-- stage10-explanations:end -->

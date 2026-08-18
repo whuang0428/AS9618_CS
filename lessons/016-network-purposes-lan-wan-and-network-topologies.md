@@ -109,39 +109,39 @@ Correction prompt: "Show the mechanism, not just the label."
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
-### How a shared resource becomes useful
-
-- **Explains:** `purpose`
-- **Explanation type:** mechanism
-
-1. A device packages a request and names the destination.
-2. The network carries that request to the shared resource.
-3. One managed resource can then serve many authorised devices.
-
-- **Analogy:** A library serves many readers because requests reach one organised collection.
-- **Boundary:** If the path or shared service fails, many users lose access together.
-
 ### Why LAN and WAN management differs
 
 - **Explains:** `lanwan`
 - **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-016-lanwan.jpg`
 
 1. A LAN usually stays within one organisation's controlled site.
 2. A WAN crosses distance and often uses provider-owned infrastructure.
 3. More owners and routes add latency, cost and fault-finding complexity.
-
 - **Analogy:** Managing one campus is different from coordinating transport across several cities.
 - **Boundary:** Wi-Fi does not make a network a WAN; scale and control do.
+
+### How a shared resource becomes useful
+
+- **Explains:** `purpose`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-016-purpose.jpg`
+
+1. A device packages a request and names the destination.
+2. The network carries that request to the shared resource.
+3. One managed resource can then serve many authorised devices.
+- **Analogy:** A library serves many readers because requests reach one organised collection.
+- **Boundary:** If the path or shared service fails, many users lose access together.
 
 ### Why connection patterns change risk
 
 - **Explains:** `topologies`
 - **Explanation type:** tradeoff
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-016-topologies.jpg`
 
 1. The layout determines which physical paths data can follow.
 2. Shared paths reduce cabling but concentrate traffic and failures.
 3. Alternative paths improve resilience but require more links and ports.
-
 - **Analogy:** Road layouts trade construction cost against alternative routes after a closure.
 - **Boundary:** No topology is universally best; cost, scale and failure tolerance decide.
 <!-- stage10-explanations:end -->

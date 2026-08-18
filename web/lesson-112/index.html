@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -117,6 +117,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start retrieval -->
+        <section class="panel explanation-panel" id="explanation-retrieval" data-explains="retrieval" data-explanation-kind="synthesis" aria-labelledby="explanation-retrieval-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="retrieval">
+          <h2 class="explanation-sr-only" id="explanation-retrieval-title">Section 9 in one page</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-retrieval.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 9 in one page with a structured visual model." />
+            <figcaption class="explanation-sr-only">Section 9 in one page: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Retrieval map</li><li><strong>Lesson fact:</strong> Signal words</li><li><strong>Lesson fact:</strong> Expected mechanism</li><li><strong>Lesson fact:</strong> Typical mark trap</li><li><strong>Lesson fact:</strong> IPOC / decomposition</li><li><strong>Lesson fact:</strong> scenario, requirements, constraints</li><li><strong>Lesson fact:</strong> break problem into inputs, processing, outputs and rules</li><li><strong>Lesson fact:</strong> copying the story without design decisions</li><li><strong>Lesson fact:</strong> Trace tables</li><li><strong>Lesson fact:</strong> dry run, trace, values after each loop</li><li><strong>Lesson fact:</strong> update variables row by row in execution order</li><li><strong>Lesson fact:</strong> jumping to final answer and missing intermediate states</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end retrieval -->
+
         <section class="panel" id="triage" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="triage">
           <div class="section-title">
             <p class="eyebrow">Scenario triage</p>
@@ -152,6 +166,20 @@ OUTPUT Average</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start triage -->
+        <section class="panel explanation-panel" id="explanation-triage" data-explains="triage" data-explanation-kind="synthesis" aria-labelledby="explanation-triage-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="triage">
+          <h2 class="explanation-sr-only" id="explanation-triage-title">Turn question wording into an algorithm plan</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-triage.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn question wording into an algorithm plan with a structured visual model." />
+            <figcaption class="explanation-sr-only">Turn question wording into an algorithm plan: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Scenario triage</li><li><strong>Lesson fact:</strong> Step 1: Output first</li><li><strong>Lesson fact:</strong> Ask: what must be displayed, returned or stored at the end? The final output tells you which variables need to exist.</li><li><strong>Lesson fact:</strong> Output needed: average rainfall</li><li><strong>Lesson fact:</strong> Therefore:</li><li><strong>Lesson fact:</strong> Total is needed</li><li><strong>Lesson fact:</strong> Count is needed</li><li><strong>Lesson fact:</strong> Average &lt;- Total / Count</li><li><strong>Lesson fact:</strong> Step 2: Stop condition</li><li><strong>Lesson fact:</strong> Ask: does the question state a fixed number of values, or does input continue until a condition is met?</li><li><strong>Lesson fact:</strong> Exactly 7 days -&gt; FOR Day &lt;- 1 TO 7</li><li><strong>Lesson fact:</strong> Until -1 entered -&gt; WHILE Value &lt;&gt; -1</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end triage -->
+
         <section class="panel" id="patterns" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
           <div class="section-title">
             <p class="eyebrow">Pattern choice</p>
@@ -167,6 +195,20 @@ OUTPUT Average</code></pre>
             <div class="table-row" role="row"><div>build a sorted left section</div><div>Insertion sort</div><div>insert next item into its correct position</div><div>Each pass keeps the processed section sorted.</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start patterns -->
+        <section class="panel explanation-panel" id="explanation-patterns" data-explains="patterns" data-explanation-kind="synthesis" aria-labelledby="explanation-patterns-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
+          <h2 class="explanation-sr-only" id="explanation-patterns-title">Match the scenario to the correct algorithm pattern</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-patterns.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match the scenario to the correct algorithm pattern with a structured visual model." />
+            <figcaption class="explanation-sr-only">Match the scenario to the correct algorithm pattern: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pattern choice</li><li><strong>Lesson fact:</strong> Scenario clue</li><li><strong>Lesson fact:</strong> Core pseudocode feature</li><li><strong>Lesson fact:</strong> One precise explanation</li><li><strong>Lesson fact:</strong> exactly 10 readings</li><li><strong>Lesson fact:</strong> Count-controlled loop</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 10</li><li><strong>Lesson fact:</strong> The number of repetitions is known before the loop starts.</li><li><strong>Lesson fact:</strong> until 0 is entered</li><li><strong>Lesson fact:</strong> Condition-controlled loop</li><li><strong>Lesson fact:</strong> WHILE Value &lt;&gt; 0</li><li><strong>Lesson fact:</strong> The number of repetitions depends on input values.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end patterns -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
@@ -234,6 +276,20 @@ double average = (double) total / count;</code></pre>
           <div class="callout">Chinese support: Java 可以帮助你测试思路，但 Cambridge pseudocode 才是 Paper 2 的作答格式。</div>
         </section>
 
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="synthesis" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Paper 2 wants readable Cambridge-style pseudocode</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Paper 2 wants readable Cambridge-style pseudocode with a structured visual model." />
+            <figcaption class="explanation-sr-only">Paper 2 wants readable Cambridge-style pseudocode: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style answer</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> Count &lt;- 0</li><li><strong>Lesson fact:</strong> INPUT Value</li><li><strong>Lesson fact:</strong> WHILE Value &lt;&gt; -1</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Value</li><li><strong>Lesson fact:</strong> Count &lt;- Count + 1</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> Average &lt;- Total / Count</li><li><strong>Lesson fact:</strong> OUTPUT Average</li><li><strong>Lesson fact:</strong> Java support only</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
+
 
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
           <div class="section-title">
@@ -275,6 +331,20 @@ double average = (double) total / count;</code></pre>
           </div>
           <div class="trace-output" id="fixerResult">Choose a weak answer to see a stricter version.</div>
         </section>
+
+        <!-- stage10-explanation:start fixer -->
+        <section class="panel explanation-panel" id="explanation-fixer" data-explains="fixer" data-explanation-kind="synthesis" aria-labelledby="explanation-fixer-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fixer">
+          <h2 class="explanation-sr-only" id="explanation-fixer-title">Turn vague answers into mark-worthy answers</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-112-fixer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn vague answers into mark-worthy answers with a structured visual model." />
+            <figcaption class="explanation-sr-only">Turn vague answers into mark-worthy answers: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive answer fixer</li><li><strong>Lesson fact:</strong> Weak answer</li><li><strong>Lesson fact:</strong> Choose a weak answer to see a stricter version.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end fixer -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

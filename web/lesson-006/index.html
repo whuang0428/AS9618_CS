@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -147,6 +147,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start point -->
+        <section class="panel explanation-panel" id="explanation-point" data-explains="point" data-explanation-kind="mechanism" aria-labelledby="explanation-point-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="point">
+          <h2 class="explanation-sr-only" id="explanation-point-title">Binary fractional place value</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-006-point.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Binary fractional place value with a structured visual model." />
+            <figcaption class="explanation-sr-only">Binary fractional place value: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Example 10.101₂</li><li><strong>Lesson fact:</strong> 10.101₂ = 2 + 1/2 + 1/8 = 2.625₁₀</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end point -->
+
         <section id="delivery-05" class="guidance-grid compact" aria-label="Fraction guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="point">
           <article class="trap-card">
             <h3>Common trap</h3>
@@ -182,6 +196,20 @@
           <div class="callout">Example: `0.625₁₀ = 0.101₂` because `0.5 + 0.125 = 0.625`.</div>
         </section>
 
+        <!-- stage10-explanation:start convert -->
+        <section class="panel explanation-panel" id="explanation-convert" data-explains="convert" data-explanation-kind="mechanism" aria-labelledby="explanation-convert-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="convert">
+          <h2 class="explanation-sr-only" id="explanation-convert-title">Converting simple binary fractions</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-006-convert.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Converting simple binary fractions with a structured visual model." />
+            <figcaption class="explanation-sr-only">Converting simple binary fractions: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Binary fraction to denary</li><li><strong>Lesson fact:</strong> Write the place values above and below the point.</li><li><strong>Lesson fact:</strong> Add the values for every 1 bit.</li><li><strong>Lesson fact:</strong> Keep the base label until the final answer.</li><li><strong>Lesson fact:</strong> State whether the answer is exact.</li><li><strong>Lesson fact:</strong> Denary fraction to binary</li><li><strong>Lesson fact:</strong> Use 1/2, 1/4, 1/8, 1/16 as target values.</li><li><strong>Lesson fact:</strong> Subtract a target value when it fits.</li><li><strong>Lesson fact:</strong> Write 1 for a used value and 0 for a skipped value.</li><li><strong>Lesson fact:</strong> Stop when the remainder is zero or the bit limit is reached.</li><li><strong>Lesson fact:</strong> Example: 0.625₁₀ = 0.101₂ because 0.5 + 0.125 = 0.625.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end convert -->
+
         <section class="panel" id="precision" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="precision">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -205,6 +233,20 @@
             This lesson uses fixed fractional places only. Mantissa, exponent and floating-point normalisation belong to later A Level content.
           </div>
         </section>
+
+        <!-- stage10-explanation:start precision -->
+        <section class="panel explanation-panel" id="explanation-precision" data-explains="precision" data-explanation-kind="mechanism" aria-labelledby="explanation-precision-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="precision">
+          <h2 class="explanation-sr-only" id="explanation-precision-title">Precision limits: why computers sometimes approximate</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-006-precision.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Precision limits: why computers sometimes approximate with a structured visual model." />
+            <figcaption class="explanation-sr-only">Precision limits: why computers sometimes approximate: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 0.75₁₀ = 0.11₂ exactly because 1/2 + 1/4 = 3/4.</li><li><strong>Lesson fact:</strong> Limited precision</li><li><strong>Lesson fact:</strong> With four fractional bits, 0.1₁₀ becomes approximately 0.0001₂, which is 0.0625₁₀.</li><li><strong>Lesson fact:</strong> Representation error is the difference between the intended value and the stored approximation.</li><li><strong>Lesson fact:</strong> This lesson uses fixed fractional places only. Mantissa, exponent and floating-point normalisation belong to later A Level content.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end precision -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

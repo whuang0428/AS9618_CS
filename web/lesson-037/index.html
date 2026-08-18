@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -129,6 +129,20 @@
           <div class="callout">Chinese support: requirement = 需求；variable = 变量；logic circuit = 逻辑电路；gate sequence = 逻辑门顺序。</div>
         </section>
 
+        <!-- stage10-explanation:start parse -->
+        <section class="panel explanation-panel" id="explanation-parse" data-explains="parse" data-explanation-kind="mechanism" aria-labelledby="explanation-parse-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parse">
+          <h2 class="explanation-sr-only" id="explanation-parse-title">Parse requirement wording into logic</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-037-parse.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Parse requirement wording into logic with a structured visual model." />
+            <figcaption class="explanation-sr-only">Parse requirement wording into logic: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Requirement phrase</li><li><strong>Lesson fact:</strong> Logic meaning</li><li><strong>Lesson fact:</strong> Gate / expression</li><li><strong>Lesson fact:</strong> Exam warning</li><li><strong>Lesson fact:</strong> both / all / only if X and Y</li><li><strong>Lesson fact:</strong> Every listed condition must be 1.</li><li><strong>Lesson fact:</strong> Do not replace AND with OR because one condition sounds important.</li><li><strong>Lesson fact:</strong> either / at least one</li><li><strong>Lesson fact:</strong> One or more conditions may be 1.</li><li><strong>Lesson fact:</strong> OR includes the row where both inputs are 1.</li><li><strong>Lesson fact:</strong> not / unless / inactive</li><li><strong>Lesson fact:</strong> Invert the condition.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end parse -->
+
         <section class="panel" id="design" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="design">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -142,6 +156,20 @@
           </div>
           <div class="callout">A correct circuit is not just a pretty drawing. It must match the Boolean expression and produce the correct truth-table output.</div>
         </section>
+
+        <!-- stage10-explanation:start design -->
+        <section class="panel explanation-panel" id="explanation-design" data-explains="design" data-explanation-kind="mechanism" aria-labelledby="explanation-design-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="design">
+          <h2 class="explanation-sr-only" id="explanation-design-title">A circuit design method that examiners can follow</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-037-design.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A circuit design method that examiners can follow with a structured visual model." />
+            <figcaption class="explanation-sr-only">A circuit design method that examiners can follow: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 1. Name the output Use a clear output such as Alarm, Unlock, Fan or Light.</li><li><strong>Lesson fact:</strong> 2. Define variables Write what each input means, for example A = system armed.</li><li><strong>Lesson fact:</strong> 3. Write expression Translate the requirement with AND, OR, NOT, NAND, NOR or XOR.</li><li><strong>Lesson fact:</strong> 4. Draw in stages Draw inner gates first, then connect them to the final output gate.</li><li><strong>Lesson fact:</strong> A correct circuit is not just a pretty drawing. It must match the Boolean expression and produce the correct truth-table output.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end design -->
 
         <section class="panel" id="diagram" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="diagram">
           <div class="section-title">
@@ -158,6 +186,20 @@
           </div>
           <div class="callout">Draw the OR branch first, then feed it into AND with Armed. If the drawing order is unclear, label intermediate outputs.</div>
         </section>
+
+        <!-- stage10-explanation:start diagram -->
+        <section class="panel explanation-panel" id="explanation-diagram" data-explains="diagram" data-explanation-kind="mechanism" aria-labelledby="explanation-diagram-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="diagram">
+          <h2 class="explanation-sr-only" id="explanation-diagram-title">Gate sequence creates the circuit structure</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-037-diagram.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Gate sequence creates the circuit structure with a structured visual model." />
+            <figcaption class="explanation-sr-only">Gate sequence creates the circuit structure: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Door Input D</li><li><strong>Lesson fact:</strong> Window Input W</li><li><strong>Lesson fact:</strong> OR D OR W</li><li><strong>Lesson fact:</strong> Armed Input A</li><li><strong>Lesson fact:</strong> AND A AND (D OR W)</li><li><strong>Lesson fact:</strong> Alarm Final output Q</li><li><strong>Lesson fact:</strong> Draw the OR branch first, then feed it into AND with Armed. If the drawing order is unclear, label intermediate outputs.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end diagram -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

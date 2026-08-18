@@ -105,3 +105,77 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** fixed address supports reliable location/DNS mapping
 
 **Strict note:** Do not accept that private IP addresses guarantee security; they reduce direct public addressing but other controls are still required.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### From a URL to a packet on the local link
+
+- **Explains:** `address-journey`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-020-address-journey.jpg`
+
+1. Visual explanation
+2. These labels solve different problems. DNS resolves only the domain name; it does not return a web page or a MAC address.
+3. URL Includes a scheme, domain name and path to a resource.
+4. DNS Resolves the domain-name part to an IP address.
+5. IP address Provides a logical network address used for routing.
+6. MAC address Identifies a network interface for delivery on a local link.
+7. Check the diagram: does DNS turn the whole URL into a MAC address?
+8. No. DNS resolves the domain-name part to an IP address. MAC addressing is used separately on a local network link.
+
+### IP address vs MAC address
+
+- **Explains:** `addresses`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-020-addresses.jpg`
+
+1. IP address
+2. MAC address
+3. Main use
+4. Logical address used to identify a device on a network and route packets between networks.
+5. Hardware address used to identify a network interface on a local network.
+6. Can change, for example when joining a different network or using DHCP.
+7. Normally fixed to the network interface by the manufacturer, though it can sometimes be spoofed.
+8. 192.168.1.24 or an IPv6 address.
+9. 3C:52:82:AA:19:F0
+
+### 5-minute mini assessment
+
+- **Explains:** `checkpoint`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-020-checkpoint.jpg`
+
+1. Monthly checkpoint
+2. Use this as a short checkpoint before moving to named protocols. Expand the answer key after attempting.
+3. Explain why DNS is needed when a user enters a URL.
+4. State one difference between an IP address and a MAC address.
+5. Identify the domain name in https://store.example.com/products/item7 .
+6. 1: DNS resolves the domain name in the URL to an IP address so packets can be routed to the server.
+7. 2: IP is a logical network address that can change; MAC is a hardware/interface address used locally.
+8. 3: store.example.com .
+
+### DNS: name to IP address
+
+- **Explains:** `dns`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-020-dns.jpg`
+
+1. 1. URL entered The user enters a URL containing a domain name.
+2. 2. DNS lookup The device asks a DNS server to resolve the domain name.
+3. 3. IP returned The DNS server returns the IP address for that domain name.
+4. 4. Packets sent Packets can now be addressed and routed to the web server.
+5. Common trap
+6. DNS failure may stop a domain name working even if the server is still reachable by IP address.
+
+### URL components
+
+- **Explains:** `urls`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-020-urls.jpg`
+
+1. https://www.example.org/resources/page.html
+2. Protocol / scheme https tells the browser which communication protocol to use.
+3. Domain name www.example.org is resolved by DNS to an IP address.
+4. Path /resources/page.html identifies the resource on the server.
+<!-- stage10-explanations:end -->

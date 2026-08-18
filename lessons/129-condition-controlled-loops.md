@@ -92,3 +92,111 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. For this lesson, make students contrast that mistake with the exact idea of **condition-controlled loops**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### The difference is when the condition is tested
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-129-compare.jpg`
+
+1. WHILE vs REPEAT
+2. REPEAT...UNTIL
+3. Condition checked
+4. before the loop body
+5. after the loop body
+6. Minimum iterations
+7. Continues when
+8. condition is TRUE
+9. UNTIL condition becomes TRUE
+10. Typical use
+11. read while not EOF, repeat while invalid
+12. input validation where input must be requested once
+
+### Java syntax is support, not Cambridge pseudocode
+
+- **Explains:** `java`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-129-java.jpg`
+
+1. Java support only
+2. Cambridge-style pseudocode
+3. WHILE Mark < 0 OR Mark > 100
+4. INPUT Mark
+5. ENDWHILE
+6. Java support example only
+7. while (mark < 0 || mark > 100) {
+8. mark = scanner.nextInt();
+
+### Post-condition loop: run once, then check
+
+- **Explains:** `repeat`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-129-repeat.jpg`
+
+1. REPEAT...UNTIL loop
+2. General pattern
+3. // repeated statements
+4. // update something used by Condition
+5. UNTIL Condition
+6. Input validation
+7. INPUT Mark
+8. UNTIL Mark >= 0 AND Mark <= 100
+9. REPEAT...UNTIL is useful when the body must happen at least once, such as asking for the first input.
+
+### A special value can stop the loop
+
+- **Explains:** `sentinel`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-129-sentinel.jpg`
+
+1. Sentinel values
+2. Total until -1
+3. Total <- 0
+4. INPUT Number
+5. WHILE Number <> -1
+6. Total <- Total + Number
+7. ENDWHILE
+8. OUTPUT Total
+9. Trace idea
+10. Total after step
+11. 11, stop
+12. The sentinel value is used to stop the loop; it should not be included in the calculation.
+
+### Keep asking until the input is valid
+
+- **Explains:** `validation`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-129-validation.jpg`
+
+1. Validation pattern
+2. REPEAT version
+3. OUTPUT "Enter mark 0 to 100"
+4. INPUT Mark
+5. UNTIL Mark >= 0 AND Mark <= 100
+6. WHILE version
+7. WHILE Mark < 0 OR Mark > 100
+8. OUTPUT "Invalid"
+9. ENDWHILE
+
+### Pre-condition loop: check before running
+
+- **Explains:** `while`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-129-while.jpg`
+
+1. WHILE loop
+2. General pattern
+3. WHILE Condition
+4. // repeated statements
+5. // update something used by Condition
+6. ENDWHILE
+7. Password example
+8. INPUT Password
+9. WHILE Password <> CorrectPassword
+10. OUTPUT "Try again"
+11. OUTPUT "Access granted"
+12. A WHILE loop may run zero times if the condition is false before the first iteration.
+<!-- stage10-explanations:end -->

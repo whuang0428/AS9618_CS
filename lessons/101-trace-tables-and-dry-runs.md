@@ -92,3 +92,81 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **trace tables and dry runs**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Dry run: execute the algorithm by hand
+
+- **Explains:** `dry-run`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-dry-run.jpg`
+
+1. 1 Copy the variable names into table columns.
+2. 2 Write initial values before the loop starts.
+3. 3 Use each input value in order.
+4. 4 Update variables exactly when pseudocode updates them.
+5. 5 Record output only when an OUTPUT statement is executed.
+
+### Loops make trace tables useful and slightly unforgiving
+
+- **Explains:** `loops`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-loops.jpg`
+
+1. Loop tracing
+2. Initialisation Variables such as Total and Count usually need a starting value before the loop.
+3. Update Record new values after assignment, not before.
+4. Condition For WHILE loops, check the condition before each iteration.
+5. Sentinel A sentinel value stops input and should usually not be processed as data.
+6. Output timing If OUTPUT is after the loop, output appears once at the end.
+7. Boundary Check whether loops run 5 times, 6 times, or one time too many.
+
+### Predict the final output
+
+- **Explains:** `predictor`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-predictor.jpg`
+
+1. Interactive output predictor
+2. Input set
+3. The pseudocode totals three input numbers and outputs Total.
+
+### Trace Cambridge pseudocode in the exam; Java is only a support view
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style pseudocode
+3. Total <- 0
+4. FOR Count <- 1 TO 3
+5. INPUT Number
+6. Total <- Total + Number
+7. NEXT Count
+8. OUTPUT Total
+9. Java support only
+10. int total = 0;
+11. for (int count = 1; count <= 3; count++) {
+12. int number = input.nextInt();
+
+### A trace table records variables after each change
+
+- **Explains:** `trace-table`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-trace-table.jpg`
+
+1. Knowledge explanation
+2. What it records
+3. Exam note
+4. Line / step
+5. which statement is being executed
+6. optional, but useful for debugging
+7. Input value
+8. the test data read by INPUT
+9. do not invent values not given by the question
+10. Variable columns
+11. current values of Count, Total, Mark, Found, etc.
+12. write changed values clearly
+<!-- stage10-explanations:end -->

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -121,6 +121,20 @@ ENDIF</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start purpose -->
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="comparison" aria-labelledby="explanation-purpose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+          <h2 class="explanation-sr-only" id="explanation-purpose-title">Testing compares actual results with expected results</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-137-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Testing compares actual results with expected results with a structured visual model." />
+            <figcaption class="explanation-sr-only">Testing compares actual results with expected results: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Why testing</li><li><strong>Lesson fact:</strong> A test is useful only if it can reveal whether the program behaves correctly. A strong test case has input data,</li><li><strong>Lesson fact:</strong> a reason for choosing it, and a clear expected result.</li><li><strong>Lesson fact:</strong> Validation rule</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Accepted&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Rejected&quot;</li><li><strong>Lesson fact:</strong> Testing question</li><li><strong>Lesson fact:</strong> Which values prove that the rule accepts valid marks and rejects invalid marks?</li><li><strong>Lesson fact:</strong> Normal data checks ordinary use. Boundary data checks the edges. Erroneous data checks rejection.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end purpose -->
+
         <section class="panel" id="normal" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="normal">
           <div class="section-title">
             <p class="eyebrow">Normal data</p>
@@ -133,6 +147,20 @@ ENDIF</code></pre>
             <div class="table-row"><div>Age 11 to 18 inclusive</div><div><code>15</code></div><div>Accepted</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start normal -->
+        <section class="panel explanation-panel" id="explanation-normal" data-explains="normal" data-explanation-kind="mechanism" aria-labelledby="explanation-normal-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="normal">
+          <h2 class="explanation-sr-only" id="explanation-normal-title">Normal data is valid, typical data inside the allowed range</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-137-normal.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Normal data is valid, typical data inside the allowed range with a structured visual model." />
+            <figcaption class="explanation-sr-only">Normal data is valid, typical data inside the allowed range: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Normal data</li><li><strong>Lesson fact:</strong> Normal test data</li><li><strong>Lesson fact:</strong> Expected result</li><li><strong>Lesson fact:</strong> Mark 0 to 100 inclusive</li><li><strong>Lesson fact:</strong> Accepted</li><li><strong>Lesson fact:</strong> Password length 8 to 20</li><li><strong>Lesson fact:</strong> 12 characters</li><li><strong>Lesson fact:</strong> Age 11 to 18 inclusive</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end normal -->
 
         <section class="panel" id="boundary" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="boundary">
           <div class="section-title">
@@ -149,6 +177,20 @@ ENDIF</code></pre>
           </div>
           <div class="callout">Cambridge marking usually rewards precise edge values. “Near the edge” is a direction, not a test case.</div>
         </section>
+
+        <!-- stage10-explanation:start boundary -->
+        <section class="panel explanation-panel" id="explanation-boundary" data-explains="boundary" data-explanation-kind="mechanism" aria-labelledby="explanation-boundary-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="boundary">
+          <h2 class="explanation-sr-only" id="explanation-boundary-title">Boundary data tests the edge of a valid range</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-137-boundary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Boundary data tests the edge of a valid range with a structured visual model." />
+            <figcaption class="explanation-sr-only">Boundary data tests the edge of a valid range: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Boundary data</li><li><strong>Lesson fact:</strong> Use exact edges and, where helpful, values just outside the edges. Be explicit about which values are valid and invalid.</li><li><strong>Lesson fact:</strong> just outside</li><li><strong>Lesson fact:</strong> lower boundary</li><li><strong>Lesson fact:</strong> upper boundary</li><li><strong>Lesson fact:</strong> Cambridge marking usually rewards precise edge values. “Near the edge” is a direction, not a test case.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end boundary -->
 
         <section class="panel" id="erroneous" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="erroneous">
           <div class="section-title">
@@ -171,6 +213,20 @@ ENDIF</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start erroneous -->
+        <section class="panel explanation-panel" id="explanation-erroneous" data-explains="erroneous" data-explanation-kind="mechanism" aria-labelledby="explanation-erroneous-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="erroneous">
+          <h2 class="explanation-sr-only" id="explanation-erroneous-title">Erroneous data is invalid data that should be rejected</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-137-erroneous.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Erroneous data is invalid data that should be rejected with a structured visual model." />
+            <figcaption class="explanation-sr-only">Erroneous data is invalid data that should be rejected: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Erroneous data</li><li><strong>Lesson fact:</strong> Out of range</li><li><strong>Lesson fact:</strong> -1 or 101 for a mark from 0 to 100. Expected result: rejected.</li><li><strong>Lesson fact:</strong> Wrong type</li><li><strong>Lesson fact:</strong> &quot;cat&quot; where an integer mark is required. Expected result: rejected or error handled.</li><li><strong>Lesson fact:</strong> Missing required data</li><li><strong>Lesson fact:</strong> An empty name when a name must be entered. Expected result: rejected with a suitable message.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end erroneous -->
+
         <section class="panel" id="table" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="table">
           <div class="section-title">
             <p class="eyebrow">Test table</p>
@@ -185,6 +241,20 @@ ENDIF</code></pre>
             <div class="table-row"><div><code>"cat"</code></div><div>Erroneous</div><div>wrong data type</div><div>Rejected or handled</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start table -->
+        <section class="panel explanation-panel" id="explanation-table" data-explains="table" data-explanation-kind="mechanism" aria-labelledby="explanation-table-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="table">
+          <h2 class="explanation-sr-only" id="explanation-table-title">A clear test table turns thinking into marks</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-137-table.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A clear test table turns thinking into marks with a structured visual model." />
+            <figcaption class="explanation-sr-only">A clear test table turns thinking into marks: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Test table</li><li><strong>Lesson fact:</strong> Test data</li><li><strong>Lesson fact:</strong> Expected result</li><li><strong>Lesson fact:</strong> typical valid mark</li><li><strong>Lesson fact:</strong> Accepted</li><li><strong>Lesson fact:</strong> Boundary</li><li><strong>Lesson fact:</strong> lowest valid mark</li><li><strong>Lesson fact:</strong> highest valid mark</li><li><strong>Lesson fact:</strong> Erroneous</li><li><strong>Lesson fact:</strong> below valid range</li><li><strong>Lesson fact:</strong> Rejected</li><li><strong>Lesson fact:</strong> wrong data type</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end table -->
 
         <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
           <div class="section-title">
@@ -202,6 +272,20 @@ ENDIF</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start validation -->
+        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="mechanism" aria-labelledby="explanation-validation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
+          <h2 class="explanation-sr-only" id="explanation-validation-title">Validation is the check. Testing proves whether the check works.</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-137-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation is the check. Testing proves whether the check works. with a structured visual model." />
+            <figcaption class="explanation-sr-only">Validation is the check. Testing proves whether the check works.: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Validation vs testing</li><li><strong>Lesson fact:</strong> Validation</li><li><strong>Lesson fact:</strong> A program rule, such as “Mark must be from 0 to 100 inclusive”.</li><li><strong>Lesson fact:</strong> A planned set of inputs, such as 50 , 0 , 100 , -1 , 101 and &quot;cat&quot; .</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end validation -->
 
         <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
@@ -228,6 +312,20 @@ ENDIF</code></pre>
           </div>
           <div class="callout">Do not write Java syntax as the final Cambridge pseudocode answer unless the question specifically asks for Java.</div>
         </section>
+
+        <!-- stage10-explanation:start java -->
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Java can help you run examples, but Cambridge pseudocode is the exam answer format</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-137-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java can help you run examples, but Cambridge pseudocode is the exam answer format with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java can help you run examples, but Cambridge pseudocode is the exam answer format: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Accepted&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Rejected&quot;</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> if (mark &gt;= 0 &amp;&amp; mark &lt;= 100) {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Accepted&quot;);</li><li><strong>Lesson fact:</strong> } else {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Rejected&quot;);</li><li><strong>Lesson fact:</strong> Do not write Java syntax as the final Cambridge pseudocode answer unless the question specifically asks for Java.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end java -->
 
 
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">

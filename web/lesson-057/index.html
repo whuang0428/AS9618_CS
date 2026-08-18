@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -113,6 +113,20 @@
           <div class="callout">Chinese support: lexical analysis = 词法分析；syntax analysis = 语法分析；semantic analysis = 语义分析；token = 词法单元；object code = 目标代码。</div>
         </section>
 
+        <!-- stage10-explanation:start pipeline -->
+        <section class="panel explanation-panel" id="explanation-pipeline" data-explains="pipeline" data-explanation-kind="mechanism" aria-labelledby="explanation-pipeline-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pipeline">
+          <h2 class="explanation-sr-only" id="explanation-pipeline-title">The compilation pipeline transforms source code into object code</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-057-pipeline.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The compilation pipeline transforms source code into object code with a structured visual model." />
+            <figcaption class="explanation-sr-only">The compilation pipeline transforms source code into object code: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Source code The high-level program written by the programmer.</li><li><strong>Lesson fact:</strong> Tokens Meaningful units such as identifiers, keywords, operators and literals.</li><li><strong>Lesson fact:</strong> Checks The compiler checks structure and meaning before generating code.</li><li><strong>Lesson fact:</strong> Object code Translated low-level code output by the compiler before linking/loading details.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pipeline -->
+
         <section class="panel" id="lexical" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lexical">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -125,6 +139,20 @@
             <article><strong>Errors</strong><span>Can detect invalid characters or unrecognised symbols.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start lexical -->
+        <section class="panel explanation-panel" id="explanation-lexical" data-explains="lexical" data-explanation-kind="mechanism" aria-labelledby="explanation-lexical-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lexical">
+          <h2 class="explanation-sr-only" id="explanation-lexical-title">Lexical analysis converts character streams into tokens</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-057-lexical.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lexical analysis converts character streams into tokens with a structured visual model." />
+            <figcaption class="explanation-sr-only">Lexical analysis converts character streams into tokens: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Input Source code as a stream of characters.</li><li><strong>Lesson fact:</strong> Action Groups characters into tokens such as identifiers, operators, constants and keywords.</li><li><strong>Lesson fact:</strong> Also May remove unnecessary whitespace and comments.</li><li><strong>Lesson fact:</strong> Errors Can detect invalid characters or unrecognised symbols.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lexical -->
 
         <section class="panel" id="syntax" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="syntax">
           <div class="section-title">
@@ -139,6 +167,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start syntax -->
+        <section class="panel explanation-panel" id="explanation-syntax" data-explains="syntax" data-explanation-kind="mechanism" aria-labelledby="explanation-syntax-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="syntax">
+          <h2 class="explanation-sr-only" id="explanation-syntax-title">Syntax analysis checks grammar and program structure</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-057-syntax.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Syntax analysis checks grammar and program structure with a structured visual model." />
+            <figcaption class="explanation-sr-only">Syntax analysis checks grammar and program structure: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Input Tokens produced by lexical analysis.</li><li><strong>Lesson fact:</strong> Action Checks whether tokens follow the grammar rules of the language.</li><li><strong>Lesson fact:</strong> Output May build a parse tree or syntax tree to represent structure.</li><li><strong>Lesson fact:</strong> Errors Can detect missing brackets, invalid statement order or malformed expressions.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end syntax -->
+
         <section class="panel" id="semantic" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="semantic">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -151,6 +193,20 @@
             <article><strong>Errors</strong><span>Examples include using an undeclared variable or adding incompatible types.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start semantic -->
+        <section class="panel explanation-panel" id="explanation-semantic" data-explains="semantic" data-explanation-kind="mechanism" aria-labelledby="explanation-semantic-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="semantic">
+          <h2 class="explanation-sr-only" id="explanation-semantic-title">Semantic analysis checks meaning and context</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-057-semantic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Semantic analysis checks meaning and context with a structured visual model." />
+            <figcaption class="explanation-sr-only">Semantic analysis checks meaning and context: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Meaning Code can be grammatically correct but still not make valid sense.</li><li><strong>Lesson fact:</strong> Checks Type compatibility, variable declarations, scope and valid operations.</li><li><strong>Lesson fact:</strong> Symbol table Stores information about identifiers such as names, types and locations.</li><li><strong>Lesson fact:</strong> Errors Examples include using an undeclared variable or adding incompatible types.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end semantic -->
 
         <section class="panel" id="generation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="generation">
           <div class="section-title">
@@ -165,6 +221,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start generation -->
+        <section class="panel explanation-panel" id="explanation-generation" data-explains="generation" data-explanation-kind="mechanism" aria-labelledby="explanation-generation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="generation">
+          <h2 class="explanation-sr-only" id="explanation-generation-title">Code generation produces object code</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-057-generation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Code generation produces object code with a structured visual model." />
+            <figcaption class="explanation-sr-only">Code generation produces object code: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Input Checked intermediate representation or syntax tree.</li><li><strong>Lesson fact:</strong> Action Generates target low-level instructions for the processor or virtual machine.</li><li><strong>Lesson fact:</strong> Output Object code, often not yet a complete final executable.</li><li><strong>Lesson fact:</strong> Boundary Linking external modules and loading into memory belong to the next lesson.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end generation -->
+
         <section class="panel" id="optimisation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="optimisation">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
@@ -177,6 +247,20 @@
             <article><strong>Trap</strong><span>Optimisation does not mean fixing all logic errors in the programmer's algorithm.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start optimisation -->
+        <section class="panel explanation-panel" id="explanation-optimisation" data-explains="optimisation" data-explanation-kind="mechanism" aria-labelledby="explanation-optimisation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="optimisation">
+          <h2 class="explanation-sr-only" id="explanation-optimisation-title">Optimisation improves code without changing what it does</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-057-optimisation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Optimisation improves code without changing what it does with a structured visual model." />
+            <figcaption class="explanation-sr-only">Optimisation improves code without changing what it does: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Purpose Improve efficiency, such as speed or memory use.</li><li><strong>Lesson fact:</strong> Examples Remove unreachable code or avoid repeated calculations.</li><li><strong>Lesson fact:</strong> Rule The program's intended behaviour should remain the same.</li><li><strong>Lesson fact:</strong> Trap Optimisation does not mean fixing all logic errors in the programmer's algorithm.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end optimisation -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

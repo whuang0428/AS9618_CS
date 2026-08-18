@@ -71,3 +71,80 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **paper 1 extended-response practice**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Evaluation is not just "good and bad"
+
+- **Explains:** `balance`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-096-balance.jpg`
+
+1. Stakeholder Name who is affected: student, staff, customer, business, public, developer.
+2. Benefit Explain the advantage and who receives it.
+3. Concern Explain harm, risk, fairness, privacy, legal or environmental issue.
+4. Safeguard Add condition, limit, policy, access control, transparency or testing.
+5. Judgement Reach a conclusion using provided that, unless, only if or because.
+6. Scenario Use the actual organisation, users and data in the question.
+
+### Extended-response topics across Paper 1
+
+- **Explains:** `map`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-096-map.jpg`
+
+1. Question map
+2. Representation choice justify storage, compression, image/sound settings and file-size trade-offs
+3. Communication compare networks, models, protocols, media and cloud services in context
+4. Hardware/processor explain component roles, FDE cycle, interrupts and performance factors
+5. System software compare translators, OS roles, utility software and development choices
+6. Security explain threats, controls, limitations and data integrity consequences
+7. Ethics/databases evaluate impacts and design relational data/SQL solutions with justification
+
+### How extended marks usually appear
+
+- **Explains:** `marking`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-096-marking.jpg`
+
+1. Marking focus
+2. Mark type
+3. What earns it
+4. What loses it
+5. accurate named point or fact
+6. vague wording such as "secure" or "efficient"
+7. method, mechanism, comparison or logical development
+8. keyword with no explanation
+9. application, consequence, judgement or correct final result
+10. generic answer that ignores the scenario
+
+### Choose a structure before writing
+
+- **Explains:** `planner`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-096-planner.jpg`
+
+1. Interactive response planner
+2. Question type
+3. Choose a question type to see a compact plan.
+
+### Three reliable extended-response shapes
+
+- **Explains:** `structure`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-096-structure.jpg`
+
+1. Structure
+2. Question type
+3. Sentence pattern
+4. Explain three...
+5. 3 x named point + mechanism + consequence
+6. Control X works by..., so in this scenario...
+7. Compare...
+8. 3 paired contrasts
+9. A does..., whereas B does..., which matters because...
+10. Evaluate/discuss...
+11. benefit + concern + safeguard + judgement
+12. Although..., however..., therefore only if...
+<!-- stage10-explanations:end -->

@@ -92,3 +92,135 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **paper 2 review: programming constructs and file handling**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Identify the construct from the scenario
+
+- **Explains:** `construct-tool`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-construct-tool.jpg`
+
+1. Interactive construct tool
+2. Scenario
+
+### Constructs control the order in which statements run
+
+- **Explains:** `constructs`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-constructs.jpg`
+
+1. Programming constructs
+2. Construct
+3. Cambridge-style signal
+4. Common trap
+5. Sequence
+6. statements run in order
+7. one statement after another
+8. assuming hidden jumps
+9. Selection
+10. choose a branch
+11. IF / ELSE / CASE
+12. missing ELSE or ENDIF
+
+### Choose READ, WRITE or APPEND
+
+- **Explains:** `file-tool`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-file-tool.jpg`
+
+1. File mode chooser
+
+### Open the file in the correct mode, process records, then close it
+
+- **Explains:** `files`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-files.jpg`
+
+1. File handling review
+2. Read pattern
+3. OPENFILE "Scores.txt" FOR READ
+4. WHILE NOT EOF("Scores.txt")
+5. READFILE "Scores.txt", Line
+6. OUTPUT Line
+7. ENDWHILE
+8. CLOSEFILE "Scores.txt"
+9. Append pattern
+10. OPENFILE "Scores.txt" FOR APPEND
+11. WRITEFILE "Scores.txt", NewScore
+12. APPEND preserves existing records. WRITE is usually for creating or replacing file contents.
+
+### Choose the loop by what is known before the loop starts
+
+- **Explains:** `iteration`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-iteration.jpg`
+
+1. Iteration review
+2. Use when
+3. number of repetitions is known
+4. process 30 scores
+5. condition is checked before each repetition
+6. read until end of file
+7. REPEAT UNTIL
+8. body must run at least once
+9. keep asking until valid input
+10. Boundary warning: if a loop says 1 to 5, there are five iterations. The loop counter is not just decorative furniture.
+
+### Use IF for decisions, CASE for clean multi-way choices
+
+- **Explains:** `selection`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-selection.jpg`
+
+1. Selection review
+2. IF example
+3. IF Mark >= 50 THEN
+4. OUTPUT "Pass"
+5. OUTPUT "Resit needed"
+6. CASE example
+7. CASE MenuChoice OF
+8. 1 : CALL AddScore()
+9. 2 : CALL DisplayScores()
+10. 3 : CALL SaveScores()
+11. OTHERWISE : OUTPUT "Invalid choice"
+
+### Subprograms reduce repetition and make code testable
+
+- **Explains:** `subprograms`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-subprograms.jpg`
+
+1. Procedures and functions
+2. Procedure
+3. PROCEDURE DisplayMessage(Message : STRING)
+4. OUTPUT Message
+5. ENDPROCEDURE
+6. A procedure performs an action and does not have to return a value.
+7. Function
+8. FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
+9. IF Mark >= 0 AND Mark <= 100 THEN
+10. RETURN TRUE
+11. RETURN FALSE
+12. ENDFUNCTION
+
+### Validation rejects unsuitable input before it damages the logic
+
+- **Explains:** `validation`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-validation.jpg`
+
+1. Validation review
+2. Range check
+3. value is between limits
+4. mark from 0 to 100 inclusive
+5. Type check
+6. value has expected data type
+7. mark must be integer
+8. Presence check
+9. value is not blank
+10. student name required
+11. Length check
+12. value has correct number of characters
+<!-- stage10-explanations:end -->

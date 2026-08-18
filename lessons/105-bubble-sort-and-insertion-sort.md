@@ -100,47 +100,47 @@ Correction prompt: "Show the mechanism, not just the label."
 
 - **Explains:** `bubble`
 - **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-105-bubble.jpg`
 
 1. Compare neighbouring values and swap an inverted pair.
 2. A pass moves one extreme value toward its final end position.
 3. Repeat until a pass makes no swaps or the unsorted region ends.
-
 - **Analogy:** Repeatedly exchange adjacent books until the largest reaches the shelf end.
 - **Boundary:** One pass does not generally sort the entire list.
-
-### How insertion sort grows a sorted region
-
-- **Explains:** `insertion`
-- **Explanation type:** process
-
-1. Treat the first item as an already sorted region.
-2. Remove the next key and shift larger sorted items right.
-3. Insert the key into the gap, expanding the sorted region.
-
-- **Analogy:** Insert each new card into the correct place in an ordered hand.
-- **Boundary:** The left region is sorted, but the unprocessed right region is not.
 
 ### Why the sorts move data differently
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-105-compare.jpg`
 
 1. Bubble sort repairs local inversions through repeated neighbouring swaps.
 2. Insertion sort moves one key through an existing sorted region.
 3. Their movement patterns produce different trace states and operation counts.
-
 - **Analogy:** One method swaps neighbours; the other opens a gap for one selected card.
 - **Boundary:** Both remain quadratic in the typical worst-case school-level analysis.
+
+### How insertion sort grows a sorted region
+
+- **Explains:** `insertion`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-105-insertion.jpg`
+
+1. Treat the first item as an already sorted region.
+2. Remove the next key and shift larger sorted items right.
+3. Insert the key into the gap, expanding the sorted region.
+- **Analogy:** Insert each new card into the correct place in an ordered hand.
+- **Boundary:** The left region is sorted, but the unprocessed right region is not.
 
 ### Why a trace follows state
 
 - **Explains:** `pseudocode`
 - **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-105-pseudocode.jpg`
 
 1. Record the variables and list at the agreed trace point.
 2. Apply exactly one comparison, swap, shift or insertion step.
 3. Write the new state before advancing the loop.
-
 - **Analogy:** A laboratory log records each changed state, not the punctuation of instructions.
 - **Boundary:** A trace must use the algorithm's actual update order.
 <!-- stage10-explanations:end -->

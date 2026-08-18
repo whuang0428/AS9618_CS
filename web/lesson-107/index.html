@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -130,6 +130,20 @@ NEXT Index</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start model -->
+        <section class="panel explanation-panel" id="explanation-model" data-explains="model" data-explanation-kind="comparison" aria-labelledby="explanation-model-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
+          <h2 class="explanation-sr-only" id="explanation-model-title">A string algorithm needs position, character and stopping point</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-107-model.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A string algorithm needs position, character and stopping point with a structured visual model." />
+            <figcaption class="explanation-sr-only">A string algorithm needs position, character and stopping point: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> Concrete model</li><li><strong>Lesson fact:</strong> In Cambridge-style reasoning, text is processed by taking one character at a time from a known position.</li><li><strong>Lesson fact:</strong> Word &lt;- &quot;DATA&quot;</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO LENGTH(Word)</li><li><strong>Lesson fact:</strong> Character &lt;- character at position Index</li><li><strong>Lesson fact:</strong> OUTPUT Character</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Trace for &quot;DATA&quot;</li><li><strong>Lesson fact:</strong> Character</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end model -->
+
         <section class="panel" id="patterns" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
           <div class="section-title">
             <p class="eyebrow">Core patterns</p>
@@ -143,6 +157,20 @@ NEXT Index</code></pre>
             <div class="table-row" role="row"><div>Build</div><div>`NewString`</div><div>copy or transform selected characters</div><div>constructed text</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start patterns -->
+        <section class="panel explanation-panel" id="explanation-patterns" data-explains="patterns" data-explanation-kind="process" aria-labelledby="explanation-patterns-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
+          <h2 class="explanation-sr-only" id="explanation-patterns-title">Most AS string algorithms are four familiar patterns</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-107-patterns.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Most AS string algorithms are four familiar patterns with a structured visual model." />
+            <figcaption class="explanation-sr-only">Most AS string algorithms are four familiar patterns: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Core patterns</li><li><strong>Lesson fact:</strong> State variable</li><li><strong>Lesson fact:</strong> Typical condition</li><li><strong>Lesson fact:</strong> Character = Target</li><li><strong>Lesson fact:</strong> number of matches</li><li><strong>Lesson fact:</strong> Found flag</li><li><strong>Lesson fact:</strong> Character = Target</li><li><strong>Lesson fact:</strong> true/false or position</li><li><strong>Lesson fact:</strong> Validate</li><li><strong>Lesson fact:</strong> Valid flag</li><li><strong>Lesson fact:</strong> character is allowed / not allowed</li><li><strong>Lesson fact:</strong> valid or invalid</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end patterns -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
@@ -194,6 +222,20 @@ OUTPUT NewString</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start build -->
+        <section class="panel explanation-panel" id="explanation-build" data-explains="build" data-explanation-kind="process" aria-labelledby="explanation-build-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="build">
+          <h2 class="explanation-sr-only" id="explanation-build-title">Some algorithms construct a new string one character at a time</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-107-build.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Some algorithms construct a new string one character at a time with a structured visual model." />
+            <figcaption class="explanation-sr-only">Some algorithms construct a new string one character at a time: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Building output</li><li><strong>Lesson fact:</strong> Remove spaces from a string</li><li><strong>Lesson fact:</strong> NewString &lt;- &quot;&quot;</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO LENGTH(Text)</li><li><strong>Lesson fact:</strong> Character &lt;- character at position Index</li><li><strong>Lesson fact:</strong> IF Character &lt;&gt; &quot; &quot; THEN</li><li><strong>Lesson fact:</strong> NewString &lt;- NewString &amp; Character</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> OUTPUT NewString</li><li><strong>Lesson fact:</strong> Why concatenation matters</li><li><strong>Lesson fact:</strong> For &quot;A S&quot;, the algorithm appends A, skips the space, then appends S. The result is &quot;AS&quot;.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end build -->
+
         <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
@@ -224,6 +266,20 @@ for (int index = 0; index &lt; word.length(); index++) {
           </div>
           <div class="callout">Exam reminder: Java uses `charAt(0)` for the first character. Do not copy Java braces, semicolons or 0-based loop bounds into Cambridge pseudocode unless the question asks for Java.</div>
         </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Keep exam pseudocode readable and avoid Java indexing leakage</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-107-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Keep exam pseudocode readable and avoid Java indexing leakage with a structured visual model." />
+            <figcaption class="explanation-sr-only">Keep exam pseudocode readable and avoid Java indexing leakage: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> VowelCount &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO LENGTH(Word)</li><li><strong>Lesson fact:</strong> Character &lt;- character at position Index</li><li><strong>Lesson fact:</strong> IF Character = &quot;A&quot; OR Character = &quot;E&quot; OR Character = &quot;I&quot; OR Character = &quot;O&quot; OR Character = &quot;U&quot; THEN</li><li><strong>Lesson fact:</strong> VowelCount &lt;- VowelCount + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> OUTPUT VowelCount</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> int vowelCount = 0;</li><li><strong>Lesson fact:</strong> for (int index = 0; index &lt; word.length(); index++) {</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
 
 
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
@@ -273,6 +329,20 @@ for (int index = 0; index &lt; word.length(); index++) {
           </div>
           <div class="trace-output" id="scanResult">Choose text and operation, then trace the string.</div>
         </section>
+
+        <!-- stage10-explanation:start scanner -->
+        <section class="panel explanation-panel" id="explanation-scanner" data-explains="scanner" data-explanation-kind="process" aria-labelledby="explanation-scanner-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="scanner">
+          <h2 class="explanation-sr-only" id="explanation-scanner-title">Trace character processing</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-107-scanner.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace character processing with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trace character processing: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive string scanner</li><li><strong>Lesson fact:</strong> Operation</li><li><strong>Lesson fact:</strong> Choose text and operation, then trace the string.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end scanner -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

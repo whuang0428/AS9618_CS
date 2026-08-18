@@ -126,3 +126,142 @@ Correction prompt: "Show the mechanism, not just the label."
 - **A1** outputs count after the loop with coherent Cambridge syntax
 
 **Strict note:** Do not accept Java syntax such as int, braces or System.out as Cambridge pseudocode.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Use Cambridge array notation consistently
+
+- **Explains:** `arrays`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-arrays.jpg`
+
+1. Java support example only
+2. scores[0] = 72;
+3. System.out.println(scores[0]);
+4. Cambridge-style pseudocode
+5. Scores[1] <- 72
+6. OUTPUT Scores[1]
+7. Cambridge examples often use 1-based indexing unless a question defines otherwise. Follow the question's stated indexing.
+
+### Use the assignment arrow for storing a value
+
+- **Explains:** `assignment`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-assignment.jpg`
+
+1. Assignment
+2. Java support example only
+3. total = total + mark;
+4. Cambridge-style pseudocode
+5. Total <- Total + Mark
+6. A single equals sign can be read as assignment in Java, but Cambridge pseudocode normally uses the left arrow.
+
+### 5-minute quiz focus
+
+- **Explains:** `checkpoint`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-checkpoint.jpg`
+
+1. Monthly checkpoint
+2. Conversion
+3. Translate one Java selection, one loop and one output statement.
+4. Explanation
+5. Explain why Java syntax is support only, not the Paper 2 answer format.
+6. Accuracy
+7. Check that the algorithm meaning is unchanged after conversion.
+
+### Replace library calls with algorithm keywords
+
+- **Explains:** `io`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-io.jpg`
+
+1. Input and output
+2. Java support example only
+3. Scanner input = new Scanner(System.in);
+4. mark = input.nextInt();
+5. System.out.println(mark);
+6. Cambridge-style pseudocode
+7. INPUT Mark
+8. OUTPUT Mark
+
+### Choose the loop keyword that matches the logic
+
+- **Explains:** `loops`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-loops.jpg`
+
+1. Java habit
+2. Pseudocode form
+3. for (int i = 1; i <= 5; i++)
+4. known count
+5. FOR I <- 1 TO 5
+6. do not keep Java brackets
+7. while (valid == false)
+8. repeat while condition true
+9. WHILE Valid = FALSE
+10. end with ENDWHILE
+11. do { ... } while (...)
+12. post-condition loop
+
+### Use IF , THEN , ELSE , ENDIF
+
+- **Explains:** `selection`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-selection.jpg`
+
+1. Selection
+2. Java support example only
+3. if (mark >= 50) {
+4. System.out.println("Pass");
+5. } else {
+6. System.out.println("Resit needed");
+7. Cambridge-style pseudocode
+8. IF Mark >= 50 THEN
+9. OUTPUT "Pass"
+10. OUTPUT "Resit needed"
+
+### Spot the Java-only syntax in an exam answer
+
+- **Explains:** `spotter`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-spotter.jpg`
+
+1. Java spotter
+2. Suspicious answer fragment
+
+### Cambridge pseudocode uses readable algorithm keywords
+
+- **Explains:** `standard`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-standard.jpg`
+
+1. Exam standard
+2. It is not Java with the class declaration removed. It has its own conventions for assignment, input/output, loops, selection and subroutines.
+3. Java habit
+4. Cambridge-style pseudocode
+5. Assignment
+6. total = total + mark;
+7. Total <- Total + Mark
+8. System.out.println(total);
+9. OUTPUT Total
+10. Selection
+11. if (...) { ... }
+12. IF ... THEN ... ENDIF
+
+### Use PROCEDURE and FUNCTION instead of Java method wrappers
+
+- **Explains:** `subroutines`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-subroutines.jpg`
+
+1. Subroutines
+2. Java support example only
+3. static boolean isValidMark(int mark) {
+4. return mark >= 0 && mark <= 100;
+5. Cambridge-style pseudocode
+6. FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
+7. RETURN Mark >= 0 AND Mark <= 100
+8. ENDFUNCTION
+<!-- stage10-explanations:end -->

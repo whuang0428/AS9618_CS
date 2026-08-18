@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -118,6 +118,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start principle -->
+        <section class="panel explanation-panel" id="explanation-principle" data-explains="principle" data-explanation-kind="mechanism" aria-labelledby="explanation-principle-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="principle">
+          <h2 class="explanation-sr-only" id="explanation-principle-title">Do not mix the two languages inside one answer</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-124-principle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Do not mix the two languages inside one answer with a structured visual model." />
+            <figcaption class="explanation-sr-only">Do not mix the two languages inside one answer: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Core principle</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Variable declaration</li><li><strong>Lesson fact:</strong> DECLARE Count : INTEGER</li><li><strong>Lesson fact:</strong> int count;</li><li><strong>Lesson fact:</strong> Assignment</li><li><strong>Lesson fact:</strong> Count &lt;- 0</li><li><strong>Lesson fact:</strong> count = 0;</li><li><strong>Lesson fact:</strong> Array declaration</li><li><strong>Lesson fact:</strong> DECLARE Scores : ARRAY[1:30] OF INTEGER</li><li><strong>Lesson fact:</strong> int[] scores = new int[30];</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end principle -->
+
         <section class="panel" id="types" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="types">
           <div class="section-title">
             <p class="eyebrow">Data type mapping</p>
@@ -132,6 +146,20 @@
             <div class="table-row" role="row"><div>true/false</div><div><code>BOOLEAN</code></div><div><code>boolean</code></div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start types -->
+        <section class="panel explanation-panel" id="explanation-types" data-explains="types" data-explanation-kind="mechanism" aria-labelledby="explanation-types-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="types">
+          <h2 class="explanation-sr-only" id="explanation-types-title">Map concepts, not spelling</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-124-types.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Map concepts, not spelling with a structured visual model." />
+            <figcaption class="explanation-sr-only">Map concepts, not spelling: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Data type mapping</li><li><strong>Lesson fact:</strong> Pseudocode type</li><li><strong>Lesson fact:</strong> Java support example</li><li><strong>Lesson fact:</strong> whole number</li><li><strong>Lesson fact:</strong> decimal number</li><li><strong>Lesson fact:</strong> single character</li><li><strong>Lesson fact:</strong> true/false</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end types -->
 
         <section class="panel" id="variables" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="variables">
           <div class="section-title">
@@ -155,6 +183,20 @@ String name = "Ali";</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start variables -->
+        <section class="panel explanation-panel" id="explanation-variables" data-explains="variables" data-explanation-kind="mechanism" aria-labelledby="explanation-variables-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="variables">
+          <h2 class="explanation-sr-only" id="explanation-variables-title">Declare first; initialise separately when needed</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-124-variables.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Declare first; initialise separately when needed with a structured visual model." />
+            <figcaption class="explanation-sr-only">Declare first; initialise separately when needed: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Variables</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> DECLARE Count : INTEGER</li><li><strong>Lesson fact:</strong> Count &lt;- 0</li><li><strong>Lesson fact:</strong> DECLARE Name : STRING</li><li><strong>Lesson fact:</strong> Name &lt;- &quot;Ali&quot;</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> int count = 0;</li><li><strong>Lesson fact:</strong> String name = &quot;Ali&quot;;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end variables -->
+
         <section class="panel" id="constants" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constants">
           <div class="section-title">
             <p class="eyebrow">Constants</p>
@@ -175,6 +217,20 @@ final int PASS_MARK = 40;</code></pre>
           <div class="callout">Java naming conventions may use capitals for constants. Cambridge pseudocode credit comes from clear constant declaration and use.</div>
         </section>
 
+        <!-- stage10-explanation:start constants -->
+        <section class="panel explanation-panel" id="explanation-constants" data-explains="constants" data-explanation-kind="mechanism" aria-labelledby="explanation-constants-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constants">
+          <h2 class="explanation-sr-only" id="explanation-constants-title">Constants are named values that should not change</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-124-constants.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Constants are named values that should not change with a structured visual model." />
+            <figcaption class="explanation-sr-only">Constants are named values that should not change: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Constants</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> CONSTANT MaxSize = 100</li><li><strong>Lesson fact:</strong> CONSTANT PassMark = 40</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> final int MAX_SIZE = 100;</li><li><strong>Lesson fact:</strong> final int PASS_MARK = 40;</li><li><strong>Lesson fact:</strong> Java naming conventions may use capitals for constants. Cambridge pseudocode credit comes from clear constant declaration and use.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end constants -->
+
         <section class="panel" id="arrays" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="arrays">
           <div class="section-title">
             <p class="eyebrow">Arrays</p>
@@ -194,6 +250,20 @@ scores[0] = 72;</code></pre>
           </div>
           <div class="callout">Index warning: if pseudocode declares <code>ARRAY[1:30]</code>, do not automatically use Java's index 0 in the exam answer.</div>
         </section>
+
+        <!-- stage10-explanation:start arrays -->
+        <section class="panel explanation-panel" id="explanation-arrays" data-explains="arrays" data-explanation-kind="mechanism" aria-labelledby="explanation-arrays-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="arrays">
+          <h2 class="explanation-sr-only" id="explanation-arrays-title">Cambridge array bounds are stated explicitly</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-124-arrays.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge array bounds are stated explicitly with a structured visual model." />
+            <figcaption class="explanation-sr-only">Cambridge array bounds are stated explicitly: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> DECLARE Scores : ARRAY[1:30] OF INTEGER</li><li><strong>Lesson fact:</strong> Scores[1] &lt;- 72</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> int[] scores = new int[30];</li><li><strong>Lesson fact:</strong> scores[0] = 72;</li><li><strong>Lesson fact:</strong> Index warning: if pseudocode declares ARRAY[1:30] , do not automatically use Java's index 0 in the exam answer.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end arrays -->
 
         <section class="panel" id="records" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="records">
           <div class="section-title">
@@ -222,6 +292,20 @@ Student student1 = new Student();</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start records -->
+        <section class="panel explanation-panel" id="explanation-records" data-explains="records" data-explanation-kind="mechanism" aria-labelledby="explanation-records-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="records">
+          <h2 class="explanation-sr-only" id="explanation-records-title">Record declarations use TYPE and ENDTYPE</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-124-records.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Record declarations use TYPE and ENDTYPE with a structured visual model." />
+            <figcaption class="explanation-sr-only">Record declarations use TYPE and ENDTYPE: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> TYPE TStudent</li><li><strong>Lesson fact:</strong> DECLARE Name : STRING</li><li><strong>Lesson fact:</strong> DECLARE Mark : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Student1 : TStudent</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> class Student {</li><li><strong>Lesson fact:</strong> String name;</li><li><strong>Lesson fact:</strong> int mark;</li><li><strong>Lesson fact:</strong> Student student1 = new Student();</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end records -->
+
         <section class="panel" id="assignment" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assignment">
           <div class="section-title">
             <p class="eyebrow">Assignment versus comparison</p>
@@ -234,6 +318,20 @@ Student student1 = new Student();</code></pre>
             <div class="table-row" role="row"><div>Java warning</div><div><code>count == 10</code></div><div>Java equality syntax is not the expected pseudocode style</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start assignment -->
+        <section class="panel explanation-panel" id="explanation-assignment" data-explains="assignment" data-explanation-kind="mechanism" aria-labelledby="explanation-assignment-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assignment">
+          <h2 class="explanation-sr-only" id="explanation-assignment-title">&lt;- changes a value; = usually tests equality in conditions</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-124-assignment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining &lt;- changes a value; = usually tests equality in conditions with a structured visual model." />
+            <figcaption class="explanation-sr-only">&lt;- changes a value; = usually tests equality in conditions: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Assignment versus comparison</li><li><strong>Lesson fact:</strong> Pseudocode</li><li><strong>Lesson fact:</strong> Count &lt;- Count + 1</li><li><strong>Lesson fact:</strong> store a new value in Count</li><li><strong>Lesson fact:</strong> IF Count = 10 THEN</li><li><strong>Lesson fact:</strong> test whether Count equals 10</li><li><strong>Lesson fact:</strong> Java warning</li><li><strong>Lesson fact:</strong> count == 10</li><li><strong>Lesson fact:</strong> Java equality syntax is not the expected pseudocode style</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end assignment -->
 
 
         <section class="panel" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="converter">
@@ -270,6 +368,20 @@ Student student1 = new Student();</code></pre>
           </div>
           <div class="feedback" id="sortFeedback" aria-live="polite">Click a statement to identify whether it is pseudocode or Java-style.</div>
         </section>
+
+        <!-- stage10-explanation:start sorter -->
+        <section class="panel explanation-panel" id="explanation-sorter" data-explains="sorter" data-explanation-kind="process" aria-labelledby="explanation-sorter-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sorter">
+          <h2 class="explanation-sr-only" id="explanation-sorter-title">Which syntax belongs to which answer style?</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-124-sorter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Which syntax belongs to which answer style? with a structured visual model." />
+            <figcaption class="explanation-sr-only">Which syntax belongs to which answer style?: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Syntax sorter</li><li><strong>Lesson fact:</strong> Click a statement to identify whether it is pseudocode or Java-style.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end sorter -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

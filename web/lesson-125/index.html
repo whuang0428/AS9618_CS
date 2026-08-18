@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -116,6 +116,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start map -->
+        <section class="panel explanation-panel" id="explanation-map" data-explains="map" data-explanation-kind="synthesis" aria-labelledby="explanation-map-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="map">
+          <h2 class="explanation-sr-only" id="explanation-map-title">Section 10 in one review grid</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 10 in one review grid with a structured visual model." />
+            <figcaption class="explanation-sr-only">Section 10 in one review grid: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Retrieval map</li><li><strong>Lesson fact:</strong> Best clue</li><li><strong>Lesson fact:</strong> Exam action</li><li><strong>Lesson fact:</strong> Common weak answer</li><li><strong>Lesson fact:</strong> many values of the same type</li><li><strong>Lesson fact:</strong> declare bounds, loop over indexes</li><li><strong>Lesson fact:</strong> &quot;list of data&quot;</li><li><strong>Lesson fact:</strong> one item has several fields</li><li><strong>Lesson fact:</strong> declare TYPE, fields and variables</li><li><strong>Lesson fact:</strong> &quot;array with different things&quot;</li><li><strong>Lesson fact:</strong> Array of records</li><li><strong>Lesson fact:</strong> many items, each with fields</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end map -->
+
         <section class="panel" id="decision" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="decision">
           <div class="section-title">
             <p class="eyebrow">Data model decision</p>
@@ -137,6 +151,20 @@
           </div>
           <div class="callout">Mark-worthy pattern: <strong>structure + scenario clue + consequence</strong>.</div>
         </section>
+
+        <!-- stage10-explanation:start decision -->
+        <section class="panel explanation-panel" id="explanation-decision" data-explains="decision" data-explanation-kind="synthesis" aria-labelledby="explanation-decision-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="decision">
+          <h2 class="explanation-sr-only" id="explanation-decision-title">A good answer names the structure and the reason</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-decision.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A good answer names the structure and the reason with a structured visual model." />
+            <figcaption class="explanation-sr-only">A good answer names the structure and the reason: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Data model decision</li><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> A school stores 120 students. Each student has an ID, name, class group and average mark.</li><li><strong>Lesson fact:</strong> Strong choice</li><li><strong>Lesson fact:</strong> Use an array of records: the array stores many students; each record keeps fields for one student together.</li><li><strong>Lesson fact:</strong> Why not just an array?</li><li><strong>Lesson fact:</strong> A single array normally stores one type of value. A record is better when one logical item has different fields.</li><li><strong>Lesson fact:</strong> Mark-worthy pattern: structure + scenario clue + consequence .</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end decision -->
 
         <section class="panel" id="files" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="files">
           <div class="section-title">
@@ -165,6 +193,20 @@ Mark &lt;- STRING_TO_INTEGER(Fields[3])</code></pre>
           <div class="callout">CSV fields arrive as text. Convert numeric fields before arithmetic.</div>
         </section>
 
+        <!-- stage10-explanation:start files -->
+        <section class="panel explanation-panel" id="explanation-files" data-explains="files" data-explanation-kind="synthesis" aria-labelledby="explanation-files-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="files">
+          <h2 class="explanation-sr-only" id="explanation-files-title">Files preserve data beyond the running program</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-files.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Files preserve data beyond the running program with a structured visual model." />
+            <figcaption class="explanation-sr-only">Files preserve data beyond the running program: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> File handling review</li><li><strong>Lesson fact:</strong> Line-based read pattern</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.csv&quot; FOR READ</li><li><strong>Lesson fact:</strong> WHILE NOT EOF(&quot;Scores.csv&quot;)</li><li><strong>Lesson fact:</strong> READFILE &quot;Scores.csv&quot;, Line</li><li><strong>Lesson fact:</strong> // process Line</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Scores.csv&quot;</li><li><strong>Lesson fact:</strong> CSV processing idea</li><li><strong>Lesson fact:</strong> Line &lt;- &quot;S017,Ava,82&quot;</li><li><strong>Lesson fact:</strong> Fields &lt;- SPLIT(Line, &quot;,&quot;)</li><li><strong>Lesson fact:</strong> StudentID &lt;- Fields[1]</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end files -->
+
         <section class="panel" id="adts" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="adts">
           <div class="section-title">
             <p class="eyebrow">Stack and queue review</p>
@@ -176,6 +218,20 @@ Mark &lt;- STRING_TO_INTEGER(Fields[3])</code></pre>
             <div class="table-row" role="row"><div>Queue</div><div>FIFO: First In, First Out</div><div>ENQUEUE, DEQUEUE</div><div>print jobs, calls, waiting line</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start adts -->
+        <section class="panel explanation-panel" id="explanation-adts" data-explains="adts" data-explanation-kind="synthesis" aria-labelledby="explanation-adts-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="adts">
+          <h2 class="explanation-sr-only" id="explanation-adts-title">Order of removal is the key clue</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-adts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Order of removal is the key clue with a structured visual model." />
+            <figcaption class="explanation-sr-only">Order of removal is the key clue: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Stack and queue review</li><li><strong>Lesson fact:</strong> Typical operations</li><li><strong>Lesson fact:</strong> Scenario clue</li><li><strong>Lesson fact:</strong> LIFO: Last In, First Out</li><li><strong>Lesson fact:</strong> PUSH, POP, PEEK</li><li><strong>Lesson fact:</strong> undo, backtracking, nested calls</li><li><strong>Lesson fact:</strong> FIFO: First In, First Out</li><li><strong>Lesson fact:</strong> ENQUEUE, DEQUEUE</li><li><strong>Lesson fact:</strong> print jobs, calls, waiting line</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end adts -->
 
         <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
           <div class="section-title">
@@ -206,6 +262,20 @@ Student[] students = new Student[120];</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start declare -->
+        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="synthesis" aria-labelledby="explanation-declare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+          <h2 class="explanation-sr-only" id="explanation-declare-title">Cambridge pseudocode remains the exam standard</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge pseudocode remains the exam standard with a structured visual model." />
+            <figcaption class="explanation-sr-only">Cambridge pseudocode remains the exam standard: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Declaration review</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> TYPE TStudent</li><li><strong>Lesson fact:</strong> DECLARE ID : STRING</li><li><strong>Lesson fact:</strong> DECLARE Name : STRING</li><li><strong>Lesson fact:</strong> DECLARE Mark : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:120] OF TStudent</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> class Student {</li><li><strong>Lesson fact:</strong> String id;</li><li><strong>Lesson fact:</strong> String name;</li><li><strong>Lesson fact:</strong> int mark;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end declare -->
+
         <section class="panel" id="marks" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="marks">
           <div class="section-title">
             <p class="eyebrow">Mark-scheme language</p>
@@ -219,6 +289,20 @@ Student[] students = new Student[120];</code></pre>
             <div class="table-row" role="row"><div>Use Java array.</div><div>DECLARE Scores : ARRAY[1:30] OF INTEGER.</div><div>answers in Cambridge pseudocode</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start marks -->
+        <section class="panel explanation-panel" id="explanation-marks" data-explains="marks" data-explanation-kind="synthesis" aria-labelledby="explanation-marks-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="marks">
+          <h2 class="explanation-sr-only" id="explanation-marks-title">Upgrade vague words into credit-bearing words</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-marks.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Upgrade vague words into credit-bearing words with a structured visual model." />
+            <figcaption class="explanation-sr-only">Upgrade vague words into credit-bearing words: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Mark-scheme language</li><li><strong>Lesson fact:</strong> Weak wording</li><li><strong>Lesson fact:</strong> Stronger wording</li><li><strong>Lesson fact:</strong> Why it earns more</li><li><strong>Lesson fact:</strong> It is better.</li><li><strong>Lesson fact:</strong> It keeps all fields for one student together.</li><li><strong>Lesson fact:</strong> names the consequence</li><li><strong>Lesson fact:</strong> It is ordered.</li><li><strong>Lesson fact:</strong> A queue removes items in the same order they arrived.</li><li><strong>Lesson fact:</strong> states FIFO clearly</li><li><strong>Lesson fact:</strong> Use a file.</li><li><strong>Lesson fact:</strong> Use a text file so data remains after the program closes.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end marks -->
 
 
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
@@ -250,6 +334,20 @@ Student[] students = new Student[120];</code></pre>
           </div>
           <div class="trace-output" id="improveResult">Pick a weak answer to see a mark-worthy rewrite.</div>
         </section>
+
+        <!-- stage10-explanation:start improver -->
+        <section class="panel explanation-panel" id="explanation-improver" data-explains="improver" data-explanation-kind="synthesis" aria-labelledby="explanation-improver-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="improver">
+          <h2 class="explanation-sr-only" id="explanation-improver-title">Turn a weak answer into a useful answer</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-125-improver.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Turn a weak answer into a useful answer with a structured visual model." />
+            <figcaption class="explanation-sr-only">Turn a weak answer into a useful answer: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Mark improver</li><li><strong>Lesson fact:</strong> Weak answer</li><li><strong>Lesson fact:</strong> Pick a weak answer to see a mark-worthy rewrite.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end improver -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

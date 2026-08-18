@@ -105,3 +105,81 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** missing/incompatible DLL can stop or alter programs
 
 **Strict note:** Do not accept 'saves space' unless duplication or executable size is explained.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Compare the roles without blending them
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-compare.jpg`
+
+1. Main role
+2. Typical input
+3. Typical output/result
+4. Stores reusable routines/modules.
+5. Calls from a program.
+6. Routine code can be linked or used at run time.
+7. Combines object modules and resolves external references.
+8. Object files and library references.
+9. Executable/linked object code.
+10. Places executable program into main memory.
+11. Executable file/program image.
+12. Program ready for execution in memory.
+
+### The post-compilation pathway connects code and prepares execution
+
+- **Explains:** `concept`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-concept.jpg`
+
+1. Object code Translated output from compilation or assembly, not always a complete executable.
+2. External reference A call to code or data defined in another module or library.
+3. Executable file A program file with required code linked and arranged for execution.
+4. In memory Code and data must be placed into main memory before the CPU can execute it.
+
+### Libraries provide reusable routines and modules
+
+- **Explains:** `libraries`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-libraries.jpg`
+
+1. Purpose Provide pre-written, tested routines that programs can use.
+2. Examples Mathematical functions, input/output routines, graphics or string-handling routines.
+3. Benefits Saves development time, reduces duplication and may improve reliability.
+4. Requirement Calls to library routines must be linked or made available at run time.
+
+### Linkers combine object modules and resolve references
+
+- **Explains:** `linkers`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-linkers.jpg`
+
+1. Input Object code modules and required library routines or references.
+2. Action Resolves external references between modules and libraries.
+3. Output Produces executable code or a linked object file.
+4. Error Can report unresolved external references if a required routine cannot be found.
+
+### Loaders place executable code into memory
+
+- **Explains:** `loaders`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-loaders.jpg`
+
+1. Input An executable program or loadable program image.
+2. Action Loads code and data into main memory and prepares it to run.
+3. Addresses May allocate memory and adjust addresses depending on where the program is loaded.
+4. Boundary A loader does not translate source code or combine object modules.
+
+### Static and dynamic linking affect when library code is connected
+
+- **Explains:** `static-dynamic`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-static-dynamic.jpg`
+
+1. Static linking Library code is copied into the executable at link time.
+2. Static trade-off Executable can be more self-contained but may be larger.
+3. Dynamic linking Library code is linked at load time or run time from a shared library.
+4. Dynamic trade-off Can reduce duplication, but the required shared library must be available and compatible.
+<!-- stage10-explanations:end -->

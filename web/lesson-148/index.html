@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -108,6 +108,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start constructs -->
+        <section class="panel explanation-panel" id="explanation-constructs" data-explains="constructs" data-explanation-kind="synthesis" aria-labelledby="explanation-constructs-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constructs">
+          <h2 class="explanation-sr-only" id="explanation-constructs-title">Constructs control the order in which statements run</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-148-constructs.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Constructs control the order in which statements run with a structured visual model." />
+            <figcaption class="explanation-sr-only">Constructs control the order in which statements run: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Programming constructs</li><li><strong>Lesson fact:</strong> Construct</li><li><strong>Lesson fact:</strong> Cambridge-style signal</li><li><strong>Lesson fact:</strong> Common trap</li><li><strong>Lesson fact:</strong> Sequence</li><li><strong>Lesson fact:</strong> statements run in order</li><li><strong>Lesson fact:</strong> one statement after another</li><li><strong>Lesson fact:</strong> assuming hidden jumps</li><li><strong>Lesson fact:</strong> Selection</li><li><strong>Lesson fact:</strong> choose a branch</li><li><strong>Lesson fact:</strong> IF / ELSE / CASE</li><li><strong>Lesson fact:</strong> missing ELSE or ENDIF</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end constructs -->
+
         <section class="panel" id="selection" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selection">
           <div class="section-title">
             <p class="eyebrow">Selection review</p>
@@ -134,6 +148,20 @@ ENDCASE</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start selection -->
+        <section class="panel explanation-panel" id="explanation-selection" data-explains="selection" data-explanation-kind="synthesis" aria-labelledby="explanation-selection-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selection">
+          <h2 class="explanation-sr-only" id="explanation-selection-title">Use IF for decisions, CASE for clean multi-way choices</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-148-selection.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use IF for decisions, CASE for clean multi-way choices with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use IF for decisions, CASE for clean multi-way choices: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Selection review</li><li><strong>Lesson fact:</strong> IF example</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit needed&quot;</li><li><strong>Lesson fact:</strong> CASE example</li><li><strong>Lesson fact:</strong> CASE MenuChoice OF</li><li><strong>Lesson fact:</strong> 1 : CALL AddScore()</li><li><strong>Lesson fact:</strong> 2 : CALL DisplayScores()</li><li><strong>Lesson fact:</strong> 3 : CALL SaveScores()</li><li><strong>Lesson fact:</strong> OTHERWISE : OUTPUT &quot;Invalid choice&quot;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end selection -->
+
         <section class="panel" id="iteration" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="iteration">
           <div class="section-title">
             <p class="eyebrow">Iteration review</p>
@@ -147,6 +175,20 @@ ENDCASE</code></pre>
           </div>
           <div class="callout">Boundary warning: if a loop says 1 to 5, there are five iterations. The loop counter is not just decorative furniture.</div>
         </section>
+
+        <!-- stage10-explanation:start iteration -->
+        <section class="panel explanation-panel" id="explanation-iteration" data-explains="iteration" data-explanation-kind="synthesis" aria-labelledby="explanation-iteration-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="iteration">
+          <h2 class="explanation-sr-only" id="explanation-iteration-title">Choose the loop by what is known before the loop starts</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-148-iteration.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the loop by what is known before the loop starts with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose the loop by what is known before the loop starts: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Iteration review</li><li><strong>Lesson fact:</strong> Use when</li><li><strong>Lesson fact:</strong> number of repetitions is known</li><li><strong>Lesson fact:</strong> process 30 scores</li><li><strong>Lesson fact:</strong> condition is checked before each repetition</li><li><strong>Lesson fact:</strong> read until end of file</li><li><strong>Lesson fact:</strong> REPEAT UNTIL</li><li><strong>Lesson fact:</strong> body must run at least once</li><li><strong>Lesson fact:</strong> keep asking until valid input</li><li><strong>Lesson fact:</strong> Boundary warning: if a loop says 1 to 5, there are five iterations. The loop counter is not just decorative furniture.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end iteration -->
 
         <section class="panel" id="subprograms" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="subprograms">
           <div class="section-title">
@@ -175,6 +217,20 @@ ENDFUNCTION</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start subprograms -->
+        <section class="panel explanation-panel" id="explanation-subprograms" data-explains="subprograms" data-explanation-kind="synthesis" aria-labelledby="explanation-subprograms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="subprograms">
+          <h2 class="explanation-sr-only" id="explanation-subprograms-title">Subprograms reduce repetition and make code testable</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-148-subprograms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Subprograms reduce repetition and make code testable with a structured visual model." />
+            <figcaption class="explanation-sr-only">Subprograms reduce repetition and make code testable: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Procedures and functions</li><li><strong>Lesson fact:</strong> Procedure</li><li><strong>Lesson fact:</strong> PROCEDURE DisplayMessage(Message : STRING)</li><li><strong>Lesson fact:</strong> OUTPUT Message</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> A procedure performs an action and does not have to return a value.</li><li><strong>Lesson fact:</strong> Function</li><li><strong>Lesson fact:</strong> FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN</li><li><strong>Lesson fact:</strong> RETURN TRUE</li><li><strong>Lesson fact:</strong> RETURN FALSE</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end subprograms -->
+
         <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
           <div class="section-title">
             <p class="eyebrow">Validation review</p>
@@ -188,6 +244,20 @@ ENDFUNCTION</code></pre>
             <div class="table-row"><div>Length check</div><div>value has correct number of characters</div><div>StudentID length is 8</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start validation -->
+        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="synthesis" aria-labelledby="explanation-validation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
+          <h2 class="explanation-sr-only" id="explanation-validation-title">Validation rejects unsuitable input before it damages the logic</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-148-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation rejects unsuitable input before it damages the logic with a structured visual model." />
+            <figcaption class="explanation-sr-only">Validation rejects unsuitable input before it damages the logic: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Validation review</li><li><strong>Lesson fact:</strong> Range check</li><li><strong>Lesson fact:</strong> value is between limits</li><li><strong>Lesson fact:</strong> mark from 0 to 100 inclusive</li><li><strong>Lesson fact:</strong> Type check</li><li><strong>Lesson fact:</strong> value has expected data type</li><li><strong>Lesson fact:</strong> mark must be integer</li><li><strong>Lesson fact:</strong> Presence check</li><li><strong>Lesson fact:</strong> value is not blank</li><li><strong>Lesson fact:</strong> student name required</li><li><strong>Lesson fact:</strong> Length check</li><li><strong>Lesson fact:</strong> value has correct number of characters</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end validation -->
 
         <section class="panel" id="files" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="files">
           <div class="section-title">
@@ -214,6 +284,20 @@ CLOSEFILE "Scores.txt"</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start files -->
+        <section class="panel explanation-panel" id="explanation-files" data-explains="files" data-explanation-kind="synthesis" aria-labelledby="explanation-files-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="files">
+          <h2 class="explanation-sr-only" id="explanation-files-title">Open the file in the correct mode, process records, then close it</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-148-files.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Open the file in the correct mode, process records, then close it with a structured visual model." />
+            <figcaption class="explanation-sr-only">Open the file in the correct mode, process records, then close it: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> File handling review</li><li><strong>Lesson fact:</strong> Read pattern</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.txt&quot; FOR READ</li><li><strong>Lesson fact:</strong> WHILE NOT EOF(&quot;Scores.txt&quot;)</li><li><strong>Lesson fact:</strong> READFILE &quot;Scores.txt&quot;, Line</li><li><strong>Lesson fact:</strong> OUTPUT Line</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Scores.txt&quot;</li><li><strong>Lesson fact:</strong> Append pattern</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.txt&quot; FOR APPEND</li><li><strong>Lesson fact:</strong> WRITEFILE &quot;Scores.txt&quot;, NewScore</li><li><strong>Lesson fact:</strong> APPEND preserves existing records. WRITE is usually for creating or replacing file contents.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end files -->
+
 
         <section class="panel" id="construct-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="construct-tool">
           <div class="section-title">
@@ -235,6 +319,20 @@ CLOSEFILE "Scores.txt"</code></pre>
           <div id="constructOutput" class="trace-output" aria-live="polite"></div>
         </section>
 
+        <!-- stage10-explanation:start construct-tool -->
+        <section class="panel explanation-panel" id="explanation-construct-tool" data-explains="construct-tool" data-explanation-kind="synthesis" aria-labelledby="explanation-construct-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="construct-tool">
+          <h2 class="explanation-sr-only" id="explanation-construct-tool-title">Identify the construct from the scenario</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-148-construct-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Identify the construct from the scenario with a structured visual model." />
+            <figcaption class="explanation-sr-only">Identify the construct from the scenario: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive construct tool</li><li><strong>Lesson fact:</strong> Scenario</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end construct-tool -->
+
         <section class="panel" id="file-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="file-tool">
           <div class="section-title">
             <p class="eyebrow">File mode chooser</p>
@@ -254,6 +352,20 @@ CLOSEFILE "Scores.txt"</code></pre>
           </div>
           <div id="fileOutput" class="trace-output" aria-live="polite"></div>
         </section>
+
+        <!-- stage10-explanation:start file-tool -->
+        <section class="panel explanation-panel" id="explanation-file-tool" data-explains="file-tool" data-explanation-kind="synthesis" aria-labelledby="explanation-file-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="file-tool">
+          <h2 class="explanation-sr-only" id="explanation-file-tool-title">Choose READ, WRITE or APPEND</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-148-file-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose READ, WRITE or APPEND with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose READ, WRITE or APPEND: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> File mode chooser</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end file-tool -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

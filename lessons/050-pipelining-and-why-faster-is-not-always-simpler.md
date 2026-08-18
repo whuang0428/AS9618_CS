@@ -105,3 +105,81 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** non-zero result shows the selected bit was set
 
 **Strict note:** Do not accept a Boolean whole-value AND; the operation is applied independently to corresponding bits.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Without and with pipelining
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-050-compare.jpg`
+
+1. Without pipelining
+2. Instruction 1 completes fetch, decode and execute before instruction 2 begins.
+3. I1: F D E
+4. I2: F D E
+5. I3: F D E
+6. Three instructions with three stages each may take nine stage slots.
+7. With pipelining
+8. Instruction 2 can be fetched while instruction 1 is decoded; instruction 3 can be fetched while instruction 1 executes.
+9. C2: F2 D1
+10. C3: F3 D2 E1
+11. C4: D3 E2
+12. After the pipeline fills, one instruction can complete per cycle in the ideal case.
+
+### Pipelining overlaps instruction-cycle stages
+
+- **Explains:** `concept`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-050-concept.jpg`
+
+1. Pipeline
+2. A processor technique where multiple instructions are at different stages of execution at the same time.
+3. The next instruction is fetched from memory using the program counter and memory registers.
+4. The control unit interprets the instruction and prepares required operands/control signals.
+5. The instruction is carried out, such as arithmetic, memory access or a branch.
+
+### Pipeline hazards: why faster is not always simpler
+
+- **Explains:** `hazards`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-050-hazards.jpg`
+
+1. Consequence
+2. Data hazard
+3. An instruction needs a result that a previous instruction has not produced yet.
+4. The pipeline may stall until the needed value is available.
+5. Control hazard
+6. A branch or jump changes which instruction should be fetched next.
+7. Incorrectly fetched instructions may need to be discarded or the pipeline may wait.
+8. Resource hazard
+9. Two stages need the same hardware resource in the same cycle.
+10. One stage may wait, reducing the ideal performance gain.
+
+### Stalls and flushes reduce the ideal gain
+
+- **Explains:** `stalls`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-050-stalls.jpg`
+
+1. The pipeline pauses one or more stages because an instruction cannot safely continue yet.
+2. Incorrect or unwanted instructions are removed from the pipeline, often after a branch decision.
+3. Dependency
+4. One instruction depends on the result or effect of an earlier instruction.
+5. Ideal case
+6. Pipeline is full, stages are balanced, no hazards occur and instructions complete regularly.
+
+### Throughput improves, but latency still exists
+
+- **Explains:** `timing`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-050-timing.jpg`
+
+1. Latency The time for one instruction to pass from fetch through decode to execute.
+2. Throughput The number of instructions completed per unit time once the pipeline is full.
+3. Fill The early cycles before every pipeline stage is occupied.
+4. Drain The final cycles when no new instructions enter but existing ones finish.
+5. Why this matters
+6. Exam wording may ask "why performance can improve" rather than "why every instruction is faster". Answer with throughput.
+<!-- stage10-explanations:end -->

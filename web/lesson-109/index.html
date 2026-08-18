@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -114,6 +114,20 @@
           <div class="callout">Chinese support: efficiency = 效率；time complexity idea = 随输入规模增长的运行时间；space = 额外内存。</div>
         </section>
 
+        <!-- stage10-explanation:start measure -->
+        <section class="panel explanation-panel" id="explanation-measure" data-explains="measure" data-explanation-kind="mechanism" aria-labelledby="explanation-measure-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="measure">
+          <h2 class="explanation-sr-only" id="explanation-measure-title">Efficiency is about resources used</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-109-measure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Efficiency is about resources used with a structured visual model." />
+            <figcaption class="explanation-sr-only">Efficiency is about resources used: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> What to count</li><li><strong>Lesson fact:</strong> Exam wording</li><li><strong>Lesson fact:</strong> comparisons, loop repetitions, steps</li><li><strong>Lesson fact:</strong> fewer checks / fewer iterations</li><li><strong>Lesson fact:</strong> &quot;faster&quot; without reason</li><li><strong>Lesson fact:</strong> extra variables, arrays, copied data</li><li><strong>Lesson fact:</strong> uses less memory / no extra list</li><li><strong>Lesson fact:</strong> ignoring memory when data is copied</li><li><strong>Lesson fact:</strong> Input size</li><li><strong>Lesson fact:</strong> number of items, characters, rows, columns</li><li><strong>Lesson fact:</strong> as n increases, work increases...</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end measure -->
+
         <section class="panel" id="cases" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cases">
           <div class="section-title">
             <p class="eyebrow">Best and worst cases</p>
@@ -140,6 +154,20 @@ ENDWHILE</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start cases -->
+        <section class="panel explanation-panel" id="explanation-cases" data-explains="cases" data-explanation-kind="process" aria-labelledby="explanation-cases-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cases">
+          <h2 class="explanation-sr-only" id="explanation-cases-title">The same algorithm can behave differently on different inputs</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-109-cases.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The same algorithm can behave differently on different inputs with a structured visual model." />
+            <figcaption class="explanation-sr-only">The same algorithm can behave differently on different inputs: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Best and worst cases</li><li><strong>Lesson fact:</strong> Linear search</li><li><strong>Lesson fact:</strong> Found &lt;- FALSE</li><li><strong>Lesson fact:</strong> Index &lt;- 1</li><li><strong>Lesson fact:</strong> WHILE Found = FALSE AND Index &lt;= Length</li><li><strong>Lesson fact:</strong> IF List[Index] = Target THEN</li><li><strong>Lesson fact:</strong> Found &lt;- TRUE</li><li><strong>Lesson fact:</strong> Index &lt;- Index + 1</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> Case language</li><li><strong>Lesson fact:</strong> Best case: target is first, so only 1 comparison. Worst case: target is last or absent, so all n items may be checked.</li><li><strong>Lesson fact:</strong> Do not say &quot;linear search is always slow&quot;. It can be quick in the best case, but grows linearly in the worst case.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end cases -->
+
         <section class="panel" id="search" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="search">
           <div class="section-title">
             <p class="eyebrow">Search comparison</p>
@@ -164,6 +192,20 @@ middle 52 -> found</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start search -->
+        <section class="panel explanation-panel" id="explanation-search" data-explains="search" data-explanation-kind="process" aria-labelledby="explanation-search-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="search">
+          <h2 class="explanation-sr-only" id="explanation-search-title">Linear search checks one by one; binary search halves a sorted list</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-109-search.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Linear search checks one by one; binary search halves a sorted list with a structured visual model." />
+            <figcaption class="explanation-sr-only">Linear search checks one by one; binary search halves a sorted list: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Search comparison</li><li><strong>Lesson fact:</strong> Linear search on 8 items</li><li><strong>Lesson fact:</strong> Worst case: check item 1, 2, 3, 4, 5, 6, 7, 8. That is up to 8 comparisons.</li><li><strong>Lesson fact:</strong> [3, 8, 11, 18, 25, 31, 40, 52]</li><li><strong>Lesson fact:</strong> target 52 -&gt; 8 comparisons</li><li><strong>Lesson fact:</strong> Binary search on sorted 8 items</li><li><strong>Lesson fact:</strong> Compare the middle item, discard half, repeat. For 8 items, the target is found or ruled out in about 4 checks.</li><li><strong>Lesson fact:</strong> middle 18 -&gt; search right</li><li><strong>Lesson fact:</strong> middle 31 -&gt; search right</li><li><strong>Lesson fact:</strong> middle 40 -&gt; search right</li><li><strong>Lesson fact:</strong> middle 52 -&gt; found</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end search -->
+
         <section class="panel" id="loops" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loops">
           <div class="section-title">
             <p class="eyebrow">Loop growth</p>
@@ -177,6 +219,20 @@ middle 52 -> found</code></pre>
             <div class="table-row" role="row"><div>Repeated passes</div><div>bubble sort</div><div>many comparisons</div><div>several passes through the list</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start loops -->
+        <section class="panel explanation-panel" id="explanation-loops" data-explains="loops" data-explanation-kind="mechanism" aria-labelledby="explanation-loops-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loops">
+          <h2 class="explanation-sr-only" id="explanation-loops-title">Loops reveal how work grows</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-109-loops.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Loops reveal how work grows with a structured visual model." />
+            <figcaption class="explanation-sr-only">Loops reveal how work grows: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Loop growth</li><li><strong>Lesson fact:</strong> Structure</li><li><strong>Lesson fact:</strong> Work for n items</li><li><strong>Lesson fact:</strong> AS-level explanation</li><li><strong>Lesson fact:</strong> Single loop</li><li><strong>Lesson fact:</strong> total all marks</li><li><strong>Lesson fact:</strong> n additions</li><li><strong>Lesson fact:</strong> one step per item</li><li><strong>Lesson fact:</strong> Nested loop</li><li><strong>Lesson fact:</strong> n rows and n columns</li><li><strong>Lesson fact:</strong> n x n visits</li><li><strong>Lesson fact:</strong> inner loop repeats for every outer value</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end loops -->
 
         <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
@@ -205,6 +261,20 @@ NEXT Index</code></pre>
           </div>
           <div class="callout">Exam reminder: explain the algorithm's work, not the programming language's punctuation.</div>
         </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Efficiency explanations are language-independent</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-109-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Efficiency explanations are language-independent with a structured visual model." />
+            <figcaption class="explanation-sr-only">Efficiency explanations are language-independent: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style reasoning</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO Length</li><li><strong>Lesson fact:</strong> IF List[Index] = Target THEN</li><li><strong>Lesson fact:</strong> Found &lt;- TRUE</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> This loop can perform up to Length comparisons.</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> for (int index = 0; index &lt; list.length; index++) {</li><li><strong>Lesson fact:</strong> if (list[index] == target) {</li><li><strong>Lesson fact:</strong> found = true;</li><li><strong>Lesson fact:</strong> Java syntax changes the notation, not the number of item comparisons.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
 
 
         <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
@@ -255,6 +325,20 @@ NEXT Index</code></pre>
           </div>
           <div class="trace-output" id="estimateResult">Choose a size and pattern, then estimate the number of steps.</div>
         </section>
+
+        <!-- stage10-explanation:start estimator -->
+        <section class="panel explanation-panel" id="explanation-estimator" data-explains="estimator" data-explanation-kind="mechanism" aria-labelledby="explanation-estimator-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="estimator">
+          <h2 class="explanation-sr-only" id="explanation-estimator-title">Estimate the work</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-109-estimator.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Estimate the work with a structured visual model." />
+            <figcaption class="explanation-sr-only">Estimate the work: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive step estimator</li><li><strong>Lesson fact:</strong> Input size n</li><li><strong>Lesson fact:</strong> Algorithm pattern</li><li><strong>Lesson fact:</strong> Choose a size and pattern, then estimate the number of steps.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end estimator -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

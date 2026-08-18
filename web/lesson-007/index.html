@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -126,6 +126,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">What a character set actually does</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What a character set actually does with a structured visual model." />
+            <figcaption class="explanation-sr-only">What a character set actually does: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Character</li><li><strong>Lesson fact:</strong> Character set</li><li><strong>Lesson fact:</strong> A defined collection of characters and the code assigned to each character.</li><li><strong>Lesson fact:</strong> Character code</li><li><strong>Lesson fact:</strong> The numeric value used to represent a character inside the computer.</li><li><strong>Lesson fact:</strong> Binary storage</li><li><strong>Lesson fact:</strong> The numeric code is stored using bits, for example 65₁₀ = 01000001₂.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concept -->
+
         <section class="panel" id="ascii" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ascii">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -177,6 +191,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start ascii -->
+        <section class="panel explanation-panel" id="explanation-ascii" data-explains="ascii" data-explanation-kind="mechanism" aria-labelledby="explanation-ascii-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ascii">
+          <h2 class="explanation-sr-only" id="explanation-ascii-title">ASCII and extended ASCII</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-ascii.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining ASCII and extended ASCII with a structured visual model." />
+            <figcaption class="explanation-sr-only">ASCII and extended ASCII: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Standard ASCII</li><li><strong>Lesson fact:</strong> Uses 7 bits, so it can represent 2⁷ = 128 possible codes.</li><li><strong>Lesson fact:</strong> It covers common English letters, digits, punctuation and control characters.</li><li><strong>Lesson fact:</strong> Extended ASCII</li><li><strong>Lesson fact:</strong> Uses 8 bits, so it can represent 2⁸ = 256 possible codes.</li><li><strong>Lesson fact:</strong> It adds extra characters, but still cannot cover the world’s writing systems.</li><li><strong>Lesson fact:</strong> Character</li><li><strong>Lesson fact:</strong> Denary code</li><li><strong>Lesson fact:</strong> 8-bit binary</li><li><strong>Lesson fact:</strong> Exam note</li><li><strong>Lesson fact:</strong> 01000001</li><li><strong>Lesson fact:</strong> Example only; no need to memorise.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end ascii -->
+
         <section id="delivery-06" class="guidance-grid compact" aria-label="ASCII guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ascii">
           <article class="trap-card">
             <h3>Common trap</h3>
@@ -208,6 +236,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start unicode -->
+        <section class="panel explanation-panel" id="explanation-unicode" data-explains="unicode" data-explanation-kind="mechanism" aria-labelledby="explanation-unicode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="unicode">
+          <h2 class="explanation-sr-only" id="explanation-unicode-title">Unicode: more characters, more global use</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-unicode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Unicode: more characters, more global use with a structured visual model." />
+            <figcaption class="explanation-sr-only">Unicode: more characters, more global use: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Unicode is designed to represent characters from many languages and symbol systems.</li><li><strong>Lesson fact:</strong> Unicode supports far more characters than ASCII, including Chinese characters and many symbols.</li><li><strong>Lesson fact:</strong> Trade-off</li><li><strong>Lesson fact:</strong> More possible characters may require more bits per character, depending on the encoding used.</li><li><strong>Lesson fact:</strong> Emoji are not magic stickers. They are characters with assigned Unicode code points, then rendered by software and fonts.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end unicode -->
+
         <section class="panel" id="encoding" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="encoding">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -229,6 +271,20 @@
             A good exam sentence: “Unicode can represent a wider range of characters, so it is more suitable for multilingual text.”
           </div>
         </section>
+
+        <!-- stage10-explanation:start encoding -->
+        <section class="panel explanation-panel" id="explanation-encoding" data-explains="encoding" data-explanation-kind="comparison" aria-labelledby="explanation-encoding-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="encoding">
+          <h2 class="explanation-sr-only" id="explanation-encoding-title">Character set vs encoding</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-007-encoding.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Character set vs encoding with a structured visual model." />
+            <figcaption class="explanation-sr-only">Character set vs encoding: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Character set</li><li><strong>Lesson fact:</strong> Defines the characters and their code points or code values.</li><li><strong>Lesson fact:</strong> Example idea: A has a defined code in ASCII and Unicode.</li><li><strong>Lesson fact:</strong> Encoding</li><li><strong>Lesson fact:</strong> Defines how those codes are stored as bytes.</li><li><strong>Lesson fact:</strong> For AS exam answers, keep this distinction simple unless the question gives a specific encoding.</li><li><strong>Lesson fact:</strong> A good exam sentence: “Unicode can represent a wider range of characters, so it is more suitable for multilingual text.”</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end encoding -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

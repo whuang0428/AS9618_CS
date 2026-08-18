@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -126,6 +126,20 @@ OUTPUT Message</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start strings -->
+        <section class="panel explanation-panel" id="explanation-strings" data-explains="strings" data-explanation-kind="mechanism" aria-labelledby="explanation-strings-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="strings">
+          <h2 class="explanation-sr-only" id="explanation-strings-title">A string is a sequence of characters</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-strings.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A string is a sequence of characters with a structured visual model." />
+            <figcaption class="explanation-sr-only">A string is a sequence of characters: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Cambridge-style assignment</li><li><strong>Lesson fact:</strong> Name &lt;- &quot;Ada&quot;</li><li><strong>Lesson fact:</strong> Message &lt;- &quot;Hello, &quot; &amp; Name</li><li><strong>Lesson fact:</strong> OUTPUT Message</li><li><strong>Lesson fact:</strong> Reasoning</li><li><strong>Lesson fact:</strong> &quot;Ada&quot; is a string of three characters. &amp; is used here for concatenation.</li><li><strong>Lesson fact:</strong> If a question uses a different concatenation operator, follow the question. The mark is for clear string construction.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end strings -->
+
         <section class="panel" id="length" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="length">
           <div class="section-title">
             <p class="eyebrow">LENGTH</p>
@@ -149,6 +163,20 @@ OUTPUT Size</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start length -->
+        <section class="panel explanation-panel" id="explanation-length" data-explains="length" data-explanation-kind="mechanism" aria-labelledby="explanation-length-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="length">
+          <h2 class="explanation-sr-only" id="explanation-length-title">LENGTH(String) returns the number of characters</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-length.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining LENGTH(String) returns the number of characters with a structured visual model." />
+            <figcaption class="explanation-sr-only">LENGTH(String) returns the number of characters: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Word &lt;- &quot;ALGORITHM&quot;</li><li><strong>Lesson fact:</strong> Size &lt;- LENGTH(Word)</li><li><strong>Lesson fact:</strong> OUTPUT Size</li><li><strong>Lesson fact:</strong> Word &quot;ALGORITHM&quot;</li><li><strong>Lesson fact:</strong> LENGTH(Word) 9</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end length -->
+
         <section class="panel" id="substring" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="substring">
           <div class="section-title">
             <p class="eyebrow">Substring functions</p>
@@ -162,6 +190,20 @@ OUTPUT Size</code></pre>
           </div>
           <div class="callout">This course uses <code>MID(Text, start, count)</code>. If a paper specifies <code>SUBSTRING</code> or a different convention, follow the convention given in the question.</div>
         </section>
+
+        <!-- stage10-explanation:start substring -->
+        <section class="panel explanation-panel" id="explanation-substring" data-explains="substring" data-explanation-kind="mechanism" aria-labelledby="explanation-substring-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="substring">
+          <h2 class="explanation-sr-only" id="explanation-substring-title">Use substring functions to extract part of a string</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-substring.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use substring functions to extract part of a string with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use substring functions to extract part of a string: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Substring functions</li><li><strong>Lesson fact:</strong> Function</li><li><strong>Lesson fact:</strong> LEFT(Text, n)</li><li><strong>Lesson fact:</strong> first n characters</li><li><strong>Lesson fact:</strong> LEFT(&quot;NETWORK&quot;, 3) returns &quot;NET&quot;</li><li><strong>Lesson fact:</strong> RIGHT(Text, n)</li><li><strong>Lesson fact:</strong> last n characters</li><li><strong>Lesson fact:</strong> RIGHT(&quot;NETWORK&quot;, 4) returns &quot;WORK&quot;</li><li><strong>Lesson fact:</strong> MID(Text, start, n)</li><li><strong>Lesson fact:</strong> n characters from a start position</li><li><strong>Lesson fact:</strong> MID(&quot;NETWORK&quot;, 4, 2) returns &quot;WO&quot;</li><li><strong>Lesson fact:</strong> This course uses MID(Text, start, count) . If a paper specifies SUBSTRING or a different convention, follow the convention given in the question.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end substring -->
 
         <section class="panel" id="case" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="case">
           <div class="section-title">
@@ -186,6 +228,20 @@ ENDIF</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start case -->
+        <section class="panel explanation-panel" id="explanation-case" data-explains="case" data-explanation-kind="mechanism" aria-labelledby="explanation-case-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="case">
+          <h2 class="explanation-sr-only" id="explanation-case-title">UCASE and LCASE normalise text before comparison</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-case.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining UCASE and LCASE normalise text before comparison with a structured visual model." />
+            <figcaption class="explanation-sr-only">UCASE and LCASE normalise text before comparison: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Case conversion</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> INPUT Answer</li><li><strong>Lesson fact:</strong> Answer &lt;- UCASE(Answer)</li><li><strong>Lesson fact:</strong> IF Answer = &quot;Y&quot; THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Continue&quot;</li><li><strong>Lesson fact:</strong> Why it helps</li><li><strong>Lesson fact:</strong> If the user enters &quot;y&quot; , converting to upper case lets the algorithm compare it with &quot;Y&quot; .</li><li><strong>Lesson fact:</strong> Case conversion changes letter case; it does not remove spaces or fix spelling.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end case -->
+
         <section class="panel" id="concat" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concat">
           <div class="section-title">
             <p class="eyebrow">Concatenation</p>
@@ -209,6 +265,20 @@ OUTPUT Username</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start concat -->
+        <section class="panel explanation-panel" id="explanation-concat" data-explains="concat" data-explanation-kind="mechanism" aria-labelledby="explanation-concat-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concat">
+          <h2 class="explanation-sr-only" id="explanation-concat-title">Concatenation joins strings to form a new string</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-concat.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Concatenation joins strings to form a new string with a structured visual model." />
+            <figcaption class="explanation-sr-only">Concatenation joins strings to form a new string: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Concatenation</li><li><strong>Lesson fact:</strong> Build a username</li><li><strong>Lesson fact:</strong> FirstName &lt;- &quot;Lin&quot;</li><li><strong>Lesson fact:</strong> Year &lt;- &quot;2029&quot;</li><li><strong>Lesson fact:</strong> Username &lt;- LCASE(FirstName) &amp; Year</li><li><strong>Lesson fact:</strong> OUTPUT Username</li><li><strong>Lesson fact:</strong> LCASE(FirstName) &quot;lin&quot;</li><li><strong>Lesson fact:</strong> Username &quot;lin2029&quot;</li><li><strong>Lesson fact:</strong> Common error treating Year as arithmetic instead of text</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concat -->
 
         <section class="panel" id="position" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="position">
           <div class="section-title">
@@ -236,6 +306,20 @@ OUTPUT Part</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start position -->
+        <section class="panel explanation-panel" id="explanation-position" data-explains="position" data-explanation-kind="mechanism" aria-labelledby="explanation-position-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="position">
+          <h2 class="explanation-sr-only" id="explanation-position-title">Exam traces must follow the position convention stated or implied</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-position.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Exam traces must follow the position convention stated or implied with a structured visual model." />
+            <figcaption class="explanation-sr-only">Exam traces must follow the position convention stated or implied: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Positions and indexing</li><li><strong>Lesson fact:</strong> Cambridge-style trace</li><li><strong>Lesson fact:</strong> Word &lt;- &quot;DATA&quot;</li><li><strong>Lesson fact:</strong> Part &lt;- MID(Word, 2, 2)</li><li><strong>Lesson fact:</strong> OUTPUT Part</li><li><strong>Lesson fact:</strong> Using 1-based positions, the output is &quot;AT&quot; .</li><li><strong>Lesson fact:</strong> Common trap</li><li><strong>Lesson fact:</strong> Do not import Java's zero-based indexing into a pseudocode trace unless the question explicitly tells you to.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end position -->
+
         <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
@@ -253,6 +337,20 @@ OUTPUT Part</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start java -->
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Java method syntax is not Cambridge pseudocode</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java method syntax is not Cambridge pseudocode with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java method syntax is not Cambridge pseudocode: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Code &lt;- LEFT(UCASE(Name), 3)</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> String code = name.toUpperCase().substring(0, 3);</li><li><strong>Lesson fact:</strong> Java's substring(0, 3) uses indexes 0 to 2. That is not the same notation as LEFT(Name, 3) .</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end java -->
 
 
         <section class="panel" id="lab" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lab">
@@ -289,6 +387,20 @@ OUTPUT Part</code></pre>
           </div>
           <div class="trace-output" id="labResult" aria-live="polite">Choose a function and run it.</div>
         </section>
+
+        <!-- stage10-explanation:start lab -->
+        <section class="panel explanation-panel" id="explanation-lab" data-explains="lab" data-explanation-kind="mechanism" aria-labelledby="explanation-lab-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lab">
+          <h2 class="explanation-sr-only" id="explanation-lab-title">Test a built-in function</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-lab.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Test a built-in function with a structured visual model." />
+            <figcaption class="explanation-sr-only">Test a built-in function: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive string lab</li><li><strong>Lesson fact:</strong> Use a short string and compare the returned value. For MID , positions start at 1.</li><li><strong>Lesson fact:</strong> Function</li><li><strong>Lesson fact:</strong> Choose a function and run it.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lab -->
 
         <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
           <div class="section-title">

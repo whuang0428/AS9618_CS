@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -123,6 +123,20 @@
           <div class="callout">Chinese support: row = 行，column = 列，cell = 某一行某一列交叉处的一个值。</div>
         </section>
 
+        <!-- stage10-explanation:start model -->
+        <section class="panel explanation-panel" id="explanation-model" data-explains="model" data-explanation-kind="comparison" aria-labelledby="explanation-model-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
+          <h2 class="explanation-sr-only" id="explanation-model-title">Rows and columns create coordinates</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-model.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Rows and columns create coordinates with a structured visual model." />
+            <figcaption class="explanation-sr-only">Rows and columns create coordinates: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 2D model</li><li><strong>Lesson fact:</strong> Same identifier</li><li><strong>Lesson fact:</strong> The whole grid has one array name.</li><li><strong>Lesson fact:</strong> Two indexes</li><li><strong>Lesson fact:</strong> The first index usually selects the row; the second index selects the column.</li><li><strong>Lesson fact:</strong> Marks[Row, Column]</li><li><strong>Lesson fact:</strong> Same type</li><li><strong>Lesson fact:</strong> Each cell stores the same data type.</li><li><strong>Lesson fact:</strong> ARRAY[1:3, 1:4] OF INTEGER</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end model -->
+
         <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
           <div class="section-title">
             <p class="eyebrow">Declare 2D arrays</p>
@@ -135,6 +149,20 @@
             <div class="table-row" role="row"><div>10 by 10 grid</div><div><code>DECLARE Grid : ARRAY[1:10, 1:10] OF BOOLEAN</code></div><div>100 Boolean cells</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start declare -->
+        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+          <h2 class="explanation-sr-only" id="explanation-declare-title">Two dimensions need two ranges</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Two dimensions need two ranges with a structured visual model." />
+            <figcaption class="explanation-sr-only">Two dimensions need two ranges: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Declare 2D arrays</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Valid cells</li><li><strong>Lesson fact:</strong> 3 by 4 mark table</li><li><strong>Lesson fact:</strong> DECLARE Marks : ARRAY[1:3, 1:4] OF INTEGER</li><li><strong>Lesson fact:</strong> 3 rows, 4 columns, 12 cells</li><li><strong>Lesson fact:</strong> 5 by 7 temperatures</li><li><strong>Lesson fact:</strong> DECLARE Temp : ARRAY[1:5, 1:7] OF REAL</li><li><strong>Lesson fact:</strong> 5 rows, 7 columns, 35 cells</li><li><strong>Lesson fact:</strong> 10 by 10 grid</li><li><strong>Lesson fact:</strong> DECLARE Grid : ARRAY[1:10, 1:10] OF BOOLEAN</li><li><strong>Lesson fact:</strong> 100 Boolean cells</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end declare -->
 
         <section class="panel" id="access" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
           <div class="section-title">
@@ -154,6 +182,20 @@
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start access -->
+        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
+          <h2 class="explanation-sr-only" id="explanation-access-title">A cell needs row and column</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-access.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A cell needs row and column with a structured visual model." />
+            <figcaption class="explanation-sr-only">A cell needs row and column: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Access and update</li><li><strong>Lesson fact:</strong> Read one cell</li><li><strong>Lesson fact:</strong> OUTPUT Marks[2, 3]</li><li><strong>Lesson fact:</strong> Outputs the value in row 2, column 3.</li><li><strong>Lesson fact:</strong> Update one cell</li><li><strong>Lesson fact:</strong> Marks[2, 3] &lt;- Marks[2, 3] + 1</li><li><strong>Lesson fact:</strong> Only that cell changes; other rows and columns are untouched.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end access -->
 
         <section class="panel" id="nested" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="nested">
           <div class="section-title">
@@ -182,6 +224,20 @@ OUTPUT Total</code></pre>
           </div>
           <div class="callout">For a 3 by 4 array, the inner statement runs 3 * 4 = 12 times.</div>
         </section>
+
+        <!-- stage10-explanation:start nested -->
+        <section class="panel explanation-panel" id="explanation-nested" data-explains="nested" data-explanation-kind="mechanism" aria-labelledby="explanation-nested-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="nested">
+          <h2 class="explanation-sr-only" id="explanation-nested-title">Outer row loop, inner column loop</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-nested.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Outer row loop, inner column loop with a structured visual model." />
+            <figcaption class="explanation-sr-only">Outer row loop, inner column loop: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Nested loops</li><li><strong>Lesson fact:</strong> Input every cell</li><li><strong>Lesson fact:</strong> FOR Row &lt;- 1 TO 3</li><li><strong>Lesson fact:</strong> FOR Column &lt;- 1 TO 4</li><li><strong>Lesson fact:</strong> INPUT Marks[Row, Column]</li><li><strong>Lesson fact:</strong> NEXT Column</li><li><strong>Lesson fact:</strong> NEXT Row</li><li><strong>Lesson fact:</strong> Total every cell</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Marks[Row, Column]</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> For a 3 by 4 array, the inner statement runs 3 * 4 = 12 times.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end nested -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
@@ -242,6 +298,20 @@ for (int row = 0; row &lt; 3; row++) {
           <div class="callout">Paper 2 reminder: if the question states <code>ARRAY[1:3, 1:4]</code>, valid row indexes are 1 to 3 and valid column indexes are 1 to 4.</div>
         </section>
 
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Do not import Java indexing into Cambridge answers</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Do not import Java indexing into Cambridge answers with a structured visual model." />
+            <figcaption class="explanation-sr-only">Do not import Java indexing into Cambridge answers: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> DECLARE Marks : ARRAY[1:3, 1:4] OF INTEGER</li><li><strong>Lesson fact:</strong> FOR Row &lt;- 1 TO 3</li><li><strong>Lesson fact:</strong> FOR Column &lt;- 1 TO 4</li><li><strong>Lesson fact:</strong> OUTPUT Marks[Row, Column]</li><li><strong>Lesson fact:</strong> NEXT Column</li><li><strong>Lesson fact:</strong> NEXT Row</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> int[][] marks = new int[3][4];</li><li><strong>Lesson fact:</strong> for (int row = 0; row &lt; 3; row++) {</li><li><strong>Lesson fact:</strong> for (int column = 0; column &lt; 4; column++) {</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
+
 
         <section class="panel" id="lookup" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lookup">
           <div class="section-title">
@@ -271,6 +341,20 @@ for (int row = 0; row &lt; 3; row++) {
           </div>
           <div class="trace-output" id="lookupResult">Array: Marks[1:3, 1:4]. Choose a row and column.</div>
         </section>
+
+        <!-- stage10-explanation:start lookup -->
+        <section class="panel explanation-panel" id="explanation-lookup" data-explains="lookup" data-explanation-kind="mechanism" aria-labelledby="explanation-lookup-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lookup">
+          <h2 class="explanation-sr-only" id="explanation-lookup-title">Read Marks[Row, Column]</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-116-lookup.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read Marks[Row, Column] with a structured visual model." />
+            <figcaption class="explanation-sr-only">Read Marks[Row, Column]: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive cell lookup</li><li><strong>Lesson fact:</strong> Array: Marks[1:3, 1:4]. Choose a row and column.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lookup -->
 
         <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">

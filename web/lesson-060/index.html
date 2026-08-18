@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -113,6 +113,20 @@
           <div class="callout">Chinese support: development = 开发阶段；deployment = 部署/发布阶段；translation approach = 翻译方式；diagnostics = 诊断信息；executable = 可执行文件。</div>
         </section>
 
+        <!-- stage10-explanation:start decision -->
+        <section class="panel explanation-panel" id="explanation-decision" data-explains="decision" data-explanation-kind="mechanism" aria-labelledby="explanation-decision-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="decision">
+          <h2 class="explanation-sr-only" id="explanation-decision-title">A good translator choice starts with four questions</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-060-decision.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A good translator choice starts with four questions with a structured visual model." />
+            <figcaption class="explanation-sr-only">A good translator choice starts with four questions: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> What code? High-level source code, assembly language, object modules or executable code?</li><li><strong>Lesson fact:</strong> What stage? Development, testing, deployment, linking or running?</li><li><strong>Lesson fact:</strong> What output? Immediate execution, object code, executable code or program loaded in memory?</li><li><strong>Lesson fact:</strong> What feedback? Line-by-line diagnostics, a compiler error list, linker errors or runtime messages?</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end decision -->
+
         <section class="panel" id="development" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="development">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -125,6 +139,20 @@
             <article><strong>Trade-off</strong><span>Execution may be slower and source code/interpreter may be needed.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start development -->
+        <section class="panel explanation-panel" id="explanation-development" data-explains="development" data-explanation-kind="mechanism" aria-labelledby="explanation-development-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="development">
+          <h2 class="explanation-sr-only" id="explanation-development-title">During development, an interpreter can support rapid testing</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-060-development.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining During development, an interpreter can support rapid testing with a structured visual model." />
+            <figcaption class="explanation-sr-only">During development, an interpreter can support rapid testing: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Useful when The programmer wants immediate feedback while writing and testing code.</li><li><strong>Lesson fact:</strong> Mechanism Translates and executes statements as the program runs.</li><li><strong>Lesson fact:</strong> Benefit Can stop at or near the statement with an error, helping debugging.</li><li><strong>Lesson fact:</strong> Trade-off Execution may be slower and source code/interpreter may be needed.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end development -->
 
         <section class="panel" id="deployment" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="deployment">
           <div class="section-title">
@@ -139,6 +167,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start deployment -->
+        <section class="panel explanation-panel" id="explanation-deployment" data-explains="deployment" data-explanation-kind="mechanism" aria-labelledby="explanation-deployment-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="deployment">
+          <h2 class="explanation-sr-only" id="explanation-deployment-title">For deployment, a compiler often produces a distributable executable</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-060-deployment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining For deployment, a compiler often produces a distributable executable with a structured visual model." />
+            <figcaption class="explanation-sr-only">For deployment, a compiler often produces a distributable executable: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Useful when A finished program will be distributed to users or run many times.</li><li><strong>Lesson fact:</strong> Mechanism Translates the whole high-level program before execution.</li><li><strong>Lesson fact:</strong> Benefit Executable/object code can run without giving users the source code.</li><li><strong>Lesson fact:</strong> Trade-off Compilation must complete before running; errors may be reported as a list.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end deployment -->
+
         <section class="panel" id="lowlevel" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lowlevel">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -151,6 +193,20 @@
             <article><strong>Boundary</strong><span>Assembler is not the correct tool for Java, Python or Cambridge pseudocode.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start lowlevel -->
+        <section class="panel explanation-panel" id="explanation-lowlevel" data-explains="lowlevel" data-explanation-kind="mechanism" aria-labelledby="explanation-lowlevel-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lowlevel">
+          <h2 class="explanation-sr-only" id="explanation-lowlevel-title">For assembly language, use an assembler</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-060-lowlevel.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining For assembly language, use an assembler with a structured visual model." />
+            <figcaption class="explanation-sr-only">For assembly language, use an assembler: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Input Assembly language mnemonics for a specific processor.</li><li><strong>Lesson fact:</strong> Output Machine code/object code.</li><li><strong>Lesson fact:</strong> Use case Low-level code close to hardware or processor instructions.</li><li><strong>Lesson fact:</strong> Boundary Assembler is not the correct tool for Java, Python or Cambridge pseudocode.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lowlevel -->
 
         <section class="panel" id="pipeline" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pipeline">
           <div class="section-title">
@@ -191,6 +247,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start pipeline -->
+        <section class="panel explanation-panel" id="explanation-pipeline" data-explains="pipeline" data-explanation-kind="mechanism" aria-labelledby="explanation-pipeline-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pipeline">
+          <h2 class="explanation-sr-only" id="explanation-pipeline-title">After translation, linking and loading may still be needed</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-060-pipeline.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining After translation, linking and loading may still be needed with a structured visual model." />
+            <figcaption class="explanation-sr-only">After translation, linking and loading may still be needed: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Precise role</li><li><strong>Lesson fact:</strong> High-level source to object/executable code</li><li><strong>Lesson fact:</strong> Compiler</li><li><strong>Lesson fact:</strong> Translates whole program before execution.</li><li><strong>Lesson fact:</strong> High-level source during execution</li><li><strong>Lesson fact:</strong> Interpreter</li><li><strong>Lesson fact:</strong> Translates and executes statement by statement.</li><li><strong>Lesson fact:</strong> Assembly to machine code</li><li><strong>Lesson fact:</strong> Assembler</li><li><strong>Lesson fact:</strong> Translates mnemonics into machine code.</li><li><strong>Lesson fact:</strong> Object modules to executable</li><li><strong>Lesson fact:</strong> Combines modules and resolves external references.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pipeline -->
+
         <section class="panel" id="diagnostics" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="diagnostics">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
@@ -203,6 +273,20 @@
             <article><strong>Testing</strong><span>Logic errors may still need test data and tracing regardless of translator.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start diagnostics -->
+        <section class="panel explanation-panel" id="explanation-diagnostics" data-explains="diagnostics" data-explanation-kind="mechanism" aria-labelledby="explanation-diagnostics-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="diagnostics">
+          <h2 class="explanation-sr-only" id="explanation-diagnostics-title">Error feedback affects the best choice during development</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-060-diagnostics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Error feedback affects the best choice during development with a structured visual model." />
+            <figcaption class="explanation-sr-only">Error feedback affects the best choice during development: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Compiler May provide a list of syntax/translation errors after trying to compile.</li><li><strong>Lesson fact:</strong> Interpreter May stop at the current statement, useful for step-by-step testing.</li><li><strong>Lesson fact:</strong> Linker May report unresolved external references after object code exists.</li><li><strong>Lesson fact:</strong> Testing Logic errors may still need test data and tracing regardless of translator.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end diagnostics -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

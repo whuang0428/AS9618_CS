@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -114,6 +114,20 @@
           <div class="callout">Chinese support: client = 客户端；server = 服务器；peer = 对等节点；service = 服务。</div>
         </section>
 
+        <!-- stage10-explanation:start roles -->
+        <section class="panel explanation-panel" id="explanation-roles" data-explains="roles" data-explanation-kind="mechanism" aria-labelledby="explanation-roles-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="roles">
+          <h2 class="explanation-sr-only" id="explanation-roles-title">Core roles</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-017-roles.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Core roles with a structured visual model." />
+            <figcaption class="explanation-sr-only">Core roles: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A client requests a service or resource, such as a web page, file, login or print job.</li><li><strong>Lesson fact:</strong> A server provides a service or resource to clients, often with central control over data and access.</li><li><strong>Lesson fact:</strong> A peer can request and provide resources directly, so devices share responsibility instead of relying on one central server.</li><li><strong>Lesson fact:</strong> A service is the function provided, such as file storage, authentication, email, printing or web hosting.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end roles -->
+
         <section class="panel" id="model-visual" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model-visual">
           <div class="section-title">
             <p class="eyebrow">Visual explanation</p>
@@ -208,6 +222,20 @@
           </details>
         </section>
 
+        <!-- stage10-explanation:start model-visual -->
+        <section class="panel explanation-panel" id="explanation-model-visual" data-explains="model-visual" data-explanation-kind="comparison" aria-labelledby="explanation-model-visual-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model-visual">
+          <h2 class="explanation-sr-only" id="explanation-model-visual-title">One model has equal peers; the other has dedicated service roles</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-017-model-visual.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One model has equal peers; the other has dedicated service roles with a structured visual model." />
+            <figcaption class="explanation-sr-only">One model has equal peers; the other has dedicated service roles: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> Follow the arrows and identify which devices can provide a resource.</li><li><strong>Lesson fact:</strong> Peer-to-peer: every device can request and provide</li><li><strong>Lesson fact:</strong> The lines show possible direct sharing between peers. They do not define a physical topology: peer-to-peer describes device roles.</li><li><strong>Lesson fact:</strong> No dedicated central server is required.</li><li><strong>Lesson fact:</strong> Each peer can request a file and provide one.</li><li><strong>Lesson fact:</strong> A peer going offline can make its shared resource unavailable.</li><li><strong>Lesson fact:</strong> Client-server: clients request a managed service</li><li><strong>Lesson fact:</strong> Requests go to the server and responses return to clients. The server role may be performed by hardware or software.</li><li><strong>Lesson fact:</strong> Accounts, permissions and backups can be managed centrally.</li><li><strong>Lesson fact:</strong> Dedicated server resources and administration add cost.</li><li><strong>Lesson fact:</strong> Server failure can affect many clients unless redundancy is used.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end model-visual -->
+
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -242,6 +270,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Client-server vs peer-to-peer</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-017-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Client-server vs peer-to-peer with a structured visual model." />
+            <figcaption class="explanation-sr-only">Client-server vs peer-to-peer: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Client-server</li><li><strong>Lesson fact:</strong> Peer-to-peer</li><li><strong>Lesson fact:</strong> Centralised management, security, backups and permissions.</li><li><strong>Lesson fact:</strong> Decentralised control; each peer may manage its own resources.</li><li><strong>Lesson fact:</strong> May need dedicated server hardware, software and administration.</li><li><strong>Lesson fact:</strong> Can be cheaper for small networks because no dedicated server is required.</li><li><strong>Lesson fact:</strong> Reliability</li><li><strong>Lesson fact:</strong> Server failure may affect many clients unless redundancy is used.</li><li><strong>Lesson fact:</strong> No single central server, but availability depends on peers being online.</li><li><strong>Lesson fact:</strong> Typical use</li><li><strong>Lesson fact:</strong> School login, file server, web server, email server.</li><li><strong>Lesson fact:</strong> Small file sharing, local collaboration, distributed sharing.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
+
         <section class="panel" id="usecases" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="usecases">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -266,6 +308,20 @@
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start usecases -->
+        <section class="panel explanation-panel" id="explanation-usecases" data-explains="usecases" data-explanation-kind="mechanism" aria-labelledby="explanation-usecases-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="usecases">
+          <h2 class="explanation-sr-only" id="explanation-usecases-title">Scenario choices</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-017-usecases.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Scenario choices with a structured visual model." />
+            <figcaption class="explanation-sr-only">Scenario choices: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> School accounts</li><li><strong>Lesson fact:</strong> Client-server fits because logins, permissions and backups can be centrally managed.</li><li><strong>Lesson fact:</strong> Small home sharing</li><li><strong>Lesson fact:</strong> Peer-to-peer may fit when a few devices share files directly without a dedicated server.</li><li><strong>Lesson fact:</strong> Public web app</li><li><strong>Lesson fact:</strong> Client-server fits because many clients request data from managed servers.</li><li><strong>Lesson fact:</strong> Distributed file sharing</li><li><strong>Lesson fact:</strong> Peer-to-peer can spread sharing across peers, reducing reliance on one central source.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end usecases -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

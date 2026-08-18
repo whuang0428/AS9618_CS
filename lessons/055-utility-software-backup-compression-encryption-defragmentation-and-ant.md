@@ -71,3 +71,92 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often call every program an operating system. Correction: an OS manages resources and provides services; an app performs user tasks. For this lesson, make students contrast that mistake with the exact idea of **utility software: backup, compression, encryption, defragmentation, and antivirus**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Antivirus utilities detect, quarantine and remove malware
+
+- **Explains:** `antivirus`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-055-antivirus.jpg`
+
+1. Purpose Scan files, memory or downloads for malware signatures or suspicious behaviour.
+2. Actions Warn the user, quarantine infected files, delete malware or block malicious activity.
+3. Updates Definitions and detection rules should be updated to recognise newer threats.
+4. Limitation Antivirus reduces risk but cannot guarantee protection against every new or disguised threat.
+
+### Backup utilities create copies so data can be restored
+
+- **Explains:** `backup`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-055-backup.jpg`
+
+1. Purpose Create copies of files or systems in another location or storage medium.
+2. Benefit Data can be restored after accidental deletion, hardware failure, corruption or ransomware.
+3. Good practice Use automatic scheduling, versioning and off-site/cloud copies where appropriate.
+4. Limitation A backup is only useful if it is recent, complete and can actually be restored.
+
+### Choose the utility by diagnosing the problem
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-055-compare.jpg`
+
+1. Most relevant utility
+2. Exam-quality reason
+3. Deleted work needs recovery
+4. A previous copy can be restored if it was made before the loss.
+5. File is too large to email
+6. Compression
+7. Reduces file size, saving transmission time and storage space.
+8. Sensitive file may be stolen
+9. Encryption
+10. Turns readable data into ciphertext that needs a key to read.
+11. Old HDD opens files slowly
+12. Defragmentation
+
+### Compression utilities reduce file size
+
+- **Explains:** `compression`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-055-compression.jpg`
+
+1. Purpose Encode data so it takes up fewer bits than the original file.
+2. Uses Save storage space, reduce upload/download time and fit within attachment limits.
+3. Lossless Original data can be reconstructed exactly, suitable for text, programs and archives.
+4. Lossy Some detail is discarded, often suitable for media where small quality loss is acceptable.
+
+### Utility software performs maintenance and support tasks
+
+- **Explains:** `concept`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-055-concept.jpg`
+
+1. System software Software that supports the operation and management of the computer system.
+2. Utility software System software designed for a specific maintenance, protection or management task.
+3. Not application software It supports the system rather than directly producing user documents, games or media.
+4. Scenario link The correct utility depends on whether the problem is loss, size, confidentiality, fragmentation or malware.
+
+### Defragmentation rearranges fragmented files on magnetic disks
+
+- **Explains:** `defrag`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-055-defrag.jpg`
+
+1. Fragmentation Parts of a file are stored in non-contiguous blocks across a disk.
+2. Purpose Rearrange file blocks so related parts are stored closer together.
+3. Benefit Can reduce mechanical disk head movement and improve hard disk access time.
+4. Boundary Do not apply the same benefit to SSDs; they have no moving disk head.
+
+### Encryption utilities protect confidentiality
+
+- **Explains:** `encryption`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-055-encryption.jpg`
+
+1. Purpose Scramble plaintext into ciphertext using an algorithm and a key.
+2. Benefit Unauthorised users cannot read the data without the correct key.
+3. Examples Encrypting a laptop drive, a backup archive or files sent over a network.
+4. Limitation Encryption does not stop deletion or malware; losing the key can make data unrecoverable.
+<!-- stage10-explanations:end -->

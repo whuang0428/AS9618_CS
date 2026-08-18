@@ -105,3 +105,71 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** promote competence, honesty, privacy or integrity
 
 **Strict note:** Do not accept 'because ethics are good' without a professional purpose or consequence.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Ethics is about responsible decision-making
+
+- **Explains:** `ethics`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-072-ethics.jpg`
+
+1. Ethics Principles about right and wrong behaviour, responsibility and fairness.
+2. Stakeholder A person or group affected by a decision, directly or indirectly.
+3. Responsibility The duty to consider consequences and act appropriately.
+4. Proportionality The response should be no more intrusive or harmful than needed for the aim.
+
+### Map a decision to stakeholders, benefits and concerns
+
+- **Explains:** `mapper`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-072-mapper.jpg`
+
+1. Interactive stakeholder mapper
+2. Select a scenario and compare the ethical tension. The aim is not to memorise one answer; it is to see the pattern.
+3. Scenario
+
+### Use a balanced evaluation structure
+
+- **Explains:** `method`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-072-method.jpg`
+
+1. 1. Context State the decision and the computing system involved.
+2. 2. For Explain a benefit for a named stakeholder, with scenario detail.
+3. 3. Against Explain a harm or right that may be affected.
+4. 4. Judgement Give a justified conclusion with conditions or safeguards.
+5. Answer frame:
+6. Although [benefit] helps [stakeholder], [harm] may affect [stakeholder]. Therefore, the decision is justified only if [condition/safeguard].
+
+### Ethical answers start with stakeholders
+
+- **Explains:** `stakeholders`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-072-stakeholders.jpg`
+
+1. Stakeholder
+2. Possible benefit
+3. Possible harm or concern
+4. Users / students / patients
+5. Better service, safety, convenience, personalisation.
+6. Loss of privacy, unfair treatment, pressure, exclusion.
+7. Organisation
+8. Efficiency, security, reduced cost, legal compliance.
+9. Reputation damage, misuse of data, over-collection.
+10. Wider society
+11. Public safety, accessibility, innovation.
+12. Surveillance culture, inequality, environmental impact.
+
+### Most ethical issues are trade-offs, not slogans
+
+- **Explains:** `tradeoffs`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-072-tradeoffs.jpg`
+
+1. Privacy vs safety Monitoring may protect users, but can intrude into personal behaviour.
+2. Efficiency vs fairness Automation may save time, but may disadvantage some groups if data or rules are biased.
+3. Convenience vs consent Personalisation can help users, but data collection should be clear and justified.
+4. Innovation vs responsibility New systems can create benefits, but developers still need to consider harms.
+<!-- stage10-explanations:end -->

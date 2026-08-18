@@ -75,15 +75,59 @@ Correction prompt: "Show the mechanism, not just the label."
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
+### Choose hardware by matching characteristics to use
+
+- **Explains:** `hardware`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-091-hardware.jpg`
+
+1. Hardware review
+2. Likely choice
+3. Justification phrase
+4. fast temporary access
+5. RAM / cache
+6. volatile memory used while programs run / frequently used data close to CPU
+7. portable durable storage
+8. no moving parts, fast access, resistant to shock
+9. cheap high-capacity archive
+10. magnetic disk
+11. large capacity and lower cost per GiB
+12. automatic physical response
+
 ### How hardware facts become mechanisms
 
 - **Explains:** `logic`
 - **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-091-logic.jpg`
 
 1. Name the component or representation involved.
 2. Explain the operation performed on data or signals.
 3. Link that operation to the observable result or limitation.
-
 - **Analogy:** A useful technical answer connects parts like a working machine, not a parts list.
 - **Boundary:** An isolated definition rarely explains why the stated outcome occurs.
+
+### Sections 3-4 knowledge map
+
+- **Explains:** `map`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-091-map.jpg`
+
+1. Retrieval map
+2. Computer system input, output, storage, memory, processor and data capture
+3. Storage and memory RAM, ROM, cache, virtual memory, magnetic/optical/solid-state storage
+4. Embedded systems sensors, actuators, microcontrollers and control systems
+5. Logic NOT, AND, OR, NAND, NOR, XOR, truth tables and Boolean expressions
+6. Processor ALU, CU, registers, buses, fetch-decode-execute and addressing modes
+7. Performance clock speed, cores, cache, word length, pipelining and interrupts
+
+### Registers and buses: the FDE cycle vocabulary
+
+- **Explains:** `processor`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-091-processor.jpg`
+
+1. Processor review
+2. PC Stores the address of the next instruction to be fetched.
+3. MAR / MDR MAR stores an address; MDR stores data/instruction being transferred.
+4. CIR / ACC CIR stores current instruction; ACC stores intermediate arithmetic/logic results.
 <!-- stage10-explanations:end -->

@@ -96,16 +96,63 @@ Correction prompt: "Show the mechanism, not just the label."
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
+### Why short feedback cycles support change
+
+- **Explains:** `agile`
+- **Explanation type:** tradeoff
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-142-agile.jpg`
+
+1. A small increment makes assumptions visible quickly.
+2. Frequent stakeholder feedback reprioritises the next increment.
+3. Less unreviewed work depends on a mistaken requirement.
+- **Analogy:** Regular design reviews correct direction while only a small section is built.
+- **Boundary:** Agile still requires architecture, testing and available informed stakeholders.
+
+### Why artefacts make decisions traceable
+
+- **Explains:** `artefacts`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-142-artefacts.jpg`
+
+1. Requirements define what successful behaviour means.
+2. Designs and tests link implementation choices to those requirements.
+3. Traceability exposes every item affected by a later change.
+- **Analogy:** A linked evidence trail shows which plans and checks depend on one decision.
+- **Boundary:** An outdated artefact can mislead more than an absent one.
+
+### How project conditions choose a model
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-142-compare.jpg`
+
+1. Stable regulated work values traceability and formal approval.
+2. Uncertain user-facing work values short feedback distance.
+3. Dependencies, risk and stakeholder availability constrain the viable choice.
+- **Analogy:** Choose a planning rhythm that matches how often reliable evidence arrives.
+- **Boundary:** No lifecycle model is inherently fastest or best for every project.
+
+### Why repeated cycles expose mistakes
+
+- **Explains:** `iterative`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-142-iterative.jpg`
+
+1. Build a limited version around a defined goal.
+2. Review evidence from users, tests or prototypes.
+3. Feed the findings into the next improved cycle.
+- **Analogy:** A model is built, inspected and revised before the full structure is fixed.
+- **Boundary:** Repeated work without a review goal is rework, not controlled iteration.
+
 ### Why a lifecycle reduces uncertainty
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
-- **Visual:** `../assets/diagrams/stage10-lifecycle-models-analogy.jpg` — Different project conditions favour different distances between building, review and change.
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-142-purpose.jpg`
 
 1. Each stage asks a different question about need, design or evidence.
 2. Its output makes assumptions visible for review.
 3. Later work proceeds with clearer constraints and acceptance criteria.
-
 - **Analogy:** Architectural plans turn assumptions into inspectable decisions before construction.
 - **Boundary:** Documents help only when they stay accurate and influence decisions.
 
@@ -113,11 +160,11 @@ Correction prompt: "Show the mechanism, not just the label."
 
 - **Explains:** `stages`
 - **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-142-stages.jpg`
 
 1. Analysis defines the problem and required outcomes.
 2. Design translates requirements into components, data and interfaces.
 3. Implementation and testing create and check the resulting system.
-
 - **Analogy:** A specification becomes a plan, then a build, then evidence of fitness.
 - **Boundary:** Feedback may return to an earlier stage when evidence exposes a bad assumption.
 
@@ -125,59 +172,11 @@ Correction prompt: "Show the mechanism, not just the label."
 
 - **Explains:** `waterfall`
 - **Explanation type:** tradeoff
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-142-waterfall.jpg`
 
 1. A stage is reviewed before the next major stage begins.
 2. Early agreement supports budgets, contracts and traceable approvals.
 3. Late change crosses completed boundaries and causes expensive rework.
-
 - **Analogy:** Changing foundations after upper floors exist is harder than changing a drawing.
 - **Boundary:** Waterfall suits stable requirements; sequence alone does not guarantee quality.
-
-### Why repeated cycles expose mistakes
-
-- **Explains:** `iterative`
-- **Explanation type:** process
-
-1. Build a limited version around a defined goal.
-2. Review evidence from users, tests or prototypes.
-3. Feed the findings into the next improved cycle.
-
-- **Analogy:** A model is built, inspected and revised before the full structure is fixed.
-- **Boundary:** Repeated work without a review goal is rework, not controlled iteration.
-
-### Why short feedback cycles support change
-
-- **Explains:** `agile`
-- **Explanation type:** tradeoff
-
-1. A small increment makes assumptions visible quickly.
-2. Frequent stakeholder feedback reprioritises the next increment.
-3. Less unreviewed work depends on a mistaken requirement.
-
-- **Analogy:** Regular design reviews correct direction while only a small section is built.
-- **Boundary:** Agile still requires architecture, testing and available informed stakeholders.
-
-### How project conditions choose a model
-
-- **Explains:** `compare`
-- **Explanation type:** comparison
-
-1. Stable regulated work values traceability and formal approval.
-2. Uncertain user-facing work values short feedback distance.
-3. Dependencies, risk and stakeholder availability constrain the viable choice.
-
-- **Analogy:** Choose a planning rhythm that matches how often reliable evidence arrives.
-- **Boundary:** No lifecycle model is inherently fastest or best for every project.
-
-### Why artefacts make decisions traceable
-
-- **Explains:** `artefacts`
-- **Explanation type:** mechanism
-
-1. Requirements define what successful behaviour means.
-2. Designs and tests link implementation choices to those requirements.
-3. Traceability exposes every item affected by a later change.
-
-- **Analogy:** A linked evidence trail shows which plans and checks depend on one decision.
-- **Boundary:** An outdated artefact can mislead more than an absent one.
 <!-- stage10-explanations:end -->

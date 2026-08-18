@@ -71,3 +71,59 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record. For this lesson, make students contrast that mistake with the exact idea of **validation, verification, security, and backup in databases**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Backups allow data recovery after loss or corruption
+
+- **Explains:** `backup`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-088-backup.jpg`
+
+1. A backup is a separate copy of data kept so the database can be restored after failure, deletion or corruption.
+2. Frequency How often backups are made, such as daily or hourly.
+3. Location Copies should be stored separately, often off-site or in secure cloud storage.
+4. Testing A backup is only useful if restoration is tested. Untested backup plans are optimistic fiction.
+
+### Database security restricts access and protects confidentiality
+
+- **Explains:** `security`
+- **Explanation type:** tradeoff
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-088-security.jpg`
+
+1. Security controls reduce unauthorised access, accidental damage and inappropriate disclosure of data.
+2. Access rights Different users can view or edit only the data they need.
+3. Authentication Usernames, passwords and multi-factor methods check user identity.
+4. Encryption Data is encoded so it is unreadable without the correct key.
+
+### Validation checks whether input is sensible or acceptable
+
+- **Explains:** `validation`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-088-validation.jpg`
+
+1. Validation applies rules before data is accepted into the database. It reduces errors but cannot prove truth.
+2. Range check
+3. Checks a value is within limits
+4. Age must be 11 to 19
+5. Type check
+6. Checks data has the correct data type
+7. PaymentAmount must be numeric
+8. Presence check
+9. Checks required data is not blank
+10. StudentID must be entered
+11. Format check
+12. Checks data follows a pattern
+
+### Verification checks data has been copied accurately
+
+- **Explains:** `verification`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-088-verification.jpg`
+
+1. Verification compares entered data with the source or repeats entry to reduce transcription errors.
+2. Double entry The same data is entered twice and compared. Useful for passwords or email addresses.
+3. Proofreading A person checks entered data against the original source document.
+4. Key distinction Verification checks copying accuracy; it does not decide whether the original source was true.
+<!-- stage10-explanations:end -->

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -112,6 +112,20 @@
           <div class="callout">Chinese support: access rights = 访问权限；permission = 权限；least privilege = 最小权限原则；authorisation = 授权。</div>
         </section>
 
+        <!-- stage10-explanation:start core -->
+        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
+          <h2 class="explanation-sr-only" id="explanation-core-title">Access control decides what authenticated users may do</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Access control decides what authenticated users may do with a structured visual model." />
+            <figcaption class="explanation-sr-only">Access control decides what authenticated users may do: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Access right A permission to perform an action on a resource, such as read or write.</li><li><strong>Lesson fact:</strong> Resource A file, database table, account, device, folder, application or network service.</li><li><strong>Lesson fact:</strong> Authorisation The decision to allow or deny an action after identity has been checked.</li><li><strong>Lesson fact:</strong> Policy The rule set that maps users, groups or roles to permitted actions.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end core -->
+
         <section class="panel" id="rights" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rights">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -125,6 +139,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start rights -->
+        <section class="panel explanation-panel" id="explanation-rights" data-explains="rights" data-explanation-kind="mechanism" aria-labelledby="explanation-rights-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rights">
+          <h2 class="explanation-sr-only" id="explanation-rights-title">Common permission types</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-rights.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common permission types with a structured visual model." />
+            <figcaption class="explanation-sr-only">Common permission types: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Read View or open data without changing it. Protects confidentiality when restricted.</li><li><strong>Lesson fact:</strong> Write/modify Create or change data. Protects integrity when restricted.</li><li><strong>Lesson fact:</strong> Delete Remove data or accounts. Often high risk because loss may affect availability.</li><li><strong>Lesson fact:</strong> Execute/admin Run programs, install software or manage settings. Usually limited to trusted roles.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end rights -->
+
         <section class="panel" id="users" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="users">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -137,6 +165,20 @@
             <article><strong>Audit log</strong><span>Records access attempts or changes, helping detect misuse and investigate incidents.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start users -->
+        <section class="panel explanation-panel" id="explanation-users" data-explains="users" data-explanation-kind="mechanism" aria-labelledby="explanation-users-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="users">
+          <h2 class="explanation-sr-only" id="explanation-users-title">Users, groups and roles keep permissions manageable</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-users.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Users, groups and roles keep permissions manageable with a structured visual model." />
+            <figcaption class="explanation-sr-only">Users, groups and roles keep permissions manageable: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> User account Individual identity, useful for accountability and audit trails.</li><li><strong>Lesson fact:</strong> Group A collection of accounts that share permissions, such as &quot;Students&quot; or &quot;Finance&quot;.</li><li><strong>Lesson fact:</strong> Role A job-based permission set, such as teacher, receptionist, technician or administrator.</li><li><strong>Lesson fact:</strong> Audit log Records access attempts or changes, helping detect misuse and investigate incidents.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end users -->
 
         <section class="panel" id="matrix" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="matrix">
           <div class="section-title">
@@ -177,6 +219,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start matrix -->
+        <section class="panel explanation-panel" id="explanation-matrix" data-explains="matrix" data-explanation-kind="mechanism" aria-labelledby="explanation-matrix-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="matrix">
+          <h2 class="explanation-sr-only" id="explanation-matrix-title">A permission matrix makes access decisions visible</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-matrix.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A permission matrix makes access decisions visible with a structured visual model." />
+            <figcaption class="explanation-sr-only">A permission matrix makes access decisions visible: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Student records</li><li><strong>Lesson fact:</strong> Exam marks</li><li><strong>Lesson fact:</strong> System settings</li><li><strong>Lesson fact:</strong> Read own record</li><li><strong>Lesson fact:</strong> No access</li><li><strong>Lesson fact:</strong> Read class records</li><li><strong>Lesson fact:</strong> Write marks for own classes</li><li><strong>Lesson fact:</strong> Exam officer</li><li><strong>Lesson fact:</strong> Read relevant records</li><li><strong>Lesson fact:</strong> Read/write exam data</li><li><strong>Lesson fact:</strong> Administrator</li><li><strong>Lesson fact:</strong> Manage accounts</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end matrix -->
+
         <section class="panel" id="least" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="least">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
@@ -190,6 +246,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start least -->
+        <section class="panel explanation-panel" id="explanation-least" data-explains="least" data-explanation-kind="mechanism" aria-labelledby="explanation-least-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="least">
+          <h2 class="explanation-sr-only" id="explanation-least-title">Least privilege reduces unnecessary damage</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-least.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Least privilege reduces unnecessary damage with a structured visual model." />
+            <figcaption class="explanation-sr-only">Least privilege reduces unnecessary damage: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Definition Give users only the minimum permissions needed to perform their role.</li><li><strong>Lesson fact:</strong> Confidentiality Users cannot view data that is not needed for their work.</li><li><strong>Lesson fact:</strong> Integrity Users cannot accidentally or deliberately change data outside their responsibility.</li><li><strong>Lesson fact:</strong> Availability Fewer users can delete files, disable services or change critical settings.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end least -->
+
         <section class="panel" id="review" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="review">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
@@ -202,6 +272,20 @@
             <article><strong>Review</strong><span>Regular checks remove excessive, stale or temporary permissions.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start review -->
+        <section class="panel explanation-panel" id="explanation-review" data-explains="review" data-explanation-kind="mechanism" aria-labelledby="explanation-review-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="review">
+          <h2 class="explanation-sr-only" id="explanation-review-title">Permissions need review, not just setup day optimism</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-066-review.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Permissions need review, not just setup day optimism with a structured visual model." />
+            <figcaption class="explanation-sr-only">Permissions need review, not just setup day optimism: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Joiner New user receives permissions based on role, not copied blindly from a friend.</li><li><strong>Lesson fact:</strong> Mover User changes role; old permissions are removed and new ones are added.</li><li><strong>Lesson fact:</strong> Leaver Account is disabled or removed when the user leaves.</li><li><strong>Lesson fact:</strong> Review Regular checks remove excessive, stale or temporary permissions.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end review -->
 
 
         <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="tool">

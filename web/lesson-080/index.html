@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -131,6 +131,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start terms -->
+        <section class="panel explanation-panel" id="explanation-terms" data-explains="terms" data-explanation-kind="mechanism" aria-labelledby="explanation-terms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="terms">
+          <h2 class="explanation-sr-only" id="explanation-terms-title">Tables, records and fields</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-terms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Tables, records and fields with a structured visual model." />
+            <figcaption class="explanation-sr-only">Tables, records and fields: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A table stores records about one entity. A record is one complete row. A field is one column or attribute.</li><li><strong>Lesson fact:</strong> A collection of records for one entity</li><li><strong>Lesson fact:</strong> Student table</li><li><strong>Lesson fact:</strong> Record / tuple</li><li><strong>Lesson fact:</strong> One complete row in a table</li><li><strong>Lesson fact:</strong> S0234, Amira Chen, 2009-04-18, TRUE</li><li><strong>Lesson fact:</strong> Field / attribute</li><li><strong>Lesson fact:</strong> One column or property stored for each record</li><li><strong>Lesson fact:</strong> StudentID, Name, DateOfBirth, FeePaid</li><li><strong>Lesson fact:</strong> One item of data in a field for a record</li><li><strong>Lesson fact:</strong> TRUE in the FeePaid field</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end terms -->
+
         <section class="panel" id="fields" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fields">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -145,6 +159,20 @@
           </div>
           <div class="callout">Chinese support: field = 字段/列；record = 记录/行；constraint = 约束/限制规则；data integrity = 数据完整性。</div>
         </section>
+
+        <!-- stage10-explanation:start fields -->
+        <section class="panel explanation-panel" id="explanation-fields" data-explains="fields" data-explanation-kind="mechanism" aria-labelledby="explanation-fields-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fields">
+          <h2 class="explanation-sr-only" id="explanation-fields-title">Designing fields properly</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-fields.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Designing fields properly with a structured visual model." />
+            <figcaption class="explanation-sr-only">Designing fields properly: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Each field should have a name, data type, possible field size and constraints. Good design reduces invalid data at entry.</li><li><strong>Lesson fact:</strong> Field name Clear and specific: DateOfBirth , not date .</li><li><strong>Lesson fact:</strong> Data type Controls the kind of data: text, integer, real, date/time, Boolean.</li><li><strong>Lesson fact:</strong> Field size Maximum storage length where relevant, such as 8 characters for StudentID.</li><li><strong>Lesson fact:</strong> Constraint A rule that a value must satisfy before it is accepted.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end fields -->
 
         <section class="panel" id="types" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="types">
           <div class="section-title">
@@ -185,6 +213,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start types -->
+        <section class="panel explanation-panel" id="explanation-types" data-explains="types" data-explanation-kind="mechanism" aria-labelledby="explanation-types-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="types">
+          <h2 class="explanation-sr-only" id="explanation-types-title">Common database data types</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-types.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Common database data types with a structured visual model." />
+            <figcaption class="explanation-sr-only">Common database data types: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Data type</li><li><strong>Lesson fact:</strong> Use when</li><li><strong>Lesson fact:</strong> Text / string</li><li><strong>Lesson fact:</strong> The value may contain letters, spaces, symbols or leading zeroes</li><li><strong>Lesson fact:</strong> PhoneNumber = &quot;02071234567&quot;</li><li><strong>Lesson fact:</strong> Whole number used for counting or arithmetic</li><li><strong>Lesson fact:</strong> Quantity = 24</li><li><strong>Lesson fact:</strong> Real / decimal</li><li><strong>Lesson fact:</strong> Number may include fractional part</li><li><strong>Lesson fact:</strong> MassKg = 62.5</li><li><strong>Lesson fact:</strong> Only two logical states are needed</li><li><strong>Lesson fact:</strong> FeePaid = TRUE</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end types -->
+
         <section class="panel" id="constraints" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constraints">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -204,6 +246,20 @@
             <span>A constraint improves data integrity by preventing values that do not meet a rule, such as rejecting a mark outside 0 to 100.</span>
           </div>
         </section>
+
+        <!-- stage10-explanation:start constraints -->
+        <section class="panel explanation-panel" id="explanation-constraints" data-explains="constraints" data-explanation-kind="mechanism" aria-labelledby="explanation-constraints-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constraints">
+          <h2 class="explanation-sr-only" id="explanation-constraints-title">Constraints and validation rules</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-constraints.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Constraints and validation rules with a structured visual model." />
+            <figcaption class="explanation-sr-only">Constraints and validation rules: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A constraint limits accepted values to help maintain data integrity. It does not prove the data is true; it helps reject impossible or invalid data.</li><li><strong>Lesson fact:</strong> Presence check Value must not be blank. Example: Name is required.</li><li><strong>Lesson fact:</strong> Range check Value must be within limits. Example: Mark is 0 to 100.</li><li><strong>Lesson fact:</strong> Type check Value must match the data type. Example: Quantity must be Integer.</li><li><strong>Lesson fact:</strong> Length check Value must have a permitted length. Example: StudentID has 5 characters.</li><li><strong>Lesson fact:</strong> Format check Value must match a pattern. Example: postcode or email pattern.</li><li><strong>Lesson fact:</strong> Lookup check Value must be from an allowed list. Example: Grade is A, B, C, D, E or U.</li><li><strong>Lesson fact:</strong> Exam sentence:</li><li><strong>Lesson fact:</strong> A constraint improves data integrity by preventing values that do not meet a rule, such as rejecting a mark outside 0 to 100.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end constraints -->
 
 
         <section class="panel" id="type-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="type-tool">
@@ -228,6 +284,20 @@
           <div class="feedback" id="typeReason">The best answer depends on how the value is used, not how numeric it looks.</div>
         </section>
 
+        <!-- stage10-explanation:start type-tool -->
+        <section class="panel explanation-panel" id="explanation-type-tool" data-explains="type-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-type-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="type-tool">
+          <h2 class="explanation-sr-only" id="explanation-type-tool-title">Choose the best data type</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-type-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the best data type with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose the best data type: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive data type chooser</li><li><strong>Lesson fact:</strong> Choose a field, then decide the data type.</li><li><strong>Lesson fact:</strong> The best answer depends on how the value is used, not how numeric it looks.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end type-tool -->
+
         <section class="panel" id="constraint-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constraint-tool">
           <div class="section-title">
             <p class="eyebrow">Interactive constraint checker</p>
@@ -249,6 +319,20 @@
           <div class="result-box" id="constraintResult">Choose a bad value to identify the check.</div>
           <div class="feedback" id="constraintReason">Name the rule and explain what it prevents.</div>
         </section>
+
+        <!-- stage10-explanation:start constraint-tool -->
+        <section class="panel explanation-panel" id="explanation-constraint-tool" data-explains="constraint-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-constraint-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constraint-tool">
+          <h2 class="explanation-sr-only" id="explanation-constraint-tool-title">Which rule rejects the bad value?</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-constraint-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Which rule rejects the bad value? with a structured visual model." />
+            <figcaption class="explanation-sr-only">Which rule rejects the bad value?: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive constraint checker</li><li><strong>Lesson fact:</strong> Bad value</li><li><strong>Lesson fact:</strong> Choose a bad value to identify the check.</li><li><strong>Lesson fact:</strong> Name the rule and explain what it prevents.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end constraint-tool -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
@@ -285,6 +369,20 @@
             <article><strong>3. Design</strong><span>choose data types and constraints for five fields in a small scenario.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start checkpoint -->
+        <section class="panel explanation-panel" id="explanation-checkpoint" data-explains="checkpoint" data-explanation-kind="mechanism" aria-labelledby="explanation-checkpoint-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checkpoint">
+          <h2 class="explanation-sr-only" id="explanation-checkpoint-title">Section 8 basics so far</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-080-checkpoint.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 8 basics so far with a structured visual model." />
+            <figcaption class="explanation-sr-only">Section 8 basics so far: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Monthly checkpoint</li><li><strong>Lesson fact:</strong> This checkpoint connects Lessons 078-080 without becoming a full exam.</li><li><strong>Lesson fact:</strong> 1. Define data, information, database, DBMS, flat-file, relational database.</li><li><strong>Lesson fact:</strong> 2. Compare one-table repeated data vs linked tables with reduced redundancy.</li><li><strong>Lesson fact:</strong> 3. Design choose data types and constraints for five fields in a small scenario.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end checkpoint -->
 
         <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">

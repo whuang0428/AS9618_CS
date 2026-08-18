@@ -71,3 +71,58 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often say the sensor 'does the action'. Correction: sensors detect; actuators act. For this lesson, make students contrast that mistake with the exact idea of **sensors, actuators, and control systems**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Actuators turn output signals into physical action
+
+- **Explains:** `actuators`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-034-actuators.jpg`
+
+1. Motor Creates movement, such as opening a door or spinning a fan.
+2. Valve Controls flow of water, gas or air.
+3. Heater Changes temperature by producing heat.
+4. Light Turns visual warning or illumination on/off.
+5. Lock / brake Controls physical safety or movement.
+6. An actuator receives an output signal. It does not decide the rule; the processor/controller does that.
+
+### Control systems use rules and feedback
+
+- **Explains:** `control`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-034-control.jpg`
+
+1. 1 Sensor reads
+2. 2 Processor compares
+3. 3 Fan and vent act
+4. The solid arrows show input and output signals. The dashed arrow shows feedback: the changed temperature is measured again.
+5. Sense: the temperature sensor produces a reading.
+6. Compare: the controller compares the reading with its threshold.
+7. Act: an output signal switches or adjusts the fan and vent.
+8. Repeat: a new reading checks whether further action is needed.
+9. Input Sensor reads the physical condition.
+10. Decision Processor compares the reading with a threshold or rule.
+11. Output Signal is sent to an actuator.
+12. Feedback New sensor readings check the result.
+
+### Sensors capture physical data
+
+- **Explains:** `sensors`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-034-sensors.jpg`
+
+1. Example system
+2. Exam warning
+3. Temperature
+4. Heat / temperature value
+5. Greenhouse fan, thermostat, freezer alarm
+6. It detects temperature; it does not cool the room.
+7. Light intensity
+8. Street lights, phone brightness
+9. The output may be a lamp, not the sensor.
+10. Pressure
+11. Force/pressure level
+12. Burglar mat, weighing scale, tyre pressure
+<!-- stage10-explanations:end -->

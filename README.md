@@ -1,6 +1,6 @@
 # AS9618 Computer Science 2027-2029 AS Lesson Plans
 
-This repository contains the completed nine-stage classroom teaching and self-study course pack for Cambridge International AS Level Computer Science 9618, syllabus years 2027-2029.
+This repository contains the completed ten-stage classroom teaching and self-study course pack for Cambridge International AS Level Computer Science 9618, syllabus years 2027-2029.
 
 Official qualification page: <https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/>
 
@@ -8,9 +8,9 @@ Syllabus reference used for this pack: Cambridge International AS & A Level Comp
 
 ## Project Status
 
-All 150 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit maps all 121 AS requirements to direct teaching and assessment evidence. The assessment bank provides 30 ten-mark quizzes, 7 thirty-mark monthly checkpoints and 14 twenty-mark stage reviews. Stage 5 reviewed and approved all 963 exam-style mark schemes (750 lesson questions and 213 assessment questions); 295 questions in System Software, Security, Ethics and Databases received a specialist second review. Stage 6 completed desktop and mobile full-page QA for all 150 lessons plus the course, assessment and resource hubs. Stage 7 completed keyboard, semantic, contrast and bilingual-language accessibility QA for the same 153 pages. Stage 8 provides a versioned, checksummed and source-matched offline release. Stage 9 adds a fixed lesson toolbar, audited delivery metadata, teacher filters in the Assessment Bank and a static 150-lesson catalogue.
+All 150 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit maps all 121 AS requirements to direct teaching and assessment evidence. The assessment bank provides 30 ten-mark quizzes, 7 thirty-mark monthly checkpoints and 14 twenty-mark stage reviews. Stage 5 reviewed and approved all 963 exam-style mark schemes (750 lesson questions and 213 assessment questions); 295 questions in System Software, Security, Ethics and Databases received a specialist second review. Stage 6 completed desktop and mobile full-page QA for all 150 lessons plus the course, assessment and resource hubs. Stage 7 completed keyboard, semantic, contrast and bilingual-language accessibility QA for the same 153 pages. Stage 8 provides a versioned, checksummed and source-matched offline release. Stage 9 adds a fixed lesson toolbar, audited delivery metadata, teacher filters in the Assessment Bank and a static 150-lesson catalogue. Stage 10 adds 782 maintained academic infographics with source-grounded text alternatives across all 150 lessons.
 
-The shared web version prioritises classroom teaching while preserving each complete lesson for student preview and revision. Every lesson provides `Course home`, previous/next lesson controls and section shortcuts without changing or hiding lesson content. A prioritised visual-explanation register covers 25 abstract concepts. Eight approved visual explanations now cover network models, packet switching, addressing, secondary storage, control systems, logic gates, CPU architecture and the fetch-decode-execute cycle.
+The shared web version prioritises classroom teaching while preserving each complete lesson for student preview and revision. Every lesson provides `Course home`, previous/next lesson controls and section shortcuts without changing or hiding lesson content. The comprehensive visual register now tracks 968 diagrams and interactive visuals, including the 782 Stage 10 knowledge-point infographics. Automated checks cover structure, dimensions, file budgets and accessible transcripts; conceptual correctness remains subject to human semantic review.
 
 ## Course Design
 
@@ -83,7 +83,7 @@ node scripts/apply-classroom-delivery.mjs
 node scripts/generate-stage10-audits.mjs
 ```
 
-The current Stage 10 rollout is deliberately limited to the ten pilot lessons: 016, 030, 041, 053, 067, 083, 091, 105, 122 and 142. Each `Visual explanation` panel is visible by default and combines a three-step cause chain, a short analogy and a boundary condition. Five selected lessons also use original, academically styled ImageGen illustrations; exact topology, algorithm and relationship facts remain code-native. The remaining lessons stay listed as `Planned` until the revised pilot receives human approval.
+Stage 10 now covers all 782 maintained explanation targets across all 150 lessons. Each target uses an academically styled ImageGen infographic grounded in the corresponding lesson facts, with a synchronised screen-reader transcript and matching Markdown record. The original ten-lesson pilot established the approved visual style; the full visual set remains subject to human semantic review because automated checks cannot prove conceptual correctness.
 
 ## Verification
 

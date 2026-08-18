@@ -92,3 +92,80 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **validation algorithms and defensive input handling**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Match the rule to the risk
+
+- **Explains:** `checks`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-checks.jpg`
+
+1. Validation check types
+2. Range check
+3. value is within allowed limits
+4. Mark >= 0 AND Mark <= 100
+5. Presence check
+6. field is not blank
+7. Name <> ""
+8. Length check
+9. input has required number of characters
+10. LENGTH(Postcode) <= 8
+11. Type / format check
+12. input matches expected type or pattern
+
+### Reject bad input, then ask again
+
+- **Explains:** `defensive`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-defensive.jpg`
+
+1. Defensive input handling
+2. 1 Input the value.
+3. 2 Test the validation condition.
+4. 3 If invalid, output a helpful message.
+5. 4 Repeat input until valid.
+6. 5 Process only the accepted value.
+
+### Use Cambridge-style validation loops in the exam
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style pseudocode
+3. INPUT Mark
+4. IF Mark < 0 OR Mark > 100 THEN
+5. OUTPUT "Invalid mark"
+6. UNTIL Mark >= 0 AND Mark <= 100
+7. Java support only
+8. mark = input.nextInt();
+9. if (mark < 0 || mark > 100) {
+10. System.out.println("Invalid mark");
+11. } while (mark < 0 || mark > 100);
+12. Exam reminder: Cambridge pseudocode uses keywords such as REPEAT, UNTIL, IF, THEN, ENDIF, INPUT and OUTPUT. Java syntax is support only.
+
+### Test a mark against 0-100
+
+- **Explains:** `tester`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-tester.jpg`
+
+1. Interactive input tester
+2. Enter a mark and test whether it is valid.
+
+### Validation checks whether input follows a rule
+
+- **Explains:** `validation`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-validation.jpg`
+
+1. Knowledge explanation
+2. What validation does
+3. Validation rejects unacceptable input before processing. It can check range, presence, length, type, format, existence or check digit rules.
+4. What validation does not do
+5. Validation does not prove input is true. It checks whether input is reasonable or follows the expected pattern.
+6. Example: age 15 passes a school-age range check, but it might still be a lie.
+<!-- stage10-explanations:end -->

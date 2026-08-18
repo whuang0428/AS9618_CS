@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -108,6 +108,20 @@
           <div class="callout">A useful design document is specific enough to guide construction, but not just a pasted block of final program code.</div>
         </section>
 
+        <!-- stage10-explanation:start purpose -->
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+          <h2 class="explanation-sr-only" id="explanation-purpose-title">Design documents translate requirements into a buildable plan</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Design documents translate requirements into a buildable plan with a structured visual model." />
+            <figcaption class="explanation-sr-only">Design documents translate requirements into a buildable plan: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Design documentation purpose</li><li><strong>Lesson fact:</strong> Before coding</li><li><strong>Lesson fact:</strong> They decide data structures, processing logic and user interaction before the implementation language takes over.</li><li><strong>Lesson fact:</strong> For testers</li><li><strong>Lesson fact:</strong> They provide expected rules and interface behaviour so tests can check more than “it seems fine”.</li><li><strong>Lesson fact:</strong> For maintenance</li><li><strong>Lesson fact:</strong> They help future developers understand why the system works in a particular way.</li><li><strong>Lesson fact:</strong> A useful design document is specific enough to guide construction, but not just a pasted block of final program code.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end purpose -->
+
         <section class="panel" id="algorithms" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="algorithms">
           <div class="section-title">
             <p class="eyebrow">Algorithm design documents</p>
@@ -141,6 +155,20 @@ for (Booking booking : bookingList) {
           </div>
         </section>
 
+        <!-- stage10-explanation:start algorithms -->
+        <section class="panel explanation-panel" id="explanation-algorithms" data-explains="algorithms" data-explanation-kind="process" aria-labelledby="explanation-algorithms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="algorithms">
+          <h2 class="explanation-sr-only" id="explanation-algorithms-title">Algorithm designs describe the processing steps</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-algorithms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Algorithm designs describe the processing steps with a structured visual model." />
+            <figcaption class="explanation-sr-only">Algorithm designs describe the processing steps: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Algorithm design documents</li><li><strong>Lesson fact:</strong> They may use Cambridge-style pseudocode, flowcharts or structure diagrams. Java can support learning, but the exam standard remains Cambridge pseudocode.</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode design</li><li><strong>Lesson fact:</strong> SET ClashFound TO FALSE</li><li><strong>Lesson fact:</strong> FOR EACH Booking IN BookingList</li><li><strong>Lesson fact:</strong> IF Booking.RoomID = NewRoomID AND Booking.Date = NewDate THEN</li><li><strong>Lesson fact:</strong> IF times overlap THEN</li><li><strong>Lesson fact:</strong> SET ClashFound TO TRUE</li><li><strong>Lesson fact:</strong> NEXT Booking</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> // Java support example, not exam pseudocode</li><li><strong>Lesson fact:</strong> boolean clashFound = false;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end algorithms -->
+
         <section class="panel" id="dictionary" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dictionary">
           <div class="section-title">
             <p class="eyebrow">Data dictionary</p>
@@ -154,6 +182,20 @@ for (Booking booking : bookingList) {
             <div class="table-row"><div>StaffID</div><div>STRING</div><div>8</div><div>staff code</div><div>must match staff record</div><div>person making booking</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start dictionary -->
+        <section class="panel explanation-panel" id="explanation-dictionary" data-explains="dictionary" data-explanation-kind="mechanism" aria-labelledby="explanation-dictionary-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dictionary">
+          <h2 class="explanation-sr-only" id="explanation-dictionary-title">A data dictionary defines each data item consistently</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-dictionary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A data dictionary defines each data item consistently with a structured visual model." />
+            <figcaption class="explanation-sr-only">A data dictionary defines each data item consistently: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Data dictionary</li><li><strong>Lesson fact:</strong> Validation</li><li><strong>Lesson fact:</strong> letter plus digits</li><li><strong>Lesson fact:</strong> not blank; exists in room file</li><li><strong>Lesson fact:</strong> identifies the room</li><li><strong>Lesson fact:</strong> BookingDate</li><li><strong>Lesson fact:</strong> YYYY-MM-DD</li><li><strong>Lesson fact:</strong> school day; not in past</li><li><strong>Lesson fact:</strong> date of booking</li><li><strong>Lesson fact:</strong> StartTime</li><li><strong>Lesson fact:</strong> valid period start time</li><li><strong>Lesson fact:</strong> booking start</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end dictionary -->
 
         <section class="panel" id="interfaces" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="interfaces">
           <div class="section-title">
@@ -171,6 +213,20 @@ for (Booking booking : bookingList) {
           <div class="callout">Interface design is not just “make the screen pretty”. It specifies controls, navigation, prompts, validation messages and user feedback.</div>
         </section>
 
+        <!-- stage10-explanation:start interfaces -->
+        <section class="panel explanation-panel" id="explanation-interfaces" data-explains="interfaces" data-explanation-kind="mechanism" aria-labelledby="explanation-interfaces-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="interfaces">
+          <h2 class="explanation-sr-only" id="explanation-interfaces-title">Interface designs show how users will enter data and navigate the system</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-interfaces.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Interface designs show how users will enter data and navigate the system with a structured visual model." />
+            <figcaption class="explanation-sr-only">Interface designs show how users will enter data and navigate the system: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interface designs</li><li><strong>Lesson fact:</strong> Create room booking</li><li><strong>Lesson fact:</strong> Date calendar control</li><li><strong>Lesson fact:</strong> Period drop-down list</li><li><strong>Lesson fact:</strong> Room searchable list</li><li><strong>Lesson fact:</strong> Error message area: “Room already booked for this time.”</li><li><strong>Lesson fact:</strong> Interface design is not just “make the screen pretty”. It specifies controls, navigation, prompts, validation messages and user feedback.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end interfaces -->
+
         <section class="panel" id="traceability" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traceability">
           <div class="section-title">
             <p class="eyebrow">Linking requirements to design</p>
@@ -183,6 +239,20 @@ for (Booking booking : bookingList) {
           </div>
         </section>
 
+        <!-- stage10-explanation:start traceability -->
+        <section class="panel explanation-panel" id="explanation-traceability" data-explains="traceability" data-explanation-kind="mechanism" aria-labelledby="explanation-traceability-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traceability">
+          <h2 class="explanation-sr-only" id="explanation-traceability-title">Traceability keeps the design connected to the original need</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-traceability.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Traceability keeps the design connected to the original need with a structured visual model." />
+            <figcaption class="explanation-sr-only">Traceability keeps the design connected to the original need: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Linking requirements to design</li><li><strong>Lesson fact:</strong> Requirement</li><li><strong>Lesson fact:</strong> Algorithm design</li><li><strong>Lesson fact:</strong> Data dictionary</li><li><strong>Lesson fact:</strong> Interface design</li><li><strong>Lesson fact:</strong> Prevent double booking</li><li><strong>Lesson fact:</strong> compare requested time with existing bookings</li><li><strong>Lesson fact:</strong> RoomID, date, start and end times</li><li><strong>Lesson fact:</strong> availability check button and clash message</li><li><strong>Lesson fact:</strong> Only staff can book</li><li><strong>Lesson fact:</strong> check user role before saving</li><li><strong>Lesson fact:</strong> StaffID and Role fields</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end traceability -->
+
         <section class="panel" id="lifecycle" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lifecycle">
           <div class="section-title">
             <p class="eyebrow">Using design docs later</p>
@@ -194,6 +264,20 @@ for (Booking booking : bookingList) {
             <article><h3>Maintenance</h3><p>Future changes are safer because developers can see existing data rules and processing assumptions.</p></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start lifecycle -->
+        <section class="panel explanation-panel" id="explanation-lifecycle" data-explains="lifecycle" data-explanation-kind="process" aria-labelledby="explanation-lifecycle-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lifecycle">
+          <h2 class="explanation-sr-only" id="explanation-lifecycle-title">Design documentation supports implementation, testing and maintenance</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-lifecycle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Design documentation supports implementation, testing and maintenance with a structured visual model." />
+            <figcaption class="explanation-sr-only">Design documentation supports implementation, testing and maintenance: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Using design docs later</li><li><strong>Lesson fact:</strong> Implementation</li><li><strong>Lesson fact:</strong> Developers know which data fields, algorithms and interface behaviours to build.</li><li><strong>Lesson fact:</strong> Testers compare actual behaviour with the designed rules, validation and expected messages.</li><li><strong>Lesson fact:</strong> Maintenance</li><li><strong>Lesson fact:</strong> Future changes are safer because developers can see existing data rules and processing assumptions.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lifecycle -->
 
 
         <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
@@ -235,6 +319,20 @@ for (Booking booking : bookingList) {
           </div>
           <div id="fieldOutput" class="trace-output" aria-live="polite"></div>
         </section>
+
+        <!-- stage10-explanation:start dictionary-tool -->
+        <section class="panel explanation-panel" id="explanation-dictionary-tool" data-explains="dictionary-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-dictionary-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dictionary-tool">
+          <h2 class="explanation-sr-only" id="explanation-dictionary-tool-title">Inspect a field definition</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-dictionary-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Inspect a field definition with a structured visual model." />
+            <figcaption class="explanation-sr-only">Inspect a field definition: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Data dictionary checker</li><li><strong>Lesson fact:</strong> Data item</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end dictionary-tool -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

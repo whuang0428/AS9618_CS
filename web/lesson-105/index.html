@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -123,33 +123,17 @@ compare 5 and 2 -> swap: [1, 4, 2, 5]</code></pre>
         </section>
 
         <!-- stage10-explanation:start bubble -->
-        <section class="panel explanation-panel" id="explanation-bubble" data-explains="bubble" data-explanation-kind="process" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bubble">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why bubble sort repeats adjacent comparisons</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-bubble" data-explains="bubble" data-explanation-kind="process" aria-labelledby="explanation-bubble-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bubble">
+          <h2 class="explanation-sr-only" id="explanation-bubble-title">Why bubble sort repeats adjacent comparisons</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-bubble.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why bubble sort repeats adjacent comparisons through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why bubble sort repeats adjacent comparisons: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Compare neighbouring values and swap an inverted pair.</li><li><strong>Reason:</strong> A pass moves one extreme value toward its final end position.</li><li><strong>Result:</strong> Repeat until a pass makes no swaps or the unsorted region ends.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Compare neighbouring values and swap an inverted pair.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>A pass moves one extreme value toward its final end position.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Repeat until a pass makes no swaps or the unsorted region ends.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Repeatedly exchange adjacent books until the largest reaches the shelf end.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>One pass does not generally sort the entire list.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Repeatedly exchange adjacent books until the largest reaches the shelf end.</p>
+            <p><strong>Boundary:</strong> One pass does not generally sort the entire list.</p>
           </div>
         </section>
         <!-- stage10-explanation:end bubble -->
@@ -176,33 +160,17 @@ take 2 -> insert between 1 and 4: [1, 2, 4, 5]</code></pre>
         </section>
 
         <!-- stage10-explanation:start insertion -->
-        <section class="panel explanation-panel" id="explanation-insertion" data-explains="insertion" data-explanation-kind="process" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="insertion">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>How insertion sort grows a sorted region</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-insertion" data-explains="insertion" data-explanation-kind="process" aria-labelledby="explanation-insertion-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="insertion">
+          <h2 class="explanation-sr-only" id="explanation-insertion-title">How insertion sort grows a sorted region</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-insertion.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How insertion sort grows a sorted region through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How insertion sort grows a sorted region: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Treat the first item as an already sorted region.</li><li><strong>Reason:</strong> Remove the next key and shift larger sorted items right.</li><li><strong>Result:</strong> Insert the key into the gap, expanding the sorted region.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Treat the first item as an already sorted region.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Remove the next key and shift larger sorted items right.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Insert the key into the gap, expanding the sorted region.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Insert each new card into the correct place in an ordered hand.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>The left region is sorted, but the unprocessed right region is not.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Insert each new card into the correct place in an ordered hand.</p>
+            <p><strong>Boundary:</strong> The left region is sorted, but the unprocessed right region is not.</p>
           </div>
         </section>
         <!-- stage10-explanation:end insertion -->
@@ -222,33 +190,17 @@ take 2 -> insert between 1 and 4: [1, 2, 4, 5]</code></pre>
         </section>
 
         <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why the sorts move data differently</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Why the sorts move data differently</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why the sorts move data differently through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why the sorts move data differently: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Bubble sort repairs local inversions through repeated neighbouring swaps.</li><li><strong>Reason:</strong> Insertion sort moves one key through an existing sorted region.</li><li><strong>Result:</strong> Their movement patterns produce different trace states and operation counts.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Bubble sort repairs local inversions through repeated neighbouring swaps.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Insertion sort moves one key through an existing sorted region.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Their movement patterns produce different trace states and operation counts.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>One method swaps neighbours; the other opens a gap for one selected card.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Both remain quadratic in the typical worst-case school-level analysis.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> One method swaps neighbours; the other opens a gap for one selected card.</p>
+            <p><strong>Boundary:</strong> Both remain quadratic in the typical worst-case school-level analysis.</p>
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
@@ -288,33 +240,17 @@ NEXT Pass</code></pre>
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why a trace follows state</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="comparison" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Why a trace follows state</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-105-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why a trace follows state through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why a trace follows state: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Record the variables and list at the agreed trace point.</li><li><strong>Reason:</strong> Apply exactly one comparison, swap, shift or insertion step.</li><li><strong>Result:</strong> Write the new state before advancing the loop.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Record the variables and list at the agreed trace point.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Apply exactly one comparison, swap, shift or insertion step.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Write the new state before advancing the loop.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A laboratory log records each changed state, not the punctuation of instructions.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>A trace must use the algorithm's actual update order.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> A laboratory log records each changed state, not the punctuation of instructions.</p>
+            <p><strong>Boundary:</strong> A trace must use the algorithm's actual update order.</p>
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->

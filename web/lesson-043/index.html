@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -124,6 +124,20 @@
           <div class="callout">Chinese support: register = 寄存器；temporary = 临时的；address = 地址；flag = 标志位；intermediate result = 中间结果。</div>
         </section>
 
+        <!-- stage10-explanation:start purpose -->
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+          <h2 class="explanation-sr-only" id="explanation-purpose-title">Why registers exist</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why registers exist with a structured visual model." />
+            <figcaption class="explanation-sr-only">Why registers exist: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Inside the CPU</li><li><strong>Lesson fact:</strong> Registers are located inside the processor, so they can be accessed very quickly.</li><li><strong>Lesson fact:</strong> Small capacity</li><li><strong>Lesson fact:</strong> They hold only a small amount of data, usually one value, address, instruction or set of flags.</li><li><strong>Lesson fact:</strong> Temporary role</li><li><strong>Lesson fact:</strong> They hold values needed immediately during fetch, decode or execute.</li><li><strong>Lesson fact:</strong> Specific jobs</li><li><strong>Lesson fact:</strong> Different registers are designed for different temporary values.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end purpose -->
+
         <section class="panel" id="main-registers" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="main-registers">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -175,6 +189,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start main-registers -->
+        <section class="panel explanation-panel" id="explanation-main-registers" data-explains="main-registers" data-explanation-kind="mechanism" aria-labelledby="explanation-main-registers-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="main-registers">
+          <h2 class="explanation-sr-only" id="explanation-main-registers-title">The six register roles</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-main-registers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The six register roles with a structured visual model." />
+            <figcaption class="explanation-sr-only">The six register roles: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Register</li><li><strong>Lesson fact:</strong> Full name</li><li><strong>Lesson fact:</strong> What it holds</li><li><strong>Lesson fact:</strong> Exam-safe sentence</li><li><strong>Lesson fact:</strong> Program Counter</li><li><strong>Lesson fact:</strong> Address of the next instruction to be fetched.</li><li><strong>Lesson fact:</strong> The PC is updated so the CPU knows where to fetch the next instruction.</li><li><strong>Lesson fact:</strong> Current Instruction Register</li><li><strong>Lesson fact:</strong> Instruction currently being decoded/executed.</li><li><strong>Lesson fact:</strong> The CIR holds the fetched instruction while the CU decodes it.</li><li><strong>Lesson fact:</strong> Memory Address Register</li><li><strong>Lesson fact:</strong> Address of a memory location being accessed.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end main-registers -->
+
         <section class="panel" id="acc-status" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="acc-status">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -203,6 +231,20 @@
             <p>The status register does not store the calculation result itself. It stores flags about the result.</p>
           </div>
         </section>
+
+        <!-- stage10-explanation:start acc-status -->
+        <section class="panel explanation-panel" id="explanation-acc-status" data-explains="acc-status" data-explanation-kind="process" aria-labelledby="explanation-acc-status-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="acc-status">
+          <h2 class="explanation-sr-only" id="explanation-acc-status-title">ACC and status register: execute-stage evidence</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-acc-status.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining ACC and status register: execute-stage evidence with a structured visual model." />
+            <figcaption class="explanation-sr-only">ACC and status register: execute-stage evidence: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Accumulator (ACC)</li><li><strong>Lesson fact:</strong> The accumulator commonly holds intermediate results from the ALU. For example, after adding two values, the result may be stored in the ACC.</li><li><strong>Lesson fact:</strong> Status register</li><li><strong>Lesson fact:</strong> The status register holds flags that describe the outcome of an operation or the processor state.</li><li><strong>Lesson fact:</strong> Zero flag</li><li><strong>Lesson fact:</strong> Can be set when an operation result is zero. Useful after comparisons or subtraction.</li><li><strong>Lesson fact:</strong> Carry / overflow flags</li><li><strong>Lesson fact:</strong> Can indicate a carry out or arithmetic overflow. Exact flag names vary by architecture, but the exam idea is that flags record result conditions.</li><li><strong>Lesson fact:</strong> Common trap</li><li><strong>Lesson fact:</strong> The status register does not store the calculation result itself. It stores flags about the result.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end acc-status -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

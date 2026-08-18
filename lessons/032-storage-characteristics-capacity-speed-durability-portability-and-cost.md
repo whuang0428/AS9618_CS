@@ -71,3 +71,50 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need. For this lesson, make students contrast that mistake with the exact idea of **storage characteristics: capacity, speed, durability, portability, and cost**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### The answer pattern: choice -> characteristic -> context -> consequence
+
+- **Explains:** `answer`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-032-answer.jpg`
+
+1. Choice Use an SSD
+2. Characteristic because it has fast access and no moving parts
+3. Context for a laptop carried to school each day
+4. Consequence so programs load quickly and it is less likely to be damaged by knocks
+5. Weak: "SSD is better." Strong: "SSD is suitable because fast access reduces loading time and no moving parts improves durability in a portable laptop."
+
+### The five core characteristics
+
+- **Explains:** `criteria`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-032-criteria.jpg`
+
+1. Capacity How much data can be stored, usually measured in GB or TB.
+2. Speed How quickly data can be read or written; affects startup, loading and transfer.
+3. Durability How well the device resists damage, wear, shock, scratches or environmental conditions.
+4. Portability How easy it is to carry, remove, connect and use between devices.
+5. Cost Price of the device and cost per unit of storage; not always the same thing.
+
+### Trade-offs by common storage device
+
+- **Explains:** `tradeoffs`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-032-tradeoffs.jpg`
+
+1. Strengths
+2. Weaknesses
+3. Suitable when...
+4. High capacity; low cost per GB.
+5. Moving parts; slower; less shock-resistant than SSD.
+6. Large storage is needed cheaply and portability is less critical.
+7. Fast; durable; no moving parts; low power.
+8. Often higher cost per GB than HDD.
+9. Speed and durability matter, especially in laptops.
+10. Magnetic tape
+11. Very high capacity; low cost for archives.
+12. Slow sequential access; not convenient for frequent random access.
+<!-- stage10-explanations:end -->

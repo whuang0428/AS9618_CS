@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -109,6 +109,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start dml -->
+        <section class="panel explanation-panel" id="explanation-dml" data-explains="dml" data-explanation-kind="mechanism" aria-labelledby="explanation-dml-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dml">
+          <h2 class="explanation-sr-only" id="explanation-dml-title">INSERT, UPDATE and DELETE are data manipulation commands</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-087-dml.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining INSERT, UPDATE and DELETE are data manipulation commands with a structured visual model." />
+            <figcaption class="explanation-sr-only">INSERT, UPDATE and DELETE are data manipulation commands: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> They change stored data. In exam answers, be precise about command keywords and affected records.</li><li><strong>Lesson fact:</strong> INSERT Adds a new record to a table.</li><li><strong>Lesson fact:</strong> UPDATE Changes values in existing records.</li><li><strong>Lesson fact:</strong> DELETE Removes existing records from a table.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end dml -->
+
         <section class="panel" id="insert" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="insert">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -121,6 +135,20 @@
           </div>
           <div class="callout">Chinese support: insert = 插入/新增；record = 记录；field = 字段；value = 值。</div>
         </section>
+
+        <!-- stage10-explanation:start insert -->
+        <section class="panel explanation-panel" id="explanation-insert" data-explains="insert" data-explanation-kind="mechanism" aria-labelledby="explanation-insert-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="insert">
+          <h2 class="explanation-sr-only" id="explanation-insert-title">INSERT INTO adds a record</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-087-insert.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining INSERT INTO adds a record with a structured visual model." />
+            <figcaption class="explanation-sr-only">INSERT INTO adds a record: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> List the fields, then list matching values in the same order. Text values use quotes.</li><li><strong>Lesson fact:</strong> Pattern:</li><li><strong>Lesson fact:</strong> INSERT INTO Student (StudentID, StudentName, TutorGroup) VALUES ('S04', 'Nina', '12C');</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end insert -->
 
         <section class="panel" id="update" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="update">
           <div class="section-title">
@@ -139,6 +167,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start update -->
+        <section class="panel explanation-panel" id="explanation-update" data-explains="update" data-explanation-kind="mechanism" aria-labelledby="explanation-update-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="update">
+          <h2 class="explanation-sr-only" id="explanation-update-title">UPDATE changes existing records</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-087-update.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining UPDATE changes existing records with a structured visual model." />
+            <figcaption class="explanation-sr-only">UPDATE changes existing records: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> SET names the field and new value. WHERE restricts which rows are changed.</li><li><strong>Lesson fact:</strong> Pattern:</li><li><strong>Lesson fact:</strong> UPDATE Student SET TutorGroup = '12C' WHERE StudentID = 'S01';</li><li><strong>Lesson fact:</strong> Table UPDATE Student chooses the table.</li><li><strong>Lesson fact:</strong> New value SET TutorGroup = '12C' changes the field.</li><li><strong>Lesson fact:</strong> Target rows WHERE StudentID = 'S01' prevents changing every student.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end update -->
+
         <section class="panel" id="delete" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="delete">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -151,6 +193,20 @@
           </div>
           <div class="callout">Exam caution: <code>DELETE FROM Student;</code> has no <code>WHERE</code>, so it targets every record in the table.</div>
         </section>
+
+        <!-- stage10-explanation:start delete -->
+        <section class="panel explanation-panel" id="explanation-delete" data-explains="delete" data-explanation-kind="mechanism" aria-labelledby="explanation-delete-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="delete">
+          <h2 class="explanation-sr-only" id="explanation-delete-title">DELETE FROM removes records</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-087-delete.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining DELETE FROM removes records with a structured visual model." />
+            <figcaption class="explanation-sr-only">DELETE FROM removes records: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Use DELETE only when the whole record should be removed. A missing condition can remove all records.</li><li><strong>Lesson fact:</strong> Pattern:</li><li><strong>Lesson fact:</strong> DELETE FROM Student WHERE StudentID = 'S03';</li><li><strong>Lesson fact:</strong> Exam caution: DELETE FROM Student; has no WHERE , so it targets every record in the table.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end delete -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">

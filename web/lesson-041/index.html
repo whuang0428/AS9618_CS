@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../student-visuals.css?v=1" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -129,37 +129,17 @@
         </section>
 
         <!-- stage10-explanation:start architecture -->
-        <section class="panel explanation-panel" id="explanation-architecture" data-explains="architecture" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="architecture">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why a CPU divides specialised work</h2>
-          </div>
-          <div class="explanation-layout has-visual">
-
-          <figure class="explanation-figure">
-            <img src="../assets/diagrams/stage10-cpu-workflow-analogy.jpg" width="1400" height="933" loading="lazy" decoding="async" alt="A textbook-style laboratory workflow with a controller, small holding trays, parallel channels and a processing machine." />
-            <figcaption>A controller coordinates; small trays hold immediate values; distinct channels carry different kinds of signals.</figcaption>
+        <section class="panel explanation-panel" id="explanation-architecture" data-explains="architecture" data-explanation-kind="mechanism" aria-labelledby="explanation-architecture-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="architecture">
+          <h2 class="explanation-sr-only" id="explanation-architecture-title">Why a CPU divides specialised work</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-041-architecture.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why a CPU divides specialised work through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why a CPU divides specialised work: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>The control unit interprets the current instruction.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>The ALU performs the required arithmetic or logical operation.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Registers and buses hold and move the immediate values.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A laboratory separates coordination, processing, temporary trays and transport lanes.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>The components form one system; none executes a program alone.</span></p>
-              </div>
-            </div>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> The control unit interprets the current instruction.</li><li><strong>Reason:</strong> The ALU performs the required arithmetic or logical operation.</li><li><strong>Result:</strong> Registers and buses hold and move the immediate values.</li></ol>
+
+            <p><strong>Analogy:</strong> A laboratory separates coordination, processing, temporary trays and transport lanes.</p>
+            <p><strong>Boundary:</strong> The components form one system; none executes a program alone.</p>
           </div>
         </section>
         <!-- stage10-explanation:end architecture -->
@@ -211,6 +191,20 @@
           </details>
         </section>
 
+        <!-- stage10-explanation:start cpu-map -->
+        <section class="panel explanation-panel" id="explanation-cpu-map" data-explains="cpu-map" data-explanation-kind="mechanism" aria-labelledby="explanation-cpu-map-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cpu-map">
+          <h2 class="explanation-sr-only" id="explanation-cpu-map-title">Inside the CPU, outside the CPU, and what connects them</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-041-cpu-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Inside the CPU, outside the CPU, and what connects them with a structured visual model." />
+            <figcaption class="explanation-sr-only">Inside the CPU, outside the CPU, and what connects them: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> The ALU, CU and registers are processor components. Main memory is outside the CPU; buses carry addresses, data and control signals between them.</li><li><strong>Lesson fact:</strong> CU Coordinates the fetch-decode-execute cycle and sends control signals.</li><li><strong>Lesson fact:</strong> ALU Performs arithmetic operations, comparisons and Boolean logic.</li><li><strong>Lesson fact:</strong> Registers + clock Registers hold immediate working values; clock pulses coordinate timing.</li><li><strong>Lesson fact:</strong> Buses + memory Buses connect the CPU to memory without making memory part of the CPU.</li><li><strong>Lesson fact:</strong> Check the diagram: is main memory a register inside the CPU?</li><li><strong>Lesson fact:</strong> No. Registers are small, fast storage locations inside the CPU. Main memory is a separate component connected to the CPU by buses.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end cpu-map -->
+
         <section class="panel" id="alu-cu" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="alu-cu">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -243,33 +237,17 @@
         </section>
 
         <!-- stage10-explanation:start alu-cu -->
-        <section class="panel explanation-panel" id="explanation-alu-cu" data-explains="alu-cu" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="alu-cu">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why control and calculation are separate</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-alu-cu" data-explains="alu-cu" data-explanation-kind="comparison" aria-labelledby="explanation-alu-cu-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="alu-cu">
+          <h2 class="explanation-sr-only" id="explanation-alu-cu-title">Why control and calculation are separate</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-041-alu-cu.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why control and calculation are separate through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why control and calculation are separate: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> The control unit decodes what the instruction demands.</li><li><strong>Reason:</strong> It sends signals that select data movement and an ALU operation.</li><li><strong>Result:</strong> The ALU returns a result and status information.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>The control unit decodes what the instruction demands.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>It sends signals that select data movement and an ALU operation.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>The ALU returns a result and status information.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A coordinator chooses the operation; a specialist instrument performs it.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>The control unit coordinates calculation but does not replace the ALU.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> A coordinator chooses the operation; a specialist instrument performs it.</p>
+            <p><strong>Boundary:</strong> The control unit coordinates calculation but does not replace the ALU.</p>
           </div>
         </section>
         <!-- stage10-explanation:end alu-cu -->
@@ -309,33 +287,17 @@
         </section>
 
         <!-- stage10-explanation:start registers -->
-        <section class="panel explanation-panel" id="explanation-registers" data-explains="registers" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="registers">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>How registers, buses and clock stay aligned</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-registers" data-explains="registers" data-explanation-kind="mechanism" aria-labelledby="explanation-registers-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="registers">
+          <h2 class="explanation-sr-only" id="explanation-registers-title">How registers, buses and clock stay aligned</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-041-registers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How registers, buses and clock stay aligned through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How registers, buses and clock stay aligned: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Registers expose small values needed immediately.</li><li><strong>Reason:</strong> Buses carry values, addresses and control signals on distinct paths.</li><li><strong>Result:</strong> Clock events determine when components may capture a new state.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Registers expose small values needed immediately.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Buses carry values, addresses and control signals on distinct paths.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Clock events determine when components may capture a new state.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Timed transfer gates stop items arriving halfway through an operation.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>A faster clock helps only when the rest of the architecture can keep up.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Timed transfer gates stop items arriving halfway through an operation.</p>
+            <p><strong>Boundary:</strong> A faster clock helps only when the rest of the architecture can keep up.</p>
           </div>
         </section>
         <!-- stage10-explanation:end registers -->

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -112,6 +112,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start patterns -->
+        <section class="panel explanation-panel" id="explanation-patterns" data-explains="patterns" data-explanation-kind="process" aria-labelledby="explanation-patterns-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
+          <h2 class="explanation-sr-only" id="explanation-patterns-title">Four array algorithm patterns</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-patterns.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Four array algorithm patterns with a structured visual model." />
+            <figcaption class="explanation-sr-only">Four array algorithm patterns: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pattern map</li><li><strong>Lesson fact:</strong> Question wording</li><li><strong>Lesson fact:</strong> Core idea</li><li><strong>Lesson fact:</strong> Key variable</li><li><strong>Lesson fact:</strong> Traversal</li><li><strong>Lesson fact:</strong> output all, process each</li><li><strong>Lesson fact:</strong> visit every valid index</li><li><strong>Lesson fact:</strong> increase, replace, apply discount</li><li><strong>Lesson fact:</strong> assign a new value to selected elements</li><li><strong>Lesson fact:</strong> Scores[Index]</li><li><strong>Lesson fact:</strong> find, present, target</li><li><strong>Lesson fact:</strong> compare each element with target</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end patterns -->
+
         <section class="panel" id="traversal" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
           <div class="section-title">
             <p class="eyebrow">Traversal</p>
@@ -122,6 +136,20 @@
 NEXT Index</code></pre>
           <div class="callout">Traversal is the skeleton. Update, search and count usually add logic inside this skeleton.</div>
         </section>
+
+        <!-- stage10-explanation:start traversal -->
+        <section class="panel explanation-panel" id="explanation-traversal" data-explains="traversal" data-explanation-kind="mechanism" aria-labelledby="explanation-traversal-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
+          <h2 class="explanation-sr-only" id="explanation-traversal-title">Visit every element once</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-traversal.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Visit every element once with a structured visual model." />
+            <figcaption class="explanation-sr-only">Visit every element once: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Traversal</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> OUTPUT Scores[Index]</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Traversal is the skeleton. Update, search and count usually add logic inside this skeleton.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end traversal -->
 
         <section class="panel" id="update" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="update">
           <div class="section-title">
@@ -146,6 +174,20 @@ NEXT Index</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start update -->
+        <section class="panel explanation-panel" id="explanation-update" data-explains="update" data-explanation-kind="mechanism" aria-labelledby="explanation-update-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="update">
+          <h2 class="explanation-sr-only" id="explanation-update-title">Change selected elements</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-update.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Change selected elements with a structured visual model." />
+            <figcaption class="explanation-sr-only">Change selected elements: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Update every element</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> Scores[Index] &lt;- Scores[Index] + 2</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Update only when condition is true</li><li><strong>Lesson fact:</strong> IF Scores[Index] &lt; 50 THEN</li><li><strong>Lesson fact:</strong> Scores[Index] &lt;- Scores[Index] + 5</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end update -->
+
         <section class="panel" id="search" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="search">
           <div class="section-title">
             <p class="eyebrow">Search</p>
@@ -160,6 +202,20 @@ NEXT Index
 OUTPUT Found</code></pre>
         </section>
 
+        <!-- stage10-explanation:start search -->
+        <section class="panel explanation-panel" id="explanation-search" data-explains="search" data-explanation-kind="mechanism" aria-labelledby="explanation-search-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="search">
+          <h2 class="explanation-sr-only" id="explanation-search-title">Use a flag to remember whether the target appeared</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-search.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use a flag to remember whether the target appeared with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use a flag to remember whether the target appeared: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Found &lt;- FALSE</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> IF Names[Index] = TargetName THEN</li><li><strong>Lesson fact:</strong> Found &lt;- TRUE</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> OUTPUT Found</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end search -->
+
         <section class="panel" id="count" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="count">
           <div class="section-title">
             <p class="eyebrow">Count</p>
@@ -173,6 +229,20 @@ FOR Index &lt;- 1 TO 5
 NEXT Index
 OUTPUT PassCount</code></pre>
         </section>
+
+        <!-- stage10-explanation:start count -->
+        <section class="panel explanation-panel" id="explanation-count" data-explains="count" data-explanation-kind="mechanism" aria-labelledby="explanation-count-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="count">
+          <h2 class="explanation-sr-only" id="explanation-count-title">Increment only when a condition is true</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-count.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Increment only when a condition is true with a structured visual model." />
+            <figcaption class="explanation-sr-only">Increment only when a condition is true: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> PassCount &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> IF Scores[Index] &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> PassCount &lt;- PassCount + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> OUTPUT PassCount</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end count -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
@@ -218,6 +288,20 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="callout">Paper 2 reminder: follow the bounds in the pseudocode question. Java examples support understanding, not exam syntax.</div>
         </section>
 
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="process" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Same algorithm, different array syntax</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same algorithm, different array syntax with a structured visual model." />
+            <figcaption class="explanation-sr-only">Same algorithm, different array syntax: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> PassCount &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> IF Scores[Index] &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> PassCount &lt;- PassCount + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> int passCount = 0;</li><li><strong>Lesson fact:</strong> for (int index = 0; index &lt; 5; index++) {</li><li><strong>Lesson fact:</strong> if (scores[index] &gt;= 50) {</li><li><strong>Lesson fact:</strong> passCount++;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
+
 
         <section class="panel" id="selector" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selector">
           <div class="section-title">
@@ -239,6 +323,20 @@ for (int index = 0; index &lt; 5; index++) {
           </div>
           <div class="trace-output" id="patternResult">Choose a scenario to see the algorithm pattern.</div>
         </section>
+
+        <!-- stage10-explanation:start selector -->
+        <section class="panel explanation-panel" id="explanation-selector" data-explains="selector" data-explanation-kind="mechanism" aria-labelledby="explanation-selector-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selector">
+          <h2 class="explanation-sr-only" id="explanation-selector-title">Choose a scenario and inspect the matching template</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-117-selector.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose a scenario and inspect the matching template with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose a scenario and inspect the matching template: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive pattern selector</li><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> Choose a scenario to see the algorithm pattern.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end selector -->
 
         <section class="panel" id="runner" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="runner">
           <div class="section-title">

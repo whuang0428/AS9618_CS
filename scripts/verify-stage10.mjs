@@ -15,6 +15,25 @@ function wordCount(value) {
   return String(value).trim().split(/\s+/).filter(Boolean).length;
 }
 
+function jpegDimensions(filePath) {
+  const buffer = fs.readFileSync(filePath);
+  let offset = 2;
+  while (offset + 9 < buffer.length) {
+    if (buffer[offset] !== 0xff) {
+      offset += 1;
+      continue;
+    }
+    const marker = buffer[offset + 1];
+    const length = buffer.readUInt16BE(offset + 2);
+    if ([0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf].includes(marker)) {
+      return { width: buffer.readUInt16BE(offset + 7), height: buffer.readUInt16BE(offset + 5) };
+    }
+    if (!Number.isFinite(length) || length < 2) break;
+    offset += length + 2;
+  }
+  return null;
+}
+
 function parseCsv(source) {
   const rows = [];
   let row = [];
@@ -67,36 +86,49 @@ function directSectionIds(source) {
   return ids;
 }
 
-const pilotLessons = new Set(["016", "030", "041", "053", "067", "083", "091", "105", "122", "142"]);
-expect(explanations.length === 45, `Expected 45 pilot explanations; found ${explanations.length}`);
-expect(new Set(explanations.map((item) => item.lesson)).size === 10, "Stage 10 pilot must cover exactly ten lessons");
-expect([...pilotLessons].every((lesson) => explanations.some((item) => item.lesson === lesson)), "One or more named pilot lessons are missing");
+expect(explanations.length === 782, `Expected 782 full-rollout explanations; found ${explanations.length}`);
+expect(new Set(explanations.map((item) => item.lesson)).size === 150, "Stage 10 rollout must cover all 150 lessons");
 expect(new Set(explanations.map((item) => `${item.lesson}/${item.targetId}`)).size === explanations.length, "Duplicate explanation target keys found");
 
 const prose = new Set();
 for (const item of explanations) {
-  const words = wordCount([...item.steps, item.analogy, item.boundary].join(" "));
-  expect(words >= 35 && words <= 90, `${item.lesson}/${item.targetId}: visual explanation has ${words} words; expected 35-90`);
   expect(["mechanism", "tradeoff", "process", "comparison", "synthesis"].includes(item.kind), `${item.lesson}/${item.targetId}: invalid explanation kind`);
-  expect(item.steps.length === 3, `${item.lesson}/${item.targetId}: expected exactly three cause-and-effect steps`);
-  for (const statement of [...item.steps, item.analogy, item.boundary]) {
-    expect(wordCount(statement) <= 20, `${item.lesson}/${item.targetId}: statement is too long for projected teaching`);
-    expect(!prose.has(statement), `${item.lesson}/${item.targetId}: duplicate explanation statement`);
-    prose.add(statement);
+  const transcript = item.transcript ?? item.steps;
+  expect(transcript.length >= 1, `${item.lesson}/${item.targetId}: accessible transcript is empty`);
+  for (const statement of transcript) {
+    expect(wordCount(statement) <= 30, `${item.lesson}/${item.targetId}: transcript statement is too long for projected teaching`);
+    if (!item.sourceGrounded) {
+      expect(!prose.has(statement), `${item.lesson}/${item.targetId}: duplicate pilot explanation statement`);
+      prose.add(statement);
+    }
+  }
+  if (!item.sourceGrounded) {
+    const words = wordCount([...item.steps, item.analogy, item.boundary].join(" "));
+    expect(words >= 35 && words <= 90, `${item.lesson}/${item.targetId}: pilot visual explanation has ${words} words; expected 35-90`);
+    expect(item.steps.length === 3, `${item.lesson}/${item.targetId}: expected exactly three cause-and-effect steps`);
+    for (const statement of [item.analogy, item.boundary]) {
+      expect(wordCount(statement) <= 20, `${item.lesson}/${item.targetId}: pilot supporting statement is too long for projected teaching`);
+      expect(!prose.has(statement), `${item.lesson}/${item.targetId}: duplicate pilot supporting statement`);
+      prose.add(statement);
+    }
   }
   if (item.visual) {
     const assetPath = path.join(root, "web", item.visual.src.replace(/^\.\.\//, ""));
     expect(fs.existsSync(assetPath), `${item.lesson}/${item.targetId}: visual asset is missing`);
-    if (fs.existsSync(assetPath)) expect(fs.statSync(assetPath).size <= 400_000, `${item.lesson}/${item.targetId}: visual exceeds 400 KB budget`);
+    if (fs.existsSync(assetPath)) {
+      expect(fs.statSync(assetPath).size <= 550_000, `${item.lesson}/${item.targetId}: infographic exceeds 550 KB budget`);
+      const dimensions = jpegDimensions(assetPath);
+      expect(dimensions?.width === 1536 && dimensions?.height === 1024, `${item.lesson}/${item.targetId}: infographic must be 1536 x 1024`);
+    }
     expect(wordCount(item.visual.alt) >= 8, `${item.lesson}/${item.targetId}: visual alternative text is too weak`);
   }
 }
-expect(explanations.filter((item) => item.visual).length === 5, "Expected five selected academic illustration assets in the pilot");
+expect(explanations.filter((item) => item.visual).length === explanations.length, "Every explanation must use one academic infographic");
 
 for (let number = 1; number <= 150; number += 1) {
   const lesson = String(number).padStart(3, "0");
   const html = read(`web/lesson-${lesson}/index.html`);
-  expect(count(html, 'href="../stage10-explanations.css?v=5"') === 1, `Lesson ${lesson}: Stage 10 stylesheet must appear once at v5`);
+  expect(count(html, 'href="../stage10-explanations.css?v=7"') === 1, `Lesson ${lesson}: Stage 10 stylesheet must appear once at v7`);
   const sectionIds = directSectionIds(html);
   const lessonItems = explanations.filter((item) => item.lesson === lesson);
   expect(count(html, 'class="panel explanation-panel"') === lessonItems.length, `Lesson ${lesson}: explanation panel count mismatch`);
@@ -112,16 +144,16 @@ for (let number = 1; number <= 150; number += 1) {
     expect(startTag.includes(`data-explains="${item.targetId}"`), `Lesson ${lesson}: ${explanationId} data-explains mismatch`);
     expect(startTag.includes(`data-explanation-kind="${item.kind}"`), `Lesson ${lesson}: ${explanationId} explanation kind mismatch`);
     expect(startTag.includes(`data-delivery-group="${item.targetId}"`), `Lesson ${lesson}: ${explanationId} delivery group mismatch`);
-    expect(html.includes(`<h2>${item.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;")}</h2>`), `Lesson ${lesson}: ${explanationId} title mismatch`);
+    expect(html.includes(`id="${explanationId}-title">${item.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;")}</h2>`), `Lesson ${lesson}: ${explanationId} title mismatch`);
 
     const markdownName = fs.readdirSync(path.join(root, "lessons")).find((name) => name.startsWith(`${lesson}-`) && name.endsWith(".md"));
     const markdown = read(`lessons/${markdownName}`);
     expect(markdown.includes(`**Explains:** \`${item.targetId}\``), `Lesson ${lesson}: Markdown target ${item.targetId} is missing`);
-    for (const statement of [...item.steps, item.analogy, item.boundary]) expect(markdown.includes(statement), `Lesson ${lesson}/${item.targetId}: Markdown explanation is out of sync`);
-    expect(html.includes('class="explanation-chain"'), `Lesson ${lesson}/${item.targetId}: visual cause chain is missing`);
-    if (item.visual) {
-      expect(html.includes(`src="${item.visual.src}"`) && html.includes('loading="lazy"'), `Lesson ${lesson}/${item.targetId}: responsive visual is missing or not lazy-loaded`);
-    }
+    for (const statement of (item.transcript ?? [...item.steps, item.analogy, item.boundary])) expect(markdown.includes(statement), `Lesson ${lesson}/${item.targetId}: Markdown explanation is out of sync`);
+    expect(html.includes('class="explanation-infographic"'), `Lesson ${lesson}/${item.targetId}: infographic wrapper is missing`);
+    expect(html.includes(`src="${item.visual.src}"`) && html.includes('loading="lazy"'), `Lesson ${lesson}/${item.targetId}: responsive infographic is missing or not lazy-loaded`);
+    expect(html.includes('aria-label="Infographic text alternative"'), `Lesson ${lesson}/${item.targetId}: accessible transcript is missing`);
+    expect(!html.includes('class="explanation-chain"') && !html.includes('class="explanation-notes"'), `Lesson ${lesson}/${item.targetId}: rejected visible prose cards remain`);
   }
 }
 
@@ -139,7 +171,8 @@ const targetHeader = targetRows.shift();
 const targetLessonIndex = targetHeader.indexOf("lesson");
 const targetStatusIndex = targetHeader.indexOf("status");
 expect(new Set(targetRows.map((row) => row[targetLessonIndex])).size === 150, "Stage 10 target register must cover all 150 lessons");
-expect(targetRows.filter((row) => row[targetStatusIndex] === "ImplementedPilot").length === explanations.length, "Stage 10 target register implemented count mismatch");
+expect(targetRows.length === explanations.length, "Stage 10 target register count mismatch");
+expect(targetRows.filter((row) => row[targetStatusIndex] === "Implemented").length === explanations.length, "Stage 10 target register implemented count mismatch");
 
 const visualRows = parseCsv(read("audits/stage10-concept-visual-register.csv"));
 const visualHeader = visualRows.shift();
@@ -149,11 +182,11 @@ expect(visualRows.length >= 25, "Stage 10 visual register is unexpectedly small"
 expect(visualRows.some((row) => row[visualLessonIndex] === "016" && row[visualStatusIndex] === "PilotReview"), "Lesson 016 corrected topology visuals are not registered for pilot review");
 
 const report = read("audits/stage10-concept-explanation-report.md");
-expect(report.includes("pilot only") && report.includes("requires human approval"), "Stage 10 report does not preserve the human approval gate");
+expect(report.includes("complete across all 150 lessons") && report.includes("Human semantic review remains"), "Stage 10 report does not describe the completed rollout and human semantic-review gate");
 
 if (failures.length) {
   console.error(failures.join("\n"));
   process.exit(1);
 }
 
-console.log(`Stage 10 verification passed: ${explanations.length} structured visual explanations, five academic illustration assets, 150-lesson target coverage and ${visualRows.length} visual audit records.`);
+console.log(`Stage 10 verification passed: ${explanations.length} academic infographics, accessible transcripts, 150-lesson target coverage and ${visualRows.length} visual audit records.`);

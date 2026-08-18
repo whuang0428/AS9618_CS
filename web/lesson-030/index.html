@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -103,37 +103,17 @@
         </section>
 
         <!-- stage10-explanation:start primary -->
-        <section class="panel explanation-panel" id="explanation-primary" data-explains="primary" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="primary">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why active data stays close to the CPU</h2>
-          </div>
-          <div class="explanation-layout has-visual">
-
-          <figure class="explanation-figure">
-            <img src="../assets/diagrams/stage10-memory-hierarchy-analogy.jpg" width="1400" height="933" loading="lazy" decoding="async" alt="A restrained textbook illustration showing immediate trays, a working surface, fixed reference material and distant archive drawers." />
-            <figcaption>Nearer, smaller working areas represent faster access; the archive represents larger but slower storage.</figcaption>
+        <section class="panel explanation-panel" id="explanation-primary" data-explains="primary" data-explanation-kind="mechanism" aria-labelledby="explanation-primary-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="primary">
+          <h2 class="explanation-sr-only" id="explanation-primary-title">Why active data stays close to the CPU</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-030-primary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why active data stays close to the CPU through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why active data stays close to the CPU: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>The CPU repeatedly requests current instructions and data.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Nearby electronic storage answers with less delay than secondary storage.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Faster access prevents the processor waiting as often.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Keep today's papers on the desk, not in a distant archive.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Closer and faster storage is smaller and more expensive per byte.</span></p>
-              </div>
-            </div>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> The CPU repeatedly requests current instructions and data.</li><li><strong>Reason:</strong> Nearby electronic storage answers with less delay than secondary storage.</li><li><strong>Result:</strong> Faster access prevents the processor waiting as often.</li></ol>
+
+            <p><strong>Analogy:</strong> Keep today's papers on the desk, not in a distant archive.</p>
+            <p><strong>Boundary:</strong> Closer and faster storage is smaller and more expensive per byte.</p>
           </div>
         </section>
         <!-- stage10-explanation:end primary -->
@@ -168,33 +148,17 @@
         </section>
 
         <!-- stage10-explanation:start ram-rom -->
-        <section class="panel explanation-panel" id="explanation-ram-rom" data-explains="ram-rom" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ram-rom">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why RAM changes while ROM remains stable</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-ram-rom" data-explains="ram-rom" data-explanation-kind="comparison" aria-labelledby="explanation-ram-rom-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ram-rom">
+          <h2 class="explanation-sr-only" id="explanation-ram-rom-title">Why RAM changes while ROM remains stable</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-030-ram-rom.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why RAM changes while ROM remains stable through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why RAM changes while ROM remains stable: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> RAM holds the changing state of running programs.</li><li><strong>Reason:</strong> Most RAM needs continuous power to preserve that state.</li><li><strong>Result:</strong> ROM retains fixed startup instructions when power is removed.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>RAM holds the changing state of running programs.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Most RAM needs continuous power to preserve that state.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>ROM retains fixed startup instructions when power is removed.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A working notepad changes constantly; a printed reference card should not.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>ROM can sometimes be updated, but not as ordinary working memory.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> A working notepad changes constantly; a printed reference card should not.</p>
+            <p><strong>Boundary:</strong> ROM can sometimes be updated, but not as ordinary working memory.</p>
           </div>
         </section>
         <!-- stage10-explanation:end ram-rom -->
@@ -230,33 +194,17 @@
         </section>
 
         <!-- stage10-explanation:start cache-vm -->
-        <section class="panel explanation-panel" id="explanation-cache-vm" data-explains="cache-vm" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cache-vm">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why cache helps and virtual memory slows</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-cache-vm" data-explains="cache-vm" data-explanation-kind="comparison" aria-labelledby="explanation-cache-vm-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cache-vm">
+          <h2 class="explanation-sr-only" id="explanation-cache-vm-title">Why cache helps and virtual memory slows</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-030-cache-vm.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why cache helps and virtual memory slows through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why cache helps and virtual memory slows: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Cache keeps likely next data close to the CPU.</li><li><strong>Reason:</strong> A cache hit avoids a slower trip to main memory.</li><li><strong>Result:</strong> Virtual memory moves pages to storage when RAM is insufficient.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Cache keeps likely next data close to the CPU.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>A cache hit avoids a slower trip to main memory.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Virtual memory moves pages to storage when RAM is insufficient.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A desk tray saves a walk; using the archive as desk space creates walks.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Virtual memory increases capacity, not physical RAM speed.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> A desk tray saves a walk; using the archive as desk space creates walks.</p>
+            <p><strong>Boundary:</strong> Virtual memory increases capacity, not physical RAM speed.</p>
           </div>
         </section>
         <!-- stage10-explanation:end cache-vm -->

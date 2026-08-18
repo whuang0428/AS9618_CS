@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -113,6 +113,20 @@
           <div class="callout">Chinese support: backup = 备份；restore = 恢复；disaster recovery = 灾难恢复；audit trail = 审计追踪/审计日志。</div>
         </section>
 
+        <!-- stage10-explanation:start core -->
+        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
+          <h2 class="explanation-sr-only" id="explanation-core-title">Recovery planning is about availability, integrity and accountability</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-070-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Recovery planning is about availability, integrity and accountability with a structured visual model." />
+            <figcaption class="explanation-sr-only">Recovery planning is about availability, integrity and accountability: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Backup A separate copy of data that can be used to restore the original after loss or corruption.</li><li><strong>Lesson fact:</strong> Restore The process of recovering data or systems from a backup.</li><li><strong>Lesson fact:</strong> Disaster recovery Planned actions to restore systems and services after a major incident.</li><li><strong>Lesson fact:</strong> Audit trail A chronological record of actions, changes and access events.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end core -->
+
         <section class="panel" id="backups" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="backups">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -126,6 +140,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start backups -->
+        <section class="panel explanation-panel" id="explanation-backups" data-explains="backups" data-explanation-kind="mechanism" aria-labelledby="explanation-backups-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="backups">
+          <h2 class="explanation-sr-only" id="explanation-backups-title">Backup type affects speed, storage and recovery complexity</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-070-backups.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Backup type affects speed, storage and recovery complexity with a structured visual model." />
+            <figcaption class="explanation-sr-only">Backup type affects speed, storage and recovery complexity: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Full backup Copies all selected data. Simple to restore, but uses more time and storage.</li><li><strong>Lesson fact:</strong> Incremental backup Copies only data changed since the last backup. Faster and smaller, but restore may need a chain.</li><li><strong>Lesson fact:</strong> Differential idea Copies changes since last full backup. Useful comparison, though full/incremental is the main contrast here.</li><li><strong>Lesson fact:</strong> Testing Backups must be tested by restoring sample data, not only by checking that a file exists.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end backups -->
+
         <section class="panel" id="strategy" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="strategy">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -138,6 +166,20 @@
             <article><strong>Retention</strong><span>How long versions are kept, so accidental deletion or corruption can be rolled back.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start strategy -->
+        <section class="panel explanation-panel" id="explanation-strategy" data-explains="strategy" data-explanation-kind="tradeoff" aria-labelledby="explanation-strategy-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="strategy">
+          <h2 class="explanation-sr-only" id="explanation-strategy-title">A strategy defines location, frequency, retention and security</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-070-strategy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A strategy defines location, frequency, retention and security with a structured visual model." />
+            <figcaption class="explanation-sr-only">A strategy defines location, frequency, retention and security: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Onsite Fast to access, but vulnerable to the same fire, flood, theft or ransomware incident.</li><li><strong>Lesson fact:</strong> Offsite Stored in a different physical location, reducing site-wide disaster risk.</li><li><strong>Lesson fact:</strong> Cloud Remote provider storage; useful for offsite copies but needs network access and access control.</li><li><strong>Lesson fact:</strong> Retention How long versions are kept, so accidental deletion or corruption can be rolled back.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end strategy -->
 
         <section class="panel" id="recovery" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="recovery">
           <div class="section-title">
@@ -153,6 +195,20 @@
           <div class="callout">Useful exam language: RPO = how much data loss is acceptable; RTO = how quickly service must be restored.</div>
         </section>
 
+        <!-- stage10-explanation:start recovery -->
+        <section class="panel explanation-panel" id="explanation-recovery" data-explains="recovery" data-explanation-kind="mechanism" aria-labelledby="explanation-recovery-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="recovery">
+          <h2 class="explanation-sr-only" id="explanation-recovery-title">Disaster recovery is more than data copying</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-070-recovery.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Disaster recovery is more than data copying with a structured visual model." />
+            <figcaption class="explanation-sr-only">Disaster recovery is more than data copying: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 1. Identify incident Detect failure, confirm scope and prevent further damage.</li><li><strong>Lesson fact:</strong> 2. Communicate Notify staff/users and assign responsibilities.</li><li><strong>Lesson fact:</strong> 3. Restore systems Recover data, applications, hardware/network access and configuration.</li><li><strong>Lesson fact:</strong> 4. Test and review Check service works, document lessons and improve the plan.</li><li><strong>Lesson fact:</strong> Useful exam language: RPO = how much data loss is acceptable; RTO = how quickly service must be restored.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end recovery -->
+
         <section class="panel" id="audit-trails" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="audit-trails">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
@@ -165,6 +221,20 @@
             <article><strong>Use</strong><span>Trace errors, detect misuse, investigate incidents and prove compliance.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start audit-trails -->
+        <section class="panel explanation-panel" id="explanation-audit-trails" data-explains="audit-trails" data-explanation-kind="mechanism" aria-labelledby="explanation-audit-trails-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="audit-trails">
+          <h2 class="explanation-sr-only" id="explanation-audit-trails-title">Audit trails support accountability and investigation</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-070-audit-trails.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Audit trails support accountability and investigation with a structured visual model." />
+            <figcaption class="explanation-sr-only">Audit trails support accountability and investigation: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Who User ID, account, device or process involved.</li><li><strong>Lesson fact:</strong> What Action such as login, read, edit, delete, approve or restore.</li><li><strong>Lesson fact:</strong> When/where Timestamp, location, device or IP address.</li><li><strong>Lesson fact:</strong> Use Trace errors, detect misuse, investigate incidents and prove compliance.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end audit-trails -->
 
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
@@ -194,6 +264,20 @@
             </div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare by purpose, not by &quot;security word&quot;</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-070-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by purpose, not by &quot;security word&quot; with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compare by purpose, not by &quot;security word&quot;: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Main purpose</li><li><strong>Lesson fact:</strong> Limitation</li><li><strong>Lesson fact:</strong> Restore data after deletion, corruption, hardware failure or ransomware.</li><li><strong>Lesson fact:</strong> May be too old, corrupted, inaccessible or affected by same incident.</li><li><strong>Lesson fact:</strong> Disaster recovery plan</li><li><strong>Lesson fact:</strong> Restore systems and services in a planned order after major disruption.</li><li><strong>Lesson fact:</strong> Needs testing, clear roles and updated documentation.</li><li><strong>Lesson fact:</strong> Audit trail</li><li><strong>Lesson fact:</strong> Record actions for accountability, investigation and evidence.</li><li><strong>Lesson fact:</strong> Does not restore data by itself and must be protected from tampering.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
 
 
         <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="tool">
@@ -240,6 +324,20 @@
           <div class="result-box" id="rpoResult" aria-live="polite"></div>
           <div class="method-box" id="rpoReason"></div>
         </section>
+
+        <!-- stage10-explanation:start rpo-tool -->
+        <section class="panel explanation-panel" id="explanation-rpo-tool" data-explains="rpo-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-rpo-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rpo-tool">
+          <h2 class="explanation-sr-only" id="explanation-rpo-tool-title">Match backup frequency to acceptable data loss</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-070-rpo-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match backup frequency to acceptable data loss with a structured visual model." />
+            <figcaption class="explanation-sr-only">Match backup frequency to acceptable data loss: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive recovery objective tool</li><li><strong>Lesson fact:</strong> Maximum acceptable data loss</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end rpo-tool -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -120,6 +120,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start systems -->
+        <section class="panel explanation-panel" id="explanation-systems" data-explains="systems" data-explanation-kind="mechanism" aria-labelledby="explanation-systems-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="systems">
+          <h2 class="explanation-sr-only" id="explanation-systems-title">Three ways to represent negative binary values</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-005-systems.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Three ways to represent negative binary values with a structured visual model." />
+            <figcaption class="explanation-sr-only">Three ways to represent negative binary values: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Sign-and-magnitude</li><li><strong>Lesson fact:</strong> The leftmost bit is the sign: 0 positive, 1 negative. The remaining bits store the magnitude.</li><li><strong>Lesson fact:</strong> Example: 10010111₂ = -23</li><li><strong>Lesson fact:</strong> One’s complement</li><li><strong>Lesson fact:</strong> Start with the positive binary value and invert every bit to make the negative value.</li><li><strong>Lesson fact:</strong> 00010111₂ → 11101000₂ = -23</li><li><strong>Lesson fact:</strong> Two’s complement</li><li><strong>Lesson fact:</strong> Invert every bit, then add 1. This gives one zero and a range from -128 to +127.</li><li><strong>Lesson fact:</strong> 11101000₂ + 1 = 11101001₂ = -23</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end systems -->
+
         <section id="delivery-05" class="guidance-grid compact" aria-label="Representation guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="systems">
           <article class="trap-card">
             <h3>Common trap</h3>
@@ -155,6 +169,20 @@
           <div class="callout">For 8-bit two’s complement, a quick decode is: unsigned value - 256 when the MSB is 1.</div>
         </section>
 
+        <!-- stage10-explanation:start twos -->
+        <section class="panel explanation-panel" id="explanation-twos" data-explains="twos" data-explanation-kind="mechanism" aria-labelledby="explanation-twos-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="twos">
+          <h2 class="explanation-sr-only" id="explanation-twos-title">Two’s complement method</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-005-twos.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Two’s complement method with a structured visual model." />
+            <figcaption class="explanation-sr-only">Two’s complement method: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Positive denary to negative two’s complement</li><li><strong>Lesson fact:</strong> Write the positive magnitude in 8-bit binary.</li><li><strong>Lesson fact:</strong> Invert every bit.</li><li><strong>Lesson fact:</strong> Label the result as two’s complement.</li><li><strong>Lesson fact:</strong> Two’s complement binary to denary</li><li><strong>Lesson fact:</strong> If the leftmost bit is 0, convert as normal positive binary.</li><li><strong>Lesson fact:</strong> If the leftmost bit is 1, subtract 256 from the unsigned value.</li><li><strong>Lesson fact:</strong> Alternatively: invert, add 1, then add a negative sign.</li><li><strong>Lesson fact:</strong> State the representation in the answer.</li><li><strong>Lesson fact:</strong> For 8-bit two’s complement, a quick decode is: unsigned value - 256 when the MSB is 1.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end twos -->
+
         <section class="panel" id="range" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="range">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -178,6 +206,20 @@
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start range -->
+        <section class="panel explanation-panel" id="explanation-range" data-explains="range" data-explanation-kind="mechanism" aria-labelledby="explanation-range-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="range">
+          <h2 class="explanation-sr-only" id="explanation-range-title">8-bit signed ranges and zero</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-005-range.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining 8-bit signed ranges and zero with a structured visual model." />
+            <figcaption class="explanation-sr-only">8-bit signed ranges and zero: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Sign-and-magnitude</li><li><strong>Lesson fact:</strong> -127 to +127</li><li><strong>Lesson fact:</strong> Has two zeros: 00000000₂ and 10000000₂.</li><li><strong>Lesson fact:</strong> One’s complement</li><li><strong>Lesson fact:</strong> Also has two zeros: 00000000₂ and 11111111₂.</li><li><strong>Lesson fact:</strong> Two’s complement</li><li><strong>Lesson fact:</strong> -128 to +127</li><li><strong>Lesson fact:</strong> Has one zero and one extra negative value.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end range -->
 
         <section class="panel interactive" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="converter">
           <div class="section-title">

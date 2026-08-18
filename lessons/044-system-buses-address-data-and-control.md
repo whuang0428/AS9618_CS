@@ -105,3 +105,74 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** VGA does not normally carry audio / may have lower suitability for modern digital displays
 
 **Strict note:** Do not accept 'HDMI is always higher quality' without the digital/analogue or audio distinction.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### What a system bus does
+
+- **Explains:** `concept`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-044-concept.jpg`
+
+1. Communication pathway
+2. A bus is a set of parallel wires or connections used to carry signals.
+3. Connects components
+4. System buses connect CPU, main memory and other devices through controlled transfers.
+5. Not storage
+6. A bus transfers signals; it does not permanently store data or instructions.
+7. Part of a trace
+8. In processor questions, bus roles often appear inside fetch, read and write sequences.
+
+### Read and write traces
+
+- **Explains:** `read-write`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-044-read-write.jpg`
+
+1. Memory read
+2. CPU places the required address on the address bus.
+3. CPU sends a read signal on the control bus.
+4. Memory places the requested data/instruction on the data bus.
+5. CPU receives the data, often through the MDR.
+6. Memory write
+7. CPU places the target address on the address bus.
+8. CPU places the data to be stored on the data bus.
+9. CPU sends a write signal on the control bus.
+10. Memory stores the data at the addressed location.
+11. Common trap
+12. Read and write both use all three buses, but the direction of data transfer changes.
+
+### The three buses
+
+- **Explains:** `three-buses`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-044-three-buses.jpg`
+
+1. Typical direction
+2. Exam-safe sentence
+3. Address bus
+4. Memory or I/O address identifying a location.
+5. Usually from CPU to memory/I/O.
+6. The address bus carries the address of the location to be read from or written to.
+7. Data bus
+8. Data or instructions being transferred.
+9. Usually bidirectional.
+10. The data bus carries the actual data or instruction between CPU, memory and devices.
+11. Control bus
+12. Control and timing signals such as read, write, interrupt and clock signals.
+
+### Bus width and addressable locations
+
+- **Explains:** `width`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-044-width.jpg`
+
+1. Address bus width
+2. If the address bus has n lines, it can represent 2^n different addresses.
+3. A 16-bit address bus can address 2^16 = 65,536 memory locations.
+4. Data bus width
+5. A wider data bus can transfer more bits at once, which can affect throughput.
+6. Precision
+7. Address bus width affects address range; data bus width affects transfer size.
+<!-- stage10-explanations:end -->

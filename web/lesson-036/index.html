@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -115,6 +115,20 @@
           <div class="callout">Chinese support: Boolean expression = 布尔表达式；intermediate column = 中间列；evaluate = 求值；precedence = 优先级。</div>
         </section>
 
+        <!-- stage10-explanation:start expressions -->
+        <section class="panel explanation-panel" id="explanation-expressions" data-explains="expressions" data-explanation-kind="mechanism" aria-labelledby="explanation-expressions-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="expressions">
+          <h2 class="explanation-sr-only" id="explanation-expressions-title">Boolean expressions describe gate behaviour</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-036-expressions.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Boolean expressions describe gate behaviour with a structured visual model." />
+            <figcaption class="explanation-sr-only">Boolean expressions describe gate behaviour: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Variables</li><li><strong>Lesson fact:</strong> A, B and C represent input signals. Each row assigns them 0 or 1.</li><li><strong>Lesson fact:</strong> Operators</li><li><strong>Lesson fact:</strong> NOT, AND, OR, NAND, NOR and XOR describe the logic applied.</li><li><strong>Lesson fact:</strong> Intermediate columns</li><li><strong>Lesson fact:</strong> Each bracketed part or gate output should get its own column.</li><li><strong>Lesson fact:</strong> Final output</li><li><strong>Lesson fact:</strong> Q is the final result after all intermediate columns have been combined.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end expressions -->
+
         <section class="panel" id="table-method" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="table-method">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -141,6 +155,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start table-method -->
+        <section class="panel explanation-panel" id="explanation-table-method" data-explains="table-method" data-explanation-kind="mechanism" aria-labelledby="explanation-table-method-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="table-method">
+          <h2 class="explanation-sr-only" id="explanation-table-method-title">A reliable truth-table method</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-036-table-method.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A reliable truth-table method with a structured visual model." />
+            <figcaption class="explanation-sr-only">A reliable truth-table method: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 1. Count inputs n inputs produce 2^n rows. Two inputs give 4 rows; three inputs give 8 rows.</li><li><strong>Lesson fact:</strong> 2. List input combinations Use a systematic order such as 000, 001, 010, 011, 100, 101, 110, 111.</li><li><strong>Lesson fact:</strong> 3. Add intermediate columns One column for each gate result, such as A AND B or NOT C.</li><li><strong>Lesson fact:</strong> 4. Fill final Q Use the intermediate columns to avoid guessing the final output.</li><li><strong>Lesson fact:</strong> Row number</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end table-method -->
+
         <section class="panel" id="precedence" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="precedence">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -154,6 +182,20 @@
           </div>
           <div class="callout">Do not assume a hidden priority when the expression is unclear. In exam answers, use brackets or intermediate columns to remove ambiguity.</div>
         </section>
+
+        <!-- stage10-explanation:start precedence -->
+        <section class="panel explanation-panel" id="explanation-precedence" data-explains="precedence" data-explanation-kind="mechanism" aria-labelledby="explanation-precedence-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="precedence">
+          <h2 class="explanation-sr-only" id="explanation-precedence-title">Brackets and NOT usually come before the final combination</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-036-precedence.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Brackets and NOT usually come before the final combination with a structured visual model." />
+            <figcaption class="explanation-sr-only">Brackets and NOT usually come before the final combination: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Brackets first For (A OR B) AND C, complete A OR B before the AND with C.</li><li><strong>Lesson fact:</strong> NOT next For A AND NOT B, invert B before applying AND.</li><li><strong>Lesson fact:</strong> Then combine Use AND, OR or XOR to combine the prepared columns.</li><li><strong>Lesson fact:</strong> Check one row Pick one row and explain it in words to catch swapped columns.</li><li><strong>Lesson fact:</strong> Do not assume a hidden priority when the expression is unclear. In exam answers, use brackets or intermediate columns to remove ambiguity.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end precedence -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

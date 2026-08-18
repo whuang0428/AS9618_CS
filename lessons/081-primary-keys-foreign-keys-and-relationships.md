@@ -105,3 +105,85 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** prevents orphan/inconsistent relationships
 
 **Strict note:** Do not accept that foreign-key values must be unique in the child table.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Foreign keys link tables
+
+- **Explains:** `foreign`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-foreign.jpg`
+
+1. A foreign key is a field in one table that references the primary key in another table. It creates a link between related records.
+2. StudentID | Name
+3. S0234 | Alex Chen
+4. S0318 | Maya Patel
+5. StudentID links tables
+6. LoanID | StudentID | BookID
+7. L9001 | S0234 | B144
+8. L9002 | S0234 | B102
+9. Exam sentence:
+10. StudentID is a primary key in Student and a foreign key in Loan , linking each loan to the student who borrowed the book.
+
+### Choose the best primary key
+
+- **Explains:** `key-picker`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-key-picker.jpg`
+
+1. Interactive key picker
+2. Choose a table to identify the strongest primary key.
+3. A good primary key is unique, not null and stable.
+
+### Primary keys uniquely identify records
+
+- **Explains:** `primary`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-primary.jpg`
+
+1. A primary key is a field, or combination of fields, that uniquely identifies each record in a table. It should be unique and not null.
+2. Unique No two records in the table have the same key value.
+3. Not null Every record must have a key value; blank identity is not identity.
+4. Stable A good key is unlikely to change, such as an allocated ID.
+5. Minimal Do not use extra fields when one suitable field is enough.
+6. StudentID
+7. TutorGroup
+8. PhoneNumber
+9. Alex Chen
+10. 02071234567
+11. 02079876543
+
+### Referential integrity
+
+- **Explains:** `referential`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-referential.jpg`
+
+1. Referential integrity means a foreign key value must match an existing primary key value in the referenced table.
+2. Valid Loan.StudentID = S0234 is valid if Student.StudentID = S0234 exists.
+3. Invalid Loan.StudentID = S9999 is invalid if no student with that ID exists.
+4. Why It prevents orphan records, such as a loan assigned to a non-existent student.
+
+### Classify the relationship
+
+- **Explains:** `relationship-tool`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-relationship-tool.jpg`
+
+1. Interactive relationship classifier
+2. Scenario
+3. Choose a scenario to classify the relationship.
+4. Use one-to-one, one-to-many or many-to-many with a scenario reason.
+
+### Relationships describe how records connect
+
+- **Explains:** `relationships`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-relationships.jpg`
+
+1. A relationship describes how records in one table are associated with records in another table.
+2. One-to-one One record in A relates to one record in B. Example: person and passport in a simplified system.
+3. One-to-many One record in A relates to many records in B. Example: one student can have many loans.
+4. Many-to-many Many records in A relate to many in B. Often resolved using a linking table. Example: students and clubs.
+<!-- stage10-explanations:end -->

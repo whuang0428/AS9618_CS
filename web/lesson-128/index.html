@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -130,6 +130,20 @@ OUTPUT Total</code></pre>
           <div class="callout">Use a FOR loop when the number of repetitions is known before the loop starts.</div>
         </section>
 
+        <!-- stage10-explanation:start for -->
+        <section class="panel explanation-panel" id="explanation-for" data-explains="for" data-explanation-kind="mechanism" aria-labelledby="explanation-for-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="for">
+          <h2 class="explanation-sr-only" id="explanation-for-title">A FOR loop has a counter, a start value and an end value</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-for.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A FOR loop has a counter, a start value and an end value with a structured visual model." />
+            <figcaption class="explanation-sr-only">A FOR loop has a counter, a start value and an end value: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> FOR loop structure</li><li><strong>Lesson fact:</strong> General pattern</li><li><strong>Lesson fact:</strong> FOR Counter &lt;- StartValue TO EndValue</li><li><strong>Lesson fact:</strong> // repeated statements</li><li><strong>Lesson fact:</strong> NEXT Counter</li><li><strong>Lesson fact:</strong> Concrete example</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Count &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Count</li><li><strong>Lesson fact:</strong> NEXT Count</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> Use a FOR loop when the number of repetitions is known before the loop starts.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end for -->
+
         <section class="panel" id="counter" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="counter">
           <div class="section-title">
             <p class="eyebrow">Counter and accumulator</p>
@@ -142,6 +156,20 @@ OUTPUT Total</code></pre>
             <div class="table-row"><div>Limit</div><div>bound; controls where the loop stops</div><div>5 in <code>1 TO 5</code></div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start counter -->
+        <section class="panel explanation-panel" id="explanation-counter" data-explains="counter" data-explanation-kind="mechanism" aria-labelledby="explanation-counter-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="counter">
+          <h2 class="explanation-sr-only" id="explanation-counter-title">Do not confuse the counter with the running total</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-counter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Do not confuse the counter with the running total with a structured visual model." />
+            <figcaption class="explanation-sr-only">Do not confuse the counter with the running total: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Counter and accumulator</li><li><strong>Lesson fact:</strong> Variable</li><li><strong>Lesson fact:</strong> loop counter; controls the current iteration</li><li><strong>Lesson fact:</strong> 1, 2, 3, 4, 5</li><li><strong>Lesson fact:</strong> accumulator; stores a running total</li><li><strong>Lesson fact:</strong> 0, 1, 3, 6, 10, 15</li><li><strong>Lesson fact:</strong> bound; controls where the loop stops</li><li><strong>Lesson fact:</strong> 5 in 1 TO 5</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end counter -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
@@ -193,6 +221,20 @@ NEXT Index</code></pre>
           <div class="callout">The loop bounds should match the declared array bounds unless the question gives a reason not to.</div>
         </section>
 
+        <!-- stage10-explanation:start arrays -->
+        <section class="panel explanation-panel" id="explanation-arrays" data-explains="arrays" data-explanation-kind="mechanism" aria-labelledby="explanation-arrays-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="arrays">
+          <h2 class="explanation-sr-only" id="explanation-arrays-title">FOR loops are natural for fixed array bounds</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-arrays.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining FOR loops are natural for fixed array bounds with a structured visual model." />
+            <figcaption class="explanation-sr-only">FOR loops are natural for fixed array bounds: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Array processing</li><li><strong>Lesson fact:</strong> Output all marks</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 30</li><li><strong>Lesson fact:</strong> OUTPUT Marks[Index]</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Total all marks</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Marks[Index]</li><li><strong>Lesson fact:</strong> The loop bounds should match the declared array bounds unless the question gives a reason not to.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end arrays -->
+
         <section class="panel" id="bounds" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bounds">
           <div class="section-title">
             <p class="eyebrow">Bounds and off-by-one errors</p>
@@ -205,6 +247,20 @@ NEXT Index</code></pre>
             <div class="table-row"><div><code>1 TO 4</code></div><div>1, 2, 3, 4</div><div>4</div><div>misses item 5 if five items are required</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start bounds -->
+        <section class="panel explanation-panel" id="explanation-bounds" data-explains="bounds" data-explanation-kind="mechanism" aria-labelledby="explanation-bounds-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bounds">
+          <h2 class="explanation-sr-only" id="explanation-bounds-title">One wrong bound can miss or invent an iteration</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-bounds.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One wrong bound can miss or invent an iteration with a structured visual model." />
+            <figcaption class="explanation-sr-only">One wrong bound can miss or invent an iteration: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Bounds and off-by-one errors</li><li><strong>Lesson fact:</strong> Counter values</li><li><strong>Lesson fact:</strong> Iterations</li><li><strong>Lesson fact:</strong> Common issue</li><li><strong>Lesson fact:</strong> 1, 2, 3, 4, 5</li><li><strong>Lesson fact:</strong> 0, 1, 2, 3, 4</li><li><strong>Lesson fact:</strong> only if array uses 0-based bounds</li><li><strong>Lesson fact:</strong> 1, 2, 3, 4</li><li><strong>Lesson fact:</strong> misses item 5 if five items are required</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end bounds -->
 
         <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
@@ -226,6 +282,20 @@ NEXT Count</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start java -->
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Java for loops are useful, but not the exam answer format</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-128-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java for loops are useful, but not the exam answer format with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java for loops are useful, but not the exam answer format: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FOR Count &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> OUTPUT Count</li><li><strong>Lesson fact:</strong> NEXT Count</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> for (int count = 1; count &lt;= 5; count++) {</li><li><strong>Lesson fact:</strong> System.out.println(count);</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end java -->
 
 
         <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">

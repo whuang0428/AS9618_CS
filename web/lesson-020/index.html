@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../student-visuals.css?v=1" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -119,6 +119,20 @@
           <div class="callout">Chinese support: logical address = 逻辑地址；hardware address = 硬件地址；network interface = 网络接口。</div>
         </section>
 
+        <!-- stage10-explanation:start addresses -->
+        <section class="panel explanation-panel" id="explanation-addresses" data-explains="addresses" data-explanation-kind="comparison" aria-labelledby="explanation-addresses-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="addresses">
+          <h2 class="explanation-sr-only" id="explanation-addresses-title">IP address vs MAC address</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-020-addresses.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining IP address vs MAC address with a structured visual model." />
+            <figcaption class="explanation-sr-only">IP address vs MAC address: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> IP address</li><li><strong>Lesson fact:</strong> MAC address</li><li><strong>Lesson fact:</strong> Main use</li><li><strong>Lesson fact:</strong> Logical address used to identify a device on a network and route packets between networks.</li><li><strong>Lesson fact:</strong> Hardware address used to identify a network interface on a local network.</li><li><strong>Lesson fact:</strong> Can change, for example when joining a different network or using DHCP.</li><li><strong>Lesson fact:</strong> Normally fixed to the network interface by the manufacturer, though it can sometimes be spoofed.</li><li><strong>Lesson fact:</strong> 192.168.1.24 or an IPv6 address.</li><li><strong>Lesson fact:</strong> 3C:52:82:AA:19:F0</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end addresses -->
+
         <section class="panel" id="dns" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dns">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -136,6 +150,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start dns -->
+        <section class="panel explanation-panel" id="explanation-dns" data-explains="dns" data-explanation-kind="mechanism" aria-labelledby="explanation-dns-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dns">
+          <h2 class="explanation-sr-only" id="explanation-dns-title">DNS: name to IP address</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-020-dns.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining DNS: name to IP address with a structured visual model." />
+            <figcaption class="explanation-sr-only">DNS: name to IP address: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 1. URL entered The user enters a URL containing a domain name.</li><li><strong>Lesson fact:</strong> 2. DNS lookup The device asks a DNS server to resolve the domain name.</li><li><strong>Lesson fact:</strong> 3. IP returned The DNS server returns the IP address for that domain name.</li><li><strong>Lesson fact:</strong> 4. Packets sent Packets can now be addressed and routed to the web server.</li><li><strong>Lesson fact:</strong> Common trap</li><li><strong>Lesson fact:</strong> DNS failure may stop a domain name working even if the server is still reachable by IP address.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end dns -->
+
         <section class="panel" id="urls" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="urls">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -150,6 +178,20 @@
             </div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start urls -->
+        <section class="panel explanation-panel" id="explanation-urls" data-explains="urls" data-explanation-kind="mechanism" aria-labelledby="explanation-urls-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="urls">
+          <h2 class="explanation-sr-only" id="explanation-urls-title">URL components</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-020-urls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining URL components with a structured visual model." />
+            <figcaption class="explanation-sr-only">URL components: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> https://www.example.org/resources/page.html</li><li><strong>Lesson fact:</strong> Protocol / scheme https tells the browser which communication protocol to use.</li><li><strong>Lesson fact:</strong> Domain name www.example.org is resolved by DNS to an IP address.</li><li><strong>Lesson fact:</strong> Path /resources/page.html identifies the resource on the server.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end urls -->
 
         <section class="panel visual-explainer" id="address-journey" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="address-journey">
           <div class="section-title">
@@ -195,6 +237,20 @@
             <p>No. DNS resolves the domain-name part to an IP address. MAC addressing is used separately on a local network link.</p>
           </details>
         </section>
+
+        <!-- stage10-explanation:start address-journey -->
+        <section class="panel explanation-panel" id="explanation-address-journey" data-explains="address-journey" data-explanation-kind="mechanism" aria-labelledby="explanation-address-journey-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="address-journey">
+          <h2 class="explanation-sr-only" id="explanation-address-journey-title">From a URL to a packet on the local link</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-020-address-journey.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining From a URL to a packet on the local link with a structured visual model." />
+            <figcaption class="explanation-sr-only">From a URL to a packet on the local link: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> These labels solve different problems. DNS resolves only the domain name; it does not return a web page or a MAC address.</li><li><strong>Lesson fact:</strong> URL Includes a scheme, domain name and path to a resource.</li><li><strong>Lesson fact:</strong> DNS Resolves the domain-name part to an IP address.</li><li><strong>Lesson fact:</strong> IP address Provides a logical network address used for routing.</li><li><strong>Lesson fact:</strong> MAC address Identifies a network interface for delivery on a local link.</li><li><strong>Lesson fact:</strong> Check the diagram: does DNS turn the whole URL into a MAC address?</li><li><strong>Lesson fact:</strong> No. DNS resolves the domain-name part to an IP address. MAC addressing is used separately on a local network link.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end address-journey -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
@@ -259,6 +315,20 @@
             <p><strong>3:</strong> <code>store.example.com</code>.</p>
           </div>
         </section>
+
+        <!-- stage10-explanation:start checkpoint -->
+        <section class="panel explanation-panel" id="explanation-checkpoint" data-explains="checkpoint" data-explanation-kind="mechanism" aria-labelledby="explanation-checkpoint-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checkpoint">
+          <h2 class="explanation-sr-only" id="explanation-checkpoint-title">5-minute mini assessment</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-020-checkpoint.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining 5-minute mini assessment with a structured visual model." />
+            <figcaption class="explanation-sr-only">5-minute mini assessment: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Monthly checkpoint</li><li><strong>Lesson fact:</strong> Use this as a short checkpoint before moving to named protocols. Expand the answer key after attempting.</li><li><strong>Lesson fact:</strong> Explain why DNS is needed when a user enters a URL.</li><li><strong>Lesson fact:</strong> State one difference between an IP address and a MAC address.</li><li><strong>Lesson fact:</strong> Identify the domain name in https://store.example.com/products/item7 .</li><li><strong>Lesson fact:</strong> 1: DNS resolves the domain name in the URL to an IP address so packets can be routed to the server.</li><li><strong>Lesson fact:</strong> 2: IP is a logical network address that can change; MAC is a hardware/interface address used locally.</li><li><strong>Lesson fact:</strong> 3: store.example.com .</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end checkpoint -->
 
         <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">

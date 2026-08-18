@@ -71,3 +71,81 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups. For this lesson, make students contrast that mistake with the exact idea of **access rights, permissions, and least privilege**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Access control decides what authenticated users may do
+
+- **Explains:** `core`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-066-core.jpg`
+
+1. Access right A permission to perform an action on a resource, such as read or write.
+2. Resource A file, database table, account, device, folder, application or network service.
+3. Authorisation The decision to allow or deny an action after identity has been checked.
+4. Policy The rule set that maps users, groups or roles to permitted actions.
+
+### Least privilege reduces unnecessary damage
+
+- **Explains:** `least`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-066-least.jpg`
+
+1. Definition Give users only the minimum permissions needed to perform their role.
+2. Confidentiality Users cannot view data that is not needed for their work.
+3. Integrity Users cannot accidentally or deliberately change data outside their responsibility.
+4. Availability Fewer users can delete files, disable services or change critical settings.
+
+### A permission matrix makes access decisions visible
+
+- **Explains:** `matrix`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-066-matrix.jpg`
+
+1. Student records
+2. Exam marks
+3. System settings
+4. Read own record
+5. No access
+6. Read class records
+7. Write marks for own classes
+8. Exam officer
+9. Read relevant records
+10. Read/write exam data
+11. Administrator
+12. Manage accounts
+
+### Permissions need review, not just setup day optimism
+
+- **Explains:** `review`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-066-review.jpg`
+
+1. Joiner New user receives permissions based on role, not copied blindly from a friend.
+2. Mover User changes role; old permissions are removed and new ones are added.
+3. Leaver Account is disabled or removed when the user leaves.
+4. Review Regular checks remove excessive, stale or temporary permissions.
+
+### Common permission types
+
+- **Explains:** `rights`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-066-rights.jpg`
+
+1. Read View or open data without changing it. Protects confidentiality when restricted.
+2. Write/modify Create or change data. Protects integrity when restricted.
+3. Delete Remove data or accounts. Often high risk because loss may affect availability.
+4. Execute/admin Run programs, install software or manage settings. Usually limited to trusted roles.
+
+### Users, groups and roles keep permissions manageable
+
+- **Explains:** `users`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-066-users.jpg`
+
+1. User account Individual identity, useful for accountability and audit trails.
+2. Group A collection of accounts that share permissions, such as "Students" or "Finance".
+3. Role A job-based permission set, such as teacher, receptionist, technician or administrator.
+4. Audit log Records access attempts or changes, helping detect misuse and investigate incidents.
+<!-- stage10-explanations:end -->

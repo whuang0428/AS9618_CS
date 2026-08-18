@@ -105,3 +105,64 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** greater control/security configuration/customisation developed
 
 **Strict note:** Do not accept 'the internet is WiFi' or 'the WWW is the internet'.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Cloud services
+
+- **Explains:** `cloud`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-024-cloud.jpg`
+
+1. Cloud services provide storage, software or computing resources from remote servers over a network. The user does not need to own all the local infrastructure.
+2. Cloud storage
+3. Files are stored on remote servers and accessed from different devices over a network.
+4. Example: a student saves project files online and opens them at home and school.
+5. Cloud software
+6. Applications run through a browser or client while data and updates are managed by the provider.
+7. Example: collaborative documents or email systems.
+8. Cloud infrastructure
+9. Servers, processing power or databases are rented from a provider instead of bought and maintained locally.
+10. Example: hosting a school portal on remote servers.
+11. Common trap
+12. Cloud advantages are not automatic. A strong answer links the benefit or risk to a scenario: remote access, collaboration, backup, scalability, provider dependence, security, privacy or internet connection.
+
+### Compare by access, not by buzzword
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-024-compare.jpg`
+
+1. Access / control
+2. Exam distinction
+3. Internet
+4. Global public network; services may be public or login-protected.
+5. Do not call every online service an intranet.
+6. Intranet
+7. Private internal network controlled by one organisation.
+8. Restricted to authorised internal users.
+9. Extranet
+10. Private controlled access extended to selected external users.
+11. Not fully public; access is still controlled.
+12. Cloud service
+
+### Internet, intranet and extranet
+
+- **Explains:** `networks`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-024-networks.jpg`
+
+1. These terms describe access scope and purpose. The spelling difference is small; the exam difference is not.
+2. Internet
+3. A global public network of interconnected networks. It allows public services such as websites, email and online platforms.
+4. Access: public, though individual services may still require login.
+5. Use case: public website, online search, public cloud service access.
+6. Intranet
+7. A private network used within an organisation, often using web technologies but restricted to authorised users.
+8. Access: internal staff or members only.
+9. Use case: staff policies, internal forms, private school resources.
+10. Extranet
+11. A private network that allows controlled access to selected external users or organisations.
+12. Access: authorised internal users plus selected partners/customers/suppliers.
+<!-- stage10-explanations:end -->

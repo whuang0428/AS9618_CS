@@ -71,3 +71,70 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record. For this lesson, make students contrast that mistake with the exact idea of **flat-file databases vs relational databases**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Why repeated data causes anomalies
+
+- **Explains:** `anomalies`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-079-anomalies.jpg`
+
+1. An anomaly is a problem caused when data is inserted, updated or deleted in a structure that stores repeated facts poorly.
+2. Update anomaly A parent email is changed in one row but not in another, so the same member has two different emails.
+3. Insertion anomaly A new member cannot be recorded until they join a session, because member details only exist in lesson rows.
+4. Deletion anomaly Deleting a cancelled session row may accidentally delete the only copy of a member's contact details.
+
+### Flat-file vs relational comparison
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-079-compare.jpg`
+
+1. Flat-file
+2. Relational
+3. Structure
+4. Single table
+5. Multiple linked tables
+6. Redundancy
+7. More likely because related details are repeated
+8. Reduced because shared data can be stored once
+9. Consistency
+10. Harder to maintain if repeated values are updated differently
+11. Improved because updates can be made in one relevant table
+12. Complexity
+
+### Flat-file database
+
+- **Explains:** `flat`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-079-flat.jpg`
+
+1. A flat-file database stores data in a single table. It is simple, but related data may be repeated in many records.
+2. MemberID
+3. ParentEmail
+4. Amira Chen
+5. lee@example.com
+6. Robotics
+7. Leo Singh
+8. patel@example.com
+
+### Relational database
+
+- **Explains:** `relational`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-079-relational.jpg`
+
+1. A relational database stores data in multiple tables that are linked using shared fields. Shared facts can be stored once and referenced where needed.
+2. MemberID | Name | ParentEmail
+3. M104 | Amira Chen | lee@example.com
+4. M211 | Leo Singh | patel@example.com
+5. linked by MemberID
+6. Enrolment
+7. EnrolID | MemberID | Session | FeePaid
+8. E501 | M104 | Python | TRUE
+9. E502 | M104 | Robotics | FALSE
+10. Exam sentence:
+11. A relational database reduces redundancy by separating related data into linked tables, so a fact such as a parent email is stored once instead of repeated in every lesson record.
+<!-- stage10-explanations:end -->

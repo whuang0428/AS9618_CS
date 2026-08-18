@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -138,6 +138,20 @@ OUTPUT Total</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start scope -->
+        <section class="panel explanation-panel" id="explanation-scope" data-explains="scope" data-explanation-kind="mechanism" aria-labelledby="explanation-scope-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="scope">
+          <h2 class="explanation-sr-only" id="explanation-scope-title">Scope means where a variable or identifier can be accessed</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-scope.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Scope means where a variable or identifier can be accessed with a structured visual model." />
+            <figcaption class="explanation-sr-only">Scope means where a variable or identifier can be accessed: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Inside scope</li><li><strong>Lesson fact:</strong> PROCEDURE DisplayTotal()</li><li><strong>Lesson fact:</strong> Total &lt;- 25</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Total is accessible inside DisplayTotal .</li><li><strong>Lesson fact:</strong> Outside scope</li><li><strong>Lesson fact:</strong> CALL DisplayTotal()</li><li><strong>Lesson fact:</strong> If Total was local to the procedure, the main algorithm cannot use it directly.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end scope -->
+
         <section class="panel" id="lifetime" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lifetime">
           <div class="section-title">
             <p class="eyebrow">Lifetime</p>
@@ -151,6 +165,20 @@ OUTPUT Total</code></pre>
           </div>
           <div class="callout">A local variable's lifetime is usually one subroutine call. It is not a tiny global variable in disguise.</div>
         </section>
+
+        <!-- stage10-explanation:start lifetime -->
+        <section class="panel explanation-panel" id="explanation-lifetime" data-explains="lifetime" data-explanation-kind="mechanism" aria-labelledby="explanation-lifetime-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lifetime">
+          <h2 class="explanation-sr-only" id="explanation-lifetime-title">Lifetime means how long a variable exists during execution</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-lifetime.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lifetime means how long a variable exists during execution with a structured visual model." />
+            <figcaption class="explanation-sr-only">Lifetime means how long a variable exists during execution: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Lifetime</li><li><strong>Lesson fact:</strong> Main program starts global variables may be created and keep their values</li><li><strong>Lesson fact:</strong> Procedure is called local variables are created for that call</li><li><strong>Lesson fact:</strong> Procedure ends local variables are destroyed or become inaccessible</li><li><strong>Lesson fact:</strong> Main continues global variables still exist unless the program ends</li><li><strong>Lesson fact:</strong> A local variable's lifetime is usually one subroutine call. It is not a tiny global variable in disguise.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lifetime -->
 
         <section class="panel" id="local" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="local">
           <div class="section-title">
@@ -176,6 +204,20 @@ ENDPROCEDURE</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start local -->
+        <section class="panel explanation-panel" id="explanation-local" data-explains="local" data-explanation-kind="mechanism" aria-labelledby="explanation-local-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="local">
+          <h2 class="explanation-sr-only" id="explanation-local-title">Local variables are declared inside a subroutine or block</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-local.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Local variables are declared inside a subroutine or block with a structured visual model." />
+            <figcaption class="explanation-sr-only">Local variables are declared inside a subroutine or block: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Local variables</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> PROCEDURE CalculateBonus(Mark : INTEGER)</li><li><strong>Lesson fact:</strong> Bonus &lt;- Mark DIV 10</li><li><strong>Lesson fact:</strong> OUTPUT Bonus</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Reasoning</li><li><strong>Lesson fact:</strong> Mark parameter local to this procedure call</li><li><strong>Lesson fact:</strong> Bonus local variable used only inside the procedure</li><li><strong>Lesson fact:</strong> After call Bonus is not directly available in the main algorithm</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end local -->
+
         <section class="panel" id="global" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="global">
           <div class="section-title">
             <p class="eyebrow">Global variables</p>
@@ -197,6 +239,20 @@ ENDPROCEDURE</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start global -->
+        <section class="panel explanation-panel" id="explanation-global" data-explains="global" data-explanation-kind="mechanism" aria-labelledby="explanation-global-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="global">
+          <h2 class="explanation-sr-only" id="explanation-global-title">Global variables are declared outside subroutines and can be accessed widely</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-global.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Global variables are declared outside subroutines and can be accessed widely with a structured visual model." />
+            <figcaption class="explanation-sr-only">Global variables are declared outside subroutines and can be accessed widely: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Global variables</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> PROCEDURE AddScore(Score : INTEGER)</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Score</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Reasoning</li><li><strong>Lesson fact:</strong> Total is declared outside the procedure, so it is global in this fragment.</li><li><strong>Lesson fact:</strong> Global variables can make updates convenient, but they can also make tracing harder because many parts of a program may change the value.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end global -->
 
         <section class="panel" id="shadowing" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="shadowing">
           <div class="section-title">
@@ -224,6 +280,20 @@ OUTPUT Score</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start shadowing -->
+        <section class="panel explanation-panel" id="explanation-shadowing" data-explains="shadowing" data-explanation-kind="mechanism" aria-labelledby="explanation-shadowing-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="shadowing">
+          <h2 class="explanation-sr-only" id="explanation-shadowing-title">A local variable can hide a global variable with the same name</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-shadowing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A local variable can hide a global variable with the same name with a structured visual model." />
+            <figcaption class="explanation-sr-only">A local variable can hide a global variable with the same name: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Same name trap</li><li><strong>Lesson fact:</strong> Trace this carefully</li><li><strong>Lesson fact:</strong> Score &lt;- 50</li><li><strong>Lesson fact:</strong> PROCEDURE ChangeScore()</li><li><strong>Lesson fact:</strong> Score &lt;- 80</li><li><strong>Lesson fact:</strong> OUTPUT Score</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> CALL ChangeScore()</li><li><strong>Lesson fact:</strong> Exam explanation</li><li><strong>Lesson fact:</strong> If the procedure's Score is local, the procedure outputs 80 , but the main program still outputs the global 50 .</li><li><strong>Lesson fact:</strong> The name is the same; the storage location is not. Same label, different locker.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end shadowing -->
+
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Compare</p>
@@ -237,6 +307,20 @@ OUTPUT Score</code></pre>
             <div class="table-row"><div>Main risk</div><div>using it outside scope</div><div>unexpected changes from different program parts</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Local and global variables differ by accessibility and lifetime</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Local and global variables differ by accessibility and lifetime with a structured visual model." />
+            <figcaption class="explanation-sr-only">Local and global variables differ by accessibility and lifetime: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Local variable</li><li><strong>Lesson fact:</strong> Global variable</li><li><strong>Lesson fact:</strong> Declared</li><li><strong>Lesson fact:</strong> inside a subroutine or block</li><li><strong>Lesson fact:</strong> outside subroutines</li><li><strong>Lesson fact:</strong> limited to that subroutine or block</li><li><strong>Lesson fact:</strong> available more widely in the program</li><li><strong>Lesson fact:</strong> Lifetime</li><li><strong>Lesson fact:</strong> usually while the subroutine call is active</li><li><strong>Lesson fact:</strong> usually while the program is running</li><li><strong>Lesson fact:</strong> Main risk</li><li><strong>Lesson fact:</strong> using it outside scope</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
 
         <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
@@ -261,6 +345,20 @@ ENDPROCEDURE</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start java -->
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Java helps illustrate scope, but Cambridge pseudocode remains the answer format</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-132-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java helps illustrate scope, but Cambridge pseudocode remains the answer format with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java helps illustrate scope, but Cambridge pseudocode remains the answer format: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> PROCEDURE PrintLocal()</li><li><strong>Lesson fact:</strong> Value &lt;- 7</li><li><strong>Lesson fact:</strong> OUTPUT Value</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> static void printLocal() {</li><li><strong>Lesson fact:</strong> int value = 7;</li><li><strong>Lesson fact:</strong> System.out.println(value);</li><li><strong>Lesson fact:</strong> Do not answer Paper 2 with Java braces, semicolons or access modifiers unless the question specifically asks for Java.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end java -->
 
 
         <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">

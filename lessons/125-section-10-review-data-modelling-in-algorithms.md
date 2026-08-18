@@ -87,3 +87,124 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **section 10 review: data modelling in algorithms**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Order of removal is the key clue
+
+- **Explains:** `adts`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-adts.jpg`
+
+1. Stack and queue review
+2. Typical operations
+3. Scenario clue
+4. LIFO: Last In, First Out
+5. PUSH, POP, PEEK
+6. undo, backtracking, nested calls
+7. FIFO: First In, First Out
+8. ENQUEUE, DEQUEUE
+9. print jobs, calls, waiting line
+
+### A good answer names the structure and the reason
+
+- **Explains:** `decision`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-decision.jpg`
+
+1. Data model decision
+2. Scenario
+3. A school stores 120 students. Each student has an ID, name, class group and average mark.
+4. Strong choice
+5. Use an array of records: the array stores many students; each record keeps fields for one student together.
+6. Why not just an array?
+7. A single array normally stores one type of value. A record is better when one logical item has different fields.
+8. Mark-worthy pattern: structure + scenario clue + consequence .
+
+### Cambridge pseudocode remains the exam standard
+
+- **Explains:** `declare`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-declare.jpg`
+
+1. Declaration review
+2. Cambridge-style pseudocode
+3. TYPE TStudent
+4. DECLARE ID : STRING
+5. DECLARE Name : STRING
+6. DECLARE Mark : INTEGER
+7. DECLARE Students : ARRAY[1:120] OF TStudent
+8. Java support only
+9. class Student {
+10. String id;
+11. String name;
+12. int mark;
+
+### Files preserve data beyond the running program
+
+- **Explains:** `files`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-files.jpg`
+
+1. File handling review
+2. Line-based read pattern
+3. OPENFILE "Scores.csv" FOR READ
+4. WHILE NOT EOF("Scores.csv")
+5. READFILE "Scores.csv", Line
+6. // process Line
+7. ENDWHILE
+8. CLOSEFILE "Scores.csv"
+9. CSV processing idea
+10. Line <- "S017,Ava,82"
+11. Fields <- SPLIT(Line, ",")
+12. StudentID <- Fields[1]
+
+### Turn a weak answer into a useful answer
+
+- **Explains:** `improver`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-improver.jpg`
+
+1. Mark improver
+2. Weak answer
+3. Pick a weak answer to see a mark-worthy rewrite.
+
+### Section 10 in one review grid
+
+- **Explains:** `map`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-map.jpg`
+
+1. Retrieval map
+2. Best clue
+3. Exam action
+4. Common weak answer
+5. many values of the same type
+6. declare bounds, loop over indexes
+7. "list of data"
+8. one item has several fields
+9. declare TYPE, fields and variables
+10. "array with different things"
+11. Array of records
+12. many items, each with fields
+
+### Upgrade vague words into credit-bearing words
+
+- **Explains:** `marks`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-marks.jpg`
+
+1. Mark-scheme language
+2. Weak wording
+3. Stronger wording
+4. Why it earns more
+5. It is better.
+6. It keeps all fields for one student together.
+7. names the consequence
+8. It is ordered.
+9. A queue removes items in the same order they arrived.
+10. states FIFO clearly
+11. Use a file.
+12. Use a text file so data remains after the program closes.
+<!-- stage10-explanations:end -->

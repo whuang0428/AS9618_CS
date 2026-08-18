@@ -105,3 +105,55 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** computer/processor can continue other processing without waiting for the full print
 
 **Strict note:** Do not accept 'the buffer makes the printer faster'; it manages transfer-rate differences.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Common output devices and when they fit
+
+- **Explains:** `devices`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-029-devices.jpg`
+
+1. Output form
+2. Good use
+3. Exam warning
+4. Monitor / screen
+5. Visual soft copy
+6. Live results, interfaces, dashboards, maps
+7. Not suitable when permanent paper evidence is required
+8. Hard copy on paper or labels
+9. Receipts, reports, tickets, labels
+10. Usually slower and uses consumables
+11. Speaker / buzzer
+12. Audio output
+
+### User feedback must fit the situation
+
+- **Explains:** `feedback`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-029-feedback.jpg`
+
+1. Feedback type
+2. Strength
+3. Limitation
+4. Detailed information, menus, diagrams, maps.
+5. User must be able to see and look at the display.
+6. Immediate warning without needing to look.
+7. Can be missed in noise or disruptive in quiet spaces.
+8. Permanent portable evidence.
+9. Not ideal for rapidly changing information.
+10. Physical action
+11. Controls the real world automatically.
+12. Needs safety controls because it changes the environment.
+
+### What output devices do
+
+- **Explains:** `purpose`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-029-purpose.jpg`
+
+1. 1. Present Output devices present processed data to a user, such as text, images or sound.
+2. 2. Record Some output creates a physical record, such as a printout or receipt.
+3. 3. Act Actuators convert computer output into physical movement or control.
+<!-- stage10-explanations:end -->

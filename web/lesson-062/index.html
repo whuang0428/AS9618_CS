@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -112,6 +112,20 @@
           <div class="callout">Chinese support: asset = 资产；threat = 威胁；vulnerability = 漏洞/弱点；control = 控制措施；risk = 风险。</div>
         </section>
 
+        <!-- stage10-explanation:start risk-chain -->
+        <section class="panel explanation-panel" id="explanation-risk-chain" data-explains="risk-chain" data-explanation-kind="mechanism" aria-labelledby="explanation-risk-chain-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="risk-chain">
+          <h2 class="explanation-sr-only" id="explanation-risk-chain-title">Use the risk chain before naming a control</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-risk-chain.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the risk chain before naming a control with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use the risk chain before naming a control: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Asset Something valuable that needs protection, such as exam marks, passwords or customer records.</li><li><strong>Lesson fact:</strong> Threat A possible cause of harm, such as unauthorised access, data corruption or service failure.</li><li><strong>Lesson fact:</strong> Vulnerability A weakness that a threat could exploit, such as weak passwords or poor permissions.</li><li><strong>Lesson fact:</strong> Control A safeguard that reduces likelihood or impact, such as access rights, backups or authentication.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end risk-chain -->
+
         <section class="panel" id="confidentiality" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="confidentiality">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -124,6 +138,20 @@
             <article><strong>Exam wording</strong><span>Say who is prevented from reading what, and why they are unauthorised.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start confidentiality -->
+        <section class="panel explanation-panel" id="explanation-confidentiality" data-explains="confidentiality" data-explanation-kind="mechanism" aria-labelledby="explanation-confidentiality-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="confidentiality">
+          <h2 class="explanation-sr-only" id="explanation-confidentiality-title">Confidentiality protects data from unauthorised access</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-confidentiality.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Confidentiality protects data from unauthorised access with a structured visual model." />
+            <figcaption class="explanation-sr-only">Confidentiality protects data from unauthorised access: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Goal Only authorised users should be able to view or access the data.</li><li><strong>Lesson fact:</strong> Risk Personal details, passwords or exam marks are viewed by unauthorised people.</li><li><strong>Lesson fact:</strong> Controls Access rights, authentication, encryption and least privilege can support confidentiality.</li><li><strong>Lesson fact:</strong> Exam wording Say who is prevented from reading what, and why they are unauthorised.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end confidentiality -->
 
         <section class="panel" id="integrity" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="integrity">
           <div class="section-title">
@@ -138,6 +166,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start integrity -->
+        <section class="panel explanation-panel" id="explanation-integrity" data-explains="integrity" data-explanation-kind="mechanism" aria-labelledby="explanation-integrity-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="integrity">
+          <h2 class="explanation-sr-only" id="explanation-integrity-title">Integrity protects data from unauthorised or accidental alteration</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-integrity.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Integrity protects data from unauthorised or accidental alteration with a structured visual model." />
+            <figcaption class="explanation-sr-only">Integrity protects data from unauthorised or accidental alteration: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Goal Data should remain accurate, complete and unaltered unless changed by an authorised process.</li><li><strong>Lesson fact:</strong> Risk Exam marks, bank balances or stock levels are changed incorrectly.</li><li><strong>Lesson fact:</strong> Controls Validation, verification, access rights, checksums, hashes and audit trails can support integrity.</li><li><strong>Lesson fact:</strong> Exam wording Explain how the control detects, prevents or records an incorrect change.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end integrity -->
+
         <section class="panel" id="availability" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="availability">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -151,6 +193,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start availability -->
+        <section class="panel explanation-panel" id="explanation-availability" data-explains="availability" data-explanation-kind="mechanism" aria-labelledby="explanation-availability-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="availability">
+          <h2 class="explanation-sr-only" id="explanation-availability-title">Availability keeps systems and data accessible when needed</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-availability.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Availability keeps systems and data accessible when needed with a structured visual model." />
+            <figcaption class="explanation-sr-only">Availability keeps systems and data accessible when needed: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Goal Authorised users should be able to access data and services when required.</li><li><strong>Lesson fact:</strong> Risk Hardware failure, network failure or overload prevents legitimate use.</li><li><strong>Lesson fact:</strong> Controls Backups, redundancy, disaster recovery, UPS and monitoring can support availability.</li><li><strong>Lesson fact:</strong> Exam wording State what remains accessible or recoverable, and for whom.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end availability -->
+
         <section class="panel" id="authenticity" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="authenticity">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
@@ -163,6 +219,20 @@
             <article><strong>Exam wording</strong><span>Say what identity or source is being verified, not just "make it secure".</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start authenticity -->
+        <section class="panel explanation-panel" id="explanation-authenticity" data-explains="authenticity" data-explanation-kind="mechanism" aria-labelledby="explanation-authenticity-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="authenticity">
+          <h2 class="explanation-sr-only" id="explanation-authenticity-title">Authenticity checks that identity or data origin is genuine</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-authenticity.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Authenticity checks that identity or data origin is genuine with a structured visual model." />
+            <figcaption class="explanation-sr-only">Authenticity checks that identity or data origin is genuine: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Goal Users, devices, messages or files should be verified as genuine.</li><li><strong>Lesson fact:</strong> Risk An attacker pretends to be a valid user, sender or website.</li><li><strong>Lesson fact:</strong> Controls Authentication, digital certificates, digital signatures and multi-factor authentication can support authenticity.</li><li><strong>Lesson fact:</strong> Exam wording Say what identity or source is being verified, not just &quot;make it secure&quot;.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end authenticity -->
 
         <section class="panel" id="controls" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
           <div class="section-title">
@@ -202,6 +272,20 @@
             </div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start controls -->
+        <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="mechanism" aria-labelledby="explanation-controls-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
+          <h2 class="explanation-sr-only" id="explanation-controls-title">One control can support more than one goal, but not every goal</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-062-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One control can support more than one goal, but not every goal with a structured visual model." />
+            <figcaption class="explanation-sr-only">One control can support more than one goal, but not every goal: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Often supports</li><li><strong>Lesson fact:</strong> Encryption</li><li><strong>Lesson fact:</strong> Confidentiality</li><li><strong>Lesson fact:</strong> Makes data unreadable without the correct key.</li><li><strong>Lesson fact:</strong> Access rights</li><li><strong>Lesson fact:</strong> Confidentiality and integrity</li><li><strong>Lesson fact:</strong> Limits who can view or alter data.</li><li><strong>Lesson fact:</strong> Availability</li><li><strong>Lesson fact:</strong> Allows recovery if data is lost or corrupted.</li><li><strong>Lesson fact:</strong> Hash/checksum</li><li><strong>Lesson fact:</strong> Integrity</li><li><strong>Lesson fact:</strong> Can detect whether data has changed.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end controls -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

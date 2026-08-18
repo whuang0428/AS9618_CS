@@ -87,3 +87,114 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. For this lesson, make students contrast that mistake with the exact idea of **testing with normal, boundary, and erroneous data**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Boundary data tests the edge of a valid range
+
+- **Explains:** `boundary`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-137-boundary.jpg`
+
+1. Boundary data
+2. Use exact edges and, where helpful, values just outside the edges. Be explicit about which values are valid and invalid.
+3. just outside
+4. lower boundary
+5. upper boundary
+6. Cambridge marking usually rewards precise edge values. “Near the edge” is a direction, not a test case.
+
+### Erroneous data is invalid data that should be rejected
+
+- **Explains:** `erroneous`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-137-erroneous.jpg`
+
+1. Erroneous data
+2. Out of range
+3. -1 or 101 for a mark from 0 to 100. Expected result: rejected.
+4. Wrong type
+5. "cat" where an integer mark is required. Expected result: rejected or error handled.
+6. Missing required data
+7. An empty name when a name must be entered. Expected result: rejected with a suitable message.
+
+### Java can help you run examples, but Cambridge pseudocode is the exam answer format
+
+- **Explains:** `java`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-137-java.jpg`
+
+1. Java support only
+2. Cambridge-style pseudocode
+3. IF Mark >= 0 AND Mark <= 100 THEN
+4. OUTPUT "Accepted"
+5. OUTPUT "Rejected"
+6. Java support example only
+7. if (mark >= 0 && mark <= 100) {
+8. System.out.println("Accepted");
+9. } else {
+10. System.out.println("Rejected");
+11. Do not write Java syntax as the final Cambridge pseudocode answer unless the question specifically asks for Java.
+
+### Normal data is valid, typical data inside the allowed range
+
+- **Explains:** `normal`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-137-normal.jpg`
+
+1. Normal data
+2. Normal test data
+3. Expected result
+4. Mark 0 to 100 inclusive
+5. Accepted
+6. Password length 8 to 20
+7. 12 characters
+8. Age 11 to 18 inclusive
+
+### Testing compares actual results with expected results
+
+- **Explains:** `purpose`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-137-purpose.jpg`
+
+1. Why testing
+2. A test is useful only if it can reveal whether the program behaves correctly. A strong test case has input data,
+3. a reason for choosing it, and a clear expected result.
+4. Validation rule
+5. IF Mark >= 0 AND Mark <= 100 THEN
+6. OUTPUT "Accepted"
+7. OUTPUT "Rejected"
+8. Testing question
+9. Which values prove that the rule accepts valid marks and rejects invalid marks?
+10. Normal data checks ordinary use. Boundary data checks the edges. Erroneous data checks rejection.
+
+### A clear test table turns thinking into marks
+
+- **Explains:** `table`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-137-table.jpg`
+
+1. Test table
+2. Test data
+3. Expected result
+4. typical valid mark
+5. Accepted
+6. Boundary
+7. lowest valid mark
+8. highest valid mark
+9. Erroneous
+10. below valid range
+11. Rejected
+12. wrong data type
+
+### Validation is the check. Testing proves whether the check works.
+
+- **Explains:** `validation`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-137-validation.jpg`
+
+1. Validation vs testing
+2. Validation
+3. A program rule, such as “Mark must be from 0 to 100 inclusive”.
+4. A planned set of inputs, such as 50 , 0 , 100 , -1 , 101 and "cat" .
+<!-- stage10-explanations:end -->

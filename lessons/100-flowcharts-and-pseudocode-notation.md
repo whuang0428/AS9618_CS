@@ -126,3 +126,95 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** closes with ENDIF / coherent Cambridge syntax
 
 **Strict note:** Do not accept two independent IF statements if they can produce contradictory paths; the description requires mutually exclusive alternatives.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### A diamond becomes IF...THEN...ELSE
+
+- **Explains:** `equivalence`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-equivalence.jpg`
+
+1. Equivalent forms
+2. Flowchart idea
+3. INPUT Age
+4. Age >= 11 AND Age <= 18?
+5. Yes: OUTPUT "Valid" | No: OUTPUT "Invalid"
+6. Pseudocode equivalent
+7. IF Age >= 11 AND Age <= 18 THEN
+8. OUTPUT "Valid"
+9. OUTPUT "Invalid"
+
+### Flowcharts use symbols to show control flow
+
+- **Explains:** `flowcharts`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-flowcharts.jpg`
+
+1. Knowledge explanation
+2. START/END
+3. terminator
+4. start or stop the algorithm
+5. INPUT/OUTPUT
+6. data entering or leaving
+7. INPUT Mark, OUTPUT Average
+8. calculation or assignment
+9. Total ← Total + Mark
+10. Decision?
+11. yes/no condition
+12. Mark >= 50?
+
+### Readable notation earns marks more easily
+
+- **Explains:** `notation`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-notation.jpg`
+
+1. Notation rules
+2. One entry Flowcharts should have a clear start and a clear direction of travel.
+3. Decision labels Decision outputs should be labelled, usually Yes/No or True/False.
+4. Indentation Indented pseudocode shows which statements belong inside a branch or loop.
+5. Matching endings Use ENDIF, NEXT, ENDWHILE or equivalent to close a structure clearly.
+6. Meaningful names Use Mark, Total, Count, Found instead of X1 unless the question gives X1.
+7. No mixed syntax Do not mix Java braces with Cambridge pseudocode keywords in the same answer.
+
+### Cambridge-style pseudocode uses structured keywords
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-pseudocode.jpg`
+
+1. Knowledge explanation
+2. Selection
+3. INPUT Mark
+4. IF Mark >= 50 THEN
+5. OUTPUT "Pass"
+6. OUTPUT "Resit"
+7. Count-controlled iteration
+8. Total <- 0
+9. FOR Count <- 1 TO 5
+10. Total <- Total + Mark
+11. NEXT Count
+12. OUTPUT Total
+
+### Match scenario to pseudocode structure
+
+- **Explains:** `structure-tool`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-structure-tool.jpg`
+
+1. Interactive structure tool
+2. Scenario clue
+3. Choose a clue to see the likely structure.
+
+### Choose the correct flowchart symbol
+
+- **Explains:** `symbol-tool`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-symbol-tool.jpg`
+
+1. Interactive symbol tool
+2. Algorithm step
+3. Choose a step to see the matching symbol and reason.
+<!-- stage10-explanations:end -->

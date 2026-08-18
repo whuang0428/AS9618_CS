@@ -105,3 +105,58 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** allows repeated access to array/list elements
 
 **Strict note:** Do not accept 240 as the effective address when IX is non-zero.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### ACC and status register: execute-stage evidence
+
+- **Explains:** `acc-status`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-043-acc-status.jpg`
+
+1. Accumulator (ACC)
+2. The accumulator commonly holds intermediate results from the ALU. For example, after adding two values, the result may be stored in the ACC.
+3. Status register
+4. The status register holds flags that describe the outcome of an operation or the processor state.
+5. Zero flag
+6. Can be set when an operation result is zero. Useful after comparisons or subtraction.
+7. Carry / overflow flags
+8. Can indicate a carry out or arithmetic overflow. Exact flag names vary by architecture, but the exam idea is that flags record result conditions.
+9. Common trap
+10. The status register does not store the calculation result itself. It stores flags about the result.
+
+### The six register roles
+
+- **Explains:** `main-registers`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-043-main-registers.jpg`
+
+1. Register
+2. Full name
+3. What it holds
+4. Exam-safe sentence
+5. Program Counter
+6. Address of the next instruction to be fetched.
+7. The PC is updated so the CPU knows where to fetch the next instruction.
+8. Current Instruction Register
+9. Instruction currently being decoded/executed.
+10. The CIR holds the fetched instruction while the CU decodes it.
+11. Memory Address Register
+12. Address of a memory location being accessed.
+
+### Why registers exist
+
+- **Explains:** `purpose`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-043-purpose.jpg`
+
+1. Inside the CPU
+2. Registers are located inside the processor, so they can be accessed very quickly.
+3. Small capacity
+4. They hold only a small amount of data, usually one value, address, instruction or set of flags.
+5. Temporary role
+6. They hold values needed immediately during fetch, decode or execute.
+7. Specific jobs
+8. Different registers are designed for different temporary values.
+<!-- stage10-explanations:end -->

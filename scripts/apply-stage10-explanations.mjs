@@ -3,7 +3,7 @@ import path from "node:path";
 import { explanations } from "./stage10-explanations-data.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
-const stylesheet = '    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />';
+const stylesheet = '    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />';
 const htmlBlock = /\n?\s*<!-- stage10-explanation:start [^ ]+ -->[\s\S]*?<!-- stage10-explanation:end [^ ]+ -->\n?/g;
 const markdownBlock = /\n?<!-- stage10-explanations:start -->[\s\S]*?<!-- stage10-explanations:end -->\n?/g;
 
@@ -57,34 +57,26 @@ function directSections(source) {
 function htmlFor(item) {
   const id = `explanation-${item.targetId}`;
   const stepLabels = ["Mechanism", "Reason", "Result"];
-  const steps = item.steps.map((step, index) => `
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">${index + 1}</span>
-                <div><span class="explanation-step-label">${stepLabels[index]}</span><p>${escapeHtml(step)}</p></div>
-              </li>`).join("");
-  const visual = item.visual ? `
-          <figure class="explanation-figure">
-            <img src="${escapeHtml(item.visual.src)}" width="${item.visual.width}" height="${item.visual.height}" loading="lazy" decoding="async" alt="${escapeHtml(item.visual.alt)}" />
-            <figcaption>${escapeHtml(item.visual.caption)}</figcaption>
-          </figure>` : "";
+  const transcriptItems = item.transcript ?? item.steps;
+  const transcript = transcriptItems.map((step, index) => {
+    const label = item.sourceGrounded ? "Lesson fact" : stepLabels[index];
+    return `<li><strong>${label}:</strong> ${escapeHtml(step)}</li>`;
+  }).join("");
+  const supportingTranscript = item.sourceGrounded ? "" : `
+            <p><strong>Analogy:</strong> ${escapeHtml(item.analogy)}</p>
+            <p><strong>Boundary:</strong> ${escapeHtml(item.boundary)}</p>`;
   return `
 
         <!-- stage10-explanation:start ${item.targetId} -->
-        <section class="panel explanation-panel" id="${id}" data-explains="${item.targetId}" data-explanation-kind="${item.kind}" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="${item.targetId}">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>${escapeHtml(item.title)}</h2>
-          </div>
-          <div class="explanation-layout${item.visual ? " has-visual" : ""}">
-${visual}
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">${steps}
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>${escapeHtml(item.analogy)}</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>${escapeHtml(item.boundary)}</span></p>
-              </div>
-            </div>
+        <section class="panel explanation-panel" id="${id}" data-explains="${item.targetId}" data-explanation-kind="${item.kind}" aria-labelledby="${id}-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="${item.targetId}">
+          <h2 class="explanation-sr-only" id="${id}-title">${escapeHtml(item.title)}</h2>
+          <figure class="explanation-infographic">
+            <img src="${escapeHtml(item.visual.src)}" width="${item.visual.width}" height="${item.visual.height}" loading="lazy" decoding="async" alt="${escapeHtml(item.visual.alt)}" />
+            <figcaption class="explanation-sr-only">${escapeHtml(item.visual.caption)}</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol>${transcript}</ol>
+${supportingTranscript}
           </div>
         </section>
         <!-- stage10-explanation:end ${item.targetId} -->`;
@@ -92,9 +84,10 @@ ${visual}
 
 function markdownFor(items) {
   const sections = items.map((item) => {
-    const steps = item.steps.map((step, index) => `${index + 1}. ${step}`).join("\n");
-    const visual = item.visual ? `\n- **Visual:** \`${item.visual.src}\` — ${item.visual.caption}` : "";
-    return `### ${item.title}\n\n- **Explains:** \`${item.targetId}\`\n- **Explanation type:** ${item.kind}${visual}\n\n${steps}\n\n- **Analogy:** ${item.analogy}\n- **Boundary:** ${item.boundary}`;
+    const transcriptItems = item.transcript ?? item.steps;
+    const steps = transcriptItems.map((step, index) => `${index + 1}. ${step}`).join("\n");
+    const supportingNotes = item.sourceGrounded ? "" : `\n- **Analogy:** ${item.analogy}\n- **Boundary:** ${item.boundary}`;
+    return `### ${item.title}\n\n- **Explains:** \`${item.targetId}\`\n- **Explanation type:** ${item.kind}\n- **Infographic:** \`${item.visual.src}\`\n\n${steps}${supportingNotes}`;
   }).join("\n\n");
   return `
 
@@ -157,4 +150,4 @@ for (let number = 1; number <= 150; number += 1) {
   }
 }
 
-console.log(`Stage 10 explanations applied: ${explanations.length} pilot panels; ${changedPages} HTML and ${changedMarkdown} Markdown files changed.`);
+console.log(`Stage 10 explanations applied: ${explanations.length} panels; ${changedPages} HTML and ${changedMarkdown} Markdown files changed.`);

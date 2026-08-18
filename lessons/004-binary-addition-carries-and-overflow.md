@@ -105,3 +105,53 @@ Correction prompt: "Show the mechanism, not just the label."
 - **A1** interprets the result as -9
 
 **Strict note:** Do not award the final mark for 247; the result must be interpreted as signed two's complement.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### 8-bit addition method
+
+- **Explains:** `method`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-004-method.jpg`
+
+1. Column method
+2. Align the two 8-bit values.
+3. Start at the rightmost bit.
+4. Add the two bits and any carry-in.
+5. Write the result bit; carry 1 left if the column total is 2 or 3.
+6. After the leftmost bit, check whether there is a carry-out.
+7. Exam discipline
+8. Show the carry row or annotate carried bits.
+9. Give the 8-bit result if the question asks for 8-bit addition.
+10. State whether overflow occurs.
+11. Explain overflow using range or carry-out, not vague "too big".
+
+### Unsigned 8-bit overflow
+
+- **Explains:** `overflow`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-004-overflow.jpg`
+
+1. 00000000₂ to 11111111₂ = 0 to 255
+2. An unsigned 8-bit result cannot store a value above 255.
+3. Carry-out
+4. 11110000₂ + 00010000₂ = 1 00000000₂
+5. The ninth bit is a carry-out beyond the 8-bit storage width.
+6. Boundary warning
+7. 01111111₂ + 00000001₂ = 10000000₂
+8. No unsigned overflow: the result is 128, which still fits in 8 bits.
+
+### Single-bit addition rules
+
+- **Explains:** `rules`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-004-rules.jpg`
+
+1. 0 + 0 sum 0, carry 0
+2. 0 + 1 sum 1, carry 0
+3. 1 + 0 sum 1, carry 0
+4. 1 + 1 sum 0, carry 1
+5. 1 + 1 + carry 1 sum 1, carry 1
+6. In binary, 1 + 1 = 10₂: write 0 in the current column and carry 1 left.
+<!-- stage10-explanations:end -->

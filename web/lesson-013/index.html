@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -116,6 +116,20 @@
           <div class="callout">Chinese support: run = 连续重复段；encode = 编码；decode = 解码。</div>
         </section>
 
+        <!-- stage10-explanation:start rle -->
+        <section class="panel explanation-panel" id="explanation-rle" data-explains="rle" data-explanation-kind="mechanism" aria-labelledby="explanation-rle-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rle">
+          <h2 class="explanation-sr-only" id="explanation-rle-title">Run-length encoding</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-013-rle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Run-length encoding with a structured visual model." />
+            <figcaption class="explanation-sr-only">Run-length encoding: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Encoding rule</li><li><strong>Lesson fact:</strong> Replace each consecutive run with count + value.</li><li><strong>Lesson fact:</strong> AAAAAABBBBCCCCCCCC → 6A4B8C</li><li><strong>Lesson fact:</strong> Decoding rule</li><li><strong>Lesson fact:</strong> Expand each count and value back into repeated data.</li><li><strong>Lesson fact:</strong> 3A2B1C → AAABBC</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end rle -->
+
         <section class="panel" id="dictionary" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dictionary">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -142,6 +156,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start dictionary -->
+        <section class="panel explanation-panel" id="explanation-dictionary" data-explains="dictionary" data-explanation-kind="mechanism" aria-labelledby="explanation-dictionary-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dictionary">
+          <h2 class="explanation-sr-only" id="explanation-dictionary-title">Dictionary-style compression</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-013-dictionary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Dictionary-style compression with a structured visual model." />
+            <figcaption class="explanation-sr-only">Dictionary-style compression: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Find repeated patterns and store them once in a dictionary.</li><li><strong>Lesson fact:</strong> Reference</li><li><strong>Lesson fact:</strong> Replace later occurrences with a shorter code or pointer to the dictionary entry.</li><li><strong>Lesson fact:</strong> COMPUTER COMPUTER COMPUTER can store COMPUTER once, then use references.</li><li><strong>Lesson fact:</strong> Dictionary #1 = COMPUTER</li><li><strong>Lesson fact:</strong> Compressed form #1 #1 #1</li><li><strong>Lesson fact:</strong> Decoded form COMPUTER COMPUTER COMPUTER</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end dictionary -->
+
         <section class="panel" id="effectiveness" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="effectiveness">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -163,6 +191,20 @@
           </div>
           <div class="callout warning">Both methods are lossless if the dictionary and encoded data allow exact reconstruction.</div>
         </section>
+
+        <!-- stage10-explanation:start effectiveness -->
+        <section class="panel explanation-panel" id="explanation-effectiveness" data-explains="effectiveness" data-explanation-kind="mechanism" aria-labelledby="explanation-effectiveness-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="effectiveness">
+          <h2 class="explanation-sr-only" id="explanation-effectiveness-title">When does it help?</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-013-effectiveness.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining When does it help? with a structured visual model." />
+            <figcaption class="explanation-sr-only">When does it help?: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> RLE helps</li><li><strong>Lesson fact:</strong> Long repeated runs, simple graphics, repeated pixels or repeated characters.</li><li><strong>Lesson fact:</strong> RLE struggles</li><li><strong>Lesson fact:</strong> Alternating or random-looking data with very short runs.</li><li><strong>Lesson fact:</strong> Dictionary helps</li><li><strong>Lesson fact:</strong> Repeated words, phrases, byte patterns or sequences across the file.</li><li><strong>Lesson fact:</strong> Both methods are lossless if the dictionary and encoded data allow exact reconstruction.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end effectiveness -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

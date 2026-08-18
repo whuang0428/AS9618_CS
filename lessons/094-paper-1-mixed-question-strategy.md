@@ -71,3 +71,83 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **paper 1 mixed question strategy**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Use the smallest frame that fits the command
+
+- **Explains:** `answer`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-094-answer.jpg`
+
+1. Answer frames
+2. Calculation write formula, substitute values, show unit conversion, state final unit.
+3. Comparison Item A does X whereas item B does Y; link to scenario if asked.
+4. Security control threat, control, mechanism, consequence, limitation if needed.
+5. Processor trace name register/bus, state transfer/action, then next step.
+6. Ethics evaluation stakeholder, benefit, concern, safeguard and justified judgement.
+7. SQL SELECT fields, FROM table(s), WHERE filter, GROUP BY/ORDER BY if required.
+
+### What each command word usually demands
+
+- **Explains:** `commands`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-094-commands.jpg`
+
+1. Command words
+2. Answer shape
+3. Weak answer pattern
+4. State / identify
+5. one precise term or value
+6. writing a paragraph and hiding the answer
+7. Describe
+8. what happens or what it is
+9. saying only why it is useful
+10. cause plus consequence, usually with because/so that
+11. listing a keyword without mechanism
+12. paired differences using both items
+
+### Decode the command word before writing
+
+- **Explains:** `decoder`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-094-decoder.jpg`
+
+1. Interactive command decoder
+2. Command word
+3. Choose a command word to see the expected answer shape.
+
+### Paper 1 sections and question clues
+
+- **Explains:** `map`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-094-map.jpg`
+
+1. Paper map
+2. Section 1 binary/hex, storage units, images, sound, compression, file size calculations
+3. Section 2 LAN/WAN, packets, protocols, IP/MAC/DNS, hardware, performance
+4. Section 3 input/output/storage, RAM/ROM/cache, embedded systems, logic gates
+5. Section 4 CPU, registers, buses, FDE cycle, interrupts, performance factors
+6. Sections 5-6 OS roles, utilities, translators, errors, security threats and controls
+7. Sections 7-8 ethics, ownership, impacts, relational design, SQL and data protection
+
+### The 30-second annotation routine
+
+- **Explains:** `strategy`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-094-strategy.jpg`
+
+1. Mixed question strategy
+2. What to mark
+3. Why it protects marks
+4. 1. Topic clue
+5. underline the syllabus clue: register, packet, licence, primary key, etc.
+6. prevents using the wrong mental toolbox
+7. 2. Command word
+8. circle state, describe, explain, compare, justify or evaluate
+9. sets depth and answer structure
+10. 3. Output type
+11. calculation, table, SQL, diagram label, prose explanation
+12. prevents writing paragraphs when a method/result is needed
+<!-- stage10-explanations:end -->

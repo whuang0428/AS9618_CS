@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -122,6 +122,20 @@
           <div class="callout">Chinese support: assembly language = 汇编语言；mnemonic = 助记符；assembler = 汇编器；label = 标签；directive = 伪指令/指示语句。</div>
         </section>
 
+        <!-- stage10-explanation:start assembly -->
+        <section class="panel explanation-panel" id="explanation-assembly" data-explains="assembly" data-explanation-kind="mechanism" aria-labelledby="explanation-assembly-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assembly">
+          <h2 class="explanation-sr-only" id="explanation-assembly-title">What assembly language is</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-046-assembly.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What assembly language is with a structured visual model." />
+            <figcaption class="explanation-sr-only">What assembly language is: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Low-level language</li><li><strong>Lesson fact:</strong> Assembly language is close to machine code and closely linked to a processor's instruction set.</li><li><strong>Lesson fact:</strong> Uses mnemonics</li><li><strong>Lesson fact:</strong> Human-readable abbreviations represent machine-code operations.</li><li><strong>Lesson fact:</strong> Processor-specific</li><li><strong>Lesson fact:</strong> Assembly syntax and available instructions depend on the target architecture.</li><li><strong>Lesson fact:</strong> Needs translation</li><li><strong>Lesson fact:</strong> An assembler converts assembly language into machine code.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end assembly -->
+
         <section class="panel" id="mnemonics" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="mnemonics">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -161,6 +175,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start mnemonics -->
+        <section class="panel explanation-panel" id="explanation-mnemonics" data-explains="mnemonics" data-explanation-kind="process" aria-labelledby="explanation-mnemonics-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="mnemonics">
+          <h2 class="explanation-sr-only" id="explanation-mnemonics-title">Mnemonics represent operations</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-046-mnemonics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Mnemonics represent operations with a structured visual model." />
+            <figcaption class="explanation-sr-only">Mnemonics represent operations: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Mnemonic</li><li><strong>Lesson fact:</strong> Likely operation</li><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Load a value into a register/ACC.</li><li><strong>Lesson fact:</strong> LOAD count</li><li><strong>Lesson fact:</strong> LOAD is a mnemonic for a machine-code load instruction.</li><li><strong>Lesson fact:</strong> Store a register/ACC value in memory.</li><li><strong>Lesson fact:</strong> STORE total</li><li><strong>Lesson fact:</strong> STORE represents an operation that writes a value to memory.</li><li><strong>Lesson fact:</strong> Add a value to a register/ACC.</li><li><strong>Lesson fact:</strong> ADD value</li><li><strong>Lesson fact:</strong> ADD is easier to read than a binary opcode for addition.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end mnemonics -->
+
         <section class="panel" id="structure" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="structure">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -195,6 +223,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start structure -->
+        <section class="panel explanation-panel" id="explanation-structure" data-explains="structure" data-explanation-kind="mechanism" aria-labelledby="explanation-structure-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="structure">
+          <h2 class="explanation-sr-only" id="explanation-structure-title">Structure of a simple assembly line</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-046-structure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Structure of a simple assembly line with a structured visual model." />
+            <figcaption class="explanation-sr-only">Structure of a simple assembly line: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> LOOP: ADD value ; add next item</li><li><strong>Lesson fact:</strong> LOOP: label</li><li><strong>Lesson fact:</strong> ADD mnemonic</li><li><strong>Lesson fact:</strong> value operand</li><li><strong>Lesson fact:</strong> ; add next item comment</li><li><strong>Lesson fact:</strong> A symbolic name for an address or line, often used by jump/branch instructions.</li><li><strong>Lesson fact:</strong> The value, address, register or label used by the instruction.</li><li><strong>Lesson fact:</strong> Text for human readers. Comments are ignored by the assembler.</li><li><strong>Lesson fact:</strong> Directive</li><li><strong>Lesson fact:</strong> An instruction to the assembler, not a CPU instruction. It may reserve storage or define constants.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end structure -->
+
         <section class="panel" id="assembler" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assembler">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -211,6 +253,20 @@
             <p>An assembler translates assembly to machine code. A compiler usually translates high-level language to lower-level code.</p>
           </div>
         </section>
+
+        <!-- stage10-explanation:start assembler -->
+        <section class="panel explanation-panel" id="explanation-assembler" data-explains="assembler" data-explanation-kind="mechanism" aria-labelledby="explanation-assembler-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assembler">
+          <h2 class="explanation-sr-only" id="explanation-assembler-title">Assembler: text to machine code</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-046-assembler.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Assembler: text to machine code with a structured visual model." />
+            <figcaption class="explanation-sr-only">Assembler: text to machine code: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 1. Read source Assembly source contains mnemonics, labels, operands, comments and directives.</li><li><strong>Lesson fact:</strong> 2. Resolve labels Labels are replaced with actual addresses or offsets.</li><li><strong>Lesson fact:</strong> 3. Translate mnemonics Mnemonics are converted to binary opcodes and operands are encoded.</li><li><strong>Lesson fact:</strong> 4. Output object/machine code The generated machine code can be loaded and executed by the processor.</li><li><strong>Lesson fact:</strong> Common trap</li><li><strong>Lesson fact:</strong> An assembler translates assembly to machine code. A compiler usually translates high-level language to lower-level code.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end assembler -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

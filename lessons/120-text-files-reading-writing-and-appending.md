@@ -92,3 +92,134 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often treat files like arrays already in memory. Correction: file data must be read into variables before processing. For this lesson, make students contrast that mistake with the exact idea of **text files: reading, writing, and appending**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### A text file stores characters, usually processed one line at a time
+
+- **Explains:** `concept`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-concept.jpg`
+
+1. Exam clue
+2. Text file
+3. file containing character data
+4. "Scores.txt"
+5. get data from an existing file
+6. FOR READ
+7. store data to a file, often replacing previous contents
+8. FOR WRITE
+9. add data to the end of an existing file
+10. FOR APPEND
+
+### Open, process, close
+
+- **Explains:** `lifecycle`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-lifecycle.jpg`
+
+1. File lifecycle
+2. 1. Open choose READ, WRITE or APPEND
+3. 2. Process READFILE or WRITEFILE using variables
+4. 3. Close release the file and finalise changes
+5. A file algorithm without CLOSEFILE is like leaving the exam hall without submitting the answer booklet.
+
+### Choose the correct file mode
+
+- **Explains:** `mode-lab`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-mode-lab.jpg`
+
+1. Interactive mode lab
+2. Scenario
+3. Choose a scenario and a mode.
+
+### Choose the mode before touching the file
+
+- **Explains:** `modes`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-modes.jpg`
+
+1. File modes
+2. Use when
+3. Risk if wrong
+4. existing file contents are needed
+5. cannot write new lines
+6. creating/replacing output contents
+7. old contents may be overwritten
+8. adding new data to the end
+9. old lines remain, so duplicates are possible
+
+### Cambridge pseudocode is the exam answer format
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style pseudocode
+3. OPENFILE "Scores.txt" FOR READ
+4. WHILE NOT EOF("Scores.txt")
+5. READFILE "Scores.txt", Line
+6. OUTPUT Line
+7. ENDWHILE
+8. CLOSEFILE "Scores.txt"
+9. Java support only
+10. try (Scanner file = new Scanner(new File("Scores.txt"))) {
+11. while (file.hasNextLine()) {
+12. String line = file.nextLine();
+
+### Use EOF so the loop stops at the end of the file
+
+- **Explains:** `read`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-read.jpg`
+
+1. Read loop
+2. OPENFILE "Scores.txt" FOR READ
+3. WHILE NOT EOF("Scores.txt")
+4. READFILE "Scores.txt", Line
+5. OUTPUT Line
+6. ENDWHILE
+7. CLOSEFILE "Scores.txt"
+8. The file line is read into Line . Only after that can the program output, split or validate it.
+
+### Step through a WHILE NOT EOF loop
+
+- **Explains:** `reader`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-reader.jpg`
+
+1. Interactive read trace
+2. File is open. No line has been read yet.
+
+### A text line often represents one record
+
+- **Explains:** `records`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-records.jpg`
+
+1. Text records
+2. In simple exam-style examples, one line may contain fields separated by a comma. The delimiter must be consistent.
+3. Name = Ali
+4. Mark = 72
+5. Name = Bea
+6. Mark = 64
+
+### Write creates a new result; append adds to the existing story
+
+- **Explains:** `write`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-write.jpg`
+
+1. Write and append
+2. Write a new report
+3. OPENFILE "Report.txt" FOR WRITE
+4. WRITEFILE "Report.txt", "Pass count: " & Count
+5. CLOSEFILE "Report.txt"
+6. Append a new score
+7. OPENFILE "Scores.txt" FOR APPEND
+8. WRITEFILE "Scores.txt", "Dina,91"
+9. CLOSEFILE "Scores.txt"
+<!-- stage10-explanations:end -->

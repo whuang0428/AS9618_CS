@@ -109,16 +109,27 @@ Correction prompt: "Show the mechanism, not just the label."
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
+### Why cache helps and virtual memory slows
+
+- **Explains:** `cache-vm`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-030-cache-vm.jpg`
+
+1. Cache keeps likely next data close to the CPU.
+2. A cache hit avoids a slower trip to main memory.
+3. Virtual memory moves pages to storage when RAM is insufficient.
+- **Analogy:** A desk tray saves a walk; using the archive as desk space creates walks.
+- **Boundary:** Virtual memory increases capacity, not physical RAM speed.
+
 ### Why active data stays close to the CPU
 
 - **Explains:** `primary`
 - **Explanation type:** mechanism
-- **Visual:** `../assets/diagrams/stage10-memory-hierarchy-analogy.jpg` — Nearer, smaller working areas represent faster access; the archive represents larger but slower storage.
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-030-primary.jpg`
 
 1. The CPU repeatedly requests current instructions and data.
 2. Nearby electronic storage answers with less delay than secondary storage.
 3. Faster access prevents the processor waiting as often.
-
 - **Analogy:** Keep today's papers on the desk, not in a distant archive.
 - **Boundary:** Closer and faster storage is smaller and more expensive per byte.
 
@@ -126,23 +137,11 @@ Correction prompt: "Show the mechanism, not just the label."
 
 - **Explains:** `ram-rom`
 - **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-030-ram-rom.jpg`
 
 1. RAM holds the changing state of running programs.
 2. Most RAM needs continuous power to preserve that state.
 3. ROM retains fixed startup instructions when power is removed.
-
 - **Analogy:** A working notepad changes constantly; a printed reference card should not.
 - **Boundary:** ROM can sometimes be updated, but not as ordinary working memory.
-
-### Why cache helps and virtual memory slows
-
-- **Explains:** `cache-vm`
-- **Explanation type:** comparison
-
-1. Cache keeps likely next data close to the CPU.
-2. A cache hit avoids a slower trip to main memory.
-3. Virtual memory moves pages to storage when RAM is insufficient.
-
-- **Analogy:** A desk tray saves a walk; using the archive as desk space creates walks.
-- **Boundary:** Virtual memory increases capacity, not physical RAM speed.
 <!-- stage10-explanations:end -->

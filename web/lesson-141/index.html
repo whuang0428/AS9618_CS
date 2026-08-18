@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -110,6 +110,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start review-map -->
+        <section class="panel explanation-panel" id="explanation-review-map" data-explains="review-map" data-explanation-kind="synthesis" aria-labelledby="explanation-review-map-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="review-map">
+          <h2 class="explanation-sr-only" id="explanation-review-map-title">Section 11 tools become stronger when combined</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-review-map.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Section 11 tools become stronger when combined with a structured visual model." />
+            <figcaption class="explanation-sr-only">Section 11 tools become stronger when combined: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Review map</li><li><strong>Lesson fact:</strong> Likely construct</li><li><strong>Lesson fact:</strong> Evidence in answer</li><li><strong>Lesson fact:</strong> Common slip</li><li><strong>Lesson fact:</strong> repeat known number of times</li><li><strong>Lesson fact:</strong> start, end and NEXT</li><li><strong>Lesson fact:</strong> wrong loop bounds</li><li><strong>Lesson fact:</strong> make a decision</li><li><strong>Lesson fact:</strong> condition, branches, ENDIF</li><li><strong>Lesson fact:</strong> missing ELSE when needed</li><li><strong>Lesson fact:</strong> store several values</li><li><strong>Lesson fact:</strong> index used consistently</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end review-map -->
+
         <section class="panel" id="fragment" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fragment">
           <div class="section-title">
             <p class="eyebrow">Fragment anatomy</p>
@@ -139,6 +153,20 @@ OUTPUT PassCount</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start fragment -->
+        <section class="panel explanation-panel" id="explanation-fragment" data-explains="fragment" data-explanation-kind="synthesis" aria-labelledby="explanation-fragment-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fragment">
+          <h2 class="explanation-sr-only" id="explanation-fragment-title">A complete fragment has setup, logic and result</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-fragment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A complete fragment has setup, logic and result with a structured visual model." />
+            <figcaption class="explanation-sr-only">A complete fragment has setup, logic and result: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Fragment anatomy</li><li><strong>Lesson fact:</strong> Pass-count fragment</li><li><strong>Lesson fact:</strong> PassCount &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 10</li><li><strong>Lesson fact:</strong> INPUT Marks[Index]</li><li><strong>Lesson fact:</strong> IF Marks[Index] &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> PassCount &lt;- PassCount + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> OUTPUT PassCount</li><li><strong>Lesson fact:</strong> Why it is complete</li><li><strong>Lesson fact:</strong> counter is initialised before the loop</li><li><strong>Lesson fact:</strong> array element is input before it is tested</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end fragment -->
+
         <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
           <div class="section-title">
             <p class="eyebrow">Validation</p>
@@ -155,6 +183,20 @@ OUTPUT PassCount</code></pre>
 UNTIL Valid = TRUE</code></pre>
         </section>
 
+        <!-- stage10-explanation:start validation -->
+        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="synthesis" aria-labelledby="explanation-validation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
+          <h2 class="explanation-sr-only" id="explanation-validation-title">Review fragments often need input checks</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Review fragments often need input checks with a structured visual model." />
+            <figcaption class="explanation-sr-only">Review fragments often need input checks: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Validation</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN</li><li><strong>Lesson fact:</strong> Valid &lt;- TRUE</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Enter a mark from 0 to 100&quot;</li><li><strong>Lesson fact:</strong> Valid &lt;- FALSE</li><li><strong>Lesson fact:</strong> UNTIL Valid = TRUE</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end validation -->
+
         <section class="panel" id="arrays" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="arrays">
           <div class="section-title">
             <p class="eyebrow">Arrays and loops</p>
@@ -167,6 +209,20 @@ UNTIL Valid = TRUE</code></pre>
             <div class="table-row"><div>total and average</div><div>update <code>Total</code> inside loop, divide after loop</div><div>average inside loop too early</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start arrays -->
+        <section class="panel explanation-panel" id="explanation-arrays" data-explains="arrays" data-explanation-kind="synthesis" aria-labelledby="explanation-arrays-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="arrays">
+          <h2 class="explanation-sr-only" id="explanation-arrays-title">Arrays need consistent indexing and meaningful loop bounds</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-arrays.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Arrays need consistent indexing and meaningful loop bounds with a structured visual model." />
+            <figcaption class="explanation-sr-only">Arrays need consistent indexing and meaningful loop bounds: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Arrays and loops</li><li><strong>Lesson fact:</strong> Question wording</li><li><strong>Lesson fact:</strong> Good answer feature</li><li><strong>Lesson fact:</strong> Mark-risk</li><li><strong>Lesson fact:</strong> 10 marks</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 10</li><li><strong>Lesson fact:</strong> looping 0 to 10 gives 11 iterations</li><li><strong>Lesson fact:</strong> highest score</li><li><strong>Lesson fact:</strong> initialise Highest before comparing</li><li><strong>Lesson fact:</strong> uninitialised comparison</li><li><strong>Lesson fact:</strong> total and average</li><li><strong>Lesson fact:</strong> update Total inside loop, divide after loop</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end arrays -->
 
         <section class="panel" id="subroutines" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="subroutines">
           <div class="section-title">
@@ -190,6 +246,20 @@ ENDPROCEDURE</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start subroutines -->
+        <section class="panel explanation-panel" id="explanation-subroutines" data-explains="subroutines" data-explanation-kind="synthesis" aria-labelledby="explanation-subroutines-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="subroutines">
+          <h2 class="explanation-sr-only" id="explanation-subroutines-title">Use functions for returned values and procedures for actions</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-subroutines.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use functions for returned values and procedures for actions with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use functions for returned values and procedures for actions: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Subroutines</li><li><strong>Lesson fact:</strong> Function</li><li><strong>Lesson fact:</strong> FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN</li><li><strong>Lesson fact:</strong> RETURN Mark &gt;= 50</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li><li><strong>Lesson fact:</strong> Procedure</li><li><strong>Lesson fact:</strong> PROCEDURE DisplayResult(Name : STRING, Passed : BOOLEAN)</li><li><strong>Lesson fact:</strong> OUTPUT Name</li><li><strong>Lesson fact:</strong> OUTPUT Passed</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end subroutines -->
+
         <section class="panel" id="files" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="files">
           <div class="section-title">
             <p class="eyebrow">Files</p>
@@ -203,6 +273,20 @@ ENDWHILE
 CLOSEFILE "Scores.txt"</code></pre>
         </section>
 
+        <!-- stage10-explanation:start files -->
+        <section class="panel explanation-panel" id="explanation-files" data-explains="files" data-explanation-kind="synthesis" aria-labelledby="explanation-files-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="files">
+          <h2 class="explanation-sr-only" id="explanation-files-title">File fragments need open, process and close</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-files.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining File fragments need open, process and close with a structured visual model." />
+            <figcaption class="explanation-sr-only">File fragments need open, process and close: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.txt&quot; FOR READ</li><li><strong>Lesson fact:</strong> WHILE NOT EOF(&quot;Scores.txt&quot;)</li><li><strong>Lesson fact:</strong> READFILE &quot;Scores.txt&quot;, Line</li><li><strong>Lesson fact:</strong> OUTPUT Line</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Scores.txt&quot;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end files -->
+
         <section class="panel" id="debugging" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="debugging">
           <div class="section-title">
             <p class="eyebrow">Debugging awareness</p>
@@ -211,6 +295,20 @@ CLOSEFILE "Scores.txt"</code></pre>
           </div>
           <div class="callout">If you cannot trace your own fragment with a small example, the examiner probably cannot rescue it for you either.</div>
         </section>
+
+        <!-- stage10-explanation:start debugging -->
+        <section class="panel explanation-panel" id="explanation-debugging" data-explains="debugging" data-explanation-kind="synthesis" aria-labelledby="explanation-debugging-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="debugging">
+          <h2 class="explanation-sr-only" id="explanation-debugging-title">Review answers should be traceable</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-debugging.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Review answers should be traceable with a structured visual model." />
+            <figcaption class="explanation-sr-only">Review answers should be traceable: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Debugging awareness</li><li><strong>Lesson fact:</strong> A well-written fragment can be traced: values change in clear places, conditions are testable, and outputs are easy to predict.</li><li><strong>Lesson fact:</strong> If you cannot trace your own fragment with a small example, the examiner probably cannot rescue it for you either.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end debugging -->
 
         <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
@@ -236,6 +334,20 @@ NEXT Index</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start java -->
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="synthesis" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Java can support practice; the review answer should be Cambridge pseudocode</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java can support practice; the review answer should be Cambridge pseudocode with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java can support practice; the review answer should be Cambridge pseudocode: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> for (int index = 0; index &lt; 10; index++) {</li><li><strong>Lesson fact:</strong> if (marks[index] &gt;= 50) {</li><li><strong>Lesson fact:</strong> passCount++;</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 10</li><li><strong>Lesson fact:</strong> IF Marks[Index] &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> PassCount &lt;- PassCount + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end java -->
 
 
         <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
@@ -264,6 +376,20 @@ NEXT Index</code></pre>
           </div>
           <div id="checklistOutput" class="checklist-grid"></div>
         </section>
+
+        <!-- stage10-explanation:start checklist -->
+        <section class="panel explanation-panel" id="explanation-checklist" data-explains="checklist" data-explanation-kind="synthesis" aria-labelledby="explanation-checklist-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checklist">
+          <h2 class="explanation-sr-only" id="explanation-checklist-title">Use a checklist before calling a fragment finished</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-141-checklist.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use a checklist before calling a fragment finished with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use a checklist before calling a fragment finished: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Mark checklist</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end checklist -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

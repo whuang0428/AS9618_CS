@@ -105,3 +105,82 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** balanced judgement or mitigation linked to the context
 
 **Strict note:** Do not accept a list of generic advantages/disadvantages without linking AI decisions to consequences.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Classify the impact and choose a mitigation
+
+- **Explains:** `analyser`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-analyser.jpg`
+
+1. Interactive impact analyser
+2. Select a scenario and compare the positive impact, negative impact and mitigation.
+3. Scenario
+
+### The digital divide is about access, skills and inclusion
+
+- **Explains:** `digital-divide`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-digital-divide.jpg`
+
+1. Device access Some users cannot afford suitable hardware.
+2. Connectivity Reliable high-speed internet is not equally available.
+3. Digital skills Users may lack confidence or training to use online systems.
+4. Accessibility Systems should support users with disabilities or different needs.
+
+### Environmental impacts include energy use and resource consumption
+
+- **Explains:** `environment`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-environment.jpg`
+
+1. Energy use Devices, networks and data centres consume electricity during operation.
+2. Carbon emissions Emissions depend on electricity source, device manufacture and transport.
+3. Resource extraction Manufacturing hardware requires metals, rare materials, water and energy.
+4. Lifespan Short upgrade cycles increase manufacturing and disposal impact.
+
+### E-waste is an ethical issue, not just a rubbish-bin issue
+
+- **Explains:** `ewaste`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-ewaste.jpg`
+
+1. E-waste Discarded electronic devices and components.
+2. Toxic materials Some components contain harmful substances that can pollute soil or water if mishandled.
+3. Recycling Responsible recycling can recover materials and reduce landfill, but must be managed safely.
+4. Reuse and repair Extending device life reduces demand for new manufacturing.
+
+### Use a balanced impact structure
+
+- **Explains:** `method`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-method.jpg`
+
+1. 1. Change Name the computing change, such as automation or online services.
+2. 2. Benefit Explain a positive impact for a named stakeholder.
+3. 3. Harm Explain a negative impact with a realistic consequence.
+4. 4. Mitigation Suggest a practical way to reduce harm.
+5. Answer frame:
+6. [Technology] benefits [stakeholder] because [reason]. However, it may harm [stakeholder] by [consequence]. This can be reduced by [mitigation].
+
+### Social impacts affect work, communication and daily life
+
+- **Explains:** `social`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-social.jpg`
+
+1. Computing change
+2. Possible benefit
+3. Possible harm
+4. Remote work
+5. Less commuting, flexible work, access to wider jobs.
+6. Isolation, blurred work-life boundaries, unequal home access.
+7. Automation
+8. Efficiency, safer handling of dangerous or repetitive tasks.
+9. Job displacement, need for retraining, deskilling.
+10. Online services
+11. Access to education, banking, healthcare and communication.
+12. Excludes users without devices, internet, skills or accessible design.
+<!-- stage10-explanations:end -->

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -112,6 +112,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start standard -->
+        <section class="panel explanation-panel" id="explanation-standard" data-explains="standard" data-explanation-kind="process" aria-labelledby="explanation-standard-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="standard">
+          <h2 class="explanation-sr-only" id="explanation-standard-title">Cambridge pseudocode uses readable algorithm keywords</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-standard.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge pseudocode uses readable algorithm keywords with a structured visual model." />
+            <figcaption class="explanation-sr-only">Cambridge pseudocode uses readable algorithm keywords: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Exam standard</li><li><strong>Lesson fact:</strong> It is not Java with the class declaration removed. It has its own conventions for assignment, input/output, loops, selection and subroutines.</li><li><strong>Lesson fact:</strong> Java habit</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Assignment</li><li><strong>Lesson fact:</strong> total = total + mark;</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Mark</li><li><strong>Lesson fact:</strong> System.out.println(total);</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> Selection</li><li><strong>Lesson fact:</strong> if (...) { ... }</li><li><strong>Lesson fact:</strong> IF ... THEN ... ENDIF</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end standard -->
+
         <section class="panel" id="assignment" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assignment">
           <div class="section-title">
             <p class="eyebrow">Assignment</p>
@@ -129,6 +143,20 @@
           </div>
           <div class="callout">A single equals sign can be read as assignment in Java, but Cambridge pseudocode normally uses the left arrow.</div>
         </section>
+
+        <!-- stage10-explanation:start assignment -->
+        <section class="panel explanation-panel" id="explanation-assignment" data-explains="assignment" data-explanation-kind="mechanism" aria-labelledby="explanation-assignment-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assignment">
+          <h2 class="explanation-sr-only" id="explanation-assignment-title">Use the assignment arrow for storing a value</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-assignment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the assignment arrow for storing a value with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use the assignment arrow for storing a value: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Assignment</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> total = total + mark;</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Mark</li><li><strong>Lesson fact:</strong> A single equals sign can be read as assignment in Java, but Cambridge pseudocode normally uses the left arrow.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end assignment -->
 
         <section class="panel" id="io" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="io">
           <div class="section-title">
@@ -149,6 +177,20 @@ OUTPUT Mark</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start io -->
+        <section class="panel explanation-panel" id="explanation-io" data-explains="io" data-explanation-kind="process" aria-labelledby="explanation-io-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="io">
+          <h2 class="explanation-sr-only" id="explanation-io-title">Replace library calls with algorithm keywords</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-io.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Replace library calls with algorithm keywords with a structured visual model." />
+            <figcaption class="explanation-sr-only">Replace library calls with algorithm keywords: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Input and output</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> Scanner input = new Scanner(System.in);</li><li><strong>Lesson fact:</strong> mark = input.nextInt();</li><li><strong>Lesson fact:</strong> System.out.println(mark);</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> OUTPUT Mark</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end io -->
 
         <section class="panel" id="selection" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selection">
           <div class="section-title">
@@ -175,6 +217,20 @@ ENDIF</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start selection -->
+        <section class="panel explanation-panel" id="explanation-selection" data-explains="selection" data-explanation-kind="mechanism" aria-labelledby="explanation-selection-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selection">
+          <h2 class="explanation-sr-only" id="explanation-selection-title">Use IF , THEN , ELSE , ENDIF</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-selection.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use IF , THEN , ELSE , ENDIF with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use IF , THEN , ELSE , ENDIF: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Selection</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> if (mark &gt;= 50) {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Pass&quot;);</li><li><strong>Lesson fact:</strong> } else {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Resit needed&quot;);</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit needed&quot;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end selection -->
+
         <section class="panel" id="loops" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loops">
           <div class="section-title">
             <p class="eyebrow">Loops</p>
@@ -187,6 +243,20 @@ ENDIF</code></pre>
             <div class="table-row"><div><code>do { ... } while (...)</code></div><div>post-condition loop</div><div><code>REPEAT ... UNTIL ...</code></div><div>condition may be inverted</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start loops -->
+        <section class="panel explanation-panel" id="explanation-loops" data-explains="loops" data-explanation-kind="mechanism" aria-labelledby="explanation-loops-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loops">
+          <h2 class="explanation-sr-only" id="explanation-loops-title">Choose the loop keyword that matches the logic</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-loops.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choose the loop keyword that matches the logic with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choose the loop keyword that matches the logic: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java habit</li><li><strong>Lesson fact:</strong> Pseudocode form</li><li><strong>Lesson fact:</strong> for (int i = 1; i &lt;= 5; i++)</li><li><strong>Lesson fact:</strong> known count</li><li><strong>Lesson fact:</strong> FOR I &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> do not keep Java brackets</li><li><strong>Lesson fact:</strong> while (valid == false)</li><li><strong>Lesson fact:</strong> repeat while condition true</li><li><strong>Lesson fact:</strong> WHILE Valid = FALSE</li><li><strong>Lesson fact:</strong> end with ENDWHILE</li><li><strong>Lesson fact:</strong> do { ... } while (...)</li><li><strong>Lesson fact:</strong> post-condition loop</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end loops -->
 
         <section class="panel" id="arrays" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="arrays">
           <div class="section-title">
@@ -208,6 +278,20 @@ OUTPUT Scores[1]</code></pre>
           <div class="callout">Cambridge examples often use 1-based indexing unless a question defines otherwise. Follow the question's stated indexing.</div>
         </section>
 
+        <!-- stage10-explanation:start arrays -->
+        <section class="panel explanation-panel" id="explanation-arrays" data-explains="arrays" data-explanation-kind="mechanism" aria-labelledby="explanation-arrays-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="arrays">
+          <h2 class="explanation-sr-only" id="explanation-arrays-title">Use Cambridge array notation consistently</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-arrays.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use Cambridge array notation consistently with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use Cambridge array notation consistently: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> scores[0] = 72;</li><li><strong>Lesson fact:</strong> System.out.println(scores[0]);</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Scores[1] &lt;- 72</li><li><strong>Lesson fact:</strong> OUTPUT Scores[1]</li><li><strong>Lesson fact:</strong> Cambridge examples often use 1-based indexing unless a question defines otherwise. Follow the question's stated indexing.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end arrays -->
+
         <section class="panel" id="subroutines" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="subroutines">
           <div class="section-title">
             <p class="eyebrow">Subroutines</p>
@@ -228,6 +312,20 @@ ENDFUNCTION</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start subroutines -->
+        <section class="panel explanation-panel" id="explanation-subroutines" data-explains="subroutines" data-explanation-kind="mechanism" aria-labelledby="explanation-subroutines-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="subroutines">
+          <h2 class="explanation-sr-only" id="explanation-subroutines-title">Use PROCEDURE and FUNCTION instead of Java method wrappers</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-subroutines.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use PROCEDURE and FUNCTION instead of Java method wrappers with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use PROCEDURE and FUNCTION instead of Java method wrappers: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Subroutines</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> static boolean isValidMark(int mark) {</li><li><strong>Lesson fact:</strong> return mark &gt;= 0 &amp;&amp; mark &lt;= 100;</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN</li><li><strong>Lesson fact:</strong> RETURN Mark &gt;= 0 AND Mark &lt;= 100</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end subroutines -->
 
 
         <section class="panel" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="converter">
@@ -270,6 +368,20 @@ ENDFUNCTION</code></pre>
           </div>
           <div id="spotOutput" class="trace-output" aria-live="polite"></div>
         </section>
+
+        <!-- stage10-explanation:start spotter -->
+        <section class="panel explanation-panel" id="explanation-spotter" data-explains="spotter" data-explanation-kind="mechanism" aria-labelledby="explanation-spotter-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="spotter">
+          <h2 class="explanation-sr-only" id="explanation-spotter-title">Spot the Java-only syntax in an exam answer</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-spotter.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Spot the Java-only syntax in an exam answer with a structured visual model." />
+            <figcaption class="explanation-sr-only">Spot the Java-only syntax in an exam answer: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java spotter</li><li><strong>Lesson fact:</strong> Suspicious answer fragment</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end spotter -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
@@ -320,6 +432,20 @@ ENDFUNCTION</code></pre>
             <article><h3>Accuracy</h3><p>Check that the algorithm meaning is unchanged after conversion.</p></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start checkpoint -->
+        <section class="panel explanation-panel" id="explanation-checkpoint" data-explains="checkpoint" data-explanation-kind="mechanism" aria-labelledby="explanation-checkpoint-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checkpoint">
+          <h2 class="explanation-sr-only" id="explanation-checkpoint-title">5-minute quiz focus</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-checkpoint.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining 5-minute quiz focus with a structured visual model." />
+            <figcaption class="explanation-sr-only">5-minute quiz focus: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Monthly checkpoint</li><li><strong>Lesson fact:</strong> Conversion</li><li><strong>Lesson fact:</strong> Translate one Java selection, one loop and one output statement.</li><li><strong>Lesson fact:</strong> Explanation</li><li><strong>Lesson fact:</strong> Explain why Java syntax is support only, not the Paper 2 answer format.</li><li><strong>Lesson fact:</strong> Accuracy</li><li><strong>Lesson fact:</strong> Check that the algorithm meaning is unchanged after conversion.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end checkpoint -->
 
 
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">

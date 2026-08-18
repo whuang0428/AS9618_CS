@@ -71,3 +71,71 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record. For this lesson, make students contrast that mistake with the exact idea of **entity-relationship modelling**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Attributes describe an entity
+
+- **Explains:** `attributes`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-082-attributes.jpg`
+
+1. An attribute is a property stored about an entity. It often becomes a field in the table for that entity.
+2. Possible attributes
+3. Not usually an attribute here
+4. StudentID, Name, DateOfBirth, TutorGroup
+5. BookTitle, LoanDate
+6. BookID, ISBN, Title, Author
+7. StudentName, ReturnDate
+8. LoanID, StudentID, BookID, DateBorrowed, DateReturned
+9. StudentDateOfBirth, BookAuthor if already stored in Book
+
+### Cardinality describes how many records may be linked
+
+- **Explains:** `cardinality`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-082-cardinality.jpg`
+
+1. Cardinality states how many records in one entity can be associated with records in another entity.
+2. One-to-one One record in A links to one record in B. Example: one person has one passport in a simplified model.
+3. One-to-many One record in A links to many records in B. Example: one customer can place many orders.
+4. Many-to-many Many records in A link to many records in B. Usually resolved by a linking entity.
+5. 1 -> many
+
+### Entities are things the database stores data about
+
+- **Explains:** `entities`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-082-entities.jpg`
+
+1. An entity is a person, object, event or concept about which data is stored. In a relational design, an entity often becomes a table.
+2. Person Student, Customer, Doctor, Teacher.
+3. Object Book, Product, Vehicle, Equipment.
+4. Event Loan, Appointment, Order, Booking.
+5. Concept Course, Club, Department, Module.
+6. Exam wording: say why it is an entity. "Student is an entity because the system stores multiple facts about each student."
+
+### Identify entities and attributes
+
+- **Explains:** `parser`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-082-parser.jpg`
+
+1. Interactive scenario parser
+2. Scenario
+3. Choose a scenario to identify likely entities.
+4. The answer will separate entities from attributes and relationship events.
+
+### Optional and mandatory participation
+
+- **Explains:** `participation`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-082-participation.jpg`
+
+1. Participation describes whether a record must be linked. This is often written using minimum and maximum values such as 0..* or 1..1.
+2. 0..* Optional many: a student may have no loans, or many loans.
+3. 1..* Mandatory many: an order must have at least one order line.
+4. 0..1 Optional one: a member may have zero or one parking permit.
+5. 1..1 Mandatory one: each loan must refer to exactly one student.
+<!-- stage10-explanations:end -->

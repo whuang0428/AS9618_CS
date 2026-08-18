@@ -105,3 +105,58 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** therefore more bits are required when colour depth is unchanged
 
 **Strict note:** Do not accept 'resolution means quality' without identifying which pixels are being counted.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Colour depth: bits per pixel
+
+- **Explains:** `depth`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-008-depth.jpg`
+
+1. 1-bit colour
+2. 2¹ = 2 possible colours. Useful for black/white examples.
+3. 4-bit colour
+4. 2⁴ = 16 possible colours.
+5. 8-bit colour
+6. 2⁸ = 256 possible colours.
+7. 24-bit colour
+8. 2²⁴ = 16 777 216 possible colours.
+9. Higher colour depth allows more possible colours, but it does not magically improve a low-quality original image.
+
+### Bitmap file size formula
+
+- **Explains:** `formula`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-008-formula.jpg`
+
+1. file size in bits = width × height × colour depth
+2. file size in bytes = bits ÷ 8
+3. 100 × 80 × 8 = 64 000 bits = 8000 bytes
+
+### Bitmap images are pixel grids
+
+- **Explains:** `pixels`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-008-pixels.jpg`
+
+1. An image represented as a grid of pixels, where each pixel has a stored colour value.
+2. The smallest addressable picture element in a bitmap image.
+3. Metadata
+4. Extra data about the file, such as dimensions or format. Exam calculations often say to ignore it.
+
+### Resolution: width × height
+
+- **Explains:** `resolution`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-008-resolution.jpg`
+
+1. Pixel dimensions
+2. 100 × 80 means 100 pixels across and 80 pixels down.
+3. Total pixels: 100 × 80 = 8000.
+4. Quality effect
+5. Higher resolution can show more detail because more pixels are stored.
+6. It also increases file size if colour depth stays the same.
+7. Click pixels to toggle them. Each square is one stored picture element.
+<!-- stage10-explanations:end -->

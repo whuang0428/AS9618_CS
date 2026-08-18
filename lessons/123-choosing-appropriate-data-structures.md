@@ -121,3 +121,128 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** explains why FIFO gives the wrong access order
 
 **Strict note:** Do not award the structure name without its access-order consequence.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Use ADTs when the removal rule matters
+
+- **Explains:** `adt`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-adt.jpg`
+
+1. Stack and queue
+2. Scenario clue
+3. Structure
+4. undo last action
+5. most recent action is reversed first
+6. print jobs in arrival order
+7. first job submitted should print first
+8. customer service line
+9. fair FIFO order
+
+### Use arrays for many similar values accessed by index
+
+- **Explains:** `array`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-array.jpg`
+
+1. DECLARE Scores : ARRAY[1:30] OF INTEGER
+2. FOR Index <- 1 TO 30
+3. Total <- Total + Scores[Index]
+4. NEXT Index
+5. Good reason: all elements are INTEGER scores and can be traversed using an index.
+
+### Start with the data and operations, not the keyword
+
+- **Explains:** `criteria`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-criteria.jpg`
+
+1. Selection criteria
+2. Question to ask
+3. Why it matters
+4. Likely structure
+5. Are there many values of the same type?
+6. indexed traversal/search
+7. Does one item have several named fields?
+8. mixed types and meaningful field names
+9. Are there many entities with the same fields?
+10. repeat a record shape
+11. Array of records
+12. Must the data survive after the program ends?
+
+### Match scenario evidence to structure features
+
+- **Explains:** `decision`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-decision.jpg`
+
+1. Decision table
+2. Do not choose just because...
+3. calculate average of 50 readings
+4. array of REAL
+5. records sound more advanced
+6. store one book's ISBN, title and pages
+7. ISBN has digits
+8. store 200 books with same fields
+9. array of records
+10. one record is not enough
+11. save transactions for next run
+12. text/CSV file
+
+### Use files when data must persist or be exchanged
+
+- **Explains:** `file`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-file.jpg`
+
+1. OPENFILE "Scores.csv" FOR APPEND
+2. WRITEFILE "Scores.csv", NewLine
+3. CLOSEFILE "Scores.csv"
+4. Good reason: the data must be stored after the program has finished, so memory-only structures are not enough.
+
+### Cambridge answers should justify the structure, not advertise a Java class
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style modelling
+3. TYPE TBook
+4. DECLARE ISBN : STRING
+5. DECLARE Title : STRING
+6. DECLARE Pages : INTEGER
+7. DECLARE Books : ARRAY[1:200] OF TBook
+8. Java support only
+9. class Book {
+10. String isbn;
+11. String title;
+12. int pages;
+
+### Spot the answer that would earn marks
+
+- **Explains:** `ranker`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-ranker.jpg`
+
+1. Reason ranker
+2. Choose the answer with scenario evidence and consequence.
+
+### Use records when named fields belong to one entity
+
+- **Explains:** `record`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-record.jpg`
+
+1. Record / array of records
+2. One student
+3. TYPE TStudent
+4. DECLARE Name : STRING
+5. DECLARE Mark : INTEGER
+6. DECLARE Present : BOOLEAN
+7. Many students
+8. DECLARE Students : ARRAY[1:28] OF TStudent
+9. OUTPUT Students[1].Name
+<!-- stage10-explanations:end -->

@@ -99,3 +99,91 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **linear search and binary search**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Binary search repeatedly halves a sorted list
+
+- **Explains:** `binary`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-binary.jpg`
+
+1. Knowledge explanation
+2. 1 Set Low to first index and High to last index.
+3. 2 Find Mid, the middle index.
+4. 3 Compare List[Mid] with Target.
+5. 4 If target is smaller, move High left; if larger, move Low right.
+6. 5 Stop when found or Low is greater than High.
+
+### Trace binary search on sorted data
+
+- **Explains:** `binary-tool`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-binary-tool.jpg`
+
+1. Interactive binary trace
+2. Target in [13, 21, 42, 56, 70, 88, 91]
+3. Choose a target to trace low, mid and high.
+
+### Choosing the right search
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-compare.jpg`
+
+1. Comparison
+2. Linear search
+3. Binary search
+4. Data order
+5. works on unsorted or sorted data
+6. requires sorted data
+7. checks each item one by one
+8. checks middle and discards half
+9. Worst case
+10. may check every item
+11. checks far fewer items for large sorted lists
+12. Exam phrase
+
+### Linear search checks each item in order
+
+- **Explains:** `linear`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-linear.jpg`
+
+1. Knowledge explanation
+2. How it works
+3. Start at the first item. Compare it with the target. If it matches, stop. If not, move to the next item until found or the list ends.
+4. When it is suitable
+5. Use it when data is unsorted, the list is small, or simplicity matters more than speed.
+6. Worst case: the target is last or absent, so every item may be checked.
+
+### Trace linear search
+
+- **Explains:** `linear-tool`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-linear-tool.jpg`
+
+1. Interactive linear trace
+2. Target in [13, 42, 56, 70]
+3. Choose a target to trace comparisons.
+
+### Cambridge pseudocode is the exam format
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Linear search pseudocode
+3. Found <- FALSE
+4. Index <- 1
+5. WHILE Found = FALSE AND Index <= Length
+6. IF List[Index] = Target THEN
+7. Found <- TRUE
+8. Index <- Index + 1
+9. ENDWHILE
+10. Java support only
+11. boolean found = false;
+12. int index = 0;
+<!-- stage10-explanations:end -->

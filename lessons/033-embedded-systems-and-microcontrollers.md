@@ -71,3 +71,50 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often say the sensor 'does the action'. Correction: sensors detect; actuators act. For this lesson, make students contrast that mistake with the exact idea of **embedded systems and microcontrollers**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### What is an embedded system?
+
+- **Explains:** `embedded`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-033-embedded.jpg`
+
+1. Dedicated purpose Designed to perform a specific task or set of tasks.
+2. Built into device Part of a larger product, such as a washing machine or traffic light.
+3. Limited interface Often has few controls or displays compared with a general-purpose computer.
+4. Real-world input/output Often reads sensors and controls actuators.
+5. Reliability focus Usually expected to run repeatedly and predictably.
+
+### The basic control loop
+
+- **Explains:** `loop`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-033-loop.jpg`
+
+1. 1. Sense A sensor captures a physical quantity, such as temperature, light, pressure or distance.
+2. 2. Process The microcontroller compares the reading with a stored rule or threshold.
+3. 3. Act An actuator changes something physically, such as opening a valve or starting a motor.
+4. 4. Repeat The sensor reads again so the system can respond to changing conditions.
+5. Example rule: IF temperature > 28°C THEN turn fan ON ELSE turn fan OFF.
+
+### Microcontroller vs general-purpose computer
+
+- **Explains:** `microcontroller`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-033-microcontroller.jpg`
+
+1. Microcontroller / embedded system
+2. General-purpose computer
+3. Designed for a specific control task.
+4. Designed to run many different programs.
+5. Hardware
+6. Often integrates CPU, memory and I/O on one chip.
+7. Separate high-performance components are common.
+8. Interface
+9. May have simple buttons, LEDs or no screen.
+10. Usually has richer input/output and user interface.
+11. Design priorities
+12. Low cost, low power, reliability, real-time response.
+<!-- stage10-explanations:end -->

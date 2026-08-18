@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -133,6 +133,20 @@ OUTPUT "Access granted"</code></pre>
           <div class="callout">A WHILE loop may run zero times if the condition is false before the first iteration.</div>
         </section>
 
+        <!-- stage10-explanation:start while -->
+        <section class="panel explanation-panel" id="explanation-while" data-explains="while" data-explanation-kind="mechanism" aria-labelledby="explanation-while-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="while">
+          <h2 class="explanation-sr-only" id="explanation-while-title">Pre-condition loop: check before running</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-129-while.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Pre-condition loop: check before running with a structured visual model." />
+            <figcaption class="explanation-sr-only">Pre-condition loop: check before running: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> WHILE loop</li><li><strong>Lesson fact:</strong> General pattern</li><li><strong>Lesson fact:</strong> WHILE Condition</li><li><strong>Lesson fact:</strong> // repeated statements</li><li><strong>Lesson fact:</strong> // update something used by Condition</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> Password example</li><li><strong>Lesson fact:</strong> INPUT Password</li><li><strong>Lesson fact:</strong> WHILE Password &lt;&gt; CorrectPassword</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Try again&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Access granted&quot;</li><li><strong>Lesson fact:</strong> A WHILE loop may run zero times if the condition is false before the first iteration.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end while -->
+
         <section class="panel" id="repeat" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="repeat">
           <div class="section-title">
             <p class="eyebrow">REPEAT...UNTIL loop</p>
@@ -156,6 +170,20 @@ UNTIL Mark &gt;= 0 AND Mark &lt;= 100</code></pre>
           <div class="callout">REPEAT...UNTIL is useful when the body must happen at least once, such as asking for the first input.</div>
         </section>
 
+        <!-- stage10-explanation:start repeat -->
+        <section class="panel explanation-panel" id="explanation-repeat" data-explains="repeat" data-explanation-kind="mechanism" aria-labelledby="explanation-repeat-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="repeat">
+          <h2 class="explanation-sr-only" id="explanation-repeat-title">Post-condition loop: run once, then check</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-129-repeat.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Post-condition loop: run once, then check with a structured visual model." />
+            <figcaption class="explanation-sr-only">Post-condition loop: run once, then check: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> REPEAT...UNTIL loop</li><li><strong>Lesson fact:</strong> General pattern</li><li><strong>Lesson fact:</strong> // repeated statements</li><li><strong>Lesson fact:</strong> // update something used by Condition</li><li><strong>Lesson fact:</strong> UNTIL Condition</li><li><strong>Lesson fact:</strong> Input validation</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> UNTIL Mark &gt;= 0 AND Mark &lt;= 100</li><li><strong>Lesson fact:</strong> REPEAT...UNTIL is useful when the body must happen at least once, such as asking for the first input.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end repeat -->
+
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">WHILE vs REPEAT</p>
@@ -169,6 +197,20 @@ UNTIL Mark &gt;= 0 AND Mark &lt;= 100</code></pre>
             <div class="table-row"><div>Typical use</div><div>read while not EOF, repeat while invalid</div><div>input validation where input must be requested once</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">The difference is when the condition is tested</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-129-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The difference is when the condition is tested with a structured visual model." />
+            <figcaption class="explanation-sr-only">The difference is when the condition is tested: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> WHILE vs REPEAT</li><li><strong>Lesson fact:</strong> REPEAT...UNTIL</li><li><strong>Lesson fact:</strong> Condition checked</li><li><strong>Lesson fact:</strong> before the loop body</li><li><strong>Lesson fact:</strong> after the loop body</li><li><strong>Lesson fact:</strong> Minimum iterations</li><li><strong>Lesson fact:</strong> Continues when</li><li><strong>Lesson fact:</strong> condition is TRUE</li><li><strong>Lesson fact:</strong> UNTIL condition becomes TRUE</li><li><strong>Lesson fact:</strong> Typical use</li><li><strong>Lesson fact:</strong> read while not EOF, repeat while invalid</li><li><strong>Lesson fact:</strong> input validation where input must be requested once</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
 
         <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
           <div class="section-title">
@@ -193,6 +235,20 @@ ENDWHILE</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start validation -->
+        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="mechanism" aria-labelledby="explanation-validation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
+          <h2 class="explanation-sr-only" id="explanation-validation-title">Keep asking until the input is valid</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-129-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Keep asking until the input is valid with a structured visual model." />
+            <figcaption class="explanation-sr-only">Keep asking until the input is valid: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Validation pattern</li><li><strong>Lesson fact:</strong> REPEAT version</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Enter mark 0 to 100&quot;</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> UNTIL Mark &gt;= 0 AND Mark &lt;= 100</li><li><strong>Lesson fact:</strong> WHILE version</li><li><strong>Lesson fact:</strong> WHILE Mark &lt; 0 OR Mark &gt; 100</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Invalid&quot;</li><li><strong>Lesson fact:</strong> ENDWHILE</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end validation -->
 
         <section class="panel" id="sentinel" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sentinel">
           <div class="section-title">
@@ -223,6 +279,20 @@ OUTPUT Total</code></pre>
           <div class="callout">The sentinel value is used to stop the loop; it should not be included in the calculation.</div>
         </section>
 
+        <!-- stage10-explanation:start sentinel -->
+        <section class="panel explanation-panel" id="explanation-sentinel" data-explains="sentinel" data-explanation-kind="mechanism" aria-labelledby="explanation-sentinel-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sentinel">
+          <h2 class="explanation-sr-only" id="explanation-sentinel-title">A special value can stop the loop</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-129-sentinel.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A special value can stop the loop with a structured visual model." />
+            <figcaption class="explanation-sr-only">A special value can stop the loop: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Sentinel values</li><li><strong>Lesson fact:</strong> Total until -1</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> INPUT Number</li><li><strong>Lesson fact:</strong> WHILE Number &lt;&gt; -1</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Number</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> Trace idea</li><li><strong>Lesson fact:</strong> Total after step</li><li><strong>Lesson fact:</strong> 11, stop</li><li><strong>Lesson fact:</strong> The sentinel value is used to stop the loop; it should not be included in the calculation.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end sentinel -->
+
         <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
             <p class="eyebrow">Java support only</p>
@@ -243,6 +313,20 @@ ENDWHILE</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start java -->
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Java syntax is support, not Cambridge pseudocode</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-129-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java syntax is support, not Cambridge pseudocode with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java syntax is support, not Cambridge pseudocode: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> WHILE Mark &lt; 0 OR Mark &gt; 100</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> while (mark &lt; 0 || mark &gt; 100) {</li><li><strong>Lesson fact:</strong> mark = scanner.nextInt();</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end java -->
 
 
         <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">

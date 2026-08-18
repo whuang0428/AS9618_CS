@@ -105,3 +105,81 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** scenario correctly distinguishes at least two consequences
 
 **Strict note:** Do not accept three repetitions of 'keeping data safe'.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Authenticity checks that identity or data origin is genuine
+
+- **Explains:** `authenticity`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-authenticity.jpg`
+
+1. Goal Users, devices, messages or files should be verified as genuine.
+2. Risk An attacker pretends to be a valid user, sender or website.
+3. Controls Authentication, digital certificates, digital signatures and multi-factor authentication can support authenticity.
+4. Exam wording Say what identity or source is being verified, not just "make it secure".
+
+### Availability keeps systems and data accessible when needed
+
+- **Explains:** `availability`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-availability.jpg`
+
+1. Goal Authorised users should be able to access data and services when required.
+2. Risk Hardware failure, network failure or overload prevents legitimate use.
+3. Controls Backups, redundancy, disaster recovery, UPS and monitoring can support availability.
+4. Exam wording State what remains accessible or recoverable, and for whom.
+
+### Confidentiality protects data from unauthorised access
+
+- **Explains:** `confidentiality`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-confidentiality.jpg`
+
+1. Goal Only authorised users should be able to view or access the data.
+2. Risk Personal details, passwords or exam marks are viewed by unauthorised people.
+3. Controls Access rights, authentication, encryption and least privilege can support confidentiality.
+4. Exam wording Say who is prevented from reading what, and why they are unauthorised.
+
+### One control can support more than one goal, but not every goal
+
+- **Explains:** `controls`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-controls.jpg`
+
+1. Often supports
+2. Encryption
+3. Confidentiality
+4. Makes data unreadable without the correct key.
+5. Access rights
+6. Confidentiality and integrity
+7. Limits who can view or alter data.
+8. Availability
+9. Allows recovery if data is lost or corrupted.
+10. Hash/checksum
+11. Integrity
+12. Can detect whether data has changed.
+
+### Integrity protects data from unauthorised or accidental alteration
+
+- **Explains:** `integrity`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-integrity.jpg`
+
+1. Goal Data should remain accurate, complete and unaltered unless changed by an authorised process.
+2. Risk Exam marks, bank balances or stock levels are changed incorrectly.
+3. Controls Validation, verification, access rights, checksums, hashes and audit trails can support integrity.
+4. Exam wording Explain how the control detects, prevents or records an incorrect change.
+
+### Use the risk chain before naming a control
+
+- **Explains:** `risk-chain`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-risk-chain.jpg`
+
+1. Asset Something valuable that needs protection, such as exam marks, passwords or customer records.
+2. Threat A possible cause of harm, such as unauthorised access, data corruption or service failure.
+3. Vulnerability A weakness that a threat could exploit, such as weak passwords or poor permissions.
+4. Control A safeguard that reduces likelihood or impact, such as access rights, backups or authentication.
+<!-- stage10-explanations:end -->

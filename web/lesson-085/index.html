@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -107,6 +107,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start orderby -->
+        <section class="panel explanation-panel" id="explanation-orderby" data-explains="orderby" data-explanation-kind="process" aria-labelledby="explanation-orderby-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="orderby">
+          <h2 class="explanation-sr-only" id="explanation-orderby-title">ORDER BY sorts output rows</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-085-orderby.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining ORDER BY sorts output rows with a structured visual model." />
+            <figcaption class="explanation-sr-only">ORDER BY sorts output rows: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> ORDER BY controls the order of the result rows. ASC means ascending; DESC means descending.</li><li><strong>Lesson fact:</strong> Ascending ORDER BY Price ASC : low to high, A to Z, oldest to newest.</li><li><strong>Lesson fact:</strong> Descending ORDER BY Price DESC : high to low, Z to A, newest to oldest.</li><li><strong>Lesson fact:</strong> Default Many SQL systems default to ascending, but exams may expect explicit ASC if asked.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end orderby -->
+
         <section class="panel" id="aggregates" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="aggregates">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -141,6 +155,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start aggregates -->
+        <section class="panel explanation-panel" id="explanation-aggregates" data-explains="aggregates" data-explanation-kind="mechanism" aria-labelledby="explanation-aggregates-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="aggregates">
+          <h2 class="explanation-sr-only" id="explanation-aggregates-title">Aggregate functions calculate one summary value</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-085-aggregates.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Aggregate functions calculate one summary value with a structured visual model." />
+            <figcaption class="explanation-sr-only">Aggregate functions calculate one summary value: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Function</li><li><strong>Lesson fact:</strong> Counts records or non-null values</li><li><strong>Lesson fact:</strong> SELECT COUNT(*) FROM Book</li><li><strong>Lesson fact:</strong> Adds numeric values</li><li><strong>Lesson fact:</strong> SELECT SUM(Price) FROM Book</li><li><strong>Lesson fact:</strong> Calculates the mean</li><li><strong>Lesson fact:</strong> SELECT AVG(Price) FROM Book</li><li><strong>Lesson fact:</strong> MIN , MAX</li><li><strong>Lesson fact:</strong> Finds smallest or largest value</li><li><strong>Lesson fact:</strong> SELECT MAX(Price) FROM Book</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end aggregates -->
+
         <section class="panel" id="groupby" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="groupby">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -153,6 +181,20 @@
           </div>
           <div class="callout">Chinese support: sort = 排序；aggregate = 汇总函数；group = 分组；per category = 每个类别。</div>
         </section>
+
+        <!-- stage10-explanation:start groupby -->
+        <section class="panel explanation-panel" id="explanation-groupby" data-explains="groupby" data-explanation-kind="mechanism" aria-labelledby="explanation-groupby-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="groupby">
+          <h2 class="explanation-sr-only" id="explanation-groupby-title">GROUP BY calculates summaries per group</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-085-groupby.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining GROUP BY calculates summaries per group with a structured visual model." />
+            <figcaption class="explanation-sr-only">GROUP BY calculates summaries per group: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Use GROUP BY when the question asks for a summary for each category, each borrower, each course or each group.</li><li><strong>Lesson fact:</strong> Pattern:</li><li><strong>Lesson fact:</strong> SELECT Category, COUNT(*) FROM Book GROUP BY Category;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end groupby -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">

@@ -105,3 +105,100 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** plans/executes it and returns/accesses matching data
 
 **Strict note:** Do not accept that the data dictionary stores the ordinary user records themselves.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Data vs information
+
+- **Explains:** `data-info`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-078-data-info.jpg`
+
+1. Data is raw facts and values. Information is data that has been processed, organised or interpreted so it has meaning.
+2. Raw data
+3. BookID=B144 , DueDate=2026-06-20 , Returned=FALSE
+4. Processing
+5. compare due date, filter not returned, group by student
+6. Information
+7. "Amira has two overdue books and needs a reminder."
+8. Loan dates, student IDs, book IDs
+9. Which students have overdue loans
+10. Temperatures, appointment times, patient IDs
+11. Patients needing urgent triage
+12. Online shop
+
+### What is a database?
+
+- **Explains:** `database`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-078-database.jpg`
+
+1. A database is an organised collection of related data that can be stored, retrieved and updated.
+2. Organised Data is arranged using defined structures, not random notes in one giant document.
+3. Related Records are connected by a shared context, such as students, books and loans.
+4. Retrievable Users can search, filter and query the data to produce information.
+5. Maintainable Data can be updated while rules help reduce invalid or inconsistent values.
+6. StudentID | Name | Form
+7. S0234 | Amira Chen | 12A
+8. S0318 | Leo Singh | 12B
+9. linked by ID
+10. LoanID | StudentID | BookID | Returned
+11. L9001 | S0234 | B144 | FALSE
+12. L9002 | S0318 | B102 | TRUE
+
+### What does a DBMS provide?
+
+- **Explains:** `dbms`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-078-dbms.jpg`
+
+1. A DBMS is software used to create, manage and control access to a database. It sits between users/applications and stored data.
+2. Data management stores, organises, retrieves and updates data; maintains metadata in a data dictionary.
+3. Data modelling helps define entities, tables, fields and the logical schema of the database.
+4. Data integrity enforces rules so values are valid and relationships remain consistent.
+5. Data security uses access rights for individuals or groups; supports backup and recovery procedures.
+6. Developer interface provides tools for creating structures, forms, reports or database applications.
+7. Query processor interprets and carries out queries so users can retrieve or change data.
+8. Exam sentence:
+9. The DBMS manages the database by controlling data definition, access, integrity, security and queries; the database is the organised data itself.
+
+### Which DBMS feature solves the problem?
+
+- **Explains:** `scenario`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-078-scenario.jpg`
+
+1. Interactive DBMS selector
+2. Choose a problem, then select the DBMS feature.
+3. The answer should name a feature and explain its purpose.
+
+### Is it data, information, database, or DBMS?
+
+- **Explains:** `sorter`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-078-sorter.jpg`
+
+1. Interactive concept sorter
+2. Scenario item
+3. Choose an item, then classify it.
+4. Reasoning will appear here.
+
+### Core relational words for this lesson
+
+- **Explains:** `terms`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-078-terms.jpg`
+
+1. This is the vocabulary doorway. Later lessons will go deeper into keys, relationships, E-R diagrams, normalisation and SQL.
+2. A thing about which data is stored
+3. Student, Book, Loan
+4. A set of records about one entity
+5. Student table
+6. Record / tuple
+7. One row in a table
+8. S0234, Amira Chen, 12A
+9. Field / attribute
+10. One column or property
+11. StudentID, Name, Form
+<!-- stage10-explanations:end -->

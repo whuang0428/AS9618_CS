@@ -71,3 +71,93 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups. For this lesson, make students contrast that mistake with the exact idea of **hacking, phishing, pharming, and denial-of-service attacks**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Compare by route and result
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-compare.jpg`
+
+1. Main result
+2. Unauthorised access to an account, device, network or system.
+3. Data viewed, copied, changed, deleted or used to impersonate a user.
+4. Phishing
+5. Deceptive message/link/site persuades the user to reveal information.
+6. Credentials or personal data stolen by tricking the user.
+7. Pharming
+8. Traffic is redirected to a fake site, possibly after the correct URL is entered.
+9. User submits data to fraudulent site without realising redirection occurred.
+10. DoS/DDoS
+11. Server or network is overwhelmed by requests/traffic.
+12. Legitimate users cannot access the service.
+
+### Controls must fit the attack route
+
+- **Explains:** `controls`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-controls.jpg`
+
+1. Against hacking Strong authentication, access rights, patching, audit logs and monitoring.
+2. Against phishing User training, checking URLs/senders, email filtering, reporting routes and MFA.
+3. Against pharming Secure DNS, certificate checks, HTTPS warnings, anti-malware and browser updates.
+4. Against DoS Traffic filtering, rate limiting, firewalls, load balancing and DDoS mitigation services.
+5. Do not overclaim. A control reduces risk; it rarely makes the attack impossible.
+
+### Start from mechanism, then discuss impact
+
+- **Explains:** `core`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-core.jpg`
+
+1. Asset Data, account, system or service being protected.
+2. Attack vector The route used by the attacker: access, deception, redirection or flooding.
+3. Impact Loss of confidentiality, integrity, availability or authenticity.
+4. Control A safeguard that reduces risk, detects attack or supports recovery.
+
+### Denial-of-service: making a service unavailable
+
+- **Explains:** `dos`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-dos.jpg`
+
+1. Mechanism Floods a server, network or service with traffic or requests so legitimate users cannot access it.
+2. DDoS Distributed DoS uses many devices/sources, making filtering harder.
+3. Impact Loss of availability, lost sales, disrupted lessons or inability to access online services.
+4. Trap DoS does not primarily mean data is stolen; the main issue is service availability.
+
+### Hacking: gaining unauthorised access to a system or data
+
+- **Explains:** `hacking`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-hacking.jpg`
+
+1. Mechanism Bypasses or abuses access controls to enter an account, device or system.
+2. Examples Using stolen credentials, exploiting a vulnerability or accessing an account without permission.
+3. Impact Data may be viewed, copied, changed or deleted; system settings may be altered.
+4. Trap Do not use "hacking" as a label for every cyber attack. It specifically involves unauthorised access.
+
+### Pharming: redirecting users to a fake website
+
+- **Explains:** `pharming`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-pharming.jpg`
+
+1. Mechanism Redirects traffic from a legitimate website to a fake one, often by attacking name resolution.
+2. User clue The user may type the correct URL but still arrive at a fraudulent page.
+3. Impact Users may submit credentials or payment details to the attacker.
+4. Trap Do not define pharming as just "sending a fake email"; that is phishing.
+
+### Phishing: tricking users into revealing information or visiting a fake page
+
+- **Explains:** `phishing`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-phishing.jpg`
+
+1. Mechanism Uses deceptive emails, messages or websites that appear to come from a trusted source.
+2. User action The user may enter credentials, personal data or payment details.
+3. Clues Urgent language, suspicious sender, unexpected link, spelling issues or mismatched URL.
+4. Impact Credential theft can lead to unauthorised access and impersonation.
+<!-- stage10-explanations:end -->

@@ -85,3 +85,112 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. For this lesson, make students contrast that mistake with the exact idea of **parameters: by value and by reference in pseudocode**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Same procedure body, different final result
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-compare.jpg`
+
+1. Side-by-side comparison
+2. By value
+3. By reference
+4. Header clue
+5. Number : INTEGER
+6. BYREF Number : INTEGER
+7. What is passed
+8. a copy of the value
+9. a reference to the caller's variable
+10. Change inside subroutine
+11. affects local parameter only
+12. can affect original variable
+
+### Do not replace Cambridge BYREF with Java syntax
+
+- **Explains:** `java`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-java.jpg`
+
+1. Java support only
+2. Cambridge exam answer format
+3. PROCEDURE Increase(BYREF Score : INTEGER)
+4. Score <- Score + 1
+5. ENDPROCEDURE
+6. Java support note
+7. // Java support example only, not exam pseudocode
+8. static void increase(int score) {
+9. score = score + 1;
+10. Java primitive parameters are passed by value. Do not use this as evidence that Cambridge BYREF is absent.
+
+### BYREF links the parameter back to the caller's variable
+
+- **Explains:** `reference`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-reference.jpg`
+
+1. Passing by reference
+2. Cambridge-style pseudocode
+3. PROCEDURE AddOne(BYREF Number : INTEGER)
+4. Number <- Number + 1
+5. ENDPROCEDURE
+6. CALL AddOne(X)
+7. OUTPUT X
+8. Trace reasoning
+9. Before call X = 5
+10. Inside procedure Number is linked to X
+11. After call caller's X becomes 6
+12. BYREF is useful when a procedure must update the caller's variable directly.
+
+### The header names the parameter. The call supplies the argument.
+
+- **Explains:** `terms`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-terms.jpg`
+
+1. Parameter and argument
+2. Parameter in the procedure header
+3. PROCEDURE DisplayMessage(Message : STRING)
+4. OUTPUT Message
+5. ENDPROCEDURE
+6. Message is the parameter. It is a named input expected by the procedure.
+7. Argument in the call
+8. CALL DisplayMessage("Ready")
+9. Text <- "Saved"
+10. CALL DisplayMessage(Text)
+11. "Ready" and Text are arguments. They are the actual values supplied.
+
+### Use it when the procedure must deliberately update caller data
+
+- **Explains:** `use`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-use.jpg`
+
+1. When to use BYREF
+2. Good use
+3. IncrementScore(BYREF Score : INTEGER) updates a stored score in the main algorithm.
+4. Swap(BYREF A : INTEGER, BYREF B : INTEGER) must change both original variables.
+5. Avoid if unnecessary
+6. If the subroutine only needs to read a value, by value is clearer and reduces accidental changes.
+
+### By value means the subroutine works with a copy
+
+- **Explains:** `value`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-value.jpg`
+
+1. Passing by value
+2. Cambridge-style pseudocode
+3. PROCEDURE AddOne(Number : INTEGER)
+4. Number <- Number + 1
+5. ENDPROCEDURE
+6. CALL AddOne(X)
+7. OUTPUT X
+8. Trace reasoning
+9. Before call X = 5
+10. Inside procedure local Number becomes 6
+11. After call caller's X is still 5
+12. No BYREF means do not update the original caller variable.
+<!-- stage10-explanations:end -->

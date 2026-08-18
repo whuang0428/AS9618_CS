@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -126,6 +126,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start pixels -->
+        <section class="panel explanation-panel" id="explanation-pixels" data-explains="pixels" data-explanation-kind="mechanism" aria-labelledby="explanation-pixels-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pixels">
+          <h2 class="explanation-sr-only" id="explanation-pixels-title">Bitmap images are pixel grids</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-008-pixels.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bitmap images are pixel grids with a structured visual model." />
+            <figcaption class="explanation-sr-only">Bitmap images are pixel grids: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> An image represented as a grid of pixels, where each pixel has a stored colour value.</li><li><strong>Lesson fact:</strong> The smallest addressable picture element in a bitmap image.</li><li><strong>Lesson fact:</strong> Metadata</li><li><strong>Lesson fact:</strong> Extra data about the file, such as dimensions or format. Exam calculations often say to ignore it.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pixels -->
+
         <section class="panel" id="resolution" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="resolution">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -146,6 +160,20 @@
           <div class="pixel-demo" id="pixelDemo" aria-label="Pixel grid demonstration"></div>
           <div class="feedback" id="pixelDemoText">Click pixels to toggle them. Each square is one stored picture element.</div>
         </section>
+
+        <!-- stage10-explanation:start resolution -->
+        <section class="panel explanation-panel" id="explanation-resolution" data-explains="resolution" data-explanation-kind="mechanism" aria-labelledby="explanation-resolution-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="resolution">
+          <h2 class="explanation-sr-only" id="explanation-resolution-title">Resolution: width × height</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-008-resolution.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Resolution: width × height with a structured visual model." />
+            <figcaption class="explanation-sr-only">Resolution: width × height: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pixel dimensions</li><li><strong>Lesson fact:</strong> 100 × 80 means 100 pixels across and 80 pixels down.</li><li><strong>Lesson fact:</strong> Total pixels: 100 × 80 = 8000.</li><li><strong>Lesson fact:</strong> Quality effect</li><li><strong>Lesson fact:</strong> Higher resolution can show more detail because more pixels are stored.</li><li><strong>Lesson fact:</strong> It also increases file size if colour depth stays the same.</li><li><strong>Lesson fact:</strong> Click pixels to toggle them. Each square is one stored picture element.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end resolution -->
 
         <section class="panel" id="depth" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="depth">
           <div class="section-title">
@@ -175,6 +203,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start depth -->
+        <section class="panel explanation-panel" id="explanation-depth" data-explains="depth" data-explanation-kind="mechanism" aria-labelledby="explanation-depth-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="depth">
+          <h2 class="explanation-sr-only" id="explanation-depth-title">Colour depth: bits per pixel</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-008-depth.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Colour depth: bits per pixel with a structured visual model." />
+            <figcaption class="explanation-sr-only">Colour depth: bits per pixel: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 1-bit colour</li><li><strong>Lesson fact:</strong> 2¹ = 2 possible colours. Useful for black/white examples.</li><li><strong>Lesson fact:</strong> 4-bit colour</li><li><strong>Lesson fact:</strong> 2⁴ = 16 possible colours.</li><li><strong>Lesson fact:</strong> 8-bit colour</li><li><strong>Lesson fact:</strong> 2⁸ = 256 possible colours.</li><li><strong>Lesson fact:</strong> 24-bit colour</li><li><strong>Lesson fact:</strong> 2²⁴ = 16 777 216 possible colours.</li><li><strong>Lesson fact:</strong> Higher colour depth allows more possible colours, but it does not magically improve a low-quality original image.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end depth -->
+
         <section class="panel" id="formula" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="formula">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -188,6 +230,20 @@
             `100 × 80 × 8 = 64 000 bits = 8000 bytes`
           </div>
         </section>
+
+        <!-- stage10-explanation:start formula -->
+        <section class="panel explanation-panel" id="explanation-formula" data-explains="formula" data-explanation-kind="mechanism" aria-labelledby="explanation-formula-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="formula">
+          <h2 class="explanation-sr-only" id="explanation-formula-title">Bitmap file size formula</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-008-formula.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bitmap file size formula with a structured visual model." />
+            <figcaption class="explanation-sr-only">Bitmap file size formula: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> file size in bits = width × height × colour depth</li><li><strong>Lesson fact:</strong> file size in bytes = bits ÷ 8</li><li><strong>Lesson fact:</strong> 100 × 80 × 8 = 64 000 bits = 8000 bytes</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end formula -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

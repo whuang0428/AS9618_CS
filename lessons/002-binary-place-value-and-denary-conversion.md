@@ -71,3 +71,52 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes. For this lesson, make students contrast that mistake with the exact idea of **binary place value and denary conversion**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### 8-bit binary place values
+
+- **Explains:** `knowledge`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-002-knowledge.jpg`
+
+1. Bit position 7 6 5 4 3 2 1 0
+2. Place value 128 64 32 16 8 4 2 1
+3. Example bits 1 0 1 1 0 1 1 0
+4. Count? yes no yes yes no yes yes no
+5. 10110110₂ = 128 + 32 + 16 + 4 + 2 = 182₁₀
+
+### Two conversion directions, two reliable methods
+
+- **Explains:** `methods`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-002-methods.jpg`
+
+1. Binary to denary
+2. Write the place-value row: 128, 64, 32, 16, 8, 4, 2, 1.
+3. Place the binary digits under the row.
+4. Add only the values with a 1 above them.
+5. Label the answer as denary.
+6. Denary to binary
+7. Start at 128 and move right.
+8. Write 1 if the place value fits into the remaining number.
+9. Subtract that place value when a 1 is used.
+10. Write 0 when it does not fit.
+
+### Range and leading zeros
+
+- **Explains:** `range`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-002-range.jpg`
+
+1. Smallest 8-bit value
+2. 00000000₂ = 0₁₀
+3. All place values are off.
+4. Largest 8-bit value
+5. 11111111₂ = 255₁₀
+6. All place values are on: 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1.
+7. Leading zeros
+8. 00000111₂ = 111₂ = 7₁₀
+9. Leading zeros preserve fixed bit width; they do not change the value.
+<!-- stage10-explanations:end -->

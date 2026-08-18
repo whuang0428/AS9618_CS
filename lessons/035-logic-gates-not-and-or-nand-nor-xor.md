@@ -71,3 +71,66 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often use everyday 'or' instead of logical OR. Correction: OR is true when at least one input is true unless XOR is specified. For this lesson, make students contrast that mistake with the exact idea of **logic gates: not, and, or, nand, nor, xor**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Six symbols, six exact output rules
+
+- **Explains:** `gate-visual`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-035-gate-visual.jpg`
+
+1. Visual explanation
+2. Read each symbol from left to right. A small circle on the output means “invert”; the extra curved input line distinguishes XOR from OR.
+3. NOT One input; output is the opposite value.
+4. AND / NAND AND tests whether both are 1; NAND inverts that result.
+5. OR / NOR OR tests whether at least one is 1; NOR inverts that result.
+6. XOR Output is 1 only when the two inputs are different.
+7. Check the diagram: what two visual clues separate NOR from XOR?
+8. NOR has an output bubble. XOR has no output bubble, but it has an extra curved line on the input side.
+
+### The six gate rules
+
+- **Explains:** `gates`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-035-gates.jpg`
+
+1. Expression
+2. Output is 1 when...
+3. Common exam wording
+4. Q = NOT A
+5. Inverts the input.
+6. Q = A AND B
+7. A and B are both 1.
+8. All conditions must be true.
+9. Q = A OR B
+10. At least one input is 1.
+11. One or both conditions are true.
+12. Q = NOT (A AND B)
+
+### Logic gates use binary signals
+
+- **Explains:** `signals`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-035-signals.jpg`
+
+1. False, off, no signal, condition not met
+2. True, on, signal present, condition met
+3. A value entering the gate, usually labelled A, B or C.
+4. The result produced by the gate, often labelled Q or X.
+
+### Recognise gate symbols and the inversion bubble
+
+- **Explains:** `symbols`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-035-symbols.jpg`
+
+1. NOT Triangle + bubble One input. Bubble means inversion.
+2. AND Flat left, curved right Output 1 only when all inputs are 1.
+3. OR Curved input side Output 1 when at least one input is 1.
+4. NAND AND + bubble Complete AND first, then invert.
+5. NOR OR + bubble Complete OR first, then invert.
+6. XOR OR with extra curved line Output 1 when inputs differ.
+7. Exam habit: if a symbol has a small bubble at the output, say "then invert the result" before writing the final column.
+<!-- stage10-explanations:end -->

@@ -71,3 +71,54 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often assume compression always makes a file smaller. Correction: compression has overhead and depends on patterns in the data. For this lesson, make students contrast that mistake with the exact idea of **compression: lossless vs lossy**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Lossless compression: exact reconstruction
+
+- **Explains:** `lossless`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-012-lossless.jpg`
+
+1. Definition
+2. Lossless compression reduces file size while allowing the original data to be restored exactly.
+3. Suitable uses
+4. Text files, program files, spreadsheets, databases, medical records and backups.
+5. If one changed bit could change meaning or break the file, lossless is the safer answer.
+
+### Lossy compression: smaller, but not exact
+
+- **Explains:** `lossy`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-012-lossy.jpg`
+
+1. Definition
+2. Lossy compression reduces file size by permanently removing some data.
+3. Suitable uses
+4. Images, video and sound where small quality loss may be acceptable.
+5. Lossy is not suitable when exact reconstruction is required.
+
+### Why compress data?
+
+- **Explains:** `purpose`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-012-purpose.jpg`
+
+1. Less storage
+2. Smaller files use less disk or memory space.
+3. Faster transfer
+4. Smaller files need less bandwidth and may download or upload faster.
+5. Trade-off
+6. Compression and decompression may require processing time.
+
+### Compression ratio and saved space
+
+- **Explains:** `ratio`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-012-ratio.jpg`
+
+1. compression ratio = original size : compressed size
+2. percentage saved = ((original - compressed) ÷ original) × 100
+3. Example: 1000 KB → 250 KB gives ratio 4:1 and 75% saved.
+<!-- stage10-explanations:end -->

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css?v=2" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -115,33 +115,17 @@
         </section>
 
         <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>How a shared resource becomes useful</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+          <h2 class="explanation-sr-only" id="explanation-purpose-title">How a shared resource becomes useful</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-016-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How a shared resource becomes useful through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How a shared resource becomes useful: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> A device packages a request and names the destination.</li><li><strong>Reason:</strong> The network carries that request to the shared resource.</li><li><strong>Result:</strong> One managed resource can then serve many authorised devices.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>A device packages a request and names the destination.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>The network carries that request to the shared resource.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>One managed resource can then serve many authorised devices.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A library serves many readers because requests reach one organised collection.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>If the path or shared service fails, many users lose access together.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> A library serves many readers because requests reach one organised collection.</p>
+            <p><strong>Boundary:</strong> If the path or shared service fails, many users lose access together.</p>
           </div>
         </section>
         <!-- stage10-explanation:end purpose -->
@@ -176,33 +160,17 @@
         </section>
 
         <!-- stage10-explanation:start lanwan -->
-        <section class="panel explanation-panel" id="explanation-lanwan" data-explains="lanwan" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lanwan">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why LAN and WAN management differs</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-lanwan" data-explains="lanwan" data-explanation-kind="comparison" aria-labelledby="explanation-lanwan-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lanwan">
+          <h2 class="explanation-sr-only" id="explanation-lanwan-title">Why LAN and WAN management differs</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-016-lanwan.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why LAN and WAN management differs through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why LAN and WAN management differs: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> A LAN usually stays within one organisation's controlled site.</li><li><strong>Reason:</strong> A WAN crosses distance and often uses provider-owned infrastructure.</li><li><strong>Result:</strong> More owners and routes add latency, cost and fault-finding complexity.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>A LAN usually stays within one organisation's controlled site.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>A WAN crosses distance and often uses provider-owned infrastructure.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>More owners and routes add latency, cost and fault-finding complexity.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Managing one campus is different from coordinating transport across several cities.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Wi-Fi does not make a network a WAN; scale and control do.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Managing one campus is different from coordinating transport across several cities.</p>
+            <p><strong>Boundary:</strong> Wi-Fi does not make a network a WAN; scale and control do.</p>
           </div>
         </section>
         <!-- stage10-explanation:end lanwan -->
@@ -294,33 +262,17 @@
         </section>
 
         <!-- stage10-explanation:start topologies -->
-        <section class="panel explanation-panel" id="explanation-topologies" data-explains="topologies" data-explanation-kind="tradeoff" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="topologies">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why connection patterns change risk</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-topologies" data-explains="topologies" data-explanation-kind="tradeoff" aria-labelledby="explanation-topologies-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="topologies">
+          <h2 class="explanation-sr-only" id="explanation-topologies-title">Why connection patterns change risk</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-016-topologies.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why connection patterns change risk through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why connection patterns change risk: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> The layout determines which physical paths data can follow.</li><li><strong>Reason:</strong> Shared paths reduce cabling but concentrate traffic and failures.</li><li><strong>Result:</strong> Alternative paths improve resilience but require more links and ports.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>The layout determines which physical paths data can follow.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Shared paths reduce cabling but concentrate traffic and failures.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Alternative paths improve resilience but require more links and ports.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Road layouts trade construction cost against alternative routes after a closure.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>No topology is universally best; cost, scale and failure tolerance decide.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Road layouts trade construction cost against alternative routes after a closure.</p>
+            <p><strong>Boundary:</strong> No topology is universally best; cost, scale and failure tolerance decide.</p>
           </div>
         </section>
         <!-- stage10-explanation:end topologies -->

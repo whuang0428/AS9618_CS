@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -111,6 +111,20 @@
           <div class="callout">Chinese support: syntax error = 语法错误；logic error = 逻辑错误；runtime error = 运行时错误；diagnostic message = 诊断信息；debugging = 调试。</div>
         </section>
 
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">Error classification depends on when and how the fault appears</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Error classification depends on when and how the fault appears with a structured visual model." />
+            <figcaption class="explanation-sr-only">Error classification depends on when and how the fault appears: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Before execution Syntax and translation errors may stop a program from being translated or run.</li><li><strong>Lesson fact:</strong> During execution Runtime errors occur while the program is running.</li><li><strong>Lesson fact:</strong> After execution Logic errors may allow completion but produce an incorrect result.</li><li><strong>Lesson fact:</strong> Diagnostics Error messages and locations help the programmer identify and correct faults.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concept -->
+
         <section class="panel" id="syntax" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="syntax">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -123,6 +137,20 @@
             <article><strong>Diagnostic</strong><span>Usually reports a line number or location near the invalid syntax.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start syntax -->
+        <section class="panel explanation-panel" id="explanation-syntax" data-explains="syntax" data-explanation-kind="mechanism" aria-labelledby="explanation-syntax-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="syntax">
+          <h2 class="explanation-sr-only" id="explanation-syntax-title">Syntax errors break the grammar rules of the language</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-syntax.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Syntax errors break the grammar rules of the language with a structured visual model." />
+            <figcaption class="explanation-sr-only">Syntax errors break the grammar rules of the language: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Meaning The code structure does not follow the language grammar.</li><li><strong>Lesson fact:</strong> Examples Missing brackets, missing keywords, invalid statement structure or misplaced punctuation.</li><li><strong>Lesson fact:</strong> Detection Detected by translator syntax analysis or parser before successful translation/execution.</li><li><strong>Lesson fact:</strong> Diagnostic Usually reports a line number or location near the invalid syntax.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end syntax -->
 
         <section class="panel" id="logic" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="logic">
           <div class="section-title">
@@ -137,6 +165,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start logic -->
+        <section class="panel explanation-panel" id="explanation-logic" data-explains="logic" data-explanation-kind="mechanism" aria-labelledby="explanation-logic-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="logic">
+          <h2 class="explanation-sr-only" id="explanation-logic-title">Logic errors make the program do the wrong thing</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-logic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Logic errors make the program do the wrong thing with a structured visual model." />
+            <figcaption class="explanation-sr-only">Logic errors make the program do the wrong thing: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Meaning The code is syntactically valid and may run, but the algorithm or condition is wrong.</li><li><strong>Lesson fact:</strong> Examples Using &lt; instead of &lt;= , wrong formula, wrong loop condition or off-by-one error.</li><li><strong>Lesson fact:</strong> Detection Usually found by testing, tracing or comparing actual output with expected output.</li><li><strong>Lesson fact:</strong> Trap A translator may not detect it because the instructions are legal.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end logic -->
+
         <section class="panel" id="runtime" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="runtime">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -150,6 +192,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start runtime -->
+        <section class="panel explanation-panel" id="explanation-runtime" data-explains="runtime" data-explanation-kind="mechanism" aria-labelledby="explanation-runtime-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="runtime">
+          <h2 class="explanation-sr-only" id="explanation-runtime-title">Runtime errors occur while the program is executing</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-runtime.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Runtime errors occur while the program is executing with a structured visual model." />
+            <figcaption class="explanation-sr-only">Runtime errors occur while the program is executing: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Meaning The program starts running but fails because of an event or invalid operation during execution.</li><li><strong>Lesson fact:</strong> Examples Division by zero, file not found, array index out of range or insufficient memory.</li><li><strong>Lesson fact:</strong> Result The program may crash, halt, raise an exception or display an error message.</li><li><strong>Lesson fact:</strong> Handling Robust programs may use validation and exception handling to reduce runtime failure.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end runtime -->
+
         <section class="panel" id="diagnostics" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="diagnostics">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
@@ -162,6 +218,20 @@
             <article><strong>Limitation</strong><span>The reported line may be near the cause, not always the exact cause.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start diagnostics -->
+        <section class="panel explanation-panel" id="explanation-diagnostics" data-explains="diagnostics" data-explanation-kind="mechanism" aria-labelledby="explanation-diagnostics-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="diagnostics">
+          <h2 class="explanation-sr-only" id="explanation-diagnostics-title">Translation diagnostics help locate and correct errors</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-diagnostics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Translation diagnostics help locate and correct errors with a structured visual model." />
+            <figcaption class="explanation-sr-only">Translation diagnostics help locate and correct errors: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Compiler May report a list of errors after attempting translation.</li><li><strong>Lesson fact:</strong> Interpreter May stop at or near the statement being translated/executed.</li><li><strong>Lesson fact:</strong> Useful details Error type, line number, token, expected symbol or explanation of the fault.</li><li><strong>Lesson fact:</strong> Limitation The reported line may be near the cause, not always the exact cause.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end diagnostics -->
 
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
@@ -195,6 +265,20 @@
             </div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare error types by evidence</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-059-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare error types by evidence with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compare error types by evidence: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Error type</li><li><strong>Lesson fact:</strong> When noticed</li><li><strong>Lesson fact:</strong> Evidence</li><li><strong>Lesson fact:</strong> Translation/parsing time</li><li><strong>Lesson fact:</strong> Invalid grammar or structure.</li><li><strong>Lesson fact:</strong> Missing bracket or malformed IF statement.</li><li><strong>Lesson fact:</strong> Testing/output checking</li><li><strong>Lesson fact:</strong> Program runs but result is incorrect.</li><li><strong>Lesson fact:</strong> Average calculated with wrong divisor.</li><li><strong>Lesson fact:</strong> While executing</li><li><strong>Lesson fact:</strong> Program fails due to operation or resource problem.</li><li><strong>Lesson fact:</strong> Division by zero or file not found.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

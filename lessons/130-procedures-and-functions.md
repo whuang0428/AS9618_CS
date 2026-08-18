@@ -97,3 +97,117 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. For this lesson, make students contrast that mistake with the exact idea of **procedures and functions**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Function calls can appear where a value is needed
+
+- **Explains:** `calls`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-130-calls.jpg`
+
+1. Calls and returned values
+2. CALL DisplayMenu()
+3. procedure call performs an action
+4. VAT <- CalculateVAT(Price)
+5. function return value is stored
+6. Total <- DisplayMenu()
+7. procedure does not return a value
+8. OUTPUT CalculateVAT(Price)
+9. function return value can be output
+
+### The mark-winning difference is the returned value
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-130-compare.jpg`
+
+1. Procedure vs function
+2. Procedure
+3. Function
+4. Main purpose
+5. perform an action
+6. return a value
+7. PROCEDURE Name(...)
+8. FUNCTION Name(...) RETURNS Type
+9. End keyword
+10. ENDPROCEDURE
+11. ENDFUNCTION
+12. Typical call
+
+### A function returns a value to the caller
+
+- **Explains:** `function`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-130-function.jpg`
+
+1. Function
+2. Cambridge-style pseudocode
+3. FUNCTION CalculateVAT(Price : REAL) RETURNS REAL
+4. RETURN Price * 0.20
+5. ENDFUNCTION
+6. VAT <- CalculateVAT(120.00)
+7. When it fits
+8. Use a function when a calculated, searched or checked result must be used later in the algorithm.
+9. A function should have a return type and a RETURN statement that matches that type.
+
+### Java method syntax is not Cambridge pseudocode
+
+- **Explains:** `java`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-130-java.jpg`
+
+1. Java support only
+2. Cambridge-style pseudocode
+3. FUNCTION CalculateVAT(Price : REAL) RETURNS REAL
+4. RETURN Price * 0.20
+5. ENDFUNCTION
+6. Java support example only
+7. static double calculateVAT(double price) {
+8. return price * 0.20;
+
+### Parameters receive values passed into a subroutine
+
+- **Explains:** `parameters`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-130-parameters.jpg`
+
+1. Parameters and arguments
+2. Parameter in the header
+3. FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN
+4. IF Mark >= 50 THEN
+5. RETURN TRUE
+6. RETURN FALSE
+7. ENDFUNCTION
+8. Argument in the call
+9. Result <- IsPass(67)
+10. IF IsPass(StudentMark) THEN
+11. OUTPUT "Pass"
+
+### A procedure performs actions and does not have to return a value
+
+- **Explains:** `procedure`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-130-procedure.jpg`
+
+1. Procedure
+2. Cambridge-style pseudocode
+3. PROCEDURE DisplayMenu()
+4. OUTPUT "1. Add score"
+5. OUTPUT "2. Quit"
+6. ENDPROCEDURE
+7. CALL DisplayMenu()
+8. When it fits
+9. Use a procedure when the algorithm needs an action such as output, input, updating a structure or repeated commands.
+10. A procedure may change data, but it is not used as an expression like Total <- DisplayMenu() .
+
+### Calculate a function return value
+
+- **Explains:** `returner`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-130-returner.jpg`
+
+1. Interactive return simulator
+2. Use CalculateVAT(Price) to return Price * 0.20 .
+<!-- stage10-explanations:end -->

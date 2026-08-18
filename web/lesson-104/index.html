@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -120,6 +120,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start linear -->
+        <section class="panel explanation-panel" id="explanation-linear" data-explains="linear" data-explanation-kind="mechanism" aria-labelledby="explanation-linear-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="linear">
+          <h2 class="explanation-sr-only" id="explanation-linear-title">Linear search checks each item in order</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-linear.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Linear search checks each item in order with a structured visual model." />
+            <figcaption class="explanation-sr-only">Linear search checks each item in order: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> How it works</li><li><strong>Lesson fact:</strong> Start at the first item. Compare it with the target. If it matches, stop. If not, move to the next item until found or the list ends.</li><li><strong>Lesson fact:</strong> When it is suitable</li><li><strong>Lesson fact:</strong> Use it when data is unsorted, the list is small, or simplicity matters more than speed.</li><li><strong>Lesson fact:</strong> Worst case: the target is last or absent, so every item may be checked.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end linear -->
+
         <section class="panel" id="binary" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="binary">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
@@ -135,6 +149,20 @@
           <div class="callout">Binary search requires sorted data. 二分搜索必须基于有序数据，否则无法安全排除一半数据。</div>
         </section>
 
+        <!-- stage10-explanation:start binary -->
+        <section class="panel explanation-panel" id="explanation-binary" data-explains="binary" data-explanation-kind="process" aria-labelledby="explanation-binary-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="binary">
+          <h2 class="explanation-sr-only" id="explanation-binary-title">Binary search repeatedly halves a sorted list</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-binary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Binary search repeatedly halves a sorted list with a structured visual model." />
+            <figcaption class="explanation-sr-only">Binary search repeatedly halves a sorted list: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> 1 Set Low to first index and High to last index.</li><li><strong>Lesson fact:</strong> 2 Find Mid, the middle index.</li><li><strong>Lesson fact:</strong> 3 Compare List[Mid] with Target.</li><li><strong>Lesson fact:</strong> 4 If target is smaller, move High left; if larger, move Low right.</li><li><strong>Lesson fact:</strong> 5 Stop when found or Low is greater than High.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end binary -->
+
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Comparison</p>
@@ -148,6 +176,20 @@
             <div class="table-row" role="row"><div>Exam phrase</div><div>"sequentially compare each item with target"</div><div>"compare middle item and adjust low/high bounds"</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Choosing the right search</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Choosing the right search with a structured visual model." />
+            <figcaption class="explanation-sr-only">Choosing the right search: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Comparison</li><li><strong>Lesson fact:</strong> Linear search</li><li><strong>Lesson fact:</strong> Binary search</li><li><strong>Lesson fact:</strong> Data order</li><li><strong>Lesson fact:</strong> works on unsorted or sorted data</li><li><strong>Lesson fact:</strong> requires sorted data</li><li><strong>Lesson fact:</strong> checks each item one by one</li><li><strong>Lesson fact:</strong> checks middle and discards half</li><li><strong>Lesson fact:</strong> Worst case</li><li><strong>Lesson fact:</strong> may check every item</li><li><strong>Lesson fact:</strong> checks far fewer items for large sorted lists</li><li><strong>Lesson fact:</strong> Exam phrase</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
 
         <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
@@ -182,6 +224,20 @@ while (!found &amp;&amp; index &lt; list.length) {
           </div>
           <div class="callout">Exam reminder: Java array indexing starts at 0; Cambridge pseudocode examples often use index 1. Keep the notation you are using consistent.</div>
         </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Cambridge pseudocode is the exam format</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge pseudocode is the exam format with a structured visual model." />
+            <figcaption class="explanation-sr-only">Cambridge pseudocode is the exam format: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Linear search pseudocode</li><li><strong>Lesson fact:</strong> Found &lt;- FALSE</li><li><strong>Lesson fact:</strong> Index &lt;- 1</li><li><strong>Lesson fact:</strong> WHILE Found = FALSE AND Index &lt;= Length</li><li><strong>Lesson fact:</strong> IF List[Index] = Target THEN</li><li><strong>Lesson fact:</strong> Found &lt;- TRUE</li><li><strong>Lesson fact:</strong> Index &lt;- Index + 1</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> boolean found = false;</li><li><strong>Lesson fact:</strong> int index = 0;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
 
 
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
@@ -223,6 +279,20 @@ while (!found &amp;&amp; index &lt; list.length) {
           <div class="trace-output" id="linearResult">Choose a target to trace comparisons.</div>
         </section>
 
+        <!-- stage10-explanation:start linear-tool -->
+        <section class="panel explanation-panel" id="explanation-linear-tool" data-explains="linear-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-linear-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="linear-tool">
+          <h2 class="explanation-sr-only" id="explanation-linear-tool-title">Trace linear search</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-linear-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace linear search with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trace linear search: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive linear trace</li><li><strong>Lesson fact:</strong> Target in [13, 42, 56, 70]</li><li><strong>Lesson fact:</strong> Choose a target to trace comparisons.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end linear-tool -->
+
         <section class="panel" id="binary-tool" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="binary-tool">
           <div class="section-title">
             <p class="eyebrow">Interactive binary trace</p>
@@ -241,6 +311,20 @@ while (!found &amp;&amp; index &lt; list.length) {
           </div>
           <div class="trace-output" id="binaryResult">Choose a target to trace low, mid and high.</div>
         </section>
+
+        <!-- stage10-explanation:start binary-tool -->
+        <section class="panel explanation-panel" id="explanation-binary-tool" data-explains="binary-tool" data-explanation-kind="process" aria-labelledby="explanation-binary-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="binary-tool">
+          <h2 class="explanation-sr-only" id="explanation-binary-tool-title">Trace binary search on sorted data</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-104-binary-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace binary search on sorted data with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trace binary search on sorted data: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive binary trace</li><li><strong>Lesson fact:</strong> Target in [13, 21, 42, 56, 70, 88, 91]</li><li><strong>Lesson fact:</strong> Choose a target to trace low, mid and high.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end binary-tool -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

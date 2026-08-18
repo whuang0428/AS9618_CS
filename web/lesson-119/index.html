@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -112,6 +112,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">One array, many records, same record shape</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One array, many records, same record shape with a structured visual model." />
+            <figcaption class="explanation-sr-only">One array, many records, same record shape: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Array of records</li><li><strong>Lesson fact:</strong> array where each element is a record</li><li><strong>Lesson fact:</strong> Students[1:30]</li><li><strong>Lesson fact:</strong> selects one record from the array</li><li><strong>Lesson fact:</strong> Students[5]</li><li><strong>Lesson fact:</strong> selects one named value inside that record</li><li><strong>Lesson fact:</strong> Combined access</li><li><strong>Lesson fact:</strong> index first, field second</li><li><strong>Lesson fact:</strong> Students[5].Mark</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concept -->
+
         <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
           <div class="section-title">
             <p class="eyebrow">Declare</p>
@@ -137,6 +151,20 @@ Students[1].Mark &lt;- 72</code></pre>
           <div class="callout">The record type describes one element. The array declaration creates many elements of that type.</div>
         </section>
 
+        <!-- stage10-explanation:start declare -->
+        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+          <h2 class="explanation-sr-only" id="explanation-declare-title">Define the record type, then declare the array</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Define the record type, then declare the array with a structured visual model." />
+            <figcaption class="explanation-sr-only">Define the record type, then declare the array: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Record type</li><li><strong>Lesson fact:</strong> TYPE TStudent</li><li><strong>Lesson fact:</strong> DECLARE Name : STRING</li><li><strong>Lesson fact:</strong> DECLARE Mark : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Enrolled : BOOLEAN</li><li><strong>Lesson fact:</strong> Array of records</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:30] OF TStudent</li><li><strong>Lesson fact:</strong> Students[1].Name &lt;- &quot;Ali&quot;</li><li><strong>Lesson fact:</strong> Students[1].Mark &lt;- 72</li><li><strong>Lesson fact:</strong> The record type describes one element. The array declaration creates many elements of that type.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end declare -->
+
         <section class="panel" id="access" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
           <div class="section-title">
             <p class="eyebrow">Access pattern</p>
@@ -149,6 +177,20 @@ Students[1].Mark &lt;- 72</code></pre>
             <div class="table-row" role="row"><div>Test one field</div><div><code>IF Students[Index].Enrolled = TRUE THEN</code></div><div>Boolean field in current record</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start access -->
+        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
+          <h2 class="explanation-sr-only" id="explanation-access-title">Index first, then field name</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-access.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Index first, then field name with a structured visual model." />
+            <figcaption class="explanation-sr-only">Index first, then field name: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Access pattern</li><li><strong>Lesson fact:</strong> Pseudocode</li><li><strong>Lesson fact:</strong> Read one field</li><li><strong>Lesson fact:</strong> OUTPUT Students[3].Name</li><li><strong>Lesson fact:</strong> name field of record 3</li><li><strong>Lesson fact:</strong> Update one field</li><li><strong>Lesson fact:</strong> Students[3].Mark &lt;- 80</li><li><strong>Lesson fact:</strong> mark field of record 3</li><li><strong>Lesson fact:</strong> Test one field</li><li><strong>Lesson fact:</strong> IF Students[Index].Enrolled = TRUE THEN</li><li><strong>Lesson fact:</strong> Boolean field in current record</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end access -->
 
         <section class="panel" id="traversal" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
           <div class="section-title">
@@ -163,6 +205,20 @@ NEXT Index</code></pre>
           <div class="callout">The loop variable chooses the current record. The field name chooses which value to inspect.</div>
         </section>
 
+        <!-- stage10-explanation:start traversal -->
+        <section class="panel explanation-panel" id="explanation-traversal" data-explains="traversal" data-explanation-kind="mechanism" aria-labelledby="explanation-traversal-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
+          <h2 class="explanation-sr-only" id="explanation-traversal-title">A loop visits each record; field access uses the loop index</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-traversal.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A loop visits each record; field access uses the loop index with a structured visual model." />
+            <figcaption class="explanation-sr-only">A loop visits each record; field access uses the loop index: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Traversal</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 30</li><li><strong>Lesson fact:</strong> IF Students[Index].Mark &gt;= 70 THEN</li><li><strong>Lesson fact:</strong> OUTPUT Students[Index].Name</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> The loop variable chooses the current record. The field name chooses which value to inspect.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end traversal -->
+
         <section class="panel" id="operations" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="operations">
           <div class="section-title">
             <p class="eyebrow">Common operations</p>
@@ -175,6 +231,20 @@ NEXT Index</code></pre>
             <div class="table-row" role="row"><div>Update</div><div><code>Students[Index].Mark &lt; 40</code></div><div>change a status or mark field</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start operations -->
+        <section class="panel explanation-panel" id="explanation-operations" data-explains="operations" data-explanation-kind="process" aria-labelledby="explanation-operations-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="operations">
+          <h2 class="explanation-sr-only" id="explanation-operations-title">Search, count and update fields</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-operations.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Search, count and update fields with a structured visual model." />
+            <figcaption class="explanation-sr-only">Search, count and update fields: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Common operations</li><li><strong>Lesson fact:</strong> Operation</li><li><strong>Lesson fact:</strong> Typical condition</li><li><strong>Lesson fact:</strong> Typical action</li><li><strong>Lesson fact:</strong> Students[Index].Name = TargetName</li><li><strong>Lesson fact:</strong> output index or record details</li><li><strong>Lesson fact:</strong> Students[Index].Enrolled = TRUE</li><li><strong>Lesson fact:</strong> Count &lt;- Count + 1</li><li><strong>Lesson fact:</strong> Students[Index].Mark &lt; 40</li><li><strong>Lesson fact:</strong> change a status or mark field</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end operations -->
 
         <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
@@ -201,6 +271,20 @@ for (int index = 0; index &lt; 30; index++) {
           </div>
           <div class="callout">Paper 2 reminder: Java arrays are often zero-based. Cambridge pseudocode ranges follow the declaration shown in the question.</div>
         </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Same structure, different syntax</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same structure, different syntax with a structured visual model." />
+            <figcaption class="explanation-sr-only">Same structure, different syntax: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:30] OF TStudent</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 30</li><li><strong>Lesson fact:</strong> OUTPUT Students[Index].Name</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Student[] students = new Student[30];</li><li><strong>Lesson fact:</strong> for (int index = 0; index &lt; 30; index++) {</li><li><strong>Lesson fact:</strong> System.out.println(students[index].name);</li><li><strong>Lesson fact:</strong> Paper 2 reminder: Java arrays are often zero-based. Cambridge pseudocode ranges follow the declaration shown in the question.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
 
 
         <section class="panel" id="explorer" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="explorer">
@@ -229,6 +313,20 @@ for (int index = 0; index &lt; 30; index++) {
           </div>
           <div class="trace-output" id="fieldResult">Choose an index and a field to read from the array of records.</div>
         </section>
+
+        <!-- stage10-explanation:start explorer -->
+        <section class="panel explanation-panel" id="explanation-explorer" data-explains="explorer" data-explanation-kind="mechanism" aria-labelledby="explanation-explorer-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="explorer">
+          <h2 class="explanation-sr-only" id="explanation-explorer-title">Read a field from a selected record</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-119-explorer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read a field from a selected record with a structured visual model." />
+            <figcaption class="explanation-sr-only">Read a field from a selected record: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive record explorer</li><li><strong>Lesson fact:</strong> Record index</li><li><strong>Lesson fact:</strong> Choose an index and a field to read from the array of records.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end explorer -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">

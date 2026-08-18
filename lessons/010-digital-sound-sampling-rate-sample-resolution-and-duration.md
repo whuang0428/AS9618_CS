@@ -71,3 +71,65 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it. For this lesson, make students contrast that mistake with the exact idea of **digital sound: sampling rate, sample resolution, and duration**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Duration: how long the sound lasts
+
+- **Explains:** `duration`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-010-duration.jpg`
+
+1. Seconds matter
+2. A 10-second clip stores ten times as many samples as a 1-second clip if the sample rate is unchanged.
+3. Mono for today
+4. This lesson uses mono sound, so there is one channel. Stereo channels are handled in the next calculation lesson.
+
+### Basic mono sound file size formula
+
+- **Explains:** `formula`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-010-formula.jpg`
+
+1. size in bits = sampling rate × sample resolution × duration
+2. size in bytes = bits ÷ 8
+3. 8000 × 16 × 10 = 1 280 000 bits = 160 000 bytes
+
+### Sampling rate: samples per second
+
+- **Explains:** `rate`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-010-rate.jpg`
+
+1. Definition
+2. Sampling rate is the number of samples taken each second.
+3. It is commonly measured in hertz, Hz.
+4. A higher sampling rate records more measurements each second.
+5. This can improve accuracy, but increases file size.
+
+### Sample resolution: bits per sample
+
+- **Explains:** `resolution`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-010-resolution.jpg`
+
+1. 8-bit sample resolution
+2. 2⁸ = 256 possible amplitude levels.
+3. 16-bit sample resolution
+4. 2¹⁶ = 65 536 possible amplitude levels.
+5. Quality trade-off
+6. More bits per sample can store amplitude more precisely, but uses more storage.
+
+### Sampling turns an analogue wave into digital values
+
+- **Explains:** `sampling`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-010-sampling.jpg`
+
+1. Analogue sound
+2. A continuous wave. The pressure changes smoothly over time.
+3. A measurement of the wave amplitude at one moment in time.
+4. Digital sound
+5. A sequence of sample values stored as binary numbers.
+<!-- stage10-explanations:end -->

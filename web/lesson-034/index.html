@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -134,6 +134,20 @@
           <div class="callout">Chinese support: sensor = 传感器；physical quantity = 物理量；threshold = 阈值；reading = 读数。</div>
         </section>
 
+        <!-- stage10-explanation:start sensors -->
+        <section class="panel explanation-panel" id="explanation-sensors" data-explains="sensors" data-explanation-kind="mechanism" aria-labelledby="explanation-sensors-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sensors">
+          <h2 class="explanation-sr-only" id="explanation-sensors-title">Sensors capture physical data</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-034-sensors.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sensors capture physical data with a structured visual model." />
+            <figcaption class="explanation-sr-only">Sensors capture physical data: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Example system</li><li><strong>Lesson fact:</strong> Exam warning</li><li><strong>Lesson fact:</strong> Temperature</li><li><strong>Lesson fact:</strong> Heat / temperature value</li><li><strong>Lesson fact:</strong> Greenhouse fan, thermostat, freezer alarm</li><li><strong>Lesson fact:</strong> It detects temperature; it does not cool the room.</li><li><strong>Lesson fact:</strong> Light intensity</li><li><strong>Lesson fact:</strong> Street lights, phone brightness</li><li><strong>Lesson fact:</strong> The output may be a lamp, not the sensor.</li><li><strong>Lesson fact:</strong> Pressure</li><li><strong>Lesson fact:</strong> Force/pressure level</li><li><strong>Lesson fact:</strong> Burglar mat, weighing scale, tyre pressure</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end sensors -->
+
         <section class="panel" id="actuators" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="actuators">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -148,6 +162,20 @@
           </div>
           <div class="callout">An actuator receives an output signal. It does not decide the rule; the processor/controller does that.</div>
         </section>
+
+        <!-- stage10-explanation:start actuators -->
+        <section class="panel explanation-panel" id="explanation-actuators" data-explains="actuators" data-explanation-kind="mechanism" aria-labelledby="explanation-actuators-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="actuators">
+          <h2 class="explanation-sr-only" id="explanation-actuators-title">Actuators turn output signals into physical action</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-034-actuators.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Actuators turn output signals into physical action with a structured visual model." />
+            <figcaption class="explanation-sr-only">Actuators turn output signals into physical action: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Motor Creates movement, such as opening a door or spinning a fan.</li><li><strong>Lesson fact:</strong> Valve Controls flow of water, gas or air.</li><li><strong>Lesson fact:</strong> Heater Changes temperature by producing heat.</li><li><strong>Lesson fact:</strong> Light Turns visual warning or illumination on/off.</li><li><strong>Lesson fact:</strong> Lock / brake Controls physical safety or movement.</li><li><strong>Lesson fact:</strong> An actuator receives an output signal. It does not decide the rule; the processor/controller does that.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end actuators -->
 
         <section class="panel" id="control" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="control">
           <div class="section-title">
@@ -218,6 +246,20 @@
             <p>The sensor only measures temperature and sends a reading. The controller makes the decision, while the fan or vent is the actuator that changes the physical condition.</p>
           </details>
         </section>
+
+        <!-- stage10-explanation:start control -->
+        <section class="panel explanation-panel" id="explanation-control" data-explains="control" data-explanation-kind="mechanism" aria-labelledby="explanation-control-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="control">
+          <h2 class="explanation-sr-only" id="explanation-control-title">Control systems use rules and feedback</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-034-control.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Control systems use rules and feedback with a structured visual model." />
+            <figcaption class="explanation-sr-only">Control systems use rules and feedback: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 1 Sensor reads</li><li><strong>Lesson fact:</strong> 2 Processor compares</li><li><strong>Lesson fact:</strong> 3 Fan and vent act</li><li><strong>Lesson fact:</strong> The solid arrows show input and output signals. The dashed arrow shows feedback: the changed temperature is measured again.</li><li><strong>Lesson fact:</strong> Sense: the temperature sensor produces a reading.</li><li><strong>Lesson fact:</strong> Compare: the controller compares the reading with its threshold.</li><li><strong>Lesson fact:</strong> Act: an output signal switches or adjusts the fan and vent.</li><li><strong>Lesson fact:</strong> Repeat: a new reading checks whether further action is needed.</li><li><strong>Lesson fact:</strong> Input Sensor reads the physical condition.</li><li><strong>Lesson fact:</strong> Decision Processor compares the reading with a threshold or rule.</li><li><strong>Lesson fact:</strong> Output Signal is sent to an actuator.</li><li><strong>Lesson fact:</strong> Feedback New sensor readings check the result.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end control -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

@@ -92,3 +92,84 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **sequence, selection, and iteration in algorithms**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Real algorithms usually combine the three structures
+
+- **Explains:** `combining`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-102-combining.jpg`
+
+1. Combining structures
+2. 1 Use sequence to initialise variables and read inputs.
+3. 2 Use iteration when the same action happens repeatedly.
+4. 3 Use selection inside the loop when each item needs a decision.
+5. 4 Use sequence after the loop to calculate or output final results.
+6. 5 Indent nested structures so the examiner can see the logic.
+
+### Iteration: repeat steps
+
+- **Explains:** `iteration`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-102-iteration.jpg`
+
+1. Knowledge explanation
+2. Use when
+3. Cambridge-style pattern
+4. Count-controlled
+5. the number of repeats is known
+6. FOR Count <- 1 TO 10 ... NEXT Count
+7. Condition-controlled
+8. repeat until a condition changes
+9. WHILE Number <> -1 ... ENDWHILE
+10. Repeat-until style
+11. the body must run at least once
+12. REPEAT ... UNTIL Valid = TRUE
+
+### Cambridge pseudocode is the exam form; Java is support only
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-102-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style pseudocode
+3. PassCount <- 0
+4. FOR Count <- 1 TO 5
+5. INPUT Mark
+6. IF Mark >= 50 THEN
+7. PassCount <- PassCount + 1
+8. NEXT Count
+9. OUTPUT PassCount
+10. Java support only
+11. int passCount = 0;
+12. for (int count = 1; count <= 5; count++) {
+
+### Selection: choose a path using a condition
+
+- **Explains:** `selection`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-102-selection.jpg`
+
+1. Knowledge explanation
+2. Selection is used when the algorithm must decide between different actions.
+3. INPUT Mark
+4. IF Mark >= 50 THEN
+5. OUTPUT "Pass"
+6. OUTPUT "Resit"
+
+### Sequence: steps run in a fixed order
+
+- **Explains:** `sequence`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-102-sequence.jpg`
+
+1. Knowledge explanation
+2. Sequence is used when every step must happen once, in order, with no branch and no repetition.
+3. INPUT Length
+4. INPUT Width
+5. Area <- Length * Width
+6. OUTPUT Area
+<!-- stage10-explanations:end -->

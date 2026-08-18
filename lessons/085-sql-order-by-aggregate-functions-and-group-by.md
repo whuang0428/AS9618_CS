@@ -71,3 +71,45 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often select every field with `*`. Correction: exam questions usually specify exactly which fields are required. For this lesson, make students contrast that mistake with the exact idea of **sql order by, aggregate functions, and group by**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Aggregate functions calculate one summary value
+
+- **Explains:** `aggregates`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-085-aggregates.jpg`
+
+1. Function
+2. Counts records or non-null values
+3. SELECT COUNT(*) FROM Book
+4. Adds numeric values
+5. SELECT SUM(Price) FROM Book
+6. Calculates the mean
+7. SELECT AVG(Price) FROM Book
+8. MIN , MAX
+9. Finds smallest or largest value
+10. SELECT MAX(Price) FROM Book
+
+### GROUP BY calculates summaries per group
+
+- **Explains:** `groupby`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-085-groupby.jpg`
+
+1. Use GROUP BY when the question asks for a summary for each category, each borrower, each course or each group.
+2. Pattern:
+3. SELECT Category, COUNT(*) FROM Book GROUP BY Category;
+
+### ORDER BY sorts output rows
+
+- **Explains:** `orderby`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-085-orderby.jpg`
+
+1. ORDER BY controls the order of the result rows. ASC means ascending; DESC means descending.
+2. Ascending ORDER BY Price ASC : low to high, A to Z, oldest to newest.
+3. Descending ORDER BY Price DESC : high to low, Z to A, newest to oldest.
+4. Default Many SQL systems default to ascending, but exams may expect explicit ASC if asked.
+<!-- stage10-explanations:end -->

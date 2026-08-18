@@ -71,3 +71,103 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement. For this lesson, make students contrast that mistake with the exact idea of **privacy, surveillance, and data protection**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Choose a weak policy and see what is missing
+
+- **Explains:** `checklist`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-073-checklist.jpg`
+
+1. Interactive data protection checklist
+2. Weak policy
+
+### Use a privacy impact answer structure
+
+- **Explains:** `method`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-073-method.jpg`
+
+1. 1. Data Name the personal or sensitive data being collected.
+2. 2. Purpose Explain why the organisation claims it is needed.
+3. 3. Risk Describe misuse, over-collection, surveillance or unfair effect.
+4. 4. Safeguard Recommend a specific protection and link it to the risk.
+5. Answer frame:
+6. The system collects [data] for [purpose]. This may affect privacy because [risk]. A suitable safeguard is [control], which reduces the risk by [mechanism].
+
+### Good answers link a principle to a concrete risk
+
+- **Explains:** `principles`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-073-principles.jpg`
+
+1. Principle
+2. Plain English
+3. Scenario use
+4. Fair and lawful use
+5. Do not mislead users or use data in unexpected harmful ways.
+6. A health app should not secretly sell location patterns.
+7. Data minimisation
+8. Collect less when less is enough.
+9. A step counter may not need contacts or microphone access.
+10. Retention
+11. Do not keep personal data forever by default.
+12. CCTV footage should be deleted after a defined period unless needed.
+
+### Privacy is control over personal information
+
+- **Explains:** `privacy`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-073-privacy.jpg`
+
+1. Privacy The ability to control how personal information is collected, used and shared.
+2. Personal data Data that can identify a person directly or indirectly.
+3. Sensitive data Data that could cause greater harm if misused, such as health, biometric or location data.
+4. Consent A clear agreement to a specific use of data, based on understandable information.
+
+### Data protection reduces misuse and unnecessary exposure
+
+- **Explains:** `protection`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-073-protection.jpg`
+
+1. Data minimisation Collect only what is necessary for the stated purpose.
+2. Purpose limitation Use data only for the purpose users were told about.
+3. Access control Limit who can view, edit or export personal data.
+4. Retention limit Delete data when it is no longer needed.
+5. Transparency Explain what data is collected, why and how it is used.
+6. Security Protect data using measures such as encryption, authentication and audit trails.
+7. Accuracy Keep personal data correct and allow errors to be corrected.
+8. Accountability Record and justify processing decisions so misuse can be investigated.
+
+### Find the privacy risk in a data collection scenario
+
+- **Explains:** `scanner`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-073-scanner.jpg`
+
+1. Interactive privacy scanner
+2. Select a scenario and compare data collected, risk and safeguard.
+3. Scenario
+
+### Surveillance can protect people, but it changes behaviour and trust
+
+- **Explains:** `surveillance`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-073-surveillance.jpg`
+
+1. Monitoring example
+2. Possible benefit
+3. Privacy concern
+4. CCTV with analytics
+5. Deter crime and support emergency response.
+6. May track people who have done nothing wrong.
+7. School device monitoring
+8. Detect unsafe websites, bullying or misuse.
+9. May record personal activity if scope is unclear.
+10. Workplace productivity tracking
+11. Identify workload issues and bottlenecks.
+12. May create pressure and reduce trust.
+<!-- stage10-explanations:end -->

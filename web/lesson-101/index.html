@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -116,6 +116,20 @@ OUTPUT Total</code></pre>
           <div class="callout">Chinese support: trace table = 跟踪表；dry run = 手动执行；variable = 变量；output column = 输出列。</div>
         </section>
 
+        <!-- stage10-explanation:start trace-table -->
+        <section class="panel explanation-panel" id="explanation-trace-table" data-explains="trace-table" data-explanation-kind="mechanism" aria-labelledby="explanation-trace-table-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace-table">
+          <h2 class="explanation-sr-only" id="explanation-trace-table-title">A trace table records variables after each change</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-101-trace-table.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A trace table records variables after each change with a structured visual model." />
+            <figcaption class="explanation-sr-only">A trace table records variables after each change: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> What it records</li><li><strong>Lesson fact:</strong> Exam note</li><li><strong>Lesson fact:</strong> Line / step</li><li><strong>Lesson fact:</strong> which statement is being executed</li><li><strong>Lesson fact:</strong> optional, but useful for debugging</li><li><strong>Lesson fact:</strong> Input value</li><li><strong>Lesson fact:</strong> the test data read by INPUT</li><li><strong>Lesson fact:</strong> do not invent values not given by the question</li><li><strong>Lesson fact:</strong> Variable columns</li><li><strong>Lesson fact:</strong> current values of Count, Total, Mark, Found, etc.</li><li><strong>Lesson fact:</strong> write changed values clearly</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end trace-table -->
+
         <section class="panel" id="dry-run" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dry-run">
           <div class="section-title">
             <p class="eyebrow">Method</p>
@@ -129,6 +143,20 @@ OUTPUT Total</code></pre>
             <div><strong>5</strong><span>Record output only when an OUTPUT statement is executed.</span></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start dry-run -->
+        <section class="panel explanation-panel" id="explanation-dry-run" data-explains="dry-run" data-explanation-kind="process" aria-labelledby="explanation-dry-run-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dry-run">
+          <h2 class="explanation-sr-only" id="explanation-dry-run-title">Dry run: execute the algorithm by hand</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-101-dry-run.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Dry run: execute the algorithm by hand with a structured visual model." />
+            <figcaption class="explanation-sr-only">Dry run: execute the algorithm by hand: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 1 Copy the variable names into table columns.</li><li><strong>Lesson fact:</strong> 2 Write initial values before the loop starts.</li><li><strong>Lesson fact:</strong> 3 Use each input value in order.</li><li><strong>Lesson fact:</strong> 4 Update variables exactly when pseudocode updates them.</li><li><strong>Lesson fact:</strong> 5 Record output only when an OUTPUT statement is executed.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end dry-run -->
 
         <section class="panel" id="loops" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loops">
           <div class="section-title">
@@ -144,6 +172,20 @@ OUTPUT Total</code></pre>
             <article><strong>Boundary</strong><span>Check whether loops run 5 times, 6 times, or one time too many.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start loops -->
+        <section class="panel explanation-panel" id="explanation-loops" data-explains="loops" data-explanation-kind="mechanism" aria-labelledby="explanation-loops-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loops">
+          <h2 class="explanation-sr-only" id="explanation-loops-title">Loops make trace tables useful and slightly unforgiving</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-101-loops.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Loops make trace tables useful and slightly unforgiving with a structured visual model." />
+            <figcaption class="explanation-sr-only">Loops make trace tables useful and slightly unforgiving: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Loop tracing</li><li><strong>Lesson fact:</strong> Initialisation Variables such as Total and Count usually need a starting value before the loop.</li><li><strong>Lesson fact:</strong> Update Record new values after assignment, not before.</li><li><strong>Lesson fact:</strong> Condition For WHILE loops, check the condition before each iteration.</li><li><strong>Lesson fact:</strong> Sentinel A sentinel value stops input and should usually not be processed as data.</li><li><strong>Lesson fact:</strong> Output timing If OUTPUT is after the loop, output appears once at the end.</li><li><strong>Lesson fact:</strong> Boundary Check whether loops run 5 times, 6 times, or one time too many.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end loops -->
 
         <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
@@ -173,6 +215,20 @@ System.out.println(total);</code></pre>
           <div class="callout">Trace the Cambridge-style statements. Java syntax such as braces and `++` may help implementation practice, but it is not the required Paper 2 pseudocode notation.</div>
         </section>
 
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Trace Cambridge pseudocode in the exam; Java is only a support view</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-101-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace Cambridge pseudocode in the exam; Java is only a support view with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trace Cambridge pseudocode in the exam; Java is only a support view: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Count &lt;- 1 TO 3</li><li><strong>Lesson fact:</strong> INPUT Number</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Number</li><li><strong>Lesson fact:</strong> NEXT Count</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> int total = 0;</li><li><strong>Lesson fact:</strong> for (int count = 1; count &lt;= 3; count++) {</li><li><strong>Lesson fact:</strong> int number = input.nextInt();</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
+
 
         <section class="panel" id="predictor" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="predictor">
           <div class="section-title">
@@ -193,6 +249,20 @@ System.out.println(total);</code></pre>
           </div>
           <div class="feedback" id="predictResult">The pseudocode totals three input numbers and outputs Total.</div>
         </section>
+
+        <!-- stage10-explanation:start predictor -->
+        <section class="panel explanation-panel" id="explanation-predictor" data-explains="predictor" data-explanation-kind="mechanism" aria-labelledby="explanation-predictor-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="predictor">
+          <h2 class="explanation-sr-only" id="explanation-predictor-title">Predict the final output</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-101-predictor.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Predict the final output with a structured visual model." />
+            <figcaption class="explanation-sr-only">Predict the final output: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive output predictor</li><li><strong>Lesson fact:</strong> Input set</li><li><strong>Lesson fact:</strong> The pseudocode totals three input numbers and outputs Total.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end predictor -->
 
         <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">

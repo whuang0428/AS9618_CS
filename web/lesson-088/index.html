@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -113,6 +113,20 @@
           <div class="callout">Chinese support: validation = 验证输入是否合理；range check = 范围检查；presence check = 存在性检查。</div>
         </section>
 
+        <!-- stage10-explanation:start validation -->
+        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="mechanism" aria-labelledby="explanation-validation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
+          <h2 class="explanation-sr-only" id="explanation-validation-title">Validation checks whether input is sensible or acceptable</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-088-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation checks whether input is sensible or acceptable with a structured visual model." />
+            <figcaption class="explanation-sr-only">Validation checks whether input is sensible or acceptable: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Validation applies rules before data is accepted into the database. It reduces errors but cannot prove truth.</li><li><strong>Lesson fact:</strong> Range check</li><li><strong>Lesson fact:</strong> Checks a value is within limits</li><li><strong>Lesson fact:</strong> Age must be 11 to 19</li><li><strong>Lesson fact:</strong> Type check</li><li><strong>Lesson fact:</strong> Checks data has the correct data type</li><li><strong>Lesson fact:</strong> PaymentAmount must be numeric</li><li><strong>Lesson fact:</strong> Presence check</li><li><strong>Lesson fact:</strong> Checks required data is not blank</li><li><strong>Lesson fact:</strong> StudentID must be entered</li><li><strong>Lesson fact:</strong> Format check</li><li><strong>Lesson fact:</strong> Checks data follows a pattern</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end validation -->
+
         <section class="panel" id="verification" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="verification">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -125,6 +139,20 @@
             <article><strong>Key distinction</strong><span>Verification checks copying accuracy; it does not decide whether the original source was true.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start verification -->
+        <section class="panel explanation-panel" id="explanation-verification" data-explains="verification" data-explanation-kind="mechanism" aria-labelledby="explanation-verification-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="verification">
+          <h2 class="explanation-sr-only" id="explanation-verification-title">Verification checks data has been copied accurately</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-088-verification.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Verification checks data has been copied accurately with a structured visual model." />
+            <figcaption class="explanation-sr-only">Verification checks data has been copied accurately: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Verification compares entered data with the source or repeats entry to reduce transcription errors.</li><li><strong>Lesson fact:</strong> Double entry The same data is entered twice and compared. Useful for passwords or email addresses.</li><li><strong>Lesson fact:</strong> Proofreading A person checks entered data against the original source document.</li><li><strong>Lesson fact:</strong> Key distinction Verification checks copying accuracy; it does not decide whether the original source was true.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end verification -->
 
         <section class="panel" id="security" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="security">
           <div class="section-title">
@@ -139,6 +167,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start security -->
+        <section class="panel explanation-panel" id="explanation-security" data-explains="security" data-explanation-kind="tradeoff" aria-labelledby="explanation-security-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="security">
+          <h2 class="explanation-sr-only" id="explanation-security-title">Database security restricts access and protects confidentiality</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-088-security.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Database security restricts access and protects confidentiality with a structured visual model." />
+            <figcaption class="explanation-sr-only">Database security restricts access and protects confidentiality: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Security controls reduce unauthorised access, accidental damage and inappropriate disclosure of data.</li><li><strong>Lesson fact:</strong> Access rights Different users can view or edit only the data they need.</li><li><strong>Lesson fact:</strong> Authentication Usernames, passwords and multi-factor methods check user identity.</li><li><strong>Lesson fact:</strong> Encryption Data is encoded so it is unreadable without the correct key.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end security -->
+
         <section class="panel" id="backup" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="backup">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -151,6 +193,20 @@
             <article><strong>Testing</strong><span>A backup is only useful if restoration is tested. Untested backup plans are optimistic fiction.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start backup -->
+        <section class="panel explanation-panel" id="explanation-backup" data-explains="backup" data-explanation-kind="mechanism" aria-labelledby="explanation-backup-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="backup">
+          <h2 class="explanation-sr-only" id="explanation-backup-title">Backups allow data recovery after loss or corruption</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-088-backup.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Backups allow data recovery after loss or corruption with a structured visual model." />
+            <figcaption class="explanation-sr-only">Backups allow data recovery after loss or corruption: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A backup is a separate copy of data kept so the database can be restored after failure, deletion or corruption.</li><li><strong>Lesson fact:</strong> Frequency How often backups are made, such as daily or hourly.</li><li><strong>Lesson fact:</strong> Location Copies should be stored separately, often off-site or in secure cloud storage.</li><li><strong>Lesson fact:</strong> Testing A backup is only useful if restoration is tested. Untested backup plans are optimistic fiction.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end backup -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">

@@ -92,3 +92,90 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **string-processing algorithms**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Some algorithms construct a new string one character at a time
+
+- **Explains:** `build`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-build.jpg`
+
+1. Building output
+2. Remove spaces from a string
+3. NewString <- ""
+4. FOR Index <- 1 TO LENGTH(Text)
+5. Character <- character at position Index
+6. IF Character <> " " THEN
+7. NewString <- NewString & Character
+8. NEXT Index
+9. OUTPUT NewString
+10. Why concatenation matters
+11. For "A S", the algorithm appends A, skips the space, then appends S. The result is "AS".
+
+### A string algorithm needs position, character and stopping point
+
+- **Explains:** `model`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-model.jpg`
+
+1. Knowledge explanation
+2. Concrete model
+3. In Cambridge-style reasoning, text is processed by taking one character at a time from a known position.
+4. Word <- "DATA"
+5. FOR Index <- 1 TO LENGTH(Word)
+6. Character <- character at position Index
+7. OUTPUT Character
+8. NEXT Index
+9. Trace for "DATA"
+10. Character
+
+### Most AS string algorithms are four familiar patterns
+
+- **Explains:** `patterns`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-patterns.jpg`
+
+1. Core patterns
+2. State variable
+3. Typical condition
+4. Character = Target
+5. number of matches
+6. Found flag
+7. Character = Target
+8. true/false or position
+9. Validate
+10. Valid flag
+11. character is allowed / not allowed
+12. valid or invalid
+
+### Keep exam pseudocode readable and avoid Java indexing leakage
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style pseudocode
+3. VowelCount <- 0
+4. FOR Index <- 1 TO LENGTH(Word)
+5. Character <- character at position Index
+6. IF Character = "A" OR Character = "E" OR Character = "I" OR Character = "O" OR Character = "U" THEN
+7. VowelCount <- VowelCount + 1
+8. NEXT Index
+9. OUTPUT VowelCount
+10. Java support only
+11. int vowelCount = 0;
+12. for (int index = 0; index < word.length(); index++) {
+
+### Trace character processing
+
+- **Explains:** `scanner`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-scanner.jpg`
+
+1. Interactive string scanner
+2. Operation
+3. Choose text and operation, then trace the string.
+<!-- stage10-explanations:end -->

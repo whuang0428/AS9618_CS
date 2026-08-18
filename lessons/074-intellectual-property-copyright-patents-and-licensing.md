@@ -105,3 +105,88 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** users must follow licence conditions
 
 **Strict note:** Do not accept that open source means 'no owner' or 'no rules'.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Do not confuse protection type with permission type
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-074-compare.jpg`
+
+1. Protects / controls
+2. Common misconception
+3. Copyright
+4. Original expression, including source code and media.
+5. Changing a few names does not automatically avoid infringement.
+6. An invention or technical process for a limited time.
+7. Not every software idea or algorithm is patentable.
+8. Permission to use protected work under conditions.
+9. A licence does not always transfer ownership.
+10. Ownership
+11. Legal control over rights to the work.
+12. Using software is not the same as owning its source code.
+
+### Copyright protects expression, including software code
+
+- **Explains:** `copyright`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-074-copyright.jpg`
+
+1. Copyright Protects original expression such as source code, documentation, graphics or text.
+2. Automatic protection Copyright usually exists when the work is created; registration is not always needed for protection.
+3. Restricted acts Copying, distributing, adapting or using beyond permission can breach copyright.
+4. Fair use/dealing caution Exceptions are limited and context-specific; do not assume every educational use is allowed.
+
+### Intellectual property protects created ideas and expressions
+
+- **Explains:** `ip`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-074-ip.jpg`
+
+1. Intellectual property Creations of the mind that may be legally protected, such as software, designs and inventions.
+2. Owner The person or organisation holding legal rights to control use of the work.
+3. Infringement Using protected work without permission or outside licence conditions.
+4. Attribution Giving credit to the creator or source when required.
+
+### A licence grants permission under conditions
+
+- **Explains:** `licensing`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-074-licensing.jpg`
+
+1. Licence idea
+2. What it allows or limits
+3. Exam caution
+4. Proprietary licence
+5. Usually permits use under conditions but restricts copying, modification or redistribution.
+6. Paying for software usually buys permission to use, not ownership of the code.
+7. Open-source licence
+8. Allows source code access and certain rights to use, modify and share.
+9. Still has conditions such as attribution or sharing changes under the same licence.
+10. Creative Commons style
+11. Often used for media/text; may require attribution or block commercial use.
+12. Check exact terms; symbols are not decoration.
+
+### Choose the likely permission issue
+
+- **Explains:** `matcher`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-074-matcher.jpg`
+
+1. Interactive licence matcher
+2. Select a scenario and compare the relevant IP concept with the common trap.
+3. Scenario
+
+### Patents protect inventions, not every line of code
+
+- **Explains:** `patents`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-074-patents.jpg`
+
+1. Patent A legal right protecting an invention for a limited time, often requiring novelty and inventive step.
+2. Invention A new technical solution, product or process; software patent rules vary by jurisdiction.
+3. Disclosure Patent applications normally require public description of the invention.
+4. Limitation Patents are expensive and time-limited; they do not protect all ideas or ordinary code automatically.
+<!-- stage10-explanations:end -->

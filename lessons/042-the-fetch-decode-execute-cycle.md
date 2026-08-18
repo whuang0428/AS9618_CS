@@ -71,3 +71,79 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **the fetch-decode-execute cycle**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### The cycle in one clean sentence
+
+- **Explains:** `cycle`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-cycle.jpg`
+
+1. The CPU gets the next instruction from main memory using the address stored in the PC.
+2. The CU interprets the instruction in the CIR and identifies the operation and any operands needed.
+3. The CPU carries out the instruction, for example using the ALU, accessing memory, or changing the PC.
+
+### Trace one instruction through the fetch stage
+
+- **Explains:** `cycle-visual`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-cycle-visual.jpg`
+
+1. Visual explanation
+2. Read left to right. The labels name what is held or transferred, so the register names are tied to a job rather than memorised as a list.
+3. 1. PC → MAR Copy the address of the next instruction into the MAR.
+4. 2. Memory read Send the address and a read signal; return the instruction to the MDR.
+5. 3. MDR → CIR Move the fetched instruction into the CIR and increment the PC.
+6. 4. Decode, execute, repeat The CU decodes; the CPU performs the instruction; the cycle starts again.
+7. Check the diagram: why is the instruction copied to the CIR before decoding?
+8. The CIR holds the current instruction so the control unit can decode its opcode and identify any operands or addresses needed for execution.
+
+### Decode and execute are not filler words
+
+- **Explains:** `decode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-decode.jpg`
+
+1. The control unit interprets the instruction in the CIR. It identifies the opcode, decides what operation is required, and identifies any operands or addresses needed.
+2. Execute: arithmetic or logic
+3. If the instruction is arithmetic or logical, the ALU performs the operation and a result may be stored in a register.
+4. Execute: memory access
+5. If the instruction needs data from memory, the CPU uses buses and registers to read from or write to the required memory address.
+6. Execute: branch
+7. If the instruction is a branch/jump, the PC may be changed to a different address rather than just continuing with the next instruction.
+8. Common trap
+9. "Execute" does not always mean "ALU does maths". Some instructions move data, access memory or change the PC.
+
+### Fetch stage: the register sequence
+
+- **Explains:** `fetch`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-fetch.jpg`
+
+1. This is the part students must be able to trace precisely.
+2. Register / bus focus
+3. Exam-safe wording
+4. Address copied from PC to MAR.
+5. PC -> MAR
+6. The PC contains the address of the next instruction; this address is copied to the MAR.
+7. Address sent to memory.
+8. Address bus
+9. The address in the MAR is placed on the address bus.
+10. Memory read signal is sent.
+11. Control bus
+12. The CU sends a read signal on the control bus.
+
+### The four fetch-stage names you cannot blur together
+
+- **Explains:** `registers`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-registers.jpg`
+
+1. Register roles
+2. PC Program Counter: stores the address of the next instruction to be fetched.
+3. MAR Memory Address Register: stores the address of the memory location being accessed.
+4. MDR Memory Data Register: stores data or an instruction being transferred to or from memory.
+5. CIR Current Instruction Register: stores the instruction currently being decoded/executed.
+<!-- stage10-explanations:end -->

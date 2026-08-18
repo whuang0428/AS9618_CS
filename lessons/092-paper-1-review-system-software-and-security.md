@@ -71,3 +71,79 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **paper 1 review: system software and security**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Sections 5-6 knowledge map
+
+- **Explains:** `map`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-092-map.jpg`
+
+1. Retrieval map
+2. Operating system process, memory, file, device and security/user management
+3. User interfaces CLI, GUI, menu-driven and natural language interfaces
+4. Utilities backup, compression, encryption, defragmentation and anti-malware tools
+5. Translators assembler, compiler, interpreter, linker, loader and libraries
+6. Security goals confidentiality, integrity, availability, authenticity
+7. Controls authentication, access rights, encryption, hashing, certificates, firewalls and audit trails
+
+### Choose the best control
+
+- **Explains:** `matcher`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-092-matcher.jpg`
+
+1. Interactive risk-control matcher
+2. Choose a risk to see a suitable control and justification.
+
+### Match the control to the threat
+
+- **Explains:** `security`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-092-security.jpg`
+
+1. Security review
+2. Threat / need
+3. Mechanism
+4. unauthorised login
+5. authentication / MFA
+6. checks user identity using factors such as password and token
+7. intercepted data
+8. encryption
+9. encodes data so it is unreadable without the key
+10. malicious traffic
+11. firewall
+12. filters traffic using rules such as IP address, port or protocol
+
+### OS and utility roles
+
+- **Explains:** `software`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-092-software.jpg`
+
+1. System software review
+2. Mark-worthy phrase
+3. OS process management
+4. schedules processes
+5. allocates processor time and manages multitasking
+6. OS memory management
+7. allocates memory
+8. keeps programs/data in separate memory areas and manages virtual memory
+9. File management
+10. organises files
+11. stores, names, retrieves and controls access to files
+12. Utility software
+
+### Compiler, interpreter and assembler
+
+- **Explains:** `translators`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-092-translators.jpg`
+
+1. Translator review
+2. Compiler Translates whole source program into object code before execution; can report errors after compilation.
+3. Interpreter Translates and executes code line by line; useful for testing and debugging.
+4. Assembler Translates assembly language mnemonics into machine code.
+<!-- stage10-explanations:end -->

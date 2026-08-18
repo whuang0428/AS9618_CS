@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -113,6 +113,20 @@
           <div class="callout">Chinese support: switch = 交换机；frame = 帧；port = 端口；MAC address = MAC 地址。</div>
         </section>
 
+        <!-- stage10-explanation:start lan -->
+        <section class="panel explanation-panel" id="explanation-lan" data-explains="lan" data-explanation-kind="mechanism" aria-labelledby="explanation-lan-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lan">
+          <h2 class="explanation-sr-only" id="explanation-lan-title">Switches: forwarding inside a LAN</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-023-lan.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Switches: forwarding inside a LAN with a structured visual model." />
+            <figcaption class="explanation-sr-only">Switches: forwarding inside a LAN: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A switch connects devices on a local area network and forwards frames to the correct device.</li><li><strong>Lesson fact:</strong> Uses: MAC addresses to decide which port should receive the frame.</li><li><strong>Lesson fact:</strong> Why useful: reduces unnecessary traffic compared with sending every frame everywhere.</li><li><strong>Lesson fact:</strong> Exam wording: say &quot;within a LAN&quot; and &quot;MAC address&quot; when the scenario is local device-to-device traffic.</li><li><strong>Lesson fact:</strong> LAN idea</li><li><strong>Lesson fact:</strong> PC A -&gt; switch -&gt; PC B</li><li><strong>Lesson fact:</strong> The switch is the traffic desk inside the local network. It does not decide the route across the wider internet.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lan -->
+
         <section class="panel" id="routing" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="routing">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -136,6 +150,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start routing -->
+        <section class="panel explanation-panel" id="explanation-routing" data-explains="routing" data-explanation-kind="mechanism" aria-labelledby="explanation-routing-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="routing">
+          <h2 class="explanation-sr-only" id="explanation-routing-title">Routers: forwarding between networks</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-023-routing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Routers: forwarding between networks with a structured visual model." />
+            <figcaption class="explanation-sr-only">Routers: forwarding between networks: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A router connects different networks and forwards packets towards their destination.</li><li><strong>Lesson fact:</strong> Uses: IP addresses and routing information to choose a path.</li><li><strong>Lesson fact:</strong> Common role: connects a LAN to the internet or to another network.</li><li><strong>Lesson fact:</strong> Careful wording: a router does not simply &quot;make WiFi&quot;. Some home boxes combine router and access point functions, but the jobs are distinct.</li><li><strong>Lesson fact:</strong> Between networks</li><li><strong>Lesson fact:</strong> LAN -&gt; router -&gt; internet / WAN</li><li><strong>Lesson fact:</strong> Inside the LAN, MAC-address forwarding matters. Between networks, IP-address routing matters.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end routing -->
+
         <section class="panel" id="wireless" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="wireless">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -153,6 +181,20 @@
           <div class="callout">Chinese support: wireless access point = 无线接入点；authentication = 身份验证；radio waves = 无线电波。</div>
         </section>
 
+        <!-- stage10-explanation:start wireless -->
+        <section class="panel explanation-panel" id="explanation-wireless" data-explains="wireless" data-explanation-kind="mechanism" aria-labelledby="explanation-wireless-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="wireless">
+          <h2 class="explanation-sr-only" id="explanation-wireless-title">Wireless access points: joining wireless devices</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-023-wireless.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Wireless access points: joining wireless devices with a structured visual model." />
+            <figcaption class="explanation-sr-only">Wireless access points: joining wireless devices: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Wireless access point</li><li><strong>Lesson fact:</strong> A wireless access point allows wireless devices to connect to a network using radio waves, often linking them to a wired LAN.</li><li><strong>Lesson fact:</strong> Good exam phrase: provides wireless access to a network.</li><li><strong>Lesson fact:</strong> Not enough: &quot;it gives internet&quot;. Internet access may also require a router and wider network connection.</li><li><strong>Lesson fact:</strong> Security link: access points can use authentication and encryption, but this lesson focuses on their network role.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end wireless -->
+
         <section class="panel" id="gateway" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="gateway">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -168,6 +210,20 @@
             </ul>
           </div>
         </section>
+
+        <!-- stage10-explanation:start gateway -->
+        <section class="panel explanation-panel" id="explanation-gateway" data-explains="gateway" data-explanation-kind="mechanism" aria-labelledby="explanation-gateway-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="gateway">
+          <h2 class="explanation-sr-only" id="explanation-gateway-title">Gateways: connecting different network rules</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-023-gateway.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Gateways: connecting different network rules with a structured visual model." />
+            <figcaption class="explanation-sr-only">Gateways: connecting different network rules: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A gateway connects networks that may use different protocols, data formats or communication standards, translating where needed.</li><li><strong>Lesson fact:</strong> Useful when: two systems need to communicate but do not use the same rules.</li><li><strong>Lesson fact:</strong> Default gateway note: in many LANs, the default gateway is the device used to send traffic outside the local network, often a router.</li><li><strong>Lesson fact:</strong> Exam trap: do not use &quot;gateway&quot; as a fancy synonym for every network device.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end gateway -->
 
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
@@ -202,6 +258,20 @@
             </div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare by job and boundary</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-023-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare by job and boundary with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compare by job and boundary: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Main job</li><li><strong>Lesson fact:</strong> Address / rule focus</li><li><strong>Lesson fact:</strong> Connects devices and forwards frames inside a LAN.</li><li><strong>Lesson fact:</strong> Uses MAC addresses / ports.</li><li><strong>Lesson fact:</strong> Connects different networks and forwards packets between them.</li><li><strong>Lesson fact:</strong> Uses IP addresses / routing table.</li><li><strong>Lesson fact:</strong> Access point</li><li><strong>Lesson fact:</strong> Allows wireless devices to connect to a network.</li><li><strong>Lesson fact:</strong> Uses radio waves / WiFi access.</li><li><strong>Lesson fact:</strong> Connects networks using different protocols or formats.</li><li><strong>Lesson fact:</strong> Performs protocol/format translation where needed.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

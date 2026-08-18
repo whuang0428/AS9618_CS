@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -127,6 +127,20 @@ NEXT Row</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start model -->
+        <section class="panel explanation-panel" id="explanation-model" data-explains="model" data-explanation-kind="comparison" aria-labelledby="explanation-model-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
+          <h2 class="explanation-sr-only" id="explanation-model-title">Outer loop first, inner loop second</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-108-model.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Outer loop first, inner loop second with a structured visual model." />
+            <figcaption class="explanation-sr-only">Outer loop first, inner loop second: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> Core structure</li><li><strong>Lesson fact:</strong> FOR Row &lt;- 1 TO 3</li><li><strong>Lesson fact:</strong> FOR Column &lt;- 1 TO 4</li><li><strong>Lesson fact:</strong> OUTPUT Row, Column</li><li><strong>Lesson fact:</strong> NEXT Column</li><li><strong>Lesson fact:</strong> NEXT Row</li><li><strong>Lesson fact:</strong> The inner loop completes all columns for one row before the outer loop moves to the next row.</li><li><strong>Lesson fact:</strong> Trace idea</li><li><strong>Lesson fact:</strong> Column sequence</li><li><strong>Lesson fact:</strong> 1, 2, 3, 4</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end model -->
+
         <section class="panel" id="table" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="table">
           <div class="section-title">
             <p class="eyebrow">Table traversal</p>
@@ -140,6 +154,20 @@ NEXT Row</code></pre>
             <div class="table-row" role="row"><div>Every pair</div><div>first item</div><div>second item</div><div>comparison or match result</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start table -->
+        <section class="panel explanation-panel" id="explanation-table" data-explains="table" data-explanation-kind="mechanism" aria-labelledby="explanation-table-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="table">
+          <h2 class="explanation-sr-only" id="explanation-table-title">Table-style problems usually scan row by row</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-108-table.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Table-style problems usually scan row by row with a structured visual model." />
+            <figcaption class="explanation-sr-only">Table-style problems usually scan row by row: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Table traversal</li><li><strong>Lesson fact:</strong> Problem type</li><li><strong>Lesson fact:</strong> Outer loop</li><li><strong>Lesson fact:</strong> Inner loop</li><li><strong>Lesson fact:</strong> Typical output</li><li><strong>Lesson fact:</strong> Grid / table</li><li><strong>Lesson fact:</strong> cell coordinates or cell values</li><li><strong>Lesson fact:</strong> Class marks</li><li><strong>Lesson fact:</strong> students</li><li><strong>Lesson fact:</strong> subjects/tests</li><li><strong>Lesson fact:</strong> row total or average per student</li><li><strong>Lesson fact:</strong> Multiplication table</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end table -->
 
         <section class="panel" id="reset" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="reset">
           <div class="section-title">
@@ -169,6 +197,20 @@ OUTPUT GrandTotal</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start reset -->
+        <section class="panel explanation-panel" id="explanation-reset" data-explains="reset" data-explanation-kind="mechanism" aria-labelledby="explanation-reset-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="reset">
+          <h2 class="explanation-sr-only" id="explanation-reset-title">Put row-level variables inside the outer loop</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-108-reset.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Put row-level variables inside the outer loop with a structured visual model." />
+            <figcaption class="explanation-sr-only">Put row-level variables inside the outer loop: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Reset rules</li><li><strong>Lesson fact:</strong> Correct: row total resets for each row</li><li><strong>Lesson fact:</strong> GrandTotal &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Row &lt;- 1 TO 3</li><li><strong>Lesson fact:</strong> RowTotal &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Column &lt;- 1 TO 4</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> RowTotal &lt;- RowTotal + Mark</li><li><strong>Lesson fact:</strong> NEXT Column</li><li><strong>Lesson fact:</strong> OUTPUT RowTotal</li><li><strong>Lesson fact:</strong> GrandTotal &lt;- GrandTotal + RowTotal</li><li><strong>Lesson fact:</strong> NEXT Row</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end reset -->
+
         <section class="panel" id="counting" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="counting">
           <div class="section-title">
             <p class="eyebrow">Counting steps</p>
@@ -190,6 +232,20 @@ NEXT Row</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start counting -->
+        <section class="panel explanation-panel" id="explanation-counting" data-explains="counting" data-explanation-kind="mechanism" aria-labelledby="explanation-counting-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="counting">
+          <h2 class="explanation-sr-only" id="explanation-counting-title">Total visits = outer repetitions x inner repetitions</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-108-counting.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Total visits = outer repetitions x inner repetitions with a structured visual model." />
+            <figcaption class="explanation-sr-only">Total visits = outer repetitions x inner repetitions: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Counting steps</li><li><strong>Lesson fact:</strong> FOR Row &lt;- 1 TO 2</li><li><strong>Lesson fact:</strong> FOR Column &lt;- 1 TO 3</li><li><strong>Lesson fact:</strong> OUTPUT &quot;*&quot;</li><li><strong>Lesson fact:</strong> NEXT Column</li><li><strong>Lesson fact:</strong> NEXT Row</li><li><strong>Lesson fact:</strong> Count it</li><li><strong>Lesson fact:</strong> The OUTPUT &quot;*&quot; statement runs 2 x 3 = 6 times. The inner loop runs fully for Row 1, then fully again for Row 2.</li><li><strong>Lesson fact:</strong> Do not add 2 + 3. Nested loop visits multiply when every inner loop runs for every outer loop value.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end counting -->
 
         <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
@@ -218,6 +274,20 @@ NEXT Row</code></pre>
           </div>
           <div class="callout">Exam reminder: Java braces and semicolons are not Cambridge pseudocode. Use clear `FOR`, `NEXT`, indentation and assignment arrows in Paper 2 answers.</div>
         </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Indentation is evidence in nested loops</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-108-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Indentation is evidence in nested loops with a structured visual model." />
+            <figcaption class="explanation-sr-only">Indentation is evidence in nested loops: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FOR Row &lt;- 1 TO 3</li><li><strong>Lesson fact:</strong> FOR Column &lt;- 1 TO 4</li><li><strong>Lesson fact:</strong> Product &lt;- Row * Column</li><li><strong>Lesson fact:</strong> OUTPUT Product</li><li><strong>Lesson fact:</strong> NEXT Column</li><li><strong>Lesson fact:</strong> NEXT Row</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> for (int row = 1; row &lt;= 3; row++) {</li><li><strong>Lesson fact:</strong> for (int column = 1; column &lt;= 4; column++) {</li><li><strong>Lesson fact:</strong> int product = row * column;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
 
 
         <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">

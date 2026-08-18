@@ -92,3 +92,106 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. For this lesson, make students contrast that mistake with the exact idea of **programming constructs: sequence, selection, and iteration**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Three control-flow ideas
+
+- **Explains:** `constructs`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-constructs.jpg`
+
+1. Core constructs
+2. Construct
+3. Question it answers
+4. Pseudocode clue
+5. Typical error
+6. Sequence
+7. What happens next?
+8. statements listed one after another
+9. wrong order of assignment
+10. Selection
+11. Which path is taken?
+12. IF...THEN...ELSE...ENDIF, CASE
+
+### Loops repeat with control
+
+- **Explains:** `iteration`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-iteration.jpg`
+
+1. Iteration
+2. Use when
+3. Condition checked
+4. number of repetitions is known
+5. by counter range
+6. wrong start/end value
+7. may repeat zero or more times
+8. before each iteration
+9. condition never changes
+10. REPEAT...UNTIL
+11. must run at least once
+12. after each iteration
+
+### Same logic, different exam language
+
+- **Explains:** `java`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-java.jpg`
+
+1. Java support only
+2. Cambridge-style pseudocode
+3. IF Mark >= 50 THEN
+4. OUTPUT "Pass"
+5. OUTPUT "Resit needed"
+6. Java support example only
+7. if (mark >= 50) {
+8. System.out.println("Pass");
+9. } else {
+10. System.out.println("Resit needed");
+
+### Conditions decide the path
+
+- **Explains:** `selection`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-selection.jpg`
+
+1. Selection
+2. IF selection
+3. INPUT Mark
+4. IF Mark >= 50 THEN
+5. OUTPUT "Pass"
+6. OUTPUT "Resit needed"
+7. CASE selection
+8. CASE Grade OF
+9. "A" : OUTPUT "Excellent"
+10. "B" : OUTPUT "Good"
+11. OTHERWISE OUTPUT "Check grade"
+12. Boundary tests matter: Mark = 49, 50 and 51 reveal whether the condition is correct.
+
+### Order changes meaning
+
+- **Explains:** `sequence`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-sequence.jpg`
+
+1. Sequence
+2. Correct order
+3. INPUT Price
+4. INPUT Quantity
+5. Total <- Price * Quantity
+6. OUTPUT Total
+7. Wrong order
+8. A sequence is simple, but not optional. Using a value before it has been input is algorithmic optimism, not a method.
+
+### Run a small loop by hand
+
+- **Explains:** `tracer`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-tracer.jpg`
+
+1. Interactive trace
+2. FOR Count <- 1 TO
+3. Choose a loop limit to build a trace table.
+<!-- stage10-explanations:end -->

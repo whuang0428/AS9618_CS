@@ -87,3 +87,116 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name. For this lesson, make students contrast that mistake with the exact idea of **arrays of records**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Index first, then field name
+
+- **Explains:** `access`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-access.jpg`
+
+1. Access pattern
+2. Pseudocode
+3. Read one field
+4. OUTPUT Students[3].Name
+5. name field of record 3
+6. Update one field
+7. Students[3].Mark <- 80
+8. mark field of record 3
+9. Test one field
+10. IF Students[Index].Enrolled = TRUE THEN
+11. Boolean field in current record
+
+### One array, many records, same record shape
+
+- **Explains:** `concept`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-concept.jpg`
+
+1. Array of records
+2. array where each element is a record
+3. Students[1:30]
+4. selects one record from the array
+5. Students[5]
+6. selects one named value inside that record
+7. Combined access
+8. index first, field second
+9. Students[5].Mark
+
+### Define the record type, then declare the array
+
+- **Explains:** `declare`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-declare.jpg`
+
+1. Record type
+2. TYPE TStudent
+3. DECLARE Name : STRING
+4. DECLARE Mark : INTEGER
+5. DECLARE Enrolled : BOOLEAN
+6. Array of records
+7. DECLARE Students : ARRAY[1:30] OF TStudent
+8. Students[1].Name <- "Ali"
+9. Students[1].Mark <- 72
+10. The record type describes one element. The array declaration creates many elements of that type.
+
+### Read a field from a selected record
+
+- **Explains:** `explorer`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-explorer.jpg`
+
+1. Interactive record explorer
+2. Record index
+3. Choose an index and a field to read from the array of records.
+
+### Search, count and update fields
+
+- **Explains:** `operations`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-operations.jpg`
+
+1. Common operations
+2. Operation
+3. Typical condition
+4. Typical action
+5. Students[Index].Name = TargetName
+6. output index or record details
+7. Students[Index].Enrolled = TRUE
+8. Count <- Count + 1
+9. Students[Index].Mark < 40
+10. change a status or mark field
+
+### Same structure, different syntax
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style pseudocode
+3. DECLARE Students : ARRAY[1:30] OF TStudent
+4. FOR Index <- 1 TO 30
+5. OUTPUT Students[Index].Name
+6. NEXT Index
+7. Java support only
+8. Student[] students = new Student[30];
+9. for (int index = 0; index < 30; index++) {
+10. System.out.println(students[index].name);
+11. Paper 2 reminder: Java arrays are often zero-based. Cambridge pseudocode ranges follow the declaration shown in the question.
+
+### A loop visits each record; field access uses the loop index
+
+- **Explains:** `traversal`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-traversal.jpg`
+
+1. Traversal
+2. FOR Index <- 1 TO 30
+3. IF Students[Index].Mark >= 70 THEN
+4. OUTPUT Students[Index].Name
+5. NEXT Index
+6. The loop variable chooses the current record. The field name chooses which value to inspect.
+<!-- stage10-explanations:end -->

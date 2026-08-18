@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -114,6 +114,20 @@
           <div class="callout">Chinese support: linker = 连接器；loader = 装入程序；library = 库；library routine = 库例程；object module = 目标模块；executable = 可执行文件。</div>
         </section>
 
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">The post-compilation pathway connects code and prepares execution</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The post-compilation pathway connects code and prepares execution with a structured visual model." />
+            <figcaption class="explanation-sr-only">The post-compilation pathway connects code and prepares execution: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Object code Translated output from compilation or assembly, not always a complete executable.</li><li><strong>Lesson fact:</strong> External reference A call to code or data defined in another module or library.</li><li><strong>Lesson fact:</strong> Executable file A program file with required code linked and arranged for execution.</li><li><strong>Lesson fact:</strong> In memory Code and data must be placed into main memory before the CPU can execute it.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concept -->
+
         <section class="panel" id="libraries" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="libraries">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -126,6 +140,20 @@
             <article><strong>Requirement</strong><span>Calls to library routines must be linked or made available at run time.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start libraries -->
+        <section class="panel explanation-panel" id="explanation-libraries" data-explains="libraries" data-explanation-kind="mechanism" aria-labelledby="explanation-libraries-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="libraries">
+          <h2 class="explanation-sr-only" id="explanation-libraries-title">Libraries provide reusable routines and modules</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-libraries.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Libraries provide reusable routines and modules with a structured visual model." />
+            <figcaption class="explanation-sr-only">Libraries provide reusable routines and modules: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Purpose Provide pre-written, tested routines that programs can use.</li><li><strong>Lesson fact:</strong> Examples Mathematical functions, input/output routines, graphics or string-handling routines.</li><li><strong>Lesson fact:</strong> Benefits Saves development time, reduces duplication and may improve reliability.</li><li><strong>Lesson fact:</strong> Requirement Calls to library routines must be linked or made available at run time.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end libraries -->
 
         <section class="panel" id="linkers" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="linkers">
           <div class="section-title">
@@ -140,6 +168,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start linkers -->
+        <section class="panel explanation-panel" id="explanation-linkers" data-explains="linkers" data-explanation-kind="mechanism" aria-labelledby="explanation-linkers-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="linkers">
+          <h2 class="explanation-sr-only" id="explanation-linkers-title">Linkers combine object modules and resolve references</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-linkers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Linkers combine object modules and resolve references with a structured visual model." />
+            <figcaption class="explanation-sr-only">Linkers combine object modules and resolve references: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Input Object code modules and required library routines or references.</li><li><strong>Lesson fact:</strong> Action Resolves external references between modules and libraries.</li><li><strong>Lesson fact:</strong> Output Produces executable code or a linked object file.</li><li><strong>Lesson fact:</strong> Error Can report unresolved external references if a required routine cannot be found.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end linkers -->
+
         <section class="panel" id="loaders" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loaders">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -153,6 +195,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start loaders -->
+        <section class="panel explanation-panel" id="explanation-loaders" data-explains="loaders" data-explanation-kind="mechanism" aria-labelledby="explanation-loaders-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loaders">
+          <h2 class="explanation-sr-only" id="explanation-loaders-title">Loaders place executable code into memory</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-loaders.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Loaders place executable code into memory with a structured visual model." />
+            <figcaption class="explanation-sr-only">Loaders place executable code into memory: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Input An executable program or loadable program image.</li><li><strong>Lesson fact:</strong> Action Loads code and data into main memory and prepares it to run.</li><li><strong>Lesson fact:</strong> Addresses May allocate memory and adjust addresses depending on where the program is loaded.</li><li><strong>Lesson fact:</strong> Boundary A loader does not translate source code or combine object modules.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end loaders -->
+
         <section class="panel" id="static-dynamic" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="static-dynamic">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
@@ -165,6 +221,20 @@
             <article><strong>Dynamic trade-off</strong><span>Can reduce duplication, but the required shared library must be available and compatible.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start static-dynamic -->
+        <section class="panel explanation-panel" id="explanation-static-dynamic" data-explains="static-dynamic" data-explanation-kind="mechanism" aria-labelledby="explanation-static-dynamic-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="static-dynamic">
+          <h2 class="explanation-sr-only" id="explanation-static-dynamic-title">Static and dynamic linking affect when library code is connected</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-static-dynamic.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Static and dynamic linking affect when library code is connected with a structured visual model." />
+            <figcaption class="explanation-sr-only">Static and dynamic linking affect when library code is connected: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Static linking Library code is copied into the executable at link time.</li><li><strong>Lesson fact:</strong> Static trade-off Executable can be more self-contained but may be larger.</li><li><strong>Lesson fact:</strong> Dynamic linking Library code is linked at load time or run time from a shared library.</li><li><strong>Lesson fact:</strong> Dynamic trade-off Can reduce duplication, but the required shared library must be available and compatible.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end static-dynamic -->
 
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
@@ -198,6 +268,20 @@
             </div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare the roles without blending them</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-058-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare the roles without blending them with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compare the roles without blending them: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Main role</li><li><strong>Lesson fact:</strong> Typical input</li><li><strong>Lesson fact:</strong> Typical output/result</li><li><strong>Lesson fact:</strong> Stores reusable routines/modules.</li><li><strong>Lesson fact:</strong> Calls from a program.</li><li><strong>Lesson fact:</strong> Routine code can be linked or used at run time.</li><li><strong>Lesson fact:</strong> Combines object modules and resolves external references.</li><li><strong>Lesson fact:</strong> Object files and library references.</li><li><strong>Lesson fact:</strong> Executable/linked object code.</li><li><strong>Lesson fact:</strong> Places executable program into main memory.</li><li><strong>Lesson fact:</strong> Executable file/program image.</li><li><strong>Lesson fact:</strong> Program ready for execution in memory.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

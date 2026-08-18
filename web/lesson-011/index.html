@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -115,6 +115,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start formula -->
+        <section class="panel explanation-panel" id="explanation-formula" data-explains="formula" data-explanation-kind="mechanism" aria-labelledby="explanation-formula-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="formula">
+          <h2 class="explanation-sr-only" id="explanation-formula-title">The full uncompressed sound formula</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-011-formula.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The full uncompressed sound formula with a structured visual model." />
+            <figcaption class="explanation-sr-only">The full uncompressed sound formula: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> size in bits = sampling rate × sample resolution × duration × channels</li><li><strong>Lesson fact:</strong> size in bytes = bits ÷ 8</li><li><strong>Lesson fact:</strong> KiB = bytes ÷ 1024; MiB = KiB ÷ 1024</li><li><strong>Lesson fact:</strong> Sampling rate samples per second, measured in Hz</li><li><strong>Lesson fact:</strong> Sample resolution bits used for each sample</li><li><strong>Lesson fact:</strong> Duration length of the sound in seconds</li><li><strong>Lesson fact:</strong> Channels mono = 1, stereo = 2</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end formula -->
+
         <section class="panel" id="channels" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="channels">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -135,6 +149,20 @@
           <div class="callout">Chinese support: channel = 声道；mono = 单声道；stereo = 立体声/双声道。</div>
         </section>
 
+        <!-- stage10-explanation:start channels -->
+        <section class="panel explanation-panel" id="explanation-channels" data-explains="channels" data-explanation-kind="mechanism" aria-labelledby="explanation-channels-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="channels">
+          <h2 class="explanation-sr-only" id="explanation-channels-title">Channels: mono and stereo</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-011-channels.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Channels: mono and stereo with a structured visual model." />
+            <figcaption class="explanation-sr-only">Channels: mono and stereo: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> One channel of audio. Use channel factor 1.</li><li><strong>Lesson fact:</strong> rate × resolution × duration × 1</li><li><strong>Lesson fact:</strong> Two channels, commonly left and right. Use channel factor 2.</li><li><strong>Lesson fact:</strong> rate × resolution × duration × 2</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end channels -->
+
         <section class="panel" id="units" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="units">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -148,6 +176,20 @@
           </div>
           <div class="callout warning">Do not divide by 1000 when the question asks for KiB or MiB.</div>
         </section>
+
+        <!-- stage10-explanation:start units -->
+        <section class="panel explanation-panel" id="explanation-units" data-explains="units" data-explanation-kind="mechanism" aria-labelledby="explanation-units-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="units">
+          <h2 class="explanation-sr-only" id="explanation-units-title">Unit conversion without changing the answer</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-011-units.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Unit conversion without changing the answer with a structured visual model." />
+            <figcaption class="explanation-sr-only">Unit conversion without changing the answer: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> The formula gives bits first.</li><li><strong>Lesson fact:</strong> 8 bits = 1 byte.</li><li><strong>Lesson fact:</strong> 1 KiB = 1024 bytes.</li><li><strong>Lesson fact:</strong> 1 MiB = 1024 KiB.</li><li><strong>Lesson fact:</strong> Do not divide by 1000 when the question asks for KiB or MiB.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end units -->
 
         <section class="panel" id="tradeoffs" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tradeoffs">
           <div class="section-title">
@@ -173,6 +215,20 @@
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start tradeoffs -->
+        <section class="panel explanation-panel" id="explanation-tradeoffs" data-explains="tradeoffs" data-explanation-kind="mechanism" aria-labelledby="explanation-tradeoffs-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tradeoffs">
+          <h2 class="explanation-sr-only" id="explanation-tradeoffs-title">Parameter changes and consequences</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-011-tradeoffs.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Parameter changes and consequences with a structured visual model." />
+            <figcaption class="explanation-sr-only">Parameter changes and consequences: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Higher sampling rate</li><li><strong>Lesson fact:</strong> More samples per second; may improve accuracy; increases file size.</li><li><strong>Lesson fact:</strong> Higher sample resolution</li><li><strong>Lesson fact:</strong> More bits per sample; more amplitude levels; increases file size.</li><li><strong>Lesson fact:</strong> Longer duration</li><li><strong>Lesson fact:</strong> More seconds of samples; increases file size in direct proportion.</li><li><strong>Lesson fact:</strong> More channels</li><li><strong>Lesson fact:</strong> More separate audio streams; stereo doubles mono size when other factors match.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end tradeoffs -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

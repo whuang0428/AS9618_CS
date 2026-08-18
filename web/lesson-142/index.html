@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -108,37 +108,17 @@
         </section>
 
         <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why a lifecycle reduces uncertainty</h2>
-          </div>
-          <div class="explanation-layout has-visual">
-
-          <figure class="explanation-figure">
-            <img src="../assets/diagrams/stage10-lifecycle-models-analogy.jpg" width="1400" height="768" loading="lazy" decoding="async" alt="Three architectural workflows showing sequential approval, repeated review cycles and incremental construction." />
-            <figcaption>Different project conditions favour different distances between building, review and change.</figcaption>
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+          <h2 class="explanation-sr-only" id="explanation-purpose-title">Why a lifecycle reduces uncertainty</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why a lifecycle reduces uncertainty through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why a lifecycle reduces uncertainty: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Each stage asks a different question about need, design or evidence.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Its output makes assumptions visible for review.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Later work proceeds with clearer constraints and acceptance criteria.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Architectural plans turn assumptions into inspectable decisions before construction.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Documents help only when they stay accurate and influence decisions.</span></p>
-              </div>
-            </div>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Each stage asks a different question about need, design or evidence.</li><li><strong>Reason:</strong> Its output makes assumptions visible for review.</li><li><strong>Result:</strong> Later work proceeds with clearer constraints and acceptance criteria.</li></ol>
+
+            <p><strong>Analogy:</strong> Architectural plans turn assumptions into inspectable decisions before construction.</p>
+            <p><strong>Boundary:</strong> Documents help only when they stay accurate and influence decisions.</p>
           </div>
         </section>
         <!-- stage10-explanation:end purpose -->
@@ -160,33 +140,17 @@
         </section>
 
         <!-- stage10-explanation:start stages -->
-        <section class="panel explanation-panel" id="explanation-stages" data-explains="stages" data-explanation-kind="process" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stages">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>How one stage supplies the next</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-stages" data-explains="stages" data-explanation-kind="process" aria-labelledby="explanation-stages-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stages">
+          <h2 class="explanation-sr-only" id="explanation-stages-title">How one stage supplies the next</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-stages.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How one stage supplies the next through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How one stage supplies the next: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Analysis defines the problem and required outcomes.</li><li><strong>Reason:</strong> Design translates requirements into components, data and interfaces.</li><li><strong>Result:</strong> Implementation and testing create and check the resulting system.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Analysis defines the problem and required outcomes.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Design translates requirements into components, data and interfaces.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Implementation and testing create and check the resulting system.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A specification becomes a plan, then a build, then evidence of fitness.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Feedback may return to an earlier stage when evidence exposes a bad assumption.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> A specification becomes a plan, then a build, then evidence of fitness.</p>
+            <p><strong>Boundary:</strong> Feedback may return to an earlier stage when evidence exposes a bad assumption.</p>
           </div>
         </section>
         <!-- stage10-explanation:end stages -->
@@ -209,33 +173,17 @@
         </section>
 
         <!-- stage10-explanation:start waterfall -->
-        <section class="panel explanation-panel" id="explanation-waterfall" data-explains="waterfall" data-explanation-kind="tradeoff" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="waterfall">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why sequence helps and resists change</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-waterfall" data-explains="waterfall" data-explanation-kind="tradeoff" aria-labelledby="explanation-waterfall-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="waterfall">
+          <h2 class="explanation-sr-only" id="explanation-waterfall-title">Why sequence helps and resists change</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-waterfall.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why sequence helps and resists change through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why sequence helps and resists change: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> A stage is reviewed before the next major stage begins.</li><li><strong>Reason:</strong> Early agreement supports budgets, contracts and traceable approvals.</li><li><strong>Result:</strong> Late change crosses completed boundaries and causes expensive rework.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>A stage is reviewed before the next major stage begins.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Early agreement supports budgets, contracts and traceable approvals.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Late change crosses completed boundaries and causes expensive rework.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Changing foundations after upper floors exist is harder than changing a drawing.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Waterfall suits stable requirements; sequence alone does not guarantee quality.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Changing foundations after upper floors exist is harder than changing a drawing.</p>
+            <p><strong>Boundary:</strong> Waterfall suits stable requirements; sequence alone does not guarantee quality.</p>
           </div>
         </section>
         <!-- stage10-explanation:end waterfall -->
@@ -252,33 +200,17 @@
         </section>
 
         <!-- stage10-explanation:start iterative -->
-        <section class="panel explanation-panel" id="explanation-iterative" data-explains="iterative" data-explanation-kind="process" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="iterative">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why repeated cycles expose mistakes</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-iterative" data-explains="iterative" data-explanation-kind="process" aria-labelledby="explanation-iterative-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="iterative">
+          <h2 class="explanation-sr-only" id="explanation-iterative-title">Why repeated cycles expose mistakes</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-iterative.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why repeated cycles expose mistakes through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why repeated cycles expose mistakes: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Build a limited version around a defined goal.</li><li><strong>Reason:</strong> Review evidence from users, tests or prototypes.</li><li><strong>Result:</strong> Feed the findings into the next improved cycle.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Build a limited version around a defined goal.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Review evidence from users, tests or prototypes.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Feed the findings into the next improved cycle.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A model is built, inspected and revised before the full structure is fixed.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Repeated work without a review goal is rework, not controlled iteration.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> A model is built, inspected and revised before the full structure is fixed.</p>
+            <p><strong>Boundary:</strong> Repeated work without a review goal is rework, not controlled iteration.</p>
           </div>
         </section>
         <!-- stage10-explanation:end iterative -->
@@ -296,33 +228,17 @@
         </section>
 
         <!-- stage10-explanation:start agile -->
-        <section class="panel explanation-panel" id="explanation-agile" data-explains="agile" data-explanation-kind="tradeoff" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="agile">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why short feedback cycles support change</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-agile" data-explains="agile" data-explanation-kind="tradeoff" aria-labelledby="explanation-agile-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="agile">
+          <h2 class="explanation-sr-only" id="explanation-agile-title">Why short feedback cycles support change</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-agile.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why short feedback cycles support change through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why short feedback cycles support change: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> A small increment makes assumptions visible quickly.</li><li><strong>Reason:</strong> Frequent stakeholder feedback reprioritises the next increment.</li><li><strong>Result:</strong> Less unreviewed work depends on a mistaken requirement.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>A small increment makes assumptions visible quickly.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Frequent stakeholder feedback reprioritises the next increment.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Less unreviewed work depends on a mistaken requirement.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Regular design reviews correct direction while only a small section is built.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Agile still requires architecture, testing and available informed stakeholders.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Regular design reviews correct direction while only a small section is built.</p>
+            <p><strong>Boundary:</strong> Agile still requires architecture, testing and available informed stakeholders.</p>
           </div>
         </section>
         <!-- stage10-explanation:end agile -->
@@ -341,33 +257,17 @@
         </section>
 
         <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>How project conditions choose a model</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">How project conditions choose a model</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How project conditions choose a model through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How project conditions choose a model: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Stable regulated work values traceability and formal approval.</li><li><strong>Reason:</strong> Uncertain user-facing work values short feedback distance.</li><li><strong>Result:</strong> Dependencies, risk and stakeholder availability constrain the viable choice.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Stable regulated work values traceability and formal approval.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Uncertain user-facing work values short feedback distance.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Dependencies, risk and stakeholder availability constrain the viable choice.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Choose a planning rhythm that matches how often reliable evidence arrives.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>No lifecycle model is inherently fastest or best for every project.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Choose a planning rhythm that matches how often reliable evidence arrives.</p>
+            <p><strong>Boundary:</strong> No lifecycle model is inherently fastest or best for every project.</p>
           </div>
         </section>
         <!-- stage10-explanation:end compare -->
@@ -388,33 +288,17 @@
         </section>
 
         <!-- stage10-explanation:start artefacts -->
-        <section class="panel explanation-panel" id="explanation-artefacts" data-explains="artefacts" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="artefacts">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why artefacts make decisions traceable</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-artefacts" data-explains="artefacts" data-explanation-kind="mechanism" aria-labelledby="explanation-artefacts-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="artefacts">
+          <h2 class="explanation-sr-only" id="explanation-artefacts-title">Why artefacts make decisions traceable</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-artefacts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why artefacts make decisions traceable through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why artefacts make decisions traceable: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Requirements define what successful behaviour means.</li><li><strong>Reason:</strong> Designs and tests link implementation choices to those requirements.</li><li><strong>Result:</strong> Traceability exposes every item affected by a later change.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Requirements define what successful behaviour means.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Designs and tests link implementation choices to those requirements.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Traceability exposes every item affected by a later change.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A linked evidence trail shows which plans and checks depend on one decision.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>An outdated artefact can mislead more than an absent one.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> A linked evidence trail shows which plans and checks depend on one decision.</p>
+            <p><strong>Boundary:</strong> An outdated artefact can mislead more than an absent one.</p>
           </div>
         </section>
         <!-- stage10-explanation:end artefacts -->

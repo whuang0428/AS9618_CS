@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -113,6 +113,20 @@
           <div class="callout">Chinese support: protocol = 协议/规则集合；interoperability = 互操作性；acknowledgement = 确认信息。</div>
         </section>
 
+        <!-- stage10-explanation:start protocols -->
+        <section class="panel explanation-panel" id="explanation-protocols" data-explains="protocols" data-explanation-kind="mechanism" aria-labelledby="explanation-protocols-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="protocols">
+          <h2 class="explanation-sr-only" id="explanation-protocols-title">What a protocol is</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-019-protocols.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What a protocol is with a structured visual model." />
+            <figcaption class="explanation-sr-only">What a protocol is: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Definition</li><li><strong>Lesson fact:</strong> A protocol is a set of rules that governs how data is transmitted and received.</li><li><strong>Lesson fact:</strong> Shared meaning</li><li><strong>Lesson fact:</strong> Both sender and receiver follow the same rules, so messages can be interpreted correctly.</li><li><strong>Lesson fact:</strong> Interoperability</li><li><strong>Lesson fact:</strong> Different devices and software can communicate if they implement the same protocol.</li><li><strong>Lesson fact:</strong> Reliability</li><li><strong>Lesson fact:</strong> Protocols can specify error checking, acknowledgements and retransmission rules.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end protocols -->
+
         <section class="panel" id="rules" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rules">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -127,6 +141,20 @@
             <article><strong>Connection rules</strong><span>How communication starts, continues and ends.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start rules -->
+        <section class="panel explanation-panel" id="explanation-rules" data-explains="rules" data-explanation-kind="mechanism" aria-labelledby="explanation-rules-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rules">
+          <h2 class="explanation-sr-only" id="explanation-rules-title">What protocol rules can specify</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-019-rules.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What protocol rules can specify with a structured visual model." />
+            <figcaption class="explanation-sr-only">What protocol rules can specify: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Data format How data is structured, encoded or framed.</li><li><strong>Lesson fact:</strong> Addressing How sender and receiver are identified.</li><li><strong>Lesson fact:</strong> Timing When data can be sent and how long to wait for responses.</li><li><strong>Lesson fact:</strong> Error control How errors are detected and how retransmission is handled.</li><li><strong>Lesson fact:</strong> Flow control How to stop a fast sender overwhelming a slow receiver.</li><li><strong>Lesson fact:</strong> Connection rules How communication starts, continues and ends.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end rules -->
 
         <section class="panel" id="layers" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="layers">
           <div class="section-title">
@@ -144,6 +172,20 @@
             <p>As data moves down layers, each layer may add control information. At the receiver, layers remove and interpret that control information in reverse order.</p>
           </div>
         </section>
+
+        <!-- stage10-explanation:start layers -->
+        <section class="panel explanation-panel" id="explanation-layers" data-explains="layers" data-explanation-kind="mechanism" aria-labelledby="explanation-layers-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="layers">
+          <h2 class="explanation-sr-only" id="explanation-layers-title">Layered communication</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-019-layers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Layered communication with a structured visual model." />
+            <figcaption class="explanation-sr-only">Layered communication: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Application layer idea What the user or application wants to do, such as send a web request.</li><li><strong>Lesson fact:</strong> Transport layer idea Breaks data into segments, manages reliability or delivery style.</li><li><strong>Lesson fact:</strong> Network layer idea Adds logical addressing and routing between networks.</li><li><strong>Lesson fact:</strong> Link/physical layer idea Moves frames or bits across the local medium.</li><li><strong>Lesson fact:</strong> Encapsulation and de-encapsulation</li><li><strong>Lesson fact:</strong> As data moves down layers, each layer may add control information. At the receiver, layers remove and interpret that control information in reverse order.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end layers -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

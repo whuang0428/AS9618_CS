@@ -71,3 +71,59 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it. For this lesson, make students contrast that mistake with the exact idea of **sound file size calculations**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Channels: mono and stereo
+
+- **Explains:** `channels`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-011-channels.jpg`
+
+1. One channel of audio. Use channel factor 1.
+2. rate × resolution × duration × 1
+3. Two channels, commonly left and right. Use channel factor 2.
+4. rate × resolution × duration × 2
+
+### The full uncompressed sound formula
+
+- **Explains:** `formula`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-011-formula.jpg`
+
+1. size in bits = sampling rate × sample resolution × duration × channels
+2. size in bytes = bits ÷ 8
+3. KiB = bytes ÷ 1024; MiB = KiB ÷ 1024
+4. Sampling rate samples per second, measured in Hz
+5. Sample resolution bits used for each sample
+6. Duration length of the sound in seconds
+7. Channels mono = 1, stereo = 2
+
+### Parameter changes and consequences
+
+- **Explains:** `tradeoffs`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-011-tradeoffs.jpg`
+
+1. Higher sampling rate
+2. More samples per second; may improve accuracy; increases file size.
+3. Higher sample resolution
+4. More bits per sample; more amplitude levels; increases file size.
+5. Longer duration
+6. More seconds of samples; increases file size in direct proportion.
+7. More channels
+8. More separate audio streams; stereo doubles mono size when other factors match.
+
+### Unit conversion without changing the answer
+
+- **Explains:** `units`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-011-units.jpg`
+
+1. The formula gives bits first.
+2. 8 bits = 1 byte.
+3. 1 KiB = 1024 bytes.
+4. 1 MiB = 1024 KiB.
+5. Do not divide by 1000 when the question asks for KiB or MiB.
+<!-- stage10-explanations:end -->

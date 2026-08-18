@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -126,6 +126,20 @@
           <div class="callout">Chinese support: instruction set = 指令集；machine code = 机器码；opcode = 操作码；operand = 操作数；mnemonic = 助记符。</div>
         </section>
 
+        <!-- stage10-explanation:start instruction-set -->
+        <section class="panel explanation-panel" id="explanation-instruction-set" data-explains="instruction-set" data-explanation-kind="mechanism" aria-labelledby="explanation-instruction-set-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="instruction-set">
+          <h2 class="explanation-sr-only" id="explanation-instruction-set-title">What is an instruction set?</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-instruction-set.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What is an instruction set? with a structured visual model." />
+            <figcaption class="explanation-sr-only">What is an instruction set?: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Definition</li><li><strong>Lesson fact:</strong> The set of instructions that a particular processor can recognise and execute.</li><li><strong>Lesson fact:</strong> Includes operations</li><li><strong>Lesson fact:</strong> Examples include load, store, add, subtract, compare, jump and input/output instructions.</li><li><strong>Lesson fact:</strong> Processor-specific</li><li><strong>Lesson fact:</strong> Different processor families can have different instruction sets and instruction formats.</li><li><strong>Lesson fact:</strong> Defines meaning</li><li><strong>Lesson fact:</strong> The instruction set tells the CPU what each opcode means and how operands are interpreted.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end instruction-set -->
+
         <section class="panel" id="machine-code" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="machine-code">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -150,6 +164,20 @@
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start machine-code -->
+        <section class="panel explanation-panel" id="explanation-machine-code" data-explains="machine-code" data-explanation-kind="mechanism" aria-labelledby="explanation-machine-code-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="machine-code">
+          <h2 class="explanation-sr-only" id="explanation-machine-code-title">Machine code is binary instructions for the CPU</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-machine-code.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Machine code is binary instructions for the CPU with a structured visual model." />
+            <figcaption class="explanation-sr-only">Machine code is binary instructions for the CPU: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Lowest-level executable form</li><li><strong>Lesson fact:</strong> Machine code consists of binary instructions that can be executed directly by the processor.</li><li><strong>Lesson fact:</strong> Not friendly for humans</li><li><strong>Lesson fact:</strong> Binary instructions are hard to read and write, which is why assembly language uses mnemonics and high-level languages use translators.</li><li><strong>Lesson fact:</strong> Stored in memory</li><li><strong>Lesson fact:</strong> Machine-code instructions are stored in memory and fetched by the CPU during the fetch-decode-execute cycle.</li><li><strong>Lesson fact:</strong> CPU-specific meaning</li><li><strong>Lesson fact:</strong> The same bit pattern can have different meanings on different architectures because opcodes are defined by the instruction set.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end machine-code -->
 
         <section class="panel" id="opcode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="opcode">
           <div class="section-title">
@@ -201,6 +229,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start opcode -->
+        <section class="panel explanation-panel" id="explanation-opcode" data-explains="opcode" data-explanation-kind="mechanism" aria-labelledby="explanation-opcode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="opcode">
+          <h2 class="explanation-sr-only" id="explanation-opcode-title">Opcode and operand</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-opcode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Opcode and operand with a structured visual model." />
+            <figcaption class="explanation-sr-only">Opcode and operand: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Opcode tells the CPU which operation to perform. Operand gives the data, register, address or value used by the operation.</li><li><strong>Lesson fact:</strong> Mnemonic</li><li><strong>Lesson fact:</strong> Example with operand</li><li><strong>Lesson fact:</strong> Load value from memory into ACC.</li><li><strong>Lesson fact:</strong> 0001 01011010 = LOAD address 90</li><li><strong>Lesson fact:</strong> Store ACC value into memory.</li><li><strong>Lesson fact:</strong> 0010 01011010 = STORE address 90</li><li><strong>Lesson fact:</strong> Add value from memory to ACC.</li><li><strong>Lesson fact:</strong> 0011 01011010 = ADD value at address 90</li><li><strong>Lesson fact:</strong> Jump to a different instruction address.</li><li><strong>Lesson fact:</strong> 0100 00001100 = jump to address 12</li><li><strong>Lesson fact:</strong> Common trap</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end opcode -->
+
         <section class="panel" id="compatibility" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compatibility">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -225,6 +267,20 @@
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start compatibility -->
+        <section class="panel explanation-panel" id="explanation-compatibility" data-explains="compatibility" data-explanation-kind="mechanism" aria-labelledby="explanation-compatibility-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compatibility">
+          <h2 class="explanation-sr-only" id="explanation-compatibility-title">Instruction sets and compatibility</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-045-compatibility.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Instruction sets and compatibility with a structured visual model." />
+            <figcaption class="explanation-sr-only">Instruction sets and compatibility: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Same ISA</li><li><strong>Lesson fact:</strong> A program compiled to one instruction set can run on compatible processors that implement that instruction set.</li><li><strong>Lesson fact:</strong> Different ISA</li><li><strong>Lesson fact:</strong> Machine code for one architecture may not run correctly on another architecture.</li><li><strong>Lesson fact:</strong> Translation needed</li><li><strong>Lesson fact:</strong> Source code may need to be recompiled, interpreted, emulated or translated for a different processor.</li><li><strong>Lesson fact:</strong> Exam wording</li><li><strong>Lesson fact:</strong> Say &quot;the CPU cannot recognise/execute those opcodes&quot; rather than simply &quot;the CPU does not like it&quot;.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compatibility -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

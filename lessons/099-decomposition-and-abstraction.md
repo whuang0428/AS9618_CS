@@ -92,3 +92,90 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **decomposition and abstraction**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Abstraction: keep the details that affect the algorithm
+
+- **Explains:** `abstraction`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-099-abstraction.jpg`
+
+1. Knowledge explanation
+2. Keep inputs, ranges, counts, limits, required outputs and stopping conditions.
+3. Ignore visual style, real-world decoration and details that do not change the logic.
+4. Name use meaningful identifiers such as Mark, TotalCost, PlacesLeft and IsValid.
+5. Model represent the real situation using variables, constants, arrays and records when needed.
+6. Check ask whether removing a detail would change the algorithm's result.
+7. Explain state why a detail is relevant or irrelevant, not just that it is "important".
+
+### Decomposition: split the problem into sub-problems
+
+- **Explains:** `decomposition`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-099-decomposition.jpg`
+
+1. Knowledge explanation
+2. Possible sub-problems
+3. Why this helps
+4. Calculate class average
+5. Input marks, validate marks, total marks, calculate average, output average
+6. Each part has a clear variable and test case
+7. Login check
+8. Input username/password, check blank input, compare stored details, output access decision
+9. Selection and validation are easier to locate
+10. Process ticket sales
+11. Input ticket type, validate type, calculate price, update places, output confirmation
+12. Business rules are separated from input/output
+
+### Keep or ignore details
+
+- **Explains:** `filter`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-099-filter.jpg`
+
+1. Interactive abstraction filter
+
+### From scenario to algorithm plan
+
+- **Explains:** `pattern`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-099-pattern.jpg`
+
+1. Design pattern
+2. 1 Read the scenario and underline the required output.
+3. 2 List inputs and constraints.
+4. 3 Decompose into sub-problems with verb-based names.
+5. 4 Abstract away details that do not affect logic.
+6. 5 Write Cambridge-style pseudocode for each part.
+
+### Modules can be planned in pseudocode without Java syntax
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-099-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style pseudocode
+3. PROCEDURE ValidateMark(Mark)
+4. IF Mark >= 0 AND Mark <= 100 THEN
+5. OUTPUT "Valid"
+6. OUTPUT "Invalid"
+7. ENDPROCEDURE
+8. Java support only
+9. static void validateMark(int mark) {
+10. if (mark >= 0 && mark <= 100) {
+11. System.out.println("Valid");
+12. } else {
+
+### Classify the design move
+
+- **Explains:** `sorter`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-099-sorter.jpg`
+
+1. Interactive task sorter
+2. Design statement
+3. Choose a statement to see whether it is decomposition, abstraction or a trap.
+<!-- stage10-explanations:end -->

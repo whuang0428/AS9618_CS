@@ -71,3 +71,81 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often call every program an operating system. Correction: an OS manages resources and provides services; an app performs user tasks. For this lesson, make students contrast that mistake with the exact idea of **user interfaces: command line, graphical, menu-driven, and natural language**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Command line interface: precise text commands
+
+- **Explains:** `cli`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-cli.jpg`
+
+1. How it works The user types commands and parameters at a prompt.
+2. Advantages Fast for experts, supports automation/scripts, can use fewer system resources.
+3. Limitations Users must know exact commands; errors can occur from mistyped syntax.
+4. Good fit System administration, batch operations, remote servers and repeatable tasks.
+
+### Compare interface suitability by scenario
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-compare.jpg`
+
+1. Scenario
+2. Likely suitable interface
+3. Expert admin repeats a file operation
+4. Commands/scripts are efficient for repeatable precise tasks.
+5. Novice edits photos
+6. Visual feedback and direct manipulation support the task.
+7. Customer buys a train ticket
+8. Menu-driven
+9. Fixed choices guide the user and reduce input errors.
+10. Driver asks for directions hands-free
+11. Natural language
+12. Speech input can be used without touching the device.
+
+### A user interface allows interaction with a computer system
+
+- **Explains:** `concept`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-concept.jpg`
+
+1. User interface The method by which a user communicates with a computer system.
+2. Usability How easy and effective an interface is for a specific user and task.
+3. Accessibility How well an interface can be used by people with different needs or abilities.
+4. Context The environment, user skill level and task determine suitability.
+
+### Graphical user interface: visual objects and pointer actions
+
+- **Explains:** `gui`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-gui.jpg`
+
+1. How it works Uses windows, icons, menus and a pointer/touch input.
+2. Advantages Intuitive for many users, easy to learn, supports visual feedback and direct manipulation.
+3. Limitations Can use more memory/processing power; repetitive actions may be slower than commands.
+4. Good fit General desktop use, creative work, browsing files and visual tasks.
+
+### Menu-driven interface: choose from fixed options
+
+- **Explains:** `menu`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-menu.jpg`
+
+1. How it works The user selects from displayed options, often step by step.
+2. Advantages Reduces memorisation, restricts invalid choices, useful for simple repeated tasks.
+3. Limitations Can be slow for expert users; limited to available options; nested menus can frustrate users.
+4. Good fit ATMs, ticket machines, phone menus and kiosks.
+
+### Natural language interface: ordinary language input
+
+- **Explains:** `natural`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-natural.jpg`
+
+1. How it works The user speaks or types instructions in ordinary human language.
+2. Advantages Can be accessible, hands-free and intuitive for simple requests.
+3. Limitations May misinterpret ambiguous wording, accents, noise or context.
+4. Good fit Voice assistants, search queries, smart speakers and accessibility support.
+<!-- stage10-explanations:end -->

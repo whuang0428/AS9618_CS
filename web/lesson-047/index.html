@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -123,6 +123,20 @@
           <div class="callout">Chinese support: addressing mode = 寻址方式；operand = 操作数；effective address = 有效地址；pointer = 指针/指向地址的值。</div>
         </section>
 
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">Addressing mode means operand interpretation</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Addressing mode means operand interpretation with a structured visual model." />
+            <figcaption class="explanation-sr-only">Addressing mode means operand interpretation: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> The part of an instruction that supplies data, an address, a register or another reference.</li><li><strong>Lesson fact:</strong> Addressing mode</li><li><strong>Lesson fact:</strong> The rule used to interpret the operand and locate the data needed by the instruction.</li><li><strong>Lesson fact:</strong> Effective address</li><li><strong>Lesson fact:</strong> The actual memory address used after applying the addressing mode.</li><li><strong>Lesson fact:</strong> Fetched value</li><li><strong>Lesson fact:</strong> The final data value obtained or used by the instruction after interpretation.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concept -->
+
         <section class="panel" id="modes" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="modes">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -162,6 +176,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start modes -->
+        <section class="panel explanation-panel" id="explanation-modes" data-explains="modes" data-explanation-kind="mechanism" aria-labelledby="explanation-modes-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="modes">
+          <h2 class="explanation-sr-only" id="explanation-modes-title">Four common addressing modes</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-modes.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Four common addressing modes with a structured visual model." />
+            <figcaption class="explanation-sr-only">Four common addressing modes: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Operand means</li><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Immediate</li><li><strong>Lesson fact:</strong> The actual value to use.</li><li><strong>Lesson fact:</strong> LOAD #20</li><li><strong>Lesson fact:</strong> The operand is the value 20 itself.</li><li><strong>Lesson fact:</strong> The memory address of the value.</li><li><strong>Lesson fact:</strong> The CPU loads the value stored at memory address 20.</li><li><strong>Lesson fact:</strong> Indirect</li><li><strong>Lesson fact:</strong> The address of a memory location that stores another address.</li><li><strong>Lesson fact:</strong> LOAD (20)</li><li><strong>Lesson fact:</strong> The CPU looks at address 20 to find the address of the actual value.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end modes -->
+
         <section class="panel" id="effective" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="effective">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -185,6 +213,20 @@
             <article><strong>LOAD 100, IX=3</strong><span>Effective address = 100 + 3 = 103, so value loaded is memory[103] = 44.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start effective -->
+        <section class="panel explanation-panel" id="explanation-effective" data-explains="effective" data-explanation-kind="mechanism" aria-labelledby="explanation-effective-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="effective">
+          <h2 class="explanation-sr-only" id="explanation-effective-title">Effective address: where the CPU actually reads</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-effective.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Effective address: where the CPU actually reads with a structured visual model." />
+            <figcaption class="explanation-sr-only">Effective address: where the CPU actually reads: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Stored value</li><li><strong>Lesson fact:</strong> Can be a data value or pointer, depending on mode.</li><li><strong>Lesson fact:</strong> Used by indirect example.</li><li><strong>Lesson fact:</strong> Start of an array-like block.</li><li><strong>Lesson fact:</strong> Used when base 100 and IX = 3.</li><li><strong>Lesson fact:</strong> LOAD #20 Use value 20 directly. No memory lookup for the operand value.</li><li><strong>Lesson fact:</strong> LOAD 20 Read memory[20], so the value loaded is 70.</li><li><strong>Lesson fact:</strong> LOAD (20) Read memory[20] to get address 70, then read memory[70] to get 999.</li><li><strong>Lesson fact:</strong> LOAD 100, IX=3 Effective address = 100 + 3 = 103, so value loaded is memory[103] = 44.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end effective -->
 
         <section class="panel" id="arrays" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="arrays">
           <div class="section-title">
@@ -214,6 +256,20 @@
             <p>Indexed addressing does not mean "convert the operand into an index number". It calculates an effective address using a base and an offset.</p>
           </div>
         </section>
+
+        <!-- stage10-explanation:start arrays -->
+        <section class="panel explanation-panel" id="explanation-arrays" data-explains="arrays" data-explanation-kind="mechanism" aria-labelledby="explanation-arrays-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="arrays">
+          <h2 class="explanation-sr-only" id="explanation-arrays-title">Indexed addressing and arrays</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-arrays.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Indexed addressing and arrays with a structured visual model." />
+            <figcaption class="explanation-sr-only">Indexed addressing and arrays: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Base address</li><li><strong>Lesson fact:</strong> The start address of a block of related values, such as an array.</li><li><strong>Lesson fact:</strong> Index register</li><li><strong>Lesson fact:</strong> A register holding an offset from the base address.</li><li><strong>Lesson fact:</strong> Effective address</li><li><strong>Lesson fact:</strong> Calculated as base address + index/offset.</li><li><strong>Lesson fact:</strong> Why useful</li><li><strong>Lesson fact:</strong> Changing the index can access different array elements without changing the instruction's base address.</li><li><strong>Lesson fact:</strong> Common trap</li><li><strong>Lesson fact:</strong> Indexed addressing does not mean &quot;convert the operand into an index number&quot;. It calculates an effective address using a base and an offset.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end arrays -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

@@ -71,3 +71,70 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often say interpreters are 'bad compilers'. Correction: they are different translation approaches with different use cases. For this lesson, make students contrast that mistake with the exact idea of **compilers, interpreters, and assemblers**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### An assembler translates assembly language into machine code
+
+- **Explains:** `assembler`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-assembler.jpg`
+
+1. Input Assembly language mnemonics such as LDA , ADD or STA .
+2. Output Machine code/object code that the processor can execute.
+3. Purpose Allows low-level programming using mnemonic instructions instead of raw binary.
+4. Boundary It does not translate high-level languages such as Python, Java or pseudocode.
+
+### Comparison: same goal, different route
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-compare.jpg`
+
+1. Translator
+2. Output / execution behaviour
+3. Typical use
+4. Compiler
+5. High-level source code
+6. Produces object/executable code before the program is run.
+7. Distribution, repeated execution, protecting source code.
+8. Interpreter
+9. Translates and executes statement by statement; normally no separate object code.
+10. Development, testing, learning and rapid debugging.
+11. Assembler
+12. Assembly language
+
+### A compiler translates the whole high-level program before execution
+
+- **Explains:** `compiler`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-compiler.jpg`
+
+1. Input High-level language source code.
+2. Output Object code or executable code after translation.
+3. Advantages Executable can run without source code; repeated execution may be faster after compilation.
+4. Limitations Errors are often reported after compilation, so debugging may involve checking a list of errors.
+
+### Translator software converts program code into another form
+
+- **Explains:** `concept`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-concept.jpg`
+
+1. Source code The program as written by the programmer, usually in a high-level or assembly language.
+2. Object code Translated code produced by a compiler or assembler, often close to machine code.
+3. Machine code Binary instructions that can be executed directly by the processor.
+4. Translator System software that converts code from one language level to another.
+
+### An interpreter translates and executes statements as the program runs
+
+- **Explains:** `interpreter`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-interpreter.jpg`
+
+1. Input High-level language source code.
+2. Output No separate permanent object code is normally produced.
+3. Advantages Useful during development because errors can be found statement by statement.
+4. Limitations Program may run more slowly because translation happens during execution; source code is needed.
+<!-- stage10-explanations:end -->

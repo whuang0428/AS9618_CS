@@ -105,3 +105,105 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** index has storage/update cost or need not enforce entity identity
 
 **Strict note:** Do not accept that an index and a primary key are always the same object.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Section 8 basics so far
+
+- **Explains:** `checkpoint`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-checkpoint.jpg`
+
+1. Monthly checkpoint
+2. This checkpoint connects Lessons 078-080 without becoming a full exam.
+3. 1. Define data, information, database, DBMS, flat-file, relational database.
+4. 2. Compare one-table repeated data vs linked tables with reduced redundancy.
+5. 3. Design choose data types and constraints for five fields in a small scenario.
+
+### Which rule rejects the bad value?
+
+- **Explains:** `constraint-tool`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-constraint-tool.jpg`
+
+1. Interactive constraint checker
+2. Bad value
+3. Choose a bad value to identify the check.
+4. Name the rule and explain what it prevents.
+
+### Constraints and validation rules
+
+- **Explains:** `constraints`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-constraints.jpg`
+
+1. A constraint limits accepted values to help maintain data integrity. It does not prove the data is true; it helps reject impossible or invalid data.
+2. Presence check Value must not be blank. Example: Name is required.
+3. Range check Value must be within limits. Example: Mark is 0 to 100.
+4. Type check Value must match the data type. Example: Quantity must be Integer.
+5. Length check Value must have a permitted length. Example: StudentID has 5 characters.
+6. Format check Value must match a pattern. Example: postcode or email pattern.
+7. Lookup check Value must be from an allowed list. Example: Grade is A, B, C, D, E or U.
+8. Exam sentence:
+9. A constraint improves data integrity by preventing values that do not meet a rule, such as rejecting a mark outside 0 to 100.
+
+### Designing fields properly
+
+- **Explains:** `fields`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-fields.jpg`
+
+1. Each field should have a name, data type, possible field size and constraints. Good design reduces invalid data at entry.
+2. Field name Clear and specific: DateOfBirth , not date .
+3. Data type Controls the kind of data: text, integer, real, date/time, Boolean.
+4. Field size Maximum storage length where relevant, such as 8 characters for StudentID.
+5. Constraint A rule that a value must satisfy before it is accepted.
+
+### Tables, records and fields
+
+- **Explains:** `terms`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-terms.jpg`
+
+1. A table stores records about one entity. A record is one complete row. A field is one column or attribute.
+2. A collection of records for one entity
+3. Student table
+4. Record / tuple
+5. One complete row in a table
+6. S0234, Amira Chen, 2009-04-18, TRUE
+7. Field / attribute
+8. One column or property stored for each record
+9. StudentID, Name, DateOfBirth, FeePaid
+10. One item of data in a field for a record
+11. TRUE in the FeePaid field
+
+### Choose the best data type
+
+- **Explains:** `type-tool`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-type-tool.jpg`
+
+1. Interactive data type chooser
+2. Choose a field, then decide the data type.
+3. The best answer depends on how the value is used, not how numeric it looks.
+
+### Common database data types
+
+- **Explains:** `types`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-types.jpg`
+
+1. Data type
+2. Use when
+3. Text / string
+4. The value may contain letters, spaces, symbols or leading zeroes
+5. PhoneNumber = "02071234567"
+6. Whole number used for counting or arithmetic
+7. Quantity = 24
+8. Real / decimal
+9. Number may include fractional part
+10. MassKg = 62.5
+11. Only two logical states are needed
+12. FeePaid = TRUE
+<!-- stage10-explanations:end -->

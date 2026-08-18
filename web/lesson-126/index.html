@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -108,6 +108,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start constructs -->
+        <section class="panel explanation-panel" id="explanation-constructs" data-explains="constructs" data-explanation-kind="mechanism" aria-labelledby="explanation-constructs-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constructs">
+          <h2 class="explanation-sr-only" id="explanation-constructs-title">Three control-flow ideas</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-126-constructs.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Three control-flow ideas with a structured visual model." />
+            <figcaption class="explanation-sr-only">Three control-flow ideas: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Core constructs</li><li><strong>Lesson fact:</strong> Construct</li><li><strong>Lesson fact:</strong> Question it answers</li><li><strong>Lesson fact:</strong> Pseudocode clue</li><li><strong>Lesson fact:</strong> Typical error</li><li><strong>Lesson fact:</strong> Sequence</li><li><strong>Lesson fact:</strong> What happens next?</li><li><strong>Lesson fact:</strong> statements listed one after another</li><li><strong>Lesson fact:</strong> wrong order of assignment</li><li><strong>Lesson fact:</strong> Selection</li><li><strong>Lesson fact:</strong> Which path is taken?</li><li><strong>Lesson fact:</strong> IF...THEN...ELSE...ENDIF, CASE</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end constructs -->
+
         <section class="panel" id="sequence" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sequence">
           <div class="section-title">
             <p class="eyebrow">Sequence</p>
@@ -131,6 +145,20 @@ OUTPUT Total</code></pre>
           </div>
           <div class="callout">A sequence is simple, but not optional. Using a value before it has been input is algorithmic optimism, not a method.</div>
         </section>
+
+        <!-- stage10-explanation:start sequence -->
+        <section class="panel explanation-panel" id="explanation-sequence" data-explains="sequence" data-explanation-kind="mechanism" aria-labelledby="explanation-sequence-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sequence">
+          <h2 class="explanation-sr-only" id="explanation-sequence-title">Order changes meaning</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-126-sequence.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Order changes meaning with a structured visual model." />
+            <figcaption class="explanation-sr-only">Order changes meaning: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Sequence</li><li><strong>Lesson fact:</strong> Correct order</li><li><strong>Lesson fact:</strong> INPUT Price</li><li><strong>Lesson fact:</strong> INPUT Quantity</li><li><strong>Lesson fact:</strong> Total &lt;- Price * Quantity</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> Wrong order</li><li><strong>Lesson fact:</strong> A sequence is simple, but not optional. Using a value before it has been input is algorithmic optimism, not a method.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end sequence -->
 
         <section class="panel" id="selection" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selection">
           <div class="section-title">
@@ -159,6 +187,20 @@ ENDCASE</code></pre>
           <div class="callout">Boundary tests matter: Mark = 49, 50 and 51 reveal whether the condition is correct.</div>
         </section>
 
+        <!-- stage10-explanation:start selection -->
+        <section class="panel explanation-panel" id="explanation-selection" data-explains="selection" data-explanation-kind="mechanism" aria-labelledby="explanation-selection-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selection">
+          <h2 class="explanation-sr-only" id="explanation-selection-title">Conditions decide the path</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-126-selection.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Conditions decide the path with a structured visual model." />
+            <figcaption class="explanation-sr-only">Conditions decide the path: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Selection</li><li><strong>Lesson fact:</strong> IF selection</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit needed&quot;</li><li><strong>Lesson fact:</strong> CASE selection</li><li><strong>Lesson fact:</strong> CASE Grade OF</li><li><strong>Lesson fact:</strong> &quot;A&quot; : OUTPUT &quot;Excellent&quot;</li><li><strong>Lesson fact:</strong> &quot;B&quot; : OUTPUT &quot;Good&quot;</li><li><strong>Lesson fact:</strong> OTHERWISE OUTPUT &quot;Check grade&quot;</li><li><strong>Lesson fact:</strong> Boundary tests matter: Mark = 49, 50 and 51 reveal whether the condition is correct.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end selection -->
+
         <section class="panel" id="iteration" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="iteration">
           <div class="section-title">
             <p class="eyebrow">Iteration</p>
@@ -171,6 +213,20 @@ ENDCASE</code></pre>
             <div class="table-row" role="row"><div>REPEAT...UNTIL</div><div>must run at least once</div><div>after each iteration</div><div>stops on the wrong condition</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start iteration -->
+        <section class="panel explanation-panel" id="explanation-iteration" data-explains="iteration" data-explanation-kind="mechanism" aria-labelledby="explanation-iteration-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="iteration">
+          <h2 class="explanation-sr-only" id="explanation-iteration-title">Loops repeat with control</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-126-iteration.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Loops repeat with control with a structured visual model." />
+            <figcaption class="explanation-sr-only">Loops repeat with control: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Iteration</li><li><strong>Lesson fact:</strong> Use when</li><li><strong>Lesson fact:</strong> Condition checked</li><li><strong>Lesson fact:</strong> number of repetitions is known</li><li><strong>Lesson fact:</strong> by counter range</li><li><strong>Lesson fact:</strong> wrong start/end value</li><li><strong>Lesson fact:</strong> may repeat zero or more times</li><li><strong>Lesson fact:</strong> before each iteration</li><li><strong>Lesson fact:</strong> condition never changes</li><li><strong>Lesson fact:</strong> REPEAT...UNTIL</li><li><strong>Lesson fact:</strong> must run at least once</li><li><strong>Lesson fact:</strong> after each iteration</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end iteration -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
@@ -223,6 +279,20 @@ ENDIF</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start java -->
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Same logic, different exam language</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-126-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same logic, different exam language with a structured visual model." />
+            <figcaption class="explanation-sr-only">Same logic, different exam language: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit needed&quot;</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> if (mark &gt;= 50) {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Pass&quot;);</li><li><strong>Lesson fact:</strong> } else {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Resit needed&quot;);</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end java -->
+
 
         <section class="panel" id="tracer" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tracer">
           <div class="section-title">
@@ -242,6 +312,20 @@ ENDIF</code></pre>
           </div>
           <div class="trace-output" id="traceResult">Choose a loop limit to build a trace table.</div>
         </section>
+
+        <!-- stage10-explanation:start tracer -->
+        <section class="panel explanation-panel" id="explanation-tracer" data-explains="tracer" data-explanation-kind="mechanism" aria-labelledby="explanation-tracer-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tracer">
+          <h2 class="explanation-sr-only" id="explanation-tracer-title">Run a small loop by hand</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-126-tracer.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Run a small loop by hand with a structured visual model." />
+            <figcaption class="explanation-sr-only">Run a small loop by hand: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive trace</li><li><strong>Lesson fact:</strong> FOR Count &lt;- 1 TO</li><li><strong>Lesson fact:</strong> Choose a loop limit to build a trace table.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end tracer -->
 
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
           <div class="section-title">

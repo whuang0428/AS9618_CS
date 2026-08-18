@@ -71,3 +71,66 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it. For this lesson, make students contrast that mistake with the exact idea of **character sets: ascii, unicode, and why emojis are not magic**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### ASCII and extended ASCII
+
+- **Explains:** `ascii`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-007-ascii.jpg`
+
+1. Standard ASCII
+2. Uses 7 bits, so it can represent 2⁷ = 128 possible codes.
+3. It covers common English letters, digits, punctuation and control characters.
+4. Extended ASCII
+5. Uses 8 bits, so it can represent 2⁸ = 256 possible codes.
+6. It adds extra characters, but still cannot cover the world’s writing systems.
+7. Character
+8. Denary code
+9. 8-bit binary
+10. Exam note
+11. 01000001
+12. Example only; no need to memorise.
+
+### What a character set actually does
+
+- **Explains:** `concept`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-007-concept.jpg`
+
+1. Character
+2. Character set
+3. A defined collection of characters and the code assigned to each character.
+4. Character code
+5. The numeric value used to represent a character inside the computer.
+6. Binary storage
+7. The numeric code is stored using bits, for example 65₁₀ = 01000001₂.
+
+### Character set vs encoding
+
+- **Explains:** `encoding`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-007-encoding.jpg`
+
+1. Character set
+2. Defines the characters and their code points or code values.
+3. Example idea: A has a defined code in ASCII and Unicode.
+4. Encoding
+5. Defines how those codes are stored as bytes.
+6. For AS exam answers, keep this distinction simple unless the question gives a specific encoding.
+7. A good exam sentence: “Unicode can represent a wider range of characters, so it is more suitable for multilingual text.”
+
+### Unicode: more characters, more global use
+
+- **Explains:** `unicode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-007-unicode.jpg`
+
+1. Unicode is designed to represent characters from many languages and symbol systems.
+2. Unicode supports far more characters than ASCII, including Chinese characters and many symbols.
+3. Trade-off
+4. More possible characters may require more bits per character, depending on the encoding used.
+5. Emoji are not magic stickers. They are characters with assigned Unicode code points, then rendered by software and fonts.
+<!-- stage10-explanations:end -->

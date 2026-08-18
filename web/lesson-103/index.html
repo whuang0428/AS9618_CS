@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -116,6 +116,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start validation -->
+        <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="mechanism" aria-labelledby="explanation-validation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
+          <h2 class="explanation-sr-only" id="explanation-validation-title">Validation checks whether input follows a rule</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-103-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation checks whether input follows a rule with a structured visual model." />
+            <figcaption class="explanation-sr-only">Validation checks whether input follows a rule: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> What validation does</li><li><strong>Lesson fact:</strong> Validation rejects unacceptable input before processing. It can check range, presence, length, type, format, existence or check digit rules.</li><li><strong>Lesson fact:</strong> What validation does not do</li><li><strong>Lesson fact:</strong> Validation does not prove input is true. It checks whether input is reasonable or follows the expected pattern.</li><li><strong>Lesson fact:</strong> Example: age 15 passes a school-age range check, but it might still be a lie.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end validation -->
+
         <section class="panel" id="checks" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checks">
           <div class="section-title">
             <p class="eyebrow">Validation check types</p>
@@ -131,6 +145,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start checks -->
+        <section class="panel explanation-panel" id="explanation-checks" data-explains="checks" data-explanation-kind="mechanism" aria-labelledby="explanation-checks-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="checks">
+          <h2 class="explanation-sr-only" id="explanation-checks-title">Match the rule to the risk</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-103-checks.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match the rule to the risk with a structured visual model." />
+            <figcaption class="explanation-sr-only">Match the rule to the risk: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Validation check types</li><li><strong>Lesson fact:</strong> Range check</li><li><strong>Lesson fact:</strong> value is within allowed limits</li><li><strong>Lesson fact:</strong> Mark &gt;= 0 AND Mark &lt;= 100</li><li><strong>Lesson fact:</strong> Presence check</li><li><strong>Lesson fact:</strong> field is not blank</li><li><strong>Lesson fact:</strong> Name &lt;&gt; &quot;&quot;</li><li><strong>Lesson fact:</strong> Length check</li><li><strong>Lesson fact:</strong> input has required number of characters</li><li><strong>Lesson fact:</strong> LENGTH(Postcode) &lt;= 8</li><li><strong>Lesson fact:</strong> Type / format check</li><li><strong>Lesson fact:</strong> input matches expected type or pattern</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end checks -->
+
         <section class="panel" id="defensive" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="defensive">
           <div class="section-title">
             <p class="eyebrow">Defensive input handling</p>
@@ -144,6 +172,20 @@
             <div><strong>5</strong><span>Process only the accepted value.</span></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start defensive -->
+        <section class="panel explanation-panel" id="explanation-defensive" data-explains="defensive" data-explanation-kind="mechanism" aria-labelledby="explanation-defensive-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="defensive">
+          <h2 class="explanation-sr-only" id="explanation-defensive-title">Reject bad input, then ask again</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-103-defensive.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Reject bad input, then ask again with a structured visual model." />
+            <figcaption class="explanation-sr-only">Reject bad input, then ask again: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Defensive input handling</li><li><strong>Lesson fact:</strong> 1 Input the value.</li><li><strong>Lesson fact:</strong> 2 Test the validation condition.</li><li><strong>Lesson fact:</strong> 3 If invalid, output a helpful message.</li><li><strong>Lesson fact:</strong> 4 Repeat input until valid.</li><li><strong>Lesson fact:</strong> 5 Process only the accepted value.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end defensive -->
 
         <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
@@ -172,6 +214,20 @@ UNTIL Mark &gt;= 0 AND Mark &lt;= 100</code></pre>
           </div>
           <div class="callout">Exam reminder: Cambridge pseudocode uses keywords such as REPEAT, UNTIL, IF, THEN, ENDIF, INPUT and OUTPUT. Java syntax is support only.</div>
         </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Use Cambridge-style validation loops in the exam</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-103-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use Cambridge-style validation loops in the exam with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use Cambridge-style validation loops in the exam: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &lt; 0 OR Mark &gt; 100 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Invalid mark&quot;</li><li><strong>Lesson fact:</strong> UNTIL Mark &gt;= 0 AND Mark &lt;= 100</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> mark = input.nextInt();</li><li><strong>Lesson fact:</strong> if (mark &lt; 0 || mark &gt; 100) {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Invalid mark&quot;);</li><li><strong>Lesson fact:</strong> } while (mark &lt; 0 || mark &gt; 100);</li><li><strong>Lesson fact:</strong> Exam reminder: Cambridge pseudocode uses keywords such as REPEAT, UNTIL, IF, THEN, ENDIF, INPUT and OUTPUT. Java syntax is support only.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
 
 
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
@@ -209,6 +265,20 @@ UNTIL Mark &gt;= 0 AND Mark &lt;= 100</code></pre>
           </div>
           <div class="feedback" id="testResult">Enter a mark and test whether it is valid.</div>
         </section>
+
+        <!-- stage10-explanation:start tester -->
+        <section class="panel explanation-panel" id="explanation-tester" data-explains="tester" data-explanation-kind="mechanism" aria-labelledby="explanation-tester-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tester">
+          <h2 class="explanation-sr-only" id="explanation-tester-title">Test a mark against 0-100</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-103-tester.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Test a mark against 0-100 with a structured visual model." />
+            <figcaption class="explanation-sr-only">Test a mark against 0-100: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive input tester</li><li><strong>Lesson fact:</strong> Enter a mark and test whether it is valid.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end tester -->
 
         <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">

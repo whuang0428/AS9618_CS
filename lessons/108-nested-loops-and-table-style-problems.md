@@ -92,3 +92,98 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **nested loops and table-style problems**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Total visits = outer repetitions x inner repetitions
+
+- **Explains:** `counting`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-108-counting.jpg`
+
+1. Counting steps
+2. FOR Row <- 1 TO 2
+3. FOR Column <- 1 TO 3
+4. OUTPUT "*"
+5. NEXT Column
+6. NEXT Row
+7. Count it
+8. The OUTPUT "*" statement runs 2 x 3 = 6 times. The inner loop runs fully for Row 1, then fully again for Row 2.
+9. Do not add 2 + 3. Nested loop visits multiply when every inner loop runs for every outer loop value.
+
+### Outer loop first, inner loop second
+
+- **Explains:** `model`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-108-model.jpg`
+
+1. Knowledge explanation
+2. Core structure
+3. FOR Row <- 1 TO 3
+4. FOR Column <- 1 TO 4
+5. OUTPUT Row, Column
+6. NEXT Column
+7. NEXT Row
+8. The inner loop completes all columns for one row before the outer loop moves to the next row.
+9. Trace idea
+10. Column sequence
+11. 1, 2, 3, 4
+
+### Indentation is evidence in nested loops
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-108-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style pseudocode
+3. FOR Row <- 1 TO 3
+4. FOR Column <- 1 TO 4
+5. Product <- Row * Column
+6. OUTPUT Product
+7. NEXT Column
+8. NEXT Row
+9. Java support only
+10. for (int row = 1; row <= 3; row++) {
+11. for (int column = 1; column <= 4; column++) {
+12. int product = row * column;
+
+### Put row-level variables inside the outer loop
+
+- **Explains:** `reset`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-108-reset.jpg`
+
+1. Reset rules
+2. Correct: row total resets for each row
+3. GrandTotal <- 0
+4. FOR Row <- 1 TO 3
+5. RowTotal <- 0
+6. FOR Column <- 1 TO 4
+7. INPUT Mark
+8. RowTotal <- RowTotal + Mark
+9. NEXT Column
+10. OUTPUT RowTotal
+11. GrandTotal <- GrandTotal + RowTotal
+12. NEXT Row
+
+### Table-style problems usually scan row by row
+
+- **Explains:** `table`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-108-table.jpg`
+
+1. Table traversal
+2. Problem type
+3. Outer loop
+4. Inner loop
+5. Typical output
+6. Grid / table
+7. cell coordinates or cell values
+8. Class marks
+9. students
+10. subjects/tests
+11. row total or average per student
+12. Multiplication table
+<!-- stage10-explanations:end -->

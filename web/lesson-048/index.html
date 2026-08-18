@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -124,6 +124,20 @@
           <div class="callout">Chinese support: interrupt = 中断信号；ISR = 中断服务程序；processor state = 处理器当前状态；resume = 恢复继续执行。</div>
         </section>
 
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">What an interrupt is</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What an interrupt is with a structured visual model." />
+            <figcaption class="explanation-sr-only">What an interrupt is: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interrupt</li><li><strong>Lesson fact:</strong> A signal that causes the processor to pause normal execution and deal with an event.</li><li><strong>Lesson fact:</strong> Interrupt service routine</li><li><strong>Lesson fact:</strong> A program routine that handles a specific interrupt.</li><li><strong>Lesson fact:</strong> Processor state</li><li><strong>Lesson fact:</strong> The information needed to continue later, such as PC, registers and status flags.</li><li><strong>Lesson fact:</strong> Interrupt flag</li><li><strong>Lesson fact:</strong> A stored indication that an interrupt has occurred or is waiting to be handled.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concept -->
+
         <section class="panel" id="sources" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sources">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -157,6 +171,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start sources -->
+        <section class="panel explanation-panel" id="explanation-sources" data-explains="sources" data-explanation-kind="mechanism" aria-labelledby="explanation-sources-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sources">
+          <h2 class="explanation-sr-only" id="explanation-sources-title">Where interrupts come from</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-sources.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Where interrupts come from with a structured visual model." />
+            <figcaption class="explanation-sr-only">Where interrupts come from: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Input/output device</li><li><strong>Lesson fact:</strong> A keyboard, printer or network interface signals that it needs CPU attention.</li><li><strong>Lesson fact:</strong> Example: key pressed; printer buffer ready.</li><li><strong>Lesson fact:</strong> A timer interrupt lets an operating system share CPU time between tasks.</li><li><strong>Lesson fact:</strong> Example: scheduler checks whether another process should run.</li><li><strong>Lesson fact:</strong> Hardware fault</li><li><strong>Lesson fact:</strong> A device or hardware condition signals a problem that must be handled.</li><li><strong>Lesson fact:</strong> Example: power warning or device failure signal.</li><li><strong>Lesson fact:</strong> Software / exception</li><li><strong>Lesson fact:</strong> A program event requires special handling.</li><li><strong>Lesson fact:</strong> Example: division by zero or system call, depending on architecture.</li><li><strong>Lesson fact:</strong> Common trap</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end sources -->
+
         <section class="panel" id="cycle" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cycle">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -175,6 +203,20 @@
             <p>Saving state is the "bookmark". Without it, the CPU may not know where or how to resume the interrupted program.</p>
           </div>
         </section>
+
+        <!-- stage10-explanation:start cycle -->
+        <section class="panel explanation-panel" id="explanation-cycle" data-explains="cycle" data-explanation-kind="process" aria-labelledby="explanation-cycle-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cycle">
+          <h2 class="explanation-sr-only" id="explanation-cycle-title">The interrupt handling cycle</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-cycle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The interrupt handling cycle with a structured visual model." />
+            <figcaption class="explanation-sr-only">The interrupt handling cycle: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 1. Execute instruction The CPU finishes the current instruction before accepting most maskable interrupts.</li><li><strong>Lesson fact:</strong> 2. Check interrupt The control unit checks whether an interrupt is pending and enabled.</li><li><strong>Lesson fact:</strong> 3. Save state Important registers, PC and status information are stored, often on a stack.</li><li><strong>Lesson fact:</strong> 4. Find ISR The interrupt type is used to locate the correct interrupt service routine.</li><li><strong>Lesson fact:</strong> 5. Run ISR The routine handles the event, such as reading a key or acknowledging a device.</li><li><strong>Lesson fact:</strong> 6. Restore and return The saved state is restored and the interrupted program continues.</li><li><strong>Lesson fact:</strong> Why this matters</li><li><strong>Lesson fact:</strong> Saving state is the &quot;bookmark&quot;. Without it, the CPU may not know where or how to resume the interrupted program.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end cycle -->
 
         <section class="panel" id="priority" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="priority">
           <div class="section-title">
@@ -210,6 +252,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start priority -->
+        <section class="panel explanation-panel" id="explanation-priority" data-explains="priority" data-explanation-kind="mechanism" aria-labelledby="explanation-priority-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="priority">
+          <h2 class="explanation-sr-only" id="explanation-priority-title">Priority and masking</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-priority.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Priority and masking with a structured visual model." />
+            <figcaption class="explanation-sr-only">Priority and masking: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Priority</li><li><strong>Lesson fact:</strong> Some interrupts are more urgent than others.</li><li><strong>Lesson fact:</strong> A higher-priority interrupt may be handled before a lower-priority one.</li><li><strong>Lesson fact:</strong> Maskable interrupt</li><li><strong>Lesson fact:</strong> Can be disabled or delayed by the processor.</li><li><strong>Lesson fact:</strong> Used when a less urgent event can wait.</li><li><strong>Lesson fact:</strong> Non-maskable interrupt</li><li><strong>Lesson fact:</strong> Cannot normally be ignored.</li><li><strong>Lesson fact:</strong> Used for critical events such as serious hardware faults.</li><li><strong>Lesson fact:</strong> Nested interrupt</li><li><strong>Lesson fact:</strong> An interrupt occurs while another ISR is running.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end priority -->
+
         <section class="panel" id="polling" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="polling">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
@@ -236,6 +292,20 @@
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start polling -->
+        <section class="panel explanation-panel" id="explanation-polling" data-explains="polling" data-explanation-kind="mechanism" aria-labelledby="explanation-polling-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="polling">
+          <h2 class="explanation-sr-only" id="explanation-polling-title">Interrupts versus polling</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-048-polling.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Interrupts versus polling with a structured visual model." />
+            <figcaption class="explanation-sr-only">Interrupts versus polling: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interrupt-driven input</li><li><strong>Lesson fact:</strong> The device signals the CPU when attention is needed. The CPU can do useful work meanwhile.</li><li><strong>Lesson fact:</strong> Efficient when events are unpredictable.</li><li><strong>Lesson fact:</strong> Requires interrupt handling and state saving.</li><li><strong>Lesson fact:</strong> Good exam phrase: &quot;CPU does not continually check the device.&quot;</li><li><strong>Lesson fact:</strong> The CPU repeatedly checks a device or flag to see whether attention is needed.</li><li><strong>Lesson fact:</strong> Simple to understand and implement.</li><li><strong>Lesson fact:</strong> Can waste processor time if checks are frequent and no event has occurred.</li><li><strong>Lesson fact:</strong> Good exam phrase: &quot;regularly checks the status of the device.&quot;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end polling -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

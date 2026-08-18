@@ -71,3 +71,54 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **section 1 review: representation calculations under exam timing**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Section 1 method bank
+
+- **Explains:** `methods`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-015-methods.jpg`
+
+1. Storage units
+2. 1 KiB = 1024 bytes. 1 MiB = 1024 KiB. Decimal prefixes use 1000, binary prefixes use 1024.
+3. Binary to denary
+4. Add active place values. For 8-bit unsigned, range is 0 to 255.
+5. File size
+6. Image bits = width x height x colour depth. Sound bits = sample rate x sample resolution x duration x channels.
+7. Compression choice
+8. Lossless allows exact reconstruction. Lossy removes data permanently but can reduce file size more.
+
+### Six-minute review sprint
+
+- **Explains:** `sprint`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-015-sprint.jpg`
+
+1. Timed section
+2. Use the timer for a short retrieval round. The goal is not panic; the goal is clean method under a clock.
+3. Convert 10101100 to denary.
+4. Calculate the size in bits of a 100 x 50 bitmap image with 8-bit colour depth.
+5. State why Unicode is suitable for a multilingual app.
+6. Choose lossless or lossy compression for a legal document archive and justify the choice.
+7. 1: 172, because 128 + 32 + 8 + 4 = 172.
+8. 2: 100 x 50 x 8 = 40 000 bits.
+9. 3: Unicode supports a wider range of characters, so it can represent many languages.
+10. 4: Lossless, because the document must be reconstructed exactly.
+
+### Question triage: choose the toolbox first
+
+- **Explains:** `triage`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-015-triage.jpg`
+
+1. Number bases
+2. Look for binary, denary, hexadecimal, place values, carries, overflow or two's complement.
+3. Text representation
+4. Look for ASCII, Unicode, character set, character code, multilingual text or symbols.
+5. Images and sound
+6. Look for resolution, colour depth, sampling rate, sample resolution, duration and file size.
+7. Compression
+8. Look for lossless, lossy, exact reconstruction, reduced quality, RLE or repeated data.
+<!-- stage10-explanations:end -->

@@ -71,3 +71,52 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need. For this lesson, make students contrast that mistake with the exact idea of **hardware selection for different users**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Classify the hardware before choosing it
+
+- **Explains:** `categories`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-038-categories.jpg`
+
+1. Category
+2. Examples
+3. Selection question
+4. Captures data or commands.
+5. Keyboard, barcode reader, camera, touchscreen, sensor
+6. How fast and accurate must data entry be?
+7. Presents information or produces an action.
+8. Monitor, printer, speaker, projector, actuator
+9. Does the user need visual, printed, audio or physical output?
+10. Stores programs and data.
+11. SSD, HDD, optical disc, flash storage
+12. Is speed, capacity, portability or durability most important?
+
+### Choose using criteria, not vibes
+
+- **Explains:** `criteria`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-038-criteria.jpg`
+
+1. Speed Needed for real-time input, rapid searches, video editing or low-delay output.
+2. Capacity Needed for large files, media archives, backups or databases.
+3. Cost Matters when many devices must be purchased or the user has a fixed budget.
+4. Durability Important for mobile, outdoor or high-use environments.
+5. Accuracy Important for barcode scanning, sensors, medical data and attendance records.
+6. Compatibility Hardware must connect to existing software, ports, networks and operating systems.
+7. Exam sentence frame: "I would choose X because it has Y, which matters for Z, so the user can..."
+
+### Different users value different trade-offs
+
+- **Explains:** `users`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-038-users.jpg`
+
+1. Librarian Needs fast, accurate item input and reliable local/network database access.
+2. Delivery driver Needs portable, durable, wireless hardware and quick barcode/QR capture.
+3. Video editor Needs high-speed storage, strong CPU/GPU performance and colour-accurate display.
+4. Weather station Needs accurate sensors, durable enclosure, low power use and stable communication.
+5. A strong answer rejects one tempting unsuitable option. This proves the choice was evaluated, not guessed.
+<!-- stage10-explanations:end -->

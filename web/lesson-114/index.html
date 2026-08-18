@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -123,6 +123,20 @@ Average &lt;- Total / Count</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start model -->
+        <section class="panel explanation-panel" id="explanation-model" data-explains="model" data-explanation-kind="comparison" aria-labelledby="explanation-model-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
+          <h2 class="explanation-sr-only" id="explanation-model-title">Identifiers name storage locations</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-model.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Identifiers name storage locations with a structured visual model." />
+            <figcaption class="explanation-sr-only">Identifiers name storage locations: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Memory model</li><li><strong>Lesson fact:</strong> Variable</li><li><strong>Lesson fact:</strong> A named storage location whose value can change while the algorithm runs.</li><li><strong>Lesson fact:</strong> DECLARE Count : INTEGER</li><li><strong>Lesson fact:</strong> Count &lt;- 0</li><li><strong>Lesson fact:</strong> Count &lt;- Count + 1</li><li><strong>Lesson fact:</strong> Constant</li><li><strong>Lesson fact:</strong> A named value that should remain fixed. Use it when the same fixed value is used in several places.</li><li><strong>Lesson fact:</strong> CONSTANT MaxMark = 100</li><li><strong>Lesson fact:</strong> CONSTANT VATRate = 0.2</li><li><strong>Lesson fact:</strong> Assignment</li><li><strong>Lesson fact:</strong> Assignment evaluates the right-hand expression first, then stores the result in the left-hand variable.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end model -->
+
         <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
           <div class="section-title">
             <p class="eyebrow">Declare variables</p>
@@ -137,6 +151,20 @@ Average &lt;- Total / Count</code></pre>
             <div class="table-row" role="row"><div>Text value</div><div><code>DECLARE Name : STRING</code></div><div>Name can store a sequence of characters</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start declare -->
+        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+          <h2 class="explanation-sr-only" id="explanation-declare-title">Declaration gives a name and a type before use</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Declaration gives a name and a type before use with a structured visual model." />
+            <figcaption class="explanation-sr-only">Declaration gives a name and a type before use: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Declare variables</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Whole-number counter</li><li><strong>Lesson fact:</strong> DECLARE Count : INTEGER</li><li><strong>Lesson fact:</strong> Count can store whole numbers</li><li><strong>Lesson fact:</strong> Decimal total</li><li><strong>Lesson fact:</strong> DECLARE Price : REAL</li><li><strong>Lesson fact:</strong> Price can store decimal values</li><li><strong>Lesson fact:</strong> True/false state</li><li><strong>Lesson fact:</strong> DECLARE Found : BOOLEAN</li><li><strong>Lesson fact:</strong> Found can store TRUE or FALSE</li><li><strong>Lesson fact:</strong> Text value</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end declare -->
 
         <section class="panel" id="constants" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constants">
           <div class="section-title">
@@ -164,6 +192,20 @@ ENDIF</code></pre>
           <div class="callout">Exam point: changing a constant later is a contradiction. If it must change during execution, it should be a variable.</div>
         </section>
 
+        <!-- stage10-explanation:start constants -->
+        <section class="panel explanation-panel" id="explanation-constants" data-explains="constants" data-explanation-kind="process" aria-labelledby="explanation-constants-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constants">
+          <h2 class="explanation-sr-only" id="explanation-constants-title">Name fixed values so the algorithm explains itself</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-constants.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Name fixed values so the algorithm explains itself with a structured visual model." />
+            <figcaption class="explanation-sr-only">Name fixed values so the algorithm explains itself: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Constants</li><li><strong>Lesson fact:</strong> Without a constant</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> The value 50 appears without explaining its role.</li><li><strong>Lesson fact:</strong> With a constant</li><li><strong>Lesson fact:</strong> CONSTANT PassMark = 50</li><li><strong>Lesson fact:</strong> IF Mark &gt;= PassMark THEN</li><li><strong>Lesson fact:</strong> The identifier documents the meaning of the fixed value.</li><li><strong>Lesson fact:</strong> Exam point: changing a constant later is a contradiction. If it must change during execution, it should be a variable.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end constants -->
+
         <section class="panel" id="assignment" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assignment">
           <div class="section-title">
             <p class="eyebrow">Assignment</p>
@@ -177,6 +219,20 @@ ENDIF</code></pre>
             <div class="table-row" role="row"><div><code>Found &lt;- TRUE</code></div><div>Found is set to TRUE</div><div>flag update</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start assignment -->
+        <section class="panel explanation-panel" id="explanation-assignment" data-explains="assignment" data-explanation-kind="mechanism" aria-labelledby="explanation-assignment-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assignment">
+          <h2 class="explanation-sr-only" id="explanation-assignment-title">Right side first, left side second</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-assignment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Right side first, left side second with a structured visual model." />
+            <figcaption class="explanation-sr-only">Right side first, left side second: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Assignment</li><li><strong>Lesson fact:</strong> Statement</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> Total is set to 0</li><li><strong>Lesson fact:</strong> initialises Total</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Mark</li><li><strong>Lesson fact:</strong> Total becomes old Total plus Mark</li><li><strong>Lesson fact:</strong> running total update</li><li><strong>Lesson fact:</strong> Count &lt;- Count + 1</li><li><strong>Lesson fact:</strong> Count is incremented</li><li><strong>Lesson fact:</strong> counter update</li><li><strong>Lesson fact:</strong> Found &lt;- TRUE</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end assignment -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
@@ -231,6 +287,20 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           </div>
           <div class="callout">Paper 2 reminder: use Cambridge-style assignment <code>&lt;-</code> in pseudocode. Java uses <code>=</code> for assignment.</div>
         </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">The symbol changes, the update idea does not</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-114-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The symbol changes, the update idea does not with a structured visual model." />
+            <figcaption class="explanation-sr-only">The symbol changes, the update idea does not: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> CONSTANT PassMark = 50</li><li><strong>Lesson fact:</strong> DECLARE Mark : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Passed : BOOLEAN</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> Passed &lt;- Mark &gt;= PassMark</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> final int PASS_MARK = 50;</li><li><strong>Lesson fact:</strong> int mark = input.nextInt();</li><li><strong>Lesson fact:</strong> boolean passed = mark &gt;= PASS_MARK;</li><li><strong>Lesson fact:</strong> Paper 2 reminder: use Cambridge-style assignment &lt;- in pseudocode. Java uses = for assignment.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
 
 
         <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">

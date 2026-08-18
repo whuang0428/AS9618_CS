@@ -105,3 +105,46 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** reduces conversion work / preserves exact decimal digits for display
 
 **Strict note:** Do not accept 37, which is the pure-binary interpretation of the whole eight-bit pattern.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Converting simple binary fractions
+
+- **Explains:** `convert`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-006-convert.jpg`
+
+1. Binary fraction to denary
+2. Write the place values above and below the point.
+3. Add the values for every 1 bit.
+4. Keep the base label until the final answer.
+5. State whether the answer is exact.
+6. Denary fraction to binary
+7. Use 1/2, 1/4, 1/8, 1/16 as target values.
+8. Subtract a target value when it fits.
+9. Write 1 for a used value and 0 for a skipped value.
+10. Stop when the remainder is zero or the bit limit is reached.
+11. Example: 0.625₁₀ = 0.101₂ because 0.5 + 0.125 = 0.625.
+
+### Binary fractional place value
+
+- **Explains:** `point`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-006-point.jpg`
+
+1. Example 10.101₂
+2. 10.101₂ = 2 + 1/2 + 1/8 = 2.625₁₀
+
+### Precision limits: why computers sometimes approximate
+
+- **Explains:** `precision`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-006-precision.jpg`
+
+1. 0.75₁₀ = 0.11₂ exactly because 1/2 + 1/4 = 3/4.
+2. Limited precision
+3. With four fractional bits, 0.1₁₀ becomes approximately 0.0001₂, which is 0.0625₁₀.
+4. Representation error is the difference between the intended value and the stored approximation.
+5. This lesson uses fixed fractional places only. Mantissa, exponent and floating-point normalisation belong to later A Level content.
+<!-- stage10-explanations:end -->

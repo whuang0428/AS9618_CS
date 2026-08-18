@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -125,6 +125,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start knowledge -->
+        <section class="panel explanation-panel" id="explanation-knowledge" data-explains="knowledge" data-explanation-kind="mechanism" aria-labelledby="explanation-knowledge-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="knowledge">
+          <h2 class="explanation-sr-only" id="explanation-knowledge-title">8-bit binary place values</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-002-knowledge.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining 8-bit binary place values with a structured visual model." />
+            <figcaption class="explanation-sr-only">8-bit binary place values: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Bit position 7 6 5 4 3 2 1 0</li><li><strong>Lesson fact:</strong> Place value 128 64 32 16 8 4 2 1</li><li><strong>Lesson fact:</strong> Example bits 1 0 1 1 0 1 1 0</li><li><strong>Lesson fact:</strong> Count? yes no yes yes no yes yes no</li><li><strong>Lesson fact:</strong> 10110110₂ = 128 + 32 + 16 + 4 + 2 = 182₁₀</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end knowledge -->
+
         <section class="panel" id="methods" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="methods">
           <div class="section-title">
             <p class="eyebrow">Knowledge points 2-3</p>
@@ -151,6 +165,20 @@
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start methods -->
+        <section class="panel explanation-panel" id="explanation-methods" data-explains="methods" data-explanation-kind="mechanism" aria-labelledby="explanation-methods-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="methods">
+          <h2 class="explanation-sr-only" id="explanation-methods-title">Two conversion directions, two reliable methods</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-002-methods.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Two conversion directions, two reliable methods with a structured visual model." />
+            <figcaption class="explanation-sr-only">Two conversion directions, two reliable methods: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Binary to denary</li><li><strong>Lesson fact:</strong> Write the place-value row: 128, 64, 32, 16, 8, 4, 2, 1.</li><li><strong>Lesson fact:</strong> Place the binary digits under the row.</li><li><strong>Lesson fact:</strong> Add only the values with a 1 above them.</li><li><strong>Lesson fact:</strong> Label the answer as denary.</li><li><strong>Lesson fact:</strong> Denary to binary</li><li><strong>Lesson fact:</strong> Start at 128 and move right.</li><li><strong>Lesson fact:</strong> Write 1 if the place value fits into the remaining number.</li><li><strong>Lesson fact:</strong> Subtract that place value when a 1 is used.</li><li><strong>Lesson fact:</strong> Write 0 when it does not fit.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end methods -->
 
         <section id="delivery-06" class="guidance-grid compact" aria-label="Conversion guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="methods">
           <article class="trap-card">
@@ -182,6 +210,20 @@
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start range -->
+        <section class="panel explanation-panel" id="explanation-range" data-explains="range" data-explanation-kind="mechanism" aria-labelledby="explanation-range-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="range">
+          <h2 class="explanation-sr-only" id="explanation-range-title">Range and leading zeros</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-002-range.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Range and leading zeros with a structured visual model." />
+            <figcaption class="explanation-sr-only">Range and leading zeros: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Smallest 8-bit value</li><li><strong>Lesson fact:</strong> 00000000₂ = 0₁₀</li><li><strong>Lesson fact:</strong> All place values are off.</li><li><strong>Lesson fact:</strong> Largest 8-bit value</li><li><strong>Lesson fact:</strong> 11111111₂ = 255₁₀</li><li><strong>Lesson fact:</strong> All place values are on: 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1.</li><li><strong>Lesson fact:</strong> Leading zeros</li><li><strong>Lesson fact:</strong> 00000111₂ = 111₂ = 7₁₀</li><li><strong>Lesson fact:</strong> Leading zeros preserve fixed bit width; they do not change the value.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end range -->
 
         <section class="panel interactive" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="converter">
           <div class="section-title">

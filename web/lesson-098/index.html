@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -112,6 +112,20 @@
           <div class="callout">Chinese support: input = 输入；output = 输出；constraint = 约束；stopping condition = 停止条件；trace = 跟踪执行。</div>
         </section>
 
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="process" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">An algorithm is a precise method for solving a problem</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-098-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining An algorithm is a precise method for solving a problem with a structured visual model." />
+            <figcaption class="explanation-sr-only">An algorithm is a precise method for solving a problem: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Core idea</li><li><strong>Lesson fact:</strong> Question to ask</li><li><strong>Lesson fact:</strong> What data is supplied?</li><li><strong>Lesson fact:</strong> Mark, NumberOfItems, List[1:10]</li><li><strong>Lesson fact:</strong> What operations are performed?</li><li><strong>Lesson fact:</strong> compare, add, count, repeat, validate</li><li><strong>Lesson fact:</strong> What must be shown or returned?</li><li><strong>Lesson fact:</strong> &quot;Pass&quot;, total, maximum, valid/invalid</li><li><strong>Lesson fact:</strong> Constraint</li><li><strong>Lesson fact:</strong> What rule or limit applies?</li><li><strong>Lesson fact:</strong> Mark must be 0-100; loop stops after 10 items</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concept -->
+
         <section class="panel" id="model" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
           <div class="section-title">
             <p class="eyebrow">Problem model</p>
@@ -127,6 +141,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start model -->
+        <section class="panel explanation-panel" id="explanation-model" data-explains="model" data-explanation-kind="comparison" aria-labelledby="explanation-model-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
+          <h2 class="explanation-sr-only" id="explanation-model-title">Use IPOC before pseudocode</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-098-model.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use IPOC before pseudocode with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use IPOC before pseudocode: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Problem model</li><li><strong>Lesson fact:</strong> Input List each value the algorithm needs. Decide type and range when possible.</li><li><strong>Lesson fact:</strong> Process Write the transformation in English first: calculate, compare, count, search, repeat.</li><li><strong>Lesson fact:</strong> Output State exactly what the algorithm must display, return or store.</li><li><strong>Lesson fact:</strong> Constraints Record limits, valid ranges, maximum repetitions and stopping conditions.</li><li><strong>Lesson fact:</strong> Assumptions State what is guaranteed if the question implies it, such as exactly 10 values.</li><li><strong>Lesson fact:</strong> Test data Choose normal, boundary and invalid data when validation is involved.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end model -->
+
         <section class="panel" id="constraints" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constraints">
           <div class="section-title">
             <p class="eyebrow">Constraints</p>
@@ -140,6 +168,20 @@
             <div class="table-row" role="row"><div>Output format</div><div>output highest value and its position</div><div>track both value and position</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start constraints -->
+        <section class="panel explanation-panel" id="explanation-constraints" data-explains="constraints" data-explanation-kind="process" aria-labelledby="explanation-constraints-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="constraints">
+          <h2 class="explanation-sr-only" id="explanation-constraints-title">Constraints stop algorithms from wandering off</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-098-constraints.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Constraints stop algorithms from wandering off with a structured visual model." />
+            <figcaption class="explanation-sr-only">Constraints stop algorithms from wandering off: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Constraints</li><li><strong>Lesson fact:</strong> Constraint type</li><li><strong>Lesson fact:</strong> Example clue</li><li><strong>Lesson fact:</strong> Design effect</li><li><strong>Lesson fact:</strong> mark is between 0 and 100</li><li><strong>Lesson fact:</strong> validate before processing</li><li><strong>Lesson fact:</strong> exactly 10 readings are entered</li><li><strong>Lesson fact:</strong> use count-controlled loop</li><li><strong>Lesson fact:</strong> Sentinel</li><li><strong>Lesson fact:</strong> enter -1 to finish</li><li><strong>Lesson fact:</strong> use condition-controlled loop</li><li><strong>Lesson fact:</strong> Output format</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end constraints -->
 
         <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
@@ -167,6 +209,20 @@ ENDIF</code></pre>
           </div>
           <div class="callout">Exam reminder: write `IF ... THEN`, `ELSE`, `ENDIF`, `INPUT`, `OUTPUT` in Cambridge-style pseudocode. Java braces and semicolons are support examples only.</div>
         </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Cambridge pseudocode is the exam language</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-098-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge pseudocode is the exam language with a structured visual model." />
+            <figcaption class="explanation-sr-only">Cambridge pseudocode is the exam language: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit needed&quot;</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> if (mark &gt;= 50) {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Pass&quot;);</li><li><strong>Lesson fact:</strong> } else {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Resit needed&quot;);</li><li><strong>Lesson fact:</strong> Exam reminder: write IF ... THEN, ELSE, ENDIF, INPUT, OUTPUT in Cambridge-style pseudocode. Java braces and semicolons are support examples only.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
 
 
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">

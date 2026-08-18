@@ -99,3 +99,107 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name. For this lesson, make students contrast that mistake with the exact idea of **array algorithms: traversal, update, search, and count**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Increment only when a condition is true
+
+- **Explains:** `count`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-count.jpg`
+
+1. PassCount <- 0
+2. FOR Index <- 1 TO 5
+3. IF Scores[Index] >= 50 THEN
+4. PassCount <- PassCount + 1
+5. NEXT Index
+6. OUTPUT PassCount
+
+### Four array algorithm patterns
+
+- **Explains:** `patterns`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-patterns.jpg`
+
+1. Pattern map
+2. Question wording
+3. Core idea
+4. Key variable
+5. Traversal
+6. output all, process each
+7. visit every valid index
+8. increase, replace, apply discount
+9. assign a new value to selected elements
+10. Scores[Index]
+11. find, present, target
+12. compare each element with target
+
+### Same algorithm, different array syntax
+
+- **Explains:** `pseudocode`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style pseudocode
+3. PassCount <- 0
+4. FOR Index <- 1 TO 5
+5. IF Scores[Index] >= 50 THEN
+6. PassCount <- PassCount + 1
+7. NEXT Index
+8. Java support only
+9. int passCount = 0;
+10. for (int index = 0; index < 5; index++) {
+11. if (scores[index] >= 50) {
+12. passCount++;
+
+### Use a flag to remember whether the target appeared
+
+- **Explains:** `search`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-search.jpg`
+
+1. Found <- FALSE
+2. FOR Index <- 1 TO 5
+3. IF Names[Index] = TargetName THEN
+4. Found <- TRUE
+5. NEXT Index
+6. OUTPUT Found
+
+### Choose a scenario and inspect the matching template
+
+- **Explains:** `selector`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-selector.jpg`
+
+1. Interactive pattern selector
+2. Scenario
+3. Choose a scenario to see the algorithm pattern.
+
+### Visit every element once
+
+- **Explains:** `traversal`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-traversal.jpg`
+
+1. Traversal
+2. FOR Index <- 1 TO 5
+3. OUTPUT Scores[Index]
+4. NEXT Index
+5. Traversal is the skeleton. Update, search and count usually add logic inside this skeleton.
+
+### Change selected elements
+
+- **Explains:** `update`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-update.jpg`
+
+1. Update every element
+2. FOR Index <- 1 TO 5
+3. Scores[Index] <- Scores[Index] + 2
+4. NEXT Index
+5. Update only when condition is true
+6. IF Scores[Index] < 50 THEN
+7. Scores[Index] <- Scores[Index] + 5
+<!-- stage10-explanations:end -->

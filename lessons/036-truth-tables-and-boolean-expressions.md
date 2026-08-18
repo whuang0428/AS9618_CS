@@ -71,3 +71,46 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often use everyday 'or' instead of logical OR. Correction: OR is true when at least one input is true unless XOR is specified. For this lesson, make students contrast that mistake with the exact idea of **truth tables and boolean expressions**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Boolean expressions describe gate behaviour
+
+- **Explains:** `expressions`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-036-expressions.jpg`
+
+1. Variables
+2. A, B and C represent input signals. Each row assigns them 0 or 1.
+3. Operators
+4. NOT, AND, OR, NAND, NOR and XOR describe the logic applied.
+5. Intermediate columns
+6. Each bracketed part or gate output should get its own column.
+7. Final output
+8. Q is the final result after all intermediate columns have been combined.
+
+### Brackets and NOT usually come before the final combination
+
+- **Explains:** `precedence`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-036-precedence.jpg`
+
+1. Brackets first For (A OR B) AND C, complete A OR B before the AND with C.
+2. NOT next For A AND NOT B, invert B before applying AND.
+3. Then combine Use AND, OR or XOR to combine the prepared columns.
+4. Check one row Pick one row and explain it in words to catch swapped columns.
+5. Do not assume a hidden priority when the expression is unclear. In exam answers, use brackets or intermediate columns to remove ambiguity.
+
+### A reliable truth-table method
+
+- **Explains:** `table-method`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-036-table-method.jpg`
+
+1. 1. Count inputs n inputs produce 2^n rows. Two inputs give 4 rows; three inputs give 8 rows.
+2. 2. List input combinations Use a systematic order such as 000, 001, 010, 011, 100, 101, 110, 111.
+3. 3. Add intermediate columns One column for each gate result, such as A AND B or NOT C.
+4. 4. Fill final Q Use the intermediate columns to avoid guessing the final output.
+5. Row number
+<!-- stage10-explanations:end -->

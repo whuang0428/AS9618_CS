@@ -71,3 +71,76 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **section 8 review: designing and querying relational data**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Relational design: what earns marks?
+
+- **Explains:** `design`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-089-design.jpg`
+
+1. Design review
+2. Primary key Uniquely identifies a record in one table. It must be unique and reliable.
+3. Foreign key Stores a value that matches a primary key in another table, creating a relationship.
+4. Normalisation Separates repeated data into related tables to reduce duplication and update errors.
+
+### Section 8 knowledge map
+
+- **Explains:** `map`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-089-map.jpg`
+
+1. Retrieval map
+2. Data and DBMS data vs information; DBMS roles; avoiding flat-file limitations
+3. Tables and keys records, fields, data types, constraints, primary keys and foreign keys
+4. Design entity-relationship modelling and normalisation to reduce duplication
+5. SQL retrieval SELECT , FROM , WHERE , ORDER BY , aggregates and joins
+6. SQL modification INSERT , UPDATE , DELETE , field/value matching and safe WHERE
+7. Protection validation, verification, security controls, backups and restore testing
+
+### Do not swap the security vocabulary
+
+- **Explains:** `protection`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-089-protection.jpg`
+
+1. Protection review
+2. Validation Checks data follows rules, such as range, type, format or presence.
+3. Verification Checks entered data matches a source, using proofreading or double entry.
+4. Security and backup Security restricts access; backup enables recovery after loss or corruption.
+
+### SQL clauses: choose the clause that matches the request
+
+- **Explains:** `sql`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-089-sql.jpg`
+
+1. SQL review
+2. Request clue
+3. output fields
+4. SELECT Title, Borrower
+5. filter rows
+6. WHERE Returned = FALSE
+7. sort rows
+8. ORDER BY
+9. ORDER BY Price DESC
+10. summary per group
+11. GROUP BY
+12. GROUP BY Category
+
+### Trace one mixed SQL result
+
+- **Explains:** `tracer`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-089-tracer.jpg`
+
+1. Interactive SQL tracer
+2. Category
+3. Networks
+4. Computing
+5. Literature
+6. Databases
+7. Choose a query to see the result.
+<!-- stage10-explanations:end -->

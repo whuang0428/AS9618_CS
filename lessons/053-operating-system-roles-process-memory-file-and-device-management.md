@@ -79,72 +79,71 @@ Correction prompt: "Show the mechanism, not just the label."
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
-- **Visual:** `../assets/diagrams/stage10-os-resource-management-analogy.jpg` — One control layer allocates shared resources while keeping tasks separated.
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-053-concept.jpg`
 
 1. Applications request services instead of controlling hardware directly.
 2. The operating system checks and schedules those requests.
 3. Drivers translate approved requests for particular devices.
-
 - **Analogy:** A control centre coordinates many users of limited shared infrastructure.
 - **Boundary:** The OS manages access; it cannot make finite hardware unlimited.
-
-### How time-slicing creates apparent simultaneity
-
-- **Explains:** `process`
-- **Explanation type:** process
-
-1. A running process receives a short interval of CPU time.
-2. Its state is saved before another ready process runs.
-3. Rapid switching keeps several programs responsive.
-
-- **Analogy:** One service desk handles many queues by switching between short tasks.
-- **Boundary:** Switching has overhead; too much switching reduces useful work.
-
-### Why memory needs allocation and protection
-
-- **Explains:** `memory`
-- **Explanation type:** mechanism
-
-1. Each process receives addresses for its code and data.
-2. Protection blocks one process from overwriting another's region.
-3. Released memory can be reassigned safely to later work.
-
-- **Analogy:** Separate laboratory benches prevent experiments contaminating each other.
-- **Boundary:** Isolation must still allow controlled sharing through OS services.
-
-### Why files need metadata and access rules
-
-- **Explains:** `file`
-- **Explanation type:** mechanism
-
-1. A name and path let software locate stored content.
-2. Metadata records size, timestamps, type and storage information.
-3. Permissions determine which users may read or change it.
-
-- **Analogy:** A catalogue locates an archive item while rules control who may handle it.
-- **Boundary:** A filename alone neither protects data nor proves its contents.
 
 ### Why drivers, buffers and queues work together
 
 - **Explains:** `device`
 - **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-053-device.jpg`
 
 1. A driver converts a general request into device-specific commands.
 2. A buffer absorbs the speed difference between producer and device.
 3. A queue preserves an orderly sequence of pending requests.
-
 - **Analogy:** A loading bay stages deliveries before a slower vehicle can collect them.
 - **Boundary:** Buffering smooths bursts but cannot remove a permanently overloaded device.
+
+### Why files need metadata and access rules
+
+- **Explains:** `file`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-053-file.jpg`
+
+1. A name and path let software locate stored content.
+2. Metadata records size, timestamps, type and storage information.
+3. Permissions determine which users may read or change it.
+- **Analogy:** A catalogue locates an archive item while rules control who may handle it.
+- **Boundary:** A filename alone neither protects data nor proves its contents.
+
+### Why memory needs allocation and protection
+
+- **Explains:** `memory`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-053-memory.jpg`
+
+1. Each process receives addresses for its code and data.
+2. Protection blocks one process from overwriting another's region.
+3. Released memory can be reassigned safely to later work.
+- **Analogy:** Separate laboratory benches prevent experiments contaminating each other.
+- **Boundary:** Isolation must still allow controlled sharing through OS services.
+
+### How time-slicing creates apparent simultaneity
+
+- **Explains:** `process`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-053-process.jpg`
+
+1. A running process receives a short interval of CPU time.
+2. Its state is saved before another ready process runs.
+3. Rapid switching keeps several programs responsive.
+- **Analogy:** One service desk handles many queues by switching between short tasks.
+- **Boundary:** Switching has overhead; too much switching reduces useful work.
 
 ### How OS services form one control layer
 
 - **Explains:** `services`
 - **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-053-services.jpg`
 
 1. Process, memory, file and device managers track different resources.
 2. Common permissions and scheduling rules coordinate their decisions.
 3. Applications receive a stable service interface above changing hardware.
-
 - **Analogy:** Departments share one operating policy instead of issuing conflicting instructions.
 - **Boundary:** Weak coordination between services can still create deadlock or starvation.
 <!-- stage10-explanations:end -->

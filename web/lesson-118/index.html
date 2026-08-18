@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -114,6 +114,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">Composite data groups fields into one type</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Composite data groups fields into one type with a structured visual model." />
+            <figcaption class="explanation-sr-only">Composite data groups fields into one type: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> a composite structure containing named fields</li><li><strong>Lesson fact:</strong> TStudent</li><li><strong>Lesson fact:</strong> one named item inside a record</li><li><strong>Lesson fact:</strong> Name , Mark</li><li><strong>Lesson fact:</strong> Composite data</li><li><strong>Lesson fact:</strong> data made from several components</li><li><strong>Lesson fact:</strong> student details grouped together</li><li><strong>Lesson fact:</strong> Dot notation</li><li><strong>Lesson fact:</strong> access to one field of a record variable</li><li><strong>Lesson fact:</strong> Student1.Mark</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concept -->
+
         <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
           <div class="section-title">
             <p class="eyebrow">Declare records</p>
@@ -139,6 +153,20 @@ Student1.Mark &lt;- 72</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start declare -->
+        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+          <h2 class="explanation-sr-only" id="explanation-declare-title">Define the type, then declare variables that use it</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Define the type, then declare variables that use it with a structured visual model." />
+            <figcaption class="explanation-sr-only">Define the type, then declare variables that use it: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Declare records</li><li><strong>Lesson fact:</strong> Record type</li><li><strong>Lesson fact:</strong> TYPE TStudent</li><li><strong>Lesson fact:</strong> DECLARE Name : STRING</li><li><strong>Lesson fact:</strong> DECLARE DateOfBirth : DATE</li><li><strong>Lesson fact:</strong> DECLARE Mark : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Enrolled : BOOLEAN</li><li><strong>Lesson fact:</strong> Record variable</li><li><strong>Lesson fact:</strong> DECLARE Student1 : TStudent</li><li><strong>Lesson fact:</strong> Student1.Name &lt;- &quot;Ali&quot;</li><li><strong>Lesson fact:</strong> Student1.Mark &lt;- 72</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end declare -->
+
         <section class="panel" id="access" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
           <div class="section-title">
             <p class="eyebrow">Access and update</p>
@@ -152,6 +180,20 @@ Student1.Mark &lt;- 72</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start access -->
+        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
+          <h2 class="explanation-sr-only" id="explanation-access-title">Use the field name, not a numeric index</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-access.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the field name, not a numeric index with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use the field name, not a numeric index: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Access and update</li><li><strong>Lesson fact:</strong> Pseudocode</li><li><strong>Lesson fact:</strong> Read field</li><li><strong>Lesson fact:</strong> OUTPUT Student1.Name</li><li><strong>Lesson fact:</strong> outputs the Name field</li><li><strong>Lesson fact:</strong> Update field</li><li><strong>Lesson fact:</strong> Student1.Mark &lt;- 80</li><li><strong>Lesson fact:</strong> changes only the Mark field</li><li><strong>Lesson fact:</strong> Test field</li><li><strong>Lesson fact:</strong> IF Student1.Enrolled = TRUE THEN</li><li><strong>Lesson fact:</strong> uses Boolean field in selection</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end access -->
+
         <section class="panel" id="array-vs-record" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="array-vs-record">
           <div class="section-title">
             <p class="eyebrow">Array vs record</p>
@@ -164,6 +206,20 @@ Student1.Mark &lt;- 72</code></pre>
             <div class="table-row" role="row"><div>Best for</div><div>many similar values</div><div>several facts about one entity</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start array-vs-record -->
+        <section class="panel explanation-panel" id="explanation-array-vs-record" data-explains="array-vs-record" data-explanation-kind="comparison" aria-labelledby="explanation-array-vs-record-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="array-vs-record">
+          <h2 class="explanation-sr-only" id="explanation-array-vs-record-title">Same type and index, or mixed fields and names?</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-array-vs-record.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same type and index, or mixed fields and names? with a structured visual model." />
+            <figcaption class="explanation-sr-only">Same type and index, or mixed fields and names?: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Array vs record</li><li><strong>Lesson fact:</strong> Elements / fields</li><li><strong>Lesson fact:</strong> usually same type</li><li><strong>Lesson fact:</strong> can be different types</li><li><strong>Lesson fact:</strong> index: Scores[3]</li><li><strong>Lesson fact:</strong> field name: Student1.Mark</li><li><strong>Lesson fact:</strong> Best for</li><li><strong>Lesson fact:</strong> many similar values</li><li><strong>Lesson fact:</strong> several facts about one entity</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end array-vs-record -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
@@ -210,6 +266,20 @@ book1.available = true;</code></pre>
           <div class="callout">Paper 2 reminder: Java class syntax is support only. Cambridge pseudocode should use clear TYPE/ENDTYPE-style record notation when required.</div>
         </section>
 
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="comparison" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Same modelling idea, different syntax</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same modelling idea, different syntax with a structured visual model." />
+            <figcaption class="explanation-sr-only">Same modelling idea, different syntax: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> TYPE TBook</li><li><strong>Lesson fact:</strong> DECLARE Title : STRING</li><li><strong>Lesson fact:</strong> DECLARE Pages : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Available : BOOLEAN</li><li><strong>Lesson fact:</strong> DECLARE Book1 : TBook</li><li><strong>Lesson fact:</strong> Book1.Available &lt;- TRUE</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> class Book {</li><li><strong>Lesson fact:</strong> String title;</li><li><strong>Lesson fact:</strong> int pages;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
+
 
         <section class="panel" id="lookup" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lookup">
           <div class="section-title">
@@ -230,6 +300,20 @@ book1.available = true;</code></pre>
           </div>
           <div class="trace-output" id="fieldResult">Student1 has Name, DateOfBirth, Mark and Enrolled fields.</div>
         </section>
+
+        <!-- stage10-explanation:start lookup -->
+        <section class="panel explanation-panel" id="explanation-lookup" data-explains="lookup" data-explanation-kind="mechanism" aria-labelledby="explanation-lookup-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lookup">
+          <h2 class="explanation-sr-only" id="explanation-lookup-title">Read one field from a record</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-118-lookup.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read one field from a record with a structured visual model." />
+            <figcaption class="explanation-sr-only">Read one field from a record: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive field lookup</li><li><strong>Lesson fact:</strong> Student1 has Name, DateOfBirth, Mark and Enrolled fields.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lookup -->
 
         <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">

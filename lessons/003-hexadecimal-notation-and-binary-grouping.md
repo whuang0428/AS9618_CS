@@ -71,3 +71,42 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes. For this lesson, make students contrast that mistake with the exact idea of **hexadecimal notation and binary grouping**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Hexadecimal digits: 0-9 then A-F
+
+- **Explains:** `digits`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-003-digits.jpg`
+
+1. nibble 4-bit group
+
+### One hex digit represents one nibble
+
+- **Explains:** `grouping`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-003-grouping.jpg`
+
+1. Why four bits?
+2. Four bits can represent 16 patterns: from 0000₂ to 1111₂. Hexadecimal has exactly 16 digits: 0 to F.
+3. Binary to hex
+4. Group the binary value into nibbles from the right. Convert each nibble separately.
+5. Hex to binary
+6. Replace each hex digit with its 4-bit binary nibble. Keep all four bits for each digit.
+7. 1101₂ = D₁₆ and 0110₂ = 6₁₆, so 1101 0110₂ = D6₁₆.
+
+### Padding with leading zeros
+
+- **Explains:** `padding`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-003-padding.jpg`
+
+1. When padding is needed
+2. If the leftmost group has fewer than four bits, add leading zeros to complete the nibble.
+3. 101101₂ → 0010 1101₂ → 2D₁₆
+4. The value does not change because leading zeros do not add active place values.
+5. Base labels
+6. 10 could mean denary ten or binary two. Use base labels when the notation could be ambiguous.
+<!-- stage10-explanations:end -->

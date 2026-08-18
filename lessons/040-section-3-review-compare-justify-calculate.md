@@ -71,3 +71,53 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **section 3 review: compare, justify, calculate**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Short timed review structure
+
+- **Explains:** `checkpoint`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-040-checkpoint.jpg`
+
+1. Monthly checkpoint
+2. 3 minutes Classify five questions by topic and command word.
+3. 8 minutes Answer one 6-mark scenario question.
+4. 5 minutes Complete one truth table or Boolean trace.
+5. 7 minutes Mark with MS, identify missing marks, rewrite one answer.
+6. The checkpoint is included as lesson practice, not a midterm or final exam.
+
+### Section 3 topic map
+
+- **Explains:** `map`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-040-map.jpg`
+
+1. Core idea
+2. Common question verb
+3. Mark-winning habit
+4. Primary / secondary storage
+5. RAM, ROM, cache, virtual memory, SSD, HDD, optical, solid-state
+6. compare, describe, justify
+7. Link speed, volatility, capacity, durability or cost to the scenario.
+8. Embedded systems
+9. Dedicated systems built into larger devices
+10. describe, explain
+11. Mention dedicated purpose, limited interface and real-world control.
+12. Sensors and actuators
+
+### Three review skills: compare, justify, calculate
+
+- **Explains:** `skills`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-040-skills.jpg`
+
+1. Compare Give both sides and use the same criterion, e.g. SSD is faster than HDD, but HDD may be cheaper per GB.
+2. Justify Name a choice, name a feature, link it to the user's need, then explain the consequence.
+3. Calculate / trace Show working: input values, intermediate result, final output.
+4. Describe Use a sequence, such as sensor reading -> comparison -> output signal -> actuator.
+5. Explain Include cause and effect, not only a definition.
+6. Correct Find the missing mark, then rewrite the answer with specific wording.
+7. Exam answer frame: "Because [feature], it meets [need], so [practical consequence]."
+<!-- stage10-explanations:end -->

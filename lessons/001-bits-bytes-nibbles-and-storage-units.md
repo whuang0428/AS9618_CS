@@ -105,3 +105,21 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** giga uses a decimal power / multiples of 1000
 
 **Strict note:** Do not accept 'GiB is bigger' without both numerical definitions.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### The storage ladder
+
+- **Explains:** `knowledge`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-001-knowledge.jpg`
+
+1. bit 0 or 1
+2. nibble 4 bits
+3. byte 8 bits = 2 nibbles
+4. KiB 1024 bytes
+5. MiB 1024 KiB
+6. GiB 1024 MiB
+7. TiB 1024 GiB
+<!-- stage10-explanations:end -->

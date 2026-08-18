@@ -121,3 +121,115 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** three invalid attempts transition from LoggedOut to Locked
 
 **Strict note:** Do not accept a flowchart of processing steps; marks require persistent states and event-labelled transitions.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Algorithm designs describe the processing steps
+
+- **Explains:** `algorithms`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-algorithms.jpg`
+
+1. Algorithm design documents
+2. They may use Cambridge-style pseudocode, flowcharts or structure diagrams. Java can support learning, but the exam standard remains Cambridge pseudocode.
+3. Cambridge-style pseudocode design
+4. SET ClashFound TO FALSE
+5. FOR EACH Booking IN BookingList
+6. IF Booking.RoomID = NewRoomID AND Booking.Date = NewDate THEN
+7. IF times overlap THEN
+8. SET ClashFound TO TRUE
+9. NEXT Booking
+10. Java support only
+11. // Java support example, not exam pseudocode
+12. boolean clashFound = false;
+
+### A data dictionary defines each data item consistently
+
+- **Explains:** `dictionary`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-dictionary.jpg`
+
+1. Data dictionary
+2. Validation
+3. letter plus digits
+4. not blank; exists in room file
+5. identifies the room
+6. BookingDate
+7. YYYY-MM-DD
+8. school day; not in past
+9. date of booking
+10. StartTime
+11. valid period start time
+12. booking start
+
+### Inspect a field definition
+
+- **Explains:** `dictionary-tool`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-dictionary-tool.jpg`
+
+1. Data dictionary checker
+2. Data item
+
+### Interface designs show how users will enter data and navigate the system
+
+- **Explains:** `interfaces`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-interfaces.jpg`
+
+1. Interface designs
+2. Create room booking
+3. Date calendar control
+4. Period drop-down list
+5. Room searchable list
+6. Error message area: “Room already booked for this time.”
+7. Interface design is not just “make the screen pretty”. It specifies controls, navigation, prompts, validation messages and user feedback.
+
+### Design documentation supports implementation, testing and maintenance
+
+- **Explains:** `lifecycle`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-lifecycle.jpg`
+
+1. Using design docs later
+2. Implementation
+3. Developers know which data fields, algorithms and interface behaviours to build.
+4. Testers compare actual behaviour with the designed rules, validation and expected messages.
+5. Maintenance
+6. Future changes are safer because developers can see existing data rules and processing assumptions.
+
+### Design documents translate requirements into a buildable plan
+
+- **Explains:** `purpose`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-purpose.jpg`
+
+1. Design documentation purpose
+2. Before coding
+3. They decide data structures, processing logic and user interaction before the implementation language takes over.
+4. For testers
+5. They provide expected rules and interface behaviour so tests can check more than “it seems fine”.
+6. For maintenance
+7. They help future developers understand why the system works in a particular way.
+8. A useful design document is specific enough to guide construction, but not just a pasted block of final program code.
+
+### Traceability keeps the design connected to the original need
+
+- **Explains:** `traceability`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-traceability.jpg`
+
+1. Linking requirements to design
+2. Requirement
+3. Algorithm design
+4. Data dictionary
+5. Interface design
+6. Prevent double booking
+7. compare requested time with existing bookings
+8. RoomID, date, start and end times
+9. availability check button and clash message
+10. Only staff can book
+11. check user role before saving
+12. StaffID and Role fields
+<!-- stage10-explanations:end -->

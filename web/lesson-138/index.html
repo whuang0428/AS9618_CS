@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -122,6 +122,20 @@ ENDIF</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start purpose -->
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+          <h2 class="explanation-sr-only" id="explanation-purpose-title">Debugging locates and corrects faults</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Debugging locates and corrects faults with a structured visual model." />
+            <figcaption class="explanation-sr-only">Debugging locates and corrects faults: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Debugging</li><li><strong>Lesson fact:</strong> A program can be syntactically valid and still wrong. Debugging checks the actual behaviour against the intended</li><li><strong>Lesson fact:</strong> behaviour, then narrows down where the fault occurs.</li><li><strong>Lesson fact:</strong> Faulty pseudocode</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt; 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit needed&quot;</li><li><strong>Lesson fact:</strong> Intended rule</li><li><strong>Lesson fact:</strong> A mark of 50 should pass. The code uses &gt; , so 50 incorrectly goes to the ELSE branch.</li><li><strong>Lesson fact:</strong> The bug is small. Its exam mark consequences are not.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end purpose -->
+
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
             <p class="eyebrow">Trace table</p>
@@ -157,6 +171,20 @@ ENDIF</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start breakpoint -->
+        <section class="panel explanation-panel" id="explanation-breakpoint" data-explains="breakpoint" data-explanation-kind="mechanism" aria-labelledby="explanation-breakpoint-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="breakpoint">
+          <h2 class="explanation-sr-only" id="explanation-breakpoint-title">A breakpoint pauses execution at a chosen line</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-breakpoint.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A breakpoint pauses execution at a chosen line with a structured visual model." />
+            <figcaption class="explanation-sr-only">A breakpoint pauses execution at a chosen line: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Breakpoint</li><li><strong>Lesson fact:</strong> Best place</li><li><strong>Lesson fact:</strong> Place a breakpoint before or on the line where the suspected decision or calculation happens.</li><li><strong>Lesson fact:</strong> What to inspect</li><li><strong>Lesson fact:</strong> Check variable values, the next line to execute, and whether the condition is true or false.</li><li><strong>Lesson fact:</strong> What not to do</li><li><strong>Lesson fact:</strong> Do not scatter breakpoints randomly. Random pausing is just procrastination wearing a technical hat.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end breakpoint -->
+
         <section class="panel" id="watch" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="watch">
           <div class="section-title">
             <p class="eyebrow">Watch variables</p>
@@ -169,6 +197,20 @@ ENDIF</code></pre>
             <div class="table-row"><div><code>Mark</code></div><div>50 passes</div><div>50 goes to ELSE branch</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start watch -->
+        <section class="panel explanation-panel" id="explanation-watch" data-explains="watch" data-explanation-kind="mechanism" aria-labelledby="explanation-watch-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="watch">
+          <h2 class="explanation-sr-only" id="explanation-watch-title">Watching variables shows state changes while stepping</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-watch.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Watching variables shows state changes while stepping with a structured visual model." />
+            <figcaption class="explanation-sr-only">Watching variables shows state changes while stepping: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Watch variables</li><li><strong>Lesson fact:</strong> Variable</li><li><strong>Lesson fact:</strong> Expected</li><li><strong>Lesson fact:</strong> Suspicious result</li><li><strong>Lesson fact:</strong> increases by each item price</li><li><strong>Lesson fact:</strong> resets to 0 inside loop</li><li><strong>Lesson fact:</strong> moves through every array element</li><li><strong>Lesson fact:</strong> skips first or last element</li><li><strong>Lesson fact:</strong> 50 passes</li><li><strong>Lesson fact:</strong> 50 goes to ELSE branch</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end watch -->
 
         <section class="panel" id="stepping" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stepping">
           <div class="section-title">
@@ -186,6 +228,20 @@ ENDIF</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start stepping -->
+        <section class="panel explanation-panel" id="explanation-stepping" data-explains="stepping" data-explanation-kind="mechanism" aria-labelledby="explanation-stepping-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stepping">
+          <h2 class="explanation-sr-only" id="explanation-stepping-title">Step through code one instruction at a time</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-stepping.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Step through code one instruction at a time with a structured visual model." />
+            <figcaption class="explanation-sr-only">Step through code one instruction at a time: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Stepping</li><li><strong>Lesson fact:</strong> Step over</li><li><strong>Lesson fact:</strong> Run the next line without entering a called procedure or function. Useful when the call itself is not suspicious.</li><li><strong>Lesson fact:</strong> Step into</li><li><strong>Lesson fact:</strong> Enter a called procedure or function. Useful when the fault may be inside that subroutine.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end stepping -->
 
         <section class="panel" id="bug" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bug">
           <div class="section-title">
@@ -211,6 +267,20 @@ ENDIF</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start bug -->
+        <section class="panel explanation-panel" id="explanation-bug" data-explains="bug" data-explanation-kind="mechanism" aria-labelledby="explanation-bug-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="bug">
+          <h2 class="explanation-sr-only" id="explanation-bug-title">Trace the boundary case to expose a logic error</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-bug.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace the boundary case to expose a logic error with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trace the boundary case to expose a logic error: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Fault example</li><li><strong>Lesson fact:</strong> Buggy condition</li><li><strong>Lesson fact:</strong> IF Mark &gt; 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit needed&quot;</li><li><strong>Lesson fact:</strong> Corrected condition</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end bug -->
 
         <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
@@ -239,6 +309,20 @@ if (mark &gt;= 50) {
           </div>
           <div class="callout">Breakpoints in an IDE are useful for learning, but do not replace a trace table when the exam asks for one.</div>
         </section>
+
+        <!-- stage10-explanation:start java -->
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Java debugging tools help practice, but Cambridge pseudocode remains the exam format</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-138-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java debugging tools help practice, but Cambridge pseudocode remains the exam format with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java debugging tools help practice, but Cambridge pseudocode remains the exam format: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit needed&quot;</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> int mark = 50;</li><li><strong>Lesson fact:</strong> if (mark &gt;= 50) {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Pass&quot;);</li><li><strong>Lesson fact:</strong> } else {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Resit needed&quot;);</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end java -->
 
 
         <section class="panel" id="simulator" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="simulator">

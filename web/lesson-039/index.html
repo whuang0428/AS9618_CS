@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -135,6 +135,20 @@
           <div class="callout">Chinese support: environmental factor = 环境因素；corrosion = 腐蚀；surge protection = 浪涌保护；rugged = 加固型。</div>
         </section>
 
+        <!-- stage10-explanation:start environment -->
+        <section class="panel explanation-panel" id="explanation-environment" data-explains="environment" data-explanation-kind="tradeoff" aria-labelledby="explanation-environment-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="environment">
+          <h2 class="explanation-sr-only" id="explanation-environment-title">Environmental factors change hardware suitability</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-039-environment.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Environmental factors change hardware suitability with a structured visual model." />
+            <figcaption class="explanation-sr-only">Environmental factors change hardware suitability: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Possible effect</li><li><strong>Lesson fact:</strong> Suitable protection</li><li><strong>Lesson fact:</strong> Exam warning</li><li><strong>Lesson fact:</strong> Temperature</li><li><strong>Lesson fact:</strong> Overheating can slow, shut down or damage components.</li><li><strong>Lesson fact:</strong> Cooling, heat sinks, ventilation, temperature-rated hardware</li><li><strong>Lesson fact:</strong> Do not just say &quot;fast&quot;; explain heat tolerance or cooling.</li><li><strong>Lesson fact:</strong> Moisture / water</li><li><strong>Lesson fact:</strong> Corrosion or short circuits can stop the system working.</li><li><strong>Lesson fact:</strong> Sealed casing, waterproof enclosure, humidity control</li><li><strong>Lesson fact:</strong> Name what water does to reliability.</li><li><strong>Lesson fact:</strong> Dust / dirt</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end environment -->
+
         <section class="panel" id="reliability" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="reliability">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -151,6 +165,20 @@
           <div class="callout">Reliability answer frame: "If X fails, Y prevents or reduces the impact, so the user can continue Z."</div>
         </section>
 
+        <!-- stage10-explanation:start reliability -->
+        <section class="panel explanation-panel" id="explanation-reliability" data-explains="reliability" data-explanation-kind="mechanism" aria-labelledby="explanation-reliability-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="reliability">
+          <h2 class="explanation-sr-only" id="explanation-reliability-title">Reliability is about continuing to work correctly</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-039-reliability.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Reliability is about continuing to work correctly with a structured visual model." />
+            <figcaption class="explanation-sr-only">Reliability is about continuing to work correctly: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Availability The system is usable when required, such as a checkout system during opening hours.</li><li><strong>Lesson fact:</strong> Redundancy Extra hardware can take over if one component fails, such as a spare disk or power supply.</li><li><strong>Lesson fact:</strong> Backup Copies of data reduce the impact of storage failure or accidental loss.</li><li><strong>Lesson fact:</strong> MTBF Mean time between failures indicates expected reliability, often used for comparing components.</li><li><strong>Lesson fact:</strong> Maintenance Cleaning, updates and replacement schedules reduce unexpected failure.</li><li><strong>Lesson fact:</strong> Monitoring Temperature, battery, disk and network monitoring can warn before failure becomes outage.</li><li><strong>Lesson fact:</strong> Reliability answer frame: &quot;If X fails, Y prevents or reduces the impact, so the user can continue Z.&quot;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end reliability -->
+
         <section class="panel" id="mitigation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="mitigation">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -164,6 +192,20 @@
           </div>
           <div class="callout">A strong answer rejects an unsuitable protection. A UPS helps power cuts; it does not make a sensor waterproof.</div>
         </section>
+
+        <!-- stage10-explanation:start mitigation -->
+        <section class="panel explanation-panel" id="explanation-mitigation" data-explains="mitigation" data-explanation-kind="mechanism" aria-labelledby="explanation-mitigation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="mitigation">
+          <h2 class="explanation-sr-only" id="explanation-mitigation-title">Mitigation must match the risk</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-039-mitigation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Mitigation must match the risk with a structured visual model." />
+            <figcaption class="explanation-sr-only">Mitigation must match the risk: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Outdoor weather station Weatherproof casing, low-power controller, battery/solar power and wireless communication.</li><li><strong>Lesson fact:</strong> Hospital workstation Reliable power, backup, regular maintenance and quick replacement to reduce downtime.</li><li><strong>Lesson fact:</strong> Delivery handheld Rugged case, long battery life, mobile data fallback and SSD/flash storage.</li><li><strong>Lesson fact:</strong> Data server Cooling, UPS, RAID, backup, monitoring and controlled access.</li><li><strong>Lesson fact:</strong> A strong answer rejects an unsuitable protection. A UPS helps power cuts; it does not make a sensor waterproof.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end mitigation -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

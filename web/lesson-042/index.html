@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../student-visuals.css?v=1" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -120,6 +120,20 @@
           <div class="callout">Chinese support: fetch = 取指；decode = 译码；execute = 执行；operand = 操作数；instruction = 指令。</div>
         </section>
 
+        <!-- stage10-explanation:start cycle -->
+        <section class="panel explanation-panel" id="explanation-cycle" data-explains="cycle" data-explanation-kind="process" aria-labelledby="explanation-cycle-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cycle">
+          <h2 class="explanation-sr-only" id="explanation-cycle-title">The cycle in one clean sentence</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-042-cycle.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The cycle in one clean sentence with a structured visual model." />
+            <figcaption class="explanation-sr-only">The cycle in one clean sentence: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> The CPU gets the next instruction from main memory using the address stored in the PC.</li><li><strong>Lesson fact:</strong> The CU interprets the instruction in the CIR and identifies the operation and any operands needed.</li><li><strong>Lesson fact:</strong> The CPU carries out the instruction, for example using the ALU, accessing memory, or changing the PC.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end cycle -->
+
         <section class="panel visual-explainer" id="cycle-visual" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cycle-visual">
           <div class="section-title">
             <p class="eyebrow">Visual explanation</p>
@@ -175,6 +189,20 @@
           </details>
         </section>
 
+        <!-- stage10-explanation:start cycle-visual -->
+        <section class="panel explanation-panel" id="explanation-cycle-visual" data-explains="cycle-visual" data-explanation-kind="process" aria-labelledby="explanation-cycle-visual-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cycle-visual">
+          <h2 class="explanation-sr-only" id="explanation-cycle-visual-title">Trace one instruction through the fetch stage</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-042-cycle-visual.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace one instruction through the fetch stage with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trace one instruction through the fetch stage: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> Read left to right. The labels name what is held or transferred, so the register names are tied to a job rather than memorised as a list.</li><li><strong>Lesson fact:</strong> 1. PC → MAR Copy the address of the next instruction into the MAR.</li><li><strong>Lesson fact:</strong> 2. Memory read Send the address and a read signal; return the instruction to the MDR.</li><li><strong>Lesson fact:</strong> 3. MDR → CIR Move the fetched instruction into the CIR and increment the PC.</li><li><strong>Lesson fact:</strong> 4. Decode, execute, repeat The CU decodes; the CPU performs the instruction; the cycle starts again.</li><li><strong>Lesson fact:</strong> Check the diagram: why is the instruction copied to the CIR before decoding?</li><li><strong>Lesson fact:</strong> The CIR holds the current instruction so the control unit can decode its opcode and identify any operands or addresses needed for execution.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end cycle-visual -->
+
         <section class="panel" id="fetch" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fetch">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -227,6 +255,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start fetch -->
+        <section class="panel explanation-panel" id="explanation-fetch" data-explains="fetch" data-explanation-kind="process" aria-labelledby="explanation-fetch-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fetch">
+          <h2 class="explanation-sr-only" id="explanation-fetch-title">Fetch stage: the register sequence</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-042-fetch.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Fetch stage: the register sequence with a structured visual model." />
+            <figcaption class="explanation-sr-only">Fetch stage: the register sequence: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> This is the part students must be able to trace precisely.</li><li><strong>Lesson fact:</strong> Register / bus focus</li><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Address copied from PC to MAR.</li><li><strong>Lesson fact:</strong> PC -&gt; MAR</li><li><strong>Lesson fact:</strong> The PC contains the address of the next instruction; this address is copied to the MAR.</li><li><strong>Lesson fact:</strong> Address sent to memory.</li><li><strong>Lesson fact:</strong> Address bus</li><li><strong>Lesson fact:</strong> The address in the MAR is placed on the address bus.</li><li><strong>Lesson fact:</strong> Memory read signal is sent.</li><li><strong>Lesson fact:</strong> Control bus</li><li><strong>Lesson fact:</strong> The CU sends a read signal on the control bus.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end fetch -->
+
         <section class="panel" id="decode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="decode">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -256,6 +298,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start decode -->
+        <section class="panel explanation-panel" id="explanation-decode" data-explains="decode" data-explanation-kind="mechanism" aria-labelledby="explanation-decode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="decode">
+          <h2 class="explanation-sr-only" id="explanation-decode-title">Decode and execute are not filler words</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-042-decode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Decode and execute are not filler words with a structured visual model." />
+            <figcaption class="explanation-sr-only">Decode and execute are not filler words: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> The control unit interprets the instruction in the CIR. It identifies the opcode, decides what operation is required, and identifies any operands or addresses needed.</li><li><strong>Lesson fact:</strong> Execute: arithmetic or logic</li><li><strong>Lesson fact:</strong> If the instruction is arithmetic or logical, the ALU performs the operation and a result may be stored in a register.</li><li><strong>Lesson fact:</strong> Execute: memory access</li><li><strong>Lesson fact:</strong> If the instruction needs data from memory, the CPU uses buses and registers to read from or write to the required memory address.</li><li><strong>Lesson fact:</strong> Execute: branch</li><li><strong>Lesson fact:</strong> If the instruction is a branch/jump, the PC may be changed to a different address rather than just continuing with the next instruction.</li><li><strong>Lesson fact:</strong> Common trap</li><li><strong>Lesson fact:</strong> &quot;Execute&quot; does not always mean &quot;ALU does maths&quot;. Some instructions move data, access memory or change the PC.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end decode -->
+
         <section class="panel" id="registers" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="registers">
           <div class="section-title">
             <p class="eyebrow">Register roles</p>
@@ -268,6 +324,20 @@
             <article><strong>CIR</strong><span>Current Instruction Register: stores the instruction currently being decoded/executed.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start registers -->
+        <section class="panel explanation-panel" id="explanation-registers" data-explains="registers" data-explanation-kind="process" aria-labelledby="explanation-registers-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="registers">
+          <h2 class="explanation-sr-only" id="explanation-registers-title">The four fetch-stage names you cannot blur together</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-042-registers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The four fetch-stage names you cannot blur together with a structured visual model." />
+            <figcaption class="explanation-sr-only">The four fetch-stage names you cannot blur together: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Register roles</li><li><strong>Lesson fact:</strong> PC Program Counter: stores the address of the next instruction to be fetched.</li><li><strong>Lesson fact:</strong> MAR Memory Address Register: stores the address of the memory location being accessed.</li><li><strong>Lesson fact:</strong> MDR Memory Data Register: stores data or an instruction being transferred to or from memory.</li><li><strong>Lesson fact:</strong> CIR Current Instruction Register: stores the instruction currently being decoded/executed.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end registers -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

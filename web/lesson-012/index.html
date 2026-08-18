@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body class="stage7-contrast-lesson-012">
@@ -119,6 +119,20 @@
           <div class="callout">Chinese support: compression = 压缩；decompression = 解压；reconstruct = 还原。</div>
         </section>
 
+        <!-- stage10-explanation:start purpose -->
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+          <h2 class="explanation-sr-only" id="explanation-purpose-title">Why compress data?</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-012-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why compress data? with a structured visual model." />
+            <figcaption class="explanation-sr-only">Why compress data?: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Less storage</li><li><strong>Lesson fact:</strong> Smaller files use less disk or memory space.</li><li><strong>Lesson fact:</strong> Faster transfer</li><li><strong>Lesson fact:</strong> Smaller files need less bandwidth and may download or upload faster.</li><li><strong>Lesson fact:</strong> Trade-off</li><li><strong>Lesson fact:</strong> Compression and decompression may require processing time.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end purpose -->
+
         <section class="panel" id="lossless" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lossless">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -136,6 +150,20 @@
           </div>
           <div class="callout warning">If one changed bit could change meaning or break the file, lossless is the safer answer.</div>
         </section>
+
+        <!-- stage10-explanation:start lossless -->
+        <section class="panel explanation-panel" id="explanation-lossless" data-explains="lossless" data-explanation-kind="mechanism" aria-labelledby="explanation-lossless-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lossless">
+          <h2 class="explanation-sr-only" id="explanation-lossless-title">Lossless compression: exact reconstruction</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-012-lossless.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lossless compression: exact reconstruction with a structured visual model." />
+            <figcaption class="explanation-sr-only">Lossless compression: exact reconstruction: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Definition</li><li><strong>Lesson fact:</strong> Lossless compression reduces file size while allowing the original data to be restored exactly.</li><li><strong>Lesson fact:</strong> Suitable uses</li><li><strong>Lesson fact:</strong> Text files, program files, spreadsheets, databases, medical records and backups.</li><li><strong>Lesson fact:</strong> If one changed bit could change meaning or break the file, lossless is the safer answer.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lossless -->
 
         <section class="panel" id="lossy" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lossy">
           <div class="section-title">
@@ -155,6 +183,20 @@
           <div class="callout warning">Lossy is not suitable when exact reconstruction is required.</div>
         </section>
 
+        <!-- stage10-explanation:start lossy -->
+        <section class="panel explanation-panel" id="explanation-lossy" data-explains="lossy" data-explanation-kind="mechanism" aria-labelledby="explanation-lossy-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lossy">
+          <h2 class="explanation-sr-only" id="explanation-lossy-title">Lossy compression: smaller, but not exact</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-012-lossy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Lossy compression: smaller, but not exact with a structured visual model." />
+            <figcaption class="explanation-sr-only">Lossy compression: smaller, but not exact: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Definition</li><li><strong>Lesson fact:</strong> Lossy compression reduces file size by permanently removing some data.</li><li><strong>Lesson fact:</strong> Suitable uses</li><li><strong>Lesson fact:</strong> Images, video and sound where small quality loss may be acceptable.</li><li><strong>Lesson fact:</strong> Lossy is not suitable when exact reconstruction is required.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lossy -->
+
         <section class="panel" id="ratio" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ratio">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -166,6 +208,20 @@
           </div>
           <div class="worked-line">Example: `1000 KB → 250 KB` gives ratio `4:1` and `75%` saved.</div>
         </section>
+
+        <!-- stage10-explanation:start ratio -->
+        <section class="panel explanation-panel" id="explanation-ratio" data-explains="ratio" data-explanation-kind="mechanism" aria-labelledby="explanation-ratio-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ratio">
+          <h2 class="explanation-sr-only" id="explanation-ratio-title">Compression ratio and saved space</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-012-ratio.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compression ratio and saved space with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compression ratio and saved space: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> compression ratio = original size : compressed size</li><li><strong>Lesson fact:</strong> percentage saved = ((original - compressed) ÷ original) × 100</li><li><strong>Lesson fact:</strong> Example: 1000 KB → 250 KB gives ratio 4:1 and 75% saved.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end ratio -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

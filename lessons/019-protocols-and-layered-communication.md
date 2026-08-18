@@ -105,3 +105,48 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** waits a random/backoff time before retrying
 
 **Strict note:** Do not accept collision avoidance: CSMA/CD detects and responds to a collision after transmission has begun.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Layered communication
+
+- **Explains:** `layers`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-019-layers.jpg`
+
+1. Application layer idea What the user or application wants to do, such as send a web request.
+2. Transport layer idea Breaks data into segments, manages reliability or delivery style.
+3. Network layer idea Adds logical addressing and routing between networks.
+4. Link/physical layer idea Moves frames or bits across the local medium.
+5. Encapsulation and de-encapsulation
+6. As data moves down layers, each layer may add control information. At the receiver, layers remove and interpret that control information in reverse order.
+
+### What a protocol is
+
+- **Explains:** `protocols`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-019-protocols.jpg`
+
+1. Definition
+2. A protocol is a set of rules that governs how data is transmitted and received.
+3. Shared meaning
+4. Both sender and receiver follow the same rules, so messages can be interpreted correctly.
+5. Interoperability
+6. Different devices and software can communicate if they implement the same protocol.
+7. Reliability
+8. Protocols can specify error checking, acknowledgements and retransmission rules.
+
+### What protocol rules can specify
+
+- **Explains:** `rules`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-019-rules.jpg`
+
+1. Data format How data is structured, encoded or framed.
+2. Addressing How sender and receiver are identified.
+3. Timing When data can be sent and how long to wait for responses.
+4. Error control How errors are detected and how retransmission is handled.
+5. Flow control How to stop a fast sender overwhelming a slow receiver.
+6. Connection rules How communication starts, continues and ends.
+<!-- stage10-explanations:end -->

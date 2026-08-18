@@ -71,3 +71,89 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups. For this lesson, make students contrast that mistake with the exact idea of **backup strategies, disaster recovery, and audit trails**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Audit trails support accountability and investigation
+
+- **Explains:** `audit-trails`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-070-audit-trails.jpg`
+
+1. Who User ID, account, device or process involved.
+2. What Action such as login, read, edit, delete, approve or restore.
+3. When/where Timestamp, location, device or IP address.
+4. Use Trace errors, detect misuse, investigate incidents and prove compliance.
+
+### Backup type affects speed, storage and recovery complexity
+
+- **Explains:** `backups`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-070-backups.jpg`
+
+1. Full backup Copies all selected data. Simple to restore, but uses more time and storage.
+2. Incremental backup Copies only data changed since the last backup. Faster and smaller, but restore may need a chain.
+3. Differential idea Copies changes since last full backup. Useful comparison, though full/incremental is the main contrast here.
+4. Testing Backups must be tested by restoring sample data, not only by checking that a file exists.
+
+### Compare by purpose, not by "security word"
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-070-compare.jpg`
+
+1. Main purpose
+2. Limitation
+3. Restore data after deletion, corruption, hardware failure or ransomware.
+4. May be too old, corrupted, inaccessible or affected by same incident.
+5. Disaster recovery plan
+6. Restore systems and services in a planned order after major disruption.
+7. Needs testing, clear roles and updated documentation.
+8. Audit trail
+9. Record actions for accountability, investigation and evidence.
+10. Does not restore data by itself and must be protected from tampering.
+
+### Recovery planning is about availability, integrity and accountability
+
+- **Explains:** `core`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-070-core.jpg`
+
+1. Backup A separate copy of data that can be used to restore the original after loss or corruption.
+2. Restore The process of recovering data or systems from a backup.
+3. Disaster recovery Planned actions to restore systems and services after a major incident.
+4. Audit trail A chronological record of actions, changes and access events.
+
+### Disaster recovery is more than data copying
+
+- **Explains:** `recovery`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-070-recovery.jpg`
+
+1. 1. Identify incident Detect failure, confirm scope and prevent further damage.
+2. 2. Communicate Notify staff/users and assign responsibilities.
+3. 3. Restore systems Recover data, applications, hardware/network access and configuration.
+4. 4. Test and review Check service works, document lessons and improve the plan.
+5. Useful exam language: RPO = how much data loss is acceptable; RTO = how quickly service must be restored.
+
+### Match backup frequency to acceptable data loss
+
+- **Explains:** `rpo-tool`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-070-rpo-tool.jpg`
+
+1. Interactive recovery objective tool
+2. Maximum acceptable data loss
+
+### A strategy defines location, frequency, retention and security
+
+- **Explains:** `strategy`
+- **Explanation type:** tradeoff
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-070-strategy.jpg`
+
+1. Onsite Fast to access, but vulnerable to the same fire, flood, theft or ransomware incident.
+2. Offsite Stored in a different physical location, reducing site-wide disaster risk.
+3. Cloud Remote provider storage; useful for offsite copies but needs network access and access control.
+4. Retention How long versions are kept, so accidental deletion or corruption can be rolled back.
+<!-- stage10-explanations:end -->

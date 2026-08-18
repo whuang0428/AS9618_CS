@@ -71,3 +71,48 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often select every field with `*`. Correction: exam questions usually specify exactly which fields are required. For this lesson, make students contrast that mistake with the exact idea of **sql joins using related tables**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Table-qualified names and aliases prevent ambiguity
+
+- **Explains:** `aliases`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-086-aliases.jpg`
+
+1. If two tables have a field with the same name, write the table name or alias before the field.
+2. Full name Student.StudentID clearly means the field from Student.
+3. Alias Student AS S lets you write S.StudentID .
+4. Exam caution Only use aliases if they make the query clear. Do not hide the join logic.
+
+### Join conditions say which fields match
+
+- **Explains:** `join`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-086-join.jpg`
+
+1. For this lesson, use explicit join conditions. The key idea is not the exact SQL flavour; it is the matching relationship.
+2. Three-table pattern:
+3. FROM Student, Loan, Book WHERE Student.StudentID = Loan.StudentID AND Loan.BookID = Book.BookID
+4. Correct match Student.StudentID = Loan.StudentID because both values identify the same student.
+5. Correct match Loan.BookID = Book.BookID because both values identify the same book.
+6. Extra filter Use another AND condition for a filter, such as Loan.Returned = FALSE .
+
+### Related tables use primary keys and foreign keys
+
+- **Explains:** `relationships`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-086-relationships.jpg`
+
+1. A join combines rows when matching key fields refer to the same real-world item.
+2. StudentID primary key
+3. StudentName , TutorGroup
+4. 1 to many
+5. StudentID
+6. LoanID primary key
+7. StudentID , BookID foreign keys
+8. many to 1
+9. BookID primary key
+10. Title , Category
+<!-- stage10-explanations:end -->

@@ -92,3 +92,119 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often treat files like arrays already in memory. Correction: file data must be read into variables before processing. For this lesson, make students contrast that mistake with the exact idea of **csv-style structured text files**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### CSV-style means separated fields in a fixed order
+
+- **Explains:** `concept`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-concept.jpg`
+
+1. one complete line of data
+2. S001,Ali,72
+3. one item inside the record
+4. Delimiter
+5. character that separates fields
+6. Fixed order
+7. each position has agreed meaning
+8. ID, Name, Mark
+
+### Design the format before writing code
+
+- **Explains:** `format`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-format.jpg`
+
+1. CSV format
+2. Position
+3. Field name
+4. Data type after conversion
+5. StudentID
+6. The file stores all fields as text. The program gives each position meaning.
+
+### Read the line before splitting it
+
+- **Explains:** `parse`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-parse.jpg`
+
+1. Parse fields
+2. READFILE "Scores.csv", Line
+3. Fields <- SPLIT(Line, ",")
+4. StudentID <- Fields[1]
+5. Name <- Fields[2]
+6. Mark <- STRING_TO_INTEGER(Fields[3])
+7. SPLIT is used here as clear Cambridge-style pseudocode for separating a line by a delimiter.
+
+### Split a line into fields
+
+- **Explains:** `parser`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-parser.jpg`
+
+1. Interactive CSV parser
+2. CSV line
+3. Delimiter
+4. Enter a line and split it into fields.
+
+### Java split helps understanding, but Cambridge pseudocode remains the answer format
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style pseudocode
+3. READFILE "Scores.csv", Line
+4. Fields <- SPLIT(Line, ",")
+5. Mark <- STRING_TO_INTEGER(Fields[3])
+6. Java support only
+7. String[] fields = line.split(",");
+8. int mark = Integer.parseInt(fields[2]);
+9. Notice the index difference: Cambridge-style examples here use Fields[1] ; Java arrays are zero-based.
+
+### CSV fields arrive as text, then become useful values
+
+- **Explains:** `types`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-types.jpg`
+
+1. Text vs data types
+2. Incorrect comparison
+3. IF Fields[3] > 70 THEN
+4. OUTPUT Name
+5. This compares text unless conversion has happened.
+6. Correct pattern
+7. Mark <- STRING_TO_INTEGER(Fields[3])
+8. IF Mark > 70 THEN
+9. The numeric comparison now has a numeric value.
+
+### A structured file can still contain bad lines
+
+- **Explains:** `validate`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-validate.jpg`
+
+1. Validation
+2. Correction prompt
+3. S003,Chen
+4. missing Mark field
+5. check field count before using Fields[3]
+6. S004,Dina,Ninety
+7. mark is not numeric
+8. validate before converting to INTEGER
+9. S005;Eli;88
+10. wrong delimiter
+11. use the delimiter specified by the format
+
+### Check field count and mark type
+
+- **Explains:** `validator`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-validator.jpg`
+
+1. Interactive validator
+2. Choose a sample line to validate.
+<!-- stage10-explanations:end -->

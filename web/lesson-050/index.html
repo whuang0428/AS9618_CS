@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -122,6 +122,20 @@
           <div class="callout">Chinese support: pipeline = 流水线；throughput = 吞吐量；latency = 延迟；stall = 停顿；hazard = 流水线风险/冲突。</div>
         </section>
 
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="process" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">Pipelining overlaps instruction-cycle stages</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Pipelining overlaps instruction-cycle stages with a structured visual model." />
+            <figcaption class="explanation-sr-only">Pipelining overlaps instruction-cycle stages: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pipeline</li><li><strong>Lesson fact:</strong> A processor technique where multiple instructions are at different stages of execution at the same time.</li><li><strong>Lesson fact:</strong> The next instruction is fetched from memory using the program counter and memory registers.</li><li><strong>Lesson fact:</strong> The control unit interprets the instruction and prepares required operands/control signals.</li><li><strong>Lesson fact:</strong> The instruction is carried out, such as arithmetic, memory access or a branch.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concept -->
+
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -153,6 +167,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Without and with pipelining</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Without and with pipelining with a structured visual model." />
+            <figcaption class="explanation-sr-only">Without and with pipelining: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Without pipelining</li><li><strong>Lesson fact:</strong> Instruction 1 completes fetch, decode and execute before instruction 2 begins.</li><li><strong>Lesson fact:</strong> I1: F D E</li><li><strong>Lesson fact:</strong> I2: F D E</li><li><strong>Lesson fact:</strong> I3: F D E</li><li><strong>Lesson fact:</strong> Three instructions with three stages each may take nine stage slots.</li><li><strong>Lesson fact:</strong> With pipelining</li><li><strong>Lesson fact:</strong> Instruction 2 can be fetched while instruction 1 is decoded; instruction 3 can be fetched while instruction 1 executes.</li><li><strong>Lesson fact:</strong> C2: F2 D1</li><li><strong>Lesson fact:</strong> C3: F3 D2 E1</li><li><strong>Lesson fact:</strong> C4: D3 E2</li><li><strong>Lesson fact:</strong> After the pipeline fills, one instruction can complete per cycle in the ideal case.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
+
         <section class="panel" id="timing" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="timing">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -169,6 +197,20 @@
             <p>Exam wording may ask "why performance can improve" rather than "why every instruction is faster". Answer with throughput.</p>
           </div>
         </section>
+
+        <!-- stage10-explanation:start timing -->
+        <section class="panel explanation-panel" id="explanation-timing" data-explains="timing" data-explanation-kind="mechanism" aria-labelledby="explanation-timing-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="timing">
+          <h2 class="explanation-sr-only" id="explanation-timing-title">Throughput improves, but latency still exists</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-timing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Throughput improves, but latency still exists with a structured visual model." />
+            <figcaption class="explanation-sr-only">Throughput improves, but latency still exists: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Latency The time for one instruction to pass from fetch through decode to execute.</li><li><strong>Lesson fact:</strong> Throughput The number of instructions completed per unit time once the pipeline is full.</li><li><strong>Lesson fact:</strong> Fill The early cycles before every pipeline stage is occupied.</li><li><strong>Lesson fact:</strong> Drain The final cycles when no new instructions enter but existing ones finish.</li><li><strong>Lesson fact:</strong> Why this matters</li><li><strong>Lesson fact:</strong> Exam wording may ask &quot;why performance can improve&quot; rather than &quot;why every instruction is faster&quot;. Answer with throughput.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end timing -->
 
         <section class="panel" id="hazards" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="hazards">
           <div class="section-title">
@@ -199,6 +241,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start hazards -->
+        <section class="panel explanation-panel" id="explanation-hazards" data-explains="hazards" data-explanation-kind="mechanism" aria-labelledby="explanation-hazards-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="hazards">
+          <h2 class="explanation-sr-only" id="explanation-hazards-title">Pipeline hazards: why faster is not always simpler</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-hazards.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Pipeline hazards: why faster is not always simpler with a structured visual model." />
+            <figcaption class="explanation-sr-only">Pipeline hazards: why faster is not always simpler: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Consequence</li><li><strong>Lesson fact:</strong> Data hazard</li><li><strong>Lesson fact:</strong> An instruction needs a result that a previous instruction has not produced yet.</li><li><strong>Lesson fact:</strong> The pipeline may stall until the needed value is available.</li><li><strong>Lesson fact:</strong> Control hazard</li><li><strong>Lesson fact:</strong> A branch or jump changes which instruction should be fetched next.</li><li><strong>Lesson fact:</strong> Incorrectly fetched instructions may need to be discarded or the pipeline may wait.</li><li><strong>Lesson fact:</strong> Resource hazard</li><li><strong>Lesson fact:</strong> Two stages need the same hardware resource in the same cycle.</li><li><strong>Lesson fact:</strong> One stage may wait, reducing the ideal performance gain.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end hazards -->
+
         <section class="panel" id="stalls" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stalls">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 5</p>
@@ -223,6 +279,20 @@
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start stalls -->
+        <section class="panel explanation-panel" id="explanation-stalls" data-explains="stalls" data-explanation-kind="mechanism" aria-labelledby="explanation-stalls-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stalls">
+          <h2 class="explanation-sr-only" id="explanation-stalls-title">Stalls and flushes reduce the ideal gain</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-050-stalls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Stalls and flushes reduce the ideal gain with a structured visual model." />
+            <figcaption class="explanation-sr-only">Stalls and flushes reduce the ideal gain: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> The pipeline pauses one or more stages because an instruction cannot safely continue yet.</li><li><strong>Lesson fact:</strong> Incorrect or unwanted instructions are removed from the pipeline, often after a branch decision.</li><li><strong>Lesson fact:</strong> Dependency</li><li><strong>Lesson fact:</strong> One instruction depends on the result or effect of an earlier instruction.</li><li><strong>Lesson fact:</strong> Ideal case</li><li><strong>Lesson fact:</strong> Pipeline is full, stages are balanced, no hazards occur and instructions complete regularly.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end stalls -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

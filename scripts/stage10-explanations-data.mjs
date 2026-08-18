@@ -1,64 +1,38 @@
-function explanation(lesson, targetId, kind, title, steps, analogy, boundary, visual = null) {
-  return Object.freeze({ lesson, targetId, kind, title, steps: Object.freeze(steps), analogy, boundary, visual: visual ? Object.freeze(visual) : null });
+import fs from "node:fs";
+import path from "node:path";
+
+function explanation(lesson, targetId, kind, title, steps, analogy, boundary) {
+  const visual = Object.freeze({
+    src: `../assets/diagrams/stage10-infographics/stage10-lesson-${lesson}-${targetId}.jpg`,
+    width: 1536,
+    height: 1024,
+    alt: `Academic knowledge-point infographic explaining ${title} through a cause-and-effect diagram.`,
+    caption: `${title}: mechanism, reason, result, analogy and boundary condition.`,
+  });
+  return Object.freeze({ lesson, targetId, kind, title, steps: Object.freeze(steps), analogy, boundary, visual });
 }
 
-const memoryVisual = {
-  src: "../assets/diagrams/stage10-memory-hierarchy-analogy.jpg",
-  width: 1400,
-  height: 933,
-  alt: "A restrained textbook illustration showing immediate trays, a working surface, fixed reference material and distant archive drawers.",
-  caption: "Nearer, smaller working areas represent faster access; the archive represents larger but slower storage.",
-};
-const cpuVisual = {
-  src: "../assets/diagrams/stage10-cpu-workflow-analogy.jpg",
-  width: 1400,
-  height: 933,
-  alt: "A textbook-style laboratory workflow with a controller, small holding trays, parallel channels and a processing machine.",
-  caption: "A controller coordinates; small trays hold immediate values; distinct channels carry different kinds of signals.",
-};
-const osVisual = {
-  src: "../assets/diagrams/stage10-os-resource-management-analogy.jpg",
-  width: 1400,
-  height: 933,
-  alt: "A textbook-style control centre allocating separated areas, queues and storage blocks to several tasks.",
-  caption: "One control layer allocates shared resources while keeping tasks separated.",
-};
-const securityVisual = {
-  src: "../assets/diagrams/stage10-security-functions-analogy.jpg",
-  width: 1400,
-  height: 768,
-  alt: "Three restrained exhibits representing hidden content, an irreversible comparison imprint and trusted identity verification.",
-  caption: "Confidentiality, comparison and identity verification are different jobs, so they require different mechanisms.",
-};
-const lifecycleVisual = {
-  src: "../assets/diagrams/stage10-lifecycle-models-analogy.jpg",
-  width: 1400,
-  height: 768,
-  alt: "Three architectural workflows showing sequential approval, repeated review cycles and incremental construction.",
-  caption: "Different project conditions favour different distances between building, review and change.",
-};
-
-export const explanations = Object.freeze([
+export const pilotExplanations = Object.freeze([
   explanation("016", "purpose", "mechanism", "How a shared resource becomes useful", ["A device packages a request and names the destination.", "The network carries that request to the shared resource.", "One managed resource can then serve many authorised devices."], "A library serves many readers because requests reach one organised collection.", "If the path or shared service fails, many users lose access together."),
   explanation("016", "lanwan", "comparison", "Why LAN and WAN management differs", ["A LAN usually stays within one organisation's controlled site.", "A WAN crosses distance and often uses provider-owned infrastructure.", "More owners and routes add latency, cost and fault-finding complexity."], "Managing one campus is different from coordinating transport across several cities.", "Wi-Fi does not make a network a WAN; scale and control do."),
   explanation("016", "topologies", "tradeoff", "Why connection patterns change risk", ["The layout determines which physical paths data can follow.", "Shared paths reduce cabling but concentrate traffic and failures.", "Alternative paths improve resilience but require more links and ports."], "Road layouts trade construction cost against alternative routes after a closure.", "No topology is universally best; cost, scale and failure tolerance decide."),
 
-  explanation("030", "primary", "mechanism", "Why active data stays close to the CPU", ["The CPU repeatedly requests current instructions and data.", "Nearby electronic storage answers with less delay than secondary storage.", "Faster access prevents the processor waiting as often."], "Keep today's papers on the desk, not in a distant archive.", "Closer and faster storage is smaller and more expensive per byte.", memoryVisual),
+  explanation("030", "primary", "mechanism", "Why active data stays close to the CPU", ["The CPU repeatedly requests current instructions and data.", "Nearby electronic storage answers with less delay than secondary storage.", "Faster access prevents the processor waiting as often."], "Keep today's papers on the desk, not in a distant archive.", "Closer and faster storage is smaller and more expensive per byte."),
   explanation("030", "ram-rom", "comparison", "Why RAM changes while ROM remains stable", ["RAM holds the changing state of running programs.", "Most RAM needs continuous power to preserve that state.", "ROM retains fixed startup instructions when power is removed."], "A working notepad changes constantly; a printed reference card should not.", "ROM can sometimes be updated, but not as ordinary working memory."),
   explanation("030", "cache-vm", "comparison", "Why cache helps and virtual memory slows", ["Cache keeps likely next data close to the CPU.", "A cache hit avoids a slower trip to main memory.", "Virtual memory moves pages to storage when RAM is insufficient."], "A desk tray saves a walk; using the archive as desk space creates walks.", "Virtual memory increases capacity, not physical RAM speed."),
 
-  explanation("041", "architecture", "mechanism", "Why a CPU divides specialised work", ["The control unit interprets the current instruction.", "The ALU performs the required arithmetic or logical operation.", "Registers and buses hold and move the immediate values."], "A laboratory separates coordination, processing, temporary trays and transport lanes.", "The components form one system; none executes a program alone.", cpuVisual),
+  explanation("041", "architecture", "mechanism", "Why a CPU divides specialised work", ["The control unit interprets the current instruction.", "The ALU performs the required arithmetic or logical operation.", "Registers and buses hold and move the immediate values."], "A laboratory separates coordination, processing, temporary trays and transport lanes.", "The components form one system; none executes a program alone."),
   explanation("041", "alu-cu", "comparison", "Why control and calculation are separate", ["The control unit decodes what the instruction demands.", "It sends signals that select data movement and an ALU operation.", "The ALU returns a result and status information."], "A coordinator chooses the operation; a specialist instrument performs it.", "The control unit coordinates calculation but does not replace the ALU."),
   explanation("041", "registers", "mechanism", "How registers, buses and clock stay aligned", ["Registers expose small values needed immediately.", "Buses carry values, addresses and control signals on distinct paths.", "Clock events determine when components may capture a new state."], "Timed transfer gates stop items arriving halfway through an operation.", "A faster clock helps only when the rest of the architecture can keep up."),
 
-  explanation("053", "concept", "mechanism", "Why applications need an operating system", ["Applications request services instead of controlling hardware directly.", "The operating system checks and schedules those requests.", "Drivers translate approved requests for particular devices."], "A control centre coordinates many users of limited shared infrastructure.", "The OS manages access; it cannot make finite hardware unlimited.", osVisual),
+  explanation("053", "concept", "mechanism", "Why applications need an operating system", ["Applications request services instead of controlling hardware directly.", "The operating system checks and schedules those requests.", "Drivers translate approved requests for particular devices."], "A control centre coordinates many users of limited shared infrastructure.", "The OS manages access; it cannot make finite hardware unlimited."),
   explanation("053", "process", "process", "How time-slicing creates apparent simultaneity", ["A running process receives a short interval of CPU time.", "Its state is saved before another ready process runs.", "Rapid switching keeps several programs responsive."], "One service desk handles many queues by switching between short tasks.", "Switching has overhead; too much switching reduces useful work."),
   explanation("053", "memory", "mechanism", "Why memory needs allocation and protection", ["Each process receives addresses for its code and data.", "Protection blocks one process from overwriting another's region.", "Released memory can be reassigned safely to later work."], "Separate laboratory benches prevent experiments contaminating each other.", "Isolation must still allow controlled sharing through OS services."),
   explanation("053", "file", "mechanism", "Why files need metadata and access rules", ["A name and path let software locate stored content.", "Metadata records size, timestamps, type and storage information.", "Permissions determine which users may read or change it."], "A catalogue locates an archive item while rules control who may handle it.", "A filename alone neither protects data nor proves its contents."),
   explanation("053", "device", "process", "Why drivers, buffers and queues work together", ["A driver converts a general request into device-specific commands.", "A buffer absorbs the speed difference between producer and device.", "A queue preserves an orderly sequence of pending requests."], "A loading bay stages deliveries before a slower vehicle can collect them.", "Buffering smooths bursts but cannot remove a permanently overloaded device."),
   explanation("053", "services", "synthesis", "How OS services form one control layer", ["Process, memory, file and device managers track different resources.", "Common permissions and scheduling rules coordinate their decisions.", "Applications receive a stable service interface above changing hardware."], "Departments share one operating policy instead of issuing conflicting instructions.", "Weak coordination between services can still create deadlock or starvation."),
 
-  explanation("067", "core", "comparison", "Why security methods cannot substitute", ["Encryption hides readable content from unauthorised viewers.", "Hashing creates a comparison value for integrity checks.", "Certificates bind an identity to a public key through trust."], "A sealed case, an evidence imprint and verified identity solve different problems.", "Using one mechanism does not automatically provide the other properties.", securityVisual),
+  explanation("067", "core", "comparison", "Why security methods cannot substitute", ["Encryption hides readable content from unauthorised viewers.", "Hashing creates a comparison value for integrity checks.", "Certificates bind an identity to a public key through trust."], "A sealed case, an evidence imprint and verified identity solve different problems.", "Using one mechanism does not automatically provide the other properties."),
   explanation("067", "encryption", "mechanism", "How encryption protects confidentiality", ["An algorithm combines plaintext with a key.", "The output is ciphertext that lacks readable meaning without the key.", "An authorised key reverses the transformation for the recipient."], "A locked document case hides the contents while it travels.", "Encryption alone does not prove who sent the message or that it is unchanged."),
   explanation("067", "keys", "mechanism", "Why key ownership changes capability", ["A symmetric key can both encrypt and decrypt shared data.", "An asymmetric key pair separates public and private operations.", "Protecting the private or shared secret preserves the security boundary."], "A public deposit slot can be open while only the owner opens the safe.", "If a secret key is copied, the algorithm cannot detect the impostor."),
   explanation("067", "hashing", "mechanism", "Why a hash supports comparison", ["A hash function maps input data to a fixed-length digest.", "A small input change should produce a substantially different digest.", "Matching digests provide evidence that the checked data is unchanged."], "Compare a tamper-evident imprint instead of storing the original object.", "Hashing is one-way comparison, not encryption and later decryption."),
@@ -86,7 +60,7 @@ export const explanations = Object.freeze([
   explanation("122", "implementation", "mechanism", "How pointers enforce ADT behaviour", ["A stack pointer identifies the current top or next free slot.", "Queue front and rear pointers identify removal and insertion positions.", "Each valid operation updates data and pointers in a fixed order."], "Markers turn a row of storage boxes into a controlled service structure.", "Incorrect wrap-around or update order can overwrite live queue data."),
   explanation("122", "pseudocode", "comparison", "Why pseudocode must expose state change", ["Test the empty or full condition before accessing storage.", "Read or write the element at the correct pointer.", "Update the pointer so the invariant remains true."], "A clear procedure shows the safety check, action and new boundary marker.", "Hiding pointer updates makes correctness impossible to verify."),
 
-  explanation("142", "purpose", "mechanism", "Why a lifecycle reduces uncertainty", ["Each stage asks a different question about need, design or evidence.", "Its output makes assumptions visible for review.", "Later work proceeds with clearer constraints and acceptance criteria."], "Architectural plans turn assumptions into inspectable decisions before construction.", "Documents help only when they stay accurate and influence decisions.", lifecycleVisual),
+  explanation("142", "purpose", "mechanism", "Why a lifecycle reduces uncertainty", ["Each stage asks a different question about need, design or evidence.", "Its output makes assumptions visible for review.", "Later work proceeds with clearer constraints and acceptance criteria."], "Architectural plans turn assumptions into inspectable decisions before construction.", "Documents help only when they stay accurate and influence decisions."),
   explanation("142", "stages", "process", "How one stage supplies the next", ["Analysis defines the problem and required outcomes.", "Design translates requirements into components, data and interfaces.", "Implementation and testing create and check the resulting system."], "A specification becomes a plan, then a build, then evidence of fitness.", "Feedback may return to an earlier stage when evidence exposes a bad assumption."),
   explanation("142", "waterfall", "tradeoff", "Why sequence helps and resists change", ["A stage is reviewed before the next major stage begins.", "Early agreement supports budgets, contracts and traceable approvals.", "Late change crosses completed boundaries and causes expensive rework."], "Changing foundations after upper floors exist is harder than changing a drawing.", "Waterfall suits stable requirements; sequence alone does not guarantee quality."),
   explanation("142", "iterative", "process", "Why repeated cycles expose mistakes", ["Build a limited version around a defined goal.", "Review evidence from users, tests or prototypes.", "Feed the findings into the next improved cycle."], "A model is built, inspected and revised before the full structure is fixed.", "Repeated work without a review goal is rework, not controlled iteration."),
@@ -94,5 +68,34 @@ export const explanations = Object.freeze([
   explanation("142", "compare", "comparison", "How project conditions choose a model", ["Stable regulated work values traceability and formal approval.", "Uncertain user-facing work values short feedback distance.", "Dependencies, risk and stakeholder availability constrain the viable choice."], "Choose a planning rhythm that matches how often reliable evidence arrives.", "No lifecycle model is inherently fastest or best for every project."),
   explanation("142", "artefacts", "mechanism", "Why artefacts make decisions traceable", ["Requirements define what successful behaviour means.", "Designs and tests link implementation choices to those requirements.", "Traceability exposes every item affected by a later change."], "A linked evidence trail shows which plans and checks depend on one decision.", "An outdated artefact can mislead more than an absent one."),
 ]);
+
+const root = path.resolve(import.meta.dirname, "..");
+const rolloutJobsPath = path.join(import.meta.dirname, "stage10-rollout-jobs.json");
+const rolloutJobs = fs.existsSync(rolloutJobsPath) ? JSON.parse(fs.readFileSync(rolloutJobsPath, "utf8")) : [];
+const pilotKeys = new Set(pilotExplanations.map((item) => `${item.lesson}/${item.targetId}`));
+const rolloutExplanations = rolloutJobs
+  .filter((job) => !pilotKeys.has(`${job.lesson}/${job.targetId}`))
+  .filter((job) => fs.existsSync(path.join(root, "web", "assets", "diagrams", "stage10-infographics", job.filename)))
+  .map((job) => Object.freeze({
+    lesson: job.lesson,
+    targetId: job.targetId,
+    kind: job.kind,
+    title: job.title,
+    steps: Object.freeze(job.sourceFacts.slice(0, 3)),
+    analogy: "",
+    boundary: "",
+    transcript: Object.freeze(job.sourceFacts),
+    sourceGrounded: true,
+    visual: Object.freeze({
+      src: `../assets/diagrams/stage10-infographics/${job.filename}`,
+      width: 1536,
+      height: 1024,
+      alt: `Academic knowledge-point infographic explaining ${job.title} with a structured visual model.`,
+      caption: `${job.title}: source-grounded visual explanation.`,
+    }),
+  }));
+
+export const explanations = Object.freeze([...pilotExplanations, ...rolloutExplanations]
+  .sort((left, right) => left.lesson.localeCompare(right.lesson) || left.targetId.localeCompare(right.targetId)));
 
 export const explanationByKey = Object.freeze(Object.fromEntries(explanations.map((item) => [`${item.lesson}/${item.targetId}`, item])));

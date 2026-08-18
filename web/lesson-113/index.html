@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -123,6 +123,20 @@ ENDIF</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start why-types -->
+        <section class="panel explanation-panel" id="explanation-why-types" data-explains="why-types" data-explanation-kind="process" aria-labelledby="explanation-why-types-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="why-types">
+          <h2 class="explanation-sr-only" id="explanation-why-types-title">A type controls meaning and valid operations</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-why-types.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A type controls meaning and valid operations with a structured visual model." />
+            <figcaption class="explanation-sr-only">A type controls meaning and valid operations: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Why data types exist</li><li><strong>Lesson fact:</strong> 23 could be an age, a day of month, a count or part of an ID. The variable name and type make the intention explicit.</li><li><strong>Lesson fact:</strong> DECLARE Age : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE StudentID : STRING</li><li><strong>Lesson fact:</strong> Operations</li><li><strong>Lesson fact:</strong> You can add two INTEGER values, compare DATE values, test a BOOLEAN, and join STRING values. The type narrows what is sensible.</li><li><strong>Lesson fact:</strong> IF IsValid = TRUE THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Accepted&quot;</li><li><strong>Lesson fact:</strong> Validation</li><li><strong>Lesson fact:</strong> Choosing a type does not replace validation. A DATE type stores a date; validation still checks whether a date is in an allowed range.</li><li><strong>Lesson fact:</strong> IF BirthDate &gt; Today THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Invalid&quot;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end why-types -->
+
         <section class="panel" id="built-in" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="built-in">
           <div class="section-title">
             <p class="eyebrow">Built-in types</p>
@@ -140,6 +154,20 @@ ENDIF</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start built-in -->
+        <section class="panel explanation-panel" id="explanation-built-in" data-explains="built-in" data-explanation-kind="mechanism" aria-labelledby="explanation-built-in-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="built-in">
+          <h2 class="explanation-sr-only" id="explanation-built-in-title">Core AS-level data types</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-built-in.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Core AS-level data types with a structured visual model." />
+            <figcaption class="explanation-sr-only">Core AS-level data types: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Built-in types</li><li><strong>Lesson fact:</strong> Good example</li><li><strong>Lesson fact:</strong> Do not use for</li><li><strong>Lesson fact:</strong> whole numbers</li><li><strong>Lesson fact:</strong> Score, Count, Quantity</li><li><strong>Lesson fact:</strong> values needing decimals</li><li><strong>Lesson fact:</strong> numbers with fractional parts</li><li><strong>Lesson fact:</strong> Temperature, Mass, Average</li><li><strong>Lesson fact:</strong> exact counters or indexes</li><li><strong>Lesson fact:</strong> TRUE or FALSE</li><li><strong>Lesson fact:</strong> Found, IsValid, HasPaid</li><li><strong>Lesson fact:</strong> more than two possible states</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end built-in -->
+
         <section class="panel" id="choose" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="choose">
           <div class="section-title">
             <p class="eyebrow">Choosing types</p>
@@ -156,6 +184,20 @@ ENDIF</code></pre>
           </div>
           <div class="callout">Exam wording tip: "suitable type" answers usually need both the type and a reason linked to the data.</div>
         </section>
+
+        <!-- stage10-explanation:start choose -->
+        <section class="panel explanation-panel" id="explanation-choose" data-explains="choose" data-explanation-kind="mechanism" aria-labelledby="explanation-choose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="choose">
+          <h2 class="explanation-sr-only" id="explanation-choose-title">Use the scenario, not the surface appearance</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-choose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the scenario, not the surface appearance with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use the scenario, not the surface appearance: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Choosing types</li><li><strong>Lesson fact:</strong> Question</li><li><strong>Lesson fact:</strong> Type direction</li><li><strong>Lesson fact:</strong> Will arithmetic be performed?</li><li><strong>Lesson fact:</strong> INTEGER or REAL</li><li><strong>Lesson fact:</strong> Can the value contain decimals?</li><li><strong>Lesson fact:</strong> Is the answer only true/false?</li><li><strong>Lesson fact:</strong> Is exactly one character stored?</li><li><strong>Lesson fact:</strong> Must leading zeros or letters be preserved?</li><li><strong>Lesson fact:</strong> Is the value a calendar date?</li><li><strong>Lesson fact:</strong> Exam wording tip: &quot;suitable type&quot; answers usually need both the type and a reason linked to the data.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end choose -->
 
         <section class="panel" id="user-defined" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="user-defined">
           <div class="section-title">
@@ -182,6 +224,20 @@ ENDTYPE</code></pre>
           </div>
           <div class="callout">Boundary: this lesson introduces user-defined type choice. Arrays and records get their own full lessons later.</div>
         </section>
+
+        <!-- stage10-explanation:start user-defined -->
+        <section class="panel explanation-panel" id="explanation-user-defined" data-explains="user-defined" data-explanation-kind="mechanism" aria-labelledby="explanation-user-defined-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="user-defined">
+          <h2 class="explanation-sr-only" id="explanation-user-defined-title">When built-in types are not descriptive enough</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-user-defined.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining When built-in types are not descriptive enough with a structured visual model." />
+            <figcaption class="explanation-sr-only">When built-in types are not descriptive enough: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> User-defined types</li><li><strong>Lesson fact:</strong> Enumerated type</li><li><strong>Lesson fact:</strong> Use an enumerated type when a value must be one of a named set of options.</li><li><strong>Lesson fact:</strong> TYPE TDay = (Monday, Tuesday, Wednesday, Thursday, Friday)</li><li><strong>Lesson fact:</strong> DECLARE Day : TDay</li><li><strong>Lesson fact:</strong> Composite type preview</li><li><strong>Lesson fact:</strong> A record groups fields of different types. Records are developed later, but the idea starts with type choice.</li><li><strong>Lesson fact:</strong> TYPE TStudent</li><li><strong>Lesson fact:</strong> DECLARE Name : STRING</li><li><strong>Lesson fact:</strong> DECLARE DateOfBirth : DATE</li><li><strong>Lesson fact:</strong> DECLARE Enrolled : BOOLEAN</li><li><strong>Lesson fact:</strong> Boundary: this lesson introduces user-defined type choice. Arrays and records get their own full lessons later.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end user-defined -->
 
         <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
@@ -210,6 +266,20 @@ LocalDate birthDate;</code></pre>
           </div>
           <div class="callout">Paper 2 reminder: Java syntax supports understanding, but Cambridge-style pseudocode is the expected exam answer format.</div>
         </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Same idea, different syntax</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same idea, different syntax with a structured visual model." />
+            <figcaption class="explanation-sr-only">Same idea, different syntax: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style declarations</li><li><strong>Lesson fact:</strong> DECLARE Count : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Average : REAL</li><li><strong>Lesson fact:</strong> DECLARE Found : BOOLEAN</li><li><strong>Lesson fact:</strong> DECLARE Initial : CHAR</li><li><strong>Lesson fact:</strong> DECLARE Name : STRING</li><li><strong>Lesson fact:</strong> DECLARE BirthDate : DATE</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> int count;</li><li><strong>Lesson fact:</strong> double average;</li><li><strong>Lesson fact:</strong> boolean found;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
 
 
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">

@@ -92,3 +92,100 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name. For this lesson, make students contrast that mistake with the exact idea of **constants, variables, and assignment**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Right side first, left side second
+
+- **Explains:** `assignment`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-114-assignment.jpg`
+
+1. Assignment
+2. Statement
+3. Total <- 0
+4. Total is set to 0
+5. initialises Total
+6. Total <- Total + Mark
+7. Total becomes old Total plus Mark
+8. running total update
+9. Count <- Count + 1
+10. Count is incremented
+11. counter update
+12. Found <- TRUE
+
+### Name fixed values so the algorithm explains itself
+
+- **Explains:** `constants`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-114-constants.jpg`
+
+1. Constants
+2. Without a constant
+3. IF Mark >= 50 THEN
+4. OUTPUT "Pass"
+5. The value 50 appears without explaining its role.
+6. With a constant
+7. CONSTANT PassMark = 50
+8. IF Mark >= PassMark THEN
+9. The identifier documents the meaning of the fixed value.
+10. Exam point: changing a constant later is a contradiction. If it must change during execution, it should be a variable.
+
+### Declaration gives a name and a type before use
+
+- **Explains:** `declare`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-114-declare.jpg`
+
+1. Declare variables
+2. Cambridge-style pseudocode
+3. Whole-number counter
+4. DECLARE Count : INTEGER
+5. Count can store whole numbers
+6. Decimal total
+7. DECLARE Price : REAL
+8. Price can store decimal values
+9. True/false state
+10. DECLARE Found : BOOLEAN
+11. Found can store TRUE or FALSE
+12. Text value
+
+### Identifiers name storage locations
+
+- **Explains:** `model`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-114-model.jpg`
+
+1. Memory model
+2. Variable
+3. A named storage location whose value can change while the algorithm runs.
+4. DECLARE Count : INTEGER
+5. Count <- 0
+6. Count <- Count + 1
+7. Constant
+8. A named value that should remain fixed. Use it when the same fixed value is used in several places.
+9. CONSTANT MaxMark = 100
+10. CONSTANT VATRate = 0.2
+11. Assignment
+12. Assignment evaluates the right-hand expression first, then stores the result in the left-hand variable.
+
+### The symbol changes, the update idea does not
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-114-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style pseudocode
+3. CONSTANT PassMark = 50
+4. DECLARE Mark : INTEGER
+5. DECLARE Passed : BOOLEAN
+6. INPUT Mark
+7. Passed <- Mark >= PassMark
+8. Java support only
+9. final int PASS_MARK = 50;
+10. int mark = input.nextInt();
+11. boolean passed = mark >= PASS_MARK;
+12. Paper 2 reminder: use Cambridge-style assignment <- in pseudocode. Java uses = for assignment.
+<!-- stage10-explanations:end -->

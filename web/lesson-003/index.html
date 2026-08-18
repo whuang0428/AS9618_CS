@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -121,6 +121,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start digits -->
+        <section class="panel explanation-panel" id="explanation-digits" data-explains="digits" data-explanation-kind="mechanism" aria-labelledby="explanation-digits-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="digits">
+          <h2 class="explanation-sr-only" id="explanation-digits-title">Hexadecimal digits: 0-9 then A-F</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-003-digits.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Hexadecimal digits: 0-9 then A-F with a structured visual model." />
+            <figcaption class="explanation-sr-only">Hexadecimal digits: 0-9 then A-F: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> nibble 4-bit group</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end digits -->
+
         <section class="panel" id="grouping" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="grouping">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -142,6 +156,20 @@
           </div>
           <div class="callout">`1101₂ = D₁₆` and `0110₂ = 6₁₆`, so `1101 0110₂ = D6₁₆`.</div>
         </section>
+
+        <!-- stage10-explanation:start grouping -->
+        <section class="panel explanation-panel" id="explanation-grouping" data-explains="grouping" data-explanation-kind="mechanism" aria-labelledby="explanation-grouping-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="grouping">
+          <h2 class="explanation-sr-only" id="explanation-grouping-title">One hex digit represents one nibble</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-003-grouping.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining One hex digit represents one nibble with a structured visual model." />
+            <figcaption class="explanation-sr-only">One hex digit represents one nibble: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Why four bits?</li><li><strong>Lesson fact:</strong> Four bits can represent 16 patterns: from 0000₂ to 1111₂. Hexadecimal has exactly 16 digits: 0 to F.</li><li><strong>Lesson fact:</strong> Binary to hex</li><li><strong>Lesson fact:</strong> Group the binary value into nibbles from the right. Convert each nibble separately.</li><li><strong>Lesson fact:</strong> Hex to binary</li><li><strong>Lesson fact:</strong> Replace each hex digit with its 4-bit binary nibble. Keep all four bits for each digit.</li><li><strong>Lesson fact:</strong> 1101₂ = D₁₆ and 0110₂ = 6₁₆, so 1101 0110₂ = D6₁₆.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end grouping -->
 
         <section id="delivery-06" class="guidance-grid compact" aria-label="Grouping guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="grouping">
           <article class="trap-card">
@@ -171,6 +199,20 @@
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start padding -->
+        <section class="panel explanation-panel" id="explanation-padding" data-explains="padding" data-explanation-kind="mechanism" aria-labelledby="explanation-padding-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="padding">
+          <h2 class="explanation-sr-only" id="explanation-padding-title">Padding with leading zeros</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-003-padding.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Padding with leading zeros with a structured visual model." />
+            <figcaption class="explanation-sr-only">Padding with leading zeros: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> When padding is needed</li><li><strong>Lesson fact:</strong> If the leftmost group has fewer than four bits, add leading zeros to complete the nibble.</li><li><strong>Lesson fact:</strong> 101101₂ → 0010 1101₂ → 2D₁₆</li><li><strong>Lesson fact:</strong> The value does not change because leading zeros do not add active place values.</li><li><strong>Lesson fact:</strong> Base labels</li><li><strong>Lesson fact:</strong> 10 could mean denary ten or binary two. Use base labels when the notation could be ambiguous.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end padding -->
 
         <section class="panel interactive" id="converter" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="converter">
           <div class="section-title">

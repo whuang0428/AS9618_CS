@@ -92,3 +92,75 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **paper 2 mock review and correction clinic**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### The four-line correction format
+
+- **Explains:** `correction`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-150-correction.jpg`
+
+1. Correction workflow
+2. 1. Original
+3. Copy the sentence or pseudocode line that failed.
+4. 2. Mark lost
+5. Name the exact mark: missing M1, B1 or A1.
+6. Write the general rule that would prevent the error next time.
+7. 4. Retest
+8. Answer a similar mini-question without looking at the model answer.
+9. A good correction is reusable. “I forgot” is honest, but it is not a strategy.
+
+### Translate feedback into a repeatable checklist
+
+- **Explains:** `marking`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-150-marking.jpg`
+
+1. Mark recovery
+2. Pseudocode initialise variables, process all items, output after the loop, close files
+3. Trace show intermediate values and include boundary conditions
+4. Data structures justify with LIFO, FIFO, index access or grouped fields
+5. Explanations use point, reason, context and consequence
+6. Testing include data, expected result and why the case is useful
+7. Evaluation compare evidence with success criteria and make a judgement
+
+### Know which skill the mark scheme is testing
+
+- **Explains:** `sections`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-150-sections.jpg`
+
+1. Paper 2 section map
+2. Core skill
+3. Common lost mark
+4. Correction target
+5. algorithm design and problem-solving
+6. missing input/output or loop condition
+7. write full algorithm skeleton
+8. data types and structures
+9. name structure without reason
+10. link to access pattern
+11. programming and file handling
+12. wrong file mode or no CLOSEFILE
+
+### Sort errors before trying to fix everything
+
+- **Explains:** `triage`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-150-triage.jpg`
+
+1. Mock triage
+2. Error type
+3. Looks like
+4. Correction action
+5. Fast retest
+6. Knowledge
+7. wrong term or concept
+8. relearn definition and contrast pair
+9. two quick retrieval prompts
+10. trace skipped or algorithm incomplete
+11. write steps as checklist
+12. similar short problem
+<!-- stage10-explanations:end -->

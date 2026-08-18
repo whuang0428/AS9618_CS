@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -113,6 +113,20 @@
           <div class="callout">Chinese support: firewall = 防火墙；proxy = 代理服务器；network monitoring = 网络监控；log = 日志。</div>
         </section>
 
+        <!-- stage10-explanation:start core -->
+        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
+          <h2 class="explanation-sr-only" id="explanation-core-title">Network controls sit between traffic and risk</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Network controls sit between traffic and risk with a structured visual model." />
+            <figcaption class="explanation-sr-only">Network controls sit between traffic and risk: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Traffic Data packets or requests moving across a network.</li><li><strong>Lesson fact:</strong> Rule A condition that allows, blocks or logs traffic based on properties.</li><li><strong>Lesson fact:</strong> Log A record of events, traffic, blocked attempts or user activity.</li><li><strong>Lesson fact:</strong> Alert A warning generated when traffic or behaviour matches a suspicious pattern.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end core -->
+
         <section class="panel" id="firewall" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="firewall">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -125,6 +139,20 @@
             <article><strong>Placement</strong><span>Can protect a network boundary or run on an individual host.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start firewall -->
+        <section class="panel explanation-panel" id="explanation-firewall" data-explains="firewall" data-explanation-kind="mechanism" aria-labelledby="explanation-firewall-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="firewall">
+          <h2 class="explanation-sr-only" id="explanation-firewall-title">Firewalls filter traffic using rules</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-firewall.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Firewalls filter traffic using rules with a structured visual model." />
+            <figcaption class="explanation-sr-only">Firewalls filter traffic using rules: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Purpose Control traffic entering or leaving a network/device.</li><li><strong>Lesson fact:</strong> Checks Can inspect source/destination IP address, port number, protocol or connection state.</li><li><strong>Lesson fact:</strong> Decision Allow, deny, reject or log traffic depending on rule match.</li><li><strong>Lesson fact:</strong> Placement Can protect a network boundary or run on an individual host.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end firewall -->
 
         <section class="panel" id="rules" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rules">
           <div class="section-title">
@@ -160,6 +188,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start rules -->
+        <section class="panel explanation-panel" id="explanation-rules" data-explains="rules" data-explanation-kind="mechanism" aria-labelledby="explanation-rules-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rules">
+          <h2 class="explanation-sr-only" id="explanation-rules-title">Firewall rules should be specific and ordered</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-rules.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Firewall rules should be specific and ordered with a structured visual model." />
+            <figcaption class="explanation-sr-only">Firewall rules should be specific and ordered: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Allow HTTPS from internal users to internet</li><li><strong>Lesson fact:</strong> Permit web traffic on port 443.</li><li><strong>Lesson fact:</strong> Needed for secure website access.</li><li><strong>Lesson fact:</strong> Block inbound unknown traffic</li><li><strong>Lesson fact:</strong> Deny unsolicited external connections.</li><li><strong>Lesson fact:</strong> Reduces unauthorised access attempts.</li><li><strong>Lesson fact:</strong> Allow admin only from management subnet</li><li><strong>Lesson fact:</strong> Restrict sensitive admin ports by source.</li><li><strong>Lesson fact:</strong> Limits attack surface and misuse.</li><li><strong>Lesson fact:</strong> Log repeated denied connections</li><li><strong>Lesson fact:</strong> Record unusual or repeated blocked attempts.</li><li><strong>Lesson fact:</strong> Supports monitoring and investigation.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end rules -->
+
         <section class="panel" id="proxy" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="proxy">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -172,6 +214,20 @@
             <article><strong>Logging</strong><span>Can record user requests for audit, investigation or policy enforcement.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start proxy -->
+        <section class="panel explanation-panel" id="explanation-proxy" data-explains="proxy" data-explanation-kind="mechanism" aria-labelledby="explanation-proxy-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="proxy">
+          <h2 class="explanation-sr-only" id="explanation-proxy-title">A proxy acts as an intermediary</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-proxy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A proxy acts as an intermediary with a structured visual model." />
+            <figcaption class="explanation-sr-only">A proxy acts as an intermediary: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Forward requests Client sends request to proxy; proxy requests the resource from the destination.</li><li><strong>Lesson fact:</strong> Filtering Can block sites, content types, categories or requests that break policy.</li><li><strong>Lesson fact:</strong> Caching Can store copies of frequently requested resources to reduce bandwidth and latency.</li><li><strong>Lesson fact:</strong> Logging Can record user requests for audit, investigation or policy enforcement.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end proxy -->
 
         <section class="panel" id="monitoring" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="monitoring">
           <div class="section-title">
@@ -186,6 +242,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start monitoring -->
+        <section class="panel explanation-panel" id="explanation-monitoring" data-explains="monitoring" data-explanation-kind="mechanism" aria-labelledby="explanation-monitoring-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="monitoring">
+          <h2 class="explanation-sr-only" id="explanation-monitoring-title">Network monitoring watches for patterns and evidence</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-monitoring.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Network monitoring watches for patterns and evidence with a structured visual model." />
+            <figcaption class="explanation-sr-only">Network monitoring watches for patterns and evidence: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Traffic volume Unusual spikes may suggest DoS, malware activity or misconfiguration.</li><li><strong>Lesson fact:</strong> Connection attempts Repeated failed access attempts may suggest probing or brute force activity.</li><li><strong>Lesson fact:</strong> Alerts Monitoring systems can notify staff when thresholds or signatures are triggered.</li><li><strong>Lesson fact:</strong> Investigation Logs help reconstruct what happened, when, and from where.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end monitoring -->
+
         <section class="panel" id="limits" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="limits">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
@@ -198,6 +268,20 @@
             <article><strong>Layering</strong><span>Use with authentication, permissions, patching, encryption and user training.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start limits -->
+        <section class="panel explanation-panel" id="explanation-limits" data-explains="limits" data-explanation-kind="mechanism" aria-labelledby="explanation-limits-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="limits">
+          <h2 class="explanation-sr-only" id="explanation-limits-title">Controls reduce risk but have limits</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-limits.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Controls reduce risk but have limits with a structured visual model." />
+            <figcaption class="explanation-sr-only">Controls reduce risk but have limits: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Firewall limit Allowed traffic can still carry attacks, and rules may be misconfigured.</li><li><strong>Lesson fact:</strong> Proxy limit Encrypted traffic and unmanaged devices can reduce visibility if not configured properly.</li><li><strong>Lesson fact:</strong> Monitoring limit Alerts need review and response; too many false positives can be ignored.</li><li><strong>Lesson fact:</strong> Layering Use with authentication, permissions, patching, encryption and user training.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end limits -->
 
 
         <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="tool">
@@ -244,6 +328,20 @@
           <div class="result-box" id="eventResult" aria-live="polite"></div>
           <div class="method-box" id="eventReason"></div>
         </section>
+
+        <!-- stage10-explanation:start event-tool -->
+        <section class="panel explanation-panel" id="explanation-event-tool" data-explains="event-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-event-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="event-tool">
+          <h2 class="explanation-sr-only" id="explanation-event-tool-title">Which control is most relevant?</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-068-event-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Which control is most relevant? with a structured visual model." />
+            <figcaption class="explanation-sr-only">Which control is most relevant?: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive event classifier</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end event-tool -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

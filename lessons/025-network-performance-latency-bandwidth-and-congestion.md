@@ -105,3 +105,57 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** buffer empties when data arrives more slowly than playback consumes it
 
 **Strict note:** Do not accept 'bandwidth is slow' without comparing arrival rate with the stream bit rate.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Simple transfer time calculation
+
+- **Explains:** `calculation`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-025-calculation.jpg`
+
+1. Transfer time = file size in bits / bandwidth in bits per second
+2. Remember: 1 byte = 8 bits . A 50 MB file is not 50 Mb. That capital B is doing real work.
+3. Mini example
+4. A 25 MB file is downloaded over a 10 Mbps link.
+5. Convert file size: 25 MB x 8 = 200 Mb .
+6. Divide by bandwidth: 200 Mb / 10 Mbps = 20 seconds .
+7. This is an ideal estimate; real throughput may be lower due to congestion and overhead.
+
+### Core performance terms
+
+- **Explains:** `concepts`
+- **Explanation type:** tradeoff
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-025-concepts.jpg`
+
+1. Bandwidth
+2. The maximum amount of data that can be transmitted over a connection per second.
+3. Typical units: bits per second, Mbps, Gbps.
+4. The delay before data starts to arrive or before a response is received.
+5. Typical units: milliseconds (ms).
+6. Congestion
+7. Occurs when too much data is trying to use part of a network, causing queues, delay or packet loss.
+8. Symptom: performance worsens when many users/devices compete.
+9. Throughput
+10. The actual amount of data successfully transferred per second, often lower than theoretical bandwidth.
+
+### Factors that affect performance
+
+- **Explains:** `factors`
+- **Explanation type:** tradeoff
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-025-factors.jpg`
+
+1. Good answers name a factor and explain its effect. "It becomes slower" needs a cause.
+2. Transmission medium
+3. Fibre may provide high bandwidth and low interference; wireless may vary with distance, obstacles and interference.
+4. Number of users
+5. More users can share the same capacity, increasing congestion and reducing throughput per user.
+6. Distance and route
+7. Longer physical distance and more hops can increase latency.
+8. Hardware and server load
+9. Slow routers, overloaded servers or weak wireless access points can become bottlenecks.
+10. Packet loss and retransmission
+11. If packets are lost, data may need to be resent, increasing delay and reducing effective throughput.
+12. Protocol overhead
+<!-- stage10-explanations:end -->

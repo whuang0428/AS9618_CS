@@ -105,3 +105,71 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** uses a coherent example or sequence
 
 **Strict note:** Do not accept that CMP itself necessarily jumps to another instruction.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Instruction sets and compatibility
+
+- **Explains:** `compatibility`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-045-compatibility.jpg`
+
+1. Same ISA
+2. A program compiled to one instruction set can run on compatible processors that implement that instruction set.
+3. Different ISA
+4. Machine code for one architecture may not run correctly on another architecture.
+5. Translation needed
+6. Source code may need to be recompiled, interpreted, emulated or translated for a different processor.
+7. Exam wording
+8. Say "the CPU cannot recognise/execute those opcodes" rather than simply "the CPU does not like it".
+
+### What is an instruction set?
+
+- **Explains:** `instruction-set`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-045-instruction-set.jpg`
+
+1. Definition
+2. The set of instructions that a particular processor can recognise and execute.
+3. Includes operations
+4. Examples include load, store, add, subtract, compare, jump and input/output instructions.
+5. Processor-specific
+6. Different processor families can have different instruction sets and instruction formats.
+7. Defines meaning
+8. The instruction set tells the CPU what each opcode means and how operands are interpreted.
+
+### Machine code is binary instructions for the CPU
+
+- **Explains:** `machine-code`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-045-machine-code.jpg`
+
+1. Lowest-level executable form
+2. Machine code consists of binary instructions that can be executed directly by the processor.
+3. Not friendly for humans
+4. Binary instructions are hard to read and write, which is why assembly language uses mnemonics and high-level languages use translators.
+5. Stored in memory
+6. Machine-code instructions are stored in memory and fetched by the CPU during the fetch-decode-execute cycle.
+7. CPU-specific meaning
+8. The same bit pattern can have different meanings on different architectures because opcodes are defined by the instruction set.
+
+### Opcode and operand
+
+- **Explains:** `opcode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-045-opcode.jpg`
+
+1. Opcode tells the CPU which operation to perform. Operand gives the data, register, address or value used by the operation.
+2. Mnemonic
+3. Example with operand
+4. Load value from memory into ACC.
+5. 0001 01011010 = LOAD address 90
+6. Store ACC value into memory.
+7. 0010 01011010 = STORE address 90
+8. Add value from memory to ACC.
+9. 0011 01011010 = ADD value at address 90
+10. Jump to a different instruction address.
+11. 0100 00001100 = jump to address 12
+12. Common trap
+<!-- stage10-explanations:end -->

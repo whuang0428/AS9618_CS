@@ -126,3 +126,128 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** comparison shows whether observed behaviour meets the predicted requirement
 
 **Strict note:** Do not accept a list containing only normal/abnormal/boundary; those are test-data categories, not a complete test plan.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Changeover methods balance risk, cost and speed
+
+- **Explains:** `changeover`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-changeover.jpg`
+
+1. Implementation strategies
+2. Advantage
+3. Risk or cost
+4. old system stops; new system starts immediately
+5. fast and cheaper
+6. high risk if new system fails
+7. Parallel
+8. old and new run together for a time
+9. outputs can be compared
+10. expensive and more work
+11. new system introduced one part at a time
+12. faults are contained
+
+### Classify input for NumberOfStudents, valid range 1 to 30
+
+- **Explains:** `data-tool`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-data-tool.jpg`
+
+1. Test data classifier
+2. Test value
+
+### Evaluation judges the final system against requirements and success criteria
+
+- **Explains:** `evaluation`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-evaluation.jpg`
+
+1. Evaluation
+2. Success criterion
+3. Evidence
+4. Evaluation judgement
+5. teachers create booking in under 2 minutes
+6. 8 out of 10 trial users met the target
+7. criterion met, but training may help remaining users
+8. reject double bookings
+9. all clash test cases rejected invalid bookings
+10. criterion met for tested cases
+11. search within 2 seconds
+12. 95 of 100 searches completed within target
+
+### Implementation turns the design into a working system
+
+- **Explains:** `implementation`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-implementation.jpg`
+
+1. Implementation
+2. Program modules, create files or databases, implement interfaces and connect components.
+3. Put the system into the user environment, configure hardware, accounts, permissions and data.
+4. Document
+5. Prepare user instructions and technical notes so the system can be used and supported.
+6. Implementation should follow the design documentation. If implementation silently changes the design, testing may no longer match the intended system.
+
+### Maintenance changes a system after it has been delivered
+
+- **Explains:** `maintenance`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-maintenance.jpg`
+
+1. Maintenance
+2. Corrective
+3. Fixing faults found after release, such as a booking clash that was not rejected.
+4. Adaptive
+5. Changing the system because the environment changes, such as a new timetable structure.
+6. Perfective
+7. Improving performance, usability or features, such as faster room search.
+
+### Which lifecycle stage is being described?
+
+- **Explains:** `stage-tool`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-stage-tool.jpg`
+
+1. Interactive stage chooser
+2. Scenario
+
+### Good testing uses different categories of data
+
+- **Explains:** `test-data`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-test-data.jpg`
+
+1. Test data
+2. Category
+3. Room capacity example
+4. Expected result
+5. valid typical data
+6. 24 students for capacity 30
+7. accepted
+8. Boundary
+9. valid or invalid data at the edge
+10. 30 and 31 for capacity 30
+11. 30 accepted; 31 rejected
+12. Abnormal
+
+### Testing is planned evidence that the system behaves as expected
+
+- **Explains:** `testing`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-testing.jpg`
+
+1. Evidence
+2. Unit testing
+3. one module or subroutine
+4. check clash detection function
+5. actual output compared with expected output
+6. Integration testing
+7. modules working together
+8. booking form sends data to save module
+9. data passes correctly between parts
+10. System testing
+11. whole system
+12. complete booking workflow
+<!-- stage10-explanations:end -->

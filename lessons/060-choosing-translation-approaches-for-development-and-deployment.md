@@ -105,3 +105,81 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** valid debugging feature described with its effect
 
 **Strict note:** Do not accept that Java source is compiled directly into one universal machine-code file.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### A good translator choice starts with four questions
+
+- **Explains:** `decision`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-060-decision.jpg`
+
+1. What code? High-level source code, assembly language, object modules or executable code?
+2. What stage? Development, testing, deployment, linking or running?
+3. What output? Immediate execution, object code, executable code or program loaded in memory?
+4. What feedback? Line-by-line diagnostics, a compiler error list, linker errors or runtime messages?
+
+### For deployment, a compiler often produces a distributable executable
+
+- **Explains:** `deployment`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-060-deployment.jpg`
+
+1. Useful when A finished program will be distributed to users or run many times.
+2. Mechanism Translates the whole high-level program before execution.
+3. Benefit Executable/object code can run without giving users the source code.
+4. Trade-off Compilation must complete before running; errors may be reported as a list.
+
+### During development, an interpreter can support rapid testing
+
+- **Explains:** `development`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-060-development.jpg`
+
+1. Useful when The programmer wants immediate feedback while writing and testing code.
+2. Mechanism Translates and executes statements as the program runs.
+3. Benefit Can stop at or near the statement with an error, helping debugging.
+4. Trade-off Execution may be slower and source code/interpreter may be needed.
+
+### Error feedback affects the best choice during development
+
+- **Explains:** `diagnostics`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-060-diagnostics.jpg`
+
+1. Compiler May provide a list of syntax/translation errors after trying to compile.
+2. Interpreter May stop at the current statement, useful for step-by-step testing.
+3. Linker May report unresolved external references after object code exists.
+4. Testing Logic errors may still need test data and tracing regardless of translator.
+
+### For assembly language, use an assembler
+
+- **Explains:** `lowlevel`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-060-lowlevel.jpg`
+
+1. Input Assembly language mnemonics for a specific processor.
+2. Output Machine code/object code.
+3. Use case Low-level code close to hardware or processor instructions.
+4. Boundary Assembler is not the correct tool for Java, Python or Cambridge pseudocode.
+
+### After translation, linking and loading may still be needed
+
+- **Explains:** `pipeline`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-060-pipeline.jpg`
+
+1. Precise role
+2. High-level source to object/executable code
+3. Compiler
+4. Translates whole program before execution.
+5. High-level source during execution
+6. Interpreter
+7. Translates and executes statement by statement.
+8. Assembly to machine code
+9. Assembler
+10. Translates mnemonics into machine code.
+11. Object modules to executable
+12. Combines modules and resolves external references.
+<!-- stage10-explanations:end -->

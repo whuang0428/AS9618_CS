@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -116,37 +116,17 @@
         </section>
 
         <!-- stage10-explanation:start core -->
-        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="comparison" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why security methods cannot substitute</h2>
-          </div>
-          <div class="explanation-layout has-visual">
-
-          <figure class="explanation-figure">
-            <img src="../assets/diagrams/stage10-security-functions-analogy.jpg" width="1400" height="768" loading="lazy" decoding="async" alt="Three restrained exhibits representing hidden content, an irreversible comparison imprint and trusted identity verification." />
-            <figcaption>Confidentiality, comparison and identity verification are different jobs, so they require different mechanisms.</figcaption>
+        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="comparison" aria-labelledby="explanation-core-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
+          <h2 class="explanation-sr-only" id="explanation-core-title">Why security methods cannot substitute</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why security methods cannot substitute through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why security methods cannot substitute: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Encryption hides readable content from unauthorised viewers.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Hashing creates a comparison value for integrity checks.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Certificates bind an identity to a public key through trust.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A sealed case, an evidence imprint and verified identity solve different problems.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Using one mechanism does not automatically provide the other properties.</span></p>
-              </div>
-            </div>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Encryption hides readable content from unauthorised viewers.</li><li><strong>Reason:</strong> Hashing creates a comparison value for integrity checks.</li><li><strong>Result:</strong> Certificates bind an identity to a public key through trust.</li></ol>
+
+            <p><strong>Analogy:</strong> A sealed case, an evidence imprint and verified identity solve different problems.</p>
+            <p><strong>Boundary:</strong> Using one mechanism does not automatically provide the other properties.</p>
           </div>
         </section>
         <!-- stage10-explanation:end core -->
@@ -165,33 +145,17 @@
         </section>
 
         <!-- stage10-explanation:start encryption -->
-        <section class="panel explanation-panel" id="explanation-encryption" data-explains="encryption" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="encryption">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>How encryption protects confidentiality</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-encryption" data-explains="encryption" data-explanation-kind="mechanism" aria-labelledby="explanation-encryption-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="encryption">
+          <h2 class="explanation-sr-only" id="explanation-encryption-title">How encryption protects confidentiality</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-encryption.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How encryption protects confidentiality through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How encryption protects confidentiality: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> An algorithm combines plaintext with a key.</li><li><strong>Reason:</strong> The output is ciphertext that lacks readable meaning without the key.</li><li><strong>Result:</strong> An authorised key reverses the transformation for the recipient.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>An algorithm combines plaintext with a key.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>The output is ciphertext that lacks readable meaning without the key.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>An authorised key reverses the transformation for the recipient.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A locked document case hides the contents while it travels.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Encryption alone does not prove who sent the message or that it is unchanged.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> A locked document case hides the contents while it travels.</p>
+            <p><strong>Boundary:</strong> Encryption alone does not prove who sent the message or that it is unchanged.</p>
           </div>
         </section>
         <!-- stage10-explanation:end encryption -->
@@ -210,33 +174,17 @@
         </section>
 
         <!-- stage10-explanation:start keys -->
-        <section class="panel explanation-panel" id="explanation-keys" data-explains="keys" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="keys">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why key ownership changes capability</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-keys" data-explains="keys" data-explanation-kind="mechanism" aria-labelledby="explanation-keys-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="keys">
+          <h2 class="explanation-sr-only" id="explanation-keys-title">Why key ownership changes capability</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-keys.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why key ownership changes capability through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why key ownership changes capability: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> A symmetric key can both encrypt and decrypt shared data.</li><li><strong>Reason:</strong> An asymmetric key pair separates public and private operations.</li><li><strong>Result:</strong> Protecting the private or shared secret preserves the security boundary.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>A symmetric key can both encrypt and decrypt shared data.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>An asymmetric key pair separates public and private operations.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Protecting the private or shared secret preserves the security boundary.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A public deposit slot can be open while only the owner opens the safe.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>If a secret key is copied, the algorithm cannot detect the impostor.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> A public deposit slot can be open while only the owner opens the safe.</p>
+            <p><strong>Boundary:</strong> If a secret key is copied, the algorithm cannot detect the impostor.</p>
           </div>
         </section>
         <!-- stage10-explanation:end keys -->
@@ -255,33 +203,17 @@
         </section>
 
         <!-- stage10-explanation:start hashing -->
-        <section class="panel explanation-panel" id="explanation-hashing" data-explains="hashing" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="hashing">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why a hash supports comparison</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-hashing" data-explains="hashing" data-explanation-kind="mechanism" aria-labelledby="explanation-hashing-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="hashing">
+          <h2 class="explanation-sr-only" id="explanation-hashing-title">Why a hash supports comparison</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-hashing.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why a hash supports comparison through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why a hash supports comparison: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> A hash function maps input data to a fixed-length digest.</li><li><strong>Reason:</strong> A small input change should produce a substantially different digest.</li><li><strong>Result:</strong> Matching digests provide evidence that the checked data is unchanged.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>A hash function maps input data to a fixed-length digest.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>A small input change should produce a substantially different digest.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Matching digests provide evidence that the checked data is unchanged.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Compare a tamper-evident imprint instead of storing the original object.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Hashing is one-way comparison, not encryption and later decryption.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Compare a tamper-evident imprint instead of storing the original object.</p>
+            <p><strong>Boundary:</strong> Hashing is one-way comparison, not encryption and later decryption.</p>
           </div>
         </section>
         <!-- stage10-explanation:end hashing -->
@@ -300,33 +232,17 @@
         </section>
 
         <!-- stage10-explanation:start certificates -->
-        <section class="panel explanation-panel" id="explanation-certificates" data-explains="certificates" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="certificates">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>How a certificate supports trust</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-certificates" data-explains="certificates" data-explanation-kind="mechanism" aria-labelledby="explanation-certificates-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="certificates">
+          <h2 class="explanation-sr-only" id="explanation-certificates-title">How a certificate supports trust</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-certificates.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How a certificate supports trust through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How a certificate supports trust: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> A certificate contains an identity and its public key.</li><li><strong>Reason:</strong> A trusted authority digitally signs that binding.</li><li><strong>Result:</strong> Software verifies the signature before trusting the presented key.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>A certificate contains an identity and its public key.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>A trusted authority digitally signs that binding.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Software verifies the signature before trusting the presented key.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>An independent registrar verifies which key belongs to which identity.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>A valid certificate does not guarantee that the website itself is honest.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> An independent registrar verifies which key belongs to which identity.</p>
+            <p><strong>Boundary:</strong> A valid certificate does not guarantee that the website itself is honest.</p>
           </div>
         </section>
         <!-- stage10-explanation:end certificates -->
@@ -345,33 +261,17 @@
         </section>
 
         <!-- stage10-explanation:start https -->
-        <section class="panel explanation-panel" id="explanation-https" data-explains="https" data-explanation-kind="process" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="https">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>How HTTPS combines trust and privacy</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-https" data-explains="https" data-explanation-kind="process" aria-labelledby="explanation-https-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="https">
+          <h2 class="explanation-sr-only" id="explanation-https-title">How HTTPS combines trust and privacy</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-https.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How HTTPS combines trust and privacy through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How HTTPS combines trust and privacy: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> The server presents its certificate and public-key information.</li><li><strong>Reason:</strong> The browser verifies the trust chain and agreed connection details.</li><li><strong>Result:</strong> Both sides establish session keys for efficient encrypted transport.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>The server presents its certificate and public-key information.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>The browser verifies the trust chain and agreed connection details.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Both sides establish session keys for efficient encrypted transport.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Check the recipient's identity before sending a locked stream of parcels.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>HTTPS protects the connection, not unsafe content downloaded through it.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Check the recipient's identity before sending a locked stream of parcels.</p>
+            <p><strong>Boundary:</strong> HTTPS protects the connection, not unsafe content downloaded through it.</p>
           </div>
         </section>
         <!-- stage10-explanation:end https -->
@@ -410,33 +310,17 @@
         </section>
 
         <!-- stage10-explanation:start compare -->
-        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="tradeoff" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>How the required property chooses the method</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="tradeoff" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">How the required property chooses the method</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-067-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How the required property chooses the method through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How the required property chooses the method: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> First identify confidentiality, integrity, authentication or several needs.</li><li><strong>Reason:</strong> Choose the mechanism whose operation creates that property.</li><li><strong>Result:</strong> Combine methods when the communication needs multiple properties.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>First identify confidentiality, integrity, authentication or several needs.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Choose the mechanism whose operation creates that property.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Combine methods when the communication needs multiple properties.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Choose a lock, evidence seal or identity check according to the threat.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>More mechanisms add management cost and do not repair poor key handling.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Choose a lock, evidence seal or identity check according to the threat.</p>
+            <p><strong>Boundary:</strong> More mechanisms add management cost and do not repair poor key handling.</p>
           </div>
         </section>
         <!-- stage10-explanation:end compare -->

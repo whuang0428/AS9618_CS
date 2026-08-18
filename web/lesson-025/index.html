@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -117,6 +117,20 @@
           <div class="callout">Chinese support: bandwidth = 带宽；latency = 延迟；congestion = 拥塞；throughput = 实际吞吐量；packet loss = 丢包。</div>
         </section>
 
+        <!-- stage10-explanation:start concepts -->
+        <section class="panel explanation-panel" id="explanation-concepts" data-explains="concepts" data-explanation-kind="tradeoff" aria-labelledby="explanation-concepts-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concepts">
+          <h2 class="explanation-sr-only" id="explanation-concepts-title">Core performance terms</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-025-concepts.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Core performance terms with a structured visual model." />
+            <figcaption class="explanation-sr-only">Core performance terms: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Bandwidth</li><li><strong>Lesson fact:</strong> The maximum amount of data that can be transmitted over a connection per second.</li><li><strong>Lesson fact:</strong> Typical units: bits per second, Mbps, Gbps.</li><li><strong>Lesson fact:</strong> The delay before data starts to arrive or before a response is received.</li><li><strong>Lesson fact:</strong> Typical units: milliseconds (ms).</li><li><strong>Lesson fact:</strong> Congestion</li><li><strong>Lesson fact:</strong> Occurs when too much data is trying to use part of a network, causing queues, delay or packet loss.</li><li><strong>Lesson fact:</strong> Symptom: performance worsens when many users/devices compete.</li><li><strong>Lesson fact:</strong> Throughput</li><li><strong>Lesson fact:</strong> The actual amount of data successfully transferred per second, often lower than theoretical bandwidth.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concepts -->
+
         <section class="panel" id="factors" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="factors">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -151,6 +165,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start factors -->
+        <section class="panel explanation-panel" id="explanation-factors" data-explains="factors" data-explanation-kind="tradeoff" aria-labelledby="explanation-factors-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="factors">
+          <h2 class="explanation-sr-only" id="explanation-factors-title">Factors that affect performance</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-025-factors.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Factors that affect performance with a structured visual model." />
+            <figcaption class="explanation-sr-only">Factors that affect performance: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Good answers name a factor and explain its effect. &quot;It becomes slower&quot; needs a cause.</li><li><strong>Lesson fact:</strong> Transmission medium</li><li><strong>Lesson fact:</strong> Fibre may provide high bandwidth and low interference; wireless may vary with distance, obstacles and interference.</li><li><strong>Lesson fact:</strong> Number of users</li><li><strong>Lesson fact:</strong> More users can share the same capacity, increasing congestion and reducing throughput per user.</li><li><strong>Lesson fact:</strong> Distance and route</li><li><strong>Lesson fact:</strong> Longer physical distance and more hops can increase latency.</li><li><strong>Lesson fact:</strong> Hardware and server load</li><li><strong>Lesson fact:</strong> Slow routers, overloaded servers or weak wireless access points can become bottlenecks.</li><li><strong>Lesson fact:</strong> Packet loss and retransmission</li><li><strong>Lesson fact:</strong> If packets are lost, data may need to be resent, increasing delay and reducing effective throughput.</li><li><strong>Lesson fact:</strong> Protocol overhead</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end factors -->
+
         <section class="panel" id="calculation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="calculation">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -170,6 +198,20 @@
             </ol>
           </div>
         </section>
+
+        <!-- stage10-explanation:start calculation -->
+        <section class="panel explanation-panel" id="explanation-calculation" data-explains="calculation" data-explanation-kind="mechanism" aria-labelledby="explanation-calculation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="calculation">
+          <h2 class="explanation-sr-only" id="explanation-calculation-title">Simple transfer time calculation</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-025-calculation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Simple transfer time calculation with a structured visual model." />
+            <figcaption class="explanation-sr-only">Simple transfer time calculation: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Transfer time = file size in bits / bandwidth in bits per second</li><li><strong>Lesson fact:</strong> Remember: 1 byte = 8 bits . A 50 MB file is not 50 Mb. That capital B is doing real work.</li><li><strong>Lesson fact:</strong> Mini example</li><li><strong>Lesson fact:</strong> A 25 MB file is downloaded over a 10 Mbps link.</li><li><strong>Lesson fact:</strong> Convert file size: 25 MB x 8 = 200 Mb .</li><li><strong>Lesson fact:</strong> Divide by bandwidth: 200 Mb / 10 Mbps = 20 seconds .</li><li><strong>Lesson fact:</strong> This is an ideal estimate; real throughput may be lower due to congestion and overhead.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end calculation -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

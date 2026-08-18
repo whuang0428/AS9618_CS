@@ -105,3 +105,75 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** head senses magnetic patterns which are decoded as data
 
 **Strict note:** Do not accept a laser-based explanation for an HDD; lasers apply to optical media.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Compare by scenario, not by favourite brand
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-031-compare.jpg`
+
+1. Capacity/cost
+2. Good scenario
+3. Magnetic HDD
+4. Slower than SSD; mechanical parts.
+5. High capacity and low cost per GB.
+6. Desktop storage, large file libraries, cost-sensitive backups.
+7. Magnetic tape
+8. Slow sequential access.
+9. Very high capacity and low cost for backups.
+10. Archiving and large organisation backups.
+11. Optical disc
+12. Generally slower access.
+
+### Three main storage media
+
+- **Explains:** `media`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-031-media.jpg`
+
+1. Magnetic storage
+2. Stores data using magnetised areas on a medium.
+3. Examples: hard disk drive (HDD), magnetic tape.
+4. Typical strengths: high capacity, relatively low cost per GB; tape is useful for large backups.
+5. Limitations: moving parts in HDDs, slower than SSDs, vulnerable to shock and magnetic fields.
+6. Optical storage
+7. Uses laser light to read marks/pits on a disc surface.
+8. Examples: CD, DVD, Blu-ray.
+9. Typical strengths: cheap, portable, useful for distributing or archiving data that changes rarely.
+10. Limitations: lower capacity and slower access than HDD/SSD; discs can scratch.
+11. Solid-state storage
+12. Stores data electronically in flash memory with no moving parts.
+
+### What secondary storage does
+
+- **Explains:** `purpose`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-031-purpose.jpg`
+
+1. Non-volatile Data remains when power is switched off.
+2. Long-term Stores files, programs, backups and operating system data.
+3. Usually slower Secondary storage is usually slower than RAM for direct access.
+4. Scenario-based The best medium depends on speed, capacity, durability, portability and cost.
+
+### Look at the storage mechanism before comparing performance
+
+- **Explains:** `storage-visual`
+- **Explanation type:** tradeoff
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-031-storage-visual.jpg`
+
+1. Visual explanation
+2. The physical mechanism helps explain speed, durability and suitable uses.
+3. Magnetic
+4. Solid-state
+5. Three ways to store data when power is off. The illustration identifies the mechanism; the cards below state the exam-safe explanation.
+6. Magnetic HDD
+7. Magnetised areas store data on rotating platters. A moving actuator positions the read/write head.
+8. Consequence: high capacity and low cost per GB, but mechanical parts are vulnerable to shock.
+9. Optical disc
+10. A laser reads changes such as pits and lands on the disc surface.
+11. Consequence: portable and cheap to distribute, but generally slower and lower-capacity.
+12. Solid-state drive
+<!-- stage10-explanations:end -->

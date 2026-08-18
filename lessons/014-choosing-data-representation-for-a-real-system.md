@@ -71,3 +71,51 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often assume compression always makes a file smaller. Correction: compression has overhead and depends on patterns in the data. For this lesson, make students contrast that mistake with the exact idea of **choosing data representation for a real system**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### System cases
+
+- **Explains:** `cases`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-014-cases.jpg`
+
+1. Multilingual chat app
+2. Use Unicode so messages can include characters from many languages.
+3. Sensor logger
+4. Use enough bits and signed representation if values may be negative.
+5. Website thumbnail
+6. Lower resolution and lossy compression may be acceptable to reduce transfer time.
+7. Legal archive
+8. Use lossless compression because exact reconstruction is required.
+
+### A decision framework
+
+- **Explains:** `framework`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-014-framework.jpg`
+
+1. 1. What data?
+2. Integer, signed value, text, image, sound or repeated data.
+3. 2. What range?
+4. Check minimum, maximum, precision and whether negative values are possible.
+5. 3. What quality?
+6. Choose resolution, colour depth, sample rate or sample resolution only as high as needed.
+7. 4. What constraints?
+8. Storage, bandwidth, compatibility, exact reconstruction and processing cost.
+
+### Useful trade-off sentences
+
+- **Explains:** `tradeoffs`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-014-tradeoffs.jpg`
+
+1. More bits increase the possible range but require more storage per value.
+2. Image quality
+3. Higher resolution or colour depth can improve detail or colour range but increases file size.
+4. Sound quality
+5. Higher sample rate or sample resolution can improve accuracy but increases file size.
+6. Compression
+7. Lossless preserves exact data; lossy can reduce size more but loses data permanently.
+<!-- stage10-explanations:end -->

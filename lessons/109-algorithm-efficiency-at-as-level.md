@@ -92,3 +92,112 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **algorithm efficiency at as level**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### The same algorithm can behave differently on different inputs
+
+- **Explains:** `cases`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-109-cases.jpg`
+
+1. Best and worst cases
+2. Linear search
+3. Found <- FALSE
+4. Index <- 1
+5. WHILE Found = FALSE AND Index <= Length
+6. IF List[Index] = Target THEN
+7. Found <- TRUE
+8. Index <- Index + 1
+9. ENDWHILE
+10. Case language
+11. Best case: target is first, so only 1 comparison. Worst case: target is last or absent, so all n items may be checked.
+12. Do not say "linear search is always slow". It can be quick in the best case, but grows linearly in the worst case.
+
+### Estimate the work
+
+- **Explains:** `estimator`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-109-estimator.jpg`
+
+1. Interactive step estimator
+2. Input size n
+3. Algorithm pattern
+4. Choose a size and pattern, then estimate the number of steps.
+
+### Loops reveal how work grows
+
+- **Explains:** `loops`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-109-loops.jpg`
+
+1. Loop growth
+2. Structure
+3. Work for n items
+4. AS-level explanation
+5. Single loop
+6. total all marks
+7. n additions
+8. one step per item
+9. Nested loop
+10. n rows and n columns
+11. n x n visits
+12. inner loop repeats for every outer value
+
+### Efficiency is about resources used
+
+- **Explains:** `measure`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-109-measure.jpg`
+
+1. Knowledge explanation
+2. What to count
+3. Exam wording
+4. comparisons, loop repetitions, steps
+5. fewer checks / fewer iterations
+6. "faster" without reason
+7. extra variables, arrays, copied data
+8. uses less memory / no extra list
+9. ignoring memory when data is copied
+10. Input size
+11. number of items, characters, rows, columns
+12. as n increases, work increases...
+
+### Efficiency explanations are language-independent
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-109-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style reasoning
+3. FOR Index <- 1 TO Length
+4. IF List[Index] = Target THEN
+5. Found <- TRUE
+6. NEXT Index
+7. This loop can perform up to Length comparisons.
+8. Java support only
+9. for (int index = 0; index < list.length; index++) {
+10. if (list[index] == target) {
+11. found = true;
+12. Java syntax changes the notation, not the number of item comparisons.
+
+### Linear search checks one by one; binary search halves a sorted list
+
+- **Explains:** `search`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-109-search.jpg`
+
+1. Search comparison
+2. Linear search on 8 items
+3. Worst case: check item 1, 2, 3, 4, 5, 6, 7, 8. That is up to 8 comparisons.
+4. [3, 8, 11, 18, 25, 31, 40, 52]
+5. target 52 -> 8 comparisons
+6. Binary search on sorted 8 items
+7. Compare the middle item, discard half, repeat. For 8 items, the target is found or ruled out in about 4 checks.
+8. middle 18 -> search right
+9. middle 31 -> search right
+10. middle 40 -> search right
+11. middle 52 -> found
+<!-- stage10-explanations:end -->

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -125,6 +125,20 @@ Scores[Index]</code></pre>
           <div class="callout">Chinese support: array 是一组同类型数据；index 是位置编号；element 是某一个具体格子里的值。</div>
         </section>
 
+        <!-- stage10-explanation:start model -->
+        <section class="panel explanation-panel" id="explanation-model" data-explains="model" data-explanation-kind="comparison" aria-labelledby="explanation-model-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
+          <h2 class="explanation-sr-only" id="explanation-model-title">A one-dimensional array is a linear collection</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-model.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A one-dimensional array is a linear collection with a structured visual model." />
+            <figcaption class="explanation-sr-only">A one-dimensional array is a linear collection: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Array model</li><li><strong>Lesson fact:</strong> Same identifier</li><li><strong>Lesson fact:</strong> All elements belong to one array name.</li><li><strong>Lesson fact:</strong> Same type</li><li><strong>Lesson fact:</strong> At AS level, an array stores elements of the same data type.</li><li><strong>Lesson fact:</strong> ARRAY[1:5] OF INTEGER</li><li><strong>Lesson fact:</strong> Indexed access</li><li><strong>Lesson fact:</strong> An index selects one element.</li><li><strong>Lesson fact:</strong> Scores[3]</li><li><strong>Lesson fact:</strong> Scores[Index]</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end model -->
+
         <section class="panel" id="declare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
           <div class="section-title">
             <p class="eyebrow">Declare arrays</p>
@@ -138,6 +152,20 @@ Scores[Index]</code></pre>
             <div class="table-row" role="row"><div>Boolean flags</div><div><code>DECLARE Present : ARRAY[1:30] OF BOOLEAN</code></div><div>1 to 30 inclusive</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start declare -->
+        <section class="panel explanation-panel" id="explanation-declare" data-explains="declare" data-explanation-kind="mechanism" aria-labelledby="explanation-declare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="declare">
+          <h2 class="explanation-sr-only" id="explanation-declare-title">Bounds say which indexes are valid</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-declare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bounds say which indexes are valid with a structured visual model." />
+            <figcaption class="explanation-sr-only">Bounds say which indexes are valid: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Declare arrays</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Valid indexes</li><li><strong>Lesson fact:</strong> Five integer scores</li><li><strong>Lesson fact:</strong> DECLARE Scores : ARRAY[1:5] OF INTEGER</li><li><strong>Lesson fact:</strong> 1, 2, 3, 4, 5</li><li><strong>Lesson fact:</strong> Ten names</li><li><strong>Lesson fact:</strong> DECLARE Names : ARRAY[1:10] OF STRING</li><li><strong>Lesson fact:</strong> 1 to 10 inclusive</li><li><strong>Lesson fact:</strong> Seven temperatures</li><li><strong>Lesson fact:</strong> DECLARE Temp : ARRAY[1:7] OF REAL</li><li><strong>Lesson fact:</strong> 1 to 7 inclusive</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end declare -->
 
         <section class="panel" id="access" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
           <div class="section-title">
@@ -157,6 +185,20 @@ Scores[Index]</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start access -->
+        <section class="panel explanation-panel" id="explanation-access" data-explains="access" data-explanation-kind="mechanism" aria-labelledby="explanation-access-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="access">
+          <h2 class="explanation-sr-only" id="explanation-access-title">The index points to exactly one element</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-access.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The index points to exactly one element with a structured visual model." />
+            <figcaption class="explanation-sr-only">The index points to exactly one element: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Access and update</li><li><strong>Lesson fact:</strong> Read one element</li><li><strong>Lesson fact:</strong> OUTPUT Scores[3]</li><li><strong>Lesson fact:</strong> Outputs the element at index 3, not the whole array.</li><li><strong>Lesson fact:</strong> Update one element</li><li><strong>Lesson fact:</strong> Scores[3] &lt;- Scores[3] + 5</li><li><strong>Lesson fact:</strong> Reads the old value at index 3, adds 5, and stores it back into the same element.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end access -->
 
         <section class="panel" id="traversal" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
           <div class="section-title">
@@ -181,6 +223,20 @@ OUTPUT Total</code></pre>
           </div>
           <div class="callout">The loop bounds must match the declared array bounds. If the array is 1:5, index 0 and index 6 are out of range.</div>
         </section>
+
+        <!-- stage10-explanation:start traversal -->
+        <section class="panel explanation-panel" id="explanation-traversal" data-explains="traversal" data-explanation-kind="mechanism" aria-labelledby="explanation-traversal-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="traversal">
+          <h2 class="explanation-sr-only" id="explanation-traversal-title">Use a loop to visit every element</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-traversal.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use a loop to visit every element with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use a loop to visit every element: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Traversal</li><li><strong>Lesson fact:</strong> Input all scores</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> INPUT Scores[Index]</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Total all scores</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Scores[Index]</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> The loop bounds must match the declared array bounds. If the array is 1:5, index 0 and index 6 are out of range.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end traversal -->
 
         <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
           <div class="section-title">
@@ -238,6 +294,20 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="callout">Paper 2 reminder: Cambridge pseudocode may use bounds such as <code>ARRAY[1:5]</code>. Do not import Java's zero-based indexing unless the question states it.</div>
         </section>
 
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Cambridge bounds and Java indexes are not the same habit</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge bounds and Java indexes are not the same habit with a structured visual model." />
+            <figcaption class="explanation-sr-only">Cambridge bounds and Java indexes are not the same habit: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> DECLARE Scores : ARRAY[1:5] OF INTEGER</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> INPUT Scores[Index]</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> int[] scores = new int[5];</li><li><strong>Lesson fact:</strong> for (int index = 0; index &lt; 5; index++) {</li><li><strong>Lesson fact:</strong> scores[index] = input.nextInt();</li><li><strong>Lesson fact:</strong> Paper 2 reminder: Cambridge pseudocode may use bounds such as ARRAY[1:5] . Do not import Java's zero-based indexing unless the question states it.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
+
 
         <section class="panel" id="lookup" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lookup">
           <div class="section-title">
@@ -260,6 +330,20 @@ for (int index = 0; index &lt; 5; index++) {
           </div>
           <div class="trace-output" id="lookupResult">Array: Scores[1:5] = 42, 67, 55, 81, 49.</div>
         </section>
+
+        <!-- stage10-explanation:start lookup -->
+        <section class="panel explanation-panel" id="explanation-lookup" data-explains="lookup" data-explanation-kind="mechanism" aria-labelledby="explanation-lookup-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="lookup">
+          <h2 class="explanation-sr-only" id="explanation-lookup-title">Access one element</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-115-lookup.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Access one element with a structured visual model." />
+            <figcaption class="explanation-sr-only">Access one element: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive index lookup</li><li><strong>Lesson fact:</strong> Array: Scores[1:5] = 42, 67, 55, 81, 49.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end lookup -->
 
         <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">

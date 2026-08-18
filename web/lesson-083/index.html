@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -115,33 +115,17 @@
         </section>
 
         <!-- stage10-explanation:start purpose -->
-        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why normalisation protects consistency</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-purpose" data-explains="purpose" data-explanation-kind="mechanism" aria-labelledby="explanation-purpose-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="purpose">
+          <h2 class="explanation-sr-only" id="explanation-purpose-title">Why normalisation protects consistency</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-purpose.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why normalisation protects consistency through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why normalisation protects consistency: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Each fact is stored in a relation where its determinant is clear.</li><li><strong>Reason:</strong> Other tables reference that fact instead of copying it repeatedly.</li><li><strong>Result:</strong> One update then changes the authoritative value once.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Each fact is stored in a relation where its determinant is clear.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Other tables reference that fact instead of copying it repeatedly.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>One update then changes the authoritative value once.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Keep one catalogue record and let many loans point to it.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Normalisation improves consistency but joins may make some queries more complex.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Keep one catalogue record and let many loans point to it.</p>
+            <p><strong>Boundary:</strong> Normalisation improves consistency but joins may make some queries more complex.</p>
           </div>
         </section>
         <!-- stage10-explanation:end purpose -->
@@ -177,33 +161,17 @@
         </section>
 
         <!-- stage10-explanation:start redundancy -->
-        <section class="panel explanation-panel" id="explanation-redundancy" data-explains="redundancy" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="redundancy">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>How repeated facts become risky</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-redundancy" data-explains="redundancy" data-explanation-kind="mechanism" aria-labelledby="explanation-redundancy-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="redundancy">
+          <h2 class="explanation-sr-only" id="explanation-redundancy-title">How repeated facts become risky</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-redundancy.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How repeated facts become risky through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How repeated facts become risky: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> The same real-world fact appears in several rows.</li><li><strong>Reason:</strong> A later update may change only some copies.</li><li><strong>Result:</strong> Queries then return conflicting versions of one fact.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>The same real-world fact appears in several rows.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>A later update may change only some copies.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Queries then return conflicting versions of one fact.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Several photocopies agree only until someone edits one copy.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Repeated transactional events are valid; repeated descriptive facts cause the risk.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Several photocopies agree only until someone edits one copy.</p>
+            <p><strong>Boundary:</strong> Repeated transactional events are valid; repeated descriptive facts cause the risk.</p>
           </div>
         </section>
         <!-- stage10-explanation:end redundancy -->
@@ -221,33 +189,17 @@
         </section>
 
         <!-- stage10-explanation:start anomalies -->
-        <section class="panel explanation-panel" id="explanation-anomalies" data-explains="anomalies" data-explanation-kind="tradeoff" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="anomalies">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why one structure causes three anomalies</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-anomalies" data-explains="anomalies" data-explanation-kind="tradeoff" aria-labelledby="explanation-anomalies-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="anomalies">
+          <h2 class="explanation-sr-only" id="explanation-anomalies-title">Why one structure causes three anomalies</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-anomalies.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why one structure causes three anomalies through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why one structure causes three anomalies: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Insertion may require an unrelated fact that is not yet known.</li><li><strong>Reason:</strong> Updating requires finding every repeated copy.</li><li><strong>Result:</strong> Deleting one event may accidentally remove the only descriptive fact.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Insertion may require an unrelated fact that is not yet known.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Updating requires finding every repeated copy.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Deleting one event may accidentally remove the only descriptive fact.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A form that mixes customers, products and orders ties unrelated lifetimes together.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>The anomaly comes from dependency structure, not simply from a large table.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> A form that mixes customers, products and orders ties unrelated lifetimes together.</p>
+            <p><strong>Boundary:</strong> The anomaly comes from dependency structure, not simply from a large table.</p>
           </div>
         </section>
         <!-- stage10-explanation:end anomalies -->
@@ -267,33 +219,17 @@
         </section>
 
         <!-- stage10-explanation:start normal-forms -->
-        <section class="panel explanation-panel" id="explanation-normal-forms" data-explains="normal-forms" data-explanation-kind="process" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="normal-forms">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>How normal forms remove dependency problems</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-normal-forms" data-explains="normal-forms" data-explanation-kind="process" aria-labelledby="explanation-normal-forms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="normal-forms">
+          <h2 class="explanation-sr-only" id="explanation-normal-forms-title">How normal forms remove dependency problems</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-083-normal-forms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How normal forms remove dependency problems through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How normal forms remove dependency problems: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> 1NF makes stored values atomic within each row and column.</li><li><strong>Reason:</strong> 2NF removes partial dependency on part of a composite key.</li><li><strong>Result:</strong> 3NF removes dependency on another non-key attribute.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>1NF makes stored values atomic within each row and column.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>2NF removes partial dependency on part of a composite key.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>3NF removes dependency on another non-key attribute.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Separate mixed filing rules one dependency at a time.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>A table with a single-attribute key cannot have a partial-key dependency.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Separate mixed filing rules one dependency at a time.</p>
+            <p><strong>Boundary:</strong> A table with a single-attribute key cannot have a partial-key dependency.</p>
           </div>
         </section>
         <!-- stage10-explanation:end normal-forms -->

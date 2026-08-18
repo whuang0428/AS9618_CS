@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -124,6 +124,20 @@
           <div class="callout">Chinese support: bus = 总线；address = 地址/位置；data = 数据/值；control signal = 控制信号；bidirectional = 双向。</div>
         </section>
 
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">What a system bus does</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-044-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What a system bus does with a structured visual model." />
+            <figcaption class="explanation-sr-only">What a system bus does: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Communication pathway</li><li><strong>Lesson fact:</strong> A bus is a set of parallel wires or connections used to carry signals.</li><li><strong>Lesson fact:</strong> Connects components</li><li><strong>Lesson fact:</strong> System buses connect CPU, main memory and other devices through controlled transfers.</li><li><strong>Lesson fact:</strong> Not storage</li><li><strong>Lesson fact:</strong> A bus transfers signals; it does not permanently store data or instructions.</li><li><strong>Lesson fact:</strong> Part of a trace</li><li><strong>Lesson fact:</strong> In processor questions, bus roles often appear inside fetch, read and write sequences.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concept -->
+
         <section class="panel" id="three-buses" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="three-buses">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -157,6 +171,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start three-buses -->
+        <section class="panel explanation-panel" id="explanation-three-buses" data-explains="three-buses" data-explanation-kind="mechanism" aria-labelledby="explanation-three-buses-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="three-buses">
+          <h2 class="explanation-sr-only" id="explanation-three-buses-title">The three buses</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-044-three-buses.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The three buses with a structured visual model." />
+            <figcaption class="explanation-sr-only">The three buses: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Typical direction</li><li><strong>Lesson fact:</strong> Exam-safe sentence</li><li><strong>Lesson fact:</strong> Address bus</li><li><strong>Lesson fact:</strong> Memory or I/O address identifying a location.</li><li><strong>Lesson fact:</strong> Usually from CPU to memory/I/O.</li><li><strong>Lesson fact:</strong> The address bus carries the address of the location to be read from or written to.</li><li><strong>Lesson fact:</strong> Data bus</li><li><strong>Lesson fact:</strong> Data or instructions being transferred.</li><li><strong>Lesson fact:</strong> Usually bidirectional.</li><li><strong>Lesson fact:</strong> The data bus carries the actual data or instruction between CPU, memory and devices.</li><li><strong>Lesson fact:</strong> Control bus</li><li><strong>Lesson fact:</strong> Control and timing signals such as read, write, interrupt and clock signals.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end three-buses -->
+
         <section class="panel" id="read-write" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="read-write">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -188,6 +216,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start read-write -->
+        <section class="panel explanation-panel" id="explanation-read-write" data-explains="read-write" data-explanation-kind="mechanism" aria-labelledby="explanation-read-write-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="read-write">
+          <h2 class="explanation-sr-only" id="explanation-read-write-title">Read and write traces</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-044-read-write.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read and write traces with a structured visual model." />
+            <figcaption class="explanation-sr-only">Read and write traces: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Memory read</li><li><strong>Lesson fact:</strong> CPU places the required address on the address bus.</li><li><strong>Lesson fact:</strong> CPU sends a read signal on the control bus.</li><li><strong>Lesson fact:</strong> Memory places the requested data/instruction on the data bus.</li><li><strong>Lesson fact:</strong> CPU receives the data, often through the MDR.</li><li><strong>Lesson fact:</strong> Memory write</li><li><strong>Lesson fact:</strong> CPU places the target address on the address bus.</li><li><strong>Lesson fact:</strong> CPU places the data to be stored on the data bus.</li><li><strong>Lesson fact:</strong> CPU sends a write signal on the control bus.</li><li><strong>Lesson fact:</strong> Memory stores the data at the addressed location.</li><li><strong>Lesson fact:</strong> Common trap</li><li><strong>Lesson fact:</strong> Read and write both use all three buses, but the direction of data transfer changes.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end read-write -->
+
         <section class="panel" id="width" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="width">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -212,6 +254,20 @@
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start width -->
+        <section class="panel explanation-panel" id="explanation-width" data-explains="width" data-explanation-kind="mechanism" aria-labelledby="explanation-width-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="width">
+          <h2 class="explanation-sr-only" id="explanation-width-title">Bus width and addressable locations</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-044-width.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bus width and addressable locations with a structured visual model." />
+            <figcaption class="explanation-sr-only">Bus width and addressable locations: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Address bus width</li><li><strong>Lesson fact:</strong> If the address bus has n lines, it can represent 2^n different addresses.</li><li><strong>Lesson fact:</strong> A 16-bit address bus can address 2^16 = 65,536 memory locations.</li><li><strong>Lesson fact:</strong> Data bus width</li><li><strong>Lesson fact:</strong> A wider data bus can transfer more bits at once, which can affect throughput.</li><li><strong>Lesson fact:</strong> Precision</li><li><strong>Lesson fact:</strong> Address bus width affects address range; data bus width affects transfer size.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end width -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

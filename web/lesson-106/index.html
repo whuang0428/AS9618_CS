@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -115,6 +115,20 @@
           <div class="callout">Chinese support: running total = 累加总和；count = 计数；maximum/minimum = 最大值/最小值；initialise = 初始化。</div>
         </section>
 
+        <!-- stage10-explanation:start patterns -->
+        <section class="panel explanation-panel" id="explanation-patterns" data-explains="patterns" data-explanation-kind="mechanism" aria-labelledby="explanation-patterns-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="patterns">
+          <h2 class="explanation-sr-only" id="explanation-patterns-title">Four running-value patterns</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-patterns.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Four running-value patterns with a structured visual model." />
+            <figcaption class="explanation-sr-only">Four running-value patterns: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> Start with a concrete list, then name the algorithm pattern.</li><li><strong>Lesson fact:</strong> Variable</li><li><strong>Lesson fact:</strong> Update rule</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Value</li><li><strong>Lesson fact:</strong> running sum of values</li><li><strong>Lesson fact:</strong> Count &lt;- Count + 1 when a value is processed or meets a condition</li><li><strong>Lesson fact:</strong> number of items</li><li><strong>Lesson fact:</strong> Maximum</li><li><strong>Lesson fact:</strong> replace when Value &gt; Maximum</li><li><strong>Lesson fact:</strong> largest value seen so far</li><li><strong>Lesson fact:</strong> Minimum</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end patterns -->
+
         <section class="panel" id="initialise" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="initialise">
           <div class="section-title">
             <p class="eyebrow">Initialisation</p>
@@ -153,6 +167,20 @@ NEXT Index</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start initialise -->
+        <section class="panel explanation-panel" id="explanation-initialise" data-explains="initialise" data-explanation-kind="process" aria-labelledby="explanation-initialise-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="initialise">
+          <h2 class="explanation-sr-only" id="explanation-initialise-title">The starting value decides whether the algorithm is honest</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-initialise.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The starting value decides whether the algorithm is honest with a structured visual model." />
+            <figcaption class="explanation-sr-only">The starting value decides whether the algorithm is honest: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Initialisation</li><li><strong>Lesson fact:</strong> Total and count</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> Count &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 4</li><li><strong>Lesson fact:</strong> INPUT Score</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Score</li><li><strong>Lesson fact:</strong> Count &lt;- Count + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Zero is safe because nothing has been added or counted yet.</li><li><strong>Lesson fact:</strong> Maximum and minimum</li><li><strong>Lesson fact:</strong> INPUT Value</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end initialise -->
+
         <section class="panel" id="fixed" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fixed">
           <div class="section-title">
             <p class="eyebrow">Fixed-count input</p>
@@ -176,6 +204,20 @@ OUTPUT Average</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start fixed -->
+        <section class="panel explanation-panel" id="explanation-fixed" data-explains="fixed" data-explanation-kind="mechanism" aria-labelledby="explanation-fixed-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="fixed">
+          <h2 class="explanation-sr-only" id="explanation-fixed-title">When the number of values is known, use a count-controlled loop</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-fixed.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining When the number of values is known, use a count-controlled loop with a structured visual model." />
+            <figcaption class="explanation-sr-only">When the number of values is known, use a count-controlled loop: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Fixed-count input</li><li><strong>Lesson fact:</strong> Example: total and average of 4 scores</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 4</li><li><strong>Lesson fact:</strong> INPUT Score</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Score</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Average &lt;- Total / 4</li><li><strong>Lesson fact:</strong> OUTPUT Average</li><li><strong>Lesson fact:</strong> Trace focus</li><li><strong>Lesson fact:</strong> For scores 72, 55, 91, 64, the total becomes 72, 127, 218, 282. The average is 70.5.</li><li><strong>Lesson fact:</strong> Do not output the average inside the loop unless the question asks for a running average.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end fixed -->
 
         <section class="panel" id="sentinel" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sentinel">
           <div class="section-title">
@@ -203,6 +245,20 @@ OUTPUT Count</code></pre>
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start sentinel -->
+        <section class="panel explanation-panel" id="explanation-sentinel" data-explains="sentinel" data-explanation-kind="process" aria-labelledby="explanation-sentinel-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sentinel">
+          <h2 class="explanation-sr-only" id="explanation-sentinel-title">When input stops on a special value, do not process the sentinel</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-sentinel.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining When input stops on a special value, do not process the sentinel with a structured visual model." />
+            <figcaption class="explanation-sr-only">When input stops on a special value, do not process the sentinel: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Sentinel input</li><li><strong>Lesson fact:</strong> Example: enter numbers until -1</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> Count &lt;- 0</li><li><strong>Lesson fact:</strong> INPUT Number</li><li><strong>Lesson fact:</strong> WHILE Number &lt;&gt; -1</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Number</li><li><strong>Lesson fact:</strong> Count &lt;- Count + 1</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> OUTPUT Count</li><li><strong>Lesson fact:</strong> Exam wording</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end sentinel -->
 
         <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
@@ -239,6 +295,20 @@ for (int index = 0; index &lt; 5; index++) {
           </div>
           <div class="callout">Exam reminder: Java helps implementation practice, but Paper 2 expects clear Cambridge-style pseudocode unless Java is explicitly requested.</div>
         </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Use Cambridge assignment and loop keywords in exam answers</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use Cambridge assignment and loop keywords in exam answers with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use Cambridge assignment and loop keywords in exam answers: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> PassCount &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> PassCount &lt;- PassCount + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> OUTPUT PassCount</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
 
 
         <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
@@ -289,6 +359,20 @@ for (int index = 0; index &lt; 5; index++) {
           </div>
           <div class="trace-output" id="traceResult">Choose a data set and goal, then trace the algorithm.</div>
         </section>
+
+        <!-- stage10-explanation:start trace-tool -->
+        <section class="panel explanation-panel" id="explanation-trace-tool" data-explains="trace-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-trace-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace-tool">
+          <h2 class="explanation-sr-only" id="explanation-trace-tool-title">Watch running variables change</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-106-trace-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Watch running variables change with a structured visual model." />
+            <figcaption class="explanation-sr-only">Watch running variables change: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive trace simulator</li><li><strong>Lesson fact:</strong> Data set</li><li><strong>Lesson fact:</strong> Choose a data set and goal, then trace the algorithm.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end trace-tool -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

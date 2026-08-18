@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -115,6 +115,20 @@
           <div class="callout">Chinese support: malware = 恶意软件；payload = 有害载荷/破坏行为；propagation = 传播方式；social engineering = 社会工程学攻击。</div>
         </section>
 
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">Malware is malicious software; social engineering manipulates people</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Malware is malicious software; social engineering manipulates people with a structured visual model." />
+            <figcaption class="explanation-sr-only">Malware is malicious software; social engineering manipulates people: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Malware Software created to disrupt, damage, steal data or gain unauthorised access.</li><li><strong>Lesson fact:</strong> Payload The harmful action, such as deleting files, encrypting data or stealing credentials.</li><li><strong>Lesson fact:</strong> Propagation How it spreads, such as infected files, networks, removable media or deceptive downloads.</li><li><strong>Lesson fact:</strong> Social engineering Manipulating a person into revealing information or performing an unsafe action.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concept -->
+
         <section class="panel" id="virus" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="virus">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -127,6 +141,20 @@
             <article><strong>Trap</strong><span>Do not say every self-spreading threat is a virus.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start virus -->
+        <section class="panel explanation-panel" id="explanation-virus" data-explains="virus" data-explanation-kind="mechanism" aria-labelledby="explanation-virus-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="virus">
+          <h2 class="explanation-sr-only" id="explanation-virus-title">Virus and worm: both can spread, but not in the same way</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-virus.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Virus and worm: both can spread, but not in the same way with a structured visual model." />
+            <figcaption class="explanation-sr-only">Virus and worm: both can spread, but not in the same way: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Virus Attaches to a host file/program and often needs the host to be run or shared.</li><li><strong>Lesson fact:</strong> Worm Self-replicates, often across networks, without needing to attach to a host file.</li><li><strong>Lesson fact:</strong> Impact Can corrupt data, slow systems, consume bandwidth or install further malware.</li><li><strong>Lesson fact:</strong> Trap Do not say every self-spreading threat is a virus.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end virus -->
 
         <section class="panel" id="trojan" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trojan">
           <div class="section-title">
@@ -141,6 +169,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start trojan -->
+        <section class="panel explanation-panel" id="explanation-trojan" data-explains="trojan" data-explanation-kind="mechanism" aria-labelledby="explanation-trojan-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trojan">
+          <h2 class="explanation-sr-only" id="explanation-trojan-title">Trojan: malicious code disguised as legitimate software</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-trojan.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trojan: malicious code disguised as legitimate software with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trojan: malicious code disguised as legitimate software: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Mechanism Appears useful or harmless so a user installs or runs it.</li><li><strong>Lesson fact:</strong> Impact May create a backdoor, steal data, install other malware or change settings.</li><li><strong>Lesson fact:</strong> Control Download from trusted sources, check permissions, use anti-malware and user education.</li><li><strong>Lesson fact:</strong> Trap A Trojan does not need to self-replicate to be harmful.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end trojan -->
+
         <section class="panel" id="spyware" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="spyware">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -153,6 +195,20 @@
             <article><strong>Control</strong><span>Anti-malware, least privilege, patching, browser controls and caution with downloads.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start spyware -->
+        <section class="panel explanation-panel" id="explanation-spyware" data-explains="spyware" data-explanation-kind="mechanism" aria-labelledby="explanation-spyware-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="spyware">
+          <h2 class="explanation-sr-only" id="explanation-spyware-title">Spyware secretly monitors activity or collects data</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-spyware.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Spyware secretly monitors activity or collects data with a structured visual model." />
+            <figcaption class="explanation-sr-only">Spyware secretly monitors activity or collects data: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Mechanism Runs without clear user awareness and gathers information.</li><li><strong>Lesson fact:</strong> Examples Keylogger, screen monitoring or browser tracking used to capture credentials.</li><li><strong>Lesson fact:</strong> Goal affected Often threatens confidentiality and authenticity if credentials are stolen.</li><li><strong>Lesson fact:</strong> Control Anti-malware, least privilege, patching, browser controls and caution with downloads.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end spyware -->
 
         <section class="panel" id="ransomware" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ransomware">
           <div class="section-title">
@@ -167,6 +223,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start ransomware -->
+        <section class="panel explanation-panel" id="explanation-ransomware" data-explains="ransomware" data-explanation-kind="mechanism" aria-labelledby="explanation-ransomware-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="ransomware">
+          <h2 class="explanation-sr-only" id="explanation-ransomware-title">Ransomware denies access by encrypting or locking data</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-ransomware.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Ransomware denies access by encrypting or locking data with a structured visual model." />
+            <figcaption class="explanation-sr-only">Ransomware denies access by encrypting or locking data: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Mechanism Encrypts files or locks systems, then demands payment for restoration.</li><li><strong>Lesson fact:</strong> Goal affected Mainly threatens availability; may also threaten confidentiality if data is stolen.</li><li><strong>Lesson fact:</strong> Control Offline backups, patching, anti-malware, restricted permissions and user training.</li><li><strong>Lesson fact:</strong> Trap Paying is not a reliable recovery strategy in an exam answer.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end ransomware -->
+
         <section class="panel" id="social" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="social">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
@@ -179,6 +249,20 @@
             <article><strong>Control</strong><span>User training, verification procedures, MFA, reporting routes and least privilege.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start social -->
+        <section class="panel explanation-panel" id="explanation-social" data-explains="social" data-explanation-kind="mechanism" aria-labelledby="explanation-social-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="social">
+          <h2 class="explanation-sr-only" id="explanation-social-title">Social engineering exploits people rather than code</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-social.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Social engineering exploits people rather than code with a structured visual model." />
+            <figcaption class="explanation-sr-only">Social engineering exploits people rather than code: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Mechanism Uses trust, urgency, authority, curiosity or fear to influence a user.</li><li><strong>Lesson fact:</strong> Action User may reveal passwords, approve access, install software or transfer data.</li><li><strong>Lesson fact:</strong> Goal affected Often threatens confidentiality and authenticity through impersonation or credential theft.</li><li><strong>Lesson fact:</strong> Control User training, verification procedures, MFA, reporting routes and least privilege.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end social -->
 
         <section class="panel" id="controls" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
           <div class="section-title">
@@ -218,6 +302,20 @@
             </div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start controls -->
+        <section class="panel explanation-panel" id="explanation-controls" data-explains="controls" data-explanation-kind="mechanism" aria-labelledby="explanation-controls-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="controls">
+          <h2 class="explanation-sr-only" id="explanation-controls-title">Match controls to mechanism, not just the word &quot;malware&quot;</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-063-controls.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Match controls to mechanism, not just the word &quot;malware&quot; with a structured visual model." />
+            <figcaption class="explanation-sr-only">Match controls to mechanism, not just the word &quot;malware&quot;: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Likely impact</li><li><strong>Lesson fact:</strong> Suitable controls</li><li><strong>Lesson fact:</strong> Virus/worm</li><li><strong>Lesson fact:</strong> Corrupts data, spreads, slows systems, uses resources.</li><li><strong>Lesson fact:</strong> Anti-malware, patching, scanning removable media, network monitoring.</li><li><strong>Lesson fact:</strong> Disguised malicious installation or backdoor.</li><li><strong>Lesson fact:</strong> Trusted sources, permissions review, user education, anti-malware.</li><li><strong>Lesson fact:</strong> Secret monitoring, credential/data theft.</li><li><strong>Lesson fact:</strong> Anti-spyware, least privilege, MFA, patching, download caution.</li><li><strong>Lesson fact:</strong> Ransomware</li><li><strong>Lesson fact:</strong> Loss of access to files/services.</li><li><strong>Lesson fact:</strong> Offline backups, patching, anti-malware, restricted write access.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end controls -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

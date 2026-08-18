@@ -92,3 +92,91 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **paper 2 timed pseudocode practice**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Choose the smallest construct that fits the task
+
+- **Explains:** `constructs`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-149-constructs.jpg`
+
+1. Construct bank
+2. Task signal
+3. Likely construct
+4. exactly N items
+5. known repetition count
+6. bounds include all items
+7. until file ends
+8. WHILE NOT EOF
+9. unknown record count
+10. read inside loop
+11. validate input
+12. REPEAT UNTIL
+
+### The four-pass approach
+
+- **Explains:** `method`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-149-method.jpg`
+
+1. Timed method
+2. 1. Decode
+3. Underline inputs, outputs, constraints and any required data structure or file.
+4. 2. Skeleton
+5. Write the outer shape first: initialisation, loop, selection, output.
+6. Add conditions, assignments, function calls and file statements.
+7. 4. Check
+8. Trace one normal and one boundary case; confirm the output happens once in the right place.
+
+### Before moving on, ask six questions
+
+- **Explains:** `quality`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-149-quality.jpg`
+
+1. Quality checklist
+2. Inputs Where does the data come from: user, array or file?
+3. Initialisation Are counters, totals and flags set before use?
+4. Loop Does the loop include the correct items and stop safely?
+5. Selection Are boundary conditions correct, such as greater than or equal to?
+6. Output Is the final result output once, after processing?
+7. File handling Are OPENFILE, READFILE or WRITEFILE and CLOSEFILE used correctly?
+
+### Build the outer shape before details
+
+- **Explains:** `skeleton-tool`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-149-skeleton-tool.jpg`
+
+1. Skeleton builder
+
+### Choose a mark value and plan the response
+
+- **Explains:** `timer-tool`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-149-timer-tool.jpg`
+
+1. Interactive timing tool
+2. Question size
+
+### Spend time according to marks
+
+- **Explains:** `timing`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-149-timing.jpg`
+
+1. Timing strategy
+2. Read and plan
+3. 30 seconds
+4. 3 minutes
+5. 60 seconds
+6. 5 minutes
+7. 90 seconds
+8. 7 minutes
+9. 10 marks
+10. 2 minutes
+11. 9 minutes
+12. If planning feels slow, remember that rewriting a confused answer is slower.
+<!-- stage10-explanations:end -->

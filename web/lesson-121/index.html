@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -113,6 +113,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">CSV-style means separated fields in a fixed order</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining CSV-style means separated fields in a fixed order with a structured visual model." />
+            <figcaption class="explanation-sr-only">CSV-style means separated fields in a fixed order: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> one complete line of data</li><li><strong>Lesson fact:</strong> S001,Ali,72</li><li><strong>Lesson fact:</strong> one item inside the record</li><li><strong>Lesson fact:</strong> Delimiter</li><li><strong>Lesson fact:</strong> character that separates fields</li><li><strong>Lesson fact:</strong> Fixed order</li><li><strong>Lesson fact:</strong> each position has agreed meaning</li><li><strong>Lesson fact:</strong> ID, Name, Mark</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concept -->
+
         <section class="panel" id="format" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="format">
           <div class="section-title">
             <p class="eyebrow">CSV format</p>
@@ -127,6 +141,20 @@
           <div class="callout">The file stores all fields as text. The program gives each position meaning.</div>
         </section>
 
+        <!-- stage10-explanation:start format -->
+        <section class="panel explanation-panel" id="explanation-format" data-explains="format" data-explanation-kind="mechanism" aria-labelledby="explanation-format-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="format">
+          <h2 class="explanation-sr-only" id="explanation-format-title">Design the format before writing code</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-format.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Design the format before writing code with a structured visual model." />
+            <figcaption class="explanation-sr-only">Design the format before writing code: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> CSV format</li><li><strong>Lesson fact:</strong> Position</li><li><strong>Lesson fact:</strong> Field name</li><li><strong>Lesson fact:</strong> Data type after conversion</li><li><strong>Lesson fact:</strong> StudentID</li><li><strong>Lesson fact:</strong> The file stores all fields as text. The program gives each position meaning.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end format -->
+
         <section class="panel" id="parse" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parse">
           <div class="section-title">
             <p class="eyebrow">Parse fields</p>
@@ -140,6 +168,20 @@ Mark &lt;- STRING_TO_INTEGER(Fields[3])</code></pre>
           <div class="callout"><code>SPLIT</code> is used here as clear Cambridge-style pseudocode for separating a line by a delimiter.</div>
         </section>
 
+        <!-- stage10-explanation:start parse -->
+        <section class="panel explanation-panel" id="explanation-parse" data-explains="parse" data-explanation-kind="mechanism" aria-labelledby="explanation-parse-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parse">
+          <h2 class="explanation-sr-only" id="explanation-parse-title">Read the line before splitting it</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-parse.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Read the line before splitting it with a structured visual model." />
+            <figcaption class="explanation-sr-only">Read the line before splitting it: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Parse fields</li><li><strong>Lesson fact:</strong> READFILE &quot;Scores.csv&quot;, Line</li><li><strong>Lesson fact:</strong> Fields &lt;- SPLIT(Line, &quot;,&quot;)</li><li><strong>Lesson fact:</strong> StudentID &lt;- Fields[1]</li><li><strong>Lesson fact:</strong> Name &lt;- Fields[2]</li><li><strong>Lesson fact:</strong> Mark &lt;- STRING_TO_INTEGER(Fields[3])</li><li><strong>Lesson fact:</strong> SPLIT is used here as clear Cambridge-style pseudocode for separating a line by a delimiter.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end parse -->
+
         <section class="panel" id="validate" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validate">
           <div class="section-title">
             <p class="eyebrow">Validation</p>
@@ -152,6 +194,20 @@ Mark &lt;- STRING_TO_INTEGER(Fields[3])</code></pre>
             <div class="table-row" role="row"><div><code>S005;Eli;88</code></div><div>wrong delimiter</div><div>use the delimiter specified by the format</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start validate -->
+        <section class="panel explanation-panel" id="explanation-validate" data-explains="validate" data-explanation-kind="mechanism" aria-labelledby="explanation-validate-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validate">
+          <h2 class="explanation-sr-only" id="explanation-validate-title">A structured file can still contain bad lines</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-validate.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A structured file can still contain bad lines with a structured visual model." />
+            <figcaption class="explanation-sr-only">A structured file can still contain bad lines: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Validation</li><li><strong>Lesson fact:</strong> Correction prompt</li><li><strong>Lesson fact:</strong> S003,Chen</li><li><strong>Lesson fact:</strong> missing Mark field</li><li><strong>Lesson fact:</strong> check field count before using Fields[3]</li><li><strong>Lesson fact:</strong> S004,Dina,Ninety</li><li><strong>Lesson fact:</strong> mark is not numeric</li><li><strong>Lesson fact:</strong> validate before converting to INTEGER</li><li><strong>Lesson fact:</strong> S005;Eli;88</li><li><strong>Lesson fact:</strong> wrong delimiter</li><li><strong>Lesson fact:</strong> use the delimiter specified by the format</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end validate -->
 
         <section class="panel" id="types" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="types">
           <div class="section-title">
@@ -177,6 +233,20 @@ ENDIF</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start types -->
+        <section class="panel explanation-panel" id="explanation-types" data-explains="types" data-explanation-kind="mechanism" aria-labelledby="explanation-types-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="types">
+          <h2 class="explanation-sr-only" id="explanation-types-title">CSV fields arrive as text, then become useful values</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-types.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining CSV fields arrive as text, then become useful values with a structured visual model." />
+            <figcaption class="explanation-sr-only">CSV fields arrive as text, then become useful values: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Text vs data types</li><li><strong>Lesson fact:</strong> Incorrect comparison</li><li><strong>Lesson fact:</strong> IF Fields[3] &gt; 70 THEN</li><li><strong>Lesson fact:</strong> OUTPUT Name</li><li><strong>Lesson fact:</strong> This compares text unless conversion has happened.</li><li><strong>Lesson fact:</strong> Correct pattern</li><li><strong>Lesson fact:</strong> Mark &lt;- STRING_TO_INTEGER(Fields[3])</li><li><strong>Lesson fact:</strong> IF Mark &gt; 70 THEN</li><li><strong>Lesson fact:</strong> The numeric comparison now has a numeric value.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end types -->
+
         <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
@@ -197,6 +267,20 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           </div>
           <div class="callout">Notice the index difference: Cambridge-style examples here use <code>Fields[1]</code>; Java arrays are zero-based.</div>
         </section>
+
+        <!-- stage10-explanation:start pseudocode -->
+        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Java split helps understanding, but Cambridge pseudocode remains the answer format</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Java split helps understanding, but Cambridge pseudocode remains the answer format with a structured visual model." />
+            <figcaption class="explanation-sr-only">Java split helps understanding, but Cambridge pseudocode remains the answer format: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> READFILE &quot;Scores.csv&quot;, Line</li><li><strong>Lesson fact:</strong> Fields &lt;- SPLIT(Line, &quot;,&quot;)</li><li><strong>Lesson fact:</strong> Mark &lt;- STRING_TO_INTEGER(Fields[3])</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> String[] fields = line.split(&quot;,&quot;);</li><li><strong>Lesson fact:</strong> int mark = Integer.parseInt(fields[2]);</li><li><strong>Lesson fact:</strong> Notice the index difference: Cambridge-style examples here use Fields[1] ; Java arrays are zero-based.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end pseudocode -->
 
 
         <section class="panel" id="parser" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parser">
@@ -222,6 +306,20 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           <div class="trace-output" id="parseResult">Enter a line and split it into fields.</div>
         </section>
 
+        <!-- stage10-explanation:start parser -->
+        <section class="panel explanation-panel" id="explanation-parser" data-explains="parser" data-explanation-kind="mechanism" aria-labelledby="explanation-parser-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parser">
+          <h2 class="explanation-sr-only" id="explanation-parser-title">Split a line into fields</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-parser.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Split a line into fields with a structured visual model." />
+            <figcaption class="explanation-sr-only">Split a line into fields: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive CSV parser</li><li><strong>Lesson fact:</strong> CSV line</li><li><strong>Lesson fact:</strong> Delimiter</li><li><strong>Lesson fact:</strong> Enter a line and split it into fields.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end parser -->
+
         <section class="panel" id="validator" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validator">
           <div class="section-title">
             <p class="eyebrow">Interactive validator</p>
@@ -235,6 +333,20 @@ int mark = Integer.parseInt(fields[2]);</code></pre>
           </div>
           <div class="trace-output" id="validationResult">Choose a sample line to validate.</div>
         </section>
+
+        <!-- stage10-explanation:start validator -->
+        <section class="panel explanation-panel" id="explanation-validator" data-explains="validator" data-explanation-kind="mechanism" aria-labelledby="explanation-validator-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validator">
+          <h2 class="explanation-sr-only" id="explanation-validator-title">Check field count and mark type</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-121-validator.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Check field count and mark type with a structured visual model." />
+            <figcaption class="explanation-sr-only">Check field count and mark type: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive validator</li><li><strong>Lesson fact:</strong> Choose a sample line to validate.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end validator -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

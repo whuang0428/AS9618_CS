@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -118,6 +118,20 @@
           <div class="callout">Exam wording: say why it is an entity. "Student is an entity because the system stores multiple facts about each student."</div>
         </section>
 
+        <!-- stage10-explanation:start entities -->
+        <section class="panel explanation-panel" id="explanation-entities" data-explains="entities" data-explanation-kind="mechanism" aria-labelledby="explanation-entities-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="entities">
+          <h2 class="explanation-sr-only" id="explanation-entities-title">Entities are things the database stores data about</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-entities.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Entities are things the database stores data about with a structured visual model." />
+            <figcaption class="explanation-sr-only">Entities are things the database stores data about: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> An entity is a person, object, event or concept about which data is stored. In a relational design, an entity often becomes a table.</li><li><strong>Lesson fact:</strong> Person Student, Customer, Doctor, Teacher.</li><li><strong>Lesson fact:</strong> Object Book, Product, Vehicle, Equipment.</li><li><strong>Lesson fact:</strong> Event Loan, Appointment, Order, Booking.</li><li><strong>Lesson fact:</strong> Concept Course, Club, Department, Module.</li><li><strong>Lesson fact:</strong> Exam wording: say why it is an entity. &quot;Student is an entity because the system stores multiple facts about each student.&quot;</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end entities -->
+
         <section class="panel" id="attributes" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="attributes">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -148,6 +162,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start attributes -->
+        <section class="panel explanation-panel" id="explanation-attributes" data-explains="attributes" data-explanation-kind="mechanism" aria-labelledby="explanation-attributes-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="attributes">
+          <h2 class="explanation-sr-only" id="explanation-attributes-title">Attributes describe an entity</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-attributes.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Attributes describe an entity with a structured visual model." />
+            <figcaption class="explanation-sr-only">Attributes describe an entity: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> An attribute is a property stored about an entity. It often becomes a field in the table for that entity.</li><li><strong>Lesson fact:</strong> Possible attributes</li><li><strong>Lesson fact:</strong> Not usually an attribute here</li><li><strong>Lesson fact:</strong> StudentID, Name, DateOfBirth, TutorGroup</li><li><strong>Lesson fact:</strong> BookTitle, LoanDate</li><li><strong>Lesson fact:</strong> BookID, ISBN, Title, Author</li><li><strong>Lesson fact:</strong> StudentName, ReturnDate</li><li><strong>Lesson fact:</strong> LoanID, StudentID, BookID, DateBorrowed, DateReturned</li><li><strong>Lesson fact:</strong> StudentDateOfBirth, BookAuthor if already stored in Book</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end attributes -->
+
         <section class="panel" id="cardinality" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cardinality">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -166,6 +194,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start cardinality -->
+        <section class="panel explanation-panel" id="explanation-cardinality" data-explains="cardinality" data-explanation-kind="mechanism" aria-labelledby="explanation-cardinality-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cardinality">
+          <h2 class="explanation-sr-only" id="explanation-cardinality-title">Cardinality describes how many records may be linked</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-cardinality.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cardinality describes how many records may be linked with a structured visual model." />
+            <figcaption class="explanation-sr-only">Cardinality describes how many records may be linked: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Cardinality states how many records in one entity can be associated with records in another entity.</li><li><strong>Lesson fact:</strong> One-to-one One record in A links to one record in B. Example: one person has one passport in a simplified model.</li><li><strong>Lesson fact:</strong> One-to-many One record in A links to many records in B. Example: one customer can place many orders.</li><li><strong>Lesson fact:</strong> Many-to-many Many records in A link to many records in B. Usually resolved by a linking entity.</li><li><strong>Lesson fact:</strong> 1 -&gt; many</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end cardinality -->
+
         <section class="panel" id="participation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="participation">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -179,6 +221,20 @@
             <article><strong>1..1</strong><span>Mandatory one: each loan must refer to exactly one student.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start participation -->
+        <section class="panel explanation-panel" id="explanation-participation" data-explains="participation" data-explanation-kind="mechanism" aria-labelledby="explanation-participation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="participation">
+          <h2 class="explanation-sr-only" id="explanation-participation-title">Optional and mandatory participation</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-participation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Optional and mandatory participation with a structured visual model." />
+            <figcaption class="explanation-sr-only">Optional and mandatory participation: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Participation describes whether a record must be linked. This is often written using minimum and maximum values such as 0..* or 1..1.</li><li><strong>Lesson fact:</strong> 0..* Optional many: a student may have no loans, or many loans.</li><li><strong>Lesson fact:</strong> 1..* Mandatory many: an order must have at least one order line.</li><li><strong>Lesson fact:</strong> 0..1 Optional one: a member may have zero or one parking permit.</li><li><strong>Lesson fact:</strong> 1..1 Mandatory one: each loan must refer to exactly one student.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end participation -->
 
 
         <section class="panel" id="parser" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parser">
@@ -202,6 +258,20 @@
           <div class="result-box" id="scenarioResult">Choose a scenario to identify likely entities.</div>
           <div class="feedback" id="scenarioReason">The answer will separate entities from attributes and relationship events.</div>
         </section>
+
+        <!-- stage10-explanation:start parser -->
+        <section class="panel explanation-panel" id="explanation-parser" data-explains="parser" data-explanation-kind="mechanism" aria-labelledby="explanation-parser-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parser">
+          <h2 class="explanation-sr-only" id="explanation-parser-title">Identify entities and attributes</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-082-parser.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Identify entities and attributes with a structured visual model." />
+            <figcaption class="explanation-sr-only">Identify entities and attributes: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive scenario parser</li><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> Choose a scenario to identify likely entities.</li><li><strong>Lesson fact:</strong> The answer will separate entities from attributes and relationship events.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end parser -->
 
         <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="checker">
           <div class="section-title">

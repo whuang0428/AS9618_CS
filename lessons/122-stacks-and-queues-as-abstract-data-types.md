@@ -129,59 +129,23 @@ Correction prompt: "Show the mechanism, not just the label."
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-concept.jpg`
 
 1. The ADT specifies permitted operations and their observable effects.
 2. Client code uses those operations without accessing internal storage directly.
 3. The implementation can change while the behaviour contract remains stable.
-
 - **Analogy:** A service counter defines allowed requests without exposing the storeroom layout.
 - **Boundary:** Using an array does not automatically make a structure a stack or queue.
-
-### Why one open end creates LIFO
-
-- **Explains:** `stack`
-- **Explanation type:** process
-
-1. Push adds the new item at the top position.
-2. Only the current top item is available to pop.
-3. The most recently pushed item therefore leaves first.
-
-- **Analogy:** Only the top plate of a pile can be removed safely.
-- **Boundary:** Accessing an older item requires removing items above it first.
-
-### Why two ends create FIFO
-
-- **Explains:** `queue`
-- **Explanation type:** process
-
-1. Enqueue adds a new item at the rear.
-2. Dequeue removes the waiting item at the front.
-3. Earlier arrivals remain ahead of later arrivals.
-
-- **Analogy:** A single orderly waiting line serves the earliest arrival first.
-- **Boundary:** A priority queue follows a different removal rule and is not ordinary FIFO.
-
-### Why operation names preserve meaning
-
-- **Explains:** `operations`
-- **Explanation type:** comparison
-
-1. Push and pop describe changes at a stack's top.
-2. Enqueue and dequeue describe changes at opposite queue ends.
-3. Using the correct operation prevents accidental access-rule changes.
-
-- **Analogy:** Door names matter when one room has one entrance and another has two.
-- **Boundary:** Generic array insertion is not equivalent unless it preserves the ADT rule.
 
 ### Why boundary checks come first
 
 - **Explains:** `errors`
 - **Explanation type:** tradeoff
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-errors.jpg`
 
 1. Underflow occurs when removal is requested from an empty structure.
 2. Overflow occurs when fixed storage has no free position.
 3. Checking first prevents invalid reads, writes and pointer changes.
-
 - **Analogy:** Check whether a shelf is empty or full before moving an item.
 - **Boundary:** Dynamic storage changes the capacity strategy but can still exhaust memory.
 
@@ -189,23 +153,59 @@ Correction prompt: "Show the mechanism, not just the label."
 
 - **Explains:** `implementation`
 - **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-implementation.jpg`
 
 1. A stack pointer identifies the current top or next free slot.
 2. Queue front and rear pointers identify removal and insertion positions.
 3. Each valid operation updates data and pointers in a fixed order.
-
 - **Analogy:** Markers turn a row of storage boxes into a controlled service structure.
 - **Boundary:** Incorrect wrap-around or update order can overwrite live queue data.
+
+### Why operation names preserve meaning
+
+- **Explains:** `operations`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-operations.jpg`
+
+1. Push and pop describe changes at a stack's top.
+2. Enqueue and dequeue describe changes at opposite queue ends.
+3. Using the correct operation prevents accidental access-rule changes.
+- **Analogy:** Door names matter when one room has one entrance and another has two.
+- **Boundary:** Generic array insertion is not equivalent unless it preserves the ADT rule.
 
 ### Why pseudocode must expose state change
 
 - **Explains:** `pseudocode`
 - **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-pseudocode.jpg`
 
 1. Test the empty or full condition before accessing storage.
 2. Read or write the element at the correct pointer.
 3. Update the pointer so the invariant remains true.
-
 - **Analogy:** A clear procedure shows the safety check, action and new boundary marker.
 - **Boundary:** Hiding pointer updates makes correctness impossible to verify.
+
+### Why two ends create FIFO
+
+- **Explains:** `queue`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-queue.jpg`
+
+1. Enqueue adds a new item at the rear.
+2. Dequeue removes the waiting item at the front.
+3. Earlier arrivals remain ahead of later arrivals.
+- **Analogy:** A single orderly waiting line serves the earliest arrival first.
+- **Boundary:** A priority queue follows a different removal rule and is not ordinary FIFO.
+
+### Why one open end creates LIFO
+
+- **Explains:** `stack`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-stack.jpg`
+
+1. Push adds the new item at the top position.
+2. Only the current top item is available to pop.
+3. The most recently pushed item therefore leaves first.
+- **Analogy:** Only the top plate of a pile can be removed safely.
+- **Boundary:** Accessing an older item requires removing items above it first.
 <!-- stage10-explanations:end -->

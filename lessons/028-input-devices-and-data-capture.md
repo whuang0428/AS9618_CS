@@ -105,3 +105,53 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** sample values are encoded/stored as binary
 
 **Strict note:** Do not accept that the microphone directly records binary without an analogue signal and conversion stage.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Manual input vs automatic data capture
+
+- **Explains:** `automatic`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-028-automatic.jpg`
+
+1. Manual input
+2. Automatic data capture
+3. A person enters data, such as typing into a form.
+4. A device captures data directly, such as scanning or sensing.
+5. Advantages
+6. Flexible, cheap for occasional input, useful for unusual data.
+7. Fast, consistent, reduces transcription errors, suitable for high volume.
+8. Limitations
+9. Typing mistakes, slower, depends on user attention.
+10. May need codes/tags/sensors; can fail if labels are damaged or conditions are poor.
+
+### What input devices do
+
+- **Explains:** `capture`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-028-capture.jpg`
+
+1. 1. Capture The device captures data from a user, document, object or environment.
+2. 2. Convert The data is converted into a digital form the computer can process.
+3. 3. Validate later Input is not automatically correct. Validation and verification may still be needed.
+
+### Common input devices and what they capture
+
+- **Explains:** `devices`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-028-devices.jpg`
+
+1. Captures
+2. Good use
+3. Exam warning
+4. Keyboard
+5. Typed text/numbers
+6. Short manual entries, corrections, commands
+7. Slow and error-prone for long repeated codes
+8. Barcode / QR reader
+9. Encoded product, ticket or ID data
+10. Fast repeated identification
+11. Needs a readable code; does not capture handwriting
+12. RFID / NFC reader
+<!-- stage10-explanations:end -->

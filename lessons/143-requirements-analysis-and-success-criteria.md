@@ -92,3 +92,119 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages. For this lesson, make students contrast that mistake with the exact idea of **requirements analysis and success criteria**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Acceptance tests check whether requirements are met
+
+- **Explains:** `acceptance`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-acceptance.jpg`
+
+1. Acceptance tests
+2. Requirement
+3. Test data/action
+4. Expected result
+5. Evidence
+6. reject double booking
+7. try to book Room 12 at an occupied time
+8. booking rejected with message
+9. test result screenshot/log
+10. search within 2 seconds
+11. search all rooms for Monday period 3
+12. results shown within 2 seconds
+
+### Analysis turns user needs into a requirements specification
+
+- **Explains:** `analysis`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-analysis.jpg`
+
+1. Requirements analysis
+2. Use interviews, questionnaires, observation or document analysis to find needs.
+3. Remove ambiguity by asking about users, tasks, data, constraints and priorities.
+4. Write requirements that can guide design and later testing.
+
+### Is the criterion testable?
+
+- **Explains:** `criteria-tool`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-criteria-tool.jpg`
+
+1. Criteria checker
+2. Criterion
+
+### Functional requirements describe what the system must do
+
+- **Explains:** `functional`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-functional.jpg`
+
+1. Functional requirements
+2. Vague request
+3. Functional requirement
+4. Why stronger
+5. manage bookings
+6. allow teachers to create, edit and cancel room bookings
+7. states actions and user
+8. avoid clashes
+9. reject a booking if the room is already booked for that time
+10. states exact rule
+11. show information
+12. display a timetable for a selected room and date
+
+### Non-functional requirements describe qualities or constraints
+
+- **Explains:** `non-functional`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-non-functional.jpg`
+
+1. Non-functional requirements
+2. Measurable requirement
+3. Possible evidence
+4. performance
+5. room search results display within 2 seconds
+6. timed test
+7. usability
+8. a new teacher can create a booking in under 2 minutes after one demonstration
+9. user trial
+10. security
+11. only staff with valid login credentials can create bookings
+12. access test
+
+### Turn vague requests into stronger requirements
+
+- **Explains:** `rewriter`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-rewriter.jpg`
+
+1. Interactive rewriter
+2. Vague request
+
+### Different users reveal different requirements
+
+- **Explains:** `stakeholders`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-stakeholders.jpg`
+
+1. Stakeholders
+2. Teachers
+3. Need quick booking and clear room availability.
+4. Admin staff
+5. Need reports, conflict resolution and permission controls.
+6. IT support
+7. Need backup, user management and maintainable configuration.
+
+### Success criteria make evaluation possible
+
+- **Explains:** `success`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-success.jpg`
+
+1. Success criteria
+2. “The system should be easy to use.”
+3. Stronger
+4. “At least 8 out of 10 teachers can create a booking without help in under 2 minutes.”
+5. A success criterion should be specific enough that two people can test it and reach the same conclusion.
+<!-- stage10-explanations:end -->

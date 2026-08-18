@@ -109,39 +109,15 @@ Correction prompt: "Show the mechanism, not just the label."
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
-### Why normalisation protects consistency
-
-- **Explains:** `purpose`
-- **Explanation type:** mechanism
-
-1. Each fact is stored in a relation where its determinant is clear.
-2. Other tables reference that fact instead of copying it repeatedly.
-3. One update then changes the authoritative value once.
-
-- **Analogy:** Keep one catalogue record and let many loans point to it.
-- **Boundary:** Normalisation improves consistency but joins may make some queries more complex.
-
-### How repeated facts become risky
-
-- **Explains:** `redundancy`
-- **Explanation type:** mechanism
-
-1. The same real-world fact appears in several rows.
-2. A later update may change only some copies.
-3. Queries then return conflicting versions of one fact.
-
-- **Analogy:** Several photocopies agree only until someone edits one copy.
-- **Boundary:** Repeated transactional events are valid; repeated descriptive facts cause the risk.
-
 ### Why one structure causes three anomalies
 
 - **Explains:** `anomalies`
 - **Explanation type:** tradeoff
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-083-anomalies.jpg`
 
 1. Insertion may require an unrelated fact that is not yet known.
 2. Updating requires finding every repeated copy.
 3. Deleting one event may accidentally remove the only descriptive fact.
-
 - **Analogy:** A form that mixes customers, products and orders ties unrelated lifetimes together.
 - **Boundary:** The anomaly comes from dependency structure, not simply from a large table.
 
@@ -149,11 +125,35 @@ Correction prompt: "Show the mechanism, not just the label."
 
 - **Explains:** `normal-forms`
 - **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-083-normal-forms.jpg`
 
 1. 1NF makes stored values atomic within each row and column.
 2. 2NF removes partial dependency on part of a composite key.
 3. 3NF removes dependency on another non-key attribute.
-
 - **Analogy:** Separate mixed filing rules one dependency at a time.
 - **Boundary:** A table with a single-attribute key cannot have a partial-key dependency.
+
+### Why normalisation protects consistency
+
+- **Explains:** `purpose`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-083-purpose.jpg`
+
+1. Each fact is stored in a relation where its determinant is clear.
+2. Other tables reference that fact instead of copying it repeatedly.
+3. One update then changes the authoritative value once.
+- **Analogy:** Keep one catalogue record and let many loans point to it.
+- **Boundary:** Normalisation improves consistency but joins may make some queries more complex.
+
+### How repeated facts become risky
+
+- **Explains:** `redundancy`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-083-redundancy.jpg`
+
+1. The same real-world fact appears in several rows.
+2. A later update may change only some copies.
+3. Queries then return conflicting versions of one fact.
+- **Analogy:** Several photocopies agree only until someone edits one copy.
+- **Boundary:** Repeated transactional events are valid; repeated descriptive facts cause the risk.
 <!-- stage10-explanations:end -->

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -110,6 +110,20 @@
           <div class="callout">In binary, `1 + 1 = 10₂`: write 0 in the current column and carry 1 left.</div>
         </section>
 
+        <!-- stage10-explanation:start rules -->
+        <section class="panel explanation-panel" id="explanation-rules" data-explains="rules" data-explanation-kind="mechanism" aria-labelledby="explanation-rules-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rules">
+          <h2 class="explanation-sr-only" id="explanation-rules-title">Single-bit addition rules</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-004-rules.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Single-bit addition rules with a structured visual model." />
+            <figcaption class="explanation-sr-only">Single-bit addition rules: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 0 + 0 sum 0, carry 0</li><li><strong>Lesson fact:</strong> 0 + 1 sum 1, carry 0</li><li><strong>Lesson fact:</strong> 1 + 0 sum 1, carry 0</li><li><strong>Lesson fact:</strong> 1 + 1 sum 0, carry 1</li><li><strong>Lesson fact:</strong> 1 + 1 + carry 1 sum 1, carry 1</li><li><strong>Lesson fact:</strong> In binary, 1 + 1 = 10₂: write 0 in the current column and carry 1 left.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end rules -->
+
         <section class="panel" id="method" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="method">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -138,6 +152,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start method -->
+        <section class="panel explanation-panel" id="explanation-method" data-explains="method" data-explanation-kind="mechanism" aria-labelledby="explanation-method-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="method">
+          <h2 class="explanation-sr-only" id="explanation-method-title">8-bit addition method</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-004-method.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining 8-bit addition method with a structured visual model." />
+            <figcaption class="explanation-sr-only">8-bit addition method: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Column method</li><li><strong>Lesson fact:</strong> Align the two 8-bit values.</li><li><strong>Lesson fact:</strong> Start at the rightmost bit.</li><li><strong>Lesson fact:</strong> Add the two bits and any carry-in.</li><li><strong>Lesson fact:</strong> Write the result bit; carry 1 left if the column total is 2 or 3.</li><li><strong>Lesson fact:</strong> After the leftmost bit, check whether there is a carry-out.</li><li><strong>Lesson fact:</strong> Exam discipline</li><li><strong>Lesson fact:</strong> Show the carry row or annotate carried bits.</li><li><strong>Lesson fact:</strong> Give the 8-bit result if the question asks for 8-bit addition.</li><li><strong>Lesson fact:</strong> State whether overflow occurs.</li><li><strong>Lesson fact:</strong> Explain overflow using range or carry-out, not vague &quot;too big&quot;.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end method -->
+
         <section class="panel" id="overflow" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overflow">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
@@ -161,6 +189,20 @@
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start overflow -->
+        <section class="panel explanation-panel" id="explanation-overflow" data-explains="overflow" data-explanation-kind="mechanism" aria-labelledby="explanation-overflow-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overflow">
+          <h2 class="explanation-sr-only" id="explanation-overflow-title">Unsigned 8-bit overflow</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-004-overflow.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Unsigned 8-bit overflow with a structured visual model." />
+            <figcaption class="explanation-sr-only">Unsigned 8-bit overflow: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 00000000₂ to 11111111₂ = 0 to 255</li><li><strong>Lesson fact:</strong> An unsigned 8-bit result cannot store a value above 255.</li><li><strong>Lesson fact:</strong> Carry-out</li><li><strong>Lesson fact:</strong> 11110000₂ + 00010000₂ = 1 00000000₂</li><li><strong>Lesson fact:</strong> The ninth bit is a carry-out beyond the 8-bit storage width.</li><li><strong>Lesson fact:</strong> Boundary warning</li><li><strong>Lesson fact:</strong> 01111111₂ + 00000001₂ = 10000000₂</li><li><strong>Lesson fact:</strong> No unsigned overflow: the result is 128, which still fits in 8 bits.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end overflow -->
 
         <section id="delivery-07" class="guidance-grid compact" aria-label="Overflow guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overflow">
           <article class="trap-card">

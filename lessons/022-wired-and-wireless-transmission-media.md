@@ -71,3 +71,63 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance. For this lesson, make students contrast that mistake with the exact idea of **wired and wireless transmission media**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Compare by factor, not by vibe
+
+- **Explains:** `compare`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-022-compare.jpg`
+
+1. Wired networks
+2. Wireless networks
+3. Mobility
+4. Poor for moving devices because a cable is required.
+5. Better for mobile devices because no physical cable is needed.
+6. Interference
+7. Copper may suffer electromagnetic interference; fibre is less affected.
+8. Can be affected by walls, distance, other devices and weather.
+9. Security
+10. Physical access to the cable is usually needed to intercept traffic.
+11. Signals travel through air, so encryption and access control are important.
+12. Performance
+
+### Wired transmission media
+
+- **Explains:** `wired`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-022-wired.jpg`
+
+1. Wired media carry signals through a physical cable. They are usually suitable for fixed devices and controlled environments.
+2. Copper cable
+3. Copper cable transmits data using electrical signals. It is common in local networks because it is relatively cheap and easy to install.
+4. Good for: short local links, desktop PCs, classroom networks.
+5. Limits: affected by electromagnetic interference; lower bandwidth and distance than fibre in many contexts.
+6. Exam wording: say "electrical signals", not "data flows like water". The cable is not a tiny plumbing system.
+7. Fibre-optic cable
+8. Fibre-optic cable transmits data as pulses of light through glass or plastic fibres.
+9. Good for: high-bandwidth links, long distances, backbone connections.
+10. Strengths: less affected by electromagnetic interference and can support high data rates.
+11. Limits: installation can be more expensive and the cable can be more delicate to handle.
+
+### Wireless transmission media
+
+- **Explains:** `wireless`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-022-wireless.jpg`
+
+1. Wireless media transmit through the air or space. They support mobility, but the signal can be affected by distance, obstacles and interference.
+2. Radio waves
+3. Radio waves are used by technologies such as WiFi to transmit data without a physical cable.
+4. Good for: mobile devices, classrooms, homes, short-range wireless networking.
+5. Limits: shared medium, interference from other devices, weaker security if poorly configured.
+6. Microwaves
+7. Microwave links can transmit data between fixed points, often using directional antennas.
+8. Good for: point-to-point links where a line of sight is available.
+9. Limits: obstacles, weather and alignment can affect the link.
+10. Satellites
+11. Satellite communication uses signals to and from satellites to cover large geographical areas.
+12. Good for: remote locations, ships, aircraft or areas without cable infrastructure.
+<!-- stage10-explanations:end -->

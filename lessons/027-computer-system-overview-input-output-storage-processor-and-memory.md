@@ -71,3 +71,55 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need. For this lesson, make students contrast that mistake with the exact idea of **computer system overview: input, output, storage, processor, and memory**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Component roles and examples
+
+- **Explains:** `components`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-027-components.jpg`
+
+1. Input devices
+2. Allow data to enter the system.
+3. Examples: keyboard, mouse, barcode reader, touch screen, microphone, camera, sensor.
+4. Output devices
+5. Present data or results from the system.
+6. Examples: monitor, speaker, printer, projector, actuator.
+7. Processor
+8. Executes instructions and coordinates operations. It processes data; it is not where user files are stored.
+9. Primary memory
+10. Stores instructions and data currently in use. RAM is volatile; ROM is non-volatile and stores startup instructions.
+11. Secondary storage
+12. Stores data and files long term, even when power is off.
+
+### The basic system flow
+
+- **Explains:** `flow`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-027-flow.jpg`
+
+1. 1. Input Data is captured by an input device, such as a keyboard, sensor, scanner, camera or microphone.
+2. 2. Processing The processor executes instructions and performs operations on data.
+3. 3. Memory Data and instructions in current use are held temporarily in primary memory such as RAM.
+4. 4. Storage Files and data that must persist are saved in secondary storage such as SSD, HDD or optical media.
+5. 5. Output Results are presented through output devices such as screens, speakers, printers or actuators.
+
+### Memory is not the same as storage
+
+- **Explains:** `memory-storage`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-027-memory-storage.jpg`
+
+1. Primary memory
+2. Secondary storage
+3. Holds data/instructions currently being used.
+4. Holds files and data long term.
+5. Volatility
+6. RAM is volatile; contents are lost without power.
+7. Non-volatile; data remains when power is off.
+8. Speed and capacity
+9. Usually faster but smaller and more expensive per unit.
+10. Usually larger and cheaper per unit but slower than RAM.
+<!-- stage10-explanations:end -->

@@ -92,3 +92,93 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **section 9 review: from scenario to pseudocode**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Turn vague answers into mark-worthy answers
+
+- **Explains:** `fixer`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-112-fixer.jpg`
+
+1. Interactive answer fixer
+2. Weak answer
+3. Choose a weak answer to see a stricter version.
+
+### Match the scenario to the correct algorithm pattern
+
+- **Explains:** `patterns`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-112-patterns.jpg`
+
+1. Pattern choice
+2. Scenario clue
+3. Core pseudocode feature
+4. One precise explanation
+5. exactly 10 readings
+6. Count-controlled loop
+7. FOR Index <- 1 TO 10
+8. The number of repetitions is known before the loop starts.
+9. until 0 is entered
+10. Condition-controlled loop
+11. WHILE Value <> 0
+12. The number of repetitions depends on input values.
+
+### Paper 2 wants readable Cambridge-style pseudocode
+
+- **Explains:** `pseudocode`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-112-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style answer
+3. Total <- 0
+4. Count <- 0
+5. INPUT Value
+6. WHILE Value <> -1
+7. Total <- Total + Value
+8. Count <- Count + 1
+9. ENDWHILE
+10. Average <- Total / Count
+11. OUTPUT Average
+12. Java support only
+
+### Section 9 in one page
+
+- **Explains:** `retrieval`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-112-retrieval.jpg`
+
+1. Retrieval map
+2. Signal words
+3. Expected mechanism
+4. Typical mark trap
+5. IPOC / decomposition
+6. scenario, requirements, constraints
+7. break problem into inputs, processing, outputs and rules
+8. copying the story without design decisions
+9. Trace tables
+10. dry run, trace, values after each loop
+11. update variables row by row in execution order
+12. jumping to final answer and missing intermediate states
+
+### Turn question wording into an algorithm plan
+
+- **Explains:** `triage`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-112-triage.jpg`
+
+1. Scenario triage
+2. Step 1: Output first
+3. Ask: what must be displayed, returned or stored at the end? The final output tells you which variables need to exist.
+4. Output needed: average rainfall
+5. Therefore:
+6. Total is needed
+7. Count is needed
+8. Average <- Total / Count
+9. Step 2: Stop condition
+10. Ask: does the question state a fixed number of values, or does input continue until a condition is met?
+11. Exactly 7 days -> FOR Day <- 1 TO 7
+12. Until -1 entered -> WHILE Value <> -1
+<!-- stage10-explanations:end -->

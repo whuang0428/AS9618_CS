@@ -71,3 +71,74 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **section 4 review: tracing processor behaviour**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Turn vague into mark-worthy
+
+- **Explains:** `clinic`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-051-clinic.jpg`
+
+1. Answer clinic
+2. Weak answer: "The CPU uses registers and buses to get instructions. It is faster because of cache and pipelining."
+3. Diagnosis: This names several topics but does not answer any one of them precisely.
+4. Fix pattern: Topic → mechanism → exact role/sequence → consequence.
+
+### Common compare traps
+
+- **Explains:** `compare`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-051-compare.jpg`
+
+1. MAR vs MDR
+2. MAR holds an address. MDR holds the data or instruction being transferred. One points where; the other carries what.
+3. Direct vs indirect
+4. Direct uses the operand as the address of the value. Indirect uses the operand as the address of a pointer to the value.
+5. Clock speed vs throughput
+6. Clock speed is cycles per second. Throughput is completed work per unit time. They are related, not identical.
+7. Interrupt vs polling
+8. An interrupt lets a device signal the CPU. Polling means the CPU repeatedly checks the device/status flag.
+
+### The Section 4 mental toolbox
+
+- **Explains:** `map`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-051-map.jpg`
+
+1. Section map
+2. CPU components ALU, CU, registers, buses and clock coordinate instruction processing.
+3. FDE cycle PC, MAR, MDR and CIR move address, instruction and data through fetch-decode-execute.
+4. Instruction set Machine code depends on a processor's instruction set; assembly uses mnemonics and labels.
+5. Addressing modes Immediate, direct, indirect and indexed modes change operand interpretation.
+6. Interrupts The CPU saves state, runs an ISR, then restores state and resumes.
+7. Performance Clock speed, cores, cache, word length and pipelining affect performance with limits.
+
+### Retrieval grid: say the role, not just the name
+
+- **Explains:** `retrieval`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-051-retrieval.jpg`
+
+1. PC Holds address of the next instruction to fetch.
+2. MAR Holds the memory address being accessed.
+3. MDR Holds data/instruction transferred to or from memory.
+4. CIR Holds the current instruction while it is decoded/executed.
+5. Control bus Carries control/timing signals such as read, write and interrupt.
+6. Cache Small fast memory storing frequently/recently used items.
+7. ISR Routine that handles a specific interrupt.
+8. Pipeline stall Pause because an instruction cannot safely continue.
+
+### 8-minute mixed Section 4 response
+
+- **Explains:** `timed`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-051-timed.jpg`
+
+1. Timed task
+2. Choose one question, write the answer, then compare with the expandable MS in the exam section.
+3. Question A Trace the fetch stage and name the role of PC, MAR and MDR.
+4. Question B Explain why an interrupt service routine must save and restore processor state.
+5. Question C Discuss why pipelining may improve CPU performance but not always reach ideal speed-up.
+<!-- stage10-explanations:end -->

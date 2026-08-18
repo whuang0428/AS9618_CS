@@ -126,3 +126,93 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** outputs confirmation/card or error; steps form a coherent sequence
 
 **Strict note:** Do not award a list of unrelated features; substeps must collectively implement the parent task.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Extract the design before writing pseudocode
+
+- **Explains:** `analyser`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-111-analyser.jpg`
+
+1. Interactive scenario analyser
+2. Scenario
+3. Choose a scenario to see the IPOC breakdown.
+
+### Turn paragraphs into a design table
+
+- **Explains:** `ipoc`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-111-ipoc.jpg`
+
+1. IPOC reading
+2. Question to ask
+3. Example evidence
+4. Algorithm consequence
+5. What data is provided?
+6. mark, price, password, reading
+7. use INPUT or given array/list item
+8. What must be calculated or checked?
+9. total, maximum, validation, search
+10. choose assignment, IF, loop
+11. What must be displayed or returned?
+12. message, total, average, position
+
+### Design in Cambridge pseudocode first; use Java only to support testing
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-111-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style answer
+3. PassCount <- 0
+4. FOR Index <- 1 TO 5
+5. INPUT Mark
+6. IF Mark >= 50 THEN
+7. PassCount <- PassCount + 1
+8. NEXT Index
+9. OUTPUT PassCount
+10. Java support only
+11. int passCount = 0;
+12. for (int index = 0; index < 5; index++) {
+
+### Words in the question usually signal a control structure
+
+- **Explains:** `requirements`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-111-requirements.jpg`
+
+1. Requirements
+2. Likely structure
+3. Variables
+4. exactly / for each / ten values
+5. count-controlled loop
+6. Index, Total, Count
+7. input 10 marks
+8. until / while / sentinel
+9. condition-controlled loop
+10. Number, Total, Count
+11. input until -1
+12. if / otherwise / valid
+
+### Pick the structure before writing the pseudocode
+
+- **Explains:** `structures`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-111-structures.jpg`
+
+1. Control choice
+2. Known count
+3. Total <- 0
+4. FOR Index <- 1 TO 5
+5. INPUT Mark
+6. Total <- Total + Mark
+7. NEXT Index
+8. OUTPUT Total
+9. Use when the number of repetitions is given.
+10. Unknown count with sentinel
+11. WHILE Mark <> -1
+12. ENDWHILE
+<!-- stage10-explanations:end -->

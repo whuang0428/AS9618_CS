@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -125,37 +125,17 @@
         </section>
 
         <!-- stage10-explanation:start concept -->
-        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why applications need an operating system</h2>
-          </div>
-          <div class="explanation-layout has-visual">
-
-          <figure class="explanation-figure">
-            <img src="../assets/diagrams/stage10-os-resource-management-analogy.jpg" width="1400" height="933" loading="lazy" decoding="async" alt="A textbook-style control centre allocating separated areas, queues and storage blocks to several tasks." />
-            <figcaption>One control layer allocates shared resources while keeping tasks separated.</figcaption>
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="mechanism" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">Why applications need an operating system</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why applications need an operating system through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why applications need an operating system: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Applications request services instead of controlling hardware directly.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>The operating system checks and schedules those requests.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Drivers translate approved requests for particular devices.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A control centre coordinates many users of limited shared infrastructure.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>The OS manages access; it cannot make finite hardware unlimited.</span></p>
-              </div>
-            </div>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Applications request services instead of controlling hardware directly.</li><li><strong>Reason:</strong> The operating system checks and schedules those requests.</li><li><strong>Result:</strong> Drivers translate approved requests for particular devices.</li></ol>
+
+            <p><strong>Analogy:</strong> A control centre coordinates many users of limited shared infrastructure.</p>
+            <p><strong>Boundary:</strong> The OS manages access; it cannot make finite hardware unlimited.</p>
           </div>
         </section>
         <!-- stage10-explanation:end concept -->
@@ -178,33 +158,17 @@
         </section>
 
         <!-- stage10-explanation:start process -->
-        <section class="panel explanation-panel" id="explanation-process" data-explains="process" data-explanation-kind="process" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="process">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>How time-slicing creates apparent simultaneity</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-process" data-explains="process" data-explanation-kind="process" aria-labelledby="explanation-process-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="process">
+          <h2 class="explanation-sr-only" id="explanation-process-title">How time-slicing creates apparent simultaneity</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-process.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How time-slicing creates apparent simultaneity through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How time-slicing creates apparent simultaneity: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> A running process receives a short interval of CPU time.</li><li><strong>Reason:</strong> Its state is saved before another ready process runs.</li><li><strong>Result:</strong> Rapid switching keeps several programs responsive.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>A running process receives a short interval of CPU time.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Its state is saved before another ready process runs.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Rapid switching keeps several programs responsive.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>One service desk handles many queues by switching between short tasks.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Switching has overhead; too much switching reduces useful work.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> One service desk handles many queues by switching between short tasks.</p>
+            <p><strong>Boundary:</strong> Switching has overhead; too much switching reduces useful work.</p>
           </div>
         </section>
         <!-- stage10-explanation:end process -->
@@ -227,33 +191,17 @@
         </section>
 
         <!-- stage10-explanation:start memory -->
-        <section class="panel explanation-panel" id="explanation-memory" data-explains="memory" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="memory">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why memory needs allocation and protection</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-memory" data-explains="memory" data-explanation-kind="mechanism" aria-labelledby="explanation-memory-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="memory">
+          <h2 class="explanation-sr-only" id="explanation-memory-title">Why memory needs allocation and protection</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-memory.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why memory needs allocation and protection through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why memory needs allocation and protection: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Each process receives addresses for its code and data.</li><li><strong>Reason:</strong> Protection blocks one process from overwriting another's region.</li><li><strong>Result:</strong> Released memory can be reassigned safely to later work.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Each process receives addresses for its code and data.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Protection blocks one process from overwriting another's region.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Released memory can be reassigned safely to later work.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Separate laboratory benches prevent experiments contaminating each other.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Isolation must still allow controlled sharing through OS services.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Separate laboratory benches prevent experiments contaminating each other.</p>
+            <p><strong>Boundary:</strong> Isolation must still allow controlled sharing through OS services.</p>
           </div>
         </section>
         <!-- stage10-explanation:end memory -->
@@ -272,33 +220,17 @@
         </section>
 
         <!-- stage10-explanation:start file -->
-        <section class="panel explanation-panel" id="explanation-file" data-explains="file" data-explanation-kind="mechanism" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="file">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why files need metadata and access rules</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-file" data-explains="file" data-explanation-kind="mechanism" aria-labelledby="explanation-file-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="file">
+          <h2 class="explanation-sr-only" id="explanation-file-title">Why files need metadata and access rules</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-file.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why files need metadata and access rules through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why files need metadata and access rules: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> A name and path let software locate stored content.</li><li><strong>Reason:</strong> Metadata records size, timestamps, type and storage information.</li><li><strong>Result:</strong> Permissions determine which users may read or change it.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>A name and path let software locate stored content.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Metadata records size, timestamps, type and storage information.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Permissions determine which users may read or change it.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A catalogue locates an archive item while rules control who may handle it.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>A filename alone neither protects data nor proves its contents.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> A catalogue locates an archive item while rules control who may handle it.</p>
+            <p><strong>Boundary:</strong> A filename alone neither protects data nor proves its contents.</p>
           </div>
         </section>
         <!-- stage10-explanation:end file -->
@@ -338,33 +270,17 @@
         </section>
 
         <!-- stage10-explanation:start device -->
-        <section class="panel explanation-panel" id="explanation-device" data-explains="device" data-explanation-kind="process" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="device">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>Why drivers, buffers and queues work together</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-device" data-explains="device" data-explanation-kind="process" aria-labelledby="explanation-device-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="device">
+          <h2 class="explanation-sr-only" id="explanation-device-title">Why drivers, buffers and queues work together</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-device.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why drivers, buffers and queues work together through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Why drivers, buffers and queues work together: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> A driver converts a general request into device-specific commands.</li><li><strong>Reason:</strong> A buffer absorbs the speed difference between producer and device.</li><li><strong>Result:</strong> A queue preserves an orderly sequence of pending requests.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>A driver converts a general request into device-specific commands.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>A buffer absorbs the speed difference between producer and device.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>A queue preserves an orderly sequence of pending requests.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>A loading bay stages deliveries before a slower vehicle can collect them.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Buffering smooths bursts but cannot remove a permanently overloaded device.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> A loading bay stages deliveries before a slower vehicle can collect them.</p>
+            <p><strong>Boundary:</strong> Buffering smooths bursts but cannot remove a permanently overloaded device.</p>
           </div>
         </section>
         <!-- stage10-explanation:end device -->
@@ -383,33 +299,17 @@
         </section>
 
         <!-- stage10-explanation:start services -->
-        <section class="panel explanation-panel" id="explanation-services" data-explains="services" data-explanation-kind="synthesis" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="services">
-          <div class="section-title">
-            <p class="eyebrow">Visual explanation</p>
-            <h2>How OS services form one control layer</h2>
-          </div>
-          <div class="explanation-layout">
+        <section class="panel explanation-panel" id="explanation-services" data-explains="services" data-explanation-kind="synthesis" aria-labelledby="explanation-services-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="services">
+          <h2 class="explanation-sr-only" id="explanation-services-title">How OS services form one control layer</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-053-services.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining How OS services form one control layer through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">How OS services form one control layer: mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> Process, memory, file and device managers track different resources.</li><li><strong>Reason:</strong> Common permissions and scheduling rules coordinate their decisions.</li><li><strong>Result:</strong> Applications receive a stable service interface above changing hardware.</li></ol>
 
-            <div class="explanation-content">
-              <ol class="explanation-chain" aria-label="Cause and effect sequence">
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">1</span>
-                <div><span class="explanation-step-label">Mechanism</span><p>Process, memory, file and device managers track different resources.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">2</span>
-                <div><span class="explanation-step-label">Reason</span><p>Common permissions and scheduling rules coordinate their decisions.</p></div>
-              </li>
-              <li>
-                <span class="explanation-step-number" aria-hidden="true">3</span>
-                <div><span class="explanation-step-label">Result</span><p>Applications receive a stable service interface above changing hardware.</p></div>
-              </li>
-              </ol>
-              <div class="explanation-notes">
-                <p class="explanation-analogy"><strong>Analogy</strong><span>Departments share one operating policy instead of issuing conflicting instructions.</span></p>
-                <p class="explanation-boundary"><strong>Boundary</strong><span>Weak coordination between services can still create deadlock or starvation.</span></p>
-              </div>
-            </div>
+            <p><strong>Analogy:</strong> Departments share one operating policy instead of issuing conflicting instructions.</p>
+            <p><strong>Boundary:</strong> Weak coordination between services can still create deadlock or starvation.</p>
           </div>
         </section>
         <!-- stage10-explanation:end services -->

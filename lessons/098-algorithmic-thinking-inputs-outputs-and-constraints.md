@@ -126,3 +126,77 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** purposes clearly distinguish input values from calculated result
 
 **Strict note:** Do not award data types without identifiers and purposes; this is an identifier table, not only declarations.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### An algorithm is a precise method for solving a problem
+
+- **Explains:** `concept`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-098-concept.jpg`
+
+1. Core idea
+2. Question to ask
+3. What data is supplied?
+4. Mark, NumberOfItems, List[1:10]
+5. What operations are performed?
+6. compare, add, count, repeat, validate
+7. What must be shown or returned?
+8. "Pass", total, maximum, valid/invalid
+9. Constraint
+10. What rule or limit applies?
+11. Mark must be 0-100; loop stops after 10 items
+
+### Constraints stop algorithms from wandering off
+
+- **Explains:** `constraints`
+- **Explanation type:** process
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-098-constraints.jpg`
+
+1. Constraints
+2. Constraint type
+3. Example clue
+4. Design effect
+5. mark is between 0 and 100
+6. validate before processing
+7. exactly 10 readings are entered
+8. use count-controlled loop
+9. Sentinel
+10. enter -1 to finish
+11. use condition-controlled loop
+12. Output format
+
+### Use IPOC before pseudocode
+
+- **Explains:** `model`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-098-model.jpg`
+
+1. Problem model
+2. Input List each value the algorithm needs. Decide type and range when possible.
+3. Process Write the transformation in English first: calculate, compare, count, search, repeat.
+4. Output State exactly what the algorithm must display, return or store.
+5. Constraints Record limits, valid ranges, maximum repetitions and stopping conditions.
+6. Assumptions State what is guaranteed if the question implies it, such as exactly 10 values.
+7. Test data Choose normal, boundary and invalid data when validation is involved.
+
+### Cambridge pseudocode is the exam language
+
+- **Explains:** `pseudocode`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-098-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style pseudocode
+3. INPUT Mark
+4. IF Mark >= 50 THEN
+5. OUTPUT "Pass"
+6. OUTPUT "Resit needed"
+7. Java support only
+8. if (mark >= 50) {
+9. System.out.println("Pass");
+10. } else {
+11. System.out.println("Resit needed");
+12. Exam reminder: write IF ... THEN, ELSE, ENDIF, INPUT, OUTPUT in Cambridge-style pseudocode. Java braces and semicolons are support examples only.
+<!-- stage10-explanations:end -->

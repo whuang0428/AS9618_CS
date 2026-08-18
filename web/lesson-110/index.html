@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -120,6 +120,20 @@ if (mark &gt;= 50) {
           <div class="callout">Chinese support: assignment = 赋值；indentation = 缩进；block ending = 代码块结束标记。</div>
         </section>
 
+        <!-- stage10-explanation:start notation -->
+        <section class="panel explanation-panel" id="explanation-notation" data-explains="notation" data-explanation-kind="process" aria-labelledby="explanation-notation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="notation">
+          <h2 class="explanation-sr-only" id="explanation-notation-title">Use the symbols that make algorithm intent visible</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-notation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the symbols that make algorithm intent visible with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use the symbols that make algorithm intent visible: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Core notation</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Exam note</li><li><strong>Lesson fact:</strong> Assignment</li><li><strong>Lesson fact:</strong> Total &lt;- Total + 1</li><li><strong>Lesson fact:</strong> total = total + 1;</li><li><strong>Lesson fact:</strong> &lt;- shows value is stored</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> scanner.nextInt()</li><li><strong>Lesson fact:</strong> name the value being read</li><li><strong>Lesson fact:</strong> OUTPUT Total</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end notation -->
+
         <section class="panel" id="structure" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="structure">
           <div class="section-title">
             <p class="eyebrow">Block structure</p>
@@ -146,6 +160,20 @@ NEXT Index</code></pre>
           </div>
         </section>
 
+        <!-- stage10-explanation:start structure -->
+        <section class="panel explanation-panel" id="explanation-structure" data-explains="structure" data-explanation-kind="mechanism" aria-labelledby="explanation-structure-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="structure">
+          <h2 class="explanation-sr-only" id="explanation-structure-title">Every opening should have a visible ending</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-structure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Every opening should have a visible ending with a structured visual model." />
+            <figcaption class="explanation-sr-only">Every opening should have a visible ending: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Block structure</li><li><strong>Lesson fact:</strong> Readable selection</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit&quot;</li><li><strong>Lesson fact:</strong> ENDIF makes the selection boundary clear.</li><li><strong>Lesson fact:</strong> Readable loop</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Mark</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> NEXT Index shows which loop is ending, useful when loops are nested.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end structure -->
+
         <section class="panel" id="readability" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="readability">
           <div class="section-title">
             <p class="eyebrow">Readability</p>
@@ -159,6 +187,20 @@ NEXT Index</code></pre>
             <div class="table-row" role="row"><div>Condition</div><div>`IF good THEN`</div><div>`IF Mark &gt;= 50 THEN`</div><div>test is precise</div></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start readability -->
+        <section class="panel explanation-panel" id="explanation-readability" data-explains="readability" data-explanation-kind="mechanism" aria-labelledby="explanation-readability-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="readability">
+          <h2 class="explanation-sr-only" id="explanation-readability-title">A marker should not need detective training</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-readability.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A marker should not need detective training with a structured visual model." />
+            <figcaption class="explanation-sr-only">A marker should not need detective training: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Readability</li><li><strong>Lesson fact:</strong> Weak answer</li><li><strong>Lesson fact:</strong> Improved answer</li><li><strong>Lesson fact:</strong> Why it helps</li><li><strong>Lesson fact:</strong> Identifier</li><li><strong>Lesson fact:</strong> x, y, z</li><li><strong>Lesson fact:</strong> Mark, Total, PassCount</li><li><strong>Lesson fact:</strong> purpose is visible</li><li><strong>Lesson fact:</strong> Indentation</li><li><strong>Lesson fact:</strong> all lines aligned</li><li><strong>Lesson fact:</strong> nested lines indented</li><li><strong>Lesson fact:</strong> block ownership is clear</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end readability -->
 
         <section class="panel" id="java" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
           <div class="section-title">
@@ -187,6 +229,20 @@ NEXT Index</code></pre>
           <div class="callout">Java arrays often use 0-based indexing. Cambridge-style course examples here use readable 1-based positions unless the question defines otherwise.</div>
         </section>
 
+        <!-- stage10-explanation:start java -->
+        <section class="panel explanation-panel" id="explanation-java" data-explains="java" data-explanation-kind="mechanism" aria-labelledby="explanation-java-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="java">
+          <h2 class="explanation-sr-only" id="explanation-java-title">Keep Java syntax out of Paper 2 unless Java is explicitly requested</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-java.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Keep Java syntax out of Paper 2 unless Java is explicitly requested with a structured visual model." />
+            <figcaption class="explanation-sr-only">Keep Java syntax out of Paper 2 unless Java is explicitly requested: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Java traps</li><li><strong>Lesson fact:</strong> Java-like answer</li><li><strong>Lesson fact:</strong> for (int i = 0; i &lt; 5; i++) {</li><li><strong>Lesson fact:</strong> if (marks[i] &gt;= 50) {</li><li><strong>Lesson fact:</strong> passCount++;</li><li><strong>Lesson fact:</strong> Cambridge-style version</li><li><strong>Lesson fact:</strong> PassCount &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> IF Mark[Index] &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> PassCount &lt;- PassCount + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Java arrays often use 0-based indexing. Cambridge-style course examples here use readable 1-based positions unless the question defines otherwise.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end java -->
+
         <section class="panel" id="conversion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="conversion">
           <div class="section-title">
             <p class="eyebrow">Conversion routine</p>
@@ -199,6 +255,20 @@ NEXT Index</code></pre>
             <div><strong>4. Trace once</strong><span>Check that each variable changes where the indentation says it changes.</span></div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start conversion -->
+        <section class="panel explanation-panel" id="explanation-conversion" data-explains="conversion" data-explanation-kind="mechanism" aria-labelledby="explanation-conversion-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="conversion">
+          <h2 class="explanation-sr-only" id="explanation-conversion-title">Convert meaning first, syntax second</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-conversion.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Convert meaning first, syntax second with a structured visual model." />
+            <figcaption class="explanation-sr-only">Convert meaning first, syntax second: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Conversion routine</li><li><strong>Lesson fact:</strong> 1. State the goal Example: input five marks and count how many are at least 50.</li><li><strong>Lesson fact:</strong> 2. Choose variables Mark, Index, PassCount are clearer than m, i, pc in first drafts.</li><li><strong>Lesson fact:</strong> 3. Write Cambridge blocks Use FOR/NEXT, IF/ENDIF, &lt;-, INPUT, OUTPUT.</li><li><strong>Lesson fact:</strong> 4. Trace once Check that each variable changes where the indentation says it changes.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end conversion -->
 
 
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
@@ -240,6 +310,20 @@ NEXT Index</code></pre>
           </div>
           <div class="trace-output" id="cleanerResult">Choose a fragment to convert.</div>
         </section>
+
+        <!-- stage10-explanation:start cleaner -->
+        <section class="panel explanation-panel" id="explanation-cleaner" data-explains="cleaner" data-explanation-kind="mechanism" aria-labelledby="explanation-cleaner-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cleaner">
+          <h2 class="explanation-sr-only" id="explanation-cleaner-title">Convert Java-like syntax into Cambridge-style pseudocode</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-110-cleaner.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Convert Java-like syntax into Cambridge-style pseudocode with a structured visual model." />
+            <figcaption class="explanation-sr-only">Convert Java-like syntax into Cambridge-style pseudocode: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive Java cleaner</li><li><strong>Lesson fact:</strong> Java-like fragment</li><li><strong>Lesson fact:</strong> Choose a fragment to convert.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end cleaner -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

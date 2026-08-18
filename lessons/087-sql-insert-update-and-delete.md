@@ -105,3 +105,52 @@ Correction prompt: "Show the mechanism, not just the label."
 - **B1** Open BOOLEAN with valid punctuation/structure
 
 **Strict note:** Do not award INSERT/UPDATE statements: the question asks for structure, not record data.
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### DELETE FROM removes records
+
+- **Explains:** `delete`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-087-delete.jpg`
+
+1. Use DELETE only when the whole record should be removed. A missing condition can remove all records.
+2. Pattern:
+3. DELETE FROM Student WHERE StudentID = 'S03';
+4. Exam caution: DELETE FROM Student; has no WHERE , so it targets every record in the table.
+
+### INSERT, UPDATE and DELETE are data manipulation commands
+
+- **Explains:** `dml`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-087-dml.jpg`
+
+1. They change stored data. In exam answers, be precise about command keywords and affected records.
+2. INSERT Adds a new record to a table.
+3. UPDATE Changes values in existing records.
+4. DELETE Removes existing records from a table.
+
+### INSERT INTO adds a record
+
+- **Explains:** `insert`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-087-insert.jpg`
+
+1. List the fields, then list matching values in the same order. Text values use quotes.
+2. Pattern:
+3. INSERT INTO Student (StudentID, StudentName, TutorGroup) VALUES ('S04', 'Nina', '12C');
+
+### UPDATE changes existing records
+
+- **Explains:** `update`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-087-update.jpg`
+
+1. SET names the field and new value. WHERE restricts which rows are changed.
+2. Pattern:
+3. UPDATE Student SET TutorGroup = '12C' WHERE StudentID = 'S01';
+4. Table UPDATE Student chooses the table.
+5. New value SET TutorGroup = '12C' changes the field.
+6. Target rows WHERE StudentID = 'S01' prevents changing every student.
+<!-- stage10-explanations:end -->

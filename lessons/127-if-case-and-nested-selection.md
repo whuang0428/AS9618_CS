@@ -92,3 +92,105 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. For this lesson, make students contrast that mistake with the exact idea of **if, case, and nested selection**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Use CASE for clear values of one expression
+
+- **Explains:** `case`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-case.jpg`
+
+1. CASE selection
+2. Menu choice
+3. INPUT Choice
+4. CASE Choice OF
+5. 1 : OUTPUT "Add record"
+6. 2 : OUTPUT "Delete record"
+7. 3 : OUTPUT "Search"
+8. OTHERWISE OUTPUT "Invalid choice"
+9. Why CASE fits
+10. One variable, Choice , is compared with several discrete values. OTHERWISE handles unexpected input.
+11. If each branch needs a different complex condition, IF is usually clearer than CASE.
+
+### Start with the shape of the decision
+
+- **Explains:** `choice`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-choice.jpg`
+
+1. Choosing IF or CASE
+2. Situation
+3. Usually better
+4. Pass if mark is at least 50
+5. uses a relational comparison
+6. Menu option 1, 2, 3 or invalid
+7. one variable has discrete values
+8. Adult members get one discount; adult non-members another
+9. Nested IF
+10. second decision depends on the first
+11. Grade A/B/C/D with ranges of marks
+12. IF or nested IF
+
+### Use IF when a Boolean condition decides the route
+
+- **Explains:** `if`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-if.jpg`
+
+1. IF selection
+2. Use when
+3. Cambridge-style pattern
+4. action is needed only when condition is true
+5. IF Found THEN ... ENDIF
+6. IF...ELSE
+7. two paths are needed
+8. IF Mark >= 50 THEN ... ELSE ... ENDIF
+9. Nested IF
+10. a second decision depends on the first decision
+11. IF Age >= 18 THEN IF Member THEN ... ENDIF ENDIF
+
+### Same idea, different syntax
+
+- **Explains:** `java`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-java.jpg`
+
+1. Java support only
+2. Cambridge-style pseudocode
+3. CASE Choice OF
+4. 1 : OUTPUT "Add"
+5. 2 : OUTPUT "Delete"
+6. OTHERWISE OUTPUT "Invalid"
+7. Java support example only
+8. switch (choice) {
+9. case 1 -> System.out.println("Add");
+10. case 2 -> System.out.println("Delete");
+11. default -> System.out.println("Invalid");
+
+### A decision inside another decision
+
+- **Explains:** `nested`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-nested.jpg`
+
+1. Nested selection
+2. Discount example
+3. IF Age >= 18 THEN
+4. IF Member = TRUE THEN
+5. Discount <- 0.20
+6. Discount <- 0.10
+7. Discount <- 0.05
+8. Trace the paths
+9. Discount
+
+### Trace a nested IF
+
+- **Explains:** `path`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-path.jpg`
+
+1. Interactive path tracer
+2. Enter values to trace which branch runs.
+<!-- stage10-explanations:end -->

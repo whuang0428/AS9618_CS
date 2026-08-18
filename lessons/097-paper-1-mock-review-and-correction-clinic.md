@@ -71,3 +71,103 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **paper 1 mock review and correction clinic**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### The rewrite protocol
+
+- **Explains:** `clinic`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-097-clinic.jpg`
+
+1. Correction clinic
+2. 1. Label Write the section/topic and command word beside the question.
+3. 2. Locate Underline the exact missing mark: term, method, mechanism, context or judgement.
+4. 3. Rewrite Write a new answer, not a note saying "be more careful".
+5. 4. Mark Use B/M/A labels to show why the corrected answer earns marks.
+6. 5. Drill Create one similar question and answer it under a time limit.
+7. 6. Track Record whether the issue is knowledge, method, wording or timing.
+
+### Paper 1 correction checklist
+
+- **Explains:** `coverage`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-097-coverage.jpg`
+
+1. Coverage map
+2. Section 1 units, binary/hex, image/sound file size, compression method and units
+3. Section 2 network types, protocols, packets, addressing, hardware and performance
+4. Sections 3-4 hardware choice, memory/storage, logic, registers, FDE, interrupts, performance
+5. Section 5 OS roles, utilities, translators, errors, linkers/loaders/libraries
+6. Section 6 threats, CIA, authentication, access rights, encryption, hashing, firewalls, backup
+7. Sections 7-8 ethics, ownership, environmental/social impact, relational design, SQL, validation/verification
+
+### Four common sources of lost marks
+
+- **Explains:** `diagnosis`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-097-diagnosis.jpg`
+
+1. Diagnosis
+2. Error type
+3. What it looks like
+4. Repair move
+5. Topic gap
+6. wrong section or wrong concept
+7. re-label the syllabus area and write the first correct keyword
+8. Command error
+9. state/describe/explain/compare/evaluate answered with wrong depth
+10. reshape the answer to match the command word
+11. Method error
+12. calculation, SQL, trace or logic method is wrong/incomplete
+
+### Classify the flaw before rewriting
+
+- **Explains:** `error`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-097-error.jpg`
+
+1. Interactive error classifier
+2. Weak mock answer
+3. Choose a weak answer to classify the correction need.
+
+### Build a corrected answer sentence
+
+- **Explains:** `rewrite`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-097-rewrite.jpg`
+
+1. Interactive rewrite builder
+2. Missing focus
+3. Choose a focus and topic to generate a repair model.
+
+### How to use the mock after today
+
+- **Explains:** `routine`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-097-routine.jpg`
+
+1. Review routine
+2. Same day
+3. classify every lost mark
+4. error tally by topic and flaw
+5. Next 48 hours
+6. rewrite the top five weak answers
+7. corrected answers with MS labels
+8. Next week
+9. retry similar questions under time
+10. evidence that the error has changed
+11. Maintenance
+12. mix one Paper 1 drill into Paper 2 weeks
+
+### Turn a score into a repair priority
+
+- **Explains:** `score`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-097-score.jpg`
+
+1. Interactive score analyser
+2. Mock score band
+3. Choose a score pattern to see the repair priority.
+<!-- stage10-explanations:end -->

@@ -87,3 +87,104 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name. For this lesson, make students contrast that mistake with the exact idea of **records and composite data**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Use the field name, not a numeric index
+
+- **Explains:** `access`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-118-access.jpg`
+
+1. Access and update
+2. Pseudocode
+3. Read field
+4. OUTPUT Student1.Name
+5. outputs the Name field
+6. Update field
+7. Student1.Mark <- 80
+8. changes only the Mark field
+9. Test field
+10. IF Student1.Enrolled = TRUE THEN
+11. uses Boolean field in selection
+
+### Same type and index, or mixed fields and names?
+
+- **Explains:** `array-vs-record`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-118-array-vs-record.jpg`
+
+1. Array vs record
+2. Elements / fields
+3. usually same type
+4. can be different types
+5. index: Scores[3]
+6. field name: Student1.Mark
+7. Best for
+8. many similar values
+9. several facts about one entity
+
+### Composite data groups fields into one type
+
+- **Explains:** `concept`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-118-concept.jpg`
+
+1. a composite structure containing named fields
+2. TStudent
+3. one named item inside a record
+4. Name , Mark
+5. Composite data
+6. data made from several components
+7. student details grouped together
+8. Dot notation
+9. access to one field of a record variable
+10. Student1.Mark
+
+### Define the type, then declare variables that use it
+
+- **Explains:** `declare`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-118-declare.jpg`
+
+1. Declare records
+2. Record type
+3. TYPE TStudent
+4. DECLARE Name : STRING
+5. DECLARE DateOfBirth : DATE
+6. DECLARE Mark : INTEGER
+7. DECLARE Enrolled : BOOLEAN
+8. Record variable
+9. DECLARE Student1 : TStudent
+10. Student1.Name <- "Ali"
+11. Student1.Mark <- 72
+
+### Read one field from a record
+
+- **Explains:** `lookup`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-118-lookup.jpg`
+
+1. Interactive field lookup
+2. Student1 has Name, DateOfBirth, Mark and Enrolled fields.
+
+### Same modelling idea, different syntax
+
+- **Explains:** `pseudocode`
+- **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-118-pseudocode.jpg`
+
+1. Pseudocode vs Java
+2. Cambridge-style pseudocode
+3. TYPE TBook
+4. DECLARE Title : STRING
+5. DECLARE Pages : INTEGER
+6. DECLARE Available : BOOLEAN
+7. DECLARE Book1 : TBook
+8. Book1.Available <- TRUE
+9. Java support only
+10. class Book {
+11. String title;
+12. int pages;
+<!-- stage10-explanations:end -->

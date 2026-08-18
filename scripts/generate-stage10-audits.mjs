@@ -147,12 +147,12 @@ for (let number = 1; number <= 150; number += 1) {
       targetId: id,
       title,
       targetType: item?.kind ?? targetType(lesson, id, title),
-      status: item ? "ImplementedPilot" : "Planned",
+      status: item ? "Implemented" : "Planned",
       implementationId: item ? `explanation-${id}` : "",
       rationale: reviewLessons.has(lesson)
         ? "Review lesson: consolidate related ideas into causal synthesis and avoid adding panels to retrieval items or tools."
         : "Core concept: explain mechanism, cause, consequence and boundary instead of repeating the definition.",
-      contentHash: item ? hash([...item.steps, item.analogy, item.boundary, item.visual?.src ?? ""].join("\n")) : "",
+      contentHash: item ? hash([...(item.transcript ?? item.steps), item.analogy, item.boundary, item.visual?.src ?? ""].filter(Boolean).join("\n")) : "",
     });
   }
 }
@@ -241,7 +241,28 @@ const visualRows = visuals.map((item) => [item.lesson, item.visualId, item.secti
 fs.writeFileSync(path.join(auditDirectory, "stage10-concept-visual-register.csv"), `${visualHeader.join(",")}\n${visualRows.join("\n")}\n`);
 
 const implementedLessons = new Set(explanations.map((item) => item.lesson));
-const report = `# Stage 10 Concept Accuracy and Explanation Audit\n\n## Current gate\n\n- Explanation targets: ${targets.length} across 150 lessons.\n- Implemented pilot explanations: ${explanations.length} across ${implementedLessons.size} lessons.\n- Academic ImageGen assets in the revised pilot: ${explanations.filter((item) => item.visual).length}.\n- Visual records: ${visuals.length}; semantic statuses remain explicit and are not inferred from successful rendering.\n- Rollout state: pilot only. Expansion beyond the ten named lessons requires human approval.\n\n## Review rules\n\n- Definitions alone do not satisfy an explanation target. Each panel uses three concise cause-and-effect steps plus an analogy and a boundary condition.\n- Review lessons use causal synthesis rather than one panel per retrieval prompt.\n- SVG, image, CSS and interactive visuals require factual review. Automated checks can verify structure and accessibility, not conceptual truth.\n- Precise connections, sequences and symbols use deterministic SVG or HTML. ImageGen is restricted to academically styled analogies without labels, topology or exact sequences.\n`;
+const report = `# Stage 10 Concept Accuracy and Explanation Audit\n\n## Current gate\n\n- Explanation targets: ${targets.length} across 150 lessons.\n- Implemented visual explanations: ${explanations.length} across ${implementedLessons.size} lessons.\n- Academic ImageGen infographics: ${explanations.filter((item) => item.visual).length}.\n- Visual records: ${visuals.length}; semantic statuses remain explicit and are not inferred from successful rendering.\n- Rollout state: complete across all 150 lessons after approval of the ten-lesson visual-style pilot.\n\n## Review rules\n\n- Definitions alone do not satisfy an explanation target. Each infographic must visualise the maintained lesson facts as a structured mechanism, comparison, process, trade-off or synthesis.\n- Review lessons use causal synthesis rather than one infographic per retrieval prompt.\n- Every infographic has an adjacent screen-reader transcript generated from the maintained factual source.\n- Image and interactive visuals require factual review. Automated checks verify target coverage, structure, file state and accessibility, not conceptual truth.\n- Human semantic review remains an explicit post-generation gate for the full visual set.\n`;
 fs.writeFileSync(path.join(auditDirectory, "stage10-concept-explanation-report.md"), report);
+
+const imagegenRows = explanations.map((item) => `| ${item.lesson} | \`${item.targetId}\` | \`${path.basename(item.visual.src)}\` | ${item.title} | Human semantic review pending |`).join("\n");
+const imagegenRecord = `# Stage 10 ImageGen infographic record
+
+All ${explanations.length} explanations use original infographics generated with the built-in ImageGen tool. The uploaded CPU FDE infographic was used as a style and layout reference only. The maintained Stage 10 data supplies the lesson facts and visual constraints for every prompt.
+
+| Lesson | Target | Asset | Knowledge point | Review state |
+|---|---|---|---|---|
+${imagegenRows}
+
+## Prompt pattern
+
+- Scientific-educational, 3:2 landscape, white academic handout.
+- Large navy title; restrained blue, green and orange panels; labelled arrows, compact worked state and key-points box where useful.
+- Exact subject facts come from \`scripts/stage10-explanations-data.mjs\` and \`scripts/stage10-rollout-jobs.json\`.
+- Prompts prohibit toy-like 3D rendering, cartoons, film scenes, decorative clip art, logos and watermarks.
+- Algorithm and lifecycle regenerations add explicit state constraints and prohibit invented quantitative evidence.
+
+The website files are 1536 x 1024 JPEGs under \`web/assets/diagrams/stage10-infographics/\`. Automated checks validate count, paths, dimensions, size budget and accessible transcripts. Conceptual approval remains a human gate.
+`;
+fs.writeFileSync(path.join(auditDirectory, "stage10-imagegen-assets.md"), imagegenRecord);
 
 console.log(`Generated Stage 10 audits: ${targets.length} explanation targets and ${visuals.length} visual records.`);

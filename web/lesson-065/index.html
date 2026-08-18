@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -114,6 +114,20 @@
           <div class="callout">Chinese support: authentication = 认证身份；authorisation = 授权权限；credential = 凭据/身份证明。</div>
         </section>
 
+        <!-- stage10-explanation:start core -->
+        <section class="panel explanation-panel" id="explanation-core" data-explains="core" data-explanation-kind="mechanism" aria-labelledby="explanation-core-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="core">
+          <h2 class="explanation-sr-only" id="explanation-core-title">Authentication is identity checking</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-core.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Authentication is identity checking with a structured visual model." />
+            <figcaption class="explanation-sr-only">Authentication is identity checking: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Authentication Verifies that a user, device or process is who it claims to be.</li><li><strong>Lesson fact:</strong> Claim The identity presented, such as a username, account or device ID.</li><li><strong>Lesson fact:</strong> Credential Evidence used to prove the claim, such as a password, biometric or token.</li><li><strong>Lesson fact:</strong> Authorisation Decides what an authenticated user is allowed to access or change.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end core -->
+
         <section class="panel" id="factors" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="factors">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -126,6 +140,20 @@
             <article><strong>Factor type</strong><span>Two checks only become MFA when they come from different factor categories.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start factors -->
+        <section class="panel explanation-panel" id="explanation-factors" data-explains="factors" data-explanation-kind="mechanism" aria-labelledby="explanation-factors-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="factors">
+          <h2 class="explanation-sr-only" id="explanation-factors-title">Authentication factors: know, have, are</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-factors.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Authentication factors: know, have, are with a structured visual model." />
+            <figcaption class="explanation-sr-only">Authentication factors: know, have, are: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Something you know Password, passphrase or PIN. Risk: guessed, reused, shared or phished.</li><li><strong>Lesson fact:</strong> Something you have Security token, smart card or one-time code device. Risk: lost, stolen or unavailable.</li><li><strong>Lesson fact:</strong> Something you are Biometric characteristic such as fingerprint, face, iris or voice. Risk: false acceptance or privacy concerns.</li><li><strong>Lesson fact:</strong> Factor type Two checks only become MFA when they come from different factor categories.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end factors -->
 
         <section class="panel" id="passwords" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="passwords">
           <div class="section-title">
@@ -140,6 +168,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start passwords -->
+        <section class="panel explanation-panel" id="explanation-passwords" data-explains="passwords" data-explanation-kind="mechanism" aria-labelledby="explanation-passwords-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="passwords">
+          <h2 class="explanation-sr-only" id="explanation-passwords-title">Passwords: cheap, familiar and often ruined by humans</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-passwords.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Passwords: cheap, familiar and often ruined by humans with a structured visual model." />
+            <figcaption class="explanation-sr-only">Passwords: cheap, familiar and often ruined by humans: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Strength Longer passwords or passphrases with less predictable structure are harder to guess.</li><li><strong>Lesson fact:</strong> Weakness Users may reuse, share, write down or choose predictable passwords.</li><li><strong>Lesson fact:</strong> Storage Systems should not store plaintext passwords; hashes are commonly used for verification.</li><li><strong>Lesson fact:</strong> Control Password policy, lockout/rate limiting, user education and MFA reduce risk.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end passwords -->
+
         <section class="panel" id="biometrics" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="biometrics">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -152,6 +194,20 @@
             <article><strong>Error types</strong><span>False reject blocks a valid user; false accept allows an unauthorised user.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start biometrics -->
+        <section class="panel explanation-panel" id="explanation-biometrics" data-explains="biometrics" data-explanation-kind="mechanism" aria-labelledby="explanation-biometrics-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="biometrics">
+          <h2 class="explanation-sr-only" id="explanation-biometrics-title">Biometrics: convenient identity evidence from physical or behavioural features</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-biometrics.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Biometrics: convenient identity evidence from physical or behavioural features with a structured visual model." />
+            <figcaption class="explanation-sr-only">Biometrics: convenient identity evidence from physical or behavioural features: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Examples Fingerprint, face, iris, retina, voice or typing pattern.</li><li><strong>Lesson fact:</strong> Advantage Difficult to forget, lose or share casually; quick for users.</li><li><strong>Lesson fact:</strong> Limitation Requires sensors and stored biometric templates; may raise privacy concerns.</li><li><strong>Lesson fact:</strong> Error types False reject blocks a valid user; false accept allows an unauthorised user.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end biometrics -->
 
         <section class="panel" id="tokens" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tokens">
           <div class="section-title">
@@ -166,6 +222,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start tokens -->
+        <section class="panel explanation-panel" id="explanation-tokens" data-explains="tokens" data-explanation-kind="mechanism" aria-labelledby="explanation-tokens-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="tokens">
+          <h2 class="explanation-sr-only" id="explanation-tokens-title">Tokens: proof that the user has a specific device or object</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-tokens.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Tokens: proof that the user has a specific device or object with a structured visual model." />
+            <figcaption class="explanation-sr-only">Tokens: proof that the user has a specific device or object: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Hardware token A physical device, card or key used during login.</li><li><strong>Lesson fact:</strong> Software token An app or service that generates a one-time code.</li><li><strong>Lesson fact:</strong> One-time code A code valid for a short time or single login attempt.</li><li><strong>Lesson fact:</strong> Limitation Tokens can be lost, stolen, damaged, out of battery or unavailable without a phone/network.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end tokens -->
+
         <section class="panel" id="mfa" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="mfa">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
@@ -178,6 +248,20 @@
             <article><strong>Cost</strong><span>More setup, recovery problems and user friction if a device is unavailable.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start mfa -->
+        <section class="panel explanation-panel" id="explanation-mfa" data-explains="mfa" data-explanation-kind="mechanism" aria-labelledby="explanation-mfa-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="mfa">
+          <h2 class="explanation-sr-only" id="explanation-mfa-title">MFA combines different factor types</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-mfa.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining MFA combines different factor types with a structured visual model." />
+            <figcaption class="explanation-sr-only">MFA combines different factor types: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Definition Multi-factor authentication requires evidence from two or more different factor categories.</li><li><strong>Lesson fact:</strong> Example Password plus phone app code: something you know plus something you have.</li><li><strong>Lesson fact:</strong> Benefit If a password is stolen, the attacker still needs the second factor.</li><li><strong>Lesson fact:</strong> Cost More setup, recovery problems and user friction if a device is unavailable.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end mfa -->
 
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
@@ -212,6 +296,20 @@
             </div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Compare methods by evidence, risk and context</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Compare methods by evidence, risk and context with a structured visual model." />
+            <figcaption class="explanation-sr-only">Compare methods by evidence, risk and context: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Evidence</li><li><strong>Lesson fact:</strong> Strengths and limitations</li><li><strong>Lesson fact:</strong> Password/PIN</li><li><strong>Lesson fact:</strong> Something the user knows.</li><li><strong>Lesson fact:</strong> Low cost and familiar; can be guessed, reused, shared, phished or forgotten.</li><li><strong>Lesson fact:</strong> Biometric</li><li><strong>Lesson fact:</strong> Something the user is.</li><li><strong>Lesson fact:</strong> Convenient and hard to forget; needs sensors and may have false accepts/rejects or privacy concerns.</li><li><strong>Lesson fact:</strong> Something the user has.</li><li><strong>Lesson fact:</strong> Useful second factor; can be lost, stolen, damaged or unavailable.</li><li><strong>Lesson fact:</strong> Two or more different factor categories.</li><li><strong>Lesson fact:</strong> Reduces account takeover risk; increases setup, support and recovery complexity.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
 
 
         <section class="panel" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="tool">
@@ -254,6 +352,20 @@
           <div class="result-box" id="passwordResult" aria-live="polite"></div>
           <div class="method-box" id="passwordAdvice"></div>
         </section>
+
+        <!-- stage10-explanation:start password-tool -->
+        <section class="panel explanation-panel" id="explanation-password-tool" data-explains="password-tool" data-explanation-kind="mechanism" aria-labelledby="explanation-password-tool-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="password-tool">
+          <h2 class="explanation-sr-only" id="explanation-password-tool-title">Estimate password quality without collecting real passwords</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-065-password-tool.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Estimate password quality without collecting real passwords with a structured visual model." />
+            <figcaption class="explanation-sr-only">Estimate password quality without collecting real passwords: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive password check</li><li><strong>Lesson fact:</strong> Use a practice string only. Never type a real password into lesson tools, screenshots or chat.</li><li><strong>Lesson fact:</strong> Practice password</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end password-tool -->
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">

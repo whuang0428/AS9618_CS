@@ -109,40 +109,54 @@ Correction prompt: "Show the mechanism, not just the label."
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
-### Why a CPU divides specialised work
-
-- **Explains:** `architecture`
-- **Explanation type:** mechanism
-- **Visual:** `../assets/diagrams/stage10-cpu-workflow-analogy.jpg` — A controller coordinates; small trays hold immediate values; distinct channels carry different kinds of signals.
-
-1. The control unit interprets the current instruction.
-2. The ALU performs the required arithmetic or logical operation.
-3. Registers and buses hold and move the immediate values.
-
-- **Analogy:** A laboratory separates coordination, processing, temporary trays and transport lanes.
-- **Boundary:** The components form one system; none executes a program alone.
-
 ### Why control and calculation are separate
 
 - **Explains:** `alu-cu`
 - **Explanation type:** comparison
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-041-alu-cu.jpg`
 
 1. The control unit decodes what the instruction demands.
 2. It sends signals that select data movement and an ALU operation.
 3. The ALU returns a result and status information.
-
 - **Analogy:** A coordinator chooses the operation; a specialist instrument performs it.
 - **Boundary:** The control unit coordinates calculation but does not replace the ALU.
+
+### Why a CPU divides specialised work
+
+- **Explains:** `architecture`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-041-architecture.jpg`
+
+1. The control unit interprets the current instruction.
+2. The ALU performs the required arithmetic or logical operation.
+3. Registers and buses hold and move the immediate values.
+- **Analogy:** A laboratory separates coordination, processing, temporary trays and transport lanes.
+- **Boundary:** The components form one system; none executes a program alone.
+
+### Inside the CPU, outside the CPU, and what connects them
+
+- **Explains:** `cpu-map`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-041-cpu-map.jpg`
+
+1. Visual explanation
+2. The ALU, CU and registers are processor components. Main memory is outside the CPU; buses carry addresses, data and control signals between them.
+3. CU Coordinates the fetch-decode-execute cycle and sends control signals.
+4. ALU Performs arithmetic operations, comparisons and Boolean logic.
+5. Registers + clock Registers hold immediate working values; clock pulses coordinate timing.
+6. Buses + memory Buses connect the CPU to memory without making memory part of the CPU.
+7. Check the diagram: is main memory a register inside the CPU?
+8. No. Registers are small, fast storage locations inside the CPU. Main memory is a separate component connected to the CPU by buses.
 
 ### How registers, buses and clock stay aligned
 
 - **Explains:** `registers`
 - **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-041-registers.jpg`
 
 1. Registers expose small values needed immediately.
 2. Buses carry values, addresses and control signals on distinct paths.
 3. Clock events determine when components may capture a new state.
-
 - **Analogy:** Timed transfer gates stop items arriving halfway through an operation.
 - **Boundary:** A faster clock helps only when the rest of the architecture can keep up.
 <!-- stage10-explanations:end -->

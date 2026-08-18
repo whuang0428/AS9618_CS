@@ -87,3 +87,109 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **paper 2 review: algorithm design and data structures**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Good pseudocode is precise enough to trace
+
+- **Explains:** `algorithms`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-147-algorithms.jpg`
+
+1. Algorithm design review
+2. State the data being read, such as target name, score list or file record.
+3. Use sequence, selection and iteration with clear variable updates.
+4. State exactly what is displayed, returned or stored.
+
+### Persistent data needs clear read/write logic
+
+- **Explains:** `files`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-147-files.jpg`
+
+1. Files and records
+2. Pseudocode pattern
+3. OPENFILE "Scores.txt" FOR READ
+4. WHILE NOT EOF("Scores.txt")
+5. READFILE "Scores.txt", StudentRecord
+6. OUTPUT StudentRecord.Name
+7. ENDWHILE
+8. CLOSEFILE "Scores.txt"
+9. Review note
+10. File questions often test the sequence: open, read or write, loop until end of file, then close. Keep the file mode clear.
+
+### The reason matters more than the name
+
+- **Explains:** `selection`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-147-selection.jpg`
+
+1. Structure choice
+2. Scenario
+3. Likely structure
+4. store 30 daily temperatures
+5. 1D array
+6. same type, indexed by day
+7. store student name, ID and mark
+8. related fields of different types
+9. undo recent edits
+10. most recent action is undone first
+11. print jobs waiting
+12. first job added should print first
+
+### Choose the tool before writing the answer
+
+- **Explains:** `strategy`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-147-strategy.jpg`
+
+1. Review strategy
+2. Question signal
+3. Evidence
+4. Common loss
+5. trace / dry run
+6. trace table
+7. variable values after each step
+8. skipping loop iterations
+9. design an algorithm
+10. pseudocode
+11. inputs, process, output
+12. writing vague English only
+
+### Choose the structure and explain why
+
+- **Explains:** `structure-tool`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-147-structure-tool.jpg`
+
+1. Data structure chooser
+2. Scenario
+
+### Choose structures by how the data is used
+
+- **Explains:** `structures`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-147-structures.jpg`
+
+1. Data structures review
+2. Structure
+3. Use when
+4. Core operation
+5. 1D array
+6. fixed list of same-type items
+7. index access
+8. forgetting bounds
+9. 2D array
+10. table/grid data
+11. row and column access
+12. mixing row and column
+
+### Calculate Total for the selected score list
+
+- **Explains:** `trace-tool`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-147-trace-tool.jpg`
+
+1. Interactive trace tool
+<!-- stage10-explanations:end -->

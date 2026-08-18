@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -103,6 +103,20 @@
           <div class="callout">Chinese support: embedded system = 嵌入式系统；microcontroller = 微控制器；sensor = 传感器；actuator = 执行器；control loop = 控制循环。</div>
         </section>
 
+        <!-- stage10-explanation:start embedded -->
+        <section class="panel explanation-panel" id="explanation-embedded" data-explains="embedded" data-explanation-kind="mechanism" aria-labelledby="explanation-embedded-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="embedded">
+          <h2 class="explanation-sr-only" id="explanation-embedded-title">What is an embedded system?</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-033-embedded.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining What is an embedded system? with a structured visual model." />
+            <figcaption class="explanation-sr-only">What is an embedded system?: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Dedicated purpose Designed to perform a specific task or set of tasks.</li><li><strong>Lesson fact:</strong> Built into device Part of a larger product, such as a washing machine or traffic light.</li><li><strong>Lesson fact:</strong> Limited interface Often has few controls or displays compared with a general-purpose computer.</li><li><strong>Lesson fact:</strong> Real-world input/output Often reads sensors and controls actuators.</li><li><strong>Lesson fact:</strong> Reliability focus Usually expected to run repeatedly and predictably.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end embedded -->
+
         <section class="panel" id="loop" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loop">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -116,6 +130,20 @@
           </div>
           <div class="callout">Example rule: IF temperature &gt; 28°C THEN turn fan ON ELSE turn fan OFF.</div>
         </section>
+
+        <!-- stage10-explanation:start loop -->
+        <section class="panel explanation-panel" id="explanation-loop" data-explains="loop" data-explanation-kind="mechanism" aria-labelledby="explanation-loop-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loop">
+          <h2 class="explanation-sr-only" id="explanation-loop-title">The basic control loop</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-033-loop.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The basic control loop with a structured visual model." />
+            <figcaption class="explanation-sr-only">The basic control loop: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 1. Sense A sensor captures a physical quantity, such as temperature, light, pressure or distance.</li><li><strong>Lesson fact:</strong> 2. Process The microcontroller compares the reading with a stored rule or threshold.</li><li><strong>Lesson fact:</strong> 3. Act An actuator changes something physically, such as opening a valve or starting a motor.</li><li><strong>Lesson fact:</strong> 4. Repeat The sensor reads again so the system can respond to changing conditions.</li><li><strong>Lesson fact:</strong> Example rule: IF temperature &gt; 28°C THEN turn fan ON ELSE turn fan OFF.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end loop -->
 
         <section class="panel" id="microcontroller" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="microcontroller">
           <div class="section-title">
@@ -150,6 +178,20 @@
             </div>
           </div>
         </section>
+
+        <!-- stage10-explanation:start microcontroller -->
+        <section class="panel explanation-panel" id="explanation-microcontroller" data-explains="microcontroller" data-explanation-kind="comparison" aria-labelledby="explanation-microcontroller-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="microcontroller">
+          <h2 class="explanation-sr-only" id="explanation-microcontroller-title">Microcontroller vs general-purpose computer</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-033-microcontroller.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Microcontroller vs general-purpose computer with a structured visual model." />
+            <figcaption class="explanation-sr-only">Microcontroller vs general-purpose computer: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Microcontroller / embedded system</li><li><strong>Lesson fact:</strong> General-purpose computer</li><li><strong>Lesson fact:</strong> Designed for a specific control task.</li><li><strong>Lesson fact:</strong> Designed to run many different programs.</li><li><strong>Lesson fact:</strong> Hardware</li><li><strong>Lesson fact:</strong> Often integrates CPU, memory and I/O on one chip.</li><li><strong>Lesson fact:</strong> Separate high-performance components are common.</li><li><strong>Lesson fact:</strong> Interface</li><li><strong>Lesson fact:</strong> May have simple buttons, LEDs or no screen.</li><li><strong>Lesson fact:</strong> Usually has richer input/output and user interface.</li><li><strong>Lesson fact:</strong> Design priorities</li><li><strong>Lesson fact:</strong> Low cost, low power, reliability, real-time response.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end microcontroller -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

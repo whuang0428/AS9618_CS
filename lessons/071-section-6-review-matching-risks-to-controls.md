@@ -71,3 +71,92 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction. For this lesson, make students contrast that mistake with the exact idea of **section 6 review: matching risks to controls**.  
 Correction prompt: "Show the mechanism, not just the label."
+
+<!-- stage10-explanations:start -->
+## Stage 10 visual explanations
+
+### Similar-looking controls: choose by mechanism
+
+- **Explains:** `compare`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-071-compare.jpg`
+
+1. Difference
+2. Exam trap
+3. Validation vs verification
+4. Validation checks rule acceptability; verification checks accurate transfer/copying.
+5. A valid value can still be the wrong value.
+6. Authentication vs authorisation
+7. Authentication confirms identity; authorisation/access rights decide permitted actions.
+8. Logging in does not mean full access should be granted.
+9. Encryption vs hashing
+10. Encryption is reversible with a key; hashing is one-way and often used for password storage.
+11. Do not say hashed data can be decrypted.
+12. Backup vs audit trail
+
+### Controls have different jobs
+
+- **Explains:** `controls`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-071-controls.jpg`
+
+1. Authentication Checks identity before access. It does not decide every permission by itself.
+2. Access rights Limit what an authenticated user can read, edit, delete or approve.
+3. Encryption Makes data unreadable without the key, protecting confidentiality.
+4. Validation Checks input follows rules such as type, range, length or format.
+5. Verification Checks data has been copied or entered accurately, often by comparison.
+6. Backup Provides recoverable copies after deletion, corruption or hardware failure.
+7. Disaster recovery Plans how systems and services are restored after a major incident.
+8. Audit trail Records actions for investigation, accountability and evidence.
+
+### Identify the risk family first
+
+- **Explains:** `diagnostic`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-071-diagnostic.jpg`
+
+1. Interactive diagnostic
+2. Choose the broad risk family. Then compare the suggested control route.
+
+### Select the best control for the scenario
+
+- **Explains:** `matcher`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-071-matcher.jpg`
+
+1. Interactive risk matcher
+2. The best answer is the one whose mechanism directly addresses the named risk.
+3. Scenario
+
+### Use the four-part answer chain
+
+- **Explains:** `method`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-071-method.jpg`
+
+1. 1. Name the risk Example: unauthorised users may view medical records.
+2. 2. Choose a control Example: role-based access levels and authentication.
+3. 3. Explain mechanism Example: only authenticated staff with the correct role can open the record.
+4. 4. Link consequence Example: this protects confidentiality and reduces privacy breaches.
+5. Answer frame:
+6. [Control] reduces [risk] because [mechanism]. In this scenario, this matters because [impact/consequence].
+
+### Section 6 review map: risk families and likely controls
+
+- **Explains:** `review-map`
+- **Explanation type:** synthesis
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-071-review-map.jpg`
+
+1. Risk family
+2. Typical problem
+3. Useful controls
+4. Unauthorised access
+5. A user enters a system or data they should not access.
+6. Authentication, access levels, strong passwords, two-factor authentication.
+7. Disclosure
+8. Sensitive data is read or intercepted by an unauthorised party.
+9. Encryption in transit/at rest, access rights, staff training.
+10. Corruption / inaccurate data
+11. Data is changed incorrectly, accidentally or maliciously.
+12. Validation, verification, permissions, audit trails, backups.
+<!-- stage10-explanations:end -->

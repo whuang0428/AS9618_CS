@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -124,6 +124,20 @@
           <div class="callout">Chinese support: clock speed = 时钟频率；core = 核心；cache = 高速缓存；word length = 字长；bottleneck = 瓶颈。</div>
         </section>
 
+        <!-- stage10-explanation:start concept -->
+        <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="process" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
+          <h2 class="explanation-sr-only" id="explanation-concept-title">Performance factor means a hardware feature that can affect processing speed</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Performance factor means a hardware feature that can affect processing speed with a structured visual model." />
+            <figcaption class="explanation-sr-only">Performance factor means a hardware feature that can affect processing speed: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Clock speed</li><li><strong>Lesson fact:</strong> How many clock cycles the CPU can perform per second, commonly measured in Hz/GHz.</li><li><strong>Lesson fact:</strong> Processing units that can execute instructions independently, allowing parallel work.</li><li><strong>Lesson fact:</strong> Small, fast memory close to the CPU storing frequently or recently used data/instructions.</li><li><strong>Lesson fact:</strong> Word length</li><li><strong>Lesson fact:</strong> The number of bits the CPU can process as a unit in one operation/register word.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end concept -->
+
         <section class="panel" id="clock" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="clock">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -144,6 +158,20 @@
             </article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start clock -->
+        <section class="panel explanation-panel" id="explanation-clock" data-explains="clock" data-explanation-kind="process" aria-labelledby="explanation-clock-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="clock">
+          <h2 class="explanation-sr-only" id="explanation-clock-title">Clock speed: more cycles per second</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-clock.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Clock speed: more cycles per second with a structured visual model." />
+            <figcaption class="explanation-sr-only">Clock speed: more cycles per second: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Mechanism</li><li><strong>Lesson fact:</strong> A higher clock speed means more fetch-decode-execute cycle steps can be started per second, if other parts keep up.</li><li><strong>Lesson fact:</strong> 3.6 GHz means 3.6 billion clock cycles per second, not automatically 3.6 billion completed programs.</li><li><strong>Lesson fact:</strong> Limitation</li><li><strong>Lesson fact:</strong> Memory access, heat, power use and CPU architecture can limit the real improvement.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end clock -->
 
         <section class="panel" id="cores" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cores">
           <div class="section-title">
@@ -170,6 +198,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start cores -->
+        <section class="panel explanation-panel" id="explanation-cores" data-explains="cores" data-explanation-kind="process" aria-labelledby="explanation-cores-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cores">
+          <h2 class="explanation-sr-only" id="explanation-cores-title">Cores: more independent processing units</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-cores.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cores: more independent processing units with a structured visual model." />
+            <figcaption class="explanation-sr-only">Cores: more independent processing units: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Where extra cores help</li><li><strong>Lesson fact:</strong> Several programs running at the same time.</li><li><strong>Lesson fact:</strong> Tasks that can be split into parallel threads.</li><li><strong>Lesson fact:</strong> Background tasks while a foreground task remains responsive.</li><li><strong>Lesson fact:</strong> Where extra cores may not help much</li><li><strong>Lesson fact:</strong> A single-threaded program that cannot be divided.</li><li><strong>Lesson fact:</strong> A task waiting for disk, network or memory.</li><li><strong>Lesson fact:</strong> Software that was not designed for parallel processing.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end cores -->
+
         <section class="panel" id="cache" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cache">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -186,6 +228,20 @@
             <p>Cache is not the same as RAM capacity. It is smaller, faster and used to reduce repeated slow access to main memory.</p>
           </div>
         </section>
+
+        <!-- stage10-explanation:start cache -->
+        <section class="panel explanation-panel" id="explanation-cache" data-explains="cache" data-explanation-kind="mechanism" aria-labelledby="explanation-cache-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="cache">
+          <h2 class="explanation-sr-only" id="explanation-cache-title">Cache: reduce slow memory access</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-cache.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cache: reduce slow memory access with a structured visual model." />
+            <figcaption class="explanation-sr-only">Cache: reduce slow memory access: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> 1. CPU requests data The CPU needs an instruction or data item.</li><li><strong>Lesson fact:</strong> 2. Cache checked first Cache is much faster than main memory.</li><li><strong>Lesson fact:</strong> 3. Cache hit If found, access is fast and the CPU waits less.</li><li><strong>Lesson fact:</strong> 4. Cache miss If not found, data is fetched from slower main memory and may be copied into cache.</li><li><strong>Lesson fact:</strong> Common trap</li><li><strong>Lesson fact:</strong> Cache is not the same as RAM capacity. It is smaller, faster and used to reduce repeated slow access to main memory.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end cache -->
 
         <section class="panel" id="word" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="word">
           <div class="section-title">
@@ -221,6 +277,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start word -->
+        <section class="panel explanation-panel" id="explanation-word" data-explains="word" data-explanation-kind="process" aria-labelledby="explanation-word-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="word">
+          <h2 class="explanation-sr-only" id="explanation-word-title">Word length: bits processed as a unit</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-word.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Word length: bits processed as a unit with a structured visual model." />
+            <figcaption class="explanation-sr-only">Word length: bits processed as a unit: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Explanation</li><li><strong>Lesson fact:</strong> Exam-safe wording</li><li><strong>Lesson fact:</strong> Larger values</li><li><strong>Lesson fact:</strong> More bits can represent larger numbers in one word.</li><li><strong>Lesson fact:</strong> A longer word can process larger data values in a single operation.</li><li><strong>Lesson fact:</strong> More precision</li><li><strong>Lesson fact:</strong> More bits can support greater numeric precision where relevant.</li><li><strong>Lesson fact:</strong> Useful for calculations needing larger or more precise operands.</li><li><strong>Lesson fact:</strong> Addressing</li><li><strong>Lesson fact:</strong> In some architectures, word/register/address size can affect addressable memory.</li><li><strong>Lesson fact:</strong> Do not claim this without linking it to the architecture or address size.</li><li><strong>Lesson fact:</strong> Limitation</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end word -->
+
         <section class="panel" id="limits" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="limits">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 6</p>
@@ -233,6 +303,20 @@
             <article><strong>Architecture</strong><span>Different CPU designs may do different amounts of work per clock cycle.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start limits -->
+        <section class="panel explanation-panel" id="explanation-limits" data-explains="limits" data-explanation-kind="tradeoff" aria-labelledby="explanation-limits-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="limits">
+          <h2 class="explanation-sr-only" id="explanation-limits-title">Performance is limited by bottlenecks</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-049-limits.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Performance is limited by bottlenecks with a structured visual model." />
+            <figcaption class="explanation-sr-only">Performance is limited by bottlenecks: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Memory bottleneck A fast CPU still waits if data arrives slowly from memory.</li><li><strong>Lesson fact:</strong> Software bottleneck Single-threaded code cannot fully use many cores.</li><li><strong>Lesson fact:</strong> Heat and power Higher clock speed can require more power and produce more heat.</li><li><strong>Lesson fact:</strong> Architecture Different CPU designs may do different amounts of work per clock cycle.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end limits -->
 
 
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">

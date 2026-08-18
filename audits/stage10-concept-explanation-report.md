@@ -3,14 +3,15 @@
 ## Current gate
 
 - Explanation targets: 782 across 150 lessons.
-- Implemented pilot explanations: 45 across 10 lessons.
-- Academic ImageGen assets in the revised pilot: 5.
-- Visual records: 198; semantic statuses remain explicit and are not inferred from successful rendering.
-- Rollout state: pilot only. Expansion beyond the ten named lessons requires human approval.
+- Implemented visual explanations: 782 across 150 lessons.
+- Academic ImageGen infographics: 782.
+- Visual records: 968; semantic statuses remain explicit and are not inferred from successful rendering.
+- Rollout state: complete across all 150 lessons after approval of the ten-lesson visual-style pilot.
 
 ## Review rules
 
-- Definitions alone do not satisfy an explanation target. Each panel uses three concise cause-and-effect steps plus an analogy and a boundary condition.
-- Review lessons use causal synthesis rather than one panel per retrieval prompt.
-- SVG, image, CSS and interactive visuals require factual review. Automated checks can verify structure and accessibility, not conceptual truth.
-- Precise connections, sequences and symbols use deterministic SVG or HTML. ImageGen is restricted to academically styled analogies without labels, topology or exact sequences.
+- Definitions alone do not satisfy an explanation target. Each infographic must visualise the maintained lesson facts as a structured mechanism, comparison, process, trade-off or synthesis.
+- Review lessons use causal synthesis rather than one infographic per retrieval prompt.
+- Every infographic has an adjacent screen-reader transcript generated from the maintained factual source.
+- Image and interactive visuals require factual review. Automated checks verify target coverage, structure, file state and accessibility, not conceptual truth.
+- Human semantic review remains an explicit post-generation gate for the full visual set.

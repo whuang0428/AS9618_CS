@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=5" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
     <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
   </head>
   <body>
@@ -130,6 +130,20 @@
           <div class="callout">Chinese support: flat-file = 单表结构。The problem is not the word "file"; the problem is using one table for related repeated data.</div>
         </section>
 
+        <!-- stage10-explanation:start flat -->
+        <section class="panel explanation-panel" id="explanation-flat" data-explains="flat" data-explanation-kind="mechanism" aria-labelledby="explanation-flat-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="flat">
+          <h2 class="explanation-sr-only" id="explanation-flat-title">Flat-file database</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-flat.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Flat-file database with a structured visual model." />
+            <figcaption class="explanation-sr-only">Flat-file database: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A flat-file database stores data in a single table. It is simple, but related data may be repeated in many records.</li><li><strong>Lesson fact:</strong> MemberID</li><li><strong>Lesson fact:</strong> ParentEmail</li><li><strong>Lesson fact:</strong> Amira Chen</li><li><strong>Lesson fact:</strong> lee@example.com</li><li><strong>Lesson fact:</strong> Robotics</li><li><strong>Lesson fact:</strong> Leo Singh</li><li><strong>Lesson fact:</strong> patel@example.com</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end flat -->
+
         <section class="panel" id="relational" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="relational">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 2</p>
@@ -156,6 +170,20 @@
             <span>A relational database reduces redundancy by separating related data into linked tables, so a fact such as a parent email is stored once instead of repeated in every lesson record.</span>
           </div>
         </section>
+
+        <!-- stage10-explanation:start relational -->
+        <section class="panel explanation-panel" id="explanation-relational" data-explains="relational" data-explanation-kind="mechanism" aria-labelledby="explanation-relational-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="relational">
+          <h2 class="explanation-sr-only" id="explanation-relational-title">Relational database</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-relational.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Relational database with a structured visual model." />
+            <figcaption class="explanation-sr-only">Relational database: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> A relational database stores data in multiple tables that are linked using shared fields. Shared facts can be stored once and referenced where needed.</li><li><strong>Lesson fact:</strong> MemberID | Name | ParentEmail</li><li><strong>Lesson fact:</strong> M104 | Amira Chen | lee@example.com</li><li><strong>Lesson fact:</strong> M211 | Leo Singh | patel@example.com</li><li><strong>Lesson fact:</strong> linked by MemberID</li><li><strong>Lesson fact:</strong> Enrolment</li><li><strong>Lesson fact:</strong> EnrolID | MemberID | Session | FeePaid</li><li><strong>Lesson fact:</strong> E501 | M104 | Python | TRUE</li><li><strong>Lesson fact:</strong> E502 | M104 | Robotics | FALSE</li><li><strong>Lesson fact:</strong> Exam sentence:</li><li><strong>Lesson fact:</strong> A relational database reduces redundancy by separating related data into linked tables, so a fact such as a parent email is stored once instead of repeated in every lesson record.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end relational -->
 
         <section class="panel" id="compare" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
           <div class="section-title">
@@ -196,6 +224,20 @@
           </div>
         </section>
 
+        <!-- stage10-explanation:start compare -->
+        <section class="panel explanation-panel" id="explanation-compare" data-explains="compare" data-explanation-kind="comparison" aria-labelledby="explanation-compare-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="compare">
+          <h2 class="explanation-sr-only" id="explanation-compare-title">Flat-file vs relational comparison</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-compare.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Flat-file vs relational comparison with a structured visual model." />
+            <figcaption class="explanation-sr-only">Flat-file vs relational comparison: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Flat-file</li><li><strong>Lesson fact:</strong> Relational</li><li><strong>Lesson fact:</strong> Structure</li><li><strong>Lesson fact:</strong> Single table</li><li><strong>Lesson fact:</strong> Multiple linked tables</li><li><strong>Lesson fact:</strong> Redundancy</li><li><strong>Lesson fact:</strong> More likely because related details are repeated</li><li><strong>Lesson fact:</strong> Reduced because shared data can be stored once</li><li><strong>Lesson fact:</strong> Consistency</li><li><strong>Lesson fact:</strong> Harder to maintain if repeated values are updated differently</li><li><strong>Lesson fact:</strong> Improved because updates can be made in one relevant table</li><li><strong>Lesson fact:</strong> Complexity</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end compare -->
+
         <section class="panel" id="anomalies" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="anomalies">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
@@ -208,6 +250,20 @@
             <article><strong>Deletion anomaly</strong><span>Deleting a cancelled session row may accidentally delete the only copy of a member's contact details.</span></article>
           </div>
         </section>
+
+        <!-- stage10-explanation:start anomalies -->
+        <section class="panel explanation-panel" id="explanation-anomalies" data-explains="anomalies" data-explanation-kind="mechanism" aria-labelledby="explanation-anomalies-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="anomalies">
+          <h2 class="explanation-sr-only" id="explanation-anomalies-title">Why repeated data causes anomalies</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-079-anomalies.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why repeated data causes anomalies with a structured visual model." />
+            <figcaption class="explanation-sr-only">Why repeated data causes anomalies: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> An anomaly is a problem caused when data is inserted, updated or deleted in a structure that stores repeated facts poorly.</li><li><strong>Lesson fact:</strong> Update anomaly A parent email is changed in one row but not in another, so the same member has two different emails.</li><li><strong>Lesson fact:</strong> Insertion anomaly A new member cannot be recorded until they join a session, because member details only exist in lesson rows.</li><li><strong>Lesson fact:</strong> Deletion anomaly Deleting a cancelled session row may accidentally delete the only copy of a member's contact details.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end anomalies -->
 
 
         <section class="panel" id="chooser" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="chooser">
