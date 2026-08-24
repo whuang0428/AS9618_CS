@@ -201,7 +201,7 @@ function setupHook() {
       if (button.dataset.hook === "hex") {
         feedback.textContent = "Correct for compact copying, as long as you know D6₁₆ maps back to 1101 0110₂.";
       } else if (button.dataset.hook === "depends") {
-        feedback.textContent = "Fair. Hex is useful because the mapping is systematic, not because it is magic.";
+        feedback.textContent = "Fair. Hex is useful because the mapping is systematic, because the mapping is systematic.";
       } else {
         feedback.textContent = "Check the mapping: D6₁₆ represents the same bit pattern using fewer characters.";
       }
@@ -333,7 +333,7 @@ function renderExamQuestions() {
         <p class="marks">[${question.marks}]</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="marking" id="${msId}">
-          <h4>CIE-style mark scheme</h4>
+          <h4>Cambridge-style mark scheme</h4>
           <p><strong>Expected answer:</strong> ${question.answer}</p>
           <ul class="ms-list">
             ${question.marking.map((point) => `<li><b>${point.mark}</b> ${point.text}</li>`).join("")}

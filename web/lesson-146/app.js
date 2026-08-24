@@ -252,7 +252,7 @@ function setupCaseTool() {
     output.innerHTML = `
       <p><strong>Concept:</strong> ${escapeHtml(item.concept)}</p>
       <p><strong>Answer:</strong> ${escapeHtml(item.answer)}</p>
-      <p><strong>Trap:</strong> ${escapeHtml(item.trap)}</p>
+      <p><strong>Common error:</strong> ${escapeHtml(item.trap)}</p>
     `;
   };
   document.querySelector("#caseBtn").addEventListener("click", render);

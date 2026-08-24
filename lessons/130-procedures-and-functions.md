@@ -10,9 +10,9 @@
 
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Describe the purpose of **Procedures and functions** using accurate Cambridge AS Computer Science vocabulary.
-2. Apply the concept through a topic-specific calculation, trace, design choice or exam-style explanation.
-3. Identify and correct a likely misconception about this knowledge point.
+1. Use the programming construct involved in **Procedures and functions**.
+2. Write and trace Cambridge pseudocode for normal and boundary cases.
+3. Identify and correct an error in control flow, data use or notation.
 
 ## Key Vocabulary
 English first, Chinese support:
@@ -20,14 +20,14 @@ English first, Chinese support:
 - procedure 过程, function 函数, parameter 参数, scope 作用域, debugging 调试
 
 ## Warm-Up Hook
-Show a short code fragment with one tiny bug and ask students to find it before the program develops confidence. The point is not syntax hunting; it is reasoning about state.
+Show a short code fragment containing one error and ask students to identify its effect on the program state. Emphasise reasoning about values and control flow.
 
-Lesson-specific focus question: What would go wrong if a student confused **Procedures and functions** with a neighbouring syllabus idea?
+Focus question: Which feature distinguishes **Procedures and functions** from the most closely related syllabus concept?
 
 ## Guided Explanation
 For Procedures and functions, begin with the purpose of the construct, then show Cambridge pseudocode, then compare Java only as a runnable support example. Trace variable values after each key line and identify what test data would expose errors.
 
-Topic-specific teaching move: keep the explanation anchored to **Procedures and functions**. Students must produce one clear sentence that names the mechanism, one example that uses it, and one exam trap connected to it.
+Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
 Suggested timing:
 - 0-5 min: warm-up and prediction.
@@ -39,10 +39,10 @@ Suggested timing:
 ## Board Plan / Teacher Talk Track
 Left: construct purpose. Middle: Cambridge pseudocode. Right: Java comparison and trace.
 
-Teacher line to reuse: "A correct keyword starts the answer; the explanation earns the mark."
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Write a procedure `DisplayMenu()` and a function `CalculateVAT(Price)`; explain the difference in return value. The worked example must explicitly use **Procedures and functions**, not a generic example from the wider unit.
+**Problem:** Write a procedure `DisplayMenu()` and a function `CalculateVAT(Price)`; explain the difference in return value.
 
 **Worked answer / marking focus:** The procedure performs output and does not have to return a value. The function returns a calculated value, for example `Price * 0.2`.
 
@@ -72,20 +72,20 @@ static double calculateVAT(double price) {
 
 
 ## Student Task
-Students convert two repeated code blocks into one procedure and one function, then label call, parameter and return value. Their final answer must include the phrase **Procedures and functions** and one short Chinese support note explaining the hardest word.
+Students convert two repeated code blocks into one procedure and one function, then label call, parameter and return value.
 
 ## Mini-Quiz
-1. State one precise definition connected to **Procedures and functions**.
-2. Complete one calculation, trace, SQL clause, diagram label or scenario explanation from the lesson.
-3. Write one sentence that uses "therefore" to link the concept to a consequence.
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
 Complete this sentence in English:  
-"The key point about **Procedures and functions** is..., and a common mistake is..."
+"One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
-- Create three flashcards: one definition, one worked example, one common trap.
-- Answer one 4-mark question about **Procedures and functions** using the structure: point, explanation, context, consequence.
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **Procedures and functions**. Follow its command word and apply each point to the stated context.
 
 ## Marking Notes
 Award credit for:
@@ -95,8 +95,8 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. For this lesson, make students contrast that mistake with the exact idea of **procedures and functions**.  
-Correction prompt: "Show the mechanism, not just the label."
+Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

@@ -10,9 +10,9 @@
 
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Describe the purpose of **Linear search and binary search** using accurate Cambridge AS Computer Science vocabulary.
-2. Apply the concept through a topic-specific calculation, trace, design choice or exam-style explanation.
-3. Identify and correct a likely misconception about this knowledge point.
+1. Apply the algorithmic technique involved in **Linear search and binary search**.
+2. Write or trace Cambridge pseudocode using appropriate constructs and identifiers.
+3. Explain how the algorithm meets the stated inputs, outputs and constraints.
 
 ## Key Vocabulary
 English first, Chinese support:
@@ -22,12 +22,12 @@ English first, Chinese support:
 ## Warm-Up Hook
 Give instructions for making tea but remove one step. Ask where the algorithm fails. The kettle is not being difficult; the instructions are.
 
-Lesson-specific focus question: What would go wrong if a student confused **Linear search and binary search** with a neighbouring syllabus idea?
+Focus question: Which feature distinguishes **Linear search and binary search** from the most closely related syllabus concept?
 
 ## Guided Explanation
 Define the inputs, outputs and stopping condition before writing any pseudocode. For Linear search and binary search, model the algorithm with a trace or dry run. Then improve readability using indentation, meaningful identifiers and Cambridge pseudocode conventions.
 
-Topic-specific teaching move: keep the explanation anchored to **Linear search and binary search**. Students must produce one clear sentence that names the mechanism, one example that uses it, and one exam trap connected to it.
+Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
 Suggested timing:
 - 0-5 min: warm-up and prediction.
@@ -39,10 +39,10 @@ Suggested timing:
 ## Board Plan / Teacher Talk Track
 Left: problem statement with inputs/outputs. Middle: pseudocode or flowchart. Right: trace table and test case.
 
-Teacher line to reuse: "A correct keyword starts the answer; the explanation earns the mark."
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Trace a linear search for `42` in `[13, 42, 56, 70]`, then explain why binary search requires sorted data. The worked example must explicitly use **Linear search and binary search**, not a generic example from the wider unit.
+**Problem:** Trace a linear search for `42` in `[13, 42, 56, 70]`, then explain why binary search requires sorted data.
 
 **Worked answer / marking focus:** Linear search checks 13 then 42 and stops when found. Binary search can discard half the data only when order is guaranteed.
 
@@ -74,20 +74,20 @@ while (!found && index < names.length) {
 
 
 ## Student Task
-Students trace both searches on paper cards, then write one sentence explaining when linear search is still acceptable. Their final answer must include the phrase **Linear search and binary search** and one short Chinese support note explaining the hardest word.
+Students trace both searches on paper cards, then write one sentence explaining when linear search is still acceptable.
 
 ## Mini-Quiz
-1. State one precise definition connected to **Linear search and binary search**.
-2. Complete one calculation, trace, SQL clause, diagram label or scenario explanation from the lesson.
-3. Write one sentence that uses "therefore" to link the concept to a consequence.
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
 Complete this sentence in English:  
-"The key point about **Linear search and binary search** is..., and a common mistake is..."
+"One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
-- Create three flashcards: one definition, one worked example, one common trap.
-- Answer one 4-mark question about **Linear search and binary search** using the structure: point, explanation, context, consequence.
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **Linear search and binary search**. Follow its command word and apply each point to the stated context.
 
 ## Marking Notes
 Award credit for:
@@ -97,8 +97,8 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first. For this lesson, make students contrast that mistake with the exact idea of **linear search and binary search**.  
-Correction prompt: "Show the mechanism, not just the label."
+Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

@@ -211,7 +211,7 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const messages = {
-    database: { text: "This is Paper 1 database thinking, not the program fragment toolbox.", correct: false },
+    database: { text: "This applies database concepts from Paper 1 rather than program-fragment analysis.", correct: false },
     array: { text: "Correct. The task needs an array, a loop and an IF condition.", correct: true },
     file: { text: "File handling is useful elsewhere, but this task does not mention a file.", correct: false },
     html: { text: "No HTML needed. Stay in Cambridge pseudocode.", correct: false },

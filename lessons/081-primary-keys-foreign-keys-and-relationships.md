@@ -7,9 +7,9 @@
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Describe the purpose of **Primary keys, foreign keys, and relationships** using accurate Cambridge AS Computer Science vocabulary.
-2. Apply the concept through a topic-specific calculation, trace, design choice or exam-style explanation.
-3. Identify and correct a likely misconception about this knowledge point.
+1. Define and apply the database concepts involved in **Primary keys, foreign keys, and relationships**.
+2. Use precise relational terminology when describing data and relationships.
+3. Identify and correct an unsuitable database design or explanation.
 
 ## Key Vocabulary
 English first, Chinese support:
@@ -19,12 +19,12 @@ English first, Chinese support:
 ## Warm-Up Hook
 Ask students to manage a school club using one giant spreadsheet. Then add duplicate names, changed phone numbers and missing payments. The spreadsheet will start sweating politely.
 
-Lesson-specific focus question: What would go wrong if a student confused **Primary keys, foreign keys, and relationships** with a neighbouring syllabus idea?
+Focus question: Which feature distinguishes **Primary keys, foreign keys, and relationships** from the most closely related syllabus concept?
 
 ## Guided Explanation
 Start with messy data, then organise it into entities, fields, records and relationships. For Primary keys, foreign keys, and relationships, show how structure reduces duplication or improves integrity. End by connecting the design to queries and updates.
 
-Topic-specific teaching move: keep the explanation anchored to **Primary keys, foreign keys, and relationships**. Students must produce one clear sentence that names the mechanism, one example that uses it, and one exam trap connected to it.
+Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
 Suggested timing:
 - 0-5 min: warm-up and prediction.
@@ -36,30 +36,30 @@ Suggested timing:
 ## Board Plan / Teacher Talk Track
 Left: messy flat data. Middle: table/entity design. Right: key or relationship rule.
 
-Teacher line to reuse: "A correct keyword starts the answer; the explanation earns the mark."
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** For `Student(StudentID, Name, TutorGroup)` and `Loan(LoanID, StudentID, BookID, DateBorrowed)`, identify primary and foreign keys. The worked example must explicitly use **Primary keys, foreign keys, and relationships**, not a generic example from the wider unit.
+**Problem:** For `Student(StudentID, Name, TutorGroup)` and `Loan(LoanID, StudentID, BookID, DateBorrowed)`, identify primary and foreign keys.
 
 **Worked answer / marking focus:** `StudentID` is primary key in Student; `LoanID` is primary key in Loan; `StudentID` in Loan is a foreign key referencing Student.
 
 
 
 ## Student Task
-Students design a two-table system for sports equipment loans and label each key. Their final answer must include the phrase **Primary keys, foreign keys, and relationships** and one short Chinese support note explaining the hardest word.
+Students design a two-table system for sports equipment loans and label each key.
 
 ## Mini-Quiz
-1. State one precise definition connected to **Primary keys, foreign keys, and relationships**.
-2. Complete one calculation, trace, SQL clause, diagram label or scenario explanation from the lesson.
-3. Write one sentence that uses "therefore" to link the concept to a consequence.
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
 Complete this sentence in English:
-"The key point about **Primary keys, foreign keys, and relationships** is..., and a common mistake is..."
+"One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
-- Create three flashcards: one definition, one worked example, one common trap.
-- Answer one 4-mark question about **Primary keys, foreign keys, and relationships** using the structure: point, explanation, context, consequence.
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **Primary keys, foreign keys, and relationships**. Follow its command word and apply each point to the stated context.
 
 ## Marking Notes
 Award credit for:
@@ -69,8 +69,8 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record. For this lesson, make students contrast that mistake with the exact idea of **primary keys, foreign keys, and relationships**.
-Correction prompt: "Show the mechanism, not just the label."
+Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 ## Stage 2 syllabus completion
 

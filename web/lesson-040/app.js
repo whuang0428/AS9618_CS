@@ -197,7 +197,7 @@ function setupSorter() {
     const item = sortQuestions[select.value];
     result.textContent = item.topic;
     method.innerHTML = `<strong>Method:</strong> ${item.method}`;
-    trap.innerHTML = `<strong>Trap:</strong> ${item.trap}`;
+    trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
   select.addEventListener("change", sort);
   document.querySelector("#sortBtn").addEventListener("click", sort);
@@ -283,7 +283,7 @@ function renderExamQuestions() {
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
-          <h4>CIE-style mark scheme</h4>
+          <h4>Cambridge-style mark scheme</h4>
           <p><strong>Answer:</strong> ${question.answer}</p>
           <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
         </div>

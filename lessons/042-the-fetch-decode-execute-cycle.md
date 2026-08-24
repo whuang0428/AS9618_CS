@@ -7,9 +7,9 @@
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Describe the purpose of **The fetch-decode-execute cycle** using accurate Cambridge AS Computer Science vocabulary.
-2. Apply the concept through a topic-specific calculation, trace, design choice or exam-style explanation.
-3. Identify and correct a likely misconception about this knowledge point.
+1. Identify the processor components or operations involved in **The fetch-decode-execute cycle**.
+2. Describe the sequence of data, address and control transfers.
+3. Explain the effect of the relevant architecture or performance factor.
 
 ## Key Vocabulary
 English first, Chinese support:
@@ -17,14 +17,14 @@ English first, Chinese support:
 - register 寄存器, bus 总线, fetch-decode-execute 取指-译码-执行, interrupt 中断
 
 ## Warm-Up Hook
-Ask students to act as registers passing one instruction around the room. If the Program Counter forgets its job, the whole class becomes a very expensive paperweight.
+Give students the roles of named registers and ask them to pass an instruction through the fetch stage in the correct order. Use any incorrect transfer to clarify each register's function.
 
-Lesson-specific focus question: What would go wrong if a student confused **The fetch-decode-execute cycle** with a neighbouring syllabus idea?
+Focus question: Which feature distinguishes **The fetch-decode-execute cycle** from the most closely related syllabus concept?
 
 ## Guided Explanation
 Follow one instruction through the processor. Identify each register or bus only when it does work in the story. Then connect the mechanism to The fetch-decode-execute cycle: what changes, what improves, and what limitation remains?
 
-Topic-specific teaching move: keep the explanation anchored to **The fetch-decode-execute cycle**. Students must produce one clear sentence that names the mechanism, one example that uses it, and one exam trap connected to it.
+Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
 Suggested timing:
 - 0-5 min: warm-up and prediction.
@@ -36,30 +36,30 @@ Suggested timing:
 ## Board Plan / Teacher Talk Track
 Left: instruction or interrupt scenario. Middle: CPU/register/bus sequence. Right: performance or tracing notes.
 
-Teacher line to reuse: "A correct keyword starts the answer; the explanation earns the mark."
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Trace one instruction through PC, MAR, MDR and CIR during the fetch stage. The worked example must explicitly use **The fetch-decode-execute cycle**, not a generic example from the wider unit.
+**Problem:** Trace one instruction through PC, MAR, MDR and CIR during the fetch stage.
 
 **Worked answer / marking focus:** PC holds the address; address is copied to MAR; memory returns instruction to MDR; instruction is copied to CIR; PC is incremented. Credit sequence.
 
 
 
 ## Student Task
-Students annotate a CPU diagram with numbered arrows for each fetch step. Their final answer must include the phrase **The fetch-decode-execute cycle** and one short Chinese support note explaining the hardest word.
+Students annotate a CPU diagram with numbered arrows for each fetch step.
 
 ## Mini-Quiz
-1. State one precise definition connected to **The fetch-decode-execute cycle**.
-2. Complete one calculation, trace, SQL clause, diagram label or scenario explanation from the lesson.
-3. Write one sentence that uses "therefore" to link the concept to a consequence.
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
 Complete this sentence in English:  
-"The key point about **The fetch-decode-execute cycle** is..., and a common mistake is..."
+"One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
-- Create three flashcards: one definition, one worked example, one common trap.
-- Answer one 4-mark question about **The fetch-decode-execute cycle** using the structure: point, explanation, context, consequence.
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **The fetch-decode-execute cycle**. Follow its command word and apply each point to the stated context.
 
 ## Marking Notes
 Award credit for:
@@ -69,8 +69,8 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds. For this lesson, make students contrast that mistake with the exact idea of **the fetch-decode-execute cycle**.  
-Correction prompt: "Show the mechanism, not just the label."
+Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
@@ -113,7 +113,7 @@ Correction prompt: "Show the mechanism, not just the label."
 5. If the instruction needs data from memory, the CPU uses buses and registers to read from or write to the required memory address.
 6. Execute: branch
 7. If the instruction is a branch/jump, the PC may be changed to a different address rather than just continuing with the next instruction.
-8. Common trap
+8. Common error
 9. "Execute" does not always mean "ALU does maths". Some instructions move data, access memory or change the PC.
 
 ### Fetch stage: the register sequence

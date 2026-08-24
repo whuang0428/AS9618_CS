@@ -186,8 +186,8 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "5 marks",
-    prompt: "A loop inputs numbers until -1 is entered. The total of the entered numbers must be output, but -1 must not be included. Explain the key input, output, constraint and common algorithm trap.",
-    answer: "The input is a sequence of numbers. The output is the total of the numbers entered before -1. The constraint/stopping condition is that -1 ends the input and is a sentinel value. The common trap is adding -1 to the total before checking whether it is the sentinel; the algorithm should check for -1 before including the value in the total.",
+    prompt: "A loop inputs numbers until -1 is entered. The total of the entered numbers must be output, but -1 must not be included. Explain the key input, output, constraint and common algorithm error.",
+    answer: "The input is a sequence of numbers. The output is the total of the numbers entered before -1. The constraint/stopping condition is that -1 ends the input and is a sentinel value. The common error is adding -1 to the total before checking whether it is the sentinel; the algorithm should check for -1 before including the value in the total.",
     marking: [
       { mark: "B1", text: "identifies sequence of numbers as input" },
       { mark: "B1", text: "identifies total before sentinel as output" },
@@ -384,7 +384,7 @@ function renderExamQuestions() {
           <div class="ms-panel" id="ms${index}">
             <p><strong>Indicative answer:</strong></p>
             <pre><code>${question.answer}</code></pre>
-            <h4>CIE-style mark scheme</h4>
+            <h4>Cambridge-style mark scheme</h4>
             <ul>
               ${question.marking.map((mark) => `<li><strong>${mark.mark}:</strong> ${mark.text}</li>`).join("")}
             </ul>

@@ -7,9 +7,9 @@
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Describe the purpose of **Encryption, hashing, and digital certificates** using accurate Cambridge AS Computer Science vocabulary.
-2. Apply the concept through a topic-specific calculation, trace, design choice or exam-style explanation.
-3. Identify and correct a likely misconception about this knowledge point.
+1. Identify the threats, controls or security properties involved in **Encryption, hashing, and digital certificates**.
+2. Explain how a named control reduces a stated risk.
+3. Recommend controls for a scenario and state any relevant limitation.
 
 ## Key Vocabulary
 English first, Chinese support:
@@ -19,12 +19,12 @@ English first, Chinese support:
 ## Warm-Up Hook
 Ask: If the school password is `Password123`, is the threat the hacker or our optimism? Use the answer to separate threat, vulnerability and control.
 
-Lesson-specific focus question: What would go wrong if a student confused **Encryption, hashing, and digital certificates** with a neighbouring syllabus idea?
+Focus question: Which feature distinguishes **Encryption, hashing, and digital certificates** from the most closely related syllabus concept?
 
 ## Guided Explanation
 Build a risk chain: asset, threat, vulnerability, impact and control. For Encryption, hashing, and digital certificates, classify whether the control protects confidentiality, integrity, availability or authenticity. Finish with a short scenario so students choose a proportionate safeguard.
 
-Topic-specific teaching move: keep the explanation anchored to **Encryption, hashing, and digital certificates**. Students must produce one clear sentence that names the mechanism, one example that uses it, and one exam trap connected to it.
+Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
 Suggested timing:
 - 0-5 min: warm-up and prediction.
@@ -36,30 +36,30 @@ Suggested timing:
 ## Board Plan / Teacher Talk Track
 Left: asset and threat. Middle: risk chain. Right: control mapped to CIA/authenticity.
 
-Teacher line to reuse: "A correct keyword starts the answer; the explanation earns the mark."
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** A website stores passwords and sends payment data. Decide where hashing, encryption and a digital certificate are used. The worked example must explicitly use **Encryption, hashing, and digital certificates**, not a generic example from the wider unit.
+**Problem:** A website stores passwords and sends payment data. Decide where hashing, encryption and a digital certificate are used.
 
 **Worked answer / marking focus:** Hash stored passwords; encrypt payment data in transit; use a digital certificate to support authentication of the website and secure HTTPS communication.
 
 
 
 ## Student Task
-Students create a three-column table: protection method, what it protects, what it does not protect. Their final answer must include the phrase **Encryption, hashing, and digital certificates** and one short Chinese support note explaining the hardest word.
+Students create a three-column table: protection method, what it protects, what it does not protect.
 
 ## Mini-Quiz
-1. State one precise definition connected to **Encryption, hashing, and digital certificates**.
-2. Complete one calculation, trace, SQL clause, diagram label or scenario explanation from the lesson.
-3. Write one sentence that uses "therefore" to link the concept to a consequence.
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
 Complete this sentence in English:
-"The key point about **Encryption, hashing, and digital certificates** is..., and a common mistake is..."
+"One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
-- Create three flashcards: one definition, one worked example, one common trap.
-- Answer one 4-mark question about **Encryption, hashing, and digital certificates** using the structure: point, explanation, context, consequence.
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **Encryption, hashing, and digital certificates**. Follow its command word and apply each point to the stated context.
 
 ## Marking Notes
 Award credit for:
@@ -69,8 +69,8 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups. For this lesson, make students contrast that mistake with the exact idea of **encryption, hashing, and digital certificates**.
-Correction prompt: "Show the mechanism, not just the label."
+Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 ## Stage 2 syllabus completion
 

@@ -265,7 +265,7 @@ function setupArtefactChooser() {
     output.innerHTML = `
       <p><strong>Best artefact:</strong> ${escapeHtml(item.artefact)}</p>
       <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
-      <p><strong>Exam trap:</strong> ${escapeHtml(item.warning)}</p>
+      <p><strong>Common error:</strong> ${escapeHtml(item.warning)}</p>
     `;
   };
   document.querySelector("#artefactBtn").addEventListener("click", render);

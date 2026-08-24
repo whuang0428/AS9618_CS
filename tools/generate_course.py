@@ -340,13 +340,138 @@ def category_for(section: str, topic: str) -> str:
     return "review"
 
 
+def display_topic(topic: str) -> str:
+    """Return the formal learner-facing title without changing stable filenames."""
+    return topic.replace(
+        "Character sets: ASCII, Unicode, and why emojis are not magic",
+        "Character sets: ASCII, Unicode and emoji representation",
+    ).replace(
+        "Pipelining and why faster is not always simpler",
+        "Pipelining and factors that limit performance",
+    )
+
+
+def learning_objectives(section: str, topic: str) -> list[str]:
+    """Create measurable, syllabus-aligned objectives for each lesson category."""
+    category = category_for(section, topic)
+    focus = display_topic(topic)
+    objectives = {
+        "number_representation": [
+            f"Represent and convert values using the conventions relevant to **{focus}**.",
+            "Show each stage of a calculation and give the result in the required representation and unit.",
+            "Identify an incorrect method and explain how it changes the result.",
+        ],
+        "media_representation": [
+            f"Describe how data is represented in **{focus}**.",
+            "Calculate a storage requirement from the stated parameters and units.",
+            "Explain how changing one parameter affects quality and storage requirements.",
+        ],
+        "compression": [
+            f"Describe the method or choice involved in **{focus}**.",
+            "Apply the method to a given data set and show each stage of the result.",
+            "Explain a limitation or suitability decision using the stated context.",
+        ],
+        "networking": [
+            f"Define and distinguish the network concepts in **{focus}**.",
+            "Explain how the relevant devices, addressing or protocols support communication.",
+            "Apply the concepts to a network scenario and justify a suitable choice.",
+        ],
+        "hardware": [
+            f"Identify the components and functions relevant to **{focus}**.",
+            "Explain how data is input, processed, stored or output in a stated system.",
+            "Recommend suitable hardware using criteria from the scenario.",
+        ],
+        "control_hardware": [
+            f"Identify the sensor, processor and output components involved in **{focus}**.",
+            "Describe the sequence from input data to a control action.",
+            "Apply the control process to a stated scenario and explain its limitation.",
+        ],
+        "logic": [
+            f"Use the logic conventions relevant to **{focus}**.",
+            "Construct or complete a Boolean expression, circuit or truth table.",
+            "Check intermediate values and correct an inaccurate result.",
+        ],
+        "processor": [
+            f"Identify the processor components or operations involved in **{focus}**.",
+            "Describe the sequence of data, address and control transfers.",
+            "Explain the effect of the relevant architecture or performance factor.",
+        ],
+        "system_software": [
+            f"Describe the system-software functions involved in **{focus}**.",
+            "Explain how the software manages a stated resource or task.",
+            "Recommend and justify suitable software for a given scenario.",
+        ],
+        "translator": [
+            f"Distinguish the translation processes involved in **{focus}**.",
+            "Describe the input, processing and output of each relevant translator or stage.",
+            "Select and justify a suitable translation approach for a stated use.",
+        ],
+        "security": [
+            f"Identify the threats, controls or security properties involved in **{focus}**.",
+            "Explain how a named control reduces a stated risk.",
+            "Recommend controls for a scenario and state any relevant limitation.",
+        ],
+        "ethics": [
+            f"Identify the stakeholders and issues involved in **{focus}**.",
+            "Explain consequences using evidence from the stated scenario.",
+            "Evaluate competing considerations and reach a supported conclusion.",
+        ],
+        "database": [
+            f"Define and apply the database concepts involved in **{focus}**.",
+            "Use precise relational terminology when describing data and relationships.",
+            "Identify and correct an unsuitable database design or explanation.",
+        ],
+        "sql": [
+            f"Use the SQL clauses relevant to **{focus}**.",
+            "Construct a query that returns or changes only the required data.",
+            "Identify and correct a syntax or logic error in a given statement.",
+        ],
+        "algorithm": [
+            f"Apply the algorithmic technique involved in **{focus}**.",
+            "Write or trace Cambridge pseudocode using appropriate constructs and identifiers.",
+            "Explain how the algorithm meets the stated inputs, outputs and constraints.",
+        ],
+        "data_structure": [
+            f"Select and declare a suitable structure for **{focus}**.",
+            "Access, update or traverse the structure using Cambridge pseudocode.",
+            "Justify the structure using the requirements of the stated data.",
+        ],
+        "file_data": [
+            f"Describe the file organisation or operations involved in **{focus}**.",
+            "Write Cambridge pseudocode that opens, processes and closes a file correctly.",
+            "Identify and correct an inappropriate file mode or processing step.",
+        ],
+        "adt": [
+            f"Define the access rule and operations involved in **{focus}**.",
+            "Trace the structure after a sequence of valid operations.",
+            "Explain how overflow and underflow are detected and handled.",
+        ],
+        "programming": [
+            f"Use the programming construct involved in **{focus}**.",
+            "Write and trace Cambridge pseudocode for normal and boundary cases.",
+            "Identify and correct an error in control flow, data use or notation.",
+        ],
+        "software_development": [
+            f"Describe the development activity involved in **{focus}**.",
+            "Apply the activity to a stated client requirement or system.",
+            "Explain how its output supports a later development or testing activity.",
+        ],
+        "review": [
+            f"Select the relevant concepts and command words for **{focus}**.",
+            "Complete a timed response using the required calculation, notation or explanation structure.",
+            "Use a mark scheme to identify omissions and produce an improved answer.",
+        ],
+    }
+    return objectives[category]
+
+
 def topic_overrides(topic: str) -> dict[str, str]:
     t = topic.lower()
     if "bits, bytes" in t:
         return {
             "worked_problem": "A small icon uses 2048 bits. Convert this into bytes, nibbles and KiB where appropriate. Then explain why confusing bit and byte would make a file-size answer eight times wrong.",
             "worked_answer": "`2048 bits / 8 = 256 bytes`; `2048 bits / 4 = 512 nibbles`; `256 bytes = 0.25 KiB` if using 1024 bytes per KiB. Mark the unit conversion and the explanation that 1 byte = 8 bits.",
-            "student_task": "Students build a storage ladder from bit -> nibble -> byte -> KiB -> MiB, then create two exam traps: one using decimal place-value thinking and one confusing bits with bytes.",
+            "student_task": "Students build a storage ladder from bit to nibble, byte, KiB and MiB, then correct one example that uses decimal place-value thinking and one that confuses bits with bytes.",
         }
     if "binary place value" in t:
         return {
@@ -482,12 +607,12 @@ def topic_profile(section: str, topic: str, no: int) -> dict[str, str]:
     t = topic.lower()
     profiles: dict[str, dict[str, str]] = {
         "number_representation": {
-            "warmup": f"Write `{no * 7 % 256:08b}` on the board and ask: Is this a number, a colour value, a character code, or just eight dramatic zeros and ones? Let students argue before revealing that representation gives the bits meaning.",
+            "warmup": f"Write `{no * 7 % 256:08b}` on the board. Ask whether it represents a number, colour value or character code. Establish that the representation rule gives the bit pattern its meaning.",
             "guided": f"Start with place value in denary, then rebuild the same idea in base 2 or base 16. Model one conversion slowly, annotate every carry/grouping step, then remove the scaffolding and let students predict the next step. Finish by connecting {topic} to file sizes, memory addresses, or exam calculation marks.",
             "board": "Left: place-value columns. Middle: worked conversion or binary operation. Right: exam warnings: show working, label base, check range.",
             "worked_problem": "Convert a small value between denary, binary and hexadecimal, then state whether the answer fits in 8 bits.",
             "worked_answer": "Award the method before the final number: place values or 4-bit hex groups must be visible. The final line must include the base, for example `10110110₂ = B6₁₆`.",
-            "student_task": "Give each pair three cards: a denary value, a binary value and a hex value. They must match them, explain the method, then design one trap card that looks plausible but is wrong.",
+            "student_task": "Give each pair three cards: a denary value, a binary value and a hexadecimal value. Students match the equivalent values, explain the conversion method, then correct one plausible but inaccurate conversion.",
             "misconception": "Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.",
         },
         "media_representation": {
@@ -500,7 +625,7 @@ def topic_profile(section: str, topic: str, no: int) -> dict[str, str]:
             "misconception": "Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it.",
         },
         "compression": {
-            "warmup": "Write `AAAAAABBBBCCCCCCCC` and ask students to compress it faster than a tired messaging app. Then show a random-looking string and ask why the same trick struggles.",
+            "warmup": "Write `AAAAAABBBBCCCCCCCC` and ask students to suggest a shorter representation. Then show a string with few repeated characters and ask why the same method is less effective.",
             "guided": f"Begin with repeated data, then formalise why {topic} reduces storage. Compare the original and compressed forms, calculate a compression ratio, and discuss when the technique helps or harms. End by linking the choice to images, sound, backups or web transfer.",
             "board": "Left: original data. Middle: compressed representation and ratio. Right: lossless/lossy decision table.",
             "worked_problem": "Compress a short run of repeated characters and calculate the number of saved characters or bytes.",
@@ -527,7 +652,7 @@ def topic_profile(section: str, topic: str, no: int) -> dict[str, str]:
             "misconception": "Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need.",
         },
         "control_hardware": {
-            "warmup": "Ask: How does a washing machine know it is being dramatic, not just wet? Lead students to sensors, data input, decisions and actuators.",
+            "warmup": "Ask how a washing machine detects the current conditions and decides when to change its operation. Lead students to sensors, data input, processing and actuators.",
             "guided": "Build a control loop: sensor reads a physical quantity, processor compares it with a rule, actuator changes the environment, then the sensor reads again. Keep the loop visible and ask where errors could enter.",
             "board": "Left: physical condition. Middle: sensor -> processor -> actuator loop. Right: error and safety checks.",
             "worked_problem": "Design a control system for a greenhouse fan using temperature readings.",
@@ -545,7 +670,7 @@ def topic_profile(section: str, topic: str, no: int) -> dict[str, str]:
             "misconception": "Students often use everyday 'or' instead of logical OR. Correction: OR is true when at least one input is true unless XOR is specified.",
         },
         "processor": {
-            "warmup": "Ask students to act as registers passing one instruction around the room. If the Program Counter forgets its job, the whole class becomes a very expensive paperweight.",
+            "warmup": "Give students the roles of named registers and ask them to pass an instruction through the fetch stage in the correct order. Use any incorrect transfer to clarify each register's function.",
             "guided": f"Follow one instruction through the processor. Identify each register or bus only when it does work in the story. Then connect the mechanism to {topic}: what changes, what improves, and what limitation remains?",
             "board": "Left: instruction or interrupt scenario. Middle: CPU/register/bus sequence. Right: performance or tracing notes.",
             "worked_problem": "Trace one fetch-decode-execute cycle and name the role of two registers.",
@@ -564,7 +689,7 @@ def topic_profile(section: str, topic: str, no: int) -> dict[str, str]:
         },
         "translator": {
             "warmup": "Write a tiny high-level statement and a made-up machine-code-looking line. Ask: Which one would a human prefer, and which one would the processor accept without complaining?",
-            "guided": "Move from source code to executable behaviour. Compare compiler, interpreter and assembler by when translation happens, what output is produced, and how errors are reported. Use one syntax error to show why translation is not magic.",
+            "guided": "Move from source code to executable behaviour. Compare compiler, interpreter and assembler by when translation happens, what output is produced, and how errors are reported. Use one syntax error to show how translation diagnostics are produced.",
             "board": "Left: source code. Middle: translation pathway. Right: compiler/interpreter/assembler comparison.",
             "worked_problem": "Choose a suitable translator for distributing a finished program and justify the choice.",
             "worked_answer": "Compiler is usually suitable for distribution because it produces object/executable code and can run without source code; interpreter is useful during development for line-by-line diagnostics.",
@@ -617,7 +742,7 @@ def topic_profile(section: str, topic: str, no: int) -> dict[str, str]:
             "misconception": "Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.",
         },
         "data_structure": {
-            "warmup": "Ask: Would you store a class register as 28 separate variables? Let the class enjoy the horror for three seconds, then introduce structure.",
+            "warmup": "Ask students to compare storing a class register in 28 separate variables with storing the values in a suitable data structure. Use the comparison to introduce organisation and access.",
             "guided": f"Move from single values to grouped data. For {topic}, show declaration, access, update and traversal. Then connect the structure to a realistic problem where separate variables would be fragile.",
             "board": "Left: data model. Middle: declaration/access pattern. Right: common boundary or indexing error.",
             "worked_problem": "Declare an appropriate data structure and write pseudocode to read, update, search or count values.",
@@ -626,7 +751,7 @@ def topic_profile(section: str, topic: str, no: int) -> dict[str, str]:
             "misconception": "Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.",
         },
         "file_data": {
-            "warmup": "Ask: If the program forgets everything when it closes, is it a program or a very confident goldfish? Then introduce files as persistent storage.",
+            "warmup": "Ask what happens to data held only in variables when a program closes. Use the answer to introduce files as persistent storage.",
             "guided": f"Show the lifecycle of file data: open, read or write, process, close. For {topic}, distinguish the stored text from the variables used while processing it. Include one failure case such as missing file or malformed line.",
             "board": "Left: file contents. Middle: read/write pseudocode. Right: validation and close-file reminders.",
             "worked_problem": "Read records from a text file, process a value, and write a result or updated line.",
@@ -635,7 +760,7 @@ def topic_profile(section: str, topic: str, no: int) -> dict[str, str]:
             "misconception": "Students often treat files like arrays already in memory. Correction: file data must be read into variables before processing.",
         },
         "adt": {
-            "warmup": "Ask who should be served first: the last student who joined the queue or the first. If anyone says last, quietly move them to the stack lesson.",
+            "warmup": "Ask which student should be served first in a queue and which item is removed first from a stack. Use the contrast to introduce FIFO and LIFO access rules.",
             "guided": f"Introduce the rule of access before implementation. For {topic}, model operations with cards: push/pop or enqueue/dequeue. Then write pseudocode that respects overflow and underflow checks.",
             "board": "Left: ADT rule. Middle: operation trace. Right: overflow/underflow checks.",
             "worked_problem": "Trace a sequence of stack or queue operations and state the final contents.",
@@ -644,7 +769,7 @@ def topic_profile(section: str, topic: str, no: int) -> dict[str, str]:
             "misconception": "Students often describe stacks and queues as just arrays. Correction: the defining feature is the access rule, not the storage implementation.",
         },
         "programming": {
-            "warmup": "Show a short code fragment with one tiny bug and ask students to find it before the program develops confidence. The point is not syntax hunting; it is reasoning about state.",
+            "warmup": "Show a short code fragment containing one error and ask students to identify its effect on the program state. Emphasise reasoning about values and control flow.",
             "guided": f"For {topic}, begin with the purpose of the construct, then show Cambridge pseudocode, then compare Java only as a runnable support example. Trace variable values after each key line and identify what test data would expose errors.",
             "board": "Left: construct purpose. Middle: Cambridge pseudocode. Right: Java comparison and trace.",
             "worked_problem": "Write a program fragment using the construct from the lesson and trace it with one normal and one boundary test case.",
@@ -653,8 +778,8 @@ def topic_profile(section: str, topic: str, no: int) -> dict[str, str]:
             "misconception": "Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.",
         },
         "software_development": {
-            "warmup": "Ask: If a client says 'make it user-friendly', should we start coding or start asking better questions? Requirements first; keyboard heroics later.",
-            "guided": f"Place {topic} inside the development lifecycle. Identify the artefact produced at this stage, who uses it, and what can go wrong if it is weak. Connect the stage to testing and maintenance, not as a poster but as a feedback loop.",
+            "warmup": "Ask whether development should begin from the request 'make it user-friendly' or from questions that make the requirement measurable. Establish that requirements must be analysed before implementation.",
+            "guided": f"Place {topic} inside the development lifecycle. Identify the artefact produced at this stage, who uses it, and what can go wrong if it is incomplete. Connect the stage to testing and maintenance through explicit feedback paths.",
             "board": "Left: lifecycle stage. Middle: document or activity produced. Right: risk if skipped.",
             "worked_problem": "Given a small client scenario, identify suitable requirements, design evidence, tests or maintenance actions.",
             "worked_answer": "Credit answers that are measurable and scenario-specific. Vague requirements such as 'easy to use' need success criteria to earn strong marks.",
@@ -662,7 +787,7 @@ def topic_profile(section: str, topic: str, no: int) -> dict[str, str]:
             "misconception": "Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.",
         },
         "review": {
-            "warmup": f"Put three deliberately mixed questions on the board and ask students to identify the topic before answering. The first skill in a review lesson is knowing which mental toolbox to open.",
+            "warmup": f"Put three mixed questions on the board and ask students to identify the relevant syllabus topic, command word and required response form before answering.",
             "guided": f"Use {topic} to connect ideas across sections. Start with retrieval, then compare two similar concepts, then answer one timed question. Finish with correction: students rewrite a weak answer into a mark-worthy one.",
             "board": "Left: retrieval grid. Middle: mixed exam question. Right: mark scheme phrases and correction targets.",
             "worked_problem": "Answer a mixed Cambridge-style question, then annotate which words in the answer earn marks.",
@@ -674,23 +799,13 @@ def topic_profile(section: str, topic: str, no: int) -> dict[str, str]:
     profile = profiles[category].copy()
     profile.update(topic_overrides(topic))
     profile["category"] = category
-    topic_focus = topic.lower()
     profile["warmup"] = (
         f"{profile['warmup']}\n\n"
-        f"Lesson-specific focus question: What would go wrong if a student confused **{topic}** with a neighbouring syllabus idea?"
+        f"Focus question: Which feature distinguishes **{display_topic(topic)}** from the most closely related syllabus concept?"
     )
     profile["guided"] = (
         f"{profile['guided']}\n\n"
-        f"Topic-specific teaching move: keep the explanation anchored to **{topic}**. Students must produce one clear sentence that names the mechanism, one example that uses it, and one exam trap connected to it."
-    )
-    profile["worked_problem"] = (
-        f"{profile['worked_problem']} The worked example must explicitly use **{topic}**, not a generic example from the wider unit."
-    )
-    profile["student_task"] = (
-        f"{profile['student_task']} Their final answer must include the phrase **{topic}** and one short Chinese support note explaining the hardest word."
-    )
-    profile["misconception"] = (
-        f"{profile['misconception']} For this lesson, make students contrast that mistake with the exact idea of **{topic_focus}**."
+        "Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion."
     )
     return profile
 
@@ -813,18 +928,20 @@ if (mark >= 50) {
 def lesson_markdown(lesson: dict[str, str | int]) -> str:
     no = int(lesson["no"])
     section = str(lesson["section"])
-    topic = str(lesson["topic"])
+    source_topic = str(lesson["topic"])
+    topic = display_topic(source_topic)
     paper = str(lesson["paper"])
     ref = str(lesson["ref"])
     vocab = ", ".join(VOCAB.get(section, VOCAB["O"])[:5])
     is_programming = section in {"9", "10", "11", "12", "R2"}
-    profile = topic_profile(section, topic, no)
+    profile = topic_profile(section, source_topic, no)
+    objectives = learning_objectives(section, source_topic)
     java_note = (
         "\n> Java is used only as a supporting implementation language. Cambridge pseudocode remains the exam answer format.\n\n"
         if is_programming
         else ""
     )
-    pseudo_block = pseudocode_example(section, topic)
+    pseudo_block = pseudocode_example(section, source_topic)
     return f"""# Lesson {no:03d}: {topic}
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
@@ -834,9 +951,9 @@ def lesson_markdown(lesson: dict[str, str | int]) -> str:
 **Assessment rhythm:** {assessment_tag(no)}
 {java_note}## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Describe the purpose of **{topic}** using accurate Cambridge AS Computer Science vocabulary.
-2. Apply the concept through a topic-specific calculation, trace, design choice or exam-style explanation.
-3. Identify and correct a likely misconception about this knowledge point.
+1. {objectives[0]}
+2. {objectives[1]}
+3. {objectives[2]}
 
 ## Key Vocabulary
 English first, Chinese support:
@@ -859,7 +976,7 @@ Suggested timing:
 ## Board Plan / Teacher Talk Track
 {profile["board"]}
 
-Teacher line to reuse: "A correct keyword starts the answer; the explanation earns the mark."
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
 **Problem:** {profile["worked_problem"]}
@@ -872,17 +989,17 @@ Teacher line to reuse: "A correct keyword starts the answer; the explanation ear
 {profile["student_task"]}
 
 ## Mini-Quiz
-1. State one precise definition connected to **{topic}**.
-2. Complete one calculation, trace, SQL clause, diagram label or scenario explanation from the lesson.
-3. Write one sentence that uses "therefore" to link the concept to a consequence.
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
 Complete this sentence in English:  
-"The key point about **{topic}** is..., and a common mistake is..."
+"One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
-- Create three flashcards: one definition, one worked example, one common trap.
-- Answer one 4-mark question about **{topic}** using the structure: point, explanation, context, consequence.
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **{topic}**. Follow its command word and apply each point to the stated context.
 
 ## Marking Notes
 Award credit for:
@@ -892,8 +1009,8 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: {profile["misconception"]}  
-Correction prompt: "Show the mechanism, not just the label."
+Misconception: {profile["misconception"]}
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
 """
 
 
@@ -1031,13 +1148,13 @@ def quizzes(lessons: list[dict[str, str | int]]) -> str:
                 1. Define one key term from {section_ref(section)}.
                 2. Give one example and one non-example related to **{topic}**.
                 3. Explain why a vague answer such as "it is faster" would not earn full marks.
-                4. Write one exam-quality sentence using "therefore".
+                4. Write one examination-style sentence that links a cause to its effect.
 
                 ### Answer Key / Mark Scheme
                 1. Award 1 mark for an accurate definition and 1 mark for correct technical vocabulary.
                 2. Award 1 mark for a valid example and 1 mark for a valid non-example.
                 3. Award 2 marks for explaining that "faster" needs context, measurable comparison, and a consequence.
-                4. Award 2 marks for a complete sentence that links cause to effect using "therefore".
+                4. Award one mark for the relevant cause and one mark for the linked effect.
 
                 Do not award generic claims without explanation.
                 """
@@ -1164,9 +1281,9 @@ def pseudocode_java_guide() -> str:
         | Condition loop | `WHILE found = FALSE DO ... ENDWHILE` | `while (!found) { ... }` |
         | Array access | `names[1]` or syllabus-approved indexing as taught | `names[0]` in standard Java zero-based arrays |
 
-        ## Teacher Rule
+        ## Exam Rule
 
-        When students write Paper 2 answers, mark for algorithmic clarity and Cambridge notation. Do not let Java punctuation become the main event. Semicolons are not a personality trait.
+        In Paper 2, write algorithms clearly using Cambridge pseudocode. Java punctuation is not part of the required answer format.
 
         ## Conversion Routine
 
@@ -1218,21 +1335,12 @@ def main() -> None:
     for old_lesson in LESSONS_DIR.glob("*.md"):
         old_lesson.unlink()
 
-    write_file(ROOT / "README.md", readme(lessons))
-    write_file(ROOT / "course-map.md", course_map(lessons))
-    write_file(ASSESSMENTS_DIR / "quizzes.md", quizzes(lessons))
-    write_file(ASSESSMENTS_DIR / "monthly-assessments.md", monthly_assessments())
-    write_file(ASSESSMENTS_DIR / "stage-reviews.md", stage_reviews())
-    write_file(RESOURCES_DIR / "glossary.md", glossary())
-    write_file(RESOURCES_DIR / "pseudocode-java-guide.md", pseudocode_java_guide())
-    write_file(RESOURCES_DIR / "common-misconceptions.md", misconceptions())
-
     for lesson in lessons:
         no = int(lesson["no"])
         slug = slugify(str(lesson["topic"]))
         write_file(LESSONS_DIR / f"{no:03d}-{slug}.md", lesson_markdown(lesson))
 
-    print(f"Generated {len(lessons)} lesson files and course resources.")
+    print(f"Generated {len(lessons)} base lesson files. Run the Stage 2 and Stage 10 applicators afterwards.")
 
 
 if __name__ == "__main__":

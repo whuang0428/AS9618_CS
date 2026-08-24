@@ -82,7 +82,7 @@ const examples = {
       "Table/entity: Student.",
       "Field/attribute: StudentID, Name or Form.",
       "Record/tuple: one complete row such as S0234, Amira Chen, 12A.",
-      "Exam trap: a field is a column; a record is a row. Do not swap them.",
+      "Common error: a field is a column; a record is a row. Do not swap them.",
     ],
   },
 };
@@ -406,7 +406,7 @@ function renderExamQuestions() {
           <button class="ms-toggle" type="button" data-ms="ms${index}">Show MS</button>
           <div class="ms-panel" id="ms${index}">
             <p><strong>Indicative answer:</strong> ${question.answer}</p>
-            <h4>CIE-style mark scheme</h4>
+            <h4>Cambridge-style mark scheme</h4>
             <ul>
               ${question.marking.map((mark) => `<li><strong>${mark.mark}:</strong> ${mark.text}</li>`).join("")}
             </ul>

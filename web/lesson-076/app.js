@@ -365,7 +365,7 @@ function renderExam() {
       <p>${item.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <h4>CIE-style mark scheme</h4>
+        <h4>Cambridge-style mark scheme</h4>
         <p><strong>Indicative answer:</strong> ${item.answer}</p>
         <ul>${item.marking.map((mark) => `<li><strong>${mark.mark}</strong> ${mark.text}</li>`).join("")}</ul>
       </div>

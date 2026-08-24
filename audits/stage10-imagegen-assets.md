@@ -84,7 +84,7 @@ All 782 explanations use original infographics generated with the built-in Image
 | 023 | `routing` | `stage10-lesson-023-routing.jpg` | Routers: forwarding between networks | Human semantic review pending |
 | 023 | `wireless` | `stage10-lesson-023-wireless.jpg` | Wireless access points: joining wireless devices | Human semantic review pending |
 | 024 | `cloud` | `stage10-lesson-024-cloud.jpg` | Cloud services | Human semantic review pending |
-| 024 | `compare` | `stage10-lesson-024-compare.jpg` | Compare by access, not by buzzword | Human semantic review pending |
+| 024 | `compare` | `stage10-lesson-024-compare.jpg` | Compare networks by access and control | Human semantic review pending |
 | 024 | `networks` | `stage10-lesson-024-networks.jpg` | Internet, intranet and extranet | Human semantic review pending |
 | 025 | `calculation` | `stage10-lesson-025-calculation.jpg` | Simple transfer time calculation | Human semantic review pending |
 | 025 | `concepts` | `stage10-lesson-025-concepts.jpg` | Core performance terms | Human semantic review pending |
@@ -127,7 +127,7 @@ All 782 explanations use original infographics generated with the built-in Image
 | 037 | `diagram` | `stage10-lesson-037-diagram.jpg` | Gate sequence creates the circuit structure | Human semantic review pending |
 | 037 | `parse` | `stage10-lesson-037-parse.jpg` | Parse requirement wording into logic | Human semantic review pending |
 | 038 | `categories` | `stage10-lesson-038-categories.jpg` | Classify the hardware before choosing it | Human semantic review pending |
-| 038 | `criteria` | `stage10-lesson-038-criteria.jpg` | Choose using criteria, not vibes | Human semantic review pending |
+| 038 | `criteria` | `stage10-lesson-038-criteria.jpg` | Choose hardware using stated criteria | Human semantic review pending |
 | 038 | `users` | `stage10-lesson-038-users.jpg` | Different users value different trade-offs | Human semantic review pending |
 | 039 | `environment` | `stage10-lesson-039-environment.jpg` | Environmental factors change hardware suitability | Human semantic review pending |
 | 039 | `mitigation` | `stage10-lesson-039-mitigation.jpg` | Mitigation must match the risk | Human semantic review pending |
@@ -181,7 +181,7 @@ All 782 explanations use original infographics generated with the built-in Image
 | 050 | `timing` | `stage10-lesson-050-timing.jpg` | Throughput improves, but latency still exists | Human semantic review pending |
 | 051 | `clinic` | `stage10-lesson-051-clinic.jpg` | Turn vague into mark-worthy | Human semantic review pending |
 | 051 | `compare` | `stage10-lesson-051-compare.jpg` | Common compare traps | Human semantic review pending |
-| 051 | `map` | `stage10-lesson-051-map.jpg` | The Section 4 mental toolbox | Human semantic review pending |
+| 051 | `map` | `stage10-lesson-051-map.jpg` | Section 4 concept map | Human semantic review pending |
 | 051 | `retrieval` | `stage10-lesson-051-retrieval.jpg` | Retrieval grid: say the role, not just the name | Human semantic review pending |
 | 051 | `timed` | `stage10-lesson-051-timed.jpg` | 8-minute mixed Section 4 response | Human semantic review pending |
 | 052 | `categories` | `stage10-lesson-052-categories.jpg` | System software versus application software | Human semantic review pending |

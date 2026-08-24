@@ -240,7 +240,7 @@ function setupHook() {
     a: "Not quite. Those are the inputs, not the running totals.",
     b: "Correct. Total becomes 3, then 8, then 10.",
     c: "Close, but this misses the final update after adding 2.",
-    d: "No. Trace values follow execution order, not dramatic countdown order.",
+    d: "No. Trace values follow execution order, not numerical countdown order.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {

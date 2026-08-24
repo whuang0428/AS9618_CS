@@ -10,9 +10,9 @@
 
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Describe the purpose of **Scope, lifetime, and local/global variables** using accurate Cambridge AS Computer Science vocabulary.
-2. Apply the concept through a topic-specific calculation, trace, design choice or exam-style explanation.
-3. Identify and correct a likely misconception about this knowledge point.
+1. Use the programming construct involved in **Scope, lifetime, and local/global variables**.
+2. Write and trace Cambridge pseudocode for normal and boundary cases.
+3. Identify and correct an error in control flow, data use or notation.
 
 ## Key Vocabulary
 English first, Chinese support:
@@ -20,14 +20,14 @@ English first, Chinese support:
 - procedure 过程, function 函数, parameter 参数, scope 作用域, debugging 调试
 
 ## Warm-Up Hook
-Show a short code fragment with one tiny bug and ask students to find it before the program develops confidence. The point is not syntax hunting; it is reasoning about state.
+Show a short code fragment containing one error and ask students to identify its effect on the program state. Emphasise reasoning about values and control flow.
 
-Lesson-specific focus question: What would go wrong if a student confused **Scope, lifetime, and local/global variables** with a neighbouring syllabus idea?
+Focus question: Which feature distinguishes **Scope, lifetime, and local/global variables** from the most closely related syllabus concept?
 
 ## Guided Explanation
 For Scope, lifetime, and local/global variables, begin with the purpose of the construct, then show Cambridge pseudocode, then compare Java only as a runnable support example. Trace variable values after each key line and identify what test data would expose errors.
 
-Topic-specific teaching move: keep the explanation anchored to **Scope, lifetime, and local/global variables**. Students must produce one clear sentence that names the mechanism, one example that uses it, and one exam trap connected to it.
+Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
 Suggested timing:
 - 0-5 min: warm-up and prediction.
@@ -39,10 +39,10 @@ Suggested timing:
 ## Board Plan / Teacher Talk Track
 Left: construct purpose. Middle: Cambridge pseudocode. Right: Java comparison and trace.
 
-Teacher line to reuse: "A correct keyword starts the answer; the explanation earns the mark."
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Write a program fragment using the construct from the lesson and trace it with one normal and one boundary test case. The worked example must explicitly use **Scope, lifetime, and local/global variables**, not a generic example from the wider unit.
+**Problem:** Write a program fragment using the construct from the lesson and trace it with one normal and one boundary test case.
 
 **Worked answer / marking focus:** Credit correct control flow, meaningful identifiers, correct parameter or variable use, and test data that actually exercises the construct.
 
@@ -67,20 +67,20 @@ if (mark >= 50) {
 
 
 ## Student Task
-Students write Cambridge pseudocode first, then produce a Java support version. They circle every place where Java syntax must not leak into the exam answer. Their final answer must include the phrase **Scope, lifetime, and local/global variables** and one short Chinese support note explaining the hardest word.
+Students write Cambridge pseudocode first, then produce a Java support version. They circle every place where Java syntax must not leak into the exam answer.
 
 ## Mini-Quiz
-1. State one precise definition connected to **Scope, lifetime, and local/global variables**.
-2. Complete one calculation, trace, SQL clause, diagram label or scenario explanation from the lesson.
-3. Write one sentence that uses "therefore" to link the concept to a consequence.
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
 Complete this sentence in English:  
-"The key point about **Scope, lifetime, and local/global variables** is..., and a common mistake is..."
+"One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
-- Create three flashcards: one definition, one worked example, one common trap.
-- Answer one 4-mark question about **Scope, lifetime, and local/global variables** using the structure: point, explanation, context, consequence.
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **Scope, lifetime, and local/global variables**. Follow its command word and apply each point to the stated context.
 
 ## Marking Notes
 Award credit for:
@@ -90,8 +90,8 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. For this lesson, make students contrast that mistake with the exact idea of **scope, lifetime, and local/global variables**.  
-Correction prompt: "Show the mechanism, not just the label."
+Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
@@ -201,7 +201,7 @@ Correction prompt: "Show the mechanism, not just the label."
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-shadowing.jpg`
 
-1. Same name trap
+1. Same-name variable error
 2. Trace this carefully
 3. Score <- 50
 4. PROCEDURE ChangeScore()
@@ -211,5 +211,5 @@ Correction prompt: "Show the mechanism, not just the label."
 8. CALL ChangeScore()
 9. Exam explanation
 10. If the procedure's Score is local, the procedure outputs 80 , but the main program still outputs the global 50 .
-11. The name is the same; the storage location is not. Same label, different locker.
+11. The identifier is the same, but the local and global variables occupy different storage locations.
 <!-- stage10-explanations:end -->

@@ -10,9 +10,9 @@
 
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Describe the purpose of **Testing, implementation, maintenance, and evaluation** using accurate Cambridge AS Computer Science vocabulary.
-2. Apply the concept through a topic-specific calculation, trace, design choice or exam-style explanation.
-3. Identify and correct a likely misconception about this knowledge point.
+1. Describe the development activity involved in **Testing, implementation, maintenance, and evaluation**.
+2. Apply the activity to a stated client requirement or system.
+3. Explain how its output supports a later development or testing activity.
 
 ## Key Vocabulary
 English first, Chinese support:
@@ -20,14 +20,14 @@ English first, Chinese support:
 - lifecycle 生命周期, requirements 需求, testing 测试, maintenance 维护
 
 ## Warm-Up Hook
-Ask: If a client says 'make it user-friendly', should we start coding or start asking better questions? Requirements first; keyboard heroics later.
+Ask whether development should begin from the request 'make it user-friendly' or from questions that make the requirement measurable. Establish that requirements must be analysed before implementation.
 
-Lesson-specific focus question: What would go wrong if a student confused **Testing, implementation, maintenance, and evaluation** with a neighbouring syllabus idea?
+Focus question: Which feature distinguishes **Testing, implementation, maintenance, and evaluation** from the most closely related syllabus concept?
 
 ## Guided Explanation
-Place Testing, implementation, maintenance, and evaluation inside the development lifecycle. Identify the artefact produced at this stage, who uses it, and what can go wrong if it is weak. Connect the stage to testing and maintenance, not as a poster but as a feedback loop.
+Place Testing, implementation, maintenance, and evaluation inside the development lifecycle. Identify the artefact produced at this stage, who uses it, and what can go wrong if it is incomplete. Connect the stage to testing and maintenance through explicit feedback paths.
 
-Topic-specific teaching move: keep the explanation anchored to **Testing, implementation, maintenance, and evaluation**. Students must produce one clear sentence that names the mechanism, one example that uses it, and one exam trap connected to it.
+Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
 Suggested timing:
 - 0-5 min: warm-up and prediction.
@@ -39,10 +39,10 @@ Suggested timing:
 ## Board Plan / Teacher Talk Track
 Left: lifecycle stage. Middle: document or activity produced. Right: risk if skipped.
 
-Teacher line to reuse: "A correct keyword starts the answer; the explanation earns the mark."
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Given a small client scenario, identify suitable requirements, design evidence, tests or maintenance actions. The worked example must explicitly use **Testing, implementation, maintenance, and evaluation**, not a generic example from the wider unit.
+**Problem:** Given a small client scenario, identify suitable requirements, design evidence, tests or maintenance actions.
 
 **Worked answer / marking focus:** Credit answers that are measurable and scenario-specific. Vague requirements such as 'easy to use' need success criteria to earn strong marks.
 
@@ -67,20 +67,20 @@ if (mark >= 50) {
 
 
 ## Student Task
-Students turn a vague client request into three testable requirements and one acceptance test. Their final answer must include the phrase **Testing, implementation, maintenance, and evaluation** and one short Chinese support note explaining the hardest word.
+Students turn a vague client request into three testable requirements and one acceptance test.
 
 ## Mini-Quiz
-1. State one precise definition connected to **Testing, implementation, maintenance, and evaluation**.
-2. Complete one calculation, trace, SQL clause, diagram label or scenario explanation from the lesson.
-3. Write one sentence that uses "therefore" to link the concept to a consequence.
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
 Complete this sentence in English:
-"The key point about **Testing, implementation, maintenance, and evaluation** is..., and a common mistake is..."
+"One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
-- Create three flashcards: one definition, one worked example, one common trap.
-- Answer one 4-mark question about **Testing, implementation, maintenance, and evaluation** using the structure: point, explanation, context, consequence.
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **Testing, implementation, maintenance, and evaluation**. Follow its command word and apply each point to the stated context.
 
 ## Marking Notes
 Award credit for:
@@ -90,8 +90,8 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages. For this lesson, make students contrast that mistake with the exact idea of **testing, implementation, maintenance, and evaluation**.
-Correction prompt: "Show the mechanism, not just the label."
+Misconception: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 ## Stage 2 syllabus completion
 

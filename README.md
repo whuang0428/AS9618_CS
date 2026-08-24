@@ -90,6 +90,7 @@ Stage 10 now covers all 782 maintained explanation targets across all 150 lesson
 ## Verification
 
 ```bash
+node scripts/verify-cie-wording.mjs
 node scripts/verify-academic-theme.mjs
 node scripts/verify-student-navigation.mjs
 node scripts/verify-educational-visuals.mjs

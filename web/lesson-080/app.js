@@ -66,7 +66,7 @@ const examples = {
     ],
   },
   phone: {
-    title: "Example 3: Phone number trap",
+    title: "Example 3: Phone-number data type error",
     problem: "A designer chooses Integer for PhoneNumber.",
     steps: [
       "This is weak because phone numbers are not normally used for arithmetic.",
@@ -409,7 +409,7 @@ function renderExamQuestions() {
           <button class="ms-toggle" type="button" data-ms="ms${index}">Show MS</button>
           <div class="ms-panel" id="ms${index}">
             <p><strong>Indicative answer:</strong> ${question.answer}</p>
-            <h4>CIE-style mark scheme</h4>
+            <h4>Cambridge-style mark scheme</h4>
             <ul>
               ${question.marking.map((mark) => `<li><strong>${mark.mark}:</strong> ${mark.text}</li>`).join("")}
             </ul>

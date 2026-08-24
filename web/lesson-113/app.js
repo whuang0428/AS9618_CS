@@ -264,7 +264,7 @@ function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
     integer: "INTEGER would treat 007 as a number and usually lose the leading zero.",
-    real: "REAL is for decimal values. A spy ID does not need fractional arithmetic, despite the dramatic branding.",
+    real: "REAL is for decimal values. A spy ID does not need fractional arithmetic, because no fractional arithmetic is required.",
     string: "Correct. STRING preserves the exact characters, including leading zeroes.",
     boolean: "BOOLEAN can only store TRUE/FALSE, so it cannot store 007.",
   };

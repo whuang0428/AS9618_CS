@@ -42,10 +42,10 @@
         <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 001 | 45 minutes | Informal questioning</p>
-            <h2>Raw bits are tiny. Exams make them measurable.</h2>
+            <h2>Bit patterns acquire meaning from their representation.</h2>
             <p>
               This lesson builds the storage unit ladder, compares decimal and binary prefixes,
-              and practises Cambridge-style conversion explanations without losing marks to lonely units.
+              and practises Cambridge-style conversion explanations with the correct units shown at each stage.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
               <div>
@@ -74,7 +74,7 @@
             <p>Exam marks often depend on choosing the right unit system before doing arithmetic.</p>
           </article>
           <article class="trap-card">
-            <h3>Common trap</h3>
+            <h3>Common error</h3>
             <p>同一串 bit 可以代表数值、字符、颜色或指令；单位只告诉你数据大小，不自动说明含义。</p>
           </article>
         </section>
@@ -82,7 +82,7 @@
         <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Is `00000111` a number, a colour, or just eight dramatic digits?</h2>
+            <h2>What does the bit pattern `00000111` represent?</h2>
           </div>
           <div class="hook-grid">
             <button class="choice-card" type="button" data-hook="number">It is a number</button>
@@ -91,13 +91,13 @@
             <button class="choice-card" type="button" data-hook="context">It depends on context</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Pick an answer. The bits are waiting politely.
+            Select the answer that accounts for the representation context.
           </div>
         </section>
 
         <section id="delivery-04" class="guidance-grid compact" aria-label="Warm-up guidance" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <article class="trap-card">
-            <h3>Common trap</h3>
+            <h3>Common error</h3>
             <p>Do not treat binary digits as decoration. Every bit can matter once a representation is chosen.</p>
           </article>
         </section>
@@ -207,8 +207,8 @@
             <p>The syllabus explicitly expects the contrast between kibi/kilo, mebi/mega, gibi/giga and tebi/tera.</p>
           </article>
           <article class="trap-card">
-            <h3>Common trap</h3>
-            <p>decimal prefixes 按 1000 进位；binary prefixes 按 1024 进位。MiB is not just a fancy spelling of MB.</p>
+            <h3>Common error</h3>
+            <p>decimal prefixes 按 1000 进位；binary prefixes 按 1024 进位。MiB and MB use different magnitude prefixes.</p>
           </article>
         </section>
 
@@ -251,7 +251,7 @@
 
         <section id="delivery-11" class="guidance-grid compact" aria-label="Worked example guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <article class="trap-card">
-            <h3>Common trap</h3>
+            <h3>Common error</h3>
             <p>Do not guess MB/MiB from memory. Read the prefix, choose 1000 or 1024, then calculate.</p>
           </article>
         </section>
@@ -269,7 +269,7 @@
         <section id="delivery-13" class="panel mistake-panel" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="delivery-13">
           <div class="section-title">
             <p class="eyebrow">Debug the mistakes</p>
-            <h2>Find the trap, fix the answer</h2>
+            <h2>Identify and correct the error</h2>
           </div>
           <div class="mistake-grid">
             <div>
@@ -295,7 +295,7 @@
           <div class="exam-grid" id="examGrid"></div>
           <p class="source-note">
             These are original past-paper-style questions, not copied Cambridge past paper text.
-            Use the buttons under each question to expand the CIE-style mark scheme.
+            Use the buttons under each question to expand the Cambridge-style mark scheme.
           </p>
         </section>
 
@@ -353,7 +353,7 @@
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>What must survive until the exam?</h2>
+            <h2>Summary of required knowledge</h2>
           </div>
           <div class="summary-grid">
             <div><strong>1</strong><span>bit = 0 or 1; nibble = 4 bits; byte = 8 bits</span></div>
@@ -369,7 +369,7 @@
         <section class="panel" id="homework" data-delivery-role="AFTER_CLASS" data-classroom-activity="HOMEWORK" data-delivery-group="homework">
           <div class="section-title">
             <p class="eyebrow">Homework</p>
-            <h2>Clear tasks, not vague revision</h2>
+            <h2>Homework tasks</h2>
           </div>
           <ol class="homework-list">
             <li>Create a two-column vocabulary table for bit, nibble, byte, kB, KiB, MB, MiB, GB, GiB, TB, TiB.</li>

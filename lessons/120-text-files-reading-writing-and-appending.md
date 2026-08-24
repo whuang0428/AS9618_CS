@@ -10,9 +10,9 @@
 
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Describe the purpose of **Text files: reading, writing, and appending** using accurate Cambridge AS Computer Science vocabulary.
-2. Apply the concept through a topic-specific calculation, trace, design choice or exam-style explanation.
-3. Identify and correct a likely misconception about this knowledge point.
+1. Describe the file organisation or operations involved in **Text files: reading, writing, and appending**.
+2. Write Cambridge pseudocode that opens, processes and closes a file correctly.
+3. Identify and correct an inappropriate file mode or processing step.
 
 ## Key Vocabulary
 English first, Chinese support:
@@ -20,14 +20,14 @@ English first, Chinese support:
 - array 数组, record 记录, file 文件, stack 栈, queue 队列
 
 ## Warm-Up Hook
-Ask: If the program forgets everything when it closes, is it a program or a very confident goldfish? Then introduce files as persistent storage.
+Ask what happens to data held only in variables when a program closes. Use the answer to introduce files as persistent storage.
 
-Lesson-specific focus question: What would go wrong if a student confused **Text files: reading, writing, and appending** with a neighbouring syllabus idea?
+Focus question: Which feature distinguishes **Text files: reading, writing, and appending** from the most closely related syllabus concept?
 
 ## Guided Explanation
 Show the lifecycle of file data: open, read or write, process, close. For Text files: reading, writing, and appending, distinguish the stored text from the variables used while processing it. Include one failure case such as missing file or malformed line.
 
-Topic-specific teaching move: keep the explanation anchored to **Text files: reading, writing, and appending**. Students must produce one clear sentence that names the mechanism, one example that uses it, and one exam trap connected to it.
+Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
 Suggested timing:
 - 0-5 min: warm-up and prediction.
@@ -39,10 +39,10 @@ Suggested timing:
 ## Board Plan / Teacher Talk Track
 Left: file contents. Middle: read/write pseudocode. Right: validation and close-file reminders.
 
-Teacher line to reuse: "A correct keyword starts the answer; the explanation earns the mark."
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Read records from a text file, process a value, and write a result or updated line. The worked example must explicitly use **Text files: reading, writing, and appending**, not a generic example from the wider unit.
+**Problem:** Read records from a text file, process a value, and write a result or updated line.
 
 **Worked answer / marking focus:** Credit correct open mode, loop through records, parsing or assignment, and closing the file. For CSV-style data, fields must be separated consistently.
 
@@ -67,20 +67,20 @@ try (Scanner file = new Scanner(new File("Scores.txt"))) {
 
 
 ## Student Task
-Students design a small text file format for scores or stock items, then write pseudocode to read one record. Their final answer must include the phrase **Text files: reading, writing, and appending** and one short Chinese support note explaining the hardest word.
+Students design a small text file format for scores or stock items, then write pseudocode to read one record.
 
 ## Mini-Quiz
-1. State one precise definition connected to **Text files: reading, writing, and appending**.
-2. Complete one calculation, trace, SQL clause, diagram label or scenario explanation from the lesson.
-3. Write one sentence that uses "therefore" to link the concept to a consequence.
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
 Complete this sentence in English:  
-"The key point about **Text files: reading, writing, and appending** is..., and a common mistake is..."
+"One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
-- Create three flashcards: one definition, one worked example, one common trap.
-- Answer one 4-mark question about **Text files: reading, writing, and appending** using the structure: point, explanation, context, consequence.
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **Text files: reading, writing, and appending**. Follow its command word and apply each point to the stated context.
 
 ## Marking Notes
 Award credit for:
@@ -90,8 +90,8 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often treat files like arrays already in memory. Correction: file data must be read into variables before processing. For this lesson, make students contrast that mistake with the exact idea of **text files: reading, writing, and appending**.  
-Correction prompt: "Show the mechanism, not just the label."
+Misconception: Students often treat files like arrays already in memory. Correction: file data must be read into variables before processing.
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

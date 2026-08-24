@@ -211,7 +211,7 @@ function setupHook() {
     depends: "Correct. More cores help only when the software/workload can use parallel processing.",
     yes: "Not always. A single-threaded task may use only one core heavily.",
     cache: "No. Cache usually helps by reducing slower memory access; removing it is not the secret sauce.",
-    word: "No. A 1-bit word length would be a very dramatic way to make life worse.",
+    word: "No. A 1-bit word length would be insufficient for useful processor operations.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -231,7 +231,7 @@ function setupSimulator() {
     const item = scenarioMap[select.value];
     result.textContent = item.result;
     method.innerHTML = `<strong>Reasoning:</strong> ${item.method}`;
-    trap.innerHTML = `<strong>Common trap:</strong> ${item.trap}`;
+    trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
   select.addEventListener("change", simulate);
   document.querySelector("#simulateBtn").addEventListener("click", simulate);
@@ -327,7 +327,7 @@ function renderExamQuestions() {
       <button type="button" class="ms-toggle" data-answer="ms-${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
         <p><strong>Indicative answer:</strong> ${question.answer}</p>
-        <h4>CIE-style mark scheme</h4>
+        <h4>Cambridge-style mark scheme</h4>
         <ul>${question.marking.map((item) => `<li><strong>${item.mark}</strong> ${item.text}</li>`).join("")}</ul>
       </div>
     </article>

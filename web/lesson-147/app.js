@@ -265,7 +265,7 @@ function setupStructureTool() {
     output.innerHTML = `
       <p><strong>Structure:</strong> ${escapeHtml(item.structure)}</p>
       <p><strong>Reason:</strong> ${escapeHtml(item.reason)}</p>
-      <p><strong>Trap:</strong> ${escapeHtml(item.trap)}</p>
+      <p><strong>Common error:</strong> ${escapeHtml(item.trap)}</p>
     `;
   };
   document.querySelector("#structureBtn").addEventListener("click", render);

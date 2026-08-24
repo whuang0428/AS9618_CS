@@ -249,7 +249,7 @@ function setupMatcher() {
     const item = scenarioMap[scenario.value];
     result.textContent = item.result;
     reason.innerHTML = `<strong>Reasoning:</strong> ${item.reason}`;
-    trap.innerHTML = `<strong>Common trap:</strong> ${item.trap}`;
+    trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
   scenario.addEventListener("change", match);
   document.querySelector("#matchBtn").addEventListener("click", match);
@@ -363,7 +363,7 @@ function renderExam() {
       <p>${item.prompt}</p>
       <button class="ms-toggle" type="button" data-ms="${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
-        <h4>CIE-style mark scheme</h4>
+        <h4>Cambridge-style mark scheme</h4>
         <p><strong>Indicative answer:</strong> ${item.answer}</p>
         <ul>${item.marking.map((mark) => `<li><strong>${mark.mark}</strong> ${mark.text}</li>`).join("")}</ul>
       </div>

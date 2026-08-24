@@ -229,7 +229,7 @@ function setupMapper() {
     const item = componentMap[select.value];
     result.textContent = item.role;
     sentence.innerHTML = `<strong>Exam-safe sentence:</strong> ${item.sentence}`;
-    trap.innerHTML = `<strong>Common trap:</strong> ${item.trap}`;
+    trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
   select.addEventListener("change", mapComponent);
   document.querySelector("#mapBtn").addEventListener("click", mapComponent);
@@ -325,7 +325,7 @@ function renderExamQuestions() {
       <button type="button" class="ms-toggle" data-answer="ms-${index}">Show MS</button>
       <div class="ms-panel" id="ms-${index}">
         <p><strong>Indicative answer:</strong> ${question.answer}</p>
-        <h4>CIE-style mark scheme</h4>
+        <h4>Cambridge-style mark scheme</h4>
         <ul>${question.marking.map((item) => `<li><strong>${item.mark}</strong> ${item.text}</li>`).join("")}</ul>
       </div>
     </article>

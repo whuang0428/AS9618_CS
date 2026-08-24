@@ -33,7 +33,7 @@
         <a href="#lifetime">Lifetime</a>
         <a href="#local">Local variables</a>
         <a href="#global">Global variables</a>
-        <a href="#shadowing">Same name trap</a>
+        <a href="#shadowing">Same-name variable error</a>
         <a href="#compare">Compare</a>
         <a href="#java">Java support</a>
         <a href="#simulator">Trace simulator</a>
@@ -76,7 +76,7 @@
             <p>Paper 2 trace questions often use local and global variables to test whether candidates follow the actual data, not just the names.</p>
           </article>
           <article class="trap-card">
-            <h3>Common trap</h3>
+            <h3>Common error</h3>
             <p>A local variable with the same name as a global variable does not automatically change the global variable.</p>
           </article>
         </section>
@@ -257,7 +257,7 @@ ENDPROCEDURE</code></pre>
 
         <section class="panel" id="shadowing" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="shadowing">
           <div class="section-title">
-            <p class="eyebrow">Same name trap</p>
+            <p class="eyebrow">Same-name variable error</p>
             <h2>A local variable can hide a global variable with the same name</h2>
           </div>
           <div class="code-grid">
@@ -276,7 +276,7 @@ OUTPUT Score</code></pre>
             <article>
               <h3>Exam explanation</h3>
               <p>If the procedure's <code>Score</code> is local, the procedure outputs <code>80</code>, but the main program still outputs the global <code>50</code>.</p>
-              <p>The name is the same; the storage location is not. Same label, different locker.</p>
+              <p>The identifier is the same, but the local and global variables occupy different storage locations.</p>
             </article>
           </div>
         </section>
@@ -289,7 +289,7 @@ OUTPUT Score</code></pre>
             <figcaption class="explanation-sr-only">A local variable can hide a global variable with the same name: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Same name trap</li><li><strong>Lesson fact:</strong> Trace this carefully</li><li><strong>Lesson fact:</strong> Score &lt;- 50</li><li><strong>Lesson fact:</strong> PROCEDURE ChangeScore()</li><li><strong>Lesson fact:</strong> Score &lt;- 80</li><li><strong>Lesson fact:</strong> OUTPUT Score</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> CALL ChangeScore()</li><li><strong>Lesson fact:</strong> Exam explanation</li><li><strong>Lesson fact:</strong> If the procedure's Score is local, the procedure outputs 80 , but the main program still outputs the global 50 .</li><li><strong>Lesson fact:</strong> The name is the same; the storage location is not. Same label, different locker.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Same-name variable error</li><li><strong>Lesson fact:</strong> Trace this carefully</li><li><strong>Lesson fact:</strong> Score &lt;- 50</li><li><strong>Lesson fact:</strong> PROCEDURE ChangeScore()</li><li><strong>Lesson fact:</strong> Score &lt;- 80</li><li><strong>Lesson fact:</strong> OUTPUT Score</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> CALL ChangeScore()</li><li><strong>Lesson fact:</strong> Exam explanation</li><li><strong>Lesson fact:</strong> If the procedure's Score is local, the procedure outputs 80 , but the main program still outputs the global 50 .</li><li><strong>Lesson fact:</strong> The identifier is the same, but the local and global variables occupy different storage locations.</li></ol>
 
           </div>
         </section>

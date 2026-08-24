@@ -7,9 +7,9 @@
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Describe the purpose of **Hexadecimal notation and binary grouping** using accurate Cambridge AS Computer Science vocabulary.
-2. Apply the concept through a topic-specific calculation, trace, design choice or exam-style explanation.
-3. Identify and correct a likely misconception about this knowledge point.
+1. Represent and convert values using the conventions relevant to **Hexadecimal notation and binary grouping**.
+2. Show each stage of a calculation and give the result in the required representation and unit.
+3. Identify an incorrect method and explain how it changes the result.
 
 ## Key Vocabulary
 English first, Chinese support:
@@ -17,14 +17,14 @@ English first, Chinese support:
 - binary 二进制, denary 十进制, hexadecimal 十六进制, overflow 溢出, compression 压缩
 
 ## Warm-Up Hook
-Write `00010101` on the board and ask: Is this a number, a colour value, a character code, or just eight dramatic zeros and ones? Let students argue before revealing that representation gives the bits meaning.
+Write `00010101` on the board. Ask whether it represents a number, colour value or character code. Establish that the representation rule gives the bit pattern its meaning.
 
-Lesson-specific focus question: What would go wrong if a student confused **Hexadecimal notation and binary grouping** with a neighbouring syllabus idea?
+Focus question: Which feature distinguishes **Hexadecimal notation and binary grouping** from the most closely related syllabus concept?
 
 ## Guided Explanation
 Start with place value in denary, then rebuild the same idea in base 2 or base 16. Model one conversion slowly, annotate every carry/grouping step, then remove the scaffolding and let students predict the next step. Finish by connecting Hexadecimal notation and binary grouping to file sizes, memory addresses, or exam calculation marks.
 
-Topic-specific teaching move: keep the explanation anchored to **Hexadecimal notation and binary grouping**. Students must produce one clear sentence that names the mechanism, one example that uses it, and one exam trap connected to it.
+Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
 Suggested timing:
 - 0-5 min: warm-up and prediction.
@@ -36,30 +36,30 @@ Suggested timing:
 ## Board Plan / Teacher Talk Track
 Left: place-value columns. Middle: worked conversion or binary operation. Right: exam warnings: show working, label base, check range.
 
-Teacher line to reuse: "A correct keyword starts the answer; the explanation earns the mark."
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Convert `1101 0110₂` to hexadecimal and explain why grouping into four bits works. The worked example must explicitly use **Hexadecimal notation and binary grouping**, not a generic example from the wider unit.
+**Problem:** Convert `1101 0110₂` to hexadecimal and explain why grouping into four bits works.
 
 **Worked answer / marking focus:** `1101₂ = D₁₆` and `0110₂ = 6₁₆`, so the value is `D6₁₆`. Award marks for 4-bit grouping from the right.
 
 
 
 ## Student Task
-Students match binary nibbles to hex digits, then decode a short memory-address style value. Their final answer must include the phrase **Hexadecimal notation and binary grouping** and one short Chinese support note explaining the hardest word.
+Students match binary nibbles to hex digits, then decode a short memory-address style value.
 
 ## Mini-Quiz
-1. State one precise definition connected to **Hexadecimal notation and binary grouping**.
-2. Complete one calculation, trace, SQL clause, diagram label or scenario explanation from the lesson.
-3. Write one sentence that uses "therefore" to link the concept to a consequence.
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
 Complete this sentence in English:  
-"The key point about **Hexadecimal notation and binary grouping** is..., and a common mistake is..."
+"One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
-- Create three flashcards: one definition, one worked example, one common trap.
-- Answer one 4-mark question about **Hexadecimal notation and binary grouping** using the structure: point, explanation, context, consequence.
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **Hexadecimal notation and binary grouping**. Follow its command word and apply each point to the stated context.
 
 ## Marking Notes
 Award credit for:
@@ -69,8 +69,8 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes. For this lesson, make students contrast that mistake with the exact idea of **hexadecimal notation and binary grouping**.  
-Correction prompt: "Show the mechanism, not just the label."
+Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

@@ -77,7 +77,7 @@ const examples = {
   },
   judge: {
     title: "Example 4: Judgement answer",
-    problem: "Explain why normalisation is useful but not magic.",
+    problem: "Explain why normalisation is useful for reducing redundancy and update anomalies.",
     steps: [
       "Useful: it reduces unnecessary redundancy and the risk of anomalies.",
       "Useful: it can improve data integrity by storing each fact in one appropriate place.",
@@ -276,7 +276,7 @@ function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
     update: "Correct. This is an update anomaly risk caused by repeated data.",
-    binary: "No. The storage design is messy, not magically base-2.",
+    binary: "No. The storage design is messy, unrelated to binary representation.",
     faster: "No. Normalisation is mainly about integrity and redundancy, not automatic speed.",
     format: "No. Font drama is not a database anomaly.",
   };
@@ -410,7 +410,7 @@ function renderExamQuestions() {
           <button class="ms-toggle" type="button" data-ms="ms${index}">Show MS</button>
           <div class="ms-panel" id="ms${index}">
             <p><strong>Indicative answer:</strong> ${question.answer}</p>
-            <h4>CIE-style mark scheme</h4>
+            <h4>Cambridge-style mark scheme</h4>
             <ul>
               ${question.marking.map((mark) => `<li><strong>${mark.mark}:</strong> ${mark.text}</li>`).join("")}
             </ul>

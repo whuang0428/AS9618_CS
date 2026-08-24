@@ -196,7 +196,7 @@ function setupHook() {
     sequence: "Sequence. These steps happen once in order.",
     selection: "Selection. IF chooses whether the toasting step happens.",
     iteration: "Iteration. The same steps repeat for each order.",
-    bad: "Trap. Importance is not a reason for WHILE. Repetition needs a real stopping rule.",
+    bad: "Common error: importance is not a reason for using WHILE. Repetition needs a real stopping rule.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {

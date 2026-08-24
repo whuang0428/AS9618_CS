@@ -10,9 +10,9 @@
 
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Describe the purpose of **Parameters: by value and by reference in pseudocode** using accurate Cambridge AS Computer Science vocabulary.
-2. Apply the concept through a topic-specific calculation, trace, design choice or exam-style explanation.
-3. Identify and correct a likely misconception about this knowledge point.
+1. Use the programming construct involved in **Parameters: by value and by reference in pseudocode**.
+2. Write and trace Cambridge pseudocode for normal and boundary cases.
+3. Identify and correct an error in control flow, data use or notation.
 
 ## Key Vocabulary
 English first, Chinese support:
@@ -20,14 +20,14 @@ English first, Chinese support:
 - procedure 过程, function 函数, parameter 参数, scope 作用域, debugging 调试
 
 ## Warm-Up Hook
-Show a short code fragment with one tiny bug and ask students to find it before the program develops confidence. The point is not syntax hunting; it is reasoning about state.
+Show a short code fragment containing one error and ask students to identify its effect on the program state. Emphasise reasoning about values and control flow.
 
-Lesson-specific focus question: What would go wrong if a student confused **Parameters: by value and by reference in pseudocode** with a neighbouring syllabus idea?
+Focus question: Which feature distinguishes **Parameters: by value and by reference in pseudocode** from the most closely related syllabus concept?
 
 ## Guided Explanation
 For Parameters: by value and by reference in pseudocode, begin with the purpose of the construct, then show Cambridge pseudocode, then compare Java only as a runnable support example. Trace variable values after each key line and identify what test data would expose errors.
 
-Topic-specific teaching move: keep the explanation anchored to **Parameters: by value and by reference in pseudocode**. Students must produce one clear sentence that names the mechanism, one example that uses it, and one exam trap connected to it.
+Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
 Suggested timing:
 - 0-5 min: warm-up and prediction.
@@ -39,10 +39,10 @@ Suggested timing:
 ## Board Plan / Teacher Talk Track
 Left: construct purpose. Middle: Cambridge pseudocode. Right: Java comparison and trace.
 
-Teacher line to reuse: "A correct keyword starts the answer; the explanation earns the mark."
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Trace a procedure call where one parameter is passed by value and another by reference. The worked example must explicitly use **Parameters: by value and by reference in pseudocode**, not a generic example from the wider unit.
+**Problem:** Trace a procedure call where one parameter is passed by value and another by reference.
 
 **Worked answer / marking focus:** Changes to the by-value parameter do not affect the original variable; changes to the by-reference parameter do. Credit clear before/after values.
 
@@ -60,20 +60,20 @@ ENDPROCEDURE
 
 
 ## Student Task
-Students annotate two calls with arrows showing whether data is copied or linked back to the caller. Their final answer must include the phrase **Parameters: by value and by reference in pseudocode** and one short Chinese support note explaining the hardest word.
+Students annotate two calls with arrows showing whether data is copied or linked back to the caller.
 
 ## Mini-Quiz
-1. State one precise definition connected to **Parameters: by value and by reference in pseudocode**.
-2. Complete one calculation, trace, SQL clause, diagram label or scenario explanation from the lesson.
-3. Write one sentence that uses "therefore" to link the concept to a consequence.
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
 Complete this sentence in English:  
-"The key point about **Parameters: by value and by reference in pseudocode** is..., and a common mistake is..."
+"One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
-- Create three flashcards: one definition, one worked example, one common trap.
-- Answer one 4-mark question about **Parameters: by value and by reference in pseudocode** using the structure: point, explanation, context, consequence.
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **Parameters: by value and by reference in pseudocode**. Follow its command word and apply each point to the stated context.
 
 ## Marking Notes
 Award credit for:
@@ -83,8 +83,8 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression. For this lesson, make students contrast that mistake with the exact idea of **parameters: by value and by reference in pseudocode**.  
-Correction prompt: "Show the mechanism, not just the label."
+Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

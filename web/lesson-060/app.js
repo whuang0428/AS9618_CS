@@ -237,7 +237,7 @@ function setupSimulator() {
     const item = scenarioMap[select.value];
     result.textContent = item.result;
     method.innerHTML = `<strong>Reasoning:</strong> ${item.method}`;
-    trap.innerHTML = `<strong>Common trap:</strong> ${item.trap}`;
+    trap.innerHTML = `<strong>Common error:</strong> ${item.trap}`;
   }
   select.addEventListener("change", simulate);
   document.querySelector("#simulateBtn").addEventListener("click", simulate);
@@ -329,7 +329,7 @@ function renderExam() {
       <div class="ms-panel" id="ms${index}">
         <h4>Indicative answer</h4>
         <p>${question.answer}</p>
-        <h4>CIE-style mark scheme</h4>
+        <h4>Cambridge-style mark scheme</h4>
         <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
       </div>
     </article>

@@ -72,7 +72,7 @@
             <p>Cambridge-style mark schemes often credit the correct join condition separately from SELECT and FROM.</p>
           </article>
           <article class="trap-card">
-            <h3>Common trap</h3>
+            <h3>Common error</h3>
             <p><code>Student.StudentID = Book.BookID</code> looks tidy but is logically wrong. Join fields must represent the same item.</p>
           </article>
         </section>
@@ -81,7 +81,7 @@
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
             <h2>Which condition correctly links students to their loans?</h2>
-            <p>If a table relationship is a bridge, a wrong join is a bridge drawn in pencil over a lake. Dramatic, not useful.</p>
+            <p>If a table relationship is a bridge, a wrong join is a bridge drawn in pencil over a lake. The join path must follow the defined relationships.</p>
           </div>
           <div class="hook-grid">
             <button class="choice-card" type="button" data-hook="studentLoan">Student.StudentID = Loan.StudentID</button>

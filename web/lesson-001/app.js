@@ -323,7 +323,7 @@ function renderExamQuestions() {
       <p class="marks">[${question.marks}]</p>
       <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
       <div class="marking" id="${msId}">
-        <h4>CIE-style mark scheme</h4>
+        <h4>Cambridge-style mark scheme</h4>
         <p><strong>Expected answer:</strong> ${question.answer}</p>
         <ul class="ms-list">
           ${question.marking.map((point) => `<li><b>${point.mark}</b> ${point.text}</li>`).join("")}

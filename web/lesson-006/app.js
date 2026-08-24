@@ -221,7 +221,7 @@ function setupHook() {
       if (button.dataset.hook === "half") {
         feedback.textContent = "Correct. 0.1₂ means one half, because the first place after the binary point is 2⁻¹.";
       } else if (button.dataset.hook === "one-tenth") {
-        feedback.textContent = "That is the classic trap. In binary, 0.1₂ is not one tenth; it is 1/2.";
+        feedback.textContent = "That is a common error. In binary, 0.1₂ is not one tenth; it is 1/2.";
       } else {
         feedback.textContent = "The base label gives enough information here. Use the fractional place values.";
       }
@@ -360,7 +360,7 @@ function renderExamQuestions() {
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
-          <h4>CIE-style mark scheme</h4>
+          <h4>Cambridge-style mark scheme</h4>
           <p><strong>Answer:</strong> ${question.answer}</p>
           <ul>${question.marking.map((point) => `<li><strong>${point.mark}</strong> ${point.text}</li>`).join("")}</ul>
         </div>

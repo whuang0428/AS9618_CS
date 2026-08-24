@@ -7,9 +7,9 @@
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Describe the purpose of **Image file size calculations and metadata** using accurate Cambridge AS Computer Science vocabulary.
-2. Apply the concept through a topic-specific calculation, trace, design choice or exam-style explanation.
-3. Identify and correct a likely misconception about this knowledge point.
+1. Describe how data is represented in **Image file size calculations and metadata**.
+2. Calculate a storage requirement from the stated parameters and units.
+3. Explain how changing one parameter affects quality and storage requirements.
 
 ## Key Vocabulary
 English first, Chinese support:
@@ -19,12 +19,12 @@ English first, Chinese support:
 ## Warm-Up Hook
 Show a pixelated icon or describe a 3-second audio clip and ask: If the computer cannot see or hear, what exactly is it storing? The useful answer is not 'the picture'; it is numbers with rules.
 
-Lesson-specific focus question: What would go wrong if a student confused **Image file size calculations and metadata** with a neighbouring syllabus idea?
+Focus question: Which feature distinguishes **Image file size calculations and metadata** from the most closely related syllabus concept?
 
 ## Guided Explanation
 Move from human perception to stored data: identify the sample, pixel or character; define the metadata that describes it; calculate the storage requirement; then ask what quality is lost or gained when one parameter changes. Keep returning to the chain: representation rule -> stored bits -> user experience.
 
-Topic-specific teaching move: keep the explanation anchored to **Image file size calculations and metadata**. Students must produce one clear sentence that names the mechanism, one example that uses it, and one exam trap connected to it.
+Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
 Suggested timing:
 - 0-5 min: warm-up and prediction.
@@ -36,30 +36,30 @@ Suggested timing:
 ## Board Plan / Teacher Talk Track
 Left: physical media idea. Middle: formula or encoding table. Right: quality/storage trade-off sentence frames.
 
-Teacher line to reuse: "A correct keyword starts the answer; the explanation earns the mark."
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Calculate the size of a 100 by 80 pixel bitmap using 8-bit colour depth, ignoring metadata. The worked example must explicitly use **Image file size calculations and metadata**, not a generic example from the wider unit.
+**Problem:** Calculate the size of a 100 by 80 pixel bitmap using 8-bit colour depth, ignoring metadata.
 
 **Worked answer / marking focus:** `100 * 80 * 8 = 64 000 bits = 8000 bytes`. Credit dimensions, colour depth and bit-to-byte conversion.
 
 
 
 ## Student Task
-Students change one parameter at a time: width, height and colour depth. They predict which change doubles the file size. Their final answer must include the phrase **Image file size calculations and metadata** and one short Chinese support note explaining the hardest word.
+Students change one parameter at a time: width, height and colour depth. They predict which change doubles the file size.
 
 ## Mini-Quiz
-1. State one precise definition connected to **Image file size calculations and metadata**.
-2. Complete one calculation, trace, SQL clause, diagram label or scenario explanation from the lesson.
-3. Write one sentence that uses "therefore" to link the concept to a consequence.
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
 Complete this sentence in English:
-"The key point about **Image file size calculations and metadata** is..., and a common mistake is..."
+"One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
-- Create three flashcards: one definition, one worked example, one common trap.
-- Answer one 4-mark question about **Image file size calculations and metadata** using the structure: point, explanation, context, consequence.
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **Image file size calculations and metadata**. Follow its command word and apply each point to the stated context.
 
 ## Marking Notes
 Award credit for:
@@ -69,8 +69,8 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it. For this lesson, make students contrast that mistake with the exact idea of **image file size calculations and metadata**.
-Correction prompt: "Show the mechanism, not just the label."
+Misconception: Students often say 'higher quality is always better'. Correction: higher quality can be wasteful if storage, bandwidth or purpose does not justify it.
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 ## Stage 2 syllabus completion
 

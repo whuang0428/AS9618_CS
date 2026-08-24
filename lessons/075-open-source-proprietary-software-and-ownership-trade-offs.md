@@ -7,9 +7,9 @@
 **Assessment rhythm:** 5-minute quiz
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Describe the purpose of **Open source, proprietary software, and ownership trade-offs** using accurate Cambridge AS Computer Science vocabulary.
-2. Apply the concept through a topic-specific calculation, trace, design choice or exam-style explanation.
-3. Identify and correct a likely misconception about this knowledge point.
+1. Identify the stakeholders and issues involved in **Open source, proprietary software, and ownership trade-offs**.
+2. Explain consequences using evidence from the stated scenario.
+3. Evaluate competing considerations and reach a supported conclusion.
 
 ## Key Vocabulary
 English first, Chinese support:
@@ -19,12 +19,12 @@ English first, Chinese support:
 ## Warm-Up Hook
 Ask: Just because a system can collect the data, should it? If the first answer is 'depends', good: now we have an ethics lesson instead of a slogan contest.
 
-Lesson-specific focus question: What would go wrong if a student confused **Open source, proprietary software, and ownership trade-offs** with a neighbouring syllabus idea?
+Focus question: Which feature distinguishes **Open source, proprietary software, and ownership trade-offs** from the most closely related syllabus concept?
 
 ## Guided Explanation
 Frame Open source, proprietary software, and ownership trade-offs as a conflict between stakeholders. Identify benefits, harms, rights and responsibilities. Teach students to write balanced answers: one side, the other side, then a justified judgement.
 
-Topic-specific teaching move: keep the explanation anchored to **Open source, proprietary software, and ownership trade-offs**. Students must produce one clear sentence that names the mechanism, one example that uses it, and one exam trap connected to it.
+Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
 Suggested timing:
 - 0-5 min: warm-up and prediction.
@@ -36,30 +36,30 @@ Suggested timing:
 ## Board Plan / Teacher Talk Track
 Left: stakeholder map. Middle: benefit/risk evidence. Right: balanced evaluation paragraph.
 
-Teacher line to reuse: "A correct keyword starts the answer; the explanation earns the mark."
+Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Evaluate whether a school should use monitoring software on student laptops. The worked example must explicitly use **Open source, proprietary software, and ownership trade-offs**, not a generic example from the wider unit.
+**Problem:** Evaluate whether a school should use monitoring software on student laptops.
 
 **Worked answer / marking focus:** Credit balanced points: safeguarding and security benefits, privacy concerns, transparency, consent, proportionality and data retention.
 
 
 
 ## Student Task
-Students role-play two stakeholders and prepare one argument each, then write a neutral examiner-style conclusion. Their final answer must include the phrase **Open source, proprietary software, and ownership trade-offs** and one short Chinese support note explaining the hardest word.
+Students role-play two stakeholders and prepare one argument each, then write a neutral examiner-style conclusion.
 
 ## Mini-Quiz
-1. State one precise definition connected to **Open source, proprietary software, and ownership trade-offs**.
-2. Complete one calculation, trace, SQL clause, diagram label or scenario explanation from the lesson.
-3. Write one sentence that uses "therefore" to link the concept to a consequence.
+1. State one precise definition from this lesson.
+2. Apply the relevant method to one calculation, trace, query, diagram or scenario.
+3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
 Complete this sentence in English:
-"The key point about **Open source, proprietary software, and ownership trade-offs** is..., and a common mistake is..."
+"One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
-- Create three flashcards: one definition, one worked example, one common trap.
-- Answer one 4-mark question about **Open source, proprietary software, and ownership trade-offs** using the structure: point, explanation, context, consequence.
+- Create three flashcards: one definition, one worked example and one common error.
+- Answer one 4-mark question about **Open source, proprietary software, and ownership trade-offs**. Follow its command word and apply each point to the stated context.
 
 ## Marking Notes
 Award credit for:
@@ -69,8 +69,8 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement. For this lesson, make students contrast that mistake with the exact idea of **open source, proprietary software, and ownership trade-offs**.
-Correction prompt: "Show the mechanism, not just the label."
+Misconception: Students often write personal opinions only. Correction: ethics answers need stakeholders, evidence and balanced judgement.
+Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 ## Stage 2 syllabus completion
 
