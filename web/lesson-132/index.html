@@ -289,7 +289,7 @@ OUTPUT Score</code></pre>
             <figcaption class="explanation-sr-only">A local variable can hide a global variable with the same name: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Same-name variable error</li><li><strong>Lesson fact:</strong> Trace this carefully</li><li><strong>Lesson fact:</strong> Score &lt;- 50</li><li><strong>Lesson fact:</strong> PROCEDURE ChangeScore()</li><li><strong>Lesson fact:</strong> Score &lt;- 80</li><li><strong>Lesson fact:</strong> OUTPUT Score</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> CALL ChangeScore()</li><li><strong>Lesson fact:</strong> Exam explanation</li><li><strong>Lesson fact:</strong> If the procedure's Score is local, the procedure outputs 80 , but the main program still outputs the global 50 .</li><li><strong>Lesson fact:</strong> The identifier is the same, but the local and global variables occupy different storage locations.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Declare a global Score and set it to 50.</li><li><strong>Lesson fact:</strong> Inside ChangeScore, explicitly declare a separate local Score and set it to 80.</li><li><strong>Lesson fact:</strong> The local Score hides the global Score only inside the procedure.</li><li><strong>Lesson fact:</strong> The procedure outputs 80, while the main program later outputs the unchanged global 50.</li></ol>
 
           </div>
         </section>

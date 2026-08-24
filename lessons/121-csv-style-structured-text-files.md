@@ -171,15 +171,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-types.jpg`
 
-1. Text vs data types
-2. Incorrect comparison
-3. IF Fields[3] > 70 THEN
-4. OUTPUT Name
-5. This compares text unless conversion has happened.
-6. Correct pattern
-7. Mark <- STRING_TO_INTEGER(Fields[3])
-8. IF Mark > 70 THEN
-9. The numeric comparison now has a numeric value.
+1. CSV fields arrive as text.
+2. Close every IF example with ENDIF.
+3. Convert the mark field to INTEGER before comparing it numerically with 70.
+4. Structural closure and type conversion solve different problems.
 
 ### A structured file can still contain bad lines
 

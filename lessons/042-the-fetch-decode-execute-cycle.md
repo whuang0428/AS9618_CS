@@ -91,14 +91,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** process
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-cycle-visual.jpg`
 
-1. Visual explanation
-2. Read left to right. The labels name what is held or transferred, so the register names are tied to a job rather than memorised as a list.
-3. 1. PC → MAR Copy the address of the next instruction into the MAR.
-4. 2. Memory read Send the address and a read signal; return the instruction to the MDR.
-5. 3. MDR → CIR Move the fetched instruction into the CIR and increment the PC.
-6. 4. Decode, execute, repeat The CU decodes; the CPU performs the instruction; the cycle starts again.
-7. Check the diagram: why is the instruction copied to the CIR before decoding?
-8. The CIR holds the current instruction so the control unit can decode its opcode and identify any operands or addresses needed for execution.
+1. Copy the next-instruction address from PC to MAR and read the instruction from memory into MDR.
+2. Move the fetched instruction from MDR to CIR.
+3. Increment PC independently so that PC points to the next instruction.
+4. PC does not feed CIR; only the instruction held in MDR is transferred to CIR.
 
 ### Decode and execute are not filler words
 

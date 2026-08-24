@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { pilotExplanations } from "./stage10-explanations-data.mjs";
+import { sourceFactOverrides } from "./stage10-semantic-source-overrides.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const registerPath = path.join(root, "audits", "stage10-explanation-target-register.csv");
@@ -132,7 +133,7 @@ for (const row of csvRows) {
   const html = fs.readFileSync(htmlPath, "utf8");
   const section = directSections(html).find((item) => item.id === targetId);
   if (!section) throw new Error(`Lesson ${lesson}: target ${targetId} is missing`);
-  const sourceFacts = sectionFacts(section.content, title);
+  const sourceFacts = sourceFactOverrides[`${lesson}/${targetId}`] ?? sectionFacts(section.content, title);
   if (!sourceFacts.length) throw new Error(`Lesson ${lesson}/${targetId}: no source facts found`);
   const job = {
     lesson,

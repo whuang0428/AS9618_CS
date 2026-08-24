@@ -138,18 +138,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style pseudocode
-3. Total <- 0
-4. FOR Count <- 1 TO 3
-5. INPUT Number
-6. Total <- Total + Number
-7. NEXT Count
-8. OUTPUT Total
-9. Java support only
-10. int total = 0;
-11. for (int count = 1; count <= 3; count++) {
-12. int number = input.nextInt();
+1. Initialise Total to zero before a three-iteration loop.
+2. Input one Number and add it to Total during each iteration.
+3. Output Total once after the loop has processed all three numbers.
+4. A Java support version must preserve the same input, accumulation and final output.
 
 ### A trace table records variables after each change
 

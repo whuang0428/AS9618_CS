@@ -207,7 +207,7 @@
             <figcaption class="explanation-sr-only">Throughput improves, but latency still exists: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Latency The time for one instruction to pass from fetch through decode to execute.</li><li><strong>Lesson fact:</strong> Throughput The number of instructions completed per unit time once the pipeline is full.</li><li><strong>Lesson fact:</strong> Fill The early cycles before every pipeline stage is occupied.</li><li><strong>Lesson fact:</strong> Drain The final cycles when no new instructions enter but existing ones finish.</li><li><strong>Lesson fact:</strong> Why this matters</li><li><strong>Lesson fact:</strong> Exam wording may ask &quot;why performance can improve&quot; rather than &quot;why every instruction is faster&quot;. Answer with throughput.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A three-stage pipeline processes each instruction through fetch, decode and execute exactly once.</li><li><strong>Lesson fact:</strong> For four instructions, cycles 1 and 2 fill the pipeline.</li><li><strong>Lesson fact:</strong> In cycles 3 and 4, different instructions occupy fetch, decode and execute concurrently.</li><li><strong>Lesson fact:</strong> Cycle 5 completes instruction 3 and decodes instruction 4; cycle 6 executes instruction 4.</li><li><strong>Lesson fact:</strong> Pipelining improves throughput after fill but does not remove the latency of one instruction.</li></ol>
 
           </div>
         </section>

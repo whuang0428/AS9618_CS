@@ -128,7 +128,7 @@
             <figcaption class="explanation-sr-only">IP address vs MAC address: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> IP address</li><li><strong>Lesson fact:</strong> MAC address</li><li><strong>Lesson fact:</strong> Main use</li><li><strong>Lesson fact:</strong> Logical address used to identify a device on a network and route packets between networks.</li><li><strong>Lesson fact:</strong> Hardware address used to identify a network interface on a local network.</li><li><strong>Lesson fact:</strong> Can change, for example when joining a different network or using DHCP.</li><li><strong>Lesson fact:</strong> Normally fixed to the network interface by the manufacturer, though it can sometimes be spoofed.</li><li><strong>Lesson fact:</strong> 192.168.1.24 or an IPv6 address.</li><li><strong>Lesson fact:</strong> 3C:52:82:AA:19:F0</li></ol>
+            <ol><li><strong>Lesson fact:</strong> IP and MAC addresses work together at different layers; they are not an either-or choice.</li><li><strong>Lesson fact:</strong> The destination IP identifies the endpoint for end-to-end packet delivery.</li><li><strong>Lesson fact:</strong> The destination MAC identifies the receiving interface for one local-link frame.</li><li><strong>Lesson fact:</strong> On a routed path, the frame normally targets the next-hop router MAC while the packet retains the remote destination IP.</li></ol>
 
           </div>
         </section>
@@ -247,7 +247,7 @@
             <figcaption class="explanation-sr-only">From a URL to a packet on the local link: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Visual explanation</li><li><strong>Lesson fact:</strong> These labels solve different problems. DNS resolves only the domain name; it does not return a web page or a MAC address.</li><li><strong>Lesson fact:</strong> URL Includes a scheme, domain name and path to a resource.</li><li><strong>Lesson fact:</strong> DNS Resolves the domain-name part to an IP address.</li><li><strong>Lesson fact:</strong> IP address Provides a logical network address used for routing.</li><li><strong>Lesson fact:</strong> MAC address Identifies a network interface for delivery on a local link.</li><li><strong>Lesson fact:</strong> Check the diagram: does DNS turn the whole URL into a MAC address?</li><li><strong>Lesson fact:</strong> No. DNS resolves the domain-name part to an IP address. MAC addressing is used separately on a local network link.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> DNS resolves a domain name to an IP address; it does not return a MAC address.</li><li><strong>Lesson fact:</strong> The network-layer packet header contains the destination IP address of the endpoint.</li><li><strong>Lesson fact:</strong> For one local hop, a link-layer frame contains the IP packet and a destination MAC address.</li><li><strong>Lesson fact:</strong> The destination IP and destination MAC belong to different encapsulation headers.</li></ol>
 
           </div>
         </section>

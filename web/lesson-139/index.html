@@ -157,7 +157,7 @@ UNTIL Valid = TRUE</code></pre>
             <figcaption class="explanation-sr-only">Validation checks whether data is acceptable for the program: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Validation</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN</li><li><strong>Lesson fact:</strong> Valid &lt;- TRUE</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Enter a mark from 0 to 100&quot;</li><li><strong>Lesson fact:</strong> Valid &lt;- FALSE</li><li><strong>Lesson fact:</strong> UNTIL Valid = TRUE</li><li><strong>Lesson fact:</strong> Reasoning</li><li><strong>Lesson fact:</strong> The loop repeats until acceptable data is entered. The program does not calculate a grade from invalid data.</li><li><strong>Lesson fact:</strong> Robustness is not guessing what the user meant. It is refusing bad data with a calm face.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Place INPUT Mark inside REPEAT so every retry reads a new value.</li><li><strong>Lesson fact:</strong> Set Valid to TRUE only when Mark is between 0 and 100 inclusive.</li><li><strong>Lesson fact:</strong> Otherwise output the valid range, set Valid to FALSE and repeat.</li><li><strong>Lesson fact:</strong> Close the selection with ENDIF and terminate with UNTIL Valid = TRUE.</li></ol>
 
           </div>
         </section>
@@ -245,7 +245,7 @@ OUTPUT Grade</code></pre>
             <figcaption class="explanation-sr-only">Pass data into a module and return only what is needed: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Parameters and return values</li><li><strong>Lesson fact:</strong> Responsibility</li><li><strong>Lesson fact:</strong> Returns / effect</li><li><strong>Lesson fact:</strong> GetValidMark()</li><li><strong>Lesson fact:</strong> input and validate mark</li><li><strong>Lesson fact:</strong> valid integer mark</li><li><strong>Lesson fact:</strong> CalculateGrade(Mark)</li><li><strong>Lesson fact:</strong> turn mark into grade</li><li><strong>Lesson fact:</strong> grade character/string</li><li><strong>Lesson fact:</strong> DisplayResult(Grade)</li><li><strong>Lesson fact:</strong> format output</li><li><strong>Lesson fact:</strong> output to screen</li></ol>
+            <ol><li><strong>Lesson fact:</strong> GetValidMark inputs and validates a mark, then returns a valid INTEGER.</li><li><strong>Lesson fact:</strong> CalculateGrade receives Mark and returns a grade character.</li><li><strong>Lesson fact:</strong> DisplayResult is a procedure that performs OUTPUT and returns no value.</li><li><strong>Lesson fact:</strong> Return values and screen-output effects must not be conflated.</li></ol>
 
           </div>
         </section>
@@ -282,7 +282,7 @@ ENDFUNCTION</code></pre>
             <figcaption class="explanation-sr-only">Validation and modularity support each other: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Combine ideas</li><li><strong>Lesson fact:</strong> Function example</li><li><strong>Lesson fact:</strong> FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN</li><li><strong>Lesson fact:</strong> RETURN TRUE</li><li><strong>Lesson fact:</strong> RETURN FALSE</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li><li><strong>Lesson fact:</strong> Why this is robust</li><li><strong>Lesson fact:</strong> The validation rule is written once and can be tested separately. Other code can call the function instead of repeating the condition.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> IsValidMark returns TRUE only for marks from 0 to 100 inclusive.</li><li><strong>Lesson fact:</strong> Close the valid branch with ENDIF before the false return.</li><li><strong>Lesson fact:</strong> Close the reusable function with ENDFUNCTION.</li><li><strong>Lesson fact:</strong> Call the function instead of repeating the validation condition.</li></ol>
 
           </div>
         </section>

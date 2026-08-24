@@ -156,18 +156,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-099-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style pseudocode
-3. PROCEDURE ValidateMark(Mark)
-4. IF Mark >= 0 AND Mark <= 100 THEN
-5. OUTPUT "Valid"
-6. OUTPUT "Invalid"
-7. ENDPROCEDURE
-8. Java support only
-9. static void validateMark(int mark) {
-10. if (mark >= 0 && mark <= 100) {
-11. System.out.println("Valid");
-12. } else {
+1. A procedure may contain an IF...THEN...ELSE selection.
+2. Close the selection with ENDIF before closing the surrounding procedure with ENDPROCEDURE.
+3. For mark validation, output Valid only for values from 0 to 100 inclusive.
+4. Java braces may support understanding but are not Cambridge pseudocode.
 
 ### Classify the design move
 

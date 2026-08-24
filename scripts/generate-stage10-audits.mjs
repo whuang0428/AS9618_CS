@@ -5,6 +5,9 @@ import { explanationByKey, explanations } from "./stage10-explanations-data.mjs"
 
 const root = path.resolve(import.meta.dirname, "..");
 const auditDirectory = path.join(root, "audits");
+const deterministicCorrections = new Map([
+  ["004/overflow", "Corrected and fact-checked after semantic review"],
+]);
 const reviewLessons = new Set(["015", "026", "040", "051", "061", "071", "077", "089", "090", "091", "092", "093", "094", "095", "096", "097", "112", "125", "141", "146", "147", "148", "149", "150"]);
 const excludedIds = /^(?:overview|examples|stage2-completion|tool|builder|simulator|converter|checker|classifier|chooser|runner|detector|hash-demo|model-tool|order-tool|error-tool|rewrite-tool|bubble-tool|insert-tool|trace|fde|delivery-\d+)$/;
 const excludedTitles = /^(?:why this matters|common trap|worked examples?|annotate |identify the topic|interactive |choose a project situation|spot the stage)/i;
@@ -60,6 +63,22 @@ function parseCsv(source) {
     rows.push(row);
   }
   return rows;
+}
+
+function semanticReviewIndex() {
+  const semanticPath = path.join(auditDirectory, "stage10-semantic-review-register.csv");
+  if (!fs.existsSync(semanticPath)) return new Map();
+  const rows = parseCsv(fs.readFileSync(semanticPath, "utf8"));
+  const header = rows.shift();
+  const columns = Object.fromEntries(header.map((value, index) => [value, index]));
+  return new Map(rows.map((row) => [
+    `${row[columns.lesson]}/${row[columns.target_id]}`,
+    {
+      status: row[columns.status],
+      severity: row[columns.max_severity],
+      defectIds: row[columns.defect_ids],
+    },
+  ]));
 }
 
 function directSections(source) {
@@ -241,13 +260,26 @@ const visualRows = visuals.map((item) => [item.lesson, item.visualId, item.secti
 fs.writeFileSync(path.join(auditDirectory, "stage10-concept-visual-register.csv"), `${visualHeader.join(",")}\n${visualRows.join("\n")}\n`);
 
 const implementedLessons = new Set(explanations.map((item) => item.lesson));
-const report = `# Stage 10 Concept Accuracy and Explanation Audit\n\n## Current gate\n\n- Explanation targets: ${targets.length} across 150 lessons.\n- Implemented visual explanations: ${explanations.length} across ${implementedLessons.size} lessons.\n- Academic ImageGen infographics: ${explanations.filter((item) => item.visual).length}.\n- Visual records: ${visuals.length}; semantic statuses remain explicit and are not inferred from successful rendering.\n- Rollout state: complete across all 150 lessons after approval of the ten-lesson visual-style pilot.\n\n## Review rules\n\n- Definitions alone do not satisfy an explanation target. Each infographic must visualise the maintained lesson facts as a structured mechanism, comparison, process, trade-off or synthesis.\n- Review lessons use causal synthesis rather than one infographic per retrieval prompt.\n- Every infographic has an adjacent screen-reader transcript generated from the maintained factual source.\n- Image and interactive visuals require factual review. Automated checks verify target coverage, structure, file state and accessibility, not conceptual truth.\n- Human semantic review remains an explicit post-generation gate for the full visual set.\n`;
+const semanticByKey = semanticReviewIndex();
+const semanticReviewed = [...semanticByKey.values()].filter((item) => item.status !== "Pending").length;
+const semanticBlockers = [...semanticByKey.values()].filter((item) => ["DefectCritical", "DefectMajor"].includes(item.status)).length;
+const imagegenCount = explanations.filter((item) => item.visual && !deterministicCorrections.has(`${item.lesson}/${item.targetId}`)).length;
+const report = `# Stage 10 Concept Accuracy and Explanation Audit\n\n## Current gate\n\n- Explanation targets: ${targets.length} across 150 lessons.\n- Implemented visual explanations: ${explanations.length} across ${implementedLessons.size} lessons.\n- Academic infographic assets: ${explanations.filter((item) => item.visual).length} (${imagegenCount} ImageGen, ${deterministicCorrections.size} deterministic correction).\n- Semantic reviews complete: ${semanticReviewed}/${explanations.length}; unresolved blocking assets: ${semanticBlockers}.\n- Visual records: ${visuals.length}; semantic statuses remain explicit and are not inferred from successful rendering.\n- Rollout state: complete across all 150 lessons after approval of the ten-lesson visual-style pilot.\n\n## Review rules\n\n- Definitions alone do not satisfy an explanation target. Each infographic must visualise the maintained lesson facts as a structured mechanism, comparison, process, trade-off or synthesis.\n- Review lessons use causal synthesis rather than one infographic per retrieval prompt.\n- Every infographic has an adjacent screen-reader transcript generated from the maintained factual source.\n- Image and interactive visuals require factual review. Automated checks verify target coverage, structure, file state and accessibility, not conceptual truth.\n- Human semantic review status comes from \`audits/stage10-semantic-review-register.csv\`; Critical and Major defects block release.\n`;
 fs.writeFileSync(path.join(auditDirectory, "stage10-concept-explanation-report.md"), report);
 
-const imagegenRows = explanations.map((item) => `| ${item.lesson} | \`${item.targetId}\` | \`${path.basename(item.visual.src)}\` | ${item.title} | Human semantic review pending |`).join("\n");
+const imagegenRows = explanations.map((item) => {
+  const key = `${item.lesson}/${item.targetId}`;
+  const semantic = semanticByKey.get(key);
+  const reviewState = semantic?.status === "Approved"
+    ? "Semantic review approved"
+    : semantic?.status?.startsWith("Defect")
+      ? `${semantic.status}: ${semantic.defectIds}`
+      : "Human semantic review pending";
+  return `| ${item.lesson} | \`${item.targetId}\` | \`${path.basename(item.visual.src)}\` | ${item.title} | ${reviewState} |`;
+}).join("\n");
 const imagegenRecord = `# Stage 10 ImageGen infographic record
 
-All ${explanations.length} explanations use original infographics generated with the built-in ImageGen tool. The uploaded CPU FDE infographic was used as a style and layout reference only. The maintained Stage 10 data supplies the lesson facts and visual constraints for every prompt.
+${imagegenCount} explanations use original infographics generated with the built-in ImageGen tool. Lesson 004's overflow asset was vector-authored and rasterised deterministically after semantic review found inconsistent bit counts in the generated image. The uploaded CPU FDE infographic was used as a style and layout reference only. The maintained Stage 10 data supplies the lesson facts and visual constraints for every prompt.
 
 | Lesson | Target | Asset | Knowledge point | Review state |
 |---|---|---|---|---|

@@ -142,9 +142,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-006-precision.jpg`
 
-1. 0.75₁₀ = 0.11₂ exactly because 1/2 + 1/4 = 3/4.
-2. Limited precision
-3. With four fractional bits, 0.1₁₀ becomes approximately 0.0001₂, which is 0.0625₁₀.
-4. Representation error is the difference between the intended value and the stored approximation.
-5. This lesson uses fixed fractional places only. Mantissa, exponent and floating-point normalisation belong to later A Level content.
+1. 0.75 denary equals 0.1100 binary exactly.
+2. With four fractional bits, truncating 0.1 gives 0.0001 binary, which equals 0.0625 denary.
+3. The truncation error is 0.0375.
+4. Rounding 0.1 to the nearest four-bit fractional value gives 0.0010 binary, which equals 0.125 denary.
+5. The rounding error is 0.025, so 0.125 is nearer to 0.1 than 0.0625.
 <!-- stage10-explanations:end -->

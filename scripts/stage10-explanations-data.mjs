@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { sourceFactOverrides } from "./stage10-semantic-source-overrides.mjs";
 
 function explanation(lesson, targetId, kind, title, steps, analogy, boundary) {
   const visual = Object.freeze({
@@ -76,15 +77,17 @@ const pilotKeys = new Set(pilotExplanations.map((item) => `${item.lesson}/${item
 const rolloutExplanations = rolloutJobs
   .filter((job) => !pilotKeys.has(`${job.lesson}/${job.targetId}`))
   .filter((job) => fs.existsSync(path.join(root, "web", "assets", "diagrams", "stage10-infographics", job.filename)))
-  .map((job) => Object.freeze({
+  .map((job) => {
+    const sourceFacts = sourceFactOverrides[`${job.lesson}/${job.targetId}`] ?? job.sourceFacts;
+    return Object.freeze({
     lesson: job.lesson,
     targetId: job.targetId,
     kind: job.kind,
     title: job.title,
-    steps: Object.freeze(job.sourceFacts.slice(0, 3)),
+    steps: Object.freeze(sourceFacts.slice(0, 3)),
     analogy: "",
     boundary: "",
-    transcript: Object.freeze(job.sourceFacts),
+    transcript: Object.freeze(sourceFacts),
     sourceGrounded: true,
     visual: Object.freeze({
       src: `../assets/diagrams/stage10-infographics/${job.filename}`,
@@ -93,7 +96,8 @@ const rolloutExplanations = rolloutJobs
       alt: `Academic knowledge-point infographic explaining ${job.title} with a structured visual model.`,
       caption: `${job.title}: source-grounded visual explanation.`,
     }),
-  }));
+    });
+  });
 
 export const explanations = Object.freeze([...pilotExplanations, ...rolloutExplanations]
   .sort((left, right) => left.lesson.localeCompare(right.lesson) || left.targetId.localeCompare(right.targetId)));

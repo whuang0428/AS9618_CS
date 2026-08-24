@@ -118,17 +118,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** comparison
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-108-model.jpg`
 
-1. Knowledge explanation
-2. Core structure
-3. FOR Row <- 1 TO 3
-4. FOR Column <- 1 TO 4
-5. OUTPUT Row, Column
-6. NEXT Column
-7. NEXT Row
-8. The inner loop completes all columns for one row before the outer loop moves to the next row.
-9. Trace idea
-10. Column sequence
-11. 1, 2, 3, 4
+1. Choose nested-loop order from the required traversal and grouping, not from which range is wider.
+2. The outer-loop value changes less frequently.
+3. The inner loop completes its full traversal for every outer-loop value.
+4. In row-major traversal, hold one row while visiting every column, then advance the row.
 
 ### Indentation is evidence in nested loops
 
@@ -136,18 +129,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-108-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style pseudocode
-3. FOR Row <- 1 TO 3
-4. FOR Column <- 1 TO 4
-5. Product <- Row * Column
-6. OUTPUT Product
-7. NEXT Column
-8. NEXT Row
-9. Java support only
-10. for (int row = 1; row <= 3; row++) {
-11. for (int column = 1; column <= 4; column++) {
-12. int product = row * column;
+1. Use an outer loop for three rows and an inner loop for four columns.
+2. Calculate Product from the current Row and Column inside the inner loop.
+3. Output Product during every inner-loop iteration.
+4. A corresponding Java support version must also output each product.
 
 ### Put row-level variables inside the outer loop
 

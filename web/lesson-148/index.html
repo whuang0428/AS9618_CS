@@ -157,7 +157,7 @@ ENDCASE</code></pre>
             <figcaption class="explanation-sr-only">Use IF for decisions, CASE for clean multi-way choices: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Selection review</li><li><strong>Lesson fact:</strong> IF example</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit needed&quot;</li><li><strong>Lesson fact:</strong> CASE example</li><li><strong>Lesson fact:</strong> CASE MenuChoice OF</li><li><strong>Lesson fact:</strong> 1 : CALL AddScore()</li><li><strong>Lesson fact:</strong> 2 : CALL DisplayScores()</li><li><strong>Lesson fact:</strong> 3 : CALL SaveScores()</li><li><strong>Lesson fact:</strong> OTHERWISE : OUTPUT &quot;Invalid choice&quot;</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Use IF for a condition or range and close it with ENDIF.</li><li><strong>Lesson fact:</strong> Use CASE for discrete MenuChoice values and close it with ENDCASE.</li><li><strong>Lesson fact:</strong> OTHERWISE handles a menu choice not listed explicitly.</li></ol>
 
           </div>
         </section>
@@ -226,7 +226,7 @@ ENDFUNCTION</code></pre>
             <figcaption class="explanation-sr-only">Subprograms reduce repetition and make code testable: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Procedures and functions</li><li><strong>Lesson fact:</strong> Procedure</li><li><strong>Lesson fact:</strong> PROCEDURE DisplayMessage(Message : STRING)</li><li><strong>Lesson fact:</strong> OUTPUT Message</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li><li><strong>Lesson fact:</strong> A procedure performs an action and does not have to return a value.</li><li><strong>Lesson fact:</strong> Function</li><li><strong>Lesson fact:</strong> FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN</li><li><strong>Lesson fact:</strong> RETURN TRUE</li><li><strong>Lesson fact:</strong> RETURN FALSE</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li></ol>
+            <ol><li><strong>Lesson fact:</strong> DisplayMessage is a procedure that outputs its parameter and returns no value.</li><li><strong>Lesson fact:</strong> IsValidMark is a function that returns a BOOLEAN.</li><li><strong>Lesson fact:</strong> Close the function's selection with ENDIF before ENDFUNCTION.</li><li><strong>Lesson fact:</strong> Use subprograms to reduce repetition and support separate testing.</li></ol>
 
           </div>
         </section>

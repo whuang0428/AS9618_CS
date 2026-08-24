@@ -112,11 +112,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-110-conversion.jpg`
 
-1. Conversion routine
-2. 1. State the goal Example: input five marks and count how many are at least 50.
-3. 2. Choose variables Mark, Index, PassCount are clearer than m, i, pc in first drafts.
-4. 3. Write Cambridge blocks Use FOR/NEXT, IF/ENDIF, <-, INPUT, OUTPUT.
-5. 4. Trace once Check that each variable changes where the indentation says it changes.
+1. Preserve the algorithm's meaning before converting notation or syntax.
+2. Rename abbreviated draft variables toward clearer names: m to Mark, i to Index and pc to PassCount.
+3. Use Cambridge blocks after the inputs, processing and outputs are defined.
+4. Trace the completed algorithm once to verify where each value changes.
 
 ### Keep Java syntax out of Paper 2 unless Java is explicitly requested
 
@@ -124,18 +123,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-110-java.jpg`
 
-1. Java traps
-2. Java-like answer
-3. for (int i = 0; i < 5; i++) {
-4. if (marks[i] >= 50) {
-5. passCount++;
-6. Cambridge-style version
-7. PassCount <- 0
-8. FOR Index <- 1 TO 5
-9. IF Mark[Index] >= 50 THEN
-10. PassCount <- PassCount + 1
-11. NEXT Index
-12. Java arrays often use 0-based indexing. Cambridge-style course examples here use readable 1-based positions unless the question defines otherwise.
+1. Java braces, semicolons and increment operators are support syntax, not Cambridge pseudocode.
+2. In Cambridge pseudocode, initialise PassCount and iterate over explicitly defined array positions.
+3. Increment PassCount only when the current mark is at least 50.
+4. Close the conditional with ENDIF before NEXT Index.
 
 ### Use the symbols that make algorithm intent visible
 

@@ -154,7 +154,7 @@
             <figcaption class="explanation-sr-only">Match the rule to the risk: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Validation check types</li><li><strong>Lesson fact:</strong> Range check</li><li><strong>Lesson fact:</strong> value is within allowed limits</li><li><strong>Lesson fact:</strong> Mark &gt;= 0 AND Mark &lt;= 100</li><li><strong>Lesson fact:</strong> Presence check</li><li><strong>Lesson fact:</strong> field is not blank</li><li><strong>Lesson fact:</strong> Name &lt;&gt; &quot;&quot;</li><li><strong>Lesson fact:</strong> Length check</li><li><strong>Lesson fact:</strong> input has required number of characters</li><li><strong>Lesson fact:</strong> LENGTH(Postcode) &lt;= 8</li><li><strong>Lesson fact:</strong> Type / format check</li><li><strong>Lesson fact:</strong> input matches expected type or pattern</li></ol>
+            <ol><li><strong>Lesson fact:</strong> LENGTH(Postcode) &lt;= 8 is a maximum-length check.</li><li><strong>Lesson fact:</strong> The rule accepts no more than eight characters and prevents input that is too long.</li><li><strong>Lesson fact:</strong> It does not require exactly eight characters.</li><li><strong>Lesson fact:</strong> Use equality or bounded limits only when an exact or minimum-and-maximum length is intended.</li></ol>
 
           </div>
         </section>
@@ -224,7 +224,7 @@ UNTIL Mark &gt;= 0 AND Mark &lt;= 100</code></pre>
             <figcaption class="explanation-sr-only">Use Cambridge-style validation loops in the exam: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &lt; 0 OR Mark &gt; 100 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Invalid mark&quot;</li><li><strong>Lesson fact:</strong> UNTIL Mark &gt;= 0 AND Mark &lt;= 100</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> mark = input.nextInt();</li><li><strong>Lesson fact:</strong> if (mark &lt; 0 || mark &gt; 100) {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Invalid mark&quot;);</li><li><strong>Lesson fact:</strong> } while (mark &lt; 0 || mark &gt; 100);</li><li><strong>Lesson fact:</strong> Exam reminder: Cambridge pseudocode uses keywords such as REPEAT, UNTIL, IF, THEN, ENDIF, INPUT and OUTPUT. Java syntax is support only.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A post-condition validation loop starts with REPEAT and ends with UNTIL.</li><li><strong>Lesson fact:</strong> Input Mark inside the loop so every retry obtains a replacement value.</li><li><strong>Lesson fact:</strong> Close the invalid-mark selection with ENDIF before UNTIL.</li><li><strong>Lesson fact:</strong> A Java do-while support version must begin with do and close its blocks correctly.</li></ol>
 
           </div>
         </section>

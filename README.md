@@ -82,6 +82,7 @@ Stage 10 visual explanations are maintained as explicit reviewed content and syn
 ```bash
 node scripts/apply-stage10-explanations.mjs
 node scripts/apply-classroom-delivery.mjs
+node scripts/generate-stage10-semantic-audit.mjs
 node scripts/generate-stage10-audits.mjs
 ```
 
@@ -102,9 +103,12 @@ node scripts/verify-stage6-qa.mjs
 node scripts/verify-stage7-accessibility.mjs
 node scripts/verify-stage9-classroom.mjs
 node scripts/verify-stage10.mjs
+node scripts/verify-stage10.mjs --audit-only
 python3 scripts/build-stage8-release.py
 node scripts/verify-stage8-release.mjs
 ```
+
+`verify-stage10.mjs --audit-only` validates the 782-row two-pass review coverage, current asset hashes, register consistency and defect accounting without requiring a clean defect gate. The default Stage 10 verifier fails while any unresolved Critical or Major semantic defect remains, so the unified verifier and release build stop before packaging.
 
 For the complete final acceptance workflow, run:
 

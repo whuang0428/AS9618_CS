@@ -102,18 +102,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-checks.jpg`
 
-1. Validation check types
-2. Range check
-3. value is within allowed limits
-4. Mark >= 0 AND Mark <= 100
-5. Presence check
-6. field is not blank
-7. Name <> ""
-8. Length check
-9. input has required number of characters
-10. LENGTH(Postcode) <= 8
-11. Type / format check
-12. input matches expected type or pattern
+1. LENGTH(Postcode) <= 8 is a maximum-length check.
+2. The rule accepts no more than eight characters and prevents input that is too long.
+3. It does not require exactly eight characters.
+4. Use equality or bounded limits only when an exact or minimum-and-maximum length is intended.
 
 ### Reject bad input, then ask again
 
@@ -134,18 +126,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style pseudocode
-3. INPUT Mark
-4. IF Mark < 0 OR Mark > 100 THEN
-5. OUTPUT "Invalid mark"
-6. UNTIL Mark >= 0 AND Mark <= 100
-7. Java support only
-8. mark = input.nextInt();
-9. if (mark < 0 || mark > 100) {
-10. System.out.println("Invalid mark");
-11. } while (mark < 0 || mark > 100);
-12. Exam reminder: Cambridge pseudocode uses keywords such as REPEAT, UNTIL, IF, THEN, ENDIF, INPUT and OUTPUT. Java syntax is support only.
+1. A post-condition validation loop starts with REPEAT and ends with UNTIL.
+2. Input Mark inside the loop so every retry obtains a replacement value.
+3. Close the invalid-mark selection with ENDIF before UNTIL.
+4. A Java do-while support version must begin with do and close its blocks correctly.
 
 ### Test a mark against 0-100
 

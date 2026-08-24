@@ -125,18 +125,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-093-sql.jpg`
 
-1. SQL review
-2. SQL feature
-3. Example phrase
-4. choose output fields
-5. SELECT Name, Points
-6. filter records
-7. WHERE Points > 1000
-8. sort records
-9. ORDER BY
-10. ORDER BY Points DESC
-11. summary per group
-12. GROUP BY
+1. SELECT, WHERE, GROUP BY and ORDER BY are clause choices with different effects, not mandatory consecutive stages.
+2. SELECT controls fields, WHERE filters rows, GROUP BY forms groups and ORDER BY sorts final rows.
+3. When combined in written SQL, GROUP BY appears before ORDER BY.
 
 ### Trace one customer table query
 

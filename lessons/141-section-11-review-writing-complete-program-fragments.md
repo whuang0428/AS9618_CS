@@ -152,18 +152,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-141-fragment.jpg`
 
-1. Fragment anatomy
-2. Pass-count fragment
-3. PassCount <- 0
-4. FOR Index <- 1 TO 10
-5. INPUT Marks[Index]
-6. IF Marks[Index] >= 50 THEN
-7. PassCount <- PassCount + 1
-8. NEXT Index
-9. OUTPUT PassCount
-10. Why it is complete
-11. counter is initialised before the loop
-12. array element is input before it is tested
+1. Initialise PassCount before processing ten array positions.
+2. Input the current element before testing it.
+3. Close the passing-mark selection with ENDIF before NEXT Index.
+4. Output PassCount once after the loop.
 
 ### Java can support practice; the review answer should be Cambridge pseudocode
 
@@ -171,16 +163,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-141-java.jpg`
 
-1. Java support only
-2. Java support example only
-3. for (int index = 0; index < 10; index++) {
-4. if (marks[index] >= 50) {
-5. passCount++;
-6. Cambridge-style pseudocode
-7. FOR Index <- 1 TO 10
-8. IF Marks[Index] >= 50 THEN
-9. PassCount <- PassCount + 1
-10. NEXT Index
+1. Java may support practice but the review answer uses Cambridge pseudocode.
+2. Increment PassCount only when the current mark is at least 50.
+3. Close the pseudocode selection with ENDIF before NEXT Index.
+4. Keep Java and pseudocode indexing conventions explicit.
 
 ### Section 11 tools become stronger when combined
 
@@ -207,16 +193,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-141-subroutines.jpg`
 
-1. Subroutines
-2. Function
-3. FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN
-4. RETURN Mark >= 50
-5. ENDFUNCTION
-6. Procedure
-7. PROCEDURE DisplayResult(Name : STRING, Passed : BOOLEAN)
-8. OUTPUT Name
-9. OUTPUT Passed
-10. ENDPROCEDURE
+1. A function returns a value; a procedure performs an action.
+2. IsPass returns a BOOLEAN based on whether Mark is at least 50.
+3. Close the function's IF with ENDIF before ENDFUNCTION.
+4. DisplayResult outputs its parameters and returns no value.
 
 ### Review fragments often need input checks
 
@@ -224,11 +204,8 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-141-validation.jpg`
 
-1. Validation
-2. INPUT Mark
-3. IF Mark >= 0 AND Mark <= 100 THEN
-4. Valid <- TRUE
-5. OUTPUT "Enter a mark from 0 to 100"
-6. Valid <- FALSE
-7. UNTIL Valid = TRUE
+1. A complete validation fragment prompts for and inputs Mark inside REPEAT.
+2. Set Valid to TRUE when Mark is between 0 and 100 inclusive; otherwise set it to FALSE.
+3. Close the selection with ENDIF and repeat until Valid is TRUE.
+4. Every invalid retry must read a replacement Mark.
 <!-- stage10-explanations:end -->

@@ -176,10 +176,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-050-timing.jpg`
 
-1. Latency The time for one instruction to pass from fetch through decode to execute.
-2. Throughput The number of instructions completed per unit time once the pipeline is full.
-3. Fill The early cycles before every pipeline stage is occupied.
-4. Drain The final cycles when no new instructions enter but existing ones finish.
-5. Why this matters
-6. Exam wording may ask "why performance can improve" rather than "why every instruction is faster". Answer with throughput.
+1. A three-stage pipeline processes each instruction through fetch, decode and execute exactly once.
+2. For four instructions, cycles 1 and 2 fill the pipeline.
+3. In cycles 3 and 4, different instructions occupy fetch, decode and execute concurrently.
+4. Cycle 5 completes instruction 3 and decodes instruction 4; cycle 6 executes instruction 4.
+5. Pipelining improves throughput after fill but does not remove the latency of one instruction.
 <!-- stage10-explanations:end -->

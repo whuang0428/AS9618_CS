@@ -276,7 +276,7 @@ for (int index = 0; index &lt; word.length(); index++) {
             <figcaption class="explanation-sr-only">Keep exam pseudocode readable and avoid Java indexing leakage: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> VowelCount &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO LENGTH(Word)</li><li><strong>Lesson fact:</strong> Character &lt;- character at position Index</li><li><strong>Lesson fact:</strong> IF Character = &quot;A&quot; OR Character = &quot;E&quot; OR Character = &quot;I&quot; OR Character = &quot;O&quot; OR Character = &quot;U&quot; THEN</li><li><strong>Lesson fact:</strong> VowelCount &lt;- VowelCount + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> OUTPUT VowelCount</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> int vowelCount = 0;</li><li><strong>Lesson fact:</strong> for (int index = 0; index &lt; word.length(); index++) {</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Visit each character position in Word and normalise the current character with UCASE.</li><li><strong>Lesson fact:</strong> Increment VowelCount only when the character is A, E, I, O or U.</li><li><strong>Lesson fact:</strong> Close the vowel selection with ENDIF before NEXT Index.</li><li><strong>Lesson fact:</strong> Output VowelCount after the loop.</li></ol>
 
           </div>
         </section>

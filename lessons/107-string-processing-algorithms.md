@@ -156,18 +156,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style pseudocode
-3. VowelCount <- 0
-4. FOR Index <- 1 TO LENGTH(Word)
-5. Character <- character at position Index
-6. IF Character = "A" OR Character = "E" OR Character = "I" OR Character = "O" OR Character = "U" THEN
-7. VowelCount <- VowelCount + 1
-8. NEXT Index
-9. OUTPUT VowelCount
-10. Java support only
-11. int vowelCount = 0;
-12. for (int index = 0; index < word.length(); index++) {
+1. Visit each character position in Word and normalise the current character with UCASE.
+2. Increment VowelCount only when the character is A, E, I, O or U.
+3. Close the vowel selection with ENDIF before NEXT Index.
+4. Output VowelCount after the loop.
 
 ### Trace character processing
 

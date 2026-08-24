@@ -121,18 +121,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** process
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-106-initialise.jpg`
 
-1. Initialisation
-2. Total and count
-3. Total <- 0
-4. Count <- 0
-5. FOR Index <- 1 TO 4
-6. INPUT Score
-7. Total <- Total + Score
-8. Count <- Count + 1
-9. NEXT Index
-10. Zero is safe because nothing has been added or counted yet.
-11. Maximum and minimum
-12. INPUT Value
+1. Initialise totals and counters to zero before processing values.
+2. Initialise Maximum and Minimum from the first real input value or from proven safe bounds.
+3. Compare each remaining value with Maximum and Minimum.
+4. Replace Maximum only when a larger value is found and Minimum only when a smaller value is found.
 
 ### Four running-value patterns
 
@@ -159,18 +151,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-106-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style pseudocode
-3. Total <- 0
-4. PassCount <- 0
-5. FOR Index <- 1 TO 5
-6. INPUT Mark
-7. Total <- Total + Mark
-8. IF Mark >= 50 THEN
-9. PassCount <- PassCount + 1
-10. NEXT Index
-11. OUTPUT Total
-12. OUTPUT PassCount
+1. Initialise Total and PassCount to zero before processing five marks.
+2. Every input mark is added to Total.
+3. Increment PassCount only when Mark is at least 50 and close that selection with ENDIF.
+4. Output Total and PassCount after NEXT Index.
 
 ### When input stops on a special value, do not process the sentinel
 
@@ -178,18 +162,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** process
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-106-sentinel.jpg`
 
-1. Sentinel input
-2. Example: enter numbers until -1
-3. Total <- 0
-4. Count <- 0
-5. INPUT Number
-6. WHILE Number <> -1
-7. Total <- Total + Number
-8. Count <- Count + 1
-9. ENDWHILE
-10. OUTPUT Total
-11. OUTPUT Count
-12. Exam wording
+1. Initialise Total and Count, then input the first Number.
+2. While Number is not -1, add it to Total and increment Count.
+3. Input the next Number at the end of the WHILE body before ENDWHILE.
+4. The sentinel -1 stops the loop and is not added or counted.
 
 ### Watch running variables change
 

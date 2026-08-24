@@ -174,17 +174,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-selection.jpg`
 
-1. Selection review
-2. IF example
-3. IF Mark >= 50 THEN
-4. OUTPUT "Pass"
-5. OUTPUT "Resit needed"
-6. CASE example
-7. CASE MenuChoice OF
-8. 1 : CALL AddScore()
-9. 2 : CALL DisplayScores()
-10. 3 : CALL SaveScores()
-11. OTHERWISE : OUTPUT "Invalid choice"
+1. Use IF for a condition or range and close it with ENDIF.
+2. Use CASE for discrete MenuChoice values and close it with ENDCASE.
+3. OTHERWISE handles a menu choice not listed explicitly.
 
 ### Subprograms reduce repetition and make code testable
 
@@ -192,18 +184,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-subprograms.jpg`
 
-1. Procedures and functions
-2. Procedure
-3. PROCEDURE DisplayMessage(Message : STRING)
-4. OUTPUT Message
-5. ENDPROCEDURE
-6. A procedure performs an action and does not have to return a value.
-7. Function
-8. FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
-9. IF Mark >= 0 AND Mark <= 100 THEN
-10. RETURN TRUE
-11. RETURN FALSE
-12. ENDFUNCTION
+1. DisplayMessage is a procedure that outputs its parameter and returns no value.
+2. IsValidMark is a function that returns a BOOLEAN.
+3. Close the function's selection with ENDIF before ENDFUNCTION.
+4. Use subprograms to reduce repetition and support separate testing.
 
 ### Validation rejects unsuitable input before it damages the logic
 

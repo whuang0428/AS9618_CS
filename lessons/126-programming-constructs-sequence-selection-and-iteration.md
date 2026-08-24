@@ -102,18 +102,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-constructs.jpg`
 
-1. Core constructs
-2. Construct
-3. Question it answers
-4. Pseudocode clue
-5. Typical error
-6. Sequence
-7. What happens next?
-8. statements listed one after another
-9. wrong order of assignment
-10. Selection
-11. Which path is taken?
-12. IF...THEN...ELSE...ENDIF, CASE
+1. Sequence answers what happens next and depends on statement order.
+2. Selection answers which path is taken and uses IF or CASE structures.
+3. Iteration answers what repeats and when repetition stops.
+4. FOR, WHILE and REPEAT are iteration forms with different controls.
 
 ### Loops repeat with control
 
@@ -121,18 +113,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-iteration.jpg`
 
-1. Iteration
-2. Use when
-3. Condition checked
-4. number of repetitions is known
-5. by counter range
-6. wrong start/end value
-7. may repeat zero or more times
-8. before each iteration
-9. condition never changes
-10. REPEAT...UNTIL
-11. must run at least once
-12. after each iteration
+1. A FOR loop uses a counter range and checks whether the next iteration is within its bounds.
+2. A FOR loop may execute zero times when its bounds are incompatible.
+3. A WHILE loop checks its condition before each iteration and may execute zero times.
+4. A REPEAT loop checks after the body and therefore runs at least once.
 
 ### Same logic, different exam language
 
@@ -140,16 +124,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-java.jpg`
 
-1. Java support only
-2. Cambridge-style pseudocode
-3. IF Mark >= 50 THEN
-4. OUTPUT "Pass"
-5. OUTPUT "Resit needed"
-6. Java support example only
-7. if (mark >= 50) {
-8. System.out.println("Pass");
-9. } else {
-10. System.out.println("Resit needed");
+1. Cambridge pseudocode uses IF, THEN, ELSE and ENDIF for a two-way selection.
+2. Mark 50 follows the pass branch when the condition uses greater than or equal to 50.
+3. Java braces may support understanding but are not Cambridge pseudocode.
 
 ### Conditions decide the path
 
@@ -157,18 +134,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-selection.jpg`
 
-1. Selection
-2. IF selection
-3. INPUT Mark
-4. IF Mark >= 50 THEN
-5. OUTPUT "Pass"
-6. OUTPUT "Resit needed"
-7. CASE selection
-8. CASE Grade OF
-9. "A" : OUTPUT "Excellent"
-10. "B" : OUTPUT "Good"
-11. OTHERWISE OUTPUT "Check grade"
-12. Boundary tests matter: Mark = 49, 50 and 51 reveal whether the condition is correct.
+1. Use IF for a Boolean condition or range and close it with ENDIF.
+2. Use CASE for several discrete values of one expression and close it with ENDCASE.
+3. Test marks 49, 50 and 51 to verify the pass boundary.
 
 ### Order changes meaning
 

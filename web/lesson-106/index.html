@@ -176,7 +176,7 @@ NEXT Index</code></pre>
             <figcaption class="explanation-sr-only">The starting value decides whether the algorithm is honest: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Initialisation</li><li><strong>Lesson fact:</strong> Total and count</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> Count &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 4</li><li><strong>Lesson fact:</strong> INPUT Score</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Score</li><li><strong>Lesson fact:</strong> Count &lt;- Count + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Zero is safe because nothing has been added or counted yet.</li><li><strong>Lesson fact:</strong> Maximum and minimum</li><li><strong>Lesson fact:</strong> INPUT Value</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Initialise totals and counters to zero before processing values.</li><li><strong>Lesson fact:</strong> Initialise Maximum and Minimum from the first real input value or from proven safe bounds.</li><li><strong>Lesson fact:</strong> Compare each remaining value with Maximum and Minimum.</li><li><strong>Lesson fact:</strong> Replace Maximum only when a larger value is found and Minimum only when a smaller value is found.</li></ol>
 
           </div>
         </section>
@@ -255,7 +255,7 @@ OUTPUT Count</code></pre>
             <figcaption class="explanation-sr-only">When input stops on a special value, do not process the sentinel: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Sentinel input</li><li><strong>Lesson fact:</strong> Example: enter numbers until -1</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> Count &lt;- 0</li><li><strong>Lesson fact:</strong> INPUT Number</li><li><strong>Lesson fact:</strong> WHILE Number &lt;&gt; -1</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Number</li><li><strong>Lesson fact:</strong> Count &lt;- Count + 1</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> OUTPUT Count</li><li><strong>Lesson fact:</strong> Exam wording</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Initialise Total and Count, then input the first Number.</li><li><strong>Lesson fact:</strong> While Number is not -1, add it to Total and increment Count.</li><li><strong>Lesson fact:</strong> Input the next Number at the end of the WHILE body before ENDWHILE.</li><li><strong>Lesson fact:</strong> The sentinel -1 stops the loop and is not added or counted.</li></ol>
 
           </div>
         </section>
@@ -305,7 +305,7 @@ for (int index = 0; index &lt; 5; index++) {
             <figcaption class="explanation-sr-only">Use Cambridge assignment and loop keywords in exam answers: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> PassCount &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> PassCount &lt;- PassCount + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> OUTPUT PassCount</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Initialise Total and PassCount to zero before processing five marks.</li><li><strong>Lesson fact:</strong> Every input mark is added to Total.</li><li><strong>Lesson fact:</strong> Increment PassCount only when Mark is at least 50 and close that selection with ENDIF.</li><li><strong>Lesson fact:</strong> Output Total and PassCount after NEXT Index.</li></ol>
 
           </div>
         </section>

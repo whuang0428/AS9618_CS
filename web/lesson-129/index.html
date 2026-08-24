@@ -142,7 +142,7 @@ OUTPUT "Access granted"</code></pre>
             <figcaption class="explanation-sr-only">Pre-condition loop: check before running: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> WHILE loop</li><li><strong>Lesson fact:</strong> General pattern</li><li><strong>Lesson fact:</strong> WHILE Condition</li><li><strong>Lesson fact:</strong> // repeated statements</li><li><strong>Lesson fact:</strong> // update something used by Condition</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> Password example</li><li><strong>Lesson fact:</strong> INPUT Password</li><li><strong>Lesson fact:</strong> WHILE Password &lt;&gt; CorrectPassword</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Try again&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Access granted&quot;</li><li><strong>Lesson fact:</strong> A WHILE loop may run zero times if the condition is false before the first iteration.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A WHILE loop checks its condition before each iteration and may run zero times.</li><li><strong>Lesson fact:</strong> Input Password before testing whether it differs from CorrectPassword.</li><li><strong>Lesson fact:</strong> Inside the loop, output the retry message and input a replacement Password.</li><li><strong>Lesson fact:</strong> Output Access granted only after the WHILE condition becomes false.</li></ol>
 
           </div>
         </section>
@@ -179,7 +179,7 @@ UNTIL Mark &gt;= 0 AND Mark &lt;= 100</code></pre>
             <figcaption class="explanation-sr-only">Post-condition loop: run once, then check: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> REPEAT...UNTIL loop</li><li><strong>Lesson fact:</strong> General pattern</li><li><strong>Lesson fact:</strong> // repeated statements</li><li><strong>Lesson fact:</strong> // update something used by Condition</li><li><strong>Lesson fact:</strong> UNTIL Condition</li><li><strong>Lesson fact:</strong> Input validation</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> UNTIL Mark &gt;= 0 AND Mark &lt;= 100</li><li><strong>Lesson fact:</strong> REPEAT...UNTIL is useful when the body must happen at least once, such as asking for the first input.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A REPEAT...UNTIL loop checks its condition after executing the body.</li><li><strong>Lesson fact:</strong> Place INPUT Mark once inside REPEAT so each attempt obtains one value.</li><li><strong>Lesson fact:</strong> Do not add a duplicate INPUT before the loop.</li><li><strong>Lesson fact:</strong> Stop when Mark is between 0 and 100 inclusive.</li></ol>
 
           </div>
         </section>
@@ -288,7 +288,7 @@ OUTPUT Total</code></pre>
             <figcaption class="explanation-sr-only">A special value can stop the loop: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Sentinel values</li><li><strong>Lesson fact:</strong> Total until -1</li><li><strong>Lesson fact:</strong> Total &lt;- 0</li><li><strong>Lesson fact:</strong> INPUT Number</li><li><strong>Lesson fact:</strong> WHILE Number &lt;&gt; -1</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Number</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> Trace idea</li><li><strong>Lesson fact:</strong> Total after step</li><li><strong>Lesson fact:</strong> 11, stop</li><li><strong>Lesson fact:</strong> The sentinel value is used to stop the loop; it should not be included in the calculation.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Initialise Total and input the first Number before WHILE.</li><li><strong>Lesson fact:</strong> While Number is not -1, add Number to Total and input the next Number.</li><li><strong>Lesson fact:</strong> The repeated input changes the condition and allows the loop to terminate.</li><li><strong>Lesson fact:</strong> The sentinel -1 stops the loop and is not included in Total.</li></ol>
 
           </div>
         </section>

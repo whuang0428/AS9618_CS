@@ -96,18 +96,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-035-gates.jpg`
 
-1. Expression
-2. Output is 1 when...
-3. Common exam wording
-4. Q = NOT A
-5. Inverts the input.
-6. Q = A AND B
-7. A and B are both 1.
-8. All conditions must be true.
-9. Q = A OR B
-10. At least one input is 1.
-11. One or both conditions are true.
-12. Q = NOT (A AND B)
+1. The six gates are NOT, AND, OR, NAND, NOR and XOR.
+2. NAND is the negation of AND and NOR is the negation of OR.
+3. XOR outputs 1 when exactly one of its two inputs is 1.
+4. Ordinary OR also outputs 1 when both inputs are 1, so OR and XOR are different.
 
 ### Logic gates use binary signals
 

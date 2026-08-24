@@ -158,16 +158,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** process
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-operations.jpg`
 
-1. Common operations
-2. Operation
-3. Typical condition
-4. Typical action
-5. Students[Index].Name = TargetName
-6. output index or record details
-7. Students[Index].Enrolled = TRUE
-8. Count <- Count + 1
-9. Students[Index].Mark < 40
-10. change a status or mark field
+1. Search, count and update are alternative record operations, not mandatory consecutive stages.
+2. A search condition locates a matching record and outputs its position or details.
+3. A count condition increments a counter for qualifying records.
+4. An update condition changes the required field of qualifying records.
 
 ### Same structure, different syntax
 
@@ -193,10 +187,8 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-traversal.jpg`
 
-1. Traversal
-2. FOR Index <- 1 TO 30
-3. IF Students[Index].Mark >= 70 THEN
-4. OUTPUT Students[Index].Name
-5. NEXT Index
-6. The loop variable chooses the current record. The field name chooses which value to inspect.
+1. Use Index to select each Students record in turn.
+2. Test the Mark field of the current record.
+3. Output the Name field only when Mark is at least 70.
+4. Close the selection with ENDIF before NEXT Index.
 <!-- stage10-explanations:end -->

@@ -145,18 +145,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-095-timing.jpg`
 
-1. Timing rules
-2. Mark value
-3. Target time
-4. Answer behaviour
-5. 30-45 seconds
-6. give the term/value directly, then stop
-7. 1-2 minutes
-8. two separate points, or point plus mechanism/consequence
-9. 3-4 marks
-10. 3-5 minutes
-11. structured bullets, each carrying a mark-worthy idea
-12. 5-6 marks
+1. Use one declared mark-to-time rate consistently across the practice set.
+2. The example planning rate is one minute per mark, so equal marks receive equal time.
+3. Reading, planning, writing and checking all fit inside the question's total target time.
+4. Marks guide both the time budget and the required answer depth.
 
 ### Decide: answer now, flag, or return later?
 

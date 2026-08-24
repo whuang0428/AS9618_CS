@@ -136,15 +136,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-129-repeat.jpg`
 
-1. REPEAT...UNTIL loop
-2. General pattern
-3. // repeated statements
-4. // update something used by Condition
-5. UNTIL Condition
-6. Input validation
-7. INPUT Mark
-8. UNTIL Mark >= 0 AND Mark <= 100
-9. REPEAT...UNTIL is useful when the body must happen at least once, such as asking for the first input.
+1. A REPEAT...UNTIL loop checks its condition after executing the body.
+2. Place INPUT Mark once inside REPEAT so each attempt obtains one value.
+3. Do not add a duplicate INPUT before the loop.
+4. Stop when Mark is between 0 and 100 inclusive.
 
 ### A special value can stop the loop
 
@@ -152,18 +147,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-129-sentinel.jpg`
 
-1. Sentinel values
-2. Total until -1
-3. Total <- 0
-4. INPUT Number
-5. WHILE Number <> -1
-6. Total <- Total + Number
-7. ENDWHILE
-8. OUTPUT Total
-9. Trace idea
-10. Total after step
-11. 11, stop
-12. The sentinel value is used to stop the loop; it should not be included in the calculation.
+1. Initialise Total and input the first Number before WHILE.
+2. While Number is not -1, add Number to Total and input the next Number.
+3. The repeated input changes the condition and allows the loop to terminate.
+4. The sentinel -1 stops the loop and is not included in Total.
 
 ### Keep asking until the input is valid
 
@@ -187,16 +174,8 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-129-while.jpg`
 
-1. WHILE loop
-2. General pattern
-3. WHILE Condition
-4. // repeated statements
-5. // update something used by Condition
-6. ENDWHILE
-7. Password example
-8. INPUT Password
-9. WHILE Password <> CorrectPassword
-10. OUTPUT "Try again"
-11. OUTPUT "Access granted"
-12. A WHILE loop may run zero times if the condition is false before the first iteration.
+1. A WHILE loop checks its condition before each iteration and may run zero times.
+2. Input Password before testing whether it differs from CorrectPassword.
+3. Inside the loop, output the retry message and input a replacement Password.
+4. Output Access granted only after the WHILE condition becomes false.
 <!-- stage10-explanations:end -->

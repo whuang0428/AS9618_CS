@@ -131,18 +131,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** process
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-algorithms.jpg`
 
-1. Algorithm design documents
-2. They may use Cambridge-style pseudocode, flowcharts or structure diagrams. Java can support learning, but the exam standard remains Cambridge pseudocode.
-3. Cambridge-style pseudocode design
-4. SET ClashFound TO FALSE
-5. FOR EACH Booking IN BookingList
-6. IF Booking.RoomID = NewRoomID AND Booking.Date = NewDate THEN
-7. IF times overlap THEN
-8. SET ClashFound TO TRUE
-9. NEXT Booking
-10. Java support only
-11. // Java support example, not exam pseudocode
-12. boolean clashFound = false;
+1. Traverse each booking and first test whether room and date match.
+2. Only then test whether the booking times overlap.
+3. Close the inner overlap IF before closing the outer room-and-date IF.
+4. Advance to the next booking only after both selections are closed.
 
 ### A data dictionary defines each data item consistently
 

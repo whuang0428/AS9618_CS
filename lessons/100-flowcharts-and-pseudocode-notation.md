@@ -136,15 +136,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-equivalence.jpg`
 
-1. Equivalent forms
-2. Flowchart idea
-3. INPUT Age
-4. Age >= 11 AND Age <= 18?
-5. Yes: OUTPUT "Valid" | No: OUTPUT "Invalid"
-6. Pseudocode equivalent
-7. IF Age >= 11 AND Age <= 18 THEN
-8. OUTPUT "Valid"
-9. OUTPUT "Invalid"
+1. A flowchart decision diamond becomes an IF condition in pseudocode.
+2. The labelled Yes and No branches become THEN and ELSE branches.
+3. Close the selection with ENDIF after the two branches rejoin.
+4. Input Age before testing whether it is between 11 and 18 inclusive.
 
 ### Flowcharts use symbols to show control flow
 
@@ -152,18 +147,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-flowcharts.jpg`
 
-1. Knowledge explanation
-2. START/END
-3. terminator
-4. start or stop the algorithm
-5. INPUT/OUTPUT
-6. data entering or leaving
-7. INPUT Mark, OUTPUT Average
-8. calculation or assignment
-9. Total ← Total + Mark
-10. Decision?
-11. yes/no condition
-12. Mark >= 50?
+1. A terminator marks START or END; a parallelogram marks INPUT or OUTPUT.
+2. A rectangle marks a calculation or assignment; a diamond marks a yes/no decision.
+3. Flow lines show the next step and decision branches must be labelled.
+4. Every output value must first be assigned or input.
+5. A loop must contain a route that can change its condition.
 
 ### Readable notation earns marks more easily
 

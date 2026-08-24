@@ -154,15 +154,15 @@ Correction prompt: "State the correct term, then explain the relevant process or
 1. Knowledge explanation
 2. What to count
 3. Exam wording
-4. comparisons, loop repetitions, steps
-5. fewer checks / fewer iterations
-6. "faster" without reason
-7. extra variables, arrays, copied data
-8. uses less memory / no extra list
-9. ignoring memory when data is copied
-10. Input size
-11. number of items, characters, rows, columns
-12. as n increases, work increases...
+4. Common error
+5. comparisons, loop repetitions, steps
+6. fewer checks / fewer iterations
+7. "faster" without reason
+8. extra variables, arrays, copied data
+9. uses less memory / no extra list
+10. ignoring memory when data is copied
+11. Input size
+12. number of items, characters, rows, columns
 
 ### Efficiency explanations are language-independent
 
@@ -170,18 +170,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-109-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style reasoning
-3. FOR Index <- 1 TO Length
-4. IF List[Index] = Target THEN
-5. Found <- TRUE
-6. NEXT Index
-7. This loop can perform up to Length comparisons.
-8. Java support only
-9. for (int index = 0; index < list.length; index++) {
-10. if (list[index] == target) {
-11. found = true;
-12. Java syntax changes the notation, not the number of item comparisons.
+1. A linear search compares Target with each visited list item.
+2. Set Found to TRUE only inside the matching IF branch.
+3. Close the selection with ENDIF before NEXT Index.
+4. Without early exit, the algorithm can perform up to Length comparisons in either language.
 
 ### Linear search checks one by one; binary search halves a sorted list
 

@@ -191,8 +191,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-reader.jpg`
 
-1. Interactive read trace
-2. File is open. No line has been read yet.
+1. Open the file for reading before entering the loop.
+2. Check NOT EOF before attempting READFILE.
+3. When more data exists, read and process the next line.
+4. When EOF is true, skip READFILE, leave the loop and close the file.
 
 ### A text line often represents one record
 

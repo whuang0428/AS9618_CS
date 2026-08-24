@@ -122,10 +122,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-concept.jpg`
 
-1. Source code The program as written by the programmer, usually in a high-level or assembly language.
-2. Object code Translated code produced by a compiler or assembler, often close to machine code.
-3. Machine code Binary instructions that can be executed directly by the processor.
-4. Translator System software that converts code from one language level to another.
+1. A compiler translates high-level source into target machine or object code.
+2. An assembler translates assembly mnemonics into target machine or object code.
+3. A linker combines object modules and resolves references to form an executable.
+4. A loader places executable code and data into memory; it is not a generic object-to-machine translation stage.
 
 ### An interpreter translates and executes statements as the program runs
 

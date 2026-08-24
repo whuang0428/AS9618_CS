@@ -83,16 +83,16 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 1. Contrast
 2. Difference
-3. Privacy vs security
-4. Privacy concerns control of personal data; security protects systems/data from threats.
-5. Encryption alone does not answer every privacy ethics question.
-6. Copyright vs licence
-7. Copyright protects the work; a licence grants permission under conditions.
-8. Free to access does not mean free to reuse.
-9. Open source vs no owner
-10. Open source gives code access and permissions; copyright and licence terms still apply.
-11. Do not say open source has no copyright.
-12. Environmental vs social
+3. Common error
+4. Privacy vs security
+5. Privacy concerns control of personal data; security protects systems/data from threats.
+6. Encryption alone does not answer every privacy ethics question.
+7. Copyright vs licence
+8. Copyright protects the work; a licence grants permission under conditions.
+9. Free to access does not mean free to reuse.
+10. Open source vs no owner
+11. Open source gives code access and permissions; copyright and licence terms still apply.
+12. Do not say open source has no copyright.
 
 ### Section 7 topic map
 

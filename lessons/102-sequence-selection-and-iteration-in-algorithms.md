@@ -134,18 +134,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-102-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style pseudocode
-3. PassCount <- 0
-4. FOR Count <- 1 TO 5
-5. INPUT Mark
-6. IF Mark >= 50 THEN
-7. PassCount <- PassCount + 1
-8. NEXT Count
-9. OUTPUT PassCount
-10. Java support only
-11. int passCount = 0;
-12. for (int count = 1; count <= 5; count++) {
+1. Initialise PassCount to zero before processing five marks.
+2. Input Mark inside the FOR loop and increment PassCount only when Mark is at least 50.
+3. Close the conditional with ENDIF before NEXT Count.
+4. Output PassCount after the loop.
 
 ### Selection: choose a path using a condition
 

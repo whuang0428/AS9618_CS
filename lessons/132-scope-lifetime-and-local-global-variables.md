@@ -201,15 +201,8 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-132-shadowing.jpg`
 
-1. Same-name variable error
-2. Trace this carefully
-3. Score <- 50
-4. PROCEDURE ChangeScore()
-5. Score <- 80
-6. OUTPUT Score
-7. ENDPROCEDURE
-8. CALL ChangeScore()
-9. Exam explanation
-10. If the procedure's Score is local, the procedure outputs 80 , but the main program still outputs the global 50 .
-11. The identifier is the same, but the local and global variables occupy different storage locations.
+1. Declare a global Score and set it to 50.
+2. Inside ChangeScore, explicitly declare a separate local Score and set it to 80.
+3. The local Score hides the global Score only inside the procedure.
+4. The procedure outputs 80, while the main program later outputs the unchanged global 50.
 <!-- stage10-explanations:end -->

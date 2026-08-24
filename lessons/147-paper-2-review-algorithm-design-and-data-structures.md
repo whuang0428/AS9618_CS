@@ -176,14 +176,14 @@ Correction prompt: "State the correct term, then explain the relevant process or
 2. Structure
 3. Use when
 4. Core operation
-5. 1D array
-6. fixed list of same-type items
-7. index access
-8. forgetting bounds
-9. 2D array
-10. table/grid data
-11. row and column access
-12. mixing row and column
+5. Common error
+6. 1D array
+7. fixed list of same-type items
+8. index access
+9. forgetting bounds
+10. 2D array
+11. table/grid data
+12. row and column access
 
 ### Calculate Total for the selected score list
 

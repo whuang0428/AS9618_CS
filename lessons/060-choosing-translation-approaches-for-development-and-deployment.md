@@ -170,16 +170,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-060-pipeline.jpg`
 
-1. Precise role
-2. High-level source to object/executable code
-3. Compiler
-4. Translates whole program before execution.
-5. High-level source during execution
-6. Interpreter
-7. Translates and executes statement by statement.
-8. Assembly to machine code
-9. Assembler
-10. Translates mnemonics into machine code.
-11. Object modules to executable
-12. Combines modules and resolves external references.
+1. A compiler translates a whole high-level program before execution.
+2. An interpreter translates and executes high-level source statement by statement during execution.
+3. An interpreter normally does not create a separate permanent executable file.
+4. An assembler translates assembly mnemonics into machine or object code.
+5. A linker combines object modules and resolves references; a loader places executable code and data into memory.
 <!-- stage10-explanations:end -->

@@ -117,18 +117,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-089-sql.jpg`
 
-1. SQL review
-2. Request clue
-3. output fields
-4. SELECT Title, Borrower
-5. filter rows
-6. WHERE Returned = FALSE
-7. sort rows
-8. ORDER BY
-9. ORDER BY Price DESC
-10. summary per group
-11. GROUP BY
-12. GROUP BY Category
+1. For the clauses shown, written syntax order is SELECT, FROM, WHERE, GROUP BY, ORDER BY.
+2. A simplified logical processing order is FROM, WHERE, GROUP BY, SELECT, ORDER BY.
+3. GROUP BY forms groups and ORDER BY sorts the final rows.
+4. Written syntax order and logical processing order are different.
 
 ### Trace one mixed SQL result
 

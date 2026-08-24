@@ -167,16 +167,8 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-149-timing.jpg`
 
-1. Timing strategy
-2. Read and plan
-3. 30 seconds
-4. 3 minutes
-5. 60 seconds
-6. 5 minutes
-7. 90 seconds
-8. 7 minutes
-9. 10 marks
-10. 2 minutes
-11. 9 minutes
-12. If planning feels slow, remember that rewriting a confused answer is slower.
+1. Use one declared mark-to-time rate consistently across timed pseudocode practice.
+2. The example rate is one minute per mark: 2, 3, 5 and 10 marks receive 2, 3, 5 and 10 minutes.
+3. The whole question budget includes reading, planning, writing and checking.
+4. A proportional model always allocates more time to a higher-mark question.
 <!-- stage10-explanations:end -->

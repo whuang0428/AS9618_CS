@@ -136,7 +136,7 @@ NEXT Row</code></pre>
             <figcaption class="explanation-sr-only">Outer loop first, inner loop second: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> Core structure</li><li><strong>Lesson fact:</strong> FOR Row &lt;- 1 TO 3</li><li><strong>Lesson fact:</strong> FOR Column &lt;- 1 TO 4</li><li><strong>Lesson fact:</strong> OUTPUT Row, Column</li><li><strong>Lesson fact:</strong> NEXT Column</li><li><strong>Lesson fact:</strong> NEXT Row</li><li><strong>Lesson fact:</strong> The inner loop completes all columns for one row before the outer loop moves to the next row.</li><li><strong>Lesson fact:</strong> Trace idea</li><li><strong>Lesson fact:</strong> Column sequence</li><li><strong>Lesson fact:</strong> 1, 2, 3, 4</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Choose nested-loop order from the required traversal and grouping, not from which range is wider.</li><li><strong>Lesson fact:</strong> The outer-loop value changes less frequently.</li><li><strong>Lesson fact:</strong> The inner loop completes its full traversal for every outer-loop value.</li><li><strong>Lesson fact:</strong> In row-major traversal, hold one row while visiting every column, then advance the row.</li></ol>
 
           </div>
         </section>
@@ -284,7 +284,7 @@ NEXT Row</code></pre>
             <figcaption class="explanation-sr-only">Indentation is evidence in nested loops: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FOR Row &lt;- 1 TO 3</li><li><strong>Lesson fact:</strong> FOR Column &lt;- 1 TO 4</li><li><strong>Lesson fact:</strong> Product &lt;- Row * Column</li><li><strong>Lesson fact:</strong> OUTPUT Product</li><li><strong>Lesson fact:</strong> NEXT Column</li><li><strong>Lesson fact:</strong> NEXT Row</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> for (int row = 1; row &lt;= 3; row++) {</li><li><strong>Lesson fact:</strong> for (int column = 1; column &lt;= 4; column++) {</li><li><strong>Lesson fact:</strong> int product = row * column;</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Use an outer loop for three rows and an inner loop for four columns.</li><li><strong>Lesson fact:</strong> Calculate Product from the current Row and Column inside the inner loop.</li><li><strong>Lesson fact:</strong> Output Product during every inner-loop iteration.</li><li><strong>Lesson fact:</strong> A corresponding Java support version must also output each product.</li></ol>
 
           </div>
         </section>

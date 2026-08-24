@@ -162,7 +162,7 @@ OUTPUT PassCount</code></pre>
             <figcaption class="explanation-sr-only">A complete fragment has setup, logic and result: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Fragment anatomy</li><li><strong>Lesson fact:</strong> Pass-count fragment</li><li><strong>Lesson fact:</strong> PassCount &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 10</li><li><strong>Lesson fact:</strong> INPUT Marks[Index]</li><li><strong>Lesson fact:</strong> IF Marks[Index] &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> PassCount &lt;- PassCount + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> OUTPUT PassCount</li><li><strong>Lesson fact:</strong> Why it is complete</li><li><strong>Lesson fact:</strong> counter is initialised before the loop</li><li><strong>Lesson fact:</strong> array element is input before it is tested</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Initialise PassCount before processing ten array positions.</li><li><strong>Lesson fact:</strong> Input the current element before testing it.</li><li><strong>Lesson fact:</strong> Close the passing-mark selection with ENDIF before NEXT Index.</li><li><strong>Lesson fact:</strong> Output PassCount once after the loop.</li></ol>
 
           </div>
         </section>
@@ -192,7 +192,7 @@ UNTIL Valid = TRUE</code></pre>
             <figcaption class="explanation-sr-only">Review fragments often need input checks: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Validation</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN</li><li><strong>Lesson fact:</strong> Valid &lt;- TRUE</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Enter a mark from 0 to 100&quot;</li><li><strong>Lesson fact:</strong> Valid &lt;- FALSE</li><li><strong>Lesson fact:</strong> UNTIL Valid = TRUE</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A complete validation fragment prompts for and inputs Mark inside REPEAT.</li><li><strong>Lesson fact:</strong> Set Valid to TRUE when Mark is between 0 and 100 inclusive; otherwise set it to FALSE.</li><li><strong>Lesson fact:</strong> Close the selection with ENDIF and repeat until Valid is TRUE.</li><li><strong>Lesson fact:</strong> Every invalid retry must read a replacement Mark.</li></ol>
 
           </div>
         </section>
@@ -255,7 +255,7 @@ ENDPROCEDURE</code></pre>
             <figcaption class="explanation-sr-only">Use functions for returned values and procedures for actions: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Subroutines</li><li><strong>Lesson fact:</strong> Function</li><li><strong>Lesson fact:</strong> FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN</li><li><strong>Lesson fact:</strong> RETURN Mark &gt;= 50</li><li><strong>Lesson fact:</strong> ENDFUNCTION</li><li><strong>Lesson fact:</strong> Procedure</li><li><strong>Lesson fact:</strong> PROCEDURE DisplayResult(Name : STRING, Passed : BOOLEAN)</li><li><strong>Lesson fact:</strong> OUTPUT Name</li><li><strong>Lesson fact:</strong> OUTPUT Passed</li><li><strong>Lesson fact:</strong> ENDPROCEDURE</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A function returns a value; a procedure performs an action.</li><li><strong>Lesson fact:</strong> IsPass returns a BOOLEAN based on whether Mark is at least 50.</li><li><strong>Lesson fact:</strong> Close the function's IF with ENDIF before ENDFUNCTION.</li><li><strong>Lesson fact:</strong> DisplayResult outputs its parameters and returns no value.</li></ol>
 
           </div>
         </section>
@@ -344,7 +344,7 @@ NEXT Index</code></pre>
             <figcaption class="explanation-sr-only">Java can support practice; the review answer should be Cambridge pseudocode: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> for (int index = 0; index &lt; 10; index++) {</li><li><strong>Lesson fact:</strong> if (marks[index] &gt;= 50) {</li><li><strong>Lesson fact:</strong> passCount++;</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 10</li><li><strong>Lesson fact:</strong> IF Marks[Index] &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> PassCount &lt;- PassCount + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Java may support practice but the review answer uses Cambridge pseudocode.</li><li><strong>Lesson fact:</strong> Increment PassCount only when the current mark is at least 50.</li><li><strong>Lesson fact:</strong> Close the pseudocode selection with ENDIF before NEXT Index.</li><li><strong>Lesson fact:</strong> Keep Java and pseudocode indexing conventions explicit.</li></ol>
 
           </div>
         </section>

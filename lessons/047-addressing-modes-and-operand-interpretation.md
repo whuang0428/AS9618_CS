@@ -162,16 +162,8 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-047-modes.jpg`
 
-1. Operand means
-2. Exam-safe wording
-3. Immediate
-4. The actual value to use.
-5. LOAD #20
-6. The operand is the value 20 itself.
-7. The memory address of the value.
-8. The CPU loads the value stored at memory address 20.
-9. Indirect
-10. The address of a memory location that stores another address.
-11. LOAD (20)
-12. The CPU looks at address 20 to find the address of the actual value.
+1. Immediate addressing uses the operand field as the value itself.
+2. Direct addressing uses the operand field as the address of the value.
+3. Indirect addressing follows an address stored at the operand address to reach the value.
+4. Indexed addressing adds an index value to a base address to form the effective address.
 <!-- stage10-explanations:end -->

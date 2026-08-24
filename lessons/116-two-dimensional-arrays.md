@@ -174,16 +174,8 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-116-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style pseudocode
-3. DECLARE Marks : ARRAY[1:3, 1:4] OF INTEGER
-4. FOR Row <- 1 TO 3
-5. FOR Column <- 1 TO 4
-6. OUTPUT Marks[Row, Column]
-7. NEXT Column
-8. NEXT Row
-9. Java support only
-10. int[][] marks = new int[3][4];
-11. for (int row = 0; row < 3; row++) {
-12. for (int column = 0; column < 4; column++) {
+1. Traverse a 3 by 4 array with nested loops.
+2. Output the current cell inside the inner loop.
+3. A corresponding Java support version must also output every current cell.
+4. The two versions use explicitly stated indexing conventions.
 <!-- stage10-explanations:end -->

@@ -174,16 +174,8 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Linear search pseudocode
-3. Found <- FALSE
-4. Index <- 1
-5. WHILE Found = FALSE AND Index <= Length
-6. IF List[Index] = Target THEN
-7. Found <- TRUE
-8. Index <- Index + 1
-9. ENDWHILE
-10. Java support only
-11. boolean found = false;
-12. int index = 0;
+1. Initialise Found to FALSE and Index to the first valid position.
+2. While the target is not found and Index remains valid, compare the current item.
+3. Close the match selection with ENDIF, then increment Index.
+4. ENDWHILE closes the surrounding search loop.
 <!-- stage10-explanations:end -->

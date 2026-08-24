@@ -178,18 +178,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-decision.jpg`
 
-1. Decision table
-2. Do not choose just because...
-3. calculate average of 50 readings
-4. array of REAL
-5. records sound more advanced
-6. store one book's ISBN, title and pages
-7. ISBN has digits
-8. store 200 books with same fields
-9. array of records
-10. one record is not enough
-11. save transactions for next run
-12. text/CSV file
+1. Store one book as a record with ISBN, title and pages fields.
+2. Store ISBN as STRING because it is an identifier, may contain leading zeroes or hyphens, and ISBN-10 may end in X.
+3. Store many books with the same fields as an array of records.
+4. Use a file when data must remain available for a later program run.
+5. Choose a queue when requests must be served in arrival order.
 
 ### Use files when data must persist or be exchanged
 

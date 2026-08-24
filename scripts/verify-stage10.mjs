@@ -1,8 +1,11 @@
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { explanations } from "./stage10-explanations-data.mjs";
+import { evaluateSemanticCalculation, semanticCalculations } from "./stage10-semantic-calculations.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
+const auditOnly = process.argv.includes("--audit-only");
 const failures = [];
 const expect = (condition, message) => { if (!condition) failures.push(message); };
 const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8");
@@ -182,11 +185,94 @@ expect(visualRows.length >= 25, "Stage 10 visual register is unexpectedly small"
 expect(visualRows.some((row) => row[visualLessonIndex] === "016" && row[visualStatusIndex] === "PilotReview"), "Lesson 016 corrected topology visuals are not registered for pilot review");
 
 const report = read("audits/stage10-concept-explanation-report.md");
-expect(report.includes("complete across all 150 lessons") && report.includes("Human semantic review remains"), "Stage 10 report does not describe the completed rollout and human semantic-review gate");
+expect(report.includes("complete across all 150 lessons") && report.includes("Human semantic review status comes from"), "Stage 10 report does not describe the completed rollout and human semantic-review gate");
+
+const semanticRows = parseCsv(read("audits/stage10-semantic-review-register.csv"));
+const semanticHeader = semanticRows.shift();
+const semanticIndex = Object.fromEntries(semanticHeader.map((value, index) => [value, index]));
+const requiredSemanticColumns = ["lesson", "target_id", "asset", "sha256", "pass1", "pass2", "status", "max_severity", "defect_ids", "automated_checks", "automated_check_status"];
+for (const column of requiredSemanticColumns) expect(Number.isInteger(semanticIndex[column]), `Semantic review register is missing ${column}`);
+expect(semanticRows.length === explanations.length, `Expected ${explanations.length} semantic review rows; found ${semanticRows.length}`);
+expect(new Set(semanticRows.map((row) => `${row[semanticIndex.lesson]}/${row[semanticIndex.target_id]}`)).size === explanations.length, "Semantic review register contains duplicate or missing keys");
+expect(new Set(semanticRows.map((row) => row[semanticIndex.asset])).size === explanations.length, "Semantic review register contains duplicate or missing assets");
+const currentAssets = fs.readdirSync(path.join(root, "web", "assets", "diagrams", "stage10-infographics")).filter((name) => name.endsWith(".jpg"));
+expect(currentAssets.length === 782, `Expected exactly 782 current Stage 10 JPG assets; found ${currentAssets.length}`);
+expect(new Set(currentAssets).size === 782, "Current Stage 10 asset directory contains duplicate filenames");
+const registeredAssets = new Set(semanticRows.map((row) => row[semanticIndex.asset]));
+for (const asset of currentAssets) expect(registeredAssets.has(asset), `${asset}: current Stage 10 asset is missing from the semantic register`);
+
+const semanticByKey = new Map();
+for (const row of semanticRows) {
+  const key = `${row[semanticIndex.lesson]}/${row[semanticIndex.target_id]}`;
+  semanticByKey.set(key, row);
+  const item = explanations.find((candidate) => `${candidate.lesson}/${candidate.targetId}` === key);
+  expect(Boolean(item), `${key}: semantic review row has no maintained explanation`);
+  const expectedAsset = item ? path.basename(item.visual.src) : "";
+  expect(row[semanticIndex.asset] === expectedAsset, `${key}: semantic review asset path mismatch`);
+  const assetPath = path.join(root, "web", "assets", "diagrams", "stage10-infographics", row[semanticIndex.asset]);
+  if (fs.existsSync(assetPath)) {
+    const digest = crypto.createHash("sha256").update(fs.readFileSync(assetPath)).digest("hex");
+    expect(row[semanticIndex.sha256] === digest, `${key}: semantic review is stale because the asset hash changed`);
+  }
+  expect(row[semanticIndex.pass1] === "Reviewed" && row[semanticIndex.pass2] === "Reviewed", `${key}: both semantic review passes must be complete`);
+  expect(row[semanticIndex.status] !== "Pending", `${key}: semantic review remains pending`);
+}
+
+const defectRows = parseCsv(read("audits/stage10-semantic-defects.csv"));
+const defectHeader = defectRows.shift();
+const defectIndex = Object.fromEntries(defectHeader.map((value, index) => [value, index]));
+for (const column of ["defect_id", "lesson", "target_id", "severity", "blocks_release", "resolved"]) expect(Number.isInteger(defectIndex[column]), `Semantic defect register is missing ${column}`);
+const defectIds = new Set(defectRows.map((row) => row[defectIndex.defect_id]));
+expect(defectIds.size === defectRows.length, "Semantic defect register contains duplicate IDs");
+for (const row of defectRows) {
+  const key = `${row[defectIndex.lesson]}/${row[defectIndex.target_id]}`;
+  expect(semanticByKey.has(key), `${row[defectIndex.defect_id]}: defect key ${key} has no semantic review row`);
+  if (["Critical", "Major"].includes(row[defectIndex.severity]) && row[defectIndex.resolved] !== "true") {
+    expect(row[defectIndex.blocks_release] === "true", `${row[defectIndex.defect_id]}: unresolved ${row[defectIndex.severity]} defect must block release`);
+  }
+}
+for (const row of semanticRows) {
+  for (const id of row[semanticIndex.defect_ids].split(";").filter(Boolean)) expect(defectIds.has(id), `${id}: semantic review row references a missing defect`);
+}
+
+const calculationIds = new Set();
+for (const check of semanticCalculations) {
+  expect(!calculationIds.has(check.id), `${check.id}: duplicate automated semantic-calculation ID`);
+  calculationIds.add(check.id);
+  const row = semanticByKey.get(check.key);
+  expect(Boolean(row), `${check.id}: calculation key ${check.key} has no semantic review row`);
+  const passed = evaluateSemanticCalculation(check);
+  const linkedDefects = check.defectIds ?? [];
+  if (!passed) {
+    expect(linkedDefects.length > 0, `${check.id}: failed calculation is not linked to a registered defect`);
+    for (const defectId of linkedDefects) expect(defectIds.has(defectId), `${check.id}: linked defect ${defectId} is missing`);
+  }
+  if (row) {
+    const registeredChecks = row[semanticIndex.automated_checks].split(";").filter(Boolean);
+    expect(registeredChecks.includes(check.id), `${check.id}: calculation is missing from ${check.key} register row`);
+    const expectedStatus = passed ? "Passed" : "KnownDefect";
+    expect(row[semanticIndex.automated_check_status] === expectedStatus, `${check.key}: automated check status should be ${expectedStatus}`);
+  }
+}
+
+const systemsRow = semanticByKey.get("005/systems");
+expect(Boolean(systemsRow), "Lesson 005 systems semantic seed is missing");
+if (systemsRow) {
+  const systemsDefects = defectRows.filter((row) => row[defectIndex.lesson] === "005" && row[defectIndex.target_id] === "systems");
+  expect(systemsDefects.length >= 6, `Lesson 005 systems must preserve at least six seed-defect records; found ${systemsDefects.length}`);
+  expect(systemsDefects.every((row) => row[defectIndex.resolved] === "true"), "Lesson 005 systems seed defects must be resolved after the deterministic repair");
+  expect(systemsRow[semanticIndex.status] === "Approved", "Repaired Lesson 005 systems asset must pass semantic review");
+}
+expect(semanticByKey.get("004/overflow")?.[semanticIndex.status] === "Approved", "Corrected Lesson 004 overflow asset must pass semantic review");
+
+const blockers = semanticRows.filter((row) => ["DefectCritical", "DefectMajor"].includes(row[semanticIndex.status]));
+if (!auditOnly) expect(blockers.length === 0, `Stage 10 release blocked by ${blockers.length} asset(s) with unresolved Critical or Major semantic defects`);
+
+const defectCounts = Object.fromEntries(["Critical", "Major", "Minor"].map((severity) => [severity, defectRows.filter((row) => row[defectIndex.severity] === severity && row[defectIndex.resolved] !== "true").length]));
 
 if (failures.length) {
   console.error(failures.join("\n"));
   process.exit(1);
 }
 
-console.log(`Stage 10 verification passed: ${explanations.length} academic infographics, accessible transcripts, 150-lesson target coverage and ${visualRows.length} visual audit records.`);
+console.log(`Stage 10 ${auditOnly ? "audit-only " : ""}verification passed: ${explanations.length} unique academic infographics, ${semanticRows.length} two-pass semantic reviews, ${defectRows.length} recorded defects (${defectCounts.Critical} Critical, ${defectCounts.Major} Major, ${defectCounts.Minor} Minor) and ${blockers.length} blocking assets.`);

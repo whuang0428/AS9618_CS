@@ -211,7 +211,7 @@ OUTPUT Found</code></pre>
             <figcaption class="explanation-sr-only">Use a flag to remember whether the target appeared: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Found &lt;- FALSE</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> IF Names[Index] = TargetName THEN</li><li><strong>Lesson fact:</strong> Found &lt;- TRUE</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> OUTPUT Found</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Initialise Found to FALSE before traversing the names.</li><li><strong>Lesson fact:</strong> Set Found to TRUE only when the current name equals TargetName.</li><li><strong>Lesson fact:</strong> Close the match selection with ENDIF before NEXT Index.</li><li><strong>Lesson fact:</strong> Output Found after the traversal.</li></ol>
 
           </div>
         </section>
@@ -239,7 +239,7 @@ OUTPUT PassCount</code></pre>
             <figcaption class="explanation-sr-only">Increment only when a condition is true: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> PassCount &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> IF Scores[Index] &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> PassCount &lt;- PassCount + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> OUTPUT PassCount</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Initialise PassCount to zero before traversing five scores.</li><li><strong>Lesson fact:</strong> Increment PassCount only when the current score is at least 50.</li><li><strong>Lesson fact:</strong> Close the selection with ENDIF before NEXT Index.</li><li><strong>Lesson fact:</strong> Output PassCount after the loop.</li></ol>
 
           </div>
         </section>
@@ -297,7 +297,7 @@ for (int index = 0; index &lt; 5; index++) {
             <figcaption class="explanation-sr-only">Same algorithm, different array syntax: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> PassCount &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> IF Scores[Index] &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> PassCount &lt;- PassCount + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> int passCount = 0;</li><li><strong>Lesson fact:</strong> for (int index = 0; index &lt; 5; index++) {</li><li><strong>Lesson fact:</strong> if (scores[index] &gt;= 50) {</li><li><strong>Lesson fact:</strong> passCount++;</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Both pseudocode and Java versions visit five score positions.</li><li><strong>Lesson fact:</strong> Increment the pass counter only when the current score is at least 50.</li><li><strong>Lesson fact:</strong> Close the conditional before advancing the loop.</li><li><strong>Lesson fact:</strong> Both complete versions output the final pass count after the loop.</li></ol>
 
           </div>
         </section>

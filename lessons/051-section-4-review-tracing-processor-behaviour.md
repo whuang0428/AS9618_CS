@@ -121,14 +121,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-051-retrieval.jpg`
 
-1. PC Holds address of the next instruction to fetch.
-2. MAR Holds the memory address being accessed.
-3. MDR Holds data/instruction transferred to or from memory.
-4. CIR Holds the current instruction while it is decoded/executed.
-5. Control bus Carries control/timing signals such as read, write and interrupt.
-6. Cache Small fast memory storing frequently/recently used items.
-7. ISR Routine that handles a specific interrupt.
-8. Pipeline stall Pause because an instruction cannot safely continue.
+1. PC holds the address of the next instruction; MAR holds the memory address being accessed.
+2. The address bus carries addresses between the processor and memory.
+3. MDR holds data or instructions transferred through the data bus.
+4. CIR holds the current instruction while it is decoded and executed.
+5. The control bus carries control and timing signals such as read, write and interrupt.
 
 ### 8-minute mixed Section 4 response
 

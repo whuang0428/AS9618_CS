@@ -109,12 +109,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-count.jpg`
 
-1. PassCount <- 0
-2. FOR Index <- 1 TO 5
-3. IF Scores[Index] >= 50 THEN
-4. PassCount <- PassCount + 1
-5. NEXT Index
-6. OUTPUT PassCount
+1. Initialise PassCount to zero before traversing five scores.
+2. Increment PassCount only when the current score is at least 50.
+3. Close the selection with ENDIF before NEXT Index.
+4. Output PassCount after the loop.
 
 ### Four array algorithm patterns
 
@@ -141,18 +139,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** process
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style pseudocode
-3. PassCount <- 0
-4. FOR Index <- 1 TO 5
-5. IF Scores[Index] >= 50 THEN
-6. PassCount <- PassCount + 1
-7. NEXT Index
-8. Java support only
-9. int passCount = 0;
-10. for (int index = 0; index < 5; index++) {
-11. if (scores[index] >= 50) {
-12. passCount++;
+1. Both pseudocode and Java versions visit five score positions.
+2. Increment the pass counter only when the current score is at least 50.
+3. Close the conditional before advancing the loop.
+4. Both complete versions output the final pass count after the loop.
 
 ### Use a flag to remember whether the target appeared
 
@@ -160,12 +150,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-search.jpg`
 
-1. Found <- FALSE
-2. FOR Index <- 1 TO 5
-3. IF Names[Index] = TargetName THEN
-4. Found <- TRUE
-5. NEXT Index
-6. OUTPUT Found
+1. Initialise Found to FALSE before traversing the names.
+2. Set Found to TRUE only when the current name equals TargetName.
+3. Close the match selection with ENDIF before NEXT Index.
+4. Output Found after the traversal.
 
 ### Choose a scenario and inspect the matching template
 

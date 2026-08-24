@@ -129,7 +129,7 @@
             <figcaption class="explanation-sr-only">Three ways to represent negative binary values: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Sign-and-magnitude</li><li><strong>Lesson fact:</strong> The leftmost bit is the sign: 0 positive, 1 negative. The remaining bits store the magnitude.</li><li><strong>Lesson fact:</strong> Example: 10010111₂ = -23</li><li><strong>Lesson fact:</strong> One’s complement</li><li><strong>Lesson fact:</strong> Start with the positive binary value and invert every bit to make the negative value.</li><li><strong>Lesson fact:</strong> 00010111₂ → 11101000₂ = -23</li><li><strong>Lesson fact:</strong> Two’s complement</li><li><strong>Lesson fact:</strong> Invert every bit, then add 1. This gives one zero and a range from -128 to +127.</li><li><strong>Lesson fact:</strong> 11101000₂ + 1 = 11101001₂ = -23</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Positive 23 in 8 bits is 00010111.</li><li><strong>Lesson fact:</strong> The 8-bit sign-and-magnitude representation of -23 is 10010111.</li><li><strong>Lesson fact:</strong> The 8-bit one's-complement representation of -23 is 11101000.</li><li><strong>Lesson fact:</strong> The 8-bit two's-complement representation of -23 is 11101001.</li><li><strong>Lesson fact:</strong> Every input, intermediate state and result must contain exactly 8 bits.</li></ol>
 
           </div>
         </section>
@@ -178,7 +178,7 @@
             <figcaption class="explanation-sr-only">Two’s complement method: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Positive denary to negative two’s complement</li><li><strong>Lesson fact:</strong> Write the positive magnitude in 8-bit binary.</li><li><strong>Lesson fact:</strong> Invert every bit.</li><li><strong>Lesson fact:</strong> Label the result as two’s complement.</li><li><strong>Lesson fact:</strong> Two’s complement binary to denary</li><li><strong>Lesson fact:</strong> If the leftmost bit is 0, convert as normal positive binary.</li><li><strong>Lesson fact:</strong> If the leftmost bit is 1, subtract 256 from the unsigned value.</li><li><strong>Lesson fact:</strong> Alternatively: invert, add 1, then add a negative sign.</li><li><strong>Lesson fact:</strong> State the representation in the answer.</li><li><strong>Lesson fact:</strong> For 8-bit two’s complement, a quick decode is: unsigned value - 256 when the MSB is 1.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Write the positive magnitude using exactly 8 bits.</li><li><strong>Lesson fact:</strong> Invert every bit, then add 1 to form the negative two's-complement value.</li><li><strong>Lesson fact:</strong> For +45: 00101101 becomes 11010010 after inversion, then 11010011 after adding 1.</li><li><strong>Lesson fact:</strong> The 8-bit value 11010011 represents -45 in two's complement.</li><li><strong>Lesson fact:</strong> When the MSB is 1, quick decode uses unsigned value minus 256.</li></ol>
 
           </div>
         </section>
@@ -216,7 +216,7 @@
             <figcaption class="explanation-sr-only">8-bit signed ranges and zero: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Sign-and-magnitude</li><li><strong>Lesson fact:</strong> -127 to +127</li><li><strong>Lesson fact:</strong> Has two zeros: 00000000₂ and 10000000₂.</li><li><strong>Lesson fact:</strong> One’s complement</li><li><strong>Lesson fact:</strong> Also has two zeros: 00000000₂ and 11111111₂.</li><li><strong>Lesson fact:</strong> Two’s complement</li><li><strong>Lesson fact:</strong> -128 to +127</li><li><strong>Lesson fact:</strong> Has one zero and one extra negative value.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Sign-and-magnitude uses one sign bit and seven magnitude bits; its range is -127 to +127 and it has two zero patterns.</li><li><strong>Lesson fact:</strong> One's complement forms a negative value by inverting all eight bits; its range is -127 to +127 and it has two zero patterns.</li><li><strong>Lesson fact:</strong> Two's complement uses all eight bits as one weighted value with MSB place value -128.</li><li><strong>Lesson fact:</strong> The 8-bit two's-complement range is -128 to +127 and it has one zero pattern.</li><li><strong>Lesson fact:</strong> One's complement and two's complement do not store a separate magnitude field.</li></ol>
 
           </div>
         </section>

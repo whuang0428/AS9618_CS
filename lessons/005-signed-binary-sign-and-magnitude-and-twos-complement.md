@@ -81,14 +81,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-005-range.jpg`
 
-1. Sign-and-magnitude
-2. -127 to +127
-3. Has two zeros: 00000000₂ and 10000000₂.
-4. One’s complement
-5. Also has two zeros: 00000000₂ and 11111111₂.
-6. Two’s complement
-7. -128 to +127
-8. Has one zero and one extra negative value.
+1. Sign-and-magnitude uses one sign bit and seven magnitude bits; its range is -127 to +127 and it has two zero patterns.
+2. One's complement forms a negative value by inverting all eight bits; its range is -127 to +127 and it has two zero patterns.
+3. Two's complement uses all eight bits as one weighted value with MSB place value -128.
+4. The 8-bit two's-complement range is -128 to +127 and it has one zero pattern.
+5. One's complement and two's complement do not store a separate magnitude field.
 
 ### Three ways to represent negative binary values
 
@@ -96,15 +93,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-005-systems.jpg`
 
-1. Sign-and-magnitude
-2. The leftmost bit is the sign: 0 positive, 1 negative. The remaining bits store the magnitude.
-3. Example: 10010111₂ = -23
-4. One’s complement
-5. Start with the positive binary value and invert every bit to make the negative value.
-6. 00010111₂ → 11101000₂ = -23
-7. Two’s complement
-8. Invert every bit, then add 1. This gives one zero and a range from -128 to +127.
-9. 11101000₂ + 1 = 11101001₂ = -23
+1. Positive 23 in 8 bits is 00010111.
+2. The 8-bit sign-and-magnitude representation of -23 is 10010111.
+3. The 8-bit one's-complement representation of -23 is 11101000.
+4. The 8-bit two's-complement representation of -23 is 11101001.
+5. Every input, intermediate state and result must contain exactly 8 bits.
 
 ### Two’s complement method
 
@@ -112,14 +105,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-005-twos.jpg`
 
-1. Positive denary to negative two’s complement
-2. Write the positive magnitude in 8-bit binary.
-3. Invert every bit.
-4. Label the result as two’s complement.
-5. Two’s complement binary to denary
-6. If the leftmost bit is 0, convert as normal positive binary.
-7. If the leftmost bit is 1, subtract 256 from the unsigned value.
-8. Alternatively: invert, add 1, then add a negative sign.
-9. State the representation in the answer.
-10. For 8-bit two’s complement, a quick decode is: unsigned value - 256 when the MSB is 1.
+1. Write the positive magnitude using exactly 8 bits.
+2. Invert every bit, then add 1 to form the negative two's-complement value.
+3. For +45: 00101101 becomes 11010010 after inversion, then 11010011 after adding 1.
+4. The 8-bit value 11010011 represents -45 in two's complement.
+5. When the MSB is 1, quick decode uses unsigned value minus 256.
 <!-- stage10-explanations:end -->

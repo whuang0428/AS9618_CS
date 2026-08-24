@@ -238,7 +238,7 @@ NEXT Index</code></pre>
             <figcaption class="explanation-sr-only">Keep Java syntax out of Paper 2 unless Java is explicitly requested: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Java traps</li><li><strong>Lesson fact:</strong> Java-like answer</li><li><strong>Lesson fact:</strong> for (int i = 0; i &lt; 5; i++) {</li><li><strong>Lesson fact:</strong> if (marks[i] &gt;= 50) {</li><li><strong>Lesson fact:</strong> passCount++;</li><li><strong>Lesson fact:</strong> Cambridge-style version</li><li><strong>Lesson fact:</strong> PassCount &lt;- 0</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> IF Mark[Index] &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> PassCount &lt;- PassCount + 1</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Java arrays often use 0-based indexing. Cambridge-style course examples here use readable 1-based positions unless the question defines otherwise.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Java braces, semicolons and increment operators are support syntax, not Cambridge pseudocode.</li><li><strong>Lesson fact:</strong> In Cambridge pseudocode, initialise PassCount and iterate over explicitly defined array positions.</li><li><strong>Lesson fact:</strong> Increment PassCount only when the current mark is at least 50.</li><li><strong>Lesson fact:</strong> Close the conditional with ENDIF before NEXT Index.</li></ol>
 
           </div>
         </section>
@@ -265,7 +265,7 @@ NEXT Index</code></pre>
             <figcaption class="explanation-sr-only">Convert meaning first, syntax second: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Conversion routine</li><li><strong>Lesson fact:</strong> 1. State the goal Example: input five marks and count how many are at least 50.</li><li><strong>Lesson fact:</strong> 2. Choose variables Mark, Index, PassCount are clearer than m, i, pc in first drafts.</li><li><strong>Lesson fact:</strong> 3. Write Cambridge blocks Use FOR/NEXT, IF/ENDIF, &lt;-, INPUT, OUTPUT.</li><li><strong>Lesson fact:</strong> 4. Trace once Check that each variable changes where the indentation says it changes.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Preserve the algorithm's meaning before converting notation or syntax.</li><li><strong>Lesson fact:</strong> Rename abbreviated draft variables toward clearer names: m to Mark, i to Index and pc to PassCount.</li><li><strong>Lesson fact:</strong> Use Cambridge blocks after the inputs, processing and outputs are defined.</li><li><strong>Lesson fact:</strong> Trace the completed algorithm once to verify where each value changes.</li></ol>
 
           </div>
         </section>

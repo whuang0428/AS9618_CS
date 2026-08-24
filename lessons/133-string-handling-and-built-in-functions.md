@@ -102,15 +102,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-case.jpg`
 
-1. Case conversion
-2. Cambridge-style pseudocode
-3. INPUT Answer
-4. Answer <- UCASE(Answer)
-5. IF Answer = "Y" THEN
-6. OUTPUT "Continue"
-7. Why it helps
-8. If the user enters "y" , converting to upper case lets the algorithm compare it with "Y" .
-9. Case conversion changes letter case; it does not remove spaces or fix spelling.
+1. Input Answer and normalise it with UCASE before comparison.
+2. If the normalised answer equals Y, output Continue.
+3. Close the selection with ENDIF.
+4. Case conversion changes letter case but does not remove spaces or correct spelling.
 
 ### Concatenation joins strings to form a new string
 

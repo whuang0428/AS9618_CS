@@ -121,15 +121,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-integration.jpg`
 
-1. Combine ideas
-2. Function example
-3. FUNCTION IsValidMark(Mark : INTEGER) RETURNS BOOLEAN
-4. IF Mark >= 0 AND Mark <= 100 THEN
-5. RETURN TRUE
-6. RETURN FALSE
-7. ENDFUNCTION
-8. Why this is robust
-9. The validation rule is written once and can be tested separately. Other code can call the function instead of repeating the condition.
+1. IsValidMark returns TRUE only for marks from 0 to 100 inclusive.
+2. Close the valid branch with ENDIF before the false return.
+3. Close the reusable function with ENDFUNCTION.
+4. Call the function instead of repeating the validation condition.
 
 ### Java methods can model modularity, but Cambridge pseudocode remains the exam format
 
@@ -176,18 +171,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-parameters.jpg`
 
-1. Parameters and return values
-2. Responsibility
-3. Returns / effect
-4. GetValidMark()
-5. input and validate mark
-6. valid integer mark
-7. CalculateGrade(Mark)
-8. turn mark into grade
-9. grade character/string
-10. DisplayResult(Grade)
-11. format output
-12. output to screen
+1. GetValidMark inputs and validates a mark, then returns a valid INTEGER.
+2. CalculateGrade receives Mark and returns a grade character.
+3. DisplayResult is a procedure that performs OUTPUT and returns no value.
+4. Return values and screen-output effects must not be conflated.
 
 ### A robust program handles expected misuse without collapsing
 
@@ -209,17 +196,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-validation.jpg`
 
-1. Validation
-2. Cambridge-style pseudocode
-3. INPUT Mark
-4. IF Mark >= 0 AND Mark <= 100 THEN
-5. Valid <- TRUE
-6. OUTPUT "Enter a mark from 0 to 100"
-7. Valid <- FALSE
-8. UNTIL Valid = TRUE
-9. Reasoning
-10. The loop repeats until acceptable data is entered. The program does not calculate a grade from invalid data.
-11. Robustness is not guessing what the user meant. It is refusing bad data with a calm face.
+1. Place INPUT Mark inside REPEAT so every retry reads a new value.
+2. Set Valid to TRUE only when Mark is between 0 and 100 inclusive.
+3. Otherwise output the valid range, set Valid to FALSE and repeat.
+4. Close the selection with ENDIF and terminate with UNTIL Valid = TRUE.
 
 ### Check whether a mark input is robustly acceptable
 

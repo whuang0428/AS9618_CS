@@ -131,18 +131,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-112-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style answer
-3. Total <- 0
-4. Count <- 0
-5. INPUT Value
-6. WHILE Value <> -1
-7. Total <- Total + Value
-8. Count <- Count + 1
-9. ENDWHILE
-10. Average <- Total / Count
-11. OUTPUT Average
-12. Java support only
+1. Initialise Total and Count, then input the first Value.
+2. While Value is not -1, add it to Total and increment Count.
+3. Input the next Value inside the WHILE body before ENDWHILE.
+4. If Count is greater than zero, calculate Average using real division and output it.
+5. Java may support understanding but is not the Cambridge pseudocode answer format.
 
 ### Section 9 in one page
 

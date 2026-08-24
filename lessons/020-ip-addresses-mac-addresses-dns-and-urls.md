@@ -115,14 +115,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-020-address-journey.jpg`
 
-1. Visual explanation
-2. These labels solve different problems. DNS resolves only the domain name; it does not return a web page or a MAC address.
-3. URL Includes a scheme, domain name and path to a resource.
-4. DNS Resolves the domain-name part to an IP address.
-5. IP address Provides a logical network address used for routing.
-6. MAC address Identifies a network interface for delivery on a local link.
-7. Check the diagram: does DNS turn the whole URL into a MAC address?
-8. No. DNS resolves the domain-name part to an IP address. MAC addressing is used separately on a local network link.
+1. DNS resolves a domain name to an IP address; it does not return a MAC address.
+2. The network-layer packet header contains the destination IP address of the endpoint.
+3. For one local hop, a link-layer frame contains the IP packet and a destination MAC address.
+4. The destination IP and destination MAC belong to different encapsulation headers.
 
 ### IP address vs MAC address
 
@@ -130,15 +126,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** comparison
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-020-addresses.jpg`
 
-1. IP address
-2. MAC address
-3. Main use
-4. Logical address used to identify a device on a network and route packets between networks.
-5. Hardware address used to identify a network interface on a local network.
-6. Can change, for example when joining a different network or using DHCP.
-7. Normally fixed to the network interface by the manufacturer, though it can sometimes be spoofed.
-8. 192.168.1.24 or an IPv6 address.
-9. 3C:52:82:AA:19:F0
+1. IP and MAC addresses work together at different layers; they are not an either-or choice.
+2. The destination IP identifies the endpoint for end-to-end packet delivery.
+3. The destination MAC identifies the receiving interface for one local-link frame.
+4. On a routed path, the frame normally targets the next-hop router MAC while the packet retains the remote destination IP.
 
 ### 5-minute mini assessment
 

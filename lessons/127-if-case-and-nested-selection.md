@@ -102,17 +102,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-case.jpg`
 
-1. CASE selection
-2. Menu choice
-3. INPUT Choice
-4. CASE Choice OF
-5. 1 : OUTPUT "Add record"
-6. 2 : OUTPUT "Delete record"
-7. 3 : OUTPUT "Search"
-8. OTHERWISE OUTPUT "Invalid choice"
-9. Why CASE fits
-10. One variable, Choice , is compared with several discrete values. OTHERWISE handles unexpected input.
-11. If each branch needs a different complex condition, IF is usually clearer than CASE.
+1. CASE compares one expression with several discrete values.
+2. Each listed value has its own action and OTHERWISE handles unlisted values.
+3. Close the complete multi-way selection with ENDCASE.
 
 ### Start with the shape of the decision
 
@@ -157,17 +149,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-java.jpg`
 
-1. Java support only
-2. Cambridge-style pseudocode
-3. CASE Choice OF
-4. 1 : OUTPUT "Add"
-5. 2 : OUTPUT "Delete"
-6. OTHERWISE OUTPUT "Invalid"
-7. Java support example only
-8. switch (choice) {
-9. case 1 -> System.out.println("Add");
-10. case 2 -> System.out.println("Delete");
-11. default -> System.out.println("Invalid");
+1. Cambridge pseudocode uses CASE...OF, OTHERWISE and ENDCASE.
+2. Java switch syntax may support understanding but is not Cambridge pseudocode.
+3. Both forms must preserve the same branch meanings.
 
 ### A decision inside another decision
 

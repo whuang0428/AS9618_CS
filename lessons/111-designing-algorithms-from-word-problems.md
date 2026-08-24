@@ -165,18 +165,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-111-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style answer
-3. PassCount <- 0
-4. FOR Index <- 1 TO 5
-5. INPUT Mark
-6. IF Mark >= 50 THEN
-7. PassCount <- PassCount + 1
-8. NEXT Index
-9. OUTPUT PassCount
-10. Java support only
-11. int passCount = 0;
-12. for (int index = 0; index < 5; index++) {
+1. Initialise PassCount before processing five marks.
+2. Input one Mark per iteration and increment PassCount only when Mark is at least 50.
+3. Close the conditional with ENDIF before NEXT Index.
+4. Output the final PassCount after the loop in both equivalent forms.
 
 ### Words in the question usually signal a control structure
 

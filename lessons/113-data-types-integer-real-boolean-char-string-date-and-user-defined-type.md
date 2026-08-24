@@ -172,16 +172,8 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** process
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-113-why-types.jpg`
 
-1. Why data types exist
-2. 23 could be an age, a day of month, a count or part of an ID. The variable name and type make the intention explicit.
-3. DECLARE Age : INTEGER
-4. DECLARE StudentID : STRING
-5. Operations
-6. You can add two INTEGER values, compare DATE values, test a BOOLEAN, and join STRING values. The type narrows what is sensible.
-7. IF IsValid = TRUE THEN
-8. OUTPUT "Accepted"
-9. Validation
-10. Choosing a type does not replace validation. A DATE type stores a date; validation still checks whether a date is in an allowed range.
-11. IF BirthDate > Today THEN
-12. OUTPUT "Invalid"
+1. A data type determines which operations are meaningful for a stored value.
+2. A BOOLEAN can control a decision and a DATE can be compared with another date.
+3. Close every structured IF example with ENDIF.
+4. Choosing the correct type does not replace validation against the problem's allowed range.
 <!-- stage10-explanations:end -->

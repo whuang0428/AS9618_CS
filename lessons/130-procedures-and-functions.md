@@ -173,17 +173,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-130-parameters.jpg`
 
-1. Parameters and arguments
-2. Parameter in the header
-3. FUNCTION IsPass(Mark : INTEGER) RETURNS BOOLEAN
-4. IF Mark >= 50 THEN
-5. RETURN TRUE
-6. RETURN FALSE
-7. ENDFUNCTION
-8. Argument in the call
-9. Result <- IsPass(67)
-10. IF IsPass(StudentMark) THEN
-11. OUTPUT "Pass"
+1. A parameter is named in a subroutine header and receives an argument supplied at a call.
+2. IsPass returns TRUE for marks at least 50 and FALSE otherwise.
+3. Close each IF with ENDIF independently of ENDFUNCTION.
 
 ### A procedure performs actions and does not have to return a value
 

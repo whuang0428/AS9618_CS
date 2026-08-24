@@ -164,7 +164,7 @@ for (Booking booking : bookingList) {
             <figcaption class="explanation-sr-only">Algorithm designs describe the processing steps: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Algorithm design documents</li><li><strong>Lesson fact:</strong> They may use Cambridge-style pseudocode, flowcharts or structure diagrams. Java can support learning, but the exam standard remains Cambridge pseudocode.</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode design</li><li><strong>Lesson fact:</strong> SET ClashFound TO FALSE</li><li><strong>Lesson fact:</strong> FOR EACH Booking IN BookingList</li><li><strong>Lesson fact:</strong> IF Booking.RoomID = NewRoomID AND Booking.Date = NewDate THEN</li><li><strong>Lesson fact:</strong> IF times overlap THEN</li><li><strong>Lesson fact:</strong> SET ClashFound TO TRUE</li><li><strong>Lesson fact:</strong> NEXT Booking</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> // Java support example, not exam pseudocode</li><li><strong>Lesson fact:</strong> boolean clashFound = false;</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Traverse each booking and first test whether room and date match.</li><li><strong>Lesson fact:</strong> Only then test whether the booking times overlap.</li><li><strong>Lesson fact:</strong> Close the inner overlap IF before closing the outer room-and-date IF.</li><li><strong>Lesson fact:</strong> Advance to the next booking only after both selections are closed.</li></ol>
 
           </div>
         </section>

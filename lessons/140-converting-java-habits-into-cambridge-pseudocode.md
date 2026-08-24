@@ -192,18 +192,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-loops.jpg`
 
-1. Java habit
-2. Pseudocode form
-3. for (int i = 1; i <= 5; i++)
-4. known count
-5. FOR I <- 1 TO 5
-6. do not keep Java brackets
-7. while (valid == false)
-8. repeat while condition true
-9. WHILE Valid = FALSE
-10. end with ENDWHILE
-11. do { ... } while (...)
-12. post-condition loop
+1. Use FOR when a counter range determines the number of iterations.
+2. Use WHILE when the condition is checked before each iteration.
+3. Use REPEAT, then the body, then UNTIL Condition for a post-condition loop.
+4. Do not use DO...ENDWHILE as the Cambridge post-condition form.
 
 ### Use IF , THEN , ELSE , ENDIF
 

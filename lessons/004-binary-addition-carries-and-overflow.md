@@ -115,17 +115,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-004-method.jpg`
 
-1. Column method
-2. Align the two 8-bit values.
-3. Start at the rightmost bit.
-4. Add the two bits and any carry-in.
-5. Write the result bit; carry 1 left if the column total is 2 or 3.
-6. After the leftmost bit, check whether there is a carry-out.
-7. Exam discipline
-8. Show the carry row or annotate carried bits.
-9. Give the 8-bit result if the question asks for 8-bit addition.
-10. State whether overflow occurs.
-11. Explain overflow using range or carry-out, not vague "too big".
+1. Align the two 8-bit operands and start at the rightmost column.
+2. Add both bits and any carry-in; write the result bit and carry 1 left when required.
+3. For unsigned addition, a carry-out beyond bit 7 means the true sum needs more than 8 bits.
+4. For signed two's-complement addition, carry-out alone is not the overflow test.
+5. Signed overflow occurs when same-sign operands produce a result with the opposite sign.
 
 ### Unsigned 8-bit overflow
 
