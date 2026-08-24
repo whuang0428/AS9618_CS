@@ -49,7 +49,7 @@ Teacher guidance: require the technical term and the explanation, method or appl
 ```text
 // Cambridge-style pseudocode
 PROCEDURE Increase(BYREF Score : INTEGER)
-    Score <- Score + 1
+    Score ← Score + 1
 ENDPROCEDURE
 ```
 
@@ -57,7 +57,6 @@ ENDPROCEDURE
 // Java support example only, not exam pseudocode
 // Java primitives are passed by value; wrapper/state objects are needed to mimic BYREF-style changes.
 ```
-
 
 ## Student Task
 Students annotate two calls with arrows showing whether data is copied or linked back to the caller.

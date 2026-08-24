@@ -487,8 +487,8 @@ def topic_overrides(topic: str) -> dict[str, str]:
         }
     if "overflow" in t:
         return {
-            "worked_problem": "Add `11001010₂` and `01110101₂` using 8-bit binary addition and identify whether overflow occurs.",
-            "worked_answer": "Credit correct carries and the 9th carry-out. Overflow must be explained as the result exceeding the available 8-bit range, not just 'there is a carry'.",
+            "worked_problem": "Add `11001010₂` and `01110101₂` using unsigned 8-bit binary addition and identify whether unsigned overflow occurs.",
+            "worked_answer": "Credit correct carries and the 9th carry-out. Unsigned overflow must be explained as the result exceeding the unsigned 8-bit range 0 to 255, not just 'there is a carry'.",
             "student_task": "Pairs solve two additions: one that fits in 8 bits and one that overflows. They annotate every carry.",
         }
     if "two's complement" in t or "signed binary" in t:
@@ -496,6 +496,12 @@ def topic_overrides(topic: str) -> dict[str, str]:
             "worked_problem": "Represent `-23` in 8-bit two's complement and explain how the sign bit is interpreted.",
             "worked_answer": "`23 = 00010111`; invert -> `11101000`; add 1 -> `11101001`. Credit method and explanation that the leading 1 indicates a negative value in two's complement.",
             "student_task": "Students convert two positive and two negative values, then explain why sign-and-magnitude and two's complement are not interchangeable.",
+        }
+    if "character sets" in t:
+        return {
+            "worked_problem": "A worldwide messaging app must store English, Chinese and emoji characters. Explain why Unicode is more suitable than ASCII.",
+            "worked_answer": "Unicode provides code points for a much larger repertoire of scripts and symbols, whereas ASCII represents only a small character set. Credit the wider character repertoire; do not claim that every Unicode character always uses the same number of bits.",
+            "student_task": "Students compare the characters available in ASCII with a small set of multilingual and emoji examples, then explain why an agreed encoding is needed to interpret stored bit patterns.",
         }
     if "bitmap" in t or "image file size" in t:
         return {
@@ -544,6 +550,24 @@ def topic_overrides(topic: str) -> dict[str, str]:
             "worked_problem": "Choose a translator for development and another for distributing a finished program. Justify both choices.",
             "worked_answer": "Interpreter is useful for development due to line-by-line error feedback; compiler is suitable for distribution because object/executable code can run without source code.",
             "student_task": "Students sort scenarios into compiler, interpreter and assembler, then write one trade-off for each.",
+        }
+    if "user interfaces" in t:
+        return {
+            "worked_problem": "Choose a suitable interface for an experienced network administrator entering repeated commands and for a visitor selecting a ticket at a kiosk. Justify each choice.",
+            "worked_answer": "A command-line interface suits the administrator because precise commands can be entered quickly and automated, while a menu-driven or graphical interface suits the visitor because visible choices reduce the need to remember commands. Credit suitability linked to each user and task.",
+            "student_task": "Students match command-line, graphical, menu-driven and natural-language interfaces to users and tasks, then justify one advantage and one limitation in context.",
+        }
+    if "error types" in t:
+        return {
+            "worked_problem": "Classify three faults: a missing closing bracket, division by zero while the program runs, and a program that calculates the wrong average but completes.",
+            "worked_answer": "Missing bracket: syntax error; division by zero during execution: runtime error; wrong average with successful execution: logic error. Credit classification plus the stage or effect that distinguishes each type.",
+            "student_task": "Students classify short faults as syntax, logic or runtime errors and state whether a translator diagnostic, test result or runtime failure would reveal each one.",
+        }
+    if "translation approaches" in t:
+        return {
+            "worked_problem": "A team wants rapid line-by-line feedback during development, then wants to distribute a finished program without its source code. Choose a suitable translation approach for each stage.",
+            "worked_answer": "Use an interpreter during development for immediate statement-by-statement feedback; compile the finished program to object/executable code for distribution. Credit that compiled code is produced before execution and can run without retranslating the source each time.",
+            "student_task": "Students compare compiler, interpreter and virtual-machine approaches for development, portability and deployment, keeping translation method separate from source-language quality.",
         }
     if "encryption, hashing" in t:
         return {
@@ -598,6 +622,24 @@ def topic_overrides(topic: str) -> dict[str, str]:
             "worked_problem": "A school wants a booking system. Place analysis, design, implementation, testing, evaluation and maintenance in a sensible lifecycle order.",
             "worked_answer": "Credit lifecycle order and feedback loops; analysis should identify requirements before design and implementation.",
             "student_task": "Students turn a vague client request into two measurable requirements before any design is allowed.",
+        }
+    if "intellectual property" in t:
+        return {
+            "worked_problem": "A student copies part of a commercial program's source code into an assessed project. Explain how copyright and licensing apply, and why a patent is not automatically the relevant protection.",
+            "worked_answer": "Copyright protects the original expression in the source code; a licence states permitted uses and may prohibit copying or redistribution. A patent protects a qualifying invention or technical process, not every software idea or copied code fragment.",
+            "student_task": "Students classify scenarios involving copying, permitted use and inventions under copyright, licence or patent, then justify the classification without assuming that payment transfers ownership.",
+        }
+    if "open source" in t:
+        return {
+            "worked_problem": "Compare adopting open-source and proprietary software for a school. Include source-code access, licence obligations, support and cost without assuming that open source means no copyright or zero price.",
+            "worked_answer": "Open-source licences allow source inspection and specified rights to modify or redistribute, subject to licence conditions; proprietary licences normally restrict those rights. Either model may involve cost and support, and both remain protected by copyright.",
+            "student_task": "Students compare two licence models using permissions, restrictions, support and total cost, then recommend one for a stated school scenario.",
+        }
+    if "environmental and social impacts" in t:
+        return {
+            "worked_problem": "Evaluate replacing a school's working computers with more energy-efficient models. Consider operational energy, manufacturing, electronic waste, accessibility and cost.",
+            "worked_answer": "Credit both sides: newer devices may reduce electricity use or improve access, but manufacture and premature disposal consume resources and create e-waste. The judgement must depend on measured savings, device condition, reuse or recycling and user needs.",
+            "student_task": "Students build a balanced impact table for a computing decision, separating environmental effects from social effects and supporting a conditional conclusion.",
         }
     return {}
 
@@ -841,7 +883,7 @@ static double calculateVAT(double price) {
         pseudo = """```text
 // Cambridge-style pseudocode
 PROCEDURE Increase(BYREF Score : INTEGER)
-    Score <- Score + 1
+    Score ← Score + 1
 ENDPROCEDURE
 ```"""
         java = """```java
@@ -851,13 +893,13 @@ ENDPROCEDURE
     elif "search" in t:
         pseudo = """```text
 // Cambridge-style pseudocode
-Found <- FALSE
-Index <- 1
-WHILE Found = FALSE AND Index <= Length DO
+Found ← FALSE
+Index ← 1
+WHILE Found = FALSE AND Index <= Length
     IF Names[Index] = Target THEN
-        Found <- TRUE
+        Found ← TRUE
     ELSE
-        Index <- Index + 1
+        Index ← Index + 1
     ENDIF
 ENDWHILE
 ```"""
@@ -873,18 +915,148 @@ while (!found && index < names.length) {
     }
 }
 ```"""
-    elif "array" in t or "data" in t or "record" in t:
+    elif "two-dimensional arrays" in t or "nested loops" in t:
         pseudo = """```text
 // Cambridge-style pseudocode
-FOR Index <- 1 TO 5
+FOR Row ← 1 TO NumberOfRows
+    FOR Column ← 1 TO NumberOfColumns
+        OUTPUT Table[Row, Column]
+    NEXT Column
+NEXT Row
+```"""
+        java = """```java
+// Java support example only, not exam pseudocode
+for (int row = 0; row < table.length; row++) {
+    for (int column = 0; column < table[row].length; column++) {
+        System.out.println(table[row][column]);
+    }
+}
+```"""
+    elif "one-dimensional arrays" in t or "array algorithms" in t:
+        pseudo = """```text
+// Cambridge-style pseudocode
+FOR Index ← 1 TO NumberOfScores
     OUTPUT Scores[Index]
 NEXT Index
 ```"""
         java = """```java
 // Java support example only, not exam pseudocode
-for (int index = 0; index < 5; index++) {
+for (int index = 0; index < scores.length; index++) {
     System.out.println(scores[index]);
 }
+```"""
+    elif "bubble sort" in t or "insertion sort" in t:
+        pseudo = """```text
+// Cambridge-style pseudocode: one bubble-sort pass
+FOR Index ← 1 TO Length - 1
+    IF Values[Index] > Values[Index + 1] THEN
+        Temp ← Values[Index]
+        Values[Index] ← Values[Index + 1]
+        Values[Index + 1] ← Temp
+    ENDIF
+NEXT Index
+```"""
+        java = """```java
+// Java support example only, not exam pseudocode
+for (int index = 0; index < values.length - 1; index++) {
+    if (values[index] > values[index + 1]) {
+        int temp = values[index];
+        values[index] = values[index + 1];
+        values[index + 1] = temp;
+    }
+}
+```"""
+    elif "maximum, minimum, count, and total" in t:
+        pseudo = """```text
+// Cambridge-style pseudocode
+Maximum ← Values[1]
+Total ← 0
+FOR Index ← 1 TO Length
+    Total ← Total + Values[Index]
+    IF Values[Index] > Maximum THEN
+        Maximum ← Values[Index]
+    ENDIF
+NEXT Index
+```"""
+        java = """```java
+// Java support example only, not exam pseudocode
+int maximum = values[0];
+int total = 0;
+for (int value : values) {
+    total += value;
+    if (value > maximum) maximum = value;
+}
+```"""
+    elif "string-processing" in t or "string handling" in t:
+        pseudo = """```text
+// Cambridge-style pseudocode
+VowelCount ← 0
+FOR Index ← 1 TO LENGTH(Text)
+    Character ← LCASE(MID(Text, Index, 1))
+    IF Character = "a" OR Character = "e" OR Character = "i" OR Character = "o" OR Character = "u" THEN
+        VowelCount ← VowelCount + 1
+    ENDIF
+NEXT Index
+```"""
+        java = """```java
+// Java support example only, not exam pseudocode
+int vowelCount = 0;
+for (int index = 0; index < text.length(); index++) {
+    if ("aeiou".indexOf(Character.toLowerCase(text.charAt(index))) >= 0) vowelCount++;
+}
+```"""
+    elif "count-controlled loops" in t:
+        pseudo = """```text
+// Cambridge-style pseudocode
+FOR Count ← 1 TO 10
+    OUTPUT Count
+NEXT Count
+```"""
+        java = """```java
+// Java support example only, not exam pseudocode
+for (int count = 1; count <= 10; count++) {
+    System.out.println(count);
+}
+```"""
+    elif "condition-controlled loops" in t:
+        pseudo = """```text
+// Cambridge-style pseudocode
+INPUT Value
+WHILE Value < 1 OR Value > 10
+    OUTPUT "Enter a value from 1 to 10"
+    INPUT Value
+ENDWHILE
+```"""
+        java = """```java
+// Java support example only, not exam pseudocode
+while (value < 1 || value > 10) {
+    System.out.println("Enter a value from 1 to 10");
+    value = input.nextInt();
+}
+```"""
+    elif "arithmetic operators" in t:
+        pseudo = """```text
+// Cambridge-style pseudocode
+WholeBoxes ← ItemCount DIV BoxCapacity
+Remainder ← ItemCount MOD BoxCapacity
+```"""
+        java = """```java
+// Java support example only, not exam pseudocode
+int wholeBoxes = itemCount / boxCapacity;
+int remainder = itemCount % boxCapacity;
+```"""
+    elif "input and output formatting" in t:
+        pseudo = """```text
+// Cambridge-style pseudocode
+OUTPUT "Enter name"
+INPUT Name
+OUTPUT "Hello ", Name
+```"""
+        java = """```java
+// Java support example only, not exam pseudocode
+System.out.println("Enter name");
+String name = input.nextLine();
+System.out.println("Hello " + name);
 ```"""
     elif "file" in t:
         pseudo = """```text
@@ -905,23 +1077,7 @@ try (Scanner file = new Scanner(new File("Scores.txt"))) {
 }
 ```"""
     else:
-        pseudo = """```text
-// Cambridge-style pseudocode
-INPUT Mark
-IF Mark >= 50 THEN
-    OUTPUT "Pass"
-ELSE
-    OUTPUT "Resit needed"
-ENDIF
-```"""
-        java = """```java
-// Java support example only, not exam pseudocode
-if (mark >= 50) {
-    System.out.println("Pass");
-} else {
-    System.out.println("Resit needed");
-}
-```"""
+        return ""
     return f"{pseudo}\n\n{java}\n"
 
 
@@ -1278,7 +1434,7 @@ def pseudocode_java_guide() -> str:
         | Output | `OUTPUT total` | `System.out.println(total);` |
         | Selection | `IF mark >= 50 THEN ... ENDIF` | `if (mark >= 50) { ... }` |
         | Count loop | `FOR i <- 1 TO 10 ... NEXT i` | `for (int i = 1; i <= 10; i++) { ... }` |
-        | Condition loop | `WHILE found = FALSE DO ... ENDWHILE` | `while (!found) { ... }` |
+        | Condition loop | `WHILE found = FALSE ... ENDWHILE` | `while (!found) { ... }` |
         | Array access | `names[1]` or syllabus-approved indexing as taught | `names[0]` in standard Java zero-based arrays |
 
         ## Exam Rule

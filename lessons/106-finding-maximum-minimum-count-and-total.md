@@ -48,23 +48,25 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 ```text
 // Cambridge-style pseudocode
-INPUT Mark
-IF Mark >= 50 THEN
-    OUTPUT "Pass"
-ELSE
-    OUTPUT "Resit needed"
-ENDIF
+Maximum ← Values[1]
+Total ← 0
+FOR Index ← 1 TO Length
+    Total ← Total + Values[Index]
+    IF Values[Index] > Maximum THEN
+        Maximum ← Values[Index]
+    ENDIF
+NEXT Index
 ```
 
 ```java
 // Java support example only, not exam pseudocode
-if (mark >= 50) {
-    System.out.println("Pass");
-} else {
-    System.out.println("Resit needed");
+int maximum = values[0];
+int total = 0;
+for (int value : values) {
+    total += value;
+    if (value > maximum) maximum = value;
 }
 ```
-
 
 ## Student Task
 Students solve the same problem twice: first as numbered English steps, then as Cambridge-style pseudocode. They annotate where selection or iteration appears.

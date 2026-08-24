@@ -39,14 +39,14 @@ Left: physical media idea. Middle: formula or encoding table. Right: quality/sto
 Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Calculate storage for a small image or sound sample using the lesson parameters, then explain one effect of increasing resolution, colour depth, sample rate or sample resolution.
+**Problem:** A worldwide messaging app must store English, Chinese and emoji characters. Explain why Unicode is more suitable than ASCII.
 
-**Worked answer / marking focus:** Correct answers show multiplication by the relevant dimensions and bit depth, then convert bits to bytes where needed. The explanation must mention both quality and file size.
+**Worked answer / marking focus:** Unicode provides code points for a much larger repertoire of scripts and symbols, whereas ASCII represents only a small character set. Credit the wider character repertoire; do not claim that every Unicode character always uses the same number of bits.
 
 
 
 ## Student Task
-Pairs redesign a media file for a slow network: one student defends quality, the other defends storage. They must agree on which parameter to reduce and justify it.
+Students compare the characters available in ASCII with a small set of multilingual and emoji examples, then explain why an agreed encoding is needed to interpret stored bit patterns.
 
 ## Mini-Quiz
 1. State one precise definition from this lesson.

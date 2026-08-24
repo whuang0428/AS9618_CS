@@ -70,7 +70,6 @@ static double calculateVAT(double price) {
 }
 ```
 
-
 ## Student Task
 Students convert two repeated code blocks into one procedure and one function, then label call, parameter and return value.
 

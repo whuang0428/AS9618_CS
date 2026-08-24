@@ -81,18 +81,21 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** comparison
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-compare.jpg`
 
-1. Main result
-2. Unauthorised access to an account, device, network or system.
-3. Data viewed, copied, changed, deleted or used to impersonate a user.
-4. Phishing
-5. Deceptive message/link/site persuades the user to reveal information.
-6. Credentials or personal data stolen by tricking the user.
-7. Pharming
-8. Traffic is redirected to a fake site, possibly after the correct URL is entered.
-9. User submits data to fraudulent site without realising redirection occurred.
-10. DoS/DDoS
-11. Server or network is overwhelmed by requests/traffic.
-12. Legitimate users cannot access the service.
+1. Attack
+2. Route or mechanism
+3. Direct result
+4. Hacking
+5. Access controls are bypassed or abused.
+6. Unauthorised access; data may then be viewed, copied, changed or deleted.
+7. Phishing
+8. A deceptive message, link or site persuades the user to reveal information.
+9. Credentials or personal data are disclosed; later unauthorised access is possible but not guaranteed.
+10. Pharming
+11. Traffic is redirected to a fake site, possibly after the correct URL is entered.
+12. The user may submit data to the fake site; later credential theft or misuse is possible but not guaranteed.
+13. DoS/DDoS
+14. A server or network is overwhelmed by requests or traffic.
+15. Legitimate users cannot access the service.
 
 ### Controls must fit the attack route
 

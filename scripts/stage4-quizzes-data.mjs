@@ -209,7 +209,7 @@ export const quizzes = [
     q2("Give one boundary and one abnormal value for an integer Age allowed from 16 to 65.", p("B1", "boundary value such as 16 or 65"), p("B1", "abnormal value outside range or wrong type"), "Examples must match their labels."),
     q2("State how a breakpoint and single-step execution support debugging.", p("B1", "breakpoint pauses execution at a chosen statement"), p("B1", "single-step executes one statement while variables/flow are inspected"), "Do not describe syntax highlighting only."),
     q2("Write the valid-range condition for Score from 0 to 100 inclusive.", p("B1", "Score >= 0"), p("B1", "AND Score <= 100"), "Do not accept OR for the valid condition."),
-    q2("Convert while (Count < 10) { Count++; } into Cambridge pseudocode.", p("B1", "WHILE Count < 10 DO; Count <- Count + 1"), p("B1", "ENDWHILE"), "Do not retain braces or ++."),
+    q2("Convert while (Count < 10) { Count++; } into Cambridge pseudocode.", p("B1", "WHILE Count < 10; Count <- Count + 1"), p("B1", "ENDWHILE"), "Do not retain braces or ++."),
   ]),
   quiz(145, "Software development and testing", ["11", "12"], [
     q2("State one check to perform when reviewing a complete Section 11 program fragment.", p("B1", "valid check such as initialisation/bounds/construct closure/output position"), p("B1", "explains the error that the check prevents"), "Do not accept only 'check it works'."),

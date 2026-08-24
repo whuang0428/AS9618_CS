@@ -39,14 +39,14 @@ Left: user problem. Middle: OS or utility role. Right: benefit and limitation.
 Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** A laptop is slow and storage is nearly full. Recommend two system software tools or OS actions and justify them.
+**Problem:** Classify three faults: a missing closing bracket, division by zero while the program runs, and a program that calculates the wrong average but completes.
 
-**Worked answer / marking focus:** Answers must connect a tool to a job: backup protects data, antivirus detects malware, file management organises storage, process management allocates CPU time.
+**Worked answer / marking focus:** Missing bracket: syntax error; division by zero during execution: runtime error; wrong average with successful execution: logic error. Credit classification plus the stage or effect that distinguishes each type.
 
 
 
 ## Student Task
-Students sort cards into OS roles, utility software and application software, then defend two difficult cards.
+Students classify short faults as syntax, logic or runtime errors and state whether a translator diagnostic, test result or runtime failure would reveal each one.
 
 ## Mini-Quiz
 1. State one precise definition from this lesson.

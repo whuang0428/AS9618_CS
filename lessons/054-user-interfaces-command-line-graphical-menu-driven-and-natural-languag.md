@@ -39,14 +39,14 @@ Left: user problem. Middle: OS or utility role. Right: benefit and limitation.
 Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** A laptop is slow and storage is nearly full. Recommend two system software tools or OS actions and justify them.
+**Problem:** Choose a suitable interface for an experienced network administrator entering repeated commands and for a visitor selecting a ticket at a kiosk. Justify each choice.
 
-**Worked answer / marking focus:** Answers must connect a tool to a job: backup protects data, antivirus detects malware, file management organises storage, process management allocates CPU time.
+**Worked answer / marking focus:** A command-line interface suits the administrator because precise commands can be entered quickly and automated, while a menu-driven or graphical interface suits the visitor because visible choices reduce the need to remember commands. Credit suitability linked to each user and task.
 
 
 
 ## Student Task
-Students sort cards into OS roles, utility software and application software, then defend two difficult cards.
+Students match command-line, graphical, menu-driven and natural-language interfaces to users and tasks, then justify one advantage and one limitation in context.
 
 ## Mini-Quiz
 1. State one precise definition from this lesson.

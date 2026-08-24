@@ -48,23 +48,20 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 ```text
 // Cambridge-style pseudocode
-INPUT Mark
-IF Mark >= 50 THEN
-    OUTPUT "Pass"
-ELSE
-    OUTPUT "Resit needed"
-ENDIF
+INPUT Value
+WHILE Value < 1 OR Value > 10
+    OUTPUT "Enter a value from 1 to 10"
+    INPUT Value
+ENDWHILE
 ```
 
 ```java
 // Java support example only, not exam pseudocode
-if (mark >= 50) {
-    System.out.println("Pass");
-} else {
-    System.out.println("Resit needed");
+while (value < 1 || value > 10) {
+    System.out.println("Enter a value from 1 to 10");
+    value = input.nextInt();
 }
 ```
-
 
 ## Student Task
 Students write Cambridge pseudocode first, then produce a Java support version. They circle every place where Java syntax must not leak into the exam answer.

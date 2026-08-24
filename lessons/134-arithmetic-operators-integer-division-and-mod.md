@@ -48,23 +48,15 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 ```text
 // Cambridge-style pseudocode
-INPUT Mark
-IF Mark >= 50 THEN
-    OUTPUT "Pass"
-ELSE
-    OUTPUT "Resit needed"
-ENDIF
+WholeBoxes ← ItemCount DIV BoxCapacity
+Remainder ← ItemCount MOD BoxCapacity
 ```
 
 ```java
 // Java support example only, not exam pseudocode
-if (mark >= 50) {
-    System.out.println("Pass");
-} else {
-    System.out.println("Resit needed");
-}
+int wholeBoxes = itemCount / boxCapacity;
+int remainder = itemCount % boxCapacity;
 ```
-
 
 ## Student Task
 Students write Cambridge pseudocode first, then produce a Java support version. They circle every place where Java syntax must not leak into the exam answer.

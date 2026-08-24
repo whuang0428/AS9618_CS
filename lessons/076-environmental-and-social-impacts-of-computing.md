@@ -39,14 +39,14 @@ Left: stakeholder map. Middle: benefit/risk evidence. Right: balanced evaluation
 Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Evaluate whether a school should use monitoring software on student laptops.
+**Problem:** Evaluate replacing a school's working computers with more energy-efficient models. Consider operational energy, manufacturing, electronic waste, accessibility and cost.
 
-**Worked answer / marking focus:** Credit balanced points: safeguarding and security benefits, privacy concerns, transparency, consent, proportionality and data retention.
+**Worked answer / marking focus:** Credit both sides: newer devices may reduce electricity use or improve access, but manufacture and premature disposal consume resources and create e-waste. The judgement must depend on measured savings, device condition, reuse or recycling and user needs.
 
 
 
 ## Student Task
-Students role-play two stakeholders and prepare one argument each, then write a neutral examiner-style conclusion.
+Students build a balanced impact table for a computing decision, separating environmental effects from social effects and supporting a conditional conclusion.
 
 ## Mini-Quiz
 1. State one precise definition from this lesson.

@@ -46,20 +46,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit correct control flow, meaningful identifiers, correct parameter or variable use, and test data that actually exercises the construct.
 
-```text
-// Cambridge-style pseudocode
-FOR Index <- 1 TO 5
-    OUTPUT Scores[Index]
-NEXT Index
-```
-
-```java
-// Java support example only, not exam pseudocode
-for (int index = 0; index < 5; index++) {
-    System.out.println(scores[index]);
-}
-```
-
 
 ## Student Task
 Students write Cambridge pseudocode first, then produce a Java support version. They circle every place where Java syntax must not leak into the exam answer.

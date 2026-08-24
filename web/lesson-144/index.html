@@ -132,14 +132,15 @@
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode design</h3>
-              <pre><code>SET ClashFound TO FALSE
-FOR EACH Booking IN BookingList
-    IF Booking.RoomID = NewRoomID AND Booking.Date = NewDate THEN
-        IF times overlap THEN
-            SET ClashFound TO TRUE
+              <pre><code>ClashFound ← FALSE
+FOR Index ← 1 TO NumberOfBookings
+    Current ← BookingList[Index]
+    IF Current.RoomID = NewRoomID AND Current.Date = NewDate THEN
+        IF TimesOverlap(Current, NewBooking) THEN
+            ClashFound ← TRUE
         ENDIF
     ENDIF
-NEXT Booking</code></pre>
+NEXT Index</code></pre>
             </article>
             <article>
               <h3>Java support only</h3>

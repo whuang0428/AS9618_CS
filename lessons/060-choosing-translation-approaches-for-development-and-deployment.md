@@ -39,14 +39,14 @@ Left: user problem. Middle: OS or utility role. Right: benefit and limitation.
 Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** A laptop is slow and storage is nearly full. Recommend two system software tools or OS actions and justify them.
+**Problem:** A team wants rapid line-by-line feedback during development, then wants to distribute a finished program without its source code. Choose a suitable translation approach for each stage.
 
-**Worked answer / marking focus:** Answers must connect a tool to a job: backup protects data, antivirus detects malware, file management organises storage, process management allocates CPU time.
+**Worked answer / marking focus:** Use an interpreter during development for immediate statement-by-statement feedback; compile the finished program to object/executable code for distribution. Credit that compiled code is produced before execution and can run without retranslating the source each time.
 
 
 
 ## Student Task
-Students sort cards into OS roles, utility software and application software, then defend two difficult cards.
+Students compare compiler, interpreter and virtual-machine approaches for development, portability and deployment, keeping translation method separate from source-language quality.
 
 ## Mini-Quiz
 1. State one precise definition from this lesson.

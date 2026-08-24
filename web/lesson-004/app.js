@@ -96,7 +96,7 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Add 11001010₂ and 01110101₂ using 8-bit binary addition and identify overflow.",
+    prompt: "Add 11001010₂ and 01110101₂ using unsigned 8-bit binary addition and identify unsigned overflow.",
     answer: "11001010₂ + 01110101₂ = 1 00111111₂. The stored 8-bit result is 00111111₂ with carry-out 1, so unsigned overflow occurs.",
     marking: [
       { mark: "M1", text: "shows a correct carry process / carry row" },

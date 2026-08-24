@@ -46,7 +46,7 @@ const examples = {
       ["Original", "Loop through marks and count passes."],
       ["Lost mark", "No initialisation and no precise condition."],
       ["Correction rule", "Initialise counters before the loop and state the pass condition exactly."],
-      ["Rewrite", "SET PassCount TO 0; IF Mark >= 50 THEN PassCount = PassCount + 1."],
+      ["Rewrite", "PassCount ← 0; IF Mark >= 50 THEN PassCount ← PassCount + 1; ENDIF"],
     ],
   },
   structure: {

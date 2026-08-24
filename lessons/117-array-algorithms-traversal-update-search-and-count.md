@@ -48,13 +48,13 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 ```text
 // Cambridge-style pseudocode
-Found <- FALSE
-Index <- 1
-WHILE Found = FALSE AND Index <= Length DO
+Found ← FALSE
+Index ← 1
+WHILE Found = FALSE AND Index <= Length
     IF Names[Index] = Target THEN
-        Found <- TRUE
+        Found ← TRUE
     ELSE
-        Index <- Index + 1
+        Index ← Index + 1
     ENDIF
 ENDWHILE
 ```
@@ -71,7 +71,6 @@ while (!found && index < names.length) {
     }
 }
 ```
-
 
 ## Student Task
 Students model a small school dataset using arrays, records or arrays of records, then write one operation on it.

@@ -48,18 +48,21 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 ```text
 // Cambridge-style pseudocode
-FOR Index <- 1 TO 5
-    OUTPUT Scores[Index]
-NEXT Index
+FOR Row ← 1 TO NumberOfRows
+    FOR Column ← 1 TO NumberOfColumns
+        OUTPUT Table[Row, Column]
+    NEXT Column
+NEXT Row
 ```
 
 ```java
 // Java support example only, not exam pseudocode
-for (int index = 0; index < 5; index++) {
-    System.out.println(scores[index]);
+for (int row = 0; row < table.length; row++) {
+    for (int column = 0; column < table[row].length; column++) {
+        System.out.println(table[row][column]);
+    }
 }
 ```
-
 
 ## Student Task
 Students model a small school dataset using arrays, records or arrays of records, then write one operation on it.

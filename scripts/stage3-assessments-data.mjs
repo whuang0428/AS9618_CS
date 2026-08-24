@@ -170,7 +170,7 @@ const legacyQuizzes = [
   quiz(140, "Java-to-pseudocode conversion", ["11"], [
     q("Convert System.out.println(Name); to Cambridge pseudocode.", 2, [p("B1", "OUTPUT"), p("B1", "Name")], "No Java library call should remain."),
     q("Convert boolean Found = false; to a Cambridge declaration and assignment.", 2, [p("B1", "DECLARE Found : BOOLEAN"), p("B1", "Found <- FALSE")], "Do not use = for assignment."),
-    q("Convert while (Count < 10) { Count++; }.", 3, [p("B1", "WHILE Count < 10 DO"), p("B1", "Count <- Count + 1"), p("B1", "ENDWHILE")], "Do not retain braces or ++."),
+    q("Convert while (Count < 10) { Count++; }.", 3, [p("B1", "WHILE Count < 10"), p("B1", "Count <- Count + 1"), p("B1", "ENDWHILE")], "Do not retain braces or ++."),
     q("Explain why Java syntax in a Paper 2 pseudocode answer can lose marks even if the intended algorithm is recognisable.", 3, [p("B1", "question requires Cambridge pseudocode conventions"), p("B1", "Java-specific constructs may be ambiguous/incompatible with specified notation"), p("B1", "incorrect declarations/loop delimiters/operators can obscure executable logic")], "Do not claim Java algorithms are conceptually always wrong.")
   ]),
   quiz(145, "Software testing and design documentation", ["12"], [

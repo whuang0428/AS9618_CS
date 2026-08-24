@@ -39,14 +39,14 @@ Left: stakeholder map. Middle: benefit/risk evidence. Right: balanced evaluation
 Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Evaluate whether a school should use monitoring software on student laptops.
+**Problem:** Compare adopting open-source and proprietary software for a school. Include source-code access, licence obligations, support and cost without assuming that open source means no copyright or zero price.
 
-**Worked answer / marking focus:** Credit balanced points: safeguarding and security benefits, privacy concerns, transparency, consent, proportionality and data retention.
+**Worked answer / marking focus:** Open-source licences allow source inspection and specified rights to modify or redistribute, subject to licence conditions; proprietary licences normally restrict those rights. Either model may involve cost and support, and both remain protected by copyright.
 
 
 
 ## Student Task
-Students role-play two stakeholders and prepare one argument each, then write a neutral examiner-style conclusion.
+Students compare two licence models using permissions, restrictions, support and total cost, then recommend one for a stated school scenario.
 
 ## Mini-Quiz
 1. State one precise definition from this lesson.

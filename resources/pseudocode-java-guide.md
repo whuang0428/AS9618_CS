@@ -10,7 +10,7 @@ Cambridge pseudocode is the exam answer format. Java examples in this course are
 | Output | `OUTPUT total` | `System.out.println(total);` |
 | Selection | `IF mark >= 50 THEN ... ENDIF` | `if (mark >= 50) { ... }` |
 | Count loop | `FOR i <- 1 TO 10 ... NEXT i` | `for (int i = 1; i <= 10; i++) { ... }` |
-| Condition loop | `WHILE found = FALSE DO ... ENDWHILE` | `while (!found) { ... }` |
+| Condition loop | `WHILE found = FALSE ... ENDWHILE` | `while (!found) { ... }` |
 | Array access | `names[1]` or syllabus-approved indexing as taught | `names[0]` in standard Java zero-based arrays |
 
 ## Exam Rule

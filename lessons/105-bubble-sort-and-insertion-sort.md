@@ -47,24 +47,26 @@ Teacher guidance: require the technical term and the explanation, method or appl
 **Worked answer / marking focus:** Bubble sort compares adjacent items and moves the largest towards the end; insertion sort takes the next item and inserts it into the sorted left part.
 
 ```text
-// Cambridge-style pseudocode
-INPUT Mark
-IF Mark >= 50 THEN
-    OUTPUT "Pass"
-ELSE
-    OUTPUT "Resit needed"
-ENDIF
+// Cambridge-style pseudocode: one bubble-sort pass
+FOR Index ← 1 TO Length - 1
+    IF Values[Index] > Values[Index + 1] THEN
+        Temp ← Values[Index]
+        Values[Index] ← Values[Index + 1]
+        Values[Index + 1] ← Temp
+    ENDIF
+NEXT Index
 ```
 
 ```java
 // Java support example only, not exam pseudocode
-if (mark >= 50) {
-    System.out.println("Pass");
-} else {
-    System.out.println("Resit needed");
+for (int index = 0; index < values.length - 1; index++) {
+    if (values[index] > values[index + 1]) {
+        int temp = values[index];
+        values[index] = values[index + 1];
+        values[index + 1] = temp;
+    }
 }
 ```
-
 
 ## Student Task
 Students physically sort four cards twice, once using bubble sort rules and once using insertion sort rules.

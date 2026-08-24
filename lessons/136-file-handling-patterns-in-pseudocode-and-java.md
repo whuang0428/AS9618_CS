@@ -65,7 +65,6 @@ try (Scanner file = new Scanner(new File("Scores.txt"))) {
 }
 ```
 
-
 ## Student Task
 Students identify the file mode for read, write and append scenarios, then write one Cambridge pseudocode pattern.
 

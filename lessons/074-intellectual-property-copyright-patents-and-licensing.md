@@ -39,14 +39,14 @@ Left: stakeholder map. Middle: benefit/risk evidence. Right: balanced evaluation
 Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Evaluate whether a school should use monitoring software on student laptops.
+**Problem:** A student copies part of a commercial program's source code into an assessed project. Explain how copyright and licensing apply, and why a patent is not automatically the relevant protection.
 
-**Worked answer / marking focus:** Credit balanced points: safeguarding and security benefits, privacy concerns, transparency, consent, proportionality and data retention.
+**Worked answer / marking focus:** Copyright protects the original expression in the source code; a licence states permitted uses and may prohibit copying or redistribution. A patent protects a qualifying invention or technical process, not every software idea or copied code fragment.
 
 
 
 ## Student Task
-Students role-play two stakeholders and prepare one argument each, then write a neutral examiner-style conclusion.
+Students classify scenarios involving copying, permitted use and inventions under copyright, licence or patent, then justify the classification without assuming that payment transfers ownership.
 
 ## Mini-Quiz
 1. State one precise definition from this lesson.

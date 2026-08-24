@@ -65,7 +65,6 @@ try (Scanner file = new Scanner(new File("Scores.txt"))) {
 }
 ```
 
-
 ## Student Task
 Students design a small text file format for scores or stock items, then write pseudocode to read one record.
 

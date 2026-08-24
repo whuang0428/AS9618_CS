@@ -155,7 +155,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 5. Access rights
 6. Confidentiality and integrity
 7. Limits who can view or alter data.
-8. Availability
+8. Backups
 9. Allows recovery if data is lost or corrupted.
 10. Hash/checksum
 11. Integrity
@@ -169,8 +169,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 1. Goal Data should remain accurate, complete and unaltered unless changed by an authorised process.
 2. Risk Exam marks, bank balances or stock levels are changed incorrectly.
-3. Controls Validation, verification, access rights, checksums, hashes and audit trails can support integrity.
-4. Exam wording Explain how the control detects, prevents or records an incorrect change.
+3. Validation checks whether data follows stated rules; verification checks whether entered or transferred data matches its source.
+4. Access rights, checksums, hashes and audit trails can prevent, detect or record some changes, but no control guarantees integrity.
+5. Exam wording Explain exactly how the named control prevents, detects or records an incorrect change; verification does not prove that the source data is true or complete.
 
 ### Use the risk chain before naming a control
 

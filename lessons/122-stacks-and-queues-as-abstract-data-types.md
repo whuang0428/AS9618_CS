@@ -46,20 +46,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit operation order and pointer/front/rear updates where used. Answers must show when an operation is invalid because the structure is full or empty.
 
-```text
-// Cambridge-style pseudocode
-FOR Index <- 1 TO 5
-    OUTPUT Scores[Index]
-NEXT Index
-```
-
-```java
-// Java support example only, not exam pseudocode
-for (int index = 0; index < 5; index++) {
-    System.out.println(scores[index]);
-}
-```
-
 
 ## Student Task
 Students act out a stack or queue with paper cards, then convert the movement into pseudocode operations.

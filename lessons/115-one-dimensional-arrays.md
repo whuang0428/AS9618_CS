@@ -48,18 +48,17 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 ```text
 // Cambridge-style pseudocode
-FOR Index <- 1 TO 5
+FOR Index ← 1 TO NumberOfScores
     OUTPUT Scores[Index]
 NEXT Index
 ```
 
 ```java
 // Java support example only, not exam pseudocode
-for (int index = 0; index < 5; index++) {
+for (int index = 0; index < scores.length; index++) {
     System.out.println(scores[index]);
 }
 ```
-
 
 ## Student Task
 Students model a small school dataset using arrays, records or arrays of records, then write one operation on it.

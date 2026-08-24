@@ -1659,7 +1659,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q5 [2]
 
-- **B1** WHILE Count < 10 DO; Count <- Count + 1
+- **B1** WHILE Count < 10; Count <- Count + 1
 - **B1** ENDWHILE
 
 **Guidance:** Do not retain braces or ++.

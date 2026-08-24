@@ -46,25 +46,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit answers that are measurable and scenario-specific. Vague requirements such as 'easy to use' need success criteria to earn strong marks.
 
-```text
-// Cambridge-style pseudocode
-INPUT Mark
-IF Mark >= 50 THEN
-    OUTPUT "Pass"
-ELSE
-    OUTPUT "Resit needed"
-ENDIF
-```
-
-```java
-// Java support example only, not exam pseudocode
-if (mark >= 50) {
-    System.out.println("Pass");
-} else {
-    System.out.println("Resit needed");
-}
-```
-
 
 ## Student Task
 Students turn a vague client request into three testable requirements and one acceptance test.

@@ -65,7 +65,6 @@ try (Scanner file = new Scanner(new File("Scores.txt"))) {
 }
 ```
 
-
 ## Student Task
 Students complete a timed response, swap scripts, mark with a checklist, and write one improved version.
 

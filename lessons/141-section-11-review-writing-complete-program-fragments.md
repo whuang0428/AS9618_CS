@@ -46,25 +46,6 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit topic recognition, precise terminology, and explanations that fit the scenario rather than generic memorised lines.
 
-```text
-// Cambridge-style pseudocode
-INPUT Mark
-IF Mark >= 50 THEN
-    OUTPUT "Pass"
-ELSE
-    OUTPUT "Resit needed"
-ENDIF
-```
-
-```java
-// Java support example only, not exam pseudocode
-if (mark >= 50) {
-    System.out.println("Pass");
-} else {
-    System.out.println("Resit needed");
-}
-```
-
 
 ## Student Task
 Students complete a timed response, swap scripts, mark with a checklist, and write one improved version.

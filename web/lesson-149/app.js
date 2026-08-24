@@ -20,10 +20,10 @@ const timingPlans = {
 const skeletons = {
   count: {
     title: "Count passing marks in an array",
-    code: `SET PassCount TO 0
-FOR Index TO 1 TO NumberOfMarks
+    code: `PassCount ← 0
+FOR Index ← 1 TO NumberOfMarks
     IF Marks[Index] >= 50 THEN
-        SET PassCount TO PassCount + 1
+        PassCount ← PassCount + 1
     ENDIF
 NEXT Index
 OUTPUT PassCount`,
@@ -51,10 +51,10 @@ UNTIL Mark >= 0 AND Mark <= 100`,
   },
   largest: {
     title: "Find largest value in an array",
-    code: `SET Largest TO Values[1]
-FOR Index TO 2 TO NumberOfValues
+    code: `Largest ← Values[1]
+FOR Index ← 2 TO NumberOfValues
     IF Values[Index] > Largest THEN
-        SET Largest TO Values[Index]
+        Largest ← Values[Index]
     ENDIF
 NEXT Index
 OUTPUT Largest`,

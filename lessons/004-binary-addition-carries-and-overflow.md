@@ -39,9 +39,9 @@ Left: place-value columns. Middle: worked conversion or binary operation. Right:
 Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Add `11001010₂` and `01110101₂` using 8-bit binary addition and identify whether overflow occurs.
+**Problem:** Add `11001010₂` and `01110101₂` using unsigned 8-bit binary addition and identify whether unsigned overflow occurs.
 
-**Worked answer / marking focus:** Credit correct carries and the 9th carry-out. Overflow must be explained as the result exceeding the available 8-bit range, not just 'there is a carry'.
+**Worked answer / marking focus:** Credit correct carries and the 9th carry-out. Unsigned overflow must be explained as the result exceeding the unsigned 8-bit range 0 to 255, not just 'there is a carry'.
 
 
 

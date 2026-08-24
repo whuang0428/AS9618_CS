@@ -48,23 +48,21 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 ```text
 // Cambridge-style pseudocode
-INPUT Mark
-IF Mark >= 50 THEN
-    OUTPUT "Pass"
-ELSE
-    OUTPUT "Resit needed"
-ENDIF
+FOR Row ← 1 TO NumberOfRows
+    FOR Column ← 1 TO NumberOfColumns
+        OUTPUT Table[Row, Column]
+    NEXT Column
+NEXT Row
 ```
 
 ```java
 // Java support example only, not exam pseudocode
-if (mark >= 50) {
-    System.out.println("Pass");
-} else {
-    System.out.println("Resit needed");
+for (int row = 0; row < table.length; row++) {
+    for (int column = 0; column < table[row].length; column++) {
+        System.out.println(table[row][column]);
+    }
 }
 ```
-
 
 ## Student Task
 Students solve the same problem twice: first as numbered English steps, then as Cambridge-style pseudocode. They annotate where selection or iteration appears.
