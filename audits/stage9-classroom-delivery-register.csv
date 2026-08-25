@@ -59,9 +59,9 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 004,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,2f45d3b15b23ebd937cf894a540fe5f193d9176707d29d99721494c22e56586b
 004,3,hook,hook,CORE,ASK,,"If an 8-bit box is full, where does the ninth bit go?",Classified,f9c838a5779bcefa0ad61e804143f808f3982c6d4a73e068472c1e8675d07df8
 004,4,rules,rules,CORE,TEACH,,Single-bit addition rules,Classified,55d0938292738bbef98f0997969148b7910cefeee00428a9afe2d65dc0fcb824
-004,5,explanation-rules,rules,CORE,TEACH,,Single-bit addition rules,Classified,9bedc54409749592b0b67072fd0ae3433fbc7d34a603a569f772fda1a2de60b0
+004,5,explanation-rules,rules,CORE,TEACH,,Single-bit addition rules,Classified,0a4617688c1fe6fe1ee494fdf3b65ad00764ceb8fa4045b36f789981af31e65b
 004,6,method,method,CORE,TEACH,,8-bit addition method,Classified,afe3b863998b99a4ecaf35fe2a01489319971bb07585e9d1030280d4b53c851d
-004,7,explanation-method,method,CORE,TEACH,,8-bit addition method,Classified,a6367d8134d2035766db42b2f5232453a0930fd6a50bd61849d5d5b90845fcba
+004,7,explanation-method,method,CORE,TEACH,,8-bit addition method,Classified,a302e7bfe1eafa8cca7069e38a46a9592e0ca792bc5860bccc0d1bb85c91b03a
 004,8,overflow,overflow,CORE,TEACH,,Unsigned 8-bit overflow,Classified,ace264028e7930d858613c4751fbcd96c0d9678b4a4eebfa5f70c13829179d4a
 004,9,explanation-overflow,overflow,CORE,TEACH,,Unsigned 8-bit overflow,Classified,0c15ba9885c468730e43617c076fee1499853b8ad19cfc69cf2e6d47ccc0372c
 004,10,delivery-07,overflow,CORE,TEACH,,Common error,Classified,093b989579047316111abf6ae316bf4b7d29cefa380d852576a011fbbc61e372
@@ -72,18 +72,18 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 004,15,exam,exam,CORE,EXAM,,Original exam-style questions,Classified,52d930904e865fa0e624cd2122ea9adae5bb1c83650ebac21c75d25c1a9216e9
 004,16,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Binary subtraction with signed and unsigned values,Classified,97dc6acb0c2b86d8d1ffe60fae590d3e7163e9ff0422534722c7781229127854
 004,17,summary,summary,CORE,CHECK,,Summary of required knowledge,Classified,b2ab60b9ad25f63a75cfbcb89cf67d83d692b5d23c7c79c667a4dc94db3de898
-004,18,homework,homework,AFTER_CLASS,HOMEWORK,,Homework tasks,Classified,73fdb592c659a46e3a5d7b868a5b42042a4289aeb0b8c69764e5cd89191a5568
+004,18,homework,homework,AFTER_CLASS,HOMEWORK,,Homework tasks,Classified,e3e97b76b8651adf514fd0b2b8a7b2ab72acd5db113fabf43ca76f814154f5aa
 004,19,delivery-16,homework,AFTER_CLASS,HOMEWORK,,Check only after attempting,Classified,1c26890b824137cb28c818d8d842beff995a1ba1024b9a7343a80d1ab4e93335
 005,1,overview,overview,CORE,TEACH,,A leading 1 does not always mean the same thing.,Classified,52fbad28bd20d4d5c36c2c6926da324135e1cf4aea1fb3bb59cd8eead06008a7
 005,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,4670ed60bf547b8d79458e6e96eb4460036c99945b2db44ff299d6becd679789
 005,3,hook,hook,CORE,ASK,,What does `11101001₂` represent?,Classified,094c25fc7c63d7e5f2b6bf9f9a39c4cc8e0b257de1693e2d145ad418e8c60a65
 005,4,systems,systems,CORE,TEACH,,Three ways to represent negative binary values,Classified,7dbb3745d3a9f8a52e518c7779e96490e61ab32e7ba400da1f69ec83d77b584a
-005,5,explanation-systems,systems,CORE,TEACH,,Three ways to represent negative binary values,Classified,e7743b782ee9c088e0178abb2e3ada1683809d0e4f08000a2402abd7aaad59ee
+005,5,explanation-systems,systems,CORE,TEACH,,Three ways to represent negative binary values,Classified,da27ee9eb24ab85babca140ec4a6a2f1697ed2d1f7b956a92a42bde9dadcca81
 005,6,delivery-05,systems,CORE,TEACH,,Common error,Classified,e0ab06fe5542a9199cf37e371a6ee46af1a53d814d666a138b3ce1915d8afc38
 005,7,twos,twos,CORE,TEACH,,Two’s complement method,Classified,f04471bac69a635169e3fd675588d399ad4464ef7fe91a60cc1b0cf516c0d3ef
-005,8,explanation-twos,twos,CORE,TEACH,,Two’s complement method,Classified,adfa581fa5b7f4c12fb23e52649dd3d93e3f4d2bd375322d2a2b6277f248270f
+005,8,explanation-twos,twos,CORE,TEACH,,Two’s complement method,Classified,083b000e7c41f6662cf24a309761144e7ed3e7d47d3dc35b907452342f307669
 005,9,range,range,CORE,TEACH,,8-bit signed ranges and zero,Classified,27ed85cb791a55bd91e394ed6e0d3b30beb91f03d8955ad3f044dd8bb36903ce
-005,10,explanation-range,range,CORE,TEACH,,8-bit signed ranges and zero,Classified,a1b4773b15bcf8bbb3ccd205205fe3e64103da6a2df6d50eaf8045f07051f0e4
+005,10,explanation-range,range,CORE,TEACH,,8-bit signed ranges and zero,Classified,b8f313fdb15530008881c4f9cfac0278890bb6506d1cd0f945a87ad6c651595d
 005,11,converter,converter,OPTIONAL,PRACTISE,,8-bit two’s complement converter,Classified,16df8afd6b174d1565ea555ce83d60a6e3b6e0cf9f6425a07c6220025fc2e744
 005,12,examples,examples,CORE,TEACH,,Worked examples,Classified,722f55dca7285fc8eae06d6ef9fc006b47917223d234e6734cf78e759d930db0
 005,13,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,958021402fb19495f5d7e7838bc6f935e50cb888198d7ed8b0c0c136b6219869
@@ -99,9 +99,9 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 006,5,explanation-point,point,CORE,TEACH,,Binary fractional place value,Classified,2bf684fb471d4493e655597d3bd2fcf5a69cf12a1379a4479c3b068f170166b1
 006,6,delivery-05,point,CORE,TEACH,,Common error,Classified,9fb8bfcdc8ace92cfab37329716f70816602f57f92e4b4a5b5d575f4d83fa8f9
 006,7,convert,convert,CORE,TEACH,,Converting simple binary fractions,Classified,8c8c57687944cc317a0bf9074f6d34bdfc105bc6115674cd8a095f780cf5a0db
-006,8,explanation-convert,convert,CORE,TEACH,,Converting simple binary fractions,Classified,9439f58858c8f29eeb2e5e8735d45df3867f69a3f383b044b60f6f5597ba5269
+006,8,explanation-convert,convert,CORE,TEACH,,Converting simple binary fractions,Classified,ad4ee57548068297d6024dadeae4c896d581e3133d69e6bce108d27d27c63a91
 006,9,precision,precision,CORE,TEACH,,Precision limits: why computers sometimes approximate,Classified,4cb7d9a3c6321b08b462468db4b38ed21b647d9b71560145c7bbe29fe37520e0
-006,10,explanation-precision,precision,CORE,TEACH,,Precision limits: why computers sometimes approximate,Classified,12d59534815f920213ce586dcdfb635476a0e518179690afeb1e039c3b660bbb
+006,10,explanation-precision,precision,CORE,TEACH,,Precision limits: why computers sometimes approximate,Classified,4b77eec4999bf1f979c455e2c879bc6347e3808bd19512f697ab3509f05fbc3a
 006,11,tool,tool,OPTIONAL,PRACTISE,,Fixed binary fraction converter,Classified,29f2d84629450d772fb0f5d2ffadd79dccbbea087c2ffd4156ae9154541351a0
 006,12,examples,examples,CORE,TEACH,,Worked examples,Classified,cfa5ffd4f092f685952f5af9732db5979b624643d06323ae5dacd7917b133777
 006,13,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
@@ -156,7 +156,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 009,6,metadata,metadata,CORE,TEACH,,"Metadata is data about the image, not the pixels themselves",Classified,4d9352411accd1f9904d96566b8d07fac3daeeb40c036e54e9f0b482ce4cde7a
 009,7,explanation-metadata,metadata,CORE,TEACH,,"Metadata is data about the image, not the pixels themselves",Classified,b9efcb07860cde18b1b5f15bbfcc0072343ebd44e717bb592352130b48c0e02f
 009,8,units,units,CORE,TEACH,,Units: do not trip at the finish line,Classified,3e9897db75396296736363637a73eb59f4739a87c53b379ec735657d8431b751
-009,9,explanation-units,units,CORE,TEACH,,Units: do not trip at the finish line,Classified,eef481d7d86041432ef42beb9bb380e4d80668246a0332e6c06762db2e5ac09b
+009,9,explanation-units,units,CORE,TEACH,,Units: do not trip at the finish line,Classified,15f37d4f59c28560e051187082d448ada09c702287d225dec0f44dfe3f1fb90e
 009,10,tool,tool,OPTIONAL,PRACTISE,,Image size calculator with metadata,Classified,2f46e4ced6b02d86e8a01192e877d711f3c2d3a3becd9da74a635a5fb0d425e6
 009,11,examples,examples,CORE,TEACH,,Worked examples,Classified,2177020831e2c0ec64d5f2ac20aef2b9ace0b831f5f2a3f454fcc14cc642c46e
 009,12,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
@@ -245,7 +245,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 014,6,cases,cases,CORE,TEACH,,System cases,Classified,1eb4699ceafc9b88bc88714e94b09f3923ddf769fcdb8685021876b06861a6fa
 014,7,explanation-cases,cases,CORE,TEACH,,System cases,Classified,f4aae26dffb81716d3e2eda93f37fb4223e8c8de7282e18c5ca35d8e54ceb7a0
 014,8,tradeoffs,tradeoffs,CORE,TEACH,,Useful trade-off sentences,Classified,3f5386ef2a05a65e3acf696caec5d238ba89da44a7bbb7d0d89d1c0096d0d06c
-014,9,explanation-tradeoffs,tradeoffs,CORE,TEACH,,Useful trade-off sentences,Classified,ce572543ecf01bfb180321cd1b393c8b2e507a690409e87f1d44dd919d485f59
+014,9,explanation-tradeoffs,tradeoffs,CORE,TEACH,,Useful trade-off sentences,Classified,50d74e4e04634d55f298d5320b7d707417385b5109656467dafc996c6fdafd38
 014,10,tool,tool,OPTIONAL,PRACTISE,,Representation decision helper,Classified,eb2838cab0e191f3121e852650f4abaa12c5eaa8e05f897a24205b61cbb61782
 014,11,examples,examples,CORE,TEACH,,Worked examples,Classified,77c7cee1759601cac9c588da8013ce79111162f7260a902b305ca9b53d319495
 014,12,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
@@ -277,7 +277,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 016,6,lanwan,lanwan,CORE,TEACH,,LAN vs WAN,Classified,507d9018b4979b9f12eb27a0d48b3e9f8a6e996f4fedcdb56301104331501327
 016,7,explanation-lanwan,lanwan,CORE,TEACH,,Why LAN and WAN management differs,Classified,ca84172797aa00d4844bf68751cc1cb531a4094cc823f479095f65316ad846e9
 016,8,topologies,topologies,CORE,TEACH,,Network topologies,Classified,a3e3d7dc3bcdf519ced799d06d767edde6d593cfd2dfdae0e12fd9496165e6c8
-016,9,explanation-topologies,topologies,CORE,TEACH,,Why connection patterns change risk,Classified,9d77c21fe8b5bfe7ae076c1609499f9f8167d03dee6fce3dfa5bf58ad7d5c0a8
+016,9,explanation-topologies,topologies,CORE,TEACH,,Why connection patterns change risk,Classified,426ba2e22592439d18c6101d7d80229821cdb8c9a879b4ae54a2f4d63880b7ec
 016,10,tool,tool,OPTIONAL,PRACTISE,,Topology recommendation helper,Classified,647943cd83a66844f843bd11c5160eb2d8746b8cc011e895f5fcb08288dd3082
 016,11,examples,examples,CORE,TEACH,,Worked examples,Classified,f36d63e3f0c87e104892224ad8c4eef3f2bf2bf1d26a405a8972dd6cf4386693
 016,12,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
@@ -329,7 +329,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 019,4,protocols,protocols,CORE,TEACH,,What a protocol is,Classified,58093edcb4a0a85f4e26988562b523b15fdf2d8b2b4a285dea893aca42ba214b
 019,5,explanation-protocols,protocols,CORE,TEACH,,What a protocol is,Classified,50a2b7cf50b58dfaf9f432f818a3598de56f0d2c2f1810e9fcb663f4a965ab4d
 019,6,rules,rules,CORE,TEACH,,What protocol rules can specify,Classified,aafade80a2b5f108f0b5e0a5efd2ff7aa88d82bbd63119e0cd6eb56cbf062c6e
-019,7,explanation-rules,rules,CORE,TEACH,,What protocol rules can specify,Classified,61e180b164765d507b6a149f75d79040ca65663e163ae915b227c4be8a38f656
+019,7,explanation-rules,rules,CORE,TEACH,,What protocol rules can specify,Classified,f8c882d762b5daeae95e1dc2caff781af8b2931cfbf31cf03a1252b84de4bb41
 019,8,layers,layers,CORE,TEACH,,Layered communication,Classified,41c1ba55ed90114e25b5162f322ef999379933323007fbdc88e6f105a45dd30d
 019,9,explanation-layers,layers,CORE,TEACH,,Layered communication,Classified,504489b740b914ea7adaf86f35cc319e01be19b610888b211757b8dd33683a38
 019,10,tool,tool,OPTIONAL,PRACTISE,,Communication diagnostic helper,Classified,7021098068ca732e85509d3b0b12888b080fbef3ca3db9d8f137556f0423241d
@@ -344,13 +344,13 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 020,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,2d113c1a5db46956e4d0642d4530dcd0d840a1bbf728cf0d402d91410aea13cd
 020,3,hook,hook,CORE,ASK,,You type www.cambridgeinternational.org . What must happen before packets can be routed to the server?,Classified,f17d63645021328270a7345de6ebe79eeb491d93d0a8ffde6f966eff6dcd4776
 020,4,addresses,addresses,CORE,TEACH,,IP address vs MAC address,Classified,107c22a5b4e3e6f9858f579d3e7bc7a5d50207ec7ecb818b66722e63e6501552
-020,5,explanation-addresses,addresses,CORE,TEACH,,IP address vs MAC address,Classified,a443a8c9c55960db6bdfa69fde17a1d4582e194ec358aef12e4e10856f27db7d
+020,5,explanation-addresses,addresses,CORE,TEACH,,IP address vs MAC address,Classified,21ab33cc1e470e516afe15a6b02602c44e718cabd32ebf640714b2a3cabe418c
 020,6,dns,dns,CORE,TEACH,,DNS: name to IP address,Classified,b72c01f1ff1ac0334fab90f492835d602002ca80c5fea6147c991f6cc98992fa
 020,7,explanation-dns,dns,CORE,TEACH,,DNS: name to IP address,Classified,5d2af068ea181d801c08d6a9f1e0fa0f05fb8e82bb0a79f23f5611510dd60fcb
 020,8,urls,urls,CORE,TEACH,,URL components,Classified,a303c6cf81cd3191ab91efc48ebe721992765233cb3cb4385aa546220eb2c420
 020,9,explanation-urls,urls,CORE,TEACH,,URL components,Classified,c4ab64dfada900de008ec9108593b2f311956d5d56f45a0780157359672da330
 020,10,address-journey,address-journey,CORE,TEACH,,From a URL to a packet on the local link,Classified,46fa9d69ae43ea759ff84d4670304bdb59695dec6fb7f652294fe991f06d7ee2
-020,11,explanation-address-journey,address-journey,CORE,TEACH,,From a URL to a packet on the local link,Classified,7b026b1beb6a565d85b5662e01aee73c33cde69fa243b612288687b334a6714d
+020,11,explanation-address-journey,address-journey,CORE,TEACH,,From a URL to a packet on the local link,Classified,15815767a43d9fee1487f101aa8194c886dcd6537343a2de4d484887f257d9de
 020,12,tool,tool,OPTIONAL,PRACTISE,,Addressing diagnostic helper,Classified,e82a2493627b7133b2a433844108f1e22e214cdf15ab8d5012285cbfbe3f8bb3
 020,13,examples,examples,CORE,TEACH,,Worked examples,Classified,d6c78ed9beba4ac836eeb99b2ebf898d6152ac7758410f19a7f3991b81adbf42
 020,14,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
@@ -405,7 +405,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 023,10,gateway,gateway,CORE,TEACH,,Gateways: connecting different network rules,Classified,27e935186ae84469e5b896c655e80756ee6586b62960e0a591c376e937ac9fc2
 023,11,explanation-gateway,gateway,CORE,TEACH,,Gateways: connecting different network rules,Classified,fc1d56b7d46e3f63241d2f570eb453ad32f32eb71a31413dd5017cba30e6de2d
 023,12,compare,compare,CORE,TEACH,,Compare by job and boundary,Classified,f92afe674d21a4082a85845668fd17513e4d53eaefbc70d41005958c002e1ad0
-023,13,explanation-compare,compare,CORE,TEACH,,Compare by job and boundary,Classified,82333c258260a5722dbb740eca77c7fec8206e07e0dcf88be13eaca5f9ed45b4
+023,13,explanation-compare,compare,CORE,TEACH,,Compare by job and boundary,Classified,5cff24fd71c51b5a923f973949a5e60aeaec35c5e6cef0e9a4c00f0d034ef5ef
 023,14,tool,tool,OPTIONAL,PRACTISE,,Network hardware choice helper,Classified,25b5cb95019eceaa6150d19cb346381e76342d95a412ad6400c3b68e844f3258
 023,15,examples,examples,CORE,TEACH,,Worked examples,Classified,4dc17bf9b10cf4b9993ab344f360cc4e9200f6e8253ce63cc9d2034d4314b90b
 023,16,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
@@ -435,7 +435,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 025,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,ec58d07b190c1f2a556e8589e346aa113596b6c40d04887c1e47cf9b214f7c42
 025,3,hook,hook,CORE,ASK,,A video call looks sharp but everyone replies two seconds late. Which factor is most suspicious?,Classified,52037b726cf75b1cd6cb318d26465176003e173c76b6e9ef3ae0208391d7f3cc
 025,4,concepts,concepts,CORE,TEACH,,Core performance terms,Classified,7f1a03e0004a3930f369b99f125df6727c0e37382a4636ca2836ffb96d0a6b5f
-025,5,explanation-concepts,concepts,CORE,TEACH,,Core performance terms,Classified,8f4ff9aeb68ac709bbdd91accaf70f22d3b791804a33b8c75e427eda907be29b
+025,5,explanation-concepts,concepts,CORE,TEACH,,Core performance terms,Classified,6572cada8b1d9cf5df486581d142fc1d044a1c8740323cfde08ac3af71bdd1c2
 025,6,factors,factors,CORE,TEACH,,Factors that affect performance,Classified,ea9e78e62466067d918554c4fba5b724c967c19e1e61db0184bbfb78c508477a
 025,7,explanation-factors,factors,CORE,TEACH,,Factors that affect performance,Classified,b46a70074466c98bdc0bbb24dbb8e0eef81fb412a13ecde071854ebe3f36c352
 025,8,calculation,calculation,CORE,TEACH,,Simple transfer time calculation,Classified,0e2af254e7ce15c1991e708c1bf709ec0abd9a18388106183418bc873ff11ba2
@@ -452,7 +452,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 026,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,66a3452110a790ceafbbb12418da8d0f86757a6353e7d324b4fac24e852de8fe
 026,3,hook,hook,CORE,ASK,,Three short clues. Which topic is each one testing?,Classified,c75bbf98a8268251f270ad307a1a44cff8e554d53b5fb337ab0a8751c948a31f
 026,4,map,map,CORE,TEACH,,Section 2 in one page,Classified,056b8f58921aaaf563a7d473a8d218e6f19422c1d82d7a1450b2f118d87bc154
-026,5,explanation-map,map,CORE,TEACH,,Section 2 in one page,Classified,2d4c7f9d8f347ab20ec9c3f237bd424edd0bc82d2ad0485e3df58c40f5edfca7
+026,5,explanation-map,map,CORE,TEACH,,Section 2 in one page,Classified,2257fdfcf841b70af2487db475ab92899c938c8c0504e5240a5a72bb0d87bed8
 026,6,precision,precision,CORE,TEACH,,Precision rules for Section 2 answers,Classified,f9f323a1dce411926f8f0e00920ac7c41aefae1fa091e56d689e3787a336c7cf
 026,7,explanation-precision,precision,CORE,TEACH,,Precision rules for Section 2 answers,Classified,91864c5cb61ca5446450104e547b1393bd38c261de5f0cc85e4cc39a107bed9e
 026,8,tool,tool,OPTIONAL,PRACTISE,,Topic identifier,Classified,564a5a7b081eaeb37a55503f254ee1d6a7754157b522975a7e3d185cc779a16d
@@ -466,7 +466,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 027,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,dad084432e3c49680f534f400c2975807afe0afd49ff179940db7429d21b6a42
 027,3,hook,hook,CORE,ASK,,"A phone scans a QR code, checks the ticket, saves the record and shows ""Entry allowed"". Which part does each job?",Classified,5436f37a400a9e4e4d73b363cf9e6b1b88099b01ed939409c11b41928b04ebad
 027,4,flow,flow,CORE,TEACH,,The basic system flow,Classified,f8442e39ed7b5c85eb84090b08c23a7222586fcd3b097f2207562b669c30c8ac
-027,5,explanation-flow,flow,CORE,TEACH,,The basic system flow,Classified,1ef34bac42f743eb2d09d9ffb824b2347adeec10ad4293daf02a69125fa98350
+027,5,explanation-flow,flow,CORE,TEACH,,The basic system flow,Classified,09c9166a2d66fd99d14cc759eaad991e6fb9b82426addcb2f16fc1bc1ebfbe7f
 027,6,components,components,CORE,TEACH,,Component roles and examples,Classified,584da999f38592a7623d2590d7eccb4d70cfd8f0c208e1b0f99dfd94c2923720
 027,7,explanation-components,components,CORE,TEACH,,Component roles and examples,Classified,5b620a4819754a660ca8bde93628a91b389b665d99407404875a68f69a0410a9
 027,8,memory-storage,memory-storage,CORE,TEACH,,Memory is not the same as storage,Classified,20b492b230398141d3b8567701d48ec22cad9a33ce5c4723d3edf1cdc0dfa869
@@ -503,7 +503,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 029,6,devices,devices,CORE,TEACH,,Common output devices and when they fit,Classified,1cb8c8f5a4650e4d8d554dea327e5556ad91abd34ff7f7cfa1374de4b6e4d230
 029,7,explanation-devices,devices,CORE,TEACH,,Common output devices and when they fit,Classified,1c74b4600bedae50cb2e3b9431cb0203e899c3e8b036d54e8c672017dbd2b574
 029,8,feedback,feedback,CORE,TEACH,,User feedback must fit the situation,Classified,ac1fd42219d0cee01d92c31af56e8acf6e86beb67541522b5dd265c120c3614c
-029,9,explanation-feedback,feedback,CORE,TEACH,,User feedback must fit the situation,Classified,365d48cbc5922ac939b708df342eea51dbf85fd1611bed5c984daca49154f8fc
+029,9,explanation-feedback,feedback,CORE,TEACH,,User feedback must fit the situation,Classified,884bce46600a13a0e0ddbf9122606f544e5c4640fa9cb75aead3b9575ccf2cde
 029,10,tool,tool,OPTIONAL,PRACTISE,,Choose the output device,Classified,d073a07475df76f574396261643e2a1890f892833b4b6dbcd6410161b73d6370
 029,11,examples,examples,CORE,TEACH,,From device name to scenario-linked output,Classified,0639c20faefe41c4a091762658f790736ecd3774456fb34751f26b01ebf31fd8
 029,12,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
@@ -520,7 +520,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 030,6,ram-rom,ram-rom,CORE,TEACH,,"RAM and ROM: similar letters, very different jobs",Classified,ff581ea3d63d5fcd74136301f260c46e8c70d14dfa3a729e70067da4691e2580
 030,7,explanation-ram-rom,ram-rom,CORE,TEACH,,Why RAM changes while ROM remains stable,Classified,bcc626a2ceea7b353ad3cdea78b1da90cc371b04c2ef2f7dae5d18b3a5080f73
 030,8,cache-vm,cache-vm,CORE,TEACH,,Cache and virtual memory affect performance in opposite directions,Classified,bd2617bd3a6da1a60f536fccab3f44d3f8ef7a9030ee4dc2155eb18a8970147d
-030,9,explanation-cache-vm,cache-vm,CORE,TEACH,,Why cache helps and virtual memory slows,Classified,8697530b9951c565e5b9f1cb7074e9ceb1d43ab7ce06dbeeb778aedfc9029e9a
+030,9,explanation-cache-vm,cache-vm,CORE,TEACH,,Why cache helps and virtual memory slows,Classified,11c07533253accf04d9269dd3fe11616848946c5e19d6848b67668d426b6dcf3
 030,10,tool,tool,OPTIONAL,PRACTISE,,Choose the memory concept,Classified,c35c4d846cd9848e7899344db0ce5ccb9c008078bf0f33a3e60326c376716827
 030,11,examples,examples,CORE,TEACH,,Precise explanations for primary storage,Classified,83eebc978ca100a6cc8d7dc8ef94ee330f70c54bc3f7b1cd92aa45b99d3707d6
 030,12,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
@@ -535,11 +535,11 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 031,4,purpose,purpose,CORE,TEACH,,What secondary storage does,Classified,eccbc79a1be85dd78d264ae571b171b2cd9ab880065a008210694b9222e9f834
 031,5,explanation-purpose,purpose,CORE,TEACH,,What secondary storage does,Classified,930cdd2927c783132372784d5a360d46284e711a00a1b2528e19848d199790a0
 031,6,media,media,CORE,TEACH,,Three main storage media,Classified,92f0aa462ffb2fababdd7f6f9db68449fefcd2ff888b4bbadd7962748da8833a
-031,7,explanation-media,media,CORE,TEACH,,Three main storage media,Classified,e707a3aad4d0f4fe8d34ce39551a6ddfa71792476cca020bbc160e852ee75044
+031,7,explanation-media,media,CORE,TEACH,,Three main storage media,Classified,ff1f188ecdf4e816f0feb968f51f043576275dc17581766d4646f62927886161
 031,8,storage-visual,storage-visual,CORE,TEACH,,Look at the storage mechanism before comparing performance,Classified,2fd72ab6ae5463c8e5e5dff7450d20f73804f207e5bd5ba16308723ea969f7b7
 031,9,explanation-storage-visual,storage-visual,CORE,TEACH,,Look at the storage mechanism before comparing performance,Classified,b181a8c3f1a12a2cbf9e9b129d07f2059ec35bd9ad22d10aea86dbe733af9a8a
 031,10,compare,compare,CORE,TEACH,,"Compare by scenario, not by favourite brand",Classified,f8de3f4d501b86b8ae5e9bda889d9dadd5e3deac41d4f5e1284301ef51ed9906
-031,11,explanation-compare,compare,CORE,TEACH,,"Compare by scenario, not by favourite brand",Classified,d6a45a3035abf235669628497e61312d3ef36cf9e37ce91526b32642aa945f8b
+031,11,explanation-compare,compare,CORE,TEACH,,"Compare by scenario, not by favourite brand",Classified,59fe94ae26c17267e7dd273f5b9d6fa46a807e0c4ac823a7264913e2ee63b8f4
 031,12,tool,tool,OPTIONAL,PRACTISE,,Choose the storage medium,Classified,b911466a0b1e8498056d4fa921d77350ad00db008f070474baac6f7a02de5c9d
 031,13,examples,examples,CORE,TEACH,,Choosing storage with reasons,Classified,4e308511e9210139ac674da03425d0eaeb88704adcb3d40376b0d9fb6b418bb8
 031,14,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
@@ -600,9 +600,9 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 035,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,44783cfd7a04e407c7c0d2137f425a68c0ceed3ab81946bddc03c77a1c135c90
 035,3,hook,hook,CORE,ASK,,The classroom door opens if the teacher has a key AND today is not an exam.,Classified,5f9e7eb5bbab84b4077fb83647f6914ab7ae6a008284a7fe80a5ae34f19c272b
 035,4,signals,signals,CORE,TEACH,,Logic gates use binary signals,Classified,6b676ab30dfbb2589c4832b4e64584734afaa40c668b1e57c31d04ce5cea71ac
-035,5,explanation-signals,signals,CORE,TEACH,,Logic gates use binary signals,Classified,f35b0195334c58df8f98adcfe9fb0b4fab4f221e25081d440d6627f1ebb5e5ad
+035,5,explanation-signals,signals,CORE,TEACH,,Logic gates use binary signals,Classified,f6c23a07f3c7bea0c9af96717ae014a953ed86e1c55a8a36ab6546cdb450ec22
 035,6,gates,gates,CORE,TEACH,,The six gate rules,Classified,faca1cae3ef73dff02726b7ade7d6e77a0642be6fc1c7e3efef2d894cdda86a2
-035,7,explanation-gates,gates,CORE,TEACH,,The six gate rules,Classified,ef292c5cffb0c38f8eb0431b899f8cd5210122c1e21bb39b64da96eeab5635c8
+035,7,explanation-gates,gates,CORE,TEACH,,The six gate rules,Classified,107755f2645dcd2e91e99c6e68515526c2a08752a7defb455208c16de6fa9419
 035,8,symbols,symbols,CORE,TEACH,,Recognise gate symbols and the inversion bubble,Classified,26a304a04b95f337e049df7c7df808a8e47d6fb7ba36a2609b8e682a6036cf59
 035,9,explanation-symbols,symbols,CORE,TEACH,,Recognise gate symbols and the inversion bubble,Classified,0831a7c312aad8db0c275811506fb45f4c067d5b993a14efa2b4c99ce2cac78b
 035,10,gate-visual,gate-visual,CORE,TEACH,,"Six symbols, six exact output rules",Classified,bb4cdf3bfd2e8e2e7933aa857fc2966db5cb5ce0224314254028a54fc41997aa
@@ -634,7 +634,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 037,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,6613dd56210bb623e985ef6ae2bad8c8d94c06ea9f2d4f3463dbb58c075e444b
 037,3,hook,hook,CORE,ASK,,A school door unlocks only if the card is valid and the emergency stop is not active.,Classified,d11d3de8d6c0aca0ea5e4f9b768f08e03026bb573a528782ddb1431eb895d68a
 037,4,parse,parse,CORE,TEACH,,Parse requirement wording into logic,Classified,6f58cd9e0233fe76b771de5d3171e5c330cb0bdd17069c859c1c6dd3bd1b2e49
-037,5,explanation-parse,parse,CORE,TEACH,,Parse requirement wording into logic,Classified,687fa1b21c8b3f5fe29c3ac86954f7a1f388a5934cf76f8f65e666f1791e6594
+037,5,explanation-parse,parse,CORE,TEACH,,Parse requirement wording into logic,Classified,363a2682b51b63b1264de847d9c4c36e9cf717d0d0e429075c55a2d07a779ee1
 037,6,design,design,CORE,TEACH,,A circuit design method that examiners can follow,Classified,bdf7603a5686dffbb9c478492e993da7571e5af9832faf30bcec9331f81116d0
 037,7,explanation-design,design,CORE,TEACH,,A circuit design method that examiners can follow,Classified,e94562828897ad9ee97bc6d6d38feb0ffe99ffaf27705195d5c9ec278a48a8ec
 037,8,diagram,diagram,CORE,TEACH,,Gate sequence creates the circuit structure,Classified,d6bb4de1125b21d5e32b9a0902f099c8e24095271d1dc0476404802456ca0a3b
@@ -650,7 +650,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 038,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,ef2da5aa4d42930b59edabe2bce685982aa6e34a7291d3ae315a97eb0c17740c
 038,3,hook,hook,CORE,ASK,,"Phone, keyboard, USB drive: which captures data, which stores data, and which just makes humans feel in control?",Classified,791205ef54d2fb081499aa14252a1027b7e8a1211342f220538116d2e4262b54
 038,4,categories,categories,CORE,TEACH,,Classify the hardware before choosing it,Classified,9ae2a0f249e652b9b8eddbff747373053766b7c179f7adf3fa4221f83e2e283e
-038,5,explanation-categories,categories,CORE,TEACH,,Classify the hardware before choosing it,Classified,df5ad87f73875c10b1f6cd5fdf8d3d0c2344c912c8c130b2c99248c0ae83d3de
+038,5,explanation-categories,categories,CORE,TEACH,,Classify the hardware before choosing it,Classified,6da482506a60dbcc03aac6c5e2bea6c8c35de80da17dc33d067c3bff86fcff1d
 038,6,criteria,criteria,CORE,TEACH,,Choose hardware using stated criteria,Classified,0211b5b8e2f9d708c77c3de176c453270fbd30ee9d7b0251e3df05d5da3f6e54
 038,7,explanation-criteria,criteria,CORE,TEACH,,Choose hardware using stated criteria,Classified,cacc44380c5e3b432703d96eceab5b7433ef8f24de4108629aadd4731f4fac4b
 038,8,users,users,CORE,TEACH,,Different users value different trade-offs,Classified,c761aa19d830c13bf5db616d04512fb50724929be82c1c4592152ae5ece16c48
@@ -668,7 +668,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 039,4,environment,environment,CORE,TEACH,,Environmental factors change hardware suitability,Classified,c1a3e97730c7ac44b3b668f2809e5253b599a3cdfe20ccb4e0924e4573dae7ec
 039,5,explanation-environment,environment,CORE,TEACH,,Environmental factors change hardware suitability,Classified,d925444b58a6ee9e688a54754b5b0e3a4c942e98aa7db4ed3869aa6d0d5240e1
 039,6,reliability,reliability,CORE,TEACH,,Reliability is about continuing to work correctly,Classified,c5f08945e9e19a2591ec453c079b5789af61c6bbf448cf0e4d12703fa0987106
-039,7,explanation-reliability,reliability,CORE,TEACH,,Reliability is about continuing to work correctly,Classified,6f089abba38e9d2f78da359fa51b79d079a443208eeaf0fd99b4d679cfde7cd2
+039,7,explanation-reliability,reliability,CORE,TEACH,,Reliability is about continuing to work correctly,Classified,1efab3cfef68d1695863399e5d3562141f97a5f8fa11d078fbc476ceb1514e0f
 039,8,mitigation,mitigation,CORE,TEACH,,Mitigation must match the risk,Classified,a753fbb894ccbe0b92c74a3ebcd0f9a961ee8f7dbe7c3a05f3d2d8317c38776b
 039,9,explanation-mitigation,mitigation,CORE,TEACH,,Mitigation must match the risk,Classified,cdc0d9311c6bfcf4444e90ca13ecc8610455c9a69690d0f42d5f13c1d7c43866
 039,10,tool,tool,OPTIONAL,PRACTISE,,Environmental risk evaluator,Classified,0d43d4405166a3b2760706f994424d0317fb97cec6dc937b48fd7126611647a6
@@ -682,7 +682,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 040,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,880d993a77a9f83c7513c0ddb677d7b2b253c6aa42872ec91a789a30d17fb380
 040,3,hook,hook,CORE,ASK,,Which syllabus concept is required for each mixed question?,Classified,6d512de7c7cc388fdf18a3b0727038acc6549d9213c2437a2f843803b5a669e0
 040,4,map,map,CORE,TEACH,,Section 3 topic map,Classified,eec5816ef84a33731219bc7cfcf6074b772985758146c9d989ae7bae4361158a
-040,5,explanation-map,map,CORE,TEACH,,Section 3 topic map,Classified,256a0bce36f8fe26665c6b3b984cee300281094761ad720c3e94eb59ece0c567
+040,5,explanation-map,map,CORE,TEACH,,Section 3 topic map,Classified,0407db25046f092aeed825a396cfbc7d4209d59d0cffae2f8b44149195342704
 040,6,skills,skills,CORE,TEACH,,"Three review skills: compare, justify, calculate",Classified,bbdb85ec34972bddfc0a8e5216b4c4bded353935fedd4361869794eef7a11652
 040,7,explanation-skills,skills,CORE,TEACH,,"Three review skills: compare, justify, calculate",Classified,d5c0fd0d0c42dfd12d44a50b8b2685793d7b342dae5b764c41ebd9aa0e96dcb2
 040,8,checkpoint,checkpoint,CORE,TEACH,,Short timed review structure,Classified,ff5bc0dec675a613a872458b8f16d66f3054f4b45dcf2b26b54a71f84e18f83e
@@ -700,7 +700,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 041,4,architecture,architecture,CORE,TEACH,,CPU architecture is about cooperating parts,Classified,a128c4208b76fdceef97f85b93a176c10daea1b65dbe5d05edc6528391de3329
 041,5,explanation-architecture,architecture,CORE,TEACH,,Why a CPU divides specialised work,Classified,95480efba201193f71456a8a048b50bb9016e305fac7b67bf2b9c80263bfd95d
 041,6,cpu-map,cpu-map,CORE,TEACH,,"Inside the CPU, outside the CPU, and what connects them",Classified,7eed84ff90a2987774597fe00660058ccb46ee4017817a147bbaa8e22ccd481b
-041,7,explanation-cpu-map,cpu-map,CORE,TEACH,,"Inside the CPU, outside the CPU, and what connects them",Classified,ea481aae8b4e35cae18a67fd37a7aef4131448edf10aad1630bc88207370c89c
+041,7,explanation-cpu-map,cpu-map,CORE,TEACH,,"Inside the CPU, outside the CPU, and what connects them",Classified,25c9df6deb2158f8c4591258cacd63448762b541bf5de668cdfe28e689c2c668
 041,8,alu-cu,alu-cu,CORE,TEACH,,ALU and CU: do not swap their jobs,Classified,e328fd286da850ef51f02935aef99e44d53fe81fe88901aaf5516ef689fbe852
 041,9,explanation-alu-cu,alu-cu,CORE,TEACH,,Why control and calculation are separate,Classified,6eab183ea823eeb1094a80c34555b8a3df54f4c1e3a7fcb7ac2ae24ff1c03477
 041,10,registers,registers,CORE,TEACH,,"Registers, buses and clock",Classified,46b726bd6f5b17c99f5caf2d02ee5da20d5f8bbd76588c8e0e6c44fc6bc836d5
@@ -719,7 +719,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 042,4,cycle,cycle,CORE,TEACH,,The cycle in one clean sentence,Classified,5c3b499b832b2be2ad43f8d399bf7d3623011779fa2987efd89711896e6a3289
 042,5,explanation-cycle,cycle,CORE,TEACH,,The cycle in one clean sentence,Classified,b3c631ec29ccb009fc6250091f42979adc915e6bee29dc91db0e4f22bf560ece
 042,6,cycle-visual,cycle-visual,CORE,TEACH,,Trace one instruction through the fetch stage,Classified,4f3fe7225ef39257fd429cb7dc49e0cf6fd1ef35ed9da68dd99a976952bc8649
-042,7,explanation-cycle-visual,cycle-visual,CORE,TEACH,,Trace one instruction through the fetch stage,Classified,5dbdd45b581881a0dc1dd974525539c254cf74f50aa24fbbc6b04482f0b90480
+042,7,explanation-cycle-visual,cycle-visual,CORE,TEACH,,Trace one instruction through the fetch stage,Classified,44830c444ac444758b8d8a6f752b988d2f8e32f5d4b8ec342305ea29118837d6
 042,8,fetch,fetch,CORE,TEACH,,Fetch stage: the register sequence,Classified,7aab81584aced667f0dde29d50ee61f63565f79fd4e41c652434dbf118b3fd74
 042,9,explanation-fetch,fetch,CORE,TEACH,,Fetch stage: the register sequence,Classified,b400e63ee3d353c06f8ee8e3b33fe5a138f1b594d9d175de1b1a4a8bac9ad263
 042,10,decode,decode,CORE,TEACH,,Decode and execute are not filler words,Classified,ca6057acf66e95f9f79c88255bc9435012faadc9fe6349f9f3e8db3b6c21aa51
@@ -756,7 +756,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 044,4,concept,concept,CORE,TEACH,,What a system bus does,Classified,2863455636c117e8a1c7be547927bf87650e552b768481598fda5f26e813f823
 044,5,explanation-concept,concept,CORE,TEACH,,What a system bus does,Classified,bc526f76c3ddb34522405af93dd574ccbdd31e03c46b20441213b7b6a1340a79
 044,6,three-buses,three-buses,CORE,TEACH,,The three buses,Classified,50130408cac7c9dd1e72fa6addd6fe80281085583478d2bbeebdc0f6c06de170
-044,7,explanation-three-buses,three-buses,CORE,TEACH,,The three buses,Classified,ad736fe0c2ea82758a7953f1dea43a2ca04fdea67b35fd3a958408732c03c248
+044,7,explanation-three-buses,three-buses,CORE,TEACH,,The three buses,Classified,6f8e5d9629c85bb908cb5020e0934db32107d80c7e2f77de8b59f0a195ec6703
 044,8,read-write,read-write,CORE,TEACH,,Read and write traces,Classified,0befb8ee2f0daa35b1641bd7958b60035232661dcc87557b57f94525bdc4e008
 044,9,explanation-read-write,read-write,CORE,TEACH,,Read and write traces,Classified,291b4606155e23885646c5c835044fff4c48ec76d564509cc0b755e27c33ed7a
 044,10,width,width,CORE,TEACH,,Bus width and addressable locations,Classified,7567b9ed4c774103a4e4527b7353c96c63d6fc5ab8435129400be8cab314b409
@@ -813,7 +813,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 047,4,concept,concept,CORE,TEACH,,Addressing mode means operand interpretation,Classified,07e61c16eef9a098f25f074714c476190ad49a39db68c633dee16c24a66a7e87
 047,5,explanation-concept,concept,CORE,TEACH,,Addressing mode means operand interpretation,Classified,24b0ebc9a2615c22293b8dda4bc020605dc7c62f5d916c6c762255baa9b6ec99
 047,6,modes,modes,CORE,TEACH,,Four common addressing modes,Classified,2cbaa1288a1b8fca0e675b8a21756215f597d82a19034cb581b56fab66509609
-047,7,explanation-modes,modes,CORE,TEACH,,Four common addressing modes,Classified,377439e06605671547e58457a13988a49d5ad18b302317847e7cbb57f81dfe98
+047,7,explanation-modes,modes,CORE,TEACH,,Four common addressing modes,Classified,139d898a4484b355243f65bf0fcb8c7d36e91f78e295464f240d2fdaa95137b1
 047,8,effective,effective,CORE,TEACH,,Effective address: where the CPU actually reads,Classified,fb4e6d3fd6f7b2098efbddbd83eba3951cc4c7ed37169b11b9f5edfacb8963ce
 047,9,explanation-effective,effective,CORE,TEACH,,Effective address: where the CPU actually reads,Classified,97d8cdedbf9a5e264e473d098ad0db57296a7cf367dae58e963191573937ab3b
 047,10,arrays,arrays,CORE,TEACH,,Indexed addressing and arrays,Classified,388f949f33566002b3f566574a8fbb59c3debbdc88826bec6e295724e6593529
@@ -854,7 +854,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 049,6,clock,clock,CORE,TEACH,,Clock speed: more cycles per second,Classified,3ffda5e78d64f2c7287cfc8ccb1943f7dbb4a868d4cb61a84c927fa3609e5aa5
 049,7,explanation-clock,clock,CORE,TEACH,,Clock speed: more cycles per second,Classified,ce37564301af1421f9c1ec9801296a765e3ac728ac7f5f760ec2747a703c0b5d
 049,8,cores,cores,CORE,TEACH,,Cores: more independent processing units,Classified,4f1a6f6819a024e7891575fb695452ba7ba4f814dd5fe28bf0f8c92ae7103181
-049,9,explanation-cores,cores,CORE,TEACH,,Cores: more independent processing units,Classified,1566702c65a997f470a4af0d4b33d9ec0e90ff3b14f4b69adea22438be5a03bf
+049,9,explanation-cores,cores,CORE,TEACH,,Cores: more independent processing units,Classified,664376a44f6924c98fd8e3903dfe963267fc3936d451fdf63b99477ea04b264a
 049,10,cache,cache,CORE,TEACH,,Cache: reduce slow memory access,Classified,81e3d3457922f555a88bbc37eb3d636307f49ab8c12201eb9e5d777508dffb1f
 049,11,explanation-cache,cache,CORE,TEACH,,Cache: reduce slow memory access,Classified,c8f388bd9f1db755dd7d88e66775adc7441311e92cccebe8743ef143320ca0cb
 049,12,word,word,CORE,TEACH,,Word length: bits processed as a unit,Classified,7f866cd5e3c925271d11374ba419cbe5341aafb0255b4431d54bc9fe6ba1e704
@@ -874,9 +874,9 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 050,4,concept,concept,CORE,TEACH,,Pipelining overlaps instruction-cycle stages,Classified,f51b9d8415d8b6fcfd5e3960eafa24ea58e7727b34aee93fb4985369d65fe6a1
 050,5,explanation-concept,concept,CORE,TEACH,,Pipelining overlaps instruction-cycle stages,Classified,983764187856f097fef3b244cdd47eda0fe89d2211082bc92519d273658383cc
 050,6,compare,compare,CORE,TEACH,,Without and with pipelining,Classified,7a531cc9d0dfa4ecc0750d77bca278d16b0b4c19b3d678c74cf17d22f4909a26
-050,7,explanation-compare,compare,CORE,TEACH,,Without and with pipelining,Classified,1af9caf5a086647a3dad42aeb95fdf6992e6487e3687366aed54a1ffe1c8d529
+050,7,explanation-compare,compare,CORE,TEACH,,Without and with pipelining,Classified,f3f0f1e4fefbe854c57fe49376452844c8e73ccd9051addd26eab496199afea5
 050,8,timing,timing,CORE,TEACH,,"Throughput improves, but latency still exists",Classified,15ff4a55d66c4b8e81aee7e45d7b63aaff822bef988b80094423d3086155be1a
-050,9,explanation-timing,timing,CORE,TEACH,,"Throughput improves, but latency still exists",Classified,be9f8a7c6db52e2f8f79f6dea637915c1653f9316ad1836fb223ba0a12aa4e90
+050,9,explanation-timing,timing,CORE,TEACH,,"Throughput improves, but latency still exists",Classified,ef9d6700b7bf06745db63f8ef6867a894b47ae25998a6247257bdde938514ef3
 050,10,hazards,hazards,CORE,TEACH,,Pipeline hazards: why faster is not always simpler,Classified,3ecaef1f541bdaa70c260d82bf3b5861913f09658455620bb5c203bb9735844e
 050,11,explanation-hazards,hazards,CORE,TEACH,,Pipeline hazards: why faster is not always simpler,Classified,411241da1e7e2db879a79c3e801716549793b4e9dc5534b7599615a9a5d9eb02
 050,12,stalls,stalls,CORE,TEACH,,Stalls and flushes reduce the ideal gain,Classified,2f93f0453fc936929f294d4a3d02fdc90e598d8d91d6b4adc84272eef580f8a5
@@ -893,10 +893,10 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 051,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,4417a187a20cb2eaf5fbbe1a700177d77b1471acf7550143bddc8b1e29a54003
 051,3,hook,hook,CORE,ASK,,Which topic is being tested?,Classified,6ad6a93506afd57593e5e4786915a5dff3f84bdc2ce0dca958ca280ab67de604
 051,4,map,map,CORE,TEACH,,Section 4 concept map,Classified,e07f76c64c15e6d1fe9a65850df434eae7a2c2eb158c6d696038df0f1edc51cb
-051,5,explanation-map,map,CORE,TEACH,,Section 4 concept map,Classified,09f88b6f7f4b5de85d2c043029d06c63e9fb015d64ad366719687dd3665818e3
+051,5,explanation-map,map,CORE,TEACH,,Section 4 concept map,Classified,757b94a0cb46fb01db8eaa0a82de64b9d9f689e7aae68f502695ebfa78dff8eb
 051,6,classifier,classifier,OPTIONAL,TEACH,,Classify the question before answering,Classified,0d246728c905266489d96242a3c52b91ad13a3a385842c3f77321c2a338cd411
 051,7,retrieval,retrieval,CORE,TEACH,,"Retrieval grid: say the role, not just the name",Classified,42acd9aef1ebfa44bb5533385f038f2878fa6395d1eb9041ac5ff272edba9610
-051,8,explanation-retrieval,retrieval,CORE,TEACH,,"Retrieval grid: say the role, not just the name",Classified,c78a4476cbd1ce3cb9c42322555016ef5e2179bf561ce7f6edb2234c023ec35b
+051,8,explanation-retrieval,retrieval,CORE,TEACH,,"Retrieval grid: say the role, not just the name",Classified,05ff6e6eec39380dc7e65b8f1ee2426b0b4539a0768f508e3d53df63327a7326
 051,9,compare,compare,CORE,TEACH,,Common compare traps,Classified,83c732d1fd8efd6d5f8ea09d3aaf70f14c48904ea61a4ea2e0a1ce08e56fe10c
 051,10,explanation-compare,compare,CORE,TEACH,,Common compare traps,Classified,f5e54ac61bc7b310445e24fe7f82aca75b78d97bcf112ac20d8c6d85a39533d9
 051,11,timed,timed,CORE,TEACH,,8-minute mixed Section 4 response,Classified,13dea1a94d3bd56a0c96e53b336ffc2e2c3c50a3a849d795e3b208c6b8337c10
@@ -992,7 +992,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 055,14,antivirus,antivirus,CORE,TEACH,,"Antivirus utilities detect, quarantine and remove malware",Classified,4499716a052ed9f67053417b80e493986bfe1a97d275366d33aa549a40a96678
 055,15,explanation-antivirus,antivirus,CORE,TEACH,,"Antivirus utilities detect, quarantine and remove malware",Classified,e958e9f7eac06293a7e149fd8a4d5783c0f7e02736462e4ba1fb5fd79b71d63a
 055,16,compare,compare,CORE,TEACH,,Choose the utility by diagnosing the problem,Classified,c5ac3e6e24e0c8ffdcc73143da986495eaf003039903cb03c95741c3fdd248a0
-055,17,explanation-compare,compare,CORE,TEACH,,Choose the utility by diagnosing the problem,Classified,e24bbf8b81ea925b4d7598239e6de53f611eeef023236f1740d33c28448b4a10
+055,17,explanation-compare,compare,CORE,TEACH,,Choose the utility by diagnosing the problem,Classified,2903750280c4afbf84a9cae4d485419111f6333479ede3d0f826547d457b6628
 055,18,tool,tool,OPTIONAL,PRACTISE,,Utility selector,Classified,28adfcb9cd1e0ede55aff8fa543140dfe2dd0ad3b3c37e331d30f30d30b90ec9
 055,19,examples,examples,CORE,TEACH,,From scenario to utility choice,Classified,e56a875d9308099a1424205819db6bc4d69eddc638b6d37cb90c9b85486e7345
 055,20,practice,practice,CORE,PRACTISE,,Instant-check questions,Classified,7914396e0dd92f819e18114050c1acd1b90b83061911678542246736b0ac0447
@@ -1004,7 +1004,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 056,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,96644f2c9a206b865a3413cb24443453e944a5b9b4dd3dd3ecb4e15786b33030
 056,3,hook,hook,CORE,ASK,,"A processor receives PRINT(""Hello"") . Will it run that directly?",Classified,d5c5a5596a71b7572b19db09d0949d61ee8a93b84b4e02075708e2adaae46eb5
 056,4,concept,concept,CORE,TEACH,,Translator software converts program code into another form,Classified,091ad8f90dcdaad0d05cc2873baff21102f8c8392f7d0f6f1b49c91cf63ce7c8
-056,5,explanation-concept,concept,CORE,TEACH,,Translator software converts program code into another form,Classified,672fb3b76189d90b50b487e3f6c530275629adc4cd0d28863c2a15a16ba75978
+056,5,explanation-concept,concept,CORE,TEACH,,Translator software converts program code into another form,Classified,1d06e2bfe8ae0ca6f822f31130a9413e17a90b046cbb35d766ec62917c0715f1
 056,6,compiler,compiler,CORE,TEACH,,A compiler translates the whole high-level program before execution,Classified,09b6975e3485e17548a971067fb34b85d6df17aeb61c2aedc080c81cba4164e8
 056,7,explanation-compiler,compiler,CORE,TEACH,,A compiler translates the whole high-level program before execution,Classified,cf2b9ee7269acc4e74e8833ee651b8027c91299e9cd277f575f3199ae0ccd641
 056,8,interpreter,interpreter,CORE,TEACH,,An interpreter translates and executes statements as the program runs,Classified,fd36395720b20d95507a12a02eab20d553a60e6bd846397a121e80ee678d3267
@@ -1020,13 +1020,13 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 056,18,exam,exam,CORE,EXAM,,"Answer first, then reveal the Cambridge-style mark scheme",Classified,439724f6eb0551e2e4f2558b444e3476b0b8f79f172ccfb87e9ab9d4fdbf2036
 056,19,summary,summary,CORE,CHECK,,Translator memory map,Classified,e81265f5405191cda67b7f82854364f78a780b5be38830315964521a258b9ad8
 056,20,homework,homework,AFTER_CLASS,HOMEWORK,,"Clear output, not vague revision",Classified,b1d893bda6faf76c266f24c009f960551eaf54cabebdf47c4e8de66c9d4c7fe7
-057,1,overview,overview,CORE,TEACH,,A compiler is not one giant button. It is a careful sequence of checks and transformations.,Classified,da8e2e75cd626fa638a28c00dbf00b29b7a61046edeb0065adc2023b730aed6b
+057,1,overview,overview,CORE,TEACH,,A compiler is not one giant button. It is a careful sequence of checks and transformations.,Classified,401fcea9e03163a105057fba8e7cbac52172f7ed0d2ba3a6ecfe1c9a80d74e00
 057,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,ec629c7c08a950c02cb0705ee739b60bdb3be52e5acd2f68bd0c4641c7e2e80a
 057,3,hook,hook,CORE,ASK,,What happens first when a compiler reads total = price + tax ?,Classified,f84dc58ad8018efeca4a033e271ef0dc70b79f26802bf0374afcbf2f46daaeee
 057,4,pipeline,pipeline,CORE,TEACH,,The compilation pipeline transforms source code into object code,Classified,4f1bf44615e4866cdf2c95a9a8f5824348e8f7fbc2c1c44361e8cc1ebeb7c9e9
 057,5,explanation-pipeline,pipeline,CORE,TEACH,,The compilation pipeline transforms source code into object code,Classified,66902bfa584b2b5310dddf97b820be9817894e148de850a669ee162a91b96fd7
 057,6,lexical,lexical,CORE,TEACH,,Lexical analysis converts character streams into tokens,Classified,b55972574323b08f94d32a1662ecb912a55649282a2b38a23333a917cac7823c
-057,7,explanation-lexical,lexical,CORE,TEACH,,Lexical analysis converts character streams into tokens,Classified,4833467dacd7fec69ee561d24fd7639c86c02a2f4a60ad3f202f603d96bca5bd
+057,7,explanation-lexical,lexical,CORE,TEACH,,Lexical analysis converts character streams into tokens,Classified,a9ee45167171eb4207d4804e826ee8d78e32b1211c22881a46724a35b4299684
 057,8,syntax,syntax,CORE,TEACH,,Syntax analysis checks grammar and program structure,Classified,385276713a5caaa3df76cafc72a2c248a8727c18929c76f2b807122fa4395c05
 057,9,explanation-syntax,syntax,CORE,TEACH,,Syntax analysis checks grammar and program structure,Classified,4893ff54860db4a0e4c25fdbe4ec041ddea022ddbce50f0557a3172d2fc1c408
 057,10,semantic,semantic,CORE,TEACH,,Semantic analysis checks meaning and context,Classified,b5f154b579dc8eac45f47267ae1ae0ad9a2e77c1f35c8f45f8be487c32dfc109
@@ -1098,8 +1098,8 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 060,9,explanation-deployment,deployment,CORE,TEACH,,"For deployment, a compiler often produces a distributable executable",Classified,692cfa1f3a7b5b640055e0bba925680376731ee9cbca710e2e858a9c89f69133
 060,10,lowlevel,lowlevel,CORE,TEACH,,"For assembly language, use an assembler",Classified,b344dca69f6ce7e92c29b98779fe008f8562bcd299e7d2dba255dd8fc972da06
 060,11,explanation-lowlevel,lowlevel,CORE,TEACH,,"For assembly language, use an assembler",Classified,046f725ea2fb991ae1912d9a53e992718b84c819771d9ad4bd5ca5e35615f5f1
-060,12,pipeline,pipeline,CORE,TEACH,,"After translation, linking and loading may still be needed",Classified,63e4ad185103b6d1cdf77020b0b04b2dbad173b837389cfd401393f907b43597
-060,13,explanation-pipeline,pipeline,CORE,TEACH,,"After translation, linking and loading may still be needed",Classified,95f30ad60b3b09428607a2029580e371afe054d9d5a5bf3f976df1bb079f478f
+060,12,pipeline,pipeline,CORE,TEACH,,"After translation, linking and loading may still be needed",Classified,37ddd8e72949d9696a8b2793d442521b2293f09550f88ec30e7807656c33177f
+060,13,explanation-pipeline,pipeline,CORE,TEACH,,"After translation, linking and loading may still be needed",Classified,560251463f6238c01ede3b55cb6a8c4d489075dc283f25b475adf0d74e949404
 060,14,diagnostics,diagnostics,CORE,TEACH,,Error feedback affects the best choice during development,Classified,41e275ca5c7344941a835e8b790dcb5c4f99b89c345987c02b3c4689608b9757
 060,15,explanation-diagnostics,diagnostics,CORE,TEACH,,Error feedback affects the best choice during development,Classified,e7c83c7408421ea061310185c26601f1692da788987897f1532899564c1b662d
 060,16,tool,tool,OPTIONAL,PRACTISE,,Translation approach selector,Classified,3cde2f2166f5ea1b8f77a7898f63d854a0fc1a5c6f03d78b272987323a04fafa
@@ -1114,7 +1114,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 061,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,3d872cb0b420030e8396c4ea2fa0fcea540e52825780f932371606dd9f0dbeaa
 061,3,hook,hook,CORE,ASK,,"Three answers say ""it helps the computer run"". Which one earns marks?",Classified,2e5110ad61acb379d740251d20b976255c478c75797c878f2091dbd953f2a6d1
 061,4,retrieval,retrieval,CORE,TEACH,,Section 5 in one screen,Classified,06d67b4915d84120364edafaab3dd36e6b452cd564a45b24a12c3935140ea223
-061,5,explanation-retrieval,retrieval,CORE,TEACH,,Section 5 in one screen,Classified,074d8be222f0a4493e735e859f611b10ac8db9d3d4bfe083466e3ac468377676
+061,5,explanation-retrieval,retrieval,CORE,TEACH,,Section 5 in one screen,Classified,f6f0dbde43002fc4ef078c10e56dfc33a19403a59072ebc281e832b80b0353f2
 061,6,compare,compare,CORE,TEACH,,Similar terms that the exam likes to separate,Classified,868864308a4345e50b40b6386ef2a656ba3b9f6c365bda3215d474d2d559dc27
 061,7,explanation-compare,compare,CORE,TEACH,,Similar terms that the exam likes to separate,Classified,2626c41cf67209c37d216971f9e7a050d76b75d7fba3891602e97b2c59d2fc73
 061,8,precision,precision,CORE,TEACH,,Turn a weak answer into marks,Classified,2f6fb93f742228d370a74c32a3e84b7082e59440c713c9b158ba03e02cd9a38f
@@ -1133,14 +1133,14 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 062,5,explanation-risk-chain,risk-chain,CORE,TEACH,,Use the risk chain before naming a control,Classified,930f6af5985f8d8e26884dc585d38a0c400a6b0b0fad34e2b08164f452d6dd3b
 062,6,confidentiality,confidentiality,CORE,TEACH,,Confidentiality protects data from unauthorised access,Classified,8f9f7371bcb51864ef55282d5ba7df70f2ce26063e527e0b699d2b19d6e0d804
 062,7,explanation-confidentiality,confidentiality,CORE,TEACH,,Confidentiality protects data from unauthorised access,Classified,35aa52944f3e1aa8f7d93db1145be3aeb79aecdce5c59a94bd828019799edcc6
-062,8,integrity,integrity,CORE,TEACH,,Integrity protects data from unauthorised or accidental alteration,Classified,b2affa327377a2ef0d6d1c609925e853055831f5bd6fae723fa6f7fa9442d45c
-062,9,explanation-integrity,integrity,CORE,TEACH,,Integrity protects data from unauthorised or accidental alteration,Classified,e1dfcbb98558588db2560d17adb9626242324613e3b559207156246fe6bb9135
+062,8,integrity,integrity,CORE,TEACH,,Integrity protects data from unauthorised or accidental alteration,Classified,fd0f0e93bbc5311350fbba04456272af11452c959ac033b937d8109a59cfb20c
+062,9,explanation-integrity,integrity,CORE,TEACH,,Integrity protects data from unauthorised or accidental alteration,Classified,12408de86164e60adb9f4e9f1fc2f766adb360b67116d782630f177155d9324f
 062,10,availability,availability,CORE,TEACH,,Availability keeps systems and data accessible when needed,Classified,551a84a6c50d82e62214c399897ef9320149b819a4614d36f63819f0f8282f9e
 062,11,explanation-availability,availability,CORE,TEACH,,Availability keeps systems and data accessible when needed,Classified,380005a09827673d79f6d3e9a33a0e6c3398b87a1606fc2d12f8a55b0d234276
 062,12,authenticity,authenticity,CORE,TEACH,,Authenticity checks that identity or data origin is genuine,Classified,376c802c31b08b69a08e9bfa8c9335432733fd6966aa8b3448ab6b50b9cb8ae2
 062,13,explanation-authenticity,authenticity,CORE,TEACH,,Authenticity checks that identity or data origin is genuine,Classified,c526d6c05d962ff563c7cbe38cadabc69165b26e9184a01db050d6446f76e811
 062,14,controls,controls,CORE,TEACH,,"One control can support more than one goal, but not every goal",Classified,5a84e729466de22aa61c2636b721e580976e72316654fc39044baf3e81122d64
-062,15,explanation-controls,controls,CORE,TEACH,,"One control can support more than one goal, but not every goal",Classified,576d4c1521f4cc02f65b54455da0a722471ede4f07f1b67c455d08a927e3ce08
+062,15,explanation-controls,controls,CORE,TEACH,,"One control can support more than one goal, but not every goal",Classified,25a8790efa3cfa177176a400c0fe353b159d820ef8298f63d37a0660e351e296
 062,16,tool,tool,OPTIONAL,PRACTISE,,Security goal classifier,Classified,0d89fb3bbcebf59c8396d9ccaee292403c1887925164175a6a2f71bd9d809fdf
 062,17,examples,examples,CORE,TEACH,,"Risk, goal, control, consequence",Classified,e853afa0304fcf9ef8b09b41aeba925be37f9b87c180a123a9299e8941df4b08
 062,18,practice,practice,CORE,PRACTISE,,Instant-check questions,Classified,c9ab3475a46a8096e8a3b45ac45f1306373256736d15601cad1f4651606c4c93
@@ -1161,11 +1161,11 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 063,10,spyware,spyware,CORE,TEACH,,Spyware secretly monitors activity or collects data,Classified,c6a12e217061281044eee5bbb20fa8cfa73440fbc13bbc674e15cabf3fa9642f
 063,11,explanation-spyware,spyware,CORE,TEACH,,Spyware secretly monitors activity or collects data,Classified,de46d5b05145b2b3c1e637f7c0300ce60ba3e669ca3ef1633338e6813001768c
 063,12,ransomware,ransomware,CORE,TEACH,,Ransomware denies access by encrypting or locking data,Classified,26ae9e0f2b8c137ad1d9ce0bac3c935b52df414236bf2a779a8ec839d52acbcc
-063,13,explanation-ransomware,ransomware,CORE,TEACH,,Ransomware denies access by encrypting or locking data,Classified,af8194ae6d4136323f073ecd375d3bd0590a0a7d9cee356b41bae0ad3db0bdbb
+063,13,explanation-ransomware,ransomware,CORE,TEACH,,Ransomware denies access by encrypting or locking data,Classified,8fee1f7b05d7796676025ada0aa462adbfefcdc5f072c39887bcd08f63ee29d4
 063,14,social,social,CORE,TEACH,,Social engineering exploits people rather than code,Classified,bb941c07ed7eb50f0b9691fb5f509433beabf07bfb1f8b2914347f1f03f5d52a
 063,15,explanation-social,social,CORE,TEACH,,Social engineering exploits people rather than code,Classified,f29c5553684e7db843662d51cf1f0565bdee62f17d8929b9dfe52fd6afe404fe
 063,16,controls,controls,CORE,TEACH,,"Match controls to mechanism, not just the word ""malware""",Classified,305d1eed902c0b9b3dcdce6034776065d87afc090712e354626cf5cc4deec5b2
-063,17,explanation-controls,controls,CORE,TEACH,,"Match controls to mechanism, not just the word ""malware""",Classified,20da9404ea1b66294468bd68e2c9796ea5a6f2ea9311aa5f68503be4f66393e3
+063,17,explanation-controls,controls,CORE,TEACH,,"Match controls to mechanism, not just the word ""malware""",Classified,d9c64b8efe26d075f750dceabb230cf6553defe323be1086b81babc2bc7c0848
 063,18,tool,tool,OPTIONAL,PRACTISE,,Threat classifier,Classified,5fe5d1489b1207e01105352c8ced8e46185253663c087e26c72bae85f4d36dcf
 063,19,examples,examples,CORE,TEACH,,"Threat, impact, control",Classified,6cd27acd1648afc4e04197385d5833bc7d79920e9b1581c7763fcb3818caa2f0
 063,20,practice,practice,CORE,PRACTISE,,Instant-check questions,Classified,c9ab3475a46a8096e8a3b45ac45f1306373256736d15601cad1f4651606c4c93
@@ -1187,8 +1187,8 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 064,11,explanation-pharming,pharming,CORE,TEACH,,Pharming: redirecting users to a fake website,Classified,6d5ea5e45239cd6a33766873bc9664e62df5342ec568dd81b8a560a378e6517f
 064,12,dos,dos,CORE,TEACH,,Denial-of-service: making a service unavailable,Classified,fe77ee714c6b95144812d6f5341570819fde32c418b4610ebe52c02efd6299b3
 064,13,explanation-dos,dos,CORE,TEACH,,Denial-of-service: making a service unavailable,Classified,42d2196826697f312c6d6224e60bacee89e7a834a42da652451f03245960a382
-064,14,compare,compare,CORE,TEACH,,Compare by route and result,Classified,706359183846accd97ea9bc043b1765d5046a891ce5ac45359cda58029f5438c
-064,15,explanation-compare,compare,CORE,TEACH,,Compare by route and result,Classified,c9f7b46667848dc33028abe365eed6710bfee9d5a630f903c17814d70d7b3afb
+064,14,compare,compare,CORE,TEACH,,Compare by route and result,Classified,13ddcad6476e92db1e1d7dcebeedac533a3f2481d66df204af9993789a8bf912
+064,15,explanation-compare,compare,CORE,TEACH,,Compare by route and result,Classified,6ea871d02e3f82f9a35e98a0e6a0e70a629be198954388262f1461080a8119b4
 064,16,controls,controls,CORE,TEACH,,Controls must fit the attack route,Classified,a75456e49b8676276d71dfdb1d78a0d52662902758cc505899084cb4180ca3b1
 064,17,explanation-controls,controls,CORE,TEACH,,Controls must fit the attack route,Classified,869bd496984a2b646ac7ec27b3697bb88a2cd932942a46ae311d706da1588483
 064,18,tool,tool,OPTIONAL,TEACH,,Classify the attack by the clue,Classified,559802db28679f9faa2b733242c81b827a29b0054ce8a536f3bab46091818b86
@@ -1306,7 +1306,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 069,8,checks,checks,CORE,TEACH,,Common validation checks,Classified,32a9c896b7a23f6534de3cb859db22ede9ba715845a12485af93ae74ce5d31a7
 069,9,explanation-checks,checks,CORE,TEACH,,Common validation checks,Classified,f475b0dbc7f7cd08e53b0d34099b97012c4daabd981321214512923ceabf20a9
 069,10,verification,verification,CORE,TEACH,,Verification checks accuracy against the source,Classified,ecea264d2f626b851b367bb9bc60dfb9fd04ef1ef3d3e4a3176ee850e49cda86
-069,11,explanation-verification,verification,CORE,TEACH,,Verification checks accuracy against the source,Classified,80fc3ff65d71c1b2ce9cd65ab79062aee5fc21925ff3f698b7393e06a4aa5856
+069,11,explanation-verification,verification,CORE,TEACH,,Verification checks accuracy against the source,Classified,58f9be8f1eb5b5a8eb08ef5a4d4c0c7b0bdb53d4691b2e81b71f600b1cea4b35
 069,12,compare,compare,CORE,TEACH,,"Validation and verification are partners, not synonyms",Classified,0a1407bbb17bacb33cbb4d6aee497ef0b6ee161e7c4733c3ea4d493a77ce6858
 069,13,explanation-compare,compare,CORE,TEACH,,"Validation and verification are partners, not synonyms",Classified,2d68bb81d94c945d4a38e81067197d07a827a953459bd45f9264e40771916e48
 069,14,limits,limits,CORE,TEACH,,Neither method guarantees truth,Classified,bda1ea5f2689fa2a8f25e9e8b03b08fff687ae41e4aec7fe4035096562f1d921
@@ -1353,7 +1353,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 071,6,method,method,CORE,TEACH,,Use the four-part answer chain,Classified,b273abf9d99cde6dacc82d743a59e9553ba9d7a4a0e5d1b45721ec5ccb23aeaf
 071,7,explanation-method,method,CORE,TEACH,,Use the four-part answer chain,Classified,698d101adf5baf62aa5338d7493e387e9ec90029871c6793337cb9dde26a6c0b
 071,8,controls,controls,CORE,TEACH,,Controls have different jobs,Classified,991115b6469c5006507ff5d263173e83b5993544688e0791cfbe56577f11f19b
-071,9,explanation-controls,controls,CORE,TEACH,,Controls have different jobs,Classified,3cf615d3d4b663734c087d4d9f9479ebe3edd3719316fc2d89b9b624f5e67e70
+071,9,explanation-controls,controls,CORE,TEACH,,Controls have different jobs,Classified,e419b2bc090eb7445b5745c59bab35277e249cbe35aae423d532ff7974a2f2a2
 071,10,compare,compare,CORE,TEACH,,Similar-looking controls: choose by mechanism,Classified,3ce6cbe917b3b221b2395cf43bf7108fcd563091e235faee59e4d925c58ade11
 071,11,explanation-compare,compare,CORE,TEACH,,Similar-looking controls: choose by mechanism,Classified,521e8a0fa621e59482ee34dfeaab45d5d197709b3ee3dabde4532e53b6c1172f
 071,12,matcher,matcher,CORE,TEACH,,Select the best control for the scenario,Classified,0244ac70b977cf55c1f81a9d55308094243cc10a2cafdd7bc75b0282dcff938e
@@ -1414,7 +1414,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 074,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,3a10198951dba943d6b328d44f9bef3ba7280ee61262c98c8fc7afc187c255d9
 074,3,hook,hook,CORE,ASK,,A student copies code from an online repository into coursework. The repository is public. Is the copying automatically allowed?,Classified,5e1f712c47f0fcc7b6dc11f240b18994ceefa708b1f0741a79afb506cd484307
 074,4,ip,ip,CORE,TEACH,,Intellectual property protects created ideas and expressions,Classified,9083f0ab813c0f8cd4b4c2446fdc6b7dff028590795fad85785e286deb75dc1a
-074,5,explanation-ip,ip,CORE,TEACH,,Intellectual property protects created ideas and expressions,Classified,e73ada4dbf8aec2bd265e28230d34117bfce6462415d8d0a5e9a9b4d06733a8f
+074,5,explanation-ip,ip,CORE,TEACH,,What intellectual property can protect,Classified,af7c827a1b06eb82a99c306619bdce8f46a514ef1aba325e3745abbbe075f3f5
 074,6,copyright,copyright,CORE,TEACH,,"Copyright protects expression, including software code",Classified,1b4c381de935e71e513330b0d3c27d594a34c70eb28f48c28671bb8c0392202c
 074,7,explanation-copyright,copyright,CORE,TEACH,,"Copyright protects expression, including software code",Classified,452bc4e54bfc1e193771afb553adb78ca0419af48cddd5bca509167648bf7cb2
 074,8,patents,patents,CORE,TEACH,,"Patents protect inventions, not every line of code",Classified,7faf1ffee50f7070f97ee57ff78e4f8f5f180085abcaca782e75d9fec580b50f
@@ -1489,7 +1489,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 077,8,marking,marking,CORE,TEACH,,What Cambridge-style marking usually rewards,Classified,333f14dabbcec4f85f6090fa25acbc2010755b8089e0e44bc2cb45153c93e3d5
 077,9,explanation-marking,marking,CORE,TEACH,,What Cambridge-style marking usually rewards,Classified,30c98449ece30985b98c889429f0ba2dc79b40b4fd42f271543e4ebc9f2c6013
 077,10,compare,compare,CORE,TEACH,,Common contrasts that stop vague answers,Classified,16fee7f5a2e114a9f6654cfbb968d9644e36f27ccaa14c9c03f30591883c556d
-077,11,explanation-compare,compare,CORE,TEACH,,Common contrasts that stop vague answers,Classified,7bdc2b8f8698e25e841adfd338be3b53edf01a7d5d0e711e2182550431a34998
+077,11,explanation-compare,compare,CORE,TEACH,,Common contrasts that stop vague answers,Classified,2b1a4b299e0b7503a8440ccebfdac8b03c3523435931db4a803612f8c2eb8d46
 077,12,classifier,classifier,OPTIONAL,TEACH,,Identify the Section 7 topic before answering,Classified,6cdcd3f7560703071a651f41fd176e3474db671adf9c54b7fe3ecc278187bd7e
 077,13,builder,builder,OPTIONAL,TEACH,,Build a balanced Section 7 answer,Classified,6d4debcab72554f0496a57ddeeaebca27274fff03e19ebcbe3ec15b4e419e8d0
 077,14,examples,examples,CORE,TEACH,,Four mixed Section 7 answers with mark annotations,Classified,392dde898b04146963b34287d70ab8734f35716e402b4337b819261f16ae857a
@@ -1567,7 +1567,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 081,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,be526ed1b9637cd0fde950bb7c1528ae6e7e99aa1c330ee2ce6c1fba206bb135
 081,3,hook,hook,CORE,ASK,,Two students are called Alex Chen. Which field should identify each student?,Classified,30c61260de8c10e493c6dfc5c31a08fbd0621d1f809f5b0930476196a3c826be
 081,4,primary,primary,CORE,TEACH,,Primary keys uniquely identify records,Classified,e29b7691001fb347f280583d48fb25c38ff24450bd758d75cb48aebf111135d7
-081,5,explanation-primary,primary,CORE,TEACH,,Primary keys uniquely identify records,Classified,77305ad158e32d10c94af22bd77ddf69ee55c745149b66094e9a312c4e509d8c
+081,5,explanation-primary,primary,CORE,TEACH,,Primary keys uniquely identify records,Classified,0f5bd0c64e6bc346c22e47bffdfa70a11e5b09ed09f5a1637df6d2eb2398cc70
 081,6,foreign,foreign,CORE,TEACH,,Foreign keys link tables,Classified,c18f6d9ae9d8080d09e8f60494f92f93a5bd077cb833785e7d98d55b21d07224
 081,7,explanation-foreign,foreign,CORE,TEACH,,Foreign keys link tables,Classified,af7bf259d233e3393596362aa24c422171d936b49e376458a84c2fb60905d040
 081,8,relationships,relationships,CORE,TEACH,,Relationships describe how records connect,Classified,93df29e8e8b07557ee34ac978ecccc921a6aa249ce23ca79af29ba7a51fbb435
@@ -1615,7 +1615,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 083,8,anomalies,anomalies,CORE,TEACH,,Three anomaly types,Classified,9eee832526a669d26a60b08362791cf97feafe4a29cd7ce1d8ab23ec7cf40300
 083,9,explanation-anomalies,anomalies,CORE,TEACH,,Why one structure causes three anomalies,Classified,1645e676afc7951e05e60f96abb670c13b64973368c86597d6a6c87f89126d87
 083,10,normal-forms,normal-forms,CORE,TEACH,,"Normal form idea, without turning the lesson into a maze",Classified,9cd493a887ac3efa6432fb7f2c59e008cbf434f4cdd0de1692385d35de0356e0
-083,11,explanation-normal-forms,normal-forms,CORE,TEACH,,How normal forms remove dependency problems,Classified,437ed6eeb6c40314257e5ce27eaba32adeb712a0ac5eb45cf9af0574cc5a36e8
+083,11,explanation-normal-forms,normal-forms,CORE,TEACH,,How normal forms remove dependency problems,Classified,252ddcd522d9acbf21c199d0ed5ea1f518f9cd0d9306122a52d1880be8edda13
 083,12,detector,detector,CORE,TEACH,,Which fact should be moved?,Classified,21af3f4c9879003cc5eae382fb8a530b9f3cb7f73947e8fba0b1d07aca38be78
 083,13,classifier,classifier,OPTIONAL,TEACH,,Classify the problem,Classified,f1b063f9a3f39fe1011bbb844c7df6eecc18282da41fc5bc4c925af118298c0f
 083,14,examples,examples,CORE,TEACH,,From one bad table to linked tables,Classified,870c8c6f6bccbecd7a986dc52fff9bff41e8a872cd1242e7a6075086cf5b0c19
@@ -1649,7 +1649,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 085,4,orderby,orderby,CORE,TEACH,,ORDER BY sorts output rows,Classified,634701c19da7b2881d23a97ef0a595c9e709cf5f9aabd438352be4df90f74164
 085,5,explanation-orderby,orderby,CORE,TEACH,,ORDER BY sorts output rows,Classified,d61dbed68619473fc9527757f0ef5314da4375e6fc0bc0ec5b80432d5fcd1075
 085,6,aggregates,aggregates,CORE,TEACH,,Aggregate functions calculate one summary value,Classified,d0cc4ccb827cfc301140b35befbb5f34261c9c641dc5977c99b3363344db85d8
-085,7,explanation-aggregates,aggregates,CORE,TEACH,,Aggregate functions calculate one summary value,Classified,2ac4b50aa2cb258f3845fbaa0cccb980b7e9ad31c3b6d35cc57325b8c45ebcee
+085,7,explanation-aggregates,aggregates,CORE,TEACH,,Aggregate functions calculate one summary value,Classified,556da24305522d90b49d24717f5ac5ee45f26840128ad346b01d434674059aa2
 085,8,groupby,groupby,CORE,TEACH,,GROUP BY calculates summaries per group,Classified,cba281f1f92a5b4f4d70cfce95b5ba2d2d9495369f36ec395bb7a4c17d708ae2
 085,9,explanation-groupby,groupby,CORE,TEACH,,GROUP BY calculates summaries per group,Classified,3410caf9a9eb0b96e8aded5db274d918daca303916da430a1e5294205a6aed9f
 085,10,trace,trace,CORE,TEACH,,Trace summaries from a small table,Classified,514ba54b4bd6973f4c8330216440c8b8bb2e03536621e149ebe847f885f48efe
@@ -1728,7 +1728,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 089,6,design,design,CORE,TEACH,,Relational design: what earns marks?,Classified,640a349e7bd08ab486999fc054e2e38aebe622623d469646bc3cdde9a0cc93ba
 089,7,explanation-design,design,CORE,TEACH,,Relational design: what earns marks?,Classified,d6c6810facd1f0c51961d2a7e61bfc05e0182ef12587745fd1c1857bd0910c8f
 089,8,sql,sql,CORE,TEACH,,SQL clauses: choose the clause that matches the request,Classified,2c274412cbcb30ca303a6a3f540b8164014518e15485fa02b8f52bdaddb6f234
-089,9,explanation-sql,sql,CORE,TEACH,,SQL clauses: choose the clause that matches the request,Classified,02b501b7ad8d4850205e9273f27fe8980f62061855110337ae4bbd4c1674c6db
+089,9,explanation-sql,sql,CORE,TEACH,,SQL clauses: choose the clause that matches the request,Classified,f7bdafb7e8711b82bb32f91957d0188081065091b8b89ed9445912cfde8db1f1
 089,10,protection,protection,CORE,TEACH,,Do not swap the security vocabulary,Classified,21a8b9aee6f7563d784ce83dbdf2f55fb094166311316c002fbe5cd468ae77a6
 089,11,explanation-protection,protection,CORE,TEACH,,Do not swap the security vocabulary,Classified,e99a42c76a5f9bbfbfea130f43f6630df1c6dfc7ce1113804acb48df8c866a8c
 089,12,classifier,classifier,OPTIONAL,TEACH,,Identify the topic before answering,Classified,dd770fdf8ef5b29f32441ed0cdc55cd787151b477c4dc7cd90d728ac285411e7
@@ -1781,7 +1781,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 092,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,7cccb6eea573c6a50650423b524f3fac793ea35f4b3b55048fdc06136f9f007c
 092,3,hook,hook,CORE,ASK,,Which topic is being tested?,Classified,8eaa1445daeecfc6a6be36bd77d7c73989ad5d9230ae3d90c3afd5f3072cafd2
 092,4,map,map,CORE,TEACH,,Sections 5-6 knowledge map,Classified,e418f423d0dcfa3310786fb1e66570c8d3513baa1bd3a29d86ab12a769eeb7cb
-092,5,explanation-map,map,CORE,TEACH,,Sections 5-6 knowledge map,Classified,25ff747db8e31b08c4abbabf48746d540bcfad47943d882198d0b1089daa9649
+092,5,explanation-map,map,CORE,TEACH,,Sections 5-6 knowledge map,Classified,a66571f40a7681f9f5787ea815e55bf7c76c95b7e25bacd4ea95cfd3eb0ae0a3
 092,6,software,software,CORE,TEACH,,OS and utility roles,Classified,344b33c5b554bcacdf08513813ee37d0ae10e35ea5402d3d9ffaab3217c54335
 092,7,explanation-software,software,CORE,TEACH,,OS and utility roles,Classified,061c2a4fbc2b4e190b45000106e6ea65efe6403d646980a9cb2d91a2c39be42a
 092,8,translators,translators,CORE,TEACH,,"Compiler, interpreter and assembler",Classified,8842ee5776b8297d948f1fe728b844192fb2292bf114f1bda803f47d66f9e5fc
@@ -1805,9 +1805,9 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 093,6,ethics,ethics,CORE,TEACH,,Evaluation answers need both sides and a condition,Classified,7467543d407bfac044d59d8cee85bc99d612caf21d1774085af2f6f7a01b5b33
 093,7,explanation-ethics,ethics,CORE,TEACH,,Evaluation answers need both sides and a condition,Classified,bbfa1c4e8bdc26bec0fd8eebc73a43dd121dc1210d0416f5d56a89fdd81ec857
 093,8,databases,databases,CORE,TEACH,,Relational design: structure before SQL,Classified,9084030a04cb665dcca3af51674ef5089dbfad3be1ed08d45604a48908a8bf90
-093,9,explanation-databases,databases,CORE,TEACH,,Relational design: structure before SQL,Classified,f86a4d33bf56a1a62aa06a04e9ad4974b651534122639580c9c6e423c290ce87
+093,9,explanation-databases,databases,CORE,TEACH,,Relational design: structure before SQL,Classified,d6a8e3dd98c4575147e9fc9b5a9d8f78b690957d54ba59e1f27e7b4e6413d72f
 093,10,sql,sql,CORE,TEACH,,Clause choice is not decoration,Classified,64f959d16ca47659fa09ab68541572bc1883f45cc8f94140458602da235a9245
-093,11,explanation-sql,sql,CORE,TEACH,,Clause choice is not decoration,Classified,db03722beee780f18ea6c12b46743d0fb1cd5944251764480298334cc7d11d17
+093,11,explanation-sql,sql,CORE,TEACH,,Clause choice is not decoration,Classified,a4b5c0a918b9ff8ef5295fc47fff4c3ec0b322316a3a660880542f9a7ae1ed64
 093,12,classifier,classifier,OPTIONAL,TEACH,,Identify the topic and first move,Classified,fb8b3409d0bbc714141cc1271046f4ee237909bf30de4b0938824bd49f47e805
 093,13,builder,builder,OPTIONAL,TEACH,,Build a balanced ethics paragraph,Classified,f598b0f7acf5e8b759126e1d0fd8b84a3a5e6e433a28368e2e8ddc0cac50d35b
 093,14,tracer,tracer,CORE,TEACH,,Trace one customer table query,Classified,1afe976aa8120173975ddd8d71091aab1e5f74746592185dd3ffeffa5c6aab4a
@@ -1843,7 +1843,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 095,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,de42bec998df09dc67be05f379ed7456b9b39a9ac7acfc5af0c480b372c94633
 095,3,hook,hook,CORE,ASK,,How much should you write?,Classified,a1d84ce8917edde0805ad0e1ad5d116735e782e87aa0c46ce1e862d0d07d97ab
 095,4,timing,timing,CORE,TEACH,,A practical mark-per-minute model,Classified,625c0e1827249548dc79170c9aa8ad84d64d3a47843dfe864ff29feaf662f50f
-095,5,explanation-timing,timing,CORE,TEACH,,A practical mark-per-minute model,Classified,bd8811ed735d5cce48f3f80016a7205b77eadbb6b8186363b48547925092451d
+095,5,explanation-timing,timing,CORE,TEACH,,A practical mark-per-minute model,Classified,e1ea694219099ee2f1929eefa2e9734f887aadd6186f84d7aaa0a09aa5a08637
 095,6,quiz,quiz,CORE,TEACH,,Quick retrieval across Paper 1,Classified,c72c19520879a20254753b6823b8c4aa766d7d8020b97f0229813e42c727a8d1
 095,7,explanation-quiz,quiz,CORE,TEACH,,Quick retrieval across Paper 1,Classified,f57955d104a8e0e4541fcf92fedf2b9503e73fac1ab137d69b50bc1b8ce6af19
 095,8,short,short,CORE,TEACH,,"Compress the answer, not the marks",Classified,41269341b6c9ddaa304d333f15dce3b18dba066ab3a563475e897390e8f86404
@@ -1937,7 +1937,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 099,8,pattern,pattern,CORE,TEACH,,From scenario to algorithm plan,Classified,0b797178f729284f9d1f23fff52d9c8e12f9c838254a8c02e3cf75f0dc589de0
 099,9,explanation-pattern,pattern,CORE,TEACH,,From scenario to algorithm plan,Classified,fe91cbb9f9a812eeb023a8e7c7e12d58bbea94222c9236fe8be586ab6fc0b95c
 099,10,pseudocode,pseudocode,CORE,TEACH,,Modules can be planned in pseudocode without Java syntax,Classified,27466059b6226d7444d280772984ef6e471e73796fdd4efca16062a6736c1b24
-099,11,explanation-pseudocode,pseudocode,CORE,TEACH,,Modules can be planned in pseudocode without Java syntax,Classified,af5a167e4bf93d636881fe0af9ce697b2c5d63f127c8a209aa530229ce400ab7
+099,11,explanation-pseudocode,pseudocode,CORE,TEACH,,Modules can be planned in pseudocode without Java syntax,Classified,c4703819aa3f1250314744844a69a0db8b2563dfbdfaadb9b460e77864f750be
 099,12,sorter,sorter,CORE,TEACH,,Classify the design move,Classified,35a0d5a835c7aefa0584c5ca2cb50a4cc4e3a44584317776662b29b04011abcd
 099,13,explanation-sorter,sorter,CORE,TEACH,,Classify the design move,Classified,43a18b431caa1531bed1ab939b998e485138ddc643d63da22f849093b106cdff
 099,14,filter,filter,CORE,TEACH,,Keep or ignore details,Classified,6a354f8fe05e571ae0d07ca824c146a4c1f1a415269c94a53392c4b026c1fd76
@@ -1953,13 +1953,13 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 100,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,ea57436c7f45abdd9708a494ff5674e638eaca5067cb5a28c2a3c91b2043997a
 100,3,hook,hook,CORE,ASK,,The vending machine is not impressed by vague arrows,Classified,3761f916966cd4e64eba56db7b15ef387d461d33a988952661bb90ec6a3bc1a3
 100,4,flowcharts,flowcharts,CORE,TEACH,,Flowcharts use symbols to show control flow,Classified,080e24fd8065335d9c122f30ae580dab9f7a2a90fc4b0bcf33cac3f3ca688d34
-100,5,explanation-flowcharts,flowcharts,CORE,TEACH,,Flowcharts use symbols to show control flow,Classified,e89de0e6630d5ba055e495f6b906e6efd5f57c42330e5835b8c6e82f1347f692
+100,5,explanation-flowcharts,flowcharts,CORE,TEACH,,Flowcharts use symbols to show control flow,Classified,aca8109879b0f7fa445b91a6e0e7005e9d13f2fb0051fd0653880061d2586988
 100,6,pseudocode,pseudocode,CORE,TEACH,,Cambridge-style pseudocode uses structured keywords,Classified,83a86e495b53fd5f2db91bc3a25dd5f0177799e42fc20414083ab4f827189370
 100,7,explanation-pseudocode,pseudocode,CORE,TEACH,,Cambridge-style pseudocode uses structured keywords,Classified,50cf40c61f64144baa642942a6af4793f3e226af7b92c6d6b1169136262716a7
 100,8,notation,notation,CORE,TEACH,,Readable notation earns marks more easily,Classified,92d98e19062a2b4a1153c93a0c8003eed424c0333fa527cffd0d9572c7897012
 100,9,explanation-notation,notation,CORE,TEACH,,Readable notation earns marks more easily,Classified,5678bb1d19b95ccce104d3136ebf9b4b23f9377f66d5cb5295c714871870ee98
 100,10,equivalence,equivalence,CORE,TEACH,,A diamond becomes IF...THEN...ELSE,Classified,5ccac63343075cae71868bb537db65fc751fd2b461442e37c372d30fd9723c55
-100,11,explanation-equivalence,equivalence,CORE,TEACH,,A diamond becomes IF...THEN...ELSE,Classified,4e9eaf193983417e9f730791d91d67c13fcd6d2d81725be2d1717e9b01f7ced8
+100,11,explanation-equivalence,equivalence,CORE,TEACH,,A diamond becomes IF...THEN...ELSE,Classified,b9ec47d3d95b7406ae34aaf6e4fb932d5a79065d48694387372fd4b0ae5d3de1
 100,12,symbol-tool,symbol-tool,CORE,TEACH,,Choose the correct flowchart symbol,Classified,91d4e4dff8b5c830f66462e17e938a7635be75606ebd0c5e626469453502382a
 100,13,explanation-symbol-tool,symbol-tool,CORE,TEACH,,Choose the correct flowchart symbol,Classified,8fd527eaa58ff0595005f827ef0a48a54b816bb61817b54c3daa81e16e2589ba
 100,14,structure-tool,structure-tool,CORE,TEACH,,Match scenario to pseudocode structure,Classified,9c3c17092e517e969fff696cb9d01eaa95f629dddbfe05e5bfe781744128a6d9
@@ -1982,7 +1982,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 101,8,loops,loops,CORE,TEACH,,Loops make trace tables useful and slightly unforgiving,Classified,4f32bcfe2beeecc41e99bf80895192f92f52dc9fe62392cb84ff32c5d90866cf
 101,9,explanation-loops,loops,CORE,TEACH,,Loops make trace tables useful and slightly unforgiving,Classified,c2de782af1772e094c487e7f4f5cb668829a6f99738bbd0cdca44fb9ff17cf85
 101,10,pseudocode,pseudocode,CORE,TEACH,,Trace Cambridge pseudocode in the exam; Java is only a support view,Classified,4155b1deac3f745096621558fca128a344868a3d1e64f57cbfe9f6f9c7a2a5a4
-101,11,explanation-pseudocode,pseudocode,CORE,TEACH,,Trace Cambridge pseudocode in the exam; Java is only a support view,Classified,03cca117e584f78bfc9cc7189feede464ef18ad78f67e7c173801914cb9d9123
+101,11,explanation-pseudocode,pseudocode,CORE,TEACH,,Trace Cambridge pseudocode in the exam; Java is only a support view,Classified,270433c6cd139992c32a98aa6175bfc7bfd78e60fa97b1391caa66bd1b86676e
 101,12,predictor,predictor,CORE,TEACH,,Predict the final output,Classified,d96a768ffa7a5c314ade90b579b25b97da0987bc4de359e8015fc0673e1eb8ce
 101,13,explanation-predictor,predictor,CORE,TEACH,,Predict the final output,Classified,6009d9ece7355bc1ad87fe0081e656499859a4b71667984bf94755b4f5cfcb08
 101,14,builder,builder,OPTIONAL,TEACH,,Build the trace table rows,Classified,c161eb9c48ef05e69f45bd4230573fb8e5fceadf5b01dcbcb38a12f6c6314159
@@ -2005,7 +2005,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 102,10,combining,combining,CORE,TEACH,,Real algorithms usually combine the three structures,Classified,ab0216c1b2a15b780f43523947ee19ac9349b6c1861cd7e5928993919d796ab2
 102,11,explanation-combining,combining,CORE,TEACH,,Real algorithms usually combine the three structures,Classified,17a5cbe973885c0c99d0b466bfa2f3ef4e9e0b78c6e4a51bdcaabe4e650f1e78
 102,12,pseudocode,pseudocode,CORE,TEACH,,Cambridge pseudocode is the exam form; Java is support only,Classified,d6c6d40b9fe208bc2f7d851c164b003f2aec9c4422ce28c27d85b203b4982489
-102,13,explanation-pseudocode,pseudocode,CORE,TEACH,,Cambridge pseudocode is the exam form; Java is support only,Classified,0f34795949d8515e23f2cb1557390e5495bb594e1c7e81dff385af0372eaa0e7
+102,13,explanation-pseudocode,pseudocode,CORE,TEACH,,Cambridge pseudocode is the exam form; Java is support only,Classified,c9d9a292e80d37f416f553b77a24097f503d0e751319bbf6bff8abf8cf8b9cb2
 102,14,classifier,classifier,OPTIONAL,TEACH,,Choose the control structure,Classified,aaec393cc785a173192f62b12860ff5b132097493f9321a520f892b7ec6252b9
 102,15,builder,builder,OPTIONAL,TEACH,,Generate a Cambridge-style outline,Classified,73f0eaeafefdb5b6750c8c38b7af46dc704cfb30cb1f21a9d989b6093b30a7cb
 102,16,examples,examples,CORE,TEACH,,Recognise and combine structures,Classified,96b01fc9d1b3ead67b7620a4de2752cc0dd5daf253b18089a0330a6941f923c9
@@ -2020,11 +2020,11 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 103,4,validation,validation,CORE,TEACH,,Validation checks whether input follows a rule,Classified,9b2ebbcbe8ce6827195aec25d0468a86c4e471ff9f3085c9893fda790db57d1a
 103,5,explanation-validation,validation,CORE,TEACH,,Validation checks whether input follows a rule,Classified,c872091d3ecbcb02fafbdfe34ee13b410b15d71a4442cbf4cc7311866d9b7fdb
 103,6,checks,checks,CORE,TEACH,,Match the rule to the risk,Classified,a973837c6046e6c50098e46ee7187af5af53182c38e3073a33544c2d733e49e8
-103,7,explanation-checks,checks,CORE,TEACH,,Match the rule to the risk,Classified,b5196f76d32f6e21925121f1d8f0d9caed8837ab854969dfda379ed3a5341bef
+103,7,explanation-checks,checks,CORE,TEACH,,Match the rule to the risk,Classified,4e638ebac9f03a7e94d6940c1d092315c75c4383b9b18124a9d05ca6cbaa5050
 103,8,defensive,defensive,CORE,TEACH,,"Reject bad input, then ask again",Classified,97729c4c6f77f1ac75f2137febbe04154bf2daa8475935445783c8dcfa306011
 103,9,explanation-defensive,defensive,CORE,TEACH,,"Reject bad input, then ask again",Classified,b830ece440fa53dfb93f701f11e4652982627d8698dc20ef078645478467c5e5
 103,10,pseudocode,pseudocode,CORE,TEACH,,Use Cambridge-style validation loops in the exam,Classified,c1a3a57905ce2364c4c8a1a915fc40dcc2207ad0387dbd8b3eeeef826fe323c6
-103,11,explanation-pseudocode,pseudocode,CORE,TEACH,,Use Cambridge-style validation loops in the exam,Classified,eb287efa0f9837aadcd2ebd4c95a47035b4c8006a46a0dba49fb40f73d0bf9b5
+103,11,explanation-pseudocode,pseudocode,CORE,TEACH,,Use Cambridge-style validation loops in the exam,Classified,a356d2c9388cba6eeba543171d5b7142ce59e27c02755f8502f0d8156245e521
 103,12,classifier,classifier,OPTIONAL,TEACH,,Choose the validation type,Classified,d6ab1a67ba728b65c0c92ddd53756f2241afedf1709c58722ca191af83ff96d8
 103,13,tester,tester,CORE,TEACH,,Test a mark against 0-100,Classified,1d26f542fc6509a03f1d7da245e7b375e9ab875508db1f4e12c3f929a8bb0553
 103,14,explanation-tester,tester,CORE,TEACH,,Test a mark against 0-100,Classified,46fbf7c36a63af160723cf4b5224e5b0a782d29b4f3786d3c83445f5f732258d
@@ -2041,11 +2041,11 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 104,4,linear,linear,CORE,TEACH,,Linear search checks each item in order,Classified,0ebd7a111cd086187a03b21cc790b0f2a43df6e67893f19b986f4d2fea48d128
 104,5,explanation-linear,linear,CORE,TEACH,,Linear search checks each item in order,Classified,e84853fdf46fc14eb2a39f194062ecf542a5379c1f4335ee04fa5946a23e35b5
 104,6,binary,binary,CORE,TEACH,,Binary search repeatedly halves a sorted list,Classified,d2cb54b7de1c642cd514cfe00c4014ed61c628f54fc404eeb80692039405a96a
-104,7,explanation-binary,binary,CORE,TEACH,,Binary search repeatedly halves a sorted list,Classified,314888429e68ea12f4a6f1f9c661023a6fd23abdbb22869772e0038dd90b1c2c
+104,7,explanation-binary,binary,CORE,TEACH,,Binary search repeatedly halves a sorted list,Classified,394a2038ed922b213b8dbfded61d3644aa39aa59652155286af571b912889e9e
 104,8,compare,compare,CORE,TEACH,,Choosing the right search,Classified,0718b0b8cd1ccefcfea45ba84f7fb17f8ecb28c2922560cfc13d9eed21d5c7a6
 104,9,explanation-compare,compare,CORE,TEACH,,Choosing the right search,Classified,87211ad4d9cca7bb4deb9464c0ba86a83cd07ad39319b8a124579fee1df54edb
 104,10,pseudocode,pseudocode,CORE,TEACH,,Cambridge pseudocode is the exam format,Classified,d637a3685d82fa4debe528f5caa3846e7ca5ad6d88b552b78ae233355862e89e
-104,11,explanation-pseudocode,pseudocode,CORE,TEACH,,Cambridge pseudocode is the exam format,Classified,590c07b9ea7f9d6ce4e94d9e450cf04eb3ae467492fc407c87c3d9db2d85131f
+104,11,explanation-pseudocode,pseudocode,CORE,TEACH,,Cambridge pseudocode is the exam format,Classified,7ba636757d409eb85c36a55531593a9a993c254a746e75dfc9363bd2eda4b99a
 104,12,classifier,classifier,OPTIONAL,TEACH,,Pick a suitable search method,Classified,c966d0a3b97a2b96c3eea6fddd8298d76755d58068193fdb980546aeb1cf8b65
 104,13,linear-tool,linear-tool,CORE,TEACH,,Trace linear search,Classified,06277f1e23e29eeb7baa435ce76680571315c5b2240f9e017ccb5c136c026715
 104,14,explanation-linear-tool,linear-tool,CORE,TEACH,,Trace linear search,Classified,11b5241605fc3f174bfbbbdf5adad00f3307868864cceeee00ad3bcf43d150a5
@@ -2061,7 +2061,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 105,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,f62a602ea2c4082959d2578f8093e5048504df596ce59f93a7d68a1e5a43e01d
 105,3,hook,hook,CORE,ASK,,"Four cards, two legal ways to tidy them",Classified,e833262d91032566235868bc1d4fabd553a0719c2ac2a263bb73f408a7096e99
 105,4,bubble,bubble,CORE,TEACH,,Bubble sort: compare adjacent items and swap if needed,Classified,b4282aae045583a4b5b6b617019a52cba0bb14344b9a35fbb8db6b811a82aa25
-105,5,explanation-bubble,bubble,CORE,TEACH,,Why bubble sort repeats adjacent comparisons,Classified,2fdeb19b9ad57f50564a35da8660b18645a4d6bc4864e4aa41d72aebd78eeb7e
+105,5,explanation-bubble,bubble,CORE,TEACH,,Why bubble sort repeats adjacent comparisons,Classified,535cc183fd989642b45f36275590f3ea185004d1fc1c055f1a1c6434b45607bb
 105,6,insertion,insertion,CORE,TEACH,,Insertion sort: insert the next item into the sorted left section,Classified,641169e9bfd7b44c40d4113c2aaaf4650a0becf8530dc09cefc54ff383f350ed
 105,7,explanation-insertion,insertion,CORE,TEACH,,How insertion sort grows a sorted region,Classified,66aa34a062a91b5835a71d4b0dfdc18c6ca4faa04b458e2aeddd42c63c76d565
 105,8,compare,compare,CORE,TEACH,,"Same final list, different route",Classified,50270427853d802cc4b17b393a4048470890284829ec5e15ccb23f17bbbb6981
@@ -2083,13 +2083,13 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 106,4,patterns,patterns,CORE,TEACH,,Four running-value patterns,Classified,3abadbba01bc9d4f05e84d2cdb09cbf961bbe3e7afab82209161a4615663c05b
 106,5,explanation-patterns,patterns,CORE,TEACH,,Four running-value patterns,Classified,1c5e7da1aba0f6d565fc820c3686a9db6c805951b991e413407dfeb73c1446ca
 106,6,initialise,initialise,CORE,TEACH,,The starting value decides whether the algorithm is honest,Classified,aac9fb65a2dda4abe875319f6516cf6739adb48e4075a8abc3a7ca101979e103
-106,7,explanation-initialise,initialise,CORE,TEACH,,The starting value decides whether the algorithm is honest,Classified,20337bb195d8de3ebd7dbb251f9af3b11562f1c52bacb2632e1ab3dbdf69ba99
+106,7,explanation-initialise,initialise,CORE,TEACH,,The starting value decides whether the algorithm is honest,Classified,f3d03eb4ea616fbf0dc8a85a3bc653dd71ec4483fa9372ca421051a59b4180b9
 106,8,fixed,fixed,CORE,TEACH,,"When the number of values is known, use a count-controlled loop",Classified,bc2ded30b33106db8a9b266f95680abde95a9606b3c9c1db4b02fa8372e979e4
 106,9,explanation-fixed,fixed,CORE,TEACH,,"When the number of values is known, use a count-controlled loop",Classified,b4beb7e095693018ad29fd2bb4288203c7787a615970eb5dc8912d18c86ebb47
 106,10,sentinel,sentinel,CORE,TEACH,,"When input stops on a special value, do not process the sentinel",Classified,682b2b82514dd17f1934d59a2eec61c62bc44deca03fc597c8036a215e087dc2
-106,11,explanation-sentinel,sentinel,CORE,TEACH,,"When input stops on a special value, do not process the sentinel",Classified,87bea85c11e0bb042f6d0541bd3c28c5568509d0e50f0c412f6b729427c0aa20
+106,11,explanation-sentinel,sentinel,CORE,TEACH,,"When input stops on a special value, do not process the sentinel",Classified,dea13e75ab51b40bb4f33d0ae8058df513c4e77d3140c5e07e6dfc0190ab32b0
 106,12,pseudocode,pseudocode,CORE,TEACH,,Use Cambridge assignment and loop keywords in exam answers,Classified,bfed97584efc7ec76db3b5e18d1022fdf3ab1ce56b7872c274e10fbb388f60c8
-106,13,explanation-pseudocode,pseudocode,CORE,TEACH,,Use Cambridge assignment and loop keywords in exam answers,Classified,6e1a354138f75f4d2de2fd2a3737231edbb1327a32386cc39e58d89b2c27659f
+106,13,explanation-pseudocode,pseudocode,CORE,TEACH,,Use Cambridge assignment and loop keywords in exam answers,Classified,8ca9b4adecc64732e212b0ecd8ea750a7ccaeab7fb05617aa07b72551d78ccb9
 106,14,chooser,chooser,OPTIONAL,TEACH,,Match the task to the running-value pattern,Classified,19f97c51237d81961137a8c12647c326e8b28654137145b97da966b3a2ff5a62
 106,15,trace-tool,trace-tool,CORE,TEACH,,Watch running variables change,Classified,8ad42ee4fbcba0b3009f9199002648194fb60d7893362151c4dea3fbd2c19cf5
 106,16,explanation-trace-tool,trace-tool,CORE,TEACH,,Watch running variables change,Classified,5f62b364fda2de4fe8dd106fbb669f9416e74bd20b44a10b1cc500458c23f2af
@@ -2099,7 +2099,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 106,20,exam,exam,CORE,EXAM,,Original Cambridge-style accumulator questions with expandable MS,Classified,627e4887d3862ea6d371f475edb62fb22f869696d8d140d86321f7937c6ad5a2
 106,21,summary,summary,CORE,CHECK,,Accumulator checklist,Classified,0ce7195f864a5a23353c7b7e4c22fb37ba5baf93b2d45e784be8262525c11fba
 106,22,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,2d2ecc0b92b0083230e74f229584c9e727eb354602c985ed9fdd003782081c3e
-107,1,overview,overview,CORE,TEACH,,A string is a queue of characters pretending to be one thing.,Classified,63d79a03cf771609fbdad6925aec3a630ecfc084120e5f4d2c6e57318de425ea
+107,1,overview,overview,CORE,TEACH,,A string is a sequence of zero or more characters.,Classified,e525ffeb29c96c7b4518aafa938ccb5652f9cbafdea088569a7417207f337d6e
 107,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,5273c4b9d2db81d80e1c3d410c068440e94ac6f8ef19f4aee997cd3d440282ab
 107,3,hook,hook,CORE,ASK,,Which letter does the algorithm inspect first?,Classified,7eb4a87e158985878201251ca0c28e73ee259b60e25ba9e48d85bb343f5d38e5
 107,4,model,model,CORE,TEACH,,"A string algorithm needs position, character and stopping point",Classified,d677c69d7261f47749d6c8278216c69a6bc6f1e1fcf426232b93fff8d69b076d
@@ -2110,7 +2110,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 107,9,build,build,CORE,TEACH,,Some algorithms construct a new string one character at a time,Classified,eed28d8e52143b489cd41010816239dd1cb39c701f958b54772ef051609de96e
 107,10,explanation-build,build,CORE,TEACH,,Some algorithms construct a new string one character at a time,Classified,d7a04892cc1fb397abcc0358e2a5054ab038f2596f04bef286f45371867e742b
 107,11,pseudocode,pseudocode,CORE,TEACH,,Keep exam pseudocode readable and avoid Java indexing leakage,Classified,950c28f9f632f4180d28bedd62010e967fdb3042ae9371a1171cc67a075c8632
-107,12,explanation-pseudocode,pseudocode,CORE,TEACH,,Keep exam pseudocode readable and avoid Java indexing leakage,Classified,db1800856a13bada733ecfe1f32b437a42a4acd818a9095015330a7e1b6691dd
+107,12,explanation-pseudocode,pseudocode,CORE,TEACH,,Keep exam pseudocode readable and avoid Java indexing leakage,Classified,b3756bfbc00b346f1d0cddb62458cdfa0507f411dc78e81a31f3f87ad7c503f0
 107,13,classifier,classifier,OPTIONAL,TEACH,,Identify the string-processing pattern,Classified,5c9b4648654e4c8e050e521a0935b113897d3cc9b8e6843021128f6ad7ae0cf2
 107,14,scanner,scanner,CORE,TEACH,,Trace character processing,Classified,b5d58ed428805c4ad869933ee1d4e5c73dca0f64f0df6ca345c84fab420194b1
 107,15,explanation-scanner,scanner,CORE,TEACH,,Trace character processing,Classified,592dd44b89259ce39d631e7c6456ff9fda63b3a50b36cfcb8b6c5e3e20d6aa4c
@@ -2124,7 +2124,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 108,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,08d4beb531c9381430a903e917471fcb91380b34ecf7fed0afed7918cc7c9c8b
 108,3,hook,hook,CORE,ASK,,How many stickers are checked?,Classified,4087066b9ed0813415480934cf0a74f7866bdf5a5b58c51af8b237a404acf45c
 108,4,model,model,CORE,TEACH,,"Outer loop first, inner loop second",Classified,4d84fd1ad4c76e05fa6d1a00f2953323f6a1a4cdfdb6c8a70501e19613c99bd1
-108,5,explanation-model,model,CORE,TEACH,,"Outer loop first, inner loop second",Classified,bef17b0ceb866ecf3ec4f201cb8f2e2874e169c147cc994b4507d12c76641191
+108,5,explanation-model,model,CORE,TEACH,,"Outer loop first, inner loop second",Classified,1e7726525aa2e21571f9cfdcab04cfd7b7abad69ec9f5eb6a6c9a05c8d33ca94
 108,6,table,table,CORE,TEACH,,Table-style problems usually scan row by row,Classified,b40788bded289d8642d5456658684e61399e8d5b22b9fc830c3fc27e9fd913a1
 108,7,explanation-table,table,CORE,TEACH,,Table-style problems usually scan row by row,Classified,43f4017dad66ddb57ff9412b0ab6fe84b5f80589e296d0b8f3e51a7b04851b52
 108,8,reset,reset,CORE,TEACH,,Put row-level variables inside the outer loop,Classified,207441c6e8fae45c48abac1352cb68d035d55d6b4d3009211f0a7736f6b603c1
@@ -2132,7 +2132,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 108,10,counting,counting,CORE,TEACH,,Total visits = outer repetitions x inner repetitions,Classified,a63825c1657244ccc0e8270aa112b8ae2ffea1f29e143d203b09e386da7d9404
 108,11,explanation-counting,counting,CORE,TEACH,,Total visits = outer repetitions x inner repetitions,Classified,91e4a35b1534893e8815a8093b495854d02350a4e58599ff570aef827bba6af4
 108,12,pseudocode,pseudocode,CORE,TEACH,,Indentation is evidence in nested loops,Classified,13733960f19c768979aba3060896b24164b703e8032af86b70333a9071d499d5
-108,13,explanation-pseudocode,pseudocode,CORE,TEACH,,Indentation is evidence in nested loops,Classified,2d346bf8b25478dc157d80baf68d2111a826e0b383a09bd2d507a6e5a263ebe7
+108,13,explanation-pseudocode,pseudocode,CORE,TEACH,,Indentation is evidence in nested loops,Classified,5da7d1ba4eceabce25f5b806c65b3294be9696ab696a53407f147e2da50afa77
 108,14,chooser,chooser,OPTIONAL,TEACH,,Choose the outer and inner loop,Classified,b27c9a97ea27b749523344dc284b7d0d30f6931e9388067294e34f16a8234176
 108,15,simulator,simulator,OPTIONAL,TEACH,,Trace nested-loop visits,Classified,91ed12f489ffe0b59f9769b0682cc94d1b7adb1f5e0decacbbd36e18700552f7
 108,16,examples,examples,CORE,TEACH,,Nested-loop traces,Classified,eb4e8a456e94f41734121a926f1bb9a0d16f8c4d361e223ff3ba32b333dcf0d1
@@ -2145,7 +2145,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 109,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,aa38fdc539bc0027e2d2ef4a8ca38f9f13cc233def064eb438f94a5dc7db5365
 109,3,hook,hook,CORE,ASK,,Where would you search for page 512?,Classified,62b491511197141820348e187e0e89e7ed1299b8ebfa46c94483695a7276ad82
 109,4,measure,measure,CORE,TEACH,,Efficiency is about resources used,Classified,05084ca56252e181ca737f917e65311ef47e1c1a83cfb1e448d278ebf3fac72c
-109,5,explanation-measure,measure,CORE,TEACH,,Efficiency is about resources used,Classified,3924e7974045e7a3d13d3534affd7ddb504e935c70633c5ba65d8b5e82a72f47
+109,5,explanation-measure,measure,CORE,TEACH,,Efficiency is about resources used,Classified,cf89db7f2da669c32c05c8be7fcc4e41d6a96b8300e4cc8c67d6f7beef6efcb7
 109,6,cases,cases,CORE,TEACH,,The same algorithm can behave differently on different inputs,Classified,5a7001f8349d164abf44d2ca29e213e1b45444aada8d06b45cf60ea95910a46c
 109,7,explanation-cases,cases,CORE,TEACH,,The same algorithm can behave differently on different inputs,Classified,f8eaf26d6c4c70efc83a0f9619790eb63b1930c00d1763ece9846cad5c9dc829
 109,8,search,search,CORE,TEACH,,Linear search checks one by one; binary search halves a sorted list,Classified,8a9af582baca01cd2951b3216ccbb48786baf8a1a44ef26fd6c97cf846131de6
@@ -2153,7 +2153,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 109,10,loops,loops,CORE,TEACH,,Loops reveal how work grows,Classified,390c42b7fb55a8f65e3c9c956fed87a3b2ba8bb7f0a70f995c02f3ef3f2746de
 109,11,explanation-loops,loops,CORE,TEACH,,Loops reveal how work grows,Classified,e048f91787c5f3258436f13acd0a6c2f7ad73f5d78df4ed6781c5a1eee6b7d3d
 109,12,pseudocode,pseudocode,CORE,TEACH,,Efficiency explanations are language-independent,Classified,7b8fbac7beb945bfbe7b691b25f84568fa63f08828365d8692f9f3003839c377
-109,13,explanation-pseudocode,pseudocode,CORE,TEACH,,Efficiency explanations are language-independent,Classified,3f4cfa14c0597ac71d0a6fcc227002a48e1884e879fda45b6783a51a1b3a69c2
+109,13,explanation-pseudocode,pseudocode,CORE,TEACH,,Efficiency explanations are language-independent,Classified,a7ae68366b9be0324ed923ccb497f76e785ca13c517c9decb9acb76f13e506ad
 109,14,chooser,chooser,OPTIONAL,TEACH,,Choose the better explanation,Classified,fcbd677da3601f05952548340b83c075506ce69b2ac10552c2f0e0de3d75e2b8
 109,15,estimator,estimator,CORE,TEACH,,Estimate the work,Classified,ac1c5c9b2f82ac84f184051baf2fbc8178c882c5e6a691ab164479ed98216f79
 109,16,explanation-estimator,estimator,CORE,TEACH,,Estimate the work,Classified,d1a42e4ff824ee2096a41fcf7247806d26291528853218acdd5db377c8996e46
@@ -2173,9 +2173,9 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 110,8,readability,readability,CORE,TEACH,,A marker should not need detective training,Classified,5144ea5169b38d61d3c7e63eb733bca840a231d2946eaf15b9afcba3a58dfb12
 110,9,explanation-readability,readability,CORE,TEACH,,A marker should not need detective training,Classified,60acbe201bda76613693461e959cddbfafe6b93246dbe100ec1b95210c9d8f3a
 110,10,java,java,CORE,TEACH,,Keep Java syntax out of Paper 2 unless Java is explicitly requested,Classified,86767c3a659c57eb78e20fbfddd7e8bd8b10e447a6f250cd8982e5d5ab0666e4
-110,11,explanation-java,java,CORE,TEACH,,Keep Java syntax out of Paper 2 unless Java is explicitly requested,Classified,e49204c6057190911e489c6a4029d22e2c75561445735d18ce49e4be46193d0a
+110,11,explanation-java,java,CORE,TEACH,,Keep Java syntax out of Paper 2 unless Java is explicitly requested,Classified,f7adb5a2eab921c5730df4d461bbb44bf8d4f72dbcecf729dfb05d36d49d1219
 110,12,conversion,conversion,CORE,TEACH,,"Convert meaning first, syntax second",Classified,935e4871d6e0b21c113d1e4c9bae74c03705ecdfd073346b6683b4a8baee9296
-110,13,explanation-conversion,conversion,CORE,TEACH,,"Convert meaning first, syntax second",Classified,4ce2f72424f83f86e3a599920cfc7824cde236f0a50cac65b6338f3a5d22e6d8
+110,13,explanation-conversion,conversion,CORE,TEACH,,"Convert meaning first, syntax second",Classified,f35d83c0dc3ad9b450c37ce7eb3c86d485cdada1c18c128df3ac22e05987f641
 110,14,classifier,classifier,OPTIONAL,TEACH,,Identify the convention,Classified,7b9fa62bdf6e94387ee17b00b9e324c0ee881b8f21f6ace186a405898a655f33
 110,15,cleaner,cleaner,CORE,TEACH,,Convert Java-like syntax into Cambridge-style pseudocode,Classified,978959d4861cf313825aaffaeea7eb6cf06ade4528552f70a6535e8fc54c0f6d
 110,16,explanation-cleaner,cleaner,CORE,TEACH,,Convert Java-like syntax into Cambridge-style pseudocode,Classified,e645a33411b2922c20a869c4d617fabc409baec7e6d1a79d77db7244dee451b3
@@ -2196,7 +2196,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 111,9,explanation-structures,structures,CORE,TEACH,,Pick the structure before writing the pseudocode,Classified,0e18966d9bb426b185bcc694dc505806d3b1660135af756ebd46fc6c94e17d86
 111,10,trace,trace,CORE,TEACH,,A design is not finished until it survives a trace,Classified,6ff177014d887b67aea3b91509d8131202834211c3d7be6b5ae6a5c8b8e9b77c
 111,11,pseudocode,pseudocode,CORE,TEACH,,Design in Cambridge pseudocode first; use Java only to support testing,Classified,055bf05ff37e7a2c2e554c9621ef9c5b9b458137e3283da03145202bde66438f
-111,12,explanation-pseudocode,pseudocode,CORE,TEACH,,Design in Cambridge pseudocode first; use Java only to support testing,Classified,19064950cb552eabae73c73f6fdaa480158d14c7782c51644b17364b649c76cf
+111,12,explanation-pseudocode,pseudocode,CORE,TEACH,,Design in Cambridge pseudocode first; use Java only to support testing,Classified,a3fcae48d6ffa20b6d25552e89223799b50d7d18ccf2d091b7e44ee3adfeef4d
 111,13,analyser,analyser,CORE,TEACH,,Extract the design before writing pseudocode,Classified,daccb5125eeaad8725a6690cb90be6fa4e151cc54b9bf6816061941bcd537978
 111,14,explanation-analyser,analyser,CORE,TEACH,,Extract the design before writing pseudocode,Classified,df57d29de9af1b75c8b73dddbc4f79defcf0c31c5cfebee576651a2ee6570d1a
 111,15,builder,builder,OPTIONAL,TEACH,,Choose a scenario and inspect a model answer,Classified,591ab7a6ed727ad9a6301140944ea76f55134b40a47534097960cb5e94aa9474
@@ -2218,7 +2218,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 112,9,explanation-patterns,patterns,CORE,TEACH,,Match the scenario to the correct algorithm pattern,Classified,c46e2147f228d03328b95c467f0a3324e2a0726cf76fda1fb7cc6a181f33da9e
 112,10,trace,trace,CORE,TEACH,,Marks are often lost between two lines of pseudocode,Classified,2b90abbca0049557b2c0b0f69e8f43aca350f8ec16e9a51b9ea085c54d597c39
 112,11,pseudocode,pseudocode,CORE,TEACH,,Paper 2 wants readable Cambridge-style pseudocode,Classified,b97fb91f4e96be6e8c81bd26d6063fffeee0f8d5877f937acc51c6f883a9c56e
-112,12,explanation-pseudocode,pseudocode,CORE,TEACH,,Paper 2 wants readable Cambridge-style pseudocode,Classified,c0be949c9a57cb9903ba530ab3418cf1dbb30581d891a9b3ef1d71c516897edf
+112,12,explanation-pseudocode,pseudocode,CORE,TEACH,,Paper 2 wants readable Cambridge-style pseudocode,Classified,3f1b1f514bd4948079650f8d3fea44ed62bb04ebb0fea46ee4a0ec52d5565205
 112,13,classifier,classifier,OPTIONAL,TEACH,,Practise choosing the correct Section 9 tool,Classified,8b09b72ba2c5faa35b9e0097d4988c78aa5f1da6cb8bf31ee9cc83c8729337c9
 112,14,fixer,fixer,CORE,TEACH,,Turn vague answers into mark-worthy answers,Classified,f2ffc7db3453e11a5e0bc2c5dc09028c771b650c034c3ac95c5f2059ba1dd9a3
 112,15,explanation-fixer,fixer,CORE,TEACH,,Turn vague answers into mark-worthy answers,Classified,322b0dd96e27903963ddefb65935af55c41e1cfa3261003de7ee1e830ed253e4
@@ -2232,13 +2232,13 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 113,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,4ea946554161cc938e595ff5ec00a251f5c0fa4779682ecd7c3faea45e75a332
 113,3,hook,hook,CORE,ASK,,"Is ""007"" a number or a code?",Classified,1877dbffdfd48d0ede773576a4fc306a7c69f135deea7568a9387f8deb077c89
 113,4,why-types,why-types,CORE,TEACH,,A type controls meaning and valid operations,Classified,2e689471655340250fbcafbb832b5f0e89ee3eabe8eb48649c9913f490206710
-113,5,explanation-why-types,why-types,CORE,TEACH,,A type controls meaning and valid operations,Classified,deda70bdbf28b8fb0b235df62d441295e17ae48ea124e71335f7603008b9312b
+113,5,explanation-why-types,why-types,CORE,TEACH,,A type controls meaning and valid operations,Classified,78d3681731e0ee173d3a3340e1c87dc444f14eb0da9f6b8ea789e204afd944c5
 113,6,built-in,built-in,CORE,TEACH,,Core AS-level data types,Classified,e35f93b5a980ea42a94fea2f60709deb3923f3ec5f1991aa750265808cb6e403
 113,7,explanation-built-in,built-in,CORE,TEACH,,Core AS-level data types,Classified,ce3a234842460d32a13880e04536e769715634ad00358c50bdc0b2c1071c708c
 113,8,choose,choose,CORE,TEACH,,"Use the scenario, not the surface appearance",Classified,500c84d7cebb8c464a7a563d381f09a1d8fba805155c2accc0a80ad5f26ae7f6
-113,9,explanation-choose,choose,CORE,TEACH,,"Use the scenario, not the surface appearance",Classified,aa15efcadcf7732441bcca5dd320582fe47325cfecac1dbeaa734d6edebd0b6a
+113,9,explanation-choose,choose,CORE,TEACH,,"Use the scenario, not the surface appearance",Classified,d8bfa22d3ec3dfc0379c6b0f01de13a4a0332585685d9dd74bdb7c152419a2d1
 113,10,user-defined,user-defined,CORE,TEACH,,When built-in types are not descriptive enough,Classified,6d0964d3c66f2c726d61f75b51fcceff6adc551db0953b9436f675cae56e0346
-113,11,explanation-user-defined,user-defined,CORE,TEACH,,When built-in types are not descriptive enough,Classified,75428ee022a473e4de67f07b827f9551da533d71e144549996f7fff7bfc07c9e
+113,11,explanation-user-defined,user-defined,CORE,TEACH,,When built-in types are not descriptive enough,Classified,5705ef8249929a5ae41f9c2accd8ea87bec4b8bcb20520c09db55f698c4a0928
 113,12,pseudocode,pseudocode,CORE,TEACH,,"Same idea, different syntax",Classified,92218622e146b9b3dfa1445d58758adb4eaf167a74bbaf86cf828eb250f9bdec
 113,13,explanation-pseudocode,pseudocode,CORE,TEACH,,"Same idea, different syntax",Classified,59a173019618e14584c2b1696538bf8be9a1c3f891f200bbed04e4b78c3ab0bf
 113,14,classifier,classifier,OPTIONAL,TEACH,,Choose a suitable data type,Classified,58cc050ca810782c9082d9b9761aff3781a24241f1b1d0b62f6cc6941dd92c5e
@@ -2279,7 +2279,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 115,6,declare,declare,CORE,TEACH,,Bounds say which indexes are valid,Classified,1ccc01643835cbad0ac7e51a6a347821a05bec885a023f8f70b6705878493e5c
 115,7,explanation-declare,declare,CORE,TEACH,,Bounds say which indexes are valid,Classified,7a611369b90d1ab87f2b86a6e947a0ca3dd37dddd2bc364ad98b34c09dfa4b9d
 115,8,access,access,CORE,TEACH,,The index points to exactly one element,Classified,190c771616f3c9ad4a2b79a4cc2e3dd8a115b0519e03a7f9373f57bad4b3be7c
-115,9,explanation-access,access,CORE,TEACH,,The index points to exactly one element,Classified,4e8d99ed919130cb0bc351e31faa8e4d29f7480126749783c8352e08218e1c28
+115,9,explanation-access,access,CORE,TEACH,,The index points to exactly one element,Classified,970e67c9c040590e8d216c189766ee492e273a9f8221fa3b2a5523db1b3e3465
 115,10,traversal,traversal,CORE,TEACH,,Use a loop to visit every element,Classified,c61a73dbb027b8d60082cb2f15acef7539709eceb4631238f8bacb5e57bf553f
 115,11,explanation-traversal,traversal,CORE,TEACH,,Use a loop to visit every element,Classified,d8a584e763a82254b0fe06e408cdbeef3859e9c34449ba1bb1f0498bacd5e21f
 115,12,trace,trace,CORE,TEACH,,Trace the index and the element value,Classified,fbba26db5465d04444c9cdc16abdc19ea0a50db43b0bc238f25c2525672cc4db
@@ -2307,7 +2307,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 116,11,explanation-nested,nested,CORE,TEACH,,"Outer row loop, inner column loop",Classified,7232785901e760aa7ca74ab09ff6445657edc09417c53fb4e200417b809f322e
 116,12,trace,trace,CORE,TEACH,,Trace row and column together,Classified,006578f2534c66736a55daee55450dd0584185b5cda9267e68db4e1dd7dd7e3c
 116,13,pseudocode,pseudocode,CORE,TEACH,,Do not import Java indexing into Cambridge answers,Classified,8e1672a7b3e9c377863a9346504c7659a8e329a3be9ac5149ab734e705e5be14
-116,14,explanation-pseudocode,pseudocode,CORE,TEACH,,Do not import Java indexing into Cambridge answers,Classified,e84546d955335e98f1feefb52dd669effdf1a954c36f93c39b0e7ec53f1a0a42
+116,14,explanation-pseudocode,pseudocode,CORE,TEACH,,Do not import Java indexing into Cambridge answers,Classified,faed017adee7e9a770a18bd102f08bd01b28bf5a140c751c09feb20c7b02a043
 116,15,lookup,lookup,CORE,TEACH,,"Read Marks[Row, Column]",Classified,207a3a3c8061aab8e22bcd53083c876c9dbae7bc235661232bb598e1e07da4d8
 116,16,explanation-lookup,lookup,CORE,TEACH,,"Read Marks[Row, Column]",Classified,e8c587b059fdcadfc7898b4268839aec9d78b0b5af32b0a96cdd521ba92ecab3
 116,17,builder,builder,OPTIONAL,TEACH,,Generate a common 2D array pattern,Classified,dcb588bfd94603e1c0cd748dbff958c410128801fd9de810ca62b6edcf0788b0
@@ -2325,14 +2325,14 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 117,6,traversal,traversal,CORE,TEACH,,Visit every element once,Classified,741ba1ade4d1e3350794e90109750087fd155e2e0bcf07e48119c1a810820a23
 117,7,explanation-traversal,traversal,CORE,TEACH,,Visit every element once,Classified,0639f9428fe25dec3cc4b477bf856cc08c79430c9af9b975451e9bd97827109d
 117,8,update,update,CORE,TEACH,,Change selected elements,Classified,2b8d6418f0daa73f3b2e108e7d6b44649e2487640d1556f8da503c2b398ae88c
-117,9,explanation-update,update,CORE,TEACH,,Change selected elements,Classified,8291aceb7fc9e25b9e56b525a28867a4be55e0a75993b2a372e420a97d16c8be
+117,9,explanation-update,update,CORE,TEACH,,Change selected elements,Classified,9f6a9324079c3e0a16d5ba7c7ae16202b6126590cd14a42e3a8d91eaa60df0d5
 117,10,search,search,CORE,TEACH,,Use a flag to remember whether the target appeared,Classified,e7524d2c64cbbe19e5a6138325d103c1af06fc27308209381d0441dae7502f6c
-117,11,explanation-search,search,CORE,TEACH,,Use a flag to remember whether the target appeared,Classified,41862f6c0eb47b0356a177a62fc20a44b2807efa436c9df3d7979e208e627c7b
+117,11,explanation-search,search,CORE,TEACH,,Use a flag to remember whether the target appeared,Classified,a916693cd5bea7ae1315c3b1e2742e23b2dff40e9f7d9a79a4b9c241be4285c1
 117,12,count,count,CORE,TEACH,,Increment only when a condition is true,Classified,c9679f0619b3e514de28f257b8e1514e0ea151139657a16668a4172a86982698
-117,13,explanation-count,count,CORE,TEACH,,Increment only when a condition is true,Classified,ccbea04c6f88e6a0bdaf0649bcaf8700bac68c275fda747e16c2ed4fbe1318a7
+117,13,explanation-count,count,CORE,TEACH,,Increment only when a condition is true,Classified,ea6dcbecab889e5c66ec6d4da5818a3c888f0af72ce132f8b3a0aae30ea4adea
 117,14,trace,trace,CORE,TEACH,,"Trace the index, condition and running variable",Classified,37e450759e5ee7f3453edd44b58e5006d0a2704f24b4c0d4aaebb15dcabc8ec5
 117,15,pseudocode,pseudocode,CORE,TEACH,,"Same algorithm, different array syntax",Classified,4121765369aa4fb9e4032f72ba1e5edde69821a0199ca18b4e406ceeb58a8f4b
-117,16,explanation-pseudocode,pseudocode,CORE,TEACH,,"Same algorithm, different array syntax",Classified,b50c8c47aec88e9c0643bf2251975d5cc5e06d0091b85d7aa6bed81d4d4dc005
+117,16,explanation-pseudocode,pseudocode,CORE,TEACH,,"Same algorithm, different array syntax",Classified,6545ab75ef35b294da1d3d2db5e2ab83cf5d32c1e1cc9f7bd8ba36b0c08caa45
 117,17,selector,selector,CORE,TEACH,,Choose a scenario and inspect the matching template,Classified,ab35313ac5350f4a574c3e96c3bc3b2b3a40605afc0192f726e9a167e26164ff
 117,18,explanation-selector,selector,CORE,TEACH,,Choose a scenario and inspect the matching template,Classified,d1d24229477a3dbc358ed195bf711fbf76d101d5f5844a529f45d1c5261b2d25
 117,19,runner,runner,OPTIONAL,TEACH,,Run a count algorithm on the sample scores,Classified,9d6f9ba4d5ba3110589c67ce0ea3f58fb778ad5cd5d7fff371f165ca1f10e285
@@ -2348,14 +2348,14 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 118,4,concept,concept,CORE,TEACH,,Composite data groups fields into one type,Classified,3725e696e7ca77a0551ca06de3df58a5ac03a06e74273a69659fef786c8e2eab
 118,5,explanation-concept,concept,CORE,TEACH,,Composite data groups fields into one type,Classified,08dd943157d9936cd8f3eba277e34fb590748d02ada5e0bc76dc38bbc8bc77bc
 118,6,declare,declare,CORE,TEACH,,"Define the type, then declare variables that use it",Classified,2cd47f31d5d25f20ade77b8ae339db5a904c2345ad844fcf590ca814ffa6488a
-118,7,explanation-declare,declare,CORE,TEACH,,"Define the type, then declare variables that use it",Classified,2e31b48b7a6de5dfefa8ae42fdcbfa7c2b1d27e6cfe92e1789a649ea2b99bcec
+118,7,explanation-declare,declare,CORE,TEACH,,"Define the type, then declare variables that use it",Classified,f97ebac0de18b063756b41fdf2d824e5435f9e866b8cbdfd9e50f4b2d958f785
 118,8,access,access,CORE,TEACH,,"Use the field name, not a numeric index",Classified,04dcff36571a809501bfad94cceefd63547b64b0180b77c2aa82dd66589d8db7
 118,9,explanation-access,access,CORE,TEACH,,"Use the field name, not a numeric index",Classified,dced21611bf9df5940347d83b290bc986ca45ab3161b04d957652a46024dbe2e
 118,10,array-vs-record,array-vs-record,CORE,TEACH,,"Same type and index, or mixed fields and names?",Classified,7cfc684fc58f939f5f10ad97f22bab855a7c78f0cfd50a7b22d9c0462671075a
 118,11,explanation-array-vs-record,array-vs-record,CORE,TEACH,,"Same type and index, or mixed fields and names?",Classified,0b8a2a93631fe6a32c78b03775263ad83c5602eec784f9b2b6c0ed3547dd72f1
 118,12,trace,trace,CORE,TEACH,,Trace the field that changes,Classified,b678212adc11f00f6dc238196d72202ece9ffff6b0ce31eeaac907db1b625d60
 118,13,pseudocode,pseudocode,CORE,TEACH,,"Same modelling idea, different syntax",Classified,f521b364e846ae00fd26359dcaf15edde427b67e8a056b18e44027552b1d1fcb
-118,14,explanation-pseudocode,pseudocode,CORE,TEACH,,"Same modelling idea, different syntax",Classified,5b6d022185da88b5a5e93afedeff6553519e5da52867442565fd897d0d4f8b11
+118,14,explanation-pseudocode,pseudocode,CORE,TEACH,,"Same modelling idea, different syntax",Classified,f985beec10faf0aed3483470f2bd7f0c87f5b55378634410b658478ad582ca24
 118,15,lookup,lookup,CORE,TEACH,,Read one field from a record,Classified,6f5447ea8930491ac7cf7804dd2d4103aa56e28bb7143c2a49d4128eec76bea5
 118,16,explanation-lookup,lookup,CORE,TEACH,,Read one field from a record,Classified,a6d54c48f428cd0a89dc178df9c69a77f41a2924b75ec57ee91fd12a87120e6b
 118,17,builder,builder,OPTIONAL,TEACH,,Generate a record declaration,Classified,49ee35e50989fac9b09d06587480ddf70201796de2c40bc9a24cb839f06daaba
@@ -2369,15 +2369,15 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 119,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,36732a6804838a28d217cc807ffe809f75f3fe8ad3bb5b73a94f9ce28cbcffe2
 119,3,hook,hook,CORE,ASK,,How should we store a class register?,Classified,aff385442bb66d0fe32267b428e846d5ceb8bf4d7e280f81c23ef195b0a667e3
 119,4,concept,concept,CORE,TEACH,,"One array, many records, same record shape",Classified,8807529aaba66129da4be175a327e4e161a0e7020e9ac159bec261adaea6e1d6
-119,5,explanation-concept,concept,CORE,TEACH,,"One array, many records, same record shape",Classified,ad52cce23e287d2cd9f3a6b96c01330853dfc9ad76361b6ba3a5ac198567fec4
+119,5,explanation-concept,concept,CORE,TEACH,,"One array, many records, same record shape",Classified,2677c972c5b34850e1d341ee940a604307502785ba0b37401fd74794e6dee386
 119,6,declare,declare,CORE,TEACH,,"Define the record type, then declare the array",Classified,554c4bd336b75c426ffea9c03ef430e7cdaf393db2d8b828957e19925cba7b27
-119,7,explanation-declare,declare,CORE,TEACH,,"Define the record type, then declare the array",Classified,395dd7658fd15b13c6bffb61dacd16233916998eb3431c1957c67506c12dffc0
+119,7,explanation-declare,declare,CORE,TEACH,,"Define the record type, then declare the array",Classified,1a42980de5286d08a36964c83c4d07e2d855de475ddddbdf121100cb1db68975
 119,8,access,access,CORE,TEACH,,"Index first, then field name",Classified,31d0d6f2198016be73c8aba773eaff36ffdfa933b43a720b867a2f1d9037d0fa
 119,9,explanation-access,access,CORE,TEACH,,"Index first, then field name",Classified,14cd8023ec8f535b5b31ac94a8f993a19b9f0dbd65652877d33856844c31f486
 119,10,traversal,traversal,CORE,TEACH,,A loop visits each record; field access uses the loop index,Classified,e034529a73d06069d34fa8d9e59b113873cf11e631bc312f5b68df9254bbf92d
-119,11,explanation-traversal,traversal,CORE,TEACH,,A loop visits each record; field access uses the loop index,Classified,cf4ee74a76f3c08d975379150895190b052f71162d8476f7f75af7dc857d5711
+119,11,explanation-traversal,traversal,CORE,TEACH,,A loop visits each record; field access uses the loop index,Classified,70ede3afa5cb641e50f384f1b7031a694454847375801591c858b5c72866f481
 119,12,operations,operations,CORE,TEACH,,"Search, count and update fields",Classified,9c09d8a808223311e93abdb51e0767e260d7c9c1e59b3261ec0c5815567ca5d6
-119,13,explanation-operations,operations,CORE,TEACH,,"Search, count and update fields",Classified,6b57db1ef1c1484f4a7a2246518b21e7fe61db51b5a2ebba28b67a48c4af9da0
+119,13,explanation-operations,operations,CORE,TEACH,,"Search, count and update fields",Classified,8fa50193a254afa20bca5830e82fdf8076829ed77b644c900d6164319af30819
 119,14,pseudocode,pseudocode,CORE,TEACH,,"Same structure, different syntax",Classified,a45ba59aa8fe158cb83aa7c641d2ac5ddba2eb4826fcf24d3345f6e6df1968ff
 119,15,explanation-pseudocode,pseudocode,CORE,TEACH,,"Same structure, different syntax",Classified,9c3b268d6af072ce51e568f4f7da95810fa0e21c8c7df185173fecc96174efef
 119,16,explorer,explorer,CORE,TEACH,,Read a field from a selected record,Classified,5031f6d743b03d32a0e5bd828130f49bbc5639895a57a22340d4b684b4993645
@@ -2409,7 +2409,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 120,18,mode-lab,mode-lab,CORE,TEACH,,Choose the correct file mode,Classified,9f9b130d06097ba38c343029e7588224f6ffb6dc1c43b747e1d457ffe46c0f45
 120,19,explanation-mode-lab,mode-lab,CORE,TEACH,,Choose the correct file mode,Classified,2dea646250e2c0d3b09d1a735bc808b8c03112fd8ddc2469c61cf26e3ec685bd
 120,20,reader,reader,CORE,TEACH,,Step through a WHILE NOT EOF loop,Classified,0104971275a82710bec110be5c098a3a296f8681627f8a4174b4a913394079e4
-120,21,explanation-reader,reader,CORE,TEACH,,Step through a WHILE NOT EOF loop,Classified,b238ebca5cd1c5e9962405fd1960f3063cf221e75e879cb115da76a661d3d1d2
+120,21,explanation-reader,reader,CORE,TEACH,,Step through a WHILE NOT EOF loop,Classified,4b68171067cbed036dbbbb5d5255b515455de99171149b420b3bf4323967817b
 120,22,examples,examples,CORE,TEACH,,File algorithms that earn marks,Classified,3fe7b87b3765a485891926ded510d8f838bdc8ad0ee25fa99dc1d5c20fe1d621
 120,23,practice,practice,CORE,PRACTISE,,Ten quick file-handling checks,Classified,56a54178d0d1f0a2abcda2c1901c19154aaba8748f572e8d9ed1b81e78aec45b
 120,24,debug,debug,CORE,CHECK,,Fix common text-file errors,Classified,a3995a7a1dbe8c0870fe3c3fde857fe1654786b8f8e16792140d43fcf808ecf3
@@ -2428,7 +2428,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 121,10,validate,validate,CORE,TEACH,,A structured file can still contain bad lines,Classified,e15d65afbe930e9855a3910bc002654dd2e2c4c952ca931c20ff2716b0fbe1ec
 121,11,explanation-validate,validate,CORE,TEACH,,A structured file can still contain bad lines,Classified,ae329dcee9211315a13c78ad1ddbb0f7de87b6a7601355fd3cf46be9b91f9812
 121,12,types,types,CORE,TEACH,,"CSV fields arrive as text, then become useful values",Classified,2e4cad93571bceb08e4e5d6799f958c63dac048f10b7dcec653bb959a69f6cc2
-121,13,explanation-types,types,CORE,TEACH,,"CSV fields arrive as text, then become useful values",Classified,ae81c01ee57b62ace6ba125707eaa105f51a117d2398870eb3f3d9dc7f7a391f
+121,13,explanation-types,types,CORE,TEACH,,"CSV fields arrive as text, then become useful values",Classified,f01d34a09076a464a02e7d54498f7729581812308314e17150656445e739abec
 121,14,pseudocode,pseudocode,CORE,TEACH,,"Java split helps understanding, but Cambridge pseudocode remains the answer format",Classified,928a82b734e8961dd064e5a5653b32af06697518b61b8497aa93194a6d07ea13
 121,15,explanation-pseudocode,pseudocode,CORE,TEACH,,"Java split helps understanding, but Cambridge pseudocode remains the answer format",Classified,c761c77fc43ec8c3d23013186e14f6018366c2ccfd568af630960af4f128a79d
 121,16,parser,parser,CORE,TEACH,,Split a line into fields,Classified,2be05cf4361b0502dd6c2622fb1da3cf334b13565c6ed96130ad471f1b5018ff
@@ -2473,17 +2473,17 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 123,4,criteria,criteria,CORE,TEACH,,"Start with the data and operations, not the keyword",Classified,bd0321b17b5532ebaa646e25e332b322bb85519bfcb028a7f006b8adc6ed69b8
 123,5,explanation-criteria,criteria,CORE,TEACH,,"Start with the data and operations, not the keyword",Classified,df42646a1954dc3b37c5e667e536d29dbc2991e93522df87455d271dca3f5b6f
 123,6,array,array,CORE,TEACH,,Use arrays for many similar values accessed by index,Classified,bfe6560e3f564860bf126f22ea24c7d67e6b82c4fe84ccc7b298c04108962006
-123,7,explanation-array,array,CORE,TEACH,,Use arrays for many similar values accessed by index,Classified,b2569515e680e8d77edf07e7496155309dab6eb7781936808ba6a5704858ff7f
+123,7,explanation-array,array,CORE,TEACH,,Use arrays for many similar values accessed by index,Classified,10ec4e769dc3be8808385363e096e409daf8b214ab47565049679558264a288b
 123,8,record,record,CORE,TEACH,,Use records when named fields belong to one entity,Classified,e2214ffb2bce2e6295b545f8c414f2d7c99b043f5d56e2c38bc9d925f2abb899
-123,9,explanation-record,record,CORE,TEACH,,Use records when named fields belong to one entity,Classified,7f3a32bb681a7075345692212a895dd134f3bfddbf054398be0c7efee6606db4
+123,9,explanation-record,record,CORE,TEACH,,Use records when named fields belong to one entity,Classified,746a9d0a6caf205cda329c9825b0ef7d8afdd926c8d26fc9a15b4b283a409be8
 123,10,file,file,CORE,TEACH,,Use files when data must persist or be exchanged,Classified,770517611cb29942daaf45020e358139389218455a1b7a3be02a032e1aa454c8
 123,11,explanation-file,file,CORE,TEACH,,Use files when data must persist or be exchanged,Classified,8495273ef4085cad9a34962c5e9c9cef057dfa75fdbd927c863e99f97707e15d
 123,12,adt,adt,CORE,TEACH,,Use ADTs when the removal rule matters,Classified,c09e8c484d94e529ee6ab920203f8a820f5f90d9fe8535d1c885784726ac9e8a
 123,13,explanation-adt,adt,CORE,TEACH,,Use ADTs when the removal rule matters,Classified,5cc938634b4d0ff1461463d6d7111c5f098808c8c118ad31c7f1c0774dab31f3
 123,14,decision,decision,CORE,TEACH,,Match scenario evidence to structure features,Classified,7f991753d1003b104782102f6393e0f7eaa62df0a87cf99a43f176e6ac5eb885
-123,15,explanation-decision,decision,CORE,TEACH,,Match scenario evidence to structure features,Classified,d35e8bf8b19de95ade636082bc61466171fbf737f97e4166c00ce5d4b1956fa2
+123,15,explanation-decision,decision,CORE,TEACH,,Match scenario evidence to structure features,Classified,ac22e21656059c09eb0616ddb9fb94b83dd8a0f0c93c34fb9353c905325fb347
 123,16,pseudocode,pseudocode,CORE,TEACH,,"Cambridge answers should justify the structure, not advertise a Java class",Classified,31647eaafdd9d262450233af090c99dc34db7cba2148cf43b800e415643227cf
-123,17,explanation-pseudocode,pseudocode,CORE,TEACH,,"Cambridge answers should justify the structure, not advertise a Java class",Classified,d53f7fc4597ae9b116fc052404a03f2b478377a3993f37333a524dec1588206e
+123,17,explanation-pseudocode,pseudocode,CORE,TEACH,,Justify the data structure in Cambridge answers,Classified,22c8cb69f9020795d34d43abce43272ec6d8962c6d250aa4e1c4b27eaa7f9922
 123,18,chooser,chooser,OPTIONAL,TEACH,,Select the best structure for a scenario,Classified,2b816aa302797c474dc806bfb3dad91abaf4a22618dfd5bdf26d4a2a2fdf368d
 123,19,ranker,ranker,CORE,TEACH,,Spot the answer that would earn marks,Classified,f2e147348ef6ffa8021b9914d7a333a06a774b565d5914a6813ba12fcde9948e
 123,20,explanation-ranker,ranker,CORE,TEACH,,Spot the answer that would earn marks,Classified,e2840abfd926ef44502e011d905e040f1de75f29b75407ca948cea8ea8153d05
@@ -2520,7 +2520,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 124,24,exam,exam,CORE,EXAM,,Original Cambridge-style questions with expandable MS,Classified,f4cbd16e29f7e40d9249df21a96595d44b8c618749f8894733c73f7976cd7a7d
 124,25,summary,summary,CORE,CHECK,,Declaration checklist,Classified,4cce0e7828d5633625886acd066d0b5836c158228561356c803738f2250b0818
 124,26,homework,homework,AFTER_CLASS,HOMEWORK,,Translate without mixing syntax,Classified,550ea19da1b4ec7139d65f808ddc3b6c891f165027426283e97cff698c8f56b9
-125,1,overview,overview,CORE,TEACH,,"Before answering, choose the right data model.",Classified,f35730aa9571c68ccd0669e4e55b1ea765c0e42c793a36837c9b3b91f895aaec
+125,1,overview,overview,CORE,TEACH,,"Before answering, choose the right data model.",Classified,a488ff2e868c2dff3239c5516080536d35ed7283dcd9b3baa3f80d350411a6ec
 125,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,c2ef5a3b472c3949aa42f74800804b214b90a109937d8dc37be0787b2fc3ad7c
 125,3,hook,hook,CORE,ASK,,"Topic first, answer second",Classified,14da0cb69a5443d32b3f3e2a97a57ad3681b9d93412bde71ae127e5e00ee44cf
 125,4,map,map,CORE,TEACH,,Section 10 in one review grid,Classified,adc2d07c480e7ecd3b04544acd1aa95a384d9880d761507b9b70c538846aee9d
@@ -2528,11 +2528,11 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 125,6,decision,decision,CORE,TEACH,,A good answer names the structure and the reason,Classified,ba7aa3a44fd47618aa42276e3336babcbd8f4b7758651fceaf92452172f102f7
 125,7,explanation-decision,decision,CORE,TEACH,,A good answer names the structure and the reason,Classified,a8d0ae6da856df2bb312b93802c1857adb23afb3dec79fb560db9522f3fdb28e
 125,8,files,files,CORE,TEACH,,Files preserve data beyond the running program,Classified,892e36509850a25e930b158c3df81aee513e76562ea8e49aaa0e1ec29e1150b0
-125,9,explanation-files,files,CORE,TEACH,,Files preserve data beyond the running program,Classified,145e4c1524b9192604790c2e9ed6c400004c5cf49526239d43b51026b7195da1
+125,9,explanation-files,files,CORE,TEACH,,Files preserve data beyond the running program,Classified,a0df687eb6e6fdb1588208807b1ffdf74bd0e1393e83db1c62f1e491195d56c4
 125,10,adts,adts,CORE,TEACH,,Order of removal is the key clue,Classified,70e0123d8cdbab1d135a2c26b9d720bb52fc91101eb3bc4ee65fa5ec87a764ea
 125,11,explanation-adts,adts,CORE,TEACH,,Order of removal is the key clue,Classified,05cc75d9e0dfef0419a8e26f73346fe43dc2ee658b90231508ace87f00060600
 125,12,declare,declare,CORE,TEACH,,Cambridge pseudocode remains the exam standard,Classified,57d4997ec92d1733b6d6d7a744bbcdb9b5d5a7f0f12cc350847f9dfb11936639
-125,13,explanation-declare,declare,CORE,TEACH,,Cambridge pseudocode remains the exam standard,Classified,f183b8ba49ee984fc194d33cca5ce46556fd5fcc6b9e11a41a257c2c95842a20
+125,13,explanation-declare,declare,CORE,TEACH,,Cambridge pseudocode remains the exam standard,Classified,581c260eba6c926cf14817867c213b8e8bdd0714f7e27cd0b8ddf7674b34094d
 125,14,marks,marks,CORE,TEACH,,Upgrade vague words into credit-bearing words,Classified,41710f5920247c6b363fcbcc3cf8ec8f166b61c5244ca90394e443799cae74ef
 125,15,explanation-marks,marks,CORE,TEACH,,Upgrade vague words into credit-bearing words,Classified,55b224894f957a33bc9d28a012a76a21793d4724575bc788085ee8af7c96d751
 125,16,classifier,classifier,OPTIONAL,TEACH,,Classify the scenario before solving it,Classified,e0c3bf8a5e83474bd65ee4af3a7f1318038718b95df139c992b7061b450f9867
@@ -2548,16 +2548,16 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 126,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,412616791dee6c718d1fbe94c3f9f13dee514b3df3f5a3db65de869cc1a96c92
 126,3,hook,hook,CORE,ASK,,Find the tiny bug before it gets promoted,Classified,825b154dba81ede6aa85445976ee206bd9edb34ca752fe1207d16e15092707fd
 126,4,constructs,constructs,CORE,TEACH,,Three control-flow ideas,Classified,93ab7d26a14e1fed357851165b7540f9deae0e66650418a93c80fb27dfe37aa9
-126,5,explanation-constructs,constructs,CORE,TEACH,,Three control-flow ideas,Classified,9332f206752a9fa43f35f2b1a0009c8774642bb8c0f3338a3c9d0d482fa04bdb
+126,5,explanation-constructs,constructs,CORE,TEACH,,Three control-flow ideas,Classified,ed8057194366fe8e2eacca22de7f337bf669a0490b22c2ac634ac321091c8fee
 126,6,sequence,sequence,CORE,TEACH,,Order changes meaning,Classified,01d7694ed6a46979281f707f4c9d6bd33c065417159d97b085de62263b2d605e
 126,7,explanation-sequence,sequence,CORE,TEACH,,Order changes meaning,Classified,17ca65fff6ea8049fe3dc57f7ef94f470698b425aa3172c295b260d071cabace
 126,8,selection,selection,CORE,TEACH,,Conditions decide the path,Classified,a962ed2e1a957d4bb839fdb7e755f3820350ce2b12f7715e6fabc586c02055f3
-126,9,explanation-selection,selection,CORE,TEACH,,Conditions decide the path,Classified,0eb52cbf42792df6650b0b3b689eef26165b81a3f9894e1b0307b0287e30e275
+126,9,explanation-selection,selection,CORE,TEACH,,Conditions decide the path,Classified,86871efcf12e85b5db3cebbe1f235b5f6a9869947a025dc9f446ed8d9dac7b1e
 126,10,iteration,iteration,CORE,TEACH,,Loops repeat with control,Classified,18ffaea4c51590440202e78cc2d727cd65289d2f55f55eb47603be5f69c62f0a
-126,11,explanation-iteration,iteration,CORE,TEACH,,Loops repeat with control,Classified,faed695b1b6dc30f2e9a3b54bff6d2f6e7bc9b1e6f02ffaf9923209be40689dc
+126,11,explanation-iteration,iteration,CORE,TEACH,,Loops repeat with control,Classified,9f32a9b897d541d9e4b5b6082cfe1cd776d09523ae0c1f944b42b51023f0df62
 126,12,trace,trace,CORE,TEACH,,Trace values in execution order,Classified,2083c64e725c9433073bcacf4100c56b0a6423aa66f2d479504b03564d572207
 126,13,java,java,CORE,TEACH,,"Same logic, different exam language",Classified,b1d1274a0ffefbac75aea55bae21510589ad1d7576ebec4a1c710b2b60ffd84e
-126,14,explanation-java,java,CORE,TEACH,,"Same logic, different exam language",Classified,35d22b9582349973c38f9b9d08cabfdf5f9ec0c5445db89e50f2d4f1ae25fc62
+126,14,explanation-java,java,CORE,TEACH,,"Same logic, different exam language",Classified,0073bd4632eebd643782cf0e45e4ae3dbc55c44aa65a9bffd082cc45740514ce
 126,15,tracer,tracer,CORE,TEACH,,Run a small loop by hand,Classified,8444a42d4cb794b35e6a185d43146479db7d1a4f816f2a6a3790194e3e393a48
 126,16,explanation-tracer,tracer,CORE,TEACH,,Run a small loop by hand,Classified,fe974a64a507864691b6c4e52f3ddc021d0cb7cf393a7b3534ba268149a44cc8
 126,17,classifier,classifier,OPTIONAL,TEACH,,Which construct is being tested?,Classified,2a4794796dd6638098361c6806b3075e18ecbbac114e746d5404c08cf56605ef
@@ -2573,14 +2573,14 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 127,4,if,if,CORE,TEACH,,Use IF when a Boolean condition decides the route,Classified,cdcd5f0007ce86c34adfdf55363bedc0461dbc1129eb7081dd372e4f5d023bc2
 127,5,explanation-if,if,CORE,TEACH,,Use IF when a Boolean condition decides the route,Classified,cf58bf9a63d6adda8f0993a0850079a34dc4c22ac9337d580eff2e697a8b8420
 127,6,case,case,CORE,TEACH,,Use CASE for clear values of one expression,Classified,c833a943d51bf1b1246ba28213aa4aec6d78e8f84019250f8151f2b0be6ff772
-127,7,explanation-case,case,CORE,TEACH,,Use CASE for clear values of one expression,Classified,c78f5273c14b2543abe15faf26fe529e8f1e0848cbfd1e38f045ec4d0827df81
+127,7,explanation-case,case,CORE,TEACH,,Use CASE for clear values of one expression,Classified,976374facdd2a9c7d954388b4a5ae253c276df2615f79f601cb642d501b4598c
 127,8,nested,nested,CORE,TEACH,,A decision inside another decision,Classified,777be1d4707dad0f397b3e9a9774f2844bb4f2ec707dda121adc99e3a20633f3
 127,9,explanation-nested,nested,CORE,TEACH,,A decision inside another decision,Classified,77b6b82c54a775fbf29ff5dc0bd7aed5265d9b7f0d7d8c6b8bdff3a3c453db5f
 127,10,choice,choice,CORE,TEACH,,Start with the shape of the decision,Classified,3c7ee5178c7abfa7bbb21dcc4aeb298de526732c3ec0f487607a11f792eb626b
 127,11,explanation-choice,choice,CORE,TEACH,,Start with the shape of the decision,Classified,08e49dde19b6dd3ab07a7b4e16b4fab9c3eabcfcc8626d2eb68da7fb675eed15
 127,12,trace,trace,CORE,TEACH,,"Test normal, boundary and invalid values",Classified,65f037b8386c032cb54f81fecea4eddb4c5d716fe0cfd0067f95fba454793d27
 127,13,java,java,CORE,TEACH,,"Same idea, different syntax",Classified,4c6531a4cf461fbfe0f3e7c25a1bea2a8a82799bce564d0a57c374d402436381
-127,14,explanation-java,java,CORE,TEACH,,"Same idea, different syntax",Classified,6b14a5daeee031ae7b0c99790a13223f4aa74fe9e96ad9315873f0ac614f85e0
+127,14,explanation-java,java,CORE,TEACH,,"Same idea, different syntax",Classified,295af162e572fd6a6686f0b9317161476ba1739786e5d0f8ece83b82db6f6497
 127,15,path,path,CORE,TEACH,,Trace a nested IF,Classified,409942d838ddb8c6a8eeae4af32e9f0ec1f260fa1de92f19cc10f6d62a951aaf
 127,16,explanation-path,path,CORE,TEACH,,Trace a nested IF,Classified,eee6f93d9e69d37572ef1cb813cb35393d2d2771d2ef3c8788b1f649c9256567
 127,17,chooser,chooser,OPTIONAL,TEACH,,"IF, CASE or nested IF?",Classified,996de41d895283b44dcb96f868f59497398641add71eb607cf6fc7c026a6b9ea
@@ -2616,15 +2616,15 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 129,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,1965d995d37fe6efd856ab4e350bed01b1f54fda8de6f767538e8f3d0178b980
 129,3,hook,hook,CORE,ASK,,Will the loop run?,Classified,1dd0085801863a091790865b1d5c0813dc3afc06914b44d056bd62c7e76ee9ad
 129,4,while,while,CORE,TEACH,,Pre-condition loop: check before running,Classified,f1406011efad28e9d38e5e0db8fe3a8c97dc36b09eb10140b89578e0ebc7de81
-129,5,explanation-while,while,CORE,TEACH,,Pre-condition loop: check before running,Classified,ff99ef45da998c3c875d0fddb27305968caa5910a6ea9d90a7acd7bc6782018e
+129,5,explanation-while,while,CORE,TEACH,,Pre-condition loop: check before running,Classified,83168649eab9aca0b371cd2d104b1c7a32d3492aaefbf4f08fdb6004e30a4300
 129,6,repeat,repeat,CORE,TEACH,,"Post-condition loop: run once, then check",Classified,48e396321f7d54debe17200d965ddb47cfca1e5a084d556bb11b345943858242
-129,7,explanation-repeat,repeat,CORE,TEACH,,"Post-condition loop: run once, then check",Classified,ecb9a62a1793f932a4484494531f2031d4280dfc7194fa4ec7b2a15dab10d00f
+129,7,explanation-repeat,repeat,CORE,TEACH,,"Post-condition loop: run once, then check",Classified,21ceb25a7703088cc0096fffe4dcafc980844bc1b00b1df7d40b19a210decfee
 129,8,compare,compare,CORE,TEACH,,The difference is when the condition is tested,Classified,be16eb7ed695328df2ea641dfec43d1954aeff9d57d98182ab2698a251d6ef52
 129,9,explanation-compare,compare,CORE,TEACH,,The difference is when the condition is tested,Classified,d268aa535ae7b38f0c543ca78e54a06a3a22a6a5bfa1cd029c280a43e7a22021
 129,10,validation,validation,CORE,TEACH,,Keep asking until the input is valid,Classified,93ab936ad660137dd11c77656a47e63ee168c0e2e4507a9b9703b151bb4b0225
 129,11,explanation-validation,validation,CORE,TEACH,,Keep asking until the input is valid,Classified,445b58154a2aced89c3634d3743ea466df22dcfcae113249749beee80eb74018
 129,12,sentinel,sentinel,CORE,TEACH,,A special value can stop the loop,Classified,032fa41ed25e5635f5b97fade3ff281ee29de5dbcf7d156ebb73496737fc2219
-129,13,explanation-sentinel,sentinel,CORE,TEACH,,A special value can stop the loop,Classified,fff8637a8c26c6e01a9884b39094947ff4c5435807fcea8147dab67638bede79
+129,13,explanation-sentinel,sentinel,CORE,TEACH,,A special value can stop the loop,Classified,2208e90a53c989be25793377a973c4c17d588d483dd7b220f38d03c29211a80d
 129,14,java,java,CORE,TEACH,,"Java syntax is support, not Cambridge pseudocode",Classified,33da045bb0b079165385ed56aa2d119e023e0bbd4b995b3afeda7e29b4f9a3a7
 129,15,explanation-java,java,CORE,TEACH,,"Java syntax is support, not Cambridge pseudocode",Classified,2a4c98504ce4d4a7df987c1461c682fdde6f373e3e23eb7e0de60a7689faed80
 129,16,simulator,simulator,OPTIONAL,TEACH,,Trace a sentinel loop,Classified,08c70b7f1f18e75f79bfa1c535479773e90836598afa14146960cbabe895f79e
@@ -2639,13 +2639,13 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 130,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,cb55d1b6509d6b60ea51f15ec6c6dca8b3dc9af02ef9e855995821bc77859ee8
 130,3,hook,hook,CORE,ASK,,Procedure or function?,Classified,4c71be336680a9d0f4122d67b33a19303c7a674eafb567d519069d46e8da3921
 130,4,procedure,procedure,CORE,TEACH,,A procedure performs actions and does not have to return a value,Classified,09881a414616513b8c5328b83d4e379f31af725996a3fce546ae1368d5166d87
-130,5,explanation-procedure,procedure,CORE,TEACH,,A procedure performs actions and does not have to return a value,Classified,01cf220b7059019138834157e9a20960af8a02abaebfa48257bd77e6e2f4b392
+130,5,explanation-procedure,procedure,CORE,TEACH,,A procedure performs actions and returns no value,Classified,26151bab874b83522d33eb0101db55a250bc90db3b729fa5da3466ebfcd518be
 130,6,function,function,CORE,TEACH,,A function returns a value to the caller,Classified,cea5b4bc64b4c5b9a7c5da0c22c918c36235688cb82e10cce74584220c33572e
 130,7,explanation-function,function,CORE,TEACH,,A function returns a value to the caller,Classified,797094dc1aa551404beabcc604b57666598980a30ef9afc5647d8c3fb657b614
 130,8,compare,compare,CORE,TEACH,,The mark-winning difference is the returned value,Classified,8a6ac3f4b267701bfee3d4bd6f16ee939d17784aadb2a68af4b553ed2382c777
 130,9,explanation-compare,compare,CORE,TEACH,,The mark-winning difference is the returned value,Classified,51d09b9a8649d6cc75cf737e353493655d2c5ae30559b0d62531dfa3707b49cd
 130,10,parameters,parameters,CORE,TEACH,,Parameters receive values passed into a subroutine,Classified,807abfd7e2aeffe75b34c4100c1f87d549e8add0a076127f50be4d925d1aecd4
-130,11,explanation-parameters,parameters,CORE,TEACH,,Parameters receive values passed into a subroutine,Classified,919e0f91d69fbfbab14e618884c32e177e4bd40fa67390c12e3066d6297724e2
+130,11,explanation-parameters,parameters,CORE,TEACH,,Parameters receive values passed into a subroutine,Classified,4f29549cdd6b9fb609bc13700d9f5fecaa220a260793da89965beec2142a9463
 130,12,calls,calls,CORE,TEACH,,Function calls can appear where a value is needed,Classified,5e960e42fc8e24c923a01e42d434483b361adad49ce38534130d699b45a87110
 130,13,explanation-calls,calls,CORE,TEACH,,Function calls can appear where a value is needed,Classified,cb605bdfee942481151f90bc5cfb1bb704321a6047d86e32280b19925bc51e43
 130,14,java,java,CORE,TEACH,,Java method syntax is not Cambridge pseudocode,Classified,22525b3f4f72f50ac4ebbf5d97361edb6dd4ea09ab440d46502f168d7ca3d894
@@ -2695,7 +2695,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 132,10,global,global,CORE,TEACH,,Global variables are declared outside subroutines and can be accessed widely,Classified,5490e9006f2a11f73c33bbfc7311a72844b8e532aaed38c9d898c8063a483ec4
 132,11,explanation-global,global,CORE,TEACH,,Global variables are declared outside subroutines and can be accessed widely,Classified,f89c12a985f4293aa3a09d64e2ebcfe1b663370982239bb962956c21f72d154f
 132,12,shadowing,shadowing,CORE,TEACH,,A local variable can hide a global variable with the same name,Classified,78f1cd78238e15421dfb958a0da7992810c1ee16c8a5c0a482542b74f5c64e82
-132,13,explanation-shadowing,shadowing,CORE,TEACH,,A local variable can hide a global variable with the same name,Classified,64481f0e4febd5c4e2e0b2319ef457761dda3f2e118a3b4d01ea2d1a456e7149
+132,13,explanation-shadowing,shadowing,CORE,TEACH,,A local variable can hide a global variable with the same name,Classified,924211d20f14b24ea6eb625b21742b983c5a7b3e5b0d058ba6069919e1858841
 132,14,compare,compare,CORE,TEACH,,Local and global variables differ by accessibility and lifetime,Classified,2935ad19226a251323b7ea47e4d73dcd5e5dcb7830edbce12c4cf01ffa495855
 132,15,explanation-compare,compare,CORE,TEACH,,Local and global variables differ by accessibility and lifetime,Classified,935757b28794bed5bcf8f5c2ba9e7886cb9bfbf0e9a74c5ec2cc08f003ede552
 132,16,java,java,CORE,TEACH,,"Java helps illustrate scope, but Cambridge pseudocode remains the answer format",Classified,0a510bc6ffb648c08c8be4701c7088e494d2424c15c0c8edcf72e8e76c6cfebb
@@ -2718,7 +2718,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 133,8,substring,substring,CORE,TEACH,,Use substring functions to extract part of a string,Classified,ff2461dc71664a544255a26e3b3442242b392d040369615c77a5c3a9d9336ec3
 133,9,explanation-substring,substring,CORE,TEACH,,Use substring functions to extract part of a string,Classified,ec9020777d6ba792a318b5b73040e40eb846a82e44db602bc22c9b88b1455ffb
 133,10,case,case,CORE,TEACH,,UCASE and LCASE normalise text before comparison,Classified,e6b5f95be1b53aaf9c2474adaa2377e3cc1ece545c400a423fca0b90b26f9df2
-133,11,explanation-case,case,CORE,TEACH,,UCASE and LCASE normalise text before comparison,Classified,cb0d216de10e56dbf2b5e3fad3ee8bae32e407009c2dc802e793c6470e66ec64
+133,11,explanation-case,case,CORE,TEACH,,UCASE and LCASE normalise text before comparison,Classified,d30ceaa52c2724e6649c8ecb3b9cc058505f0b85b9a7bb2885f5f32c66f2f435
 133,12,concat,concat,CORE,TEACH,,Concatenation joins strings to form a new string,Classified,cd4fc058938e144114720c663dba4e9c5dc435dcfe133a99ec11054611233bc8
 133,13,explanation-concat,concat,CORE,TEACH,,Concatenation joins strings to form a new string,Classified,b4438402441139d3eebd07896629c7c10ad1bf84886c630442e3ad8d4d9e00a3
 133,14,position,position,CORE,TEACH,,Exam traces must follow the position convention stated or implied,Classified,8a355a9e38859046ea4307240381d29ab5d7af7de84372e269452aa8874987b6
@@ -2817,7 +2817,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 137,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,f4892585a6025a0ccebada49103f8d55c41315f281c2d21908a52ae06fd7d317
 137,3,hook,hook,CORE,ASK,,A mark must be an integer from 0 to 100 inclusive. Which value is valid boundary data?,Classified,49584bda66b0e576150bf338b323b5c554b3eec7ad4ac79aa86d0454c07efc8b
 137,4,purpose,purpose,CORE,TEACH,,Testing compares actual results with expected results,Classified,34bc2ba12205236ca6ff5c4b00c7e352196c0198977e5baf4577ec5356ea3c21
-137,5,explanation-purpose,purpose,CORE,TEACH,,Testing compares actual results with expected results,Classified,f7ae93ecc2d54f2e020c9a69f242a74837f19367c2103f28a30b53dc8c8617e0
+137,5,explanation-purpose,purpose,CORE,TEACH,,Testing compares actual results with expected results,Classified,5d86c3e9a862e4d69fddac669474eb2d1f8e476a66faf4e74bc4c3df67695675
 137,6,normal,normal,CORE,TEACH,,"Normal data is valid, typical data inside the allowed range",Classified,47f0266f8cd8b8bcef7bde3b7c79f59be07672204a09043ad5e474a8a1774bda
 137,7,explanation-normal,normal,CORE,TEACH,,"Normal data is valid, typical data inside the allowed range",Classified,9d505dc5c7e62eed3c137d204d8af299ab61ac788ae2d4553af776fee166a515
 137,8,boundary,boundary,CORE,TEACH,,Boundary data tests the edge of a valid range,Classified,2ee095a0b76397a43514fe0ef06dfd1364cf4f31fcb2a30a5d99a8f4229e3e6a
@@ -2827,7 +2827,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 137,12,table,table,CORE,TEACH,,A clear test table turns thinking into marks,Classified,5a53555a4b345114a80d919b2958eae64c64b53b80ee25cc24d30e9213768aa8
 137,13,explanation-table,table,CORE,TEACH,,A clear test table turns thinking into marks,Classified,4f5bd0c29af96af640484fb36690f5fecd0b970433879b72c22a1cff7a8f49b0
 137,14,validation,validation,CORE,TEACH,,Validation is the check. Testing proves whether the check works.,Classified,07768941a11b24c8b4f7cf6f73b640a6da9c21c7f012c0ebeb472ccd370439a6
-137,15,explanation-validation,validation,CORE,TEACH,,Validation is the check. Testing proves whether the check works.,Classified,7876c3fb1f275a84081a5633e0736e4170ebf61a48abda3b9729c921504f4136
+137,15,explanation-validation,validation,CORE,TEACH,,Testing checks validation against expected results,Classified,bbf89a187730dcc8ab8a08ca5fdc2ce9d7c1f39bdf3c54b87c056de187087ed8
 137,16,java,java,CORE,TEACH,,"Java can help you run examples, but Cambridge pseudocode is the exam answer format",Classified,9de8d222aa5fb719c72569c18c9c6d357966a1f1a8efb3aa06661c44a2a604e0
 137,17,explanation-java,java,CORE,TEACH,,"Java can help you run examples, but Cambridge pseudocode is the exam answer format",Classified,1bd7f383b6e9c4153c4eddf803c6fc44e0e2103989440900b227546370f3f867
 137,18,classifier,classifier,OPTIONAL,TEACH,,Classify a test value for the mark rule,Classified,340ec50689fcbf3cc9f31d23003ccf79ea33cc1a16df7a0abd3313b6363c6c88
@@ -2842,7 +2842,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 138,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,9939d1ea18243e7ab69344f41ded90df7c798f4211312917f1357efb0cd0bdfc
 138,3,hook,hook,CORE,ASK,,The pass mark is 50. Which line is best for a breakpoint?,Classified,7918ed498b98f98b379f459cdec3bac283cb2e6d413c69568137096111c52d9b
 138,4,purpose,purpose,CORE,TEACH,,Debugging locates and corrects faults,Classified,19d47acec7a945a85294b5885fa0f99781f78c0fdef56402ae08738354bc7dc6
-138,5,explanation-purpose,purpose,CORE,TEACH,,Debugging locates and corrects faults,Classified,dd99cdd0977946e5b335a7d37d4e2adfa92d69eeb6e64e232b84cca9feff05e9
+138,5,explanation-purpose,purpose,CORE,TEACH,,Debugging locates and corrects faults,Classified,94bdd0aaf4a934645e190307c6d646e94665c69e62ab73d8e5675e58345223b1
 138,6,trace,trace,CORE,TEACH,,A trace table records values after each important step,Classified,c25320afb6770241c80f44a766c87827f5fcf8f7fdae65f5ca42ba9756f26f31
 138,7,breakpoint,breakpoint,CORE,TEACH,,A breakpoint pauses execution at a chosen line,Classified,a32653f9adc085878104bba595ca08f9e2e6ef2f73b2304eb13a936d3ad235ac
 138,8,explanation-breakpoint,breakpoint,CORE,TEACH,,A breakpoint pauses execution at a chosen line,Classified,f585e212ace6b5ba94812599776dd51f04a44e560d2eaa51e7650c5c83cd3dad
@@ -2868,15 +2868,15 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 139,4,robust,robust,CORE,TEACH,,A robust program handles expected misuse without collapsing,Classified,a9ec92ebefd9e85d63400e9fb9bdaada414d5867ac1625fd85e152d1d02a136c
 139,5,explanation-robust,robust,CORE,TEACH,,A robust program handles expected misuse without collapsing,Classified,df00d4432b93fbd9586dc4d9eb1ebaed5a10caeb93b42c5e82c12212f90d6f98
 139,6,validation,validation,CORE,TEACH,,Validation checks whether data is acceptable for the program,Classified,27aaa99d2020648ca4119b39eae52f8e0b70cbb6f0c3f90a6e8432e982afaf97
-139,7,explanation-validation,validation,CORE,TEACH,,Validation checks whether data is acceptable for the program,Classified,b7b21d5b578f14f6e0b8a60ff28d56d6f67d196f358b7549729d0f23dbc465a4
+139,7,explanation-validation,validation,CORE,TEACH,,Validation checks whether data is acceptable for the program,Classified,31bf87e01bfefbe0cbf4b0d5a19dfdd10e021088535a1da6c1d1e805848c408f
 139,8,checks,checks,CORE,TEACH,,Pick the check that matches the rule,Classified,6db71895e4020c3ba698988ccd53374d61121b53f3c1c3578b0e859deed1206c
 139,9,explanation-checks,checks,CORE,TEACH,,Pick the check that matches the rule,Classified,551eb64b7770dffde9fd3a4425385766164c9b5a35554aee6a0ca7fca4a2c933
 139,10,modularity,modularity,CORE,TEACH,,Modular design splits a solution into smaller named parts,Classified,f74287d5e61a32d86533ae26ce050b291993c1311a2f40346d96f31d16f2f5fa
 139,11,explanation-modularity,modularity,CORE,TEACH,,Modular design splits a solution into smaller named parts,Classified,796dcb84c18f57198132e9dd0b52ce6c0a63c92bd64d35466d69da0d52f22daf
 139,12,parameters,parameters,CORE,TEACH,,Pass data into a module and return only what is needed,Classified,9d0760d70b2a492cf719363cf4b0f258f0ea15161aa8ca78ce144d4daccecab8
-139,13,explanation-parameters,parameters,CORE,TEACH,,Pass data into a module and return only what is needed,Classified,4a0fc71b2518c72ecc86e5edd2cae92c8f18a6d54f2d765acade3d277adfce51
+139,13,explanation-parameters,parameters,CORE,TEACH,,Pass data into a module and return only what is needed,Classified,207e8165b04c5bc5dc7c1338d52b0684299805da0f6ebeda1b99671f8471ffa7
 139,14,integration,integration,CORE,TEACH,,Validation and modularity support each other,Classified,2d4806952a7ebd8ff6f12437a554ff5b2b34bedde7a219693f1bd2e3e2906ef9
-139,15,explanation-integration,integration,CORE,TEACH,,Validation and modularity support each other,Classified,5bff45f0a3820d108edc952d99553d5639e19df71c7f9325d3178a5485118b3a
+139,15,explanation-integration,integration,CORE,TEACH,,Validation and modularity support each other,Classified,8c7f811c3c31dfa2b8564dae6da3df18a489753093fa9a01645c6c24623c32ad
 139,16,java,java,CORE,TEACH,,"Java methods can model modularity, but Cambridge pseudocode remains the exam format",Classified,920f287151da31f153abd0383ecd81849567ac21c9929db027c273da14d8788e
 139,17,explanation-java,java,CORE,TEACH,,"Java methods can model modularity, but Cambridge pseudocode remains the exam format",Classified,cbe6717d785d6b73e3b158b0b217579e8a526e98d109760e2896a2360d61d34a
 139,18,validator,validator,CORE,TEACH,,Check whether a mark input is robustly acceptable,Classified,5e022762db06b403d37992322803a6e86471362801b9d4cf2c9a0e4b80f87845
@@ -2901,7 +2901,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 140,10,selection,selection,CORE,TEACH,,"Use IF , THEN , ELSE , ENDIF",Classified,b900f79ea3593e1fe220459a9aa3821fd0faf34f6e7319cccf4e1c152b2da613
 140,11,explanation-selection,selection,CORE,TEACH,,"Use IF , THEN , ELSE , ENDIF",Classified,0cfa0a1bc611a69d0ab81d59cb9bad8a165099f398ec2ed601683a0168ef11e2
 140,12,loops,loops,CORE,TEACH,,Choose the loop keyword that matches the logic,Classified,5e329727d4ef7349ef75fa22f49da3d0fe0e4e394386f7252860ddd92982db2c
-140,13,explanation-loops,loops,CORE,TEACH,,Choose the loop keyword that matches the logic,Classified,02d2db69f8489d520ee2fe94924a0cb2b431176a12b93a032c28c7efc2d71a23
+140,13,explanation-loops,loops,CORE,TEACH,,Choose the loop keyword that matches the logic,Classified,679813e78b32bd5a598ce66db3151340bcceb84986148d6c2b2daea585b1fa05
 140,14,arrays,arrays,CORE,TEACH,,Use Cambridge array notation consistently,Classified,767987de32893ccc8802031b80c2cad0237cd987ac7c84ca6290080d19f8d9d8
 140,15,explanation-arrays,arrays,CORE,TEACH,,Use Cambridge array notation consistently,Classified,ea905d5dc33336f7fdf708d8ca96ece06c7fc8c59caef82d41204535cc7e818a
 140,16,subroutines,subroutines,CORE,TEACH,,Use PROCEDURE and FUNCTION instead of Java method wrappers,Classified,5984271927eb82ca33f6ca9f86d8f4e5f38dbd2bf7998cc0fcbeaad29a1ce3fc
@@ -2924,19 +2924,19 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 141,4,review-map,review-map,CORE,TEACH,,Section 11 tools become stronger when combined,Classified,454b2e612f44956f41c76cbb02f9c71cd7bf78962dedb720845498262efba74b
 141,5,explanation-review-map,review-map,CORE,TEACH,,Section 11 tools become stronger when combined,Classified,425b655c97334c33a9acaa3d8d303330a31b8db42422bea2e51e79a2b607e379
 141,6,fragment,fragment,CORE,TEACH,,"A complete fragment has setup, logic and result",Classified,8e140f851c65683253194c42e1d543d7685c0c9138328f3b0dcd345341ad35a9
-141,7,explanation-fragment,fragment,CORE,TEACH,,"A complete fragment has setup, logic and result",Classified,ab67aca36216c8b7aaef94f809ff31ee8b3f262f5d762c7ad5b8f7e823852479
+141,7,explanation-fragment,fragment,CORE,TEACH,,"A complete fragment has setup, logic and result",Classified,63980dae28c57d41ade36d4adfb6a3c9e61de28e9100feb84cf6d6d14a4692a3
 141,8,validation,validation,CORE,TEACH,,Review fragments often need input checks,Classified,8ab5236dc846abb5290f5b5e6077f77c8ccfcfdadde2affdaaab82863c4023e6
-141,9,explanation-validation,validation,CORE,TEACH,,Review fragments often need input checks,Classified,f87b1693e0e7547c7a4726122de20161216d7bdb1b2e4bcb0d31ac261a29b95c
+141,9,explanation-validation,validation,CORE,TEACH,,Review fragments often need input checks,Classified,d2efc384b10822e3a87016d68fcbf3ef31ab2af3158bdcc6058aee9e7974a242
 141,10,arrays,arrays,CORE,TEACH,,Arrays need consistent indexing and meaningful loop bounds,Classified,b5950aa999eef25f68aa964dedd540e9f55d52662d96f2dcf23fc1b85f12bb9d
 141,11,explanation-arrays,arrays,CORE,TEACH,,Arrays need consistent indexing and meaningful loop bounds,Classified,fbf5b890abf28e0b68851e1a4ffecad207e7f65be0d8186013b2e78aa0b0870d
 141,12,subroutines,subroutines,CORE,TEACH,,Use functions for returned values and procedures for actions,Classified,cde43faa9e1d931df01ea3d1df12aa05bc4d148f54ba0c2845e673f332a21f69
-141,13,explanation-subroutines,subroutines,CORE,TEACH,,Use functions for returned values and procedures for actions,Classified,f7baa67c25dc67cc1db35c98c10fd7c95ec539a72a44222ef47a75dde8e2f662
+141,13,explanation-subroutines,subroutines,CORE,TEACH,,Use functions for returned values and procedures for actions,Classified,6d4bb540a810959dd1cbd3af8396eb149b28efb51a40e51d267f50660bb1654a
 141,14,files,files,CORE,TEACH,,"File fragments need open, process and close",Classified,0eb98cccfee6e97a3359fc78f8b0ace6262389b3a202573247914bbd3ce94ba2
 141,15,explanation-files,files,CORE,TEACH,,"File fragments need open, process and close",Classified,5e9ef0bce76e0b66963eee2867f5a59699df50c81733d7b4a8166592f6201fe6
 141,16,debugging,debugging,CORE,TEACH,,Review answers should be traceable,Classified,4f9313e40c64fb00f552f56ded5062744e95a6d78c9c097c9cd7ea15fee6245a
 141,17,explanation-debugging,debugging,CORE,TEACH,,Review answers should be traceable,Classified,30ad210fa011755cb51990bf2b90f1c2295356e73fcd0139ed313988fad629de
 141,18,java,java,CORE,TEACH,,Java can support practice; the review answer should be Cambridge pseudocode,Classified,84814771ab9227ba90d2e6725555a7de09132af662d38d2df0a168b092347b33
-141,19,explanation-java,java,CORE,TEACH,,Java can support practice; the review answer should be Cambridge pseudocode,Classified,b6396ca0a9589cd29c8c37b0b287ad1266cf00c410a922685e4c1745a1d2f4b3
+141,19,explanation-java,java,CORE,TEACH,,Java can support practice; the review answer should be Cambridge pseudocode,Classified,6bdbe3cb6578db419435b45cad20cf4afd9020d36af513a3dde926e07bea9b36
 141,20,builder,builder,OPTIONAL,TEACH,,Choose a scenario and inspect the skeleton,Classified,5b3a2af2424e746481d05a2d0f86555cef63aeaba7e79b21f61111b7328dbe5e
 141,21,checklist,checklist,CORE,TEACH,,Use a checklist before calling a fragment finished,Classified,41c3badcb74cf7778dcca995ec0ad62c7a1dbf0a03e23bf016f52d1049451143
 141,22,explanation-checklist,checklist,CORE,TEACH,,Use a checklist before calling a fragment finished,Classified,64980dfd0607f480a86879440e1931b8c20c7a32915e3ab28a989d3f51aebef4
@@ -2946,12 +2946,12 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 141,26,exam,exam,CORE,EXAM,,Cambridge-style review questions with expandable MS,Classified,5645a8f1b8444d27c16bcd3cade88882cad5ac1ea1d942099696c1274abc9e22
 141,27,summary,summary,CORE,CHECK,,What to remember,Classified,b86dfec6af298bb11ce05d163191201500d16a0052316586e5a114095f0aefb2
 141,28,homework,homework,AFTER_CLASS,HOMEWORK,,Timed Section 11 review,Classified,6b565965beddd7de62bc20637a922bbca401d5804332b039559db163f11f73d9
-142,1,overview,overview,CORE,TEACH,,Lifecycle models organise the activities used to develop and maintain software.,Classified,32bc664f30667a73e05420c01894f892ca92566b79176dd7bf78fb55ee4ce866
-142,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,f467124ae45b7215e9766e725ea775495734407909663e3e6fd8eb7e60593d98
+142,1,overview,overview,CORE,TEACH,,Lifecycle models organise the activities used to develop and maintain software.,Classified,5f209006404993efd551926b527a441ef5780c21642916ba558ae89558bd39cc
+142,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,ae5c77e3a91123e2aabecca529968782fb2d165864d006a8e87e5e10ee3b9b8c
 142,3,hook,hook,CORE,ASK,,A client says: “Make a user-friendly booking system.” What should happen first?,Classified,6551d1e517cf11eacb3cbd8ea34edf804378adc7141d25484bcf7a95cd4f45f1
-142,4,purpose,purpose,CORE,TEACH,,Lifecycle models give structure to a software project,Classified,c3d6e711f34a3f3d0cb8f4e3e067e53affd03b1c91f846b13805be0a6c959292
+142,4,purpose,purpose,CORE,TEACH,,Lifecycle models give structure to a software project,Classified,43b7124dc38f60e9d0b6bfc3fd2dcbe70c62f5415a559abbd08943147022c6fb
 142,5,explanation-purpose,purpose,CORE,TEACH,,Why a lifecycle reduces uncertainty,Classified,127aad4344095a87b03439f635f21d4fdc07442394376a5bd1a43a87df2b3783
-142,6,stages,stages,CORE,TEACH,,Common stages and what each produces,Classified,82a85316a88c8bd44d8dd319f2add0df8f84a4b8b2f5688fcf48aca12d61a06f
+142,6,stages,stages,CORE,TEACH,,Common stages and what each produces,Classified,45ab77d2391eadc183bba42e527f9b33bf93a080f81557cf4af4d7a9b46018fe
 142,7,explanation-stages,stages,CORE,TEACH,,How one stage supplies the next,Classified,06ddf68405a38c2df0e4a2411b2451150bbaecd989cf7455e6be68f5c6cf1951
 142,8,waterfall,waterfall,CORE,TEACH,,Waterfall moves through stages in a planned sequence,Classified,74dcd81e8ec933ae45506b611c9a4ee5124f36b7746583918f8ce482845ca89b
 142,9,explanation-waterfall,waterfall,CORE,TEACH,,Why sequence helps and resists change,Classified,9689f7bec13769f112b1b020f6bfcf7a6fd8fd5706ae8baebacbb5b958a85b67
@@ -2964,13 +2964,13 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 142,16,artefacts,artefacts,CORE,TEACH,,Exam answers often mention documents or outputs from stages,Classified,33d1fcffc11d70be633017d044c11283678752df27d9525f595e5b825e51faf2
 142,17,explanation-artefacts,artefacts,CORE,TEACH,,Why artefacts make decisions traceable,Classified,808ee302fc4f5b9c63f7561c3a9e468d63d0b08fd547cd1026eeaa9dd4ea73c0
 142,18,model-tool,model-tool,CORE,TEACH,,Choose a project situation and compare model suitability,Classified,8124fd1b9701d62dd96d3ae0d136b818f4e06866af80ab58948f9e759ec80888
-142,19,order-tool,order-tool,CORE,TEACH,,Spot the stage that should usually happen first,Classified,72548a30618c482b04a647a77a9858e3fbe8911d023938417efcd68e7599c887
+142,19,order-tool,order-tool,CORE,TEACH,,Spot the stage that should usually happen first,Classified,8bcac88f3cbc4fd3c56c21541598817d8681e6525cc6c1c4ca69a3a086ddc1c3
 142,20,examples,examples,CORE,TEACH,,Apply the lifecycle to realistic project decisions,Classified,35081f24b13aa2d43a9ea8f7c33603698427d02d416096bf77ce162f7a2ff267
 142,21,practice,practice,CORE,PRACTISE,,Instant checking: lifecycle terms and consequences,Classified,71d76b921f8164e95fd43cd9433af70fa933fe21b8c0a0f6e5fa0b616091bd70
 142,22,debug,debug,CORE,CHECK,,Fix weak lifecycle explanations,Classified,e9e19998f7d86230a868b5f05a69dbf1789487882229646f357697586d212f4d
 142,23,exam,exam,CORE,EXAM,,Cambridge-style lifecycle questions with expandable MS,Classified,c30373c15611218c801c4700ee35d322eca8b2b09a6db201703d4f2449c76d2c
-142,24,summary,summary,CORE,CHECK,,What to remember,Classified,efe65b3d6c02113aa001e323f0156eb599c7f90126f298016f40c8d58c412a50
-142,25,homework,homework,AFTER_CLASS,HOMEWORK,,"Use the lifecycle, do not just list it",Classified,ba7b276b538b64ab3b7e8da619da3da74315516d5c477136bcddc5076f6e85a7
+142,24,summary,summary,CORE,CHECK,,What to remember,Classified,ff55923d5f5d877d6e75d313877ea1fd717987ef09053e24536ce6d71ef4f7dd
+142,25,homework,homework,AFTER_CLASS,HOMEWORK,,"Use the lifecycle, do not just list it",Classified,41850a64b5b5a6ded6229cbd33d24d1a2624d5215fdd2f5ee81610c7624706f7
 143,1,overview,overview,CORE,TEACH,,“User-friendly” is a wish. A success criterion is something you can test.,Classified,60eeae116490e0c9d87949799ddb193c94aeb389ca14211358c963582640a42c
 143,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,9a896daec38ddfc848f7a5f7c993a8ebc046a12b72ea37ffae7ab21a4538af03
 143,3,hook,hook,CORE,ASK,,Which statement is a measurable success criterion?,Classified,f34a1a77085a7bfb0fbe3d583947b791376d188bb59993db47f7c99fcc856adf
@@ -3001,8 +3001,8 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 144,3,hook,hook,CORE,ASK,,Which document says RoomID is a STRING of length 6 and must not be blank?,Classified,a89edd35a359805d4ed530cc38821d90b6d8b976b2ff969844422d040302fdfe
 144,4,purpose,purpose,CORE,TEACH,,Design documents translate requirements into a buildable plan,Classified,d1b784c399f4274cf0d0f7edae957cb9ad1e5748fc37ddf1462a3a34414824d0
 144,5,explanation-purpose,purpose,CORE,TEACH,,Design documents translate requirements into a buildable plan,Classified,4b503fee3f1af5cc668d3f16639210bf05897aa8cfef16ed873a1d4bfdeb1d2c
-144,6,algorithms,algorithms,CORE,TEACH,,Algorithm designs describe the processing steps,Classified,d512110a40aaf7b9858d9845a907f70e1305be9cccec2fa830006019760957d2
-144,7,explanation-algorithms,algorithms,CORE,TEACH,,Algorithm designs describe the processing steps,Classified,c7db87d671dc9be67fddbff787da63074c33572491073026634f50b5c503cc56
+144,6,algorithms,algorithms,CORE,TEACH,,Algorithm designs describe the processing steps,Classified,86b9444d5fa0cc48bb1cd99026f4e26799051491636692f8f7f1385e32de46a7
+144,7,explanation-algorithms,algorithms,CORE,TEACH,,Algorithm designs describe the processing steps,Classified,7b729383753ea1069b0a6e001c438da5d458d546cc7abb1678152df34f44b2ab
 144,8,dictionary,dictionary,CORE,TEACH,,A data dictionary defines each data item consistently,Classified,8f5df36ea82629dcaf3baa9f899fe36ef2db0065ace0c82c8e40bab94c70e731
 144,9,explanation-dictionary,dictionary,CORE,TEACH,,A data dictionary defines each data item consistently,Classified,bd21421f02926e9408f2a735f204edbf35b18e6816ed8ffa153d4b7dbb262f23
 144,10,interfaces,interfaces,CORE,TEACH,,Interface designs show how users will enter data and navigate the system,Classified,3d647e21a50efc7d284d612615f2a08ad1765c320cf162bf107ae1b99b501346
@@ -3035,7 +3035,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 145,12,maintenance,maintenance,CORE,TEACH,,Maintenance changes a system after it has been delivered,Classified,80a0b550fe6e2e55260a8480672231ed1c1286d423d4fac25802bd0578d84ff5
 145,13,explanation-maintenance,maintenance,CORE,TEACH,,Maintenance changes a system after it has been delivered,Classified,2ccf0372e59b4589c39f8571f28c8abc1251a55ee319e49ba4f53725de1ae5a3
 145,14,evaluation,evaluation,CORE,TEACH,,Evaluation judges the final system against requirements and success criteria,Classified,e8f6c979fbe42dad9c5a54e78febc2289bbab32e68f91079a26e3d87c8bc4843
-145,15,explanation-evaluation,evaluation,CORE,TEACH,,Evaluation judges the final system against requirements and success criteria,Classified,71246a32de0f8379ccb4ab4b71d1044aa7c8f609af64440a2c81242924edc0ef
+145,15,explanation-evaluation,evaluation,CORE,TEACH,,Evaluation uses requirements and measurable success criteria,Classified,4a4cb7341f17561ea53699b463673537f1adeca916fa0e2dbc07174965ab88cf
 145,16,stage-tool,stage-tool,CORE,TEACH,,Which lifecycle stage is being described?,Classified,f3874492b14e070693163e9c742723a2b4fdd4855ece563806010af92cc48b00
 145,17,explanation-stage-tool,stage-tool,CORE,TEACH,,Which lifecycle stage is being described?,Classified,3b40edec10b0d2464129fb8406dac82943e7a55603bcf432752d6b1b1671b3d7
 145,18,data-tool,data-tool,CORE,TEACH,,"Classify input for NumberOfStudents, valid range 1 to 30",Classified,0dc4496cb6170fa7107bf251ff62193ff17557e40361ded2e64262f0fd898a5c
@@ -3053,17 +3053,17 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 146,4,case,case,CORE,TEACH,,School activity sign-up system,Classified,eea979f1c8d5bdf99c1a013eb07445c95e030648b15525cff01bfdd83d5f81fa
 146,5,explanation-case,case,CORE,TEACH,,School activity sign-up system,Classified,5ff0cb55aacbe3aff5161ab7c830b517e85aa2f12a509f774d78cbb750f729a0
 146,6,lifecycle,lifecycle,CORE,TEACH,,"One scenario, many stages",Classified,1e9a1a8d866d92e5621cc0d75895b387b6f156ffe625f8c472d80ed40208d7aa
-146,7,explanation-lifecycle,lifecycle,CORE,TEACH,,"One scenario, many stages",Classified,639662436758681437100f85d00bcd41b78cf21731163ed35e368db4b5dc7ce7
+146,7,explanation-lifecycle,lifecycle,CORE,TEACH,,"One scenario, many stages",Classified,01eb151f26a58f837752172fbe3aabe189281bd0ad2712864ca9cbb177a3f2cb
 146,8,analysis,analysis,CORE,TEACH,,From vague request to measurable criteria,Classified,92fa11b8dc2a9d9b4e10e4f948a39b732704928d296a4f9db1ebd46ace8cb32e
 146,9,explanation-analysis,analysis,CORE,TEACH,,From vague request to measurable criteria,Classified,e4d877e4f5e2ca696d3337b1ac28c859d6d3576c585882f02c8ab86ca635e4c2
 146,10,design,design,CORE,TEACH,,Design answers must name the artefact,Classified,60d5d86c3cadaf579aa027246a16c11d989053824cb7efc2db76a41f385dab2d
 146,11,explanation-design,design,CORE,TEACH,,Design answers must name the artefact,Classified,7ab4243efc9f2ad201850140015bfc80557b89698247ddc49831d2df4cfb2dc7
 146,12,testing,testing,CORE,TEACH,,"Test cases need data, expected result and purpose",Classified,a27f90ce4ceddb2cc34f1235fb8ef727a37c94e0871aea4c983bc134c33ce05e
-146,13,explanation-testing,testing,CORE,TEACH,,"Test cases need data, expected result and purpose",Classified,d2f5c36fb57ac3fe6b5363c6b6f177c72b42cfc870a0c929d9e20a02c770d030
+146,13,explanation-testing,testing,CORE,TEACH,,"Test cases need data, expected result and purpose",Classified,b10496bb5758ea58f22c1887b65ce1b379f994f9e4b0baa08fba7e820d6d9c46
 146,14,evaluation,evaluation,CORE,TEACH,,"After release, classify changes and judge success with evidence",Classified,b1adb785dac1cac4862bb848bb41ff353e654f9c83f979fddb6fbeebc3ef8dee
 146,15,explanation-evaluation,evaluation,CORE,TEACH,,"After release, classify changes and judge success with evidence",Classified,91d4695db9fa4589d9a9f5b27ff32de6e1d68402745cb075079367faf63024d0
 146,16,commands,commands,CORE,TEACH,,Match response depth to the command,Classified,7e419fe080af558e3e9f849a71bcb56b76e779c71cca50cd35cfe6b3969298f2
-146,17,explanation-commands,commands,CORE,TEACH,,Match response depth to the command,Classified,36e852d365ebf086a959ce468b5a3e36d3bab5b87bae9adb2b2a3e8c36f5a4fa
+146,17,explanation-commands,commands,CORE,TEACH,,Match response depth to the command,Classified,15d42d16148e1170fc8fc11c0d88f29dbec6a40b455b720a35e8dce8b36ec792
 146,18,case-tool,case-tool,CORE,TEACH,,Identify the Section 12 concept,Classified,d1bc84a3b6560580d559b3e9b59ee096fd63e8172ddd4553a260724d88c42158
 146,19,explanation-case-tool,case-tool,CORE,TEACH,,Identify the Section 12 concept,Classified,e11f77bd77f5f7399ba03a8e8a6a37552fe333666379f34bd9d6ad25a3602741
 146,20,answer-tool,answer-tool,CORE,TEACH,,Turn a weak line into a mark-worthy line,Classified,f92648ad9d85846a81bd0b5cf74d754bdb4bf43d46efab5870b9b55b5e8cc576
@@ -3079,11 +3079,11 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 147,3,hook,hook,CORE,ASK,,What is the first move?,Classified,1174e4791c0bd5303533e31c30f451521e187030126fbfea09d06dd817f7909a
 147,4,strategy,strategy,CORE,TEACH,,Choose the tool before writing the answer,Classified,65bbd1f6c23d675bdfc29d61c2be8b75cdb0eb1d04a7a02a657f39d88f5b2fb3
 147,5,explanation-strategy,strategy,CORE,TEACH,,Choose the tool before writing the answer,Classified,986999379aa794bd9f8c412db9af92772105e65d7368101cd96f3ec8dc338f78
-147,6,trace,trace,CORE,TEACH,,Trace tables turn moving code into visible evidence,Classified,e5e8e70908df2fabbeddfd129395b726de2eaedea7cdf4d4bf5348ce19b5bd3a
+147,6,trace,trace,CORE,TEACH,,Trace tables turn moving code into visible evidence,Classified,a199569155da893f0e1496e7d75287649c4dc38703cfdf3412c8438da69c9377
 147,7,algorithms,algorithms,CORE,TEACH,,Good pseudocode is precise enough to trace,Classified,8e4c5be8492a9ecd41a6d642c9c3d71c015ac3fcd8e061dc35f3758fb6910f39
 147,8,explanation-algorithms,algorithms,CORE,TEACH,,Good pseudocode is precise enough to trace,Classified,c496d6e7565805f5fee5e9eb753312c017e92ef68f90f13dfd7252ccd1b1ec29
 147,9,structures,structures,CORE,TEACH,,Choose structures by how the data is used,Classified,579c314a58c1c296f820759c7f08e4f9ec4033e9803d01f9f3e3e39012303035
-147,10,explanation-structures,structures,CORE,TEACH,,Choose structures by how the data is used,Classified,cbc04af91580090ddc1a8a42e769eae114f4547760d75399ee81fc9c8c2dd298
+147,10,explanation-structures,structures,CORE,TEACH,,Choose structures by how the data is used,Classified,eb8bd5aee76103d55dd02a718d44582bd2d8cc44396b6626a8633e41de6be7b0
 147,11,selection,selection,CORE,TEACH,,The reason matters more than the name,Classified,de91960b0a092b691a581f11b5fae01ec3dbd4abb461b7d0c2bda16adf81c814
 147,12,explanation-selection,selection,CORE,TEACH,,The reason matters more than the name,Classified,6cb6af3ec30c4411cd02e24aa4769291f6e831b0b9cb421944099357503b552c
 147,13,files,files,CORE,TEACH,,Persistent data needs clear read/write logic,Classified,33e3eccc38f625835fb23c48bf6b86019029e677c114ec8bd26395ad552fe4f0
@@ -3104,11 +3104,11 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 148,4,constructs,constructs,CORE,TEACH,,Constructs control the order in which statements run,Classified,7bdddbdb4c1ff1b49639f19db35ad679b25d5b66685090de9bf8529c7c1ec11f
 148,5,explanation-constructs,constructs,CORE,TEACH,,Constructs control the order in which statements run,Classified,8305cb6f4ea7c6546040c40dec878be36ca59cf9c246e47eed78ec17bd39c36b
 148,6,selection,selection,CORE,TEACH,,"Use IF for decisions, CASE for clean multi-way choices",Classified,a140435deb1840222e46c44e90b20325188f2d476c6ec33ddb61ba0a36c4e18e
-148,7,explanation-selection,selection,CORE,TEACH,,"Use IF for decisions, CASE for clean multi-way choices",Classified,fdaaa504fd900a300cb33bcd31acde718ff49bbecdc86e10d8394d7e31cc5681
+148,7,explanation-selection,selection,CORE,TEACH,,"Use IF for decisions, CASE for clean multi-way choices",Classified,5d75e251638e048862e040b09ca93d8a31beedc476dc4a5b8ed0b925b4cbbc46
 148,8,iteration,iteration,CORE,TEACH,,Choose the loop by what is known before the loop starts,Classified,ae244794ed461d131b8e6583d562bc519e474df94d088edba64f99b8fd99643e
 148,9,explanation-iteration,iteration,CORE,TEACH,,Choose the loop by what is known before the loop starts,Classified,992d8b35e58a20f9edaad3aaa7cfa3496a16bc00155177c3b98f0113cafea21e
 148,10,subprograms,subprograms,CORE,TEACH,,Subprograms reduce repetition and make code testable,Classified,063095b551c9458aa9eda600a14bd15711f271284b2f17093d879efc7ece6ada
-148,11,explanation-subprograms,subprograms,CORE,TEACH,,Subprograms reduce repetition and make code testable,Classified,2347f4dd1248c24902d5f441733c9029f283fc5b08d93130997ebbbafba917ad
+148,11,explanation-subprograms,subprograms,CORE,TEACH,,Subprograms reduce repetition and make code testable,Classified,686e6a2e9971cf1ce386013c9ff3cde5822bc8c236c1ad8aad0158de262704d5
 148,12,validation,validation,CORE,TEACH,,Validation rejects unsuitable input before it damages the logic,Classified,22c1bd7b65c5583510fc8932531552cb5d69f496d78e8e44a506e0ef5e7141da
 148,13,explanation-validation,validation,CORE,TEACH,,Validation rejects unsuitable input before it damages the logic,Classified,28bc95586f3d8a17764b9c5ddb38b5f101b8a4c644f389622cd8a5f000eacdb1
 148,14,files,files,CORE,TEACH,,"Open the file in the correct mode, process records, then close it",Classified,fe72fdc7d88a73c669a2926f41069a26cdb3d74632387ca334de6bdc195586b9
@@ -3127,12 +3127,12 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 149,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,dbec6d3f367f02daafb6003f74fab7bd4544b4b0a169bbd9d96a1cac57175c00
 149,3,hook,hook,CORE,ASK,,What should happen before writing the first line?,Classified,11d2caa039c5b572670869fa81201b253570bb0b5313d131d9a1b3cb717aad70
 149,4,timing,timing,CORE,TEACH,,Spend time according to marks,Classified,dd04f2b9ff8f817bce1234730d06765f5bf3823c3fb4fc4502691594a5dec95f
-149,5,explanation-timing,timing,CORE,TEACH,,Spend time according to marks,Classified,4a0a97906526a2a1de6e753476924f90125b8177bd9e00b5f1361edc52f534b3
+149,5,explanation-timing,timing,CORE,TEACH,,Spend time according to marks,Classified,a1bd035962b489bfd89309dd52d56f4539b94e649d549383c9d860c30c598dd6
 149,6,method,method,CORE,TEACH,,The four-pass approach,Classified,483495ebbd9c2cb1534b8241ddaaad9013189d103f5be5ba44457b245d27edb5
 149,7,explanation-method,method,CORE,TEACH,,The four-pass approach,Classified,b99664dfa3c38fca5d9990fbc47d4cf493d36086ee5bb1ae699811c203693bbb
 149,8,constructs,constructs,CORE,TEACH,,Choose the smallest construct that fits the task,Classified,1396b2e2cfdaff49c0acbd58064d698506fd8d844581b9ff663f478bdc1954e1
-149,9,explanation-constructs,constructs,CORE,TEACH,,Choose the smallest construct that fits the task,Classified,58a0783423f17b770f2c5f0ed3857f2abdacc82e6ff53ed19ac3ce26cb20ad6f
-149,10,trace,trace,CORE,TEACH,,Trace a tiny case before trusting a big answer,Classified,a4de57ec858b9457a7563651f9079223f53b655e94b3d35e36e7c77ac0566765
+149,9,explanation-constructs,constructs,CORE,TEACH,,Choose the smallest construct that fits the task,Classified,0addb2b75a480e0919d9c748ce278d15dba5f5d4aee36bbcd0b695f287c88f18
+149,10,trace,trace,CORE,TEACH,,Trace a tiny case before trusting a big answer,Classified,cedb072f60f9eb03a03302cfbac0a8b05c06e96b57cface24a71949b92a9b978
 149,11,quality,quality,CORE,TEACH,,"Before moving on, ask six questions",Classified,c6aeab60e1eb550ba9af749909347da6b63de9dbc06323f4cb5d147d9a5a4248
 149,12,explanation-quality,quality,CORE,TEACH,,"Before moving on, ask six questions",Classified,4969a7d429ad8339377fddbe19967421403c794431f50d42d793466131d0a7ee
 149,13,timer-tool,timer-tool,CORE,TEACH,,Choose a mark value and plan the response,Classified,9b022788ee26b0b8eec5674d083837f1ca13e38722dee6fa27b64080ddfeb909

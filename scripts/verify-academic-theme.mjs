@@ -30,7 +30,17 @@ for (const marker of [
   "--academic-serif: Georgia",
   "--academic-sans: ui-sans-serif",
   "--academic-mono:",
+  "--academic-text-body: 18px",
+  "--academic-text-ui: 16px",
+  "--academic-text-meta: 14px",
+  "--academic-heading-hero: clamp(44px, 4.25vw, 64px)",
+  "--academic-heading-section: clamp(32px, 2.7vw, 40px)",
+  "--academic-heading-card: clamp(22px, 1.6vw, 24px)",
+  "font-size: var(--academic-text-body)",
+  "font-size: var(--academic-text-ui)",
+  "font-size: var(--academic-text-meta)",
   ".stats-grid svg",
+  "body.has-teacher-toolbar .topbar",
   ".lesson-content > .hero",
   ".assessment-list",
   ".resource-content table",
@@ -47,7 +57,7 @@ expect(!/@import\b/i.test(theme), "Academic theme must not import external style
 for (const definition of pageDefinitions) {
   const html = read(definition.html);
   const prefix = definition.page === "index" ? "./" : "../";
-  const themeHref = `${prefix}academic-theme.css?v=5`;
+  const themeHref = `${prefix}academic-theme.css?v=6`;
   expect(occurrences(html, `href="${themeHref}"`) === 1,
     `${definition.page}: academic theme link count is not one`);
 
@@ -77,7 +87,7 @@ const classroomGenerator = read("scripts/apply-classroom-delivery.mjs");
 expect(classroomGenerator.includes("academicThemeStylesheet"),
   "Classroom delivery generator does not preserve the academic theme");
 for (const generator of ["scripts/generate-assessments.mjs", "scripts/generate-resource-hub.mjs"]) {
-  expect(read(generator).includes('../academic-theme.css?v=5'),
+  expect(read(generator).includes('../academic-theme.css?v=6'),
     `${generator}: generated hub output does not preserve the academic theme`);
 }
 

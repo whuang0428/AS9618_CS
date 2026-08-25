@@ -20,6 +20,12 @@
   --academic-serif: Georgia, "Times New Roman", Times, serif;
   --academic-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   --academic-mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --academic-text-body: 18px;
+  --academic-text-ui: 16px;
+  --academic-text-meta: 14px;
+  --academic-heading-hero: clamp(44px, 4.25vw, 64px);
+  --academic-heading-section: clamp(32px, 2.7vw, 40px);
+  --academic-heading-card: clamp(22px, 1.6vw, 24px);
 
   /* Remap the common legacy tokens used by independently authored lessons. */
   --bg: var(--academic-paper);
@@ -55,7 +61,7 @@ body {
   background: var(--academic-paper);
   color: var(--academic-body);
   font-family: var(--academic-sans);
-  font-size: 16px;
+  font-size: var(--academic-text-body);
   line-height: 1.62;
   overflow-x: clip;
   text-rendering: optimizeLegibility;
@@ -63,7 +69,8 @@ body {
 
 :where(button, input, select, textarea) {
   font-family: var(--academic-sans);
-  font-size: 0.95rem;
+  font-size: var(--academic-text-ui);
+  line-height: 1.45;
 }
 
 :where(code, pre, kbd, samp, .binary-display, [class*="code-"]) {
@@ -103,6 +110,10 @@ img {
   backdrop-filter: none;
 }
 
+body.has-teacher-toolbar .topbar {
+  position: static;
+}
+
 .topbar > div:first-child {
   min-width: 0;
 }
@@ -121,10 +132,10 @@ img {
   margin: 0;
   color: var(--academic-blue);
   font-family: var(--academic-sans);
-  font-size: 0.75rem;
+  font-size: var(--academic-text-meta);
   font-weight: 800;
   letter-spacing: 0.06em;
-  line-height: 1.35;
+  line-height: 1.4;
   text-transform: uppercase;
 }
 
@@ -154,9 +165,9 @@ img {
   color: var(--academic-blue-dark);
   box-shadow: none;
   font-family: var(--academic-sans);
-  font-size: 0.92rem;
+  font-size: var(--academic-text-ui);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.45;
   text-decoration: none;
 }
 
@@ -229,7 +240,7 @@ img {
   margin: 14px 0 16px;
   color: var(--academic-ink);
   font-family: var(--academic-serif);
-  font-size: clamp(3rem, 5vw, 5rem);
+  font-size: var(--academic-heading-hero);
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 0.98;
@@ -239,12 +250,12 @@ img {
   max-width: 790px;
   margin: 0;
   color: var(--academic-body);
-  font-size: 1.03rem;
+  font-size: var(--academic-text-body);
 }
 
 .lesson-meta {
   color: var(--academic-muted);
-  font-size: 0.93rem;
+  font-size: var(--academic-text-ui);
   font-weight: 750;
   letter-spacing: 0.01em;
 }
@@ -300,13 +311,13 @@ img {
 .stats-grid strong {
   color: var(--academic-ink);
   font-family: var(--academic-sans);
-  font-size: 1.18rem;
+  font-size: 20px;
   line-height: 1.25;
 }
 
 .stats-grid span {
   color: var(--academic-muted);
-  font-size: 0.9rem;
+  font-size: var(--academic-text-ui);
   font-weight: 600;
 }
 
@@ -327,8 +338,9 @@ img {
 label {
   color: var(--academic-body);
   font-family: var(--academic-sans);
-  font-size: 0.85rem;
+  font-size: var(--academic-text-ui);
   font-weight: 750;
+  line-height: 1.45;
 }
 
 :where(input, select, textarea) {
@@ -384,12 +396,18 @@ label {
 
 .lesson-card small {
   color: var(--academic-blue);
+  font-size: var(--academic-text-meta);
 }
 
 .lesson-card strong {
   font-family: var(--academic-serif);
-  font-size: 1.04rem;
+  font-size: var(--academic-text-body);
   line-height: 1.32;
+}
+
+.unit-card span {
+  font-size: var(--academic-text-meta);
+  line-height: 1.4;
 }
 
 .course-map-dialog {
@@ -424,7 +442,7 @@ label {
   padding: 7px 10px;
   border-radius: 0;
   color: var(--academic-muted);
-  font-size: 0.86rem;
+  font-size: var(--academic-text-ui);
   font-weight: 650;
 }
 
@@ -455,7 +473,7 @@ label {
   margin: 12px 0 14px;
   color: var(--academic-ink);
   font-family: var(--academic-serif);
-  font-size: clamp(2.8rem, 4.6vw, 4.45rem);
+  font-size: var(--academic-heading-hero);
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1.01;
@@ -463,8 +481,8 @@ label {
 
 .lesson-content > .hero p {
   color: var(--academic-body);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: var(--academic-text-body);
+  line-height: 1.62;
 }
 
 .lesson-content > .hero > :not(.hero-copy) {
@@ -504,12 +522,13 @@ label {
   margin-bottom: 5px;
   color: var(--academic-ink);
   font-family: var(--academic-serif);
-  font-size: 1.12rem;
+  font-size: 20px;
 }
 
 .objective-grid span {
   color: var(--academic-body);
-  font-size: 0.91rem;
+  font-size: var(--academic-text-ui);
+  line-height: 1.5;
 }
 
 .lesson-content > .panel,
@@ -537,7 +556,27 @@ label {
 .lesson-content .section-title h2,
 .lesson-content > section > h2 {
   font-family: var(--academic-serif);
-  font-size: clamp(1.8rem, 3vw, 2.45rem);
+  font-size: var(--academic-heading-section);
+}
+
+.lesson-content :where(h3) {
+  font-size: var(--academic-heading-card);
+  line-height: 1.25;
+}
+
+.lesson-content :where(p, li, td, th, code, pre) {
+  line-height: 1.62;
+}
+
+/* Keep lesson-specific presentation styles from shrinking readable teaching text. */
+body .lesson-content :where(p:not(.eyebrow):not(.lesson-meta):not(.source-note), li, td, th),
+body .lesson-content code {
+  font-size: max(1em, var(--academic-text-body));
+}
+
+.lesson-content small {
+  font-size: var(--academic-text-meta);
+  line-height: 1.4;
 }
 
 .guidance-grid {
@@ -575,6 +614,8 @@ label {
 .source-note {
   border-radius: 2px;
   box-shadow: none;
+  font-size: var(--academic-text-ui);
+  line-height: 1.5;
 }
 
 /* Fixed lesson navigation remains utilitarian and never covers content. */
@@ -586,7 +627,7 @@ label {
 }
 
 body.has-teacher-toolbar {
-  padding-bottom: 104px;
+  padding-bottom: 112px;
 }
 
 .teacher-toolbar {
@@ -595,12 +636,19 @@ body.has-teacher-toolbar {
   background: rgba(255, 255, 255, 0.99);
   box-shadow: 0 -6px 18px rgba(17, 29, 53, 0.1);
   font-family: var(--academic-sans);
+  font-size: var(--academic-text-ui);
+  line-height: 1.45;
 }
 
 .teacher-toolbar :where(button, a, summary),
 .teacher-toolbar__menu {
   border-radius: 2px;
   box-shadow: none;
+}
+
+.teacher-toolbar__lesson span {
+  font-size: var(--academic-text-meta);
+  line-height: 1.4;
 }
 
 /* Assessment bank: library index plus examination-paper rhythm. */
@@ -650,7 +698,7 @@ body:has(.resource-list) main {
 
 .filter-grid label {
   color: var(--academic-body);
-  font-size: 0.8rem;
+  font-size: var(--academic-text-ui);
 }
 
 .filter-actions p {
@@ -722,7 +770,7 @@ body:has(.resource-list) main {
   background: var(--academic-paper);
   color: var(--academic-blue-dark);
   font-family: var(--academic-serif);
-  font-size: 1.08rem;
+  font-size: var(--academic-heading-card);
 }
 
 .resource-card summary:hover,
@@ -733,7 +781,8 @@ body:has(.resource-list) main {
 .resource-card summary small {
   color: var(--academic-muted);
   font-family: var(--academic-sans);
-  font-size: 0.82rem;
+  font-size: var(--academic-text-ui);
+  line-height: 1.5;
 }
 
 .resource-content {
@@ -763,7 +812,7 @@ body:has(.resource-list) main {
 .resource-content th {
   color: var(--academic-ink);
   font-family: var(--academic-serif);
-  font-size: 1rem;
+  font-size: var(--academic-text-body);
   border-bottom: 3px solid var(--academic-blue-dark);
 }
 
@@ -794,7 +843,7 @@ body:has(.resource-list) main {
 
 @media (max-width: 700px) {
   body {
-    font-size: 16px;
+    font-size: var(--academic-text-body);
   }
 
   .topbar {
@@ -869,7 +918,7 @@ body:has(.resource-list) main {
 
   .page > .hero h2,
   .lesson-content > .hero h2 {
-    font-size: clamp(2.5rem, 13vw, 3.6rem);
+    font-size: clamp(36px, 11vw, 48px);
     line-height: 1.01;
   }
 
@@ -923,7 +972,7 @@ body:has(.resource-list) main {
   }
 
   body.has-teacher-toolbar {
-    padding-bottom: 118px;
+    padding-bottom: 132px;
   }
 
   .teacher-toolbar {

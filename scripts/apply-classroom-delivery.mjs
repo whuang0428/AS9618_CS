@@ -7,7 +7,7 @@ import { explanationByKey } from "./stage10-explanations-data.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const toolbarStylesheet = '    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />';
-const academicThemeStylesheet = '    <link rel="stylesheet" href="../academic-theme.css?v=5" />';
+const academicThemeStylesheet = '    <link rel="stylesheet" href="../academic-theme.css?v=6" />';
 const scripts = [
   '    <script src="../course-catalog.js?v=1"></script>',
   '    <script src="../lesson-toolbar.js?v=2"></script>',
