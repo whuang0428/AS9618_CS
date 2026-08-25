@@ -129,16 +129,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** tradeoff
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-025-concepts.jpg`
 
-1. Bandwidth
-2. The maximum amount of data that can be transmitted over a connection per second.
-3. Typical units: bits per second, Mbps, Gbps.
-4. The delay before data starts to arrive or before a response is received.
-5. Typical units: milliseconds (ms).
-6. Congestion
-7. Occurs when too much data is trying to use part of a network, causing queues, delay or packet loss.
-8. Symptom: performance worsens when many users/devices compete.
-9. Throughput
-10. The actual amount of data successfully transferred per second, often lower than theoretical bandwidth.
+1. Bandwidth is the maximum data-transfer capacity per second.
+2. Latency is delay before data starts to arrive or a response is received.
+3. Congestion creates queues, delay or packet loss and can reduce throughput.
+4. Throughput is the actual successful transfer rate and may be below bandwidth.
 
 ### Factors that affect performance
 

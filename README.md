@@ -95,6 +95,7 @@ node scripts/verify-cie-wording.mjs
 node scripts/verify-academic-theme.mjs
 node scripts/verify-student-navigation.mjs
 node scripts/verify-educational-visuals.mjs
+node scripts/verify-visual-semantic-remediation.mjs
 node scripts/verify-stage2.mjs
 node scripts/verify-assessments.mjs
 node scripts/verify-lesson-mark-schemes.mjs
@@ -116,7 +117,7 @@ For the complete final acceptance workflow, run:
 node scripts/verify-all.mjs
 ```
 
-This runs every Stage 2-10 verifier, builds `dist/AS9618-CS-2027-2029-v1.0.0.zip`, verifies its sidecar and internal SHA-256 manifests, checks source parity and validates the packaged course inventory. Regenerate an approval register only after repeating the corresponding review.
+This runs every Stage 2-10 verifier, including the permanent 968-item visual semantic remediation gate, builds `dist/AS9618-CS-2027-2029-v1.0.0.zip`, verifies its sidecar and internal SHA-256 manifests, checks source parity and validates the packaged course inventory. The visual gate requires 66/66 repaired visuals to retain two-pass evidence, 902/902 untouched visuals to match the frozen baseline, all 79 historical Stage 10 defects to remain resolved, and the deterministic renderer, OCR/source transcripts, Markdown and HTML to agree.
 
 ## Generated Lesson Count
 

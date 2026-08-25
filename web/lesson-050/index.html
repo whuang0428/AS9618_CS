@@ -176,7 +176,7 @@
             <figcaption class="explanation-sr-only">Without and with pipelining: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Without pipelining</li><li><strong>Lesson fact:</strong> Instruction 1 completes fetch, decode and execute before instruction 2 begins.</li><li><strong>Lesson fact:</strong> I1: F D E</li><li><strong>Lesson fact:</strong> I2: F D E</li><li><strong>Lesson fact:</strong> I3: F D E</li><li><strong>Lesson fact:</strong> Three instructions with three stages each may take nine stage slots.</li><li><strong>Lesson fact:</strong> With pipelining</li><li><strong>Lesson fact:</strong> Instruction 2 can be fetched while instruction 1 is decoded; instruction 3 can be fetched while instruction 1 executes.</li><li><strong>Lesson fact:</strong> C2: F2 D1</li><li><strong>Lesson fact:</strong> C3: F3 D2 E1</li><li><strong>Lesson fact:</strong> C4: D3 E2</li><li><strong>Lesson fact:</strong> After the pipeline fills, one instruction can complete per cycle in the ideal case.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Without pipelining, each instruction completes fetch, decode and execute before the next starts.</li><li><strong>Lesson fact:</strong> In an ideal three-stage pipeline, instruction 1 completes in cycle 3, instruction 2 in cycle 4 and instruction 3 in cycle 5.</li><li><strong>Lesson fact:</strong> Instruction 3 must execute in cycle 5; it is not complete after decode in cycle 4.</li></ol>
 
           </div>
         </section>

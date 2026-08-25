@@ -104,9 +104,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** process
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-105-bubble.jpg`
 
-1. Compare neighbouring values and swap an inverted pair.
-2. A pass moves one extreme value toward its final end position.
-3. Repeat until a pass makes no swaps or the unsorted region ends.
+1. Bubble sort compares adjacent items and swaps an inverted pair.
+2. For [1, 4, 2, 5, 8], pass 2 makes one swap: 4 and 2.
+3. The resulting list is [1, 2, 4, 5, 8], and the next pass makes zero swaps.
 - **Analogy:** Repeatedly exchange adjacent books until the largest reaches the shelf end.
 - **Boundary:** One pass does not generally sort the entire list.
 

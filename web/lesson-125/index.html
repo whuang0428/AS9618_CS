@@ -68,6 +68,7 @@
               <span>TYPE TStudent</span>
               <span>Name : STRING</span>
               <span>Mark : INTEGER</span>
+              <span>ENDTYPE</span>
             </div>
             <p>Same exam section. Different toolbox. Choose before you write.</p>
           </div>
@@ -202,7 +203,11 @@ Mark &lt;- STRING_TO_INTEGER(Fields[3])</code></pre>
             <figcaption class="explanation-sr-only">Files preserve data beyond the running program: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> File handling review</li><li><strong>Lesson fact:</strong> Line-based read pattern</li><li><strong>Lesson fact:</strong> OPENFILE &quot;Scores.csv&quot; FOR READ</li><li><strong>Lesson fact:</strong> WHILE NOT EOF(&quot;Scores.csv&quot;)</li><li><strong>Lesson fact:</strong> READFILE &quot;Scores.csv&quot;, Line</li><li><strong>Lesson fact:</strong> // process Line</li><li><strong>Lesson fact:</strong> ENDWHILE</li><li><strong>Lesson fact:</strong> CLOSEFILE &quot;Scores.csv&quot;</li><li><strong>Lesson fact:</strong> CSV processing idea</li><li><strong>Lesson fact:</strong> Line &lt;- &quot;S017,Ava,82&quot;</li><li><strong>Lesson fact:</strong> Fields &lt;- SPLIT(Line, &quot;,&quot;)</li><li><strong>Lesson fact:</strong> StudentID &lt;- Fields[1]</li></ol>
+            <ol><li><strong>Lesson fact:</strong> TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:120] OF TStudent
+The array follows the completed record type.</li><li><strong>Lesson fact:</strong> File storage preserves data between program runs and is separate from record-type syntax.</li></ol>
 
           </div>
         </section>
@@ -271,7 +276,12 @@ Student[] students = new Student[120];</code></pre>
             <figcaption class="explanation-sr-only">Cambridge pseudocode remains the exam standard: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Declaration review</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> TYPE TStudent</li><li><strong>Lesson fact:</strong> DECLARE ID : STRING</li><li><strong>Lesson fact:</strong> DECLARE Name : STRING</li><li><strong>Lesson fact:</strong> DECLARE Mark : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:120] OF TStudent</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> class Student {</li><li><strong>Lesson fact:</strong> String id;</li><li><strong>Lesson fact:</strong> String name;</li><li><strong>Lesson fact:</strong> int mark;</li></ol>
+            <ol><li><strong>Lesson fact:</strong> TYPE TStudent
+    DECLARE ID : STRING
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE</li><li><strong>Lesson fact:</strong> Close TStudent after the Mark field.</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:120] OF TStudent
+This declaration follows ENDTYPE.</li></ol>
 
           </div>
         </section>

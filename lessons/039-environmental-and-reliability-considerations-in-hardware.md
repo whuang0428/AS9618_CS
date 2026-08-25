@@ -112,11 +112,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-039-reliability.jpg`
 
-1. Availability The system is usable when required, such as a checkout system during opening hours.
-2. Redundancy Extra hardware can take over if one component fails, such as a spare disk or power supply.
-3. Backup Copies of data reduce the impact of storage failure or accidental loss.
-4. MTBF Mean time between failures indicates expected reliability, often used for comparing components.
-5. Maintenance Cleaning, updates and replacement schedules reduce unexpected failure.
-6. Monitoring Temperature, battery, disk and network monitoring can warn before failure becomes outage.
-7. Reliability answer frame: "If X fails, Y prevents or reduces the impact, so the user can continue Z."
+1. Redundancy, failover and a UPS can support continuity when a component or power source fails.
+2. Backup and restore support recovery after data loss or failure.
+3. A backup copy reduces data loss and recovery time but does not by itself keep a live service running.
 <!-- stage10-explanations:end -->

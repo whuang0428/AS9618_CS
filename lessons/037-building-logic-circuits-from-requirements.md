@@ -107,16 +107,8 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-037-parse.jpg`
 
-1. Requirement phrase
-2. Logic meaning
-3. Gate / expression
-4. Exam warning
-5. both / all / only if X and Y
-6. Every listed condition must be 1.
-7. Do not replace AND with OR because one condition sounds important.
-8. either / at least one
-9. One or more conditions may be 1.
-10. OR includes the row where both inputs are 1.
-11. not / unless / inactive
-12. Invert the condition.
+1. AND means every listed condition must be true; OR means at least one condition is true.
+2. NOT directly inverts a condition.
+3. P unless Q means P when NOT Q; the full sentence determines which condition is negated.
+4. Do not treat the word unless as a universal unary NOT operator.
 <!-- stage10-explanations:end -->

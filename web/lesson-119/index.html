@@ -121,7 +121,7 @@
             <figcaption class="explanation-sr-only">One array, many records, same record shape: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Array of records</li><li><strong>Lesson fact:</strong> array where each element is a record</li><li><strong>Lesson fact:</strong> Students[1:30]</li><li><strong>Lesson fact:</strong> selects one record from the array</li><li><strong>Lesson fact:</strong> Students[5]</li><li><strong>Lesson fact:</strong> selects one named value inside that record</li><li><strong>Lesson fact:</strong> Combined access</li><li><strong>Lesson fact:</strong> index first, field second</li><li><strong>Lesson fact:</strong> Students[5].Mark</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Students[5] selects the complete record at array position 5.</li><li><strong>Lesson fact:</strong> Students[5].Mark selects the Mark field in that record.</li><li><strong>Lesson fact:</strong> Array indexing and record field selection are separate operations.</li></ol>
 
           </div>
         </section>
@@ -160,7 +160,11 @@ Students[1].Mark &lt;- 72</code></pre>
             <figcaption class="explanation-sr-only">Define the record type, then declare the array: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Record type</li><li><strong>Lesson fact:</strong> TYPE TStudent</li><li><strong>Lesson fact:</strong> DECLARE Name : STRING</li><li><strong>Lesson fact:</strong> DECLARE Mark : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Enrolled : BOOLEAN</li><li><strong>Lesson fact:</strong> Array of records</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:30] OF TStudent</li><li><strong>Lesson fact:</strong> Students[1].Name &lt;- &quot;Ali&quot;</li><li><strong>Lesson fact:</strong> Students[1].Mark &lt;- 72</li><li><strong>Lesson fact:</strong> The record type describes one element. The array declaration creates many elements of that type.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:30] OF TStudent
+This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> The record type and the array declaration are separate declarations.</li></ol>
 
           </div>
         </section>

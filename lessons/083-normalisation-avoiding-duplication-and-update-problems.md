@@ -127,9 +127,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** process
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-083-normal-forms.jpg`
 
-1. 1NF makes stored values atomic within each row and column.
-2. 2NF removes partial dependency on part of a composite key.
-3. 3NF removes dependency on another non-key attribute.
+1. A valid decomposition retains every original fact and follows the stated functional dependencies.
+2. After 2NF, keep Course(CourseID, CourseName, TutorID) when those course facts are represented.
+3. For 3NF, store tutor details in Tutor(TutorID, TutorName) and retain TutorID only in the relation it depends on.
+4. Do not drop CourseName or move TutorID without a stated dependency.
 - **Analogy:** Separate mixed filing rules one dependency at a time.
 - **Boundary:** A table with a single-attribute key cannot have a partial-key dependency.
 

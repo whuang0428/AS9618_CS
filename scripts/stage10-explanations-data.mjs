@@ -2,15 +2,36 @@ import fs from "node:fs";
 import path from "node:path";
 import { sourceFactOverrides } from "./stage10-semantic-source-overrides.mjs";
 
+const visualTitleOverrides = Object.freeze({
+  "074/ip": "What intellectual property can protect",
+  "123/pseudocode": "Justify the data structure in Cambridge answers",
+  "130/procedure": "A procedure performs actions and returns no value",
+  "137/validation": "Testing checks validation against expected results",
+  "145/evaluation": "Evaluation uses requirements and measurable success criteria",
+});
+
 function explanation(lesson, targetId, kind, title, steps, analogy, boundary) {
+  const key = `${lesson}/${targetId}`;
+  const maintainedTitle = visualTitleOverrides[key] ?? title;
+  const maintainedSteps = sourceFactOverrides[key] ?? steps;
   const visual = Object.freeze({
     src: `../assets/diagrams/stage10-infographics/stage10-lesson-${lesson}-${targetId}.jpg`,
     width: 1536,
     height: 1024,
-    alt: `Academic knowledge-point infographic explaining ${title} through a cause-and-effect diagram.`,
-    caption: `${title}: mechanism, reason, result, analogy and boundary condition.`,
+    alt: `Academic knowledge-point infographic explaining ${maintainedTitle} through a cause-and-effect diagram.`,
+    caption: `${maintainedTitle}: mechanism, reason, result, analogy and boundary condition.`,
   });
-  return Object.freeze({ lesson, targetId, kind, title, steps: Object.freeze(steps), analogy, boundary, visual });
+  return Object.freeze({
+    lesson,
+    targetId,
+    kind,
+    title: maintainedTitle,
+    steps: Object.freeze(maintainedSteps.slice(0, 3)),
+    analogy,
+    boundary,
+    transcript: Object.freeze(maintainedSteps),
+    visual,
+  });
 }
 
 export const pilotExplanations = Object.freeze([
@@ -78,12 +99,14 @@ const rolloutExplanations = rolloutJobs
   .filter((job) => !pilotKeys.has(`${job.lesson}/${job.targetId}`))
   .filter((job) => fs.existsSync(path.join(root, "web", "assets", "diagrams", "stage10-infographics", job.filename)))
   .map((job) => {
-    const sourceFacts = sourceFactOverrides[`${job.lesson}/${job.targetId}`] ?? job.sourceFacts;
+    const key = `${job.lesson}/${job.targetId}`;
+    const sourceFacts = sourceFactOverrides[key] ?? job.sourceFacts;
+    const title = visualTitleOverrides[key] ?? job.title;
     return Object.freeze({
     lesson: job.lesson,
     targetId: job.targetId,
     kind: job.kind,
-    title: job.title,
+    title,
     steps: Object.freeze(sourceFacts.slice(0, 3)),
     analogy: "",
     boundary: "",
@@ -93,8 +116,8 @@ const rolloutExplanations = rolloutJobs
       src: `../assets/diagrams/stage10-infographics/${job.filename}`,
       width: 1536,
       height: 1024,
-      alt: `Academic knowledge-point infographic explaining ${job.title} with a structured visual model.`,
-      caption: `${job.title}: source-grounded visual explanation.`,
+      alt: `Academic knowledge-point infographic explaining ${title} with a structured visual model.`,
+      caption: `${title}: source-grounded visual explanation.`,
     }),
     });
   });

@@ -115,17 +115,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** comparison
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-023-compare.jpg`
 
-1. Main job
-2. Address / rule focus
-3. Connects devices and forwards frames inside a LAN.
-4. Uses MAC addresses / ports.
-5. Connects different networks and forwards packets between them.
-6. Uses IP addresses / routing table.
-7. Access point
-8. Allows wireless devices to connect to a network.
-9. Uses radio waves / WiFi access.
-10. Connects networks using different protocols or formats.
-11. Performs protocol/format translation where needed.
+1. A switch forwards frames inside a LAN using MAC addresses.
+2. A router forwards packets between networks using IP addresses and a routing table.
+3. A wireless access point connects wireless devices to a network.
+4. A gateway connects systems or networks that use different protocols or formats and may perform translation.
 
 ### Gateways: connecting different network rules
 

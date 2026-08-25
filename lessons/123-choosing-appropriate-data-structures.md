@@ -133,11 +133,13 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-array.jpg`
 
-1. DECLARE Scores : ARRAY[1:30] OF INTEGER
-2. FOR Index <- 1 TO 30
-3. Total <- Total + Scores[Index]
-4. NEXT Index
-5. Good reason: all elements are INTEGER scores and can be traversed using an index.
+1. Initialise Total <- 0 before using Total as an accumulator.
+2. Add each Scores[Index] value during the traversal.
+3. Total <- 0
+FOR Index <- 1 TO 10
+    Total <- Total + Scores[Index]
+NEXT Index
+OUTPUT Total
 
 ### Start with the data and operations, not the keyword
 
@@ -181,24 +183,19 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. CLOSEFILE "Scores.csv"
 4. Good reason: the data must be stored after the program has finished, so memory-only structures are not enough.
 
-### Cambridge answers should justify the structure, not advertise a Java class
+### Justify the data structure in Cambridge answers
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style modelling
-3. TYPE TBook
-4. DECLARE ISBN : STRING
-5. DECLARE Title : STRING
-6. DECLARE Pages : INTEGER
-7. DECLARE Books : ARRAY[1:200] OF TBook
-8. Java support only
-9. class Book {
-10. String isbn;
-11. String title;
-12. int pages;
+1. TYPE TBook
+    DECLARE Title : STRING
+    DECLARE Pages : INTEGER
+ENDTYPE
+2. DECLARE Books : ARRAY[1:200] OF TBook
+This declaration follows ENDTYPE.
+3. A record definition must be complete before an array uses that type.
 
 ### Spot the answer that would earn marks
 
@@ -215,13 +212,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-record.jpg`
 
-1. Record / array of records
-2. One student
-3. TYPE TStudent
-4. DECLARE Name : STRING
-5. DECLARE Mark : INTEGER
-6. DECLARE Present : BOOLEAN
-7. Many students
-8. DECLARE Students : ARRAY[1:28] OF TStudent
-9. OUTPUT Students[1].Name
+1. TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE
+2. DECLARE Students : ARRAY[1:28] OF TStudent
+This declaration follows ENDTYPE.
+3. An array of records combines explicit array bounds with a complete record type.
 <!-- stage10-explanations:end -->

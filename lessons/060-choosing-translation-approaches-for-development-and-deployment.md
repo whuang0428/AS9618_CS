@@ -41,7 +41,7 @@ Teacher guidance: require the technical term and the explanation, method or appl
 ## Worked Example
 **Problem:** A team wants rapid line-by-line feedback during development, then wants to distribute a finished program without its source code. Choose a suitable translation approach for each stage.
 
-**Worked answer / marking focus:** Use an interpreter during development for immediate statement-by-statement feedback; compile the finished program to object/executable code for distribution. Credit that compiled code is produced before execution and can run without retranslating the source each time.
+**Worked answer / marking focus:** Use an interpreter during development for immediate statement-by-statement feedback. A compiler translates the finished high-level program into object code; a linker combines object modules and libraries into an executable for distribution. Credit that translation occurs before execution and the linked executable can run without retranslating the source each time.
 
 
 

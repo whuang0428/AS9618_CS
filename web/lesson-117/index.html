@@ -183,7 +183,11 @@ NEXT Index</code></pre>
             <figcaption class="explanation-sr-only">Change selected elements: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Update every element</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 5</li><li><strong>Lesson fact:</strong> Scores[Index] &lt;- Scores[Index] + 2</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Update only when condition is true</li><li><strong>Lesson fact:</strong> IF Scores[Index] &lt; 50 THEN</li><li><strong>Lesson fact:</strong> Scores[Index] &lt;- Scores[Index] + 5</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Traverse the array with a FOR loop so Index is defined for every access.</li><li><strong>Lesson fact:</strong> Place the conditional update inside the traversal.</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 10
+    IF Scores[Index] &lt; 50 THEN
+        Scores[Index] &lt;- Scores[Index] + 5
+    ENDIF
+NEXT Index</li></ol>
 
           </div>
         </section>

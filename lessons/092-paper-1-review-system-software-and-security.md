@@ -81,13 +81,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-092-map.jpg`
 
-1. Retrieval map
-2. Operating system process, memory, file, device and security/user management
-3. User interfaces CLI, GUI, menu-driven and natural language interfaces
-4. Utilities backup, compression, encryption, defragmentation and anti-malware tools
-5. Translators assembler, compiler, interpreter, linker, loader and libraries
-6. Security goals confidentiality, integrity, availability, authenticity
-7. Controls authentication, access rights, encryption, hashing, certificates, firewalls and audit trails
+1. Compiler, interpreter and assembler are alternative translator paths rather than one serial pipeline.
+2. High-level source can be compiled to object code and then linked and loaded.
+3. High-level source can instead be interpreted and executed at runtime.
+4. Assembly source is translated by an assembler into machine or object code.
 
 ### Choose the best control
 

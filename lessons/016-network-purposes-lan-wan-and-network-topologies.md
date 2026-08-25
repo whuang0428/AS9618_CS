@@ -139,9 +139,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** tradeoff
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-016-topologies.jpg`
 
-1. The layout determines which physical paths data can follow.
-2. Shared paths reduce cabling but concentrate traffic and failures.
-3. Alternative paths improve resilience but require more links and ports.
+1. A topology diagram's link count must match the physical links actually drawn.
+2. Alternative paths improve resilience but require additional links and ports.
+3. Use one consistent topology in the mechanism and result views; this example has nine links including the inter-switch link.
 - **Analogy:** Road layouts trade construction cost against alternative routes after a closure.
 - **Boundary:** No topology is universally best; cost, scale and failure tolerance decide.
 <!-- stage10-explanations:end -->

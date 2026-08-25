@@ -143,10 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-019-rules.jpg`
 
-1. Data format How data is structured, encoded or framed.
-2. Addressing How sender and receiver are identified.
-3. Timing When data can be sent and how long to wait for responses.
-4. Error control How errors are detected and how retransmission is handled.
-5. Flow control How to stop a fast sender overwhelming a slow receiver.
-6. Connection rules How communication starts, continues and ends.
+1. Protocols define rules for data format, addressing, timing, error handling, flow control and connection management.
+2. A protocol may provide reliability and ordered delivery, but these are not guaranteed by every protocol.
+3. TCP provides reliable ordered delivery; UDP does not guarantee reliability or ordering.
 <!-- stage10-explanations:end -->

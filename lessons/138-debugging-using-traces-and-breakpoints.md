@@ -130,17 +130,13 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-138-purpose.jpg`
 
-1. Debugging
-2. A program can be syntactically valid and still wrong. Debugging checks the actual behaviour against the intended
-3. behaviour, then narrows down where the fault occurs.
-4. Faulty pseudocode
-5. INPUT Mark
-6. IF Mark > 50 THEN
-7. OUTPUT "Pass"
-8. OUTPUT "Resit needed"
-9. Intended rule
-10. A mark of 50 should pass. The code uses > , so 50 incorrectly goes to the ELSE branch.
-11. The bug is small. Its exam mark consequences are not.
+1. IF Mark > 50 THEN
+    OUTPUT "Pass"
+ELSE
+    OUTPUT "Fail"
+ENDIF
+2. The example is syntactically valid but still contains the deliberate logic error Mark > 50 at the boundary.
+3. Cambridge pseudocode closes the selection with ENDIF, not END IF.
 
 ### Step through code one instruction at a time
 

@@ -115,9 +115,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** comparison
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-030-cache-vm.jpg`
 
-1. Cache keeps likely next data close to the CPU.
-2. A cache hit avoids a slower trip to main memory.
-3. Virtual memory moves pages to storage when RAM is insufficient.
+1. Cache holds copies of recently or frequently used instructions and data close to the CPU.
+2. A cache hit avoids a slower main-memory access.
+3. Virtual memory uses secondary storage when RAM is insufficient and increases apparent capacity rather than physical RAM speed.
 - **Analogy:** A desk tray saves a walk; using the archive as desk space creates walks.
 - **Boundary:** Virtual memory increases capacity, not physical RAM speed.
 

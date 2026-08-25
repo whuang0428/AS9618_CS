@@ -81,10 +81,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-093-databases.jpg`
 
-1. Database review
-2. Primary key Unique, reliable field that identifies each record in one table.
-3. Foreign key Field that stores a matching primary key value from another table to create a relationship.
-4. Normalisation Separates repeated data into related tables to reduce duplication, inconsistency and update errors.
+1. Normalisation must retain every original attribute and fact so the original information remains reconstructable.
+2. If the original rows contain A and B values, the decomposition must keep each B value with its relevant key.
+3. A relation containing only a foreign key to A loses the represented B facts.
 
 ### Evaluation answers need both sides and a condition
 

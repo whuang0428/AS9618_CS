@@ -143,16 +143,13 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** comparison
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-137-purpose.jpg`
 
-1. Why testing
-2. A test is useful only if it can reveal whether the program behaves correctly. A strong test case has input data,
-3. a reason for choosing it, and a clear expected result.
-4. Validation rule
-5. IF Mark >= 0 AND Mark <= 100 THEN
-6. OUTPUT "Accepted"
-7. OUTPUT "Rejected"
-8. Testing question
-9. Which values prove that the rule accepts valid marks and rejects invalid marks?
-10. Normal data checks ordinary use. Boundary data checks the edges. Erroneous data checks rejection.
+1. IF Mark >= 0 AND Mark <= 100 THEN
+    OUTPUT "Valid"
+ELSE
+    OUTPUT "Invalid"
+ENDIF
+2. Normal, boundary and erroneous test data provide evidence for the selected cases.
+3. Finite testing can expose faults but does not prove correctness for every possible input.
 
 ### A clear test table turns thinking into marks
 
@@ -173,14 +170,13 @@ Correction prompt: "State the correct term, then explain the relevant process or
 11. Rejected
 12. wrong data type
 
-### Validation is the check. Testing proves whether the check works.
+### Testing checks validation against expected results
 
 - **Explains:** `validation`
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-137-validation.jpg`
 
-1. Validation vs testing
-2. Validation
-3. A program rule, such as “Mark must be from 0 to 100 inclusive”.
-4. A planned set of inputs, such as 50 , 0 , 100 , -1 , 101 and "cat" .
+1. Testing checks whether validation behaves as expected for selected normal, boundary and erroneous cases.
+2. Expected and actual results are compared for each test.
+3. Passing a finite test set is evidence, not a proof of universal correctness.
 <!-- stage10-explanations:end -->

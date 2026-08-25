@@ -100,14 +100,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-071-controls.jpg`
 
-1. Authentication Checks identity before access. It does not decide every permission by itself.
-2. Access rights Limit what an authenticated user can read, edit, delete or approve.
-3. Encryption Makes data unreadable without the key, protecting confidentiality.
-4. Validation Checks input follows rules such as type, range, length or format.
-5. Verification Checks data has been copied or entered accurately, often by comparison.
-6. Backup Provides recoverable copies after deletion, corruption or hardware failure.
-7. Disaster recovery Plans how systems and services are restored after a major incident.
-8. Audit trail Records actions for investigation, accountability and evidence.
+1. Verification checks that copied, entered or transferred data agrees with the source or repeated entry.
+2. Double entry and visual checking can reduce copying errors.
+3. Matching values may still be false, so verification does not guarantee accuracy or truth.
 
 ### Identify the risk family first
 

@@ -134,17 +134,13 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-118-declare.jpg`
 
-1. Declare records
-2. Record type
-3. TYPE TStudent
-4. DECLARE Name : STRING
-5. DECLARE DateOfBirth : DATE
-6. DECLARE Mark : INTEGER
-7. DECLARE Enrolled : BOOLEAN
-8. Record variable
-9. DECLARE Student1 : TStudent
-10. Student1.Name <- "Ali"
-11. Student1.Mark <- 72
+1. TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE
+2. DECLARE Student1 : TStudent
+This declaration follows ENDTYPE.
+3. Every displayed Cambridge record declaration must include ENDTYPE.
 
 ### Read one field from a record
 
@@ -161,16 +157,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** comparison
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-118-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style pseudocode
-3. TYPE TBook
-4. DECLARE Title : STRING
-5. DECLARE Pages : INTEGER
-6. DECLARE Available : BOOLEAN
-7. DECLARE Book1 : TBook
-8. Book1.Available <- TRUE
-9. Java support only
-10. class Book {
-11. String title;
-12. int pages;
+1. TYPE TBook
+    DECLARE Title : STRING
+    DECLARE Pages : INTEGER
+ENDTYPE
+2. Book fields are declared inside the TYPE block.
+3. DECLARE Book1 : TBook
+This declaration belongs after ENDTYPE.
 <!-- stage10-explanations:end -->

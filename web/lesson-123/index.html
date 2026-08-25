@@ -152,7 +152,11 @@ NEXT Index</code></pre>
             <figcaption class="explanation-sr-only">Use arrays for many similar values accessed by index: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> DECLARE Scores : ARRAY[1:30] OF INTEGER</li><li><strong>Lesson fact:</strong> FOR Index &lt;- 1 TO 30</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Scores[Index]</li><li><strong>Lesson fact:</strong> NEXT Index</li><li><strong>Lesson fact:</strong> Good reason: all elements are INTEGER scores and can be traversed using an index.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Initialise Total &lt;- 0 before using Total as an accumulator.</li><li><strong>Lesson fact:</strong> Add each Scores[Index] value during the traversal.</li><li><strong>Lesson fact:</strong> Total &lt;- 0
+FOR Index &lt;- 1 TO 10
+    Total &lt;- Total + Scores[Index]
+NEXT Index
+OUTPUT Total</li></ol>
 
           </div>
         </section>
@@ -188,7 +192,11 @@ OUTPUT Students[1].Name</code></pre>
             <figcaption class="explanation-sr-only">Use records when named fields belong to one entity: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Record / array of records</li><li><strong>Lesson fact:</strong> One student</li><li><strong>Lesson fact:</strong> TYPE TStudent</li><li><strong>Lesson fact:</strong> DECLARE Name : STRING</li><li><strong>Lesson fact:</strong> DECLARE Mark : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Present : BOOLEAN</li><li><strong>Lesson fact:</strong> Many students</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:28] OF TStudent</li><li><strong>Lesson fact:</strong> OUTPUT Students[1].Name</li></ol>
+            <ol><li><strong>Lesson fact:</strong> TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE</li><li><strong>Lesson fact:</strong> DECLARE Students : ARRAY[1:28] OF TStudent
+This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> An array of records combines explicit array bounds with a complete record type.</li></ol>
 
           </div>
         </section>
@@ -307,13 +315,17 @@ Book[] books = new Book[200];</code></pre>
 
         <!-- stage10-explanation:start pseudocode -->
         <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Cambridge answers should justify the structure, not advertise a Java class</h2>
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Justify the data structure in Cambridge answers</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge answers should justify the structure, not advertise a Java class with a structured visual model." />
-            <figcaption class="explanation-sr-only">Cambridge answers should justify the structure, not advertise a Java class: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-123-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Justify the data structure in Cambridge answers with a structured visual model." />
+            <figcaption class="explanation-sr-only">Justify the data structure in Cambridge answers: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style modelling</li><li><strong>Lesson fact:</strong> TYPE TBook</li><li><strong>Lesson fact:</strong> DECLARE ISBN : STRING</li><li><strong>Lesson fact:</strong> DECLARE Title : STRING</li><li><strong>Lesson fact:</strong> DECLARE Pages : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Books : ARRAY[1:200] OF TBook</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> class Book {</li><li><strong>Lesson fact:</strong> String isbn;</li><li><strong>Lesson fact:</strong> String title;</li><li><strong>Lesson fact:</strong> int pages;</li></ol>
+            <ol><li><strong>Lesson fact:</strong> TYPE TBook
+    DECLARE Title : STRING
+    DECLARE Pages : INTEGER
+ENDTYPE</li><li><strong>Lesson fact:</strong> DECLARE Books : ARRAY[1:200] OF TBook
+This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> A record definition must be complete before an array uses that type.</li></ol>
 
           </div>
         </section>

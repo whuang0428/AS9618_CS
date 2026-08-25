@@ -139,14 +139,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-041-cpu-map.jpg`
 
-1. Visual explanation
-2. The ALU, CU and registers are processor components. Main memory is outside the CPU; buses carry addresses, data and control signals between them.
-3. CU Coordinates the fetch-decode-execute cycle and sends control signals.
-4. ALU Performs arithmetic operations, comparisons and Boolean logic.
-5. Registers + clock Registers hold immediate working values; clock pulses coordinate timing.
-6. Buses + memory Buses connect the CPU to memory without making memory part of the CPU.
-7. Check the diagram: is main memory a register inside the CPU?
-8. No. Registers are small, fast storage locations inside the CPU. Main memory is a separate component connected to the CPU by buses.
+1. The address bus normally carries addresses from the CPU to memory or I/O.
+2. The data bus is bidirectional and carries data or instructions.
+3. The control bus is bidirectional overall: the CPU sends read/write signals and devices or controllers can send interrupts and status signals back.
 
 ### How registers, buses and clock stay aligned
 

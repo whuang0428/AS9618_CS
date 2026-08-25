@@ -142,10 +142,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-004-rules.jpg`
 
-1. 0 + 0 sum 0, carry 0
-2. 0 + 1 sum 1, carry 0
-3. 1 + 0 sum 1, carry 0
-4. 1 + 1 sum 0, carry 1
-5. 1 + 1 + carry 1 sum 1, carry 1
-6. In binary, 1 + 1 = 10₂: write 0 in the current column and carry 1 left.
+1. A full-adder truth table has eight A, B and carry-in combinations.
+2. 000 gives sum 0 carry 0; 001 and 010 give sum 1 carry 0; 011 gives sum 0 carry 1.
+3. 100 gives sum 1 carry 0; 101 and 110 give sum 0 carry 1; 111 gives sum 1 carry 1.
 <!-- stage10-explanations:end -->

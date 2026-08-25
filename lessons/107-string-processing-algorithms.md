@@ -25,7 +25,7 @@ Give instructions for making tea but remove one step. Ask where the algorithm fa
 Focus question: Which feature distinguishes **String-processing algorithms** from the most closely related syllabus concept?
 
 ## Guided Explanation
-Define the inputs, outputs and stopping condition before writing any pseudocode. For String-processing algorithms, model the algorithm with a trace or dry run. Then improve readability using indentation, meaningful identifiers and Cambridge pseudocode conventions.
+Define a string as a sequence of zero or more characters, then define the inputs, outputs and stopping condition before writing any pseudocode. For string-processing algorithms, model the algorithm with a trace or dry run. Then improve readability using indentation, meaningful identifiers and Cambridge pseudocode conventions.
 
 Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 

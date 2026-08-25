@@ -81,15 +81,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-026-map.jpg`
 
-1. Retrieval map
-2. Networks and topologies LAN/WAN, star, bus, mesh, client-server, peer-to-peer.
-3. Packets and routing Packet switching, packet contents, routing decisions, reassembly.
-4. Protocols and layers Rules for communication, layered model, encapsulation.
-5. Addressing and naming IP address, MAC address, DNS, URL parts.
-6. Application protocols HTTP, HTTPS, FTP, SMTP, POP3, IMAP.
-7. Media and hardware Copper, fibre, radio, microwave, satellite; switch, router, access point, gateway.
-8. Network services Internet, intranet, extranet, cloud services.
-9. Performance Bandwidth, latency, congestion, throughput, packet loss.
+1. Packets in a packet-switched network are routed independently.
+2. A response is sent back to the source but may take the same or a different route.
+3. Routing decisions depend on the available network paths at each stage.
 
 ### Precision rules for Section 2 answers
 

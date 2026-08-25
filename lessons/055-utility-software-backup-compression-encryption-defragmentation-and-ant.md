@@ -103,18 +103,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** comparison
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-055-compare.jpg`
 
-1. Most relevant utility
-2. Exam-quality reason
-3. Deleted work needs recovery
-4. A previous copy can be restored if it was made before the loss.
-5. File is too large to email
-6. Compression
-7. Reduces file size, saving transmission time and storage space.
-8. Sensitive file may be stolen
-9. Encryption
-10. Turns readable data into ciphertext that needs a key to read.
-11. Old HDD opens files slowly
-12. Defragmentation
+1. Defragmentation rearranges related file blocks contiguously on a magnetic HDD.
+2. Reducing read-head movement can improve HDD access time.
+3. Defragmentation does not provide the same benefit to an SSD and does not create a backup.
 
 ### Compression utilities reduce file size
 

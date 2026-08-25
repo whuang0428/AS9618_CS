@@ -107,10 +107,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-035-signals.jpg`
 
-1. False, off, no signal, condition not met
-2. True, on, signal present, condition met
-3. A value entering the gate, usually labelled A, B or C.
-4. The result produced by the gate, often labelled Q or X.
+1. Logic 0 means false, off or a valid low logic level.
+2. Logic 1 means true, on or a valid high logic level.
+3. An absent, floating or undriven signal is not automatically a valid logic 0.
 
 ### Recognise gate symbols and the inversion bubble
 

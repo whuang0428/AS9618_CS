@@ -81,16 +81,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-085-aggregates.jpg`
 
-1. Function
-2. Counts records or non-null values
-3. SELECT COUNT(*) FROM Book
-4. Adds numeric values
-5. SELECT SUM(Price) FROM Book
-6. Calculates the mean
-7. SELECT AVG(Price) FROM Book
-8. MIN , MAX
-9. Finds smallest or largest value
-10. SELECT MAX(Price) FROM Book
+1. COUNT(*) counts all rows in the result, including rows containing null values.
+2. COUNT(column) counts only non-null values in the named column.
+3. SUM, AVG and COUNT operate on the rows remaining after filtering and grouping rules are applied.
 
 ### GROUP BY calculates summaries per group
 

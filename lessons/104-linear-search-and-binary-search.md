@@ -108,12 +108,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** process
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-104-binary.jpg`
 
-1. Knowledge explanation
-2. 1 Set Low to first index and High to last index.
-3. 2 Find Mid, the middle index.
-4. 3 Compare List[Mid] with Target.
-5. 4 If target is smaller, move High left; if larger, move Low right.
-6. 5 Stop when found or Low is greater than High.
+1. Binary search requires sorted data and repeatedly narrows the search interval.
+2. In Cambridge pseudocode, / performs real division and DIV performs integer division.
+3. Mid <- (Low + High) DIV 2
+This produces an integer array index.
 
 ### Trace binary search on sorted data
 

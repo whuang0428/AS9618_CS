@@ -134,18 +134,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-029-feedback.jpg`
 
-1. Feedback type
-2. Strength
-3. Limitation
-4. Detailed information, menus, diagrams, maps.
-5. User must be able to see and look at the display.
-6. Immediate warning without needing to look.
-7. Can be missed in noise or disruptive in quiet spaces.
-8. Permanent portable evidence.
-9. Not ideal for rapidly changing information.
-10. Physical action
-11. Controls the real world automatically.
-12. Needs safety controls because it changes the environment.
+1. Display, auditory and haptic feedback are alternative output forms, not inputs.
+2. Printed records and actuator actions are separate output types rather than downstream results of display, sound or touch feedback.
+3. Haptic feedback requires physical contact and may be missed when vibration is weak or the device is not being held.
 
 ### What output devices do
 

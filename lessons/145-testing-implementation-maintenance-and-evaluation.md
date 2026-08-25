@@ -139,24 +139,15 @@ Correction prompt: "State the correct term, then explain the relevant process or
 1. Test data classifier
 2. Test value
 
-### Evaluation judges the final system against requirements and success criteria
+### Evaluation uses requirements and measurable success criteria
 
 - **Explains:** `evaluation`
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-evaluation.jpg`
 
-1. Evaluation
-2. Success criterion
-3. Evidence
-4. Evaluation judgement
-5. teachers create booking in under 2 minutes
-6. 8 out of 10 trial users met the target
-7. criterion met, but training may help remaining users
-8. reject double bookings
-9. all clash test cases rejected invalid bookings
-10. criterion met for tested cases
-11. search within 2 seconds
-12. 95 of 100 searches completed within target
+1. A success criterion must state a measurable threshold before evidence can be judged against it.
+2. If 8 of 10 users or 95 of 100 searches is sufficient, state that threshold explicitly.
+3. Without a threshold, do not label partial evidence as an unqualified criterion met.
 
 ### Implementation turns the design into a working system
 

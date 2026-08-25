@@ -96,13 +96,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-115-access.jpg`
 
-1. Access and update
-2. Read one element
-3. OUTPUT Scores[3]
-4. Outputs the element at index 3, not the whole array.
-5. Update one element
-6. Scores[3] <- Scores[3] + 5
-7. Reads the old value at index 3, adds 5, and stores it back into the same element.
+1. Cambridge array declarations state an explicit lower and upper bound.
+2. Valid indexes follow the declared bounds and are not universally zero-based.
+3. Label 0 to n-1 as a chosen zero-based example, or use the lesson's declared bounds consistently.
 
 ### Bounds say which indexes are valid
 

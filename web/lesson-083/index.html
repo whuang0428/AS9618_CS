@@ -227,7 +227,7 @@
             <figcaption class="explanation-sr-only">How normal forms remove dependency problems: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> 1NF makes stored values atomic within each row and column.</li><li><strong>Reason:</strong> 2NF removes partial dependency on part of a composite key.</li><li><strong>Result:</strong> 3NF removes dependency on another non-key attribute.</li></ol>
+            <ol><li><strong>Mechanism:</strong> A valid decomposition retains every original fact and follows the stated functional dependencies.</li><li><strong>Reason:</strong> After 2NF, keep Course(CourseID, CourseName, TutorID) when those course facts are represented.</li><li><strong>Result:</strong> For 3NF, store tutor details in Tutor(TutorID, TutorName) and retain TutorID only in the relation it depends on.</li><li><strong>undefined:</strong> Do not drop CourseName or move TutorID without a stated dependency.</li></ol>
 
             <p><strong>Analogy:</strong> Separate mixed filing rules one dependency at a time.</p>
             <p><strong>Boundary:</strong> A table with a single-attribute key cannot have a partial-key dependency.</p>

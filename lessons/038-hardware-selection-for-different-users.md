@@ -81,18 +81,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-038-categories.jpg`
 
-1. Category
-2. Examples
-3. Selection question
-4. Captures data or commands.
-5. Keyboard, barcode reader, camera, touchscreen, sensor
-6. How fast and accurate must data entry be?
-7. Presents information or produces an action.
-8. Monitor, printer, speaker, projector, actuator
-9. Does the user need visual, printed, audio or physical output?
-10. Stores programs and data.
-11. SSD, HDD, optical disc, flash storage
-12. Is speed, capacity, portability or durability most important?
+1. The touch-sensing layer of a touchscreen is an input device.
+2. The display layer of a touchscreen is an output device.
+3. A touchscreen is therefore a combined input/output device.
 
 ### Choose hardware using stated criteria
 

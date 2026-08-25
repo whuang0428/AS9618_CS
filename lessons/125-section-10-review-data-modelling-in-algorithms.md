@@ -46,6 +46,16 @@ Teacher guidance: require the technical term and the explanation, method or appl
 
 **Worked answer / marking focus:** Credit topic recognition, precise terminology, and explanations that fit the scenario rather than generic memorised lines.
 
+For a record declaration, close every Cambridge pseudocode type definition before declaring variables or arrays that use it:
+
+```text
+TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE
+DECLARE Students : ARRAY[1:120] OF TStudent
+```
+
 
 ## Student Task
 Students complete a timed response, swap scripts, mark with a checklist, and write one improved version.
@@ -114,18 +124,14 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-declare.jpg`
 
-1. Declaration review
-2. Cambridge-style pseudocode
-3. TYPE TStudent
-4. DECLARE ID : STRING
-5. DECLARE Name : STRING
-6. DECLARE Mark : INTEGER
-7. DECLARE Students : ARRAY[1:120] OF TStudent
-8. Java support only
-9. class Student {
-10. String id;
-11. String name;
-12. int mark;
+1. TYPE TStudent
+    DECLARE ID : STRING
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE
+2. Close TStudent after the Mark field.
+3. DECLARE Students : ARRAY[1:120] OF TStudent
+This declaration follows ENDTYPE.
 
 ### Files preserve data beyond the running program
 
@@ -133,18 +139,13 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-files.jpg`
 
-1. File handling review
-2. Line-based read pattern
-3. OPENFILE "Scores.csv" FOR READ
-4. WHILE NOT EOF("Scores.csv")
-5. READFILE "Scores.csv", Line
-6. // process Line
-7. ENDWHILE
-8. CLOSEFILE "Scores.csv"
-9. CSV processing idea
-10. Line <- "S017,Ava,82"
-11. Fields <- SPLIT(Line, ",")
-12. StudentID <- Fields[1]
+1. TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE
+2. DECLARE Students : ARRAY[1:120] OF TStudent
+The array follows the completed record type.
+3. File storage preserves data between program runs and is separate from record-type syntax.
 
 ### Turn a weak answer into a useful answer
 

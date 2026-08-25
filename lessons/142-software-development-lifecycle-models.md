@@ -20,7 +20,7 @@ English first, Chinese support:
 - lifecycle 生命周期, requirements 需求, testing 测试, maintenance 维护
 
 ## Warm-Up Hook
-Ask whether development should begin from the request 'make it user-friendly' or from questions that make the requirement measurable. Establish that requirements must be analysed before implementation.
+Ask whether development should begin from the request 'make it user-friendly' or from questions that make the requirement measurable. Establish that requirements must be analysed before coding.
 
 Focus question: Which feature distinguishes **Software development lifecycle models** from the most closely related syllabus concept?
 
@@ -42,9 +42,9 @@ Left: lifecycle stage. Middle: document or activity produced. Right: risk if ski
 Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** A school wants a booking system. Place analysis, design, implementation, testing, evaluation and maintenance in a sensible lifecycle order.
+**Problem:** A school wants a booking system. Place the five syllabus stages—analysis, design, coding, testing and maintenance—in a sensible lifecycle order.
 
-**Worked answer / marking focus:** Credit lifecycle order and feedback loops; analysis should identify requirements before design and implementation.
+**Worked answer / marking focus:** Credit the five named stages and valid feedback loops; analysis should identify requirements before design and coding. Implementation may be used only as an explanatory synonym for coding. Evaluation is a review activity, not a sixth named syllabus stage.
 
 
 ## Student Task

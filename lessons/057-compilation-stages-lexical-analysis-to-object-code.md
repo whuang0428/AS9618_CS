@@ -22,7 +22,7 @@ Write a tiny high-level statement and a made-up machine-code-looking line. Ask: 
 Focus question: Which feature distinguishes **Compilation stages: lexical analysis to object code** from the most closely related syllabus concept?
 
 ## Guided Explanation
-Move from source code to executable behaviour. Compare compiler, interpreter and assembler by when translation happens, what output is produced, and how errors are reported. Use one syntax error to show how translation diagnostics are produced.
+Move from source code through lexical analysis, syntax analysis, semantic analysis, code generation and optimisation to object code. Compare compiler, interpreter and assembler by when translation happens, what output is produced, and how errors are reported. Use one syntax error to show how translation diagnostics are produced.
 
 Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
@@ -41,7 +41,7 @@ Teacher guidance: require the technical term and the explanation, method or appl
 ## Worked Example
 **Problem:** Choose a suitable translator for distributing a finished program and justify the choice.
 
-**Worked answer / marking focus:** Compiler is usually suitable for distribution because it produces object/executable code and can run without source code; interpreter is useful during development for line-by-line diagnostics.
+**Worked answer / marking focus:** A compiler is usually suitable because it produces object code before execution; a linker can then combine object modules and libraries into an executable that can be distributed without source code. An interpreter is useful during development for statement-by-statement diagnostics.
 
 
 
@@ -92,10 +92,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-057-lexical.jpg`
 
-1. Input Source code as a stream of characters.
-2. Action Groups characters into tokens such as identifiers, operators, constants and keywords.
-3. Also May remove unnecessary whitespace and comments.
-4. Errors Can detect invalid characters or unrecognised symbols.
+1. Lexical analysis converts source characters into tokens.
+2. Keywords, identifiers, literals and operators are distinct token categories.
+3. Semicolons, parentheses and braces are delimiters or punctuation, not all operators.
 
 ### Optimisation improves code without changing what it does
 

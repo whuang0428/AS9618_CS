@@ -111,11 +111,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-014-tradeoffs.jpg`
 
-1. More bits increase the possible range but require more storage per value.
-2. Image quality
-3. Higher resolution or colour depth can improve detail or colour range but increases file size.
-4. Sound quality
-5. Higher sample rate or sample resolution can improve accuracy but increases file size.
-6. Compression
-7. Lossless preserves exact data; lossy can reduce size more but loses data permanently.
+1. Higher image resolution or colour depth can improve image quality and increases image file size.
+2. Higher sample rate or sample resolution can improve sound accuracy and increases audio file size.
+3. Use an audio or neutral data-file symbol for sound data, not an image-file thumbnail.
 <!-- stage10-explanations:end -->

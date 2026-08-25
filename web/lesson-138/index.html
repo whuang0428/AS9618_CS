@@ -131,7 +131,11 @@ ENDIF</code></pre>
             <figcaption class="explanation-sr-only">Debugging locates and corrects faults: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Debugging</li><li><strong>Lesson fact:</strong> A program can be syntactically valid and still wrong. Debugging checks the actual behaviour against the intended</li><li><strong>Lesson fact:</strong> behaviour, then narrows down where the fault occurs.</li><li><strong>Lesson fact:</strong> Faulty pseudocode</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt; 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit needed&quot;</li><li><strong>Lesson fact:</strong> Intended rule</li><li><strong>Lesson fact:</strong> A mark of 50 should pass. The code uses &gt; , so 50 incorrectly goes to the ELSE branch.</li><li><strong>Lesson fact:</strong> The bug is small. Its exam mark consequences are not.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> IF Mark &gt; 50 THEN
+    OUTPUT &quot;Pass&quot;
+ELSE
+    OUTPUT &quot;Fail&quot;
+ENDIF</li><li><strong>Lesson fact:</strong> The example is syntactically valid but still contains the deliberate logic error Mark &gt; 50 at the boundary.</li><li><strong>Lesson fact:</strong> Cambridge pseudocode closes the selection with ENDIF, not END IF.</li></ol>
 
           </div>
         </section>

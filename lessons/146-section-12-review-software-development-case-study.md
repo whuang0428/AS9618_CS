@@ -132,18 +132,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-146-commands.jpg`
 
-1. Command words
-2. What to do
-3. Weak answer pattern
-4. give a precise term or fact
-5. writing a paragraph without the keyword
-6. Describe
-7. say what it is like or how it works
-8. naming only
-9. give cause and consequence in context
-10. saying “it is better”
-11. Evaluate
-12. make a judgement using evidence
+1. Explain sets out reasons or relationships and says why or how.
+2. Evaluate makes a judgement about quality, importance, amount or value using evidence.
+3. Cause and consequence support an explanation; they do not replace the judgement required by evaluate.
 
 ### Design answers must name the artefact
 
@@ -182,18 +173,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-146-lifecycle.jpg`
 
-1. Lifecycle map
-2. Case study example
-3. Risk if weak
-4. Analysis
-5. requirements and success criteria
-6. reserve a place; prevent overbooking
-7. wrong problem is solved
-8. algorithms, data dictionary, interface plans
-9. waiting-list algorithm and ActivityID field
-10. developers make inconsistent choices
-11. Implementation
-12. working configured system
+1. The syllabus names analysis, design, coding, testing and maintenance as the program development lifecycle stages.
+2. Implementation may be used only as an explanation of coding, not as a replacement stage that removes testing or maintenance.
+3. Operation and evaluation are not substitutes for the five named syllabus stages.
 
 ### Test cases need data, expected result and purpose
 
@@ -201,16 +183,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-146-testing.jpg`
 
-1. Testing review
-2. Test data
-3. Expected result
-4. Data type
-5. activity capacity is 20
-6. 20th reservation
-7. accepted
-8. boundary valid
-9. 21st reservation
-10. added to waiting list or rejected by rule
-11. boundary invalid
-12. StudentID must be numeric
+1. Normal data is valid and typical; boundary data is at an accepted limit; abnormal data violates the stated validation rule.
+2. A 21st valid reservation at a capacity boundary requires the defined business outcome, such as waiting list or rejection due to capacity.
+3. Do not call a request invalid unless it violates a stated input-validity rule.
 <!-- stage10-explanations:end -->

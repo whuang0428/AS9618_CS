@@ -100,11 +100,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-027-flow.jpg`
 
-1. 1. Input Data is captured by an input device, such as a keyboard, sensor, scanner, camera or microphone.
-2. 2. Processing The processor executes instructions and performs operations on data.
-3. 3. Memory Data and instructions in current use are held temporarily in primary memory such as RAM.
-4. 4. Storage Files and data that must persist are saved in secondary storage such as SSD, HDD or optical media.
-5. 5. Output Results are presented through output devices such as screens, speakers, printers or actuators.
+1. Input devices capture data for processing.
+2. The processor works with instructions and data held in primary memory.
+3. Processed results can go directly to output devices.
+4. Secondary storage is a separate bidirectional persistence path and is not a compulsory stage before output.
 
 ### Memory is not the same as storage
 

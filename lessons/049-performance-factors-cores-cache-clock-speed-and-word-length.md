@@ -119,14 +119,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** process
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-049-cores.jpg`
 
-1. Where extra cores help
-2. Several programs running at the same time.
-3. Tasks that can be split into parallel threads.
-4. Background tasks while a foreground task remains responsive.
-5. Where extra cores may not help much
-6. A single-threaded program that cannot be divided.
-7. A task waiting for disk, network or memory.
-8. Software that was not designed for parallel processing.
+1. One thread can execute on only one core at a time.
+2. A single-threaded task cannot run its own instructions concurrently across several cores.
+3. Other cores may still execute operating-system work or other processes; they are not necessarily idle.
 
 ### Performance is limited by bottlenecks
 

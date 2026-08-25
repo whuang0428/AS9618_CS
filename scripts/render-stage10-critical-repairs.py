@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import argparse
+import csv
+import json
 import textwrap
 from pathlib import Path
 
@@ -27,6 +29,9 @@ PAPER = "#F8FAFC"
 WHITE = "#FFFFFF"
 PALE = ["#EEF5FD", "#EEF8F1", "#FFF4E8"]
 ACCENT = [BLUE, GREEN, ORANGE]
+
+REPAIR_FACTS_PATH = ROOT / "scripts/stage10-visual-repair-facts.json"
+TARGET_REGISTER_PATH = ROOT / "audits/stage10-explanation-target-register.csv"
 
 
 def font(size: int, bold: bool = False, mono: bool = False) -> ImageFont.FreeTypeFont:
@@ -431,6 +436,56 @@ SPECS.update({
         "Each IF example is a complete structured selection ending with ENDIF.",
     ),
 })
+
+
+def current_repair_specs() -> dict[str, dict]:
+    """Build deterministic three-card specs from the maintained repair facts."""
+    facts_by_key = json.loads(REPAIR_FACTS_PATH.read_text(encoding="utf-8"))
+    with TARGET_REGISTER_PATH.open(encoding="utf-8", newline="") as handle:
+        targets = {
+            f"{row['lesson']}/{row['target_id']}": row
+            for row in csv.DictReader(handle)
+        }
+
+    headings = {
+        "process": ("START / RULE", "MECHANISM", "RESULT / CHECK"),
+        "mechanism": ("INPUT / FACT", "MECHANISM", "RESULT / CHECK"),
+        "comparison": ("FIRST CASE", "SECOND CASE", "DISTINCTION"),
+        "tradeoff": ("BENEFIT / CASE", "COST / LIMIT", "DECISION CHECK"),
+        "synthesis": ("CORE FACT", "RELATIONSHIP", "EXAM CHECK"),
+    }
+    title_overrides = {
+        "074/ip": "What intellectual property can protect",
+        "123/pseudocode": "Justify the data structure in Cambridge answers",
+        "130/procedure": "A procedure performs actions and returns no value",
+        "137/validation": "Testing checks validation against expected results",
+        "145/evaluation": "Evaluation uses requirements and measurable success criteria",
+    }
+    specs: dict[str, dict] = {}
+    for key, facts in facts_by_key.items():
+        if key not in targets:
+            raise ValueError(f"Repair target is missing from the target register: {key}")
+        if len(facts) < 3:
+            raise ValueError(f"Repair target needs at least three facts: {key}")
+        target = targets[key]
+        kind = target["target_type"]
+        labels = headings.get(kind, headings["synthesis"])
+        groups = [facts[:1], facts[1:2], facts[2:]]
+        cards = []
+        for index, group in enumerate(groups):
+            notes = ("State the core fact precisely", "Follow the relationship", "Apply the exam-safe distinction")
+            cards.append((labels[index], "\n".join(group), None, notes[index]))
+        specs[key] = {
+            "title": title_overrides.get(key, target["title"]),
+            "subtitle": "Use the exact facts and relationships in this model.",
+            "cards": cards,
+            "footer": "Exam check: state only the relationship supported by the given data and rule.",
+            "edges": [("card-1", "card-2"), ("card-2", "card-3")] if kind in {"process", "mechanism"} else [],
+        }
+    return specs
+
+
+SPECS.update(current_repair_specs())
 
 
 SPECS.update({
@@ -856,6 +911,17 @@ def render(key: str, spec: dict, destination: Path) -> None:
     for index, card in enumerate(spec["cards"]):
         x1 = 60 + index * (card_width + gap)
         draw_card(draw, (x1, 194, x1 + card_width, 852), index, *card)
+
+    for source, target in spec.get("edges", []):
+        edge = (source, target)
+        if edge not in {("card-1", "card-2"), ("card-2", "card-3")}:
+            raise ValueError(f"Unsupported directed edge for {key}: {source} -> {target}")
+        index = 0 if edge == ("card-1", "card-2") else 1
+        x1 = 60 + (index + 1) * card_width + index * gap + 4
+        x2 = x1 + gap - 8
+        y = 522
+        draw.line((x1, y, x2, y), fill=BLUE, width=5)
+        draw.polygon(((x2, y), (x2 - 11, y - 8), (x2 - 11, y + 8)), fill=BLUE)
 
     draw.rounded_rectangle((60, 880, 1476, 970), radius=18, fill="#EAF1FA", outline="#AFC3DD", width=2)
     draw.text((88, 899), "KEY CHECK", font=font(22, bold=True), fill=BLUE)

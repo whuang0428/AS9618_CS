@@ -182,11 +182,11 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-update.jpg`
 
-1. Update every element
-2. FOR Index <- 1 TO 5
-3. Scores[Index] <- Scores[Index] + 2
-4. NEXT Index
-5. Update only when condition is true
-6. IF Scores[Index] < 50 THEN
-7. Scores[Index] <- Scores[Index] + 5
+1. Traverse the array with a FOR loop so Index is defined for every access.
+2. Place the conditional update inside the traversal.
+3. FOR Index <- 1 TO 10
+    IF Scores[Index] < 50 THEN
+        Scores[Index] <- Scores[Index] + 5
+    ENDIF
+NEXT Index
 <!-- stage10-explanations:end -->

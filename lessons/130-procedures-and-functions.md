@@ -176,22 +176,15 @@ Correction prompt: "State the correct term, then explain the relevant process or
 2. IsPass returns TRUE for marks at least 50 and FALSE otherwise.
 3. Close each IF with ENDIF independently of ENDFUNCTION.
 
-### A procedure performs actions and does not have to return a value
+### A procedure performs actions and returns no value
 
 - **Explains:** `procedure`
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-130-procedure.jpg`
 
-1. Procedure
-2. Cambridge-style pseudocode
-3. PROCEDURE DisplayMenu()
-4. OUTPUT "1. Add score"
-5. OUTPUT "2. Quit"
-6. ENDPROCEDURE
-7. CALL DisplayMenu()
-8. When it fits
-9. Use a procedure when the algorithm needs an action such as output, input, updating a structure or repeated commands.
-10. A procedure may change data, but it is not used as an expression like Total <- DisplayMenu() .
+1. A procedure performs an action and does not return a value.
+2. A function returns a value and can be used in an expression.
+3. Do not describe returning a value as optional for a Cambridge procedure.
 
 ### Calculate a function return value
 

@@ -83,18 +83,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-149-constructs.jpg`
 
-1. Construct bank
-2. Task signal
-3. Likely construct
-4. exactly N items
-5. known repetition count
-6. bounds include all items
-7. until file ends
-8. WHILE NOT EOF
-9. unknown record count
-10. read inside loop
-11. validate input
-12. REPEAT UNTIL
+1. Choose a loop from when its stopping condition must be tested, not merely from whether the item count is unknown.
+2. Use WHILE NOT EOF for a text file whose record count is unknown because EOF is checked before each read or process step.
+3. Use REPEAT ... UNTIL only when the body must execute before the condition is checked.
 
 ### The four-pass approach
 

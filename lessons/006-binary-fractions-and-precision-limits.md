@@ -115,17 +115,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-006-convert.jpg`
 
-1. Binary fraction to denary
-2. Write the place values above and below the point.
-3. Add the values for every 1 bit.
-4. Keep the base label until the final answer.
-5. State whether the answer is exact.
-6. Denary fraction to binary
-7. Use 1/2, 1/4, 1/8, 1/16 as target values.
-8. Subtract a target value when it fits.
-9. Write 1 for a used value and 0 for a skipped value.
-10. Stop when the remainder is zero or the bit limit is reached.
-11. Example: 0.625₁₀ = 0.101₂ because 0.5 + 0.125 = 0.625.
+1. Binary fractional place values are 1/2, 1/4, 1/8 and 1/16 from left to right.
+2. 0.1010 binary equals 1/2 + 1/8 = 0.625 denary.
+3. 0.1100 binary equals 1/2 + 1/4 = 0.75 denary.
 
 ### Binary fractional place value
 

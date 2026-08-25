@@ -102,17 +102,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-113-choose.jpg`
 
-1. Choosing types
-2. Question
-3. Type direction
-4. Will arithmetic be performed?
-5. INTEGER or REAL
-6. Can the value contain decimals?
-7. Is the answer only true/false?
-8. Is exactly one character stored?
-9. Must leading zeros or letters be preserved?
-10. Is the value a calendar date?
-11. Exam wording tip: "suitable type" answers usually need both the type and a reason linked to the data.
+1. INTEGER stores whole numbers and REAL stores values that may have a fractional part.
+2. Both INTEGER and REAL values can be used in arithmetic.
+3. First decide whether a value is numeric, then choose INTEGER for whole-only values or REAL when fractions are possible.
 
 ### Same idea, different syntax
 
@@ -139,18 +131,13 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-113-user-defined.jpg`
 
-1. User-defined types
-2. Enumerated type
-3. Use an enumerated type when a value must be one of a named set of options.
-4. TYPE TDay = (Monday, Tuesday, Wednesday, Thursday, Friday)
-5. DECLARE Day : TDay
-6. Composite type preview
-7. A record groups fields of different types. Records are developed later, but the idea starts with type choice.
-8. TYPE TStudent
-9. DECLARE Name : STRING
-10. DECLARE DateOfBirth : DATE
-11. DECLARE Enrolled : BOOLEAN
-12. Boundary: this lesson introduces user-defined type choice. Arrays and records get their own full lessons later.
+1. TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE
+2. Fields of different data types are declared between TYPE and ENDTYPE.
+3. DECLARE Student1 : TStudent
+Declare variables of the record type only after ENDTYPE.
 
 ### A type controls meaning and valid operations
 

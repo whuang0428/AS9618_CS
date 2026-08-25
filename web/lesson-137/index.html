@@ -130,7 +130,11 @@ ENDIF</code></pre>
             <figcaption class="explanation-sr-only">Testing compares actual results with expected results: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Why testing</li><li><strong>Lesson fact:</strong> A test is useful only if it can reveal whether the program behaves correctly. A strong test case has input data,</li><li><strong>Lesson fact:</strong> a reason for choosing it, and a clear expected result.</li><li><strong>Lesson fact:</strong> Validation rule</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Accepted&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Rejected&quot;</li><li><strong>Lesson fact:</strong> Testing question</li><li><strong>Lesson fact:</strong> Which values prove that the rule accepts valid marks and rejects invalid marks?</li><li><strong>Lesson fact:</strong> Normal data checks ordinary use. Boundary data checks the edges. Erroneous data checks rejection.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
+    OUTPUT &quot;Valid&quot;
+ELSE
+    OUTPUT &quot;Invalid&quot;
+ENDIF</li><li><strong>Lesson fact:</strong> Normal, boundary and erroneous test data provide evidence for the selected cases.</li><li><strong>Lesson fact:</strong> Finite testing can expose faults but does not prove correctness for every possible input.</li></ol>
 
           </div>
         </section>
@@ -276,13 +280,13 @@ ENDIF</code></pre>
 
         <!-- stage10-explanation:start validation -->
         <section class="panel explanation-panel" id="explanation-validation" data-explains="validation" data-explanation-kind="mechanism" aria-labelledby="explanation-validation-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
-          <h2 class="explanation-sr-only" id="explanation-validation-title">Validation is the check. Testing proves whether the check works.</h2>
+          <h2 class="explanation-sr-only" id="explanation-validation-title">Testing checks validation against expected results</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-137-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Validation is the check. Testing proves whether the check works. with a structured visual model." />
-            <figcaption class="explanation-sr-only">Validation is the check. Testing proves whether the check works.: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-137-validation.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Testing checks validation against expected results with a structured visual model." />
+            <figcaption class="explanation-sr-only">Testing checks validation against expected results: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Validation vs testing</li><li><strong>Lesson fact:</strong> Validation</li><li><strong>Lesson fact:</strong> A program rule, such as “Mark must be from 0 to 100 inclusive”.</li><li><strong>Lesson fact:</strong> A planned set of inputs, such as 50 , 0 , 100 , -1 , 101 and &quot;cat&quot; .</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Testing checks whether validation behaves as expected for selected normal, boundary and erroneous cases.</li><li><strong>Lesson fact:</strong> Expected and actual results are compared for each test.</li><li><strong>Lesson fact:</strong> Passing a finite test set is evidence, not a proof of universal correctness.</li></ol>
 
           </div>
         </section>

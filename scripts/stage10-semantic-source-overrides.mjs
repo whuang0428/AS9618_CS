@@ -1,6 +1,8 @@
+import fs from "node:fs";
+
 // Corrections for maintained Stage 10 source facts whose generated extraction
 // omitted a necessary operation or whose wording allowed a false relationship.
-export const sourceFactOverrides = Object.freeze({
+const historicalSourceFactOverrides = {
   "020/address-journey": Object.freeze([
     "DNS resolves a domain name to an IP address; it does not return a MAC address.",
     "The network-layer packet header contains the destination IP address of the endpoint.",
@@ -425,4 +427,14 @@ export const sourceFactOverrides = Object.freeze({
     "Close the selection with ENDIF and repeat until Valid is TRUE.",
     "Every invalid retry must read a replacement Mark.",
   ]),
+};
+
+const visualRepairFacts = JSON.parse(fs.readFileSync(
+  new URL("./stage10-visual-repair-facts.json", import.meta.url),
+  "utf8",
+));
+
+export const sourceFactOverrides = Object.freeze({
+  ...historicalSourceFactOverrides,
+  ...Object.fromEntries(Object.entries(visualRepairFacts).map(([key, facts]) => [key, Object.freeze(facts)])),
 });

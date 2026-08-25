@@ -94,18 +94,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-040-map.jpg`
 
-1. Core idea
-2. Common question verb
-3. Mark-winning habit
-4. Primary / secondary storage
-5. RAM, ROM, cache, virtual memory, SSD, HDD, optical, solid-state
-6. compare, describe, justify
-7. Link speed, volatility, capacity, durability or cost to the scenario.
-8. Embedded systems
-9. Dedicated systems built into larger devices
-10. describe, explain
-11. Mention dedicated purpose, limited interface and real-world control.
-12. Sensors and actuators
+1. RAM and ROM are primary memory; SSD, HDD and optical media are secondary storage.
+2. Virtual memory is a memory-management technique that uses secondary storage to supplement RAM.
+3. Do not classify virtual memory as a type of primary memory.
 
 ### Three review skills: compare, justify, calculate
 

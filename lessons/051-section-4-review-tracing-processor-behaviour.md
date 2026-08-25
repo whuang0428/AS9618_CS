@@ -107,13 +107,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-051-map.jpg`
 
-1. Section map
-2. CPU components ALU, CU, registers, buses and clock coordinate instruction processing.
-3. FDE cycle PC, MAR, MDR and CIR move address, instruction and data through fetch-decode-execute.
-4. Instruction set Machine code depends on a processor's instruction set; assembly uses mnemonics and labels.
-5. Addressing modes Immediate, direct, indirect and indexed modes change operand interpretation.
-6. Interrupts The CPU saves state, runs an ISR, then restores state and resumes.
-7. Performance Clock speed, cores, cache, word length and pipelining affect performance with limits.
+1. Fetch copies PC to MAR, reads memory into MDR, copies MDR to CIR and increments PC.
+2. Decode begins after CIR holds the current instruction; the control unit interprets its opcode and operands.
+3. The address in MAR does not flow into MDR; memory returns the addressed instruction or data into MDR.
 
 ### Retrieval grid: say the role, not just the name
 

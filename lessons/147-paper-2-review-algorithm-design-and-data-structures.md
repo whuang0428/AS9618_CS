@@ -158,18 +158,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-147-structures.jpg`
 
-1. Data structures review
-2. Structure
-3. Use when
-4. Core operation
-5. Common error
-6. 1D array
-7. fixed list of same-type items
-8. index access
-9. forgetting bounds
-10. 2D array
-11. table/grid data
-12. row and column access
+1. Cambridge arrays have explicitly declared lower and upper bounds.
+2. An array may be zero-based or one-based according to its declaration.
+3. Label 0 to n-1 as one chosen convention rather than a universal rule.
 
 ### Calculate Total for the selected score list
 

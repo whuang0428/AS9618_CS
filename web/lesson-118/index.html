@@ -162,7 +162,11 @@ Student1.Mark &lt;- 72</code></pre>
             <figcaption class="explanation-sr-only">Define the type, then declare variables that use it: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Declare records</li><li><strong>Lesson fact:</strong> Record type</li><li><strong>Lesson fact:</strong> TYPE TStudent</li><li><strong>Lesson fact:</strong> DECLARE Name : STRING</li><li><strong>Lesson fact:</strong> DECLARE DateOfBirth : DATE</li><li><strong>Lesson fact:</strong> DECLARE Mark : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Enrolled : BOOLEAN</li><li><strong>Lesson fact:</strong> Record variable</li><li><strong>Lesson fact:</strong> DECLARE Student1 : TStudent</li><li><strong>Lesson fact:</strong> Student1.Name &lt;- &quot;Ali&quot;</li><li><strong>Lesson fact:</strong> Student1.Mark &lt;- 72</li></ol>
+            <ol><li><strong>Lesson fact:</strong> TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE</li><li><strong>Lesson fact:</strong> DECLARE Student1 : TStudent
+This declaration follows ENDTYPE.</li><li><strong>Lesson fact:</strong> Every displayed Cambridge record declaration must include ENDTYPE.</li></ol>
 
           </div>
         </section>
@@ -275,7 +279,11 @@ book1.available = true;</code></pre>
             <figcaption class="explanation-sr-only">Same modelling idea, different syntax: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> TYPE TBook</li><li><strong>Lesson fact:</strong> DECLARE Title : STRING</li><li><strong>Lesson fact:</strong> DECLARE Pages : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Available : BOOLEAN</li><li><strong>Lesson fact:</strong> DECLARE Book1 : TBook</li><li><strong>Lesson fact:</strong> Book1.Available &lt;- TRUE</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> class Book {</li><li><strong>Lesson fact:</strong> String title;</li><li><strong>Lesson fact:</strong> int pages;</li></ol>
+            <ol><li><strong>Lesson fact:</strong> TYPE TBook
+    DECLARE Title : STRING
+    DECLARE Pages : INTEGER
+ENDTYPE</li><li><strong>Lesson fact:</strong> Book fields are declared inside the TYPE block.</li><li><strong>Lesson fact:</strong> DECLARE Book1 : TBook
+This declaration belongs after ENDTYPE.</li></ol>
 
           </div>
         </section>

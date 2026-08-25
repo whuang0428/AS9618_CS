@@ -101,15 +101,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-concept.jpg`
 
-1. Array of records
-2. array where each element is a record
-3. Students[1:30]
-4. selects one record from the array
-5. Students[5]
-6. selects one named value inside that record
-7. Combined access
-8. index first, field second
-9. Students[5].Mark
+1. Students[5] selects the complete record at array position 5.
+2. Students[5].Mark selects the Mark field in that record.
+3. Array indexing and record field selection are separate operations.
 
 ### Define the record type, then declare the array
 
@@ -117,16 +111,13 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-declare.jpg`
 
-1. Record type
-2. TYPE TStudent
-3. DECLARE Name : STRING
-4. DECLARE Mark : INTEGER
-5. DECLARE Enrolled : BOOLEAN
-6. Array of records
-7. DECLARE Students : ARRAY[1:30] OF TStudent
-8. Students[1].Name <- "Ali"
-9. Students[1].Mark <- 72
-10. The record type describes one element. The array declaration creates many elements of that type.
+1. TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE
+2. DECLARE Students : ARRAY[1:30] OF TStudent
+This declaration follows ENDTYPE.
+3. The record type and the array declaration are separate declarations.
 
 ### Read a field from a selected record
 

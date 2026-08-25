@@ -112,13 +112,8 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** synthesis
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-061-retrieval.jpg`
 
-1. Retrieval grid
-2. Operating system Manages resources and provides services such as process, memory, file and device management.
-3. Utility software Performs a maintenance/protection task such as backup, compression, encryption, defragmentation or antivirus.
-4. User interface Allows the user to interact with the system: CLI, GUI, menu-driven or natural language.
-5. Compiler Translates a whole high-level program before execution and can produce object/executable code.
-6. Interpreter Translates and executes high-level code statement by statement.
-7. Assembler Translates assembly language mnemonics into machine code/object code.
-8. Compilation stages Lexical analysis, syntax analysis, semantic analysis, code generation and optimisation.
-9. Linker / loader Linker resolves external references; loader places executable code into main memory.
+1. A compiler translates a whole high-level program into object code before execution.
+2. An assembler translates assembly language into machine or object code.
+3. A linker combines object modules and libraries, and a loader places an executable into memory.
+4. An interpreter translates and executes source during runtime without producing a permanent object file for the linker path.
 <!-- stage10-explanations:end -->

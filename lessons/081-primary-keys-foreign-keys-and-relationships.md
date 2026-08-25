@@ -142,17 +142,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-primary.jpg`
 
-1. A primary key is a field, or combination of fields, that uniquely identifies each record in a table. It should be unique and not null.
-2. Unique No two records in the table have the same key value.
-3. Not null Every record must have a key value; blank identity is not identity.
-4. Stable A good key is unlikely to change, such as an allocated ID.
-5. Minimal Do not use extra fields when one suitable field is enough.
-6. StudentID
-7. TutorGroup
-8. PhoneNumber
-9. Alex Chen
-10. 02071234567
-11. 02079876543
+1. A primary key uniquely identifies each row and cannot be null.
+2. Candidate keys are minimal sets of attributes that can uniquely identify a row.
+3. Stability is a desirable design property when choosing a primary key, not a formal defining constraint of every primary key.
 
 ### Referential integrity
 

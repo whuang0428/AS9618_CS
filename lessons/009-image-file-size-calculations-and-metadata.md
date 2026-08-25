@@ -143,10 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-009-units.jpg`
 
-1. Bits to bytes
-2. 8 bits = 1 byte, so divide bits by 8.
-3. Bytes to KiB
-4. 1 KiB = 1024 bytes, so divide bytes by 1024 when binary units are requested.
-5. Rounding
-6. Only round if the question requests it. Otherwise keep an exact value or enough working.
+1. When a formula gives a size in bits, divide by 8 to convert to bytes.
+2. When binary units are required, divide bytes by 1024 for KiB and continue by factors of 1024.
+3. A quantity may already be supplied in bytes or a larger unit; not every measurement starts as bits.
 <!-- stage10-explanations:end -->

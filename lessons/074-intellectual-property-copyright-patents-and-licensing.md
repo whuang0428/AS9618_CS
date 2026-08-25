@@ -139,16 +139,15 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. Restricted acts Copying, distributing, adapting or using beyond permission can breach copyright.
 4. Fair use/dealing caution Exceptions are limited and context-specific; do not assume every educational use is allowed.
 
-### Intellectual property protects created ideas and expressions
+### What intellectual property can protect
 
 - **Explains:** `ip`
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-074-ip.jpg`
 
-1. Intellectual property Creations of the mind that may be legally protected, such as software, designs and inventions.
-2. Owner The person or organisation holding legal rights to control use of the work.
-3. Infringement Using protected work without permission or outside licence conditions.
-4. Attribution Giving credit to the creator or source when required.
+1. Copyright protects qualifying expression, not an abstract idea by itself.
+2. Patents may protect qualifying inventions subject to legal requirements.
+3. Intellectual property can protect qualifying creations, expressions, designs and inventions; do not state that every idea is automatically protected.
 
 ### A licence grants permission under conditions
 

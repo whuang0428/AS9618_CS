@@ -149,18 +149,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-044-three-buses.jpg`
 
-1. Typical direction
-2. Exam-safe sentence
-3. Address bus
-4. Memory or I/O address identifying a location.
-5. Usually from CPU to memory/I/O.
-6. The address bus carries the address of the location to be read from or written to.
-7. Data bus
-8. Data or instructions being transferred.
-9. Usually bidirectional.
-10. The data bus carries the actual data or instruction between CPU, memory and devices.
-11. Control bus
-12. Control and timing signals such as read, write, interrupt and clock signals.
+1. The address bus carries the address of the location being accessed and is normally directed from the CPU.
+2. The data bus carries data and instructions in both directions.
+3. The control bus carries control and timing signals in both directions, including read/write from the CPU and interrupts toward the CPU.
 
 ### Bus width and addressable locations
 

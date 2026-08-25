@@ -10,7 +10,7 @@ const modelAdvice = {
     warning: "The project still needs control; iteration is not an excuse to avoid documentation.",
   },
   critical: {
-    model: "Planned lifecycle with strong testing and evaluation",
+    model: "Planned lifecycle with strong testing and review",
     reason: "High-risk systems need evidence, traceability and careful testing before release.",
     warning: "Rapid change without control can increase risk.",
   },
@@ -22,8 +22,8 @@ const orderAdvice = {
     reason: "Design should be based on identified requirements, users and constraints.",
   },
   "design-code": {
-    first: "Design usually comes before implementation.",
-    reason: "Implementation should follow a planned interface, data and algorithm design.",
+    first: "Design usually comes before coding.",
+    reason: "Coding (implementation) should follow a planned interface, data and algorithm design.",
   },
   "test-maintain": {
     first: "Testing usually comes before release and maintenance.",
@@ -34,7 +34,7 @@ const orderAdvice = {
 const examples = {
   booking: {
     title: "Example 1: School booking system",
-    answer: "Analysis should identify who books rooms, what data is stored, booking rules, conflicts and reports. Design then plans screens, validation, data structures and algorithms. Implementation builds the system. Testing checks requirements such as rejecting double bookings. Evaluation decides whether the system meets user needs, and maintenance fixes faults or adapts to new school rules.",
+    answer: "Analysis should identify who books rooms, what data is stored, booking rules, conflicts and reports. Design then plans screens, validation, data structures and algorithms. Coding implements the design. Testing checks requirements such as rejecting double bookings. Review of the evidence can judge whether user needs are met, and maintenance fixes faults or adapts to new school rules.",
     points: [
       "Analysis before design prevents guessing requirements.",
       "Testing is linked to a measurable requirement.",
@@ -46,7 +46,7 @@ const examples = {
     answer: "If users discover during testing that they need recurring bookings, the project may return to analysis to refine the requirement and then design to change the data model. This shows the lifecycle can be iterative rather than a fixed one-way checklist.",
     points: [
       "Feedback can move the project back to earlier stages.",
-      "A clear requirement change affects design and implementation.",
+      "A clear requirement change affects design and coding (implementation).",
       "The answer names the trigger: user feedback during testing.",
     ],
   },
@@ -64,9 +64,9 @@ const examples = {
 const practice = [
   { id: "p1", prompt: "Which lifecycle stage identifies requirements?", accepted: ["analysis"], answer: "Analysis." },
   { id: "p2", prompt: "Which stage plans interfaces, data and algorithms?", accepted: ["design"], answer: "Design." },
-  { id: "p3", prompt: "Which stage turns the design into code/modules?", accepted: ["implementation", "coding"], answer: "Implementation." },
+  { id: "p3", prompt: "Which named syllabus stage turns the design into code/modules?", accepted: ["coding", "implementation"], answer: "Coding (also described as implementation)." },
   { id: "p4", prompt: "Which stage checks the system against expected results?", accepted: ["testing"], answer: "Testing." },
-  { id: "p5", prompt: "Which stage judges whether the completed system meets objectives?", accepted: ["evaluation"], answer: "Evaluation." },
+  { id: "p5", prompt: "Which review activity judges whether the completed system meets objectives?", accepted: ["evaluation", "review"], answer: "Evaluation or post-implementation review; this is an activity, not one of the five named syllabus stages." },
   { id: "p6", prompt: "Which stage fixes, adapts or improves the system after release?", accepted: ["maintenance"], answer: "Maintenance." },
   { id: "p7", prompt: "Which model is most one-way and sequential: waterfall or iterative?", accepted: ["waterfall"], answer: "Waterfall." },
   { id: "p8", prompt: "Which approach uses repeated cycles and feedback?", accepted: ["iterative", "agile"], answer: "Iterative / agile-style development." },
@@ -77,7 +77,7 @@ const practice = [
 const mistakes = [
   {
     wrong: "A student writes: 'The lifecycle is analysis, design, code, test, done.'",
-    fix: "Add evaluation and maintenance, and explain feedback loops rather than treating the process as finished forever.",
+    fix: "Use the five named stages: analysis, design, coding, testing and maintenance; then explain valid feedback loops.",
   },
   {
     wrong: "A student says design should happen before requirements are known.",
@@ -136,12 +136,12 @@ const examQuestions = [
     title: "Question 3",
     marks: "5 marks",
     prompt: "Explain why weak analysis can cause problems later in the software development lifecycle.",
-    answer: "Weak analysis can miss user requirements or constraints. The design may then be based on wrong assumptions, so implementation builds the wrong features. Testing and evaluation may reveal that the system does not meet user needs, causing rework and extra cost.",
+    answer: "Weak analysis can miss user requirements or constraints. The design may then be based on wrong assumptions, so coding implements the wrong features. Testing or stakeholder review may reveal that the system does not meet user needs, causing rework and extra cost.",
     marking: [
       { mark: "B1", text: "states analysis identifies requirements/user needs/constraints" },
       { mark: "B1", text: "states weak analysis may miss or misunderstand requirements" },
-      { mark: "B1", text: "links weak analysis to poor design or wrong implementation" },
-      { mark: "B1", text: "links later testing/evaluation to discovering the problem" },
+      { mark: "B1", text: "links weak analysis to poor design or wrong coding/implementation" },
+      { mark: "B1", text: "links later testing or stakeholder review to discovering the problem" },
       { mark: "B1", text: "explains consequence such as rework, delay, cost or unsuitable system" },
     ],
     strict: [
@@ -173,18 +173,18 @@ const examQuestions = [
     title: "Question 5",
     marks: "6 marks",
     prompt: "A student says the lifecycle always finishes after testing. Explain why this is incorrect.",
-    answer: "After testing, the system should be evaluated against objectives and user requirements. It may then be released and maintained. Maintenance can fix faults, adapt the system to new requirements or improve usability/performance. Testing or evaluation can also reveal issues that require returning to design or implementation.",
+    answer: "After testing, its evidence can be reviewed against objectives and user requirements. The system may then be released and maintained. Maintenance can fix faults, adapt the system to new requirements or improve usability/performance. Testing or review can also reveal issues that require returning to design or coding.",
     marking: [
-      { mark: "B1", text: "states evaluation occurs after or alongside testing" },
-      { mark: "B1", text: "explains evaluation checks objectives/user requirements" },
+      { mark: "B1", text: "states test evidence is reviewed after or alongside testing" },
+      { mark: "B1", text: "explains the review checks objectives/user requirements" },
       { mark: "B1", text: "states maintenance can happen after release/use" },
       { mark: "B1", text: "gives valid maintenance type/example such as corrective/adaptive/perfective" },
       { mark: "B1", text: "explains feedback may send project back to earlier stages" },
-      { mark: "B1", text: "links feedback to design/implementation/requirements rework" },
+      { mark: "B1", text: "links feedback to design/coding/requirements rework" },
     ],
     strict: [
       "Do not award full marks for listing stages without explaining why testing is not the end.",
-      "Allow post-implementation review for evaluation if meaning is clear.",
+      "Allow evaluation or post-implementation review if it is described as an activity, not an extra named syllabus stage.",
       "Do not accept maintenance as only 'using the system'.",
     ],
   },

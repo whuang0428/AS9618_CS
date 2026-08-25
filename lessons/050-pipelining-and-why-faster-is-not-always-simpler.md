@@ -115,18 +115,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** comparison
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-050-compare.jpg`
 
-1. Without pipelining
-2. Instruction 1 completes fetch, decode and execute before instruction 2 begins.
-3. I1: F D E
-4. I2: F D E
-5. I3: F D E
-6. Three instructions with three stages each may take nine stage slots.
-7. With pipelining
-8. Instruction 2 can be fetched while instruction 1 is decoded; instruction 3 can be fetched while instruction 1 executes.
-9. C2: F2 D1
-10. C3: F3 D2 E1
-11. C4: D3 E2
-12. After the pipeline fills, one instruction can complete per cycle in the ideal case.
+1. Without pipelining, each instruction completes fetch, decode and execute before the next starts.
+2. In an ideal three-stage pipeline, instruction 1 completes in cycle 3, instruction 2 in cycle 4 and instruction 3 in cycle 5.
+3. Instruction 3 must execute in cycle 5; it is not complete after decode in cycle 4.
 
 ### Pipelining overlaps instruction-cycle stages
 

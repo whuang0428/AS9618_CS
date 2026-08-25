@@ -184,10 +184,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-069-verification.jpg`
 
-1. Double entry Data is entered twice and the two entries are compared.
-2. Visual check A person compares entered data with the original document or screen.
-3. Proofreading Entered text is checked against the source for typing errors.
-4. Transfer check Data copied or transmitted is compared with the original or expected value.
+1. Verification checks whether entered or transferred data agrees with a source, second entry or transmitted value.
+2. A match provides evidence of agreement but does not guarantee that the source is true or accurate.
+3. Validation checks whether data satisfies specified rules; it also does not prove real-world truth.
 
 ### Which verification method fits?
 

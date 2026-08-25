@@ -115,18 +115,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** comparison
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-031-compare.jpg`
 
-1. Capacity/cost
-2. Good scenario
-3. Magnetic HDD
-4. Slower than SSD; mechanical parts.
-5. High capacity and low cost per GB.
-6. Desktop storage, large file libraries, cost-sensitive backups.
-7. Magnetic tape
-8. Slow sequential access.
-9. Very high capacity and low cost for backups.
-10. Archiving and large organisation backups.
-11. Optical disc
-12. Generally slower access.
+1. An HDD provides high capacity at relatively low cost and suits large file libraries or cost-sensitive backups.
+2. Magnetic tape provides high capacity with sequential access and suits archival backups.
+3. Optical media suits distributing read-only content or archiving data that changes rarely.
 
 ### Three main storage media
 
@@ -134,18 +125,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** mechanism
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-031-media.jpg`
 
-1. Magnetic storage
-2. Stores data using magnetised areas on a medium.
-3. Examples: hard disk drive (HDD), magnetic tape.
-4. Typical strengths: high capacity, relatively low cost per GB; tape is useful for large backups.
-5. Limitations: moving parts in HDDs, slower than SSDs, vulnerable to shock and magnetic fields.
-6. Optical storage
-7. Uses laser light to read marks/pits on a disc surface.
-8. Examples: CD, DVD, Blu-ray.
-9. Typical strengths: cheap, portable, useful for distributing or archiving data that changes rarely.
-10. Limitations: lower capacity and slower access than HDD/SSD; discs can scratch.
-11. Solid-state storage
-12. Stores data electronically in flash memory with no moving parts.
+1. Magnetic storage uses magnetised areas; examples include HDD and tape.
+2. Optical storage uses laser light to read marks on a disc.
+3. Solid-state secondary storage uses non-volatile flash memory with no moving parts; an SSD or NAND flash chip is the correct illustration.
+4. A volatile RAM DIMM is primary memory and is not an SSD.
 
 ### What secondary storage does
 

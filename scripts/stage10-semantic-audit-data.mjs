@@ -1,3 +1,5 @@
+import fs from "node:fs";
+
 export const semanticAudit = Object.freeze({
   completedAt: "2026-08-24",
   firstPassComplete: true,
@@ -103,7 +105,32 @@ const defect = (id, key, region, category, visibleContent, expectedContent, sour
   resolved: resolvedDefectIds.has(id),
 });
 
+const currentVisualRemediations = JSON.parse(fs.readFileSync(
+  new URL("../audits/visual-semantic-remediation-register.json", import.meta.url),
+  "utf8",
+)).records.filter((record) => record.visualType === "Stage 10 JPG");
+
+const currentVisualDefects = currentVisualRemediations.map((record) => {
+  const targetId = record.sectionId.replace(/^explanation-/, "");
+  const id = `S10-2026-${record.lesson}-${targetId.toUpperCase().replaceAll("-", "_")}-001`;
+  return Object.freeze({
+    id,
+    key: `${record.lesson}/${targetId}`,
+    region: record.sectionId,
+    category: "visual-semantic-remediation",
+    visibleContent: record.issue,
+    expectedContent: record.requiredCorrection,
+    source: record.authority,
+    severity: record.severity,
+    confidence: record.confidence,
+    blocksRelease: ["Critical", "Major"].includes(record.severity) && !record.resolved,
+    proposedFix: record.requiredCorrection,
+    resolved: record.resolved,
+  });
+});
+
 export const semanticDefects = Object.freeze([
+  ...currentVisualDefects,
   defect(
     "S10-005-SYSTEMS-001",
     "005/systems",

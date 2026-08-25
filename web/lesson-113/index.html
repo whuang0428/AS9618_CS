@@ -194,7 +194,7 @@ ENDIF</code></pre>
             <figcaption class="explanation-sr-only">Use the scenario, not the surface appearance: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Choosing types</li><li><strong>Lesson fact:</strong> Question</li><li><strong>Lesson fact:</strong> Type direction</li><li><strong>Lesson fact:</strong> Will arithmetic be performed?</li><li><strong>Lesson fact:</strong> INTEGER or REAL</li><li><strong>Lesson fact:</strong> Can the value contain decimals?</li><li><strong>Lesson fact:</strong> Is the answer only true/false?</li><li><strong>Lesson fact:</strong> Is exactly one character stored?</li><li><strong>Lesson fact:</strong> Must leading zeros or letters be preserved?</li><li><strong>Lesson fact:</strong> Is the value a calendar date?</li><li><strong>Lesson fact:</strong> Exam wording tip: &quot;suitable type&quot; answers usually need both the type and a reason linked to the data.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> INTEGER stores whole numbers and REAL stores values that may have a fractional part.</li><li><strong>Lesson fact:</strong> Both INTEGER and REAL values can be used in arithmetic.</li><li><strong>Lesson fact:</strong> First decide whether a value is numeric, then choose INTEGER for whole-only values or REAL when fractions are possible.</li></ol>
 
           </div>
         </section>
@@ -234,7 +234,11 @@ ENDTYPE</code></pre>
             <figcaption class="explanation-sr-only">When built-in types are not descriptive enough: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> User-defined types</li><li><strong>Lesson fact:</strong> Enumerated type</li><li><strong>Lesson fact:</strong> Use an enumerated type when a value must be one of a named set of options.</li><li><strong>Lesson fact:</strong> TYPE TDay = (Monday, Tuesday, Wednesday, Thursday, Friday)</li><li><strong>Lesson fact:</strong> DECLARE Day : TDay</li><li><strong>Lesson fact:</strong> Composite type preview</li><li><strong>Lesson fact:</strong> A record groups fields of different types. Records are developed later, but the idea starts with type choice.</li><li><strong>Lesson fact:</strong> TYPE TStudent</li><li><strong>Lesson fact:</strong> DECLARE Name : STRING</li><li><strong>Lesson fact:</strong> DECLARE DateOfBirth : DATE</li><li><strong>Lesson fact:</strong> DECLARE Enrolled : BOOLEAN</li><li><strong>Lesson fact:</strong> Boundary: this lesson introduces user-defined type choice. Arrays and records get their own full lessons later.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> TYPE TStudent
+    DECLARE Name : STRING
+    DECLARE Mark : INTEGER
+ENDTYPE</li><li><strong>Lesson fact:</strong> Fields of different data types are declared between TYPE and ENDTYPE.</li><li><strong>Lesson fact:</strong> DECLARE Student1 : TStudent
+Declare variables of the record type only after ENDTYPE.</li></ol>
 
           </div>
         </section>

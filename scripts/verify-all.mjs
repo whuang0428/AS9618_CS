@@ -8,6 +8,7 @@ const nodeChecks = [
   "verify-academic-theme.mjs",
   "verify-student-navigation.mjs",
   "verify-educational-visuals.mjs",
+  "verify-visual-semantic-remediation.mjs",
   "verify-stage2.mjs",
   "verify-assessments.mjs",
   "verify-lesson-mark-schemes.mjs",

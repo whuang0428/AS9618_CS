@@ -323,7 +323,7 @@
 | 073 | `surveillance` | `stage10-lesson-073-surveillance.jpg` | Surveillance can protect people, but it changes behaviour and trust | Semantic review approved |
 | 074 | `compare` | `stage10-lesson-074-compare.jpg` | Do not confuse protection type with permission type | Semantic review approved |
 | 074 | `copyright` | `stage10-lesson-074-copyright.jpg` | Copyright protects expression, including software code | Semantic review approved |
-| 074 | `ip` | `stage10-lesson-074-ip.jpg` | Intellectual property protects created ideas and expressions | Semantic review approved |
+| 074 | `ip` | `stage10-lesson-074-ip.jpg` | What intellectual property can protect | Semantic review approved |
 | 074 | `licensing` | `stage10-lesson-074-licensing.jpg` | A licence grants permission under conditions | Semantic review approved |
 | 074 | `matcher` | `stage10-lesson-074-matcher.jpg` | Choose the likely permission issue | Semantic review approved |
 | 074 | `patents` | `stage10-lesson-074-patents.jpg` | Patents protect inventions, not every line of code | Semantic review approved |
@@ -589,7 +589,7 @@
 | 123 | `criteria` | `stage10-lesson-123-criteria.jpg` | Start with the data and operations, not the keyword | Semantic review approved |
 | 123 | `decision` | `stage10-lesson-123-decision.jpg` | Match scenario evidence to structure features | Semantic review approved |
 | 123 | `file` | `stage10-lesson-123-file.jpg` | Use files when data must persist or be exchanged | Semantic review approved |
-| 123 | `pseudocode` | `stage10-lesson-123-pseudocode.jpg` | Cambridge answers should justify the structure, not advertise a Java class | Semantic review approved |
+| 123 | `pseudocode` | `stage10-lesson-123-pseudocode.jpg` | Justify the data structure in Cambridge answers | Semantic review approved |
 | 123 | `ranker` | `stage10-lesson-123-ranker.jpg` | Spot the answer that would earn marks | Semantic review approved |
 | 123 | `record` | `stage10-lesson-123-record.jpg` | Use records when named fields belong to one entity | Semantic review approved |
 | 124 | `arrays` | `stage10-lesson-124-arrays.jpg` | Cambridge array bounds are stated explicitly | Semantic review approved |
@@ -635,7 +635,7 @@
 | 130 | `function` | `stage10-lesson-130-function.jpg` | A function returns a value to the caller | Semantic review approved |
 | 130 | `java` | `stage10-lesson-130-java.jpg` | Java method syntax is not Cambridge pseudocode | Semantic review approved |
 | 130 | `parameters` | `stage10-lesson-130-parameters.jpg` | Parameters receive values passed into a subroutine | Semantic review approved |
-| 130 | `procedure` | `stage10-lesson-130-procedure.jpg` | A procedure performs actions and does not have to return a value | Semantic review approved |
+| 130 | `procedure` | `stage10-lesson-130-procedure.jpg` | A procedure performs actions and returns no value | Semantic review approved |
 | 130 | `returner` | `stage10-lesson-130-returner.jpg` | Calculate a function return value | Semantic review approved |
 | 131 | `compare` | `stage10-lesson-131-compare.jpg` | Same procedure body, different final result | Semantic review approved |
 | 131 | `java` | `stage10-lesson-131-java.jpg` | Do not replace Cambridge BYREF with Java syntax | Semantic review approved |
@@ -688,7 +688,7 @@
 | 137 | `normal` | `stage10-lesson-137-normal.jpg` | Normal data is valid, typical data inside the allowed range | Semantic review approved |
 | 137 | `purpose` | `stage10-lesson-137-purpose.jpg` | Testing compares actual results with expected results | Semantic review approved |
 | 137 | `table` | `stage10-lesson-137-table.jpg` | A clear test table turns thinking into marks | Semantic review approved |
-| 137 | `validation` | `stage10-lesson-137-validation.jpg` | Validation is the check. Testing proves whether the check works. | Semantic review approved |
+| 137 | `validation` | `stage10-lesson-137-validation.jpg` | Testing checks validation against expected results | Semantic review approved |
 | 138 | `breakpoint` | `stage10-lesson-138-breakpoint.jpg` | A breakpoint pauses execution at a chosen line | Semantic review approved |
 | 138 | `bug` | `stage10-lesson-138-bug.jpg` | Trace the boundary case to expose a logic error | Semantic review approved |
 | 138 | `java` | `stage10-lesson-138-java.jpg` | Java debugging tools help practice, but Cambridge pseudocode remains the exam format | Semantic review approved |
@@ -746,7 +746,7 @@
 | 144 | `traceability` | `stage10-lesson-144-traceability.jpg` | Traceability keeps the design connected to the original need | Semantic review approved |
 | 145 | `changeover` | `stage10-lesson-145-changeover.jpg` | Changeover methods balance risk, cost and speed | Semantic review approved |
 | 145 | `data-tool` | `stage10-lesson-145-data-tool.jpg` | Classify input for NumberOfStudents, valid range 1 to 30 | Semantic review approved |
-| 145 | `evaluation` | `stage10-lesson-145-evaluation.jpg` | Evaluation judges the final system against requirements and success criteria | Semantic review approved |
+| 145 | `evaluation` | `stage10-lesson-145-evaluation.jpg` | Evaluation uses requirements and measurable success criteria | Semantic review approved |
 | 145 | `implementation` | `stage10-lesson-145-implementation.jpg` | Implementation turns the design into a working system | Semantic review approved |
 | 145 | `maintenance` | `stage10-lesson-145-maintenance.jpg` | Maintenance changes a system after it has been delivered | Semantic review approved |
 | 145 | `stage-tool` | `stage10-lesson-145-stage-tool.jpg` | Which lifecycle stage is being described? | Semantic review approved |
