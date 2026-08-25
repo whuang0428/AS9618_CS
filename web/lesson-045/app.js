@@ -1,8 +1,8 @@
 const instructionSet = {
-  "0001": { mnemonic: "LOAD", meaning: "load the value from the operand address into ACC" },
-  "0010": { mnemonic: "STORE", meaning: "store the ACC value into the operand address" },
-  "0011": { mnemonic: "ADD", meaning: "add the value at the operand address to ACC" },
-  "0100": { mnemonic: "JMP", meaning: "jump to the operand address" },
+  "0001": { operation: "load", meaning: "load the value from the operand address into ACC" },
+  "0010": { operation: "store", meaning: "store the ACC value into the operand address" },
+  "0011": { operation: "add", meaning: "add the value at the operand address to ACC" },
+  "0100": { operation: "jump", meaning: "jump to the operand address" },
 };
 
 const decodeData = {
@@ -54,13 +54,13 @@ const examples = {
       "Therefore Processor B may not recognise or correctly execute the machine-code instructions.",
     ],
   },
-  assembly: {
-    title: "Example 3: machine code vs assembly language",
-    problem: "Explain why ADD 90 is not machine code.",
+  capacity: {
+    title: "Example 3: instruction-format capacity",
+    problem: "How many different opcodes can four opcode bits represent?",
     steps: [
-      "ADD is a mnemonic, a human-readable abbreviation used in assembly language.",
-      "Machine code uses binary instructions such as 0011 01011010.",
-      "Assembly language must be translated by an assembler into machine code before direct execution.",
+      "Four bits have 2⁴ different patterns.",
+      "Therefore the format can represent at most 16 distinct opcodes.",
+      "Using more bits for the opcode can represent more operations, but leaves fewer bits for the operand when the instruction length is fixed.",
     ],
   },
 };
@@ -72,16 +72,16 @@ const practice = [
   { id: "p4", prompt: "Which part of an instruction gives the data/address/register used by the operation?", accepted: ["operand"], answer: "Operand" },
   { id: "p5", prompt: "In 0011 01011010, using this lesson format, what is the opcode?", accepted: ["0011"], answer: "0011" },
   { id: "p6", prompt: "In 0011 01011010, using this lesson format, what is the operand?", accepted: ["01011010"], answer: "01011010" },
-  { id: "p7", prompt: "Using the lesson table, opcode 0001 means which mnemonic?", accepted: ["load"], answer: "LOAD" },
-  { id: "p8", prompt: "Using the lesson table, opcode 0100 means which mnemonic?", accepted: ["jmp", "jump"], answer: "JMP / jump" },
-  { id: "p9", prompt: "Assembly language uses human-readable words such as ADD. What are these called?", accepted: ["mnemonics", "mnemonic"], answer: "Mnemonics" },
+  { id: "p7", prompt: "Using the lesson table, what operation does opcode 0001 perform?", accepted: ["load"], answer: "Load" },
+  { id: "p8", prompt: "Using the lesson table, what operation does opcode 0100 perform?", accepted: ["jump"], answer: "Jump" },
+  { id: "p9", prompt: "How many different patterns can a 4-bit opcode have?", accepted: ["16", "sixteen"], answer: "16" },
   { id: "p10", prompt: "Can machine code for one instruction set always run on a different instruction set? Answer yes or no.", accepted: ["no"], answer: "No" },
 ];
 
 const mistakes = [
   {
-    wrong: "Machine code is assembly language written with mnemonics.",
-    fix: "Machine code is binary instructions. Assembly language uses mnemonics and must be assembled into machine code.",
+    wrong: "Machine code is any instruction written for a computer.",
+    fix: "Machine code consists of binary instructions that the processor can execute directly.",
   },
   {
     wrong: "The operand tells the CPU which operation to perform.",
@@ -111,7 +111,7 @@ const examQuestions = [
     ],
     strict: [
       "Do not accept instruction set as high-level program library.",
-      "Do not accept machine code as assembly mnemonics.",
+      "Do not accept a high-level program as machine code.",
       "Allow 'CPU' for processor.",
     ],
   },
@@ -172,20 +172,20 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "Compare machine code and assembly language.",
-    answer: "Machine code is made of binary instructions that the processor can execute directly. Assembly language uses mnemonics such as ADD or LOAD to represent machine-code operations in a more human-readable form. Assembly language is still low-level and processor-specific, but it must be translated by an assembler into machine code before direct execution. Machine code is harder for humans to read, while assembly is easier to write and understand than raw binary.",
+    prompt: "A fixed 12-bit instruction changes from a 4-bit opcode and 8-bit operand to a 5-bit opcode and 7-bit operand. Explain two effects of this change.",
+    answer: "Five opcode bits provide 32 patterns instead of 16, so the instruction set can define more operations. The operand becomes seven bits, so it provides 128 patterns instead of 256. If the operand represents an address, the directly represented address range becomes smaller. This is a trade-off because the total instruction length remains 12 bits.",
     marking: [
-      { mark: "B1", text: "machine code is binary instructions" },
-      { mark: "B1", text: "machine code executed directly by processor" },
-      { mark: "B1", text: "assembly uses mnemonics/symbolic instructions" },
-      { mark: "B1", text: "assembly is more human-readable than machine code" },
-      { mark: "B1", text: "assembly must be translated by assembler" },
-      { mark: "B1", text: "both are low-level/processor-specific or assembly maps closely to machine code" },
+      { mark: "B1", text: "uses 2⁵ for the new opcode capacity" },
+      { mark: "B1", text: "states 32 opcode patterns instead of 16" },
+      { mark: "B1", text: "links the extra opcode bit to more possible operations" },
+      { mark: "B1", text: "uses 2⁷ for the new operand capacity" },
+      { mark: "B1", text: "states 128 operand patterns instead of 256" },
+      { mark: "B1", text: "links the smaller operand to a reduced value/address range" },
     ],
     strict: [
-      "Do not accept assembly as high-level language.",
-      "Do not accept machine code as needing an assembler before execution.",
-      "Allow examples of mnemonics such as ADD, LOAD, JMP.",
+      "Do not award the pattern counts without the corresponding effect explanation.",
+      "Allow equivalent maximum-range wording if the counting convention is stated.",
+      "The instruction remains 12 bits; do not award claims that it becomes longer.",
     ],
   },
 ];

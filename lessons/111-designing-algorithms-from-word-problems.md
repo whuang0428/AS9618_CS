@@ -74,6 +74,7 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
 ## Stage 2 syllabus completion
 
 **Official audit rows:** S9.08
@@ -107,6 +108,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **B1** outputs confirmation/card or error; steps form a coherent sequence
 
 **Strict note:** Do not award a list of unrelated features; substeps must collectively implement the parent task.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

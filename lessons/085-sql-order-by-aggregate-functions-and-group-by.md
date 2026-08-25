@@ -1,9 +1,9 @@
 # Lesson 085: SQL ORDER BY, aggregate functions, and GROUP BY
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 8  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 8
+**Duration:** 45 minutes
 **Assessment rhythm:** 5-minute quiz
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students write three natural-language questions for a database, then swap and wr
 3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework

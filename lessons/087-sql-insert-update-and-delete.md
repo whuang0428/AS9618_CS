@@ -72,6 +72,7 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often select every field with `*`. Correction: exam questions usually specify exactly which fields are required.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
 ## Stage 2 syllabus completion
 
 **Official audit rows:** S8.07, S8.09
@@ -105,6 +106,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **B1** Open BOOLEAN with valid punctuation/structure
 
 **Strict note:** Do not award INSERT/UPDATE statements: the question asks for structure, not record data.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

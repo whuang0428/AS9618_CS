@@ -72,19 +72,21 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
 ## Stage 2 syllabus completion
 
-**Official audit rows:** S4.10, S4.13
-**Focus:** Two-pass assembler and core instruction semantics
+**Official audit rows:** S4.10, S4.12, S4.13
+**Focus:** Instruction groups, core semantics and the two-pass assembler
 
 ### Direct explanation
 
 - Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.
+- Instruction groups describe effects: data movement transfers values; input/output communicates with devices; arithmetic changes numeric values; compare sets status information; and branch changes the next instruction address. A conditional branch depends on status, while an unconditional jump always changes the PC.
 - Core mnemonics must be read by effect: LDM immediate; LDD direct; LDI indirect; LDX indexed; LDR relative; MOV register transfer; STO memory store; ADD/SUB/INC/DEC arithmetic; JMP branch; CMP/CMI compare; JPE/JPN conditional branches; IN/OUT I/O; END stops.
 
 ### Worked example
 
-**Forward label:** JMP FINISH appears before FINISH. Pass 1 records FINISH's eventual address in the symbol table; pass 2 substitutes that address when translating JMP.
+**Classify and translate a forward branch:** In JMP FINISH, JMP is an unconditional branch. Pass 1 records FINISH's eventual address in the symbol table; pass 2 substitutes that address when translating JMP.
 
 ### Targeted practice and answers
 
@@ -94,17 +96,22 @@ Correction prompt: "State the correct term, then explain the relevant process or
    **Answer:** LDM loads literal 5; LDD loads the contents of memory address 5.
 3. Which instruction terminates execution?
    **Answer:** END.
+4. Why is JPE conditional?
+   **Answer:** It branches only when the equality condition/status is satisfied.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Explain why an assembler commonly uses two passes when a program contains a forward reference.
+**Question (6 marks):** Explain why an assembler uses two passes for a forward reference, then distinguish compare, conditional branch and unconditional branch instructions.
 
 - **B1** label is used before its address is known
 - **B1** pass 1 assigns addresses/builds the symbol table
-- **B1** the forward label address is then available
-- **B1** pass 2 translates the instruction/substitutes the address into machine code
+- **B1** pass 2 substitutes the resolved address while translating
+- **B1** compare tests values / sets status
+- **B1** conditional branch changes flow only when its condition/status is met
+- **B1** unconditional branch always changes the next instruction/PC
 
-**Strict note:** Do not accept that pass 1 executes the program; both passes translate source.
+**Strict note:** Do not accept that pass 1 executes the program or that CMP itself necessarily jumps to another instruction.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

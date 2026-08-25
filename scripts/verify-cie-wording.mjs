@@ -29,7 +29,7 @@ for (const pattern of prohibited) if (pattern.test(learnerCorpus)) fail(`Prohibi
 
 if (lessonMarkdown.length !== 150) fail(`Expected 150 Markdown lessons; found ${lessonMarkdown.length}`);
 if (lessonHtml.length !== 150) fail(`Expected 150 lesson webpages; found ${lessonHtml.length}`);
-if (explanations.length !== 782) fail(`Expected 782 maintained infographic explanations; found ${explanations.length}`);
+if (explanations.length !== 779) fail(`Expected 779 maintained infographic explanations after retiring three obsolete targets; found ${explanations.length}`);
 
 const questions = loadAllQuestions();
 if (questions.length !== 963) fail(`Expected 963 questions; found ${questions.length}`);
@@ -45,7 +45,7 @@ if (register.trimEnd().split("\n").length !== expectedRows) fail("CIE wording re
 if (/,(?:Pending),/.test(register)) fail("CIE wording register contains pending records");
 
 const ocrRegister = fs.readFileSync(path.join(root, "audits", "stage10-ocr-wording.csv"), "utf8");
-if (ocrRegister.trimEnd().split("\n").length !== 783) fail("Stage 10 OCR wording register row count is incorrect");
+if (ocrRegister.trimEnd().split("\n").length !== 780) fail("Stage 10 OCR wording register row count is incorrect");
 if (/,(?:Review needed|OCR failed),/.test(ocrRegister)) fail("Stage 10 OCR wording register contains unresolved records");
 
 if (failures.length) {

@@ -1,131 +1,112 @@
-const predictSets = {
-  a: { values: [4, 7, 9], output: 20 },
-  b: { values: [10, 0, 5], output: 15 },
-  c: { values: [-2, 8, 6], output: 12 },
-  d: { values: [3, 3, 3], output: 9 },
-};
-
-const traceScenarios = {
-  total: {
-    title: "Running total for 4, 7, 9",
-    headers: ["Count", "Number", "Total", "Output"],
-    rows: [
-      ["1", "4", "4", "-"],
-      ["2", "7", "11", "-"],
-      ["3", "9", "20", "20"],
-    ],
-    note: "Total is updated after each input. OUTPUT happens after the loop.",
+const symbolMap = {
+  start: {
+    symbol: "Terminator",
+    detail: "Use the start/end symbol for the beginning or end of an algorithm.",
   },
-  max: {
-    title: "Maximum of 6, 11, 8",
-    headers: ["Step", "Value", "Highest", "Output"],
-    rows: [
-      ["initial", "6", "6", "-"],
-      ["compare", "11", "11", "-"],
-      ["compare", "8", "11", "11"],
-    ],
-    note: "Highest changes only when the new value is greater than the current Highest.",
+  input: {
+    symbol: "Input/output",
+    detail: "Inputting a mark is data entering the algorithm, so use the input/output symbol.",
   },
-  sentinel: {
-    title: "Sentinel total for 5, 2, -1",
-    headers: ["Input", "Condition", "Total", "Output"],
-    rows: [
-      ["5", "5 <> -1 is TRUE", "5", "-"],
-      ["2", "2 <> -1 is TRUE", "7", "-"],
-      ["-1", "-1 <> -1 is FALSE", "7", "7"],
-    ],
-    note: "The sentinel -1 stops the loop and is not added to Total.",
+  calc: {
+    symbol: "Process",
+    detail: "An assignment or calculation such as Total <- Total + Mark uses a process box.",
   },
-  valid: {
-    title: "Validate ages 10 then 15",
-    headers: ["Age", "Condition", "Output"],
-    rows: [
-      ["10", "Age >= 11 AND Age <= 18 is FALSE", "Invalid"],
-      ["15", "Age >= 11 AND Age <= 18 is TRUE", "Valid"],
-    ],
-    note: "Boundary checks depend on both lower and upper limits.",
+  decision: {
+    symbol: "Decision",
+    detail: "A condition with Yes/No outcomes uses a decision diamond.",
+  },
+  output: {
+    symbol: "Input/output",
+    detail: "Displaying a result is output, so use the input/output symbol.",
   },
 };
 
-const checkerMap = {
-  "wrong-total": {
-    verdict: "Incorrect trace",
-    detail: "Those are the input values, not the running total. Total should be 4, then 11, then 20.",
+const structureMap = {
+  selection: {
+    title: "Selection",
+    code: "IF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF",
+    reason: "The algorithm chooses one of two branches.",
   },
-  "wrong-sentinel": {
-    verdict: "Incorrect trace",
-    detail: "The sentinel is a stopping value. It should not be added to Total unless the question explicitly says otherwise.",
+  for: {
+    title: "Count-controlled iteration",
+    code: "FOR Count <- 1 TO 5\n    INPUT Mark\nNEXT Count",
+    reason: "The number of repetitions is known before the loop starts.",
   },
-  "wrong-output": {
-    verdict: "Incorrect trace",
-    detail: "Record output only when an OUTPUT statement executes. If OUTPUT is after the loop, the output appears after the final iteration.",
+  while: {
+    title: "Condition-controlled iteration",
+    code: "INPUT Number\nWHILE Number <> -1\n    OUTPUT Number\n    INPUT Number\nENDWHILE",
+    reason: "The loop continues until a condition changes.",
   },
-  correct: {
-    verdict: "Correct trace",
-    detail: "4, 11, 20 are the running totals after each input value is processed.",
+  sequence: {
+    title: "Sequence",
+    code: "INPUT Length\nINPUT Width\nArea <- Length * Width\nOUTPUT Area",
+    reason: "The steps happen in a fixed order with no branch or loop.",
   },
+};
+
+const converterPatterns = {
+  pass: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF",
+  valid: "INPUT Age\nIF Age >= 11 AND Age <= 18 THEN\n    OUTPUT \"Valid\"\nELSE\n    OUTPUT \"Invalid\"\nENDIF",
+  total: "Total <- 0\nFOR Count <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\nNEXT Count\nOUTPUT Total",
+  sentinel: "Total <- 0\nINPUT Number\nWHILE Number <> -1\n    Total <- Total + Number\n    INPUT Number\nENDWHILE\nOUTPUT Total",
 };
 
 const examples = {
-  total: {
-    title: "Example 1: Running total",
-    problem: "Trace Total <- 0; input 4, 7, 9; add each value to Total; output Total.",
-    headers: ["Count", "Number", "Total", "Output"],
-    rows: [["1", "4", "4", "-"], ["2", "7", "11", "-"], ["3", "9", "20", "20"]],
-    notes: ["Initialise Total before the loop.", "Record Total after the assignment.", "The output appears once, after the loop."],
+  pass: {
+    title: "Example 1: Pass/resit",
+    problem: "Input a mark and output Pass if it is at least 50, otherwise output Resit.",
+    flow: ["Terminator: START", "Input/output: INPUT Mark", "Decision: Mark >= 50?", "Yes branch: OUTPUT Pass", "No branch: OUTPUT Resit", "Terminator: END"],
+    code: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF",
   },
-  max: {
-    title: "Example 2: Maximum value",
-    problem: "Trace values 6, 11, 8 and output the highest.",
-    headers: ["Step", "Value", "Highest", "Output"],
-    rows: [["initial", "6", "6", "-"], ["compare", "11", "11", "-"], ["compare", "8", "11", "11"]],
-    notes: ["The first value can initialise Highest.", "11 replaces 6 because it is larger.", "8 does not replace 11."],
+  average: {
+    title: "Example 2: Average of five marks",
+    problem: "Input exactly five marks, calculate the average and output it.",
+    flow: ["Process: Total <- 0", "Loop counter controls five repetitions", "Input/output: INPUT Mark", "Process: Total <- Total + Mark", "Process: Average <- Total / 5", "Input/output: OUTPUT Average"],
+    code: "Total <- 0\nFOR Count <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\nNEXT Count\nAverage <- Total / 5\nOUTPUT Average",
   },
   sentinel: {
     title: "Example 3: Sentinel loop",
-    problem: "Trace input values 5, 2, -1. Add values until -1 is entered.",
-    headers: ["Input", "Condition", "Total", "Output"],
-    rows: [["5", "TRUE", "5", "-"], ["2", "TRUE", "7", "-"], ["-1", "FALSE", "7", "7"]],
-    notes: ["Check the condition before adding.", "-1 is not processed.", "Output Total after the loop stops."],
+    problem: "Input numbers until -1 is entered, then output the total. Do not include -1.",
+    flow: ["Process: Total <- 0", "Input/output: INPUT Number", "Decision: Number <> -1?", "Yes branch: add Number to Total and input again", "No branch: OUTPUT Total"],
+    code: "Total <- 0\nINPUT Number\nWHILE Number <> -1\n    Total <- Total + Number\n    INPUT Number\nENDWHILE\nOUTPUT Total",
   },
-  selection: {
-    title: "Example 4: Selection trace",
-    problem: "Input Mark and output Pass if Mark >= 50, otherwise Resit.",
-    headers: ["Mark", "Condition", "Output"],
-    rows: [["49", "FALSE", "Resit"], ["50", "TRUE", "Pass"], ["72", "TRUE", "Pass"]],
-    notes: ["49 and 50 are useful boundary values.", "50 is included in Pass because the condition is >= 50."],
+  validation: {
+    title: "Example 4: Age validation",
+    problem: "Input an age and output Valid if it is from 11 to 18 inclusive.",
+    flow: ["Input/output: INPUT Age", "Decision: Age >= 11 AND Age <= 18?", "Yes branch: OUTPUT Valid", "No branch: OUTPUT Invalid"],
+    code: "INPUT Age\nIF Age >= 11 AND Age <= 18 THEN\n    OUTPUT \"Valid\"\nELSE\n    OUTPUT \"Invalid\"\nENDIF",
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What is the purpose of a trace table?", accepted: ["record variable values", "record variables", "track variables", "trace variables", "record changes"], answer: "To record variable values and outputs as an algorithm is executed." },
-  { id: "p2", prompt: "What does dry run mean?", accepted: ["execute by hand", "manual execution", "run by hand", "trace by hand"], answer: "Executing the algorithm manually using test data." },
-  { id: "p3", prompt: "For inputs 4, 7, 9 with Total initially 0, what final Total is output?", accepted: ["20"], answer: "20" },
-  { id: "p4", prompt: "For running totals after 4, 7, 9, write the three Total values separated by commas.", accepted: ["4,11,20", "4 11 20", "4, 11, 20"], answer: "4, 11, 20" },
-  { id: "p5", prompt: "In a WHILE loop using -1 as a sentinel, should -1 be added to Total? yes or no.", accepted: ["no"], answer: "No. The sentinel stops the loop and is not processed." },
-  { id: "p6", prompt: "Which column should record displayed values?", accepted: ["output", "output column"], answer: "Output / output column" },
-  { id: "p7", prompt: "Values are 6, 11, 8. What final Highest is output?", accepted: ["11"], answer: "11" },
-  { id: "p8", prompt: "If OUTPUT is after a FOR loop, does output happen every iteration or after the loop?", accepted: ["after the loop", "after loop"], answer: "After the loop." },
-  { id: "p9", prompt: "Which value is the boundary for Pass when condition is Mark >= 50?", accepted: ["50"], answer: "50" },
-  { id: "p10", prompt: "Is Java syntax the expected trace notation for Paper 2 pseudocode questions? yes or no.", accepted: ["no"], answer: "No. Trace Cambridge-style pseudocode." },
+  { id: "p1", prompt: "Which flowchart symbol is used for a yes/no condition?", accepted: ["decision", "diamond", "decision diamond"], answer: "Decision / diamond" },
+  { id: "p2", prompt: "Which flowchart symbol is used for INPUT Mark?", accepted: ["input output", "input/output", "io", "parallelogram"], answer: "Input/output symbol, often drawn as a parallelogram." },
+  { id: "p3", prompt: "Which pseudocode keyword displays a result?", accepted: ["output"], answer: "OUTPUT" },
+  { id: "p4", prompt: "Which keyword closes an IF structure in Cambridge-style pseudocode?", accepted: ["endif", "end if"], answer: "ENDIF" },
+  { id: "p5", prompt: "Which structure is used when exactly five values are input?", accepted: ["for", "for loop", "count controlled loop", "count-controlled iteration"], answer: "A count-controlled loop such as FOR...TO...NEXT." },
+  { id: "p6", prompt: "Should Java braces be used as the expected Paper 2 pseudocode format? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode." },
+  { id: "p7", prompt: "In a flowchart decision, what labels should usually appear on outgoing branches?", accepted: ["yes no", "yes/no", "true false", "true/false"], answer: "Yes/No or True/False." },
+  { id: "p8", prompt: "Which symbol is used for Total <- Total + Mark?", accepted: ["process", "process box", "rectangle"], answer: "Process box / rectangle." },
+  { id: "p9", prompt: "What indentation shows in pseudocode?", accepted: ["block structure", "which statements are inside", "inside branch", "inside loop", "scope"], answer: "Indentation shows which statements belong inside a branch or loop." },
+  { id: "p10", prompt: "Which term describes the arrows showing the next step in a flowchart?", accepted: ["flow line", "flow lines", "arrow", "arrows"], answer: "Flow lines / arrows." },
 ];
 
 const mistakes = [
   {
-    wrong: "I wrote the input values in the Total column: 4, 7, 9.",
-    fix: "Total is a running value. After each update it should be 4, 11, 20.",
+    wrong: "I used a process rectangle for Mark >= 50?",
+    fix: "Use a decision diamond for a condition with alternative branches.",
   },
   {
-    wrong: "I added -1 to Total in a sentinel loop.",
-    fix: "Check the sentinel before processing it. The sentinel stops the loop and should not be included in Total.",
+    wrong: "My IF statement has ELSE but no ENDIF.",
+    fix: "Close the structure with ENDIF so the branch boundaries are clear.",
   },
   {
-    wrong: "I wrote output on every row even though OUTPUT is after the loop.",
-    fix: "Only write output when the OUTPUT statement executes. If OUTPUT is after the loop, it appears once at the end.",
+    wrong: "I used System.out.println in my exam pseudocode answer.",
+    fix: "Use OUTPUT in Cambridge-style pseudocode. Java syntax is only support for implementation practice.",
   },
   {
-    wrong: "I changed Highest even when the new value was smaller.",
-    fix: "Update Highest only when the condition Value > Highest is true.",
+    wrong: "My flowchart decision has two arrows but no Yes/No labels.",
+    fix: "Label the outgoing branches so the condition outcomes are unambiguous.",
   },
 ];
 
@@ -133,101 +114,98 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "The following pseudocode is traced with input values 4, 7, 9. Complete the trace for Total and state the output.\n\nTotal <- 0\nFOR Count <- 1 TO 3\n    INPUT Number\n    Total <- Total + Number\nNEXT Count\nOUTPUT Total",
-    answer: "Count 1: Number 4, Total 4. Count 2: Number 7, Total 11. Count 3: Number 9, Total 20. Output is 20.",
+    prompt: "Name the correct flowchart symbol for each step: start the algorithm, input a mark, calculate Total <- Total + Mark, test Mark >= 50, output Pass.",
+    answer: "Start uses a terminator. Input a mark uses an input/output symbol. Total <- Total + Mark uses a process symbol. Mark >= 50 uses a decision symbol. Output Pass uses an input/output symbol.",
     marking: [
-      { mark: "B1", text: "records Total as 4 after first input" },
-      { mark: "B1", text: "records Total as 11 after second input" },
-      { mark: "B1", text: "records Total as 20 after third input" },
-      { mark: "B1", text: "states output occurs after the loop" },
-      { mark: "A1", text: "states final output 20" },
+      { mark: "B1", text: "start/end identified as terminator" },
+      { mark: "B1", text: "input mark identified as input/output" },
+      { mark: "B1", text: "calculation/assignment identified as process" },
+      { mark: "B1", text: "condition identified as decision" },
+      { mark: "B1", text: "output identified as input/output" },
     ],
     strict: [
-      "Do not accept 4, 7, 9 as Total values.",
-      "Allow Sum instead of Total if meaning is clear.",
-      "Do not require a perfectly formatted table if values are ordered clearly.",
-      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
+      "Do not accept process symbol for a condition.",
+      "Allow common shape names such as oval for terminator, parallelogram for input/output, rectangle for process and diamond for decision.",
+      "Do not require drawn symbols if names are clear.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "A maximum algorithm inputs 6, 11, 8. Highest is set to the first value. Each next value is compared with Highest and replaces it only if larger. Complete the trace and output.",
-    answer: "Initial Highest is 6. Compare 11: 11 > 6, so Highest becomes 11. Compare 8: 8 > 11 is false, so Highest remains 11. Output is 11.",
+    prompt: "Write Cambridge-style pseudocode to input Age and output Valid if Age is from 11 to 18 inclusive, otherwise output Invalid.",
+    answer: "INPUT Age\nIF Age >= 11 AND Age <= 18 THEN\n    OUTPUT \"Valid\"\nELSE\n    OUTPUT \"Invalid\"\nENDIF",
     marking: [
-      { mark: "B1", text: "initialises Highest to first value 6" },
-      { mark: "M1", text: "compares 11 with 6" },
-      { mark: "A1", text: "updates Highest to 11" },
-      { mark: "M1", text: "compares 8 with 11" },
-      { mark: "A1", text: "keeps Highest as 11" },
-      { mark: "A1", text: "states output 11" },
+      { mark: "B1", text: "inputs Age" },
+      { mark: "M1", text: "uses IF with lower bound Age >= 11" },
+      { mark: "M1", text: "uses upper bound Age <= 18 with AND / both conditions required" },
+      { mark: "A1", text: "outputs Valid on true branch" },
+      { mark: "A1", text: "outputs Invalid on false branch" },
+      { mark: "B1", text: "uses clear Cambridge-style structure such as IF/THEN/ELSE/ENDIF" },
     ],
     strict: [
-      "Do not award update mark if Highest changes to 8 at the end.",
-      "Allow equivalent explanation without a table.",
-      "Do not require array notation.",
-      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
+      "Do not award upper-bound method mark for OR in this range check.",
+      "Allow equivalent inclusive comparisons such as Age > 10 AND Age < 19 if integer age is clear.",
+      "Do not award final style mark for Java-only syntax.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "A loop inputs numbers until -1 is entered. It should output the total of values before -1. Trace inputs 5, 2, -1 and explain why -1 is not included.",
-    answer: "Total starts at 0. Input 5 is not -1, so Total becomes 5. Input 2 is not -1, so Total becomes 7. Input -1 makes the loop condition false, so it is not added. The output is 7.",
+    prompt: "A flowchart inputs exactly five marks and outputs their total. Describe the pseudocode structure needed and write a suitable outline.",
+    answer: "A count-controlled loop is suitable because exactly five marks are input. Total should be initialised to 0 before the loop. The loop inputs a Mark and adds it to Total five times, then outputs Total.\n\nTotal <- 0\nFOR Count <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\nNEXT Count\nOUTPUT Total",
     marking: [
-      { mark: "B1", text: "initialises or implies Total starts at 0" },
-      { mark: "B1", text: "updates Total to 5 after input 5" },
-      { mark: "B1", text: "updates Total to 7 after input 2" },
-      { mark: "M1", text: "identifies -1 as sentinel/stopping value" },
-      { mark: "A1", text: "explains -1 is not added/processed" },
-      { mark: "A1", text: "states output 7" },
+      { mark: "B1", text: "identifies count-controlled loop / FOR loop" },
+      { mark: "B1", text: "initialises Total to 0 before the loop" },
+      { mark: "M1", text: "loop repeats five times" },
+      { mark: "M1", text: "inputs Mark inside the loop" },
+      { mark: "M1", text: "updates Total inside the loop" },
+      { mark: "A1", text: "outputs Total after the loop" },
     ],
     strict: [
-      "Do not accept output 6 if -1 has been included.",
-      "Allow 'terminating value' for sentinel.",
-      "Do not require full WHILE syntax.",
-      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
+      "Do not award full credit if Total is initialised inside the loop.",
+      "Allow REPEAT/WHILE if it clearly processes exactly five marks using a counter.",
+      "Do not require exact variable names.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "Explain how a trace table can help find a logic error in an algorithm. Refer to variables, expected output and one example error.",
-    answer: "A trace table records variable values after each step, so the programmer can compare the actual values with expected values. If an output is wrong, the table can show where a variable first became incorrect. For example, Total may be initialised inside a loop or a sentinel value may be added when it should stop the loop.",
+    prompt: "Explain two differences between a flowchart and pseudocode when representing the same algorithm.",
+    answer: "A flowchart is a visual representation using symbols and flow lines, while pseudocode is a structured text representation using keywords. A flowchart shows decisions with a decision symbol and labelled branches, while pseudocode shows the same logic using IF, THEN, ELSE and ENDIF. Both can represent the same sequence, selection and iteration.",
     marking: [
-      { mark: "B1", text: "states trace table records variable values during execution" },
-      { mark: "B1", text: "links trace to checking expected output" },
-      { mark: "B1", text: "explains locating the first incorrect variable/value" },
-      { mark: "B1", text: "gives a valid logic-error example" },
+      { mark: "B1", text: "states flowchart is visual/uses symbols" },
+      { mark: "B1", text: "states pseudocode is structured text/uses keywords" },
+      { mark: "B1", text: "flowchart decisions use a decision symbol with labelled branches" },
+      { mark: "B1", text: "pseudocode decisions use keywords such as IF...THEN...ELSE...ENDIF" },
     ],
     strict: [
-      "Do not accept only 'it makes it easier' without explanation.",
-      "Allow examples such as wrong initialisation, missing update, off-by-one loop or sentinel included.",
-      "Do not require code.",
+      "Do not accept that one form changes the algorithm result.",
+      "Allow discussion of loops if comparison is accurate.",
+      "Do not award marks for vague claims such as 'flowcharts are easier' without a representational difference.",
     ],
   },
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "A student traces a FOR loop but writes output on every row. The OUTPUT statement is after NEXT Count. Explain the mistake and state how the output column should be completed.",
-    answer: "The mistake is recording output before the OUTPUT statement executes. In a FOR loop where OUTPUT is after NEXT Count, the loop must finish before output is displayed. The output column should be blank or dashed during the loop iterations and should contain the final output only on the final row after the loop.",
+    prompt: "A student writes Java code with braces and semicolons as an answer to a Cambridge pseudocode question. Explain why this may lose marks and give three Cambridge-style conventions that should be used instead.",
+    answer: "Cambridge Paper 2 expects Cambridge-style pseudocode, so Java-only syntax may not match the required notation. Instead, use INPUT for data entry and OUTPUT for display. Use IF condition THEN, ELSE and ENDIF for selection. Use FOR...TO...NEXT or WHILE...ENDWHILE for iteration and indent statements inside branches or loops.",
     marking: [
-      { mark: "B1", text: "identifies output has been recorded too early" },
-      { mark: "B1", text: "recognises OUTPUT is after the loop/NEXT Count" },
-      { mark: "B1", text: "explains loop iterations must finish before output" },
-      { mark: "B1", text: "blank/dash output during loop rows" },
-      { mark: "B1", text: "final output recorded once after loop" },
+      { mark: "B1", text: "states Cambridge-style pseudocode is expected" },
+      { mark: "B1", text: "identifies Java-only syntax such as braces/semicolons/System.out.println as unsuitable" },
+      { mark: "B1", text: "gives one valid convention such as INPUT/OUTPUT" },
+      { mark: "B1", text: "gives a second distinct convention such as IF...THEN...ELSE...ENDIF" },
+      { mark: "B1", text: "gives a third distinct convention such as FOR...NEXT, WHILE...ENDWHILE or assignment arrow" },
     ],
     strict: [
-      "Do not accept output every iteration unless OUTPUT is inside the loop.",
-      "Allow 'no output until after loop' for blank/dash rows.",
-      "Do not require a specific final numeric output if none is given.",
+      "Do not award convention marks for Java syntax examples.",
+      "Allow assignment arrow and meaningful identifiers as additional valid Cambridge-style conventions.",
+      "Do not say Java is useless; it may support implementation but is not the expected exam pseudocode notation.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9, -]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9/ -]/g, "");
 }
 
 function setupPrint() {
@@ -237,10 +215,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    a: "Not quite. Those are the inputs, not the running totals.",
-    b: "Correct. Total becomes 3, then 8, then 10.",
-    c: "Close, but this misses the final update after adding 2.",
-    d: "No. Trace values follow execution order, not numerical countdown order.",
+    start: "Terminator. START and END mark the boundaries of the algorithm.",
+    input: "Input/output. The drink code is data entering the algorithm.",
+    decision: "Decision. This is a condition with different outcomes.",
+    output: "Input/output. Displaying a message is output.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -251,39 +229,33 @@ function setupHook() {
   });
 }
 
-function setupPredictor() {
-  const input = document.querySelector("#predictInput");
-  const result = document.querySelector("#predictResult");
-  document.querySelector("#predictBtn").addEventListener("click", () => {
-    const item = predictSets[input.value];
-    result.innerHTML = `<strong>Output: ${item.output}</strong><span>${item.values.join(" + ")} = ${item.output}</span>`;
+function setupSymbolTool() {
+  const input = document.querySelector("#symbolInput");
+  const result = document.querySelector("#symbolResult");
+  document.querySelector("#symbolBtn").addEventListener("click", () => {
+    const item = symbolMap[input.value];
+    result.innerHTML = `<strong>${item.symbol}</strong><span>${item.detail}</span>`;
   });
 }
 
-function tableMarkup(headers, rows) {
-  return `
-    <div class="result-table" style="--cols: ${headers.length}">
-      <div class="table-row table-head">${headers.map((head) => `<div>${head}</div>`).join("")}</div>
-      ${rows.map((row) => `<div class="table-row">${row.map((cell) => `<div>${cell}</div>`).join("")}</div>`).join("")}
-    </div>
-  `;
-}
-
-function setupTraceBuilder() {
-  const input = document.querySelector("#traceInput");
-  const result = document.querySelector("#traceResult");
-  document.querySelector("#traceBtn").addEventListener("click", () => {
-    const item = traceScenarios[input.value];
-    result.innerHTML = `<h3>${item.title}</h3>${tableMarkup(item.headers, item.rows)}<p>${item.note}</p>`;
+function setupStructureTool() {
+  const input = document.querySelector("#structureInput");
+  const result = document.querySelector("#structureResult");
+  document.querySelector("#structureBtn").addEventListener("click", () => {
+    const item = structureMap[input.value];
+    result.innerHTML = `
+      <strong>${item.title}</strong>
+      <span>${item.reason}</span>
+      <pre><code>${item.code}</code></pre>
+    `;
   });
 }
 
-function setupChecker() {
-  const input = document.querySelector("#checkerInput");
-  const result = document.querySelector("#checkerResult");
-  document.querySelector("#checkerBtn").addEventListener("click", () => {
-    const item = checkerMap[input.value];
-    result.innerHTML = `<strong>${item.verdict}</strong><span>${item.detail}</span>`;
+function setupConverter() {
+  const input = document.querySelector("#patternInput");
+  const result = document.querySelector("#convertResult");
+  document.querySelector("#convertBtn").addEventListener("click", () => {
+    result.innerHTML = `<pre><code>${converterPatterns[input.value]}</code></pre>`;
   });
 }
 
@@ -292,8 +264,10 @@ function renderExample(key) {
   document.querySelector("#exampleBox").innerHTML = `
     <h3>${example.title}</h3>
     <p><strong>Problem:</strong> ${example.problem}</p>
-    ${tableMarkup(example.headers, example.rows)}
-    <ul>${example.notes.map((note) => `<li>${note}</li>`).join("")}</ul>
+    <p><strong>Flowchart plan:</strong></p>
+    <ol>${example.flow.map((step) => `<li>${step}</li>`).join("")}</ol>
+    <p><strong>Cambridge-style pseudocode:</strong></p>
+    <pre><code>${example.code}</code></pre>
   `;
 }
 
@@ -305,7 +279,7 @@ function setupExamples() {
       renderExample(tab.dataset.example);
     });
   });
-  renderExample("total");
+  renderExample("pass");
 }
 
 function setupPractice() {
@@ -393,9 +367,9 @@ function setupExam() {
 
 setupPrint();
 setupHook();
-setupPredictor();
-setupTraceBuilder();
-setupChecker();
+setupSymbolTool();
+setupStructureTool();
+setupConverter();
 setupExamples();
 setupPractice();
 setupMistakes();

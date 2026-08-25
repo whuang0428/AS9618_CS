@@ -32,17 +32,15 @@
         <a href="#concept">Core idea</a>
         <a href="#model">Problem model</a>
         <a href="#constraints">Constraints</a>
-        <a href="#pseudocode">Pseudocode vs Java</a>
         <a href="#classifier">Problem classifier</a>
         <a href="#builder">Algorithm builder</a>
-        <a href="#trace">Trace</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Extra practice</a>
       </aside>
 
       <div class="lesson-content">
@@ -52,13 +50,13 @@
             <h2>Before writing code, know what goes in, what comes out, and what is allowed to happen in between.</h2>
             <p>
               Paper 2 starts with algorithmic thinking. You will turn a word problem into clear inputs, outputs,
-              constraints, steps and stopping conditions before writing Cambridge-style pseudocode. Java appears
-              only as a supporting implementation view; Cambridge pseudocode remains the exam answer format.
+              constraints, assumptions and ordered natural-language steps before choosing any notation.
+              Later lessons turn this natural-language plan into formal representations and executable structures.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
               <div><strong>Identify</strong><span>inputs, outputs, constraints and assumptions in a problem statement</span></div>
-              <div><strong>Design</strong><span>numbered steps and Cambridge-style pseudocode from a simple problem</span></div>
-              <div><strong>Trace</strong><span>check an algorithm using test data and variable changes</span></div>
+              <div><strong>Design</strong><span>an IPOC plan and ordered natural-language steps</span></div>
+              <div><strong>Check</strong><span>that every requirement is represented in the plan</span></div>
             </div>
           </div>
           <div class="algo-visual" aria-label="Algorithm pipeline visual">
@@ -73,11 +71,11 @@
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Most Paper 2 mistakes start before the first line of pseudocode: unclear inputs, missing output or no termination condition.</p>
+            <p>Most Paper 2 mistakes start during planning: unclear inputs, a missing output, an unstated assumption or a forgotten limit.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not write Java syntax as the exam answer. Java can help you test ideas, but Cambridge pseudocode has its own conventions.</p>
+            <p>Do not choose notation before the problem is understood. A precise IPOC plan comes first.</p>
           </article>
         </section>
 
@@ -108,9 +106,9 @@
             <div class="table-row" role="row"><div>Input</div><div>What data is supplied?</div><div>Mark, NumberOfItems, List[1:10]</div></div>
             <div class="table-row" role="row"><div>Process</div><div>What operations are performed?</div><div>compare, add, count, repeat, validate</div></div>
             <div class="table-row" role="row"><div>Output</div><div>What must be shown or returned?</div><div>"Pass", total, maximum, valid/invalid</div></div>
-            <div class="table-row" role="row"><div>Constraint</div><div>What rule or limit applies?</div><div>Mark must be 0-100; loop stops after 10 items</div></div>
+            <div class="table-row" role="row"><div>Constraint</div><div>What rule or limit applies?</div><div>Mark must be 0-100; exactly 10 items are supplied</div></div>
           </div>
-          <div class="callout">Chinese support: input = 输入；output = 输出；constraint = 约束；stopping condition = 停止条件；trace = 跟踪执行。</div>
+          <div class="callout">Chinese support: input = 输入；process = 处理；output = 输出；constraint = 约束；assumption = 假设。</div>
         </section>
 
         <!-- stage10-explanation:start concept -->
@@ -121,7 +119,7 @@
             <figcaption class="explanation-sr-only">An algorithm is a precise method for solving a problem: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Core idea</li><li><strong>Lesson fact:</strong> Question to ask</li><li><strong>Lesson fact:</strong> What data is supplied?</li><li><strong>Lesson fact:</strong> Mark, NumberOfItems, List[1:10]</li><li><strong>Lesson fact:</strong> What operations are performed?</li><li><strong>Lesson fact:</strong> compare, add, count, repeat, validate</li><li><strong>Lesson fact:</strong> What must be shown or returned?</li><li><strong>Lesson fact:</strong> &quot;Pass&quot;, total, maximum, valid/invalid</li><li><strong>Lesson fact:</strong> Constraint</li><li><strong>Lesson fact:</strong> What rule or limit applies?</li><li><strong>Lesson fact:</strong> Mark must be 0-100; loop stops after 10 items</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Identify what data is supplied and do not invent missing data.</li><li><strong>Lesson fact:</strong> State the required transformation in clear natural language.</li><li><strong>Lesson fact:</strong> State the exact result that must be displayed, returned or stored.</li><li><strong>Lesson fact:</strong> Record limits, quantity requirements and supported assumptions.</li><li><strong>Lesson fact:</strong> Check that every requirement maps to an input, process, output, constraint or assumption.</li></ol>
 
           </div>
         </section>
@@ -130,7 +128,7 @@
         <section class="panel" id="model" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
           <div class="section-title">
             <p class="eyebrow">Problem model</p>
-            <h2>Use IPOC before pseudocode</h2>
+            <h2>Use IPOC before choosing a representation</h2>
           </div>
           <div class="clause-grid">
             <article><strong>Input</strong><span>List each value the algorithm needs. Decide type and range when possible.</span></article>
@@ -138,19 +136,19 @@
             <article><strong>Output</strong><span>State exactly what the algorithm must display, return or store.</span></article>
             <article><strong>Constraints</strong><span>Record limits, valid ranges, maximum repetitions and stopping conditions.</span></article>
             <article><strong>Assumptions</strong><span>State what is guaranteed if the question implies it, such as exactly 10 values.</span></article>
-            <article><strong>Test data</strong><span>Choose normal, boundary and invalid data when validation is involved.</span></article>
+            <article><strong>Completeness check</strong><span>Confirm that every stated requirement appears in the plan.</span></article>
           </div>
         </section>
 
         <!-- stage10-explanation:start model -->
         <section class="panel explanation-panel" id="explanation-model" data-explains="model" data-explanation-kind="comparison" aria-labelledby="explanation-model-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="model">
-          <h2 class="explanation-sr-only" id="explanation-model-title">Use IPOC before pseudocode</h2>
+          <h2 class="explanation-sr-only" id="explanation-model-title">Use IPOC before choosing a representation</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-098-model.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use IPOC before pseudocode with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use IPOC before pseudocode: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-098-model.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use IPOC before choosing a representation with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use IPOC before choosing a representation: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Problem model</li><li><strong>Lesson fact:</strong> Input List each value the algorithm needs. Decide type and range when possible.</li><li><strong>Lesson fact:</strong> Process Write the transformation in English first: calculate, compare, count, search, repeat.</li><li><strong>Lesson fact:</strong> Output State exactly what the algorithm must display, return or store.</li><li><strong>Lesson fact:</strong> Constraints Record limits, valid ranges, maximum repetitions and stopping conditions.</li><li><strong>Lesson fact:</strong> Assumptions State what is guaranteed if the question implies it, such as exactly 10 values.</li><li><strong>Lesson fact:</strong> Test data Choose normal, boundary and invalid data when validation is involved.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> List each input and record its type or range when the problem supplies them.</li><li><strong>Lesson fact:</strong> Write the required processing in ordered natural-language steps.</li><li><strong>Lesson fact:</strong> State the exact required output.</li><li><strong>Lesson fact:</strong> Record constraints and supported assumptions.</li><li><strong>Lesson fact:</strong> Confirm completeness before choosing a representation.</li></ol>
 
           </div>
         </section>
@@ -164,8 +162,8 @@
           <div class="data-table concept-table" role="table" aria-label="Constraint examples">
             <div class="table-row table-head" role="row"><div>Constraint type</div><div>Example clue</div><div>Design effect</div></div>
             <div class="table-row" role="row"><div>Range</div><div>mark is between 0 and 100</div><div>validate before processing</div></div>
-            <div class="table-row" role="row"><div>Count</div><div>exactly 10 readings are entered</div><div>use count-controlled loop</div></div>
-            <div class="table-row" role="row"><div>Sentinel</div><div>enter -1 to finish</div><div>use condition-controlled loop</div></div>
+            <div class="table-row" role="row"><div>Quantity</div><div>exactly 10 readings are supplied</div><div>plan to process all 10 readings</div></div>
+            <div class="table-row" role="row"><div>Capacity</div><div>at most 30 bookings are available</div><div>reject requests that exceed remaining capacity</div></div>
             <div class="table-row" role="row"><div>Output format</div><div>output highest value and its position</div><div>track both value and position</div></div>
           </div>
         </section>
@@ -178,53 +176,11 @@
             <figcaption class="explanation-sr-only">Constraints stop algorithms from wandering off: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Constraints</li><li><strong>Lesson fact:</strong> Constraint type</li><li><strong>Lesson fact:</strong> Example clue</li><li><strong>Lesson fact:</strong> Design effect</li><li><strong>Lesson fact:</strong> mark is between 0 and 100</li><li><strong>Lesson fact:</strong> validate before processing</li><li><strong>Lesson fact:</strong> exactly 10 readings are entered</li><li><strong>Lesson fact:</strong> use count-controlled loop</li><li><strong>Lesson fact:</strong> Sentinel</li><li><strong>Lesson fact:</strong> enter -1 to finish</li><li><strong>Lesson fact:</strong> use condition-controlled loop</li><li><strong>Lesson fact:</strong> Output format</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A range of 0 to 100 requires both limits to be checked.</li><li><strong>Lesson fact:</strong> Exactly 10 supplied readings means the plan must process all 10 readings.</li><li><strong>Lesson fact:</strong> A capacity of 30 bookings means a request beyond the remaining capacity must be rejected.</li><li><strong>Lesson fact:</strong> Each stated constraint must have a specific consequence in the plan.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end constraints -->
-
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <div class="section-title">
-            <p class="eyebrow">Pseudocode vs Java</p>
-            <h2>Cambridge pseudocode is the exam language</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Cambridge-style pseudocode</h3>
-              <pre><code>INPUT Mark
-IF Mark &gt;= 50 THEN
-    OUTPUT "Pass"
-ELSE
-    OUTPUT "Resit needed"
-ENDIF</code></pre>
-            </article>
-            <article>
-              <h3>Java support only</h3>
-              <pre><code>if (mark &gt;= 50) {
-    System.out.println("Pass");
-} else {
-    System.out.println("Resit needed");
-}</code></pre>
-            </article>
-          </div>
-          <div class="callout">Exam reminder: write `IF ... THEN`, `ELSE`, `ENDIF`, `INPUT`, `OUTPUT` in Cambridge-style pseudocode. Java braces and semicolons are support examples only.</div>
-        </section>
-
-        <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Cambridge pseudocode is the exam language</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-098-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge pseudocode is the exam language with a structured visual model." />
-            <figcaption class="explanation-sr-only">Cambridge pseudocode is the exam language: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit needed&quot;</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> if (mark &gt;= 50) {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Pass&quot;);</li><li><strong>Lesson fact:</strong> } else {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Resit needed&quot;);</li><li><strong>Lesson fact:</strong> Exam reminder: write IF ... THEN, ELSE, ENDIF, INPUT, OUTPUT in Cambridge-style pseudocode. Java braces and semicolons are support examples only.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end pseudocode -->
-
 
         <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
           <div class="section-title">
@@ -237,7 +193,7 @@ ENDIF</code></pre>
               <select id="classifierInput">
                 <option value="pass">A mark is entered and Pass/Resit is output.</option>
                 <option value="total">Ten prices are entered and the total is output.</option>
-                <option value="sentinel">Numbers are entered until -1 is typed.</option>
+                <option value="capacity">A booking request cannot exceed remaining capacity.</option>
                 <option value="highest">A list of scores is entered and the highest score is output.</option>
                 <option value="validate">A temperature must be between -20 and 50.</option>
               </select>
@@ -265,25 +221,6 @@ ENDIF</code></pre>
             <button class="primary-button" type="button" id="buildBtn">Build IPOC</button>
           </div>
           <div class="answer-frame" id="builderResult">Choose a problem to generate inputs, output and constraints.</div>
-        </section>
-
-        <section class="panel" id="trace" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace">
-          <div class="section-title">
-            <p class="eyebrow">Interactive trace</p>
-            <h2>Trace the pass/resit algorithm</h2>
-          </div>
-          <div class="converter-grid">
-            <label>
-              Test mark
-              <select id="traceInput">
-                <option value="72">72</option>
-                <option value="50">50</option>
-                <option value="49">49</option>
-              </select>
-            </label>
-            <button class="primary-button" type="button" id="traceBtn">Trace output</button>
-          </div>
-          <div class="result-table" id="traceResult">Choose a mark to trace the condition and output.</div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
@@ -321,12 +258,13 @@ ENDIF</code></pre>
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Original Cambridge-style algorithm thinking questions with expandable MS</h2>
-            <p>These questions target problem analysis, pseudocode planning, tracing and correction. MS uses strict Cambridge-style expectations.</p>
+            <p>These questions target problem analysis, IPOC planning, assumptions and complete natural-language steps.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
 
 
+        <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Extra practice</p>
@@ -357,18 +295,19 @@ ENDIF</code></pre>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Construct identifier-table entries for a program storing a student's name, three test marks and calculated mean.</p>
+            <p>Construct identifier-table entries for a program storing a student's name, three separate test marks and calculated mean.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
                 <li><strong>B1</strong> meaningful identifier and STRING type for name</li>
-                <li><strong>B1</strong> meaningful array identifier with INTEGER/REAL elements for marks</li>
+                <li><strong>B1</strong> three clearly distinguished INTEGER/REAL identifiers for the separate marks</li>
                 <li><strong>B1</strong> meaningful REAL identifier for mean</li>
                 <li><strong>B1</strong> purposes clearly distinguish input values from calculated result</li>
               </ol>
             </details>
           </article>
         </section>
+        <!-- stage2-completion:end -->
 
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
@@ -376,9 +315,9 @@ ENDIF</code></pre>
             <h2>Algorithm design checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Define</strong><span>Inputs, outputs, constraints and assumptions before pseudocode.</span></div>
-            <div><strong>Design</strong><span>Use sequence, selection and iteration only where the problem needs them.</span></div>
-            <div><strong>Trace</strong><span>Run test data through the steps to find missing updates or stopping conditions.</span></div>
+            <div><strong>Define</strong><span>Inputs, outputs, constraints and assumptions before choosing notation.</span></div>
+            <div><strong>Design</strong><span>Write clear natural-language processing steps in a logical order.</span></div>
+            <div><strong>Check</strong><span>Match every requirement in the problem statement to part of the plan.</span></div>
           </div>
         </section>
 
@@ -390,15 +329,15 @@ ENDIF</code></pre>
           <div class="homework-list">
             <article>
               <strong>Task 1: IPOC cards</strong>
-              <span>For three small problems, write input, process, output, constraints and one assumption before any pseudocode.</span>
+              <span>For three small problems, write input, process, output, constraints and one assumption.</span>
             </article>
             <article>
-              <strong>Task 2: Pseudocode rewrite</strong>
-              <span>Write Cambridge-style pseudocode for pass/resit and average of 5 values. Do not use Java braces or semicolons.</span>
+              <strong>Task 2: Requirement check</strong>
+              <span>Underline each requirement in two problem statements and show where it appears in the IPOC plan.</span>
             </article>
             <article>
-              <strong>Task 3: Trace table</strong>
-              <span>Trace the pass/resit algorithm using 49, 50 and 72. State why 50 is a boundary test.</span>
+              <strong>Task 3: Assumptions</strong>
+              <span>For three plans, state one assumption and explain what information would be missing without it.</span>
             </article>
           </div>
         </section>

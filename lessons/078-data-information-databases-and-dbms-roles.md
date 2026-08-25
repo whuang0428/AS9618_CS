@@ -72,6 +72,7 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
 ## Stage 2 syllabus completion
 
 **Official audit rows:** S8.05, S8.06
@@ -105,6 +106,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **B1** plans/executes it and returns/accesses matching data
 
 **Strict note:** Do not accept that the data dictionary stores the ordinary user records themselves.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

@@ -72,6 +72,7 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often say interpreters are 'bad compilers'. Correction: they are different translation approaches with different use cases.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
 ## Stage 2 syllabus completion
 
 **Official audit rows:** S5.03
@@ -105,6 +106,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **B1** missing/incompatible DLL can stop or alter programs
 
 **Strict note:** Do not accept 'saves space' unless duplication or executable size is explained.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

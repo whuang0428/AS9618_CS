@@ -1,89 +1,131 @@
-const classifierMap = {
-  area: {
-    title: "Sequence",
-    detail: "The steps happen once in a fixed order: input, calculate, output.",
+const predictSets = {
+  a: { values: [4, 7, 9], output: 20 },
+  b: { values: [10, 0, 5], output: 15 },
+  c: { values: [-2, 8, 6], output: 12 },
+  d: { values: [3, 3, 3], output: 9 },
+};
+
+const traceScenarios = {
+  total: {
+    title: "Running total for 4, 7, 9",
+    headers: ["Count", "Number", "Total", "Output"],
+    rows: [
+      ["1", "4", "4", "-"],
+      ["2", "7", "11", "-"],
+      ["3", "9", "20", "20"],
+    ],
+    note: "Total is updated after each input. OUTPUT happens after the loop.",
   },
-  pass: {
-    title: "Selection",
-    detail: "A condition chooses between Pass and Resit.",
-  },
-  five: {
-    title: "Count-controlled iteration",
-    detail: "Exactly five values are processed, so a FOR loop is suitable.",
+  max: {
+    title: "Maximum of 6, 11, 8",
+    headers: ["Step", "Value", "Highest", "Output"],
+    rows: [
+      ["initial", "6", "6", "-"],
+      ["compare", "11", "11", "-"],
+      ["compare", "8", "11", "11"],
+    ],
+    note: "Highest changes only when the new value is greater than the current Highest.",
   },
   sentinel: {
-    title: "Condition-controlled iteration",
-    detail: "The loop continues until the sentinel value -1 is entered.",
+    title: "Sentinel total for 5, 2, -1",
+    headers: ["Input", "Condition", "Total", "Output"],
+    rows: [
+      ["5", "5 <> -1 is TRUE", "5", "-"],
+      ["2", "2 <> -1 is TRUE", "7", "-"],
+      ["-1", "-1 <> -1 is FALSE", "7", "7"],
+    ],
+    note: "The sentinel -1 stops the loop and is not added to Total.",
   },
-  countpass: {
-    title: "Iteration with nested selection",
-    detail: "The algorithm repeats for ten marks and uses IF inside the loop to count passes.",
+  valid: {
+    title: "Validate ages 10 then 15",
+    headers: ["Age", "Condition", "Output"],
+    rows: [
+      ["10", "Age >= 11 AND Age <= 18 is FALSE", "Invalid"],
+      ["15", "Age >= 11 AND Age <= 18 is TRUE", "Valid"],
+    ],
+    note: "Boundary checks depend on both lower and upper limits.",
   },
 };
 
-const builderMap = {
-  area: "INPUT Length\nINPUT Width\nArea <- Length * Width\nOUTPUT Area",
-  pass: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF",
-  total5: "Total <- 0\nFOR Count <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\nNEXT Count\nOUTPUT Total",
-  passcount: "PassCount <- 0\nFOR Count <- 1 TO 5\n    INPUT Mark\n    IF Mark >= 50 THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Count\nOUTPUT PassCount",
+const checkerMap = {
+  "wrong-total": {
+    verdict: "Incorrect trace",
+    detail: "Those are the input values, not the running total. Total should be 4, then 11, then 20.",
+  },
+  "wrong-sentinel": {
+    verdict: "Incorrect trace",
+    detail: "The sentinel is a stopping value. It should not be added to Total unless the question explicitly says otherwise.",
+  },
+  "wrong-output": {
+    verdict: "Incorrect trace",
+    detail: "Record output only when an OUTPUT statement executes. If OUTPUT is after the loop, the output appears after the final iteration.",
+  },
+  correct: {
+    verdict: "Correct trace",
+    detail: "4, 11, 20 are the running totals after each input value is processed.",
+  },
 };
 
 const examples = {
-  sequence: {
-    title: "Example 1: Sequence",
-    problem: "Calculate the area of a rectangle.",
-    structure: "Sequence only: every step happens once in order.",
-    code: builderMap.area,
+  total: {
+    title: "Example 1: Running total",
+    problem: "Trace Total <- 0; input 4, 7, 9; add each value to Total; output Total.",
+    headers: ["Count", "Number", "Total", "Output"],
+    rows: [["1", "4", "4", "-"], ["2", "7", "11", "-"], ["3", "9", "20", "20"]],
+    notes: ["Initialise Total before the loop.", "Record Total after the assignment.", "The output appears once, after the loop."],
+  },
+  max: {
+    title: "Example 2: Maximum value",
+    problem: "Trace values 6, 11, 8 and output the highest.",
+    headers: ["Step", "Value", "Highest", "Output"],
+    rows: [["initial", "6", "6", "-"], ["compare", "11", "11", "-"], ["compare", "8", "11", "11"]],
+    notes: ["The first value can initialise Highest.", "11 replaces 6 because it is larger.", "8 does not replace 11."],
+  },
+  sentinel: {
+    title: "Example 3: Sentinel loop",
+    problem: "Trace input values 5, 2, -1. Add values until -1 is entered.",
+    headers: ["Input", "Condition", "Total", "Output"],
+    rows: [["5", "TRUE", "5", "-"], ["2", "TRUE", "7", "-"], ["-1", "FALSE", "7", "7"]],
+    notes: ["Check the condition before adding.", "-1 is not processed.", "Output Total after the loop stops."],
   },
   selection: {
-    title: "Example 2: Selection",
-    problem: "Output Pass if Mark is at least 50, otherwise Resit.",
-    structure: "Selection: IF chooses one branch.",
-    code: builderMap.pass,
-  },
-  iteration: {
-    title: "Example 3: Iteration",
-    problem: "Input exactly five marks and output the total.",
-    structure: "Count-controlled iteration: FOR loop repeats exactly five times.",
-    code: builderMap.total5,
-  },
-  combined: {
-    title: "Example 4: Iteration with selection",
-    problem: "Input five marks and count how many are at least 50.",
-    structure: "Sequence initialises PassCount, FOR repeats input, IF decides whether to increment.",
-    code: builderMap.passcount,
+    title: "Example 4: Selection trace",
+    problem: "Input Mark and output Pass if Mark >= 50, otherwise Resit.",
+    headers: ["Mark", "Condition", "Output"],
+    rows: [["49", "FALSE", "Resit"], ["50", "TRUE", "Pass"], ["72", "TRUE", "Pass"]],
+    notes: ["49 and 50 are useful boundary values.", "50 is included in Pass because the condition is >= 50."],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which structure runs steps once in a fixed order?", accepted: ["sequence"], answer: "Sequence" },
-  { id: "p2", prompt: "Which structure chooses between actions using a condition?", accepted: ["selection", "if"], answer: "Selection / IF" },
-  { id: "p3", prompt: "Which structure repeats steps?", accepted: ["iteration", "loop", "repetition"], answer: "Iteration / loop" },
-  { id: "p4", prompt: "Exactly five marks are input. Which loop type is most suitable?", accepted: ["count controlled", "count-controlled", "for", "for loop", "count controlled loop"], answer: "Count-controlled loop / FOR loop" },
-  { id: "p5", prompt: "Input continues until -1 is entered. Which loop type is suitable?", accepted: ["condition controlled", "condition-controlled", "while", "while loop", "condition controlled loop"], answer: "Condition-controlled loop / WHILE loop" },
-  { id: "p6", prompt: "Which Cambridge keyword starts a selection statement?", accepted: ["if"], answer: "IF" },
-  { id: "p7", prompt: "Which Cambridge keyword closes an IF structure?", accepted: ["endif", "end if"], answer: "ENDIF" },
-  { id: "p8", prompt: "When an IF is inside a FOR loop, what is the IF called?", accepted: ["nested", "nested selection", "selection nested inside iteration"], answer: "Nested selection / IF inside iteration" },
-  { id: "p9", prompt: "Should Java braces be used in the expected Paper 2 pseudocode answer? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode." },
-  { id: "p10", prompt: "Name the three basic control structures in this lesson.", accepted: ["sequence selection iteration", "sequence, selection, iteration"], answer: "Sequence, selection and iteration." },
+  { id: "p1", prompt: "What is the purpose of a trace table?", accepted: ["record variable values", "record variables", "track variables", "trace variables", "record changes"], answer: "To record variable values and outputs as an algorithm is executed." },
+  { id: "p2", prompt: "What does dry run mean?", accepted: ["execute by hand", "manual execution", "run by hand", "trace by hand"], answer: "Executing the algorithm manually using test data." },
+  { id: "p3", prompt: "For inputs 4, 7, 9 with Total initially 0, what final Total is output?", accepted: ["20"], answer: "20" },
+  { id: "p4", prompt: "For running totals after 4, 7, 9, write the three Total values separated by commas.", accepted: ["4,11,20", "4 11 20", "4, 11, 20"], answer: "4, 11, 20" },
+  { id: "p5", prompt: "In a WHILE loop using -1 as a sentinel, should -1 be added to Total? yes or no.", accepted: ["no"], answer: "No. The sentinel stops the loop and is not processed." },
+  { id: "p6", prompt: "Which column should record displayed values?", accepted: ["output", "output column"], answer: "Output / output column" },
+  { id: "p7", prompt: "Values are 6, 11, 8. What final Highest is output?", accepted: ["11"], answer: "11" },
+  { id: "p8", prompt: "If OUTPUT is after a FOR loop, does output happen every iteration or after the loop?", accepted: ["after the loop", "after loop"], answer: "After the loop." },
+  { id: "p9", prompt: "Which value is the boundary for Pass when condition is Mark >= 50?", accepted: ["50"], answer: "50" },
+  { id: "p10", prompt: "Is Java syntax the expected trace notation for Paper 2 pseudocode questions? yes or no.", accepted: ["no"], answer: "No. Trace Cambridge-style pseudocode." },
 ];
 
 const mistakes = [
   {
-    wrong: "I used a loop for Length, Width and Area even though each step happens once.",
-    fix: "Use sequence. A loop is only needed when steps repeat.",
+    wrong: "I wrote the input values in the Total column: 4, 7, 9.",
+    fix: "Total is a running value. After each update it should be 4, 11, 20.",
   },
   {
-    wrong: "I wrote Pass and Resit one after the other with no IF.",
-    fix: "Use selection. The condition determines which output should happen.",
+    wrong: "I added -1 to Total in a sentinel loop.",
+    fix: "Check the sentinel before processing it. The sentinel stops the loop and should not be included in Total.",
   },
   {
-    wrong: "I used WHILE for exactly five marks but forgot to update Count.",
-    fix: "Use a FOR loop for a known count, or update the counter clearly if using WHILE.",
+    wrong: "I wrote output on every row even though OUTPUT is after the loop.",
+    fix: "Only write output when the OUTPUT statement executes. If OUTPUT is after the loop, it appears once at the end.",
   },
   {
-    wrong: "I placed PassCount <- 0 inside the loop.",
-    fix: "Initialise PassCount before the loop. Otherwise it resets every iteration.",
+    wrong: "I changed Highest even when the new value was smaller.",
+    fix: "Update Highest only when the condition Value > Highest is true.",
   },
 ];
 
@@ -91,93 +133,95 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Identify whether each task mainly uses sequence, selection or iteration: calculate area from length and width; output Pass/Resit from a mark; input ten scores; input values until -1; count passes from ten marks.",
-    answer: "Calculate area uses sequence. Pass/Resit uses selection. Input ten scores uses count-controlled iteration. Input until -1 uses condition-controlled iteration. Count passes from ten marks uses iteration with selection inside the loop.",
+    prompt: "The following pseudocode is traced with input values 4, 7, 9. Complete the trace for Total and state the output.\n\nTotal <- 0\nFOR Count <- 1 TO 3\n    INPUT Number\n    Total <- Total + Number\nNEXT Count\nOUTPUT Total",
+    answer: "Count 1: Number 4, Total 4. Count 2: Number 7, Total 11. Count 3: Number 9, Total 20. Output is 20.",
     marking: [
-      { mark: "B1", text: "area calculation identified as sequence" },
-      { mark: "B1", text: "Pass/Resit identified as selection" },
-      { mark: "B1", text: "ten scores identified as count-controlled iteration" },
-      { mark: "B1", text: "until -1 identified as condition-controlled iteration" },
-      { mark: "B1", text: "count passes identified as iteration with selection / nested IF" },
+      { mark: "B1", text: "records Total as 4 after first input" },
+      { mark: "B1", text: "records Total as 11 after second input" },
+      { mark: "B1", text: "records Total as 20 after third input" },
+      { mark: "B1", text: "states output occurs after the loop" },
+      { mark: "A1", text: "states final output 20" },
     ],
     strict: [
-      "Do not accept iteration for area unless repeated calculations are stated.",
-      "Allow loop for iteration.",
-      "Do not require the word nested if the combined structure is clear.",
+      "Do not accept 4, 7, 9 as Total values.",
+      "Allow Sum instead of Total if meaning is clear.",
+      "Do not require a perfectly formatted table if values are ordered clearly.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Write Cambridge-style pseudocode to input a Mark and output Pass if Mark is at least 50, otherwise output Resit. State the control structure used.",
-    answer: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF\n\nThe control structure is selection.",
+    prompt: "A maximum algorithm inputs 6, 11, 8. Highest is set to the first value. Each next value is compared with Highest and replaces it only if larger. Complete the trace and output.",
+    answer: "Initial Highest is 6. Compare 11: 11 > 6, so Highest becomes 11. Compare 8: 8 > 11 is false, so Highest remains 11. Output is 11.",
     marking: [
-      { mark: "B1", text: "inputs Mark" },
-      { mark: "M1", text: "uses IF with condition Mark >= 50 or equivalent" },
-      { mark: "A1", text: "outputs Pass on true branch" },
-      { mark: "A1", text: "outputs Resit on false branch" },
-      { mark: "B1", text: "uses clear Cambridge-style IF/THEN/ELSE/ENDIF structure" },
-      { mark: "B1", text: "identifies structure as selection" },
+      { mark: "B1", text: "initialises Highest to first value 6" },
+      { mark: "M1", text: "compares 11 with 6" },
+      { mark: "A1", text: "updates Highest to 11" },
+      { mark: "M1", text: "compares 8 with 11" },
+      { mark: "A1", text: "keeps Highest as 11" },
+      { mark: "A1", text: "states output 11" },
     ],
     strict: [
-      "Do not award style mark for Java-only syntax.",
-      "Allow Mark > 49 if integer marks are implied.",
-      "Do not require exact output wording if meaning is equivalent.",
+      "Do not award update mark if Highest changes to 8 at the end.",
+      "Allow equivalent explanation without a table.",
+      "Do not require array notation.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Write Cambridge-style pseudocode to input exactly five marks and output their total. State why iteration is suitable.",
-    answer: "Total <- 0\nFOR Count <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\nNEXT Count\nOUTPUT Total\n\nIteration is suitable because the same input-and-add steps are repeated exactly five times.",
+    prompt: "A loop inputs numbers until -1 is entered. It should output the total of values before -1. Trace inputs 5, 2, -1 and explain why -1 is not included.",
+    answer: "Total starts at 0. Input 5 is not -1, so Total becomes 5. Input 2 is not -1, so Total becomes 7. Input -1 makes the loop condition false, so it is not added. The output is 7.",
     marking: [
-      { mark: "B1", text: "initialises Total to 0 before the loop" },
-      { mark: "M1", text: "uses a loop that repeats five times" },
-      { mark: "M1", text: "inputs Mark inside the loop" },
-      { mark: "M1", text: "adds Mark to Total inside the loop" },
-      { mark: "A1", text: "outputs Total after the loop" },
-      { mark: "B1", text: "explains iteration is suitable because steps repeat / known count" },
+      { mark: "B1", text: "initialises or implies Total starts at 0" },
+      { mark: "B1", text: "updates Total to 5 after input 5" },
+      { mark: "B1", text: "updates Total to 7 after input 2" },
+      { mark: "M1", text: "identifies -1 as sentinel/stopping value" },
+      { mark: "A1", text: "explains -1 is not added/processed" },
+      { mark: "A1", text: "states output 7" },
     ],
     strict: [
-      "Do not award full credit if Total is reset inside the loop.",
-      "Allow WHILE with a correctly updated counter.",
-      "Do not require exact variable names.",
+      "Do not accept output 6 if -1 has been included.",
+      "Allow 'terminating value' for sentinel.",
+      "Do not require full WHILE syntax.",
+      "Allow FT from the candidate's earlier trace value only when every subsequent step applies the stated algorithm correctly.",
     ],
   },
   {
     title: "Question 4",
-    marks: "5 marks",
-    prompt: "A program inputs five marks and counts how many are at least 50. Explain how sequence, selection and iteration are all used.",
-    answer: "Sequence is used to initialise PassCount before the loop and to output the final count after the loop. Iteration is used because five marks are input and processed using repeated steps. Selection is used inside the loop to test whether each Mark is at least 50; if true, PassCount is increased.",
+    marks: "4 marks",
+    prompt: "Explain how a trace table can help find a logic error in an algorithm. Refer to variables, expected output and one example error.",
+    answer: "A trace table records variable values after each step, so the programmer can compare the actual values with expected values. If an output is wrong, the table can show where a variable first became incorrect. For example, Total may be initialised inside a loop or a sentinel value may be added when it should stop the loop.",
     marking: [
-      { mark: "B1", text: "identifies initialisation/output as sequence" },
-      { mark: "B1", text: "identifies repeated processing of five marks as iteration" },
-      { mark: "B1", text: "identifies Mark >= 50 test as selection" },
-      { mark: "B1", text: "explains selection occurs inside the loop" },
-      { mark: "B1", text: "explains PassCount is updated only when condition is true" },
+      { mark: "B1", text: "states trace table records variable values during execution" },
+      { mark: "B1", text: "links trace to checking expected output" },
+      { mark: "B1", text: "explains locating the first incorrect variable/value" },
+      { mark: "B1", text: "gives a valid logic-error example" },
     ],
     strict: [
-      "Do not accept generic definitions only; answer must refer to this problem.",
-      "Allow CountPasses or similar variable names.",
-      "Do not require full pseudocode.",
+      "Do not accept only 'it makes it easier' without explanation.",
+      "Allow examples such as wrong initialisation, missing update, off-by-one loop or sentinel included.",
+      "Do not require code.",
     ],
   },
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "A student uses WHILE for a known five-repetition task and forgets to update Count. Explain the likely error and give a safer structure.",
-    answer: "If Count is not updated in a WHILE loop, the loop condition may never become false, causing an infinite loop or incorrect number of repetitions. Since exactly five repetitions are required, a FOR Count <- 1 TO 5 ... NEXT Count loop is safer and clearer.",
+    prompt: "A student traces a FOR loop but writes output on every row. The OUTPUT statement is after NEXT Count. Explain the mistake and state how the output column should be completed.",
+    answer: "The mistake is recording output before the OUTPUT statement executes. In a FOR loop where OUTPUT is after NEXT Count, the loop must finish before output is displayed. The output column should be blank or dashed during the loop iterations and should contain the final output only on the final row after the loop.",
     marking: [
-      { mark: "B1", text: "identifies missing Count update" },
-      { mark: "B1", text: "explains condition may never become false / infinite loop risk" },
-      { mark: "B1", text: "recognises five repetitions are known in advance" },
-      { mark: "B1", text: "suggests FOR loop / count-controlled loop" },
-      { mark: "B1", text: "gives clear Cambridge-style FOR...TO...NEXT idea" },
+      { mark: "B1", text: "identifies output has been recorded too early" },
+      { mark: "B1", text: "recognises OUTPUT is after the loop/NEXT Count" },
+      { mark: "B1", text: "explains loop iterations must finish before output" },
+      { mark: "B1", text: "blank/dash output during loop rows" },
+      { mark: "B1", text: "final output recorded once after loop" },
     ],
     strict: [
-      "Do not accept only 'WHILE is wrong' without explanation.",
-      "Allow WHILE as a possible solution if Count is correctly updated, but safer structure must be count-controlled.",
-      "Do not require complete pseudocode.",
+      "Do not accept output every iteration unless OUTPUT is inside the loop.",
+      "Allow 'no output until after loop' for blank/dash rows.",
+      "Do not require a specific final numeric output if none is given.",
     ],
   },
 ];
@@ -193,10 +237,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    sequence: "Sequence. These steps happen once in order.",
-    selection: "Selection. IF chooses whether the toasting step happens.",
-    iteration: "Iteration. The same steps repeat for each order.",
-    bad: "Common error: importance is not a reason for using WHILE. Repetition needs a real stopping rule.",
+    a: "Not quite. Those are the inputs, not the running totals.",
+    b: "Correct. Total becomes 3, then 8, then 10.",
+    c: "Close, but this misses the final update after adding 2.",
+    d: "No. Trace values follow execution order, not numerical countdown order.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -207,20 +251,39 @@ function setupHook() {
   });
 }
 
-function setupClassifier() {
-  const input = document.querySelector("#classifierInput");
-  const result = document.querySelector("#classifyResult");
-  document.querySelector("#classifyBtn").addEventListener("click", () => {
-    const item = classifierMap[input.value];
-    result.innerHTML = `<strong>${item.title}</strong><span>${item.detail}</span>`;
+function setupPredictor() {
+  const input = document.querySelector("#predictInput");
+  const result = document.querySelector("#predictResult");
+  document.querySelector("#predictBtn").addEventListener("click", () => {
+    const item = predictSets[input.value];
+    result.innerHTML = `<strong>Output: ${item.output}</strong><span>${item.values.join(" + ")} = ${item.output}</span>`;
   });
 }
 
-function setupBuilder() {
-  const input = document.querySelector("#builderInput");
-  const result = document.querySelector("#builderResult");
-  document.querySelector("#buildBtn").addEventListener("click", () => {
-    result.innerHTML = `<pre><code>${builderMap[input.value]}</code></pre>`;
+function tableMarkup(headers, rows) {
+  return `
+    <div class="result-table" style="--cols: ${headers.length}">
+      <div class="table-row table-head">${headers.map((head) => `<div>${head}</div>`).join("")}</div>
+      ${rows.map((row) => `<div class="table-row">${row.map((cell) => `<div>${cell}</div>`).join("")}</div>`).join("")}
+    </div>
+  `;
+}
+
+function setupTraceBuilder() {
+  const input = document.querySelector("#traceInput");
+  const result = document.querySelector("#traceResult");
+  document.querySelector("#traceBtn").addEventListener("click", () => {
+    const item = traceScenarios[input.value];
+    result.innerHTML = `<h3>${item.title}</h3>${tableMarkup(item.headers, item.rows)}<p>${item.note}</p>`;
+  });
+}
+
+function setupChecker() {
+  const input = document.querySelector("#checkerInput");
+  const result = document.querySelector("#checkerResult");
+  document.querySelector("#checkerBtn").addEventListener("click", () => {
+    const item = checkerMap[input.value];
+    result.innerHTML = `<strong>${item.verdict}</strong><span>${item.detail}</span>`;
   });
 }
 
@@ -229,8 +292,8 @@ function renderExample(key) {
   document.querySelector("#exampleBox").innerHTML = `
     <h3>${example.title}</h3>
     <p><strong>Problem:</strong> ${example.problem}</p>
-    <p><strong>Structure:</strong> ${example.structure}</p>
-    <pre><code>${example.code}</code></pre>
+    ${tableMarkup(example.headers, example.rows)}
+    <ul>${example.notes.map((note) => `<li>${note}</li>`).join("")}</ul>
   `;
 }
 
@@ -242,7 +305,7 @@ function setupExamples() {
       renderExample(tab.dataset.example);
     });
   });
-  renderExample("sequence");
+  renderExample("total");
 }
 
 function setupPractice() {
@@ -330,8 +393,9 @@ function setupExam() {
 
 setupPrint();
 setupHook();
-setupClassifier();
-setupBuilder();
+setupPredictor();
+setupTraceBuilder();
+setupChecker();
 setupExamples();
 setupPractice();
 setupMistakes();

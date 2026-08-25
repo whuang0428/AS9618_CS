@@ -72,6 +72,7 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
 ## Stage 2 syllabus completion
 
 **Official audit rows:** S8.04
@@ -105,6 +106,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **A1** POSTCODE(Postcode, Town), with Postcode linked as foreign key
 
 **Strict note:** Do not award decomposition marks unless primary/foreign-key linkage can reconstruct the relationship.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

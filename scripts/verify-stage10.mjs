@@ -89,7 +89,7 @@ function directSectionIds(source) {
   return ids;
 }
 
-expect(explanations.length === 782, `Expected 782 full-rollout explanations; found ${explanations.length}`);
+expect(explanations.length === 779, `Expected 779 full-rollout explanations after retiring three obsolete targets; found ${explanations.length}`);
 expect(new Set(explanations.map((item) => item.lesson)).size === 150, "Stage 10 rollout must cover all 150 lessons");
 expect(new Set(explanations.map((item) => `${item.lesson}/${item.targetId}`)).size === explanations.length, "Duplicate explanation target keys found");
 
@@ -196,8 +196,8 @@ expect(semanticRows.length === explanations.length, `Expected ${explanations.len
 expect(new Set(semanticRows.map((row) => `${row[semanticIndex.lesson]}/${row[semanticIndex.target_id]}`)).size === explanations.length, "Semantic review register contains duplicate or missing keys");
 expect(new Set(semanticRows.map((row) => row[semanticIndex.asset])).size === explanations.length, "Semantic review register contains duplicate or missing assets");
 const currentAssets = fs.readdirSync(path.join(root, "web", "assets", "diagrams", "stage10-infographics")).filter((name) => name.endsWith(".jpg"));
-expect(currentAssets.length === 782, `Expected exactly 782 current Stage 10 JPG assets; found ${currentAssets.length}`);
-expect(new Set(currentAssets).size === 782, "Current Stage 10 asset directory contains duplicate filenames");
+expect(currentAssets.length === explanations.length, `Expected exactly ${explanations.length} current Stage 10 JPG assets; found ${currentAssets.length}`);
+expect(new Set(currentAssets).size === explanations.length, "Current Stage 10 asset directory contains duplicate filenames");
 const registeredAssets = new Set(semanticRows.map((row) => row[semanticIndex.asset]));
 for (const asset of currentAssets) expect(registeredAssets.has(asset), `${asset}: current Stage 10 asset is missing from the semantic register`);
 

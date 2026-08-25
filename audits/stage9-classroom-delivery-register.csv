@@ -56,12 +56,12 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 003,17,homework,homework,AFTER_CLASS,HOMEWORK,,Homework tasks,Classified,c1217c5426586a0ac87f9523bfab6988bd09b721a914f52f3ec909f016e65e5f
 003,18,delivery-15,homework,AFTER_CLASS,HOMEWORK,,Check only after attempting,Classified,f30c184f068910eaf39b0fa35d54984a6fd24304eb6c0249e7a98c4af78abd97
 004,1,overview,overview,CORE,TEACH,,Binary addition is column addition with stricter carrying.,Classified,de82447660694b87c27d1d8174108998e37d650e9d94eacd651bdf2475d3761c
-004,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,2f45d3b15b23ebd937cf894a540fe5f193d9176707d29d99721494c22e56586b
+004,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,1b0f7c089f24370b142ec12c67910ad71ed998c2508028533e9bebe170ee6a23
 004,3,hook,hook,CORE,ASK,,"If an 8-bit box is full, where does the ninth bit go?",Classified,f9c838a5779bcefa0ad61e804143f808f3982c6d4a73e068472c1e8675d07df8
 004,4,rules,rules,CORE,TEACH,,Single-bit addition rules,Classified,55d0938292738bbef98f0997969148b7910cefeee00428a9afe2d65dc0fcb824
 004,5,explanation-rules,rules,CORE,TEACH,,Single-bit addition rules,Classified,0a4617688c1fe6fe1ee494fdf3b65ad00764ceb8fa4045b36f789981af31e65b
 004,6,method,method,CORE,TEACH,,8-bit addition method,Classified,afe3b863998b99a4ecaf35fe2a01489319971bb07585e9d1030280d4b53c851d
-004,7,explanation-method,method,CORE,TEACH,,8-bit addition method,Classified,a302e7bfe1eafa8cca7069e38a46a9592e0ca792bc5860bccc0d1bb85c91b03a
+004,7,explanation-method,method,CORE,TEACH,,8-bit addition method,Classified,d6da84024a7908b9fb2ac88f663bcbba5058a1b9c34e4745f9da69779a0ef029
 004,8,overflow,overflow,CORE,TEACH,,Unsigned 8-bit overflow,Classified,ace264028e7930d858613c4751fbcd96c0d9678b4a4eebfa5f70c13829179d4a
 004,9,explanation-overflow,overflow,CORE,TEACH,,Unsigned 8-bit overflow,Classified,0c15ba9885c468730e43617c076fee1499853b8ad19cfc69cf2e6d47ccc0372c
 004,10,delivery-07,overflow,CORE,TEACH,,Common error,Classified,093b989579047316111abf6ae316bf4b7d29cefa380d852576a011fbbc61e372
@@ -70,10 +70,9 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 004,13,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,958021402fb19495f5d7e7838bc6f935e50cb888198d7ed8b0c0c136b6219869
 004,14,delivery-11,delivery-11,CORE,CHECK,,Identify and correct the error,Classified,1554323bae9e27090a176afc685aded5b944ea367fe98db4c8c1dab409749424
 004,15,exam,exam,CORE,EXAM,,Original exam-style questions,Classified,52d930904e865fa0e624cd2122ea9adae5bb1c83650ebac21c75d25c1a9216e9
-004,16,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Binary subtraction with signed and unsigned values,Classified,97dc6acb0c2b86d8d1ffe60fae590d3e7163e9ff0422534722c7781229127854
-004,17,summary,summary,CORE,CHECK,,Summary of required knowledge,Classified,b2ab60b9ad25f63a75cfbcb89cf67d83d692b5d23c7c79c667a4dc94db3de898
-004,18,homework,homework,AFTER_CLASS,HOMEWORK,,Homework tasks,Classified,e3e97b76b8651adf514fd0b2b8a7b2ab72acd5db113fabf43ca76f814154f5aa
-004,19,delivery-16,homework,AFTER_CLASS,HOMEWORK,,Check only after attempting,Classified,1c26890b824137cb28c818d8d842beff995a1ba1024b9a7343a80d1ab4e93335
+004,16,summary,summary,CORE,CHECK,,Summary of required knowledge,Classified,b2ab60b9ad25f63a75cfbcb89cf67d83d692b5d23c7c79c667a4dc94db3de898
+004,17,homework,homework,AFTER_CLASS,HOMEWORK,,Homework tasks,Classified,e3e97b76b8651adf514fd0b2b8a7b2ab72acd5db113fabf43ca76f814154f5aa
+004,18,delivery-16,homework,AFTER_CLASS,HOMEWORK,,Check only after attempting,Classified,1c26890b824137cb28c818d8d842beff995a1ba1024b9a7343a80d1ab4e93335
 005,1,overview,overview,CORE,TEACH,,A leading 1 does not always mean the same thing.,Classified,52fbad28bd20d4d5c36c2c6926da324135e1cf4aea1fb3bb59cd8eead06008a7
 005,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,4670ed60bf547b8d79458e6e96eb4460036c99945b2db44ff299d6becd679789
 005,3,hook,hook,CORE,ASK,,What does `11101001₂` represent?,Classified,094c25fc7c63d7e5f2b6bf9f9a39c4cc8e0b257de1693e2d145ad418e8c60a65
@@ -89,9 +88,10 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 005,13,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,958021402fb19495f5d7e7838bc6f935e50cb888198d7ed8b0c0c136b6219869
 005,14,delivery-11,delivery-11,CORE,CHECK,,Identify and correct the error,Classified,4723921d16ba9cabe282e5f97601a6683d0d60c726c1c66363189a502bb4d2d5
 005,15,exam,exam,CORE,EXAM,,Original exam-style questions,Classified,52d930904e865fa0e624cd2122ea9adae5bb1c83650ebac21c75d25c1a9216e9
-005,16,summary,summary,CORE,CHECK,,Summary of required knowledge,Classified,967aba5df6ec16b6841c6382ada1e51b7652349b89d8af2deade280843808bf6
-005,17,homework,homework,AFTER_CLASS,HOMEWORK,,Homework tasks,Classified,ef3528c74860f9e5d642203c02cdd0fb5eccff9a2afe1483b9793ff0e58af5d5
-005,18,delivery-15,homework,AFTER_CLASS,HOMEWORK,,Check only after attempting,Classified,7ff2d9a2bb65d8931e7752570feadb7a6c4a654485fb4bdbf0dc5b81e68e2b2b
+005,16,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Binary subtraction with signed and unsigned values,Classified,97dc6acb0c2b86d8d1ffe60fae590d3e7163e9ff0422534722c7781229127854
+005,17,summary,summary,CORE,CHECK,,Summary of required knowledge,Classified,967aba5df6ec16b6841c6382ada1e51b7652349b89d8af2deade280843808bf6
+005,18,homework,homework,AFTER_CLASS,HOMEWORK,,Homework tasks,Classified,ef3528c74860f9e5d642203c02cdd0fb5eccff9a2afe1483b9793ff0e58af5d5
+005,19,delivery-15,homework,AFTER_CLASS,HOMEWORK,,Check only after attempting,Classified,7ff2d9a2bb65d8931e7752570feadb7a6c4a654485fb4bdbf0dc5b81e68e2b2b
 006,1,overview,overview,CORE,TEACH,,The binary point is not decoration. It moves the weights.,Classified,751a2360c625a484bd2c3282683e8e64e4f2b1748c6f5e25c40d303216340519
 006,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,4a51f720970cdac61bbb58e0daa0c1efe23e51d7057041ecedceea6235036ab9
 006,3,hook,hook,CORE,ASK,,Which value is `0.1₂`?,Classified,49073b09eaaa014704ee2fccf3483caa397a99b54a6426cc250e513a47fe56c2
@@ -283,9 +283,8 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 016,12,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
 016,13,debug,debug,CORE,CHECK,,Fix the weak network answer,Classified,30a4ac88135a09cbb7362be9a513f9643ed1057e03381e5189e6dbbadd30dbf6
 016,14,exam,exam,CORE,EXAM,,Questions with expandable MS,Classified,82a33b83099ea3bb8e43d17d0250e81d941809328ca00f46c2aab1729d927e5a
-016,15,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Packet movement through network topologies,Classified,549d36be81e721492b332bc77533db98860deb34785c3656b666018c639e6e13
-016,16,summary,summary,CORE,CHECK,,Network answers need a comparison basis,Classified,9423aaf46ded47d5e96a3114696ed6d65b1d390fbe1103e5ff906dfb12f9ff72
-016,17,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks,Classified,fbd3cc671d8370ea66773d585f2586d887ac8ad9b788aa28e105256a1ce83dcc
+016,15,summary,summary,CORE,CHECK,,Network answers need a comparison basis,Classified,9423aaf46ded47d5e96a3114696ed6d65b1d390fbe1103e5ff906dfb12f9ff72
+016,16,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks,Classified,fbd3cc671d8370ea66773d585f2586d887ac8ad9b788aa28e105256a1ce83dcc
 017,1,overview,overview,CORE,TEACH,,"Who serves, who asks, and who secretly does both?",Classified,b0f06235644f389d6dccc4c5e6f9eebd632a92f7367a0d06d2cc2a0d2e5b75f7
 017,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,1de08df2044abdc1f47bd52df24276f85c26b8f56fd02484e457a028259ff65d
 017,3,hook,hook,CORE,ASK,,A student downloads a file from a school file server. What is the student's computer?,Classified,06c32b9370b834d87f6458fd4741687c25a0f877d84c5bc30c339a679ce84654
@@ -321,8 +320,9 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 018,14,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
 018,15,debug,debug,CORE,CHECK,,Fix the weak packet answer,Classified,defb1b9ecbbf77eeb0b5548d71580afd24b36cbaeb7719439907c30e4ef0a625
 018,16,exam,exam,CORE,EXAM,,Questions with expandable MS,Classified,aecfefba96bb4ad38b314dfe385fc1c7dc0458effdc6466328c9e08d14ccb14d
-018,17,summary,summary,CORE,CHECK,,"Packets need labels, order and checks",Classified,ba98196b743bdbfc50528dab8bf8ffe26ea266f9e7fe0690125dcc37d9166898
-018,18,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks,Classified,7025f0cbf2ae211fd9ce64d46bd497231c0af7e796c35d5e2c19f8219c274018
+018,17,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Packet movement through network topologies,Classified,549d36be81e721492b332bc77533db98860deb34785c3656b666018c639e6e13
+018,18,summary,summary,CORE,CHECK,,"Packets need labels, order and checks",Classified,ba98196b743bdbfc50528dab8bf8ffe26ea266f9e7fe0690125dcc37d9166898
+018,19,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks,Classified,7025f0cbf2ae211fd9ce64d46bd497231c0af7e796c35d5e2c19f8219c274018
 019,1,overview,overview,CORE,TEACH,,Communication works because everyone agrees on the rules.,Classified,c9e28b2acd915fcaaa8468d5d9fc58e1e91ba85106133e9d6bfa370c2de21c72
 019,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,ad7d55687b07783245bb6b7ef8013c96c1d4ad85d10d121381e216c7139d0731
 019,3,hook,hook,CORE,ASK,,Two devices try to send data. One expects bytes in groups of 8; the other sends random-length chunks. What is missing?,Classified,305395a2c7406e0c5215bbb7ff34ad41b8581f7f9ad1d4591d0b4f34b0902430
@@ -564,22 +564,20 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 032,14,exam,exam,CORE,EXAM,,Questions with expandable MS,Classified,d5b943da0b19dea19f19b7280cf398a4b5b534af4b7077cb84c82979fd0a8df6
 032,15,summary,summary,CORE,CHECK,,Characteristics decide suitability,Classified,58e0bcbc098a71a0ef5c045069f2b607c2aaab5b61575a2cef4cf1a2b7d04e0f
 032,16,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks,Classified,570dfd0f325536a9a786dd9c6f4bb738b6b4819edf6bb114ebf5ae39d396367e
-033,1,overview,overview,CORE,TEACH,,An embedded system is a computer that quietly does one job very seriously.,Classified,cfd18a1e5cdce6a77678216ee2ae79fd88cf17c1709f7e9c3a65a334cea9eff1
-033,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,e6e7f1d64b2740e6931aae2c9d49f4094b4a80f839e5cafcf8ca54b6fb5f6891
-033,3,hook,hook,CORE,ASK,,"How does a washing machine know the door is closed, the water level is enough and the motor should start?",Classified,8fb13357831822286840b451a577743a962f41a3285f30ce00f8fc538942bf22
-033,4,embedded,embedded,CORE,TEACH,,What is an embedded system?,Classified,6f5d422587cd0e4ef2a9a962ca94a05a01e64cc9e13f7fc9d568e4f03cc80705
-033,5,explanation-embedded,embedded,CORE,TEACH,,What is an embedded system?,Classified,a7646956e66d379a10b35915ba2b867a27af587a0619385d3d2907b29fa9f16a
-033,6,loop,loop,CORE,TEACH,,The basic control loop,Classified,7f3d0d8993698ca62ce9719068528e28f0fad4836fa1b617d3281ffdc90a33fa
-033,7,explanation-loop,loop,CORE,TEACH,,The basic control loop,Classified,e16067f85923f8a8cdc32cd100c651dc99fa8b9278f4563caa42729a63b4cdfe
-033,8,microcontroller,microcontroller,CORE,TEACH,,Microcontroller vs general-purpose computer,Classified,512cacd97f0ce3d65564be1131121bc2a3c7d7343d81b9d360fe6077cc6991b4
-033,9,explanation-microcontroller,microcontroller,CORE,TEACH,,Microcontroller vs general-purpose computer,Classified,6b8dc5b34b57b18dad3f53dcdf66010e151f822f7fe83ca837e979a2dc2d6aff
-033,10,tool,tool,OPTIONAL,PRACTISE,,Build the control explanation,Classified,d6b6175225c2fca6288bdb3c255f8047695af8cbbc07859220c1fa3522e1fd23
-033,11,examples,examples,CORE,TEACH,,Control-loop explanations,Classified,30df749a3fea4608cae27ab84127a553915e07b8512a188b42e79e7a5bfff8d1
-033,12,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
-033,13,debug,debug,CORE,CHECK,,Fix the weak embedded-system answer,Classified,0f4920f16a9aaec2e0655fc7059900e7ed835e80f42965b4c4059db64ebe1ee2
-033,14,exam,exam,CORE,EXAM,,Questions with expandable MS,Classified,792ff8a3fd6e91ab56e49fdbd77fd4f4de4d37dbee147dff9f5b1144bd54662c
-033,15,summary,summary,CORE,CHECK,,Embedded systems in six exam sentences,Classified,13ba7685d2d114403642fe17edc96ae81cbff272fc5cbf2b0efad185de15847b
-033,16,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks,Classified,1cda1f886f8ac5f30dad3ecdd4c3ff119c95075cd8c5c4891bf3fa47691b7071
+033,1,overview,overview,CORE,TEACH,,An embedded system is a computer that quietly does one job very seriously.,Classified,4700afaebddf033db635a48dcf29170dc72ce4b6cc8981c9b1ca5ffc4e6dd123
+033,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,45f6d2552f4aeb3cbad361f1c7471686a9a0db1f277567db517cb88eadfad55e
+033,3,hook,hook,CORE,ASK,,Why does a washing machine use an embedded computer instead of a general-purpose laptop?,Classified,042c69fe7f2e76dcd7e4d857f983ae775f4f179932eef4560b2b9916ae6a53eb
+033,4,embedded,embedded,CORE,TEACH,,What is an embedded system?,Classified,1d6d4e9c5678dd88a814e3b03110786b64dbb9ee13116c3368f4502dd4af33c9
+033,5,explanation-embedded,embedded,CORE,TEACH,,What is an embedded system?,Classified,caaee5ce2eb027e87d42f231bd5df98e2fbc7a330297d91c257b7051f5fabb59
+033,6,microcontroller,microcontroller,CORE,TEACH,,Microcontroller vs general-purpose computer,Classified,512cacd97f0ce3d65564be1131121bc2a3c7d7343d81b9d360fe6077cc6991b4
+033,7,explanation-microcontroller,microcontroller,CORE,TEACH,,Microcontroller vs general-purpose computer,Classified,6b8dc5b34b57b18dad3f53dcdf66010e151f822f7fe83ca837e979a2dc2d6aff
+033,8,tool,tool,OPTIONAL,PRACTISE,,Match a device to its embedded-system design,Classified,caaec543dc31b986fc3cf28a60b1e394cc351a200178073d1b82c6cc6c034ea0
+033,9,examples,examples,CORE,TEACH,,Embedded-system design explanations,Classified,7a3b7330f93c8dc28837c8d189604e79023234948629ecc0159d400939564f08
+033,10,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,5ca5af8f97f67f2f2d8808359cb739057fcf02231c410fb89cfab4555251c617
+033,11,debug,debug,CORE,CHECK,,Fix the weak embedded-system answer,Classified,8d9478deed52352fb02e7db45c92ef27542236eb51a65ed492f2aaa5b05d2c09
+033,12,exam,exam,CORE,EXAM,,Questions with expandable MS,Classified,0f6edfdffc019e64ea2f498ca26ee6d51a896f0b283ed01a19e49d6d938bfb66
+033,13,summary,summary,CORE,CHECK,,Embedded systems in six exam points,Classified,c5feb1e7540ea28e9bf14f5620a20fafa4b11eb5e3959118792a42c225eab661
+033,14,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks,Classified,4b6d4a98caa3caf2fd80d9dfb78bcac756e7dde024bc8a39465c16a52daa378d
 034,1,overview,overview,CORE,TEACH,,Control systems are where data stops being a spreadsheet and starts moving the world.,Classified,f5b4303d4a30ad67bc25adae511af3e2f1320c1379702afe3dcbb020be88913f
 034,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,95de63c3f05925c6d10c3f33597c9b3268acdec8c5cc129ed73d8f6108597302
 034,3,hook,hook,CORE,ASK,,"A greenhouse gets too hot. Does the temperature sensor cool the greenhouse, or does it just report the bad news?",Classified,9014c6bb6297fe2518be3d75c259a50c209d96e5a60b8fbd64b038f115b7f822
@@ -770,24 +768,23 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 044,18,summary,summary,CORE,CHECK,,"Three buses, three jobs",Classified,43e4b7ee156887f15ee6fbe64ff7a8039b0c76c2378592e79dd0ecd17e9fdfe2
 044,19,homework,homework,AFTER_CLASS,HOMEWORK,,Make bus answers precise,Classified,c0ac786bb2017973863010d5c781db429e0fb91381158aad67ae2e987a604624
 045,1,overview,overview,CORE,TEACH,,A processor executes instructions defined by its instruction set.,Classified,b01d2cb64b2e8c618c6efd091eefc1f6ffaf13c0e2ffbc480f0123a8cce14ee4
-045,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,6b2eb472fc2e3f3d006063c92cc05f8dec1ef3652fe10e0a5c3ab70ba3dd21ba
+045,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,0ff75818f993d8b6d3095733faa089af52fbacedebeab85bba9f9925914230aa
 045,3,hook,hook,CORE,ASK,,Two CPUs see the same bits. Why might they do different things?,Classified,0abe7a3b8560603d0fd04aafd34151390318b97674148355ccf778f7c7a49359
-045,4,instruction-set,instruction-set,CORE,TEACH,,What is an instruction set?,Classified,72bf19880b66a457e9591ef2b01b010ae70cc73c530f2cd2c7800bd8ca4d26ef
+045,4,instruction-set,instruction-set,CORE,TEACH,,What is an instruction set?,Classified,9e97ecfb46f5fe61fb844e1beb6f0ba089c086a2570e349dbe59933793653946
 045,5,explanation-instruction-set,instruction-set,CORE,TEACH,,What is an instruction set?,Classified,b0e343256addb27f6bd598f80f1d1481164b67293e7128eeadc16166540052b7
-045,6,machine-code,machine-code,CORE,TEACH,,Machine code is binary instructions for the CPU,Classified,f71feb4fedf06557e97a283d2b908817cf48fc27af982a0914f07a5bfaee940f
-045,7,explanation-machine-code,machine-code,CORE,TEACH,,Machine code is binary instructions for the CPU,Classified,61154795bb7ff32a6226d8bb47e405f6612b67ea8eef5416c8573b181a80636c
-045,8,opcode,opcode,CORE,TEACH,,Opcode and operand,Classified,6ba89bf61bb1bc9c64af29ec9b5ea1efe43815d8a7d4f671437df2283f88d45f
-045,9,explanation-opcode,opcode,CORE,TEACH,,Opcode and operand,Classified,91ba1d25f6cb7f3bbe23e8592e79ace29914a319a698dde753ebd048d425cfda
+045,6,machine-code,machine-code,CORE,TEACH,,Machine code is binary instructions for the CPU,Classified,4437f27299d71a18eae83e1a85ddb013d60916519b71e5ece5b513779d59b457
+045,7,explanation-machine-code,machine-code,CORE,TEACH,,Machine code is binary instructions for the CPU,Classified,903f5facacd9005aa30a4b12685395316ed1e9ca21d9582c1f3f50b7bb8f639f
+045,8,opcode,opcode,CORE,TEACH,,Opcode and operand,Classified,4f2a874eb024fcb6329b0000b8c8a44bbec5f0ac9515727d913fbb7046812171
+045,9,explanation-opcode,opcode,CORE,TEACH,,Opcode and operand,Classified,6e525c3fe3664b0b727c732962319244ce58b7e2cae9079c244f76ddac4039c0
 045,10,compatibility,compatibility,CORE,TEACH,,Instruction sets and compatibility,Classified,ed22e14dd95e7782157631b8929e5ac891ab887e16d4d10b1cd376562c6598ca
 045,11,explanation-compatibility,compatibility,CORE,TEACH,,Instruction sets and compatibility,Classified,7780868beeef097d768fe9696f96f15ca36eebebab3662c6fa5f5813812ac843
 045,12,tool,tool,OPTIONAL,PRACTISE,,Simple instruction decoder,Classified,040b78f559b032bf5344239765a2278f0983a029aa1c4269fbeb4e4a631f1ca8
-045,13,examples,examples,CORE,TEACH,,"Decode the instruction, then explain it",Classified,2dbf81d7c549438ee4ba97a8f4c62ec75e24b303fa21cd6138bd997e44bf612c
+045,13,examples,examples,CORE,TEACH,,"Decode the instruction, then explain it",Classified,d5801282985bffc6858b516ecc26304187f20af2cbfc4576a3e91ca5456699f5
 045,14,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,c254f8dc53c7dd58c71e47883336c96d6540a696b579d9a47b5cc4c1d43b51a7
 045,15,debug,debug,CORE,CHECK,,Fix the vocabulary,Classified,2fa541d8796bc5940fc89d129e8ccd34100f2e4f08819724267114ff7c58ba03
 045,16,exam,exam,CORE,EXAM,,Cambridge-style questions with expandable mark schemes,Classified,ed61b547ade6397ee6eb87111000064732c5d679a0f3023fce50ada3d6f0bbd6
-045,17,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Assembly instruction groups,Classified,41fe0040c611ea37590e3f5e24a3689c98308b31174b0b0ccde001245f7b7dc7
-045,18,summary,summary,CORE,CHECK,,Meaning comes from the instruction set,Classified,4a2cbd117530a9f5bcabac4860b5f43a1eef07bd88445107f6c5201fb16d77f6
-045,19,homework,homework,AFTER_CLASS,HOMEWORK,,Make instruction wording precise,Classified,498eb4b9cf64939b1c1696afcad256d0a3a666c52e5d5aca098756364d20e668
+045,17,summary,summary,CORE,CHECK,,Meaning comes from the instruction set,Classified,4eeae154157ebf564148ab133810007990f3aab90305fb76b69444a32353a515
+045,18,homework,homework,AFTER_CLASS,HOMEWORK,,Make instruction wording precise,Classified,c7f6a9fafe7f97e7b31446736e609e8d8d8c4c45c086cf5090f69542d3cd4cf8
 046,1,overview,overview,CORE,TEACH,,"Assembly is readable machine thinking, not friendly small talk.",Classified,b8e5bfe106df729188fc9cc0bf47c2f39c1cf8e17ca24d70def91f1c09cfb249
 046,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,e5a6b1675ce86e05584f0612ddb9becae79a3e5664f46edb1c976805b6df68a7
 046,3,hook,hook,CORE,ASK,,Which part of `ADD 90` is the mnemonic?,Classified,9f3a74c985260227aafb7c0f8be68fc5ac01d16e5905490c8c7b75dd1dec2dcc
@@ -804,7 +801,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 046,14,practice,practice,CORE,PRACTISE,,Practice with instant checking,Classified,fbb7c33abe700d02018e6eeb2954e2e31080c85000ac6a0435a58a07a107e6db
 046,15,debug,debug,CORE,CHECK,,Fix the assembly misconception,Classified,b712acada4b8c3ec12113ed7293bf672424ba6f78bdcbcdc5cd4a0b8e4aa6f65
 046,16,exam,exam,CORE,EXAM,,Cambridge-style questions with expandable mark schemes,Classified,652bd624664dd55b967bb2aea826daa6b71d2b168b9e551e9d5d180ca704427d
-046,17,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Two-pass assembler and core instruction semantics,Classified,495d4e99aaf39ee8e2fa0a75ded966f73bfa8fb4ded7079eb34c11cdc729894c
+046,17,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,"Instruction groups, core semantics and the two-pass assembler",Classified,c599161742854ea9d75d9399896534a682e26f5333b790256972599d3b0f2cc2
 046,18,summary,summary,CORE,CHECK,,"Readable, low-level, still translated",Classified,f6d4035cc92c500fd871cca6001e85705984d6bd0ce0d5cd2e08df0cc331b2c0
 046,19,homework,homework,AFTER_CLASS,HOMEWORK,,Make assembly vocabulary exam-ready,Classified,415685f727697b44decdd263fd6c93b76df434b1f9803f17a8579f16ca8b30cd
 047,1,overview,overview,CORE,TEACH,,The operand is not always the thing you want. Sometimes it is a treasure map.,Classified,20eb2422715f53ca20521c606a349a97ef1abca53c150d76de8e8a9295821081
@@ -1134,13 +1131,13 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 062,6,confidentiality,confidentiality,CORE,TEACH,,Confidentiality protects data from unauthorised access,Classified,8f9f7371bcb51864ef55282d5ba7df70f2ce26063e527e0b699d2b19d6e0d804
 062,7,explanation-confidentiality,confidentiality,CORE,TEACH,,Confidentiality protects data from unauthorised access,Classified,35aa52944f3e1aa8f7d93db1145be3aeb79aecdce5c59a94bd828019799edcc6
 062,8,integrity,integrity,CORE,TEACH,,Integrity protects data from unauthorised or accidental alteration,Classified,fd0f0e93bbc5311350fbba04456272af11452c959ac033b937d8109a59cfb20c
-062,9,explanation-integrity,integrity,CORE,TEACH,,Integrity protects data from unauthorised or accidental alteration,Classified,12408de86164e60adb9f4e9f1fc2f766adb360b67116d782630f177155d9324f
+062,9,explanation-integrity,integrity,CORE,TEACH,,Integrity protects data from unauthorised or accidental alteration,Classified,9b01daaad038f53ed508c061e78095b499bc4917a978d0358819612483f240d0
 062,10,availability,availability,CORE,TEACH,,Availability keeps systems and data accessible when needed,Classified,551a84a6c50d82e62214c399897ef9320149b819a4614d36f63819f0f8282f9e
 062,11,explanation-availability,availability,CORE,TEACH,,Availability keeps systems and data accessible when needed,Classified,380005a09827673d79f6d3e9a33a0e6c3398b87a1606fc2d12f8a55b0d234276
 062,12,authenticity,authenticity,CORE,TEACH,,Authenticity checks that identity or data origin is genuine,Classified,376c802c31b08b69a08e9bfa8c9335432733fd6966aa8b3448ab6b50b9cb8ae2
 062,13,explanation-authenticity,authenticity,CORE,TEACH,,Authenticity checks that identity or data origin is genuine,Classified,c526d6c05d962ff563c7cbe38cadabc69165b26e9184a01db050d6446f76e811
 062,14,controls,controls,CORE,TEACH,,"One control can support more than one goal, but not every goal",Classified,5a84e729466de22aa61c2636b721e580976e72316654fc39044baf3e81122d64
-062,15,explanation-controls,controls,CORE,TEACH,,"One control can support more than one goal, but not every goal",Classified,25a8790efa3cfa177176a400c0fe353b159d820ef8298f63d37a0660e351e296
+062,15,explanation-controls,controls,CORE,TEACH,,"One control can support more than one goal, but not every goal",Classified,576d4c1521f4cc02f65b54455da0a722471ede4f07f1b67c455d08a927e3ce08
 062,16,tool,tool,OPTIONAL,PRACTISE,,Security goal classifier,Classified,0d89fb3bbcebf59c8396d9ccaee292403c1887925164175a6a2f71bd9d809fdf
 062,17,examples,examples,CORE,TEACH,,"Risk, goal, control, consequence",Classified,e853afa0304fcf9ef8b09b41aeba925be37f9b87c180a123a9299e8941df4b08
 062,18,practice,practice,CORE,PRACTISE,,Instant-check questions,Classified,c9ab3475a46a8096e8a3b45ac45f1306373256736d15601cad1f4651606c4c93
@@ -1165,7 +1162,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 063,14,social,social,CORE,TEACH,,Social engineering exploits people rather than code,Classified,bb941c07ed7eb50f0b9691fb5f509433beabf07bfb1f8b2914347f1f03f5d52a
 063,15,explanation-social,social,CORE,TEACH,,Social engineering exploits people rather than code,Classified,f29c5553684e7db843662d51cf1f0565bdee62f17d8929b9dfe52fd6afe404fe
 063,16,controls,controls,CORE,TEACH,,"Match controls to mechanism, not just the word ""malware""",Classified,305d1eed902c0b9b3dcdce6034776065d87afc090712e354626cf5cc4deec5b2
-063,17,explanation-controls,controls,CORE,TEACH,,"Match controls to mechanism, not just the word ""malware""",Classified,d9c64b8efe26d075f750dceabb230cf6553defe323be1086b81babc2bc7c0848
+063,17,explanation-controls,controls,CORE,TEACH,,"Match controls to mechanism, not just the word ""malware""",Classified,20da9404ea1b66294468bd68e2c9796ea5a6f2ea9311aa5f68503be4f66393e3
 063,18,tool,tool,OPTIONAL,PRACTISE,,Threat classifier,Classified,5fe5d1489b1207e01105352c8ced8e46185253663c087e26c72bae85f4d36dcf
 063,19,examples,examples,CORE,TEACH,,"Threat, impact, control",Classified,6cd27acd1648afc4e04197385d5833bc7d79920e9b1581c7763fcb3818caa2f0
 063,20,practice,practice,CORE,PRACTISE,,Instant-check questions,Classified,c9ab3475a46a8096e8a3b45ac45f1306373256736d15601cad1f4651606c4c93
@@ -1188,7 +1185,7 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 064,12,dos,dos,CORE,TEACH,,Denial-of-service: making a service unavailable,Classified,fe77ee714c6b95144812d6f5341570819fde32c418b4610ebe52c02efd6299b3
 064,13,explanation-dos,dos,CORE,TEACH,,Denial-of-service: making a service unavailable,Classified,42d2196826697f312c6d6224e60bacee89e7a834a42da652451f03245960a382
 064,14,compare,compare,CORE,TEACH,,Compare by route and result,Classified,13ddcad6476e92db1e1d7dcebeedac533a3f2481d66df204af9993789a8bf912
-064,15,explanation-compare,compare,CORE,TEACH,,Compare by route and result,Classified,6ea871d02e3f82f9a35e98a0e6a0e70a629be198954388262f1461080a8119b4
+064,15,explanation-compare,compare,CORE,TEACH,,Compare by route and result,Classified,3ebad2879d5c61ec667c80f0da0dca25ea0bc37c183ff7d9b541169ac061b25f
 064,16,controls,controls,CORE,TEACH,,Controls must fit the attack route,Classified,a75456e49b8676276d71dfdb1d78a0d52662902758cc505899084cb4180ca3b1
 064,17,explanation-controls,controls,CORE,TEACH,,Controls must fit the attack route,Classified,869bd496984a2b646ac7ec27b3697bb88a2cd932942a46ae311d706da1588483
 064,18,tool,tool,OPTIONAL,TEACH,,Classify the attack by the clue,Classified,559802db28679f9faa2b733242c81b827a29b0054ce8a536f3bab46091818b86
@@ -1906,114 +1903,109 @@ lesson,section_order,section_id,delivery_group,delivery_role,classroom_activity,
 097,21,exam,exam,CORE,EXAM,,Original Cambridge-style correction clinic set with expandable MS,Classified,843da5c52c3dddbff9ca62d305e170d455664fdf6dcb0e2029e79148ea27bc1b
 097,22,summary,summary,CORE,CHECK,,Mock correction checklist,Classified,4d7a81658ffff207461b12c1dfea6d65cf61efccacf572bd942771313f0651d3
 097,23,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,a5cdb2f77ba2ac130e67e088e57227d5f2bb2659c532c71801e6405db4c75634
-098,1,overview,overview,CORE,TEACH,,"Before writing code, know what goes in, what comes out, and what is allowed to happen in between.",Classified,69f7952f283e15c4590291206072234b0cb2972b02f66faf4370f42f16757d01
-098,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,0f38bc313877afb69ab86b93148781984457e9fc58aad88fa9a0ced7b16ac42f
+098,1,overview,overview,CORE,TEACH,,"Before writing code, know what goes in, what comes out, and what is allowed to happen in between.",Classified,03fe83007e0a64607921b851214083c0bbabbc6050a1a85d69d7e061e8d8e978
+098,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,4a127c40ad85708ed674e518b1bb240ea63440321927094c90c0265fbfc393ee
 098,3,hook,hook,CORE,ASK,,The missing tea algorithm,Classified,99119b264834c338e0e3fe8ba6310cf6bb921b04a67576c26292668a1e419192
-098,4,concept,concept,CORE,TEACH,,An algorithm is a precise method for solving a problem,Classified,7f24eea3d59f2d27ef827c196b2db0ec739ca02767935f125842f23655128500
-098,5,explanation-concept,concept,CORE,TEACH,,An algorithm is a precise method for solving a problem,Classified,0891ce18d3eda83a709d2ec0b171561610426f19347b702d8a0ea96556b43e8f
-098,6,model,model,CORE,TEACH,,Use IPOC before pseudocode,Classified,5e072d86e4f01f8cbd516436dbd14c106ce6491e51b6671b19aea503c6b203a6
-098,7,explanation-model,model,CORE,TEACH,,Use IPOC before pseudocode,Classified,5f25274a3ce1a0b3a917e2b59540968e22cddf271f4b483d78569b4f2205abf2
-098,8,constraints,constraints,CORE,TEACH,,Constraints stop algorithms from wandering off,Classified,4f75854487cfe7436e38a914d992151429a487a9cbec826b4ea7ba908e0028f6
-098,9,explanation-constraints,constraints,CORE,TEACH,,Constraints stop algorithms from wandering off,Classified,4b70d2b4d76c1e119b3224bfcc8c0ea29d5feb3b767893e737656a3cdc152d3b
-098,10,pseudocode,pseudocode,CORE,TEACH,,Cambridge pseudocode is the exam language,Classified,892526938e3755bdfc8dc5fb8691b0bec89674b5e99b9a31d31f85882e7e1a87
-098,11,explanation-pseudocode,pseudocode,CORE,TEACH,,Cambridge pseudocode is the exam language,Classified,a8770617da89e6f5a1e13fc46776d7df66406d1364b5900b8daddd223ad77ef8
-098,12,classifier,classifier,OPTIONAL,TEACH,,Identify the design need,Classified,edf5a34022380bcc944538ed738e212aaa9542e21ed5dd8b0cdfe615749f7e41
-098,13,builder,builder,OPTIONAL,TEACH,,Build an IPOC plan,Classified,e3d459396c084a0f7dcba45354a5c366f8b6da427659bf6e7401eb02e31b518c
-098,14,trace,trace,CORE,TEACH,,Trace the pass/resit algorithm,Classified,81ea678fee1e8bd3fcf20c5d8300976005aa02558e999278aeeda78eb599e2b5
-098,15,examples,examples,CORE,TEACH,,From word problem to algorithm,Classified,d0a367559e5281c1c1db594aa37702ccf3b301ba25e3cf85002d9ba67ae5b005
-098,16,practice,practice,CORE,PRACTISE,,Algorithmic thinking vocabulary,Classified,c73277249da5b88c13c8cd7c170eae9415285c0138be3d3da8f45a15e1fdd410
-098,17,debug,debug,CORE,CHECK,,Fix weak algorithm design habits,Classified,011af102827b737bbfb4085225666e2584c93bb901e91d2995edea4702a7218a
-098,18,exam,exam,CORE,EXAM,,Original Cambridge-style algorithm thinking questions with expandable MS,Classified,60ec58fdb9cab1a395e752344ea2bd0e4f9d7327a96f03cbe06c0c785eb5c2ca
-098,19,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Meaningful identifiers and identifier tables,Classified,220528a4632ea46388009e2d1d2e8592e19467bf92b20b1b5c87c81af1f42166
-098,20,summary,summary,CORE,CHECK,,Algorithm design checklist,Classified,e6c3ce9788a1559312f2ae618fc019e65b890f4eec3213d048f1ed743d760d45
-098,21,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,c5aa8bdb0db09cfbdeb94cc7a10538369efdbafbf957b1cfc888f0bec05c38b9
-099,1,overview,overview,CORE,TEACH,,Big problems stop being scary when you give each part a sensible job.,Classified,438d14a948aab056c733de79353d08cc95b9af60285ae20c6d891940976f1886
-099,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,4c7d5818296b6298109b07cf767ad8a84dfa31caf33ba786ce6ecab86902423d
+098,4,concept,concept,CORE,TEACH,,An algorithm is a precise method for solving a problem,Classified,e255aa8ce93a894e2ba81661a0fa4555f93ae2ed1a3ba7b70d78df4d1a2e5d48
+098,5,explanation-concept,concept,CORE,TEACH,,An algorithm is a precise method for solving a problem,Classified,f77e8ad60de454e7b41d8c51f763cb71ca34804414859bc59f080c0f09e50d4e
+098,6,model,model,CORE,TEACH,,Use IPOC before choosing a representation,Classified,dfd3f037807c074e7c21099193fe57632bced7d451ee2892d0d3adf5115886ac
+098,7,explanation-model,model,CORE,TEACH,,Use IPOC before choosing a representation,Classified,4937e5a5726717a63d437a2aea460f7c6795fd2088f9ef9dca5fb4de25dd5a48
+098,8,constraints,constraints,CORE,TEACH,,Constraints stop algorithms from wandering off,Classified,e2e0a773a2d6526a129b4e7a93a4869f6208f6b20633f4ee54c439a15ae5857f
+098,9,explanation-constraints,constraints,CORE,TEACH,,Constraints stop algorithms from wandering off,Classified,846a6ecd5668a06ae57591a7024279ffc2c1d70fbe601c22fbedaec9f09036b2
+098,10,classifier,classifier,OPTIONAL,TEACH,,Identify the design need,Classified,71c89b16690cd6ada5712043465af0ed6b9c3411bcf5a44e1dd92074abb29762
+098,11,builder,builder,OPTIONAL,TEACH,,Build an IPOC plan,Classified,e3d459396c084a0f7dcba45354a5c366f8b6da427659bf6e7401eb02e31b518c
+098,12,examples,examples,CORE,TEACH,,From word problem to algorithm,Classified,d0a367559e5281c1c1db594aa37702ccf3b301ba25e3cf85002d9ba67ae5b005
+098,13,practice,practice,CORE,PRACTISE,,Algorithmic thinking vocabulary,Classified,c73277249da5b88c13c8cd7c170eae9415285c0138be3d3da8f45a15e1fdd410
+098,14,debug,debug,CORE,CHECK,,Fix weak algorithm design habits,Classified,011af102827b737bbfb4085225666e2584c93bb901e91d2995edea4702a7218a
+098,15,exam,exam,CORE,EXAM,,Original Cambridge-style algorithm thinking questions with expandable MS,Classified,30558a328db01a44db70a2c7e2e8d409e380ccaa00171683e0a289d4040b92e8
+098,16,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,Meaningful identifiers and identifier tables,Classified,9697c7075cb22336b043c24ea31e0eec195dae67fdf3d49e75014ee8645b7bd9
+098,17,summary,summary,CORE,CHECK,,Algorithm design checklist,Classified,2a482f8cdd57a85005c5e13e214af1ad7e70ce36a28119cc69ca775027d1cbb6
+098,18,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,61ab82c2c73f1623822f2804f3426fa9e408f9aecdc8ddeb81fc84d86500c12e
+099,1,overview,overview,CORE,TEACH,,Big problems stop being scary when you give each part a sensible job.,Classified,761e1e0b6bd1ef5424cdb579f23e8fc717f3b501eddab2f289101983d679c9e8
+099,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,dafe53b48df80648e1d157c7f2289fefa87dad3a3ae9fabfc82488f1e55b2df5
 099,3,hook,hook,CORE,ASK,,Plan a school trip without causing a spreadsheet incident,Classified,efa6cd93dad9470c7f5859b646459efed12c700e2f65725b68601c73e5ecffbb
-099,4,decomposition,decomposition,CORE,TEACH,,Decomposition: split the problem into sub-problems,Classified,d2355de8569cf26cd199ebfaed784c32681aa4f3f2fc9c03bff457c7fae4e370
-099,5,explanation-decomposition,decomposition,CORE,TEACH,,Decomposition: split the problem into sub-problems,Classified,250e6b7260490301e3974313d1ac2225b184ee7791f7e001973bb694a2226b90
-099,6,abstraction,abstraction,CORE,TEACH,,Abstraction: keep the details that affect the algorithm,Classified,857e6ddcb547003fb08c2cba24780cc86e8c88f6c1e27d4582158c31b380309d
-099,7,explanation-abstraction,abstraction,CORE,TEACH,,Abstraction: keep the details that affect the algorithm,Classified,964a53a38d338514dfa9a922a85e07572e9aa1a01c875af751eaae44d710fc5f
-099,8,pattern,pattern,CORE,TEACH,,From scenario to algorithm plan,Classified,0b797178f729284f9d1f23fff52d9c8e12f9c838254a8c02e3cf75f0dc589de0
-099,9,explanation-pattern,pattern,CORE,TEACH,,From scenario to algorithm plan,Classified,fe91cbb9f9a812eeb023a8e7c7e12d58bbea94222c9236fe8be586ab6fc0b95c
-099,10,pseudocode,pseudocode,CORE,TEACH,,Modules can be planned in pseudocode without Java syntax,Classified,27466059b6226d7444d280772984ef6e471e73796fdd4efca16062a6736c1b24
-099,11,explanation-pseudocode,pseudocode,CORE,TEACH,,Modules can be planned in pseudocode without Java syntax,Classified,c4703819aa3f1250314744844a69a0db8b2563dfbdfaadb9b460e77864f750be
-099,12,sorter,sorter,CORE,TEACH,,Classify the design move,Classified,35a0d5a835c7aefa0584c5ca2cb50a4cc4e3a44584317776662b29b04011abcd
-099,13,explanation-sorter,sorter,CORE,TEACH,,Classify the design move,Classified,43a18b431caa1531bed1ab939b998e485138ddc643d63da22f849093b106cdff
-099,14,filter,filter,CORE,TEACH,,Keep or ignore details,Classified,6a354f8fe05e571ae0d07ca824c146a4c1f1a415269c94a53392c4b026c1fd76
-099,15,explanation-filter,filter,CORE,TEACH,,Keep or ignore details,Classified,608b8ca2ab974b1433a7d466fab824941355de6a3f9ca6c2ab1c846ae4c82b6d
-099,16,builder,builder,OPTIONAL,TEACH,,Generate a decomposition plan,Classified,829ead81013208ec23aede7ffd7f82247712a55473cf0e49a8f0eb628b61e5de
-099,17,examples,examples,CORE,TEACH,,From messy scenario to clean plan,Classified,f3d3c7c97f00af9651ebd45de1836aa5f272e651aa1841de096baf9f5e37f0cc
-099,18,practice,practice,CORE,PRACTISE,,Decomposition and abstraction vocabulary,Classified,13fc1bbd43800e6a0abd5f0c6ee00b541c061296341f66e4e7ef8e8833a3dd70
-099,19,debug,debug,CORE,CHECK,,Fix weak planning decisions,Classified,19a571838921c7fce0cd3e5d641ce05021c2a49690fc7e2ef669d29d9d4d0b9c
-099,20,exam,exam,CORE,EXAM,,Original Cambridge-style planning questions with expandable MS,Classified,3129bed3a9011461efbc51010c5eed6b63f78d2fb15d4daed291279986f92806
-099,21,summary,summary,CORE,CHECK,,Planning checklist,Classified,b2929d22b13d59efe693e112e58751248f122308a134b93c609db32a0a0607f4
-099,22,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,7b67ee2699e84cd5e0e4fdc0e86855f9d21f0b1630dcc2a8385fbc8120802aa2
-100,1,overview,overview,CORE,TEACH,,"Same algorithm, two notations: one draws the route, one writes the instructions.",Classified,dd9a66ad0063f50fd4dfb8b0f6d9ebdd8780913775da82251826a69fa138fba2
-100,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,ea57436c7f45abdd9708a494ff5674e638eaca5067cb5a28c2a3c91b2043997a
-100,3,hook,hook,CORE,ASK,,The vending machine is not impressed by vague arrows,Classified,3761f916966cd4e64eba56db7b15ef387d461d33a988952661bb90ec6a3bc1a3
-100,4,flowcharts,flowcharts,CORE,TEACH,,Flowcharts use symbols to show control flow,Classified,080e24fd8065335d9c122f30ae580dab9f7a2a90fc4b0bcf33cac3f3ca688d34
-100,5,explanation-flowcharts,flowcharts,CORE,TEACH,,Flowcharts use symbols to show control flow,Classified,aca8109879b0f7fa445b91a6e0e7005e9d13f2fb0051fd0653880061d2586988
-100,6,pseudocode,pseudocode,CORE,TEACH,,Cambridge-style pseudocode uses structured keywords,Classified,83a86e495b53fd5f2db91bc3a25dd5f0177799e42fc20414083ab4f827189370
-100,7,explanation-pseudocode,pseudocode,CORE,TEACH,,Cambridge-style pseudocode uses structured keywords,Classified,50cf40c61f64144baa642942a6af4793f3e226af7b92c6d6b1169136262716a7
-100,8,notation,notation,CORE,TEACH,,Readable notation earns marks more easily,Classified,92d98e19062a2b4a1153c93a0c8003eed424c0333fa527cffd0d9572c7897012
-100,9,explanation-notation,notation,CORE,TEACH,,Readable notation earns marks more easily,Classified,5678bb1d19b95ccce104d3136ebf9b4b23f9377f66d5cb5295c714871870ee98
-100,10,equivalence,equivalence,CORE,TEACH,,A diamond becomes IF...THEN...ELSE,Classified,5ccac63343075cae71868bb537db65fc751fd2b461442e37c372d30fd9723c55
-100,11,explanation-equivalence,equivalence,CORE,TEACH,,A diamond becomes IF...THEN...ELSE,Classified,b9ec47d3d95b7406ae34aaf6e4fb932d5a79065d48694387372fd4b0ae5d3de1
-100,12,symbol-tool,symbol-tool,CORE,TEACH,,Choose the correct flowchart symbol,Classified,91d4e4dff8b5c830f66462e17e938a7635be75606ebd0c5e626469453502382a
-100,13,explanation-symbol-tool,symbol-tool,CORE,TEACH,,Choose the correct flowchart symbol,Classified,8fd527eaa58ff0595005f827ef0a48a54b816bb61817b54c3daa81e16e2589ba
-100,14,structure-tool,structure-tool,CORE,TEACH,,Match scenario to pseudocode structure,Classified,9c3c17092e517e969fff696cb9d01eaa95f629dddbfe05e5bfe781744128a6d9
-100,15,explanation-structure-tool,structure-tool,CORE,TEACH,,Match scenario to pseudocode structure,Classified,6247ba47adc6089260e4e587aabc9ab58fa629f12050cfe8edb1e86d58ed67b0
-100,16,converter,converter,OPTIONAL,TEACH,,Convert a flowchart pattern into pseudocode,Classified,b11d8ebf6dc98e705594b3fd19c02efac99f74a5c8d0c677bc56566fe47e3656
-100,17,examples,examples,CORE,TEACH,,Notation choices in common problems,Classified,54f0f0cbe1139555c22c6931a70a7bc49ce5876d7e8a473bc68bd17d05c2ade1
-100,18,practice,practice,CORE,PRACTISE,,Flowchart and pseudocode notation,Classified,0a7469ba7450b1772a766f502f5783b9dd7c40e7c04fa21e126862b62bb7a670
-100,19,debug,debug,CORE,CHECK,,Fix notation mistakes,Classified,33ae383bdf91f36737b88da250cd4563f8bc7c85bb5d2540b7eb4ef208154edb
-100,20,exam,exam,CORE,EXAM,,Original Cambridge-style notation questions with expandable MS,Classified,0d5aa37aae25493982393d88acb1ebdff2fd7a8bd043467af32fba6710c8c08b
-100,21,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,"Structured English, flowcharts and pseudocode conversion",Classified,effe7469f2bb5d7146482bb6e9a0652dcdacd8e3a63d58a6666bac2e9dd09980
-100,22,summary,summary,CORE,CHECK,,Notation checklist,Classified,1e782cdaa86dd101c57087a14905a9e62efab0cdc1feea4473084440fea3de85
-100,23,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,87b92a6b9a8f728e795081717ba10b2ea39e27265a0de84e07956b2f467e0940
-101,1,overview,overview,CORE,TEACH,,A trace table is the algorithm's receipt: every variable change must pay rent.,Classified,e59dcd812957768a322e27dd7466adf8b272f518c521800e9351d2b9a14fcffb
-101,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,0547fc8b90c8d633dbf22f363c7166765ef7f03eba444541d8a897660455e889
-101,3,hook,hook,CORE,ASK,,The coffee shop total that keeps changing,Classified,fb8bf454cb6bd8bd6c7051b6dfc91472f51edec8b8bd5510ec276e7eba59fb41
-101,4,trace-table,trace-table,CORE,TEACH,,A trace table records variables after each change,Classified,1822f8979052161858c3ff2ae26fefcbeb91378337ac54da0db5a643f29a0c5e
-101,5,explanation-trace-table,trace-table,CORE,TEACH,,A trace table records variables after each change,Classified,35d0aa63f027ce80ea278fc9d75b7a1269305a0aed1711c325bddc2b3edfe6dd
-101,6,dry-run,dry-run,CORE,TEACH,,Dry run: execute the algorithm by hand,Classified,767041eab9787e9608ed35a226aee535aff2186d5a467f782b2bf75d32c9d18f
-101,7,explanation-dry-run,dry-run,CORE,TEACH,,Dry run: execute the algorithm by hand,Classified,ec47a7f2fed30564dff48d63b0dee6228bebaeb237332cf6bcf628c3114e90f8
-101,8,loops,loops,CORE,TEACH,,Loops make trace tables useful and slightly unforgiving,Classified,4f32bcfe2beeecc41e99bf80895192f92f52dc9fe62392cb84ff32c5d90866cf
-101,9,explanation-loops,loops,CORE,TEACH,,Loops make trace tables useful and slightly unforgiving,Classified,c2de782af1772e094c487e7f4f5cb668829a6f99738bbd0cdca44fb9ff17cf85
-101,10,pseudocode,pseudocode,CORE,TEACH,,Trace Cambridge pseudocode in the exam; Java is only a support view,Classified,4155b1deac3f745096621558fca128a344868a3d1e64f57cbfe9f6f9c7a2a5a4
-101,11,explanation-pseudocode,pseudocode,CORE,TEACH,,Trace Cambridge pseudocode in the exam; Java is only a support view,Classified,270433c6cd139992c32a98aa6175bfc7bfd78e60fa97b1391caa66bd1b86676e
-101,12,predictor,predictor,CORE,TEACH,,Predict the final output,Classified,d96a768ffa7a5c314ade90b579b25b97da0987bc4de359e8015fc0673e1eb8ce
-101,13,explanation-predictor,predictor,CORE,TEACH,,Predict the final output,Classified,6009d9ece7355bc1ad87fe0081e656499859a4b71667984bf94755b4f5cfcb08
-101,14,builder,builder,OPTIONAL,TEACH,,Build the trace table rows,Classified,c161eb9c48ef05e69f45bd4230573fb8e5fceadf5b01dcbcb38a12f6c6314159
-101,15,checker,checker,OPTIONAL,TEACH,,Find the first wrong row,Classified,aca602d8c6c89d9a13e9549cbc06deafc415737f3ea79d77141a1de54bdd2279
-101,16,examples,examples,CORE,TEACH,,Trace common Paper 2 patterns,Classified,5017c8f5be04af7cdb9f0ace34382cb44f9174b84956fa5ca33264528850023b
-101,17,practice,practice,CORE,PRACTISE,,Trace table and dry-run accuracy,Classified,32f1f971f1b2775c0669e918034ac8a94913938d984bf5c84fec079d0eec4170
-101,18,debug,debug,CORE,CHECK,,Fix trace-table mistakes,Classified,1294be2992e9694e70144c608a4fd6d1f505707a6610826fc84fb5f41233c455
-101,19,exam,exam,CORE,EXAM,,Original Cambridge-style trace questions with expandable MS,Classified,a42c66f9c799a903932c1f622a595637d8317712c2cfff3e11d3dcc8b9e948d1
-101,20,summary,summary,CORE,CHECK,,Trace-table checklist,Classified,a48aeddb6e8dc624239cc38a3802043eb76c6e08e8a6eaf7a992d3dcc15e0732
-101,21,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,0cee696d139d5722fb0166424296b4b46cdc5cfc028d4ecbb366b5588fe304fc
-102,1,overview,overview,CORE,TEACH,,"Algorithms are built from three moves: do this, choose that, repeat carefully.",Classified,e9d8971ffb1b1c8aeb53515d3a07229a2e4e5675c762ceefc9d6f851bf9a9946
-102,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,a49ff84cfdaa6552359505e8202e0cfbfd0adccff886fe354648a095fb3bc27b
-102,3,hook,hook,CORE,ASK,,"Sandwich algorithm, but make it examinable",Classified,63a8210ac22177e03505c64814c87d858309c4662ef9cda061489e04606bf15c
-102,4,sequence,sequence,CORE,TEACH,,Sequence: steps run in a fixed order,Classified,49bf43927478e89ff8f2813daab9c261525980d5ded8d6a32608db075e363ac0
-102,5,explanation-sequence,sequence,CORE,TEACH,,Sequence: steps run in a fixed order,Classified,7e805ca907f584d69ade342a38af6a0d215ca1d3facede493100f28a20f94e1e
-102,6,selection,selection,CORE,TEACH,,Selection: choose a path using a condition,Classified,ce34bb497e332e09908f4ebd8277db45a27983a6b73487b261e9672cb1bddb7b
-102,7,explanation-selection,selection,CORE,TEACH,,Selection: choose a path using a condition,Classified,bc52aa2d603c94dad3a0c96318e4ec231c4e5b14c1a7da4cab8428ebd75caaca
-102,8,iteration,iteration,CORE,TEACH,,Iteration: repeat steps,Classified,d8556dcb767e6609c8ca8def3680e06efe8635c068423f9d7b13008770379aa8
-102,9,explanation-iteration,iteration,CORE,TEACH,,Iteration: repeat steps,Classified,400518f7214d949b87a9133459349cb7579d3082f34dc997389e9183f8f74c32
-102,10,combining,combining,CORE,TEACH,,Real algorithms usually combine the three structures,Classified,ab0216c1b2a15b780f43523947ee19ac9349b6c1861cd7e5928993919d796ab2
-102,11,explanation-combining,combining,CORE,TEACH,,Real algorithms usually combine the three structures,Classified,17a5cbe973885c0c99d0b466bfa2f3ef4e9e0b78c6e4a51bdcaabe4e650f1e78
-102,12,pseudocode,pseudocode,CORE,TEACH,,Cambridge pseudocode is the exam form; Java is support only,Classified,d6c6d40b9fe208bc2f7d851c164b003f2aec9c4422ce28c27d85b203b4982489
-102,13,explanation-pseudocode,pseudocode,CORE,TEACH,,Cambridge pseudocode is the exam form; Java is support only,Classified,c9d9a292e80d37f416f553b77a24097f503d0e751319bbf6bff8abf8cf8b9cb2
-102,14,classifier,classifier,OPTIONAL,TEACH,,Choose the control structure,Classified,aaec393cc785a173192f62b12860ff5b132097493f9321a520f892b7ec6252b9
-102,15,builder,builder,OPTIONAL,TEACH,,Generate a Cambridge-style outline,Classified,73f0eaeafefdb5b6750c8c38b7af46dc704cfb30cb1f21a9d989b6093b30a7cb
-102,16,examples,examples,CORE,TEACH,,Recognise and combine structures,Classified,96b01fc9d1b3ead67b7620a4de2752cc0dd5daf253b18089a0330a6941f923c9
-102,17,practice,practice,CORE,PRACTISE,,Control-structure decisions,Classified,d6cef2b67978668ac8f0f09214ca85e83e6b0b4253a10b3ee6b060a085f27387
-102,18,debug,debug,CORE,CHECK,,Fix weak structure choices,Classified,c450df5cb5fce1995b707b459f6d44dc1cb122ee1e00dfe94d43a9e5b19646c7
-102,19,exam,exam,CORE,EXAM,,Original Cambridge-style control-structure questions with expandable MS,Classified,2f5c4e1bda9699fd92d2f2c206384b875dff2ab7bcae197a12a94d24d2ecf9ce
-102,20,summary,summary,CORE,CHECK,,Control-structure checklist,Classified,1e646b247eeb47802eb6da857d6957a1608a88cf149c09877ecb2b4872734cd5
-102,21,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,31e0eb86a9cf619443bc2644d26c8c1a67342d2020eacb267afd427e2f497f12
+099,4,decomposition,decomposition,CORE,TEACH,,Decomposition: split the problem into sub-problems,Classified,78941d086212fef47fcda39eb820532788442497d379d9f6dcaf6cba654650a9
+099,5,explanation-decomposition,decomposition,CORE,TEACH,,Decomposition: split the problem into sub-problems,Classified,455af3f8593eb61251acec0cfd84981ce7265db0ad011b189b4884bcb0632e9b
+099,6,abstraction,abstraction,CORE,TEACH,,Abstraction: keep the details that affect the algorithm,Classified,c8e529fcc596d5cad30e43cff7fead4a1d365b84d80095ca107fdef3fe592624
+099,7,explanation-abstraction,abstraction,CORE,TEACH,,Abstraction: keep the details that affect the algorithm,Classified,af2b6451325fefbd2687fb9eb80d7e4a94b9350700939c4e512615f1236c172e
+099,8,pattern,pattern,CORE,TEACH,,From scenario to algorithm plan,Classified,28bd899cf064ce2d79ab7b685089b4b2ba69faded7c49458c105c3e188af99ef
+099,9,explanation-pattern,pattern,CORE,TEACH,,From scenario to algorithm plan,Classified,634fc86f58fd88f9572b2ac5c8aeea2a79bf5c67e40c9bc0236b7c38d5ce257b
+099,10,sorter,sorter,CORE,TEACH,,Classify the design move,Classified,506d1899d97463588eb570f453c0affba71f95b539076bd0b29731885b06e7d0
+099,11,explanation-sorter,sorter,CORE,TEACH,,Classify the design move,Classified,43a18b431caa1531bed1ab939b998e485138ddc643d63da22f849093b106cdff
+099,12,filter,filter,CORE,TEACH,,Keep or ignore details,Classified,6a354f8fe05e571ae0d07ca824c146a4c1f1a415269c94a53392c4b026c1fd76
+099,13,explanation-filter,filter,CORE,TEACH,,Keep or ignore details,Classified,608b8ca2ab974b1433a7d466fab824941355de6a3f9ca6c2ab1c846ae4c82b6d
+099,14,builder,builder,OPTIONAL,TEACH,,Generate a decomposition plan,Classified,829ead81013208ec23aede7ffd7f82247712a55473cf0e49a8f0eb628b61e5de
+099,15,examples,examples,CORE,TEACH,,From messy scenario to clean plan,Classified,f3d3c7c97f00af9651ebd45de1836aa5f272e651aa1841de096baf9f5e37f0cc
+099,16,practice,practice,CORE,PRACTISE,,Decomposition and abstraction vocabulary,Classified,13fc1bbd43800e6a0abd5f0c6ee00b541c061296341f66e4e7ef8e8833a3dd70
+099,17,debug,debug,CORE,CHECK,,Fix weak planning decisions,Classified,19a571838921c7fce0cd3e5d641ce05021c2a49690fc7e2ef669d29d9d4d0b9c
+099,18,exam,exam,CORE,EXAM,,Original Cambridge-style planning questions with expandable MS,Classified,3129bed3a9011461efbc51010c5eed6b63f78d2fb15d4daed291279986f92806
+099,19,summary,summary,CORE,CHECK,,Planning checklist,Classified,b2929d22b13d59efe693e112e58751248f122308a134b93c609db32a0a0607f4
+099,20,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,7b67ee2699e84cd5e0e4fdc0e86855f9d21f0b1630dcc2a8385fbc8120802aa2
+100,1,overview,overview,CORE,TEACH,,"Algorithms are built from three moves: do this, choose that, repeat carefully.",Classified,092e8d4f75a5c8a80e4b00d087579eb1cddf467cb9684662a3669e387ff3c2c9
+100,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,a49ff84cfdaa6552359505e8202e0cfbfd0adccff886fe354648a095fb3bc27b
+100,3,hook,hook,CORE,ASK,,"Sandwich algorithm, but make it examinable",Classified,63a8210ac22177e03505c64814c87d858309c4662ef9cda061489e04606bf15c
+100,4,sequence,sequence,CORE,TEACH,,Sequence: steps run in a fixed order,Classified,49bf43927478e89ff8f2813daab9c261525980d5ded8d6a32608db075e363ac0
+100,5,explanation-sequence,sequence,CORE,TEACH,,Sequence: steps run in a fixed order,Classified,7e805ca907f584d69ade342a38af6a0d215ca1d3facede493100f28a20f94e1e
+100,6,selection,selection,CORE,TEACH,,Selection: choose a path using a condition,Classified,ce34bb497e332e09908f4ebd8277db45a27983a6b73487b261e9672cb1bddb7b
+100,7,explanation-selection,selection,CORE,TEACH,,Selection: choose a path using a condition,Classified,bc52aa2d603c94dad3a0c96318e4ec231c4e5b14c1a7da4cab8428ebd75caaca
+100,8,iteration,iteration,CORE,TEACH,,Iteration: repeat steps,Classified,d8556dcb767e6609c8ca8def3680e06efe8635c068423f9d7b13008770379aa8
+100,9,explanation-iteration,iteration,CORE,TEACH,,Iteration: repeat steps,Classified,400518f7214d949b87a9133459349cb7579d3082f34dc997389e9183f8f74c32
+100,10,combining,combining,CORE,TEACH,,Real algorithms usually combine the three structures,Classified,ab0216c1b2a15b780f43523947ee19ac9349b6c1861cd7e5928993919d796ab2
+100,11,explanation-combining,combining,CORE,TEACH,,Real algorithms usually combine the three structures,Classified,17a5cbe973885c0c99d0b466bfa2f3ef4e9e0b78c6e4a51bdcaabe4e650f1e78
+100,12,pseudocode,pseudocode,CORE,TEACH,,Cambridge pseudocode is the exam form; Java is support only,Classified,d6c6d40b9fe208bc2f7d851c164b003f2aec9c4422ce28c27d85b203b4982489
+100,13,explanation-pseudocode,pseudocode,CORE,TEACH,,Cambridge pseudocode is the exam form; Java is support only,Classified,c9d9a292e80d37f416f553b77a24097f503d0e751319bbf6bff8abf8cf8b9cb2
+100,14,classifier,classifier,OPTIONAL,TEACH,,Choose the control structure,Classified,aaec393cc785a173192f62b12860ff5b132097493f9321a520f892b7ec6252b9
+100,15,builder,builder,OPTIONAL,TEACH,,Generate a Cambridge-style outline,Classified,73f0eaeafefdb5b6750c8c38b7af46dc704cfb30cb1f21a9d989b6093b30a7cb
+100,16,examples,examples,CORE,TEACH,,Recognise and combine structures,Classified,96b01fc9d1b3ead67b7620a4de2752cc0dd5daf253b18089a0330a6941f923c9
+100,17,practice,practice,CORE,PRACTISE,,Control-structure decisions,Classified,d6cef2b67978668ac8f0f09214ca85e83e6b0b4253a10b3ee6b060a085f27387
+100,18,debug,debug,CORE,CHECK,,Fix weak structure choices,Classified,c450df5cb5fce1995b707b459f6d44dc1cb122ee1e00dfe94d43a9e5b19646c7
+100,19,exam,exam,CORE,EXAM,,Original Cambridge-style control-structure questions with expandable MS,Classified,2f5c4e1bda9699fd92d2f2c206384b875dff2ab7bcae197a12a94d24d2ecf9ce
+100,20,summary,summary,CORE,CHECK,,Control-structure checklist,Classified,1e646b247eeb47802eb6da857d6957a1608a88cf149c09877ecb2b4872734cd5
+100,21,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,31e0eb86a9cf619443bc2644d26c8c1a67342d2020eacb267afd427e2f497f12
+101,1,overview,overview,CORE,TEACH,,"Same algorithm, two notations: one draws the route, one writes the instructions.",Classified,1a30c23d7042464f1338bb6cbc6a97669fc6c2f14bbe7f1b90794398e94007fb
+101,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,ea57436c7f45abdd9708a494ff5674e638eaca5067cb5a28c2a3c91b2043997a
+101,3,hook,hook,CORE,ASK,,The vending machine is not impressed by vague arrows,Classified,3761f916966cd4e64eba56db7b15ef387d461d33a988952661bb90ec6a3bc1a3
+101,4,flowcharts,flowcharts,CORE,TEACH,,Flowcharts use symbols to show control flow,Classified,080e24fd8065335d9c122f30ae580dab9f7a2a90fc4b0bcf33cac3f3ca688d34
+101,5,explanation-flowcharts,flowcharts,CORE,TEACH,,Flowcharts use symbols to show control flow,Classified,aca8109879b0f7fa445b91a6e0e7005e9d13f2fb0051fd0653880061d2586988
+101,6,pseudocode,pseudocode,CORE,TEACH,,Cambridge-style pseudocode uses structured keywords,Classified,83a86e495b53fd5f2db91bc3a25dd5f0177799e42fc20414083ab4f827189370
+101,7,explanation-pseudocode,pseudocode,CORE,TEACH,,Cambridge-style pseudocode uses structured keywords,Classified,50cf40c61f64144baa642942a6af4793f3e226af7b92c6d6b1169136262716a7
+101,8,notation,notation,CORE,TEACH,,Readable notation earns marks more easily,Classified,92d98e19062a2b4a1153c93a0c8003eed424c0333fa527cffd0d9572c7897012
+101,9,explanation-notation,notation,CORE,TEACH,,Readable notation earns marks more easily,Classified,5678bb1d19b95ccce104d3136ebf9b4b23f9377f66d5cb5295c714871870ee98
+101,10,equivalence,equivalence,CORE,TEACH,,A diamond becomes IF...THEN...ELSE,Classified,5ccac63343075cae71868bb537db65fc751fd2b461442e37c372d30fd9723c55
+101,11,explanation-equivalence,equivalence,CORE,TEACH,,A diamond becomes IF...THEN...ELSE,Classified,b9ec47d3d95b7406ae34aaf6e4fb932d5a79065d48694387372fd4b0ae5d3de1
+101,12,symbol-tool,symbol-tool,CORE,TEACH,,Choose the correct flowchart symbol,Classified,91d4e4dff8b5c830f66462e17e938a7635be75606ebd0c5e626469453502382a
+101,13,explanation-symbol-tool,symbol-tool,CORE,TEACH,,Choose the correct flowchart symbol,Classified,8fd527eaa58ff0595005f827ef0a48a54b816bb61817b54c3daa81e16e2589ba
+101,14,structure-tool,structure-tool,CORE,TEACH,,Match scenario to pseudocode structure,Classified,9c3c17092e517e969fff696cb9d01eaa95f629dddbfe05e5bfe781744128a6d9
+101,15,explanation-structure-tool,structure-tool,CORE,TEACH,,Match scenario to pseudocode structure,Classified,6247ba47adc6089260e4e587aabc9ab58fa629f12050cfe8edb1e86d58ed67b0
+101,16,converter,converter,OPTIONAL,TEACH,,Convert a flowchart pattern into pseudocode,Classified,b11d8ebf6dc98e705594b3fd19c02efac99f74a5c8d0c677bc56566fe47e3656
+101,17,examples,examples,CORE,TEACH,,Notation choices in common problems,Classified,54f0f0cbe1139555c22c6931a70a7bc49ce5876d7e8a473bc68bd17d05c2ade1
+101,18,practice,practice,CORE,PRACTISE,,Flowchart and pseudocode notation,Classified,0a7469ba7450b1772a766f502f5783b9dd7c40e7c04fa21e126862b62bb7a670
+101,19,debug,debug,CORE,CHECK,,Fix notation mistakes,Classified,33ae383bdf91f36737b88da250cd4563f8bc7c85bb5d2540b7eb4ef208154edb
+101,20,exam,exam,CORE,EXAM,,Original Cambridge-style notation questions with expandable MS,Classified,0d5aa37aae25493982393d88acb1ebdff2fd7a8bd043467af32fba6710c8c08b
+101,21,stage2-completion,stage2-completion,OPTIONAL,PRACTISE,,"Structured English, flowcharts and pseudocode conversion",Classified,effe7469f2bb5d7146482bb6e9a0652dcdacd8e3a63d58a6666bac2e9dd09980
+101,22,summary,summary,CORE,CHECK,,Notation checklist,Classified,1e782cdaa86dd101c57087a14905a9e62efab0cdc1feea4473084440fea3de85
+101,23,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,87b92a6b9a8f728e795081717ba10b2ea39e27265a0de84e07956b2f467e0940
+102,1,overview,overview,CORE,TEACH,,A trace table is the algorithm's receipt: every variable change must pay rent.,Classified,6d4d6be192c77da435f1ac5b5df89618418c42f64165205327abd2fcb9bb790d
+102,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,0547fc8b90c8d633dbf22f363c7166765ef7f03eba444541d8a897660455e889
+102,3,hook,hook,CORE,ASK,,The coffee shop total that keeps changing,Classified,fb8bf454cb6bd8bd6c7051b6dfc91472f51edec8b8bd5510ec276e7eba59fb41
+102,4,trace-table,trace-table,CORE,TEACH,,A trace table records variables after each change,Classified,1822f8979052161858c3ff2ae26fefcbeb91378337ac54da0db5a643f29a0c5e
+102,5,explanation-trace-table,trace-table,CORE,TEACH,,A trace table records variables after each change,Classified,35d0aa63f027ce80ea278fc9d75b7a1269305a0aed1711c325bddc2b3edfe6dd
+102,6,dry-run,dry-run,CORE,TEACH,,Dry run: execute the algorithm by hand,Classified,767041eab9787e9608ed35a226aee535aff2186d5a467f782b2bf75d32c9d18f
+102,7,explanation-dry-run,dry-run,CORE,TEACH,,Dry run: execute the algorithm by hand,Classified,ec47a7f2fed30564dff48d63b0dee6228bebaeb237332cf6bcf628c3114e90f8
+102,8,loops,loops,CORE,TEACH,,Loops make trace tables useful and slightly unforgiving,Classified,4f32bcfe2beeecc41e99bf80895192f92f52dc9fe62392cb84ff32c5d90866cf
+102,9,explanation-loops,loops,CORE,TEACH,,Loops make trace tables useful and slightly unforgiving,Classified,c2de782af1772e094c487e7f4f5cb668829a6f99738bbd0cdca44fb9ff17cf85
+102,10,pseudocode,pseudocode,CORE,TEACH,,Trace Cambridge pseudocode in the exam; Java is only a support view,Classified,4155b1deac3f745096621558fca128a344868a3d1e64f57cbfe9f6f9c7a2a5a4
+102,11,explanation-pseudocode,pseudocode,CORE,TEACH,,Trace Cambridge pseudocode in the exam; Java is only a support view,Classified,270433c6cd139992c32a98aa6175bfc7bfd78e60fa97b1391caa66bd1b86676e
+102,12,predictor,predictor,CORE,TEACH,,Predict the final output,Classified,d96a768ffa7a5c314ade90b579b25b97da0987bc4de359e8015fc0673e1eb8ce
+102,13,explanation-predictor,predictor,CORE,TEACH,,Predict the final output,Classified,6009d9ece7355bc1ad87fe0081e656499859a4b71667984bf94755b4f5cfcb08
+102,14,builder,builder,OPTIONAL,TEACH,,Build the trace table rows,Classified,c161eb9c48ef05e69f45bd4230573fb8e5fceadf5b01dcbcb38a12f6c6314159
+102,15,checker,checker,OPTIONAL,TEACH,,Find the first wrong row,Classified,aca602d8c6c89d9a13e9549cbc06deafc415737f3ea79d77141a1de54bdd2279
+102,16,examples,examples,CORE,TEACH,,Trace common Paper 2 patterns,Classified,5017c8f5be04af7cdb9f0ace34382cb44f9174b84956fa5ca33264528850023b
+102,17,practice,practice,CORE,PRACTISE,,Trace table and dry-run accuracy,Classified,32f1f971f1b2775c0669e918034ac8a94913938d984bf5c84fec079d0eec4170
+102,18,debug,debug,CORE,CHECK,,Fix trace-table mistakes,Classified,1294be2992e9694e70144c608a4fd6d1f505707a6610826fc84fb5f41233c455
+102,19,exam,exam,CORE,EXAM,,Original Cambridge-style trace questions with expandable MS,Classified,a42c66f9c799a903932c1f622a595637d8317712c2cfff3e11d3dcc8b9e948d1
+102,20,summary,summary,CORE,CHECK,,Trace-table checklist,Classified,a48aeddb6e8dc624239cc38a3802043eb76c6e08e8a6eaf7a992d3dcc15e0732
+102,21,homework,homework,AFTER_CLASS,HOMEWORK,,Clear tasks for consolidation,Classified,0cee696d139d5722fb0166424296b4b46cdc5cfc028d4ecbb366b5588fe304fc
 103,1,overview,overview,CORE,TEACH,,Validation is the polite bouncer at the algorithm door.,Classified,fb628d79a90a8676bd3f07d111d0aa6118c2d01bb25896d9d491490f052f1cb1
 103,2,delivery-02,overview,CORE,TEACH,,Why this matters,Classified,0ed35a0eda96551fa53e3712b4dd25028bc764b1f8d6fbc9815291cbc233a3d7
 103,3,hook,hook,CORE,ASK,,The school form that accepts age 900,Classified,c32b66166f2db3da306e1f0b2e4fe98202e1851fecd8200767b550acb198a9e3

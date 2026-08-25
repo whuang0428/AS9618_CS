@@ -1,9 +1,9 @@
 # Lesson 064: Hacking, phishing, pharming, and denial-of-service attacks
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 6  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 6
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Groups create a risk-control table for a school database, online shop or hospita
 3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
@@ -81,21 +81,18 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Explanation type:** comparison
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-compare.jpg`
 
-1. Attack
-2. Route or mechanism
-3. Direct result
-4. Hacking
-5. Access controls are bypassed or abused.
-6. Unauthorised access; data may then be viewed, copied, changed or deleted.
-7. Phishing
-8. A deceptive message, link or site persuades the user to reveal information.
-9. Credentials or personal data are disclosed; later unauthorised access is possible but not guaranteed.
-10. Pharming
-11. Traffic is redirected to a fake site, possibly after the correct URL is entered.
-12. The user may submit data to the fake site; later credential theft or misuse is possible but not guaranteed.
-13. DoS/DDoS
-14. A server or network is overwhelmed by requests or traffic.
-15. Legitimate users cannot access the service.
+1. Route or mechanism
+2. Direct result
+3. Access controls are bypassed or abused.
+4. Unauthorised access; data may then be viewed, copied, changed or deleted.
+5. Phishing
+6. A deceptive message, link or site persuades the user to reveal information.
+7. Credentials or personal data are disclosed; later unauthorised access is possible but not guaranteed.
+8. Pharming
+9. Traffic is redirected to a fake site, possibly after the correct URL is entered.
+10. The user may submit data to the fake site; later credential theft or misuse is possible but not guaranteed.
+11. DoS/DDoS
+12. A server or network is overwhelmed by requests or traffic.
 
 ### Controls must fit the attack route
 

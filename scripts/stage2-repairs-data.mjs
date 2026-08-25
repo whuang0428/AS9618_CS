@@ -13,7 +13,7 @@ export const repairs = [
     q("Convert 3,000,000 bytes to MB.", "3 MB using the decimal prefix mega.")
   ], "State the number of bytes represented by 1 GiB and explain why 1 GB represents a different number of bytes.", [["B1", "1 GiB = 2^30 bytes / 1,073,741,824 bytes"], ["B1", "gibi uses a binary power / multiples of 1024"], ["B1", "1 GB = 10^9 bytes / 1,000,000,000 bytes"], ["B1", "giga uses a decimal power / multiples of 1000"]], "Do not accept 'GiB is bigger' without both numerical definitions."),
 
-  r(4, ["S1.04"], "Binary subtraction with signed and unsigned values", [
+  r(5, ["S1.04"], "Binary subtraction with signed and unsigned values", [
     "Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. The fixed bit width must be retained throughout.",
     "For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Discard a carry beyond the fixed width, then interpret the remaining sign bit and check the representable range."
   ], "8-bit 23 - 9", "00010111 - 00001001 becomes 00010111 + 11110111 = 1 00001110. Discard the ninth carry: 00001110 is 14.", [
@@ -49,7 +49,7 @@ export const repairs = [
     q("Why is bitmap normally better for a photograph?", "A photograph contains complex per-pixel colour and texture that is inefficient to describe as drawing objects.")
   ], "A designer creates a simple icon from circles and rectangles. Explain how it is stored as a vector graphic and give one advantage over a bitmap when resized.", [["B1", "stored as a drawing list / list of objects"], ["B1", "stores object properties such as coordinates/dimensions/colour"], ["B1", "software redraws objects from the descriptions"], ["B1", "can be resized without pixelation / loss of shape quality"]], "Do not accept 'vector has better quality' unless scalability or object-based storage is explained."),
 
-  r(16, ["S2.05"], "Packet movement through network topologies", [
+  r(18, ["S2.05"], "Packet movement through network topologies", [
     "In a bus, a transmitted signal travels along the shared backbone and devices inspect it. In a star, each frame travels through the central switch. In a mesh, alternative links can provide several possible routes. A hybrid combines behaviours of its component topologies.",
     "Topology justification must connect packet path to the scenario: central failure, cable failure, congestion, expansion and redundancy are consequences of the structure."
   ], "One star cable fails", "Only the device on that cable loses its link; packets between other devices still pass through the central switch. If the switch fails, all attached paths fail.", [
@@ -175,23 +175,16 @@ export const repairs = [
     q("Give one extra facility USB may provide besides data.", "Electrical power to a peripheral.")
   ], "Compare HDMI and VGA for connecting a computer to a display.", [["B1", "HDMI carries digital video"], ["B1", "HDMI can also carry audio"], ["B1", "VGA carries analogue video"], ["B1", "VGA does not normally carry audio / may have lower suitability for modern digital displays"]], "Do not accept 'HDMI is always higher quality' without the digital/analogue or audio distinction."),
 
-  r(45, ["S4.12"], "Assembly instruction groups", [
-    "Data movement instructions transfer values between memory/registers; input/output instructions communicate with devices; arithmetic instructions change numeric values; compare instructions set status information; branch instructions change the next instruction address.",
-    "A conditional branch depends on a comparison/status condition, while an unconditional jump always changes the PC. Classifying by effect helps trace code before considering a specific mnemonic."
-  ], "Classify a loop", "LDD COUNT is data movement, CMP LIMIT is comparison, JPE DONE is conditional branch, INC COUNT is arithmetic, JMP LOOP is unconditional branch and OUT is output.", [
-    q("Which group does STO belong to?", "Data movement/storage."),
-    q("Why is JPE conditional?", "It branches only when the equality condition/status is satisfied."),
-    q("Which group changes a numeric accumulator value?", "Arithmetic.")
-  ], "Explain the difference between a compare instruction, a conditional branch and an unconditional branch.", [["B1", "compare tests values / sets status without itself selecting normal data output"], ["B1", "conditional branch changes flow only when a condition/status is met"], ["B1", "unconditional branch always changes the next instruction/PC"], ["B1", "uses a coherent example or sequence"]], "Do not accept that CMP itself necessarily jumps to another instruction."),
-
-  r(46, ["S4.10", "S4.13"], "Two-pass assembler and core instruction semantics", [
+  r(46, ["S4.10", "S4.12", "S4.13"], "Instruction groups, core semantics and the two-pass assembler", [
     "Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.",
+    "Instruction groups describe effects: data movement transfers values; input/output communicates with devices; arithmetic changes numeric values; compare sets status information; and branch changes the next instruction address. A conditional branch depends on status, while an unconditional jump always changes the PC.",
     "Core mnemonics must be read by effect: LDM immediate; LDD direct; LDI indirect; LDX indexed; LDR relative; MOV register transfer; STO memory store; ADD/SUB/INC/DEC arithmetic; JMP branch; CMP/CMI compare; JPE/JPN conditional branches; IN/OUT I/O; END stops."
-  ], "Forward label", "JMP FINISH appears before FINISH. Pass 1 records FINISH's eventual address in the symbol table; pass 2 substitutes that address when translating JMP.", [
+  ], "Classify and translate a forward branch", "In JMP FINISH, JMP is an unconditional branch. Pass 1 records FINISH's eventual address in the symbol table; pass 2 substitutes that address when translating JMP.", [
     q("Which pass builds the symbol table?", "Pass 1."),
     q("What is the difference between LDM #5 and LDD 5?", "LDM loads literal 5; LDD loads the contents of memory address 5."),
-    q("Which instruction terminates execution?", "END.")
-  ], "Explain why an assembler commonly uses two passes when a program contains a forward reference.", [["B1", "label is used before its address is known"], ["B1", "pass 1 assigns addresses/builds the symbol table"], ["B1", "the forward label address is then available"], ["B1", "pass 2 translates the instruction/substitutes the address into machine code"]], "Do not accept that pass 1 executes the program; both passes translate source."),
+    q("Which instruction terminates execution?", "END."),
+    q("Why is JPE conditional?", "It branches only when the equality condition/status is satisfied.")
+  ], "Explain why an assembler uses two passes for a forward reference, then distinguish compare, conditional branch and unconditional branch instructions.", [["B1", "label is used before its address is known"], ["B1", "pass 1 assigns addresses/builds the symbol table"], ["B1", "pass 2 substitutes the resolved address while translating"], ["B1", "compare tests values / sets status"], ["B1", "conditional branch changes flow only when its condition/status is met"], ["B1", "unconditional branch always changes the next instruction/PC"]], "Do not accept that pass 1 executes the program or that CMP itself necessarily jumps to another instruction."),
 
   r(47, ["S4.13"], "Address-sensitive load, compare and branch instructions", [
     "LDI follows the address stored at the operand location; LDX adds IX to the operand; LDR uses an address relative to the current instruction/PC. CMI compares with an immediate value, while CMP compares using the instruction-set operand definition.",
@@ -351,9 +344,9 @@ export const repairs = [
     q("Improve identifier x for the number of absent students.", "AbsentCount or NumberAbsent."),
     q("What three columns are essential here?", "Identifier, data type and purpose/description."),
     q("Why is Total misleading for several totals?", "It does not identify which quantity is totalled.")
-  ], "Construct identifier-table entries for a program storing a student's name, three test marks and calculated mean.", [["B1", "meaningful identifier and STRING type for name"], ["B1", "meaningful array identifier with INTEGER/REAL elements for marks"], ["B1", "meaningful REAL identifier for mean"], ["B1", "purposes clearly distinguish input values from calculated result"]], "Do not award data types without identifiers and purposes; this is an identifier table, not only declarations."),
+  ], "Construct identifier-table entries for a program storing a student's name, three separate test marks and calculated mean.", [["B1", "meaningful identifier and STRING type for name"], ["B1", "three clearly distinguished INTEGER/REAL identifiers for the separate marks"], ["B1", "meaningful REAL identifier for mean"], ["B1", "purposes clearly distinguish input values from calculated result"]], "Do not award data types without identifiers and purposes; this is an identifier table, not only declarations."),
 
-  r(100, ["S9.07"], "Structured English, flowcharts and pseudocode conversion", [
+  r(101, ["S9.07"], "Structured English, flowcharts and pseudocode conversion", [
     "Structured English expresses sequence, selection and repetition using controlled natural-language statements and indentation. A flowchart uses standard symbols and arrows; pseudocode uses Cambridge constructs. All three must preserve the same decisions and loop boundaries.",
     "Convert by identifying inputs, outputs, conditions and repeated actions before translating notation. Do not translate shapes or sentences word for word while losing control flow."
   ], "Validate a mark", "Structured English: INPUT Mark; WHILE Mark < 0 OR Mark > 100, OUTPUT error and INPUT Mark; ENDWHILE. The flowchart returns from the invalid decision branch to input; pseudocode uses a pre-condition WHILE loop.", [

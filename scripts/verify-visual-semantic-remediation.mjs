@@ -13,6 +13,38 @@ const remediation = JSON.parse(fs.readFileSync(path.join(root, "audits", "visual
 const repairFacts = JSON.parse(fs.readFileSync(path.join(root, "scripts", "stage10-visual-repair-facts.json"), "utf8"));
 const errors = [];
 const assert = (condition, message) => { if (!condition) errors.push(message); };
+const removedKeys = new Set(["033/explanation-loop-img-1", "098/explanation-pseudocode-img-1", "099/explanation-pseudocode-img-1"]);
+const keyMigrations = new Map([
+  ["100/explanation-equivalence-img-1", "101/explanation-equivalence-img-1"],
+  ["100/explanation-flowcharts-img-1", "101/explanation-flowcharts-img-1"],
+  ["100/explanation-notation-img-1", "101/explanation-notation-img-1"],
+  ["100/explanation-pseudocode-img-1", "101/explanation-pseudocode-img-1"],
+  ["100/explanation-structure-tool-img-1", "101/explanation-structure-tool-img-1"],
+  ["100/explanation-symbol-tool-img-1", "101/explanation-symbol-tool-img-1"],
+  ["101/explanation-dry-run-img-1", "102/explanation-dry-run-img-1"],
+  ["101/explanation-loops-img-1", "102/explanation-loops-img-1"],
+  ["101/explanation-predictor-img-1", "102/explanation-predictor-img-1"],
+  ["101/explanation-pseudocode-img-1", "102/explanation-pseudocode-img-1"],
+  ["101/explanation-trace-table-img-1", "102/explanation-trace-table-img-1"],
+  ["102/explanation-combining-img-1", "100/explanation-combining-img-1"],
+  ["102/explanation-iteration-img-1", "100/explanation-iteration-img-1"],
+  ["102/explanation-pseudocode-img-1", "100/explanation-pseudocode-img-1"],
+  ["102/explanation-selection-img-1", "100/explanation-selection-img-1"],
+  ["102/explanation-sequence-img-1", "100/explanation-sequence-img-1"],
+]);
+const curriculumChangeKeys = new Set([
+  "004/explanation-method-img-1",
+  "033/explanation-embedded-img-1",
+  "098/explanation-concept-img-1",
+  "098/explanation-model-img-1",
+  "098/explanation-constraints-img-1",
+  "099/explanation-decomposition-img-1",
+  "099/explanation-abstraction-img-1",
+  "099/explanation-pattern-img-1",
+  "100/overview-div-1",
+  "101/overview-div-1",
+  "102/overview-div-1",
+]);
 
 function parseCsv(text) {
   const rows = [];
@@ -61,10 +93,14 @@ function gitBlob(relativePath) {
 }
 
 const canonicalKeys = new Set(ledger.records.map((record) => record.key));
-const baselineRows = scanVisualSemanticHashes(
+const rawBaselineRows = scanVisualSemanticHashes(
   (relativePath) => gitBlob(relativePath).toString("utf8"),
   (relativePath) => gitBlob(relativePath),
-).filter((record) => canonicalKeys.has(record.key));
+);
+const baselineRows = rawBaselineRows
+  .filter((record) => !removedKeys.has(record.key))
+  .map((record) => ({ ...record, key: keyMigrations.get(record.key) ?? record.key }))
+  .filter((record) => canonicalKeys.has(record.key));
 const currentRows = scanVisualSemanticHashes(
   (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8"),
   (relativePath) => fs.readFileSync(path.join(root, relativePath)),
@@ -75,9 +111,9 @@ const remediationKeys = new Set(remediation.records.map((record) => record.key))
 const htmlRemediationKeys = new Set(remediation.records.filter((record) => record.visualType === "HTML/CSS").map((record) => record.key));
 const effectiveHash = (record) => htmlRemediationKeys.has(record.key) ? record.sectionHash : record.semanticHash;
 
-assert(ledger.records.length === 968, `Review ledger count is ${ledger.records.length}, expected 968.`);
-assert(baselineRows.length === 968, `Baseline scan count is ${baselineRows.length}, expected 968.`);
-assert(currentRows.length === 968, `Current scan count is ${currentRows.length}, expected 968.`);
+assert(ledger.records.length === 965, `Review ledger count is ${ledger.records.length}, expected 965.`);
+assert(baselineRows.length === 965, `Migrated baseline scan count is ${baselineRows.length}, expected 965.`);
+assert(currentRows.length === 965, `Current scan count is ${currentRows.length}, expected 965.`);
 assert(remediation.records.length === 66, `Remediation count is ${remediation.records.length}, expected 66.`);
 assert(Object.keys(repairFacts).length === 60, `Stage 10 repair-fact count is ${Object.keys(repairFacts).length}, expected 60.`);
 assert(remediation.records.filter((record) => record.visualType === "Stage 10 JPG").length === 60, "Expected 60 Stage 10 JPG remediations.");
@@ -86,7 +122,7 @@ assert(remediation.records.filter((record) => record.visualType === "HTML/CSS").
 const currentDefects = semanticDefects.filter((defect) => defect.id.startsWith("S10-2026-"));
 const historicalDefects = semanticDefects.filter((defect) => !defect.id.startsWith("S10-2026-"));
 assert(currentDefects.length === 60, `Current Stage 10 defect count is ${currentDefects.length}, expected 60.`);
-assert(historicalDefects.length === 79, `Historical Stage 10 defect count is ${historicalDefects.length}, expected 79.`);
+assert(historicalDefects.length === 78, `Historical Stage 10 defect count is ${historicalDefects.length}, expected 78.`);
 assert(currentDefects.every((defect) => defect.resolved === true), "A current Stage 10 semantic defect is not resolved.");
 assert(historicalDefects.every((defect) => defect.resolved === true), "A historical Stage 10 semantic defect has regressed.");
 
@@ -95,27 +131,33 @@ const methods = ledger.records.reduce((counts, record) => {
   counts[key] = (counts[key] ?? 0) + 1;
   return counts;
 }, {});
-for (const [name, expected] of Object.entries({ stage10Jpg: 782, htmlCss: 170, inlineSvg: 13, otherRaster: 3 })) {
+for (const [name, expected] of Object.entries({ stage10Jpg: 779, htmlCss: 170, inlineSvg: 13, otherRaster: 3 })) {
   assert(methods[name] === expected, `${name} count is ${methods[name]}, expected ${expected}.`);
 }
 
 let changed = 0;
 let unchanged = 0;
+let moved = 0;
+const movedKeys = new Set(keyMigrations.values());
 for (const baseline of baselineRows) {
   const current = currentByKey.get(baseline.key);
   assert(Boolean(current), `Missing current visual ${baseline.key}.`);
   if (!current) continue;
   const didChange = effectiveHash(current) !== effectiveHash(baseline);
-  if (remediationKeys.has(baseline.key)) {
+  if (movedKeys.has(baseline.key)) {
+    moved += 1;
+    assert(current.assetSha256 === baseline.assetSha256, `Moved visual asset bytes changed unexpectedly: ${baseline.key}.`);
+  } else if (remediationKeys.has(baseline.key) || curriculumChangeKeys.has(baseline.key)) {
     changed += didChange ? 1 : 0;
-    assert(didChange, `Remediation visual did not change: ${baseline.key}.`);
+    assert(didChange, `Approved visual correction did not change: ${baseline.key}.`);
   } else {
     unchanged += didChange ? 0 : 1;
     assert(!didChange, `Unapproved visual drift: ${baseline.key}.`);
   }
 }
-assert(changed === 66, `Changed remediation visuals: ${changed}, expected 66.`);
-assert(unchanged === 902, `Unchanged visual hashes: ${unchanged}, expected 902.`);
+assert(changed === 77, `Changed approved visuals: ${changed}, expected 77.`);
+assert(moved === 16, `Moved Stage 10 visuals: ${moved}, expected 16.`);
+assert(unchanged === 872, `Unchanged visual hashes: ${unchanged}, expected 872.`);
 
 for (const record of remediation.records) {
   const before = baselineByKey.get(record.key);
@@ -150,11 +192,11 @@ const repairFilenames = new Set(Object.keys(repairFacts).map((key) => {
   const [lesson, target] = key.split("/");
   return `stage10-lesson-${lesson}-${target}.jpg`;
 }));
-assert(ocrRows.length === 782, `OCR ledger count is ${ocrRows.length}, expected 782.`);
-assert(ocrRows.filter((row) => row.status === "Clear").length === 722, "Expected 722 unchanged OCR rows with Clear status.");
+assert(ocrRows.length === 779, `OCR ledger count is ${ocrRows.length}, expected 779.`);
+assert(ocrRows.filter((row) => row.status === "Clear").length === 719, "Expected 719 unchanged OCR rows with Clear status.");
 assert(ocrRows.filter((row) => row.status === "Source transcript verified").length === 60, "Expected 60 repaired OCR rows with source-transcript verification.");
 assert(ocrRows.every((row) => row.status === "Clear" || row.status === "Source transcript verified"), "OCR ledger contains a failed or unresolved status.");
-assert(new Set(ocrRows.map((row) => row.file)).size === 782, "OCR ledger contains duplicate filenames.");
+assert(new Set(ocrRows.map((row) => row.file)).size === 779, "OCR ledger contains duplicate filenames.");
 for (const row of ocrRows.filter((entry) => entry.status === "Source transcript verified")) {
   assert(repairFilenames.has(row.file), `Unexpected source-transcript OCR row: ${row.file}.`);
   assert(row.ocr_sha256 === sha256(row.ocr_text.replaceAll(" | ", "\n")), `OCR ledger transcript hash mismatch: ${row.file}.`);
@@ -228,4 +270,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("Visual semantic remediation verified: 968/968 records, 66/66 changed and resolved, 902/902 unchanged, 79/79 historical defects clear, OCR/source facts aligned, machine facts recomputed, renderer deterministic.");
+console.log("Visual semantic remediation verified: 965 current records, 77 approved changes, 16 content-preserving moves, 872 unchanged visuals, 78 historical defects clear and 779 OCR rows aligned.");

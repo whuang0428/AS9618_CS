@@ -5,6 +5,10 @@ import { repairs } from "./stage2-repairs-data.mjs";
 const root = path.resolve(import.meta.dirname, "..");
 const htmlMarker = "Extra practice";
 const markdownMarker = "Stage 2 syllabus completion";
+const htmlStart = "<!-- stage2-completion:start -->";
+const htmlEnd = "<!-- stage2-completion:end -->";
+const markdownStart = "<!-- stage2-completion:start -->";
+const markdownEnd = "<!-- stage2-completion:end -->";
 
 function escapeHtml(value) {
   return value
@@ -24,7 +28,8 @@ function htmlFor(repair) {
   const marks = repair.marks.map((item) => `                <li><strong>${escapeHtml(item[0])}</strong> ${escapeHtml(item[1])}</li>`).join("\n");
 
   return `
-        <section class="panel stage2-completion" id="stage2-completion">
+        ${htmlStart}
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">${htmlMarker}</p>
             <h2>${escapeHtml(repair.title)}</h2>
@@ -50,6 +55,7 @@ ${marks}
             </details>
           </article>
         </section>
+        ${htmlEnd}
 `;
 }
 
@@ -58,6 +64,7 @@ function markdownFor(repair) {
   const practice = repair.practice.map((item, index) => `${index + 1}. ${item.q}\n   **Answer:** ${item.a}`).join("\n");
   const marks = repair.marks.map((item) => `- **${item[0]}** ${item[1]}`).join("\n");
   return `
+${markdownStart}
 ## ${markdownMarker}
 
 **Official audit rows:** ${repair.rows.join(", ")}
@@ -82,11 +89,12 @@ ${practice}
 ${marks}
 
 **Strict note:** ${repair.strict}
+${markdownEnd}
 `;
 }
 
 const css = `
-/* Stage 2 syllabus completion */
+/* Stage 2 syllabus completion:start */
 .stage2-completion { border-top: 4px solid var(--accent, #176b5b); }
 .stage2-explanation, .stage2-practice { display: grid; gap: 10px; }
 .stage2-example, .stage2-exam, .stage2-question { border: 1px solid var(--line, #d7ddd9); padding: 16px; background: #fff; }
@@ -94,35 +102,70 @@ const css = `
 .stage2-completion details { margin-top: 10px; }
 .stage2-completion summary { cursor: pointer; color: var(--accent-dark, #124d43); font-weight: 750; min-height: 40px; padding: 8px 0; }
 .stage2-completion .mark-list { display: grid; gap: 8px; }
+/* Stage 2 syllabus completion:end */
 `;
+
+const lessonDir = path.join(root, "lessons");
+const webLessonDirs = fs.readdirSync(path.join(root, "web")).filter((name) => /^lesson-\d{3}$/.test(name));
+
+for (const webLessonDir of webLessonDirs) {
+  const number = webLessonDir.slice(-3);
+  const webDir = path.join(root, "web", webLessonDir);
+  const htmlPath = path.join(webDir, "index.html");
+  const cssPath = path.join(webDir, "styles.css");
+  const markdownMatches = fs.readdirSync(lessonDir).filter((name) => name.startsWith(`${number}-`) && name.endsWith(".md"));
+  if (markdownMatches.length !== 1) throw new Error(`Expected one Markdown lesson for ${number}`);
+
+  let html = fs.readFileSync(htmlPath, "utf8");
+  let styles = fs.readFileSync(cssPath, "utf8");
+  const markdownPath = path.join(lessonDir, markdownMatches[0]);
+  let markdown = fs.readFileSync(markdownPath, "utf8");
+
+  html = html
+    .replace(/\n?\s*<!-- stage2-completion:start -->[\s\S]*?<!-- stage2-completion:end -->\n?/g, "\n")
+    .replace(/\n?\s*<section class="panel stage2-completion" id="stage2-completion"[^>]*>[\s\S]*?<\/section>\n?/g, "\n")
+    .replace(/^\s*<a href="#stage2-completion">Extra practice<\/a>\s*\n/gm, "");
+  styles = styles
+    .replace(/\n?\/\* Stage 2 syllabus completion:start \*\/[\s\S]*?\/\* Stage 2 syllabus completion:end \*\/\n?/g, "\n")
+    .replace(/\n?\/\* Stage 2 syllabus completion \*\/[\s\S]*$/g, "\n")
+    .trimEnd() + "\n";
+  markdown = markdown
+    .replace(/\n?<!-- stage2-completion:start -->[\s\S]*?<!-- stage2-completion:end -->\n?/g, "\n")
+    .replace(/\n## Stage 2 syllabus completion[\s\S]*?(?=\n<!-- stage10-explanations:start -->|\s*$)/g, "\n")
+    .replace(/[ \t]+$/gm, "")
+    .trimEnd() + "\n";
+
+  fs.writeFileSync(htmlPath, html);
+  fs.writeFileSync(cssPath, styles);
+  fs.writeFileSync(markdownPath, markdown);
+}
 
 for (const repair of repairs) {
   const number = String(repair.lesson).padStart(3, "0");
   const webDir = path.join(root, "web", `lesson-${number}`);
   const htmlPath = path.join(webDir, "index.html");
   const cssPath = path.join(webDir, "styles.css");
-  const markdownMatches = fs.readdirSync(path.join(root, "lessons")).filter((name) => name.startsWith(`${number}-`) && name.endsWith(".md"));
+  const markdownMatches = fs.readdirSync(lessonDir).filter((name) => name.startsWith(`${number}-`) && name.endsWith(".md"));
 
   if (markdownMatches.length !== 1) throw new Error(`Expected one Markdown lesson for ${number}`);
   let html = fs.readFileSync(htmlPath, "utf8");
   let styles = fs.readFileSync(cssPath, "utf8");
-  const markdownPath = path.join(root, "lessons", markdownMatches[0]);
+  const markdownPath = path.join(lessonDir, markdownMatches[0]);
   let markdown = fs.readFileSync(markdownPath, "utf8");
 
-  if (!html.includes('id="stage2-completion"')) {
-    const summaryMatch = html.match(/        <section class="[^"]+" id="summary">/);
-    if (!summaryMatch) throw new Error(`Summary anchor missing in lesson ${number}`);
-    html = html.replace(summaryMatch[0], `${htmlFor(repair)}\n${summaryMatch[0]}`);
-    html = html.replace('<a href="#summary">', '<a href="#stage2-completion">Extra practice</a>\n        <a href="#summary">');
-    fs.writeFileSync(htmlPath, html);
-  }
-  const cssMarker = "/* Stage 2 syllabus completion */";
-  const cssBase = styles.includes(cssMarker) ? styles.slice(0, styles.indexOf(cssMarker)).trimEnd() : styles.trimEnd();
-  styles = `${cssBase}\n\n${css.trim()}\n`;
+  const summaryMatch = html.match(/        <section class="[^"]+" id="summary"/);
+  if (!summaryMatch) throw new Error(`Summary anchor missing in lesson ${number}`);
+  html = html.replace(summaryMatch[0], `${htmlFor(repair)}\n${summaryMatch[0]}`);
+  html = html.replace(
+    /(<aside class="lesson-nav"[^>]*>[\s\S]*?)(\s*<\/aside>)/,
+    `$1\n        <a href="#stage2-completion">Extra practice</a>$2`,
+  );
+  styles = `${styles.trimEnd()}\n\n${css.trim()}\n`;
+  fs.writeFileSync(htmlPath, html);
   fs.writeFileSync(cssPath, styles);
-  if (!markdown.includes(`## ${markdownMarker}`)) {
-    markdown += markdownFor(repair);
-  }
+  const stage10Index = markdown.indexOf("\n<!-- stage10-explanations:start -->");
+  if (stage10Index >= 0) markdown = `${markdown.slice(0, stage10Index).trimEnd()}\n${markdownFor(repair)}\n${markdown.slice(stage10Index + 1)}`;
+  else markdown = `${markdown.trimEnd()}\n${markdownFor(repair)}`;
   markdown = markdown.replace(/[ \t]+$/gm, "");
   fs.writeFileSync(markdownPath, markdown);
 }
@@ -136,6 +179,18 @@ for (const repair of repairs) {
   }
 }
 
+const auditEvidenceLessons = new Map([
+  ["S1.02", ["002", "003", "005", "006"]],
+  ["S1.03", ["002", "003", "005", "006"]],
+  ["S1.04", ["004", "005"]],
+  ["S2.05", ["016", "018"]],
+  ["S4.12", ["046"]],
+  ["S4.13", ["046", "047"]],
+  ["S9.06", ["100"]],
+  ["S9.07", ["101"]],
+]);
+for (const [row, lessons] of auditEvidenceLessons) rowLessons.set(row, lessons);
+
 const auditPath = path.join(root, "syllabus-audit.md");
 let audit = fs.readFileSync(auditPath, "utf8");
 audit = audit.split("\n").map((line) => {
@@ -145,8 +200,8 @@ audit = audit.split("\n").map((line) => {
   const lessons = rowLessons.get(match[1]);
   const webRefs = lessons.map((number) => `W${number}`).join(", ");
   const markdownRefs = lessons.map((number) => `M${number}`).join(", ");
-  cells[3] = ` ${webRefs} Stage 2 completion; ${markdownRefs} specific completion module. `;
-  cells[4] = ` ${webRefs} worked example, three targeted items and expandable exam-style MS. `;
+  cells[3] = ` ${webRefs} direct teaching evidence; ${markdownRefs} matching lesson plans and completion modules where required. `;
+  cells[4] = ` ${webRefs} worked examples, targeted practice and expandable exam-style MS. `;
   cells[5] = " Complete ";
   cells[6] = " - ";
   return cells.join("|");

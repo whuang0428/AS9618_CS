@@ -1,163 +1,93 @@
 const scenarios = {
-  greenhouse: {
-    result: "Temperature sensor -> microcontroller -> fan actuator",
-    method: "The temperature sensor captures the current temperature. The microcontroller compares it with a threshold. If the temperature is too high, it sends an output signal to the fan actuator/motor, then keeps checking the sensor reading.",
-  },
-  door: {
-    result: "Proximity sensor -> microcontroller -> door motor",
-    method: "The sensor detects a person approaching. The microcontroller checks the rule for opening. The motor actuator opens the door, and the system continues checking so it can close safely later.",
-  },
-  traffic: {
-    result: "Vehicle sensor -> controller -> traffic lights",
-    method: "A sensor detects vehicles. The controller applies a timing or priority rule. Output signals change the lights, then sensor readings continue to update the sequence.",
-  },
-  washer: {
-    result: "Door/water sensors -> microcontroller -> lock, valve or motor",
-    method: "Sensors check conditions such as door locked and water level. The microcontroller only starts the motor when conditions meet stored rules.",
-  },
-  car: {
-    result: "Distance sensor -> controller -> warning output",
-    method: "A distance sensor measures how close the obstacle is. The controller compares it with a safe distance and triggers a buzzer, display or haptic output if needed.",
-  },
-  heater: {
-    result: "Temperature sensor -> microcontroller -> heater actuator",
-    method: "The sensor reads room temperature. The microcontroller compares it with the target. It switches the heater off when the target is reached and back on if temperature falls.",
-  },
+  greenhouse: { result: "Microwave oven: dedicated appliance computer", method: "Its embedded system performs cooking, timing and interface tasks for one appliance. A small set of controls and predictable repeated operation are more important than running unrelated applications." },
+  door: { result: "Network printer: dedicated document-output system", method: "The processor, memory and interfaces are selected to receive, queue and print documents. The device does not need the flexibility or rich interface of a general-purpose computer." },
+  traffic: { result: "Home router: dedicated network device", method: "Its embedded software and hardware are designed for network communication tasks. Low power, continuous operation and reliability matter more than supporting arbitrary desktop software." },
+  washer: { result: "Washing machine: computer built into a larger device", method: "The embedded system is part of the appliance, has a dedicated set of wash-cycle tasks and uses only the controls and display required by those tasks." },
+  car: { result: "Smartwatch: compact low-power embedded device", method: "A microcontroller or integrated processor supports a defined set of wearable functions within tight power, size and interface constraints." },
+  heater: { result: "Laptop: general-purpose computer", method: "A laptop is designed to run many different user-selected applications and provide a rich interface. It is the comparison case, not the embedded-system example." },
 };
 
 const examples = {
   greenhouse: {
-    title: "Example 1: greenhouse fan",
-    problem: "Explain how an embedded system controls a fan when temperature is too high.",
+    title: "Example 1: microwave oven",
+    problem: "Explain why a microwave oven contains an embedded system.",
     steps: [
-      "A temperature sensor reads the current greenhouse temperature.",
-      "The microcontroller compares the reading with a stored threshold, such as 28°C.",
-      "If the reading is above the threshold, the microcontroller sends a signal to a fan motor/actuator.",
-      "The sensor continues to take readings, so the fan can be switched off when the temperature falls.",
+      "The computer is built into the appliance.",
+      "It performs a dedicated set of cooking, timing and display tasks.",
+      "It needs only a limited interface for those tasks.",
+      "Its hardware can be selected for low cost and predictable repeated operation.",
     ],
   },
   door: {
-    title: "Example 2: automatic door",
-    problem: "Explain how an automatic door opens when a person approaches.",
+    title: "Example 2: home router",
+    problem: "Explain two design priorities for a router's embedded system.",
     steps: [
-      "A proximity or motion sensor detects a person near the door.",
-      "The microcontroller receives the input and checks whether the door should open.",
-      "It sends an output signal to a motor actuator to open the door.",
-      "The system keeps checking sensors so the door can close when the person has passed safely.",
+      "The router performs dedicated network communication tasks.",
+      "It is expected to operate continuously and reliably.",
+      "Low power use reduces heat and running cost.",
+      "Its processor, memory and interfaces are chosen for those tasks rather than general desktop software.",
     ],
   },
   washing: {
-    title: "Example 3: washing machine safety",
-    problem: "Explain why the motor should not start unless the door is locked.",
+    title: "Example 3: washing machine",
+    problem: "Compare the washing machine computer with a laptop.",
     steps: [
-      "A door sensor detects whether the door is closed and locked.",
-      "The microcontroller checks the door sensor before starting the wash program.",
-      "If the condition is true, it can activate the motor and water valve actuators.",
-      "If the condition is false, it prevents the motor from starting and may output an error message.",
+      "The washing machine computer is built into a larger device.",
+      "It performs a dedicated set of appliance tasks.",
+      "It has a limited interface and task-specific resources.",
+      "The laptop is general purpose and runs many different applications.",
     ],
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "What device detects a physical condition such as temperature?", accepted: ["sensor"], answer: "Sensor" },
-  { id: "p2", prompt: "What device causes physical action such as opening a valve?", accepted: ["actuator"], answer: "Actuator" },
-  { id: "p3", prompt: "An embedded system is designed for a general or specific task?", accepted: ["specific", "specific task"], answer: "Specific task" },
-  { id: "p4", prompt: "Which component compares sensor data with a stored rule?", accepted: ["microcontroller", "processor", "controller"], answer: "Microcontroller / processor" },
-  { id: "p5", prompt: "Name one example of an embedded system.", accepted: ["washing machine", "traffic light", "automatic door", "greenhouse", "car", "microwave", "thermostat"], answer: "Washing machine / traffic light / automatic door / thermostat" },
-  { id: "p6", prompt: "In a greenhouse fan system, which sensor is likely used?", accepted: ["temperature sensor"], answer: "Temperature sensor" },
-  { id: "p7", prompt: "In an automatic door, what actuator might open the door?", accepted: ["motor", "door motor", "actuator"], answer: "Motor / actuator" },
-  { id: "p8", prompt: "Does the sensor itself turn on the fan? Answer yes or no.", accepted: ["no"], answer: "No" },
-  { id: "p9", prompt: "What word describes repeated sensor reading and response?", accepted: ["loop", "control loop", "feedback loop"], answer: "Control loop / feedback loop" },
-  { id: "p10", prompt: "Name one reason embedded systems often use microcontrollers.", accepted: ["low cost", "low power", "small", "reliable", "specific task", "integrated", "i/o"], answer: "Low cost / low power / integrated I/O / reliable for a specific task" },
+  { id: "p1", prompt: "Is an embedded system designed for a general or dedicated purpose?", accepted: ["dedicated", "specific", "dedicated purpose", "specific purpose"], answer: "A dedicated or specific purpose." },
+  { id: "p2", prompt: "Is an embedded system normally part of a larger device? yes or no.", accepted: ["yes"], answer: "Yes." },
+  { id: "p3", prompt: "Name the chip that can integrate CPU, memory and input/output interfaces.", accepted: ["microcontroller"], answer: "Microcontroller." },
+  { id: "p4", prompt: "Which usually has the richer user interface: an embedded system or a general-purpose computer?", accepted: ["general purpose computer", "general-purpose computer"], answer: "General-purpose computer." },
+  { id: "p5", prompt: "Name one valid embedded-system example.", accepted: ["washing machine", "microwave", "microwave oven", "router", "printer", "smartwatch"], answer: "For example: washing machine, microwave oven, router, printer or smartwatch." },
+  { id: "p6", prompt: "Give one common embedded-system design priority.", accepted: ["low cost", "low power", "reliability", "reliable", "small size", "predictable", "real time", "real-time"], answer: "Low cost, low power, reliability, compact size or predictable response." },
+  { id: "p7", prompt: "Does physical size alone define an embedded system? yes or no.", accepted: ["no"], answer: "No. Its dedicated role inside a larger device is the key distinction." },
+  { id: "p8", prompt: "Which runs many unrelated applications: embedded or general-purpose computer?", accepted: ["general purpose", "general-purpose", "general purpose computer", "general-purpose computer"], answer: "General-purpose computer." },
+  { id: "p9", prompt: "Name one component commonly integrated into a microcontroller besides the CPU.", accepted: ["memory", "input output", "input/output", "i/o", "io", "interface", "interfaces"], answer: "Memory or input/output interfaces." },
+  { id: "p10", prompt: "Why can a limited interface suit an embedded system?", accepted: ["specific task", "dedicated task", "only required controls", "fewer controls", "limited task"], answer: "It needs only the controls and displays required for its dedicated task." },
 ];
 
 const examQuestions = [
   {
-    title: "Question 1",
-    marks: "3 marks",
+    title: "Question 1", marks: "3 marks",
     prompt: "Define an embedded system and give one example.",
-    answer: "An embedded system is a computer system built into a larger device and designed to perform a specific task or set of tasks. An example is the control system inside a washing machine, traffic light controller, microwave oven or automatic door.",
-    marking: [
-      { mark: "B1", text: "computer/control system built into a larger device" },
-      { mark: "B1", text: "designed for a specific/dedicated task" },
-      { mark: "B1", text: "valid embedded-system example" },
-    ],
-    strict: [
-      "Do not accept only 'a small computer' for full definition credit.",
-      "Do not accept a general-purpose laptop/desktop as the example unless embedded in a larger control system.",
-      "Allow examples such as car engine control, washing machine, microwave, traffic lights or thermostat.",
-    ],
+    answer: "An embedded system is a computer system built into a larger device and designed to perform a specific task or set of tasks. A washing machine or microwave oven is a valid example.",
+    marking: [{ mark: "B1", text: "computer system built into a larger device" }, { mark: "B1", text: "designed for a specific/dedicated task" }, { mark: "B1", text: "valid embedded-system example" }],
+    strict: ["Do not accept only 'a small computer' for full definition credit.", "Do not accept a laptop or desktop as the embedded example.", "Allow any clearly justified embedded device."],
   },
   {
-    title: "Question 2",
-    marks: "5 marks",
-    prompt: "Describe how a microcontroller can control a greenhouse fan using temperature readings.",
-    answer: "A temperature sensor captures the current temperature in the greenhouse. The microcontroller receives the reading and compares it with a stored threshold. If the temperature is above the threshold, it sends an output signal to the fan motor or actuator to turn the fan on. The sensor continues to take readings so the fan can be turned off when the temperature falls.",
-    marking: [
-      { mark: "B1", text: "temperature sensor captures/inputs temperature reading" },
-      { mark: "B1", text: "microcontroller receives/processes the reading" },
-      { mark: "B1", text: "reading compared with threshold/rule" },
-      { mark: "B1", text: "output signal sent to actuator/fan motor" },
-      { mark: "B1", text: "repeated readings/feedback loop adjusts fan state" },
-    ],
-    strict: [
-      "Do not award actuator mark if answer says the sensor turns the fan on by itself.",
-      "Do not require actual code or a numeric threshold.",
-      "Allow processor/controller in place of microcontroller if role is clear.",
-    ],
+    title: "Question 2", marks: "4 marks",
+    prompt: "Describe four characteristics of an embedded system.",
+    answer: "It is built into a larger device, performs a dedicated task, often has a limited interface and is designed around priorities such as low cost, low power and reliable repeated operation.",
+    marking: [{ mark: "B1", text: "built into a larger device" }, { mark: "B1", text: "specific/dedicated purpose" }, { mark: "B1", text: "limited interface or task-specific resources" }, { mark: "B1", text: "valid priority such as low cost, low power or reliability" }],
+    strict: ["Do not award four repetitions of 'small'.", "Allow another valid characteristic linked to embedded use.", "Do not require a named device."],
   },
   {
-    title: "Question 3",
-    marks: "4 marks",
-    prompt: "Explain the difference between a sensor and an actuator in an embedded control system.",
-    answer: "A sensor is an input device that detects a physical condition, such as temperature, light or distance, and sends data to the controller. An actuator is an output device that carries out a physical action, such as moving a motor, opening a valve or switching a heater.",
-    marking: [
-      { mark: "B1", text: "sensor identified as input device" },
-      { mark: "B1", text: "sensor detects physical condition/provides reading" },
-      { mark: "B1", text: "actuator identified as output device" },
-      { mark: "B1", text: "actuator performs physical action/movement/control" },
-    ],
-    strict: [
-      "Do not accept 'sensor acts' unless action role is assigned to an actuator.",
-      "Do not accept 'actuator measures' as its main role.",
-      "Allow examples such as motor, valve, fan, heater, lock or brake.",
-    ],
+    title: "Question 3", marks: "4 marks",
+    prompt: "Explain what a microcontroller is and why it suits many embedded systems.",
+    answer: "A microcontroller can integrate a CPU, memory and input/output interfaces on one chip. This can reduce size, cost and power use while providing the processing and connections needed for a dedicated task.",
+    marking: [{ mark: "B1", text: "identifies CPU/processor integration" }, { mark: "B1", text: "identifies memory integration" }, { mark: "B1", text: "identifies input/output interfaces" }, { mark: "B1", text: "links integration to size, cost, power or dedicated use" }],
+    strict: ["Do not accept only 'a tiny CPU'.", "Award equivalent descriptions of integrated components.", "Do not require a particular manufacturer or architecture."],
   },
   {
-    title: "Question 4",
-    marks: "5 marks",
-    prompt: "A door opens automatically when a person approaches. Describe the embedded system operation.",
-    answer: "A proximity or motion sensor detects a person approaching the door. The microcontroller receives this input and checks a rule to decide whether the door should open. It sends a signal to a motor actuator to open the door. The system continues monitoring sensors so the door can remain open while needed and close safely afterwards.",
-    marking: [
-      { mark: "B1", text: "proximity/motion sensor detects person" },
-      { mark: "B1", text: "microcontroller/controller receives/processes sensor input" },
-      { mark: "B1", text: "decision/rule about opening is applied" },
-      { mark: "B1", text: "motor/actuator opens the door" },
-      { mark: "B1", text: "continued monitoring/feedback for safe closing" },
-    ],
-    strict: [
-      "Do not award full credit for only listing sensor and motor.",
-      "Do not say the sensor opens the door without controller/actuator roles.",
-      "Allow safety sensor/light beam if linked to safe closing.",
-    ],
-  },
-  {
-    title: "Question 5",
-    marks: "5 marks",
+    title: "Question 4", marks: "5 marks",
     prompt: "Compare an embedded system with a general-purpose computer.",
-    answer: "An embedded system is built into a larger device and designed for a specific task, such as controlling a washing machine. It often has limited user interface and may use a microcontroller with CPU, memory and I/O on one chip. A general-purpose computer is designed to run many different programs, usually has richer input/output and is built for flexibility and user interaction.",
-    marking: [
-      { mark: "B1", text: "embedded system built into larger device" },
-      { mark: "B1", text: "embedded system has specific/dedicated purpose" },
-      { mark: "B1", text: "microcontroller/limited interface/low power/reliability point" },
-      { mark: "B1", text: "general-purpose computer runs many different programs" },
-      { mark: "B1", text: "general-purpose computer has flexible/richer interface or user interaction" },
-    ],
-    strict: [
-      "Do not accept only size comparison such as 'embedded is smaller'.",
-      "Do not require all microcontroller details for the hardware mark.",
-      "Allow named examples if they support the comparison.",
-    ],
+    answer: "An embedded system is built into a larger device for a specific task, often with a limited interface and task-specific resources. A general-purpose computer runs many different programs, provides a richer interface and is designed for flexibility and user interaction.",
+    marking: [{ mark: "B1", text: "embedded system built into larger device" }, { mark: "B1", text: "embedded system has specific purpose" }, { mark: "B1", text: "limited interface/task-specific resource point" }, { mark: "B1", text: "general-purpose computer runs many programs" }, { mark: "B1", text: "general-purpose computer offers flexibility/richer interface" }],
+    strict: ["Do not accept only a size comparison.", "Credit paired comparisons.", "Allow named examples if they support the distinction."],
+  },
+  {
+    title: "Question 5", marks: "5 marks",
+    prompt: "A company is designing a battery-powered smartwatch. Justify three embedded-system design priorities.",
+    answer: "Low power use extends battery life; compact integrated hardware fits the wearable device; reliable predictable operation supports continuous everyday use. Cost and a simple task-focused interface are also relevant.",
+    marking: [{ mark: "B1", text: "identifies low power" }, { mark: "B1", text: "links low power to battery life" }, { mark: "B1", text: "identifies compact/integrated hardware and links it to wearable size" }, { mark: "B1", text: "identifies reliability or predictable operation" }, { mark: "B1", text: "links the priority to continuous smartwatch use" }],
+    strict: ["Do not award a priority without a smartwatch consequence where a link is required.", "Allow cost or limited interface as an alternative developed priority.", "Do not require control-system component descriptions."],
   },
 ];
 
@@ -172,10 +102,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    sensor: "Sensor: detects physical conditions such as door closed, water level or temperature.",
-    process: "Microcontroller: receives readings and checks stored rules before allowing the next action.",
-    actuator: "Actuator: performs the physical action, such as locking the door, opening a valve or turning the motor.",
-    repeat: "Repeat: the system keeps reading sensors so it can respond when conditions change.",
+    purpose: "Dedicated purpose: the appliance computer performs a defined set of washing tasks rather than arbitrary user programs.",
+    integrated: "Integration: a microcontroller can combine CPU, memory and input/output interfaces on one chip.",
+    interface: "Limited interface: the appliance needs only the buttons and display required for its dedicated task.",
+    reliability: "Reliability: the embedded system is expected to repeat its task predictably over many cycles.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -245,7 +175,6 @@ function renderPractice() {
       <div class="answer-panel" id="answer-${item.id}">${item.answer}</div>
     </div>
   `).join("");
-
   setupAnswerToggles(list);
 }
 
@@ -265,7 +194,7 @@ function setupPractice() {
       mark.className = `mark ${isCorrect ? "correct" : "incorrect"}`;
       if (isCorrect) correct += 1;
     });
-    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. For wrong answers, check whether you confused sensing, processing and acting.`;
+    document.querySelector("#practiceFeedback").textContent = `${correct}/${practice.length} correct. Check purpose, integration, interface and design priorities.`;
   });
 }
 
@@ -275,10 +204,7 @@ function renderExamQuestions() {
     const msId = `ms-${index}`;
     return `
       <article class="exam-card">
-        <div class="exam-head">
-          <h3>${question.title}</h3>
-          <span>${question.marks}</span>
-        </div>
+        <div class="exam-head"><h3>${question.title}</h3><span>${question.marks}</span></div>
         <p>${question.prompt}</p>
         <button type="button" class="ms-toggle" data-ms="${msId}">Show MS</button>
         <div class="ms-panel" id="${msId}">
@@ -289,7 +215,6 @@ function renderExamQuestions() {
       </article>
     `;
   }).join("");
-
   document.querySelectorAll(".ms-toggle").forEach((button) => {
     button.addEventListener("click", () => {
       const target = document.querySelector(`#${button.dataset.ms}`);

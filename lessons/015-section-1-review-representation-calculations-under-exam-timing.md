@@ -1,9 +1,9 @@
 # Lesson 015: Section 1 review: representation calculations under exam timing
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 1  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 1
+**Duration:** 45 minutes
 **Assessment rhythm:** 5-minute quiz, stage review
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students complete a timed response, swap scripts, mark with a checklist, and wri
 3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework

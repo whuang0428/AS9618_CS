@@ -38,7 +38,6 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
       </aside>
@@ -80,7 +79,7 @@
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Machine code is not assembly language. Assembly uses mnemonics; machine code is binary instructions.</p>
+            <p>An opcode is not the data itself. It specifies the operation; the operand supplies the associated value, address or register.</p>
           </article>
         </section>
 
@@ -124,7 +123,7 @@
               <span>The instruction set tells the CPU what each opcode means and how operands are interpreted.</span>
             </article>
           </div>
-          <div class="callout">Chinese support: instruction set = 指令集；machine code = 机器码；opcode = 操作码；operand = 操作数；mnemonic = 助记符。</div>
+          <div class="callout">Chinese support: instruction set = 指令集；machine code = 机器码；opcode = 操作码；operand = 操作数。</div>
         </section>
 
         <!-- stage10-explanation:start instruction-set -->
@@ -153,7 +152,7 @@
             </article>
             <article>
               <h3>Not friendly for humans</h3>
-              <p>Binary instructions are hard to read and write, which is why assembly language uses mnemonics and high-level languages use translators.</p>
+              <p>Binary instructions are difficult for people to read and write accurately, but they are the form the processor executes directly.</p>
             </article>
             <article>
               <h3>Stored in memory</h3>
@@ -174,7 +173,7 @@
             <figcaption class="explanation-sr-only">Machine code is binary instructions for the CPU: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Lowest-level executable form</li><li><strong>Lesson fact:</strong> Machine code consists of binary instructions that can be executed directly by the processor.</li><li><strong>Lesson fact:</strong> Not friendly for humans</li><li><strong>Lesson fact:</strong> Binary instructions are hard to read and write, which is why assembly language uses mnemonics and high-level languages use translators.</li><li><strong>Lesson fact:</strong> Stored in memory</li><li><strong>Lesson fact:</strong> Machine-code instructions are stored in memory and fetched by the CPU during the fetch-decode-execute cycle.</li><li><strong>Lesson fact:</strong> CPU-specific meaning</li><li><strong>Lesson fact:</strong> The same bit pattern can have different meanings on different architectures because opcodes are defined by the instruction set.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Lowest-level executable form</li><li><strong>Lesson fact:</strong> Machine code consists of binary instructions that can be executed directly by the processor.</li><li><strong>Lesson fact:</strong> Not friendly for humans</li><li><strong>Lesson fact:</strong> Binary instructions are difficult for people to read and write accurately, but they are the form the processor executes directly.</li><li><strong>Lesson fact:</strong> Stored in memory</li><li><strong>Lesson fact:</strong> Machine-code instructions are stored in memory and fetched by the CPU during the fetch-decode-execute cycle.</li><li><strong>Lesson fact:</strong> CPU-specific meaning</li><li><strong>Lesson fact:</strong> The same bit pattern can have different meanings on different architectures because opcodes are defined by the instruction set.</li></ol>
 
           </div>
         </section>
@@ -195,7 +194,7 @@
           <div class="instruction-table" role="table" aria-label="Example instruction set">
             <div class="table-row table-head" role="row">
               <div role="columnheader">Opcode</div>
-              <div role="columnheader">Mnemonic</div>
+              <div role="columnheader">Operation</div>
               <div role="columnheader">Meaning</div>
               <div role="columnheader">Example with operand</div>
             </div>
@@ -238,7 +237,7 @@
             <figcaption class="explanation-sr-only">Opcode and operand: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Opcode tells the CPU which operation to perform. Operand gives the data, register, address or value used by the operation.</li><li><strong>Lesson fact:</strong> Mnemonic</li><li><strong>Lesson fact:</strong> Example with operand</li><li><strong>Lesson fact:</strong> Load value from memory into ACC.</li><li><strong>Lesson fact:</strong> 0001 01011010 = LOAD address 90</li><li><strong>Lesson fact:</strong> Store ACC value into memory.</li><li><strong>Lesson fact:</strong> 0010 01011010 = STORE address 90</li><li><strong>Lesson fact:</strong> Add value from memory to ACC.</li><li><strong>Lesson fact:</strong> 0011 01011010 = ADD value at address 90</li><li><strong>Lesson fact:</strong> Jump to a different instruction address.</li><li><strong>Lesson fact:</strong> 0100 00001100 = jump to address 12</li><li><strong>Lesson fact:</strong> Common error</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Opcode tells the CPU which operation to perform. Operand gives the data, register, address or value used by the operation.</li><li><strong>Lesson fact:</strong> Operation</li><li><strong>Lesson fact:</strong> Example with operand</li><li><strong>Lesson fact:</strong> Load value from memory into ACC.</li><li><strong>Lesson fact:</strong> 0001 01011010 = LOAD address 90</li><li><strong>Lesson fact:</strong> Store ACC value into memory.</li><li><strong>Lesson fact:</strong> 0010 01011010 = STORE address 90</li><li><strong>Lesson fact:</strong> Add value from memory to ACC.</li><li><strong>Lesson fact:</strong> 0011 01011010 = ADD value at address 90</li><li><strong>Lesson fact:</strong> Jump to a different instruction address.</li><li><strong>Lesson fact:</strong> 0100 00001100 = jump to address 12</li><li><strong>Lesson fact:</strong> Common error</li></ol>
 
           </div>
         </section>
@@ -316,7 +315,7 @@
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
             <button class="tab active" type="button" data-example="decode">Decode</button>
             <button class="tab" type="button" data-example="compatibility">Compatibility</button>
-            <button class="tab" type="button" data-example="assembly">Machine vs assembly</button>
+            <button class="tab" type="button" data-example="capacity">Format capacity</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
         </section>
@@ -347,50 +346,6 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
-
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
-          <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>Assembly instruction groups</h2>
-          </div>
-          <div class="stage2-explanation">
-            <p>Data movement instructions transfer values between memory/registers; input/output instructions communicate with devices; arithmetic instructions change numeric values; compare instructions set status information; branch instructions change the next instruction address.</p>
-            <p>A conditional branch depends on a comparison/status condition, while an unconditional jump always changes the PC. Classifying by effect helps trace code before considering a specific mnemonic.</p>
-          </div>
-          <article class="stage2-example">
-            <h3>Worked example: Classify a loop</h3>
-            <p>LDD COUNT is data movement, CMP LIMIT is comparison, JPE DONE is conditional branch, INC COUNT is arithmetic, JMP LOOP is unconditional branch and OUT is output.</p>
-          </article>
-          <div class="stage2-practice">
-            <h3>Targeted practice</h3>
-            <article class="stage2-question">
-              <p><strong>1.</strong> Which group does STO belong to?</p>
-              <details><summary>Show answer</summary><p>Data movement/storage.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>2.</strong> Why is JPE conditional?</p>
-              <details><summary>Show answer</summary><p>It branches only when the equality condition/status is satisfied.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Which group changes a numeric accumulator value?</p>
-              <details><summary>Show answer</summary><p>Arithmetic.</p></details>
-            </article>
-          </div>
-          <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Explain the difference between a compare instruction, a conditional branch and an unconditional branch.</p>
-            <details>
-              <summary>Show MS</summary>
-              <ol class="mark-list">
-                <li><strong>B1</strong> compare tests values / sets status without itself selecting normal data output</li>
-                <li><strong>B1</strong> conditional branch changes flow only when a condition/status is met</li>
-                <li><strong>B1</strong> unconditional branch always changes the next instruction/PC</li>
-                <li><strong>B1</strong> uses a coherent example or sequence</li>
-              </ol>
-            </details>
-          </article>
-        </section>
-
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -402,7 +357,7 @@
             <div><strong>Opcode</strong><span>Specifies the operation to perform.</span></div>
             <div><strong>Operand</strong><span>Specifies data, address, register or value used by the operation.</span></div>
             <div><strong>Compatibility</strong><span>Machine code depends on the processor's instruction set.</span></div>
-            <div><strong>Assembly</strong><span>Uses mnemonics; it is not the same as binary machine code.</span></div>
+            <div><strong>Bit allocation</strong><span>More opcode bits allow more operations but leave fewer operand bits in a fixed-length instruction.</span></div>
           </div>
         </section>
 
@@ -415,7 +370,7 @@
             <li>Define instruction set, machine code, opcode and operand in one sentence each.</li>
             <li>Decode these fake instructions using the lesson table: `0001 00001111`, `0011 00001010`, `0100 00100000`.</li>
             <li>Write a 5-mark answer: "Explain why machine code written for one processor may not run on another processor."</li>
-            <li>Explain the difference between machine code and assembly language using the terms binary and mnemonic.</li>
+            <li>For a fixed 12-bit instruction, explain the trade-off between opcode width and operand width.</li>
             <li>Correct this sentence: "The operand tells the CPU what operation to perform and the opcode stores the data."</li>
           </ol>
         </section>

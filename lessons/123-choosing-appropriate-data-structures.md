@@ -74,6 +74,7 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
 ## Stage 2 syllabus completion
 
 **Official audit rows:** S10.09, S10.10
@@ -107,6 +108,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **B1** explains why FIFO gives the wrong access order
 
 **Strict note:** Do not award the structure name without its access-order consequence.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

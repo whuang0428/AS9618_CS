@@ -72,6 +72,7 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
 ## Stage 2 syllabus completion
 
 **Official audit rows:** S1.02, S1.03, S1.06
@@ -105,6 +106,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **B1** reduces conversion work / preserves exact decimal digits for display
 
 **Strict note:** Do not accept 37, which is the pure-binary interpretation of the whole eight-bit pattern.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

@@ -1,16 +1,16 @@
-# Lesson 101: Trace tables and dry runs
+# Lesson 100: Sequence, selection, and iteration
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 2  
-**Syllabus reference:** Syllabus Section 9  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 2
+**Syllabus reference:** Syllabus Section 9
+**Duration:** 45 minutes
 **Assessment rhythm:** informal questioning
 
 > Java is used only as a supporting implementation language. Cambridge pseudocode remains the exam answer format.
 
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Apply the algorithmic technique involved in **Trace tables and dry runs**.
+1. Apply the algorithmic technique involved in **Sequence, selection, and iteration in algorithms**.
 2. Write or trace Cambridge pseudocode using appropriate constructs and identifiers.
 3. Explain how the algorithm meets the stated inputs, outputs and constraints.
 
@@ -22,10 +22,10 @@ English first, Chinese support:
 ## Warm-Up Hook
 Give instructions for making tea but remove one step. Ask where the algorithm fails. The kettle is not being difficult; the instructions are.
 
-Focus question: Which feature distinguishes **Trace tables and dry runs** from the most closely related syllabus concept?
+Focus question: Which feature distinguishes **Sequence, selection, and iteration in algorithms** from the most closely related syllabus concept?
 
 ## Guided Explanation
-Define the inputs, outputs and stopping condition before writing any pseudocode. For Trace tables and dry runs, model the algorithm with a trace or dry run. Then improve readability using indentation, meaningful identifiers and Cambridge pseudocode conventions.
+Define the inputs, outputs and stopping condition before writing any pseudocode. For Sequence, selection, and iteration in algorithms, model the algorithm with a trace or dry run. Then improve readability using indentation, meaningful identifiers and Cambridge pseudocode conventions.
 
 Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
@@ -56,12 +56,12 @@ Students solve the same problem twice: first as numbered English steps, then as 
 3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
 - Create three flashcards: one definition, one worked example and one common error.
-- Answer one 4-mark question about **Trace tables and dry runs**. Follow its command word and apply each point to the stated context.
+- Answer one 4-mark question about **Sequence, selection, and iteration in algorithms**. Follow its command word and apply each point to the stated context.
 
 ## Marking Notes
 Award credit for:
@@ -77,69 +77,72 @@ Correction prompt: "State the correct term, then explain the relevant process or
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
-### Dry run: execute the algorithm by hand
+### Real algorithms usually combine the three structures
 
-- **Explains:** `dry-run`
+- **Explains:** `combining`
 - **Explanation type:** process
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-dry-run.jpg`
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-combining.jpg`
 
-1. 1 Copy the variable names into table columns.
-2. 2 Write initial values before the loop starts.
-3. 3 Use each input value in order.
-4. 4 Update variables exactly when pseudocode updates them.
-5. 5 Record output only when an OUTPUT statement is executed.
+1. Combining structures
+2. 1 Use sequence to initialise variables and read inputs.
+3. 2 Use iteration when the same action happens repeatedly.
+4. 3 Use selection inside the loop when each item needs a decision.
+5. 4 Use sequence after the loop to calculate or output final results.
+6. 5 Indent nested structures so the examiner can see the logic.
 
-### Loops make trace tables useful and slightly unforgiving
+### Iteration: repeat steps
 
-- **Explains:** `loops`
+- **Explains:** `iteration`
 - **Explanation type:** mechanism
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-loops.jpg`
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-iteration.jpg`
 
-1. Loop tracing
-2. Initialisation Variables such as Total and Count usually need a starting value before the loop.
-3. Update Record new values after assignment, not before.
-4. Condition For WHILE loops, check the condition before each iteration.
-5. Sentinel A sentinel value stops input and should usually not be processed as data.
-6. Output timing If OUTPUT is after the loop, output appears once at the end.
-7. Boundary Check whether loops run 5 times, 6 times, or one time too many.
+1. Knowledge explanation
+2. Use when
+3. Cambridge-style pattern
+4. Count-controlled
+5. the number of repeats is known
+6. FOR Count <- 1 TO 10 ... NEXT Count
+7. Condition-controlled
+8. repeat until a condition changes
+9. WHILE Number <> -1 ... ENDWHILE
+10. Repeat-until style
+11. the body must run at least once
+12. REPEAT ... UNTIL Valid = TRUE
 
-### Predict the final output
-
-- **Explains:** `predictor`
-- **Explanation type:** mechanism
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-predictor.jpg`
-
-1. Interactive output predictor
-2. Input set
-3. The pseudocode totals three input numbers and outputs Total.
-
-### Trace Cambridge pseudocode in the exam; Java is only a support view
+### Cambridge pseudocode is the exam form; Java is support only
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-pseudocode.jpg`
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-pseudocode.jpg`
 
-1. Initialise Total to zero before a three-iteration loop.
-2. Input one Number and add it to Total during each iteration.
-3. Output Total once after the loop has processed all three numbers.
-4. A Java support version must preserve the same input, accumulation and final output.
+1. Initialise PassCount to zero before processing five marks.
+2. Input Mark inside the FOR loop and increment PassCount only when Mark is at least 50.
+3. Close the conditional with ENDIF before NEXT Count.
+4. Output PassCount after the loop.
 
-### A trace table records variables after each change
+### Selection: choose a path using a condition
 
-- **Explains:** `trace-table`
+- **Explains:** `selection`
 - **Explanation type:** mechanism
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-trace-table.jpg`
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-selection.jpg`
 
 1. Knowledge explanation
-2. What it records
-3. Exam note
-4. Line / step
-5. which statement is being executed
-6. optional, but useful for debugging
-7. Input value
-8. the test data read by INPUT
-9. do not invent values not given by the question
-10. Variable columns
-11. current values of Count, Total, Mark, Found, etc.
-12. write changed values clearly
+2. Selection is used when the algorithm must decide between different actions.
+3. INPUT Mark
+4. IF Mark >= 50 THEN
+5. OUTPUT "Pass"
+6. OUTPUT "Resit"
+
+### Sequence: steps run in a fixed order
+
+- **Explains:** `sequence`
+- **Explanation type:** mechanism
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-sequence.jpg`
+
+1. Knowledge explanation
+2. Sequence is used when every step must happen once, in order, with no branch and no repetition.
+3. INPUT Length
+4. INPUT Width
+5. Area <- Length * Width
+6. OUTPUT Area
 <!-- stage10-explanations:end -->

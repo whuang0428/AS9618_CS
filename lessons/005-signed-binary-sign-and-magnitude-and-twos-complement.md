@@ -1,9 +1,9 @@
 # Lesson 005: Signed binary: sign-and-magnitude and two's complement
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 1  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 1
+**Duration:** 45 minutes
 **Assessment rhythm:** 5-minute quiz
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Students convert two positive and two negative values, then explain why sign-and
 3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework
@@ -71,6 +71,42 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 ## Common Misconception and Correction Prompt
 Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
+
+<!-- stage2-completion:start -->
+## Stage 2 syllabus completion
+
+**Official audit rows:** S1.04
+**Focus:** Binary subtraction with signed and unsigned values
+
+### Direct explanation
+
+- Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. The fixed bit width must be retained throughout.
+- For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Discard a carry beyond the fixed width, then interpret the remaining sign bit and check the representable range.
+
+### Worked example
+
+**8-bit 23 - 9:** 00010111 - 00001001 becomes 00010111 + 11110111 = 1 00001110. Discard the ninth carry: 00001110 is 14.
+
+### Targeted practice and answers
+
+1. Calculate 00110110 - 00010100.
+   **Answer:** 00100010, which is 34.
+2. In 8-bit two's complement, calculate 7 - 12.
+   **Answer:** 00000111 + 11110100 = 11111011, which is -5.
+3. Why is a carry beyond bit 8 discarded?
+   **Answer:** The operation has a fixed 8-bit width; the ninth bit lies outside that representation.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Using 8-bit two's complement, calculate 18 - 27. Show how subtraction is converted to addition.
+
+- **M1** 27 is 00011011 and its two's complement is 11100101
+- **M1** adds 00010010 + 11100101
+- **A1** obtains 11110111
+- **A1** interprets the result as -9
+
+**Strict note:** Do not award the final mark for 247; the result must be interpreted as signed two's complement.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

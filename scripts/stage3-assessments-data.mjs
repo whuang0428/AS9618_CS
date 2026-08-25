@@ -120,7 +120,7 @@ const legacyQuizzes = [
     q("Explain why cache can improve CPU performance but does not guarantee a fixed speed increase.", 3, [p("B1", "stores frequently/recently used data/instructions close to CPU"), p("B1", "cache hit avoids slower main-memory access"), p("B1", "benefit depends on hit rate/program access pattern/cache design")], "Do not accept only 'cache is faster'.")
   ]),
   quiz(100, "Flowcharts and pseudocode", ["9.2"], [
-    q("Name the flowchart symbols for a decision and input/output.", 2, [p("B1", "diamond for decision"), p("B1", "parallelogram for input/output")], "Allow descriptions if the symbol is unambiguous."),
+    q("State the purpose of sequence and selection in an algorithm.", 2, [p("B1", "sequence executes steps once in a fixed order"), p("B1", "selection chooses a path/action using a condition")], "Do not award notation alone; each mark requires the purpose of the construct."),
     q("Translate 'repeat until Valid is true' into Cambridge pseudocode delimiters.", 2, [p("B1", "REPEAT"), p("B1", "UNTIL Valid = TRUE")], "Do not use Java do/while syntax."),
     q("Explain how a WHILE loop differs from a REPEAT loop.", 3, [p("B1", "WHILE tests before the body"), p("B1", "it may execute zero times"), p("B1", "REPEAT tests after and executes at least once")], "A mirror statement alone earns one comparison point."),
     q("Convert: input Age; output Adult if Age >= 18, otherwise Minor.", 3, [p("B1", "INPUT Age"), p("B1", "IF Age >= 18 THEN ... ELSE ..."), p("B1", "correct outputs and ENDIF")], "Use Cambridge pseudocode, not braces.")

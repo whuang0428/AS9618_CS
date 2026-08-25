@@ -1,112 +1,89 @@
-const symbolMap = {
-  start: {
-    symbol: "Terminator",
-    detail: "Use the start/end symbol for the beginning or end of an algorithm.",
-  },
-  input: {
-    symbol: "Input/output",
-    detail: "Inputting a mark is data entering the algorithm, so use the input/output symbol.",
-  },
-  calc: {
-    symbol: "Process",
-    detail: "An assignment or calculation such as Total <- Total + Mark uses a process box.",
-  },
-  decision: {
-    symbol: "Decision",
-    detail: "A condition with Yes/No outcomes uses a decision diamond.",
-  },
-  output: {
-    symbol: "Input/output",
-    detail: "Displaying a result is output, so use the input/output symbol.",
-  },
-};
-
-const structureMap = {
-  selection: {
-    title: "Selection",
-    code: "IF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF",
-    reason: "The algorithm chooses one of two branches.",
-  },
-  for: {
-    title: "Count-controlled iteration",
-    code: "FOR Count <- 1 TO 5\n    INPUT Mark\nNEXT Count",
-    reason: "The number of repetitions is known before the loop starts.",
-  },
-  while: {
-    title: "Condition-controlled iteration",
-    code: "INPUT Number\nWHILE Number <> -1\n    OUTPUT Number\n    INPUT Number\nENDWHILE",
-    reason: "The loop continues until a condition changes.",
-  },
-  sequence: {
+const classifierMap = {
+  area: {
     title: "Sequence",
-    code: "INPUT Length\nINPUT Width\nArea <- Length * Width\nOUTPUT Area",
-    reason: "The steps happen in a fixed order with no branch or loop.",
+    detail: "The steps happen once in a fixed order: input, calculate, output.",
+  },
+  pass: {
+    title: "Selection",
+    detail: "A condition chooses between Pass and Resit.",
+  },
+  five: {
+    title: "Count-controlled iteration",
+    detail: "Exactly five values are processed, so a FOR loop is suitable.",
+  },
+  sentinel: {
+    title: "Condition-controlled iteration",
+    detail: "The loop continues until the sentinel value -1 is entered.",
+  },
+  countpass: {
+    title: "Iteration with nested selection",
+    detail: "The algorithm repeats for ten marks and uses IF inside the loop to count passes.",
   },
 };
 
-const converterPatterns = {
+const builderMap = {
+  area: "INPUT Length\nINPUT Width\nArea <- Length * Width\nOUTPUT Area",
   pass: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF",
-  valid: "INPUT Age\nIF Age >= 11 AND Age <= 18 THEN\n    OUTPUT \"Valid\"\nELSE\n    OUTPUT \"Invalid\"\nENDIF",
-  total: "Total <- 0\nFOR Count <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\nNEXT Count\nOUTPUT Total",
-  sentinel: "Total <- 0\nINPUT Number\nWHILE Number <> -1\n    Total <- Total + Number\n    INPUT Number\nENDWHILE\nOUTPUT Total",
+  total5: "Total <- 0\nFOR Count <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\nNEXT Count\nOUTPUT Total",
+  passcount: "PassCount <- 0\nFOR Count <- 1 TO 5\n    INPUT Mark\n    IF Mark >= 50 THEN\n        PassCount <- PassCount + 1\n    ENDIF\nNEXT Count\nOUTPUT PassCount",
 };
 
 const examples = {
-  pass: {
-    title: "Example 1: Pass/resit",
-    problem: "Input a mark and output Pass if it is at least 50, otherwise output Resit.",
-    flow: ["Terminator: START", "Input/output: INPUT Mark", "Decision: Mark >= 50?", "Yes branch: OUTPUT Pass", "No branch: OUTPUT Resit", "Terminator: END"],
-    code: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF",
+  sequence: {
+    title: "Example 1: Sequence",
+    problem: "Calculate the area of a rectangle.",
+    structure: "Sequence only: every step happens once in order.",
+    code: builderMap.area,
   },
-  average: {
-    title: "Example 2: Average of five marks",
-    problem: "Input exactly five marks, calculate the average and output it.",
-    flow: ["Process: Total <- 0", "Loop counter controls five repetitions", "Input/output: INPUT Mark", "Process: Total <- Total + Mark", "Process: Average <- Total / 5", "Input/output: OUTPUT Average"],
-    code: "Total <- 0\nFOR Count <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\nNEXT Count\nAverage <- Total / 5\nOUTPUT Average",
+  selection: {
+    title: "Example 2: Selection",
+    problem: "Output Pass if Mark is at least 50, otherwise Resit.",
+    structure: "Selection: IF chooses one branch.",
+    code: builderMap.pass,
   },
-  sentinel: {
-    title: "Example 3: Sentinel loop",
-    problem: "Input numbers until -1 is entered, then output the total. Do not include -1.",
-    flow: ["Process: Total <- 0", "Input/output: INPUT Number", "Decision: Number <> -1?", "Yes branch: add Number to Total and input again", "No branch: OUTPUT Total"],
-    code: "Total <- 0\nINPUT Number\nWHILE Number <> -1\n    Total <- Total + Number\n    INPUT Number\nENDWHILE\nOUTPUT Total",
+  iteration: {
+    title: "Example 3: Iteration",
+    problem: "Input exactly five marks and output the total.",
+    structure: "Count-controlled iteration: FOR loop repeats exactly five times.",
+    code: builderMap.total5,
   },
-  validation: {
-    title: "Example 4: Age validation",
-    problem: "Input an age and output Valid if it is from 11 to 18 inclusive.",
-    flow: ["Input/output: INPUT Age", "Decision: Age >= 11 AND Age <= 18?", "Yes branch: OUTPUT Valid", "No branch: OUTPUT Invalid"],
-    code: "INPUT Age\nIF Age >= 11 AND Age <= 18 THEN\n    OUTPUT \"Valid\"\nELSE\n    OUTPUT \"Invalid\"\nENDIF",
+  combined: {
+    title: "Example 4: Iteration with selection",
+    problem: "Input five marks and count how many are at least 50.",
+    structure: "Sequence initialises PassCount, FOR repeats input, IF decides whether to increment.",
+    code: builderMap.passcount,
   },
 };
 
 const practice = [
-  { id: "p1", prompt: "Which flowchart symbol is used for a yes/no condition?", accepted: ["decision", "diamond", "decision diamond"], answer: "Decision / diamond" },
-  { id: "p2", prompt: "Which flowchart symbol is used for INPUT Mark?", accepted: ["input output", "input/output", "io", "parallelogram"], answer: "Input/output symbol, often drawn as a parallelogram." },
-  { id: "p3", prompt: "Which pseudocode keyword displays a result?", accepted: ["output"], answer: "OUTPUT" },
-  { id: "p4", prompt: "Which keyword closes an IF structure in Cambridge-style pseudocode?", accepted: ["endif", "end if"], answer: "ENDIF" },
-  { id: "p5", prompt: "Which structure is used when exactly five values are input?", accepted: ["for", "for loop", "count controlled loop", "count-controlled iteration"], answer: "A count-controlled loop such as FOR...TO...NEXT." },
-  { id: "p6", prompt: "Should Java braces be used as the expected Paper 2 pseudocode format? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode." },
-  { id: "p7", prompt: "In a flowchart decision, what labels should usually appear on outgoing branches?", accepted: ["yes no", "yes/no", "true false", "true/false"], answer: "Yes/No or True/False." },
-  { id: "p8", prompt: "Which symbol is used for Total <- Total + Mark?", accepted: ["process", "process box", "rectangle"], answer: "Process box / rectangle." },
-  { id: "p9", prompt: "What indentation shows in pseudocode?", accepted: ["block structure", "which statements are inside", "inside branch", "inside loop", "scope"], answer: "Indentation shows which statements belong inside a branch or loop." },
-  { id: "p10", prompt: "Which term describes the arrows showing the next step in a flowchart?", accepted: ["flow line", "flow lines", "arrow", "arrows"], answer: "Flow lines / arrows." },
+  { id: "p1", prompt: "Which structure runs steps once in a fixed order?", accepted: ["sequence"], answer: "Sequence" },
+  { id: "p2", prompt: "Which structure chooses between actions using a condition?", accepted: ["selection", "if"], answer: "Selection / IF" },
+  { id: "p3", prompt: "Which structure repeats steps?", accepted: ["iteration", "loop", "repetition"], answer: "Iteration / loop" },
+  { id: "p4", prompt: "Exactly five marks are input. Which loop type is most suitable?", accepted: ["count controlled", "count-controlled", "for", "for loop", "count controlled loop"], answer: "Count-controlled loop / FOR loop" },
+  { id: "p5", prompt: "Input continues until -1 is entered. Which loop type is suitable?", accepted: ["condition controlled", "condition-controlled", "while", "while loop", "condition controlled loop"], answer: "Condition-controlled loop / WHILE loop" },
+  { id: "p6", prompt: "Which Cambridge keyword starts a selection statement?", accepted: ["if"], answer: "IF" },
+  { id: "p7", prompt: "Which Cambridge keyword closes an IF structure?", accepted: ["endif", "end if"], answer: "ENDIF" },
+  { id: "p8", prompt: "When an IF is inside a FOR loop, what is the IF called?", accepted: ["nested", "nested selection", "selection nested inside iteration"], answer: "Nested selection / IF inside iteration" },
+  { id: "p9", prompt: "Should Java braces be used in the expected Paper 2 pseudocode answer? yes or no.", accepted: ["no"], answer: "No. Use Cambridge-style pseudocode." },
+  { id: "p10", prompt: "Name the three basic control structures in this lesson.", accepted: ["sequence selection iteration", "sequence, selection, iteration"], answer: "Sequence, selection and iteration." },
 ];
 
 const mistakes = [
   {
-    wrong: "I used a process rectangle for Mark >= 50?",
-    fix: "Use a decision diamond for a condition with alternative branches.",
+    wrong: "I used a loop for Length, Width and Area even though each step happens once.",
+    fix: "Use sequence. A loop is only needed when steps repeat.",
   },
   {
-    wrong: "My IF statement has ELSE but no ENDIF.",
-    fix: "Close the structure with ENDIF so the branch boundaries are clear.",
+    wrong: "I wrote Pass and Resit one after the other with no IF.",
+    fix: "Use selection. The condition determines which output should happen.",
   },
   {
-    wrong: "I used System.out.println in my exam pseudocode answer.",
-    fix: "Use OUTPUT in Cambridge-style pseudocode. Java syntax is only support for implementation practice.",
+    wrong: "I used WHILE for exactly five marks but forgot to update Count.",
+    fix: "Use a FOR loop for a known count, or update the counter clearly if using WHILE.",
   },
   {
-    wrong: "My flowchart decision has two arrows but no Yes/No labels.",
-    fix: "Label the outgoing branches so the condition outcomes are unambiguous.",
+    wrong: "I placed PassCount <- 0 inside the loop.",
+    fix: "Initialise PassCount before the loop. Otherwise it resets every iteration.",
   },
 ];
 
@@ -114,98 +91,99 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Name the correct flowchart symbol for each step: start the algorithm, input a mark, calculate Total <- Total + Mark, test Mark >= 50, output Pass.",
-    answer: "Start uses a terminator. Input a mark uses an input/output symbol. Total <- Total + Mark uses a process symbol. Mark >= 50 uses a decision symbol. Output Pass uses an input/output symbol.",
+    prompt: "Identify whether each task mainly uses sequence, selection or iteration: calculate area from length and width; output Pass/Resit from a mark; input ten scores; input values until -1; count passes from ten marks.",
+    answer: "Calculate area uses sequence. Pass/Resit uses selection. Input ten scores uses count-controlled iteration. Input until -1 uses condition-controlled iteration. Count passes from ten marks uses iteration with selection inside the loop.",
     marking: [
-      { mark: "B1", text: "start/end identified as terminator" },
-      { mark: "B1", text: "input mark identified as input/output" },
-      { mark: "B1", text: "calculation/assignment identified as process" },
-      { mark: "B1", text: "condition identified as decision" },
-      { mark: "B1", text: "output identified as input/output" },
+      { mark: "B1", text: "area calculation identified as sequence" },
+      { mark: "B1", text: "Pass/Resit identified as selection" },
+      { mark: "B1", text: "ten scores identified as count-controlled iteration" },
+      { mark: "B1", text: "until -1 identified as condition-controlled iteration" },
+      { mark: "B1", text: "count passes identified as iteration with selection / nested IF" },
     ],
     strict: [
-      "Do not accept process symbol for a condition.",
-      "Allow common shape names such as oval for terminator, parallelogram for input/output, rectangle for process and diamond for decision.",
-      "Do not require drawn symbols if names are clear.",
+      "Do not accept iteration for area unless repeated calculations are stated.",
+      "Allow loop for iteration.",
+      "Do not require the word nested if the combined structure is clear.",
     ],
   },
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Write Cambridge-style pseudocode to input Age and output Valid if Age is from 11 to 18 inclusive, otherwise output Invalid.",
-    answer: "INPUT Age\nIF Age >= 11 AND Age <= 18 THEN\n    OUTPUT \"Valid\"\nELSE\n    OUTPUT \"Invalid\"\nENDIF",
+    prompt: "Write Cambridge-style pseudocode to input a Mark and output Pass if Mark is at least 50, otherwise output Resit. State the control structure used.",
+    answer: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF\n\nThe control structure is selection.",
     marking: [
-      { mark: "B1", text: "inputs Age" },
-      { mark: "M1", text: "uses IF with lower bound Age >= 11" },
-      { mark: "M1", text: "uses upper bound Age <= 18 with AND / both conditions required" },
-      { mark: "A1", text: "outputs Valid on true branch" },
-      { mark: "A1", text: "outputs Invalid on false branch" },
-      { mark: "B1", text: "uses clear Cambridge-style structure such as IF/THEN/ELSE/ENDIF" },
+      { mark: "B1", text: "inputs Mark" },
+      { mark: "M1", text: "uses IF with condition Mark >= 50 or equivalent" },
+      { mark: "A1", text: "outputs Pass on true branch" },
+      { mark: "A1", text: "outputs Resit on false branch" },
+      { mark: "B1", text: "uses clear Cambridge-style IF/THEN/ELSE/ENDIF structure" },
+      { mark: "B1", text: "identifies structure as selection" },
     ],
     strict: [
-      "Do not award upper-bound method mark for OR in this range check.",
-      "Allow equivalent inclusive comparisons such as Age > 10 AND Age < 19 if integer age is clear.",
-      "Do not award final style mark for Java-only syntax.",
+      "Do not award style mark for Java-only syntax.",
+      "Allow Mark > 49 if integer marks are implied.",
+      "Do not require exact output wording if meaning is equivalent.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "A flowchart inputs exactly five marks and outputs their total. Describe the pseudocode structure needed and write a suitable outline.",
-    answer: "A count-controlled loop is suitable because exactly five marks are input. Total should be initialised to 0 before the loop. The loop inputs a Mark and adds it to Total five times, then outputs Total.\n\nTotal <- 0\nFOR Count <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\nNEXT Count\nOUTPUT Total",
+    prompt: "Write Cambridge-style pseudocode to input exactly five marks and output their total. State why iteration is suitable.",
+    answer: "Total <- 0\nFOR Count <- 1 TO 5\n    INPUT Mark\n    Total <- Total + Mark\nNEXT Count\nOUTPUT Total\n\nIteration is suitable because the same input-and-add steps are repeated exactly five times.",
     marking: [
-      { mark: "B1", text: "identifies count-controlled loop / FOR loop" },
       { mark: "B1", text: "initialises Total to 0 before the loop" },
-      { mark: "M1", text: "loop repeats five times" },
+      { mark: "M1", text: "uses a loop that repeats five times" },
       { mark: "M1", text: "inputs Mark inside the loop" },
-      { mark: "M1", text: "updates Total inside the loop" },
+      { mark: "M1", text: "adds Mark to Total inside the loop" },
       { mark: "A1", text: "outputs Total after the loop" },
+      { mark: "B1", text: "explains iteration is suitable because steps repeat / known count" },
     ],
     strict: [
-      "Do not award full credit if Total is initialised inside the loop.",
-      "Allow REPEAT/WHILE if it clearly processes exactly five marks using a counter.",
+      "Do not award full credit if Total is reset inside the loop.",
+      "Allow WHILE with a correctly updated counter.",
       "Do not require exact variable names.",
     ],
   },
   {
     title: "Question 4",
-    marks: "4 marks",
-    prompt: "Explain two differences between a flowchart and pseudocode when representing the same algorithm.",
-    answer: "A flowchart is a visual representation using symbols and flow lines, while pseudocode is a structured text representation using keywords. A flowchart shows decisions with a decision symbol and labelled branches, while pseudocode shows the same logic using IF, THEN, ELSE and ENDIF. Both can represent the same sequence, selection and iteration.",
+    marks: "5 marks",
+    prompt: "A program inputs five marks and counts how many are at least 50. Explain how sequence, selection and iteration are all used.",
+    answer: "Sequence is used to initialise PassCount before the loop and to output the final count after the loop. Iteration is used because five marks are input and processed using repeated steps. Selection is used inside the loop to test whether each Mark is at least 50; if true, PassCount is increased.",
     marking: [
-      { mark: "B1", text: "states flowchart is visual/uses symbols" },
-      { mark: "B1", text: "states pseudocode is structured text/uses keywords" },
-      { mark: "B1", text: "flowchart decisions use a decision symbol with labelled branches" },
-      { mark: "B1", text: "pseudocode decisions use keywords such as IF...THEN...ELSE...ENDIF" },
+      { mark: "B1", text: "identifies initialisation/output as sequence" },
+      { mark: "B1", text: "identifies repeated processing of five marks as iteration" },
+      { mark: "B1", text: "identifies Mark >= 50 test as selection" },
+      { mark: "B1", text: "explains selection occurs inside the loop" },
+      { mark: "B1", text: "explains PassCount is updated only when condition is true" },
     ],
     strict: [
-      "Do not accept that one form changes the algorithm result.",
-      "Allow discussion of loops if comparison is accurate.",
-      "Do not award marks for vague claims such as 'flowcharts are easier' without a representational difference.",
+      "Do not accept generic definitions only; answer must refer to this problem.",
+      "Allow CountPasses or similar variable names.",
+      "Do not require full pseudocode.",
     ],
   },
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "A student writes Java code with braces and semicolons as an answer to a Cambridge pseudocode question. Explain why this may lose marks and give three Cambridge-style conventions that should be used instead.",
-    answer: "Cambridge Paper 2 expects Cambridge-style pseudocode, so Java-only syntax may not match the required notation. Instead, use INPUT for data entry and OUTPUT for display. Use IF condition THEN, ELSE and ENDIF for selection. Use FOR...TO...NEXT or WHILE...ENDWHILE for iteration and indent statements inside branches or loops.",
+    prompt: "A student uses WHILE for a known five-repetition task and forgets to update Count. Explain the likely error and give a safer structure.",
+    answer: "If Count is not updated in a WHILE loop, the loop condition may never become false, causing an infinite loop or incorrect number of repetitions. Since exactly five repetitions are required, a FOR Count <- 1 TO 5 ... NEXT Count loop is safer and clearer.",
     marking: [
-      { mark: "B1", text: "states Cambridge-style pseudocode is expected" },
-      { mark: "B1", text: "identifies Java-only syntax such as braces/semicolons/System.out.println as unsuitable" },
-      { mark: "B1", text: "gives one valid convention such as INPUT/OUTPUT" },
-      { mark: "B1", text: "gives a second distinct convention such as IF...THEN...ELSE...ENDIF" },
-      { mark: "B1", text: "gives a third distinct convention such as FOR...NEXT, WHILE...ENDWHILE or assignment arrow" },
+      { mark: "B1", text: "identifies missing Count update" },
+      { mark: "B1", text: "explains condition may never become false / infinite loop risk" },
+      { mark: "B1", text: "recognises five repetitions are known in advance" },
+      { mark: "B1", text: "suggests FOR loop / count-controlled loop" },
+      { mark: "B1", text: "gives clear Cambridge-style FOR...TO...NEXT idea" },
     ],
     strict: [
-      "Do not award convention marks for Java syntax examples.",
-      "Allow assignment arrow and meaningful identifiers as additional valid Cambridge-style conventions.",
-      "Do not say Java is useless; it may support implementation but is not the expected exam pseudocode notation.",
+      "Do not accept only 'WHILE is wrong' without explanation.",
+      "Allow WHILE as a possible solution if Count is correctly updated, but safer structure must be count-controlled.",
+      "Do not require complete pseudocode.",
     ],
   },
 ];
 
 function normalise(value) {
-  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9/ -]/g, "");
+  return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/[^a-z0-9, -]/g, "");
 }
 
 function setupPrint() {
@@ -215,10 +193,10 @@ function setupPrint() {
 function setupHook() {
   const feedback = document.querySelector("#hookFeedback");
   const responses = {
-    start: "Terminator. START and END mark the boundaries of the algorithm.",
-    input: "Input/output. The drink code is data entering the algorithm.",
-    decision: "Decision. This is a condition with different outcomes.",
-    output: "Input/output. Displaying a message is output.",
+    sequence: "Sequence. These steps happen once in order.",
+    selection: "Selection. IF chooses whether the toasting step happens.",
+    iteration: "Iteration. The same steps repeat for each order.",
+    bad: "Common error: importance is not a reason for using WHILE. Repetition needs a real stopping rule.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -229,33 +207,20 @@ function setupHook() {
   });
 }
 
-function setupSymbolTool() {
-  const input = document.querySelector("#symbolInput");
-  const result = document.querySelector("#symbolResult");
-  document.querySelector("#symbolBtn").addEventListener("click", () => {
-    const item = symbolMap[input.value];
-    result.innerHTML = `<strong>${item.symbol}</strong><span>${item.detail}</span>`;
+function setupClassifier() {
+  const input = document.querySelector("#classifierInput");
+  const result = document.querySelector("#classifyResult");
+  document.querySelector("#classifyBtn").addEventListener("click", () => {
+    const item = classifierMap[input.value];
+    result.innerHTML = `<strong>${item.title}</strong><span>${item.detail}</span>`;
   });
 }
 
-function setupStructureTool() {
-  const input = document.querySelector("#structureInput");
-  const result = document.querySelector("#structureResult");
-  document.querySelector("#structureBtn").addEventListener("click", () => {
-    const item = structureMap[input.value];
-    result.innerHTML = `
-      <strong>${item.title}</strong>
-      <span>${item.reason}</span>
-      <pre><code>${item.code}</code></pre>
-    `;
-  });
-}
-
-function setupConverter() {
-  const input = document.querySelector("#patternInput");
-  const result = document.querySelector("#convertResult");
-  document.querySelector("#convertBtn").addEventListener("click", () => {
-    result.innerHTML = `<pre><code>${converterPatterns[input.value]}</code></pre>`;
+function setupBuilder() {
+  const input = document.querySelector("#builderInput");
+  const result = document.querySelector("#builderResult");
+  document.querySelector("#buildBtn").addEventListener("click", () => {
+    result.innerHTML = `<pre><code>${builderMap[input.value]}</code></pre>`;
   });
 }
 
@@ -264,9 +229,7 @@ function renderExample(key) {
   document.querySelector("#exampleBox").innerHTML = `
     <h3>${example.title}</h3>
     <p><strong>Problem:</strong> ${example.problem}</p>
-    <p><strong>Flowchart plan:</strong></p>
-    <ol>${example.flow.map((step) => `<li>${step}</li>`).join("")}</ol>
-    <p><strong>Cambridge-style pseudocode:</strong></p>
+    <p><strong>Structure:</strong> ${example.structure}</p>
     <pre><code>${example.code}</code></pre>
   `;
 }
@@ -279,7 +242,7 @@ function setupExamples() {
       renderExample(tab.dataset.example);
     });
   });
-  renderExample("pass");
+  renderExample("sequence");
 }
 
 function setupPractice() {
@@ -367,9 +330,8 @@ function setupExam() {
 
 setupPrint();
 setupHook();
-setupSymbolTool();
-setupStructureTool();
-setupConverter();
+setupClassifier();
+setupBuilder();
 setupExamples();
 setupPractice();
 setupMistakes();

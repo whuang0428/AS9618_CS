@@ -38,9 +38,9 @@
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
-        <a href="#stage2-completion">Extra practice</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Extra practice</a>
       </aside>
 
       <div class="lesson-content">
@@ -334,18 +334,20 @@
         </section>
 
 
+        <!-- stage2-completion:start -->
         <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">Extra practice</p>
-            <h2>Two-pass assembler and core instruction semantics</h2>
+            <h2>Instruction groups, core semantics and the two-pass assembler</h2>
           </div>
           <div class="stage2-explanation">
             <p>Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.</p>
+            <p>Instruction groups describe effects: data movement transfers values; input/output communicates with devices; arithmetic changes numeric values; compare sets status information; and branch changes the next instruction address. A conditional branch depends on status, while an unconditional jump always changes the PC.</p>
             <p>Core mnemonics must be read by effect: LDM immediate; LDD direct; LDI indirect; LDX indexed; LDR relative; MOV register transfer; STO memory store; ADD/SUB/INC/DEC arithmetic; JMP branch; CMP/CMI compare; JPE/JPN conditional branches; IN/OUT I/O; END stops.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Forward label</h3>
-            <p>JMP FINISH appears before FINISH. Pass 1 records FINISH's eventual address in the symbol table; pass 2 substitutes that address when translating JMP.</p>
+            <h3>Worked example: Classify and translate a forward branch</h3>
+            <p>In JMP FINISH, JMP is an unconditional branch. Pass 1 records FINISH's eventual address in the symbol table; pass 2 substitutes that address when translating JMP.</p>
           </article>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
@@ -361,21 +363,28 @@
               <p><strong>3.</strong> Which instruction terminates execution?</p>
               <details><summary>Show answer</summary><p>END.</p></details>
             </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why is JPE conditional?</p>
+              <details><summary>Show answer</summary><p>It branches only when the equality condition/status is satisfied.</p></details>
+            </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Explain why an assembler commonly uses two passes when a program contains a forward reference.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Explain why an assembler uses two passes for a forward reference, then distinguish compare, conditional branch and unconditional branch instructions.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
                 <li><strong>B1</strong> label is used before its address is known</li>
                 <li><strong>B1</strong> pass 1 assigns addresses/builds the symbol table</li>
-                <li><strong>B1</strong> the forward label address is then available</li>
-                <li><strong>B1</strong> pass 2 translates the instruction/substitutes the address into machine code</li>
+                <li><strong>B1</strong> pass 2 substitutes the resolved address while translating</li>
+                <li><strong>B1</strong> compare tests values / sets status</li>
+                <li><strong>B1</strong> conditional branch changes flow only when its condition/status is met</li>
+                <li><strong>B1</strong> unconditional branch always changes the next instruction/PC</li>
               </ol>
             </details>
           </article>
         </section>
+        <!-- stage2-completion:end -->
 
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">

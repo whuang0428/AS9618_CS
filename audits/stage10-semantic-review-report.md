@@ -2,7 +2,7 @@
 
 ## Audit state
 
-- Scope: 782 Stage 10 generated infographics (737 rollout-source assets and 45 pilot explanations).
+- Scope: 779 Stage 10 generated infographics (734 rollout-source assets and 45 pilot explanations).
 - First visual pass: complete.
 - Second reverse-order visual pass: complete.
 - Method: Two visual passes at original resolution against maintained source facts; OCR used only as a locator.
@@ -12,7 +12,7 @@
 
 ## Asset outcomes
 
-- Approved: 782 (100.00%).
+- Approved: 779 (100.00%).
 - Critical assets: 0.
 - Major assets: 0.
 - Minor assets: 0.
@@ -27,8 +27,8 @@
 
 ## Automated calculation checks
 
-- Checks executed: 72.
-- Passed: 72.
+- Checks executed: 71.
+- Passed: 71.
 - Failed and linked to registered defects: 0.
 
 - CALC-001-STORAGE (001/knowledge): PASS - 1 GiB = 1024^3 bytes
@@ -48,10 +48,9 @@
 - CALC-015-ADDRESS-WIDTH (044/width): PASS - 16 address bits select 65536 addresses
 - CALC-016-LENGTH (133/length): PASS - LENGTH('ALGORITHM') = 9
 - CALC-017-DIVMOD (134/relationship): PASS - 17 DIV 5 = 3 and 17 MOD 5 = 2
-- CALC-018-PROCEDURE-NESTING (099/pseudocode): PASS - Procedure and nested IF are both closed
-- CALC-019-DECISION-ENDIF (100/equivalence): PASS - Flowchart decision maps to a closed IF selection
-- CALC-020-JAVA-SUM (101/pseudocode): PASS - Java support code inputs, accumulates and outputs
-- CALC-021-COUNT-ENDIF (102/pseudocode): PASS - ENDIF precedes NEXT Count
+- CALC-019-DECISION-ENDIF (101/equivalence): PASS - Flowchart decision maps to a closed IF selection
+- CALC-020-JAVA-SUM (102/pseudocode): PASS - Java support code inputs, accumulates and outputs
+- CALC-021-COUNT-ENDIF (100/pseudocode): PASS - ENDIF precedes NEXT Count
 - CALC-022-REPEAT-ENDIF (103/pseudocode): PASS - Cambridge validation has REPEAT, ENDIF and UNTIL in order
 - CALC-023-JAVA-DO-WHILE (103/pseudocode): PASS - Java support loop includes opening do block
 - CALC-024-SEARCH-ENDIF (104/pseudocode): PASS - Search decision closes before index update
@@ -111,10 +110,10 @@ Risk labels overlap; one asset may appear in more than one row.
 | Risk type | Assets | Assets with defects |
 |---|---:|---:|
 | binary | 16 | 0 |
-| numeric | 280 | 0 |
-| formula-or-state | 203 | 0 |
-| process-or-arrow | 368 | 0 |
-| conceptual | 244 | 0 |
+| numeric | 274 | 0 |
+| formula-or-state | 201 | 0 |
+| process-or-arrow | 363 | 0 |
+| conceptual | 245 | 0 |
 
 ## Statistics by lesson
 
@@ -152,7 +151,7 @@ Risk labels overlap; one asset may appear in more than one row.
 | 030 | 3 | 3 | 0 | 0 | 0 |
 | 031 | 4 | 4 | 0 | 0 | 0 |
 | 032 | 3 | 3 | 0 | 0 | 0 |
-| 033 | 3 | 3 | 0 | 0 | 0 |
+| 033 | 2 | 2 | 0 | 0 | 0 |
 | 034 | 3 | 3 | 0 | 0 | 0 |
 | 035 | 4 | 4 | 0 | 0 | 0 |
 | 036 | 3 | 3 | 0 | 0 | 0 |
@@ -217,10 +216,10 @@ Risk labels overlap; one asset may appear in more than one row.
 | 095 | 7 | 7 | 0 | 0 | 0 |
 | 096 | 5 | 5 | 0 | 0 | 0 |
 | 097 | 7 | 7 | 0 | 0 | 0 |
-| 098 | 4 | 4 | 0 | 0 | 0 |
-| 099 | 6 | 6 | 0 | 0 | 0 |
-| 100 | 6 | 6 | 0 | 0 | 0 |
-| 101 | 5 | 5 | 0 | 0 | 0 |
+| 098 | 3 | 3 | 0 | 0 | 0 |
+| 099 | 5 | 5 | 0 | 0 | 0 |
+| 100 | 5 | 5 | 0 | 0 | 0 |
+| 101 | 6 | 6 | 0 | 0 | 0 |
 | 102 | 5 | 5 | 0 | 0 | 0 |
 | 103 | 5 | 5 | 0 | 0 | 0 |
 | 104 | 6 | 6 | 0 | 0 | 0 |
@@ -350,11 +349,10 @@ Risk labels overlap; one asset may appear in more than one row.
 | S10-020-ADDRESSES-001 | 020/addresses | Major | Bottom decision rule | The decision rule says 'Different networks? Use IP address' versus 'Same local network? Use MAC address'. | Local IP communication uses both address types: the destination IP identifies the endpoint while the destination MAC address delivers the frame on the local link. Routed communication also uses IP end-to-end and MAC addresses hop by hop. |
 | S10-035-GATES-001 | 035/gates | Major | Main gate-rules table | The title says 'The six gate rules', but the table contains only NOT, AND, OR and NAND. | A six-gate summary must also include NOR and XOR, with their expressions and output conditions. |
 | S10-042-CYCLE-VISUAL-001 | 042/cycle-visual | Major | Step 3 PC/MDR/CIR diagram | The orange line labelled 'increment PC' leaves the PC box and its arrowhead enters the CIR box. | Incrementing the PC updates the PC itself; only the fetched instruction should move from MDR to CIR. |
-| S10-099-PSEUDOCODE-001 | 099/pseudocode | Major | Left Cambridge-style pseudocode | The IF...ELSE selection is followed directly by ENDPROCEDURE; ENDIF is missing. | Close the selection with ENDIF before ENDPROCEDURE. |
-| S10-100-EQUIVALENCE-001 | 100/equivalence | Major | Right pseudocode-equivalent panel | The IF...THEN...ELSE code has no ENDIF. | The pseudocode equivalent must end with ENDIF. |
-| S10-100-FLOWCHARTS-001 | 100/flowcharts | Critical | Example flowchart | The chart repeatedly adds Mark to Total, never calculates Average, yet outputs Average when Mark >= 50; the No branch loops back for another input. | A worked flowchart must only output a value that has been assigned and must use a termination/count rule consistent with the intended algorithm. |
-| S10-101-PSEUDOCODE-001 | 101/pseudocode | Major | Java support panel | The Java loop inputs number but never adds number to total, and the panel never outputs total, while the result says it computes the sum. | The support code must execute total += number inside the loop and output total after the loop. |
-| S10-102-PSEUDOCODE-001 | 102/pseudocode | Major | Cambridge-style pseudocode steps | The IF Mark >= 50 THEN block is not closed before NEXT Count. | Insert ENDIF after PassCount <- PassCount + 1 and before NEXT Count. |
+| S10-101-EQUIVALENCE-001 | 101/equivalence | Major | Right pseudocode-equivalent panel | The IF...THEN...ELSE code has no ENDIF. | The pseudocode equivalent must end with ENDIF. |
+| S10-101-FLOWCHARTS-001 | 101/flowcharts | Critical | Example flowchart | The chart repeatedly adds Mark to Total, never calculates Average, yet outputs Average when Mark >= 50; the No branch loops back for another input. | A worked flowchart must only output a value that has been assigned and must use a termination/count rule consistent with the intended algorithm. |
+| S10-102-PSEUDOCODE-001 | 102/pseudocode | Major | Java support panel | The Java loop inputs number but never adds number to total, and the panel never outputs total, while the result says it computes the sum. | The support code must execute total += number inside the loop and output total after the loop. |
+| S10-100-PSEUDOCODE-001 | 100/pseudocode | Major | Cambridge-style pseudocode steps | The IF Mark >= 50 THEN block is not closed before NEXT Count. | Insert ENDIF after PassCount <- PassCount + 1 and before NEXT Count. |
 | S10-103-CHECKS-001 | 103/checks | Minor | Length-check row | The description says the input has the 'required number' of characters, but the rule is LENGTH(Postcode) <= 8 and the stated risk is only being too long. | Describe this example as a maximum-length check, or use equality/range limits if an exact required length is intended. |
 | S10-103-PSEUDOCODE-001 | 103/pseudocode | Major | Cambridge-style pseudocode panel | The code uses UNTIL without a preceding REPEAT and opens IF...THEN without ENDIF. | A post-condition validation loop must use REPEAT ... UNTIL, and the nested selection must be closed with ENDIF. |
 | S10-103-PSEUDOCODE-002 | 103/pseudocode | Major | Java support panel | The Java code ends with '} while (...)' but has no opening 'do {' block. | A Java do-while loop must begin with do { before the input and condition body. |

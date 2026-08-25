@@ -8,21 +8,21 @@
 ## Learning Objectives
 By the end of the lesson, students should be able to:
 1. Define and distinguish the network concepts in **Network purposes, LAN, WAN, and network topologies**.
-2. Explain how the relevant devices, addressing or protocols support communication.
+2. Explain how LAN/WAN scope and topology links affect connectivity and fault tolerance.
 3. Apply the concepts to a network scenario and justify a suitable choice.
 
 ## Key Vocabulary
 English first, Chinese support:
 
-- protocol 协议, packet 数据包, routing 路由, bandwidth 带宽, latency 延迟
+- network 网络, LAN 局域网, WAN 广域网, topology 拓扑, resilience 韧性
 
 ## Warm-Up Hook
-Ask: If your message to a friend had to travel through several classrooms as tiny envelopes, what address would each envelope need? Use that to introduce Network purposes, LAN, WAN, and network topologies, not as a vocabulary list but as a journey.
+Sketch four computers connected in a line, then remove the middle link. Ask which devices can still communicate and how another connection pattern would change the outcome.
 
 Focus question: Which feature distinguishes **Network purposes, LAN, WAN, and network topologies** from the most closely related syllabus concept?
 
 ## Guided Explanation
-Trace one message from sender to receiver. At each step, name the device, address, protocol or performance factor involved. Then deliberately break one part of the path and ask students to predict the symptom: delay, failed lookup, wrong destination or insecure transfer.
+Compare LAN and WAN ownership, scale and management. Build bus, star, mesh and hybrid connection diagrams, then remove one link or central device from each and predict which devices lose connectivity.
 
 Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
@@ -34,19 +34,19 @@ Suggested timing:
 - 38-45 min: mini-quiz and exit ticket.
 
 ## Board Plan / Teacher Talk Track
-Left: sender and receiver. Middle: packet path with devices/protocols. Right: cause -> symptom -> fix table.
+Left: LAN and WAN comparison. Middle: bus, star, mesh and hybrid link diagrams. Right: failed component -> connectivity effect -> trade-off.
 
 Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** A student cannot access a secure web page on the school network. Identify two possible network-related causes and one suitable check for each.
+**Problem:** A school needs a network for one building and wants simple fault finding. Compare a bus and star topology and justify one choice.
 
-**Worked answer / marking focus:** Strong answers connect a named component or protocol to a symptom, for example DNS failure prevents name resolution, or HTTPS certificate problems affect secure communication.
+**Worked answer / marking focus:** A star uses a separate link from each device to a central switch, so one cable failure normally affects one device and faults are easier to isolate. It needs more cabling and the central device is a single point of failure.
 
 
 
 ## Student Task
-Students draw a packet journey for a web request and label where addressing, routing and protocols are used. They then add one bottleneck and explain its effect.
+Students draw bus, star, mesh and hybrid topologies with an accurate link count. For each, they mark one failed link or device and explain the resulting loss of connectivity.
 
 ## Mini-Quiz
 1. State one precise definition from this lesson.
@@ -69,42 +69,8 @@ Award credit for:
 Do not award vague claims such as "better", "easier", "secure" or "efficient" without a cause and consequence.
 
 ## Common Misconception and Correction Prompt
-Misconception: Students often confuse bandwidth with speed in every sense. Correction: bandwidth is capacity; latency and congestion also affect perceived performance.
+Misconception: Students often think every topology fails in the same way. Correction: the connection pattern determines which alternative paths and single points of failure exist.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
-
-## Stage 2 syllabus completion
-
-**Official audit rows:** S2.05
-**Focus:** Packet movement through network topologies
-
-### Direct explanation
-
-- In a bus, a transmitted signal travels along the shared backbone and devices inspect it. In a star, each frame travels through the central switch. In a mesh, alternative links can provide several possible routes. A hybrid combines behaviours of its component topologies.
-- Topology justification must connect packet path to the scenario: central failure, cable failure, congestion, expansion and redundancy are consequences of the structure.
-
-### Worked example
-
-**One star cable fails:** Only the device on that cable loses its link; packets between other devices still pass through the central switch. If the switch fails, all attached paths fail.
-
-### Targeted practice and answers
-
-1. Where does a frame pass in a star network?
-   **Answer:** Through the central switch.
-2. Why can a mesh continue after one link fails?
-   **Answer:** Packets may use an alternative link/route.
-3. What shared component carries transmissions in a bus?
-   **Answer:** The backbone cable.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Compare how a packet travels in a star topology and a mesh topology, and explain one reliability difference.
-
-- **B1** star packet/frame passes through a central switch
-- **B1** mesh provides multiple interconnected paths / possible routes
-- **B1** star switch is a single point of failure
-- **B1** mesh can reroute when a link fails
-
-**Strict note:** Do not accept 'mesh is better' without a packet-path or failure consequence.
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

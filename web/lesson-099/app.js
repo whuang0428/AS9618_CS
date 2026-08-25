@@ -20,7 +20,7 @@ const sorterMap = {
 const filterItems = [
   { id: "places", text: "PlacesLeft in an event booking system", keep: true, reason: "It controls whether the booking can be accepted." },
   { id: "poster", text: "Poster colour used to advertise the event", keep: false, reason: "It does not affect the booking algorithm." },
-  { id: "age", text: "StudentAge when only ages 11-18 are allowed", keep: true, reason: "It is needed for validation." },
+  { id: "age", text: "StudentAge when only ages 11-18 are allowed", keep: true, reason: "It is needed to check the stated eligibility rule." },
   { id: "desk", text: "The desk where the organiser sits", keep: false, reason: "It is real-world context but not part of the algorithm." },
   { id: "price", text: "TicketPrice used to calculate TotalCost", keep: true, reason: "It affects the calculation and output." },
   { id: "logo", text: "School logo shape on the ticket", keep: false, reason: "It does not change any processing step in the algorithm." },
@@ -29,12 +29,12 @@ const filterItems = [
 const scenarioPlans = {
   average: {
     title: "Class average from marks",
-    modules: ["Input marks", "Validate each mark is 0-100", "Add valid marks to Total", "Calculate Average", "Output Average"],
+    modules: ["Receive marks", "Check each mark is 0-100", "Calculate Total", "Calculate Average", "Produce Average"],
     abstraction: "Keep marks, number of marks and valid range. Ignore student handwriting, classroom layout and display colour.",
   },
   booking: {
     title: "Event booking with limited places",
-    modules: ["Input booking request", "Validate student details", "Check PlacesLeft", "Calculate TotalCost", "Update PlacesLeft", "Output confirmation"],
+    modules: ["Receive booking request", "Check required details", "Check PlacesLeft", "Calculate TotalCost", "Update PlacesLeft", "Produce confirmation"],
     abstraction: "Keep requested tickets, price, age rule and places left. Ignore poster design and room decoration.",
   },
   login: {
@@ -44,7 +44,7 @@ const scenarioPlans = {
   },
   shop: {
     title: "Small shop receipt total",
-    modules: ["Input item prices", "Validate price is not negative", "Add price to Total", "Apply discount if needed", "Output receipt total"],
+    modules: ["Receive item prices", "Check prices are not negative", "Calculate Total", "Apply discount rule", "Produce receipt total"],
     abstraction: "Keep prices, discount rule and total. Ignore shelf position unless the question uses it as an input.",
   },
 };
@@ -54,11 +54,11 @@ const examples = {
     title: "Example 1: Class average",
     problem: "A program inputs 20 marks and outputs the class average.",
     steps: [
-      "Decompose: InputMarks, ValidateMark, CalculateTotal, CalculateAverage, OutputAverage.",
+      "Decompose: ReceiveMarks, CheckMarks, CalculateTotal, CalculateAverage, ProduceAverage.",
       "Abstract: keep Mark, Count, Total, Average and the 0-100 range.",
       "Ignore: student's name if the average only needs marks; desk order; screen colour.",
-      "Cambridge-style plan: Total <- 0, repeat 20 times, input Mark, validate Mark, add Mark to Total, then Average <- Total / 20.",
-      "Testing focus: a mark of 0, a mark of 100 and an invalid mark such as 101.",
+      "Responsibility plan: receive all 20 marks, check the stated range, calculate the total, calculate the average, produce the result.",
+      "Review focus: every sub-problem has a clear input, responsibility and output.",
     ],
   },
   booking: {
@@ -68,7 +68,7 @@ const examples = {
       "Decompose: InputRequest, CheckEligibility, CheckPlaces, CalculateCost, UpdatePlaces, OutputDecision.",
       "Abstract: keep RequestedPlaces, PlacesLeft and TicketPrice because they affect decisions and calculations.",
       "Ignore: poster font, exact colour of the ticket and the organiser's desk.",
-      "Selection clue: IF RequestedPlaces <= PlacesLeft THEN accept and update PlacesLeft.",
+      "Decision responsibility: compare RequestedPlaces with PlacesLeft before accepting and updating the booking.",
       "Trap: outputting confirmation before checking places creates a false booking.",
     ],
   },
@@ -79,19 +79,19 @@ const examples = {
       "Decompose: InputCredentials, ValidateNotBlank, CompareUsername, ComparePassword, OutputResult.",
       "Abstract: keep EnteredUsername, EnteredPassword, StoredUsername and StoredPassword.",
       "Ignore: the shape of the login button; it is interface design, not algorithm logic.",
-      "Condition: EnteredUsername = StoredUsername AND EnteredPassword = StoredPassword.",
+      "Comparison responsibility: compare both entered credential values with the stored values.",
       "Security note: do not print the password as an output.",
     ],
   },
   receipt: {
     title: "Example 4: Receipt total",
-    problem: "A shop program inputs item prices until 0 is entered, then outputs the total.",
+    problem: "A shop plan receives four item prices and produces the total.",
     steps: [
-      "Decompose: InputPrice, CheckSentinel, ValidatePrice, AddToTotal, OutputReceipt.",
-      "Abstract: keep Price, Total and sentinel 0.",
+      "Decompose: ReceivePrices, CheckPrices, CalculateTotal, ApplyDiscount, ProduceReceipt.",
+      "Abstract: keep the four prices, any stated discount rule and the required total.",
       "Ignore: shelf colour and cashier name unless the question makes them required outputs.",
-      "Stopping condition: 0 ends input and must not be added to Total.",
-      "Trace focus: test with 2.50, 1.50, 0 to output 4.00.",
+      "Quantity constraint: exactly four prices are supplied.",
+      "Review focus: the sub-problems collectively account for every required calculation and output.",
     ],
   },
 };
@@ -100,31 +100,31 @@ const practice = [
   { id: "p1", prompt: "What term means splitting a problem into smaller sub-problems?", accepted: ["decomposition"], answer: "Decomposition" },
   { id: "p2", prompt: "What term means keeping relevant details and ignoring irrelevant details?", accepted: ["abstraction"], answer: "Abstraction" },
   { id: "p3", prompt: "In a booking system, should PlacesLeft be kept or ignored?", accepted: ["kept", "keep"], answer: "Keep it because it affects whether a booking is accepted." },
-  { id: "p4", prompt: "In an average mark algorithm, name one useful sub-problem.", accepted: ["input marks", "inputmarks", "validate marks", "validatemarks", "calculate total", "calculatetotal", "calculate average", "calculateaverage", "output average", "outputaverage", "validate mark", "validatemark"], answer: "Any useful module such as Input marks, Validate marks, Calculate total, Calculate average or Output average." },
+  { id: "p4", prompt: "In an average mark solution, name one useful sub-problem.", accepted: ["receive marks", "receivemarks", "check marks", "checkmarks", "calculate total", "calculatetotal", "calculate average", "calculateaverage", "produce average", "produceaverage"], answer: "For example: Receive marks, Check marks, Calculate total, Calculate average or Produce average." },
   { id: "p5", prompt: "Should poster colour usually be kept in an event-booking algorithm? yes or no.", accepted: ["no"], answer: "No. It normally does not affect the algorithm." },
-  { id: "p6", prompt: "Which is a better module name: ProcessData or ValidateMark?", accepted: ["validatemark", "validate mark"], answer: "ValidateMark / Validate mark, because it states a clear purpose." },
+  { id: "p6", prompt: "Which is a better sub-problem name: ProcessData or CheckMarkRange?", accepted: ["checkmarkrange", "check mark range"], answer: "CheckMarkRange / Check mark range, because it states a clear purpose." },
   { id: "p7", prompt: "What should you identify before writing sub-problems: required input or decorative detail?", accepted: ["required input", "input", "inputs"], answer: "Required input / inputs." },
   { id: "p8", prompt: "Give one reason decomposition helps testing.", accepted: ["each part can be tested", "test separately", "tested separately", "easier to test", "find errors"], answer: "Each sub-problem can be tested separately, making errors easier to find." },
-  { id: "p9", prompt: "Is Java syntax the required Paper 2 pseudocode format? yes or no.", accepted: ["no"], answer: "No. Cambridge-style pseudocode is the exam format." },
-  { id: "p10", prompt: "In a receipt algorithm using 0 as a sentinel, should 0 be added to the total? yes or no.", accepted: ["no"], answer: "No. The sentinel stops input and should not be processed as data." },
+  { id: "p9", prompt: "Should each sub-problem state a clear responsibility? yes or no.", accepted: ["yes"], answer: "Yes. A clear responsibility prevents overlap and omissions." },
+  { id: "p10", prompt: "Should a decorative detail be kept when it does not affect the required result? yes or no.", accepted: ["no"], answer: "No. Abstraction removes details that do not affect the result." },
 ];
 
 const mistakes = [
   {
     wrong: "I decomposed a program into modules called Part1, Part2 and Part3.",
-    fix: "Use meaningful verb-based names such as InputMarks, ValidateMark and CalculateAverage so the purpose is clear.",
+    fix: "Use meaningful verb-based names such as ReceiveMarks, CheckMarkRange and CalculateAverage so the purpose is clear.",
   },
   {
     wrong: "I kept the poster colour because it was mentioned in the story.",
     fix: "Only keep a detail if it affects input, processing, output or constraints. Mentioned does not always mean relevant.",
   },
   {
-    wrong: "I made every single line of pseudocode a separate module.",
+    wrong: "I made every tiny action a separate sub-problem.",
     fix: "A sub-problem should represent a useful task that can be understood and tested, not one tiny statement.",
   },
   {
     wrong: "I started coding the whole solution before deciding the sub-problems.",
-    fix: "Plan the sub-problems first. Then write Cambridge-style pseudocode for each part or combine the parts in a clear order.",
+    fix: "Plan meaningful sub-problems first and state how their responsibilities and outputs connect.",
   },
 ];
 
@@ -143,7 +143,7 @@ const examQuestions = [
     strict: [
       "Do not award a mark for vague names such as DoStuff unless purpose is explained.",
       "Allow update PlacesLeft as an additional valid sub-problem.",
-      "Do not require procedure syntax.",
+      "Do not require implementation syntax.",
     ],
   },
   {
@@ -169,12 +169,12 @@ const examQuestions = [
     title: "Question 3",
     marks: "6 marks",
     prompt: "A student decomposes a class-average program into InputMarks, ValidateMark, CalculateTotal, CalculateAverage and OutputAverage. Explain why this decomposition is useful when designing and testing the algorithm.",
-    answer: "The decomposition separates the problem into smaller tasks with clear purposes. Input and validation can be checked before marks are used. CalculateTotal and CalculateAverage can be traced with known marks. OutputAverage can be checked against the required output. This makes the algorithm easier to understand, test and correct because errors can be located in one sub-problem.",
+    answer: "The decomposition separates the problem into smaller tasks with clear purposes. Receiving and checking marks can be reviewed before calculations. CalculateTotal and CalculateAverage can be checked with known values. ProduceAverage can be checked against the required output. Errors can therefore be located in one sub-problem.",
     marking: [
       { mark: "B1", text: "states problem is split into smaller tasks/sub-problems" },
       { mark: "B1", text: "links named modules to clear purposes" },
-      { mark: "B1", text: "explains validation can be checked before processing" },
-      { mark: "B1", text: "explains calculation modules can be traced/tested" },
+      { mark: "B1", text: "explains mark checking can be reviewed before calculations" },
+      { mark: "B1", text: "explains calculation sub-problems can be checked separately" },
       { mark: "B1", text: "explains errors can be located/corrected more easily" },
       { mark: "B1", text: "uses the class-average context rather than a generic claim only" },
     ],
@@ -198,26 +198,26 @@ const examQuestions = [
     ],
     strict: [
       "Do not require discussion of hashing/encryption; this is an abstraction question.",
-      "Allow credential values/records as a grouped explanation.",
+      "Allow credential values as a grouped explanation.",
       "Do not accept ignoring passwords because they are private; privacy does not make them irrelevant to this algorithm.",
     ],
   },
   {
     title: "Question 5",
     marks: "5 marks",
-    prompt: "Write a short Cambridge-style pseudocode outline for a decomposed mark-processing algorithm using procedures InputMark, ValidateMark and OutputResult. Java syntax is not required.",
-    answer: "CALL InputMark(Mark)\nCALL ValidateMark(Mark, IsValid)\nIF IsValid = TRUE THEN\n    CALL OutputResult(Mark)\nELSE\n    OUTPUT \"Invalid mark\"\nENDIF",
+    prompt: "Describe five sub-problems for a mark-processing solution and state the responsibility of each.",
+    answer: "ReceiveMarks obtains the required values; CheckMarks checks the stated range; CalculateTotal combines the accepted values; CalculateAverage uses the total and number of marks; ProduceResult provides the required average.",
     marking: [
-      { mark: "B1", text: "uses Cambridge-style CALL/procedure-style outline or clear module calls" },
-      { mark: "B1", text: "includes InputMark or input module" },
-      { mark: "B1", text: "includes ValidateMark or validation module" },
-      { mark: "M1", text: "uses selection based on validation result" },
-      { mark: "A1", text: "outputs valid result or invalid message on correct branch" },
+      { mark: "B1", text: "receives the required marks" },
+      { mark: "B1", text: "checks marks against the stated requirement" },
+      { mark: "B1", text: "calculates the total" },
+      { mark: "B1", text: "calculates the average" },
+      { mark: "B1", text: "produces the required result" },
     ],
     strict: [
-      "Do not penalise if candidate writes PROCEDURE definitions instead of CALL outline, provided modules are clear.",
-      "Allow IsValid, Valid or equivalent Boolean flag.",
-      "Do not award final style mark for Java-only code.",
+      "Do not require implementation notation.",
+      "Allow equivalent verb-based sub-problem names.",
+      "Do not award vague labels without responsibilities.",
     ],
   },
 ];
@@ -235,7 +235,7 @@ function setupHook() {
   const responses = {
     places: "Keep it. PlacesLeft affects whether the booking can be accepted.",
     font: "Ignore it. The poster font does not change the booking algorithm.",
-    age: "Keep it if eligibility depends on age. It becomes a validation rule.",
+    age: "Keep it if eligibility depends on age. It becomes an eligibility constraint.",
     weather: "Ignore it unless the question explicitly makes weather a condition. Nice photo, not useful logic.",
   };
   document.querySelectorAll("[data-hook]").forEach((button) => {

@@ -10,6 +10,7 @@ const nodeChecks = [
   "verify-educational-visuals.mjs",
   "verify-visual-semantic-remediation.mjs",
   "verify-stage2.mjs",
+  "verify-curriculum-sequence.mjs",
   "verify-assessments.mjs",
   "verify-lesson-mark-schemes.mjs",
   "verify-stage5-mark-schemes.mjs",

@@ -72,6 +72,7 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
 ## Stage 2 syllabus completion
 
 **Official audit rows:** S4.06
@@ -105,6 +106,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **B1** VGA does not normally carry audio / may have lower suitability for modern digital displays
 
 **Strict note:** Do not accept 'HDMI is always higher quality' without the digital/analogue or audio distinction.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

@@ -74,6 +74,7 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
 ## Stage 2 syllabus completion
 
 **Official audit rows:** S12.02, S12.03
@@ -107,6 +108,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **B1** three invalid attempts transition from LoggedOut to Locked
 
 **Strict note:** Do not accept a flowchart of processing steps; marks require persistent states and event-labelled transitions.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

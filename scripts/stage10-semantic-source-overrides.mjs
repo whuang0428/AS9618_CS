@@ -84,8 +84,8 @@ const historicalSourceFactOverrides = {
     "Align the two 8-bit operands and start at the rightmost column.",
     "Add both bits and any carry-in; write the result bit and carry 1 left when required.",
     "For unsigned addition, a carry-out beyond bit 7 means the true sum needs more than 8 bits.",
-    "For signed two's-complement addition, carry-out alone is not the overflow test.",
-    "Signed overflow occurs when same-sign operands produce a result with the opposite sign.",
+    "Without a carry-out, the stored 8-bit result remains within the unsigned range 0 to 255.",
+    "A leftmost result bit of 1 is not by itself evidence of unsigned overflow.",
   ]),
   "005/twos": Object.freeze([
     "Write the positive magnitude using exactly 8 bits.",
@@ -107,6 +107,52 @@ const historicalSourceFactOverrides = {
     "Two's complement uses all eight bits as one weighted value with MSB place value -128.",
     "The 8-bit two's-complement range is -128 to +127 and it has one zero pattern.",
     "One's complement and two's complement do not store a separate magnitude field.",
+  ]),
+  "033/embedded": Object.freeze([
+    "An embedded system is designed to perform a specific task or closely related set of tasks.",
+    "It forms part of a larger product, such as a washing machine, microwave oven or router.",
+    "It often uses a limited interface and task-specific resources.",
+    "Low cost, low power and reliable repeated operation may be relevant design priorities.",
+    "Define an embedded system by purpose and context, not only by physical size.",
+  ]),
+  "098/concept": Object.freeze([
+    "Identify what data is supplied and do not invent missing data.",
+    "State the required transformation in clear natural language.",
+    "State the exact result that must be displayed, returned or stored.",
+    "Record limits, quantity requirements and supported assumptions.",
+    "Check that every requirement maps to an input, process, output, constraint or assumption.",
+  ]),
+  "098/model": Object.freeze([
+    "List each input and record its type or range when the problem supplies them.",
+    "Write the required processing in ordered natural-language steps.",
+    "State the exact required output.",
+    "Record constraints and supported assumptions.",
+    "Confirm completeness before choosing a representation.",
+  ]),
+  "098/constraints": Object.freeze([
+    "A range of 0 to 100 requires both limits to be checked.",
+    "Exactly 10 supplied readings means the plan must process all 10 readings.",
+    "A capacity of 30 bookings means a request beyond the remaining capacity must be rejected.",
+    "Each stated constraint must have a specific consequence in the plan.",
+  ]),
+  "099/decomposition": Object.freeze([
+    "Split the whole task into meaningful sub-problems with distinct responsibilities.",
+    "Separate receiving data, checking requirements, calculations and producing results when their responsibilities differ.",
+    "Use clear verb-based names instead of vague labels such as Part1 or ProcessData.",
+    "Confirm that the sub-problems connect into one complete solution.",
+  ]),
+  "099/abstraction": Object.freeze([
+    "Keep details that affect an input, rule, calculation, constraint or output.",
+    "Ignore decoration that does not change the required result.",
+    "Ask whether removing a detail would change the result.",
+    "Explain why a detail is relevant or irrelevant rather than only labelling it.",
+  ]),
+  "099/pattern": Object.freeze([
+    "Underline the required output and keep only details that affect it.",
+    "Create verb-based sub-problems with distinct responsibilities.",
+    "State each sub-problem's input and output.",
+    "Check that the parts collectively meet every requirement without gaps or overlap.",
+    "The result is a natural-language responsibility plan ready for a later representation lesson.",
   ]),
   "006/precision": Object.freeze([
     "0.75 denary equals 0.1100 binary exactly.",
@@ -142,19 +188,19 @@ const historicalSourceFactOverrides = {
     "For mark validation, output Valid only for values from 0 to 100 inclusive.",
     "Java braces may support understanding but are not Cambridge pseudocode.",
   ]),
-  "100/equivalence": Object.freeze([
+  "101/equivalence": Object.freeze([
     "A flowchart decision diamond becomes an IF condition in pseudocode.",
     "The labelled Yes and No branches become THEN and ELSE branches.",
     "Close the selection with ENDIF after the two branches rejoin.",
     "Input Age before testing whether it is between 11 and 18 inclusive.",
   ]),
-  "101/pseudocode": Object.freeze([
+  "102/pseudocode": Object.freeze([
     "Initialise Total to zero before a three-iteration loop.",
     "Input one Number and add it to Total during each iteration.",
     "Output Total once after the loop has processed all three numbers.",
     "A Java support version must preserve the same input, accumulation and final output.",
   ]),
-  "102/pseudocode": Object.freeze([
+  "100/pseudocode": Object.freeze([
     "Initialise PassCount to zero before processing five marks.",
     "Input Mark inside the FOR loop and increment PassCount only when Mark is at least 50.",
     "Close the conditional with ENDIF before NEXT Count.",
@@ -172,7 +218,7 @@ const historicalSourceFactOverrides = {
     "Close the match selection with ENDIF, then increment Index.",
     "ENDWHILE closes the surrounding search loop.",
   ]),
-  "100/flowcharts": Object.freeze([
+  "101/flowcharts": Object.freeze([
     "A terminator marks START or END; a parallelogram marks INPUT or OUTPUT.",
     "A rectangle marks a calculation or assignment; a diamond marks a yes/no decision.",
     "Flow lines show the next step and decision branches must be labelled.",

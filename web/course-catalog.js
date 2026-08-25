@@ -896,7 +896,7 @@
   {
     "number": 100,
     "id": "100",
-    "title": "Flowcharts and pseudocode notation",
+    "title": "Sequence, selection, and iteration",
     "paper": "Paper 2",
     "section": "Section 9",
     "unitId": "section-9",
@@ -905,7 +905,7 @@
   {
     "number": 101,
     "id": "101",
-    "title": "Trace tables and dry runs",
+    "title": "Flowcharts and pseudocode notation",
     "paper": "Paper 2",
     "section": "Section 9",
     "unitId": "section-9",
@@ -914,7 +914,7 @@
   {
     "number": 102,
     "id": "102",
-    "title": "Sequence, selection, and iteration in algorithms",
+    "title": "Trace tables and dry runs",
     "paper": "Paper 2",
     "section": "Section 9",
     "unitId": "section-9",

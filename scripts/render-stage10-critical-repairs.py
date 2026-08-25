@@ -118,13 +118,83 @@ def draw_card(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], index: 
 SPECS = {
     "004/method": {
         "title": "8-bit addition method",
-        "subtitle": "Keep unsigned carry-out and signed overflow as separate tests.",
+        "subtitle": "Use the carry-out beyond the eighth bit to test unsigned overflow.",
         "cards": [
             ("COLUMN METHOD", "Align both 8-bit operands.\nStart at the rightmost column.\nAdd both bits and the carry-in.\nWrite the result bit; carry 1 left when the column total is 2 or 3.", None, "Show the carry row."),
             ("UNSIGNED CHECK", "After the leftmost column, inspect the carry-out.\nCarry-out = 1 means the true unsigned sum needs a ninth bit and is outside 0 to 255.\nStore only the rightmost 8 bits when required.", None, "Carry-out tests unsigned overflow."),
-            ("SIGNED CHECK", "For two’s-complement operands, carry-out alone is not the overflow test.\nSigned overflow occurs when two operands with the same sign produce a result with the opposite sign.", None, "State which representation is being used."),
+            ("RANGE CHECK", "Without a carry-out, the stored 8-bit result remains within 0 to 255.\nA leftmost result bit of 1 is not by itself evidence of unsigned overflow.", None, "Check the ninth carry, not the leftmost stored bit."),
         ],
-        "footer": "Key distinction: carry-out detects unsigned overflow; the sign rule detects signed two’s-complement overflow.",
+        "footer": "Unsigned rule: a carry-out beyond the eighth bit means the true sum cannot fit in 8 bits.",
+    },
+    "033/embedded": {
+        "title": "What is an embedded system?",
+        "subtitle": "Define it by purpose and context, not only by physical size.",
+        "cards": [
+            ("DEDICATED PURPOSE", "Designed to perform a specific task or closely related set of tasks.", None, "Purpose is the defining feature."),
+            ("BUILT INTO A DEVICE", "Forms part of a larger product, such as a washing machine, microwave oven or router.", None, "It is not a separate general-purpose computer."),
+            ("DESIGN PRIORITIES", "Often uses a limited interface and task-specific resources. Low cost, low power and reliable repeated operation may matter.", None, "Link each priority to the device."),
+        ],
+        "footer": "Exam check: state the dedicated task and the larger device before adding a design characteristic.",
+    },
+    "098/concept": {
+        "title": "Plan the problem before choosing notation",
+        "subtitle": "A precise algorithm plan answers four questions.",
+        "cards": [
+            ("INPUT", "What data is supplied? Name each required value and any stated type or range.", None, "Do not invent missing data."),
+            ("PROCESS + OUTPUT", "What transformation is required? What exact result must be displayed, returned or stored?", None, "The process must produce the output."),
+            ("CONSTRAINTS", "What limits, quantity requirements or assumptions affect the plan?", None, "Record the source requirement."),
+        ],
+        "footer": "Completeness check: every statement in the problem should map to an input, process, output, constraint or assumption.",
+    },
+    "098/model": {
+        "title": "Use IPOC before choosing a representation",
+        "subtitle": "Write the problem model in clear natural language first.",
+        "cards": [
+            ("INPUT", "List each value the algorithm needs. Record type and range when the problem supplies them.", None, "Inputs come from the requirements."),
+            ("PROCESS", "State the required transformation in ordered natural-language steps.", None, "Use precise actions, not ‘process data’."),
+            ("OUTPUT + CHECK", "State the exact result, then confirm every constraint and supported assumption is represented.", None, "Check completeness before notation."),
+        ],
+        "footer": "A representation is chosen later; the IPOC meaning must already be complete.",
+    },
+    "098/constraints": {
+        "title": "Constraints change the algorithm plan",
+        "subtitle": "Translate each stated limit into a specific design effect.",
+        "cards": [
+            ("RANGE", "Clue: Mark is from 0 to 100.\nDesign effect: check both limits before using the mark.", None, "Inclusive limits include 0 and 100."),
+            ("QUANTITY", "Clue: exactly 10 readings are supplied.\nDesign effect: plan to process all 10 readings.", None, "Do not omit or invent readings."),
+            ("CAPACITY", "Clue: at most 30 bookings are available.\nDesign effect: reject a request beyond remaining capacity.", None, "Capacity affects the decision."),
+        ],
+        "footer": "State the constraint and its consequence; do not list limits without using them in the plan.",
+    },
+    "099/decomposition": {
+        "title": "Decomposition: split by responsibility",
+        "subtitle": "Each sub-problem should perform one meaningful part of the whole task.",
+        "cards": [
+            ("RECEIVE", "Identify the required data and create a sub-problem responsible for obtaining it.", None, "Name the responsibility clearly."),
+            ("CHECK + CALCULATE", "Separate rule checking from calculations when they have different inputs or reasons to change.", None, "Avoid one vague ‘ProcessData’ block."),
+            ("PRODUCE RESULT", "Create the required output and confirm that all sub-problems connect into one complete solution.", None, "No requirement may be omitted."),
+        ],
+        "footer": "Good decomposition reduces ambiguity: responsibilities are distinct, connected and collectively complete.",
+    },
+    "099/abstraction": {
+        "title": "Abstraction: keep details that affect the result",
+        "subtitle": "Relevant details change an input, rule, calculation, constraint or output.",
+        "cards": [
+            ("KEEP", "Keep values such as RequestedPlaces, PlacesLeft and TicketPrice when they affect the booking result.", None, "Explain the effect on the result."),
+            ("IGNORE", "Ignore decoration such as poster colour or room style when it does not change the required result.", None, "Mentioned does not mean relevant."),
+            ("CHECK", "Ask: if this detail is removed, can the required result still be produced correctly?", None, "Give a reason, not only a label."),
+        ],
+        "footer": "Abstraction is deliberate selection of relevant information, not vague simplification.",
+    },
+    "099/pattern": {
+        "title": "From scenario to responsibility plan",
+        "subtitle": "Use decomposition and abstraction before choosing implementation notation.",
+        "cards": [
+            ("READ + FILTER", "Underline the required output. Keep inputs, constraints and relationships that affect it; ignore decoration.", None, "State why each detail matters."),
+            ("DECOMPOSE", "Create verb-based sub-problems with distinct responsibilities.", None, "Avoid Part1, Part2 and DoStuff."),
+            ("CONNECT", "State each sub-problem’s input and output, then check that the parts collectively meet every requirement.", None, "Check for gaps and overlap."),
+        ],
+        "footer": "The result is a complete natural-language plan ready for a later representation lesson.",
     },
     "005/twos": {
         "title": "Two’s complement method",
@@ -196,7 +266,7 @@ SPECS = {
         ],
         "footer": "Do not draw an interpreter arrow to a permanent executable artifact.",
     },
-    "100/flowcharts": {
+    "101/flowcharts": {
         "title": "Flowcharts use symbols to show control flow",
         "subtitle": "Every arrow must lead to a defined next state.",
         "cards": [
@@ -315,7 +385,7 @@ SPECS.update({
         "ENDIF closes IF...ELSE. ENDPROCEDURE closes the surrounding procedure. They are not interchangeable.",
         "Nesting order: open PROCEDURE → open IF → close ENDIF → close ENDPROCEDURE.",
     ),
-    "100/equivalence": code_repair(
+    "101/equivalence": code_repair(
         "A decision diamond becomes a closed selection",
         "Both labelled branches must rejoin after ENDIF.",
         "FLOWCHART MEANING",
@@ -325,7 +395,7 @@ SPECS.update({
         "The diamond condition becomes IF. Its Yes and No arrows become THEN and ELSE. ENDIF is the rejoin point.",
         "A flowchart branch is not equivalent to an unclosed IF structure.",
     ),
-    "101/pseudocode": code_repair(
+    "102/pseudocode": code_repair(
         "Same summation in pseudocode and Java",
         "Both versions input three numbers, accumulate them and output the total.",
         "CAMBRIDGE PSEUDOCODE",
@@ -335,7 +405,7 @@ SPECS.update({
         "For inputs 4, 7, 2, Total changes 0 → 4 → 11 → 13. Update inside the loop; output after it.",
         "Equivalent algorithms perform the same input, accumulation and final output.",
     ),
-    "102/pseudocode": code_repair(
+    "100/pseudocode": code_repair(
         "Close the selection inside a FOR loop",
         "PassCount changes only when Mark meets the threshold.",
         "COMPLETE LOOP",

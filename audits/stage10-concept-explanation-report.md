@@ -2,11 +2,11 @@
 
 ## Current gate
 
-- Explanation targets: 782 across 150 lessons.
-- Implemented visual explanations: 782 across 150 lessons.
-- Academic infographic assets: 782 (781 ImageGen, 1 deterministic correction).
-- Semantic reviews complete: 782/782; unresolved blocking assets: 0.
-- Visual records: 968; semantic statuses remain explicit and are not inferred from successful rendering.
+- Explanation targets: 779 across 150 lessons.
+- Implemented visual explanations: 779 across 150 lessons.
+- Academic infographic assets: 779 (778 ImageGen, 1 deterministic correction).
+- Semantic reviews complete: 779/779; unresolved blocking assets: 0.
+- Visual records: 965; semantic statuses remain explicit and are not inferred from successful rendering.
 - Rollout state: complete across all 150 lessons after approval of the ten-lesson visual-style pilot.
 
 ## Review rules

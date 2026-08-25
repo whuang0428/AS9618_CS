@@ -153,9 +153,9 @@ TOPICS = {
     "9": [
         "Algorithmic thinking: inputs, outputs, and constraints",
         "Decomposition and abstraction",
+        "Sequence, selection, and iteration in algorithms",
         "Flowcharts and pseudocode notation",
         "Trace tables and dry runs",
-        "Sequence, selection, and iteration in algorithms",
         "Validation algorithms and defensive input handling",
         "Linear search and binary search",
         "Bubble sort and insertion sort",
@@ -353,6 +353,18 @@ def display_topic(topic: str) -> str:
 
 def learning_objectives(section: str, topic: str) -> list[str]:
     """Create measurable, syllabus-aligned objectives for each lesson category."""
+    if topic == "Algorithmic thinking: inputs, outputs, and constraints":
+        return [
+            "Identify inputs, processing, outputs, constraints and assumptions in a problem statement.",
+            "Build a complete IPOC plan using ordered natural-language steps.",
+            "Check that every stated requirement is represented before choosing notation.",
+        ]
+    if topic == "Decomposition and abstraction":
+        return [
+            "Split a problem into meaningful sub-problems with distinct responsibilities.",
+            "Give each sub-problem a clear input, responsibility and output.",
+            "Justify which scenario details are relevant or irrelevant to the required result.",
+        ]
     category = category_for(section, topic)
     focus = display_topic(topic)
     objectives = {
@@ -467,6 +479,24 @@ def learning_objectives(section: str, topic: str) -> list[str]:
 
 def topic_overrides(topic: str) -> dict[str, str]:
     t = topic.lower()
+    if topic == "Algorithmic thinking: inputs, outputs, and constraints":
+        return {
+            "guided": "Define inputs, outputs, constraints and assumptions before choosing a representation. Write required processing in ordered natural-language steps, then check every requirement against the plan.",
+            "board": "Left: problem statement. Middle: IPOC plan. Right: requirements and assumptions check.",
+            "worked_problem": "Plan how five supplied values will be used to produce their average.",
+            "worked_answer": "Inputs are five numeric values; output is Average; exactly five values are supplied; processing adds all five values and divides the total by 5.",
+            "student_task": "Students create IPOC plans for two problems and highlight the source requirement supporting each entry.",
+            "misconception": "Students often choose notation before defining the output. Correction: complete the IPOC meaning first.",
+        }
+    if topic == "Decomposition and abstraction":
+        return {
+            "guided": "Split a large problem into meaningful sub-problems, then keep only details that affect required inputs, processing, constraints or outputs. State how the responsibilities connect before choosing notation.",
+            "board": "Left: problem statement. Middle: verb-based sub-problems. Right: kept and ignored details with reasons.",
+            "worked_problem": "Split an event-booking problem into request, checking, cost and confirmation responsibilities.",
+            "worked_answer": "Credit clear sub-problems that collectively cover every required input, decision, calculation and output without unnecessary overlap.",
+            "student_task": "Students build a responsibility map, then justify which details must be kept or ignored.",
+            "misconception": "Students often create one sub-problem per tiny action. Correction: each sub-problem needs a meaningful responsibility.",
+        }
     if "bits, bytes" in t:
         return {
             "worked_problem": "A small icon uses 2048 bits. Convert this into bytes, nibbles and KiB where appropriate. Then explain why confusing bit and byte would make a file-size answer eight times wrong.",
@@ -854,6 +884,8 @@ def topic_profile(section: str, topic: str, no: int) -> dict[str, str]:
 
 def pseudocode_example(section: str, topic: str) -> str:
     if section not in {"9", "10", "11", "12", "R2"}:
+        return ""
+    if topic in {"Algorithmic thinking: inputs, outputs, and constraints", "Decomposition and abstraction"}:
         return ""
     t = topic.lower()
     if "procedures and functions" in t:

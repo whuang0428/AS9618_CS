@@ -1,9 +1,9 @@
 # Lesson 105: Bubble sort and insertion sort
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 2  
-**Syllabus reference:** Syllabus Section 9  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 2
+**Syllabus reference:** Syllabus Section 9
+**Duration:** 45 minutes
 **Assessment rhythm:** 5-minute quiz
 
 > Java is used only as a supporting implementation language. Cambridge pseudocode remains the exam answer format.
@@ -77,7 +77,7 @@ Students physically sort four cards twice, once using bubble sort rules and once
 3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework

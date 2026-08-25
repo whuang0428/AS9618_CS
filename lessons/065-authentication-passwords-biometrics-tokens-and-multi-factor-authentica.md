@@ -1,9 +1,9 @@
 # Lesson 065: Authentication: passwords, biometrics, tokens, and multi-factor authentication
 
-**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029  
-**Paper:** Paper 1  
-**Syllabus reference:** Syllabus Section 6  
-**Duration:** 45 minutes  
+**Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
+**Paper:** Paper 1
+**Syllabus reference:** Syllabus Section 6
+**Duration:** 45 minutes
 **Assessment rhythm:** 5-minute quiz
 ## Learning Objectives
 By the end of the lesson, students should be able to:
@@ -54,7 +54,7 @@ Groups create a risk-control table for a school database, online shop or hospita
 3. Explain one result or consequence using a complete cause-and-effect statement.
 
 ## Exit Ticket
-Complete this sentence in English:  
+Complete this sentence in English:
 "One important point from this lesson is ... . One common error is ... because ... ."
 
 ## Homework

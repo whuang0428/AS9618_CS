@@ -72,40 +72,6 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
-## Stage 2 syllabus completion
-
-**Official audit rows:** S4.12
-**Focus:** Assembly instruction groups
-
-### Direct explanation
-
-- Data movement instructions transfer values between memory/registers; input/output instructions communicate with devices; arithmetic instructions change numeric values; compare instructions set status information; branch instructions change the next instruction address.
-- A conditional branch depends on a comparison/status condition, while an unconditional jump always changes the PC. Classifying by effect helps trace code before considering a specific mnemonic.
-
-### Worked example
-
-**Classify a loop:** LDD COUNT is data movement, CMP LIMIT is comparison, JPE DONE is conditional branch, INC COUNT is arithmetic, JMP LOOP is unconditional branch and OUT is output.
-
-### Targeted practice and answers
-
-1. Which group does STO belong to?
-   **Answer:** Data movement/storage.
-2. Why is JPE conditional?
-   **Answer:** It branches only when the equality condition/status is satisfied.
-3. Which group changes a numeric accumulator value?
-   **Answer:** Arithmetic.
-
-### Exam-style question and MS
-
-**Question (4 marks):** Explain the difference between a compare instruction, a conditional branch and an unconditional branch.
-
-- **B1** compare tests values / sets status without itself selecting normal data output
-- **B1** conditional branch changes flow only when a condition/status is met
-- **B1** unconditional branch always changes the next instruction/PC
-- **B1** uses a coherent example or sequence
-
-**Strict note:** Do not accept that CMP itself necessarily jumps to another instruction.
-
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -148,7 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 1. Lowest-level executable form
 2. Machine code consists of binary instructions that can be executed directly by the processor.
 3. Not friendly for humans
-4. Binary instructions are hard to read and write, which is why assembly language uses mnemonics and high-level languages use translators.
+4. Binary instructions are difficult for people to read and write accurately, but they are the form the processor executes directly.
 5. Stored in memory
 6. Machine-code instructions are stored in memory and fetched by the CPU during the fetch-decode-execute cycle.
 7. CPU-specific meaning
@@ -161,7 +127,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-045-opcode.jpg`
 
 1. Opcode tells the CPU which operation to perform. Operand gives the data, register, address or value used by the operation.
-2. Mnemonic
+2. Operation
 3. Example with operand
 4. Load value from memory into ACC.
 5. 0001 01011010 = LOAD address 90

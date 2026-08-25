@@ -1,6 +1,6 @@
 # Stage 10 ImageGen infographic record
 
-781 explanations use original infographics generated with the built-in ImageGen tool. Lesson 004's overflow asset was vector-authored and rasterised deterministically after semantic review found inconsistent bit counts in the generated image. The uploaded CPU FDE infographic was used as a style and layout reference only. The maintained Stage 10 data supplies the lesson facts and visual constraints for every prompt.
+778 explanations use original infographics generated with the built-in ImageGen tool. Lesson 004's overflow asset was vector-authored and rasterised deterministically after semantic review found inconsistent bit counts in the generated image. The uploaded CPU FDE infographic was used as a style and layout reference only. The maintained Stage 10 data supplies the lesson facts and visual constraints for every prompt.
 
 | Lesson | Target | Asset | Knowledge point | Review state |
 |---|---|---|---|---|
@@ -111,7 +111,6 @@
 | 032 | `criteria` | `stage10-lesson-032-criteria.jpg` | The five core characteristics | Semantic review approved |
 | 032 | `tradeoffs` | `stage10-lesson-032-tradeoffs.jpg` | Trade-offs by common storage device | Semantic review approved |
 | 033 | `embedded` | `stage10-lesson-033-embedded.jpg` | What is an embedded system? | Semantic review approved |
-| 033 | `loop` | `stage10-lesson-033-loop.jpg` | The basic control loop | Semantic review approved |
 | 033 | `microcontroller` | `stage10-lesson-033-microcontroller.jpg` | Microcontroller vs general-purpose computer | Semantic review approved |
 | 034 | `actuators` | `stage10-lesson-034-actuators.jpg` | Actuators turn output signals into physical action | Semantic review approved |
 | 034 | `control` | `stage10-lesson-034-control.jpg` | Control systems use rules and feedback | Semantic review approved |
@@ -441,30 +440,28 @@
 | 097 | `score` | `stage10-lesson-097-score.jpg` | Turn a score into a repair priority | Semantic review approved |
 | 098 | `concept` | `stage10-lesson-098-concept.jpg` | An algorithm is a precise method for solving a problem | Semantic review approved |
 | 098 | `constraints` | `stage10-lesson-098-constraints.jpg` | Constraints stop algorithms from wandering off | Semantic review approved |
-| 098 | `model` | `stage10-lesson-098-model.jpg` | Use IPOC before pseudocode | Semantic review approved |
-| 098 | `pseudocode` | `stage10-lesson-098-pseudocode.jpg` | Cambridge pseudocode is the exam language | Semantic review approved |
+| 098 | `model` | `stage10-lesson-098-model.jpg` | Use IPOC before choosing a representation | Semantic review approved |
 | 099 | `abstraction` | `stage10-lesson-099-abstraction.jpg` | Abstraction: keep the details that affect the algorithm | Semantic review approved |
 | 099 | `decomposition` | `stage10-lesson-099-decomposition.jpg` | Decomposition: split the problem into sub-problems | Semantic review approved |
 | 099 | `filter` | `stage10-lesson-099-filter.jpg` | Keep or ignore details | Semantic review approved |
 | 099 | `pattern` | `stage10-lesson-099-pattern.jpg` | From scenario to algorithm plan | Semantic review approved |
-| 099 | `pseudocode` | `stage10-lesson-099-pseudocode.jpg` | Modules can be planned in pseudocode without Java syntax | Semantic review approved |
 | 099 | `sorter` | `stage10-lesson-099-sorter.jpg` | Classify the design move | Semantic review approved |
-| 100 | `equivalence` | `stage10-lesson-100-equivalence.jpg` | A diamond becomes IF...THEN...ELSE | Semantic review approved |
-| 100 | `flowcharts` | `stage10-lesson-100-flowcharts.jpg` | Flowcharts use symbols to show control flow | Semantic review approved |
-| 100 | `notation` | `stage10-lesson-100-notation.jpg` | Readable notation earns marks more easily | Semantic review approved |
-| 100 | `pseudocode` | `stage10-lesson-100-pseudocode.jpg` | Cambridge-style pseudocode uses structured keywords | Semantic review approved |
-| 100 | `structure-tool` | `stage10-lesson-100-structure-tool.jpg` | Match scenario to pseudocode structure | Semantic review approved |
-| 100 | `symbol-tool` | `stage10-lesson-100-symbol-tool.jpg` | Choose the correct flowchart symbol | Semantic review approved |
-| 101 | `dry-run` | `stage10-lesson-101-dry-run.jpg` | Dry run: execute the algorithm by hand | Semantic review approved |
-| 101 | `loops` | `stage10-lesson-101-loops.jpg` | Loops make trace tables useful and slightly unforgiving | Semantic review approved |
-| 101 | `predictor` | `stage10-lesson-101-predictor.jpg` | Predict the final output | Semantic review approved |
-| 101 | `pseudocode` | `stage10-lesson-101-pseudocode.jpg` | Trace Cambridge pseudocode in the exam; Java is only a support view | Semantic review approved |
-| 101 | `trace-table` | `stage10-lesson-101-trace-table.jpg` | A trace table records variables after each change | Semantic review approved |
-| 102 | `combining` | `stage10-lesson-102-combining.jpg` | Real algorithms usually combine the three structures | Semantic review approved |
-| 102 | `iteration` | `stage10-lesson-102-iteration.jpg` | Iteration: repeat steps | Semantic review approved |
-| 102 | `pseudocode` | `stage10-lesson-102-pseudocode.jpg` | Cambridge pseudocode is the exam form; Java is support only | Semantic review approved |
-| 102 | `selection` | `stage10-lesson-102-selection.jpg` | Selection: choose a path using a condition | Semantic review approved |
-| 102 | `sequence` | `stage10-lesson-102-sequence.jpg` | Sequence: steps run in a fixed order | Semantic review approved |
+| 100 | `combining` | `stage10-lesson-100-combining.jpg` | Real algorithms usually combine the three structures | Semantic review approved |
+| 100 | `iteration` | `stage10-lesson-100-iteration.jpg` | Iteration: repeat steps | Semantic review approved |
+| 100 | `pseudocode` | `stage10-lesson-100-pseudocode.jpg` | Cambridge pseudocode is the exam form; Java is support only | Semantic review approved |
+| 100 | `selection` | `stage10-lesson-100-selection.jpg` | Selection: choose a path using a condition | Semantic review approved |
+| 100 | `sequence` | `stage10-lesson-100-sequence.jpg` | Sequence: steps run in a fixed order | Semantic review approved |
+| 101 | `equivalence` | `stage10-lesson-101-equivalence.jpg` | A diamond becomes IF...THEN...ELSE | Semantic review approved |
+| 101 | `flowcharts` | `stage10-lesson-101-flowcharts.jpg` | Flowcharts use symbols to show control flow | Semantic review approved |
+| 101 | `notation` | `stage10-lesson-101-notation.jpg` | Readable notation earns marks more easily | Semantic review approved |
+| 101 | `pseudocode` | `stage10-lesson-101-pseudocode.jpg` | Cambridge-style pseudocode uses structured keywords | Semantic review approved |
+| 101 | `structure-tool` | `stage10-lesson-101-structure-tool.jpg` | Match scenario to pseudocode structure | Semantic review approved |
+| 101 | `symbol-tool` | `stage10-lesson-101-symbol-tool.jpg` | Choose the correct flowchart symbol | Semantic review approved |
+| 102 | `dry-run` | `stage10-lesson-102-dry-run.jpg` | Dry run: execute the algorithm by hand | Semantic review approved |
+| 102 | `loops` | `stage10-lesson-102-loops.jpg` | Loops make trace tables useful and slightly unforgiving | Semantic review approved |
+| 102 | `predictor` | `stage10-lesson-102-predictor.jpg` | Predict the final output | Semantic review approved |
+| 102 | `pseudocode` | `stage10-lesson-102-pseudocode.jpg` | Trace Cambridge pseudocode in the exam; Java is only a support view | Semantic review approved |
+| 102 | `trace-table` | `stage10-lesson-102-trace-table.jpg` | A trace table records variables after each change | Semantic review approved |
 | 103 | `checks` | `stage10-lesson-103-checks.jpg` | Match the rule to the risk | Semantic review approved |
 | 103 | `defensive` | `stage10-lesson-103-defensive.jpg` | Reject bad input, then ask again | Semantic review approved |
 | 103 | `pseudocode` | `stage10-lesson-103-pseudocode.jpg` | Use Cambridge-style validation loops in the exam | Semantic review approved |

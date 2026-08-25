@@ -56,15 +56,15 @@ The counts in this table are generated from the detailed rows below during verif
 
 | ID | Official requirement, including guidance | Current evidence | Practice / MS evidence | Status | Fixed Stage 2 action |
 |---|---|---|---|---|---|
-| S1.01 | Understand binary magnitudes and use binary prefixes kibi, mebi, gibi, tebi and decimal prefixes kilo, mega, giga, tera. | W001 Stage 2 completion; M001 specific completion module. | W001 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S1.02 | Understand binary, denary, hexadecimal, BCD, one's complement and two's complement number bases/representations. | W006 Stage 2 completion; M006 specific completion module. | W006 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S1.03 | Convert an integer value between the required number bases/representations. | W006 Stage 2 completion; M006 specific completion module. | W006 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S1.04 | Perform binary addition and subtraction on positive and negative integers. | W004 Stage 2 completion; M004 specific completion module. | W004 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S1.01 | Understand binary magnitudes and use binary prefixes kibi, mebi, gibi, tebi and decimal prefixes kilo, mega, giga, tera. | W001 direct teaching evidence; M001 matching lesson plans and completion modules where required. | W001 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S1.02 | Understand binary, denary, hexadecimal, BCD, one's complement and two's complement number bases/representations. | W002, W003, W005, W006 direct teaching evidence; M002, M003, M005, M006 matching lesson plans and completion modules where required. | W002, W003, W005, W006 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S1.03 | Convert an integer value between the required number bases/representations. | W002, W003, W005, W006 direct teaching evidence; M002, M003, M005, M006 matching lesson plans and completion modules where required. | W002, W003, W005, W006 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S1.04 | Perform binary addition and subtraction on positive and negative integers. | W004, W005 direct teaching evidence; M004, M005 matching lesson plans and completion modules where required. | W004, W005 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S1.05 | Understand overflow when performing binary addition and subtraction. | W004 directly explains fixed-width overflow. | W004 P/MS includes range and overflow decisions. | Complete | - |
-| S1.06 | Understand practical uses of BCD and hexadecimal. | W006 Stage 2 completion; M006 specific completion module. | W006 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S1.06 | Understand practical uses of BCD and hexadecimal. | W006 direct teaching evidence; M006 matching lesson plans and completion modules where required. | W006 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S1.07 | Understand ASCII, extended ASCII and Unicode; explain why character sets are used. Character codes need not be memorised. | W007 directly covers the three sets and encoding purpose. | W007 P/MS tests distinctions and application without code recall. | Complete | - |
-| S1.08 | Understand bitmap encoding: pixel, file header, image resolution, screen resolution and colour depth; calculate size and explain effects on quality/size. | W008 Stage 2 completion; M008 specific completion module. | W008 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S1.09 | Understand vector encoding using drawing objects, properties and a drawing list; justify bitmap or vector for a given application. | W009 Stage 2 completion; M009 specific completion module. | W009 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S1.08 | Understand bitmap encoding: pixel, file header, image resolution, screen resolution and colour depth; calculate size and explain effects on quality/size. | W008 direct teaching evidence; M008 matching lesson plans and completion modules where required. | W008 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S1.09 | Understand vector encoding using drawing objects, properties and a drawing list; justify bitmap or vector for a given application. | W009 direct teaching evidence; M009 matching lesson plans and completion modules where required. | W009 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S1.10 | Understand sound representation, analogue-to-digital sampling, sampling rate/resolution, file-size calculation and effects on accuracy/size. | W010-W011 directly cover the model and calculations. | W010-W011 P/MS cover definition, calculation and consequence. | Complete | - |
 | S1.11 | Explain the need for compression; lossy/lossless methods for text, bitmap, vector and sound; describe RLE. | W012-W013 cover need, trade-offs, lossy/lossless and RLE. | W012-W013 P/MS include method selection and RLE traces. | Complete | - |
 
@@ -74,19 +74,19 @@ The counts in this table are generated from the detailed rows below during verif
 |---|---|---|---|---|---|
 | S2.01 | Understand LAN and WAN characteristics and purposes. | W016 directly compares LAN and WAN. | W016 P/MS. | Complete | - |
 | S2.02 | Explain client-server and peer-to-peer roles, benefits and drawbacks; justify a model for a scenario. | W017 directly covers both models and scenario choice. | W017 P/MS. | Complete | - |
-| S2.03 | Understand thin-client and thick-client differences. | W017 Stage 2 completion; M017 specific completion module. | W017 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S2.03 | Understand thin-client and thick-client differences. | W017 direct teaching evidence; M017 matching lesson plans and completion modules where required. | W017 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S2.04 | Understand bus, star, mesh and hybrid topologies. | W016 uses accessible, fact-checked SVGs for bus, star, a labelled full-mesh example and a two-star hybrid, followed by causal explanation. | W016 P/MS. | Complete | - |
-| S2.05 | Describe how packets are transmitted in each topology and justify topology choice. | W016 Stage 2 completion; M016 specific completion module. | W016 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S2.06 | Understand public and private cloud computing, including benefits and drawbacks. | W024 Stage 2 completion; M024 specific completion module. | W024 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S2.05 | Describe how packets are transmitted in each topology and justify topology choice. | W016, W018 direct teaching evidence; M016, M018 matching lesson plans and completion modules where required. | W016, W018 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S2.06 | Understand public and private cloud computing, including benefits and drawbacks. | W024 direct teaching evidence; M024 matching lesson plans and completion modules where required. | W024 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S2.07 | Understand wired and wireless networks and compare their characteristics. | W022 directly compares both. | W022 P/MS. | Complete | - |
 | S2.08 | Understand copper cable, fibre-optic, radio waves, WiFi, microwave and satellite transmission. | W022 covers transmission media, with named-media comparisons. | W022 P/MS. | Complete | - |
-| S2.09 | Understand LAN hardware: switch, server, NIC/WNIC, WAP, cables, bridge and repeater. | W023 Stage 2 completion; M023 specific completion module. | W023 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S2.09 | Understand LAN hardware: switch, server, NIC/WNIC, WAP, cables, bridge and repeater. | W023 direct teaching evidence; M023 matching lesson plans and completion modules where required. | W023 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S2.10 | Understand the purpose of a router. | W018 and W023 directly cover forwarding between networks. | W018/W023 P/MS. | Complete | - |
-| S2.11 | Understand Ethernet collisions and CSMA/CD. | W019 Stage 2 completion; M019 specific completion module. | W019 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S2.12 | Understand bit streaming, real-time and on-demand streaming, bit rate and broadband speed. | W025 Stage 2 completion; M025 specific completion module. | W025 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S2.13 | Distinguish the World Wide Web from the internet. | W024 Stage 2 completion; M024 specific completion module. | W024 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S2.14 | Understand internet hardware: modems, PSTN, dedicated lines and cellular phone networks. | W023 Stage 2 completion; M023 specific completion module. | W023 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S2.15 | Understand IPv4/IPv6, subnetting, device association, public/private and static/dynamic addresses, including security implications. | W020 Stage 2 completion; M020 specific completion module. | W020 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S2.11 | Understand Ethernet collisions and CSMA/CD. | W019 direct teaching evidence; M019 matching lesson plans and completion modules where required. | W019 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S2.12 | Understand bit streaming, real-time and on-demand streaming, bit rate and broadband speed. | W025 direct teaching evidence; M025 matching lesson plans and completion modules where required. | W025 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S2.13 | Distinguish the World Wide Web from the internet. | W024 direct teaching evidence; M024 matching lesson plans and completion modules where required. | W024 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S2.14 | Understand internet hardware: modems, PSTN, dedicated lines and cellular phone networks. | W023 direct teaching evidence; M023 matching lesson plans and completion modules where required. | W023 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S2.15 | Understand IPv4/IPv6, subnetting, device association, public/private and static/dynamic addresses, including security implications. | W020 direct teaching evidence; M020 matching lesson plans and completion modules where required. | W020 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S2.16 | Explain URL purpose/structure and DNS operation. | W020 directly explains URL components and domain-to-IP resolution. | W020 P/MS. | Complete | - |
 
 ## Section 3: Hardware
@@ -95,11 +95,11 @@ The counts in this table are generated from the detailed rows below during verif
 |---|---|---|---|---|---|
 | S3.01 | Explain the need for input, output, primary storage, secondary storage and removable storage. | W027-W032 cover categories, purposes and selection. | W027-W032 P/MS. | Complete | - |
 | S3.02 | Understand embedded systems and their benefits/drawbacks. | W033 directly covers embedded systems and selection. | W033 P/MS. | Complete | - |
-| S3.03 | Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset. | W028, W029, W031 Stage 2 completion; M028, M029, M031 specific completion module. | W028, W029, W031 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S3.04 | Understand why buffers are used. | W029 Stage 2 completion; M029 specific completion module. | W029 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S3.03 | Describe principal operation of laser printer, 3D printer, microphone, speakers, HDD, flash memory, optical reader/writer, touchscreen and VR headset. | W028, W029, W031 direct teaching evidence; M028, M029, M031 matching lesson plans and completion modules where required. | W028, W029, W031 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S3.04 | Understand why buffers are used. | W029 direct teaching evidence; M029 matching lesson plans and completion modules where required. | W029 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S3.05 | Distinguish RAM and ROM. | W030 directly compares volatility, purpose and use. | W030 P/MS. | Complete | - |
-| S3.06 | Explain uses of SRAM and DRAM and reasons for each use. | W030 Stage 2 completion; M030 specific completion module. | W030 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S3.07 | Understand PROM, EPROM and EEPROM. | W030 Stage 2 completion; M030 specific completion module. | W030 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S3.06 | Explain uses of SRAM and DRAM and reasons for each use. | W030 direct teaching evidence; M030 matching lesson plans and completion modules where required. | W030 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S3.07 | Understand PROM, EPROM and EEPROM. | W030 direct teaching evidence; M030 matching lesson plans and completion modules where required. | W030 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S3.08 | Distinguish monitoring and control; understand sensors, actuators and feedback. | W034 covers monitoring/control loop, sensors, actuators and feedback. | W034 P/MS. | Complete | - |
 | S3.09 | Understand temperature, pressure, infrared and sound sensors and appropriate applications. | W034 covers sensor selection and feedback scenarios. | W034 P/MS. | Complete | - |
 | S3.10 | Understand NOT, AND, OR, NAND, NOR and XOR; use symbols/functions/truth tables and convert among problem, expression, circuit and truth table. | W035-W037 cover all representations and conversions. | W035-W037 P/MS. | Complete | - |
@@ -109,20 +109,20 @@ The counts in this table are generated from the detailed rows below during verif
 | ID | Official requirement, including guidance | Current evidence | Practice / MS evidence | Status | Fixed Stage 2 action |
 |---|---|---|---|---|---|
 | S4.01 | Understand Von Neumann architecture and the stored-program concept. | W041-W042 cover processor architecture and stored instructions/data. | W041-W042 P/MS. | Complete | - |
-| S4.02 | Understand general- and special-purpose registers: PC, MDR, MAR, ACC, IX, CIR and status register. | W043 Stage 2 completion; M043 specific completion module. | W043 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S4.03 | Understand ALU, CU, clock and immediate access store (IAS). | W041 Stage 2 completion; M041 specific completion module. | W041 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S4.02 | Understand general- and special-purpose registers: PC, MDR, MAR, ACC, IX, CIR and status register. | W043 direct teaching evidence; M043 matching lesson plans and completion modules where required. | W043 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S4.03 | Understand ALU, CU, clock and immediate access store (IAS). | W041 direct teaching evidence; M041 matching lesson plans and completion modules where required. | W041 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S4.04 | Understand address, data and control buses. | W044 directly covers purpose, direction and width. | W044 P/MS. | Complete | - |
 | S4.05 | Understand processor performance factors: processor type, cores, bus width, clock and cache. | W049 and W044 cover these factors and limitations. | W049/W044 P/MS. | Complete | - |
-| S4.06 | Understand USB, HDMI and VGA ports. | W044 Stage 2 completion; M044 specific completion module. | W044 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S4.06 | Understand USB, HDMI and VGA ports. | W044 direct teaching evidence; M044 matching lesson plans and completion modules where required. | W044 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S4.07 | Describe the fetch-execute cycle using register transfer notation. | W042-W043 cover the cycle and named-register transfers. | W042-W043 P/MS. | Complete | - |
 | S4.08 | Understand causes/applications of interrupts, ISR, detection and handling. | W048 directly covers the interrupt sequence and ISR. | W048 P/MS. | Complete | - |
 | S4.09 | Distinguish assembly language and machine code. | W045-W046 cover the relationship and translation need. | W045-W046 P/MS. | Complete | - |
-| S4.10 | Describe and apply the stages of a two-pass assembler. | W046 Stage 2 completion; M046 specific completion module. | W046 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S4.10 | Describe and apply the stages of a two-pass assembler. | W046 direct teaching evidence; M046 matching lesson plans and completion modules where required. | W046 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S4.11 | Trace a simple assembly-language program. | W046-W047 provide operand and instruction traces. | W046-W047 P/MS. | Complete | - |
-| S4.12 | Understand instruction groups: data movement, input/output, arithmetic, conditional/unconditional branch and compare. | W045 Stage 2 completion; M045 specific completion module. | W045 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S4.13 | Use the specified instruction set: LDM, LDD, LDI, LDX, LDR, MOV, STO, ADD, SUB, INC, DEC, JMP, CMP, CMI, JPE, JPN, IN, OUT and END. | W046, W047 Stage 2 completion; M046, M047 specific completion module. | W046, W047 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S4.12 | Understand instruction groups: data movement, input/output, arithmetic, conditional/unconditional branch and compare. | W046 direct teaching evidence; M046 matching lesson plans and completion modules where required. | W046 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S4.13 | Use the specified instruction set: LDM, LDD, LDI, LDX, LDR, MOV, STO, ADD, SUB, INC, DEC, JMP, CMP, CMI, JPE, JPN, IN, OUT and END. | W046, W047 direct teaching evidence; M046, M047 matching lesson plans and completion modules where required. | W046, W047 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S4.14 | Understand immediate, direct, indirect, indexed and relative addressing. | W047 directly covers addressing-mode interpretation. | W047 P/MS. | Complete | - |
-| S4.15 | Use AND, OR, XOR, LSL and LSR for bit manipulation, including testing/setting bits with masks. | W050 Stage 2 completion; M050 specific completion module. | W050 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S4.15 | Use AND, OR, XOR, LSL and LSR for bit manipulation, including testing/setting bits with masks. | W050 direct teaching evidence; M050 matching lesson plans and completion modules where required. | W050 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 
 ## Section 5: System Software
 
@@ -130,49 +130,49 @@ The counts in this table are generated from the detailed rows below during verif
 |---|---|---|---|---|---|
 | S5.01 | Explain why an operating system is required and its memory, file, security, hardware and process management roles. | W052-W053 directly cover need and named roles. | W052-W053 P/MS. | Complete | - |
 | S5.02 | Understand disk formatter, antivirus, defragmentation, disk analysis/repair, compression and backup utilities. | W055 covers the named utility categories and purpose. | W055 P/MS. | Complete | - |
-| S5.03 | Understand libraries and benefits of dynamically linked library files. | W058 Stage 2 completion; M058 specific completion module. | W058 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S5.03 | Understand libraries and benefits of dynamically linked library files. | W058 direct teaching evidence; M058 matching lesson plans and completion modules where required. | W058 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S5.04 | Explain why assembler, compiler and interpreter are needed. | W056 directly covers translators and source-to-target purpose. | W056 P/MS. | Complete | - |
 | S5.05 | Compare compiler and interpreter advantages/disadvantages and justify use. | W056 and W060 cover comparison and scenario choice. | W056/W060 P/MS. | Complete | - |
-| S5.06 | Understand that Java is partly compiled and partly interpreted. | W060 Stage 2 completion; M060 specific completion module. | W060 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S5.07 | Understand IDE features: context-sensitive prompts, dynamic syntax checking, prettyprint, expand/collapse, single-step, breakpoints, variable/expression inspection and report window. | W060 Stage 2 completion; M060 specific completion module. | W060 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S5.06 | Understand that Java is partly compiled and partly interpreted. | W060 direct teaching evidence; M060 matching lesson plans and completion modules where required. | W060 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S5.07 | Understand IDE features: context-sensitive prompts, dynamic syntax checking, prettyprint, expand/collapse, single-step, breakpoints, variable/expression inspection and report window. | W060 direct teaching evidence; M060 matching lesson plans and completion modules where required. | W060 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 
 ## Section 6: Security, Privacy and Data Integrity
 
 | ID | Official requirement, including guidance | Current evidence | Practice / MS evidence | Status | Fixed Stage 2 action |
 |---|---|---|---|---|---|
-| S6.01 | Distinguish data security, privacy and integrity. | W062 Stage 2 completion; M062 specific completion module. | W062 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S6.01 | Distinguish data security, privacy and integrity. | W062 direct teaching evidence; M062 matching lesson plans and completion modules where required. | W062 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S6.02 | Explain the need for data and computer-system security. | W062-W064 directly connect threats, assets and consequences. | W062-W064 P/MS. | Complete | - |
-| S6.03 | Understand user accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware and encryption as security measures. | W063, W067 Stage 2 completion; M063, M067 specific completion module. | W063, W067 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S6.03 | Understand user accounts/passwords, digital signatures, biometrics, firewall, antivirus, anti-spyware and encryption as security measures. | W063, W067 direct teaching evidence; M063, M067 matching lesson plans and completion modules where required. | W063, W067 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S6.04 | Understand virus, spyware, hackers, phishing and pharming threats. | W063-W064 directly cover the named threats. | W063-W064 P/MS. | Complete | - |
 | S6.05 | Understand restriction of access to data and computer systems as a risk-reduction method. | W065-W066 cover authentication, authorisation and least privilege. | W065-W066 P/MS. | Complete | - |
 | S6.06 | Explain how encryption and access rights protect data. | W066-W067 cover confidentiality, permissions and access decisions. | W066-W067 P/MS. | Complete | - |
-| S6.07 | Understand validation checks: range, format, length, presence, existence, limit and check digit. | W069 Stage 2 completion; M069 specific completion module. | W069 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S6.08 | Understand verification: visual and double entry; parity byte/block and checksum. | W069 Stage 2 completion; M069 specific completion module. | W069 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S6.07 | Understand validation checks: range, format, length, presence, existence, limit and check digit. | W069 direct teaching evidence; M069 matching lesson plans and completion modules where required. | W069 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S6.08 | Understand verification: visual and double entry; parity byte/block and checksum. | W069 direct teaching evidence; M069 matching lesson plans and completion modules where required. | W069 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 
 ## Section 7: Ethics and Ownership
 
 | ID | Official requirement, including guidance | Current evidence | Practice / MS evidence | Status | Fixed Stage 2 action |
 |---|---|---|---|---|---|
 | S7.01 | Understand the need for professional ethics. | W072 directly covers ethical decision-making. | W072 P/MS. | Complete | - |
-| S7.02 | Understand the importance of the British Computer Society and IEEE codes of conduct. | W072 Stage 2 completion; M072 specific completion module. | W072 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S7.02 | Understand the importance of the British Computer Society and IEEE codes of conduct. | W072 direct teaching evidence; M072 matching lesson plans and completion modules where required. | W072 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S7.03 | Determine whether a scenario is ethical or unethical and explain its impact. | W072-W073 use scenario analysis and consequences. | W072-W073 P/MS. | Complete | - |
 | S7.04 | Understand copyright and its effect on software use. | W074 directly covers copyright and ownership. | W074 P/MS. | Complete | - |
-| S7.05 | Understand FSF, OSI, shareware and commercial licences; justify a licence for a scenario. | W074, W075 Stage 2 completion; M074, M075 specific completion module. | W074, W075 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S7.06 | Understand AI applications and evaluate social, economic and environmental impacts. | W076 Stage 2 completion; M076 specific completion module. | W076 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S7.05 | Understand FSF, OSI, shareware and commercial licences; justify a licence for a scenario. | W074, W075 direct teaching evidence; M074, M075 matching lesson plans and completion modules where required. | W074, W075 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S7.06 | Understand AI applications and evaluate social, economic and environmental impacts. | W076 direct teaching evidence; M076 matching lesson plans and completion modules where required. | W076 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 
 ## Section 8: Databases
 
 | ID | Official requirement, including guidance | Current evidence | Practice / MS evidence | Status | Fixed Stage 2 action |
 |---|---|---|---|---|---|
 | S8.01 | Explain limitations of file-based systems and how relational databases address them. | W078-W079 directly compare duplication, inconsistency and shared structure. | W078-W079 P/MS. | Complete | - |
-| S8.02 | Understand entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing. | W080, W081 Stage 2 completion; M080, M081 specific completion module. | W080, W081 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S8.02 | Understand entity/table, record/tuple, field/attribute, primary/candidate/secondary/foreign key, relationships, referential integrity and indexing. | W080, W081 direct teaching evidence; M080, M081 matching lesson plans and completion modules where required. | W080, W081 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S8.03 | Produce and interpret entity-relationship diagrams. | W082 directly covers entities, keys, cardinality and relationships. | W082 P/MS. | Complete | - |
-| S8.04 | Understand 1NF, 2NF and 3NF; explain 3NF and produce a normalised design. | W083 Stage 2 completion; M083 specific completion module. | W083 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S8.05 | Understand DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights. | W078 Stage 2 completion; M078 specific completion module. | W078 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S8.06 | Understand the developer interface and query processor. | W078 Stage 2 completion; M078 specific completion module. | W078 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S8.07 | Understand DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language. | W087 Stage 2 completion; M087 specific completion module. | W087 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S8.04 | Understand 1NF, 2NF and 3NF; explain 3NF and produce a normalised design. | W083 direct teaching evidence; M083 matching lesson plans and completion modules where required. | W083 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S8.05 | Understand DBMS features: data dictionary, data modelling, logical schema, integrity, security, backup and access rights. | W078 direct teaching evidence; M078 matching lesson plans and completion modules where required. | W078 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S8.06 | Understand the developer interface and query processor. | W078 direct teaching evidence; M078 matching lesson plans and completion modules where required. | W078 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S8.07 | Understand DDL creates/modifies structure, DML queries/maintains data, and SQL is an industry-standard language. | W087 direct teaching evidence; M087 matching lesson plans and completion modules where required. | W087 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S8.08 | Understand SQL syntax and semantics in the AS syllabus. | W084-W087 directly teach reading and writing SQL. | W084-W087 P/MS. | Complete | - |
-| S8.09 | Use DDL: CREATE DATABASE, CREATE TABLE with CHARACTER/VARCHAR/BOOLEAN/INTEGER/REAL/DATE/TIME, ALTER TABLE, primary and foreign keys. | W087 Stage 2 completion; M087 specific completion module. | W087 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S8.09 | Use DDL: CREATE DATABASE, CREATE TABLE with CHARACTER/VARCHAR/BOOLEAN/INTEGER/REAL/DATE/TIME, ALTER TABLE, primary and foreign keys. | W087 direct teaching evidence; M087 matching lesson plans and completion modules where required. | W087 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S8.10 | Use DML on at most two tables: SELECT, FROM, WHERE, ORDER BY, GROUP BY, INNER JOIN, SUM, COUNT and AVG. | W084-W086 cover selection, ordering, grouping, aggregates and joins. | W084-W086 P/MS. | Complete | - |
 | S8.11 | Use INSERT, DELETE and UPDATE to maintain data. | W087 directly covers all three operations. | W087 P/MS. | Complete | - |
 
@@ -183,11 +183,11 @@ The counts in this table are generated from the detailed rows below during verif
 | S9.01 | Understand abstraction, its purpose/benefits and creation of an abstract model. | W099 directly covers decomposition and abstraction in scenarios. | W099 P/MS. | Complete | - |
 | S9.02 | Use decomposition and express a problem as modules. | W099 and W111 cover decomposition into manageable parts. | W099/W111 P/MS. | Complete | - |
 | S9.03 | Understand what an algorithm is. | W098-W100 establish finite steps, inputs, processing and outputs. | W098-W100 P/MS. | Complete | - |
-| S9.04 | Choose meaningful identifier names and construct an identifier table. | W098 Stage 2 completion; M098 specific completion module. | W098 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S9.04 | Choose meaningful identifier names and construct an identifier table. | W098 direct teaching evidence; M098 matching lesson plans and completion modules where required. | W098 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S9.05 | Use input-process-output to design pseudocode solutions. | W098 and W111 directly use IPO/constraints and scenario design. | W098/W111 P/MS. | Complete | - |
-| S9.06 | Understand and use sequence, selection and iteration. | W102 and later programming lessons directly cover all three constructs. | W102 P/MS. | Complete | - |
-| S9.07 | Use structured English, flowcharts and pseudocode; convert between representations. | W100 Stage 2 completion; M100 specific completion module. | W100 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S9.08 | Use stepwise refinement to develop an algorithm. | W111 Stage 2 completion; M111 specific completion module. | W111 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S9.06 | Understand and use sequence, selection and iteration. | W100 direct teaching evidence; M100 matching lesson plans and completion modules where required. | W100 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S9.07 | Use structured English, flowcharts and pseudocode; convert between representations. | W101 direct teaching evidence; M101 matching lesson plans and completion modules where required. | W101 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S9.08 | Use stepwise refinement to develop an algorithm. | W111 direct teaching evidence; M111 matching lesson plans and completion modules where required. | W111 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S9.09 | Construct and interpret logic statements. | W102, W127 and W134 cover Boolean conditions and logical operators. | Relevant P/MS exists. | Complete | - |
 
 ## Section 10: Data Types and Structures
@@ -202,14 +202,14 @@ The counts in this table are generated from the detailed rows below during verif
 | S10.06 | Write bubble sort and linear search algorithms. | W104-W105 directly teach linear search and bubble sort; binary/insertion are labelled supporting extensions. | W104-W105 P/MS. | Complete | - |
 | S10.07 | Explain the need for files and use text-file pseudocode. | W120-W121 and W136 cover read/write/append patterns. | W120-W121/W136 P/MS. | Complete | - |
 | S10.08 | Understand the definition and purpose of an abstract data type. | W122-W123 define ADTs through behaviour and operations. | W122-W123 P/MS. | Complete | - |
-| S10.09 | Understand stack, queue and linked-list features; justify a structure. | W122, W123 Stage 2 completion; M122, M123 specific completion module. | W122, W123 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S10.10 | Add, edit and delete data in the ADTs and implement them using arrays; pseudocode for operations is not required by the syllabus. | W122, W123 Stage 2 completion; M122, M123 specific completion module. | W122, W123 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S10.09 | Understand stack, queue and linked-list features; justify a structure. | W122, W123 direct teaching evidence; M122, M123 matching lesson plans and completion modules where required. | W122, W123 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S10.10 | Add, edit and delete data in the ADTs and implement them using arrays; pseudocode for operations is not required by the syllabus. | W122, W123 direct teaching evidence; M122, M123 matching lesson plans and completion modules where required. | W122, W123 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 
 ## Section 11: Programming
 
 | ID | Official requirement, including guidance | Current evidence | Practice / MS evidence | Status | Fixed Stage 2 action |
 |---|---|---|---|---|---|
-| S11.01 | Write pseudocode from a flowchart or structured-English description. | W140 Stage 2 completion; M140 specific completion module. | W140 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S11.01 | Write pseudocode from a flowchart or structured-English description. | W140 direct teaching evidence; M140 matching lesson plans and completion modules where required. | W140 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S11.02 | Use declarations, constants, variables, assignment, arithmetic/logical operations and input/output. | W114, W124, W126, W134-W135 directly cover the set. | Targeted P/MS exists. | Complete | - |
 | S11.03 | Use built-in/library and string functions. | W133 directly covers string and built-in functions. | W133 P/MS. | Complete | - |
 | S11.04 | Use IF/ELSE/nested selection, CASE, count-controlled loops, post-condition and pre-condition loops. | W127-W129 directly cover the full control set. | W127-W129 P/MS. | Complete | - |
@@ -224,11 +224,11 @@ The counts in this table are generated from the detailed rows below during verif
 | ID | Official requirement, including guidance | Current evidence | Practice / MS evidence | Status | Fixed Stage 2 action |
 |---|---|---|---|---|---|
 | S12.01 | Understand why a program-development lifecycle is used; compare waterfall, iterative and RAD models and their stages. | W142-W143 cover lifecycle purpose, requirements and model choice. | W142-W143 P/MS. | Complete | - |
-| S12.02 | Understand, construct and use structure charts, including parameters, and derive pseudocode. | W144 Stage 2 completion; M144 specific completion module. | W144 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S12.03 | Understand and construct state-transition diagrams. | W144 Stage 2 completion; M144 specific completion module. | W144 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S12.02 | Understand, construct and use structure charts, including parameters, and derive pseudocode. | W144 direct teaching evidence; M144 matching lesson plans and completion modules where required. | W144 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S12.03 | Understand and construct state-transition diagrams. | W144 direct teaching evidence; M144 matching lesson plans and completion modules where required. | W144 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S12.04 | Identify and correct syntax, logic and runtime errors. | W059 and W138 directly cover error types and debugging. | W059/W138 P/MS. | Complete | - |
-| S12.05 | Understand dry run, walkthrough, white-box, black-box, integration, alpha, beta, acceptance and stub testing. | W145 Stage 2 completion; M145 specific completion module. | W145 worked example, three targeted items and expandable exam-style MS. | Complete | - |
-| S12.06 | Produce a test strategy and test plan. | W145 Stage 2 completion; M145 specific completion module. | W145 worked example, three targeted items and expandable exam-style MS. | Complete | - |
+| S12.05 | Understand dry run, walkthrough, white-box, black-box, integration, alpha, beta, acceptance and stub testing. | W145 direct teaching evidence; M145 matching lesson plans and completion modules where required. | W145 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
+| S12.06 | Produce a test strategy and test plan. | W145 direct teaching evidence; M145 matching lesson plans and completion modules where required. | W145 worked examples, targeted practice and expandable exam-style MS. | Complete | - |
 | S12.07 | Select normal, abnormal and extreme/boundary test data. | W137 directly covers normal, boundary and erroneous/abnormal data. | W137 P/MS. | Complete | - |
 | S12.08 | Understand perfective, adaptive and corrective maintenance. | W145-W146 cover maintenance types and case-study decisions. | W145-W146 P/MS. | Complete | - |
 | S12.09 | Analyse and amend an existing program. | W138-W141 and W146 include debugging, correction and improvement. | Relevant P/MS exists. | Complete | - |

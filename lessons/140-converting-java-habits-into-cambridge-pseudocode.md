@@ -74,6 +74,7 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
 ## Stage 2 syllabus completion
 
 **Official audit rows:** S11.01
@@ -107,6 +108,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **A1** outputs count after the loop with coherent Cambridge syntax
 
 **Strict note:** Do not accept Java syntax such as int, braces or System.out as Cambridge pseudocode.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

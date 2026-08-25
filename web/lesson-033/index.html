@@ -30,9 +30,8 @@
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
         <a href="#embedded">Embedded system</a>
-        <a href="#loop">Control loop</a>
         <a href="#microcontroller">Microcontroller</a>
-        <a href="#tool">Control tool</a>
+        <a href="#tool">Design tool</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -46,26 +45,26 @@
             <p class="lesson-meta">Lesson 033 | 45 minutes | Paper 1 Section 3</p>
             <h2>An embedded system is a computer that quietly does one job very seriously.</h2>
             <p>
-              This lesson explains embedded systems, microcontrollers and basic control
-              loops. The exam skill is describing the mechanism: sensor input, processing
-              against a rule, actuator output, then repeated monitoring.
+              This lesson explains why embedded systems are built for dedicated tasks and
+              how a microcontroller can integrate processing, memory and input/output on one
+              chip. Control-system components and feedback are introduced in Lesson 034.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
               <div><strong>Define</strong><span>embedded systems and microcontrollers accurately</span></div>
-              <div><strong>Trace</strong><span>sensor -> processing -> actuator control loops</span></div>
+              <div><strong>Compare</strong><span>microcontrollers with general-purpose computers</span></div>
               <div><strong>Explain</strong><span>why embedded systems are designed for specific tasks</span></div>
             </div>
           </div>
-          <div class="system-card" aria-label="Embedded control loop">
-            <span>sensor -> rule -> actuator -> repeat</span>
-            <p>A washing machine control system uses sensor inputs and programmed rules to determine its outputs.</p>
+          <div class="system-card" aria-label="Embedded system focus">
+            <span>dedicated task -> integrated hardware -> predictable operation</span>
+            <p>A washing machine contains an embedded computer designed around the appliance rather than around many unrelated user programs.</p>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Control-system answers often lose marks when students say the sensor performs the action. Sensors detect; actuators act.</p>
+            <p>Embedded-system answers need more than “a small computer”: identify its dedicated purpose and its place inside a larger device.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
@@ -76,16 +75,16 @@
         <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>How does a washing machine know the door is closed, the water level is enough and the motor should start?</h2>
+            <h2>Why does a washing machine use an embedded computer instead of a general-purpose laptop?</h2>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="sensor">Sensors detect door and water conditions</button>
-            <button class="choice-card" type="button" data-hook="process">Microcontroller checks rules</button>
-            <button class="choice-card" type="button" data-hook="actuator">Actuators control motor, valve or lock</button>
-            <button class="choice-card" type="button" data-hook="repeat">The loop repeats while the cycle runs</button>
+            <button class="choice-card" type="button" data-hook="purpose">It performs a dedicated set of tasks</button>
+            <button class="choice-card" type="button" data-hook="integrated">Its hardware can be integrated on one chip</button>
+            <button class="choice-card" type="button" data-hook="interface">It needs only a limited user interface</button>
+            <button class="choice-card" type="button" data-hook="reliability">It must operate predictably for repeated cycles</button>
           </div>
           <div class="feedback" id="hookFeedback" aria-live="polite">
-            Click one part. A strong answer explains the whole chain, not just one component.
+            Click one design reason, then connect it to the appliance's dedicated purpose.
           </div>
         </section>
 
@@ -98,10 +97,10 @@
             <article><strong>Dedicated purpose</strong><span>Designed to perform a specific task or set of tasks.</span></article>
             <article><strong>Built into device</strong><span>Part of a larger product, such as a washing machine or traffic light.</span></article>
             <article><strong>Limited interface</strong><span>Often has few controls or displays compared with a general-purpose computer.</span></article>
-            <article><strong>Real-world input/output</strong><span>Often reads sensors and controls actuators.</span></article>
+            <article><strong>Limited resources</strong><span>Hardware is selected for the required task rather than maximum general performance.</span></article>
             <article><strong>Reliability focus</strong><span>Usually expected to run repeatedly and predictably.</span></article>
           </div>
-          <div class="callout">Chinese support: embedded system = 嵌入式系统；microcontroller = 微控制器；sensor = 传感器；actuator = 执行器；control loop = 控制循环。</div>
+          <div class="callout">Chinese support: embedded system = 嵌入式系统；microcontroller = 微控制器；dedicated purpose = 专用功能；general-purpose computer = 通用计算机。</div>
         </section>
 
         <!-- stage10-explanation:start embedded -->
@@ -112,39 +111,11 @@
             <figcaption class="explanation-sr-only">What is an embedded system?: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Dedicated purpose Designed to perform a specific task or set of tasks.</li><li><strong>Lesson fact:</strong> Built into device Part of a larger product, such as a washing machine or traffic light.</li><li><strong>Lesson fact:</strong> Limited interface Often has few controls or displays compared with a general-purpose computer.</li><li><strong>Lesson fact:</strong> Real-world input/output Often reads sensors and controls actuators.</li><li><strong>Lesson fact:</strong> Reliability focus Usually expected to run repeatedly and predictably.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> An embedded system is designed to perform a specific task or closely related set of tasks.</li><li><strong>Lesson fact:</strong> It forms part of a larger product, such as a washing machine, microwave oven or router.</li><li><strong>Lesson fact:</strong> It often uses a limited interface and task-specific resources.</li><li><strong>Lesson fact:</strong> Low cost, low power and reliable repeated operation may be relevant design priorities.</li><li><strong>Lesson fact:</strong> Define an embedded system by purpose and context, not only by physical size.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end embedded -->
-
-        <section class="panel" id="loop" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loop">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge point 2</p>
-            <h2>The basic control loop</h2>
-          </div>
-          <div class="loop-grid" aria-label="Control loop">
-            <div><strong>1. Sense</strong><span>A sensor captures a physical quantity, such as temperature, light, pressure or distance.</span></div>
-            <div><strong>2. Process</strong><span>The microcontroller compares the reading with a stored rule or threshold.</span></div>
-            <div><strong>3. Act</strong><span>An actuator changes something physically, such as opening a valve or starting a motor.</span></div>
-            <div><strong>4. Repeat</strong><span>The sensor reads again so the system can respond to changing conditions.</span></div>
-          </div>
-          <div class="callout">Example rule: IF temperature &gt; 28°C THEN turn fan ON ELSE turn fan OFF.</div>
-        </section>
-
-        <!-- stage10-explanation:start loop -->
-        <section class="panel explanation-panel" id="explanation-loop" data-explains="loop" data-explanation-kind="mechanism" aria-labelledby="explanation-loop-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loop">
-          <h2 class="explanation-sr-only" id="explanation-loop-title">The basic control loop</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-033-loop.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The basic control loop with a structured visual model." />
-            <figcaption class="explanation-sr-only">The basic control loop: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Sense A sensor captures a physical quantity, such as temperature, light, pressure or distance.</li><li><strong>Lesson fact:</strong> 2. Process The microcontroller compares the reading with a stored rule or threshold.</li><li><strong>Lesson fact:</strong> 3. Act An actuator changes something physically, such as opening a valve or starting a motor.</li><li><strong>Lesson fact:</strong> 4. Repeat The sensor reads again so the system can respond to changing conditions.</li><li><strong>Lesson fact:</strong> Example rule: IF temperature &gt; 28°C THEN turn fan ON ELSE turn fan OFF.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end loop -->
 
         <section class="panel" id="microcontroller" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="microcontroller">
           <div class="section-title">
@@ -198,21 +169,21 @@
         <section class="panel interactive" id="tool" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="tool">
           <div class="section-title">
             <p class="eyebrow">Interactive tool</p>
-            <h2>Build the control explanation</h2>
+            <h2>Match a device to its embedded-system design</h2>
           </div>
           <div class="converter-grid">
             <label>
               Scenario
               <select id="scenarioInput">
-                <option value="greenhouse">Greenhouse fan turns on when temperature is too high</option>
-                <option value="door">Automatic door opens when a person approaches</option>
-                <option value="traffic">Traffic lights change using vehicle detection</option>
-                <option value="washer">Washing machine starts only when door is locked</option>
-                <option value="car">Car parking sensor warns when an obstacle is close</option>
-                <option value="heater">Room heater turns off when target temperature is reached</option>
+                <option value="greenhouse">Microwave oven</option>
+                <option value="door">Network printer</option>
+                <option value="traffic">Home router</option>
+                <option value="washer">Washing machine</option>
+                <option value="car">Smartwatch</option>
+                <option value="heater">Laptop computer</option>
               </select>
             </label>
-            <button type="button" id="chooseBtn">Explain loop</button>
+            <button type="button" id="chooseBtn">Explain design</button>
           </div>
           <div class="result-box" id="componentResult" aria-live="polite"></div>
           <div class="method-box" id="componentMethod"></div>
@@ -221,11 +192,11 @@
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Control-loop explanations</h2>
+            <h2>Embedded-system design explanations</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="greenhouse">Greenhouse</button>
-            <button class="tab" type="button" data-example="door">Automatic door</button>
+            <button class="tab active" type="button" data-example="greenhouse">Microwave</button>
+            <button class="tab" type="button" data-example="door">Router</button>
             <button class="tab" type="button" data-example="washing">Washing machine</button>
           </div>
           <article class="example-box" id="exampleBox"></article>
@@ -248,9 +219,9 @@
           </div>
           <div class="mistake-grid">
             <article>
-              <p class="wrong">"The temperature sensor turns on the fan."</p>
+              <p class="wrong">"An embedded system is any small computer."</p>
               <button class="answer-toggle" type="button" data-answer="mistake1">Show correction</button>
-              <p class="answer" id="mistake1">The sensor detects temperature. The microcontroller compares the reading with a rule. The fan motor/actuator turns on if the rule condition is met.</p>
+              <p class="answer" id="mistake1">Size alone is not the definition. An embedded system is built into a larger device and performs a specific task or set of tasks.</p>
             </article>
             <article>
               <p class="wrong">"An embedded system is just a normal computer inside a machine."</p>
@@ -264,7 +235,7 @@
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
             <h2>Questions with expandable MS</h2>
-            <p>Attempt first, then expand the mark scheme. Credit depends on distinguishing sensor, microcontroller/processor and actuator roles.</p>
+            <p>Attempt first, then expand the mark scheme. Credit depends on purpose, integration, interface and design priorities.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -272,15 +243,15 @@
         <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Embedded systems in six exam sentences</h2>
+            <h2>Embedded systems in six exam points</h2>
           </div>
           <div class="summary-grid">
             <div><strong>Embedded system</strong><span>Computer system built into a larger device for a specific task.</span></div>
             <div><strong>Microcontroller</strong><span>Often integrates CPU, memory and I/O for control tasks.</span></div>
-            <div><strong>Sensor</strong><span>Detects a physical condition and provides input data.</span></div>
-            <div><strong>Processing</strong><span>Compares sensor data with stored rules or thresholds.</span></div>
-            <div><strong>Actuator</strong><span>Produces physical action such as movement, heating or locking.</span></div>
-            <div><strong>Loop</strong><span>Repeated sensing allows the system to respond to changes.</span></div>
+            <div><strong>Integration</strong><span>CPU, memory and input/output interfaces may share one chip.</span></div>
+            <div><strong>Interface</strong><span>Usually limited to the controls and displays needed for the task.</span></div>
+            <div><strong>Resources</strong><span>Selected for cost, power and required performance.</span></div>
+            <div><strong>Reliability</strong><span>Designed for predictable repeated operation.</span></div>
           </div>
         </section>
 
@@ -290,17 +261,17 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Draw a control-loop diagram for an automatic door: sensor, decision rule, actuator and repeated check.</li>
-            <li>Write a 5-mark explanation for a greenhouse fan controlled by a microcontroller.</li>
+            <li>Explain why a microwave oven is an embedded system using purpose, integration and interface.</li>
+            <li>Write a 5-mark comparison between a microcontroller and a general-purpose computer.</li>
             <li>Compare an embedded system with a general-purpose computer using purpose, interface and hardware.</li>
-            <li>Rewrite this weak sentence: "The sensor opens the door."</li>
+            <li>Rewrite this weak sentence: "An embedded system is just a small computer."</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework guidance</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Door:</strong> proximity sensor detects person -> microcontroller checks rule -> motor actuator opens door -> sensor checks again.</p>
-            <p><strong>Greenhouse:</strong> temperature sensor reads temperature; microcontroller compares with threshold; fan actuator turns on/off.</p>
+            <p><strong>Microwave:</strong> it is built into the appliance, performs a dedicated set of cooking and timing tasks, and needs only a limited interface.</p>
+            <p><strong>Microcontroller:</strong> it can integrate CPU, memory and input/output interfaces on one chip, supporting low cost and low power use.</p>
             <p><strong>Comparison:</strong> embedded system has a dedicated purpose and limited interface; general-purpose computer runs many programs.</p>
-            <p><strong>Correction:</strong> the sensor detects the person; the actuator/motor opens the door after the microcontroller decision.</p>
+            <p><strong>Correction:</strong> an embedded system is defined by its dedicated role inside a larger device, not merely by physical size.</p>
           </div>
         </section>
       </div>

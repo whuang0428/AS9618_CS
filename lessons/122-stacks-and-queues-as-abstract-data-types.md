@@ -74,6 +74,7 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often describe stacks and queues as just arrays. Correction: the defining feature is the access rule, not the storage implementation.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
 ## Stage 2 syllabus completion
 
 **Official audit rows:** S10.09, S10.10
@@ -107,6 +108,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **B1** updates start to the new index / updates free-list head
 
 **Strict note:** Do not accept shifting every array element as the defining linked-list insertion method.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

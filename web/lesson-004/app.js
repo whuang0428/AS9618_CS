@@ -73,7 +73,7 @@ const examQuestions = [
     strict: [
       "Do not accept only 'there is a carry' as the overflow explanation.",
       "Accept denary support: 240 + 16 = 256, which is greater than 255.",
-      "Do not discuss signed two's complement overflow for this question.",
+      "Keep the interpretation within the unsigned 8-bit range used in this lesson.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
@@ -107,7 +107,7 @@ const examQuestions = [
     strict: [
       "Do not award overflow explanation for saying only 'the leftmost bit is 1'.",
       "Accept denary check: 202 + 117 = 319.",
-      "Do not require signed interpretation.",
+      "Do not require any interpretation outside unsigned 8-bit addition.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
@@ -122,7 +122,7 @@ const examQuestions = [
       { mark: "B1", text: "explains that 128 is within the unsigned 8-bit range / no carry-out occurs" },
     ],
     strict: [
-      "Do not accept signed interpretation for this lesson.",
+      "Assess the result only as unsigned 8-bit addition.",
       "Do not award the final mark for saying only 'it still has 8 bits' without range or carry-out reasoning.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
@@ -179,7 +179,7 @@ function setupHook() {
       if (button.dataset.hook === "overflow") {
         feedback.textContent = "Correct. A ninth bit cannot be stored in an 8-bit result, so unsigned overflow occurs.";
       } else if (button.dataset.hook === "negative") {
-        feedback.textContent = "That is a signed-binary idea. This lesson is unsigned 8-bit addition.";
+        feedback.textContent = "The leftmost stored bit can be 1 in a valid unsigned result. Check whether there is a ninth carry-out.";
       } else {
         feedback.textContent = "Not quite. The key issue is fixed width: only eight result bits are available.";
       }

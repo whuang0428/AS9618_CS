@@ -32,7 +32,6 @@
         <a href="#decomposition">Decomposition</a>
         <a href="#abstraction">Abstraction</a>
         <a href="#pattern">Design pattern</a>
-        <a href="#pseudocode">Pseudocode vs Java</a>
         <a href="#sorter">Task sorter</a>
         <a href="#filter">Abstraction filter</a>
         <a href="#builder">Module builder</a>
@@ -52,10 +51,10 @@
             <p>
               Decomposition breaks a problem into smaller sub-problems. Abstraction keeps the important details and
               ignores details that do not affect the algorithm. Together, they help you plan before writing Cambridge-style
-              pseudocode. Java remains a support language only; it is not the required exam pseudocode format.
+              implementation. Later lessons introduce control structures and formal notation.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Decompose</strong><span>split a problem into input, validation, processing and output modules</span></div>
+              <div><strong>Decompose</strong><span>split a problem into input, checking, calculation and output sub-problems</span></div>
               <div><strong>Abstract</strong><span>keep algorithm-relevant details and ignore decorative or implementation details</span></div>
               <div><strong>Justify</strong><span>explain why modular design improves readability, testing and correction</span></div>
             </div>
@@ -77,7 +76,7 @@
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Paper 2 often rewards clear planning. A correct decomposition can reveal the loop, selection and variables before code starts.</p>
+            <p>Paper 2 often rewards clear planning. A correct decomposition reveals responsibilities, required data and outputs before implementation starts.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
@@ -110,7 +109,7 @@
           <div class="data-table concept-table" role="table" aria-label="Decomposition examples">
             <div class="table-row table-head" role="row"><div>Problem</div><div>Possible sub-problems</div><div>Why this helps</div></div>
             <div class="table-row" role="row"><div>Calculate class average</div><div>Input marks, validate marks, total marks, calculate average, output average</div><div>Each part has a clear variable and test case</div></div>
-            <div class="table-row" role="row"><div>Login check</div><div>Input username/password, check blank input, compare stored details, output access decision</div><div>Selection and validation are easier to locate</div></div>
+            <div class="table-row" role="row"><div>Login check</div><div>Receive credentials, check required fields, compare stored details, produce access decision</div><div>Each responsibility can be reviewed separately</div></div>
             <div class="table-row" role="row"><div>Process ticket sales</div><div>Input ticket type, validate type, calculate price, update places, output confirmation</div><div>Business rules are separated from input/output</div></div>
           </div>
           <div class="callout">Chinese support: decomposition = 分解，把大问题拆成更小、更容易解决的部分；sub-problem = 子问题。</div>
@@ -124,7 +123,7 @@
             <figcaption class="explanation-sr-only">Decomposition: split the problem into sub-problems: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> Possible sub-problems</li><li><strong>Lesson fact:</strong> Why this helps</li><li><strong>Lesson fact:</strong> Calculate class average</li><li><strong>Lesson fact:</strong> Input marks, validate marks, total marks, calculate average, output average</li><li><strong>Lesson fact:</strong> Each part has a clear variable and test case</li><li><strong>Lesson fact:</strong> Login check</li><li><strong>Lesson fact:</strong> Input username/password, check blank input, compare stored details, output access decision</li><li><strong>Lesson fact:</strong> Selection and validation are easier to locate</li><li><strong>Lesson fact:</strong> Process ticket sales</li><li><strong>Lesson fact:</strong> Input ticket type, validate type, calculate price, update places, output confirmation</li><li><strong>Lesson fact:</strong> Business rules are separated from input/output</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Split the whole task into meaningful sub-problems with distinct responsibilities.</li><li><strong>Lesson fact:</strong> Separate receiving data, checking requirements, calculations and producing results when their responsibilities differ.</li><li><strong>Lesson fact:</strong> Use clear verb-based names instead of vague labels such as Part1 or ProcessData.</li><li><strong>Lesson fact:</strong> Confirm that the sub-problems connect into one complete solution.</li></ol>
 
           </div>
         </section>
@@ -139,7 +138,7 @@
             <article><strong>Keep</strong><span>inputs, ranges, counts, limits, required outputs and stopping conditions.</span></article>
             <article><strong>Ignore</strong><span>visual style, real-world decoration and details that do not change the logic.</span></article>
             <article><strong>Name</strong><span>use meaningful identifiers such as Mark, TotalCost, PlacesLeft and IsValid.</span></article>
-            <article><strong>Model</strong><span>represent the real situation using variables, constants, arrays and records when needed.</span></article>
+            <article><strong>Model</strong><span>represent the real situation using only the named values and relationships the problem requires.</span></article>
             <article><strong>Check</strong><span>ask whether removing a detail would change the algorithm's result.</span></article>
             <article><strong>Explain</strong><span>state why a detail is relevant or irrelevant, not just that it is "important".</span></article>
           </div>
@@ -154,7 +153,7 @@
             <figcaption class="explanation-sr-only">Abstraction: keep the details that affect the algorithm: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> Keep inputs, ranges, counts, limits, required outputs and stopping conditions.</li><li><strong>Lesson fact:</strong> Ignore visual style, real-world decoration and details that do not change the logic.</li><li><strong>Lesson fact:</strong> Name use meaningful identifiers such as Mark, TotalCost, PlacesLeft and IsValid.</li><li><strong>Lesson fact:</strong> Model represent the real situation using variables, constants, arrays and records when needed.</li><li><strong>Lesson fact:</strong> Check ask whether removing a detail would change the algorithm's result.</li><li><strong>Lesson fact:</strong> Explain state why a detail is relevant or irrelevant, not just that it is &quot;important&quot;.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Keep details that affect an input, rule, calculation, constraint or output.</li><li><strong>Lesson fact:</strong> Ignore decoration that does not change the required result.</li><li><strong>Lesson fact:</strong> Ask whether removing a detail would change the result.</li><li><strong>Lesson fact:</strong> Explain why a detail is relevant or irrelevant rather than only labelling it.</li></ol>
 
           </div>
         </section>
@@ -170,7 +169,7 @@
             <div><strong>2</strong><span>List inputs and constraints.</span></div>
             <div><strong>3</strong><span>Decompose into sub-problems with verb-based names.</span></div>
             <div><strong>4</strong><span>Abstract away details that do not affect logic.</span></div>
-            <div><strong>5</strong><span>Write Cambridge-style pseudocode for each part.</span></div>
+            <div><strong>5</strong><span>Describe each sub-problem's responsibility, input and output.</span></div>
           </div>
         </section>
 
@@ -182,56 +181,11 @@
             <figcaption class="explanation-sr-only">From scenario to algorithm plan: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Design pattern</li><li><strong>Lesson fact:</strong> 1 Read the scenario and underline the required output.</li><li><strong>Lesson fact:</strong> 2 List inputs and constraints.</li><li><strong>Lesson fact:</strong> 3 Decompose into sub-problems with verb-based names.</li><li><strong>Lesson fact:</strong> 4 Abstract away details that do not affect logic.</li><li><strong>Lesson fact:</strong> 5 Write Cambridge-style pseudocode for each part.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Underline the required output and keep only details that affect it.</li><li><strong>Lesson fact:</strong> Create verb-based sub-problems with distinct responsibilities.</li><li><strong>Lesson fact:</strong> State each sub-problem's input and output.</li><li><strong>Lesson fact:</strong> Check that the parts collectively meet every requirement without gaps or overlap.</li><li><strong>Lesson fact:</strong> The result is a natural-language responsibility plan ready for a later representation lesson.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end pattern -->
-
-        <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <div class="section-title">
-            <p class="eyebrow">Pseudocode vs Java</p>
-            <h2>Modules can be planned in pseudocode without Java syntax</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Cambridge-style pseudocode</h3>
-              <pre><code>PROCEDURE ValidateMark(Mark)
-    IF Mark &gt;= 0 AND Mark &lt;= 100 THEN
-        OUTPUT "Valid"
-    ELSE
-        OUTPUT "Invalid"
-    ENDIF
-ENDPROCEDURE</code></pre>
-            </article>
-            <article>
-              <h3>Java support only</h3>
-              <pre><code>static void validateMark(int mark) {
-    if (mark &gt;= 0 &amp;&amp; mark &lt;= 100) {
-        System.out.println("Valid");
-    } else {
-        System.out.println("Invalid");
-    }
-}</code></pre>
-            </article>
-          </div>
-          <div class="callout">Exam reminder: Java braces, `static void` and `System.out.println` help implementation practice, but Cambridge pseudocode is the Paper 2 answer format.</div>
-        </section>
-
-        <!-- stage10-explanation:start pseudocode -->
-        <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Modules can be planned in pseudocode without Java syntax</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-099-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Modules can be planned in pseudocode without Java syntax with a structured visual model." />
-            <figcaption class="explanation-sr-only">Modules can be planned in pseudocode without Java syntax: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A procedure may contain an IF...THEN...ELSE selection.</li><li><strong>Lesson fact:</strong> Close the selection with ENDIF before closing the surrounding procedure with ENDPROCEDURE.</li><li><strong>Lesson fact:</strong> For mark validation, output Valid only for values from 0 to 100 inclusive.</li><li><strong>Lesson fact:</strong> Java braces may support understanding but are not Cambridge pseudocode.</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end pseudocode -->
-
 
         <section class="panel" id="sorter" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sorter">
           <div class="section-title">
@@ -242,7 +196,7 @@ ENDPROCEDURE</code></pre>
             <label>
               Design statement
               <select id="sorterInput">
-                <option value="split">Split booking into input, validation, payment and confirmation.</option>
+                <option value="split">Split booking into request, checking, payment and confirmation.</option>
                 <option value="ignore">Ignore the colour of the printed ticket.</option>
                 <option value="keep">Keep PlacesLeft because it controls whether booking is possible.</option>
                 <option value="bad">Create a separate module for each single assignment line.</option>

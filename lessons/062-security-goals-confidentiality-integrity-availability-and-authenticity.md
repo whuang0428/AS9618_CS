@@ -72,6 +72,7 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
 ## Stage 2 syllabus completion
 
 **Official audit rows:** S6.01
@@ -105,6 +106,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **B1** scenario correctly distinguishes at least two consequences
 
 **Strict note:** Do not accept three repetitions of 'keeping data safe'.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
@@ -155,7 +157,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 5. Access rights
 6. Confidentiality and integrity
 7. Limits who can view or alter data.
-8. Backups
+8. Availability
 9. Allows recovery if data is lost or corrupted.
 10. Hash/checksum
 11. Integrity
@@ -169,9 +171,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 1. Goal Data should remain accurate, complete and unaltered unless changed by an authorised process.
 2. Risk Exam marks, bank balances or stock levels are changed incorrectly.
-3. Validation checks whether data follows stated rules; verification checks whether entered or transferred data matches its source.
-4. Access rights, checksums, hashes and audit trails can prevent, detect or record some changes, but no control guarantees integrity.
-5. Exam wording Explain exactly how the named control prevents, detects or records an incorrect change; verification does not prove that the source data is true or complete.
+3. Validation and verification Validation checks stated rules; verification checks entered or transferred data against its source, not whether the source is true or complete.
+4. Other controls Access rights, checksums, hashes and audit trails can prevent, detect or record some changes, but no control guarantees integrity.
+5. Exam wording Explain exactly how the named control prevents, detects or records an incorrect change.
 
 ### Use the risk chain before naming a control
 

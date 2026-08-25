@@ -7,9 +7,25 @@ const failures = [];
 const expect = (condition, message) => { if (!condition) failures.push(message); };
 const occurrence = (text, needle) => text.split(needle).length - 1;
 
-expect(repairs.length === 46, `expected 46 repaired lessons, found ${repairs.length}`);
-expect(new Set(repairs.map((item) => item.lesson)).size === 46, "repair lesson numbers must be unique");
+const repairLessons = new Set(repairs.map((item) => item.lesson));
+expect(repairs.length === repairLessons.size, "repair lesson numbers must be unique");
 expect(new Set(repairs.flatMap((item) => item.rows)).size === 53, "expected 53 unique repaired audit rows");
+
+for (let lesson = 1; lesson <= 150; lesson += 1) {
+  const number = String(lesson).padStart(3, "0");
+  const webDir = path.join(root, "web", `lesson-${number}`);
+  const html = fs.readFileSync(path.join(webDir, "index.html"), "utf8");
+  const css = fs.readFileSync(path.join(webDir, "styles.css"), "utf8");
+  const markdownNames = fs.readdirSync(path.join(root, "lessons")).filter((name) => name.startsWith(`${number}-`) && name.endsWith(".md"));
+  expect(markdownNames.length === 1, `L${number}: expected one Markdown lesson, found ${markdownNames.length}`);
+  if (markdownNames.length !== 1) continue;
+  const markdown = fs.readFileSync(path.join(root, "lessons", markdownNames[0]), "utf8");
+  const expected = repairLessons.has(lesson);
+  expect(occurrence(html, 'id="stage2-completion"') === (expected ? 1 : 0), `L${number}: ${expected ? "missing or duplicate" : "orphan"} HTML completion module`);
+  expect(occurrence(html, 'href="#stage2-completion"') === (expected ? 1 : 0), `L${number}: ${expected ? "missing or duplicate" : "orphan"} completion navigation link`);
+  expect(occurrence(css, "/* Stage 2 syllabus completion:start */") === (expected ? 1 : 0), `L${number}: ${expected ? "missing or duplicate" : "orphan"} completion CSS block`);
+  expect(occurrence(markdown, "<!-- stage2-completion:start -->") === (expected ? 1 : 0), `L${number}: ${expected ? "missing or duplicate" : "orphan"} Markdown completion module`);
+}
 
 for (const repair of repairs) {
   const number = String(repair.lesson).padStart(3, "0");
@@ -28,7 +44,7 @@ for (const repair of repairs) {
   expect(occurrence(html, 'id="stage2-completion"') === 1, `L${number}: HTML completion id count is not one`);
   expect(html.includes("<summary>Show MS</summary>"), `L${number}: expandable MS missing`);
   expect(html.includes("<summary>Show answer</summary>"), `L${number}: expandable answers missing`);
-  expect(occurrence(css, "/* Stage 2 syllabus completion */") === 1, `L${number}: CSS completion block count is not one`);
+  expect(occurrence(css, "/* Stage 2 syllabus completion:start */") === 1, `L${number}: CSS completion block count is not one`);
   expect(occurrence(markdown, "## Stage 2 syllabus completion") === 1, `L${number}: Markdown completion module count is not one`);
   for (const row of repair.rows) {
     expect(markdown.includes(row), `L${number}: audit row ${row} missing from Markdown`);
@@ -47,4 +63,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log("Stage 2 verification passed: 46 lessons, 53 repaired rows, 121 complete audit rows.");
+console.log(`Stage 2 verification passed: ${repairs.length} lessons, 53 repaired rows, 121 complete audit rows.`);

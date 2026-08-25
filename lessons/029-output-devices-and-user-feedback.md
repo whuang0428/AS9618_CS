@@ -72,6 +72,7 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
 ## Stage 2 syllabus completion
 
 **Official audit rows:** S3.03, S3.04
@@ -105,6 +106,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **B1** computer/processor can continue other processing without waiting for the full print
 
 **Strict note:** Do not accept 'the buffer makes the printer faster'; it manages transfer-rate differences.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations

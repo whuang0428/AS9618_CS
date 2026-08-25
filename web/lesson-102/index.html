@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 102 | Sequence, selection, and iteration in algorithms</title>
+    <title>AS9618 Lesson 102 | Trace tables and dry runs</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 9</p>
-        <h1>Sequence, selection, and iteration in algorithms</h1>
+        <h1>Trace tables and dry runs</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -29,13 +29,13 @@
       <aside class="lesson-nav" aria-label="Lesson navigation">
         <a href="#overview">Overview</a>
         <a href="#hook">Warm-up</a>
-        <a href="#sequence">Sequence</a>
-        <a href="#selection">Selection</a>
-        <a href="#iteration">Iteration</a>
-        <a href="#combining">Combining</a>
+        <a href="#trace-table">Trace table</a>
+        <a href="#dry-run">Dry run method</a>
+        <a href="#loops">Loop tracing</a>
         <a href="#pseudocode">Pseudocode vs Java</a>
-        <a href="#classifier">Structure classifier</a>
-        <a href="#builder">Algorithm builder</a>
+        <a href="#predictor">Output predictor</a>
+        <a href="#builder">Trace builder</a>
+        <a href="#checker">Dry-run checker</a>
         <a href="#examples">Examples</a>
         <a href="#practice">Practice</a>
         <a href="#debug">Debugging</a>
@@ -48,278 +48,273 @@
         <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
             <p class="lesson-meta">Lesson 102 | 45 minutes | Paper 2 Section 9 | informal questioning</p>
-            <h2>Algorithms are built from three moves: do this, choose that, repeat carefully.</h2>
+            <h2>A trace table is the algorithm's receipt: every variable change must pay rent.</h2>
             <p>
-              Sequence runs steps in order. Selection chooses a path using a condition. Iteration repeats steps while
-              a count or condition says to continue. Most AS algorithms are these three structures combined with clear
-              variables and Cambridge-style pseudocode.
+              A dry run means executing pseudocode manually using test data. A trace table records variable values and
+              outputs after each relevant step. This is how you prove what an algorithm does, find logic errors and avoid
+              guessing during Paper 2.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Identify</strong><span>sequence, selection and iteration in word problems and pseudocode</span></div>
-              <div><strong>Choose</strong><span>the correct control structure for fixed counts, conditions and decisions</span></div>
-              <div><strong>Write</strong><span>short Cambridge-style algorithms that combine the three structures</span></div>
+              <div><strong>Trace</strong><span>record changing variables and outputs in a clear table</span></div>
+              <div><strong>Predict</strong><span>work out final output from Cambridge-style pseudocode and test data</span></div>
+              <div><strong>Debug</strong><span>locate mistakes such as wrong initialisation, missing updates and off-by-one loops</span></div>
             </div>
           </div>
-          <div class="control-visual" aria-label="Control structure visual">
-            <div><strong>Sequence</strong><span>INPUT Length<br />Area &lt;- Length * Width<br />OUTPUT Area</span></div>
-            <div><strong>Selection</strong><span>IF Mark &gt;= 50 THEN<br />OUTPUT "Pass"<br />ENDIF</span></div>
-            <div><strong>Iteration</strong><span>FOR Count &lt;- 1 TO 5<br />INPUT Mark<br />NEXT Count</span></div>
-            <p>One line after another, one branch or another, one loop until enough. That is the toolkit.</p>
+          <div class="trace-visual" aria-label="Trace table visual">
+            <pre><code>Total &lt;- 0
+FOR Count &lt;- 1 TO 3
+    INPUT Mark
+    Total &lt;- Total + Mark
+NEXT Count
+OUTPUT Total</code></pre>
+            <div class="mini-table">
+              <span>Count</span><span>Mark</span><span>Total</span><span>Output</span>
+              <span>1</span><span>4</span><span>4</span><span>-</span>
+              <span>2</span><span>7</span><span>11</span><span>-</span>
+              <span>3</span><span>9</span><span>20</span><span>20</span>
+            </div>
           </div>
         </section>
 
         <section id="delivery-02" class="guidance-grid" aria-label="Lesson guidance" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <article class="why-card">
             <h3>Why this matters</h3>
-            <p>Exam pseudocode marks often depend on selecting the right structure before worrying about syntax.</p>
+            <p>Paper 2 trace questions reward accuracy, not confidence. The table is the working; the output is only the final receipt.</p>
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not use a loop because the problem sounds busy. Use a loop only when steps must repeat.</p>
+            <p>Do not update a variable in your head and forget to write it. Invisible arithmetic earns invisible marks.</p>
           </article>
         </section>
 
         <section class="panel" id="hook" data-delivery-role="CORE" data-classroom-activity="ASK" data-delivery-group="hook">
           <div class="section-title">
             <p class="eyebrow">Warm-up hook</p>
-            <h2>Sandwich algorithm, but make it examinable</h2>
-            <p>Classify each instruction. The sandwich is simple; the terminology is where crumbs happen.</p>
+            <h2>The coffee shop total that keeps changing</h2>
+            <p>A cashier adds 3, then 5, then 2. Which row shows the correct running total? The till is not psychic; it needs a trace.</p>
           </div>
           <div class="hook-grid">
-            <button class="choice-card" type="button" data-hook="sequence">Put bread on plate, then add cheese.</button>
-            <button class="choice-card" type="button" data-hook="selection">If toasted is required, heat the sandwich.</button>
-            <button class="choice-card" type="button" data-hook="iteration">Repeat for each sandwich order.</button>
-            <button class="choice-card" type="button" data-hook="bad">Use WHILE because sandwiches are important.</button>
+            <button class="choice-card" type="button" data-hook="a">3, 5, 2</button>
+            <button class="choice-card" type="button" data-hook="b">3, 8, 10</button>
+            <button class="choice-card" type="button" data-hook="c">0, 3, 8</button>
+            <button class="choice-card" type="button" data-hook="d">10, 8, 3</button>
           </div>
-          <div class="feedback" id="hookFeedback" aria-live="polite">Choose an instruction to classify the control structure.</div>
+          <div class="feedback" id="hookFeedback" aria-live="polite">Choose the row that records Total after each item is added.</div>
         </section>
 
-        <section class="panel" id="sequence" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sequence">
+        <section class="panel" id="trace-table" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace-table">
           <div class="section-title">
             <p class="eyebrow">Knowledge explanation</p>
-            <h2>Sequence: steps run in a fixed order</h2>
+            <h2>A trace table records variables after each change</h2>
           </div>
-          <div class="code-grid">
-            <article>
-              <h3>Idea</h3>
-              <p>Sequence is used when every step must happen once, in order, with no branch and no repetition.</p>
-              <div class="callout">Chinese support: sequence = 顺序结构。</div>
-            </article>
-            <article>
-              <h3>Example</h3>
-              <pre><code>INPUT Length
-INPUT Width
-Area &lt;- Length * Width
-OUTPUT Area</code></pre>
-            </article>
+          <div class="data-table concept-table" role="table" aria-label="Trace table parts">
+            <div class="table-row table-head" role="row"><div>Column</div><div>What it records</div><div>Exam note</div></div>
+            <div class="table-row" role="row"><div>Line / step</div><div>which statement is being executed</div><div>optional, but useful for debugging</div></div>
+            <div class="table-row" role="row"><div>Input value</div><div>the test data read by INPUT</div><div>do not invent values not given by the question</div></div>
+            <div class="table-row" role="row"><div>Variable columns</div><div>current values of Count, Total, Mark, Found, etc.</div><div>write changed values clearly</div></div>
+            <div class="table-row" role="row"><div>Output column</div><div>anything displayed by OUTPUT</div><div>leave blank or dash until output happens</div></div>
           </div>
+          <div class="callout">Chinese support: trace table = 跟踪表；dry run = 手动执行；variable = 变量；output column = 输出列。</div>
         </section>
 
-        <!-- stage10-explanation:start sequence -->
-        <section class="panel explanation-panel" id="explanation-sequence" data-explains="sequence" data-explanation-kind="mechanism" aria-labelledby="explanation-sequence-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sequence">
-          <h2 class="explanation-sr-only" id="explanation-sequence-title">Sequence: steps run in a fixed order</h2>
+        <!-- stage10-explanation:start trace-table -->
+        <section class="panel explanation-panel" id="explanation-trace-table" data-explains="trace-table" data-explanation-kind="mechanism" aria-labelledby="explanation-trace-table-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="trace-table">
+          <h2 class="explanation-sr-only" id="explanation-trace-table-title">A trace table records variables after each change</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-102-sequence.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sequence: steps run in a fixed order with a structured visual model." />
-            <figcaption class="explanation-sr-only">Sequence: steps run in a fixed order: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-102-trace-table.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A trace table records variables after each change with a structured visual model." />
+            <figcaption class="explanation-sr-only">A trace table records variables after each change: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> Sequence is used when every step must happen once, in order, with no branch and no repetition.</li><li><strong>Lesson fact:</strong> INPUT Length</li><li><strong>Lesson fact:</strong> INPUT Width</li><li><strong>Lesson fact:</strong> Area &lt;- Length * Width</li><li><strong>Lesson fact:</strong> OUTPUT Area</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> What it records</li><li><strong>Lesson fact:</strong> Exam note</li><li><strong>Lesson fact:</strong> Line / step</li><li><strong>Lesson fact:</strong> which statement is being executed</li><li><strong>Lesson fact:</strong> optional, but useful for debugging</li><li><strong>Lesson fact:</strong> Input value</li><li><strong>Lesson fact:</strong> the test data read by INPUT</li><li><strong>Lesson fact:</strong> do not invent values not given by the question</li><li><strong>Lesson fact:</strong> Variable columns</li><li><strong>Lesson fact:</strong> current values of Count, Total, Mark, Found, etc.</li><li><strong>Lesson fact:</strong> write changed values clearly</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end sequence -->
+        <!-- stage10-explanation:end trace-table -->
 
-        <section class="panel" id="selection" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selection">
+        <section class="panel" id="dry-run" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dry-run">
           <div class="section-title">
-            <p class="eyebrow">Knowledge explanation</p>
-            <h2>Selection: choose a path using a condition</h2>
-          </div>
-          <div class="code-grid">
-            <article>
-              <h3>Idea</h3>
-              <p>Selection is used when the algorithm must decide between different actions.</p>
-              <div class="callout">Chinese support: selection = 选择结构；condition = 条件。</div>
-            </article>
-            <article>
-              <h3>Example</h3>
-              <pre><code>INPUT Mark
-IF Mark &gt;= 50 THEN
-    OUTPUT "Pass"
-ELSE
-    OUTPUT "Resit"
-ENDIF</code></pre>
-            </article>
-          </div>
-        </section>
-
-        <!-- stage10-explanation:start selection -->
-        <section class="panel explanation-panel" id="explanation-selection" data-explains="selection" data-explanation-kind="mechanism" aria-labelledby="explanation-selection-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="selection">
-          <h2 class="explanation-sr-only" id="explanation-selection-title">Selection: choose a path using a condition</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-102-selection.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Selection: choose a path using a condition with a structured visual model." />
-            <figcaption class="explanation-sr-only">Selection: choose a path using a condition: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> Selection is used when the algorithm must decide between different actions.</li><li><strong>Lesson fact:</strong> INPUT Mark</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 50 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Pass&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Resit&quot;</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end selection -->
-
-        <section class="panel" id="iteration" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="iteration">
-          <div class="section-title">
-            <p class="eyebrow">Knowledge explanation</p>
-            <h2>Iteration: repeat steps</h2>
-          </div>
-          <div class="data-table concept-table" role="table" aria-label="Iteration types">
-            <div class="table-row table-head" role="row"><div>Type</div><div>Use when</div><div>Cambridge-style pattern</div></div>
-            <div class="table-row" role="row"><div>Count-controlled</div><div>the number of repeats is known</div><div>FOR Count &lt;- 1 TO 10 ... NEXT Count</div></div>
-            <div class="table-row" role="row"><div>Condition-controlled</div><div>repeat until a condition changes</div><div>WHILE Number &lt;&gt; -1 ... ENDWHILE</div></div>
-            <div class="table-row" role="row"><div>Repeat-until style</div><div>the body must run at least once</div><div>REPEAT ... UNTIL Valid = TRUE</div></div>
-          </div>
-          <div class="callout">Iteration = 迭代/循环。Known count? Use count-controlled. Unknown stopping point? Use condition-controlled.</div>
-        </section>
-
-        <!-- stage10-explanation:start iteration -->
-        <section class="panel explanation-panel" id="explanation-iteration" data-explains="iteration" data-explanation-kind="mechanism" aria-labelledby="explanation-iteration-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="iteration">
-          <h2 class="explanation-sr-only" id="explanation-iteration-title">Iteration: repeat steps</h2>
-          <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-102-iteration.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Iteration: repeat steps with a structured visual model." />
-            <figcaption class="explanation-sr-only">Iteration: repeat steps: source-grounded visual explanation.</figcaption>
-          </figure>
-          <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Knowledge explanation</li><li><strong>Lesson fact:</strong> Use when</li><li><strong>Lesson fact:</strong> Cambridge-style pattern</li><li><strong>Lesson fact:</strong> Count-controlled</li><li><strong>Lesson fact:</strong> the number of repeats is known</li><li><strong>Lesson fact:</strong> FOR Count &lt;- 1 TO 10 ... NEXT Count</li><li><strong>Lesson fact:</strong> Condition-controlled</li><li><strong>Lesson fact:</strong> repeat until a condition changes</li><li><strong>Lesson fact:</strong> WHILE Number &lt;&gt; -1 ... ENDWHILE</li><li><strong>Lesson fact:</strong> Repeat-until style</li><li><strong>Lesson fact:</strong> the body must run at least once</li><li><strong>Lesson fact:</strong> REPEAT ... UNTIL Valid = TRUE</li></ol>
-
-          </div>
-        </section>
-        <!-- stage10-explanation:end iteration -->
-
-        <section class="panel" id="combining" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="combining">
-          <div class="section-title">
-            <p class="eyebrow">Combining structures</p>
-            <h2>Real algorithms usually combine the three structures</h2>
+            <p class="eyebrow">Method</p>
+            <h2>Dry run: execute the algorithm by hand</h2>
           </div>
           <div class="step-strip">
-            <div><strong>1</strong><span>Use sequence to initialise variables and read inputs.</span></div>
-            <div><strong>2</strong><span>Use iteration when the same action happens repeatedly.</span></div>
-            <div><strong>3</strong><span>Use selection inside the loop when each item needs a decision.</span></div>
-            <div><strong>4</strong><span>Use sequence after the loop to calculate or output final results.</span></div>
-            <div><strong>5</strong><span>Indent nested structures so the examiner can see the logic.</span></div>
+            <div><strong>1</strong><span>Copy the variable names into table columns.</span></div>
+            <div><strong>2</strong><span>Write initial values before the loop starts.</span></div>
+            <div><strong>3</strong><span>Use each input value in order.</span></div>
+            <div><strong>4</strong><span>Update variables exactly when pseudocode updates them.</span></div>
+            <div><strong>5</strong><span>Record output only when an OUTPUT statement is executed.</span></div>
           </div>
         </section>
 
-        <!-- stage10-explanation:start combining -->
-        <section class="panel explanation-panel" id="explanation-combining" data-explains="combining" data-explanation-kind="process" aria-labelledby="explanation-combining-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="combining">
-          <h2 class="explanation-sr-only" id="explanation-combining-title">Real algorithms usually combine the three structures</h2>
+        <!-- stage10-explanation:start dry-run -->
+        <section class="panel explanation-panel" id="explanation-dry-run" data-explains="dry-run" data-explanation-kind="process" aria-labelledby="explanation-dry-run-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="dry-run">
+          <h2 class="explanation-sr-only" id="explanation-dry-run-title">Dry run: execute the algorithm by hand</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-102-combining.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Real algorithms usually combine the three structures with a structured visual model." />
-            <figcaption class="explanation-sr-only">Real algorithms usually combine the three structures: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-102-dry-run.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Dry run: execute the algorithm by hand with a structured visual model." />
+            <figcaption class="explanation-sr-only">Dry run: execute the algorithm by hand: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Combining structures</li><li><strong>Lesson fact:</strong> 1 Use sequence to initialise variables and read inputs.</li><li><strong>Lesson fact:</strong> 2 Use iteration when the same action happens repeatedly.</li><li><strong>Lesson fact:</strong> 3 Use selection inside the loop when each item needs a decision.</li><li><strong>Lesson fact:</strong> 4 Use sequence after the loop to calculate or output final results.</li><li><strong>Lesson fact:</strong> 5 Indent nested structures so the examiner can see the logic.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> 1 Copy the variable names into table columns.</li><li><strong>Lesson fact:</strong> 2 Write initial values before the loop starts.</li><li><strong>Lesson fact:</strong> 3 Use each input value in order.</li><li><strong>Lesson fact:</strong> 4 Update variables exactly when pseudocode updates them.</li><li><strong>Lesson fact:</strong> 5 Record output only when an OUTPUT statement is executed.</li></ol>
 
           </div>
         </section>
-        <!-- stage10-explanation:end combining -->
+        <!-- stage10-explanation:end dry-run -->
+
+        <section class="panel" id="loops" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loops">
+          <div class="section-title">
+            <p class="eyebrow">Loop tracing</p>
+            <h2>Loops make trace tables useful and slightly unforgiving</h2>
+          </div>
+          <div class="clause-grid">
+            <article><strong>Initialisation</strong><span>Variables such as Total and Count usually need a starting value before the loop.</span></article>
+            <article><strong>Update</strong><span>Record new values after assignment, not before.</span></article>
+            <article><strong>Condition</strong><span>For WHILE loops, check the condition before each iteration.</span></article>
+            <article><strong>Sentinel</strong><span>A sentinel value stops input and should usually not be processed as data.</span></article>
+            <article><strong>Output timing</strong><span>If OUTPUT is after the loop, output appears once at the end.</span></article>
+            <article><strong>Boundary</strong><span>Check whether loops run 5 times, 6 times, or one time too many.</span></article>
+          </div>
+        </section>
+
+        <!-- stage10-explanation:start loops -->
+        <section class="panel explanation-panel" id="explanation-loops" data-explains="loops" data-explanation-kind="mechanism" aria-labelledby="explanation-loops-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="loops">
+          <h2 class="explanation-sr-only" id="explanation-loops-title">Loops make trace tables useful and slightly unforgiving</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-102-loops.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Loops make trace tables useful and slightly unforgiving with a structured visual model." />
+            <figcaption class="explanation-sr-only">Loops make trace tables useful and slightly unforgiving: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Loop tracing</li><li><strong>Lesson fact:</strong> Initialisation Variables such as Total and Count usually need a starting value before the loop.</li><li><strong>Lesson fact:</strong> Update Record new values after assignment, not before.</li><li><strong>Lesson fact:</strong> Condition For WHILE loops, check the condition before each iteration.</li><li><strong>Lesson fact:</strong> Sentinel A sentinel value stops input and should usually not be processed as data.</li><li><strong>Lesson fact:</strong> Output timing If OUTPUT is after the loop, output appears once at the end.</li><li><strong>Lesson fact:</strong> Boundary Check whether loops run 5 times, 6 times, or one time too many.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end loops -->
 
         <section class="panel" id="pseudocode" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
           <div class="section-title">
             <p class="eyebrow">Pseudocode vs Java</p>
-            <h2>Cambridge pseudocode is the exam form; Java is support only</h2>
+            <h2>Trace Cambridge pseudocode in the exam; Java is only a support view</h2>
           </div>
           <div class="code-grid">
             <article>
               <h3>Cambridge-style pseudocode</h3>
-              <pre><code>PassCount &lt;- 0
-FOR Count &lt;- 1 TO 5
-    INPUT Mark
-    IF Mark &gt;= 50 THEN
-        PassCount &lt;- PassCount + 1
-    ENDIF
+              <pre><code>Total &lt;- 0
+FOR Count &lt;- 1 TO 3
+    INPUT Number
+    Total &lt;- Total + Number
 NEXT Count
-OUTPUT PassCount</code></pre>
+OUTPUT Total</code></pre>
             </article>
             <article>
               <h3>Java support only</h3>
-              <pre><code>int passCount = 0;
-for (int count = 1; count &lt;= 5; count++) {
-    int mark = input.nextInt();
-    if (mark &gt;= 50) {
-        passCount++;
-    }
+              <pre><code>int total = 0;
+for (int count = 1; count &lt;= 3; count++) {
+    int number = input.nextInt();
+    total = total + number;
 }
-System.out.println(passCount);</code></pre>
+System.out.println(total);</code></pre>
             </article>
           </div>
-          <div class="callout">Exam reminder: do not answer Paper 2 pseudocode questions with Java braces, semicolons or `System.out.println`.</div>
+          <div class="callout">Trace the Cambridge-style statements. Java syntax such as braces and `++` may help implementation practice, but it is not the required Paper 2 pseudocode notation.</div>
         </section>
 
         <!-- stage10-explanation:start pseudocode -->
         <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Cambridge pseudocode is the exam form; Java is support only</h2>
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Trace Cambridge pseudocode in the exam; Java is only a support view</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-102-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge pseudocode is the exam form; Java is support only with a structured visual model." />
-            <figcaption class="explanation-sr-only">Cambridge pseudocode is the exam form; Java is support only: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-102-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Trace Cambridge pseudocode in the exam; Java is only a support view with a structured visual model." />
+            <figcaption class="explanation-sr-only">Trace Cambridge pseudocode in the exam; Java is only a support view: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Initialise PassCount to zero before processing five marks.</li><li><strong>Lesson fact:</strong> Input Mark inside the FOR loop and increment PassCount only when Mark is at least 50.</li><li><strong>Lesson fact:</strong> Close the conditional with ENDIF before NEXT Count.</li><li><strong>Lesson fact:</strong> Output PassCount after the loop.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Initialise Total to zero before a three-iteration loop.</li><li><strong>Lesson fact:</strong> Input one Number and add it to Total during each iteration.</li><li><strong>Lesson fact:</strong> Output Total once after the loop has processed all three numbers.</li><li><strong>Lesson fact:</strong> A Java support version must preserve the same input, accumulation and final output.</li></ol>
 
           </div>
         </section>
         <!-- stage10-explanation:end pseudocode -->
 
 
-        <section class="panel" id="classifier" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="classifier">
+        <section class="panel" id="predictor" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="predictor">
           <div class="section-title">
-            <p class="eyebrow">Interactive structure classifier</p>
-            <h2>Choose the control structure</h2>
+            <p class="eyebrow">Interactive output predictor</p>
+            <h2>Predict the final output</h2>
           </div>
           <div class="converter-grid">
             <label>
-              Scenario clue
-              <select id="classifierInput">
-                <option value="area">Input length and width, calculate area, output area.</option>
-                <option value="pass">Output Pass or Resit depending on mark.</option>
-                <option value="five">Input exactly five marks.</option>
-                <option value="sentinel">Input numbers until -1 is entered.</option>
-                <option value="countpass">Count how many of ten marks are at least 50.</option>
+              Input set
+              <select id="predictInput">
+                <option value="a">4, 7, 9</option>
+                <option value="b">10, 0, 5</option>
+                <option value="c">-2, 8, 6</option>
+                <option value="d">3, 3, 3</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="classifyBtn">Classify</button>
+            <button class="primary-button" type="button" id="predictBtn">Predict output</button>
           </div>
-          <div class="feedback" id="classifyResult">Choose a clue to see the likely structure.</div>
+          <div class="feedback" id="predictResult">The pseudocode totals three input numbers and outputs Total.</div>
         </section>
+
+        <!-- stage10-explanation:start predictor -->
+        <section class="panel explanation-panel" id="explanation-predictor" data-explains="predictor" data-explanation-kind="mechanism" aria-labelledby="explanation-predictor-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="predictor">
+          <h2 class="explanation-sr-only" id="explanation-predictor-title">Predict the final output</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-102-predictor.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Predict the final output with a structured visual model." />
+            <figcaption class="explanation-sr-only">Predict the final output: source-grounded visual explanation.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Lesson fact:</strong> Interactive output predictor</li><li><strong>Lesson fact:</strong> Input set</li><li><strong>Lesson fact:</strong> The pseudocode totals three input numbers and outputs Total.</li></ol>
+
+          </div>
+        </section>
+        <!-- stage10-explanation:end predictor -->
 
         <section class="panel" id="builder" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="builder">
           <div class="section-title">
-            <p class="eyebrow">Interactive algorithm builder</p>
-            <h2>Generate a Cambridge-style outline</h2>
+            <p class="eyebrow">Interactive trace builder</p>
+            <h2>Build the trace table rows</h2>
           </div>
           <div class="builder-grid">
             <label>
-              Problem
-              <select id="builderInput">
-                <option value="area">Area of rectangle</option>
-                <option value="pass">Pass/resit decision</option>
-                <option value="total5">Total of five marks</option>
-                <option value="passcount">Count passes from five marks</option>
+              Trace scenario
+              <select id="traceInput">
+                <option value="total">Total 4, 7, 9</option>
+                <option value="max">Find maximum of 6, 11, 8</option>
+                <option value="sentinel">Total until -1: 5, 2, -1</option>
+                <option value="valid">Validate age 10, then 15</option>
               </select>
             </label>
-            <button class="primary-button" type="button" id="buildBtn">Build outline</button>
+            <button class="primary-button" type="button" id="traceBtn">Build trace</button>
           </div>
-          <div class="answer-frame" id="builderResult">Choose a problem to generate pseudocode.</div>
+          <div class="trace-output" id="traceResult">Choose a scenario to generate a trace table.</div>
+        </section>
+
+        <section class="panel" id="checker" data-delivery-role="OPTIONAL" data-classroom-activity="TEACH" data-delivery-group="checker">
+          <div class="section-title">
+            <p class="eyebrow">Interactive dry-run checker</p>
+            <h2>Find the first wrong row</h2>
+          </div>
+          <div class="converter-grid">
+            <label>
+              Proposed trace
+              <select id="checkerInput">
+                <option value="wrong-total">Total after 4, 7, 9 is shown as 4, 7, 9</option>
+                <option value="wrong-sentinel">Sentinel -1 is added to Total</option>
+                <option value="wrong-output">Output is written before OUTPUT statement</option>
+                <option value="correct">Total after 4, 7, 9 is shown as 4, 11, 20</option>
+              </select>
+            </label>
+            <button class="primary-button" type="button" id="checkerBtn">Check trace</button>
+          </div>
+          <div class="feedback" id="checkerResult">Choose a proposed trace to check it.</div>
         </section>
 
         <section class="panel" id="examples" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="examples">
           <div class="section-title">
             <p class="eyebrow">Worked examples</p>
-            <h2>Recognise and combine structures</h2>
+            <h2>Trace common Paper 2 patterns</h2>
           </div>
           <div class="example-tabs" role="tablist" aria-label="Worked examples">
-            <button class="tab active" type="button" data-example="sequence">Sequence</button>
+            <button class="tab active" type="button" data-example="total">Running total</button>
+            <button class="tab" type="button" data-example="max">Maximum</button>
+            <button class="tab" type="button" data-example="sentinel">Sentinel</button>
             <button class="tab" type="button" data-example="selection">Selection</button>
-            <button class="tab" type="button" data-example="iteration">Iteration</button>
-            <button class="tab" type="button" data-example="combined">Combined</button>
           </div>
           <article class="example-box" id="exampleBox" aria-live="polite"></article>
         </section>
@@ -327,7 +322,7 @@ System.out.println(passCount);</code></pre>
         <section class="panel" id="practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="practice">
           <div class="section-title">
             <p class="eyebrow">Practice with instant checking</p>
-            <h2>Control-structure decisions</h2>
+            <h2>Trace table and dry-run accuracy</h2>
             <p>Type concise answers. Use Show answer after committing to a response.</p>
           </div>
           <div class="practice-list" id="practiceList"></div>
@@ -336,7 +331,7 @@ System.out.println(passCount);</code></pre>
         <section class="panel" id="debug" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="debug">
           <div class="section-title">
             <p class="eyebrow">Mistake debugging</p>
-            <h2>Fix weak structure choices</h2>
+            <h2>Fix trace-table mistakes</h2>
           </div>
           <div class="mistake-grid" id="mistakeGrid"></div>
         </section>
@@ -344,8 +339,8 @@ System.out.println(passCount);</code></pre>
         <section class="panel" id="exam" data-delivery-role="CORE" data-classroom-activity="EXAM" data-delivery-group="exam">
           <div class="section-title">
             <p class="eyebrow">Exam-style questions</p>
-            <h2>Original Cambridge-style control-structure questions with expandable MS</h2>
-            <p>These questions target identifying, choosing and writing sequence, selection and iteration. MS uses strict Cambridge-style expectations.</p>
+            <h2>Original Cambridge-style trace questions with expandable MS</h2>
+            <p>These questions target dry runs, trace tables, loop tracing and output prediction. MS uses strict Cambridge-style expectations.</p>
           </div>
           <div class="exam-list" id="examList"></div>
         </section>
@@ -353,12 +348,12 @@ System.out.println(passCount);</code></pre>
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
-            <h2>Control-structure checklist</h2>
+            <h2>Trace-table checklist</h2>
           </div>
           <div class="summary-grid">
-            <div><strong>Sequence</strong><span>Use when steps happen once in a fixed order.</span></div>
-            <div><strong>Selection</strong><span>Use when a condition chooses between actions.</span></div>
-            <div><strong>Iteration</strong><span>Use when steps repeat, either a known number of times or until a condition changes.</span></div>
+            <div><strong>Columns</strong><span>Include every variable that changes and an output column when output may occur.</span></div>
+            <div><strong>Order</strong><span>Use input values in order and update variables exactly when the pseudocode updates them.</span></div>
+            <div><strong>Timing</strong><span>Write output only when OUTPUT executes; check loop conditions before repeating.</span></div>
           </div>
         </section>
 
@@ -369,16 +364,16 @@ System.out.println(passCount);</code></pre>
           </div>
           <div class="homework-list">
             <article>
-              <strong>Task 1: Structure labels</strong>
-              <span>Write six real-life instructions and label each as sequence, selection or iteration. Explain each label in one sentence.</span>
+              <strong>Task 1: Trace a running total</strong>
+              <span>Trace a loop that inputs 5, 8, 1 and outputs the total. Include columns Count, Number, Total and Output.</span>
             </article>
             <article>
-              <strong>Task 2: Pseudocode</strong>
-              <span>Write Cambridge-style pseudocode to input five marks and count how many are at least 50.</span>
+              <strong>Task 2: Trace a maximum algorithm</strong>
+              <span>Trace values 12, 7, 15, 10. Show how Highest changes and state the final output.</span>
             </article>
             <article>
-              <strong>Task 3: Correction</strong>
-              <span>Find one example where a loop is unnecessary. Rewrite it using sequence or selection only.</span>
+              <strong>Task 3: Debug paragraph</strong>
+              <span>Explain why adding a sentinel value to Total is a logic error. Use the words sentinel, condition and output.</span>
             </article>
           </div>
         </section>

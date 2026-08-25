@@ -1,4 +1,4 @@
-# Lesson 100: Flowcharts and pseudocode notation
+# Lesson 101: Flowcharts and pseudocode notation
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 2
@@ -74,6 +74,7 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
 ## Stage 2 syllabus completion
 
 **Official audit rows:** S9.07
@@ -107,6 +108,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **B1** closes with ENDIF / coherent Cambridge syntax
 
 **Strict note:** Do not accept two independent IF statements if they can produce contradictory paths; the description requires mutually exclusive alternatives.
+<!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
@@ -115,7 +117,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `equivalence`
 - **Explanation type:** mechanism
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-equivalence.jpg`
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-equivalence.jpg`
 
 1. A flowchart decision diamond becomes an IF condition in pseudocode.
 2. The labelled Yes and No branches become THEN and ELSE branches.
@@ -126,7 +128,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `flowcharts`
 - **Explanation type:** mechanism
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-flowcharts.jpg`
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-flowcharts.jpg`
 
 1. A terminator marks START or END; a parallelogram marks INPUT or OUTPUT.
 2. A rectangle marks a calculation or assignment; a diamond marks a yes/no decision.
@@ -138,7 +140,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `notation`
 - **Explanation type:** mechanism
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-notation.jpg`
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-notation.jpg`
 
 1. Notation rules
 2. One entry Flowcharts should have a clear start and a clear direction of travel.
@@ -152,7 +154,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-pseudocode.jpg`
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-pseudocode.jpg`
 
 1. Knowledge explanation
 2. Selection
@@ -171,7 +173,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `structure-tool`
 - **Explanation type:** mechanism
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-structure-tool.jpg`
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-structure-tool.jpg`
 
 1. Interactive structure tool
 2. Scenario clue
@@ -181,7 +183,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `symbol-tool`
 - **Explanation type:** mechanism
-- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-100-symbol-tool.jpg`
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-symbol-tool.jpg`
 
 1. Interactive symbol tool
 2. Algorithm step
