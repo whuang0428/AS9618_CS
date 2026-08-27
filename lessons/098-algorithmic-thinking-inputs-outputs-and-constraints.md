@@ -75,53 +75,56 @@ Misconception: Students often start coding before defining the output. Correctio
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S9.04
-**Focus:** Meaningful identifiers and identifier tables
+**Focus:** Algorithms, IPO solutions and identifier tables
 
 ### Direct explanation
 
-- Identifiers should describe their data or role, be unambiguous and follow a consistent naming convention. Avoid unexplained single letters except conventional short counters.
-- An identifier table records each identifier's name, data type and purpose; scope and initial value may be added when useful. It is a design artefact, so entries must match the algorithm that follows.
+- An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.
+- Before writing pseudocode, identify the input data, the processing that transforms it and the required output. This input-process-output design must describe a complete solution rather than three unrelated lists.
+- Choose meaningful identifier names that describe each value's role. An identifier table records at least the identifier name, data type and purpose; its entries must match the pseudocode solution.
 
 ### Worked example
 
-**Ticket calculation:** Use TicketCount: INTEGER, number of tickets requested; TicketPrice: REAL, price of one ticket; TotalCost: REAL, TicketCount * TicketPrice; IsMember: BOOLEAN, whether discount applies.
+**Define and plan a ticket algorithm:** Problem: input TicketCount and TicketPrice, then output TotalCost. The algorithm is the defined sequence INPUT TicketCount; INPUT TicketPrice; TotalCost <- TicketCount * TicketPrice; OUTPUT TotalCost. The identifier table records TicketCount: INTEGER, number requested; TicketPrice: REAL, price of one ticket; TotalCost: REAL, calculated cost.
 
 ### Targeted practice and answers
 
-1. Improve identifier x for the number of absent students.
-   **Answer:** AbsentCount or NumberAbsent.
-2. What three columns are essential here?
-   **Answer:** Identifier, data type and purpose/description.
-3. Why is Total misleading for several totals?
-   **Answer:** It does not identify which quantity is totalled.
+1. What is an algorithm?
+   **Answer:** A solution to a problem expressed as a sequence of defined steps.
+2. State the input, process and output for rectangle area.
+   **Answer:** Inputs Length and Width; process multiply Length by Width; output Area.
+3. Improve identifier x for the number of absent students and state its type.
+   **Answer:** AbsentCount or NumberAbsent, with type INTEGER.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Construct identifier-table entries for a program storing a student's name, three separate test marks and calculated mean.
+**Question (6 marks):** Construct an identifier table and an input-process-output pseudocode solution that inputs a student's name and three marks, then outputs the calculated mean.
 
-- **B1** meaningful identifier and STRING type for name
-- **B1** three clearly distinguished INTEGER/REAL identifiers for the separate marks
-- **B1** meaningful REAL identifier for mean
-- **B1** purposes clearly distinguish input values from calculated result
+- **B1** meaningful STRING identifier and purpose for the student's name
+- **B1** three clearly identified numeric mark inputs or a clearly bounded mark collection
+- **B1** meaningful REAL identifier and purpose for the mean
+- **B1** pseudocode inputs the required values
+- **B1** processing calculates the total and mean in a defined sequence
+- **B1** outputs the calculated mean and matches the identifier table
 
-**Strict note:** Do not award data types without identifiers and purposes; this is an identifier table, not only declarations.
+**Strict note:** Do not award an identifier list without types and purposes, or IPO headings without a complete sequence of defined steps.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
-### An algorithm is a precise method for solving a problem
+### An algorithm is a solution expressed as defined steps
 
 - **Explains:** `concept`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-098-concept.jpg`
 
-1. Identify what data is supplied and do not invent missing data.
-2. State the required transformation in clear natural language.
-3. State the exact result that must be displayed, returned or stored.
+1. An algorithm is a solution to a problem expressed as a sequence of defined steps.
+2. Each step must be unambiguous, ordered where order matters and capable of being carried out.
+3. Identify what data is supplied, state the required transformation and state the exact result.
 4. Record limits, quantity requirements and supported assumptions.
 5. Check that every requirement maps to an input, process, output, constraint or assumption.
 
@@ -129,6 +132,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `constraints`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-098-constraints.jpg`
 
 1. A range of 0 to 100 requires both limits to be checked.
@@ -140,6 +144,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `model`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-098-model.jpg`
 
 1. List each input and record its type or range when the problem supplies them.

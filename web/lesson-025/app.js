@@ -99,18 +99,18 @@ const examQuestions = [
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "A video conference has clear picture quality but long pauses before people reply. Explain why this may happen.",
-    answer: "The clear picture suggests there may be enough bandwidth for the video quality, but the long pauses suggest high latency or jitter. Data or responses take longer to travel between users, possibly due to distance, route, congestion, wireless interference or server load. This causes the conversation to feel delayed even if the video is not low resolution.",
+    prompt: "Distinguish real-time bit streaming from on-demand bit streaming and explain why broadband speed must normally exceed the stream bit rate.",
+    answer: "Real-time bit streaming carries a live event with minimal delay, whereas on-demand bit streaming sends stored content selected by the user. The stream bit rate is the number of bits consumed each second. Available broadband speed must normally exceed that rate and allow for overhead or variation; otherwise the playback buffer eventually empties and playback pauses or quality is reduced.",
     marking: [
-      { mark: "B1", text: "identifies latency/delay as the likely issue" },
-      { mark: "B1", text: "distinguishes latency from bandwidth/video quality" },
-      { mark: "B1", text: "valid cause such as distance/route/congestion/interference/server load" },
-      { mark: "B1", text: "links to pauses/delayed conversation scenario" },
+      { mark: "B1", text: "real-time streaming carries live content with minimal delay" },
+      { mark: "B1", text: "on-demand streaming sends stored content chosen by the user" },
+      { mark: "B1", text: "broadband/arrival rate must normally exceed the stream bit rate / bits consumed per second" },
+      { mark: "B1", text: "otherwise the buffer empties and playback pauses or quality is reduced" },
     ],
     strict: [
-      "Do not accept only 'not enough bandwidth' when the prompt says picture is clear.",
-      "Allow jitter if described as variation in delay.",
-      "Do not require advanced codec details.",
+      "Do not define real-time as merely fast playback; it must be linked to live content.",
+      "Do not accept 'better internet is needed' without comparing broadband speed with stream bit rate.",
+      "A starting buffer delays a shortage but does not fix a sustained arrival rate below the stream bit rate.",
     ],
   },
   {

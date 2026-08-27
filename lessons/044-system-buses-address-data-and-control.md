@@ -73,39 +73,45 @@ Misconception: Students often memorise register names without roles. Correction:
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S4.06
-**Focus:** USB, HDMI and VGA ports
+**Focus:** System buses and peripheral ports
 
 ### Direct explanation
 
-- USB is a general serial interface carrying digital data and often power for peripherals. HDMI carries digital video and audio. VGA carries analogue video and does not carry audio in the standard VGA signal.
-- Port choice depends on signal type and device: keyboard/storage commonly use USB, a modern display/TV uses HDMI, and a legacy analogue monitor/projector may use VGA. An adapter does not make analogue and digital signals identical.
+- The address bus carries the address of the memory or I/O location being accessed and is normally directed from the processor. The data bus carries data and instructions in either direction. The control bus carries control and timing signals in both directions overall, including read/write signals from the CPU and interrupt or status signals toward it.
+- A memory read uses all three buses: the CPU places the required address on the address bus, sends a read signal on the control bus, and memory returns the requested data or instruction on the data bus. A bus transfers signals; it does not permanently store them.
+- USB is a general serial interface carrying digital data and often power for peripherals. HDMI carries digital video and audio. VGA carries analogue video and does not carry audio in the standard VGA signal. Port choice must match the peripheral and signal rather than rely on a claim that one connector is always best.
 
 ### Worked example
 
-**Connect a laptop to a modern TV:** Use HDMI because one cable can carry digital video and audio. VGA would carry analogue video only, so a separate audio connection would be needed.
+**Read memory, then connect a display:** To read address 240, the CPU puts 240 on the address bus and read on the control bus; memory returns the contents on the data bus. To connect the computer to a modern TV with one digital audio/video cable, choose HDMI. A keyboard or removable drive commonly uses USB, while a legacy analogue display may use VGA.
 
 ### Targeted practice and answers
 
-1. Which port commonly carries both digital video and audio?
+1. Which bus carries an address, which carries a value, and which carries read/write signals?
+   **Answer:** Address bus; data bus; control bus.
+2. Trace a memory read using the three buses.
+   **Answer:** Address on address bus, read signal on control bus, requested data/instruction from memory on data bus.
+3. Which port commonly carries both digital video and audio?
    **Answer:** HDMI.
-2. Which named port carries analogue video?
+4. Which named port carries analogue video?
    **Answer:** VGA.
-3. Give one extra facility USB may provide besides data.
-   **Answer:** Electrical power to a peripheral.
+5. Give one USB use or facility.
+   **Answer:** A digital peripheral connection such as keyboard/storage, often also supplying electrical power.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Compare HDMI and VGA for connecting a computer to a display.
+**Question (6 marks):** Describe a memory read using the address, data and control buses, then choose USB, HDMI or VGA for one stated peripheral connection.
 
-- **B1** HDMI carries digital video
-- **B1** HDMI can also carry audio
-- **B1** VGA carries analogue video
-- **B1** VGA does not normally carry audio / may have lower suitability for modern digital displays
+- **B1** address bus carries the required memory/I/O address
+- **B1** control bus carries the read signal
+- **B1** data bus returns the requested data/instruction
+- **B1** USB matched to a suitable digital peripheral/data/power use
+- **B1** HDMI matched to digital video and audio
+- **B1** VGA matched to analogue video without standard audio
 
-**Strict note:** Do not accept 'HDMI is always higher quality' without the digital/analogue or audio distinction.
+**Strict note:** Do not swap the address and data buses or claim that VGA normally carries digital audio.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
@@ -115,6 +121,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-044-concept.jpg`
 
 1. Communication pathway
@@ -130,6 +137,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `read-write`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-044-read-write.jpg`
 
 1. Memory read
@@ -149,6 +157,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `three-buses`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-044-three-buses.jpg`
 
 1. The address bus carries the address of the location being accessed and is normally directed from the CPU.
@@ -159,6 +168,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `width`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-044-width.jpg`
 
 1. Address bus width

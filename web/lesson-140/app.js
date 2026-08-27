@@ -114,20 +114,20 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "Convert this Java fragment into Cambridge-style pseudocode: if (mark >= 50) { System.out.println(\"Pass\"); } else { System.out.println(\"Resit needed\"); }",
-    answer: "IF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit needed\"\nENDIF",
+    prompt: "A flowchart inputs Mark, tests Mark >= 50, outputs Pass on the Yes branch and Resit needed on the No branch. Write equivalent Cambridge-style pseudocode.",
+    answer: "INPUT Mark\nIF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit needed\"\nENDIF",
     marking: [
-      { mark: "B1", text: "uses IF with the correct condition Mark >= 50" },
-      { mark: "A1", text: "uses THEN after the condition or clearly starts the true branch" },
+      { mark: "B1", text: "translates the flowchart input as INPUT Mark" },
+      { mark: "M1", text: "uses IF with the correct decision Mark >= 50" },
       { mark: "B1", text: "outputs Pass in the true branch using OUTPUT or equivalent pseudocode" },
       { mark: "B1", text: "uses ELSE for the false branch" },
       { mark: "B1", text: "outputs Resit needed in the false branch" },
-      { mark: "A1", text: "closes the selection with ENDIF or clear equivalent structure" },
+      { mark: "A1", text: "closes the selection and preserves both flowchart branches" },
     ],
     strict: [
-      "Do not award full marks for Java code copied unchanged.",
+      "Do not award full marks for Java code or for omitting the flowchart input.",
       "Allow equivalent variable capitalisation if consistent.",
-      "Do not require exact indentation, but the branches must be clear.",
+      "Do not require exact indentation, but both flowchart paths must be clear.",
     ],
   },
   {

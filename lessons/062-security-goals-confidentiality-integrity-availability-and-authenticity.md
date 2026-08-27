@@ -73,19 +73,19 @@ Misconception: Students often propose encryption for every problem. Correction: 
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S6.01
 **Focus:** Security, privacy and data integrity
 
 ### Direct explanation
 
 - Data security is protection against unauthorised access, loss or damage. Privacy concerns appropriate collection, use and disclosure of personal data. Integrity means data remains accurate, complete and unaltered except by authorised processes.
 - The concepts overlap but are not synonyms: encrypted inaccurate data may be secure but lack integrity; authorised publication may preserve integrity while violating privacy.
+- Both data security and computer-system security are necessary. Protecting only a data file is insufficient if an attacker can control the operating system, install malware, steal credentials or make the computer system unavailable; protecting only the device is insufficient if copied data is disclosed, altered or lost.
 
 ### Worked example
 
-**Incorrect medical record:** A record encrypted from attackers has security, but an accidental dosage change damages integrity. Sending the accurate record to an unauthorised advertiser violates privacy.
+**Medical records on a compromised computer system:** Encryption restricts unauthorised reading of the record data. Access rights restrict who may view or alter it. Anti-virus and a firewall help protect the computer system that stores and processes the records. If malware controls the system, it may steal decrypted data, alter records or stop authorised access even though the stored file was encrypted.
 
 ### Targeted practice and answers
 
@@ -95,17 +95,20 @@ Correction prompt: "State the correct term, then explain the relevant process or
    **Answer:** Privacy.
 3. Can data be secure but inaccurate?
    **Answer:** Yes; access protection does not guarantee correctness.
+4. Why must the computer system also be protected?
+   **Answer:** A compromised or unavailable system can expose, alter, delete or prevent access to the data it processes, even when a stored file has a separate protection such as encryption.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Distinguish data security, privacy and integrity using one data-record scenario.
+**Question (5 marks):** Distinguish data security, privacy and integrity, then explain why both data and its computer system require security.
 
 - **B1** security protects against unauthorised access/loss/damage
 - **B1** privacy controls appropriate personal-data use/disclosure
 - **B1** integrity concerns accuracy/completeness/authorised change
-- **B1** scenario correctly distinguishes at least two consequences
+- **B1** computer-system compromise can expose/alter/destroy data or prevent authorised access
+- **B1** data-specific and system controls are both required / one does not replace the other
 
-**Strict note:** Do not accept three repetitions of 'keeping data safe'.
+**Strict note:** Do not accept repeated versions of 'keeping data safe' or the claim that file encryption alone secures the computer system.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
@@ -115,6 +118,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `authenticity`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-authenticity.jpg`
 
 1. Goal Users, devices, messages or files should be verified as genuine.
@@ -126,6 +130,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `availability`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-availability.jpg`
 
 1. Goal Authorised users should be able to access data and services when required.
@@ -137,6 +142,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `confidentiality`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-confidentiality.jpg`
 
 1. Goal Only authorised users should be able to view or access the data.
@@ -148,25 +154,19 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `controls`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-controls.jpg`
 
-1. Often supports
-2. Encryption
-3. Confidentiality
-4. Makes data unreadable without the correct key.
-5. Access rights
-6. Confidentiality and integrity
-7. Limits who can view or alter data.
-8. Availability
-9. Allows recovery if data is lost or corrupted.
-10. Hash/checksum
-11. Integrity
-12. Can detect whether data has changed.
+1. Encryption makes data unreadable without the correct key and supports confidentiality.
+2. Access rights prevent unauthorised viewing and prevent unauthorised alteration; they support confidentiality and integrity but do not detect whether data changed.
+3. Backups allow recovery after data loss or corruption and support availability.
+4. Hash/checksum comparison can detect whether data changed and supports integrity, but it does not prevent unauthorised alteration.
 
 ### Integrity protects data from unauthorised or accidental alteration
 
 - **Explains:** `integrity`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-integrity.jpg`
 
 1. Goal Data should remain accurate, complete and unaltered unless changed by an authorised process.
@@ -179,6 +179,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `risk-chain`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-062-risk-chain.jpg`
 
 1. Asset Something valuable that needs protection, such as exam marks, passwords or customer records.

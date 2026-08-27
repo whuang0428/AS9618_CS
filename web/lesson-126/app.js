@@ -200,9 +200,9 @@ const examQuestions = [
     marking: [
       { mark: "B1", text: "defines sequence as statements executed in order" },
       { mark: "B1", text: "defines selection as choosing a path using a condition" },
-      { mark: "A1", text: "gives IF/THEN/ELSE/ENDIF or CASE as selection evidence" },
+      { mark: "B1", text: "gives IF/THEN/ELSE/ENDIF or CASE as selection evidence" },
       { mark: "B1", text: "defines iteration as repetition of a block" },
-      { mark: "A1", text: "gives FOR/NEXT, WHILE/ENDWHILE or REPEAT/UNTIL as iteration evidence" },
+      { mark: "B1", text: "gives FOR/NEXT, WHILE/ENDWHILE or REPEAT/UNTIL as iteration evidence" },
     ],
     strict: [
       "Do not award iteration definition mark for a single repeated word without a loop idea.",

@@ -79,17 +79,19 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `calculator`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-090-calculator.jpg`
 
 1. Interactive calculation checker
 2. Bits/sample or depth
-3. For image: A = width, B = height, C = colour depth. For sound: A = sample rate, B = duration seconds, C = sample resolution.
+3. For image: A = width, B = height, C = colour depth. For sound: A = sample rate, B = duration seconds, C = sampling resolution.
 4. Run a calculation to see bits, bytes and KiB/MiB.
 
 ### Explanation answers need mechanism and consequence
 
 - **Explains:** `communication`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-090-communication.jpg`
 
 1. Communication review
@@ -101,13 +103,14 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `map`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-090-map.jpg`
 
 1. Retrieval map
 2. Number bases binary, denary, hexadecimal, two's complement, overflow and precision limits
 3. Storage units bit, nibble, byte, KiB, MiB, GiB, TiB and careful base-2 conversions
 4. Text ASCII, Unicode, character sets and why more characters require more bit patterns
-5. Images and sound resolution, colour depth, sample rate, sample resolution, duration and metadata
+5. Images and sound resolution, colour depth, sample rate, sampling resolution, duration and metadata
 6. Compression lossless, lossy, run-length encoding and dictionary-style compression
 7. Communication LAN/WAN, client-server, peer-to-peer, packets, protocols, IP/MAC/DNS and media
 
@@ -115,6 +118,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `representation`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-090-representation.jpg`
 
 1. Representation review
@@ -125,7 +129,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 6. width x height x colour depth
 7. Answer starts in bits; convert carefully.
 8. Sound size
-9. sample rate x sample resolution x duration
+9. sample rate x sampling resolution x duration
 10. Include channels if stereo is stated.
 11. Binary place value
 12. sum active powers of 2

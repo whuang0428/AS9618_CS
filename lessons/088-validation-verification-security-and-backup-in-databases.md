@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `backup`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-088-backup.jpg`
 
 1. A backup is a separate copy of data kept so the database can be restored after failure, deletion or corruption.
@@ -90,6 +91,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `security`
 - **Explanation type:** tradeoff
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-088-security.jpg`
 
 1. Security controls reduce unauthorised access, accidental damage and inappropriate disclosure of data.
@@ -101,6 +103,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `validation`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-088-validation.jpg`
 
 1. Validation applies rules before data is accepted into the database. It reduces errors but cannot prove truth.
@@ -120,6 +123,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `verification`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-088-verification.jpg`
 
 1. Verification compares entered data with the source or repeats entry to reduce transcription errors.

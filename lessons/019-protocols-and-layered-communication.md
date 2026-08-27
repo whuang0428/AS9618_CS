@@ -73,9 +73,8 @@ Misconception: Students often confuse bandwidth with speed in every sense. Corre
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S2.11
 **Focus:** Ethernet collisions and CSMA/CD
 
 ### Direct explanation
@@ -115,6 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `layers`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-019-layers.jpg`
 
 1. Application layer idea What the user or application wants to do, such as send a web request.
@@ -128,6 +128,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `protocols`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-019-protocols.jpg`
 
 1. Definition
@@ -143,6 +144,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `rules`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-019-rules.jpg`
 
 1. Protocols define rules for data format, addressing, timing, error handling, flow control and connection management.

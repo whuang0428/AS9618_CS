@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 010 | Digital sound: sampling rate, sample resolution and duration</title>
+    <title>AS9618 Lesson 010 | Digital sound: sampling rate, sampling resolution and duration</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 1</p>
-        <h1>Digital sound: sampling rate, sample resolution and duration</h1>
+        <h1>Digital sound: sampling rate, sampling resolution and duration</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -39,6 +39,7 @@
         <a href="#practice">Practice</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -48,7 +49,7 @@
             <h2>Sound becomes data when we measure it again and again.</h2>
             <p>
               Digital sound is created by sampling an analogue sound wave at regular intervals.
-              Each sample is stored as a binary value. The sample rate, sample resolution and
+              Each sample is stored as a binary value. The sample rate, sampling resolution and
               duration determine how much data is stored.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
@@ -58,7 +59,7 @@
               </div>
               <div>
                 <strong>Explain</strong>
-                <span>sample rate, sample resolution and duration</span>
+                <span>sample rate, sampling resolution and duration</span>
               </div>
               <div>
                 <strong>Calculate</strong>
@@ -88,7 +89,7 @@
           </article>
           <article class="trap-card">
             <h3>Common error</h3>
-            <p>Do not confuse sample resolution with screen resolution. Here it means bits per sound sample.</p>
+            <p>Do not confuse sampling resolution with screen resolution. Here it means bits per sound sample.</p>
           </article>
         </section>
 
@@ -99,7 +100,7 @@
           </div>
           <div class="hook-grid">
             <button class="choice-card" type="button" data-hook="rate">Increase sample rate</button>
-            <button class="choice-card" type="button" data-hook="resolution">Increase sample resolution</button>
+            <button class="choice-card" type="button" data-hook="resolution">Increase sampling resolution</button>
             <button class="choice-card" type="button" data-hook="duration">Increase duration</button>
             <button class="choice-card" type="button" data-hook="volume">Increase speaker volume</button>
           </div>
@@ -181,15 +182,15 @@
         <section class="panel" id="resolution" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="resolution">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 3</p>
-            <h2>Sample resolution: bits per sample</h2>
+            <h2>Sampling resolution: bits per sample</h2>
           </div>
           <div class="resolution-grid">
             <article>
-              <h3>8-bit sample resolution</h3>
+              <h3>8-bit sampling resolution</h3>
               <p>`2⁸ = 256` possible amplitude levels.</p>
             </article>
             <article>
-              <h3>16-bit sample resolution</h3>
+              <h3>16-bit sampling resolution</h3>
               <p>`2¹⁶ = 65 536` possible amplitude levels.</p>
             </article>
             <article>
@@ -201,13 +202,13 @@
 
         <!-- stage10-explanation:start resolution -->
         <section class="panel explanation-panel" id="explanation-resolution" data-explains="resolution" data-explanation-kind="mechanism" aria-labelledby="explanation-resolution-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="resolution">
-          <h2 class="explanation-sr-only" id="explanation-resolution-title">Sample resolution: bits per sample</h2>
+          <h2 class="explanation-sr-only" id="explanation-resolution-title">Sampling resolution: bits per sample</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-010-resolution.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sample resolution: bits per sample with a structured visual model." />
-            <figcaption class="explanation-sr-only">Sample resolution: bits per sample: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-010-resolution.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sampling resolution: bits per sample with a structured visual model." />
+            <figcaption class="explanation-sr-only">Sampling resolution: bits per sample: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 8-bit sample resolution</li><li><strong>Lesson fact:</strong> 2⁸ = 256 possible amplitude levels.</li><li><strong>Lesson fact:</strong> 16-bit sample resolution</li><li><strong>Lesson fact:</strong> 2¹⁶ = 65 536 possible amplitude levels.</li><li><strong>Lesson fact:</strong> Quality trade-off</li><li><strong>Lesson fact:</strong> More bits per sample can store amplitude more precisely, but uses more storage.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Sampling resolution is the official syllabus term; sample resolution is a common synonym.</li><li><strong>Lesson fact:</strong> An 8-bit sampling resolution provides 2^8 = 256 possible amplitude levels.</li><li><strong>Lesson fact:</strong> A 16-bit sampling resolution provides 2^16 = 65,536 possible amplitude levels.</li><li><strong>Lesson fact:</strong> More bits per sample can represent amplitude more precisely, but use more storage.</li></ol>
 
           </div>
         </section>
@@ -250,7 +251,7 @@
             <h2>Basic mono sound file size formula</h2>
           </div>
           <div class="formula-box">
-            <strong>size in bits = sampling rate × sample resolution × duration</strong>
+            <strong>size in bits = sampling rate × sampling resolution × duration</strong>
             <span>size in bytes = bits ÷ 8</span>
           </div>
           <div class="worked-line">`8000 × 16 × 10 = 1 280 000 bits = 160 000 bytes`</div>
@@ -264,7 +265,7 @@
             <figcaption class="explanation-sr-only">Basic mono sound file size formula: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> size in bits = sampling rate × sample resolution × duration</li><li><strong>Lesson fact:</strong> size in bytes = bits ÷ 8</li><li><strong>Lesson fact:</strong> 8000 × 16 × 10 = 1 280 000 bits = 160 000 bytes</li></ol>
+            <ol><li><strong>Lesson fact:</strong> size in bits = sampling rate × sampling resolution × duration</li><li><strong>Lesson fact:</strong> size in bytes = bits ÷ 8</li><li><strong>Lesson fact:</strong> 8000 × 16 × 10 = 1 280 000 bits = 160 000 bytes</li></ol>
 
           </div>
         </section>
@@ -282,7 +283,7 @@
               <input id="rateInput" type="number" min="1" value="8000" />
             </label>
             <label>
-              Sample resolution / bits
+              Sampling resolution / bits
               <select id="resolutionInput">
                 <option value="8">8 bits</option>
                 <option value="16" selected>16 bits</option>
@@ -334,9 +335,9 @@
               <p class="answer" id="mistake1">The product is in bits. `1 280 000 bits ÷ 8 = 160 000 bytes`.</p>
             </article>
             <article>
-              <p class="wrong">“Sample resolution is how many samples are taken each second.”</p>
+              <p class="wrong">“Sampling resolution is how many samples are taken each second.”</p>
               <button class="answer-toggle" type="button" data-answer="mistake2">Show correction</button>
-              <p class="answer" id="mistake2">That is sampling rate. Sample resolution is the number of bits used to store each sample.</p>
+              <p class="answer" id="mistake2">That is sampling rate. Sampling resolution is the number of bits used to store each sample.</p>
             </article>
           </div>
         </section>
@@ -353,6 +354,59 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Sound sampling, sampling resolution and file size</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>An analogue sound wave varies continuously. Analogue-to-digital sampling measures its amplitude at regular time intervals, quantises each measurement to one permitted level and stores the resulting sample value as a binary number. The sequence of binary sample values is the digital representation of the sound.</p>
+            <p>Sampling rate is the number of samples taken per second, measured in hertz (Hz). Sampling resolution is the number of bits used for each sample and therefore controls how many amplitude levels are available. 'Sample resolution' is a common synonym, but sampling resolution is the official syllabus term.</p>
+            <p>For uncompressed sound, file size in bits = sampling rate x sampling resolution x duration x number of channels. Increasing sampling rate can represent changes over time more accurately; increasing sampling resolution can represent amplitude more accurately. Either increase also makes the file larger when the other factors stay constant.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Calculate and interpret one recording</h3>
+            <p>A 10-second mono recording sampled at 8000 Hz with 16-bit sampling resolution uses 8000 x 16 x 10 x 1 = 1,280,000 bits = 160,000 bytes. Doubling only the sampling resolution to 32 bits doubles the file size and provides more possible amplitude levels; it does not take more samples per second.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Sound sampling, sampling resolution and file size: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What is the official term for the number of bits used to store each sound sample?</p>
+              <details><summary>Show answer</summary><p>Sampling resolution; sample resolution is a common synonym.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> How does a higher sampling rate affect the stored data?</p>
+              <details><summary>Show answer</summary><p>It stores more measurements each second, which can improve time accuracy and increases file size.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> How does a higher sampling resolution affect the stored data?</p>
+              <details><summary>Show answer</summary><p>It provides more possible amplitude levels, which can improve amplitude accuracy and increases file size.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>A 5-second stereo recording is sampled at 12,000 Hz using 8-bit sampling resolution. Calculate its uncompressed size in bytes and explain one accuracy/storage trade-off.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>M1</strong> uses 12,000 x 8 x 5 x 2 bits</li>
+                <li><strong>A1</strong> obtains 960,000 bits / 120,000 bytes</li>
+                <li><strong>B1</strong> higher sampling rate gives more measurements per second or higher sampling resolution gives more amplitude levels</li>
+                <li><strong>B1</strong> the stated increase improves the relevant accuracy but increases file size</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -361,8 +415,8 @@
           <div class="summary-grid">
             <div><strong>1</strong><span>Sampling measures an analogue wave at regular intervals.</span></div>
             <div><strong>2</strong><span>Sampling rate is samples per second, measured in Hz.</span></div>
-            <div><strong>3</strong><span>Sample resolution is bits per sample.</span></div>
-            <div><strong>4</strong><span>Bits = sampling rate × sample resolution × duration for mono sound.</span></div>
+            <div><strong>3</strong><span>Sampling resolution is bits per sample.</span></div>
+            <div><strong>4</strong><span>Bits = sampling rate × sampling resolution × duration for mono sound.</span></div>
           </div>
         </section>
 
@@ -372,14 +426,14 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Define sampling, sampling rate and sample resolution.</li>
-            <li>Calculate the size of a 5-second mono clip sampled at 4000 Hz with 8-bit sample resolution.</li>
-            <li>Calculate the size of a 20-second mono clip sampled at 8000 Hz with 16-bit sample resolution.</li>
+            <li>Define sampling, sampling rate and sampling resolution.</li>
+            <li>Calculate the size of a 5-second mono clip sampled at 4000 Hz with 8-bit sampling resolution.</li>
+            <li>Calculate the size of a 20-second mono clip sampled at 8000 Hz with 16-bit sampling resolution.</li>
             <li>Write a 4-mark explanation of how increasing sampling rate affects quality and file size.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
           <div class="answer-panel" id="homeworkAnswers">
-            <p><strong>Definitions:</strong> sampling measures the wave; sampling rate is samples per second; sample resolution is bits per sample.</p>
+            <p><strong>Definitions:</strong> sampling measures the wave; sampling rate is samples per second; sampling resolution is bits per sample.</p>
             <p><strong>Task 2:</strong> `4000 × 8 × 5 = 160 000 bits = 20 000 bytes`.</p>
             <p><strong>Task 3:</strong> `8000 × 16 × 20 = 2 560 000 bits = 320 000 bytes`.</p>
             <p><strong>Explanation focus:</strong> higher sampling rate takes more measurements per second, which can improve accuracy but increases file size.</p>
@@ -389,7 +443,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

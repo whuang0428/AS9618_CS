@@ -41,11 +41,95 @@ const mistakes = [
 ];
 
 const examQuestions = [
-  { title: "Question 1", marks: "4 marks", prompt: "A program receives a Mark and produces Pass when the mark is at least 50. Identify the input, output, process and one constraint.", answer: "Input: Mark. Output: Pass or Resit needed. Process: compare Mark with 50 and choose the required message. Constraint: Mark is an integer from 0 to 100.", marking: [{ mark: "B1", text: "identifies Mark as input" }, { mark: "B1", text: "identifies the required output messages" }, { mark: "B1", text: "describes comparison with 50" }, { mark: "B1", text: "states a valid mark range/type constraint" }], strict: ["Do not accept vague 'number' without linking it to Mark.", "Allow equivalent output wording.", "Do not award a constraint that merely repeats the output."] },
-  { title: "Question 2", marks: "5 marks", prompt: "Construct an IPOC plan for a problem that receives Length and Width and produces the rectangle Area.", answer: "Input: Length and Width. Process: multiply Length by Width. Output: Area. Constraints: both dimensions are positive numeric values and use the same unit. Assumption: the shape is a rectangle.", marking: [{ mark: "B1", text: "Length input" }, { mark: "B1", text: "Width input" }, { mark: "B1", text: "multiplication process" }, { mark: "B1", text: "Area output" }, { mark: "B1", text: "valid constraint or assumption" }], strict: ["Do not award addition as the area process.", "Allow equivalent positive-dimension constraints.", "Do not require notation or code."] },
-  { title: "Question 3", marks: "6 marks", prompt: "A problem supplies five numbers and requires their average. Describe the inputs, output, constraints and ordered processing steps.", answer: "The inputs are five numeric values and the output is their average. Exactly five values are supplied. Add all five values to obtain a total, divide that total by 5, then provide the average.", marking: [{ mark: "B1", text: "identifies five numeric inputs" }, { mark: "B1", text: "identifies average output" }, { mark: "B1", text: "states exactly-five constraint" }, { mark: "B1", text: "adds all values" }, { mark: "B1", text: "divides total by 5" }, { mark: "B1", text: "places steps in a coherent order" }], strict: ["Do not require control-structure notation.", "Allow Sum instead of Total.", "Do not accept division before the total is formed."] },
-  { title: "Question 4", marks: "5 marks", prompt: "A booking system has 30 places. Analyse a request using IPOC and state one assumption that must be confirmed.", answer: "Input: RequestedPlaces and PlacesRemaining. Process: compare the request with the remaining capacity and calculate a cost if accepted. Output: accepted/rejected decision and any required cost. Constraint: the request cannot exceed remaining capacity. Assumption to confirm: ticket price or whether partial bookings are allowed.", marking: [{ mark: "B1", text: "identifies booking request input" }, { mark: "B1", text: "identifies remaining-capacity input" }, { mark: "B1", text: "describes capacity comparison" }, { mark: "B1", text: "identifies decision output" }, { mark: "B1", text: "states a relevant unsupported assumption" }], strict: ["Do not invent a ticket price as a confirmed fact.", "Allow another relevant booking assumption.", "Do not require implementation notation."] },
-  { title: "Question 5", marks: "4 marks", prompt: "Explain how a completeness check improves an algorithm plan.", answer: "Match each requirement in the problem statement to an input, processing step, output, constraint or assumption in the plan. This exposes omitted data, missing results and unsupported assumptions before representation or implementation begins.", marking: [{ mark: "B1", text: "checks every stated requirement" }, { mark: "B1", text: "maps requirements to IPOC/assumptions" }, { mark: "B1", text: "identifies omissions or unsupported assumptions" }, { mark: "B1", text: "explains correction happens before later representation/implementation" }], strict: ["Do not award only 'it makes the plan better'.", "Allow a suitable concrete omission example.", "Do not require a trace or code."] },
+  {
+    title: "Question 1",
+    marks: "4 marks",
+    prompt: "A program receives a Mark and produces Pass when the mark is at least 50. Identify the input, output, process and one constraint.",
+    answer: "Input: Mark. Output: Pass or Resit needed. Process: compare Mark with 50 and choose the required message. Constraint: Mark is an integer from 0 to 100.",
+    marking: [
+      { mark: "B1", text: "identifies Mark as input" },
+      { mark: "B1", text: "identifies the required output messages" },
+      { mark: "B1", text: "describes comparison with 50" },
+      { mark: "B1", text: "states a valid mark range/type constraint" },
+    ],
+    strict: [
+      "Do not accept vague 'number' without linking it to Mark.",
+      "Allow equivalent output wording.",
+      "Do not award a constraint that merely repeats the output.",
+    ],
+  },
+  {
+    title: "Question 2",
+    marks: "5 marks",
+    prompt: "Construct an IPOC plan for a problem that receives Length and Width and produces the rectangle Area.",
+    answer: "Input: Length and Width. Process: multiply Length by Width. Output: Area. Constraints: both dimensions are positive numeric values and use the same unit. Assumption: the shape is a rectangle.",
+    marking: [
+      { mark: "B1", text: "Length input" },
+      { mark: "B1", text: "Width input" },
+      { mark: "B1", text: "multiplication process" },
+      { mark: "B1", text: "Area output" },
+      { mark: "B1", text: "valid constraint or assumption" },
+    ],
+    strict: [
+      "Do not award addition as the area process.",
+      "Allow equivalent positive-dimension constraints.",
+      "Do not require notation or code.",
+    ],
+  },
+  {
+    title: "Question 3",
+    marks: "6 marks",
+    prompt: "A problem supplies five numbers and requires their average. Describe the inputs, output, constraints and ordered processing steps.",
+    answer: "The inputs are five numeric values and the output is their average. Exactly five values are supplied. Add all five values to obtain a total, divide that total by 5, then provide the average.",
+    marking: [
+      { mark: "B1", text: "identifies five numeric inputs" },
+      { mark: "B1", text: "identifies average output" },
+      { mark: "B1", text: "states exactly-five constraint" },
+      { mark: "B1", text: "adds all values" },
+      { mark: "B1", text: "divides total by 5" },
+      { mark: "B1", text: "places steps in a coherent order" },
+    ],
+    strict: [
+      "Do not require control-structure notation.",
+      "Allow Sum instead of Total.",
+      "Do not accept division before the total is formed.",
+    ],
+  },
+  {
+    title: "Question 4",
+    marks: "5 marks",
+    prompt: "A booking system has 30 places. Analyse a request using IPOC and state one assumption that must be confirmed.",
+    answer: "Input: RequestedPlaces and PlacesRemaining. Process: compare the request with the remaining capacity and calculate a cost if accepted. Output: accepted/rejected decision and any required cost. Constraint: the request cannot exceed remaining capacity. Assumption to confirm: ticket price or whether partial bookings are allowed.",
+    marking: [
+      { mark: "B1", text: "identifies booking request input" },
+      { mark: "B1", text: "identifies remaining-capacity input" },
+      { mark: "B1", text: "describes capacity comparison" },
+      { mark: "B1", text: "identifies decision output" },
+      { mark: "B1", text: "states a relevant unsupported assumption" },
+    ],
+    strict: [
+      "Do not invent a ticket price as a confirmed fact.",
+      "Allow another relevant booking assumption.",
+      "Do not require implementation notation.",
+    ],
+  },
+  {
+    title: "Question 5",
+    marks: "4 marks",
+    prompt: "Define an algorithm and explain why 'process the data' alone is not a complete algorithm.",
+    answer: "An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must state an unambiguous action and the sequence must lead from the supplied data to the required result. 'Process the data' does not identify the operation, order or output, so it is not a defined sequence that can be followed.",
+    marking: [
+      { mark: "B1", text: "states that an algorithm is a solution to a problem" },
+      { mark: "B1", text: "states that it is expressed as a sequence of defined steps" },
+      { mark: "B1", text: "explains that each step must be unambiguous/capable of being carried out" },
+      { mark: "B1", text: "explains that 'process the data' omits the operation, order or required result" },
+    ],
+    strict: [
+      "Do not accept only 'a list of instructions'.",
+      "Allow precise equivalent wording for defined/unambiguous steps.",
+      "Do not award an example that never defines the term algorithm.",
+    ],
+  },
 ];
 
 function normalise(value) { return value.trim().toLowerCase().replace(/\s+/g, " ").replace(/ ;$/, ";"); }

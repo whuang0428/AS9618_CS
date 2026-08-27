@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cli`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-cli.jpg`
 
 1. How it works The user types commands and parameters at a prompt.
@@ -90,6 +91,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-compare.jpg`
 
 1. Scenario
@@ -109,6 +111,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-concept.jpg`
 
 1. User interface The method by which a user communicates with a computer system.
@@ -120,6 +123,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `gui`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-gui.jpg`
 
 1. How it works Uses windows, icons, menus and a pointer/touch input.
@@ -131,6 +135,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `menu`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-menu.jpg`
 
 1. How it works The user selects from displayed options, often step by step.
@@ -142,6 +147,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `natural`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-054-natural.jpg`
 
 1. How it works The user speaks or types instructions in ordinary human language.

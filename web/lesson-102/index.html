@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -42,6 +42,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -345,6 +346,60 @@ System.out.println(total);</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Logic statements define parts of an algorithm</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A logic statement defines a decision, repetition condition or Boolean assignment in an algorithm solution. It combines comparisons such as =, &lt;, &lt;=, &gt;, &gt;= or &lt;&gt; with AND, OR or NOT when more than one condition is needed.</p>
+            <p>Construct a statement from the rule before choosing its branch: a valid mark from 0 to 100 inclusive is Mark &gt;= 0 AND Mark &lt;= 100. Interpret it by checking both comparisons; using OR would accept values outside the range.</p>
+            <p>Logic statements must preserve boundaries and intended truth conditions. Trace representative true, false and boundary values to expose reversed operators or incorrect connectors.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Define a valid-age condition</h3>
+            <p>For an accepted age from 11 to 18 inclusive, use Age &gt;= 11 AND Age &lt;= 18. At Age = 11 and Age = 18 the statement is TRUE; at Age = 10 or 19 it is FALSE. NOT(Age &gt;= 11 AND Age &lt;= 18) describes the invalid case.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Logic statements define parts of an algorithm: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Construct the valid-mark statement for 0 to 100 inclusive.</p>
+              <details><summary>Show answer</summary><p>Mark &gt;= 0 AND Mark &lt;= 100.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Interpret Found = FALSE OR Index &lt;= UpperBound.</p>
+              <details><summary>Show answer</summary><p>The statement is true when the target has not been found, or the index is still within the upper bound, or both.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why is Mark &gt;= 0 OR Mark &lt;= 100 incorrect for validation?</p>
+              <details><summary>Show answer</summary><p>Every number satisfies at least one side, so out-of-range values can be accepted.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Write and explain a logic statement that accepts an integer Temperature from -20 to 50 inclusive, then state its value for -21, -20, 50 and 51.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> uses Temperature &gt;= -20</li>
+                <li><strong>B1</strong> uses AND Temperature &lt;= 50</li>
+                <li><strong>B1</strong> states FALSE for -21</li>
+                <li><strong>B1</strong> states TRUE for -20 and 50</li>
+                <li><strong>B1</strong> states FALSE for 51</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -381,7 +436,7 @@ System.out.println(total);</code></pre>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

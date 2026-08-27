@@ -102,7 +102,7 @@ const examQuestions = [
     prompt: "Rewrite this logic as readable Cambridge-style pseudocode: if mark is at least 50 output Pass, otherwise output Resit.",
     answer: "IF Mark >= 50 THEN\n    OUTPUT \"Pass\"\nELSE\n    OUTPUT \"Resit\"\nENDIF",
     marking: [
-      { mark: "B1", text: "uses IF with condition Mark >= 50 or equivalent" },
+      { mark: "M1", text: "uses IF with condition Mark >= 50 or equivalent" },
       { mark: "B1", text: "uses THEN / clear true branch" },
       { mark: "A1", text: "outputs Pass for true condition" },
       { mark: "B1", text: "uses ELSE / clear false branch" },
@@ -157,11 +157,11 @@ const examQuestions = [
     prompt: "Identify and correct three Java features that should not appear in a Cambridge pseudocode answer unless Java is requested.",
     answer: "Examples include semicolons, braces, Java method calls such as System.out.println, ++ shorthand, Java for-loop headers and 0-based array habits. Corrections include using OUTPUT, IF/ENDIF, FOR/NEXT, explicit assignment such as Count <- Count + 1, and clearly defined pseudocode indexing.",
     marking: [
-      { mark: "B1", text: "identifies one Java-only feature such as semicolon/braces/System.out.println/++" },
+      { mark: "M1", text: "identifies one Java-only feature such as semicolon/braces/System.out.println/++" },
       { mark: "A1", text: "gives a suitable Cambridge-style correction for first feature" },
-      { mark: "B1", text: "identifies second distinct Java-only feature" },
+      { mark: "M1", text: "identifies second distinct Java-only feature" },
       { mark: "A1", text: "gives suitable correction for second feature" },
-      { mark: "B1", text: "identifies third distinct Java-only feature" },
+      { mark: "M1", text: "identifies third distinct Java-only feature" },
       { mark: "A1", text: "gives suitable correction for third feature" },
     ],
     strict: [

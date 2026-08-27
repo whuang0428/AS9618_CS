@@ -1,0 +1,22 @@
+{
+  "batch": 17,
+  "authority": "Cambridge International AS & A Level Computer Science 9618 syllabus, 2027-2029, Version 2",
+  "authorityUrl": "https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf",
+  "authoritySha256": "c8a4c6d033c07c6d8025689abed5ef481d581c28bae640986d275303ed6c08bc",
+  "status": "Resolved",
+  "records": [
+    { "id": "B17-S12.01-LIFECYCLES", "requirement": "S12.01", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Records the official lifecycle purpose, named stages and waterfall, iterative and RAD boundaries without substituting Agile for RAD." },
+    { "id": "B17-S12.02-STRUCTURE-CHARTS", "requirement": "S12.02", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Teaches the purpose and construction of structure charts, parameter arrows, and derivation into matching pseudocode headers and calls." },
+    { "id": "B17-S12.03-STATE-TRANSITIONS", "requirement": "S12.03", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Teaches marked start states and directed event-labelled transitions, with construction practice and a clear separation from processing flowcharts." },
+    { "id": "B17-S12.04-ERRORS", "requirement": "S12.04", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Connects syntax, logic and run-time errors to ways of exposing, locating, correcting and avoiding faults, followed by regression testing." },
+    { "id": "B17-S12.05-TEST-METHODS", "requirement": "S12.05", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Covers dry run, walkthrough, white-box, black-box, integration, alpha, beta, acceptance and stub testing in teaching, application and assessment." },
+    { "id": "B17-S12.06-STRATEGY-PLAN", "requirement": "S12.06", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Distinguishes and requires production of a project-wide test strategy and complete individual test-plan rows." },
+    { "id": "B17-S12.07-TEST-DATA", "requirement": "S12.07", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Retains the reviewed official normal, abnormal and extreme/boundary test-data categories and direct assessments." },
+    { "id": "B17-S12.08-MAINTENANCE", "requirement": "S12.08", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Explains continuing maintenance and classifies corrective, adaptive and perfective changes from their reasons rather than the edited module." },
+    { "id": "B17-S12.09-ENHANCEMENT", "requirement": "S12.09", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Requires analysis of an existing program, coherent amendment to enhance functionality, new-path testing and regression of preserved behaviour." },
+    { "id": "B17-ASSESSMENT-EVIDENCE", "requirement": "S12.02-S12.09", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Replaces unrelated evidence mappings and changeover-first questions with direct structure-chart derivation, testing-method, strategy/plan, error-correction and enhancement tasks while preserving assessment counts and marks." },
+    { "id": "B17-VISUAL-ENHANCEMENT", "requirement": "S12.09", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Replaces a correction-only debugging visual with a deterministic analyse-amend-test enhancement model." },
+    { "id": "B17-VISUAL-DESIGN-DOCUMENTS", "requirement": "S12.02-S12.03", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Replaces a nested-selection visual with distinct structure-chart, derived-pseudocode and state-transition panels." },
+    { "id": "B17-VISUAL-TEST-DOCUMENTS", "requirement": "S12.06", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Replaces a changeover-method visual with the required distinction between a test strategy and a complete test-plan row." }
+  ]
+}

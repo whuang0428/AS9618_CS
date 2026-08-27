@@ -72,6 +72,41 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Integer conversion between binary and denary
+
+### Direct explanation
+
+- Binary is base 2 and uses place values that are powers of 2. Denary is base 10 and uses place values that are powers of 10. A base label identifies the representation; it does not change the integer value.
+- To convert a binary integer to denary, add the binary place values whose bits are 1. To convert a denary integer to binary, select powers of 2 that sum to the value and write every required bit position, including zeros.
+
+### Worked example
+
+**Convert the same integer in both directions:** 10110110 binary = 128 + 32 + 16 + 4 + 2 = 182 denary. Reversing the process, 182 = 128 + 32 + 16 + 4 + 2, so the 8-bit binary representation is 10110110.
+
+### Targeted practice and answers
+
+1. Convert the binary integer 01001101 to denary.
+   **Answer:** 77.
+2. Convert the denary integer 129 to 8-bit binary.
+   **Answer:** 10000001.
+3. Why must a base or representation be stated?
+   **Answer:** The same digit string can represent different integer values in different number bases.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Convert 156 denary to 8-bit binary, then convert your binary answer back to denary as a check.
+
+- **M1** selects 128 + 16 + 8 + 4
+- **A1** 10011100
+- **M1** re-expands the binary place values
+- **A1** returns to 156 denary
+
+**Strict note:** Do not award an unlabelled digit string when the base is ambiguous.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `knowledge`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-002-knowledge.jpg`
 
 1. Bit position 7 6 5 4 3 2 1 0
@@ -91,6 +127,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `methods`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-002-methods.jpg`
 
 1. Binary to denary
@@ -108,6 +145,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `range`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-002-range.jpg`
 
 1. Smallest 8-bit value

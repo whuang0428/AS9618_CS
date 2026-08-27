@@ -9,7 +9,7 @@ const classifierMap = {
   },
   join: {
     topic: "SQL join",
-    reason: "StudentName and BookTitle are stored in different tables, so related tables must be joined using key fields.",
+    reason: "StudentName and DueDate are stored in Student and Loan, so the two related tables must be joined using their matching StudentID fields.",
   },
   group: {
     topic: "Aggregate and GROUP BY",
@@ -212,19 +212,19 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "A query must output StudentName and Title for current loans using Student, Loan and Book. Describe the required join path and give one suitable SQL query.",
-    answer: "Student is joined to Loan using Student.StudentID = Loan.StudentID. Loan is joined to Book using Loan.BookID = Book.BookID. A suitable query is SELECT Student.StudentName, Book.Title FROM Student, Loan, Book WHERE Student.StudentID = Loan.StudentID AND Loan.BookID = Book.BookID AND Loan.Returned = FALSE;",
+    prompt: "Student(StudentID, StudentName) and Loan(LoanID, StudentID, DueDate, Returned) are related tables. Write SQL to output StudentName and DueDate for current loans.",
+    answer: "SELECT Student.StudentName, Loan.DueDate FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.Returned = FALSE;",
     marking: [
-      { mark: "B1", text: "identifies Student to Loan relationship using StudentID" },
-      { mark: "B1", text: "identifies Loan to Book relationship using BookID" },
-      { mark: "B1", text: "SELECT StudentName and Title only" },
-      { mark: "B1", text: "FROM Student, Loan and Book" },
-      { mark: "M1", text: "includes both join conditions" },
-      { mark: "A1", text: "includes current-loan filter Returned = FALSE" },
+      { mark: "B1", text: "SELECT includes Student.StudentName" },
+      { mark: "B1", text: "SELECT includes Loan.DueDate" },
+      { mark: "B1", text: "FROM Student" },
+      { mark: "B1", text: "INNER JOIN Loan" },
+      { mark: "M1", text: "ON Student.StudentID = Loan.StudentID" },
+      { mark: "A1", text: "WHERE Loan.Returned = FALSE" },
     ],
     strict: [
-      "Do not accept direct join Student.StudentID = Book.BookID.",
-      "Allow INNER JOIN syntax if relationships and filter are correct.",
+      "Do not accept a three-table or comma-style join.",
+      "Require explicit INNER JOIN ... ON between the two named tables.",
       "Do not require semicolon.",
     ],
   },

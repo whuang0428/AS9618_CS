@@ -87,6 +87,44 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Array terminology, selection and one-dimensional pseudocode
+
+### Direct explanation
+
+- An array is a collection of elements stored under one identifier. An index selects one element. The lower bound is the first valid index and the upper bound is the last valid index; both bounds are inclusive in a Cambridge declaration such as ARRAY[1:20] OF INTEGER.
+- Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names. Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests. Do not choose 2D merely because there are many values.
+- One-dimensional array pseudocode must declare explicit bounds and an element type, access elements with one index and use loop bounds that match the declared lower and upper bounds. The number of elements is upper bound - lower bound + 1.
+
+### Worked example
+
+**Choose and declare the dimension:** Twenty daily temperatures need one position per day, so DECLARE Temperature : ARRAY[1:20] OF REAL is suitable and valid indexes are 1 to 20. Marks for 30 students in 4 tests need row and column positions, so a 2D array is suitable instead.
+
+### Targeted practice and answers
+
+1. Define index, lower bound and upper bound.
+   **Answer:** An index selects an element; the lower bound is the first valid index; the upper bound is the last valid index.
+2. Choose 1D or 2D for twelve monthly rainfall totals.
+   **Answer:** 1D, because one month index selects each total.
+3. Write a declaration for 50 Boolean flags and state the number of elements.
+   **Answer:** DECLARE Flag : ARRAY[1:50] OF BOOLEAN; there are 50 elements.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Declare a one-dimensional array for 25 REAL measurements, input every element and explain why a two-dimensional array is not required.
+
+- **B1** DECLARE Measurements : ARRAY[1:25]
+- **B1** OF REAL
+- **M1** FOR loop uses the declared lower and upper bounds
+- **A1** INPUT Measurements[Index] and closes with NEXT Index
+- **B1** one index identifies each measurement
+- **B1** there is no row-column relationship requiring a second dimension
+
+**Strict note:** Do not use index 0 when the declared lower bound is 1, and do not describe bounds as stored element values.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -94,6 +132,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `access`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-115-access.jpg`
 
 1. Cambridge array declarations state an explicit lower and upper bound.
@@ -104,6 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `declare`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-115-declare.jpg`
 
 1. Declare arrays
@@ -123,6 +163,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `lookup`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-115-lookup.jpg`
 
 1. Interactive index lookup
@@ -132,6 +173,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `model`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-115-model.jpg`
 
 1. Array model
@@ -149,6 +191,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-115-pseudocode.jpg`
 
 1. Pseudocode vs Java
@@ -167,6 +210,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `traversal`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-115-traversal.jpg`
 
 1. Traversal

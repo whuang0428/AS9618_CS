@@ -106,6 +106,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `count`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-count.jpg`
 
 1. Initialise PassCount to zero before traversing five scores.
@@ -117,6 +118,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `patterns`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-patterns.jpg`
 
 1. Pattern map
@@ -136,6 +138,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-pseudocode.jpg`
 
 1. Both pseudocode and Java versions visit five score positions.
@@ -147,6 +150,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `search`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-search.jpg`
 
 1. Initialise Found to FALSE before traversing the names.
@@ -158,6 +162,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `selector`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-selector.jpg`
 
 1. Interactive pattern selector
@@ -168,6 +173,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `traversal`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-traversal.jpg`
 
 1. Traversal
@@ -180,6 +186,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `update`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-117-update.jpg`
 
 1. Traverse the array with a FOR loop so Index is defined for every access.

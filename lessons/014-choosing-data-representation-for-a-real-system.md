@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cases`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-014-cases.jpg`
 
 1. Multilingual chat app
@@ -94,6 +95,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `framework`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-014-framework.jpg`
 
 1. 1. What data?
@@ -101,7 +103,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. 2. What range?
 4. Check minimum, maximum, precision and whether negative values are possible.
 5. 3. What quality?
-6. Choose resolution, colour depth, sample rate or sample resolution only as high as needed.
+6. Choose resolution, colour depth, sample rate or sampling resolution only as high as needed.
 7. 4. What constraints?
 8. Storage, bandwidth, compatibility, exact reconstruction and processing cost.
 
@@ -109,6 +111,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `tradeoffs`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-014-tradeoffs.jpg`
 
 1. Higher image resolution or colour depth can improve image quality and increases image file size.

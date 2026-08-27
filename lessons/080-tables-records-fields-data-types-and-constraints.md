@@ -73,39 +73,42 @@ Misconception: Students often choose names as primary keys. Correction: a primar
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S8.02
-**Focus:** Relational terminology and secondary indexes
+**Focus:** Relational terminology, keys and indexing
 
 ### Direct explanation
 
-- Entity/table and record/tuple and field/attribute are related pairs, but answers should follow the question's context. A candidate key is any minimal field set that uniquely identifies a record; one candidate becomes the primary key, while another may be a secondary/alternate key.
-- An index is an additional lookup structure mapping key values to record locations. It can speed retrieval and ordering but uses storage and must be updated when data changes.
+- An entity is a real-world thing about which data is stored and is commonly represented by a table. A table contains records (tuples); each record describes one entity occurrence. A field (attribute) is one named property or column. These paired terms are related but should not be collapsed into one definition.
+- A candidate key is a minimal field or field set that uniquely identifies a record. One candidate key is selected as the primary key. A secondary key is a field used as an additional retrieval or ordering route and need not be unique; it is not another name for an unselected candidate key. A foreign key refers to a key in a related table. An index is a lookup structure built on one or more fields: it can speed retrieval but uses storage and must be maintained after changes.
 
 ### Worked example
 
-**Student identifiers:** StudentID and Email may both be candidate keys. StudentID is selected as primary; Email remains an alternate candidate and may be indexed for faster account lookup.
+**Keys for a student table:** In Student(StudentID, Email, TutorGroup), StudentID and Email may be candidate keys if both are unique and minimal; StudentID is selected as primary. TutorGroup can be a secondary key for retrieving all students in one group even though many records share the value. An index on TutorGroup can provide a faster lookup route.
 
 ### Targeted practice and answers
 
-1. What makes a candidate key minimal?
+1. Distinguish a record/tuple from a field/attribute.
+   **Answer:** A record/tuple is one complete row for an entity occurrence; a field/attribute is one named property or column.
+2. What makes a candidate key minimal?
    **Answer:** No field can be removed while retaining uniqueness.
-2. Is every candidate key the primary key?
-   **Answer:** No; one is selected as primary.
-3. Give one cost of an index.
-   **Answer:** Extra storage and update/maintenance processing.
+3. Must a secondary key uniquely identify one record?
+   **Answer:** No. It may retrieve a set of records sharing the same value.
+4. Give one benefit and one cost of an index.
+   **Answer:** It can speed lookup/ordering, but uses storage and must be updated when data changes.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Explain the difference between a candidate key, primary key and database index.
+**Question (6 marks):** For Student(StudentID, Email, TutorGroup), explain the roles of a candidate key, primary key, secondary key and index.
 
-- **B1** candidate key is a minimal unique identifier
-- **B1** primary key is the selected candidate key
-- **B1** index is a separate lookup structure for faster access
-- **B1** index has storage/update cost or need not enforce entity identity
+- **B1** candidate key is a minimal unique identifier, such as StudentID or unique Email
+- **B1** primary key is the candidate selected to identify each record
+- **B1** secondary key is an additional retrieval field such as non-unique TutorGroup
+- **B1** secondary key need not be unique
+- **B1** index maps field values to record locations to speed access
+- **B1** index requires storage and update maintenance
 
-**Strict note:** Do not accept that an index and a primary key are always the same object.
+**Strict note:** Do not describe a secondary key as an alternate candidate key or require it to be unique.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
@@ -115,6 +118,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `checkpoint`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-checkpoint.jpg`
 
 1. Monthly checkpoint
@@ -127,6 +131,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `constraint-tool`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-constraint-tool.jpg`
 
 1. Interactive constraint checker
@@ -138,6 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `constraints`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-constraints.jpg`
 
 1. A constraint limits accepted values to help maintain data integrity. It does not prove the data is true; it helps reject impossible or invalid data.
@@ -154,6 +160,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `fields`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-fields.jpg`
 
 1. Each field should have a name, data type, possible field size and constraints. Good design reduces invalid data at entry.
@@ -166,6 +173,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `terms`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-terms.jpg`
 
 1. A table stores records about one entity. A record is one complete row. A field is one column or attribute.
@@ -184,6 +192,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `type-tool`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-type-tool.jpg`
 
 1. Interactive data type chooser
@@ -194,6 +203,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `types`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-080-types.jpg`
 
 1. Data type

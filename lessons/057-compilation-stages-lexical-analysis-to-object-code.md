@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `generation`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-057-generation.jpg`
 
 1. Input Checked intermediate representation or syntax tree.
@@ -90,6 +91,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `lexical`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-057-lexical.jpg`
 
 1. Lexical analysis converts source characters into tokens.
@@ -100,6 +102,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `optimisation`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-057-optimisation.jpg`
 
 1. Purpose Improve efficiency, such as speed or memory use.
@@ -111,6 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pipeline`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-057-pipeline.jpg`
 
 1. Source code The high-level program written by the programmer.
@@ -122,6 +126,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `semantic`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-057-semantic.jpg`
 
 1. Meaning Code can be grammatically correct but still not make valid sense.
@@ -133,6 +138,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `syntax`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-057-syntax.jpg`
 
 1. Input Tokens produced by lexical analysis.

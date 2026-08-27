@@ -81,6 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `checks`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-checks.jpg`
 
 1. Validation check types
@@ -100,6 +101,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `integration`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-integration.jpg`
 
 1. IsValidMark returns TRUE only for marks from 0 to 100 inclusive.
@@ -111,6 +113,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-java.jpg`
 
 1. Java support only
@@ -127,6 +130,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `modularity`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-modularity.jpg`
 
 1. Modularity
@@ -141,6 +145,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `module-tool`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-module-tool.jpg`
 
 1. Module chooser
@@ -150,6 +155,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `parameters`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-parameters.jpg`
 
 1. GetValidMark inputs and validates a mark, then returns a valid INTEGER.
@@ -161,6 +167,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `robust`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-robust.jpg`
 
 1. Robust design
@@ -175,6 +182,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `validation`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-validation.jpg`
 
 1. Place INPUT Mark inside REPEAT so every retry reads a new value.
@@ -186,6 +194,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `validator`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-139-validator.jpg`
 
 1. Interactive validator

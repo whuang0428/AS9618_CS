@@ -72,6 +72,44 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often list hardware without explaining suitability. Correction: the mark usually comes from matching a feature to a need.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Why computer systems need input, output and storage
+
+### Direct explanation
+
+- Input is needed to enter data and instructions into a computer system. Output is needed to communicate processed information to a user or to cause an action. A processor cannot perform a useful task unless it can receive the required data and make the result available.
+- Primary memory is needed to hold the instructions and data currently being used by the processor. Secondary storage is needed for non-volatile, long-term retention of programs and data. Removable storage is secondary storage that can be disconnected, so it can transfer data or hold an offline backup, although it can be lost or stolen.
+
+### Worked example
+
+**Field survey tablet:** A surveyor enters measurements through a touchscreen, sees validation messages on the display, uses RAM as primary memory while the survey application runs, saves records on internal secondary storage, and copies an encrypted backup to removable storage before leaving the site.
+
+### Targeted practice and answers
+
+1. Why does a computer system need input?
+   **Answer:** To receive data and instructions for processing.
+2. Why does a computer system need output?
+   **Answer:** To communicate processed information or cause an action.
+3. Distinguish the need for primary memory from the need for secondary storage.
+   **Answer:** Primary memory holds instructions/data currently in use; secondary storage retains programs/data long term without power.
+4. Give one purpose of removable storage.
+   **Answer:** To transfer data between systems or keep a detachable/offline backup copy.
+
+### Exam-style question and MS
+
+**Question (5 marks):** A portable medical system receives patient measurements, processes them and stores the records. Explain why it needs input, output, primary memory, secondary storage and removable storage.
+
+- **B1** input receives patient measurements/data
+- **B1** output communicates results or warnings
+- **B1** primary memory holds current program instructions and working data
+- **B1** secondary storage retains patient records long term without power
+- **B1** removable storage supports transfer or an offline/detachable backup
+
+**Strict note:** Do not treat primary memory, secondary storage and removable storage as interchangeable terms.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +117,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `components`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-027-components.jpg`
 
 1. Input devices
@@ -98,6 +137,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `flow`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-027-flow.jpg`
 
 1. Input devices capture data for processing.
@@ -109,6 +149,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `memory-storage`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-027-memory-storage.jpg`
 
 1. Primary memory

@@ -1,11 +1,10 @@
 import fs from "node:fs";
 
 export const semanticAudit = Object.freeze({
-  completedAt: "2026-08-24",
+  completedAt: "2026-08-26",
   firstPassComplete: true,
   secondPassComplete: true,
-  scope: 779,
-  method: "Two visual passes at original resolution against maintained source facts; OCR used only as a locator.",
+  method: "Two visual passes at original resolution against maintained source facts, including reverse-order review of all repaired and newly added assets; OCR used only as a locator.",
 });
 
 const resolvedDefectIds = new Set([
@@ -78,7 +77,9 @@ const resolvedDefectIds = new Set([
   "S10-020-ADDRESSES-001",
   "S10-035-GATES-001",
   "S10-042-CYCLE-VISUAL-001",
+  "S10-043-MAIN-REGISTERS-002",
   "S10-047-MODES-001",
+  "S10-047-MODES-002",
   "S10-056-CONCEPT-001",
   "S10-089-SQL-001",
   "S10-093-SQL-001",
@@ -1055,6 +1056,18 @@ export const semanticDefects = Object.freeze([
     "Use one consistent mark-to-time scale or add an explicit labelled exception with a defensible reason.",
   ),
   defect(
+    "S10-043-MAIN-REGISTERS-002",
+    "043/main-registers",
+    "Named register comparison",
+    "missing-content",
+    "The image labelled itself as six register roles and omitted the Index Register (IX).",
+    "The named-register visual must include PC, CIR, MAR, MDR, ACC, IX and the status register, and must not imply that six roles are complete.",
+    "Cambridge 9618 2027-2029 Version 2 Section 4.1 names IX together with the other required registers.",
+    "Major",
+    "High",
+    "Replace the image with a seven-role comparison that includes IX and preserves all register meanings.",
+  ),
+  defect(
     "S10-047-MODES-001",
     "047/modes",
     "Main addressing-mode comparison",
@@ -1065,5 +1078,17 @@ export const semanticDefects = Object.freeze([
     "Major",
     "High",
     "Add Direct and Indexed panels with accurate operand/effective-address flows, or retitle the asset to match its two-mode scope.",
+  ),
+  defect(
+    "S10-047-MODES-002",
+    "047/modes",
+    "Complete addressing-mode comparison",
+    "missing-content",
+    "The repaired four-mode image still omitted relative addressing, so it did not cover the complete Version 2 list.",
+    "The visual must teach immediate, direct, indirect, indexed and relative addressing, including that relative addressing forms an effective address from the program counter and an offset.",
+    "Cambridge 9618 2027-2029 Version 2 Section 4.2 names all five addressing modes.",
+    "Major",
+    "High",
+    "Replace the image with a five-mode comparison and retain the boundary that LDR #n is immediate loading of IX, not relative addressing.",
   ),
 ]);

@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -37,6 +37,7 @@
         <a href="#practice">Practice</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -306,6 +307,58 @@
           </p>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Integer conversion between binary and denary</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Binary is base 2 and uses place values that are powers of 2. Denary is base 10 and uses place values that are powers of 10. A base label identifies the representation; it does not change the integer value.</p>
+            <p>To convert a binary integer to denary, add the binary place values whose bits are 1. To convert a denary integer to binary, select powers of 2 that sum to the value and write every required bit position, including zeros.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Convert the same integer in both directions</h3>
+            <p>10110110 binary = 128 + 32 + 16 + 4 + 2 = 182 denary. Reversing the process, 182 = 128 + 32 + 16 + 4 + 2, so the 8-bit binary representation is 10110110.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Integer conversion between binary and denary: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Convert the binary integer 01001101 to denary.</p>
+              <details><summary>Show answer</summary><p>77.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Convert the denary integer 129 to 8-bit binary.</p>
+              <details><summary>Show answer</summary><p>10000001.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why must a base or representation be stated?</p>
+              <details><summary>Show answer</summary><p>The same digit string can represent different integer values in different number bases.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Convert 156 denary to 8-bit binary, then convert your binary answer back to denary as a check.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>M1</strong> selects 128 + 16 + 8 + 4</li>
+                <li><strong>A1</strong> 10011100</li>
+                <li><strong>M1</strong> re-expands the binary place values</li>
+                <li><strong>A1</strong> returns to 156 denary</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -359,7 +412,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

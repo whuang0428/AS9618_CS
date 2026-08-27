@@ -263,22 +263,22 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ### Retrieval Grid [6]
 
-1. Register holding next instruction address
-2. Register holding current instruction
-3. Bus carrying memory location
-4. Indexed offset register
-5. Conditional equal branch
-6. Shift inserting zero on right
+1. LDR #n
+2. CMI <address>
+3. JPE <address>
+4. JPN <address>
+5. Mask operation used to set a bit
+6. Shift that rotates an outgoing bit
 
 <details>
 <summary>Retrieval answers</summary>
 
-1. PC
-2. CIR
-3. address bus
-4. IX
-5. JPE
-6. LSL
+1. load the immediate value n into IX
+2. compare ACC with the value obtained through indirect addressing
+3. jump after a comparison produces True
+4. jump after a comparison produces False
+5. OR
+6. cyclic shift
 
 **Marking:** Award 1 mark for each accurate answer. Credit a precise equivalent syllabus term.
 
@@ -286,16 +286,16 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ### Error Clinic [4]
 
-1. Correct this claim: “MAR stores the data fetched from memory.”
-2. Correct this claim: “Pass 1 of an assembler runs the program.”
+1. Correct this claim: “START LDM #5 uses START as a symbolic data address.”
+2. Correct this claim: “CMI 40 compares ACC directly with the literal value 40.”
 
 <details>
 <summary>Corrections</summary>
 
-1. MAR stores the address; MDR stores transferred data or instruction.
+1. In <label>: <opcode> <operand>, START is an instruction label naming that instruction; a symbolic data address is defined separately with <label>: <data>.
    - **B1** identifies the technical error.
    - **B1** supplies the accurate correction.
-2. Pass 1 assigns addresses/builds the symbol table; neither assembler pass executes source.
+2. CMI <address> uses indirect addressing: the operand identifies a location whose contents lead to the value compared with ACC.
    - **B1** identifies the technical error.
    - **B1** supplies the accurate correction.
 
@@ -303,19 +303,19 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ### Timed Exam Practice [10]
 
-1. Calculate the effective address for LDX 300 when IX=12 and explain one use of indexed addressing. **[4]**
+1. State the exact effects of LDR #n, CMI <address>, JPE <address> and JPN <address>. **[4]**
 2. Describe interrupt handling from request to resuming the program. **[6]**
 
 ### Answer Key / Mark Scheme
 
 #### Q1 [4]
 
-- **M1** uses indexed addressing
-- **M1** adds 300 + 12
-- **A1** 312
-- **B1** useful for array element access
+- **B1** LDR loads immediate n into IX
+- **B1** CMI compares ACC with a value obtained through indirect addressing
+- **B1** JPE jumps after a comparison produces True
+- **B1** JPN jumps after a comparison produces False
 
-**Guidance:** Do not dereference twice.
+**Guidance:** Do not accept relative LDR, immediate CMI, equality/zero JPE or negative-status JPN.
 
 #### Q2 [6]
 
@@ -461,19 +461,19 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ### Timed Exam Practice [10]
 
-1. Describe double-entry verification and a check digit. **[4]**
+1. Describe one verification method used during data entry and two methods used during data transfer. **[4]**
 2. Recommend three controls for an online banking account and explain the threat reduced by each. **[6]**
 
 ### Answer Key / Mark Scheme
 
 #### Q1 [4]
 
-- **B1** data entered twice
-- **B1** entries compared
-- **B1** check digit calculated from other digits
-- **B1** recalculation detects many entry errors
+- **B1** visual check compares entered data with the source, or double entry compares two independently entered values
+- **B1** byte parity checks an agreed odd/even parity bit and block parity extends checks across rows and columns
+- **B1** checksum is calculated from the data block by the sender and recalculated/compared by the receiver
+- **B1** these methods detect many errors but do not prove truth or automatically correct every error
 
-**Guidance:** Neither method proves truth.
+**Guidance:** Do not substitute a validation check digit for a transfer checksum; byte parity and block parity must be distinguished.
 
 #### Q2 [6]
 
@@ -541,7 +541,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 ### Timed Exam Practice [10]
 
 1. Explain two purposes of professional codes of conduct. **[4]**
-2. Evaluate facial recognition for school attendance. **[6]**
+2. Evaluate the use of AI facial recognition for school attendance. **[6]**
 
 ### Answer Key / Mark Scheme
 
@@ -556,14 +556,14 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q2 [6]
 
-- **B1** automation/speed/accurate attendance benefit
+- **B1** AI automates matching captured faces to stored biometric templates, giving a speed/attendance-recording benefit
 - **B1** privacy/biometric-data risk
 - **B1** bias/false match consequence
 - **B1** security/access/retention control
 - **B1** alternative or human review/appeal
 - **B1** makes a reasoned recommendation for the school using attendance benefit and biometric privacy or false-match risk
 
-**Guidance:** Do not award a one-sided list as evaluation.
+**Guidance:** Do not award a one-sided list or generic AI claim as evaluation.
 
 ---
 
@@ -777,19 +777,19 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ### Timed Exam Practice [10]
 
-1. Construct an identifier-table entry for an array of 50 names and a count of names entered. **[4]**
+1. Construct identifier-table entries for a student's name and the count of valid marks entered. **[4]**
 2. Refine 'process quiz results' into a coherent modular algorithm. **[6]**
 
 ### Answer Key / Mark Scheme
 
 #### Q1 [4]
 
-- **B1** meaningful Names identifier
-- **B1** ARRAY[1:50] OF STRING
-- **B1** meaningful Count identifier with INTEGER type
-- **B1** purposes distinguish stored names and populated count
+- **B1** meaningful StudentName or equivalent identifier
+- **B1** STRING type and purpose for the student's name
+- **B1** meaningful Count or ValidMarkCount identifier with INTEGER type
+- **B1** purpose states the number of valid marks entered
 
-**Guidance:** Names, types and purposes are all required.
+**Guidance:** Both entries require meaningful identifiers, suitable scalar types and distinct purposes.
 
 #### Q2 [6]
 
@@ -857,7 +857,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 ### Timed Exam Practice [10]
 
 1. Describe array-based queue overflow and underflow. **[4]**
-2. Explain insertion at the front of an array-based linked list. **[6]**
+2. For array implementations of stack, queue and linked-list ADTs, explain how data can be added, edited and deleted while preserving each structure's rule. **[6]**
 
 ### Answer Key / Mark Scheme
 
@@ -872,14 +872,14 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q2 [6]
 
-- **B1** take index from free list
-- **B1** store new data at that index
-- **B1** set new Next to old Start
-- **B1** set Start to new index
-- **B1** advance/update free-list head
-- **B1** no shifting of all logical elements is required
+- **B1** stack adds with push and deletes with pop at the top using a stack/top pointer
+- **B1** queue adds at the rear and deletes from the front using enqueue/dequeue in FIFO order
+- **B1** linked-list insertion obtains a free array index and changes Start/Next links
+- **B1** editing changes the selected stored data field without corrupting the stack/queue order or linked-list links
+- **B1** linked-list deletion bypasses the node by changing links and returns the freed index to the free list
+- **B1** array state such as top, front/rear, Start/Next/free list implements the ADT behaviour
 
-**Guidance:** Award equivalent pointer names.
+**Guidance:** Candidates are not required to write pseudocode for these ADT operations; award accurate conceptual state changes and do not accept shifting every linked-list element as the defining method.
 
 ---
 

@@ -1,4 +1,4 @@
-# Lesson 043: Registers: PC, CIR, MAR, MDR, ACC, and status register
+# Lesson 043: Registers: PC, CIR, MAR, MDR, ACC, IX, and status register
 
 **Course:** Cambridge International AS Level Computer Science 9618, 2027-2029
 **Paper:** Paper 1
@@ -73,39 +73,45 @@ Misconception: Students often memorise register names without roles. Correction:
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S4.02
-**Focus:** Index register (IX)
+**Focus:** General-purpose and special-purpose registers
 
 ### Direct explanation
 
-- The index register stores an offset used to modify an address in an indexed instruction. The effective address is formed by adding the instruction's address operand to the IX value.
-- Indexed addressing is useful for arrays because the base address stays fixed while IX changes for successive elements. IX stores the offset/index contribution, not necessarily the array data itself.
+- A general-purpose register can temporarily hold data or intermediate results for a range of operations. A special-purpose register has a defined processor role. In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register. In Cambridge assembly-language questions, ACC is the only available general-purpose working register; this question convention does not remove the defined roles of the other named registers.
+- PC holds the address of the next instruction; MAR holds the address currently being accessed; MDR holds data or an instruction being transferred to or from memory; CIR holds the current instruction while it is decoded or executed.
+- ACC holds an intermediate or final ALU result. IX holds an offset used to form an indexed effective address. The status register holds flags about an operation or processor state, such as zero, carry or overflow; it does not hold the arithmetic result itself.
 
 ### Worked example
 
-**Access ARRAY[3]:** If the base address is 500 and IX contains 3, LDX 500 accesses effective address 503 (assuming one address per element). Incrementing IX moves to the next element.
+**Follow registers through fetch and indexed execute:** PC = 300 is copied to MAR; the instruction read from memory enters MDR and then CIR. If that instruction is LDX 500 while IX = 3, the effective address is 503 and the value at that address is loaded into ACC. A resulting condition can update a flag in the status register.
 
 ### Targeted practice and answers
 
-1. What does IX normally store?
-   **Answer:** An offset/index used in effective-address calculation.
-2. Base 120 plus IX 7 gives which effective address?
+1. Distinguish a general-purpose register from a special-purpose register.
+   **Answer:** A general-purpose register can hold values for varied operations; a special-purpose register has a defined processor role.
+2. State the roles of PC, MAR, MDR and CIR.
+   **Answer:** PC holds the next-instruction address; MAR the accessed address; MDR transferred data/instruction; CIR the current instruction.
+3. State the roles of ACC, IX and the status register.
+   **Answer:** ACC holds ALU results; IX an indexed-address offset; the status register holds flags about results or CPU state.
+4. Which general-purpose working register is assumed in Cambridge assembly questions?
+   **Answer:** The accumulator, ACC.
+5. Base 120 plus IX 7 gives which indexed effective address?
    **Answer:** 127.
-3. Why is IX useful for arrays?
-   **Answer:** The same instruction/base can access successive elements by changing the offset.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** An instruction uses indexed addressing with address operand 240 and IX = 6. State the effective address and explain the role of IX.
+**Question (6 marks):** Distinguish general-purpose and special-purpose registers, then state the roles of PC, MAR, MDR, CIR, ACC, IX and the status register.
 
-- **B1** effective address is 246
-- **B1** IX stores an offset/index
-- **B1** offset is added to the instruction/base address
-- **B1** allows repeated access to array/list elements
+- **B1** general-purpose register can hold values for varied operations; special-purpose register has a defined role
+- **B1** PC next-instruction address and CIR current instruction
+- **B1** MAR accessed address and MDR transferred data/instruction
+- **B1** ACC intermediate/final ALU result
+- **B1** IX offset used in indexed addressing
+- **B1** status register stores flags about a result or processor state
 
-**Strict note:** Do not accept 240 as the effective address when IX is non-zero.
+**Strict note:** Do not swap MAR with MDR, PC with CIR, or claim that the status register stores the calculation result.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
@@ -115,6 +121,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `acc-status`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-043-acc-status.jpg`
 
 1. Accumulator (ACC)
@@ -128,29 +135,28 @@ Correction prompt: "State the correct term, then explain the relevant process or
 9. Common error
 10. The status register does not store the calculation result itself. It stores flags about the result.
 
-### The six register roles
+### The seven named register roles
 
 - **Explains:** `main-registers`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-043-main-registers.jpg`
 
-1. Register
-2. Full name
-3. What it holds
-4. Exam-safe sentence
-5. Program Counter
-6. Address of the next instruction to be fetched.
-7. The PC is updated so the CPU knows where to fetch the next instruction.
-8. Current Instruction Register
-9. Instruction currently being decoded/executed.
-10. The CIR holds the fetched instruction while the CU decodes it.
-11. Memory Address Register
-12. Address of a memory location being accessed.
+1. PC holds the address of the next instruction to be fetched.
+2. CIR holds the instruction currently being decoded or executed.
+3. MAR holds the address of the memory location being accessed.
+4. MDR holds data or an instruction being transferred to or from memory.
+5. ACC holds an intermediate or final ALU result.
+6. IX holds an offset used in indexed addressing.
+7. The status register holds flags about a result or processor state.
+8. A general-purpose register can hold varied working values; a special-purpose register has a defined processor role.
+9. Cambridge assembly questions assume ACC is the available general-purpose working register.
 
 ### Why registers exist
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-043-purpose.jpg`
 
 1. Inside the CPU

@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -38,6 +38,7 @@
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -286,6 +287,63 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Why computer systems need input, output and storage</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Input is needed to enter data and instructions into a computer system. Output is needed to communicate processed information to a user or to cause an action. A processor cannot perform a useful task unless it can receive the required data and make the result available.</p>
+            <p>Primary memory is needed to hold the instructions and data currently being used by the processor. Secondary storage is needed for non-volatile, long-term retention of programs and data. Removable storage is secondary storage that can be disconnected, so it can transfer data or hold an offline backup, although it can be lost or stolen.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Field survey tablet</h3>
+            <p>A surveyor enters measurements through a touchscreen, sees validation messages on the display, uses RAM as primary memory while the survey application runs, saves records on internal secondary storage, and copies an encrypted backup to removable storage before leaving the site.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Why computer systems need input, output and storage: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Why does a computer system need input?</p>
+              <details><summary>Show answer</summary><p>To receive data and instructions for processing.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Why does a computer system need output?</p>
+              <details><summary>Show answer</summary><p>To communicate processed information or cause an action.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Distinguish the need for primary memory from the need for secondary storage.</p>
+              <details><summary>Show answer</summary><p>Primary memory holds instructions/data currently in use; secondary storage retains programs/data long term without power.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Give one purpose of removable storage.</p>
+              <details><summary>Show answer</summary><p>To transfer data between systems or keep a detachable/offline backup copy.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>A portable medical system receives patient measurements, processes them and stores the records. Explain why it needs input, output, primary memory, secondary storage and removable storage.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> input receives patient measurements/data</li>
+                <li><strong>B1</strong> output communicates results or warnings</li>
+                <li><strong>B1</strong> primary memory holds current program instructions and working data</li>
+                <li><strong>B1</strong> secondary storage retains patient records long term without power</li>
+                <li><strong>B1</strong> removable storage supports transfer or an offline/detachable backup</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -324,7 +382,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

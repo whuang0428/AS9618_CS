@@ -72,6 +72,41 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often treat binary digits as decoration. Correction: every bit position has a value; if the position changes, the value changes.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Hexadecimal as a base-16 representation
+
+### Direct explanation
+
+- Hexadecimal is base 16 and uses digits 0 to 9 and A to F. One hexadecimal digit represents one four-bit binary nibble, so grouping from the right gives an exact conversion between binary and hexadecimal integer representations.
+- To convert hexadecimal to denary, multiply each digit value by its power-of-16 place value. Binary, denary and hexadecimal may encode the same integer value even though their written representations differ.
+
+### Worked example
+
+**Convert D6 hexadecimal:** D6 hexadecimal = 1101 0110 binary. In denary, D6 = 13 x 16 + 6 = 214, so all three representations encode the integer 214.
+
+### Targeted practice and answers
+
+1. Convert A7 hexadecimal to binary.
+   **Answer:** 1010 0111.
+2. Convert 2D hexadecimal to denary.
+   **Answer:** 2 x 16 + 13 = 45.
+3. Convert binary 00111100 to hexadecimal.
+   **Answer:** 3C.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Convert the integer 159 denary to hexadecimal and then to 8-bit binary.
+
+- **M1** 159 = 9 x 16 + 15
+- **A1** 9F hexadecimal
+- **M1** maps 9 to 1001 and F to 1111
+- **A1** 10011111 binary
+
+**Strict note:** Do not treat A to F as decimal two-digit values.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `digits`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-003-digits.jpg`
 
 1. nibble 4-bit group
@@ -87,6 +123,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `grouping`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-003-grouping.jpg`
 
 1. Why four bits?
@@ -101,6 +138,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `padding`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-003-padding.jpg`
 
 1. When padding is needed

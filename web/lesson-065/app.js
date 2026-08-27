@@ -105,14 +105,14 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "5 marks",
-    prompt: "Explain the difference between authentication and authorisation.",
-    answer: "Authentication verifies that a user is who they claim to be, for example by checking a password, biometric or token. Authorisation happens after identity is established and determines what the user is allowed to access or do. For example, a user may be authenticated as a student but not authorised to edit examination results.",
+    prompt: "Explain the role of a user account, then distinguish authentication from authorisation.",
+    answer: "A user account provides a distinct system identity and supports accountability for access and actions. Authentication verifies the account user's identity claim, for example by checking a password, biometric or token. Authorisation happens after identity is established and determines what the authenticated account is allowed to access or do. A student account may authenticate successfully but still lack permission to edit examination results.",
     marking: [
-      { mark: "B1", text: "authentication verifies identity/claim of user" },
+      { mark: "B1", text: "user account provides a distinct system identity and/or accountability" },
+      { mark: "B1", text: "authentication verifies the identity claim of the account/user" },
       { mark: "B1", text: "valid authentication credential example, e.g. password/biometric/token" },
       { mark: "B1", text: "authorisation controls permitted access/actions/resources" },
-      { mark: "B1", text: "authorisation occurs after or depends on authentication" },
-      { mark: "B1", text: "clear scenario example distinguishing identity from permissions" },
+      { mark: "B1", text: "authorisation follows authentication / successful login does not grant every permission" },
     ],
     strict: [
       "Do not accept definitions that make both terms identical.",

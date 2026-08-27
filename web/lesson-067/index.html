@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,7 +44,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -410,19 +410,26 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>Digital signatures</h2>
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Digital signatures and encryption</h2>
           </div>
           <div class="stage2-explanation">
             <p>A sender hashes the message and encrypts the hash with the sender's private key to form a digital signature. The receiver uses the sender's public key to recover/verify the signed hash and independently hashes the received message.</p>
             <p>Matching hashes provide evidence of integrity and origin/authenticity; a valid signature does not keep the message confidential. Certificates help bind a public key to an identity.</p>
+            <p>Encryption is a separate security measure: it transforms readable plaintext into ciphertext and requires the correct key for decryption. A message may be signed for integrity/authenticity, encrypted for confidentiality, or both; neither mechanism should be credited for a property it does not provide.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Verify a signed update</h3>
-            <p>The device verifies the signature using the publisher's public key, hashes the downloaded update and compares hashes. A mismatch means the file or signature is not valid.</p>
+            <h3>Worked example: Verify and protect a signed update</h3>
+            <p>The publisher signs a hash of the update with its private key. The device uses the publisher's public key, independently hashes the received update and compares the values; a mismatch rejects the update. If the update must also remain confidential in transit, it is separately encrypted for an authorised recipient.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Digital signatures and encryption: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
@@ -435,19 +442,25 @@
             </article>
             <article class="stage2-question">
               <p><strong>3.</strong> Does a digital signature encrypt the whole message for confidentiality?</p>
-              <details><summary>Show answer</summary><p>Not necessarily; its main purposes are integrity and authentication/non-repudiation evidence.</p></details>
+              <details><summary>Show answer</summary><p>No. The content requires separate encryption if confidentiality is needed.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> What property does message encryption provide?</p>
+              <details><summary>Show answer</summary><p>Confidentiality: ciphertext should be unreadable without the correct key.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Describe how a digital signature is created and checked.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Describe how a digital signature is created and checked, then explain why separate encryption may also be required.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
                 <li><strong>B1</strong> sender creates a hash of the message</li>
                 <li><strong>B1</strong> hash is signed/encrypted using sender's private key</li>
                 <li><strong>B1</strong> receiver uses sender's public key and hashes received message</li>
-                <li><strong>B1</strong> matching hashes verify integrity and provide evidence of sender authenticity</li>
+                <li><strong>B1</strong> matching hashes provide integrity and sender-authenticity evidence</li>
+                <li><strong>B1</strong> separate encryption converts message plaintext to ciphertext</li>
+                <li><strong>B1</strong> confidentiality requires the correct decryption key</li>
               </ol>
             </details>
           </article>
@@ -490,7 +503,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

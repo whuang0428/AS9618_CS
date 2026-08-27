@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,6 +43,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -226,13 +227,13 @@ ENDIF</code></pre>
 
         <!-- stage10-explanation:start parameters -->
         <section class="panel explanation-panel" id="explanation-parameters" data-explains="parameters" data-explanation-kind="mechanism" aria-labelledby="explanation-parameters-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="parameters">
-          <h2 class="explanation-sr-only" id="explanation-parameters-title">Parameters receive values passed into a subroutine</h2>
+          <h2 class="explanation-sr-only" id="explanation-parameters-title">A subprogram interface connects caller and header</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-parameters.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Parameters receive values passed into a subroutine with a structured visual model." />
-            <figcaption class="explanation-sr-only">Parameters receive values passed into a subroutine: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-130-parameters.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining A subprogram interface connects caller and header with a structured visual model." />
+            <figcaption class="explanation-sr-only">A subprogram interface connects caller and header: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> A parameter is named in a subroutine header and receives an argument supplied at a call.</li><li><strong>Lesson fact:</strong> IsPass returns TRUE for marks at least 50 and FALSE otherwise.</li><li><strong>Lesson fact:</strong> Close each IF with ENDIF independently of ENDFUNCTION.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A subprogram interface gives the caller the name, parameter list and types, and any return value/type.</li><li><strong>Lesson fact:</strong> A procedure header or function header declares that interface; a function header also declares its return type.</li><li><strong>Lesson fact:</strong> A parameter is named in the header; an argument is the actual value or variable supplied at a call.</li><li><strong>Lesson fact:</strong> RETURN sends a function value to the caller; displayed output is an effect, not a return value.</li></ol>
 
           </div>
         </section>
@@ -386,6 +387,74 @@ ENDFUNCTION</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Procedures, functions and their interfaces</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Define and use a procedure when an algorithm needs a named action. A procedure may have no parameters, one parameter or several parameters. BYVAL passes a value that the procedure can use without changing the caller's variable; BYREF gives access to the caller's variable so an assignment can persist after the call.</p>
+            <p>Define and use a function when the caller needs one returned value. A function has a return type and RETURN statement; the call can appear in an expression, for example Total &lt;- Price + CalculateVAT(Price). Use procedures for actions and functions for calculated, searched or checked values.</p>
+            <p>A procedure header or function header names the subprogram and declares its parameters; a function header also declares its return type. The procedure/function interface is the information a caller needs to use the subprogram: its name, parameter list and types, and any returned value/type.</p>
+            <p>A parameter is the named variable in the header, while an argument is the actual value or variable supplied at a call. RETURN sends a function value back to the caller; output displayed by a procedure is an effect, not a return value.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Use a procedure and a function</h3>
+            <p>PROCEDURE Increase(BYREF Number : INTEGER, BYVAL Amount : INTEGER) changes the caller's Number by Amount. FUNCTION CalculateVAT(Price : REAL) RETURNS REAL returns Price * 0.20, so Total &lt;- Price + CalculateVAT(Price) uses the returned value in an expression. In Increase(Score, 5), Number and Amount are parameters while Score and 5 are arguments.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Procedures, functions and their interfaces: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> When is a procedure appropriate?</p>
+              <details><summary>Show answer</summary><p>When the algorithm needs a named action rather than a returned value used in an expression.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What is the difference between BYVAL and BYREF?</p>
+              <details><summary>Show answer</summary><p>BYVAL supplies a value/copy; BYREF aliases the caller variable so changes can persist.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Where can a function call be used?</p>
+              <details><summary>Show answer</summary><p>Anywhere its returned value of the declared type is valid, including an expression.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> What is included in a subprogram interface?</p>
+              <details><summary>Show answer</summary><p>Its name, parameters/types and any return value/type needed by a caller.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> In IsPass(Score), which name is the argument?</p>
+              <details><summary>Show answer</summary><p>Score.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>6.</strong> How does a function return differ from procedure output?</p>
+              <details><summary>Show answer</summary><p>RETURN supplies a value to the caller; OUTPUT displays data as an action.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Define a procedure AddBonus(BYREF Mark : INTEGER, BYVAL Bonus : INTEGER), define a function IsPass(Mark : INTEGER) returning BOOLEAN, and use both from a caller with IsPass(Score) inside an IF expression. Identify headers, parameters, arguments and return value.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> procedure header and coherent BYREF/BYVAL parameters</li>
+                <li><strong>B1</strong> procedure changes Mark using Bonus and closes correctly</li>
+                <li><strong>B1</strong> function header declares BOOLEAN return type</li>
+                <li><strong>B1</strong> function returns the result of the pass comparison</li>
+                <li><strong>M1</strong> caller supplies arguments and uses IsPass(Score) in an expression/condition</li>
+                <li><strong>B1</strong> correctly identifies parameter, argument and returned value terminology</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -414,7 +483,7 @@ ENDFUNCTION</code></pre>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

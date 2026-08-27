@@ -148,7 +148,7 @@ const examQuestions = [
     ],
     strict: [
       "Do not accept only 'it costs more'.",
-      "Do not confuse with sample resolution.",
+      "Do not confuse with sampling resolution.",
       "Answer must mention purpose or requirement.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],

@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -37,7 +37,7 @@
         <a href="#practice">Practice</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -339,19 +339,26 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>Binary-coded decimal (BCD)</h2>
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>BCD and hexadecimal in practical systems</h2>
           </div>
           <div class="stage2-explanation">
             <p>BCD encodes each denary digit separately in four bits. For example, 59 becomes 0101 1001, not the pure-binary value 00111011.</p>
-            <p>Only 0000 to 1001 are valid BCD digit groups. BCD is useful when decimal digits must be displayed exactly, such as clocks and calculators, but it usually uses more bits than pure binary.</p>
+            <p>Only 0000 to 1001 are valid BCD digit groups. BCD is used where decimal digits must be displayed or processed exactly, such as digital clocks, calculators and financial displays, although it usually uses more bits than pure binary.</p>
+            <p>Hexadecimal is used as a compact human-readable form of binary. One hex digit represents four bits, so hexadecimal is practical for memory addresses, machine-code/debug displays and colour values.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Encode 407</h3>
-            <p>Treat 4, 0 and 7 separately: 4 = 0100, 0 = 0000, 7 = 0111, so 407 in BCD is 0100 0000 0111.</p>
+            <h3>Worked example: Choose representations for a clock and an address</h3>
+            <p>A clock can encode 407 as BCD 0100 0000 0111 so each displayed denary digit maps to one four-bit group. A binary memory address can be written compactly in hexadecimal because each hexadecimal digit maps exactly to one nibble.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>BCD and hexadecimal in practical systems: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
@@ -363,20 +370,24 @@
               <details><summary>Show answer</summary><p>39.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Why is 1010 invalid as one BCD digit?</p>
-              <details><summary>Show answer</summary><p>BCD digit groups represent only denary 0 to 9; 1010 represents 10.</p></details>
+              <p><strong>3.</strong> Why is BCD suitable for a digital clock?</p>
+              <details><summary>Show answer</summary><p>Each displayed denary digit maps directly to one four-bit group.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why is hexadecimal suitable for a memory address?</p>
+              <details><summary>Show answer</summary><p>It is a compact form of binary with one digit per four-bit nibble.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>The bit pattern 0010 0101 is stored as BCD. State the denary value and explain one reason BCD may be chosen for a digital clock.</p>
+            <p>Explain one practical application of BCD and one practical application of hexadecimal.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> identifies separate groups 0010 and 0101</li>
-                <li><strong>A1</strong> states 25</li>
-                <li><strong>B1</strong> each displayed denary digit maps directly to one four-bit group</li>
-                <li><strong>B1</strong> reduces conversion work / preserves exact decimal digits for display</li>
+                <li><strong>B1</strong> BCD application such as a digital clock, calculator or financial display</li>
+                <li><strong>B1</strong> links BCD to separate exact denary digits</li>
+                <li><strong>B1</strong> hexadecimal application such as memory addresses, machine-code/debug output or colour values</li>
+                <li><strong>B1</strong> links hexadecimal to compact four-bit grouping</li>
               </ol>
             </details>
           </article>
@@ -419,7 +430,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

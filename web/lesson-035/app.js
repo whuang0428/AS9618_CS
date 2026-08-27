@@ -143,9 +143,9 @@ const examQuestions = [
     prompt: "For Q = (A AND B) OR NOT C, find Q when A = 1, B = 0 and C = 0. Show your working.",
     answer: "A AND B = 0. NOT C = 1. Q = 0 OR 1 = 1.",
     marking: [
-      { mark: "B1", text: "A AND B = 0" },
+      { mark: "M1", text: "A AND B = 0" },
       { mark: "B1", text: "NOT C = 1" },
-      { mark: "B1", text: "final output Q = 1" },
+      { mark: "A1", text: "final output Q = 1, with follow-through from the candidate's intermediate values" },
     ],
     strict: [
       "Do not award final answer mark from unsupported guessing if intermediate work contradicts it.",

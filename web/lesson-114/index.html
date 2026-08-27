@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,6 +43,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -385,6 +386,60 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Complete Cambridge pseudocode statements</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Section 11.1 requires pseudocode for the declaration and initialisation of constants, declaration of variables, assignment of values, arithmetic or logical expressions entered from the keyboard, and input to or output from the console. These are connected statements, not isolated vocabulary.</p>
+            <p>CONSTANT defines and initialises a fixed named value. DECLARE gives a variable a name and data type. Assignment evaluates the expression on the right of &lt;- and stores the result in the variable on the left. INPUT obtains a value from the keyboard; OUTPUT sends a value to the console.</p>
+            <p>Arithmetic expressions use operators such as +, -, *, /, DIV and MOD. Logical expressions combine comparisons with AND, OR or NOT and produce BOOLEAN results. Use = for comparison and &lt;- for assignment.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Declare, input, calculate and output</h3>
+            <p>CONSTANT PassMark = 50 defines and initialises a constant. DECLARE Mark : INTEGER and DECLARE Passed : BOOLEAN declare variables. INPUT Mark obtains keyboard input; Passed &lt;- Mark &gt;= PassMark assigns the result of a logical expression; OUTPUT Mark * 2 and OUTPUT Passed send arithmetic and Boolean results to the console.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Complete Cambridge pseudocode statements: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What is the difference between = and &lt;-?</p>
+              <details><summary>Show answer</summary><p>= compares values; &lt;- assigns the evaluated right-hand value to a variable.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which statement obtains keyboard input?</p>
+              <details><summary>Show answer</summary><p>INPUT followed by the target variable.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What type of result does Mark &gt;= PassMark produce?</p>
+              <details><summary>Show answer</summary><p>A BOOLEAN result, TRUE or FALSE.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Write Cambridge pseudocode that defines and initialises constant TaxRate as 0.20, declares Price and Tax as REAL, inputs Price, assigns Price * TaxRate to Tax, and outputs Tax.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> CONSTANT TaxRate = 0.20</li>
+                <li><strong>B1</strong> declares Price and Tax as REAL</li>
+                <li><strong>M1</strong> INPUT Price before the calculation</li>
+                <li><strong>M1</strong> Tax &lt;- Price * TaxRate</li>
+                <li><strong>A1</strong> OUTPUT Tax after assignment</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -421,7 +476,7 @@ boolean passed = mark &gt;= PASS_MARK;</code></pre>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

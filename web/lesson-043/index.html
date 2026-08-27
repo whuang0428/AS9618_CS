@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 043 | Registers: PC, CIR, MAR, MDR, ACC and status register</title>
+    <title>AS9618 Lesson 043 | Registers: PC, CIR, MAR, MDR, ACC, IX and status register</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="topbar">
       <div>
         <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 1 Section 4</p>
-        <h1>Registers: PC, CIR, MAR, MDR, ACC and status register</h1>
+        <h1>Registers: PC, CIR, MAR, MDR, ACC, IX and status register</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -39,7 +39,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -192,13 +192,13 @@
 
         <!-- stage10-explanation:start main-registers -->
         <section class="panel explanation-panel" id="explanation-main-registers" data-explains="main-registers" data-explanation-kind="mechanism" aria-labelledby="explanation-main-registers-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="main-registers">
-          <h2 class="explanation-sr-only" id="explanation-main-registers-title">The six register roles</h2>
+          <h2 class="explanation-sr-only" id="explanation-main-registers-title">The seven named register roles</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-main-registers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The six register roles with a structured visual model." />
-            <figcaption class="explanation-sr-only">The six register roles: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-043-main-registers.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The seven named register roles with a structured visual model." />
+            <figcaption class="explanation-sr-only">The seven named register roles: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Register</li><li><strong>Lesson fact:</strong> Full name</li><li><strong>Lesson fact:</strong> What it holds</li><li><strong>Lesson fact:</strong> Exam-safe sentence</li><li><strong>Lesson fact:</strong> Program Counter</li><li><strong>Lesson fact:</strong> Address of the next instruction to be fetched.</li><li><strong>Lesson fact:</strong> The PC is updated so the CPU knows where to fetch the next instruction.</li><li><strong>Lesson fact:</strong> Current Instruction Register</li><li><strong>Lesson fact:</strong> Instruction currently being decoded/executed.</li><li><strong>Lesson fact:</strong> The CIR holds the fetched instruction while the CU decodes it.</li><li><strong>Lesson fact:</strong> Memory Address Register</li><li><strong>Lesson fact:</strong> Address of a memory location being accessed.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> PC holds the address of the next instruction to be fetched.</li><li><strong>Lesson fact:</strong> CIR holds the instruction currently being decoded or executed.</li><li><strong>Lesson fact:</strong> MAR holds the address of the memory location being accessed.</li><li><strong>Lesson fact:</strong> MDR holds data or an instruction being transferred to or from memory.</li><li><strong>Lesson fact:</strong> ACC holds an intermediate or final ALU result.</li><li><strong>Lesson fact:</strong> IX holds an offset used in indexed addressing.</li><li><strong>Lesson fact:</strong> The status register holds flags about a result or processor state.</li><li><strong>Lesson fact:</strong> A general-purpose register can hold varied working values; a special-purpose register has a defined processor role.</li><li><strong>Lesson fact:</strong> Cambridge assembly questions assume ACC is the available general-purpose working register.</li></ol>
 
           </div>
         </section>
@@ -314,44 +314,61 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>Index register (IX)</h2>
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>General-purpose and special-purpose registers</h2>
           </div>
           <div class="stage2-explanation">
-            <p>The index register stores an offset used to modify an address in an indexed instruction. The effective address is formed by adding the instruction's address operand to the IX value.</p>
-            <p>Indexed addressing is useful for arrays because the base address stays fixed while IX changes for successive elements. IX stores the offset/index contribution, not necessarily the array data itself.</p>
+            <p>A general-purpose register can temporarily hold data or intermediate results for a range of operations. A special-purpose register has a defined processor role. In the CPU-architecture requirement, the named roles are PC, MDR, MAR, ACC, IX, CIR and the status register. In Cambridge assembly-language questions, ACC is the only available general-purpose working register; this question convention does not remove the defined roles of the other named registers.</p>
+            <p>PC holds the address of the next instruction; MAR holds the address currently being accessed; MDR holds data or an instruction being transferred to or from memory; CIR holds the current instruction while it is decoded or executed.</p>
+            <p>ACC holds an intermediate or final ALU result. IX holds an offset used to form an indexed effective address. The status register holds flags about an operation or processor state, such as zero, carry or overflow; it does not hold the arithmetic result itself.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Access ARRAY[3]</h3>
-            <p>If the base address is 500 and IX contains 3, LDX 500 accesses effective address 503 (assuming one address per element). Incrementing IX moves to the next element.</p>
+            <h3>Worked example: Follow registers through fetch and indexed execute</h3>
+            <p>PC = 300 is copied to MAR; the instruction read from memory enters MDR and then CIR. If that instruction is LDX 500 while IX = 3, the effective address is 503 and the value at that address is loaded into ACC. A resulting condition can update a flag in the status register.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>General-purpose and special-purpose registers: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What does IX normally store?</p>
-              <details><summary>Show answer</summary><p>An offset/index used in effective-address calculation.</p></details>
+              <p><strong>1.</strong> Distinguish a general-purpose register from a special-purpose register.</p>
+              <details><summary>Show answer</summary><p>A general-purpose register can hold values for varied operations; a special-purpose register has a defined processor role.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Base 120 plus IX 7 gives which effective address?</p>
+              <p><strong>2.</strong> State the roles of PC, MAR, MDR and CIR.</p>
+              <details><summary>Show answer</summary><p>PC holds the next-instruction address; MAR the accessed address; MDR transferred data/instruction; CIR the current instruction.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> State the roles of ACC, IX and the status register.</p>
+              <details><summary>Show answer</summary><p>ACC holds ALU results; IX an indexed-address offset; the status register holds flags about results or CPU state.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Which general-purpose working register is assumed in Cambridge assembly questions?</p>
+              <details><summary>Show answer</summary><p>The accumulator, ACC.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Base 120 plus IX 7 gives which indexed effective address?</p>
               <details><summary>Show answer</summary><p>127.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why is IX useful for arrays?</p>
-              <details><summary>Show answer</summary><p>The same instruction/base can access successive elements by changing the offset.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>An instruction uses indexed addressing with address operand 240 and IX = 6. State the effective address and explain the role of IX.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Distinguish general-purpose and special-purpose registers, then state the roles of PC, MAR, MDR, CIR, ACC, IX and the status register.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> effective address is 246</li>
-                <li><strong>B1</strong> IX stores an offset/index</li>
-                <li><strong>B1</strong> offset is added to the instruction/base address</li>
-                <li><strong>B1</strong> allows repeated access to array/list elements</li>
+                <li><strong>B1</strong> general-purpose register can hold values for varied operations; special-purpose register has a defined role</li>
+                <li><strong>B1</strong> PC next-instruction address and CIR current instruction</li>
+                <li><strong>B1</strong> MAR accessed address and MDR transferred data/instruction</li>
+                <li><strong>B1</strong> ACC intermediate/final ALU result</li>
+                <li><strong>B1</strong> IX offset used in indexed addressing</li>
+                <li><strong>B1</strong> status register stores flags about a result or processor state</li>
               </ol>
             </details>
           </article>
@@ -389,7 +406,7 @@
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

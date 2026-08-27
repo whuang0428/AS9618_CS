@@ -92,6 +92,44 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often treat files like arrays already in memory. Correction: file data must be read into variables before processing.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Why files are needed and how text-file pseudocode works
+
+### Direct explanation
+
+- Variables, arrays and records in main memory normally lose their contents when a program ends or power is removed. Files provide persistent storage so data can be reloaded by a later run, transferred or shared as required. A file is not merely a larger array.
+- For a text file containing one or more lines, select the mode before processing: READ obtains existing data, WRITE creates or replaces output content, and APPEND adds after existing content. Every opened file must be closed after processing.
+- A complete read algorithm uses OPENFILE for READ, checks NOT EOF before READFILE, processes each line and then CLOSEFILE. WRITEFILE stores a line in a file opened for WRITE or APPEND. Reading after EOF or using WRITE when old content must remain are boundary errors.
+
+### Worked example
+
+**Copy selected lines between text files:** Open Results.txt FOR READ and Pass.txt FOR WRITE. While NOT EOF(Results.txt), READFILE the next Line; if it contains PASS, WRITEFILE it to Pass.txt. Close both files after the loop. Results remain available from storage, while Pass.txt is deliberately created as a new output file.
+
+### Targeted practice and answers
+
+1. Why use a file instead of only an array?
+   **Answer:** A file persists after the program ends and can be reloaded in a later run.
+2. Which mode adds without replacing old lines?
+   **Answer:** APPEND.
+3. Why test NOT EOF before READFILE?
+   **Answer:** It prevents an attempt to read beyond the final available line.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Write Cambridge pseudocode to read every line from Input.txt, copy non-blank lines to Output.txt and close both files. Explain why the input data is stored in a file.
+
+- **B1** persistent/later-use need for the input file
+- **B1** opens Input.txt FOR READ
+- **B1** opens Output.txt FOR WRITE
+- **M1** loops WHILE NOT EOF before READFILE
+- **A1** writes only non-blank lines inside a coherent IF
+- **B1** closes both files after the loop
+
+**Strict note:** Do not test EOF after an invalid read or claim that WRITE preserves existing output-file contents.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -99,6 +137,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-concept.jpg`
 
 1. Exam clue
@@ -116,6 +155,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `lifecycle`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-lifecycle.jpg`
 
 1. File lifecycle
@@ -128,6 +168,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `mode-lab`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-mode-lab.jpg`
 
 1. Interactive mode lab
@@ -138,6 +179,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `modes`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-modes.jpg`
 
 1. File modes
@@ -154,6 +196,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-pseudocode.jpg`
 
 1. Pseudocode vs Java
@@ -173,6 +216,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `read`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-read.jpg`
 
 1. Read loop
@@ -188,6 +232,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `reader`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-reader.jpg`
 
 1. Open the file for reading before entering the loop.
@@ -199,6 +244,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `records`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-records.jpg`
 
 1. Text records
@@ -212,6 +258,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `write`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-120-write.jpg`
 
 1. Write and append

@@ -5,304 +5,178 @@ const students = [
 ];
 
 const loans = [
-  { LoanID: "L01", StudentID: "S01", BookID: "B01", Returned: false },
-  { LoanID: "L02", StudentID: "S02", BookID: "B02", Returned: true },
-  { LoanID: "L03", StudentID: "S03", BookID: "B03", Returned: false },
-  { LoanID: "L04", StudentID: "S01", BookID: "B03", Returned: true },
-];
-
-const books = [
-  { BookID: "B01", Title: "Networks", Category: "Computing" },
-  { BookID: "B02", Title: "Poems", Category: "Literature" },
-  { BookID: "B03", Title: "Databases", Category: "Computing" },
+  { LoanID: "L01", StudentID: "S01", Returned: false },
+  { LoanID: "L02", StudentID: "S02", Returned: true },
+  { LoanID: "L03", StudentID: "S03", Returned: false },
+  { LoanID: "L04", StudentID: "S01", Returned: true },
 ];
 
 const joinedRows = loans.map((loan) => {
   const student = students.find((item) => item.StudentID === loan.StudentID);
-  const book = books.find((item) => item.BookID === loan.BookID);
-  return { ...loan, ...student, ...book, ReturnedText: loan.Returned ? "TRUE" : "FALSE" };
+  return { ...loan, ...student, ReturnedText: loan.Returned ? "TRUE" : "FALSE" };
 });
 
 const builderMap = {
   studentLoans: {
-    sql: "SELECT Student.StudentName, Loan.LoanID\nFROM Student, Loan\nWHERE Student.StudentID = Loan.StudentID;",
-    reason: "The request needs Student and Loan, so match Student.StudentID to Loan.StudentID.",
+    sql: "SELECT Student.StudentName, Loan.LoanID\nFROM Student INNER JOIN Loan\nON Student.StudentID = Loan.StudentID;",
+    reason: "Use the two named tables and put the matching key fields in an explicit INNER JOIN ... ON clause.",
   },
   loanTitles: {
-    sql: "SELECT Loan.LoanID, Book.Title\nFROM Loan, Book\nWHERE Loan.BookID = Book.BookID;",
-    reason: "The request needs Loan and Book, so match Loan.BookID to Book.BookID.",
+    sql: "SELECT Loan.LoanID, Student.StudentName\nFROM Loan INNER JOIN Student\nON Loan.StudentID = Student.StudentID;",
+    reason: "The table order may be reversed, but the ON condition must still match StudentID to StudentID.",
   },
   currentBooks: {
-    sql:
-      "SELECT Student.StudentName, Book.Title\n" +
-      "FROM Student, Loan, Book\n" +
-      "WHERE Student.StudentID = Loan.StudentID\n" +
-      "AND Loan.BookID = Book.BookID\n" +
-      "AND Loan.Returned = FALSE;",
-    reason: "StudentName and Title are in different tables, so Loan provides the bridge; Returned = FALSE is the filter.",
+    sql: "SELECT Student.StudentName, Loan.LoanID\nFROM Student INNER JOIN Loan\nON Student.StudentID = Loan.StudentID\nWHERE Loan.Returned = FALSE;",
+    reason: "ON matches related records; WHERE then filters the joined result.",
   },
   computingBorrowers: {
-    sql:
-      "SELECT Student.StudentName\n" +
-      "FROM Student, Loan, Book\n" +
-      "WHERE Student.StudentID = Loan.StudentID\n" +
-      "AND Loan.BookID = Book.BookID\n" +
-      "AND Book.Category = 'Computing';",
-    reason: "The category is stored in Book, but StudentName is stored in Student, so the join path must use Loan.",
+    sql: "SELECT Student.StudentName\nFROM Student INNER JOIN Loan\nON Student.StudentID = Loan.StudentID\nWHERE Student.TutorGroup = '12A';",
+    reason: "This remains a two-table join; the filter uses a field from Student.",
   },
   aliasCurrent: {
-    sql:
-      "SELECT S.StudentName, B.Title\n" +
-      "FROM Student AS S, Loan AS L, Book AS B\n" +
-      "WHERE S.StudentID = L.StudentID\n" +
-      "AND L.BookID = B.BookID\n" +
-      "AND L.Returned = FALSE;",
-    reason: "Aliases shorten table names while keeping the same two join conditions.",
+    sql: "SELECT S.StudentName, L.LoanID\nFROM Student AS S INNER JOIN Loan AS L\nON S.StudentID = L.StudentID\nWHERE L.Returned = FALSE;",
+    reason: "Aliases shorten names without changing the explicit two-table INNER JOIN relationship.",
   },
 };
 
 const queryMap = {
-  q1: {
-    fields: ["StudentName", "LoanID"],
-    rows: joinedRows.map((row) => ({ StudentName: row.StudentName, LoanID: row.LoanID })),
-  },
-  q2: {
-    fields: ["LoanID", "Title"],
-    rows: joinedRows.map((row) => ({ LoanID: row.LoanID, Title: row.Title })),
-  },
-  q3: {
-    fields: ["StudentName", "Title"],
-    rows: joinedRows
-      .filter((row) => row.Returned === false)
-      .map((row) => ({ StudentName: row.StudentName, Title: row.Title })),
-  },
-  q4: {
-    fields: ["StudentName"],
-    rows: joinedRows
-      .filter((row) => row.Category === "Computing")
-      .map((row) => ({ StudentName: row.StudentName })),
-  },
-  q5: {
-    fields: ["StudentName", "Title", "TutorGroup"],
-    rows: joinedRows
-      .filter((row) => row.Returned === true)
-      .map((row) => ({ StudentName: row.StudentName, Title: row.Title, TutorGroup: row.TutorGroup })),
-  },
+  q1: { fields: ["StudentName", "LoanID"], rows: joinedRows.map(({ StudentName, LoanID }) => ({ StudentName, LoanID })) },
+  q2: { fields: ["LoanID", "StudentName"], rows: joinedRows.map(({ LoanID, StudentName }) => ({ LoanID, StudentName })) },
+  q3: { fields: ["StudentName", "LoanID"], rows: joinedRows.filter((row) => !row.Returned).map(({ StudentName, LoanID }) => ({ StudentName, LoanID })) },
+  q4: { fields: ["StudentName"], rows: joinedRows.filter((row) => row.TutorGroup === "12A").map(({ StudentName }) => ({ StudentName })) },
+  q5: { fields: ["StudentName", "LoanID", "TutorGroup"], rows: joinedRows.filter((row) => row.Returned).map(({ StudentName, LoanID, TutorGroup }) => ({ StudentName, LoanID, TutorGroup })) },
 };
 
 const examples = {
   twoTable: {
-    title: "Example 1: Join Student to Loan",
-    problem: "Show StudentName and LoanID for all loans.",
-    steps: [
-      "Required fields: StudentName from Student, LoanID from Loan.",
-      "Relationship: Student.StudentID matches Loan.StudentID.",
-      "SQL: SELECT Student.StudentName, Loan.LoanID FROM Student, Loan WHERE Student.StudentID = Loan.StudentID;",
-      "The join prevents unrelated Student rows from being paired with unrelated Loan rows.",
-    ],
+    title: "Example 1: basic two-table INNER JOIN",
+    problem: "Show StudentName and LoanID for every matched loan.",
+    steps: ["Select the requested fields.", "Name Student INNER JOIN Loan.", "Write ON Student.StudentID = Loan.StudentID.", "The ON clause prevents unrelated row combinations."],
   },
   threeTable: {
-    title: "Example 2: Join Student, Loan and Book",
-    problem: "Show StudentName and Title for all loans.",
-    steps: [
-      "StudentName is in Student; Title is in Book.",
-      "Loan is the bridge table because it stores StudentID and BookID.",
-      "Use two join conditions: Student to Loan, then Loan to Book.",
-      "SQL: SELECT Student.StudentName, Book.Title FROM Student, Loan, Book WHERE Student.StudentID = Loan.StudentID AND Loan.BookID = Book.BookID;",
-    ],
+    title: "Example 2: reverse the table order",
+    problem: "Start from Loan and show LoanID with StudentName.",
+    steps: ["Use Loan INNER JOIN Student.", "The same key relationship is required.", "Write ON Loan.StudentID = Student.StudentID.", "Only two tables are used."],
   },
   filter: {
-    title: "Example 3: Join plus condition",
-    problem: "Show StudentName and Title for current loans only.",
-    steps: [
-      "First write the two join conditions.",
-      "Then add the filter: Loan.Returned = FALSE.",
-      "Use AND because all conditions must be true.",
-      "SQL: SELECT Student.StudentName, Book.Title FROM Student, Loan, Book WHERE Student.StudentID = Loan.StudentID AND Loan.BookID = Book.BookID AND Loan.Returned = FALSE;",
-    ],
+    title: "Example 3: INNER JOIN plus WHERE",
+    problem: "Show current loans only.",
+    steps: ["Write the INNER JOIN and ON relationship first.", "Add WHERE Loan.Returned = FALSE.", "ON defines the relationship; WHERE filters the result.", "Keep the query to two tables."],
   },
   alias: {
-    title: "Example 4: Alias version",
-    problem: "Rewrite the current-loan query using aliases.",
-    steps: [
-      "Declare aliases in FROM: Student AS S, Loan AS L, Book AS B.",
-      "Use the aliases consistently: S.StudentID, L.StudentID, L.BookID, B.BookID.",
-      "Do not mix full names and aliases in a way that hides the relationship.",
-      "SQL: SELECT S.StudentName, B.Title FROM Student AS S, Loan AS L, Book AS B WHERE S.StudentID = L.StudentID AND L.BookID = B.BookID AND L.Returned = FALSE;",
-    ],
+    title: "Example 4: two-table aliases",
+    problem: "Rewrite the current-loan query using S and L.",
+    steps: ["Declare Student AS S and Loan AS L.", "Use INNER JOIN and ON S.StudentID = L.StudentID.", "Use aliases consistently in SELECT, ON and WHERE.", "Aliases do not replace the relationship condition."],
   },
 };
 
 const practice = [
-  {
-    id: "p1",
-    prompt: "Which type of key uniquely identifies a record in a table?",
-    accepted: ["primary key", "primary"],
-    answer: "Primary key",
-  },
-  {
-    id: "p2",
-    prompt: "Which type of key stores a value that matches a primary key in another table?",
-    accepted: ["foreign key", "foreign"],
-    answer: "Foreign key",
-  },
-  {
-    id: "p3",
-    prompt: "Write the join condition linking Student to Loan.",
-    accepted: ["student.studentid = loan.studentid", "loan.studentid = student.studentid"],
-    answer: "Student.StudentID = Loan.StudentID",
-  },
-  {
-    id: "p4",
-    prompt: "Write the join condition linking Loan to Book.",
-    accepted: ["loan.bookid = book.bookid", "book.bookid = loan.bookid"],
-    answer: "Loan.BookID = Book.BookID",
-  },
-  {
-    id: "p5",
-    prompt: "Which table acts as the bridge between Student and Book?",
-    accepted: ["loan"],
-    answer: "Loan",
-  },
-  {
-    id: "p6",
-    prompt: "If two tables both contain StudentID, how can you make the field name unambiguous?",
-    accepted: ["table name", "use table name", "qualify it", "table-qualified field", "student.studentid"],
-    answer: "Use a table-qualified field name, for example Student.StudentID.",
-  },
-  {
-    id: "p7",
-    prompt: "What SQL keyword combines multiple conditions in the WHERE clause?",
-    accepted: ["and"],
-    answer: "AND",
-  },
-  {
-    id: "p8",
-    prompt: "To show current loans only, what condition should be added?",
-    accepted: ["loan.returned = false", "returned = false", "loan.returned=false", "returned=false"],
-    answer: "Loan.Returned = FALSE",
-  },
-  {
-    id: "p9",
-    prompt: "In FROM Student AS S, what is S called?",
-    accepted: ["alias", "table alias"],
-    answer: "Alias / table alias",
-  },
-  {
-    id: "p10",
-    prompt: "Should SELECT * be used if the question asks only for StudentName and Title? yes or no.",
-    accepted: ["no", "n"],
-    answer: "No. Select only StudentName and Title.",
-  },
+  { id: "p1", prompt: "Which key uniquely identifies a Student record?", accepted: ["primary key", "primary"], answer: "Primary key" },
+  { id: "p2", prompt: "Which key in Loan references Student?", accepted: ["foreign key", "studentid", "loan.studentid"], answer: "Loan.StudentID is a foreign key." },
+  { id: "p3", prompt: "Write the ON condition linking Student to Loan.", accepted: ["student.studentid = loan.studentid", "loan.studentid = student.studentid"], answer: "Student.StudentID = Loan.StudentID" },
+  { id: "p4", prompt: "Which SQL join keyword is required for this AS core example?", accepted: ["inner join"], answer: "INNER JOIN" },
+  { id: "p5", prompt: "How many tables may the AS core join use?", accepted: ["two", "2", "at most two"], answer: "At most two tables." },
+  { id: "p6", prompt: "How can StudentID be made unambiguous?", accepted: ["table name", "qualify it", "table-qualified field", "student.studentid"], answer: "Qualify it, for example Student.StudentID." },
+  { id: "p7", prompt: "Which clause defines how the two tables match?", accepted: ["on", "on clause"], answer: "The ON clause." },
+  { id: "p8", prompt: "Which clause filters current loans?", accepted: ["where", "where clause"], answer: "WHERE Loan.Returned = FALSE" },
+  { id: "p9", prompt: "In Student AS S, what is S?", accepted: ["alias", "table alias"], answer: "A table alias." },
+  { id: "p10", prompt: "Should SELECT * be used when only two named fields are requested?", accepted: ["no", "n"], answer: "No. Select only the requested fields." },
 ];
 
 const mistakes = [
-  {
-    wrong: "SELECT StudentName, Title FROM Student, Book;",
-    fix: "This lists two tables but gives no relationship. Use Loan as the bridge and add join conditions.",
-  },
-  {
-    wrong: "WHERE Student.StudentID = Book.BookID",
-    fix: "These fields identify different things. Join Student to Loan using StudentID, then Loan to Book using BookID.",
-  },
-  {
-    wrong: "SELECT * FROM Student, Loan, Book WHERE Student.StudentID = Loan.StudentID AND Loan.BookID = Book.BookID;",
-    fix: "The join path is valid, but SELECT * outputs too many fields. Select only the fields required by the question.",
-  },
-  {
-    wrong: "FROM Student AS S, Loan AS L WHERE Student.StudentID = Loan.StudentID",
-    fix: "If aliases are declared, use them consistently: WHERE S.StudentID = L.StudentID.",
-  },
+  { wrong: "SELECT StudentName, LoanID FROM Student, Loan;", fix: "Use explicit INNER JOIN and an ON condition." },
+  { wrong: "ON Student.StudentID = Loan.LoanID", fix: "Match like identifiers: Student.StudentID = Loan.StudentID." },
+  { wrong: "SELECT * FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID;", fix: "The join is valid, but select only the fields requested." },
+  { wrong: "FROM Student AS S INNER JOIN Loan AS L ON Student.StudentID = Loan.StudentID", fix: "Use declared aliases consistently: ON S.StudentID = L.StudentID." },
 ];
 
 const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Write an SQL query to output StudentName and LoanID for all loans using the Student and Loan tables.",
-    answer: "SELECT Student.StudentName, Loan.LoanID FROM Student, Loan WHERE Student.StudentID = Loan.StudentID;",
+    prompt: "Write SQL using Student and Loan to output StudentName and LoanID for every matched loan.",
+    answer: "SELECT Student.StudentName, Loan.LoanID FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID;",
     marking: [
-      { mark: "B1", text: "SELECT StudentName and LoanID only" },
-      { mark: "B1", text: "FROM Student and Loan" },
-      { mark: "M1", text: "uses a join condition between Student and Loan" },
-      { mark: "A1", text: "correct condition Student.StudentID = Loan.StudentID" },
+      { mark: "B1", text: "SELECTs the two requested fields" },
+      { mark: "B1", text: "names Student INNER JOIN Loan" },
+      { mark: "M1", text: "uses an ON condition" },
+      { mark: "A1", text: "matches StudentID to StudentID" },
     ],
     strict: [
-      "Do not award the SELECT mark for SELECT * unless the required fields are also explicitly identified.",
-      "Allow unqualified field names if there is no ambiguity in the candidate answer.",
+      "Require explicit INNER JOIN ... ON.",
+      "Do not accept a comma-style FROM list.",
       "Do not accept Student.StudentID = Loan.LoanID.",
     ],
   },
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Write an SQL query to output StudentName and Title for all loans using Student, Loan and Book.",
-    answer: "SELECT Student.StudentName, Book.Title FROM Student, Loan, Book WHERE Student.StudentID = Loan.StudentID AND Loan.BookID = Book.BookID;",
+    prompt: "Write a two-table INNER JOIN that outputs StudentName and LoanID for current loans only.",
+    answer: "SELECT Student.StudentName, Loan.LoanID FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.Returned = FALSE;",
     marking: [
-      { mark: "B1", text: "SELECT StudentName and Title only" },
-      { mark: "B1", text: "FROM Student, Loan and Book" },
-      { mark: "M1", text: "correct join path from Student to Loan" },
-      { mark: "M1", text: "correct join path from Loan to Book" },
-      { mark: "A1", text: "complete query with both valid join conditions" },
+      { mark: "B1", text: "SELECTs StudentName and LoanID" },
+      { mark: "B1", text: "uses Student INNER JOIN Loan" },
+      { mark: "M1", text: "correct ON relationship" },
+      { mark: "M1", text: "filters Returned" },
+      { mark: "A1", text: "complete WHERE Returned = FALSE" },
     ],
     strict: [
-      "Do not accept a direct join between Student.StudentID and Book.BookID.",
-      "Do not require INNER JOIN syntax; comma-style FROM with WHERE join conditions is acceptable.",
-      "Allow aliases if they are declared and used consistently.",
+      "Maximum two tables.",
+      "Require INNER JOIN ... ON.",
+      "Do not accept Returned = TRUE.",
     ],
   },
   {
     title: "Question 3",
     marks: "6 marks",
-    prompt: "Write an SQL query to output StudentName and Title for current loans only. A current loan has Returned = FALSE.",
-    answer: "SELECT Student.StudentName, Book.Title FROM Student, Loan, Book WHERE Student.StudentID = Loan.StudentID AND Loan.BookID = Book.BookID AND Loan.Returned = FALSE;",
+    prompt: "Explain and correct: SELECT * FROM Student, Loan WHERE Student.StudentID = Loan.LoanID;",
+    answer: "Use only the requested fields, explicit INNER JOIN ... ON, and match Student.StudentID to Loan.StudentID.",
     marking: [
-      { mark: "B1", text: "SELECT StudentName and Title" },
-      { mark: "B1", text: "FROM Student, Loan and Book" },
-      { mark: "M1", text: "joins Student to Loan using StudentID" },
-      { mark: "M1", text: "joins Loan to Book using BookID" },
-      { mark: "M1", text: "filters current loans using Returned" },
-      { mark: "A1", text: "correct condition Returned = FALSE combined with joins" },
+      { mark: "B1", text: "identifies SELECT * issue" },
+      { mark: "B1", text: "selects named fields" },
+      { mark: "B1", text: "identifies comma join issue" },
+      { mark: "B1", text: "uses INNER JOIN" },
+      { mark: "B1", text: "identifies wrong key match" },
+      { mark: "B1", text: "correct ON condition" },
     ],
     strict: [
-      "Do not accept Returned = TRUE for current loans in this question.",
-      "Do not award the filter method mark if Returned is used as an output field only.",
-      "Allow Returned = 0 if the answer clearly treats it as false.",
+      "All corrections must preserve two-table scope.",
+      "Do not accept a three-table solution.",
     ],
   },
   {
     title: "Question 4",
     marks: "3 marks",
-    prompt: "A query uses FROM Student AS S, Loan AS L. Write the join condition linking these aliases and explain why it is needed.",
-    answer: "S.StudentID = L.StudentID. It is needed so each loan is matched with the correct student record rather than being combined with unrelated student records.",
+    prompt: "Using aliases S and L, write the ON condition and explain its purpose.",
+    answer: "ON S.StudentID = L.StudentID; it matches each loan to its related student.",
     marking: [
-      { mark: "A1", text: "correct condition S.StudentID = L.StudentID" },
-      { mark: "M1", text: "explains that the condition matches related records" },
-      { mark: "A1", text: "explains consequence of omitting it: unrelated/incorrect combinations" },
+      { mark: "A1", text: "correct alias condition" },
+      { mark: "M1", text: "matches related records" },
+      { mark: "A1", text: "explains prevention of unrelated combinations" },
     ],
     strict: [
-      "Do not accept Student.StudentID = Loan.StudentID if the answer is specifically asked to use aliases, unless aliases are also clearly mapped.",
-      "Allow reversed condition L.StudentID = S.StudentID.",
-      "Do not award explanation marks for vague claims such as 'it is faster' without relation matching.",
+      "Use the declared aliases.",
+      "Allow reversed equality.",
+      "Do not award vague speed claims.",
     ],
   },
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A student writes SELECT * FROM Student, Book WHERE Student.StudentID = Book.BookID; for the request: output StudentName and Title for all loans. Identify and correct two errors.",
-    answer: "The query selects all fields instead of only StudentName and Title. It also joins Student directly to Book using unrelated fields and omits the Loan bridge table. A corrected query is SELECT Student.StudentName, Book.Title FROM Student, Loan, Book WHERE Student.StudentID = Loan.StudentID AND Loan.BookID = Book.BookID;",
+    prompt: "Write and annotate a complete two-table INNER JOIN ... ON query of your own.",
+    answer: "Example: SELECT S.StudentName, L.LoanID FROM Student AS S INNER JOIN Loan AS L ON S.StudentID = L.StudentID;",
     marking: [
-      { mark: "B1", text: "identifies SELECT * outputs too many fields" },
-      { mark: "B1", text: "corrects output to StudentName and Title" },
-      { mark: "B1", text: "identifies Student to Book direct join is wrong / Loan bridge is missing" },
-      { mark: "B1", text: "adds Loan table to the query" },
-      { mark: "B1", text: "adds both correct join conditions through Loan" },
-      { mark: "B1", text: "complete corrected query" },
+      { mark: "B1", text: "two related tables" },
+      { mark: "B1", text: "requested fields" },
+      { mark: "B1", text: "INNER JOIN" },
+      { mark: "B1", text: "ON clause" },
+      { mark: "B1", text: "matching key fields" },
+      { mark: "B1", text: "accurate annotation" },
     ],
     strict: [
-      "Do not award the join correction mark for only adding Book.BookID without Loan.BookID.",
-      "Allow INNER JOIN syntax if both relationships are correct.",
-      "Do not require a semicolon.",
+      "Maximum two tables.",
+      "Require explicit INNER JOIN ... ON.",
+      "Aliases must be used consistently.",
     ],
   },
 ];

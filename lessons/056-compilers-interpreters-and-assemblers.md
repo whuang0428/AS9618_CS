@@ -72,6 +72,48 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often say interpreters are 'bad compilers'. Correction: they are different translation approaches with different use cases.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Assembler, compiler and interpreter choices
+
+### Direct explanation
+
+- An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.
+- Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.
+- A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.
+
+### Worked example
+
+**Choose tools across development and deployment:** During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor's machine code.
+
+### Targeted practice and answers
+
+1. Why is an assembler needed?
+   **Answer:** It translates assembly-language mnemonics and operands into machine or object code for the target processor.
+2. Give one compiler advantage and its mechanism.
+   **Answer:** A compiled program can run repeatedly without translating the source each time because translation occurred before execution.
+3. Give one compiler disadvantage.
+   **Answer:** Compilation must complete before execution and the programmer may need to correct a list of reported errors.
+4. Give one interpreter advantage and one disadvantage.
+   **Answer:** It provides immediate statement-level feedback, but repeated translation can make execution slower and requires the interpreter/source at run time.
+5. Which translator is required for assembly language?
+   **Answer:** An assembler.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Compare a compiler and an interpreter using two advantages and two disadvantages, then justify the translator used for an assembly-language routine.
+
+- **B1** compiler translates the whole high-level program before execution and produces target/object code
+- **B1** compiler advantage linked to repeated execution or distribution without source
+- **B1** compiler disadvantage linked to separate translation or error-list workflow
+- **B1** interpreter translates/executes statements during execution and gives immediate feedback
+- **B1** interpreter disadvantage linked to repeated translation, slower execution or run-time dependency
+- **B1** assembler selected and justified for assembly-language-to-machine/object-code translation
+
+**Strict note:** Do not award vague claims such as 'compiler is faster' or 'interpreter is easier' without the mechanism and scenario.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,36 +121,32 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `assembler`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-assembler.jpg`
 
-1. Input Assembly language mnemonics such as LDA , ADD or STA .
-2. Output Machine code/object code that the processor can execute.
-3. Purpose Allows low-level programming using mnemonic instructions instead of raw binary.
-4. Boundary It does not translate high-level languages such as Python, Java or pseudocode.
+1. An assembler translates assembly-language mnemonics into machine code or an object-code module.
+2. Machine code uses the instruction set and binary encodings of the target processor.
+3. An object module may still need a linker to combine modules and resolve external library references before an executable can be produced.
+4. An assembler does not translate high-level languages such as Java or Cambridge pseudocode.
 
 ### Comparison: same goal, different route
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-compare.jpg`
 
-1. Translator
-2. Output / execution behaviour
-3. Typical use
-4. Compiler
-5. High-level source code
-6. Produces object/executable code before the program is run.
-7. Distribution, repeated execution, protecting source code.
-8. Interpreter
-9. Translates and executes statement by statement; normally no separate object code.
-10. Development, testing, learning and rapid debugging.
-11. Assembler
-12. Assembly language
+1. A compiler translates a whole high-level program before execution and produces target or object code; a linked executable can run repeatedly without the source.
+2. An interpreter translates and executes high-level statements during execution and normally produces no separate permanent object-code file.
+3. An assembler translates assembly-language mnemonics into target machine code or an object module for a specific processor instruction set.
+4. If an assembler or compiler produces object modules, a linker may still be required before there is an executable program.
+5. Choose the translator from the input language and the development or deployment need; do not claim that every assembler output is immediately executable.
 
 ### A compiler translates the whole high-level program before execution
 
 - **Explains:** `compiler`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-compiler.jpg`
 
 1. Input High-level language source code.
@@ -120,6 +158,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-concept.jpg`
 
 1. A compiler translates high-level source into target machine or object code.
@@ -131,6 +170,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `interpreter`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-056-interpreter.jpg`
 
 1. Input High-level language source code.

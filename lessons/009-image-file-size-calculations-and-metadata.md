@@ -73,15 +73,14 @@ Misconception: Students often say 'higher quality is always better'. Correction:
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S1.09
 **Focus:** Vector graphics and drawing lists
 
 ### Direct explanation
 
-- A vector graphic is stored as a drawing list of objects. Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness; software redraws the objects from these instructions.
-- Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. Choice must be justified using the source image and intended editing/scaling.
+- Vector encoding stores a graphic as a drawing list of drawing objects. Each object has properties such as type, coordinates, dimensions, line colour, fill colour and line thickness; software redraws the objects from these instructions.
+- Vectors scale without pixelation and suit logos, diagrams and shapes. Bitmaps store individual pixels and suit photographs or detailed textures. For a given application, the choice must be justified using the source image and intended editing or scaling.
 
 ### Worked example
 
@@ -115,6 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `chain`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-009-chain.jpg`
 
 1. 1. Pixels
@@ -130,6 +130,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `metadata`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-009-metadata.jpg`
 
 1. Examples
@@ -143,6 +144,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `units`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-009-units.jpg`
 
 1. When a formula gives a size in bits, divide by 8 to convert to bytes.

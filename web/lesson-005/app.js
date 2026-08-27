@@ -113,16 +113,16 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "3 marks",
-    prompt: "A candidate says that 10000000₂ in 8-bit two’s complement is negative zero. Explain why this is incorrect.",
-    answer: "Two's complement has one representation of zero, 00000000₂. In 8-bit two's complement, 10000000₂ represents -128. A separate negative-zero representation occurs in sign-and-magnitude or one's-complement systems, not in two's complement.",
+    prompt: "Using 8-bit two’s complement, calculate 18 - 27. Show how the subtraction is converted to addition.",
+    answer: "27 is 00011011₂, so -27 is 11100101₂. Add 00010010₂ + 11100101₂ = 11110111₂, which represents -9.",
     marking: [
-      { mark: "B1", text: "states that two’s complement has only one zero" },
-      { mark: "B1", text: "identifies 10000000₂ as -128" },
-      { mark: "B1", text: "explains that negative zero belongs to sign-and-magnitude or one’s complement style issues, not two’s complement" },
+      { mark: "M1", text: "forms -27 as 11100101₂ by inverting 00011011₂ and adding 1" },
+      { mark: "M1", text: "adds 00010010₂ and 11100101₂ to obtain 11110111₂" },
+      { mark: "A1", text: "interprets 11110111₂ as -9" },
     ],
     strict: [
-      "Do not accept 'because the first bit is 1' as a complete explanation.",
-      "Accept range-based explanation: the lowest 8-bit two’s complement value is -128.",
+      "Do not award -9 without a valid fixed-width two’s-complement subtraction method.",
+      "Do not accept 247 as the final signed interpretation.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },

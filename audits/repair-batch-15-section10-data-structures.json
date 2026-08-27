@@ -1,0 +1,23 @@
+{
+  "batch": 15,
+  "authority": "Cambridge International AS & A Level Computer Science 9618 syllabus, 2027-2029, Version 2",
+  "authorityUrl": "https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf",
+  "authoritySha256": "c8a4c6d033c07c6d8025689abed5ef481d581c28bae640986d275303ed6c08bc",
+  "status": "Resolved",
+  "records": [
+    { "id": "B15-S10.01-DATA-TYPES", "requirement": "S10.01", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Teaches selection and use of INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE as the exact Cambridge pseudocode type set, including value-based selection boundaries." },
+    { "id": "B15-S10.02-RECORD-PURPOSE", "requirement": "S10.02", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Explains that a record groups named fields of different data types under one identifier and distinguishes field names from array indexes." },
+    { "id": "B15-S10.03-ARRAY-TERMS", "requirement": "S10.03", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Directly teaches index, lower bound and upper bound and uses them consistently in declarations, traversal and boundary calculations." },
+    { "id": "B15-S10.04-ARRAY-SELECTION", "requirement": "S10.04", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Requires students to select one-dimensional or two-dimensional arrays from the logical shape of the data rather than from superficial scenario wording." },
+    { "id": "B15-S10.05-ARRAY-PSEUDOCODE", "requirement": "S10.05", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Adds complete Cambridge declarations, reads, writes and traversals for one-dimensional and two-dimensional arrays, including nested loops for two dimensions." },
+    { "id": "B15-S10.06-ARRAY-ALGORITHMS", "requirement": "S10.06", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Provides full linear-search and ascending bubble-sort pseudocode, so traces no longer substitute for the required algorithms." },
+    { "id": "B15-S10.07-TEXT-FILES", "requirement": "S10.07", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Explains persistence as the reason files are needed and teaches complete OPENFILE, READFILE/WRITEFILE, EOF and CLOSEFILE patterns for one or more text lines." },
+    { "id": "B15-S10.08-ADT-DEFINITION", "requirement": "S10.08", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Uses the official definition of an abstract data type as a collection of data and a set of operations on those data, then applies it to stack, queue and linked list." },
+    { "id": "B15-S10.09-ADT-SELECTION", "requirement": "S10.09", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Compares LIFO stack, FIFO queue and linked-list traversal/editing features and requires a justified structure choice for a stated purpose." },
+    { "id": "B15-S10.10-ADT-ARRAY-IMPLEMENTATION", "requirement": "S10.10", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Covers adding, editing and deleting data in array implementations of stacks, queues and linked lists, while preserving the syllabus boundary that ADT pseudocode is not required." },
+    { "id": "B15-ASSESS-TYPES-ARRAYS", "requirement": "S10.01-S10.05", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Quiz items now directly assess CHAR and DATE selection, dimensionality and declaration, and record field save/read operations without changing quiz totals." },
+    { "id": "B15-ASSESS-ALGORITHMS-ADT", "requirement": "S10.06-S10.10", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Monthly and stage-review questions now require a complete bubble-sort algorithm and reasoned add/edit/delete behaviour across the three ADTs, with mark points aligned to the syllabus boundary." },
+    { "id": "B15-VISUAL-DATA-TYPES-RECORDS", "requirement": "S10.01-S10.02", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Replaces incomplete or clipped visuals with deterministic 1536x1024 assets showing all eight pseudocode types and the define/save/read record relationship." },
+    { "id": "B15-VISUAL-ADT", "requirement": "S10.08-S10.10", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Adds deterministic visuals for the official ADT definition and array implementations of stack, queue and linked list, including the no-pseudocode-required boundary." }
+  ]
+}

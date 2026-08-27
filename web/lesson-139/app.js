@@ -161,13 +161,13 @@ const examQuestions = [
     title: "Question 5",
     marks: "6 marks",
     prompt: "Explain why using a function such as IsValidMark(Mark) can improve robustness and maintainability.",
-    answer: "The validation rule is stored in one function, so the same check can be reused wherever a mark is needed. The function can be tested separately using normal, boundary and erroneous data. If the valid range changes, the condition can be updated in one place, reducing inconsistent checks and maintenance errors.",
+    answer: "The validation rule is stored in one function, so the same check can be reused wherever a mark is needed. The function can be tested separately using normal, abnormal and extreme/boundary data. If the valid range changes, the condition can be updated in one place, reducing inconsistent checks and maintenance errors.",
     marking: [
       { mark: "B1", text: "states the validation rule is placed in one named function" },
       { mark: "B1", text: "states the function can be reused" },
       { mark: "B1", text: "explains this avoids repeated or inconsistent validation code" },
       { mark: "B1", text: "states the function can be tested separately" },
-      { mark: "B1", text: "links testing to normal/boundary/erroneous data or fault detection" },
+      { mark: "B1", text: "links testing to normal/abnormal/extreme or boundary data, or to fault detection" },
       { mark: "B1", text: "explains a change to the rule can be made in one place" },
     ],
     strict: [

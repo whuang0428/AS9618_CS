@@ -3,11 +3,46 @@ import path from "node:path";
 import { sourceFactOverrides } from "./stage10-semantic-source-overrides.mjs";
 
 const visualTitleOverrides = Object.freeze({
+  "098/concept": "An algorithm is a solution expressed as defined steps",
+  "008/pixels": "Bitmap file header and pixel data",
+  "010/resolution": "Sampling resolution: bits per sample",
+  "034/sensors": "Required sensor types and applications",
+  "043/main-registers": "The seven named register roles",
+  "046/structure": "Instruction labels and symbolic data addresses",
+  "046/assembler": "Instruction groups: data movement, I/O, arithmetic, control and compare",
+  "050/shifts": "Binary shifts: logical, arithmetic, cyclic",
+  "047/effective": "Official LDR, CMI, JPE and JPN semantics",
+  "047/modes": "Five addressing modes",
+  "055/compare": "Choose the required utility by its operation",
+  "086/join": "Two-table INNER JOIN with ON",
+  "099/pattern": "Produce an abstract model",
+  "111/analyser": "Stepwise refinement turns a high-level algorithm into implementable modules",
+  "113/pseudocode": "The eight Cambridge pseudocode type names",
+  "118/declare": "Define a record, then save and read named fields",
+  "122/concept": "An ADT is data together with permitted operations",
+  "122/implementation": "Implement stack, queue and linked list using arrays",
+  "130/parameters": "A subprogram interface connects caller and header",
+  "133/substring": "Use the string-function definition supplied in the question",
+  "140/standard": "Translate a flowchart or structured English into pseudocode",
+  "138/bug": "Analyse and amend an existing program",
+  "144/algorithms": "Structure charts, derived pseudocode and state transitions",
+  "145/changeover": "Test strategy and test plan are different documents",
   "074/ip": "What intellectual property can protect",
   "123/pseudocode": "Justify the data structure in Cambridge answers",
   "130/procedure": "A procedure performs actions and returns no value",
+  "137/boundary": "Extreme or boundary data uses valid values at accepted limits",
+  "137/erroneous": "Abnormal data is invalid data that should be rejected",
   "137/validation": "Testing checks validation against expected results",
   "145/evaluation": "Evaluation uses requirements and measurable success criteria",
+});
+
+const deliveryOverrides = Object.freeze({
+  "050/compare": Object.freeze({ role: "OPTIONAL", activity: "EXTEND" }),
+  "050/concept": Object.freeze({ role: "OPTIONAL", activity: "EXTEND" }),
+  "050/hazards": Object.freeze({ role: "OPTIONAL", activity: "EXTEND" }),
+  "050/stalls": Object.freeze({ role: "OPTIONAL", activity: "EXTEND" }),
+  "050/timing": Object.freeze({ role: "OPTIONAL", activity: "EXTEND" }),
+  "142/agile": Object.freeze({ role: "OPTIONAL", activity: "EXTEND" }),
 });
 
 function explanation(lesson, targetId, kind, title, steps, analogy, boundary) {
@@ -30,11 +65,16 @@ function explanation(lesson, targetId, kind, title, steps, analogy, boundary) {
     analogy,
     boundary,
     transcript: Object.freeze(maintainedSteps),
+    deliveryRole: deliveryOverrides[key]?.role ?? "CORE",
+    classroomActivity: deliveryOverrides[key]?.activity ?? "TEACH",
     visual,
   });
 }
 
 export const pilotExplanations = Object.freeze([
+  explanation("050", "masks", "mechanism", "Bit masks target selected positions", ["AND with a 1 preserves or tests a bit, while AND with a 0 clears it.", "OR with a 1 sets a bit without clearing unrelated positions.", "XOR with a 1 toggles a bit while XOR with a 0 preserves it."], "A stencil exposes only the positions that one operation may affect.", "Apply the operation independently to corresponding bit positions."),
+  explanation("050", "shifts", "comparison", "Logical, arithmetic and cyclic shifts", ["A logical shift inserts 0 into each empty position.", "An arithmetic right shift repeats the sign bit; a left shift can overflow the fixed signed range.", "A cyclic shift rotates the discarded bit into the opposite end."], "Three conveyor rules move the same row but handle the end position differently.", "State the fixed width, direction and shift type before calculating."),
+  explanation("050", "device-bits", "process", "Monitor and control a device register", ["AND a status byte with a one-bit mask to test a named device flag.", "OR a control byte with a one-bit mask to set the selected output flag.", "AND with an inverted mask clears a flag; XOR with a one-bit mask toggles it."], "A control panel changes one labelled switch without disturbing the others.", "The processor applies the rule; a sensor supplies input and an actuator performs output."),
   explanation("016", "purpose", "mechanism", "How a shared resource becomes useful", ["A device packages a request and names the destination.", "The network carries that request to the shared resource.", "One managed resource can then serve many authorised devices."], "A library serves many readers because requests reach one organised collection.", "If the path or shared service fails, many users lose access together."),
   explanation("016", "lanwan", "comparison", "Why LAN and WAN management differs", ["A LAN usually stays within one organisation's controlled site.", "A WAN crosses distance and often uses provider-owned infrastructure.", "More owners and routes add latency, cost and fault-finding complexity."], "Managing one campus is different from coordinating transport across several cities.", "Wi-Fi does not make a network a WAN; scale and control do."),
   explanation("016", "topologies", "tradeoff", "Why connection patterns change risk", ["The layout determines which physical paths data can follow.", "Shared paths reduce cabling but concentrate traffic and failures.", "Alternative paths improve resilience but require more links and ports."], "Road layouts trade construction cost against alternative routes after a closure.", "No topology is universally best; cost, scale and failure tolerance decide."),
@@ -65,7 +105,7 @@ export const pilotExplanations = Object.freeze([
   explanation("083", "purpose", "mechanism", "Why normalisation protects consistency", ["Each fact is stored in a relation where its determinant is clear.", "Other tables reference that fact instead of copying it repeatedly.", "One update then changes the authoritative value once."], "Keep one catalogue record and let many loans point to it.", "Normalisation improves consistency but joins may make some queries more complex."),
   explanation("083", "redundancy", "mechanism", "How repeated facts become risky", ["The same real-world fact appears in several rows.", "A later update may change only some copies.", "Queries then return conflicting versions of one fact."], "Several photocopies agree only until someone edits one copy.", "Repeated transactional events are valid; repeated descriptive facts cause the risk."),
   explanation("083", "anomalies", "tradeoff", "Why one structure causes three anomalies", ["Insertion may require an unrelated fact that is not yet known.", "Updating requires finding every repeated copy.", "Deleting one event may accidentally remove the only descriptive fact."], "A form that mixes customers, products and orders ties unrelated lifetimes together.", "The anomaly comes from dependency structure, not simply from a large table."),
-  explanation("083", "normal-forms", "process", "How normal forms remove dependency problems", ["1NF makes stored values atomic within each row and column.", "2NF removes partial dependency on part of a composite key.", "3NF removes dependency on another non-key attribute."], "Separate mixed filing rules one dependency at a time.", "A table with a single-attribute key cannot have a partial-key dependency."),
+  explanation("083", "normal-forms", "process", "How normal forms remove dependency problems", ["First Normal Form (1NF) requires atomic values and no repeating groups.", "Second Normal Form (2NF) is in 1NF and removes partial dependency: each non-key attribute depends on the whole primary key.", "Third Normal Form (3NF) is in 2NF and removes transitive dependency: a non-key attribute must not depend on another non-key attribute."], "Each dependency belongs in the relation whose key determines it.", "Check the forms in order; satisfying a later normal form assumes the earlier requirements are already met."),
 
   explanation("091", "logic", "synthesis", "How hardware facts become mechanisms", ["Name the component or representation involved.", "Explain the operation performed on data or signals.", "Link that operation to the observable result or limitation."], "A useful technical answer connects parts like a working machine, not a parts list.", "An isolated definition rarely explains why the stated outcome occurs."),
 
@@ -83,6 +123,7 @@ export const pilotExplanations = Object.freeze([
   explanation("122", "pseudocode", "comparison", "Why pseudocode must expose state change", ["Test the empty or full condition before accessing storage.", "Read or write the element at the correct pointer.", "Update the pointer so the invariant remains true."], "A clear procedure shows the safety check, action and new boundary marker.", "Hiding pointer updates makes correctness impossible to verify."),
 
   explanation("142", "purpose", "mechanism", "Why a lifecycle reduces uncertainty", ["Each stage asks a different question about need, design or evidence.", "Its output makes assumptions visible for review.", "Later work proceeds with clearer constraints and acceptance criteria."], "Architectural plans turn assumptions into inspectable decisions before construction.", "Documents help only when they stay accurate and influence decisions."),
+  explanation("142", "rad", "process", "Rapid application development (RAD)", ["RAD builds rapid prototypes inside short time boxes.", "Users review prototypes frequently and their feedback changes the next version.", "RAD can respond quickly, but may not suit work requiring exhaustive assurance and stable architecture."], "A working model is reviewed and revised before the whole product is fixed.", "RAD is a named syllabus model; Agile is related extension context, not a substitute."),
   explanation("142", "stages", "process", "How one stage supplies the next", ["Analysis defines the problem and required outcomes.", "Design translates requirements into components, data and interfaces.", "Implementation and testing create and check the resulting system."], "A specification becomes a plan, then a build, then evidence of fitness.", "Feedback may return to an earlier stage when evidence exposes a bad assumption."),
   explanation("142", "waterfall", "tradeoff", "Why sequence helps and resists change", ["A stage is reviewed before the next major stage begins.", "Early agreement supports budgets, contracts and traceable approvals.", "Late change crosses completed boundaries and causes expensive rework."], "Changing foundations after upper floors exist is harder than changing a drawing.", "Waterfall suits stable requirements; sequence alone does not guarantee quality."),
   explanation("142", "iterative", "process", "Why repeated cycles expose mistakes", ["Build a limited version around a defined goal.", "Review evidence from users, tests or prototypes.", "Feed the findings into the next improved cycle."], "A model is built, inspected and revised before the full structure is fixed.", "Repeated work without a review goal is rework, not controlled iteration."),
@@ -112,6 +153,8 @@ const rolloutExplanations = rolloutJobs
     boundary: "",
     transcript: Object.freeze(sourceFacts),
     sourceGrounded: true,
+    deliveryRole: deliveryOverrides[key]?.role ?? "CORE",
+    classroomActivity: deliveryOverrides[key]?.activity ?? "TEACH",
     visual: Object.freeze({
       src: `../assets/diagrams/stage10-infographics/${job.filename}`,
       width: 1536,

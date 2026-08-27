@@ -72,6 +72,41 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often call every program an operating system. Correction: an OS manages resources and provides services; an app performs user tasks.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Required utility software
+
+### Direct explanation
+
+- A disk formatter prepares a storage medium with file-system structures. A virus checker scans for, quarantines and removes malware. A disk defragmenter rearranges fragmented file blocks on a magnetic disk; it is not a speed treatment for SSDs.
+- A disk contents analysis/repair utility examines file-system structures, reports faults and attempts defined repairs. Compression reduces file size and backup creates a separate recoverable copy. Encryption may be useful additional protection, but it does not replace any of the six named syllabus utilities.
+
+### Worked example
+
+**Choose the utility from the fault:** Use a formatter to prepare a new storage medium, disk analysis/repair for file-system errors, a backup to recover a deleted file, and compression to reduce transfer size. Choose by the operation required, not by calling every tool 'maintenance'.
+
+### Targeted practice and answers
+
+1. Which utility prepares file-system structures on a storage medium?
+   **Answer:** A disk formatter.
+2. Which utility checks file-system structures and attempts repairs?
+   **Answer:** A disk contents analysis/repair utility.
+3. Why is compression not a backup?
+   **Answer:** Compression reduces size; a backup creates a separate copy that can be restored.
+
+### Exam-style question and MS
+
+**Question (4 marks):** A computer has a new storage medium and another disk reports file-system errors. Name the utility for each task and explain its purpose.
+
+- **B1** disk formatter for the new medium
+- **B1** formatter creates/prepares file-system structures
+- **B1** disk contents analysis/repair utility for the faulty disk
+- **B1** it examines structures and reports/attempts repair of faults
+
+**Strict note:** Do not accept defragmentation as formatting or as a general file-system repair operation.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `antivirus`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-055-antivirus.jpg`
 
 1. Purpose Scan files, memory or downloads for malware signatures or suspicious behaviour.
@@ -90,6 +126,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `backup`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-055-backup.jpg`
 
 1. Purpose Create copies of files or systems in another location or storage medium.
@@ -97,20 +134,24 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. Good practice Use automatic scheduling, versioning and off-site/cloud copies where appropriate.
 4. Limitation A backup is only useful if it is recent, complete and can actually be restored.
 
-### Choose the utility by diagnosing the problem
+### Choose the required utility by its operation
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-055-compare.jpg`
 
-1. Defragmentation rearranges related file blocks contiguously on a magnetic HDD.
-2. Reducing read-head movement can improve HDD access time.
-3. Defragmentation does not provide the same benefit to an SSD and does not create a backup.
+1. A disk formatter prepares a storage medium with file-system structures.
+2. A virus checker scans for, quarantines and removes malware.
+3. A disk defragmenter rearranges fragmented file blocks on a magnetic disk.
+4. A disk contents analysis/repair utility examines file-system structures and attempts defined repairs.
+5. Compression reduces file size; backup creates a separate recoverable copy.
 
 ### Compression utilities reduce file size
 
 - **Explains:** `compression`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-055-compression.jpg`
 
 1. Purpose Encode data so it takes up fewer bits than the original file.
@@ -122,6 +163,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-055-concept.jpg`
 
 1. System software Software that supports the operation and management of the computer system.
@@ -133,6 +175,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `defrag`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-055-defrag.jpg`
 
 1. Fragmentation Parts of a file are stored in non-contiguous blocks across a disk.
@@ -144,6 +187,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `encryption`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-055-encryption.jpg`
 
 1. Purpose Scramble plaintext into ciphertext using an algorithm and a key.

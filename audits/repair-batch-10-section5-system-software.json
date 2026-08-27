@@ -1,0 +1,18 @@
+{
+  "batch": 10,
+  "authority": "Cambridge International AS & A Level Computer Science 9618 syllabus, 2027-2029, Version 2",
+  "authorityUrl": "https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf",
+  "authoritySha256": "c8a4c6d033c07c6d8025689abed5ef481d581c28bae640986d275303ed6c08bc",
+  "status": "Resolved",
+  "records": [
+    { "id": "B10-S5.01-OPERATING-SYSTEM", "requirement": "S5.01", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Verifies visible CORE teaching, practice and assessment for why an operating system is required and its memory, file, security, hardware and process management roles." },
+    { "id": "B10-S5.02-UTILITIES", "requirement": "S5.02", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Verifies every named utility category, including formatter and disk contents analysis/repair, without allowing encryption to replace a required category." },
+    { "id": "B10-S5.03-LIBRARIES", "requirement": "S5.03", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Adds explicit teaching that software under development commonly reuses existing program-library code, with developer benefits and DLL dependency/version boundaries." },
+    { "id": "B10-S5.04-TRANSLATORS", "requirement": "S5.04", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Directly distinguishes the need for an assembler, compiler and interpreter from their input languages and translation behaviour." },
+    { "id": "B10-S5.05-COMPARE", "requirement": "S5.05", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Teaches and assesses separate compiler and interpreter benefits and drawbacks, with scenario-based justification and two assessment forms." },
+    { "id": "B10-S5.06-JAVA", "requirement": "S5.06", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Teaches and assesses Java console mode as partly compiled from source to bytecode and partly interpreted or JIT-compiled by the JVM, rejecting universal machine-code claims." },
+    { "id": "B10-S5.07-IDE", "requirement": "S5.07", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Covers context-sensitive prompts, dynamic syntax checks, prettyprint, expand/collapse, single stepping, breakpoints, variable/expression inspection and a report window with direct assessment." },
+    { "id": "B10-V056-ASSEMBLER-OUTPUT", "requirement": "S5.04", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Replaces the assembler infographic so target machine code, object modules, conditional linking and executable output are no longer presented as interchangeable." },
+    { "id": "B10-V056-TRANSLATOR-COMPARE", "requirement": "S5.04", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Replaces the translator comparison infographic with separate compiler, interpreter and assembler paths and an explicit linker-if-required boundary." }
+  ]
+}

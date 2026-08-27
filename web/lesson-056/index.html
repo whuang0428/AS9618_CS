@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -41,6 +41,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -200,7 +201,7 @@
             <figcaption class="explanation-sr-only">An assembler translates assembly language into machine code: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Input Assembly language mnemonics such as LDA , ADD or STA .</li><li><strong>Lesson fact:</strong> Output Machine code/object code that the processor can execute.</li><li><strong>Lesson fact:</strong> Purpose Allows low-level programming using mnemonic instructions instead of raw binary.</li><li><strong>Lesson fact:</strong> Boundary It does not translate high-level languages such as Python, Java or pseudocode.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> An assembler translates assembly-language mnemonics into machine code or an object-code module.</li><li><strong>Lesson fact:</strong> Machine code uses the instruction set and binary encodings of the target processor.</li><li><strong>Lesson fact:</strong> An object module may still need a linker to combine modules and resolve external library references before an executable can be produced.</li><li><strong>Lesson fact:</strong> An assembler does not translate high-level languages such as Java or Cambridge pseudocode.</li></ol>
 
           </div>
         </section>
@@ -247,7 +248,7 @@
             <figcaption class="explanation-sr-only">Comparison: same goal, different route: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Translator</li><li><strong>Lesson fact:</strong> Output / execution behaviour</li><li><strong>Lesson fact:</strong> Typical use</li><li><strong>Lesson fact:</strong> Compiler</li><li><strong>Lesson fact:</strong> High-level source code</li><li><strong>Lesson fact:</strong> Produces object/executable code before the program is run.</li><li><strong>Lesson fact:</strong> Distribution, repeated execution, protecting source code.</li><li><strong>Lesson fact:</strong> Interpreter</li><li><strong>Lesson fact:</strong> Translates and executes statement by statement; normally no separate object code.</li><li><strong>Lesson fact:</strong> Development, testing, learning and rapid debugging.</li><li><strong>Lesson fact:</strong> Assembler</li><li><strong>Lesson fact:</strong> Assembly language</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A compiler translates a whole high-level program before execution and produces target or object code; a linked executable can run repeatedly without the source.</li><li><strong>Lesson fact:</strong> An interpreter translates and executes high-level statements during execution and normally produces no separate permanent object-code file.</li><li><strong>Lesson fact:</strong> An assembler translates assembly-language mnemonics into target machine code or an object module for a specific processor instruction set.</li><li><strong>Lesson fact:</strong> If an assembler or compiler produces object modules, a linker may still be required before there is an executable program.</li><li><strong>Lesson fact:</strong> Choose the translator from the input language and the development or deployment need; do not claim that every assembler output is immediately executable.</li></ol>
 
           </div>
         </section>
@@ -319,6 +320,69 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Assembler, compiler and interpreter choices</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>An assembler is needed to translate a processor-specific assembly-language program into machine code or object code. A compiler is needed to translate a whole high-level language program before execution, normally producing target/object code. An interpreter translates and executes a high-level language program statement by statement during execution, normally without producing a separate permanent object-code file.</p>
+            <p>Compiler advantages include faster repeated execution after translation, distribution without the source code and translation checks across the whole program. Disadvantages include a separate compilation step and an error list that may need several corrections before execution. Interpreter advantages include immediate statement-level feedback and convenient incremental testing. Disadvantages include repeated translation overhead, slower execution and needing the interpreter and usually the source program at run time.</p>
+            <p>A justified choice must connect the mechanism to the scenario: an interpreter can suit development and debugging; a compiler can suit repeated use or distribution; an assembler is required for assembly source. These are advantages and disadvantages of the translation approaches, not universal claims that one tool is always better.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose tools across development and deployment</h3>
+            <p>During development, an interpreter can execute each statement and stop near a fault, giving quick feedback. For final distribution, a compiler can translate the whole high-level program before execution and provide target/object or executable code without distributing the source. A processor-specific assembly routine requires an assembler because its mnemonic instructions must become the target processor's machine code.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Assembler, compiler and interpreter choices: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Why is an assembler needed?</p>
+              <details><summary>Show answer</summary><p>It translates assembly-language mnemonics and operands into machine or object code for the target processor.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Give one compiler advantage and its mechanism.</p>
+              <details><summary>Show answer</summary><p>A compiled program can run repeatedly without translating the source each time because translation occurred before execution.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Give one compiler disadvantage.</p>
+              <details><summary>Show answer</summary><p>Compilation must complete before execution and the programmer may need to correct a list of reported errors.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Give one interpreter advantage and one disadvantage.</p>
+              <details><summary>Show answer</summary><p>It provides immediate statement-level feedback, but repeated translation can make execution slower and requires the interpreter/source at run time.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Which translator is required for assembly language?</p>
+              <details><summary>Show answer</summary><p>An assembler.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Compare a compiler and an interpreter using two advantages and two disadvantages, then justify the translator used for an assembly-language routine.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> compiler translates the whole high-level program before execution and produces target/object code</li>
+                <li><strong>B1</strong> compiler advantage linked to repeated execution or distribution without source</li>
+                <li><strong>B1</strong> compiler disadvantage linked to separate translation or error-list workflow</li>
+                <li><strong>B1</strong> interpreter translates/executes statements during execution and gives immediate feedback</li>
+                <li><strong>B1</strong> interpreter disadvantage linked to repeated translation, slower execution or run-time dependency</li>
+                <li><strong>B1</strong> assembler selected and justified for assembly-language-to-machine/object-code translation</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -357,7 +421,7 @@
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

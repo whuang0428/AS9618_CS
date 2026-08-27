@@ -87,20 +87,20 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ### Questions
 
-1. Write denary 59 in BCD. **[2]**
+1. Write denary 59 in BCD and state one reason BCD is used in a digital clock. **[2]**
 2. Explain one reason Unicode is used instead of ASCII for a worldwide messaging system. **[2]**
-3. State two items stored for a vector drawing object. **[2]**
-4. Calculate the pixel data in bytes for a 100 x 50 bitmap with 8-bit colour depth. **[2]**
-5. Distinguish sampling rate from sample resolution. **[2]**
+3. A 100 x 50 bitmap uses 8-bit colour depth. Calculate its pixel data in bytes and state whether a bitmap file header is included. **[2]**
+4. State two items stored for a vector drawing object. **[2]**
+5. Distinguish sampling rate from sampling resolution. **[2]**
 
 ### Answer Key / Mark Scheme
 
 #### Q1 [2]
 
-- **B1** 5 is encoded as 0101
-- **A1** 9 is encoded as 1001; 0101 1001
+- **B1** 59 is encoded as separate denary digits: 0101 1001
+- **B1** each displayed denary digit maps directly to one four-bit BCD group
 
-**Guidance:** Do not accept pure binary 00111011.
+**Guidance:** Do not accept pure binary 00111011 or an application without the digit-to-group link.
 
 #### Q2 [2]
 
@@ -111,22 +111,22 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q3 [2]
 
+- **M1** 100 x 50 x 8 bits, then divides by 8 to obtain 5000 bytes
+- **A1** the header is not included unless the question supplies its size; it stores metadata separately from pixel data
+
+**Guidance:** Do not add an invented header size. Award the calculation method and the correct header boundary.
+
+#### Q4 [2]
+
 - **B1** one valid property such as object type/coordinates/dimensions
 - **B1** a second valid property such as line/fill colour or transformation
 
 **Guidance:** Do not award pixel colour depth as an object property.
 
-#### Q4 [2]
-
-- **M1** 100 x 50 x 8 bits, then divides by 8
-- **A1** 5000 bytes
-
-**Guidance:** Allow FT from the candidate's earlier incorrect pixel total only when the subsequent conversion to bytes is correct.
-
 #### Q5 [2]
 
 - **B1** sampling rate is samples taken per second
-- **B1** sample resolution is bits/levels used for each sample amplitude
+- **B1** sampling resolution is bits/levels used for each sample amplitude
 
 **Guidance:** Do not reverse time frequency and amplitude precision.
 
@@ -207,7 +207,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 1. Distinguish a LAN from a WAN. **[2]**
 2. State one feature of a thin client and one feature of a thick client. **[2]**
-3. State two items found in a packet header. **[2]**
+3. In a star topology, state the path taken by a frame between two hosts and one failure consequence. **[2]**
 4. Describe what an Ethernet station does after CSMA/CD detects a collision. **[2]**
 5. Explain why a public web server normally uses a static public IP address. **[2]**
 
@@ -229,10 +229,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q3 [2]
 
-- **B1** one valid item such as source/destination address
-- **B1** a second valid item such as sequence number/checksum/protocol
+- **B1** the frame passes from the source through the central switch to the destination
+- **B1** failure of the central switch stops attached communication, while one device cable failure normally affects only that device
 
-**Guidance:** Do not award payload content as a header item.
+**Guidance:** Do not accept only 'star has a centre'; require the transmission path and a failure consequence.
 
 #### Q4 [2]
 
@@ -264,20 +264,20 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ### Questions
 
-1. Choose HTTPS or SMTP for retrieving a secure web page and justify. **[2]**
+1. State the role of a modem and one reason a business may choose a dedicated line instead of a cell phone network. **[2]**
 2. Give one advantage of fibre-optic cable over copper and explain its cause. **[2]**
 3. Distinguish a switch from a router. **[2]**
 4. Distinguish the World Wide Web from the internet. **[2]**
-5. Distinguish bandwidth from latency. **[2]**
+5. Distinguish real-time bit streaming from on-demand bit streaming. **[2]**
 
 ### Answer Key / Mark Scheme
 
 #### Q1 [2]
 
-- **B1** HTTPS
-- **B1** HTTP communication is protected using encryption/authentication through TLS
+- **B1** modem converts data/signals for the access-link signalling
+- **B1** dedicated line gives a permanent or more predictable connection, while cellular signal/coverage is shared or variable
 
-**Guidance:** Do not award SMTP, which transfers email.
+**Guidance:** Do not describe a modem as simply a router or wireless access point.
 
 #### Q2 [2]
 
@@ -302,10 +302,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q5 [2]
 
-- **B1** bandwidth is data-transfer capacity/rate
-- **B1** latency is transmission/response delay
+- **B1** real-time streaming carries live content with minimal delay
+- **B1** on-demand streaming sends stored content selected by the user
 
-**Guidance:** Do not accept that both simply mean speed.
+**Guidance:** Do not define the distinction only as fast versus slow playback.
 
 ---
 
@@ -323,8 +323,8 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ### Questions
 
-1. State the roles of the processor and main memory in a computer system. **[2]**
-2. Choose a direct data-capture input device for reading product codes at a checkout and name the captured data. **[2]**
+1. State why primary memory and removable secondary storage are both needed in a portable computer. **[2]**
+2. State two principal stages in the operation of a laser printer. **[2]**
 3. Explain why a printer buffer is needed when the CPU supplies data faster than the printer outputs it. **[2]**
 4. Distinguish RAM from ROM using volatility. **[2]**
 5. Explain why SRAM is suitable for cache while DRAM is suitable for main memory. **[2]**
@@ -333,17 +333,17 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q1 [2]
 
-- **B1** processor executes instructions/processes data
-- **B1** main memory holds currently used instructions and data
+- **B1** primary memory holds instructions/data currently in use by the processor
+- **B1** removable secondary storage provides non-volatile transfer or a detachable/offline backup
 
-**Guidance:** Do not describe secondary storage as main memory.
+**Guidance:** Do not treat removable storage as volatile working memory.
 
 #### Q2 [2]
 
-- **B1** barcode/QR scanner
-- **B1** captures the encoded product identifier/code
+- **B1** charged drum is selectively discharged by a laser / electrostatic image is formed
+- **B1** toner is transferred to paper and fused using heat/pressure
 
-**Guidance:** Do not award keyboard as direct data capture.
+**Guidance:** Do not describe liquid ink or an inkjet print head.
 
 #### Q3 [2]
 
@@ -382,20 +382,20 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ### Questions
 
-1. Choose solid-state storage for a portable camera and justify. **[2]**
+1. State how flash memory stores data and why it is mechanically robust. **[2]**
 2. State one characteristic used to compare storage devices and explain its relevance to video files. **[2]**
-3. Explain why a washing-machine controller is an embedded system. **[2]**
-4. Name a sensor and actuator for an automatic greenhouse window. **[2]**
+3. State one benefit and one drawback of using an embedded controller in a washing machine. **[2]**
+4. Choose sensors for (a) detecting a warm body at night and (b) detecting a loud alarm sound. **[2]**
 5. State the XOR output for inputs 0,0 and 0,1. **[2]**
 
 ### Answer Key / Mark Scheme
 
 #### Q1 [2]
 
-- **B1** solid-state/flash storage
-- **B1** no moving parts gives shock resistance/low power/portability
+- **B1** stores electrical charge in floating-gate cells
+- **B1** electronic access/no moving parts gives resistance to mechanical shock
 
-**Guidance:** Do not award only a brand name.
+**Guidance:** Do not describe flash storage as magnetic.
 
 #### Q2 [2]
 
@@ -406,17 +406,17 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q3 [2]
 
-- **B1** computer is built into a larger device for a dedicated function
-- **B1** automatically controls a limited set of washing inputs/outputs
+- **B1** valid developed benefit such as low-power/predictable automatic control for the wash cycle
+- **B1** valid developed drawback such as limited new functions or controller failure stopping the machine
 
-**Guidance:** Do not accept only 'it is small'.
+**Guidance:** Do not award bare words such as 'cheap' or 'small' without a washing-machine consequence.
 
 #### Q4 [2]
 
-- **B1** temperature sensor
-- **B1** motor/actuator that opens the window
+- **B1** infra-red sensor for the warm body
+- **B1** sound sensor/microphone sensor for the alarm
 
-**Guidance:** Do not award a display as the actuator.
+**Guidance:** Do not substitute a light-intensity sensor for either required sensor type.
 
 #### Q5 [2]
 
@@ -442,7 +442,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 ### Questions
 
 1. For X = (A OR B) AND NOT C, calculate X when A=0, B=1 and C=0. **[2]**
-2. A burglar alarm sounds when Door is open AND Armed is true. Write the Boolean expression. **[2]**
+2. A two-input truth table gives output 1 only for A=1, B=0. Write the Boolean expression and state the gate sequence. **[2]**
 3. Recommend laser or inkjet printing for 5000 monochrome office pages each week and give one reason. **[2]**
 4. Explain one environmental consequence of replacing computers frequently. **[2]**
 5. Distinguish monitoring from control in a sensor system. **[2]**
@@ -458,10 +458,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q2 [2]
 
-- **B1** identifies AND operation
-- **A1** Alarm = Door AND Armed
+- **M1** Q = A AND NOT B or an equivalent standard-symbol expression
+- **A1** B feeds NOT; A and NOT B feed an AND gate
 
-**Guidance:** Allow standard Boolean symbols.
+**Guidance:** Do not accept XOR because XOR also outputs 1 for A=0, B=1.
 
 #### Q3 [2]
 
@@ -502,9 +502,9 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 1. State the roles of the ALU and control unit. **[2]**
 2. State the first and final register transfers in a basic fetch stage. **[2]**
-3. Distinguish MAR from MDR. **[2]**
-4. Choose HDMI or VGA for transmitting digital video and audio on one cable. **[2]**
-5. Explain why machine code is processor dependent. **[2]**
+3. Explain the stored-program concept in the basic Von Neumann architecture. **[2]**
+4. State which of USB, HDMI and VGA suits each use: a keyboard that also receives power, one-cable digital video/audio, and a legacy analogue display. **[2]**
+5. Explain how processor type can affect performance for a workload and why machine code is processor dependent. **[2]**
 
 ### Answer Key / Mark Scheme
 
@@ -524,24 +524,24 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q3 [2]
 
-- **B1** MAR holds the address currently accessed
-- **B1** MDR holds data/instruction transferred to or from memory
+- **B1** program instructions are stored in memory in binary form alongside data
+- **B1** the processor fetches instructions from that shared memory for decoding and execution
 
-**Guidance:** Do not swap address and contents.
+**Guidance:** Do not accept only that a computer stores programs; the shared instruction/data memory and fetch relationship are required.
 
 #### Q4 [2]
 
-- **B1** HDMI
-- **B1** carries digital video and audio; VGA is analogue video only
+- **B1** USB for the keyboard/data-and-power connection; HDMI for digital video and audio
+- **B1** VGA for the legacy analogue video connection
 
-**Guidance:** Do not award USB without a stated alternative interface scenario.
+**Guidance:** Do not treat VGA as digital audio or use connector shape alone as the reason.
 
 #### Q5 [2]
 
-- **B1** opcodes/formats are defined by a processor instruction set
-- **B1** another processor may decode the bit pattern differently or not support it
+- **B1** processor type includes its architecture/instruction-set and execution design, so different types may perform different amounts of useful work for the workload
+- **B1** machine-code opcodes/formats belong to that processor instruction set, so another type may decode them differently or not support them
 
-**Guidance:** Do not accept only 'processors are different'.
+**Guidance:** Do not accept processor type as only a brand name or only 'processors are different'.
 
 ---
 
@@ -560,9 +560,9 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 ### Questions
 
 1. State one task completed in each pass of a two-pass assembler. **[2]**
-2. Base address 500 is used with IX = 7. Calculate the indexed effective address. **[2]**
-3. State two processor actions when accepting an interrupt. **[2]**
-4. Explain how cache hit rate affects processor performance. **[2]**
+2. Memory[507] = 42. Trace LDX 500 when IX = 7; state the indexed effective address and the final ACC value. **[2]**
+3. Classify IN, ADD, JMP and JPN by instruction group. **[2]**
+4. Distinguish an 8-bit arithmetic right shift from a cyclic right shift. **[2]**
 5. Use a bitwise operation and mask to set bit 2 of an 8-bit value, using bit 0 as the rightmost bit. **[2]**
 
 ### Answer Key / Mark Scheme
@@ -576,24 +576,24 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q2 [2]
 
-- **M1** adds operand/base and index register
-- **A1** 507
+- **M1** indexed effective address = operand/base 500 + IX 7 = 507
+- **A1** LDX loads Memory[507], so ACC becomes 42
 
-**Guidance:** Do not dereference the calculated address a second time.
+**Guidance:** Do not stop at the effective address or dereference it more than once.
 
 #### Q3 [2]
 
-- **B1** saves current state/return address after completing an instruction
-- **B1** branches to/executes the interrupt service routine
+- **B1** IN is input/output and ADD is arithmetic
+- **B1** JMP is an unconditional branch and JPN is a conditional branch/compare instruction
 
-**Guidance:** Do not accept that the entire program restarts.
+**Guidance:** Do not award either mark unless both classifications in that pair are correct; JPN is not a negative-status test.
 
 #### Q4 [2]
 
-- **B1** a hit supplies required data/instruction from faster cache
-- **B1** more hits reduce slower main-memory accesses/CPU waiting
+- **B1** arithmetic right shift copies the sign bit into the leftmost position and discards the rightmost bit
+- **B1** cyclic right shift rotates the rightmost bit into the leftmost position, so no bit is discarded
 
-**Guidance:** Do not claim cache guarantees a fixed speed increase.
+**Guidance:** Do not describe either operation as a logical right shift.
 
 #### Q5 [2]
 
@@ -622,7 +622,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 2. Choose a command-line or graphical interface for an expert repeatedly running scripted backups and justify. **[2]**
 3. Distinguish backup from compression. **[2]**
 4. Explain why an HDD defragmenter should not normally be used to improve SSD access time. **[2]**
-5. State one purpose of encryption utility software and one purpose of antivirus software. **[2]**
+5. State one purpose of a disk formatter and one purpose of a disk contents analysis/repair utility. **[2]**
 
 ### Answer Key / Mark Scheme
 
@@ -656,10 +656,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q5 [2]
 
-- **B1** encryption makes data unreadable without the key
-- **B1** antivirus detects/quarantines/removes malicious software
+- **B1** formatter prepares a disk/partition with a file system for storing files
+- **B1** analysis/repair checks disk/file-system structures for errors and repairs recoverable faults
 
-**Guidance:** Do not state that either control guarantees complete security.
+**Guidance:** Do not substitute defragmentation, encryption or antivirus for either purpose.
 
 ---
 
@@ -678,7 +678,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 ### Questions
 
 1. Distinguish a compiler from an interpreter. **[2]**
-2. State one output of lexical analysis and one output of syntax analysis. **[2]**
+2. State one IDE feature used to present code and one IDE feature used to debug code, explaining the effect of each. **[2]**
 3. Explain one benefit and one risk of using a dynamically linked library. **[2]**
 4. Distinguish a syntax error from a logic error. **[2]**
 5. State the two main stages from Java source to execution. **[2]**
@@ -694,10 +694,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q2 [2]
 
-- **B1** lexical analysis produces tokens/symbol entries and rejects invalid tokens
-- **B1** syntax analysis checks grammatical structure/builds a parse representation
+- **B1** presentation: prettyprint formats indentation/layout or expand/collapse hides and reveals code sections
+- **B1** debugging: breakpoint pauses at a chosen statement, single-step executes one statement at a time, or variable/expression/report windows show diagnostic values
 
-**Guidance:** Do not state that either stage executes the source program.
+**Guidance:** Do not accept a feature without its effect; award one presentation feature and one distinct debugging feature, not syntax highlighting alone.
 
 #### Q3 [2]
 
@@ -737,10 +737,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 ### Questions
 
 1. Distinguish confidentiality from integrity. **[2]**
-2. Distinguish a virus from a worm. **[2]**
+2. Distinguish a virus from spyware. **[2]**
 3. Explain how phishing obtains credentials. **[2]**
 4. Give two authentication factors from different categories. **[2]**
-5. Explain one security benefit of multi-factor authentication. **[2]**
+5. Distinguish phishing from pharming. **[2]**
 
 ### Answer Key / Mark Scheme
 
@@ -753,10 +753,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q2 [2]
 
-- **B1** virus attaches to a host file/program and is triggered/spread with it
-- **B1** worm self-replicates across systems/networks without a host file
+- **B1** virus attaches to a host file/program and spreads when the infected host is run or shared
+- **B1** spyware secretly monitors activity or collects data such as keystrokes or credentials
 
-**Guidance:** Allow equivalent propagation descriptions.
+**Guidance:** Do not define both only as generic malware.
 
 #### Q3 [2]
 
@@ -774,10 +774,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q5 [2]
 
-- **B1** requires evidence from more than one independent factor
-- **B1** a stolen password alone is insufficient for access
+- **B1** phishing uses a deceptive message/link/site to persuade a user to disclose information
+- **B1** pharming redirects traffic to a fake site, possibly after the correct address is entered
 
-**Guidance:** Do not accept only 'it is safer'.
+**Guidance:** Do not define both as only a fake email or fake website.
 
 ---
 
@@ -798,8 +798,8 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 1. Explain the principle of least privilege. **[2]**
 2. Distinguish encryption from hashing. **[2]**
 3. Describe how a firewall decides whether to block a packet. **[2]**
-4. Distinguish validation from verification. **[2]**
-5. State two parts of the 3-2-1 backup principle. **[2]**
+4. Distinguish a range check from a limit check. **[2]**
+5. Distinguish a parity check on one byte from block parity. **[2]**
 
 ### Answer Key / Mark Scheme
 
@@ -826,17 +826,17 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q4 [2]
 
-- **B1** validation checks data against rules
-- **B1** verification checks entered/copied data matches the source
+- **B1** range check applies both a lower and an upper bound
+- **B1** limit check applies one stated upper or lower limit
 
-**Guidance:** Do not claim either proves real-world truth.
+**Guidance:** Do not describe a one-sided maximum as a two-bound range check.
 
 #### Q5 [2]
 
-- **B1** three copies or two different media/storage types
-- **B1** one copy off-site/offline or the remaining distinct principle
+- **B1** byte parity checks whether one received byte including its parity bit has the agreed odd/even parity
+- **B1** block parity checks parity across rows and columns of a block and can locate many single-bit errors
 
-**Guidance:** Do not award two restatements of the same part.
+**Guidance:** Do not merge byte and block parity into one unexplained parity check.
 
 ---
 
@@ -915,9 +915,9 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 1. State one social benefit and one social risk of an AI medical-triage system. **[2]**
 2. Explain one environmental cost of training a large AI model. **[2]**
-3. State two functions of a DBMS. **[2]**
+3. State the purpose of a developer interface and a query processor in a DBMS. **[2]**
 4. Give one disadvantage of a flat file when the same customer is stored in many orders. **[2]**
-5. Distinguish a record from a field. **[2]**
+5. Distinguish a candidate key from a secondary key. **[2]**
 
 ### Answer Key / Mark Scheme
 
@@ -937,10 +937,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q3 [2]
 
-- **B1** one valid function such as data definition/query/security/integrity/backup
-- **B1** a second distinct DBMS function
+- **B1** developer interface provides tools for defining structures or building database applications/forms/reports
+- **B1** query processor interprets/checks and carries out queries or maintenance statements
 
-**Guidance:** Do not award a repeated wording of storage.
+**Guidance:** Do not merge the two tools into one unexplained function.
 
 #### Q4 [2]
 
@@ -951,10 +951,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q5 [2]
 
-- **B1** record stores all attributes for one entity occurrence
-- **B1** field stores one attribute/property value
+- **B1** candidate key is a minimal field/set of fields that uniquely identifies a record
+- **B1** secondary key is an additional retrieval field and need not be unique
 
-**Guidance:** Allow tuple/attribute synonyms.
+**Guidance:** Do not describe a secondary key as an alternate candidate key.
 
 ---
 
@@ -976,7 +976,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 2. In an ER model, identify the relationship between one Customer and many Orders. **[2]**
 3. Explain how third normal form reduces update problems. **[2]**
 4. Write SQL to display Name from Student where Mark is at least 50. **[2]**
-5. Write SQL to output each Department and its average Salary. **[2]**
+5. Write SQL using Employee and Department to display each employee Name with DepartmentName. **[2]**
 
 ### Answer Key / Mark Scheme
 
@@ -1010,10 +1010,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q5 [2]
 
-- **B1** SELECT Department, AVG(Salary) FROM Employee
-- **B1** GROUP BY Department
+- **B1** SELECT Employee.Name, Department.DepartmentName FROM Employee INNER JOIN Department
+- **B1** ON Employee.DepartmentID = Department.DepartmentID
 
-**Guidance:** Do not accept ORDER BY as a substitute for GROUP BY.
+**Guidance:** Do not accept a three-table or comma-style join; require an explicit two-table INNER JOIN ... ON.
 
 ---
 
@@ -1151,9 +1151,9 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 1. For an 8-mark evaluate question, state two features required beyond listing facts. **[2]**
 2. State one correction action after a mock-paper misconception is identified. **[2]**
-3. Complete an identifier-table row for Count, used to store the number of valid inputs. **[2]**
-4. Distinguish decomposition from abstraction. **[2]**
-5. Name the flowchart symbols for a decision and input/output. **[2]**
+3. State what an algorithm is. Then give a meaningful identifier for the number of valid inputs. **[2]**
+4. A car-park model must calculate charges. State one essential detail to keep and one real-world detail to omit. **[2]**
+5. Name the control structure used to choose between paths and the control structure used to repeat steps. **[2]**
 
 ### Answer Key / Mark Scheme
 
@@ -1173,24 +1173,24 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q3 [2]
 
-- **B1** data type INTEGER
-- **B1** purpose states number/count of valid inputs
+- **B1** an algorithm is a solution to a problem expressed as a sequence of defined steps
+- **B1** ValidInputCount / NumberValid / another unambiguous identifier describing the count
 
-**Guidance:** Allow another meaningful identifier only if purpose and type match.
+**Guidance:** Do not accept only 'instructions' for the definition or an unexplained identifier such as x.
 
 #### Q4 [2]
 
-- **B1** decomposition breaks a problem into smaller subproblems
-- **B1** abstraction removes irrelevant detail/focuses on essential features
+- **B1** keeps an essential detail such as entry/exit time, duration, tariff or vehicle identifier
+- **B1** omits an irrelevant detail such as vehicle colour or driver clothing, producing an abstract model focused on charging
 
-**Guidance:** Do not define both as simplification without distinction.
+**Guidance:** Award only details justified by the stated charging purpose.
 
 #### Q5 [2]
 
-- **B1** decision is a diamond
-- **B1** input/output is a parallelogram
+- **B1** selection chooses between alternative paths
+- **B1** iteration repeats one or more steps
 
-**Guidance:** Both shape names are required.
+**Guidance:** Do not award sequence for either requested structure.
 
 ---
 
@@ -1208,7 +1208,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ### Questions
 
-1. State two columns needed in a trace table for Total <- Total + Value[Index]. **[2]**
+1. Convert this flowchart decision to pseudocode: if Score is at least 50 output 'Pass'; otherwise output 'Retry'. **[2]**
 2. Choose WHILE or REPEAT for input that must occur at least once and justify. **[2]**
 3. Write the valid-range condition for Mark from 0 to 100 inclusive. **[2]**
 4. Trace zero-based linear search for 9 in [4,9,2] and state the returned index. **[2]**
@@ -1218,10 +1218,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q1 [2]
 
-- **B1** Index/current element column
-- **B1** Total column showing its value after each update
+- **B1** IF Score >= 50 THEN OUTPUT 'Pass'
+- **B1** ELSE OUTPUT 'Retry' followed by ENDIF
 
-**Guidance:** Allow Value[Index] as a separate valid column when Index is implicit.
+**Guidance:** Award equivalent Cambridge pseudocode that preserves both mutually exclusive flowchart paths.
 
 #### Q2 [2]
 
@@ -1305,7 +1305,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q5 [2]
 
-- **B1** uses assignment operator <-
+- **M1** uses assignment operator <-
 - **A1** Total <- Total + Value
 
 **Guidance:** Do not retain Java equals as assignment.
@@ -1328,7 +1328,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 1. Refine PROCESS RESULTS into two suitable lower-level steps for a marks program. **[2]**
 2. State one check to perform when reviewing a complete algorithm against its requirements. **[2]**
-3. Choose INTEGER, REAL or STRING for storing 18.75 and justify. **[2]**
+3. Choose the Cambridge data type for a person's middle initial and for their date of birth. **[2]**
 4. Distinguish a constant from a variable. **[2]**
 5. For Mark : ARRAY[1:20] OF INTEGER, state the lower bound and number of elements. **[2]**
 
@@ -1350,10 +1350,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q3 [2]
 
-- **B1** REAL
-- **B1** value contains a fractional component
+- **B1** CHAR for the single middle initial
+- **B1** DATE for the calendar date of birth
 
-**Guidance:** Do not award STRING unless arithmetic is explicitly unnecessary and justified.
+**Guidance:** Do not use STRING as a generic replacement when the scenario requires exactly one character or a calendar date.
 
 #### Q4 [2]
 
@@ -1385,9 +1385,9 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ### Questions
 
-1. State the indexes of the top-left and bottom-right cells in Grid[1:3,1:4]. **[2]**
+1. A school stores marks for 30 students and 4 tests. Choose a one- or two-dimensional array and write a suitable Cambridge declaration. **[2]**
 2. Write one statement to add 1 to the occurrence count stored at Count[Index]. **[2]**
-3. Distinguish a record from an array. **[2]**
+3. Write one statement to save Mark 75 in record Student1 and one statement to read/output that field. **[2]**
 4. State one advantage of an array of records for storing 100 students. **[2]**
 5. Distinguish WRITE mode from APPEND mode for a text file. **[2]**
 
@@ -1395,24 +1395,24 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q1 [2]
 
-- **B1** top-left Grid[1,1]
-- **B1** bottom-right Grid[3,4]
+- **B1** two-dimensional/2D array because each mark needs a student row and test column
+- **B1** DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER or equivalent explicit bounds
 
-**Guidance:** Do not reverse row and column bounds.
+**Guidance:** Do not award a one-dimensional array unless the candidate defines and justifies a coherent index-mapping scheme beyond the required AS choice.
 
 #### Q2 [2]
 
-- **B1** references Count[Index] consistently
+- **M1** references Count[Index] consistently
 - **A1** Count[Index] <- Count[Index] + 1
 
 **Guidance:** Do not increment Index instead of the array element.
 
 #### Q3 [2]
 
-- **B1** record groups named fields that may have different types
-- **B1** array stores indexed elements of one declared type
+- **B1** Student1.Mark <- 75
+- **B1** OUTPUT Student1.Mark or assignment that reads Student1.Mark
 
-**Guidance:** Award a matched contrast.
+**Guidance:** Both statements must use the named record field rather than a numeric array index.
 
 #### Q4 [2]
 
@@ -1446,7 +1446,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 1. State two requirements when reading a CSV record containing Name,Age. **[2]**
 2. Choose a stack or queue for printer jobs and justify. **[2]**
-3. State the two fields required in an array-based linked-list node. **[2]**
+3. In an array-based linked-list node, state which field is edited to change only the stored value and which field is edited to change its successor. **[2]**
 4. Choose an array or linked list for frequent insertion between playlist items and justify. **[2]**
 5. Convert Java declaration int[] Mark = new int[20]; into a Cambridge-style array declaration using indexes 1 to 20. **[2]**
 
@@ -1468,10 +1468,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q3 [2]
 
-- **B1** data/value field
-- **B1** next index/pointer field
+- **B1** data/value field changes the stored value
+- **B1** next index/pointer field changes the successor/link
 
-**Guidance:** Allow parallel arrays or an array of records.
+**Guidance:** Allow parallel Data and Next arrays or an array of node records.
 
 #### Q4 [2]
 
@@ -1482,7 +1482,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q5 [2]
 
-- **B1** DECLARE Mark : ARRAY[1:20]
+- **M1** DECLARE Mark : ARRAY[1:20]
 - **A1** OF INTEGER
 
 **Guidance:** Do not retain Java allocation syntax.
@@ -1506,8 +1506,8 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 1. Write an IF condition that outputs Adult when Age is at least 18. **[2]**
 2. Choose CASE or nested IF for selecting one action from exact menu values 1 to 5 and justify. **[2]**
 3. Write the Cambridge pseudocode delimiters for a loop that repeats Index from 1 to 10. **[2]**
-4. Explain one difference between WHILE and REPEAT loops. **[2]**
-5. Distinguish a procedure from a function. **[2]**
+4. Choose WHILE or REPEAT...UNTIL for input that must be requested at least once, then justify. **[2]**
+5. For FUNCTION Area(Length : REAL, Width : REAL) RETURNS REAL and the call Result <- Area(5.0, 3.0), identify the parameters/arguments and the return value. **[2]**
 
 ### Answer Key / Mark Scheme
 
@@ -1534,17 +1534,17 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q4 [2]
 
-- **B1** WHILE tests before its body and may run zero times
-- **B1** REPEAT tests after its body and runs at least once
+- **B1** REPEAT...UNTIL
+- **B1** the body/input runs before the post-condition is tested, so it executes at least once
 
-**Guidance:** Do not accept only different keywords.
+**Guidance:** Do not award WHILE unless the candidate changes the scenario and explains a valid pre-test.
 
 #### Q5 [2]
 
-- **B1** function returns a value
-- **B1** procedure performs a named action and need not return a value
+- **B1** Length and Width are parameters declared in the function header/interface; 5.0 and 3.0 are arguments supplied by the caller
+- **B1** the function returns one REAL value, received by Result
 
-**Guidance:** Do not rely only on example names.
+**Guidance:** Do not call the arguments parameters without relating them to the call and header.
 
 ---
 
@@ -1564,7 +1564,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 1. Explain the effect of passing parameter X by reference. **[2]**
 2. State one benefit of using a local variable instead of a global variable. **[2]**
-3. State the result of LENGTH('CODE') and the first character using Cambridge string indexing. **[2]**
+3. A question defines FIRST(Text) as returning the first character. State LENGTH('CODE') and FIRST('CODE'). **[2]**
 4. State the results of 17 DIV 5 and 17 MOD 5. **[2]**
 5. Write pseudocode to input Length and Width and output their product. **[2]**
 
@@ -1586,10 +1586,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q3 [2]
 
-- **B1** LENGTH is 4
-- **B1** first character is 'C' using the syllabus convention
+- **B1** LENGTH('CODE') is 4
+- **B1** FIRST('CODE') is 'C' using the supplied library-routine definition
 
-**Guidance:** Allow an explicitly stated alternative indexing convention only when consistent.
+**Guidance:** Do not require an unstated substring convention; string manipulation routines are supplied.
 
 #### Q4 [2]
 
@@ -1625,7 +1625,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 2. Give one boundary and one abnormal value for an integer Age allowed from 16 to 65. **[2]**
 3. State how a breakpoint and single-step execution support debugging. **[2]**
 4. Write the valid-range condition for Score from 0 to 100 inclusive. **[2]**
-5. Convert while (Count < 10) { Count++; } into Cambridge pseudocode. **[2]**
+5. Structured English says: repeat input Score until Score is from 0 to 100 inclusive. Write Cambridge pseudocode. **[2]**
 
 ### Answer Key / Mark Scheme
 
@@ -1659,10 +1659,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q5 [2]
 
-- **B1** WHILE Count < 10; Count <- Count + 1
-- **B1** ENDWHILE
+- **B1** REPEAT; INPUT Score
+- **B1** UNTIL Score >= 0 AND Score <= 100
 
-**Guidance:** Do not retain braces or ++.
+**Guidance:** Do not retain Java syntax or use OR for the valid inclusive range.
 
 ---
 
@@ -1680,27 +1680,27 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ### Questions
 
-1. State one check to perform when reviewing a complete Section 11 program fragment. **[2]**
-2. Give one advantage and one disadvantage of the waterfall model. **[2]**
+1. An existing program counts marks of 50 or more. State one analysis to perform before amending it to also count merits of 70 or more, and one regression check after the amendment. **[2]**
+2. Explain when RAD is suitable and give one limitation. **[2]**
 3. Distinguish a functional requirement from a success criterion. **[2]**
-4. Distinguish a structure chart from a state-transition diagram. **[2]**
+4. A structure chart shows Main calling CheckLogin(UserID, IsValid). State how this is derived into pseudocode, then state what a separate state-transition diagram records. **[2]**
 5. State the purposes of a stub and acceptance testing. **[2]**
 
 ### Answer Key / Mark Scheme
 
 #### Q1 [2]
 
-- **B1** valid check such as initialisation/bounds/construct closure/output position
-- **B1** explains the error that the check prevents
+- **B1** analysis identifies the existing purpose/control flow and the pass-count behaviour that must remain unchanged before adding MeritCount
+- **B1** regression test checks the existing 49/50 pass boundary as well as testing the new 69/70 merit boundary
 
-**Guidance:** Do not accept only 'check it works'.
+**Guidance:** Do not accept only 'add another IF' or 'check it works'; analysis and preserved existing behaviour are required.
 
 #### Q2 [2]
 
-- **B1** clear sequential stages/documentation suit stable requirements
-- **B1** late change is difficult/costly
+- **B1** RAD suits a project whose users can participate frequently and whose requirements can be explored through rapid prototypes in time-boxed iterations
+- **B1** it is less suitable when users are unavailable, the system cannot be modularised/prototyped quickly, or exhaustive assurance is required
 
-**Guidance:** Do not award two advantages or two disadvantages.
+**Guidance:** Do not award Agile as a substitute for RAD.
 
 #### Q3 [2]
 
@@ -1711,10 +1711,10 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q4 [2]
 
-- **B1** structure chart shows module hierarchy/calls and parameters
-- **B1** state diagram shows states and event/condition transitions
+- **B1** derives a CheckLogin header with parameters and a matching call from Main with arguments
+- **B1** state-transition diagram records persistent states and directed event/condition-labelled transitions from a marked start state
 
-**Guidance:** Do not accept that both are flowcharts.
+**Guidance:** Do not accept that either document is a flowchart of every processing statement.
 
 #### Q5 [2]
 

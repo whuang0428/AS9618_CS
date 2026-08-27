@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -48,7 +48,7 @@
             <p>
               This lesson extends the basic mono calculation by adding channels and
               multi-step unit conversion. The key habit is to keep each factor visible:
-              sampling rate, sample resolution, duration and number of channels.
+              sampling rate, sampling resolution, duration and number of channels.
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
               <div>
@@ -104,13 +104,13 @@
             <h2>The full uncompressed sound formula</h2>
           </div>
           <div class="formula-box">
-            <strong>size in bits = sampling rate × sample resolution × duration × channels</strong>
+            <strong>size in bits = sampling rate × sampling resolution × duration × channels</strong>
             <span>size in bytes = bits ÷ 8</span>
             <span>KiB = bytes ÷ 1024; MiB = KiB ÷ 1024</span>
           </div>
           <div class="chain-grid">
             <article><strong>Sampling rate</strong><span>samples per second, measured in Hz</span></article>
-            <article><strong>Sample resolution</strong><span>bits used for each sample</span></article>
+            <article><strong>Sampling resolution</strong><span>bits used for each sample</span></article>
             <article><strong>Duration</strong><span>length of the sound in seconds</span></article>
             <article><strong>Channels</strong><span>mono = 1, stereo = 2</span></article>
           </div>
@@ -124,7 +124,7 @@
             <figcaption class="explanation-sr-only">The full uncompressed sound formula: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> size in bits = sampling rate × sample resolution × duration × channels</li><li><strong>Lesson fact:</strong> size in bytes = bits ÷ 8</li><li><strong>Lesson fact:</strong> KiB = bytes ÷ 1024; MiB = KiB ÷ 1024</li><li><strong>Lesson fact:</strong> Sampling rate samples per second, measured in Hz</li><li><strong>Lesson fact:</strong> Sample resolution bits used for each sample</li><li><strong>Lesson fact:</strong> Duration length of the sound in seconds</li><li><strong>Lesson fact:</strong> Channels mono = 1, stereo = 2</li></ol>
+            <ol><li><strong>Lesson fact:</strong> size in bits = sampling rate × sampling resolution × duration × channels</li><li><strong>Lesson fact:</strong> size in bytes = bits ÷ 8</li><li><strong>Lesson fact:</strong> KiB = bytes ÷ 1024; MiB = KiB ÷ 1024</li><li><strong>Lesson fact:</strong> Sampling rate samples per second, measured in Hz</li><li><strong>Lesson fact:</strong> Sampling resolution bits used for each sample</li><li><strong>Lesson fact:</strong> Duration length of the sound in seconds</li><li><strong>Lesson fact:</strong> Channels mono = 1, stereo = 2</li></ol>
 
           </div>
         </section>
@@ -203,7 +203,7 @@
               <p>More samples per second; may improve accuracy; increases file size.</p>
             </article>
             <article>
-              <h3>Higher sample resolution</h3>
+              <h3>Higher sampling resolution</h3>
               <p>More bits per sample; more amplitude levels; increases file size.</p>
             </article>
             <article>
@@ -225,7 +225,7 @@
             <figcaption class="explanation-sr-only">Parameter changes and consequences: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Higher sampling rate</li><li><strong>Lesson fact:</strong> More samples per second; may improve accuracy; increases file size.</li><li><strong>Lesson fact:</strong> Higher sample resolution</li><li><strong>Lesson fact:</strong> More bits per sample; more amplitude levels; increases file size.</li><li><strong>Lesson fact:</strong> Longer duration</li><li><strong>Lesson fact:</strong> More seconds of samples; increases file size in direct proportion.</li><li><strong>Lesson fact:</strong> More channels</li><li><strong>Lesson fact:</strong> More separate audio streams; stereo doubles mono size when other factors match.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Higher sampling rate</li><li><strong>Lesson fact:</strong> More samples per second; may improve accuracy; increases file size.</li><li><strong>Lesson fact:</strong> Higher sampling resolution</li><li><strong>Lesson fact:</strong> More bits per sample; more amplitude levels; increases file size.</li><li><strong>Lesson fact:</strong> Longer duration</li><li><strong>Lesson fact:</strong> More seconds of samples; increases file size in direct proportion.</li><li><strong>Lesson fact:</strong> More channels</li><li><strong>Lesson fact:</strong> More separate audio streams; stereo doubles mono size when other factors match.</li></ol>
 
           </div>
         </section>
@@ -243,7 +243,7 @@
               <input id="rateInput" type="number" min="1" value="8000" />
             </label>
             <label>
-              Sample resolution / bits
+              Sampling resolution / bits
               <select id="resolutionInput">
                 <option value="8">8 bits</option>
                 <option value="16" selected>16 bits</option>
@@ -340,9 +340,9 @@
             <h2>Clear tasks</h2>
           </div>
           <ol class="homework-list">
-            <li>Calculate the size in bytes of a 10-second stereo clip sampled at 8000 Hz with 16-bit sample resolution.</li>
+            <li>Calculate the size in bytes of a 10-second stereo clip sampled at 8000 Hz with 16-bit sampling resolution.</li>
             <li>Convert 160 000 bytes to KiB.</li>
-            <li>Calculate the size in MiB of a 60-second stereo clip sampled at 44 100 Hz with 16-bit sample resolution.</li>
+            <li>Calculate the size in MiB of a 60-second stereo clip sampled at 44 100 Hz with 16-bit sampling resolution.</li>
             <li>Write a 4-mark explanation of why a stereo sound file is larger than a matching mono sound file.</li>
           </ol>
           <button class="answer-toggle" type="button" data-answer="homeworkAnswers">Show homework answers</button>
@@ -357,7 +357,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

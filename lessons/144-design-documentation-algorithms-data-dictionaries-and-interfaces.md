@@ -75,59 +75,64 @@ Misconception: Students often describe the lifecycle as a fixed checklist. Corre
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S12.02, S12.03
 **Focus:** Structure charts and state-transition diagrams
 
 ### Direct explanation
 
-- A structure chart shows module hierarchy and calls. Boxes name modules; connecting lines show calling relationships; labelled arrows show data or control parameters passed between modules. Reading top-down supports derivation of procedure headers and calls.
-- A state-transition diagram models states and event/condition-labelled transitions, with a marked start state. It describes how an event changes system state, not the sequence of every program statement.
+- A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.
+- To construct a structure chart, place the controlling module at the top, split the problem into one-responsibility subtasks, connect each caller to its called modules, and label every value passed. To derive equivalent pseudocode, turn each box into a complete PROCEDURE or FUNCTION header with corresponding parameters, add calls in the parent body with matching arguments, and preserve the shown hierarchy.
+- A state-transition diagram documents how an algorithm or system changes between persistent states. Mark the start state; draw each state once; label directed transitions with the triggering event and any condition/action. It is not a flowchart of every processing statement.
 
 ### Worked example
 
-**Door controller:** States are Locked and Unlocked. Start at Locked; validCard / unlock moves to Unlocked; timeout / lock returns to Locked. A structure chart could show ControlDoor calling ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid).
+**Door controller: two design views:** A structure chart places ControlDoor above ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid). Equivalent pseudocode declares those interfaces and calls them from ControlDoor with matching arguments. Separately, a state-transition diagram starts at Locked; validCard / unlock leads to Unlocked; timeout / lock returns to Locked.
 
 ### Targeted practice and answers
 
 1. What does a box represent in a structure chart?
-   **Answer:** A module/procedure/function.
-2. What labels a state transition?
-   **Answer:** The event and, where needed, a condition/action.
-3. How can a structure chart guide pseudocode?
-   **Answer:** Each module becomes a subprogram with shown parameters and calls.
+   **Answer:** A module, procedure or function.
+2. How are parameters represented and then derived into pseudocode?
+   **Answer:** Labelled arrows show values passed; the same values appear as parameters in the called header and arguments in the caller's call.
+3. What labels a state transition?
+   **Answer:** The triggering event and, where needed, a condition or action.
+4. Why is a state-transition diagram not a flowchart?
+   **Answer:** It records persistent states and event-labelled changes, not every processing step in sequence.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** A system starts LoggedOut. A valid login moves it to LoggedIn; logout returns it to LoggedOut; three invalid attempts move it to Locked. Describe the state-transition diagram.
+**Question (6 marks):** For a login system, construct a structure chart in which Main calls ReadCredentials(UserID, Password) and CheckLogin(UserID, Password, IsValid), then derive equivalent subprogram headers and calls. Also construct a state-transition diagram with start state LoggedOut, valid login to LoggedIn, logout back to LoggedOut and three invalid attempts to Locked.
 
-- **B1** states LoggedOut, LoggedIn and Locked
-- **B1** start state points to LoggedOut
-- **B1** valid login transition to LoggedIn and logout transition back
+- **B1** structure chart places Main above the two called modules
+- **B1** parameter arrows label UserID, Password and IsValid coherently
+- **M1** derived pseudocode contains matching complete headers and calls with arguments
+- **B1** state diagram contains LoggedOut, LoggedIn and Locked with a start arrow
+- **B1** valid login and logout transitions are directed correctly
 - **B1** three invalid attempts transition from LoggedOut to Locked
 
-**Strict note:** Do not accept a flowchart of processing steps; marks require persistent states and event-labelled transitions.
+**Strict note:** Do not accept a flowchart as either document; the structure chart requires module hierarchy and parameters, while the state-transition diagram requires states and event-labelled transitions.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
-### Algorithm designs describe the processing steps
+### Structure charts, derived pseudocode and state transitions
 
 - **Explains:** `algorithms`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-algorithms.jpg`
 
-1. Traverse each booking and first test whether room and date match.
-2. Only then test whether the booking times overlap.
-3. Close the inner overlap IF before closing the outer room-and-date IF.
-4. Advance to the next booking only after both selections are closed.
+1. A structure chart shows module hierarchy, calling relationships and labelled parameters passed between modules, procedures or functions.
+2. Derive pseudocode by turning each box into a complete subprogram header and each hierarchy connection into a matching call with arguments.
+3. A separate state-transition diagram marks the start state and uses directed, event-labelled transitions between persistent states; it is not a flowchart of processing steps.
 
 ### A data dictionary defines each data item consistently
 
 - **Explains:** `dictionary`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-dictionary.jpg`
 
 1. Data dictionary
@@ -147,6 +152,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `dictionary-tool`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-dictionary-tool.jpg`
 
 1. Data dictionary checker
@@ -156,6 +162,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `interfaces`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-interfaces.jpg`
 
 1. Interface designs
@@ -170,6 +177,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `lifecycle`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-lifecycle.jpg`
 
 1. Using design docs later
@@ -183,6 +191,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-purpose.jpg`
 
 1. Design documentation purpose
@@ -198,6 +207,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `traceability`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-144-traceability.jpg`
 
 1. Linking requirements to design

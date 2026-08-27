@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,6 +44,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -204,7 +205,7 @@
             <figcaption class="explanation-sr-only">Biometrics: convenient identity evidence from physical or behavioural features: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Examples Fingerprint, face, iris, retina, voice or typing pattern.</li><li><strong>Lesson fact:</strong> Advantage Difficult to forget, lose or share casually; quick for users.</li><li><strong>Lesson fact:</strong> Limitation Requires sensors and stored biometric templates; may raise privacy concerns.</li><li><strong>Lesson fact:</strong> Error types False reject blocks a valid user; false accept allows an unauthorised user.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A biometric sensor captures a physical or behavioural feature and the system compares its template with a stored enrolled template.</li><li><strong>Lesson fact:</strong> A match authenticates the identity claim; authorisation is a separate process that decides what an authenticated user may access or do.</li><li><strong>Lesson fact:</strong> A false reject denies a valid enrolled user by mistake; a false accept authenticates an impostor by mistake.</li><li><strong>Lesson fact:</strong> Biometrics require sensors and stored templates and may create privacy, false-accept and false-reject risks.</li></ol>
 
           </div>
         </section>
@@ -408,6 +409,65 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>User accounts, passwords and biometric authentication</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A user account gives an individual or role a distinct system identity and supports accountability. A password is secret knowledge used to authenticate an identity claim. Accounts should not be shared; passwords should be difficult to guess, stored as salted hashes, protected by attempt limits and changed if compromised.</p>
+            <p>Biometrics use a physical or behavioural characteristic such as fingerprint, face, iris, retina, voice or typing pattern. A captured feature is converted to a template and compared with an enrolled template. A match authenticates the identity claim; authorisation is the separate decision about what that user may access or do.</p>
+            <p>False rejection denies a valid enrolled user by mistake; false acceptance authenticates an impostor by mistake. Biometrics can be convenient and cannot be casually shared like a password, but require sensors/templates, may raise privacy concerns and cannot normally be replaced as easily as a compromised password.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Account login with fingerprint</h3>
+            <p>A named staff account first supplies a password, then a fingerprint sensor captures a feature and compares its template with the enrolled template. A match authenticates the claimed identity. The access-rights system then separately decides whether that account may read payroll data; the biometric match itself does not grant every permission.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>User accounts, passwords and biometric authentication: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What is the purpose of a user account?</p>
+              <details><summary>Show answer</summary><p>It provides a distinct identity for authentication, access control and accountability.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What does a biometric match establish?</p>
+              <details><summary>Show answer</summary><p>It provides evidence that the presented feature matches the enrolled identity template; it authenticates the identity claim.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Does successful authentication decide every permitted action?</p>
+              <details><summary>Show answer</summary><p>No. Authorisation/access rights separately decide what the authenticated user may access or do.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Distinguish false accept from false reject.</p>
+              <details><summary>Show answer</summary><p>False accept authenticates an impostor; false reject denies a valid enrolled user.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Describe how user accounts, passwords and biometrics can protect a computer system, including one limitation of each authentication method.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> account supplies a distinct identity/accountability record</li>
+                <li><strong>B1</strong> password is secret knowledge checked during authentication</li>
+                <li><strong>B1</strong> password limitation such as guessing/phishing/reuse/sharing</li>
+                <li><strong>B1</strong> biometric feature is captured and compared with an enrolled template</li>
+                <li><strong>B1</strong> biometric limitation such as false accept/reject, sensor/template or privacy risk</li>
+                <li><strong>B1</strong> authentication is distinguished from later authorisation/access rights</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -444,7 +504,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

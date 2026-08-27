@@ -73,15 +73,14 @@ Misconception: Students often treat binary digits as decoration. Correction: eve
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S1.01
 **Focus:** Binary and decimal magnitude prefixes
 
 ### Direct explanation
 
-- Binary prefixes use powers of 1024: 1 KiB = 2^10 bytes, 1 MiB = 2^20 bytes, 1 GiB = 2^30 bytes and 1 TiB = 2^40 bytes.
-- Decimal prefixes use powers of 1000: 1 kB = 10^3 bytes, 1 MB = 10^6 bytes, 1 GB = 10^9 bytes and 1 TB = 10^12 bytes. Case and the i in KiB/MiB/GiB/TiB carry meaning.
+- Binary prefixes use powers of 1024: kibi (Ki) means 2^10, mebi (Mi) means 2^20, gibi (Gi) means 2^30 and tebi (Ti) means 2^40. Therefore 1 KiB = 1024 bytes, 1 MiB = 2^20 bytes, 1 GiB = 2^30 bytes and 1 TiB = 2^40 bytes.
+- Decimal prefixes use powers of 1000: kilo (k) means 10^3, mega (M) means 10^6, giga (G) means 10^9 and tera (T) means 10^12. Therefore 1 kB = 1000 bytes, 1 MB = 10^6 bytes, 1 GB = 10^9 bytes and 1 TB = 10^12 bytes. Case and the i in KiB/MiB/GiB/TiB carry meaning.
 
 ### Worked example
 
@@ -93,8 +92,10 @@ Correction prompt: "State the correct term, then explain the relevant process or
    **Answer:** 4 x 2^30 = 4,294,967,296 bytes.
 2. Which is larger, 1 TB or 1 TiB?
    **Answer:** 1 TiB, because 2^40 is greater than 10^12.
-3. Convert 3,000,000 bytes to MB.
-   **Answer:** 3 MB using the decimal prefix mega.
+3. Match kibi, mebi, gibi and tebi to Ki, Mi, Gi and Ti.
+   **Answer:** kibi = Ki, mebi = Mi, gibi = Gi and tebi = Ti.
+4. Convert 3,000,000 bytes to MB.
+   **Answer:** 3 MB using the decimal prefix mega; kilo, mega, giga and tera use powers of 1000.
 
 ### Exam-style question and MS
 
@@ -115,6 +116,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `knowledge`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-001-knowledge.jpg`
 
 1. bit 0 or 1

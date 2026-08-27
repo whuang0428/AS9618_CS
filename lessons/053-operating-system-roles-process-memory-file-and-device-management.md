@@ -72,6 +72,46 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often call every program an operating system. Correction: an OS manages resources and provides services; an app performs user tasks.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Why an operating system is required and what it manages
+
+### Direct explanation
+
+- An operating system is required to provide a controlled interface between applications, users and hardware, and to coordinate shared resources. Without it, each application would need its own incompatible routines for processor time, memory, files, security and devices.
+- Process management schedules CPU time and tracks running processes. Memory management allocates and protects RAM. File management organises files, folders, metadata and file operations. Security management authenticates users and enforces permissions or access rights.
+- Hardware management coordinates devices through drivers, interrupts, buffers and queues. These roles cooperate: security management decides whether a request is authorised, while file or hardware management performs the permitted operation. Antivirus remains a utility and must not replace the OS security-management role.
+
+### Worked example
+
+**Open a protected file and print it:** The OS authenticates the user and security management checks access rights. File management locates and opens the file; memory management allocates RAM; process management schedules the application; hardware management uses a printer driver, buffer and queue to send permitted output to the printer.
+
+### Targeted practice and answers
+
+1. Which OS role authenticates a user and enforces access rights?
+   **Answer:** Security management.
+2. Which role allocates RAM to a running process?
+   **Answer:** Memory management.
+3. Which role uses drivers, buffers and queues?
+   **Answer:** Hardware management/device management.
+4. Why is an operating system required?
+   **Answer:** It provides a controlled interface and coordinates shared hardware and software resources for applications and users.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Explain why an operating system is required and describe its process, memory, file, security and hardware management roles.
+
+- **B1** required interface/control layer between applications, users and hardware
+- **B1** process management schedules CPU time or tracks processes
+- **B1** memory management allocates/protects RAM
+- **B1** file management organises stored files and operations
+- **B1** security management authenticates users or enforces permissions/access rights
+- **B1** hardware management uses drivers/interrupts/buffers/queues to coordinate devices
+
+**Strict note:** Do not substitute antivirus utility software for OS security management, and do not treat stored files as RAM.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-053-concept.jpg`
 
 1. Applications request services instead of controlling hardware directly.
@@ -91,6 +132,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `device`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-053-device.jpg`
 
 1. A driver converts a general request into device-specific commands.
@@ -103,6 +145,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `file`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-053-file.jpg`
 
 1. A name and path let software locate stored content.
@@ -115,6 +158,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `memory`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-053-memory.jpg`
 
 1. Each process receives addresses for its code and data.
@@ -127,6 +171,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `process`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-053-process.jpg`
 
 1. A running process receives a short interval of CPU time.
@@ -139,6 +184,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `services`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-053-services.jpg`
 
 1. Process, memory, file and device managers track different resources.

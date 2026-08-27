@@ -73,9 +73,8 @@ Misconception: Students often confuse bandwidth with speed in every sense. Corre
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S2.06, S2.13
 **Focus:** Public/private cloud and WWW/internet distinction
 
 ### Direct explanation
@@ -115,6 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cloud`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-024-cloud.jpg`
 
 1. Cloud services provide storage, software or computing resources from remote servers over a network. The user does not need to own all the local infrastructure.
@@ -134,6 +134,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-024-compare.jpg`
 
 1. Access / control
@@ -153,6 +154,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `networks`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-024-networks.jpg`
 
 1. These terms describe access scope and purpose. Distinguish these terms by access scope and purpose.

@@ -87,6 +87,43 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Write and justify a count-controlled loop
+
+### Direct explanation
+
+- A count-controlled loop uses FOR...TO...NEXT when the repetition count or inclusive counter range is known before the loop starts. The counter, start value and end value define the iterations; NEXT closes the loop.
+- Match the loop bounds to the declared data. Initialise accumulators before the loop, update them inside it and output a final result after the loop unless intermediate output is explicitly required.
+- Justify FOR from the problem: it is well suited when the count or bounds are known, but a pre-condition or post-condition loop is better when the number of repetitions depends on input or a stopping condition.
+
+### Worked example
+
+**Total a fixed array:** For Marks[1:30], set Total <- 0, use FOR Index <- 1 TO 30, add Marks[Index] to Total, close with NEXT Index and output Total after all thirty elements have been processed.
+
+### Targeted practice and answers
+
+1. Why is FOR suitable for Marks[1:30]?
+   **Answer:** The 30 iterations and valid index bounds are known before the loop starts.
+2. Where is Total initialised?
+   **Answer:** Once before the loop.
+3. Which keyword closes the count-controlled loop?
+   **Answer:** NEXT followed by the counter name.
+
+### Exam-style question and MS
+
+**Question (5 marks):** Write Cambridge pseudocode to input and total exactly 12 monthly values, then output the total. Explain why the selected loop is count-controlled.
+
+- **B1** initialises Total before repetition
+- **M1** uses FOR Month <- 1 TO 12 or an equivalent twelve-iteration range
+- **M1** inputs a value and adds it inside the loop
+- **A1** closes with NEXT and outputs Total after the loop
+- **B1** justifies FOR because the repetition count is known in advance
+
+**Strict note:** Do not use an eleven- or thirteen-iteration bound or reset the accumulator inside the loop.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -94,6 +131,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `arrays`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-128-arrays.jpg`
 
 1. Array processing
@@ -110,6 +148,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `bounds`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-128-bounds.jpg`
 
 1. Bounds and off-by-one errors
@@ -126,6 +165,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `counter`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-128-counter.jpg`
 
 1. Counter and accumulator
@@ -141,6 +181,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `for`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-128-for.jpg`
 
 1. FOR loop structure
@@ -160,6 +201,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-128-java.jpg`
 
 1. Java support only

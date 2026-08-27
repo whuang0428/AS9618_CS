@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,6 +43,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -418,6 +419,61 @@ for (int row = 0; row &lt; 3; row++) {
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Select and write two-dimensional arrays</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A two-dimensional array uses two indexes, normally interpreted as row and column. In DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER, the first range gives 30 valid row indexes and the second gives 4 valid column indexes, for 120 cells.</p>
+            <p>Select 2D when the scenario has two independent position dimensions, such as Student and Test, Row and Column, or Day and Period. A simple list, sequence or one category of positions remains 1D even when it contains many elements.</p>
+            <p>Two-dimensional pseudocode declares both ranges, accesses one cell as Marks[Student, Test] and normally uses nested loops: one loop traverses rows and the inner loop traverses every column for the current row.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Input a student-by-test table</h3>
+            <p>DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER. Use FOR Student &lt;- 1 TO 30 and inside it FOR Test &lt;- 1 TO 4; INPUT Marks[Student, Test]; NEXT Test; NEXT Student. Every one of the 120 cells is visited exactly once.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Select and write two-dimensional arrays: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Why is a seating grid normally 2D?</p>
+              <details><summary>Show answer</summary><p>Each seat is identified by two independent positions: row and column.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> How many cells are in ARRAY[1:3, 1:4]?</p>
+              <details><summary>Show answer</summary><p>12 cells because 3 row indexes are paired with 4 column indexes.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What is wrong with Marks[Row] for a 2D array?</p>
+              <details><summary>Show answer</summary><p>It supplies only one index and therefore does not identify a column or one complete cell.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Write Cambridge pseudocode to declare a 5 by 7 REAL temperature table and calculate the total of every cell.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> declares ARRAY[1:5, 1:7] OF REAL or equivalent explicit five-by-seven bounds</li>
+                <li><strong>B1</strong> initialises Total</li>
+                <li><strong>M1</strong> outer loop covers all five rows</li>
+                <li><strong>M1</strong> inner loop covers all seven columns</li>
+                <li><strong>A1</strong> adds Temperature[Row, Column] inside the inner loop</li>
+                <li><strong>B1</strong> closes both loops and outputs Total after traversal</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -454,7 +510,7 @@ for (int row = 0; row &lt; 3; row++) {
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

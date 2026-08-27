@@ -102,6 +102,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `fixed`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-106-fixed.jpg`
 
 1. Fixed-count input
@@ -121,6 +122,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `initialise`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-106-initialise.jpg`
 
 1. Initialise totals and counters to zero before processing values.
@@ -132,6 +134,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `patterns`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-106-patterns.jpg`
 
 1. Knowledge explanation
@@ -151,6 +154,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-106-pseudocode.jpg`
 
 1. Initialise Total and PassCount to zero before processing five marks.
@@ -162,6 +166,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `sentinel`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-106-sentinel.jpg`
 
 1. Initialise Total and Count, then input the first Number.
@@ -173,6 +178,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `trace-tool`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-106-trace-tool.jpg`
 
 1. Interactive trace simulator

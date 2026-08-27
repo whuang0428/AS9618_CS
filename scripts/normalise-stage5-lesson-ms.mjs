@@ -43,7 +43,7 @@ const answerReplacements = new Map(Object.entries({
   "L013-Q2": "Expand each count-symbol pair: 3A -> AAA, 2B -> BB and 1C -> C. The decoded data is AAABBC.",
   "L001-Q4": "MB uses decimal powers of 1000, while MiB uses binary powers of 1024. The same byte count is therefore expressed using different numerical scales, so the operating system's number in MiB is lower even though no data has disappeared.",
   "L002-Q4": "Both values equal 10 because leading zeros contribute no value: the active columns are 8 and 2 in each representation. However, 00001010₂ explicitly uses eight bit positions, whereas 1010₂ uses four.",
-  "L005-Q5": "Two's complement has one representation of zero, 00000000₂. In 8-bit two's complement, 10000000₂ represents -128. A separate negative-zero representation occurs in sign-and-magnitude or one's-complement systems, not in two's complement.",
+  "L005-Q5": "27 is 00011011₂, so -27 is 11100101₂. Add 00010010₂ + 11100101₂ = 11110111₂, which represents -9.",
 }));
 
 const ftGuidanceById = new Map(Object.entries({

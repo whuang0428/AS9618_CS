@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `checklist`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-073-checklist.jpg`
 
 1. Interactive data protection checklist
@@ -88,6 +89,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `method`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-073-method.jpg`
 
 1. 1. Data Name the personal or sensitive data being collected.
@@ -101,6 +103,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `principles`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-073-principles.jpg`
 
 1. Principle
@@ -120,6 +123,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `privacy`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-073-privacy.jpg`
 
 1. Privacy The ability to control how personal information is collected, used and shared.
@@ -131,6 +135,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `protection`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-073-protection.jpg`
 
 1. Data minimisation Collect only what is necessary for the stated purpose.
@@ -146,6 +151,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `scanner`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-073-scanner.jpg`
 
 1. Interactive privacy scanner
@@ -156,6 +162,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `surveillance`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-073-surveillance.jpg`
 
 1. Monitoring example

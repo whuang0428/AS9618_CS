@@ -29,6 +29,25 @@ const checkRules = {
     fail: "Fail: a presence check rejects blank required fields.",
     limitation: "Typing 'unknown' may pass presence but still be poor or false data.",
   },
+  existence: {
+    test: (value) => ["P100", "P200", "P350"].includes(value.trim().toUpperCase()),
+    pass: "Pass: the product code exists in the stored practice lookup list.",
+    fail: "Fail: an existence check rejects a value that is not found in the specified stored list.",
+    limitation: "An existing product code can still be the wrong product code for this transaction.",
+  },
+  limit: {
+    test: (value) => Number.isFinite(Number(value)) && Number(value) <= 10,
+    pass: "Pass: the value satisfies the one stated upper limit of 10 MiB.",
+    fail: "Fail: an upper limit check rejects a value greater than 10 MiB.",
+    limitation: "A limit check uses one upper or lower limit; a range check uses both a lower and an upper bound.",
+  },
+  checkDigit: {
+    test: (value) => /^\d{6}$/.test(value.trim())
+      && Number(value.trim()[5]) === [...value.trim().slice(0, 5)].reduce((sum, digit) => sum + Number(digit), 0) % 10,
+    pass: "Pass: the final digit matches the digit calculated from the other five digits.",
+    fail: "Fail: the calculated check digit does not match the entered final digit.",
+    limitation: "A matching check digit detects many entry errors but does not prove that this is the intended identifier.",
+  },
 };
 
 const verifyMap = {
@@ -45,8 +64,16 @@ const verifyMap = {
     reason: "Two entries of the same data are compared. A mismatch suggests a data entry error.",
   },
   copy: {
-    result: "Verification by comparison after transfer.",
-    reason: "The copied data is compared with an expected value or digest to check it matches the original.",
+    result: "Verification by checksum after transfer.",
+    reason: "The receiver recalculates a checksum from the received data block and compares it with the transmitted checksum.",
+  },
+  parityByte: {
+    result: "Verification by parity check on a byte.",
+    reason: "The receiver checks whether the byte, including its parity bit, has the agreed odd or even parity. A mismatch indicates a likely transmission error.",
+  },
+  blockParity: {
+    result: "Verification by block parity.",
+    reason: "Parity is checked across rows and columns of a block of bytes, allowing many single-bit errors to be detected and located.",
   },
 };
 
@@ -104,6 +131,8 @@ const practice = [
   { id: "p8", prompt: "Entering data twice and comparing the two entries is what method?", accepted: ["double entry", "verification", "data verification"], answer: "Double entry verification" },
   { id: "p9", prompt: "Can validation prove data is true? Answer yes or no.", accepted: ["no"], answer: "No" },
   { id: "p10", prompt: "Can verification prove the original source data was true? Answer yes or no.", accepted: ["no"], answer: "No" },
+  { id: "p11", prompt: "Which check tests one stated maximum or minimum rather than two bounds?", accepted: ["limit", "limit check", "upper limit check", "lower limit check"], answer: "Limit check" },
+  { id: "p12", prompt: "Which check confirms that a code is present in a specified stored lookup file?", accepted: ["existence", "existence check"], answer: "Existence check" },
 ];
 
 const mistakes = [
@@ -146,21 +175,22 @@ const examQuestions = [
   },
   {
     title: "Question 2",
-    marks: "6 marks",
-    prompt: "A school form asks for age, student ID and email address. Recommend suitable validation checks for each field.",
-    answer: "The age field could use a range check, for example allowing only values from 3 to 19, and a type check to ensure it is numeric. The student ID could use a length check if all IDs have a fixed number of characters, or a format check if it follows a pattern such as two letters followed by digits. The email address could use a presence check to ensure it is not blank and a format check to check for an expected pattern such as characters, @ symbol and domain.",
+    marks: "7 marks",
+    prompt: "A school form accepts an age from 3 to 19, a file no larger than 10 MiB, a fixed-format student ID, a required email address and a product code that must already be stored in the product file. Recommend suitable validation checks and distinguish the age rule from the file-size rule.",
+    answer: "Age should use a range check because both a lower bound of 3 and an upper bound of 19 apply. File size should use an upper limit check because there is one maximum of 10 MiB. The student ID can use a length check and a format check for its fixed pattern. The email address can use a presence check so it is not blank and a format check for the required pattern. The product code should use an existence check against the stored product file.",
     marking: [
-      { mark: "B1", text: "age linked to range check with sensible limits" },
-      { mark: "B1", text: "age linked to type/numeric check" },
-      { mark: "B1", text: "student ID linked to length check" },
-      { mark: "B1", text: "student ID linked to format/pattern check or valid fixed-ID explanation" },
-      { mark: "B1", text: "email linked to presence check" },
-      { mark: "B1", text: "email linked to format check with example pattern" },
+      { mark: "B1", text: "age linked to a range check" },
+      { mark: "B1", text: "range check explained as applying lower and upper bounds 3 and 19" },
+      { mark: "B1", text: "file size linked to an upper limit check with maximum 10 MiB" },
+      { mark: "B1", text: "student ID linked to length and/or format check with its rule explained" },
+      { mark: "B1", text: "email linked to a presence check" },
+      { mark: "B1", text: "email linked to a format check with an expected pattern" },
+      { mark: "B1", text: "product code linked to an existence check against the stored product file" },
     ],
     strict: [
       "Do not award marks for verification methods when validation is requested.",
-      "Do not accept vague 'check the age is right' without range/type.",
-      "Allow alternative sensible field limits if justified.",
+      "Do not call the one-sided file maximum a two-bound range check.",
+      "Do not accept vague 'check it is right' without naming and explaining the rule.",
       "Award each field independently.",
     ],
   },
@@ -200,22 +230,22 @@ const examQuestions = [
   },
   {
     title: "Question 5",
-    marks: "6 marks",
-    prompt: "For each scenario, identify whether validation or verification is being used and justify it: mark must be 0-75; password typed twice; postcode compared with a paper form.",
-    answer: "The mark 0 to 75 is validation because the input is checked against a range rule before being accepted. The password typed twice is verification because the two entries are compared to detect a typing error. The postcode compared with a paper form is also verification because the entered data is checked against the original source. The range check can reject impossible marks, but none of the methods proves the real-world value is true.",
+    marks: "7 marks",
+    prompt: "Describe how parity check on a byte, block parity and a checksum can detect errors during data transfer.",
+    answer: "A parity check adds or uses a parity bit so each received byte should have the agreed odd or even parity; a mismatch indicates a likely error. Block parity arranges bytes as rows and checks parity across rows and columns, so many single-bit errors can be detected and located. For a checksum, the sender calculates a value from the data block and sends it; the receiver recalculates the checksum from the received block and compares the values. These methods detect many errors but do not automatically correct every error.",
     marking: [
-      { mark: "B1", text: "mark 0-75 identified as validation" },
-      { mark: "B1", text: "justification linked to range rule/allowed limits" },
-      { mark: "B1", text: "password typed twice identified as verification" },
-      { mark: "B1", text: "justification linked to comparing two entries" },
-      { mark: "B1", text: "postcode compared with paper form identified as verification" },
-      { mark: "B1", text: "justification/limitation linked to source comparison or truth not guaranteed" },
+      { mark: "B1", text: "byte parity uses a parity bit and an agreed odd/even rule" },
+      { mark: "B1", text: "receiver checks parity and a mismatch indicates a likely transfer error" },
+      { mark: "B1", text: "block parity applies parity across rows and columns of a block" },
+      { mark: "B1", text: "row/column evidence can locate many single-bit errors" },
+      { mark: "B1", text: "sender calculates and transmits a checksum for the data block" },
+      { mark: "B1", text: "receiver recalculates and compares the checksum" },
+      { mark: "B1", text: "methods detect many errors but do not automatically correct every error" },
     ],
     strict: [
-      "Do not award justification marks for repeating only the method name.",
-      "Do not classify double entry as validation unless a separate rule is described.",
-      "Allow visual checking for postcode scenario.",
-      "Award each scenario independently.",
+      "Do not substitute a validation check digit for a transfer checksum.",
+      "Do not merge byte parity and block parity into one unexplained use of the word parity.",
+      "Do not claim that error detection automatically corrects the transferred data.",
     ],
   },
 ];
@@ -256,6 +286,9 @@ function setupRuleTester() {
     type: "12.5",
     format: "AB1234",
     presence: "",
+    existence: "P200",
+    limit: "12",
+    checkDigit: "123455",
   };
   function test() {
     const rule = checkRules[type.value];

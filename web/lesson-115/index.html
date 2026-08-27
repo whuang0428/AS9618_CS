@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,6 +43,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -407,6 +408,61 @@ for (int index = 0; index &lt; 5; index++) {
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Array terminology, selection and one-dimensional pseudocode</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>An array is a collection of elements stored under one identifier. An index selects one element. The lower bound is the first valid index and the upper bound is the last valid index; both bounds are inclusive in a Cambridge declaration such as ARRAY[1:20] OF INTEGER.</p>
+            <p>Choose a one-dimensional array when each element needs one position, such as twenty marks or a list of names. Choose a two-dimensional array when each value naturally needs a row and a column, such as marks for several students across several tests. Do not choose 2D merely because there are many values.</p>
+            <p>One-dimensional array pseudocode must declare explicit bounds and an element type, access elements with one index and use loop bounds that match the declared lower and upper bounds. The number of elements is upper bound - lower bound + 1.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose and declare the dimension</h3>
+            <p>Twenty daily temperatures need one position per day, so DECLARE Temperature : ARRAY[1:20] OF REAL is suitable and valid indexes are 1 to 20. Marks for 30 students in 4 tests need row and column positions, so a 2D array is suitable instead.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Array terminology, selection and one-dimensional pseudocode: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Define index, lower bound and upper bound.</p>
+              <details><summary>Show answer</summary><p>An index selects an element; the lower bound is the first valid index; the upper bound is the last valid index.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Choose 1D or 2D for twelve monthly rainfall totals.</p>
+              <details><summary>Show answer</summary><p>1D, because one month index selects each total.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Write a declaration for 50 Boolean flags and state the number of elements.</p>
+              <details><summary>Show answer</summary><p>DECLARE Flag : ARRAY[1:50] OF BOOLEAN; there are 50 elements.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Declare a one-dimensional array for 25 REAL measurements, input every element and explain why a two-dimensional array is not required.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> DECLARE Measurements : ARRAY[1:25]</li>
+                <li><strong>B1</strong> OF REAL</li>
+                <li><strong>M1</strong> FOR loop uses the declared lower and upper bounds</li>
+                <li><strong>A1</strong> INPUT Measurements[Index] and closes with NEXT Index</li>
+                <li><strong>B1</strong> one index identifies each measurement</li>
+                <li><strong>B1</strong> there is no row-column relationship requiring a second dimension</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -443,7 +499,7 @@ for (int index = 0; index &lt; 5; index++) {
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

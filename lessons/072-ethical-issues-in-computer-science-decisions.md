@@ -73,39 +73,43 @@ Misconception: Students often write personal opinions only. Correction: ethics a
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S7.02
-**Focus:** BCS and IEEE professional codes
+**Focus:** Professional ethics, professional bodies and ethical decisions
 
 ### Direct explanation
 
-- The British Computer Society (BCS) and IEEE publish professional codes that guide competent, honest and responsible computing practice. They establish expectations for public interest, professional competence, integrity, privacy and accountability.
-- Codes support consistent decisions, public trust and disciplinary accountability. They do not replace law and do not automatically produce one answer; professionals apply principles to evidence and stakeholders.
+- Professional ethics provides principles for deciding how a computing professional should act when technical choices can affect clients, users, colleagues or wider society. Its purpose is to protect the public interest, support competent and honest work, and make professionals accountable for foreseeable consequences rather than treating legal compliance or a manager's instruction as the whole decision.
+- Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law.
+- For a given situation, decide whether an action is ethical or unethical by identifying the decision, affected stakeholders, benefits, harms, rights and responsibilities. Then explain the impact of acting ethically and the impact of acting unethically. A defensible conclusion applies evidence, proportionality and safeguards; it is not a one-sided list or an unsupported personal opinion.
 
 ### Worked example
 
-**Unsafe release pressure:** A developer documents the safety risk, refuses to conceal test failures and escalates through professional channels, applying public-interest and integrity duties rather than following schedule pressure blindly.
+**Unsafe release pressure:** A developer is told to hide failed safety tests so a medical system can launch on time. Concealing the evidence would be unethical because patients could be harmed and trust would be damaged. The developer acts ethically by documenting the risk, refusing to falsify the record and escalating through BCS/IEEE-style professional channels. This may delay release and cost money, but protects patients, supports accountability and allows the defect to be corrected.
 
 ### Targeted practice and answers
 
-1. Name the two syllabus organisations with professional codes.
-   **Answer:** BCS and IEEE.
-2. Give one purpose of a professional code.
-   **Answer:** To set standards guiding responsible professional conduct.
-3. Does following a manager automatically satisfy a code?
-   **Answer:** No; duties such as public interest and integrity may require challenge/escalation.
+1. What is the purpose of professional ethics in computing?
+   **Answer:** To guide competent, responsible and accountable decisions that protect clients, users and the public interest.
+2. Why is joining a professional body such as BCS or IEEE important?
+   **Answer:** It provides a code of conduct, professional guidance and development, accountability and a community that supports consistent standards.
+3. In the unsafe-release situation, is concealing failed tests ethical or unethical?
+   **Answer:** Unethical, because it hides foreseeable risk and can harm patients and public trust.
+4. State one impact of acting ethically and one impact of acting unethically in that situation.
+   **Answer:** Ethical escalation may delay release but protects patients and supports correction; concealment may meet the deadline but risks harm, liability and loss of trust.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Explain two reasons why professional bodies such as BCS and IEEE publish codes of conduct.
+**Question (6 marks):** A software engineer is asked to deploy a safety-critical update despite unresolved test failures. Determine whether complying silently would be ethical or unethical, explain two stakeholder impacts, and explain how membership of BCS or IEEE could support the engineer's response.
 
-- **B1** provide standards/guidance for professional decisions
-- **B1** protect public interest / reduce harm
-- **B1** support trust/accountability/discipline
-- **B1** promote competence, honesty, privacy or integrity
+- **B1** identifies silent deployment/concealment as unethical with a reason
+- **B1** explains one impact on users or the public
+- **B1** explains one impact on the organisation or professional
+- **B1** explains that a BCS/IEEE code supplies professional standards or public-interest duties
+- **B1** explains that professional membership supplies guidance, development, accountability or an escalation community
+- **B1** gives a justified ethical action such as document, refuse concealment, escalate or delay release
 
-**Strict note:** Do not accept 'because ethics are good' without a professional purpose or consequence.
+**Strict note:** Do not award a label such as 'unethical' without impact, or claim that joining a body removes the need for evidence and professional judgement.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
@@ -115,6 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `ethics`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-072-ethics.jpg`
 
 1. Ethics Principles about right and wrong behaviour, responsibility and fairness.
@@ -126,6 +131,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `mapper`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-072-mapper.jpg`
 
 1. Interactive stakeholder mapper
@@ -136,6 +142,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `method`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-072-method.jpg`
 
 1. 1. Context State the decision and the computing system involved.
@@ -149,6 +156,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `stakeholders`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-072-stakeholders.jpg`
 
 1. Stakeholder
@@ -168,6 +176,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `tradeoffs`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-072-tradeoffs.jpg`
 
 1. Privacy vs safety Monitoring may protect users, but can intrude into personal behaviour.

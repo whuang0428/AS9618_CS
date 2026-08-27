@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "total": 66,
-    "confirmedErrors": 56,
+    "total": 85,
+    "confirmedErrors": 75,
     "highRiskQuestions": 10,
-    "stage10Jpg": 60,
+    "stage10Jpg": 79,
     "htmlCss": 6
   },
   "records": [
@@ -100,6 +100,38 @@
       "resolved": true,
       "beforeSemanticHash": "ae8e24cfa7777f3bc6e1da25ec4cddb1c7cb11b915c69f52dc12cc24c87d0bf6",
       "afterSemanticHash": "52171f4ef09537a2e17b635bcc5c76ae0903e09dcdcf82d34519fc8b3832e519"
+    },
+    {
+      "key": "010/explanation-resolution-img-1",
+      "lesson": "010",
+      "visualId": "explanation-resolution-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-010/",
+      "sectionId": "explanation-resolution",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-010-resolution.jpg",
+      "classification": "Confirmed error",
+      "severity": "Minor",
+      "confidence": "High",
+      "issue": "The image uses the common synonym 'sample resolution', while the Version 2 syllabus and student-facing primary title require 'sampling resolution'; the accessible transcript previously repeated only the synonym.",
+      "requiredCorrection": "Keep the unchanged, technically correct pixels, make sampling resolution the primary title and accessible term, and identify sample resolution explicitly as a common synonym.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 1.2 Sound",
+      "beforeContentHash": "4c159297aad2a442f1404cd666d06335207cde06d47beb911d85f00cafa3b6be",
+      "beforeAssetSha256": "948f61f47cdc18bf76bba2c8a1b0d06440b2fa774c94f41d110592ab8da1c9db",
+      "afterContentHash": "",
+      "afterAssetSha256": "948f61f47cdc18bf76bba2c8a1b0d06440b2fa774c94f41d110592ab8da1c9db",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 010/explanation-resolution-img-1: complete 1536x1024 asset checked against 4 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 948f61f47cdc18bf76bba2c8a1b0d06440b2fa774c94f41d110592ab8da1c9db."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 010/explanation-resolution-img-1: official terminology was checked before the unchanged original-resolution pixels; primary title, source facts, transcript, alternative text and lesson context agree, while the pixel asset remains 948f61f47cdc18bf76bba2c8a1b0d06440b2fa774c94f41d110592ab8da1c9db."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "Source transcript and metadata",
+      "beforeSemanticHash": "4c159297aad2a442f1404cd666d06335207cde06d47beb911d85f00cafa3b6be",
+      "afterSemanticHash": "408e515f9bfde01cb26ada153f5e5f02bdec6b61ef5861f5180db63582545cfe"
     },
     {
       "key": "014/explanation-tradeoffs-img-1",
@@ -629,6 +661,38 @@
       "afterSemanticHash": "7d811fd6d68e4a6bcb053db9879ed610b26e91db8a812e0edae692322f847f99"
     },
     {
+      "key": "043/explanation-main-registers-img-1",
+      "lesson": "043",
+      "visualId": "explanation-main-registers-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-043/",
+      "sectionId": "explanation-main-registers",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-043-main-registers.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The visual labelled itself as six register roles and omitted the Index Register (IX).",
+      "requiredCorrection": "Show PC, CIR, MAR, MDR, ACC, IX and the status register, together with the general-purpose/special-purpose distinction and the Cambridge ACC question convention.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 4.1 Processor fundamentals",
+      "beforeContentHash": "4194ca7c727a5346ccb345558b1ca9e722191e05ecdf9ceb374953851ffe9920",
+      "beforeAssetSha256": "946091d0cd4c6c8b0d72eed872e08259ca87311b2267eebffe2d379e23e53bb4",
+      "afterContentHash": "",
+      "afterAssetSha256": "7bcc1f99f1fa97f14a2225b1fa1e26b4f93ed75fb52930b301ce942258c1f9c6",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 043/explanation-main-registers-img-1: complete 1536x1024 asset checked against 9 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 7bcc1f99f1fa97f14a2225b1fa1e26b4f93ed75fb52930b301ce942258c1f9c6."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 043/explanation-main-registers-img-1: official expected correction was read before the final visual; the ImageGen replacement was inspected at original resolution and its pixels, source facts, transcript, alternative text and lesson context agree; asset SHA-256 7bcc1f99f1fa97f14a2225b1fa1e26b4f93ed75fb52930b301ce942258c1f9c6."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "ImageGen",
+      "beforeSemanticHash": "4194ca7c727a5346ccb345558b1ca9e722191e05ecdf9ceb374953851ffe9920",
+      "afterSemanticHash": "f73e436c0ec4b3f54b68d1b169ebe26e70efc367eeb6161513b95b9bfca80be5"
+    },
+    {
       "key": "044/explanation-three-buses-img-1",
       "lesson": "044",
       "visualId": "explanation-three-buses-img-1",
@@ -658,6 +722,38 @@
       "resolved": true,
       "beforeSemanticHash": "e3a346d46cb681db2193d971a3cae64fe149330148d9f3611e74f745327dbec3",
       "afterSemanticHash": "c98db1256735ae8798a3d4c3cf064d0700c82aeab5dc1a57479b377b4ce2f5a4"
+    },
+    {
+      "key": "047/explanation-modes-img-1",
+      "lesson": "047",
+      "visualId": "explanation-modes-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-047/",
+      "sectionId": "explanation-modes",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-047-modes.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The previous repaired visual still omitted relative addressing and therefore showed only four of the five Version 2 addressing modes.",
+      "requiredCorrection": "Show immediate, direct, indirect, indexed and relative addressing, with PC-plus-offset relative addressing and the boundary that LDR #n loads IX rather than performing a relative load.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 4.2 Assembly language",
+      "beforeContentHash": "a92dacf92cf89ee05d2ec062049a42d87c1e6cb743f234b884c776270372c204",
+      "beforeAssetSha256": "43a7f145241e078fb733cdd63b8b0a85a90bf11c840d17626c6ece03f450d51e",
+      "afterContentHash": "",
+      "afterAssetSha256": "122981e1ab1877938934ff8b69fa8dae6c90731fc1144c8ad72696a1d3943bfe",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 047/explanation-modes-img-1: complete 1536x1024 asset checked against 6 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 122981e1ab1877938934ff8b69fa8dae6c90731fc1144c8ad72696a1d3943bfe."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 047/explanation-modes-img-1: official expected correction was read before the final visual; the ImageGen replacement was inspected at original resolution and its pixels, source facts, transcript, alternative text and lesson context agree; asset SHA-256 122981e1ab1877938934ff8b69fa8dae6c90731fc1144c8ad72696a1d3943bfe."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "ImageGen",
+      "beforeSemanticHash": "a92dacf92cf89ee05d2ec062049a42d87c1e6cb743f234b884c776270372c204",
+      "afterSemanticHash": "0a4119f350146caf684017af3b7b54463b68de098ad28409e5c12e837de09ade"
     },
     {
       "key": "049/explanation-cores-img-1",
@@ -753,35 +849,68 @@
       "afterSemanticHash": "52064180a46b3b42167c74a27e65864de94d50da8b1b747f55ba202bfae6304d"
     },
     {
-      "key": "055/explanation-compare-img-1",
-      "lesson": "055",
-      "visualId": "explanation-compare-img-1",
+      "key": "056/explanation-assembler-img-1",
+      "lesson": "056",
+      "visualId": "explanation-assembler-img-1",
       "visualType": "Stage 10 JPG",
-      "route": "/lesson-055/",
-      "sectionId": "explanation-compare",
-      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-055-compare.jpg",
+      "route": "/lesson-056/",
+      "sectionId": "explanation-assembler",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-056-assembler.jpg",
       "classification": "Confirmed error",
-      "severity": "Minor",
+      "severity": "Major",
       "confidence": "High",
-      "issue": "The utility-selection table gives “Defragmentation” for an old HDD that opens files slowly but leaves the entire exam-quality reason cell blank. The visual promises diagnosis plus justification, so the final row is an incomplete answer.",
-      "requiredCorrection": "Add that defragmentation rearranges related file blocks contiguously on a magnetic disk, reducing read-head movement and potentially improving access time; also state it does not give the same benefit to SSDs.",
-      "authority": "官方 syllabus v2 §5.1 Operating Systems；实用程序及磁盘碎片整理用途。",
-      "beforeContentHash": "d4056027318c921ed65efbefd18bb7650d42bb1335d4c5e2b05b16a86f7cbc41",
-      "beforeAssetSha256": "b412edc86a56bbcf99ef253365d94afd161c5883891c5b4b21bab25d6e91f812",
+      "issue": "The assembler infographic described machine code/object code as a single output that the processor could execute immediately, omitting the possible object-module and linking boundary.",
+      "requiredCorrection": "Distinguish target machine code from an object-code module and show that unresolved external references require a linker before an executable exists.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 5.2 Language translators",
+      "beforeContentHash": "24bc0224c4a2f066915b85b59abcbfc6533c014d25800600833c752de1767d19",
+      "beforeAssetSha256": "755e9210a54c4a83e8aacaf0eb23ccdf55dfb26ca2d3984ddf3e09b8a610bcb4",
       "afterContentHash": "",
-      "afterAssetSha256": "3f4bff40ed77fb29ac0376e29af7687ccb9a4770ef5cdb5d874f9c594c530e34",
+      "afterAssetSha256": "428023a6cdd7387bec9f0352c40004ecdc1196daa7cc0c49106a1d247380cb5c",
       "pass1": {
         "status": "passed",
-        "evidence": "Lesson-order pass for 055/explanation-compare-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 3f4bff40ed77fb29ac0376e29af7687ccb9a4770ef5cdb5d874f9c594c530e34."
+        "evidence": "Lesson-order pass for 056/explanation-assembler-img-1: complete 1536x1024 asset checked against 4 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 428023a6cdd7387bec9f0352c40004ecdc1196daa7cc0c49106a1d247380cb5c."
       },
       "pass2": {
         "status": "passed",
-        "evidence": "Reverse-order pass for 055/explanation-compare-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces 3f4bff40ed77fb29ac0376e29af7687ccb9a4770ef5cdb5d874f9c594c530e34."
+        "evidence": "Reverse-order pass for 056/explanation-assembler-img-1: official expected correction was read before the final visual; the ImageGen replacement was inspected at original resolution and its pixels, source facts, transcript, alternative text and lesson context agree; asset SHA-256 428023a6cdd7387bec9f0352c40004ecdc1196daa7cc0c49106a1d247380cb5c."
       },
       "reconciliation": "agreed",
       "resolved": true,
-      "beforeSemanticHash": "bbddfdfc8aded08a5ee5ff0c8a98bfd0e026bd0e4460914cb81a491a2deb56d9",
-      "afterSemanticHash": "4b510449ce098014f06314f268c771a34c81059b2fd7eb6819641f61b09ca097"
+      "generationMethod": "ImageGen",
+      "beforeSemanticHash": "24bc0224c4a2f066915b85b59abcbfc6533c014d25800600833c752de1767d19",
+      "afterSemanticHash": "b5e400eb83067075d61b625273b86b4b3e7f348658bae3d631d9425d5c6634aa"
+    },
+    {
+      "key": "056/explanation-compare-img-1",
+      "lesson": "056",
+      "visualId": "explanation-compare-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-056/",
+      "sectionId": "explanation-compare",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-056-compare.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The translator comparison presented assembler output as executable code that could always run repeatedly, while object modules may still require linking.",
+      "requiredCorrection": "Give compiler, interpreter and assembler separate paths and state that an assembler may produce target machine code or an object module that requires linking before execution.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 5.2 Language translators",
+      "beforeContentHash": "096d7cc13bfd206c6fb592d093633ed039b948e8cf599461cb7378a0da33bd5b",
+      "beforeAssetSha256": "31002fc8045f35b809ba8b40e21248a217cfd39cc7f2087a77cf0c590b9c95ed",
+      "afterContentHash": "",
+      "afterAssetSha256": "44fc73141aaec2857ddd3f3d64ac507c70823c410164c519157c6305bfdf2461",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 056/explanation-compare-img-1: complete 1536x1024 asset checked against 5 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 44fc73141aaec2857ddd3f3d64ac507c70823c410164c519157c6305bfdf2461."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 056/explanation-compare-img-1: official expected correction was read before the final visual; the ImageGen replacement was inspected at original resolution and its pixels, source facts, transcript, alternative text and lesson context agree; asset SHA-256 44fc73141aaec2857ddd3f3d64ac507c70823c410164c519157c6305bfdf2461."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "ImageGen",
+      "beforeSemanticHash": "096d7cc13bfd206c6fb592d093633ed039b948e8cf599461cb7378a0da33bd5b",
+      "afterSemanticHash": "8435c9512bbd41332305a144ef7630beb431e21892a9264433da0cb14e590fa6"
     },
     {
       "key": "057/explanation-lexical-img-1",
@@ -939,6 +1068,102 @@
       "afterSemanticHash": "be705620ed033d84e01346e8bae00144483d4aa30d572494cdbac346487438ae"
     },
     {
+      "key": "062/explanation-controls-img-1",
+      "lesson": "062",
+      "visualId": "explanation-controls-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-062/",
+      "sectionId": "explanation-controls",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-062-controls.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The control-to-goal visual claimed that access rights detect whether data changed, conflating preventive authorisation with integrity detection.",
+      "requiredCorrection": "Show that access rights prevent unauthorised viewing or alteration, while hash/checksum comparison detects change; keep backup and encryption roles separate.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Sections 6.1 Data Security and 6.2 Data Integrity",
+      "beforeContentHash": "9a6780562fc6ed7c14a7798ecfa8d5e8f76a6165427a34e08946812728a6a742",
+      "beforeAssetSha256": "0377f0783a570c78b482955eb41fe362186008565dd6c961a1c3b3a9dd55da00",
+      "afterContentHash": "",
+      "afterAssetSha256": "1bdf2417bb11b5f0f61ba58f5d37323b37834cb069b2242cb9daeb8afe6f63dd",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 062/explanation-controls-img-1: complete 1536x1024 asset checked against 4 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 1bdf2417bb11b5f0f61ba58f5d37323b37834cb069b2242cb9daeb8afe6f63dd."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 062/explanation-controls-img-1: official expected correction was read before the final visual; the ImageGen replacement was inspected at original resolution and its pixels, source facts, transcript, alternative text and lesson context agree; asset SHA-256 1bdf2417bb11b5f0f61ba58f5d37323b37834cb069b2242cb9daeb8afe6f63dd."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "ImageGen",
+      "beforeSemanticHash": "9a6780562fc6ed7c14a7798ecfa8d5e8f76a6165427a34e08946812728a6a742",
+      "afterSemanticHash": "69ca8d74a7030750ffee2572e262b2fafca6045bda8d69aa96368bfa26db1906"
+    },
+    {
+      "key": "065/explanation-biometrics-img-1",
+      "lesson": "065",
+      "visualId": "explanation-biometrics-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-065/",
+      "sectionId": "explanation-biometrics",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-065-biometrics.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The biometric visual stated that a match decides whether the user is authorised, conflating authentication of identity with the later access-rights decision.",
+      "requiredCorrection": "Label a biometric match as authentication of an identity claim and explicitly separate authorisation/access rights, while preserving false-accept and false-reject meanings.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 6.1 Data Security",
+      "beforeContentHash": "7826f08c765460589b7ceb070881949cb918910b22e223085b5dd24ca5f8207e",
+      "beforeAssetSha256": "5f59f62f3ae321ef8fc43e2e02627a7da99a1f565cc7534a2a40d09668a83b22",
+      "afterContentHash": "",
+      "afterAssetSha256": "b2aa2cdc8d1d88503ea3d11f9079e02d6f088e8e7d3c2bb6bb7915d7014401ef",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 065/explanation-biometrics-img-1: complete 1536x1024 asset checked against 4 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 b2aa2cdc8d1d88503ea3d11f9079e02d6f088e8e7d3c2bb6bb7915d7014401ef."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 065/explanation-biometrics-img-1: official expected correction was read before the final visual; the ImageGen replacement was inspected at original resolution and its pixels, source facts, transcript, alternative text and lesson context agree; asset SHA-256 b2aa2cdc8d1d88503ea3d11f9079e02d6f088e8e7d3c2bb6bb7915d7014401ef."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "ImageGen",
+      "beforeSemanticHash": "7826f08c765460589b7ceb070881949cb918910b22e223085b5dd24ca5f8207e",
+      "afterSemanticHash": "8b43e1e14ac9713da591ee69034ad9127258d0a83c4a10a48cdc8bee55062c4a"
+    },
+    {
+      "key": "069/explanation-checks-img-1",
+      "lesson": "069",
+      "visualId": "explanation-checks-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-069/",
+      "sectionId": "explanation-checks",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-069-checks.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The validation overview displayed only range, length, type and format, omitting presence, existence, limit and check digit from the required Version 2 list.",
+      "requiredCorrection": "Show all seven required validation checks and explicitly distinguish a two-bound range check from a one-bound limit check; type may not replace an official method.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 6.2 Data Integrity",
+      "beforeContentHash": "3ff9015953d73650f85ebd2156353f48fc73180881b0066a1dac769a1a887407",
+      "beforeAssetSha256": "52c21fc76658c730b961a308e632f12efd714c7b8b2b3ad29680584d41da0691",
+      "afterContentHash": "",
+      "afterAssetSha256": "10e346902b009f7aa45f256d734ce85511fb65272f937bbf3ae1f46432909a49",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 069/explanation-checks-img-1: complete 1536x1024 asset checked against 5 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 10e346902b009f7aa45f256d734ce85511fb65272f937bbf3ae1f46432909a49."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 069/explanation-checks-img-1: official expected correction was read before the final visual; the ImageGen replacement was inspected at original resolution and its pixels, source facts, transcript, alternative text and lesson context agree; asset SHA-256 10e346902b009f7aa45f256d734ce85511fb65272f937bbf3ae1f46432909a49."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "ImageGen",
+      "beforeSemanticHash": "3ff9015953d73650f85ebd2156353f48fc73180881b0066a1dac769a1a887407",
+      "afterSemanticHash": "40986b8ffbae56b58da17aa4576d00dc06047a80e881060a6504633ef39f8e64"
+    },
+    {
       "key": "069/explanation-verification-img-1",
       "lesson": "069",
       "visualId": "explanation-verification-img-1",
@@ -949,25 +1174,26 @@
       "classification": "Confirmed error",
       "severity": "Major",
       "confidence": "High",
-      "issue": "The verification-method table states that a match means Data is accurate for double entry, visual checking, proofreading and transfer checks. A match only provides evidence of agreement with the comparison source or second entry; it does not guarantee accuracy, especially if the source is wrong or the same error is entered twice.",
-      "requiredCorrection": "Use Match: entries or data agree; accept only if the checking procedure and trusted source requirements are satisfied. State explicitly that verification reduces copying/transmission errors but does not guarantee truth.",
+      "issue": "The verification visual switched to validation in its result panel and omitted the required data-transfer methods parity check on a byte, block parity and checksum.",
+      "requiredCorrection": "Separate entry verification from transfer verification and show visual check, double entry, byte parity, block parity and checksum with their correct mechanisms and limits.",
       "authority": "官方 syllabus v2 §6.2 Data Integrity：validation 与 verification 的作用及方法。",
       "beforeContentHash": "d6dec7e5578b3153510a6a4fef0c6c76adda0b2b46331095bcb43add3d6e15a2",
       "beforeAssetSha256": "2e5a170742234841b220c6ae83ca4601fb42fffffff5b78ef02a32f8e49d56d9",
       "afterContentHash": "",
-      "afterAssetSha256": "579c86d18a643dc7010c5d813ac3444fcbf02eb02d3380873ef7695fcc23e509",
+      "afterAssetSha256": "19e3d24db87a35eb289afc7573f9e8ab5c9968d1dda0bf837e6b404e55197e19",
       "pass1": {
         "status": "passed",
-        "evidence": "Lesson-order pass for 069/explanation-verification-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 579c86d18a643dc7010c5d813ac3444fcbf02eb02d3380873ef7695fcc23e509."
+        "evidence": "Lesson-order pass for 069/explanation-verification-img-1: complete 1536x1024 asset checked against 5 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 19e3d24db87a35eb289afc7573f9e8ab5c9968d1dda0bf837e6b404e55197e19."
       },
       "pass2": {
         "status": "passed",
-        "evidence": "Reverse-order pass for 069/explanation-verification-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces 579c86d18a643dc7010c5d813ac3444fcbf02eb02d3380873ef7695fcc23e509."
+        "evidence": "Reverse-order pass for 069/explanation-verification-img-1: official expected correction was read before the final visual; the ImageGen replacement was inspected at original resolution and its pixels, source facts, transcript, alternative text and lesson context agree; asset SHA-256 19e3d24db87a35eb289afc7573f9e8ab5c9968d1dda0bf837e6b404e55197e19."
       },
       "reconciliation": "agreed",
       "resolved": true,
       "beforeSemanticHash": "f706b020cbfe7a0a54515ab46bb00a24ddc31741ee241afd12e40f6b89a45d87",
-      "afterSemanticHash": "104936f4c0008d69c5219543bf906a399770f3315838e58eb5400bfb60a8f352"
+      "afterSemanticHash": "1cb369601de221c5db980740fe828d2b205eb41ecb214d0616b55df3650b53be",
+      "generationMethod": "ImageGen"
     },
     {
       "key": "071/explanation-controls-img-1",
@@ -1079,19 +1305,19 @@
       "beforeContentHash": "8fd7fce656113dd1a3f35f670189b4bc51647fccb3d38e9b10a527b175960489",
       "beforeAssetSha256": "345494d1f5617beda325124bb58b244322374a48a50c29d7f138079acc580df1",
       "afterContentHash": "",
-      "afterAssetSha256": "b48bf1461af23f6e41b984dfd8fa82650e2aa4b53931d437ac5d28f5b1ddc3f2",
+      "afterAssetSha256": "a895afae0535755bc051f186bed2e76a547b7d75875aa6664da5b02a2a5a1f89",
       "pass1": {
         "status": "passed",
-        "evidence": "Lesson-order pass for 083/explanation-normal-forms-img-1: complete 1536x1024 asset checked against 4 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 b48bf1461af23f6e41b984dfd8fa82650e2aa4b53931d437ac5d28f5b1ddc3f2."
+        "evidence": "Lesson-order pass for 083/explanation-normal-forms-img-1: complete 1536x1024 asset checked against 4 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 a895afae0535755bc051f186bed2e76a547b7d75875aa6664da5b02a2a5a1f89."
       },
       "pass2": {
         "status": "passed",
-        "evidence": "Reverse-order pass for 083/explanation-normal-forms-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces b48bf1461af23f6e41b984dfd8fa82650e2aa4b53931d437ac5d28f5b1ddc3f2."
+        "evidence": "Reverse-order pass for 083/explanation-normal-forms-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces a895afae0535755bc051f186bed2e76a547b7d75875aa6664da5b02a2a5a1f89."
       },
       "reconciliation": "agreed",
       "resolved": true,
       "beforeSemanticHash": "60ebab2ddc127829e78c418f14ddea98112388fb1e3ccfb088bcc8dab195adba",
-      "afterSemanticHash": "b6527ba1377a2fa0c73e71bc4d27d34bed79b74a1bfb429cf8e1fe57fefe6719"
+      "afterSemanticHash": "d7116c33f266074a1fb7e0b247ba232f248e6e982ceacc4ab44719b039795771"
     },
     {
       "key": "085/explanation-aggregates-img-1",
@@ -1280,6 +1506,38 @@
       "afterSemanticHash": "f32f036a1296289a08c9f1701f4c37b96005580ec977194147edf2596e507831"
     },
     {
+      "key": "111/explanation-analyser-img-1",
+      "lesson": "111",
+      "visualId": "explanation-analyser-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-111/",
+      "sectionId": "explanation-analyser",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-111-analyser.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The previous visual was a generic interactive-scenario placeholder and did not explain stepwise refinement, implementable levels or the transition from substeps to procedure/function modules.",
+      "requiredCorrection": "Show a high-level algorithm being repeatedly replaced by smaller defined steps until each step is implementable, while preserving the parent purpose and clarifying procedure/action versus function/returned-value modules.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 9.2 Algorithms",
+      "beforeContentHash": "c3fa40958bee1b860731240ec5aedf14ee9601456df22d9a7cf5a18169e8734b",
+      "beforeAssetSha256": "914ac5fa269e5d95db8941482d87271166ca506c2b709aad4ab8e153870b1ec7",
+      "afterContentHash": "",
+      "afterAssetSha256": "047e1c4bc3996d54c3d648e87dfecc0b53de055f538df2644602c6f68d509474",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 111/explanation-analyser-img-1: complete 1536x1024 asset checked against 5 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 047e1c4bc3996d54c3d648e87dfecc0b53de055f538df2644602c6f68d509474."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 111/explanation-analyser-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces 047e1c4bc3996d54c3d648e87dfecc0b53de055f538df2644602c6f68d509474."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "Deterministic renderer",
+      "beforeSemanticHash": "c3fa40958bee1b860731240ec5aedf14ee9601456df22d9a7cf5a18169e8734b",
+      "afterSemanticHash": "8a345f52e506be7064014cf815db928d6bfecd10f47f04bf9a7a87187203bd8f"
+    },
+    {
       "key": "113/explanation-choose-img-1",
       "lesson": "113",
       "visualId": "explanation-choose-img-1",
@@ -1309,6 +1567,38 @@
       "resolved": true,
       "beforeSemanticHash": "01bc1c0e5da569fb1ded5732612db49dfa6768139e2b8ef7e4dfb9075c468436",
       "afterSemanticHash": "9607eb701214c87b0e9800695ec2d1aa50fa0cafa444c1e62ad6ecf6cab1f3bd"
+    },
+    {
+      "key": "113/explanation-pseudocode-img-1",
+      "lesson": "113",
+      "visualId": "explanation-pseudocode-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-113/",
+      "sectionId": "explanation-pseudocode",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-113-pseudocode.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The visual listed only the six scalar type names and omitted ARRAY and FILE from the Version 2 Notes, so it could not serve as complete visual evidence for the official pseudocode type list.",
+      "requiredCorrection": "Show INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE, and retain the boundary that type choice follows meaning and required operations.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 10.1 Data Types and Records",
+      "beforeContentHash": "a22f46741010315d3a2688c5b41011b7b9bfdc2d764bdf039c8f5e8c97a47a7d",
+      "beforeAssetSha256": "86d37debc1fc9588ab92b2b3045840e441999a9953aa387c2e63d2f146503fa0",
+      "afterContentHash": "",
+      "afterAssetSha256": "3c1aacb603bde122781778735917c85c855c05e16869970a5f203f6a74c02c72",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 113/explanation-pseudocode-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 3c1aacb603bde122781778735917c85c855c05e16869970a5f203f6a74c02c72."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 113/explanation-pseudocode-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces 3c1aacb603bde122781778735917c85c855c05e16869970a5f203f6a74c02c72."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "Deterministic renderer",
+      "beforeSemanticHash": "a22f46741010315d3a2688c5b41011b7b9bfdc2d764bdf039c8f5e8c97a47a7d",
+      "afterSemanticHash": "bb8534074e4d6fb2f39707489e5569cc75c53db5ad00455a7c624a6015fc84d3"
     },
     {
       "key": "113/explanation-user-defined-img-1",
@@ -1414,25 +1704,26 @@
       "classification": "Confirmed error",
       "severity": "Major",
       "confidence": "High",
-      "issue": "The Cambridge record declaration opens TYPE TStudent and lists fields but omits ENDTYPE, making the displayed type definition incomplete.",
-      "requiredCorrection": "Insert ENDTYPE after Enrolled : BOOLEAN, then declare Student1 : TStudent.",
+      "issue": "The previous corrected record image used an overlong heading that was visibly clipped and it did not explicitly connect the definition with saving and reading named fields.",
+      "requiredCorrection": "Use a fully visible title and show record purpose, TYPE...ENDTYPE definition, field assignment for saving and named-field access for reading.",
       "authority": "官方 syllabus v2 §10 Data Types and Structures；官方 Pseudocode Guide 的数组、记录、TYPE…ENDTYPE、IF…ENDIF 语法。",
       "beforeContentHash": "994827cf5c8828222be2045232751c5b85ec4d1a475258990e2db547db35a050",
       "beforeAssetSha256": "36135100a8e7245a0c4a8ea31aca788188bc438df72c3a6c29bdfa5cebfa6909",
       "afterContentHash": "",
-      "afterAssetSha256": "1be741d3ac4d6553d4292b5c99e4f315666bf3a6a65f26d933fe3a5718c8a698",
+      "afterAssetSha256": "55ddf0f94d561a23d5c946f51d0fa6c933e5f94f40a0ebc4bde66f383fdaff03",
       "pass1": {
         "status": "passed",
-        "evidence": "Lesson-order pass for 118/explanation-declare-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 1be741d3ac4d6553d4292b5c99e4f315666bf3a6a65f26d933fe3a5718c8a698."
+        "evidence": "Lesson-order pass for 118/explanation-declare-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 55ddf0f94d561a23d5c946f51d0fa6c933e5f94f40a0ebc4bde66f383fdaff03."
       },
       "pass2": {
         "status": "passed",
-        "evidence": "Reverse-order pass for 118/explanation-declare-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces 1be741d3ac4d6553d4292b5c99e4f315666bf3a6a65f26d933fe3a5718c8a698."
+        "evidence": "Reverse-order pass for 118/explanation-declare-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces 55ddf0f94d561a23d5c946f51d0fa6c933e5f94f40a0ebc4bde66f383fdaff03."
       },
       "reconciliation": "agreed",
       "resolved": true,
       "beforeSemanticHash": "f40e8850e989120b13a266ac8c55f4957b56e3f75a44f59ff99268f19fca90bc",
-      "afterSemanticHash": "ba3372a3f6cebaba4d1dea529267a151a00c9a8f5f0551b0db0413d0dd5ae26c"
+      "afterSemanticHash": "cab2ce74169d4dd203faf4acc5c0d53d7e4ab4c8d305ada99bb925d5aa30aad6",
+      "generationMethod": "Deterministic renderer"
     },
     {
       "key": "118/explanation-pseudocode-img-1",
@@ -1526,6 +1817,70 @@
       "resolved": true,
       "beforeSemanticHash": "9ce68165e37b3bf6dda808e50e717494c6394945fa43393aa54fbe598ee6bbb3",
       "afterSemanticHash": "6e290bf89cf5f0a732ae20ecb89220bd0f2d2674025aaf47790d7977d1e989d6"
+    },
+    {
+      "key": "122/explanation-concept-img-1",
+      "lesson": "122",
+      "visualId": "explanation-concept-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-122/",
+      "sectionId": "explanation-concept",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-122-concept.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The behaviour-focused visual omitted the official definition that an ADT is a collection of data and a set of operations on those data.",
+      "requiredCorrection": "State the official definition, name stack, queue and linked list as examples, and separate behaviour from an array implementation.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 10.4 Introduction to Abstract Data Types",
+      "beforeContentHash": "62a9b4d8a298113c1588ed9b89febb44fe29fc96ef48484b1a09f8f0eefc34ac",
+      "beforeAssetSha256": "2428493662429951a916f8d5e87c7f3f554045b7aef492ea62faffd434084389",
+      "afterContentHash": "",
+      "afterAssetSha256": "343d4d1a598d46bcf9d8838c876a5eded5e5735e636ded92e2e33bc362c49bc9",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 122/explanation-concept-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 343d4d1a598d46bcf9d8838c876a5eded5e5735e636ded92e2e33bc362c49bc9."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 122/explanation-concept-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces 343d4d1a598d46bcf9d8838c876a5eded5e5735e636ded92e2e33bc362c49bc9."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "Deterministic renderer",
+      "beforeSemanticHash": "62a9b4d8a298113c1588ed9b89febb44fe29fc96ef48484b1a09f8f0eefc34ac",
+      "afterSemanticHash": "bdb8d6b133de57da6fdc78088d09227abb67e24b2b30fe345548ea1110ebfe95"
+    },
+    {
+      "key": "122/explanation-implementation-img-1",
+      "lesson": "122",
+      "visualId": "explanation-implementation-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-122/",
+      "sectionId": "explanation-implementation",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-122-implementation.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The previous implementation visual covered only stack and queue pointer movement and omitted linked-list array state, editing and the official no-pseudocode-required boundary.",
+      "requiredCorrection": "Show array state for stack, queue and linked list; explain add, edit and delete while preserving each ADT rule; state that operation pseudocode is not required.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 10.4 Introduction to Abstract Data Types",
+      "beforeContentHash": "b26ca76774ab5437cda14f87872fa9d15001ab133f27ab74747cb6e60d66268c",
+      "beforeAssetSha256": "7411c54a9d03b93f80764855752bcebd07df6312309334380da71972917f419d",
+      "afterContentHash": "",
+      "afterAssetSha256": "90eb3aab845f820138289664e61ee24ce3dcd94088fa2ee86834f572a4c77d76",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 122/explanation-implementation-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 90eb3aab845f820138289664e61ee24ce3dcd94088fa2ee86834f572a4c77d76."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 122/explanation-implementation-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces 90eb3aab845f820138289664e61ee24ce3dcd94088fa2ee86834f572a4c77d76."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "Deterministic renderer",
+      "beforeSemanticHash": "b26ca76774ab5437cda14f87872fa9d15001ab133f27ab74747cb6e60d66268c",
+      "afterSemanticHash": "5d5d5794180d9dec6d372dd13c71ec5dc40ffcbc6963d89fdedbe3d4f5a4dcf5"
     },
     {
       "key": "123/explanation-array-img-1",
@@ -1745,6 +2100,102 @@
       "afterSemanticHash": "4c257245178e0af016f669f8a730aa5f05b9489426b6c79fd1c75b8ef8a24e83"
     },
     {
+      "key": "133/explanation-substring-img-1",
+      "lesson": "133",
+      "visualId": "explanation-substring-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-133/",
+      "sectionId": "explanation-substring",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-133-substring.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The previous visual presented LEFT, RIGHT and MID as a course convention, which could imply that candidates should memorise an unstated string API rather than use the routine supplied in the question.",
+      "requiredCorrection": "State that string manipulation functions are supplied; require the stated name, parameter order and position convention; reject imported Java indexing.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 11.1 Programming Basics",
+      "beforeContentHash": "3e7ba205a0022bff6276668de3dace845cc75a5e1aac587d413982fd1c14c740",
+      "beforeAssetSha256": "c48bd9ef191540e3262c07ff2d9aadc554a837c27493df81f3b8ae5864ab30a3",
+      "afterContentHash": "",
+      "afterAssetSha256": "126859fc4b6a47f7f44664557bafa9736fc86fc533ae9c68af4ad2e246a3a388",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 133/explanation-substring-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 126859fc4b6a47f7f44664557bafa9736fc86fc533ae9c68af4ad2e246a3a388."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 133/explanation-substring-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces 126859fc4b6a47f7f44664557bafa9736fc86fc533ae9c68af4ad2e246a3a388."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "Deterministic renderer",
+      "beforeSemanticHash": "3e7ba205a0022bff6276668de3dace845cc75a5e1aac587d413982fd1c14c740",
+      "afterSemanticHash": "7c30611dc1188c44c4afc50d1e154982428a6fe7fec7827d43138fc3400ff623"
+    },
+    {
+      "key": "137/explanation-boundary-img-1",
+      "lesson": "137",
+      "visualId": "explanation-boundary-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-137/",
+      "sectionId": "explanation-boundary",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-137-boundary.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The visual used boundary as a replacement category and did not clearly separate valid accepted limits from abnormal values outside the range.",
+      "requiredCorrection": "Teach extreme/boundary as valid accepted-limit data and classify just-outside values as abnormal.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 12.3 Testing",
+      "beforeContentHash": "b370ca36fce8526f6104355ebed3b13f492ad7a0dc962df9838dfa37b96c7f47",
+      "beforeAssetSha256": "b05e2b7a2425dd0166a3fcde3e6eaa4ddc158d4a9207fcce38542fdcec403cce",
+      "afterContentHash": "",
+      "afterAssetSha256": "b48c89432ef8606573327b77951e0780a09ec1fe5af5ce40885b88449f6092b7",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 137/explanation-boundary-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 b48c89432ef8606573327b77951e0780a09ec1fe5af5ce40885b88449f6092b7."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 137/explanation-boundary-img-1: official expected correction was read before the final visual; the ImageGen replacement was inspected at original resolution and its pixels, source facts, transcript, alternative text and lesson context agree; asset SHA-256 b48c89432ef8606573327b77951e0780a09ec1fe5af5ce40885b88449f6092b7."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "ImageGen",
+      "beforeSemanticHash": "b370ca36fce8526f6104355ebed3b13f492ad7a0dc962df9838dfa37b96c7f47",
+      "afterSemanticHash": "133d9896448fd49c5e9c16b472f7b51b46365579f9fb79d2177b416821f8aaee"
+    },
+    {
+      "key": "137/explanation-erroneous-img-1",
+      "lesson": "137",
+      "visualId": "explanation-erroneous-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-137/",
+      "sectionId": "explanation-erroneous",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-137-erroneous.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The visible image used erroneous as the primary category instead of the official abnormal category.",
+      "requiredCorrection": "Use abnormal for invalid out-of-range, wrong-type or missing required data that should be rejected or handled.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 12.3 Testing",
+      "beforeContentHash": "e15b6543f4b9ccc8d68798508be65782319b70f50d9169766027fbd5e394e1c6",
+      "beforeAssetSha256": "a16240341ed0822386a2a4b3d5d26695c457fca0b23bbbf8421f59844ad3ee75",
+      "afterContentHash": "",
+      "afterAssetSha256": "0f6ea9280fbd43db3b4f141d8f5179de10f230569b95146b90a959bc6a9c3b27",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 137/explanation-erroneous-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 0f6ea9280fbd43db3b4f141d8f5179de10f230569b95146b90a959bc6a9c3b27."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 137/explanation-erroneous-img-1: official expected correction was read before the final visual; the ImageGen replacement was inspected at original resolution and its pixels, source facts, transcript, alternative text and lesson context agree; asset SHA-256 0f6ea9280fbd43db3b4f141d8f5179de10f230569b95146b90a959bc6a9c3b27."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "ImageGen",
+      "beforeSemanticHash": "e15b6543f4b9ccc8d68798508be65782319b70f50d9169766027fbd5e394e1c6",
+      "afterSemanticHash": "2a50f913b65b79c29d11db55958fdba48ff395cebadae04df8bda1214e558911"
+    },
+    {
       "key": "137/explanation-purpose-img-1",
       "lesson": "137",
       "visualId": "explanation-purpose-img-1",
@@ -1755,25 +2206,58 @@
       "classification": "Confirmed error",
       "severity": "Major",
       "confidence": "High",
-      "issue": "The displayed validation-rule pseudocode has IF and ELSE branches but no ENDIF. The same visual asks which test values 'prove' the rule works, overstating what selected test cases establish.",
-      "requiredCorrection": "Close the selection with ENDIF. Say that chosen normal, boundary and erroneous cases provide evidence for the tested cases, not proof for every possible input.",
+      "issue": "The visual omitted ENDIF and overstated selected tests as proof; its terminology also needed the official normal, abnormal and extreme/boundary categories.",
+      "requiredCorrection": "Close the selection, state that finite testing provides evidence for selected cases, and use the official category names.",
       "authority": "官方 syllabus v2 §11 Programming／§12.3 Testing；官方 Pseudocode Guide 的过程、选择、循环和数组边界规则。",
       "beforeContentHash": "3c17d5b9251cd37b780a2cd0633442510daa12e7cffe4161b8339eff9547e7f6",
       "beforeAssetSha256": "1cd36800571eb3aee569d37e1d976ee3fad1b66a36dc6c68cd083d0e023e0aa2",
       "afterContentHash": "",
-      "afterAssetSha256": "a64e9c62e8d322906c6a4083565bd4e995cf05063a0b22bf759d7e8e0a7555f3",
+      "afterAssetSha256": "072babf7647510496fc3ec67bfe8496607fa723ed7edeb09f94b043504a9fded",
       "pass1": {
         "status": "passed",
-        "evidence": "Lesson-order pass for 137/explanation-purpose-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 a64e9c62e8d322906c6a4083565bd4e995cf05063a0b22bf759d7e8e0a7555f3."
+        "evidence": "Lesson-order pass for 137/explanation-purpose-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 072babf7647510496fc3ec67bfe8496607fa723ed7edeb09f94b043504a9fded."
       },
       "pass2": {
         "status": "passed",
-        "evidence": "Reverse-order pass for 137/explanation-purpose-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces a64e9c62e8d322906c6a4083565bd4e995cf05063a0b22bf759d7e8e0a7555f3."
+        "evidence": "Reverse-order pass for 137/explanation-purpose-img-1: official expected correction was read before the final visual; the ImageGen replacement was inspected at original resolution and its pixels, source facts, transcript, alternative text and lesson context agree; asset SHA-256 072babf7647510496fc3ec67bfe8496607fa723ed7edeb09f94b043504a9fded."
       },
       "reconciliation": "agreed",
       "resolved": true,
       "beforeSemanticHash": "3ca1ca3a1a3dbec965a79dfe304021966ce5b3381351bbe8fe665581304880d6",
-      "afterSemanticHash": "701621baf0ef7a53c09a2f3e5e56db508947226373d258e3bd9babe13be856c5"
+      "afterSemanticHash": "358feb576f5b5adb02e738fae25570d0979384f089b076174a6978c9739b4afd",
+      "generationMethod": "ImageGen"
+    },
+    {
+      "key": "137/explanation-table-img-1",
+      "lesson": "137",
+      "visualId": "explanation-table-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-137/",
+      "sectionId": "explanation-table",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-137-table.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The test table used the replaced boundary/erroneous category pair and did not consistently distinguish valid limit values from invalid inputs.",
+      "requiredCorrection": "Label rows normal, extreme/boundary or abnormal and align accepted/rejected results with validity.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 12.3 Testing",
+      "beforeContentHash": "70f04e774c5d28f16a06d009e574754403da3ba0bbdb9dcb96201a67d036647a",
+      "beforeAssetSha256": "f6f61100caecc7c083e05a7d705a7f4fa0931896c00dbb3a4a8c73c106991ec8",
+      "afterContentHash": "",
+      "afterAssetSha256": "0c79b42f7a22f5b51ade83e0ee057111758a9f686734e174aa54f4b75e444589",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 137/explanation-table-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 0c79b42f7a22f5b51ade83e0ee057111758a9f686734e174aa54f4b75e444589."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 137/explanation-table-img-1: official expected correction was read before the final visual; the ImageGen replacement was inspected at original resolution and its pixels, source facts, transcript, alternative text and lesson context agree; asset SHA-256 0c79b42f7a22f5b51ade83e0ee057111758a9f686734e174aa54f4b75e444589."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "ImageGen",
+      "beforeSemanticHash": "70f04e774c5d28f16a06d009e574754403da3ba0bbdb9dcb96201a67d036647a",
+      "afterSemanticHash": "5cc32350ca9806292b2962263a15a9e1e0d02da9716ebb32961a3942853e8739"
     },
     {
       "key": "137/explanation-validation-img-1",
@@ -1786,25 +2270,58 @@
       "classification": "Confirmed error",
       "severity": "Major",
       "confidence": "High",
-      "issue": "The image says Testing proves whether the check works. Testing a finite set of cases can show correct behaviour for those cases and expose faults, but cannot prove the program is correct for every possible input.",
-      "requiredCorrection": "Use Testing checks whether the validation rule behaves as expected for the selected normal, boundary and erroneous cases.",
+      "issue": "The visual claimed that finite testing proves a validation rule works.",
+      "requiredCorrection": "State that expected and actual results are compared for selected normal, abnormal and extreme/boundary cases, without claiming universal proof.",
       "authority": "官方 syllabus v2 §11 Programming／§12.3 Testing；官方 Pseudocode Guide 的过程、选择、循环和数组边界规则。",
       "beforeContentHash": "50465e831a37447e46b835dbf5fef18d2abb8139d00df620e02a356ee033ee45",
       "beforeAssetSha256": "2a7e6e1b979baac35b7cde79646678def974a4089e5a6d93b689a0cafaef4f6e",
       "afterContentHash": "",
-      "afterAssetSha256": "39fab98b22a5f3d2a74d68a914fcbbce2ad735afd1c4f6a52d937927fde10e73",
+      "afterAssetSha256": "d2c360ee2e045cd4accf7c6f88abf512a418cf14488f0b15337639a42e809f9b",
       "pass1": {
         "status": "passed",
-        "evidence": "Lesson-order pass for 137/explanation-validation-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 39fab98b22a5f3d2a74d68a914fcbbce2ad735afd1c4f6a52d937927fde10e73."
+        "evidence": "Lesson-order pass for 137/explanation-validation-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 d2c360ee2e045cd4accf7c6f88abf512a418cf14488f0b15337639a42e809f9b."
       },
       "pass2": {
         "status": "passed",
-        "evidence": "Reverse-order pass for 137/explanation-validation-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces 39fab98b22a5f3d2a74d68a914fcbbce2ad735afd1c4f6a52d937927fde10e73."
+        "evidence": "Reverse-order pass for 137/explanation-validation-img-1: official expected correction was read before the final visual; the ImageGen replacement was inspected at original resolution and its pixels, source facts, transcript, alternative text and lesson context agree; asset SHA-256 d2c360ee2e045cd4accf7c6f88abf512a418cf14488f0b15337639a42e809f9b."
       },
       "reconciliation": "agreed",
       "resolved": true,
       "beforeSemanticHash": "6b1c96c7ca69deb17892ac26f82d0aee85572461740a149c550fee0b704f80bd",
-      "afterSemanticHash": "f70a77bee67f2a4b91daf00d3c1422b39eaf0b27a31497db3a0f91bdee025f16"
+      "afterSemanticHash": "3d7d499d1f44bbb834e5dad01b7080b4fd9058ab04b5c6fab881be16fa5ecd60",
+      "generationMethod": "ImageGen"
+    },
+    {
+      "key": "138/explanation-bug-img-1",
+      "lesson": "138",
+      "visualId": "explanation-bug-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-138/",
+      "sectionId": "explanation-bug",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-138-bug.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The previous debugging visual focused only on correcting a boundary fault and did not teach the distinct syllabus task of analysing an existing program and amending it to enhance functionality.",
+      "requiredCorrection": "Show analysis of behaviour to preserve, a coherent amendment across declaration/initialisation/processing/output, and enhancement plus regression tests.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 12.3 Program Testing and Maintenance",
+      "beforeContentHash": "a16e3d3a619993fac69fd152c725b8e5bbdfecccbea42ef5adea6e3cbc5f3658",
+      "beforeAssetSha256": "4ec0211c1f97f294f823c0870de2add52b51216c6eae93376bdd951d15eddf7e",
+      "afterContentHash": "",
+      "afterAssetSha256": "1eecb2abfa32436af864a2f84576117dc697202ace416402b8a3e491d45045a2",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 138/explanation-bug-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 1eecb2abfa32436af864a2f84576117dc697202ace416402b8a3e491d45045a2."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 138/explanation-bug-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces 1eecb2abfa32436af864a2f84576117dc697202ace416402b8a3e491d45045a2."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "Deterministic renderer",
+      "beforeSemanticHash": "a16e3d3a619993fac69fd152c725b8e5bbdfecccbea42ef5adea6e3cbc5f3658",
+      "afterSemanticHash": "bb1844244e939aa5cef5ea9124c55d33cc1ba842fac2053da7cf9d42d8d5a7a5"
     },
     {
       "key": "138/explanation-purpose-img-1",
@@ -1838,6 +2355,38 @@
       "afterSemanticHash": "8935582ceaf0ee1a88aba6bb6b5109b8877e176f16e5f311f33b82c56d1ccce8"
     },
     {
+      "key": "140/explanation-standard-img-1",
+      "lesson": "140",
+      "visualId": "explanation-standard-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-140/",
+      "sectionId": "explanation-standard",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-140-standard.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The previous visual compared Java syntax with Cambridge pseudocode but did not teach the explicit syllabus task of implementing pseudocode from a flowchart or structured-English design.",
+      "requiredCorrection": "Show how symbols, branches, loop-back arrows, controlled verbs and indentation become equivalent Cambridge pseudocode, verified by a dry run.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 11.1 Programming Basics",
+      "beforeContentHash": "1364ebd59eea0124852cd3b6e18377b0a52f91d3fe8b2a68e2d3a764ef89b509",
+      "beforeAssetSha256": "7490295e041c42b5bfee378acec0d5a00df00d964b0deb52a844fe5b764e972f",
+      "afterContentHash": "",
+      "afterAssetSha256": "999f9c28a0070d1dfd5dac66452a33a268570ce52ab5578a85475af35bb19077",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 140/explanation-standard-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 999f9c28a0070d1dfd5dac66452a33a268570ce52ab5578a85475af35bb19077."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 140/explanation-standard-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces 999f9c28a0070d1dfd5dac66452a33a268570ce52ab5578a85475af35bb19077."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "Deterministic renderer",
+      "beforeSemanticHash": "1364ebd59eea0124852cd3b6e18377b0a52f91d3fe8b2a68e2d3a764ef89b509",
+      "afterSemanticHash": "3f56f347752b82215e2f1c10516e6d2319cd752649d4b15cb59845808d03e52c"
+    },
+    {
       "key": "142/overview-div-1",
       "lesson": "142",
       "visualId": "overview-div-1",
@@ -1857,16 +2406,80 @@
       "afterAssetSha256": "",
       "pass1": {
         "status": "passed",
-        "evidence": "Lesson-order pass for 142/overview-div-1: complete rendered overview section checked at desktop and 390px; corrected text is visible, ordered and not clipped; semantic SHA-256 1902cd22470cf47d3b2832196511354c082903ace4feca268da3bfec2fc4cedf."
+        "evidence": "Lesson-order pass for 142/overview-div-1: complete rendered overview section checked at desktop and 390px; corrected text is visible, ordered and not clipped; semantic SHA-256 8e54cca70e55870f5cdb17cd7e5bec6dcd447cd96adfca081f2e8c25cc3b7061."
       },
       "pass2": {
         "status": "passed",
-        "evidence": "Reverse-order pass for 142/overview-div-1: official expected wording was established before inspecting the final section; Markdown, HTML, responsive rendering and related lesson wording agree; semantic SHA-256 1902cd22470cf47d3b2832196511354c082903ace4feca268da3bfec2fc4cedf."
+        "evidence": "Reverse-order pass for 142/overview-div-1: official expected wording was established before inspecting the final section; Markdown, HTML, responsive rendering and related lesson wording agree; semantic SHA-256 8e54cca70e55870f5cdb17cd7e5bec6dcd447cd96adfca081f2e8c25cc3b7061."
       },
       "reconciliation": "agreed",
       "resolved": true,
       "beforeSemanticHash": "1d560c32899630063793de6666e0d296ba2dc08a7d417c04b686a12a17bf691b",
-      "afterSemanticHash": "1902cd22470cf47d3b2832196511354c082903ace4feca268da3bfec2fc4cedf"
+      "afterSemanticHash": "8e54cca70e55870f5cdb17cd7e5bec6dcd447cd96adfca081f2e8c25cc3b7061"
+    },
+    {
+      "key": "144/explanation-algorithms-img-1",
+      "lesson": "144",
+      "visualId": "explanation-algorithms-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-144/",
+      "sectionId": "explanation-algorithms",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-144-algorithms.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The previous algorithm visual taught nested selection but did not show the required structure-chart hierarchy, parameter interfaces, derivation into pseudocode or the separate state-transition notation.",
+      "requiredCorrection": "Show module hierarchy and parameters, derive matching headers and calls, and distinguish a marked-start event-labelled state-transition diagram from a flowchart.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 12.2 Program Design",
+      "beforeContentHash": "7d1d7bce7b50ddc0b033a0db3eacf1f6eb0be20bfdbd70cd557e4db8a20c84b2",
+      "beforeAssetSha256": "6bdf4e7f19b5632c5c80fc655b5203df56acfad684836cc64ce7110e9b1faaaa",
+      "afterContentHash": "",
+      "afterAssetSha256": "d11acdef5331cfd769016abc8583241275207674210f2ad57bfae4263aa13688",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 144/explanation-algorithms-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 d11acdef5331cfd769016abc8583241275207674210f2ad57bfae4263aa13688."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 144/explanation-algorithms-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces d11acdef5331cfd769016abc8583241275207674210f2ad57bfae4263aa13688."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "Deterministic renderer",
+      "beforeSemanticHash": "7d1d7bce7b50ddc0b033a0db3eacf1f6eb0be20bfdbd70cd557e4db8a20c84b2",
+      "afterSemanticHash": "815bfe60cc5c27022941a8ce6b0efd2b2075108d2a85924d68681a65f7e27143"
+    },
+    {
+      "key": "145/explanation-changeover-img-1",
+      "lesson": "145",
+      "visualId": "explanation-changeover-img-1",
+      "visualType": "Stage 10 JPG",
+      "route": "/lesson-145/",
+      "sectionId": "explanation-changeover",
+      "file": "web/assets/diagrams/stage10-infographics/stage10-lesson-145-changeover.jpg",
+      "classification": "Confirmed error",
+      "severity": "Major",
+      "confidence": "High",
+      "issue": "The previous changeover-method visual occupied a core slot but did not teach the explicit Version 2 requirement to produce a test strategy and test plan.",
+      "requiredCorrection": "Contrast project-wide strategy fields with a complete individual test-plan row and state why test-data categories alone are insufficient.",
+      "authority": "Cambridge 9618 syllabus 2027-2029 Version 2, Section 12.3 Program Testing and Maintenance",
+      "beforeContentHash": "58a348d766a34d8ee7e9b692e288d2969c5fd4c0ab339bcd2c56b9afd4b4ab2a",
+      "beforeAssetSha256": "58d3781f796fa2174af9f1411f74653d429a54f96ad84ba72af14627e321be1a",
+      "afterContentHash": "",
+      "afterAssetSha256": "01dc581fb36aaea4dcad72fce747338b290ca16c213422d858b9f3fce97e2aa1",
+      "pass1": {
+        "status": "passed",
+        "evidence": "Lesson-order pass for 145/explanation-changeover-img-1: complete 1536x1024 asset checked against 3 maintained facts; title, all card text, arrows, boundaries and page rendering at desktop and 390px passed; asset SHA-256 01dc581fb36aaea4dcad72fce747338b290ca16c213422d858b9f3fce97e2aa1."
+      },
+      "pass2": {
+        "status": "passed",
+        "evidence": "Reverse-order pass for 145/explanation-changeover-img-1: official expected correction was read before the final visual; full image, source facts, transcript, alternative text and lesson context agree; deterministic renderer reproduces 01dc581fb36aaea4dcad72fce747338b290ca16c213422d858b9f3fce97e2aa1."
+      },
+      "reconciliation": "agreed",
+      "resolved": true,
+      "generationMethod": "Deterministic renderer",
+      "beforeSemanticHash": "58a348d766a34d8ee7e9b692e288d2969c5fd4c0ab339bcd2c56b9afd4b4ab2a",
+      "afterSemanticHash": "b213cce9783a185ab43f5c2e7c80cc319f84b62c37c2ffb0a4b5a47579daeced"
     },
     {
       "key": "145/explanation-evaluation-img-1",

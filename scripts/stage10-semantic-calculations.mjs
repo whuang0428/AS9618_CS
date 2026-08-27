@@ -1,3 +1,6 @@
+import fs from "node:fs";
+
+const technicalVisualContract = JSON.parse(fs.readFileSync(new URL("./stage10-technical-visual-contract.json", import.meta.url), "utf8"));
 const invertBits = (bits) => [...bits].map((bit) => bit === "0" ? "1" : "0").join("");
 const fixedBinary = (value, width) => value.toString(2).padStart(width, "0").slice(-width);
 
@@ -63,7 +66,7 @@ export const semanticCalculations = Object.freeze([
   { id: "CALC-060-IP-MAC-TOGETHER", key: "020/addresses", kind: "required-substrings", text: "Same local network IP packet destination host IP Frame destination host MAC Different network remote host IP next-hop router MAC", required: ["destination host IP", "destination host MAC", "remote host IP", "next-hop router MAC"], description: "Local and routed delivery both use IP and MAC addresses at different scopes" },
   { id: "CALC-061-SIX-GATES", key: "035/gates", kind: "required-substrings", text: "NOT AND OR NAND NOR XOR", required: ["NOT", "AND", "OR", "NAND", "NOR", "XOR"], description: "The six-gate summary names every required gate" },
   { id: "CALC-062-FETCH-UPDATES", key: "042/cycle-visual", kind: "required-substrings", text: "PC address MAR memory instruction MDR MDR instruction CIR PC PC + 1 Only MDR feeds CIR", required: ["PC", "MAR", "MDR", "CIR", "PC + 1", "Only MDR feeds CIR"], description: "MDR-to-CIR transfer is distinct from the PC self-increment" },
-  { id: "CALC-063-FOUR-ADDRESSING-MODES", key: "047/modes", kind: "required-substrings", text: "IMMEDIATE DIRECT INDIRECT INDEXED", required: ["IMMEDIATE", "DIRECT", "INDIRECT", "INDEXED"], description: "The four-mode comparison includes immediate, direct, indirect and indexed" },
+  { id: "CALC-063-FIVE-ADDRESSING-MODES", key: "047/modes", kind: "required-substrings", text: "IMMEDIATE DIRECT INDIRECT INDEXED RELATIVE LDR #n loads immediate n into IX not relative", required: ["IMMEDIATE", "DIRECT", "INDIRECT", "INDEXED", "RELATIVE", "LDR #n", "IX", "not relative"], description: "The five-mode comparison includes relative addressing and preserves the official immediate-to-IX meaning of LDR #n" },
   { id: "CALC-064-TRANSLATOR-TOOLCHAIN", key: "056/concept", kind: "ordered-substrings", text: "Object modules linker executable loader memory", required: ["Object modules", "linker", "executable", "loader", "memory"], description: "Object modules are linked and the executable is loaded rather than generically retranslated" },
   { id: "CALC-065-SQL-WRITTEN-ORDER", key: "089/sql", kind: "ordered-substrings", text: "SELECT fields FROM table WHERE condition GROUP BY field ORDER BY field", required: ["SELECT", "FROM", "WHERE", "GROUP BY", "ORDER BY"], description: "SQL written syntax places GROUP BY before ORDER BY" },
   { id: "CALC-066-SQL-LOGICAL-ORDER", key: "089/sql", kind: "ordered-substrings", text: "FROM WHERE GROUP BY SELECT ORDER BY", required: ["FROM", "WHERE", "GROUP BY", "SELECT", "ORDER BY"], description: "Simplified logical processing places sorting last" },
@@ -73,6 +76,8 @@ export const semanticCalculations = Object.freeze([
   { id: "CALC-070-NESTING-RULE", key: "108/model", kind: "required-substrings", text: "outer changes less often inner completes its full traversal range size does not decide", required: ["changes less often", "full traversal", "range size does not decide"], description: "Loop nesting is based on traversal grouping rather than range width" },
   { id: "CALC-071-CLEARER-NAMES", key: "110/conversion", kind: "ordered-substrings", text: "m -> Mark i -> Index pc -> PassCount", required: ["m", "Mark", "i", "Index", "pc", "PassCount"], description: "Arrows run from abbreviated names to clearer names" },
   { id: "CALC-072-PAPER2-TIMING", key: "149/timing", kind: "proportional-timing", pairs: [[2, 2], [3, 3], [5, 5], [10, 10]], description: "Timed pseudocode practice uses one consistent mark-to-minute ratio" },
+  { id: "CALC-073-INSTRUCTION-GROUPS", key: "046/assembler", kind: "instruction-groups", groups: technicalVisualContract["046/assembler"].groups, otherOpcodes: technicalVisualContract["046/assembler"].otherOpcodes, description: "All five official instruction groups and every specified opcode are present" },
+  { id: "CALC-074-BINARY-SHIFTS", key: "050/shifts", kind: "fixed-width-shifts", width: technicalVisualContract["050/shifts"].width, input: technicalVisualContract["050/shifts"].input, examples: technicalVisualContract["050/shifts"].examples, description: "All six shift examples preserve eight bits and recompute to the stated results and overflow contexts" },
 ]);
 
 export function evaluateSemanticCalculation(check) {
@@ -140,6 +145,44 @@ export function evaluateSemanticCalculation(check) {
     case "proportional-timing": {
       const ratios = check.pairs.map(([marks, minutes]) => minutes / marks);
       return ratios.every((ratio) => ratio === ratios[0]);
+    }
+    case "instruction-groups": {
+      const expected = {
+        "data movement": ["LDM", "LDD", "LDI", "LDX", "LDR", "MOV", "STO"],
+        "input/output": ["IN", "OUT"],
+        arithmetic: ["ADD", "SUB", "INC", "DEC"],
+        "unconditional/conditional": ["JMP", "JPE", "JPN"],
+        compare: ["CMP", "CMI"],
+      };
+      const sameMembers = (left, right) => left.length === right.length
+        && [...left].sort().join("|") === [...right].sort().join("|");
+      return Object.keys(expected).length === Object.keys(check.groups).length
+        && Object.entries(expected).every(([group, opcodes]) => sameMembers(check.groups[group] ?? [], opcodes))
+        && sameMembers(check.otherOpcodes ?? [], ["END"]);
+    }
+    case "fixed-width-shifts": {
+      const { input, width } = check;
+      if (!new RegExp(`^[01]{${width}}$`).test(input)) return false;
+      const left = `${input.slice(1)}0`;
+      const logicalRight = `0${input.slice(0, -1)}`;
+      const arithmeticRight = `${input[0]}${input.slice(0, -1)}`;
+      const cyclicLeft = `${input.slice(1)}${input[0]}`;
+      const cyclicRight = `${input.at(-1)}${input.slice(0, -1)}`;
+      const expected = new Map([
+        ["logical-left", { result: left, outgoing: input[0], fill: "0", overflowContext: "unsigned", overflow: Number.parseInt(input, 2) * 2 > 2 ** width - 1 }],
+        ["logical-right", { result: logicalRight, outgoing: input.at(-1), fill: "0", overflowContext: null, overflow: null }],
+        ["arithmetic-left", { result: left, outgoing: input[0], fill: "0", overflowContext: "signed", overflow: input[0] !== left[0] }],
+        ["arithmetic-right", { result: arithmeticRight, outgoing: input.at(-1), fill: input[0], overflowContext: null, overflow: null }],
+        ["cyclic-left", { result: cyclicLeft, outgoing: input[0], fill: input[0], overflowContext: null, overflow: null }],
+        ["cyclic-right", { result: cyclicRight, outgoing: input.at(-1), fill: input.at(-1), overflowContext: null, overflow: null }],
+      ]);
+      if (check.examples.length !== expected.size) return false;
+      return check.examples.every((example) => {
+        const result = expected.get(example.name);
+        return Boolean(result)
+          && new RegExp(`^[01]{${width}}$`).test(example.result)
+          && Object.entries(result).every(([field, value]) => example[field] === value);
+      });
     }
     default:
       throw new Error(`Unknown semantic calculation kind: ${check.kind}`);

@@ -59,7 +59,7 @@ expect(Array.isArray(catalog) && catalog.length === 150, "Course catalog must co
 
 const lessons = pageDefinitions.filter(({ kind }) => kind === "lesson");
 const roles = new Set(["CORE", "OPTIONAL", "AFTER_CLASS"]);
-const activities = new Set(["TEACH", "ASK", "THINK", "PAIR", "PRACTISE", "CHECK", "EXAM", "HOMEWORK"]);
+const activities = new Set(["TEACH", "ASK", "THINK", "PAIR", "PRACTISE", "CHECK", "EXAM", "EXTEND", "HOMEWORK"]);
 let sectionCount = 0;
 
 for (const [index, definition] of lessons.entries()) {
@@ -70,9 +70,9 @@ for (const [index, definition] of lessons.entries()) {
   expect(entry?.number === index + 1 && entry?.id === id, `${definition.page}: catalog order or id is incorrect`);
   expect(entry?.title === h1, `${definition.page}: catalog title does not match h1`);
   expect(["Paper 1", "Paper 2"].includes(entry?.paper), `${definition.page}: catalog paper is invalid`);
-  expect(/^Section \d+$|^Review$/.test(entry?.section ?? ""), `${definition.page}: catalog section is invalid`);
-  expect(count(html, 'href="../lesson-toolbar.css?v=2"') === 1, `${definition.page}: lesson toolbar stylesheet must appear once`);
-  expect(count(html, 'src="../course-catalog.js?v=1"') === 1, `${definition.page}: course catalog script must appear once`);
+  expect(/^Section \d+(?:\.\d+)?$|^Review$/.test(entry?.section ?? ""), `${definition.page}: catalog section is invalid`);
+  expect(count(html, 'href="../lesson-toolbar.css?v=3"') === 1, `${definition.page}: lesson toolbar stylesheet must appear once`);
+  expect(count(html, 'src="../course-catalog.js?v=2"') === 1, `${definition.page}: course catalog script must appear once`);
   expect(count(html, 'src="../lesson-toolbar.js?v=2"') === 1, `${definition.page}: lesson toolbar script must appear once`);
   expect(count(html, 'class="lesson-nav"') === 1, `${definition.page}: lesson contents navigation must appear once`);
   expect(count(html, 'class="action-panel"') === 1, `${definition.page}: page action panel must appear once`);

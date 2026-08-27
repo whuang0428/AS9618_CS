@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -41,6 +41,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -313,6 +314,63 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Read and write SQL statements by their semantics</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Structured Query Language (SQL) is the industry-standard language used by a DBMS for DDL and DML. To understand a statement, read each clause by its effect: SELECT chooses output fields, FROM identifies the source table, and WHERE filters records using a condition. Keywords, field names, table names, operators, literal values and punctuation have different roles.</p>
+            <p>A valid answer must preserve the requested semantics, not merely contain familiar keywords. Text and date values are normally quoted in this course's standard SQL style; numeric and Boolean values are not quoted. Clause order, comparison operators and requested output fields determine which records and columns appear.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Interpret a query</h3>
+            <p>SELECT Title, DueDate FROM Loan WHERE Returned = FALSE; reads records from Loan, keeps only records whose Returned field is false, and outputs Title and DueDate. It does not update the table and it does not output every field.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Read and write SQL statements by their semantics: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What does SELECT control?</p>
+              <details><summary>Show answer</summary><p>The fields or expressions shown in the result.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What does FROM control?</p>
+              <details><summary>Show answer</summary><p>The table supplying the records.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What does WHERE control?</p>
+              <details><summary>Show answer</summary><p>Which records satisfy the filter condition.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why is SELECT * not equivalent to SELECT Title?</p>
+              <details><summary>Show answer</summary><p>The asterisk outputs all fields; SELECT Title outputs only the requested field.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Explain the effect of SELECT StudentID, Name FROM Student WHERE TutorGroup = '12A'; and identify one change that would alter its result.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> reads records from Student</li>
+                <li><strong>B1</strong> filters to TutorGroup 12A</li>
+                <li><strong>B1</strong> outputs StudentID and Name only</li>
+                <li><strong>B1</strong> identifies a valid semantic change such as field list, condition, operator or literal</li>
+                <li><strong>B1</strong> explains how the named change alters rows or columns returned</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -349,7 +407,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

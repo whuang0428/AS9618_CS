@@ -73,9 +73,8 @@ Misconception: Students often write personal opinions only. Correction: ethics a
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S7.06
 **Focus:** AI applications and impact chains
 
 ### Direct explanation
@@ -115,6 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `analyser`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-analyser.jpg`
 
 1. Interactive impact analyser
@@ -125,6 +125,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `digital-divide`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-digital-divide.jpg`
 
 1. Device access Some users cannot afford suitable hardware.
@@ -136,6 +137,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `environment`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-environment.jpg`
 
 1. Energy use Devices, networks and data centres consume electricity during operation.
@@ -147,6 +149,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `ewaste`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-ewaste.jpg`
 
 1. E-waste Discarded electronic devices and components.
@@ -158,6 +161,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `method`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-method.jpg`
 
 1. 1. Change Name the computing change, such as automation or online services.
@@ -171,6 +175,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `social`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-076-social.jpg`
 
 1. Computing change

@@ -6,15 +6,14 @@ import { deliveryOverrides } from "./stage9-delivery-overrides.mjs";
 import { explanationByKey } from "./stage10-explanations-data.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const toolbarStylesheet = '    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />';
-const academicThemeStylesheet = '    <link rel="stylesheet" href="../academic-theme.css?v=6" />';
+const toolbarStylesheet = '    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />';
+const academicThemeStylesheet = '    <link rel="stylesheet" href="../academic-theme.css?v=7" />';
 const scripts = [
-  '    <script src="../course-catalog.js?v=1"></script>',
+  '    <script src="../course-catalog.js?v=2"></script>',
   '    <script src="../lesson-toolbar.js?v=2"></script>',
 ];
 const optionalIds = new Set([
   "tool", "builder", "simulator", "converter", "checker", "classifier", "chooser", "runner",
-  "stage2-completion",
 ]);
 
 function decodeHtml(value) {
@@ -88,7 +87,8 @@ function directSections(source) {
 
 function inferRole(sectionId, classes) {
   if (sectionId === "homework" || classes.has("homework-support")) return "AFTER_CLASS";
-  if (classes.has("interactive") || classes.has("stage2-completion") || optionalIds.has(sectionId)) return "OPTIONAL";
+  if (classes.has("stage2-completion")) return "CORE";
+  if (classes.has("interactive") || optionalIds.has(sectionId)) return "OPTIONAL";
   return "CORE";
 }
 
@@ -96,7 +96,9 @@ function inferActivity(sectionId, classes, content) {
   const text = decodeHtml(content).toLowerCase();
   if (sectionId === "homework" || classes.has("homework-support")) return "HOMEWORK";
   if (sectionId === "hook") return "ASK";
-  if (sectionId === "practice" || sectionId === "stage2-completion") return "PRACTISE";
+  if (sectionId === "stage2-completion") return "TEACH";
+  if (sectionId === "stage2-practice") return "PRACTISE";
+  if (sectionId === "practice") return "PRACTISE";
   if (sectionId === "exam") return "EXAM";
   if (sectionId === "summary" || sectionId === "debug" || classes.has("mistake-panel")) return "CHECK";
   if (/think[- ]pair[- ]share|discuss with a partner|pair discussion/.test(text)) return "PAIR";
@@ -131,7 +133,7 @@ function injectAssets(source) {
     .replace(/^\s*<script src="\.\.\/lesson-toolbar\.js\?v=\d+"><\/script>\n?/m, "");
 
   const stage7Anchor = '    <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />';
-  const stage10Anchor = '    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />';
+  const stage10Anchor = '    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />';
   const cssAnchor = updated.includes(stage10Anchor) ? stage10Anchor : stage7Anchor;
   const jsAnchor = '    <script src="../stage7-accessibility.js?v=4"></script>';
   if (!updated.includes(stage7Anchor) || !updated.includes(jsAnchor)) {
@@ -168,7 +170,11 @@ for (let number = 1; number <= 150; number += 1) {
     const key = `lesson-${lessonId}/${sectionId}`;
     const explanationTarget = sectionId.startsWith("explanation-") ? sectionId.slice("explanation-".length) : "";
     const reviewedExplanation = explanationTarget ? explanationByKey[`${lessonId}/${explanationTarget}`] : null;
-    const override = deliveryOverrides[key] ?? (reviewedExplanation ? { role: "CORE", activity: "TEACH", group: explanationTarget } : {});
+    const override = deliveryOverrides[key] ?? (reviewedExplanation ? {
+      role: reviewedExplanation.deliveryRole,
+      activity: reviewedExplanation.classroomActivity,
+      group: explanationTarget,
+    } : {});
     const metadata = {
       id: sectionId,
       role: override.role ?? (support && previousMetadata ? previousMetadata.role : inferRole(sectionId, classes)),

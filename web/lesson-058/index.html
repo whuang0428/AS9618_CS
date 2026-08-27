@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -42,7 +42,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -352,31 +352,42 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
+            <p class="eyebrow">Core syllabus content</p>
             <h2>Libraries and dynamically linked library files</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A library is a tested collection of reusable code. A dynamically linked library is linked when a program loads or calls it, rather than copying all library code into every executable.</p>
-            <p>DLLs can reduce executable size and memory duplication, support reuse and allow one shared update. They also create dependency and version risks: a missing or incompatible DLL can stop a program loading or change behaviour.</p>
+            <p>Software under development is often constructed using existing code from program libraries. A program library is a collection of reusable routines or modules, so a developer can call tested implementations instead of rewriting common mathematical, input/output, graphics or string operations.</p>
+            <p>Benefits to the developer include shorter development time, less duplicated source code, reuse of tested routines and more consistent maintenance. A dynamically linked library (DLL) is connected when a program loads or calls it rather than copying all library code into every executable.</p>
+            <p>DLL files can reduce executable size and memory duplication, support reuse and allow one shared update. They also create dependency and version risks: a missing or incompatible DLL can stop a program loading or change behaviour.</p>
           </div>
           <article class="stage2-example">
             <h3>Worked example: Three programs use one graphics DLL</h3>
             <p>All three executables call the shared graphics code. One loaded copy may be shared in memory and a security fix can update the DLL once, but replacing it with an incompatible version can break all three programs.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Libraries and dynamically linked library files: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> When is a dynamically linked library connected to a program?</p>
+              <p><strong>1.</strong> How do program libraries support software under development?</p>
+              <details><summary>Show answer</summary><p>They supply existing reusable routines or modules, avoiding the need to write common code again.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> When is a dynamically linked library connected to a program?</p>
               <details><summary>Show answer</summary><p>At load time or run time when required.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Give one storage benefit of dynamic linking.</p>
+              <p><strong>3.</strong> Give one storage benefit of dynamic linking.</p>
               <details><summary>Show answer</summary><p>Library code need not be copied into every executable.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Give one DLL risk.</p>
+              <p><strong>4.</strong> Give one DLL risk.</p>
               <details><summary>Show answer</summary><p>A missing/incompatible version can prevent execution or cause faults.</p></details>
             </article>
           </div>
@@ -434,7 +445,7 @@
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

@@ -73,39 +73,44 @@ Misconception: Students often choose names as primary keys. Correction: a primar
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S8.05, S8.06
-**Focus:** DBMS features and query processing
+**Focus:** DBMS features and practical software tools
 
 ### Direct explanation
 
-- A DBMS maintains a data dictionary of metadata, supports data modelling and a logical schema, enforces integrity/security/access rights, and provides backup/recovery. These services separate logical data use from physical storage details.
-- A developer interface accepts commands or API requests. The query processor parses/validates a query, plans how to execute it, accesses the stored data and returns results while the DBMS applies permissions and integrity rules.
+- A file-based approach can repeat facts in separate files, create inconsistent copies and isolate related data. A Database Management System (DBMS) addresses these file-based limitations by providing data management, including a data dictionary of metadata; data modelling; a logical schema; data integrity; and data security. Security includes backup procedures and access rights assigned to individual users or groups.
+- A developer interface provides tools used to define structures and build database applications, forms or reports. A query processor interprets and checks a query, chooses how to carry it out, accesses the stored data and returns or modifies the specified records while the DBMS applies access and integrity rules.
 
 ### Worked example
 
-**Run a restricted query:** The interface sends SELECT to the DBMS; the query processor checks syntax and access rights, chooses an indexed access plan, reads matching rows and returns only authorised columns.
+**Run a restricted query:** A developer enters a SELECT statement through the developer interface. The query processor checks the statement and the user's access rights, works out an execution plan, retrieves the permitted rows and returns the result. The data dictionary supplies definitions such as field types, keys and constraints; it does not hold the ordinary user records.
 
 ### Targeted practice and answers
 
-1. What does a data dictionary store?
+1. What five broad DBMS feature areas are required?
+   **Answer:** Data management including a data dictionary, data modelling, logical schema, data integrity, and data security including backup and access rights.
+2. What does a data dictionary store?
    **Answer:** Metadata such as table, field, type, key and constraint definitions.
-2. What is the role of the query processor?
-   **Answer:** To parse, plan and execute database queries.
-3. Which DBMS feature limits users to permitted operations?
-   **Answer:** Access rights/security controls.
+3. What is the purpose of a developer interface?
+   **Answer:** To provide tools for defining structures or building database applications, forms and reports.
+4. What is the role of the query processor?
+   **Answer:** To interpret/check, plan and carry out database queries or data-maintenance statements.
+5. Which DBMS feature limits users or groups to permitted operations?
+   **Answer:** Access rights within data security.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Describe the roles of a data dictionary and query processor in a DBMS.
+**Question (6 marks):** A school is introducing a relational DBMS. Explain four DBMS features and the distinct purposes of the developer interface and query processor.
 
-- **B1** data dictionary stores metadata/definitions about database structure
-- **B1** example such as field type/key/constraint
-- **B1** query processor interprets/parses a query
-- **B1** plans/executes it and returns/accesses matching data
+- **B1** data management/data dictionary stores metadata about structure
+- **B1** data modelling or logical schema represents the database design
+- **B1** integrity rules maintain valid and consistent data
+- **B1** security uses access rights and backup procedures
+- **B1** developer interface supports defining structures or building database applications/forms/reports
+- **B1** query processor interprets/checks and carries out queries or maintenance statements
 
-**Strict note:** Do not accept that the data dictionary stores the ordinary user records themselves.
+**Strict note:** Do not treat the database, data dictionary, developer interface and query processor as interchangeable names.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
@@ -115,6 +120,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `data-info`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-078-data-info.jpg`
 
 1. Data is raw facts and values. Information is data that has been processed, organised or interpreted so it has meaning.
@@ -134,6 +140,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `database`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-078-database.jpg`
 
 1. A database is an organised collection of related data that can be stored, retrieved and updated.
@@ -153,6 +160,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `dbms`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-078-dbms.jpg`
 
 1. A DBMS is software used to create, manage and control access to a database. It sits between users/applications and stored data.
@@ -169,6 +177,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `scenario`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-078-scenario.jpg`
 
 1. Interactive DBMS selector
@@ -179,6 +188,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `sorter`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-078-sorter.jpg`
 
 1. Interactive concept sorter
@@ -190,6 +200,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `terms`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-078-terms.jpg`
 
 1. This is the vocabulary doorway. Later lessons will go deeper into keys, relationships, E-R diagrams, normalisation and SQL.

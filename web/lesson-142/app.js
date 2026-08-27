@@ -5,9 +5,9 @@ const modelAdvice = {
     warning: "If requirements change late, earlier stages may need expensive rework.",
   },
   uncertain: {
-    model: "Iterative or agile-style development",
-    reason: "Short cycles and user feedback help refine unclear requirements before too much is built.",
-    warning: "The project still needs control; iteration is not an excuse to avoid documentation.",
+    model: "Rapid application development (RAD)",
+    reason: "Rapid prototypes, fixed time boxes and frequent user feedback help refine unclear requirements before too much is built.",
+    warning: "RAD still needs control, testing and available informed users.",
   },
   critical: {
     model: "Planned lifecycle with strong testing and review",
@@ -69,7 +69,7 @@ const practice = [
   { id: "p5", prompt: "Which review activity judges whether the completed system meets objectives?", accepted: ["evaluation", "review"], answer: "Evaluation or post-implementation review; this is an activity, not one of the five named syllabus stages." },
   { id: "p6", prompt: "Which stage fixes, adapts or improves the system after release?", accepted: ["maintenance"], answer: "Maintenance." },
   { id: "p7", prompt: "Which model is most one-way and sequential: waterfall or iterative?", accepted: ["waterfall"], answer: "Waterfall." },
-  { id: "p8", prompt: "Which approach uses repeated cycles and feedback?", accepted: ["iterative", "agile"], answer: "Iterative / agile-style development." },
+  { id: "p8", prompt: "Which named model uses rapid prototypes, time boxes and frequent user involvement?", accepted: ["rad", "rapid application development"], answer: "Rapid application development (RAD)." },
   { id: "p9", prompt: "Name one artefact produced during analysis.", accepted: ["requirements", "specification"], answer: "Requirements specification." },
   { id: "p10", prompt: "True or false: testing can reveal the need to revisit design.", accepted: ["true"], answer: "True." },
 ];
@@ -84,8 +84,8 @@ const mistakes = [
     fix: "Analysis should identify requirements first; design is based on those requirements.",
   },
   {
-    wrong: "A student claims agile means no planning or documentation.",
-    fix: "Agile-style development uses short cycles and feedback, but still needs planning, testing and control.",
+    wrong: "A student claims RAD is simply another name for Agile.",
+    fix: "RAD is the named syllabus model built around rapid prototyping, time-boxing and frequent user involvement; Agile is related extension context, not a replacement.",
   },
   {
     wrong: "A student says maintenance only means fixing broken code.",
@@ -116,19 +116,19 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "Compare waterfall and iterative lifecycle models for a project where user requirements are likely to change.",
-    answer: "Waterfall follows planned stages in sequence and works best when requirements are stable. If requirements change late, rework can be costly. Iterative development uses repeated cycles of design, build, test and review, so user feedback can refine requirements earlier. Therefore an iterative model is often more suitable when requirements are uncertain.",
+    prompt: "Compare waterfall, iterative and RAD for a project where requirements are likely to change and users can review frequent prototypes.",
+    answer: "Waterfall follows planned stages in sequence, so late requirement changes can cause costly rework. Iterative development uses repeated cycles and feedback to refine requirements. RAD uses rapid prototypes, short time boxes and frequent user involvement. RAD may suit this project when users are available for frequent reviews, while iterative development is suitable when repeated refinement is needed without the same rapid-prototyping emphasis.",
     marking: [
       { mark: "B1", text: "states waterfall follows a planned/sequential set of stages" },
-      { mark: "B1", text: "explains waterfall suits stable requirements" },
       { mark: "B1", text: "explains late changes can cause costly rework in waterfall" },
       { mark: "B1", text: "states iterative development uses repeated cycles" },
       { mark: "B1", text: "explains feedback can refine requirements" },
-      { mark: "B1", text: "selects iterative as more suitable for changing/uncertain requirements with reason" },
+      { mark: "B1", text: "states RAD uses rapid prototyping/time-boxing with frequent user involvement" },
+      { mark: "B1", text: "selects RAD or iterative with a reason linked to user availability, prototyping or changing requirements" },
     ],
     strict: [
-      "Do not award full marks for saying only 'agile is better'.",
-      "Allow agile-style model as an iterative example.",
+      "Do not award full marks for saying only that repeated development is better.",
+      "Do not accept Agile as a substitute for the named RAD model.",
       "Do not accept waterfall as the best choice for changing requirements without strong justification.",
     ],
   },

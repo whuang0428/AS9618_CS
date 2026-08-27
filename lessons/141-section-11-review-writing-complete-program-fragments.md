@@ -74,6 +74,43 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Efficient pseudocode is purposeful, not merely short
+
+### Direct explanation
+
+- Efficient pseudocode avoids unnecessary repeated work and selects a structure suited to the data and stopping rule. For example, total and count can be updated during one traversal instead of scanning the same array twice when both results are needed.
+- Efficiency does not justify incorrect bounds, hidden assumptions or compressed code that cannot be traced. A strong answer remains clear: initialise once, access only valid data, avoid redundant calculations and use meaningful identifiers and coherent constructs.
+- At AS Level, justify an improvement from the actual algorithm, such as fewer repeated passes or stopping a search once the target is found. Do not claim that shorter text alone proves a more efficient algorithm.
+
+### Worked example
+
+**Count passes and total in one traversal:** Set Total and PassCount to 0 before one FOR loop through Marks[1:30]. Add each mark to Total and increment PassCount only when the mark is at least 50. Output both values after NEXT Index. This preserves clear control flow while avoiding a second full traversal.
+
+### Targeted practice and answers
+
+1. Why is one combined traversal more efficient than two separate full traversals here?
+   **Answer:** The same 30 elements are read once while both required results are updated, avoiding a redundant second pass.
+2. Does fewer lines always mean greater efficiency?
+   **Answer:** No. The control flow and amount of work matter; compressed but repeated or incorrect work is not an improvement.
+3. When may a search stop early?
+   **Answer:** When the target has been found, provided the algorithm no longer needs to inspect later elements for another stated result.
+
+### Exam-style question and MS
+
+**Question (5 marks):** Rewrite an algorithm that first totals Marks[1:30] and then makes a second pass to count passes, using one clear traversal. Explain the efficiency improvement.
+
+- **B1** initialises Total and PassCount once before the loop
+- **M1** uses one loop over valid indexes 1 to 30
+- **M1** updates Total and conditionally updates PassCount inside that loop
+- **A1** outputs both results after the loop
+- **B1** explains that the rewrite removes a redundant second traversal without changing the result
+
+**Strict note:** Do not award an efficiency claim based only on fewer written lines; the revised pseudocode must perform less repeated work and remain correct.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -81,6 +118,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `arrays`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-141-arrays.jpg`
 
 1. Arrays and loops
@@ -100,6 +138,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `checklist`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-141-checklist.jpg`
 
 1. Mark checklist
@@ -108,6 +147,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `debugging`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-141-debugging.jpg`
 
 1. Debugging awareness
@@ -118,6 +158,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `files`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-141-files.jpg`
 
 1. OPENFILE "Scores.txt" FOR READ
@@ -131,6 +172,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `fragment`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-141-fragment.jpg`
 
 1. Initialise PassCount before processing ten array positions.
@@ -142,6 +184,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-141-java.jpg`
 
 1. Java may support practice but the review answer uses Cambridge pseudocode.
@@ -153,6 +196,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `review-map`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-141-review-map.jpg`
 
 1. Review map
@@ -172,6 +216,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `subroutines`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-141-subroutines.jpg`
 
 1. A function returns a value; a procedure performs an action.
@@ -183,6 +228,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `validation`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-141-validation.jpg`
 
 1. A complete validation fragment prompts for and inputs Mark inside REPEAT.

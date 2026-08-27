@@ -15,6 +15,12 @@ export const courseUnits = Object.freeze([
   { id: "paper-2-review", range: [147, 150], paper: "Paper 2", section: "Review", title: "Paper 2 integrated review" },
 ]);
 
+const lessonMetadataOverrides = Object.freeze({
+  137: Object.freeze({ section: "Section 12.3" }),
+});
+
 export function unitForLesson(number) {
-  return courseUnits.find(({ range }) => number >= range[0] && number <= range[1]);
+  const unit = courseUnits.find(({ range }) => number >= range[0] && number <= range[1]);
+  const override = lessonMetadataOverrides[number];
+  return unit && override ? { ...unit, ...override } : unit;
 }

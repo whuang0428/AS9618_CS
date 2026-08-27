@@ -91,6 +91,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `adts`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-adts.jpg`
 
 1. Stack and queue review
@@ -107,6 +108,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `decision`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-decision.jpg`
 
 1. Data model decision
@@ -122,6 +124,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `declare`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-declare.jpg`
 
 1. TYPE TStudent
@@ -137,6 +140,7 @@ This declaration follows ENDTYPE.
 
 - **Explains:** `files`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-files.jpg`
 
 1. TYPE TStudent
@@ -151,6 +155,7 @@ The array follows the completed record type.
 
 - **Explains:** `improver`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-improver.jpg`
 
 1. Mark improver
@@ -161,6 +166,7 @@ The array follows the completed record type.
 
 - **Explains:** `map`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-map.jpg`
 
 1. Retrieval map
@@ -180,6 +186,7 @@ The array follows the completed record type.
 
 - **Explains:** `marks`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-125-marks.jpg`
 
 1. Mark-scheme language

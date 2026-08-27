@@ -72,6 +72,44 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often select every field with `*`. Correction: exam questions usually specify exactly which fields are required.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Read and write SQL statements by their semantics
+
+### Direct explanation
+
+- Structured Query Language (SQL) is the industry-standard language used by a DBMS for DDL and DML. To understand a statement, read each clause by its effect: SELECT chooses output fields, FROM identifies the source table, and WHERE filters records using a condition. Keywords, field names, table names, operators, literal values and punctuation have different roles.
+- A valid answer must preserve the requested semantics, not merely contain familiar keywords. Text and date values are normally quoted in this course's standard SQL style; numeric and Boolean values are not quoted. Clause order, comparison operators and requested output fields determine which records and columns appear.
+
+### Worked example
+
+**Interpret a query:** SELECT Title, DueDate FROM Loan WHERE Returned = FALSE; reads records from Loan, keeps only records whose Returned field is false, and outputs Title and DueDate. It does not update the table and it does not output every field.
+
+### Targeted practice and answers
+
+1. What does SELECT control?
+   **Answer:** The fields or expressions shown in the result.
+2. What does FROM control?
+   **Answer:** The table supplying the records.
+3. What does WHERE control?
+   **Answer:** Which records satisfy the filter condition.
+4. Why is SELECT * not equivalent to SELECT Title?
+   **Answer:** The asterisk outputs all fields; SELECT Title outputs only the requested field.
+
+### Exam-style question and MS
+
+**Question (5 marks):** Explain the effect of SELECT StudentID, Name FROM Student WHERE TutorGroup = '12A'; and identify one change that would alter its result.
+
+- **B1** reads records from Student
+- **B1** filters to TutorGroup 12A
+- **B1** outputs StudentID and Name only
+- **B1** identifies a valid semantic change such as field list, condition, operator or literal
+- **B1** explains how the named change alters rows or columns returned
+
+**Strict note:** Do not award a clause-name list unless its effect on this statement is explained.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +117,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `clauses`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-084-clauses.jpg`
 
 1. SELECT Names the fields to output, such as Title, DueDate .
@@ -91,6 +130,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `conditions`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-084-conditions.jpg`
 
 1. A WHERE clause tests each record and returns only records where the condition is true.
@@ -108,6 +148,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `strings`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-084-strings.jpg`
 
 1. Text/string Category = 'Fiction' . The text value is quoted.

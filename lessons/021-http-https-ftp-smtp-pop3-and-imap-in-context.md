@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `email`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-021-email.jpg`
 
 1. Used to send email from a client to a mail server and between mail servers.
@@ -91,6 +92,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `file`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-021-file.jpg`
 
 1. FTP: File Transfer Protocol
@@ -101,6 +103,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `web`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-021-web.jpg`
 
 1. Protocol

@@ -7,6 +7,7 @@
 
 body.has-teacher-toolbar {
   padding-bottom: 94px;
+  scroll-padding-bottom: 94px;
 }
 
 body.lesson-nav-collapsed .layout {
@@ -139,10 +140,12 @@ body.lesson-nav-collapsed .layout {
 
 @media (max-width: 760px) {
   body.has-teacher-toolbar {
-    padding-bottom: 108px;
+    padding-bottom: calc(150px + env(safe-area-inset-bottom));
+    scroll-padding-bottom: calc(150px + env(safe-area-inset-bottom));
   }
 
   .teacher-toolbar {
+    bottom: max(12px, env(safe-area-inset-bottom));
     grid-template-columns: auto minmax(0, 1fr) auto;
     grid-template-areas:
       "previous lesson next"
@@ -179,6 +182,7 @@ body.lesson-nav-collapsed .layout {
 @media print {
   body.has-teacher-toolbar {
     padding-bottom: 0;
+    scroll-padding-bottom: 0;
   }
 
   .teacher-toolbar {

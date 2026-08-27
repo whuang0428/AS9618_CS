@@ -73,15 +73,14 @@ Misconception: Students often treat binary digits as decoration. Correction: eve
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S1.04
-**Focus:** Binary subtraction with signed and unsigned values
+**Focus:** Signed representations and binary subtraction
 
 ### Direct explanation
 
-- Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. The fixed bit width must be retained throughout.
-- For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Discard a carry beyond the fixed width, then interpret the remaining sign bit and check the representable range.
+- One's-complement representation forms a negative integer by inverting every bit of its positive fixed-width value. Two's-complement representation inverts every bit and adds 1. These are binary representations of signed integers, not separate number bases.
+- Unsigned subtraction can be performed column by column using borrowing, or by adding the two's complement of the subtrahend. For signed two's-complement subtraction A - B, form the two's complement of B and add it to A. Retain the fixed width, interpret the sign bit and check the representable range.
 
 ### Worked example
 
@@ -115,6 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `range`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-005-range.jpg`
 
 1. Sign-and-magnitude uses one sign bit and seven magnitude bits; its range is -127 to +127 and it has two zero patterns.
@@ -127,6 +127,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `systems`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-005-systems.jpg`
 
 1. Positive 23 in 8 bits is 00010111.
@@ -139,6 +140,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `twos`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-005-twos.jpg`
 
 1. Write the positive magnitude using exactly 8 bits.

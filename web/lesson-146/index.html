@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,6 +44,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -408,6 +409,61 @@
           <div id="examList" class="exam-list"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Continuing maintenance after delivery</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Maintenance continues after delivery because faults are discovered, operating environments and rules change, and users request improvements. Corrective maintenance fixes faults in required behaviour; adaptive maintenance changes software for a new environment, platform, law or external rule; perfective maintenance improves functionality, usability, performance or maintainability.</p>
+            <p>Classify the reason for the change, not the code edited. The same module could receive a corrective change for a crash, an adaptive change for a new operating-system interface, or a perfective change for faster search and a clearer result display.</p>
+            <p>Every maintenance change requires impact analysis, controlled amendment, tests for the changed behaviour and regression tests for unaffected behaviour. Records should link the request, code change and test evidence.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Three changes to one booking system</h3>
+            <p>Fixing a crash when saving is corrective. Updating tax or term-date rules imposed externally is adaptive. Adding a wait-list search and making results faster is perfective. Each change is traced to a request and followed by targeted and regression tests.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Continuing maintenance after delivery: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Why does maintenance continue after acceptance?</p>
+              <details><summary>Show answer</summary><p>Faults, environmental changes and requested improvements continue after delivery.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which type changes software for a new external rule?</p>
+              <details><summary>Show answer</summary><p>Adaptive maintenance.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which type adds useful functionality or improves performance?</p>
+              <details><summary>Show answer</summary><p>Perfective maintenance.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Classify and justify these changes: fix a save crash; support a new operating-system API; add an export feature. For one change, state the impact-analysis and regression evidence required.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> save-crash fix classified as corrective with fault reason</li>
+                <li><strong>B1</strong> new operating-system API classified as adaptive with environment reason</li>
+                <li><strong>B1</strong> new export feature classified as perfective with enhancement reason</li>
+                <li><strong>B1</strong> identifies affected interfaces/modules or behaviour before amendment</li>
+                <li><strong>B1</strong> tests the changed path</li>
+                <li><strong>B1</strong> reruns relevant existing tests to detect regression</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -437,7 +493,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

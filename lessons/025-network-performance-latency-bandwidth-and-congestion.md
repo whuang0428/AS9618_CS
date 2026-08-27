@@ -73,9 +73,8 @@ Misconception: Students often confuse bandwidth with speed in every sense. Corre
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S2.12
 **Focus:** Bit streaming, bit rate and broadband
 
 ### Direct explanation
@@ -115,6 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `calculation`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-025-calculation.jpg`
 
 1. Transfer time = file size in bits / bandwidth in bits per second
@@ -129,6 +129,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concepts`
 - **Explanation type:** tradeoff
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-025-concepts.jpg`
 
 1. Bandwidth is the maximum data-transfer capacity per second.
@@ -140,6 +141,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `factors`
 - **Explanation type:** tradeoff
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-025-factors.jpg`
 
 1. Good answers name a factor and explain its effect. "It becomes slower" needs a cause.

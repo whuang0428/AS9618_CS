@@ -1,0 +1,71 @@
+{
+  "batch": 4,
+  "status": "Resolved",
+  "basis": "Cambridge 9618 2027-2029 syllabus Version 2 and the scientific defect register",
+  "records": [
+    {
+      "id": "B4-S4.05-PROCESSOR-TYPE",
+      "severity": "P1",
+      "confidence": "High",
+      "status": "Resolved",
+      "locations": ["lessons/049-performance-factors-cores-cache-clock-speed-and-word-length.md", "web/lesson-049/index.html", "web/lesson-049/app.js", "scripts/stage4-quizzes-data.mjs"],
+      "resolution": "Added processor type as an architecture/instruction-set/workload factor alongside cores, bus width, clock and cache, with direct lesson and quiz evidence."
+    },
+    {
+      "id": "B4-S5.01-OS-MANAGEMENT",
+      "severity": "P1",
+      "confidence": "High",
+      "status": "Resolved",
+      "locations": ["lessons/053-operating-system-roles-process-memory-file-and-device-management.md", "web/lesson-053/index.html", "web/lesson-053/app.js"],
+      "resolution": "Made security management and hardware management explicit and distinguished OS security management from antivirus utilities."
+    },
+    {
+      "id": "B4-S6.07-LIMIT-CHECK",
+      "severity": "P1",
+      "confidence": "High",
+      "status": "Resolved",
+      "locations": ["lessons/069-data-validation-and-verification.md", "web/lesson-069/index.html", "web/lesson-069/app.js"],
+      "resolution": "Defined a one-sided limit check, contrasted it with a two-bound range check, and added worked, practice and assessment evidence."
+    },
+    {
+      "id": "B4-S12.07-OFFICIAL-CATEGORIES",
+      "severity": "P1",
+      "confidence": "High",
+      "status": "Resolved",
+      "locations": ["lessons/137-testing-with-normal-boundary-and-erroneous-data.md", "web/lesson-137/index.html", "web/lesson-137/app.js"],
+      "resolution": "Established normal, abnormal and extreme/boundary as the official categories and classified outside-range values as abnormal."
+    },
+    {
+      "id": "B4-L139-FORBIDDEN-TERM",
+      "severity": "P1",
+      "confidence": "High",
+      "status": "Resolved",
+      "locations": ["web/lesson-139/app.js"],
+      "resolution": "Removed the old normal/boundary/erroneous category sequence from the robustness mark scheme."
+    },
+    {
+      "id": "B4-L137-IDENTITY",
+      "severity": "P2",
+      "confidence": "High",
+      "status": "Resolved",
+      "locations": ["lessons/137-testing-with-normal-boundary-and-erroneous-data.md", "web/lesson-137/index.html"],
+      "resolution": "Corrected every student-visible lesson identity from Section 11 to Paper 2 Section 12.3 without changing its URL or number."
+    },
+    {
+      "id": "B4-L137-FINITE-TESTING-CLAIM",
+      "severity": "P1",
+      "confidence": "High",
+      "status": "Resolved",
+      "locations": ["web/lesson-137/index.html", "scripts/stage10-rollout-jobs.json"],
+      "resolution": "Removed the claim that testing proves a validation rule works and replaced it with comparison of actual and expected results for selected cases."
+    },
+    {
+      "id": "B4-MOBILE-TOOLBAR-OVERLAP",
+      "severity": "P2",
+      "confidence": "High",
+      "status": "Resolved",
+      "locations": ["web/lesson-toolbar.css", "scripts/apply-classroom-delivery.mjs"],
+      "resolution": "Reserved mobile bottom and scroll padding using the measured toolbar height plus safe-area inset and bumped the generated stylesheet version."
+    }
+  ]
+}

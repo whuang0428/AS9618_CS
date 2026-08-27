@@ -158,7 +158,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 #### Q5 [6]
 
 - **B1** identifies Door AND Armed sub-expression
-- **B1** combines Smoke OR (Door AND Armed)
+- **M1** combines Smoke OR (Door AND Armed)
 - **A1** correct Boolean expression/output label
 - **B1** AND gate output is 1 only when Door and Armed are both 1
 - **B1** OR gate output is 1 when smoke or the armed-door condition is 1
@@ -260,7 +260,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 1. Distinguish data security, privacy, integrity and verification. **[4]**
 2. Describe how a digital signature is created and checked. **[6]**
 3. A company deploys AI recruitment software. Explain two ethical risks and one control for each. **[6]**
-4. Design a relational database for members borrowing books. Identify tables/keys, explain referential integrity and write one query listing overdue member names. **[8]**
+4. A library stores member and loan data in one flat file. Explain four problems this can cause and four relational database or DBMS features that address them. **[8]**
 5. A school must choose an open-source or proprietary licence for examination software. Evaluate the choice. **[6]**
 
 ### Answer Key / Mark Scheme
@@ -298,16 +298,16 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q4 [8]
 
-- **B1** MEMBER with MemberID primary key
-- **B1** BOOK with BookID primary key
-- **B1** LOAN with key and MemberID/BookID foreign keys
-- **B1** foreign keys must match existing parent records
-- **B1** prevents orphan loans
-- **B1** SELECT Member.Name
-- **B1** valid INNER JOIN Member to Loan on MemberID
-- **B1** WHERE DueDate < stated/current date and return status condition if supplied
+- **B1** repeated member details create data duplication
+- **B1** separate copies may become inconsistent after an update
+- **B1** inserting or deleting a loan can require repeated edits or lose unrelated member data
+- **B1** a large flat file is harder to search, share or control reliably
+- **B1** related tables separate member and loan facts so each fact can be stored once
+- **B1** a candidate/primary key uniquely identifies each record
+- **B1** suitable field data types, constraints or an index improve validity or retrieval
+- **B1** a DBMS feature such as access rights, backup or the query processor manages controlled use of the data
 
-**Guidance:** Allow an equivalent normalised design; do not require a particular table name.
+**Guidance:** Award each problem only when it is distinct and each feature only when its mechanism addresses a stated database need; do not require SQL or a join.
 
 #### Q5 [6]
 
@@ -412,8 +412,8 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 ### Questions
 
 1. Construct an identifier table for an algorithm storing 20 temperatures, their total and calculated mean. **[4]**
-2. Trace one full ascending bubble-sort pass through [7,3,5,2] and state whether another pass is required. **[6]**
-3. Compare an array-based stack, queue and linked list for undo history, print jobs and an editable playlist. **[6]**
+2. Write Cambridge pseudocode for an ascending bubble sort of Value[1:Count]. **[6]**
+3. Explain how an array of records can store 100 students, each with StudentID, Name and Mark, and how one student's mark can be accessed and updated. **[6]**
 4. Write Cambridge pseudocode that reads records from a text file, stores up to 100 records in an array and uses linear search for a supplied ID. **[8]**
 5. An ordered array contains [4, 9, 15, 21, 30, 44, 57]. Trace binary search for 30 and explain its precondition. **[6]**
 
@@ -430,25 +430,25 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q2 [6]
 
-- **M1** compare 7 and 3; swap -> [3,7,5,2]
-- **M1** compare 7 and 5; swap -> [3,5,7,2]
-- **M1** compare 7 and 2; swap
-- **A1** [3,5,2,7]
-- **B1** swap flag is true / swaps occurred
-- **B1** another pass is required because earlier items may remain out of order
+- **B1** uses repeated passes over the populated array
+- **M1** inner loop compares adjacent valid elements Value[Index] and Value[Index + 1]
+- **B1** tests whether the left value is greater than the right value
+- **M1** uses Temp or an equivalent safe swap preserving both values
+- **A1** reduces the unsorted upper range or uses a correct no-swap flag stopping condition
+- **B1** closes the selection and loops coherently in Cambridge pseudocode
 
-**Guidance:** Allow FT from the candidate's earlier list after one comparison error only when every subsequent comparison remains adjacent and follows ascending bubble sort.
+**Guidance:** Do not award a single-pass trace in place of the requested algorithm, and do not allow Index + 1 to exceed Count.
 
 #### Q3 [6]
 
-- **B1** undo uses stack
-- **B1** LIFO returns most recent action first
-- **B1** print jobs use queue
-- **B1** FIFO processes earliest job first
-- **B1** editable playlist can use linked list
-- **B1** link-based insertion/deletion avoids shifting contiguous elements / preserves logical order
+- **B1** defines a record with named StudentID, Name and Mark fields
+- **B1** uses suitable field types such as STRING for Name and INTEGER/REAL for Mark
+- **B1** declares or describes an array containing 100 Student records
+- **B1** uses an index within the declared lower and upper bounds to select one student record
+- **B1** uses field access to read the selected student's Mark
+- **B1** assigns a new value to the selected Mark field without replacing unrelated student fields
 
-**Guidance:** Do not award ADT names without access-order/update justification.
+**Guidance:** Allow equivalent Cambridge record and array notation; do not award an ADT stack, queue or linked-list answer.
 
 #### Q4 [8]
 
@@ -476,9 +476,9 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 ---
 
-## Checkpoint at Lesson 140: Programming and software development
+## Checkpoint at Lesson 140: Programming and robust program design
 
-**Syllabus:** Sections 11, 12
+**Syllabus:** Sections 11
 
 **Assessment objectives:** AO2, AO3
 
@@ -491,7 +491,7 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 1. Write a function IsValidMark(Mark : INTEGER) returning BOOLEAN for the inclusive range 0 to 100. **[4]**
 2. Write a procedure Swap(BYREF A : INTEGER, BYREF B : INTEGER) and explain why reference parameters are needed. **[6]**
 3. Create a test plan for a login rule: username must exist and three wrong passwords lock the account. Include normal, abnormal and boundary tests. **[6]**
-4. Compare waterfall, iterative and RAD for a safety-critical medical system. Recommend one approach and explain testing/maintenance implications. **[8]**
+4. A program uses procedures and functions to process marks read from a text file. Explain how interfaces, parameters, scope, validation, file handling and debugging can make the program reliable and maintainable. **[8]**
 5. Write Cambridge pseudocode to read every line from Results.txt, count lines containing 'PASS', and output the count. State one debugging check. **[6]**
 
 ### Answer Key / Mark Scheme
@@ -529,16 +529,16 @@ All questions are original Cambridge-style practice, not copied past-paper quest
 
 #### Q4 [8]
 
-- **B1** waterfall has planned sequential stages/documentation
-- **B1** waterfall handles late change poorly
-- **B1** iterative develops/evaluates repeated versions
-- **B1** iterative supports feedback but needs controlled regression
-- **B1** RAD uses rapid prototyping/time-boxing/user involvement
-- **B1** RAD speed may conflict with exhaustive safety assurance
-- **B1** recommendation is justified by traceability, risk and requirements stability
-- **B1** explains that any post-release change requires regression testing against documented safety requirements
+- **B1** a procedure/function header defines the callable name and parameter types
+- **B1** a function interface also states the return type/value expected by the caller
+- **B1** arguments supplied at a call must match the declared parameters
+- **B1** BYREF is used only when the caller's variable must be changed; BYVAL protects the caller value
+- **B1** local scope reduces unintended changes or name conflicts between modules
+- **B1** validation rejects or repeats invalid mark input before processing
+- **B1** the file is opened in the correct mode, processed to EOF and closed
+- **B1** trace output, breakpoints or single-step execution exposes incorrect values/control flow so a module can be corrected and retested
 
-**Guidance:** Do not award a recommendation unless it is justified using safety risk, traceability or requirements stability in the medical context.
+**Guidance:** Do not award a list of terms without explaining how each mechanism affects the stated program.
 
 #### Q5 [6]
 

@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -41,6 +41,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -336,6 +337,64 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Document a design with an E-R diagram</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>An entity-relationship (E-R) diagram documents a database design by showing the entities, their relevant attributes or keys, the relationships between entities and the relationship cardinality. Entity names should describe things about which the system stores multiple facts; attributes belong to the entity they describe.</p>
+            <p>To produce an E-R diagram, extract entity candidates from the scenario, assign identifiers, connect only supported relationships and label cardinality as one-to-one, one-to-many or many-to-many. Resolve a many-to-many relationship with a linking entity when converting the design to relational tables. A diagram must preserve the stated business rules rather than inventing links from similar field names.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Model students joining clubs</h3>
+            <p>Draw Student(StudentID, Name) and Club(ClubID, ClubName). Because each student may join many clubs and each club may contain many students, add Membership(StudentID, ClubID, JoinDate) as a linking entity. The completed design has Student 1:M Membership and Club 1:M Membership.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Document a design with an E-R diagram: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What four kinds of information should an E-R diagram communicate here?</p>
+              <details><summary>Show answer</summary><p>Entities, relevant attributes/keys, relationships and cardinality.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What relationship exists between one Customer and many Orders?</p>
+              <details><summary>Show answer</summary><p>One-to-many from Customer to Order.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why add Membership between Student and Club?</p>
+              <details><summary>Show answer</summary><p>It resolves the many-to-many relationship into two one-to-many relationships.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why is matching field spelling not enough to draw a relationship?</p>
+              <details><summary>Show answer</summary><p>The scenario/business rule must state or imply that the records are associated.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>A clinic stores Patients, Doctors and Appointments. Produce an E-R design in words or a labelled diagram and state the two relationship cardinalities.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> identifies Patient, Doctor and Appointment as entities</li>
+                <li><strong>B1</strong> gives a suitable identifier/key for each entity</li>
+                <li><strong>B1</strong> Patient has a one-to-many relationship with Appointment</li>
+                <li><strong>B1</strong> Doctor has a one-to-many relationship with Appointment</li>
+                <li><strong>B1</strong> Appointment carries the linking foreign keys / resolves the patient-doctor many-to-many history</li>
+                <li><strong>B1</strong> attributes and relationship directions are consistent with the scenario</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -372,7 +431,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

@@ -73,39 +73,45 @@ Misconception: Students often memorise register names without roles. Correction:
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S4.03
-**Focus:** Immediate access store (IAS)
+**Focus:** Von Neumann architecture and CPU components
 
 ### Direct explanation
 
-- The immediate access store is memory directly accessible by the processor for instructions and data currently required. In the stored-program model, instructions and data share this memory and are distinguished by how they are used.
-- IAS is not the same as a CPU register or secondary storage. Registers are smaller locations inside the CPU; secondary storage must supply programs/data to main memory before normal execution.
+- The basic Von Neumann architecture uses one immediate access store for the instructions and data currently required. This is the stored-program concept: program instructions are stored in memory as binary values alongside data, and the processor fetches instructions from memory rather than being physically rewired for each program.
+- The control unit (CU) fetches and decodes instructions and sends control signals. The arithmetic and logic unit (ALU) performs arithmetic and logical operations. Registers provide small, fast temporary storage, buses carry addresses, data and control signals, and the system clock supplies regular timing pulses that synchronise state changes.
+- The immediate access store (IAS) is processor-accessible main memory, not a register, cache or secondary-storage device. A program held on secondary storage must be loaded into IAS before its instructions can be fetched and executed normally.
 
 ### Worked example
 
-**Run a stored program:** Instructions and working data are loaded from SSD into the IAS/main memory. The CPU fetches an instruction from that memory into the MDR/CIR, then executes it using registers and the ALU.
+**Run one stored program:** A program and its input data are copied from SSD into IAS. The PC supplies the address of the next instruction; the instruction is fetched through MDR into CIR, the CU decodes it, and the ALU or another component carries out the operation. The same memory can hold an instruction at one address and data at another because their use is determined by the fetch and instruction semantics.
 
 ### Targeted practice and answers
 
-1. What two kinds of item are held in IAS?
-   **Answer:** Instructions and data currently required.
-2. Is IAS a CPU register?
-   **Answer:** No; it is processor-accessible main memory.
-3. Why must a program on secondary storage be loaded into IAS?
-   **Answer:** The processor fetches executable instructions from directly accessible main memory.
+1. What is the stored-program concept?
+   **Answer:** Program instructions are stored in memory in binary form alongside data and are fetched by the processor for execution.
+2. Why is this a Von Neumann model?
+   **Answer:** The basic model uses the same directly accessible memory for instructions and data.
+3. Distinguish the ALU from the CU.
+   **Answer:** The ALU performs arithmetic and logical operations; the CU decodes instructions and coordinates components using control signals.
+4. What does the system clock do?
+   **Answer:** It supplies regular timing pulses that synchronise processor operations and state changes.
+5. Why is IAS not a CPU register?
+   **Answer:** IAS is processor-accessible main memory for current instructions and data; registers are smaller temporary locations inside the CPU.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Explain the role of the immediate access store in a stored-program computer.
+**Question (6 marks):** Explain how the Von Neumann stored-program concept, IAS, CU, ALU and system clock cooperate when a program runs.
 
-- **B1** stores instructions currently required
-- **B1** stores data currently required
-- **B1** processor can directly access/fetch from it
-- **B1** instructions and data share memory in Von Neumann architecture
+- **B1** instructions and data are stored together in IAS/main memory
+- **B1** program instructions are represented in binary and fetched from memory
+- **B1** CU fetches/decodes and sends control signals
+- **B1** ALU performs arithmetic or logical operations
+- **B1** clock supplies regular timing pulses to synchronise operations
+- **B1** IAS is directly accessible memory rather than a register or secondary storage
 
-**Strict note:** Do not accept 'IAS is cache' or 'IAS is a register'.
+**Strict note:** Do not accept that instructions are permanently built into the CU, that IAS is cache, or that the ALU decodes instructions.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
@@ -115,6 +121,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `alu-cu`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-041-alu-cu.jpg`
 
 1. The control unit decodes what the instruction demands.
@@ -127,6 +134,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `architecture`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-041-architecture.jpg`
 
 1. The control unit interprets the current instruction.
@@ -139,6 +147,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cpu-map`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-041-cpu-map.jpg`
 
 1. The address bus normally carries addresses from the CPU to memory or I/O.
@@ -149,6 +158,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `registers`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-041-registers.jpg`
 
 1. Registers expose small values needed immediately.

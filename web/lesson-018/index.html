@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="../student-visuals.css?v=1" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -39,7 +39,7 @@
         <a href="#practice">Practice</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -345,44 +345,55 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>Packet movement through network topologies</h2>
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Packet transmission between two hosts in each required topology</h2>
           </div>
           <div class="stage2-explanation">
-            <p>In a bus, a transmitted signal travels along the shared backbone and devices inspect it. In a star, each frame travels through the central switch. In a mesh, alternative links can provide several possible routes. A hybrid combines behaviours of its component topologies.</p>
-            <p>Topology justification must connect packet path to the scenario: central failure, cable failure, congestion, expansion and redundancy are consequences of the structure.</p>
+            <p>To describe transmission between two hosts, identify the physical or logical path used. In a bus, the signal travels along the shared backbone and attached devices inspect it. In a star, the source sends a frame to the central switch, which forwards it towards the destination device. In a mesh, packets can be forwarded through one of several alternative routes. In a hybrid, the path follows each component topology, for example source to local switch, across a connecting backbone, then through the destination switch.</p>
+            <p>Topology justification must connect the packet path to the scenario: central-device failure, backbone failure, individual cable failure, congestion, expansion, redundancy and cabling cost are consequences of the structure.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: One star cable fails</h3>
-            <p>Only the device on that cable loses its link; packets between other devices still pass through the central switch. If the switch fails, all attached paths fail.</p>
+            <h3>Worked example: Send a patient record across a hybrid hospital network</h3>
+            <p>The source sends the frame to its ward switch as in a star. The packet crosses the link between ward segments, then the destination switch forwards the local frame to the receiving host. A redundant inter-switch route can keep packets moving after one link fails, but adds cost and management.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Packet transmission between two hosts in each required topology: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Where does a frame pass in a star network?</p>
+              <p><strong>1.</strong> How is a transmission carried between two hosts in a bus topology?</p>
+              <details><summary>Show answer</summary><p>The signal travels along the shared backbone and the attached hosts inspect it.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Where does a frame pass in a star network?</p>
               <details><summary>Show answer</summary><p>Through the central switch.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Why can a mesh continue after one link fails?</p>
-              <details><summary>Show answer</summary><p>Packets may use an alternative link/route.</p></details>
+              <p><strong>3.</strong> Why can a mesh continue after one link fails?</p>
+              <details><summary>Show answer</summary><p>Packets may use an alternative link or route.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> What shared component carries transmissions in a bus?</p>
-              <details><summary>Show answer</summary><p>The backbone cable.</p></details>
+              <p><strong>4.</strong> Describe one possible packet path through a hybrid made from two stars.</p>
+              <details><summary>Show answer</summary><p>Source to its switch, across the link between star segments, then through the destination switch to the receiving host.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Compare how a packet travels in a star topology and a mesh topology, and explain one reliability difference.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Compare how a packet travels between two hosts in a star topology and a mesh topology, then justify one topology for a fault-sensitive system.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
                 <li><strong>B1</strong> star packet/frame passes through a central switch</li>
                 <li><strong>B1</strong> mesh provides multiple interconnected paths / possible routes</li>
                 <li><strong>B1</strong> star switch is a single point of failure</li>
-                <li><strong>B1</strong> mesh can reroute when a link fails</li>
+                <li><strong>B1</strong> mesh can use an alternative route when a link fails</li>
+                <li><strong>B1</strong> choice is justified from the stated fault-sensitivity and a path consequence</li>
               </ol>
             </details>
           </article>
@@ -425,7 +436,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

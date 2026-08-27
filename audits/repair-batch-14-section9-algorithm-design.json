@@ -1,0 +1,22 @@
+{
+  "batch": 14,
+  "authority": "Cambridge International AS & A Level Computer Science 9618 syllabus, 2027-2029, Version 2",
+  "authorityUrl": "https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf",
+  "authoritySha256": "c8a4c6d033c07c6d8025689abed5ef481d581c28bae640986d275303ed6c08bc",
+  "status": "Resolved",
+  "records": [
+    { "id": "B14-S9.01-ABSTRACTION", "requirement": "S9.01", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Keeps abstraction as both a reasoned filtering skill and a production task: the student must retain essential details, justify exclusions and produce an abstract model." },
+    { "id": "B14-S9.02-DECOMPOSITION-MODULES", "requirement": "S9.02", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Connects decomposition to named program modules and introduces the required procedure/action and function/returned-value distinction without replacing later interface teaching." },
+    { "id": "B14-S9.03-ALGORITHM-DEFINITION", "requirement": "S9.03", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Defines an algorithm as a solution to a problem expressed as a sequence of defined steps and rejects vague activity labels as a complete algorithm." },
+    { "id": "B14-S9.04-IDENTIFIERS", "requirement": "S9.04", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Requires meaningful identifier names and a table containing identifier, data type and purpose that matches the designed solution." },
+    { "id": "B14-S9.05-IPO-PSEUDOCODE", "requirement": "S9.05", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Uses input-process-output as a connected design for a complete pseudocode solution, with worked, practice, assessment and visual evidence." },
+    { "id": "B14-S9.06-THREE-CONSTRUCTS", "requirement": "S9.06", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Directly teaches and combines sequence, selection and iteration/repetition, and assesses the behaviour that selects each construct." },
+    { "id": "B14-S9.07-REPRESENTATIONS", "requirement": "S9.07", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Covers structured English, flowcharts and pseudocode plus every required conversion direction while preserving inputs, outputs and control flow." },
+    { "id": "B14-S9.08-STEPWISE-REFINEMENT", "requirement": "S9.08", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Develops a high-level algorithm through repeated refinement until each step is implementable, with clear module inputs and outputs and a preserved parent purpose." },
+    { "id": "B14-S9.09-LOGIC-STATEMENTS", "requirement": "S9.09", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Teaches construction and interpretation of comparison/Boolean logic statements used in decisions, loop conditions and Boolean assignments; tracing is supporting evidence, not substitute teaching." },
+    { "id": "B14-ASSESS-L098-Q5", "requirement": "S9.03", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Replaces a generic completeness-check question with a direct four-mark definition and boundary test for algorithm versus vague processing instruction." },
+    { "id": "B14-ASSESS-AQ100-Q3", "requirement": "S9.03", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Adds an independent quiz form for the official algorithm definition and meaningful identifier choice without changing the ten-mark quiz total, five-lesson mapping or overall assessment counts." },
+    { "id": "B14-VISUAL-L111-REFINEMENT", "requirement": "S9.08", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Replaces the generic scenario-analyser screenshot with a deterministic 1536x1024 explanation of high-level task, repeated refinement, implementable modules and the procedure/function boundary." },
+    { "id": "B14-SECTION9-CHECKPOINT", "requirement": "S9.01-S9.09", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Adds a Section 9 checkpoint that reviews all nine requirements without substituting tracing, Java syntax or generic planning advice for the named core content." }
+  ]
+}

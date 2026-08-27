@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -42,7 +42,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -404,44 +404,56 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>Relational terminology and secondary indexes</h2>
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Relational terminology, keys and indexing</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Entity/table and record/tuple and field/attribute are related pairs, but answers should follow the question's context. A candidate key is any minimal field set that uniquely identifies a record; one candidate becomes the primary key, while another may be a secondary/alternate key.</p>
-            <p>An index is an additional lookup structure mapping key values to record locations. It can speed retrieval and ordering but uses storage and must be updated when data changes.</p>
+            <p>An entity is a real-world thing about which data is stored and is commonly represented by a table. A table contains records (tuples); each record describes one entity occurrence. A field (attribute) is one named property or column. These paired terms are related but should not be collapsed into one definition.</p>
+            <p>A candidate key is a minimal field or field set that uniquely identifies a record. One candidate key is selected as the primary key. A secondary key is a field used as an additional retrieval or ordering route and need not be unique; it is not another name for an unselected candidate key. A foreign key refers to a key in a related table. An index is a lookup structure built on one or more fields: it can speed retrieval but uses storage and must be maintained after changes.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Student identifiers</h3>
-            <p>StudentID and Email may both be candidate keys. StudentID is selected as primary; Email remains an alternate candidate and may be indexed for faster account lookup.</p>
+            <h3>Worked example: Keys for a student table</h3>
+            <p>In Student(StudentID, Email, TutorGroup), StudentID and Email may be candidate keys if both are unique and minimal; StudentID is selected as primary. TutorGroup can be a secondary key for retrieving all students in one group even though many records share the value. An index on TutorGroup can provide a faster lookup route.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Relational terminology, keys and indexing: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What makes a candidate key minimal?</p>
+              <p><strong>1.</strong> Distinguish a record/tuple from a field/attribute.</p>
+              <details><summary>Show answer</summary><p>A record/tuple is one complete row for an entity occurrence; a field/attribute is one named property or column.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What makes a candidate key minimal?</p>
               <details><summary>Show answer</summary><p>No field can be removed while retaining uniqueness.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Is every candidate key the primary key?</p>
-              <details><summary>Show answer</summary><p>No; one is selected as primary.</p></details>
+              <p><strong>3.</strong> Must a secondary key uniquely identify one record?</p>
+              <details><summary>Show answer</summary><p>No. It may retrieve a set of records sharing the same value.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Give one cost of an index.</p>
-              <details><summary>Show answer</summary><p>Extra storage and update/maintenance processing.</p></details>
+              <p><strong>4.</strong> Give one benefit and one cost of an index.</p>
+              <details><summary>Show answer</summary><p>It can speed lookup/ordering, but uses storage and must be updated when data changes.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Explain the difference between a candidate key, primary key and database index.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>For Student(StudentID, Email, TutorGroup), explain the roles of a candidate key, primary key, secondary key and index.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> candidate key is a minimal unique identifier</li>
-                <li><strong>B1</strong> primary key is the selected candidate key</li>
-                <li><strong>B1</strong> index is a separate lookup structure for faster access</li>
-                <li><strong>B1</strong> index has storage/update cost or need not enforce entity identity</li>
+                <li><strong>B1</strong> candidate key is a minimal unique identifier, such as StudentID or unique Email</li>
+                <li><strong>B1</strong> primary key is the candidate selected to identify each record</li>
+                <li><strong>B1</strong> secondary key is an additional retrieval field such as non-unique TutorGroup</li>
+                <li><strong>B1</strong> secondary key need not be unique</li>
+                <li><strong>B1</strong> index maps field values to record locations to speed access</li>
+                <li><strong>B1</strong> index requires storage and update maintenance</li>
               </ol>
             </details>
           </article>
@@ -484,7 +496,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

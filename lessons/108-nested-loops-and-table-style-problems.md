@@ -98,6 +98,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `counting`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-108-counting.jpg`
 
 1. Counting steps
@@ -114,6 +115,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `model`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-108-model.jpg`
 
 1. Choose nested-loop order from the required traversal and grouping, not from which range is wider.
@@ -125,6 +127,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-108-pseudocode.jpg`
 
 1. Use an outer loop for three rows and an inner loop for four columns.
@@ -136,6 +139,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `reset`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-108-reset.jpg`
 
 1. Reset rules
@@ -155,6 +159,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `table`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-108-table.jpg`
 
 1. Table traversal

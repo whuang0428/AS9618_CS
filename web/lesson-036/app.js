@@ -107,9 +107,9 @@ const examQuestions = [
     answer: "Rows: A B NOT B Q. 00 1 0; 01 0 0; 10 1 1; 11 0 0.",
     marking: [
       { mark: "B1", text: "includes all four input combinations for A and B" },
-      { mark: "B1", text: "includes a NOT B intermediate column" },
-      { mark: "B1", text: "NOT B values are 1,0,1,0 for B values 0,1,0,1" },
-      { mark: "B1", text: "final Q values are 0,0,1,0 in matching row order" },
+      { mark: "M1", text: "includes a NOT B intermediate column" },
+      { mark: "A1", text: "NOT B values are 1,0,1,0 for B values 0,1,0,1" },
+      { mark: "A1", text: "final Q values are 0,0,1,0 in matching row order, with follow-through from the intermediate column" },
     ],
     strict: [
       "Do not award the final output mark if row order is unclear and Q values cannot be matched to inputs.",
@@ -124,9 +124,9 @@ const examQuestions = [
     answer: "Using rows 000,001,010,011,100,101,110,111: A OR B values are 0,0,1,1,1,1,1,1 and Q values are 0,0,0,1,0,1,0,1.",
     marking: [
       { mark: "B1", text: "all eight input rows for A, B and C are present" },
-      { mark: "B1", text: "A OR B intermediate column is correct" },
-      { mark: "B1", text: "final Q values are correct for at least four matching rows" },
-      { mark: "B1", text: "all eight final Q values are correct and matched to rows" },
+      { mark: "M1", text: "A OR B intermediate column is present and follows the stated OR operation" },
+      { mark: "A1", text: "final Q values are correct for at least four matching rows, allowing follow-through from the intermediate column" },
+      { mark: "A1", text: "all eight final Q values are correct and matched to rows, allowing follow-through from the intermediate column" },
     ],
     strict: [
       "Do not accept six rows for a three-input table.",
@@ -156,9 +156,9 @@ const examQuestions = [
     prompt: "For Q = (A XOR B) AND NOT C, find Q when A = 0, B = 1 and C = 0. Show working.",
     answer: "A XOR B = 1 because the inputs differ. NOT C = 1. Q = 1 AND 1 = 1.",
     marking: [
-      { mark: "B1", text: "A XOR B = 1" },
+      { mark: "M1", text: "A XOR B = 1" },
       { mark: "B1", text: "NOT C = 1" },
-      { mark: "B1", text: "final Q = 1" },
+      { mark: "A1", text: "final Q = 1, with follow-through from the candidate's intermediate values" },
     ],
     strict: [
       "Do not award XOR answer mark if answer treats XOR as OR without considering exactly-one behaviour.",

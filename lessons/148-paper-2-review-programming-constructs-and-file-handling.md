@@ -99,6 +99,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `construct-tool`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-construct-tool.jpg`
 
 1. Interactive construct tool
@@ -108,6 +109,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `constructs`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-constructs.jpg`
 
 1. Programming constructs
@@ -127,6 +129,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `file-tool`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-file-tool.jpg`
 
 1. File mode chooser
@@ -135,6 +138,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `files`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-files.jpg`
 
 1. File handling review
@@ -154,6 +158,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `iteration`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-iteration.jpg`
 
 1. Iteration review
@@ -171,6 +176,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `selection`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-selection.jpg`
 
 1. Use IF for a condition or range and close it with ENDIF.
@@ -181,6 +187,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `subprograms`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-subprograms.jpg`
 
 1. DisplayMessage is a procedure that outputs its parameter and returns no value.
@@ -192,6 +199,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `validation`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-148-validation.jpg`
 
 1. Validation review

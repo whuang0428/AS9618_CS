@@ -1,0 +1,22 @@
+{
+  "batch": 11,
+  "authority": "Cambridge International AS & A Level Computer Science 9618 syllabus, 2027-2029, Version 2",
+  "authorityUrl": "https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf",
+  "authoritySha256": "c8a4c6d033c07c6d8025689abed5ef481d581c28bae640986d275303ed6c08bc",
+  "status": "Resolved",
+  "records": [
+    { "id": "B11-S6.01-DISTINCTIONS", "requirement": "S6.01", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Directly distinguishes security, privacy and integrity in visible CORE teaching, practice and assessment, including cases where one property holds while another fails." },
+    { "id": "B11-S6.02-DATA-SYSTEM", "requirement": "S6.02", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Explains why both data and the computer system require protection and rejects file encryption as a complete computer-system security control." },
+    { "id": "B11-S6.03-MEASURES", "requirement": "S6.03", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Covers every named Version 2 measure from stand-alone PC to network: user accounts, passwords, digital signatures, biometrics, firewall, anti-virus, anti-spyware and encryption." },
+    { "id": "B11-S6.04-THREATS", "requirement": "S6.04", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Teaches virus, spyware, hackers, phishing and pharming as distinct threat mechanisms and assesses the easily confused pairs directly." },
+    { "id": "B11-S6.05-RISK-RESTRICTION", "requirement": "S6.05", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Matches controls to attack routes and states that controls restrict likelihood or impact rather than guarantee total prevention." },
+    { "id": "B11-S6.06-ENCRYPTION-RIGHTS", "requirement": "S6.06", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Separates encryption from access rights, explains how each protects data and rejects the false claim that access rights detect changes." },
+    { "id": "B11-S6.07-VALIDATION", "requirement": "S6.07", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Covers range, format, length, presence, existence and limit checks plus check digit, including the two-bound range versus one-bound limit distinction." },
+    { "id": "B11-S6.08-VERIFICATION", "requirement": "S6.08", "severity": "P0", "confidence": "High", "status": "Resolved", "resolution": "Separates entry verification from transfer verification and covers visual check, double entry, parity on a byte, block parity and checksum with direct assessment." },
+    { "id": "B11-VIS-L062-CONTROLS", "requirement": "S6.06", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Replaces the control-to-goal infographic so access rights prevent unauthorised actions while hash/checksum comparison, not permissions, detects change." },
+    { "id": "B11-VIS-L065-BIOMETRICS", "requirement": "S6.03", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Replaces the biometric infographic so matching authenticates an identity claim and authorisation remains a separate access-rights decision." },
+    { "id": "B11-VIS-L069-CHECKS", "requirement": "S6.07", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Replaces the validation infographic with all seven required methods and prevents type check from substituting for an official category." },
+    { "id": "B11-VIS-L069-VERIFICATION", "requirement": "S6.08", "severity": "P1", "confidence": "High", "status": "Resolved", "resolution": "Replaces the verification infographic with separate entry and transfer methods, including byte parity, block parity and checksum." },
+    { "id": "B11-WEB-L069-HERO-CONTRAST", "requirement": "S6.07", "severity": "P2", "confidence": "High", "status": "Resolved", "resolution": "Raises the hero-card explanation to white with sufficient selector specificity so the later academic theme cannot restore low-contrast dark text over the blue-green gradient." }
+  ]
+}

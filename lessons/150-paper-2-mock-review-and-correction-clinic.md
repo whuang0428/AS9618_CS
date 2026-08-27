@@ -81,6 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `correction`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-150-correction.jpg`
 
 1. Correction workflow
@@ -97,6 +98,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `marking`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-150-marking.jpg`
 
 1. Mark recovery
@@ -111,6 +113,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `sections`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-150-sections.jpg`
 
 1. Paper 2 section map
@@ -130,6 +133,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `triage`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-150-triage.jpg`
 
 1. Mock triage

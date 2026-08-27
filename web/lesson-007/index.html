@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -38,6 +38,7 @@
         <a href="#practice">Practice</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -359,6 +360,62 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Character sets and internal binary character data</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A character set defines a collection of characters and assigns a numeric character code to each one. The code is stored internally in binary; the bit pattern is meaningful only when software interprets it using the agreed character set.</p>
+            <p>Standard ASCII uses 7-bit codes, extended ASCII uses 8-bit codes, and Unicode provides code points for a much wider range of languages and symbols. Candidates are not expected to memorise particular character codes; a question must provide any code value needed for a conversion.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose a character set for worldwide text</h3>
+            <p>A messaging system containing English, Chinese and Arabic text needs Unicode because its character repertoire is much wider than ASCII or extended ASCII. The chosen Unicode encoding stores the character codes as binary data.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Character sets and internal binary character data: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> What does a character set assign to each character?</p>
+              <details><summary>Show answer</summary><p>A numeric character code that can be stored in binary.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Distinguish standard ASCII from extended ASCII.</p>
+              <details><summary>Show answer</summary><p>Standard ASCII uses 7 bits/128 codes; extended ASCII uses 8 bits/256 codes.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why is Unicode suitable for multilingual text?</p>
+              <details><summary>Show answer</summary><p>It defines codes for characters from far more languages and symbol systems.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Must candidates memorise particular ASCII codes?</p>
+              <details><summary>Show answer</summary><p>No; any required code value should be provided.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Explain how the character 'A' is represented internally and why Unicode is preferred to ASCII for a multilingual website.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> character set assigns A a numeric code</li>
+                <li><strong>B1</strong> numeric code is stored as a binary bit pattern</li>
+                <li><strong>B1</strong> Unicode represents a much wider range of characters/languages</li>
+                <li><strong>B1</strong> applies the wider repertoire to the multilingual website</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -395,7 +452,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

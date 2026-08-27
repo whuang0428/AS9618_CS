@@ -73,39 +73,48 @@ Misconception: Students often propose encryption for every problem. Correction: 
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S6.07, S6.08
 **Focus:** Complete validation and verification methods
 
 ### Direct explanation
 
-- Validation checks whether data is reasonable and follows rules: range, format, length, presence, existence, limit and check digit. It cannot prove truth. Verification checks whether data was copied accurately, using visual checking or double entry.
+- Validation checks whether data is reasonable and follows rules: range, format, length, presence, existence, limit and check digit. It cannot prove truth. A range check applies both a lower and an upper bound, such as 0 to 75. A limit check applies one stated upper or lower limit, such as file size no greater than 10 MiB or temperature at least -20 degrees Celsius.
+- A format check tests a required pattern; a length check tests the number of characters; a presence check rejects a blank required field; an existence check confirms a value is stored in a specified lookup file; and a check digit is calculated from the other digits and compared. Verification checks whether data was copied accurately, using visual checking or double entry.
 - Error detection includes parity: a parity byte checks one group and block parity adds row/column checks; a checksum is calculated from a data block and compared after transmission. These detect many errors but do not correct every error.
 
 ### Worked example
 
-**New product code:** A presence check rejects blank input, length and format checks enforce the pattern, an existence check confirms the code is in the product file, and a check digit detects many keying errors. None proves the label was attached to the correct product.
+**Validate input, then verify a transferred record:** A 10 MiB maximum uses an upper limit check because it has one permitted limit; a mark from 0 to 75 uses a range check because it has both lower and upper bounds. A product code uses presence, length, format, existence and check-digit rules. During entry, visual checking or double entry compares values. During transfer, byte parity detects many single-bit errors, block parity adds row/column evidence and a checksum is recalculated from the received data block.
 
 ### Targeted practice and answers
 
-1. Which check confirms a foreign code is already stored in a lookup file?
+1. Which check enforces a file size of no more than 10 MiB?
+   **Answer:** An upper limit check.
+2. How does a range check differ from a limit check?
+   **Answer:** A range check applies both lower and upper bounds; a limit check applies one stated upper or lower limit.
+3. Which check confirms a foreign code is already stored in a lookup file?
    **Answer:** Existence check.
-2. How does double-entry verification work?
+4. Match each rule to its validation check: AA1234 follows two letters then four digits; a code has exactly six characters; a required name is not blank; a barcode includes a digit calculated from the other digits.
+   **Answer:** Format check; length check; presence check; check digit, respectively.
+5. How does double-entry verification work?
    **Answer:** Data is entered twice and the two entries are compared.
-3. What happens to a checksum at the receiver?
+6. Distinguish byte parity from block parity.
+   **Answer:** Byte parity checks the agreed odd/even parity for one byte; block parity applies parity across rows and columns of a block and can locate many single-bit errors.
+7. What happens to a checksum at the receiver?
    **Answer:** It is recalculated and compared with the transmitted checksum.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** For an eight-digit account number, describe two suitable validation checks and one verification method.
+**Question (5 marks):** Describe one verification method used during data entry and two methods used during data transfer.
 
-- **B1** length check requires eight characters/digits
-- **B1** format/type/check-digit or existence check accurately described
-- **B1** visual check against source or double entry described
-- **B1** distinguishes validation reasonableness from verification accuracy of copying
+- **B1** visual check against source or double entry with comparison
+- **B1** byte parity uses an agreed odd/even parity bit and checks it at the receiver
+- **B1** block parity checks rows and columns / can locate many single-bit errors
+- **B1** checksum is recalculated from received block and compared
+- **B1** methods detect many errors but do not prove truth or automatically correct every error
 
-**Strict note:** Do not accept 'validation proves the account number is correct'.
+**Strict note:** Do not substitute validation checks for verification, merge byte and block parity into one unexplained word, or claim that detection automatically corrects an error.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
@@ -115,25 +124,20 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `checks`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-069-checks.jpg`
 
-1. What it tests
-2. Range check
-3. Value is within allowed limits.
-4. Exam mark must be 0 to 75.
-5. Length check
-6. Number of characters is correct or acceptable.
-7. Student ID must be 8 characters.
-8. Type check
-9. Data uses the expected data type.
-10. Quantity must be an integer.
-11. Format check
-12. Data follows a required pattern.
+1. The seven required validation methods are range, format, length, presence, existence, limit and check digit.
+2. A range check applies both a lower and an upper bound; a limit check applies one stated upper or lower limit.
+3. An existence check confirms that a value is present in a specified stored lookup or file.
+4. A check digit is calculated from the other digits and compared to detect many entry or scanning errors.
+5. Validation checks rules and reasonableness; it does not prove that data is true.
 
 ### Validation and verification are partners, not synonyms
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-069-compare.jpg`
 
 1. Question answered
@@ -151,6 +155,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `core`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-069-core.jpg`
 
 1. Validation Checks input data against rules before it is accepted.
@@ -162,6 +167,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `limits`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-069-limits.jpg`
 
 1. Validation limit A valid value can still be wrong, such as a valid but incorrect postcode.
@@ -173,6 +179,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `validation`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-069-validation.jpg`
 
 1. Before acceptance Invalid input can be rejected or a warning can be shown.
@@ -184,16 +191,20 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `verification`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-069-verification.jpg`
 
-1. Verification checks whether entered or transferred data agrees with a source, second entry or transmitted value.
-2. A match provides evidence of agreement but does not guarantee that the source is true or accurate.
-3. Validation checks whether data satisfies specified rules; it also does not prove real-world truth.
+1. During data entry, visual checking compares entered data with its source and double entry compares two independently entered values.
+2. During transfer, a parity check on a byte tests the agreed odd or even parity; block parity applies parity across rows and columns of a data block.
+3. For a checksum, the sender calculates and transmits a value for the data block; the receiver recalculates and compares it.
+4. These methods detect many errors but do not prove truth or automatically correct every error.
+5. A validation check digit belongs to an identifier; a transfer checksum belongs to a transmitted data block.
 
 ### Which verification method fits?
 
 - **Explains:** `verify-tool`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-069-verify-tool.jpg`
 
 1. Interactive verification selector

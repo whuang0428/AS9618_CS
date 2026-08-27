@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "status": "GateOperationalCourseBlocked",
+  "contract": {
+    "requirements": 121,
+    "reviewedEvidenceMappings": 17,
+    "pendingEvidenceMappings": 104,
+    "complete": 17,
+    "partial": 104,
+    "dimensionCounts": {
+      "mappingReview": 104,
+      "markdownTeaching": 91,
+      "visibleCoreTeaching": 87,
+      "practiceAndMarkScheme": 99,
+      "directAssessment": 13,
+      "visualEvidence": 37,
+      "workedExample": 64,
+      "other": 1
+    }
+  },
+  "sequence": {
+    "nodes": 121,
+    "edges": 82,
+    "directAssessmentEvidence": 186,
+    "blockingProblems": []
+  },
+  "mutationCoverage": {
+    "allRequirementConceptDeletion": 121,
+    "coreToOptional": [
+      "S4.15"
+    ],
+    "directAssessmentMutation": [
+      "AQ050-Q4"
+    ],
+    "prerequisiteOrderMutation": [
+      "S1.01->S1.08"
+    ],
+    "forbiddenSemanticPatterns": 5,
+    "command": "node scripts/test-syllabus-gate-mutations.mjs"
+  },
+  "verifiedInfrastructureRepairs": [
+    "SCI-COV-001",
+    "SCI-COV-002",
+    "SCI-COV-003",
+    "SCI-COV-004",
+    "SCI-SEQ-000"
+  ],
+  "releaseRule": "A passing schema and mutation suite proves that the gate is active; it does not approve course content. Release remains blocked while any requirement is Partial, any evidence mapping is Pending, or any sequence problem remains."
+}

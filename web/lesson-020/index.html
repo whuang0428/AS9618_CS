@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="../student-visuals.css?v=1" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -39,7 +39,7 @@
         <a href="#practice">Practice</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -362,19 +362,26 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>Complete IP address distinctions</h2>
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>IP addressing, URL structure and DNS</h2>
           </div>
           <div class="stage2-explanation">
-            <p>IPv4 uses 32-bit addresses; IPv6 uses 128-bit addresses and provides a much larger address space. A subnet divides a network into logical sections and uses part of the address to identify the network/subnet.</p>
-            <p>A public address is routable on the internet; a private address is used inside a private network and is not directly routed across the public internet. Static addresses remain fixed; dynamic addresses are allocated and may change. An address identifies a network interface at a given time, not a human permanently.</p>
+            <p>IPv4 uses 32-bit addresses; IPv6 uses 128-bit addresses and provides a much larger address space. Subnetting divides a network into logical sections called subnets and uses part of the address to identify the network/subnet.</p>
+            <p>An IP address is associated with a device's network interface on a network and supplies the logical source or destination used for routing. A public address is routable on the internet; a private address is used inside a private network and is not directly routed across the public internet. This reduces direct unsolicited reachability but does not guarantee security. Static addresses remain fixed; dynamic addresses are allocated and may change.</p>
+            <p>A Uniform Resource Locator (URL) identifies the location of a resource on the World Wide Web. Its structure can include a scheme such as https, a domain name, an optional port, a path and optional query/fragment. DNS resolves the domain-name part to an IP address; it does not translate the path or store the web resource. The browser then uses the resolved IP address to send packets towards the server and the path to request the resource.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: School web server and laptops</h3>
-            <p>The externally reachable server may need a stable public address. Laptops can receive dynamic private addresses; this limits direct unsolicited internet reachability but is not, by itself, complete security.</p>
+            <h3>Worked example: Locate one resource on a school web server</h3>
+            <p>For https://portal.school.example:443/results/today, https is the scheme, portal.school.example is the domain name, 443 is the port and /results/today is the path. DNS resolves only the domain name to an IP address. An externally reachable server may use a static public IPv4 or IPv6 address; school laptops may use dynamic private addresses inside a subnet.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>IP addressing, URL structure and DNS: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
@@ -389,17 +396,26 @@
               <p><strong>3.</strong> What is the purpose of subnetting?</p>
               <details><summary>Show answer</summary><p>To divide a network into logical subnetworks and identify which subnet an address belongs to.</p></details>
             </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Identify the scheme, domain and path in https://shop.example.org/items/7.</p>
+              <details><summary>Show answer</summary><p>Scheme: https; domain: shop.example.org; path: /items/7.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Which part of that URL is resolved by DNS?</p>
+              <details><summary>Show answer</summary><p>The domain name shop.example.org; DNS returns its IP address.</p></details>
+            </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Compare public/private and static/dynamic IP addresses, giving one suitable use for a static public address.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Compare IPv4 with IPv6, then explain how a URL and DNS are used to request a web resource.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> public address is routable/visible on the internet; private address is for an internal network</li>
-                <li><strong>B1</strong> static address remains fixed; dynamic address is allocated and may change</li>
-                <li><strong>B1</strong> static public address suitable for an externally accessible server</li>
-                <li><strong>B1</strong> fixed address supports reliable location/DNS mapping</li>
+                <li><strong>B1</strong> IPv4 uses 32-bit addresses</li>
+                <li><strong>B1</strong> IPv6 uses 128-bit addresses / provides a much larger address space</li>
+                <li><strong>B1</strong> URL identifies a WWW resource and includes a domain plus resource path</li>
+                <li><strong>B1</strong> DNS resolves the domain name to an IP address</li>
+                <li><strong>B1</strong> IP address is used to route packets while the path identifies the requested resource</li>
               </ol>
             </details>
           </article>
@@ -442,7 +458,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -40,7 +40,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -113,13 +113,13 @@
 
         <!-- stage10-explanation:start concept -->
         <section class="panel explanation-panel" id="explanation-concept" data-explains="concept" data-explanation-kind="process" aria-labelledby="explanation-concept-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="concept">
-          <h2 class="explanation-sr-only" id="explanation-concept-title">An algorithm is a precise method for solving a problem</h2>
+          <h2 class="explanation-sr-only" id="explanation-concept-title">An algorithm is a solution expressed as defined steps</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-098-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining An algorithm is a precise method for solving a problem with a structured visual model." />
-            <figcaption class="explanation-sr-only">An algorithm is a precise method for solving a problem: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-098-concept.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining An algorithm is a solution expressed as defined steps with a structured visual model." />
+            <figcaption class="explanation-sr-only">An algorithm is a solution expressed as defined steps: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Identify what data is supplied and do not invent missing data.</li><li><strong>Lesson fact:</strong> State the required transformation in clear natural language.</li><li><strong>Lesson fact:</strong> State the exact result that must be displayed, returned or stored.</li><li><strong>Lesson fact:</strong> Record limits, quantity requirements and supported assumptions.</li><li><strong>Lesson fact:</strong> Check that every requirement maps to an input, process, output, constraint or assumption.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> An algorithm is a solution to a problem expressed as a sequence of defined steps.</li><li><strong>Lesson fact:</strong> Each step must be unambiguous, ordered where order matters and capable of being carried out.</li><li><strong>Lesson fact:</strong> Identify what data is supplied, state the required transformation and state the exact result.</li><li><strong>Lesson fact:</strong> Record limits, quantity requirements and supported assumptions.</li><li><strong>Lesson fact:</strong> Check that every requirement maps to an input, process, output, constraint or assumption.</li></ol>
 
           </div>
         </section>
@@ -265,44 +265,53 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>Meaningful identifiers and identifier tables</h2>
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Algorithms, IPO solutions and identifier tables</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Identifiers should describe their data or role, be unambiguous and follow a consistent naming convention. Avoid unexplained single letters except conventional short counters.</p>
-            <p>An identifier table records each identifier's name, data type and purpose; scope and initial value may be added when useful. It is a design artefact, so entries must match the algorithm that follows.</p>
+            <p>An algorithm is a solution to a problem expressed as a sequence of defined steps. Each step must be unambiguous, ordered where order matters and capable of being carried out; a vague instruction such as 'process the data' is not a defined step.</p>
+            <p>Before writing pseudocode, identify the input data, the processing that transforms it and the required output. This input-process-output design must describe a complete solution rather than three unrelated lists.</p>
+            <p>Choose meaningful identifier names that describe each value's role. An identifier table records at least the identifier name, data type and purpose; its entries must match the pseudocode solution.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Ticket calculation</h3>
-            <p>Use TicketCount: INTEGER, number of tickets requested; TicketPrice: REAL, price of one ticket; TotalCost: REAL, TicketCount * TicketPrice; IsMember: BOOLEAN, whether discount applies.</p>
+            <h3>Worked example: Define and plan a ticket algorithm</h3>
+            <p>Problem: input TicketCount and TicketPrice, then output TotalCost. The algorithm is the defined sequence INPUT TicketCount; INPUT TicketPrice; TotalCost &lt;- TicketCount * TicketPrice; OUTPUT TotalCost. The identifier table records TicketCount: INTEGER, number requested; TicketPrice: REAL, price of one ticket; TotalCost: REAL, calculated cost.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Algorithms, IPO solutions and identifier tables: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Improve identifier x for the number of absent students.</p>
-              <details><summary>Show answer</summary><p>AbsentCount or NumberAbsent.</p></details>
+              <p><strong>1.</strong> What is an algorithm?</p>
+              <details><summary>Show answer</summary><p>A solution to a problem expressed as a sequence of defined steps.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What three columns are essential here?</p>
-              <details><summary>Show answer</summary><p>Identifier, data type and purpose/description.</p></details>
+              <p><strong>2.</strong> State the input, process and output for rectangle area.</p>
+              <details><summary>Show answer</summary><p>Inputs Length and Width; process multiply Length by Width; output Area.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Why is Total misleading for several totals?</p>
-              <details><summary>Show answer</summary><p>It does not identify which quantity is totalled.</p></details>
+              <p><strong>3.</strong> Improve identifier x for the number of absent students and state its type.</p>
+              <details><summary>Show answer</summary><p>AbsentCount or NumberAbsent, with type INTEGER.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Construct identifier-table entries for a program storing a student's name, three separate test marks and calculated mean.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Construct an identifier table and an input-process-output pseudocode solution that inputs a student's name and three marks, then outputs the calculated mean.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> meaningful identifier and STRING type for name</li>
-                <li><strong>B1</strong> three clearly distinguished INTEGER/REAL identifiers for the separate marks</li>
-                <li><strong>B1</strong> meaningful REAL identifier for mean</li>
-                <li><strong>B1</strong> purposes clearly distinguish input values from calculated result</li>
+                <li><strong>B1</strong> meaningful STRING identifier and purpose for the student's name</li>
+                <li><strong>B1</strong> three clearly identified numeric mark inputs or a clearly bounded mark collection</li>
+                <li><strong>B1</strong> meaningful REAL identifier and purpose for the mean</li>
+                <li><strong>B1</strong> pseudocode inputs the required values</li>
+                <li><strong>B1</strong> processing calculates the total and mean in a defined sequence</li>
+                <li><strong>B1</strong> outputs the calculated mean and matches the identifier table</li>
               </ol>
             </details>
           </article>
@@ -345,7 +354,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

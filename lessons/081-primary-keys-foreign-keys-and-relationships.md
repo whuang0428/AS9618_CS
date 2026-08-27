@@ -73,15 +73,14 @@ Misconception: Students often choose names as primary keys. Correction: a primar
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S8.02
-**Focus:** Foreign keys and referential integrity
+**Focus:** Relationships, foreign keys and referential integrity
 
 ### Direct explanation
 
 - A foreign key is an attribute in one table that refers to a primary/candidate key in another table. Referential integrity requires every non-null foreign-key value to match an existing referenced key.
-- The rule prevents orphan records. Insert, update and delete operations may be rejected or handled by an explicit cascade/null policy; the DBMS must not silently leave an invalid reference.
+- A one-to-one relationship links one record on each side. A one-to-many relationship links one parent record to many child records. A many-to-many relationship is normally implemented through a linking entity/table that creates two one-to-many relationships. Referential integrity prevents orphan records: insert, update and delete operations may be rejected or handled by a defined cascade/null policy, but must not silently leave an invalid reference.
 
 ### Worked example
 
@@ -93,17 +92,20 @@ Correction prompt: "State the correct term, then explain the relevant process or
    **Answer:** In the parent/referenced table.
 2. What is an orphan record?
    **Answer:** A child record whose foreign key has no matching parent key.
-3. Name one valid delete response.
+3. How is a many-to-many relationship represented relationally?
+   **Answer:** Use a linking table/entity containing foreign keys to both original entities.
+4. Name one valid delete response.
    **Answer:** Reject the delete, cascade it, or set nullable foreign keys to null according to defined rules.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Explain how a foreign key and referential integrity maintain a relationship between two tables.
+**Question (5 marks):** Explain how a one-to-many relationship between Department and Employee is represented and protected.
 
-- **B1** foreign key is stored in the related/child table
-- **B1** references a key in the parent table
-- **B1** each foreign-key value must match an existing referenced value (or valid null)
-- **B1** prevents orphan/inconsistent relationships
+- **B1** one Department record may relate to many Employee records
+- **B1** DepartmentID is the primary/candidate key in Department
+- **B1** DepartmentID is a foreign key in Employee and may repeat
+- **B1** each non-null foreign-key value must match an existing Department key
+- **B1** referential integrity prevents orphan Employee records
 
 **Strict note:** Do not accept that foreign-key values must be unique in the child table.
 <!-- stage2-completion:end -->
@@ -115,6 +117,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `foreign`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-foreign.jpg`
 
 1. A foreign key is a field in one table that references the primary key in another table. It creates a link between related records.
@@ -132,6 +135,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `key-picker`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-key-picker.jpg`
 
 1. Interactive key picker
@@ -142,6 +146,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `primary`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-primary.jpg`
 
 1. A primary key uniquely identifies each row and cannot be null.
@@ -152,6 +157,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `referential`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-referential.jpg`
 
 1. Referential integrity means a foreign key value must match an existing primary key value in the referenced table.
@@ -163,6 +169,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `relationship-tool`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-relationship-tool.jpg`
 
 1. Interactive relationship classifier
@@ -174,6 +181,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `relationships`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-081-relationships.jpg`
 
 1. A relationship describes how records in one table are associated with records in another table.

@@ -75,53 +75,59 @@ Misconception: Students often describe stacks and queues as just arrays. Correct
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S10.09, S10.10
-**Focus:** Linked lists and array-based ADT state
+**Focus:** Abstract data types and array-based operations
 
 ### Direct explanation
 
-- A linked list stores nodes containing data and a pointer/index to the next node; a start pointer identifies the first node and a null value ends the chain. Logical order can differ from physical array order.
-- In an array implementation, parallel Data and Next arrays store nodes and a free-list pointer tracks unused locations. Insert/delete changes links and the free list; items need not be shifted as in a contiguous array.
+- An abstract data type (ADT) is a collection of data and a set of operations on those data. The permitted operations and their effects define the ADT; its internal storage can change without changing that behaviour. Stack, queue and linked list are examples of ADTs.
+- A stack is LIFO: add with push and delete with pop at the top. A queue is FIFO: add with enqueue at the rear and delete with dequeue at the front. A linked list stores data plus a next pointer/index in each node; start identifies the first node and null ends the chain.
+- All three can be implemented using arrays and state variables or indexes. Stack uses an array with a top/stack pointer; queue uses an array with front and rear; linked list uses Data and Next arrays (or an array of node records), start and a free list. Candidates must be able to add, edit and delete data conceptually, but the syllabus does not require pseudocode for these ADT operations.
+- Editing changes the stored data without breaking the access rule or links. Deleting from a linked list reconnects the predecessor to the removed node's successor and returns the freed array slot to the free list; physical array positions need not follow logical list order.
 
 ### Worked example
 
-**Insert after node 2:** Take node 5 from the free list, set Data[5] to the new value, set Next[5] to old Next[2], then set Next[2] to 5. The logical chain now includes node 5 after node 2.
+**Add, edit and delete without changing the ADT rule:** Push D adds D at the stack top and pop deletes the current top. Enqueue D adds at the queue rear and dequeue deletes from the front. In an array-based linked list, edit Data[5] to change only the node value; insert or delete by changing Next indexes, Start and the free list rather than shifting every later array item.
 
 ### Targeted practice and answers
 
-1. What marks the end of a linked list?
-   **Answer:** A null/sentinel next pointer.
-2. What does the start pointer store?
-   **Answer:** The index/address of the first logical node.
-3. Why need a free list in an array implementation?
-   **Answer:** To track unused node positions available for insertion.
+1. Give the official definition of an ADT.
+   **Answer:** A collection of data and a set of operations on those data.
+2. How are stack and queue removal rules different?
+   **Answer:** Stack removes the most recently added item (LIFO); queue removes the earliest added item (FIFO).
+3. Which state is needed for an array-based linked list?
+   **Answer:** Data and Next storage, a Start index and normally a free-list index.
+4. Must candidates write pseudocode for stack, queue and linked-list operations?
+   **Answer:** No. They must be able to add, edit and delete data and describe array implementations, but operation pseudocode is not required by the syllabus.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** An array-based linked list uses Data and Next arrays. Explain how a new node is inserted at the front.
+**Question (6 marks):** For array implementations of a stack, queue and linked list, describe how data is added, edited and deleted while preserving each ADT's rule.
 
-- **B1** obtains an unused index from the free list
-- **B1** stores the new data at that index
-- **B1** sets its Next to the old start index
-- **B1** updates start to the new index / updates free-list head
+- **B1** stack push/pop uses the top position and stack pointer
+- **B1** queue enqueue/dequeue uses rear and front in FIFO order
+- **B1** linked-list add obtains a free index and changes links
+- **B1** edit changes a stored data field without corrupting order or links
+- **B1** linked-list delete bypasses the node and returns its index to the free list
+- **B1** distinguishes conceptual operations from the non-required task of writing their pseudocode
 
-**Strict note:** Do not accept shifting every array element as the defining linked-list insertion method.
+**Strict note:** Do not define an ADT as only an array, require ADT-operation pseudocode, or delete a linked-list node without repairing its links and free-list state.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
-### Why an ADT is defined by behaviour
+### An ADT is data together with permitted operations
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-concept.jpg`
 
-1. The ADT specifies permitted operations and their observable effects.
-2. Client code uses those operations without accessing internal storage directly.
-3. The implementation can change while the behaviour contract remains stable.
+1. An abstract data type is a collection of data and a set of operations on those data.
+2. Stack, queue and linked list are examples whose permitted operations define their behaviour.
+3. The implementation may use arrays and indexes without changing the ADT's observable rules.
 - **Analogy:** A service counter defines allowed requests without exposing the storeroom layout.
 - **Boundary:** Using an array does not automatically make a structure a stack or queue.
 
@@ -129,6 +135,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `errors`
 - **Explanation type:** tradeoff
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-errors.jpg`
 
 1. Underflow occurs when removal is requested from an empty structure.
@@ -137,15 +144,16 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Analogy:** Check whether a shelf is empty or full before moving an item.
 - **Boundary:** Dynamic storage changes the capacity strategy but can still exhaust memory.
 
-### How pointers enforce ADT behaviour
+### Implement stack, queue and linked list using arrays
 
 - **Explains:** `implementation`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-implementation.jpg`
 
-1. A stack pointer identifies the current top or next free slot.
-2. Queue front and rear pointers identify removal and insertion positions.
-3. Each valid operation updates data and pointers in a fixed order.
+1. An array stack uses Top; a queue uses Front and Rear; a linked list uses Data, Next, Start and a free list.
+2. Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.
+3. Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation.
 - **Analogy:** Markers turn a row of storage boxes into a controlled service structure.
 - **Boundary:** Incorrect wrap-around or update order can overwrite live queue data.
 
@@ -153,6 +161,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `operations`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-operations.jpg`
 
 1. Push and pop describe changes at a stack's top.
@@ -165,6 +174,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-pseudocode.jpg`
 
 1. Test the empty or full condition before accessing storage.
@@ -177,6 +187,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `queue`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-queue.jpg`
 
 1. Enqueue adds a new item at the rear.
@@ -189,6 +200,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `stack`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-122-stack.jpg`
 
 1. Push adds the new item at the top position.

@@ -127,11 +127,11 @@ const examQuestions = [
     prompt: "For an activity with capacity 20, create suitable test cases for the reservation rule.",
     answer: "Normal test: reserve when 12 places are taken, expected accepted. Boundary valid test: reserve the 20th place, expected accepted. Boundary invalid test: attempt the 21st reservation, expected rejected or added to waiting list according to the rule. Abnormal test: enter a non-numeric capacity such as 'many', expected rejected with an error message.",
     marking: [
-      { mark: "B1", text: "includes a normal valid test case" },
+      { mark: "M1", text: "selects a normal valid test case" },
       { mark: "A1", text: "normal case has correct expected result" },
-      { mark: "B1", text: "includes valid boundary case at capacity 20" },
+      { mark: "M1", text: "selects the valid boundary case at capacity 20" },
       { mark: "A1", text: "valid boundary case has correct expected result" },
-      { mark: "B1", text: "includes invalid boundary or abnormal case" },
+      { mark: "M1", text: "selects an invalid boundary or abnormal case" },
       { mark: "A1", text: "invalid or abnormal case has correct expected result" },
     ],
     strict: [

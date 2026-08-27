@@ -41,15 +41,44 @@
 
 @media (max-width: 640px) {
   .explanation-panel { padding: 8px; }
-  .explanation-infographic {
-    overflow-x: auto;
-    border-radius: 8px;
-    overscroll-behavior-inline: contain;
-    scrollbar-width: thin;
+  .explanation-panel > .explanation-infographic {
+    display: none;
   }
-  .explanation-infographic img {
-    width: 720px;
-    max-width: none;
+
+  .explanation-panel > .explanation-sr-only {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+  }
+
+  .explanation-panel > h2.explanation-sr-only {
+    margin: 4px 4px 12px !important;
+    color: #10233f;
+    font-size: 1.25rem;
+    line-height: 1.25;
+  }
+
+  .explanation-panel > div.explanation-sr-only ol {
+    display: grid;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .explanation-panel > div.explanation-sr-only li {
+    padding: 12px;
+    border: 1px solid #cbd7e6;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #172033;
+    font-size: 1rem;
+    line-height: 1.5;
   }
 }
 

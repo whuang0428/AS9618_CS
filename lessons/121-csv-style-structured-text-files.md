@@ -99,6 +99,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-concept.jpg`
 
 1. one complete line of data
@@ -114,6 +115,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `format`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-format.jpg`
 
 1. CSV format
@@ -127,6 +129,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `parse`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-parse.jpg`
 
 1. Parse fields
@@ -141,6 +144,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `parser`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-parser.jpg`
 
 1. Interactive CSV parser
@@ -152,6 +156,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-pseudocode.jpg`
 
 1. Pseudocode vs Java
@@ -168,6 +173,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `types`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-types.jpg`
 
 1. CSV fields arrive as text.
@@ -179,6 +185,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `validate`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-validate.jpg`
 
 1. Validation
@@ -197,6 +204,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `validator`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-121-validator.jpg`
 
 1. Interactive validator

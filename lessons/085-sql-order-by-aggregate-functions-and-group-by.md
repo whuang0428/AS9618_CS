@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `aggregates`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-085-aggregates.jpg`
 
 1. COUNT(*) counts all rows in the result, including rows containing null values.
@@ -89,6 +90,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `groupby`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-085-groupby.jpg`
 
 1. Use GROUP BY when the question asks for a summary for each category, each borrower, each course or each group.
@@ -99,6 +101,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `orderby`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-085-orderby.jpg`
 
 1. ORDER BY controls the order of the result rows. ASC means ascending; DESC means descending.

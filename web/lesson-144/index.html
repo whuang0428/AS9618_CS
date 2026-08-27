@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +43,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -159,13 +159,13 @@ for (Booking booking : bookingList) {
 
         <!-- stage10-explanation:start algorithms -->
         <section class="panel explanation-panel" id="explanation-algorithms" data-explains="algorithms" data-explanation-kind="process" aria-labelledby="explanation-algorithms-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="algorithms">
-          <h2 class="explanation-sr-only" id="explanation-algorithms-title">Algorithm designs describe the processing steps</h2>
+          <h2 class="explanation-sr-only" id="explanation-algorithms-title">Structure charts, derived pseudocode and state transitions</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-algorithms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Algorithm designs describe the processing steps with a structured visual model." />
-            <figcaption class="explanation-sr-only">Algorithm designs describe the processing steps: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-144-algorithms.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Structure charts, derived pseudocode and state transitions with a structured visual model." />
+            <figcaption class="explanation-sr-only">Structure charts, derived pseudocode and state transitions: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Traverse each booking and first test whether room and date match.</li><li><strong>Lesson fact:</strong> Only then test whether the booking times overlap.</li><li><strong>Lesson fact:</strong> Close the inner overlap IF before closing the outer room-and-date IF.</li><li><strong>Lesson fact:</strong> Advance to the next booking only after both selections are closed.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A structure chart shows module hierarchy, calling relationships and labelled parameters passed between modules, procedures or functions.</li><li><strong>Lesson fact:</strong> Derive pseudocode by turning each box into a complete subprogram header and each hierarchy connection into a matching call with arguments.</li><li><strong>Lesson fact:</strong> A separate state-transition diagram marks the start state and uses directed, event-labelled transitions between persistent states; it is not a flowchart of processing steps.</li></ol>
 
           </div>
         </section>
@@ -376,43 +376,56 @@ for (Booking booking : bookingList) {
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
+            <p class="eyebrow">Core syllabus content</p>
             <h2>Structure charts and state-transition diagrams</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A structure chart shows module hierarchy and calls. Boxes name modules; connecting lines show calling relationships; labelled arrows show data or control parameters passed between modules. Reading top-down supports derivation of procedure headers and calls.</p>
-            <p>A state-transition diagram models states and event/condition-labelled transitions, with a marked start state. It describes how an event changes system state, not the sequence of every program statement.</p>
+            <p>A structure chart documents decomposition into modules, procedures and functions. Boxes name modules; hierarchy lines show which module calls another; labelled arrows show data or control parameters passed between them. Its purpose is to communicate modular structure and interfaces before coding.</p>
+            <p>To construct a structure chart, place the controlling module at the top, split the problem into one-responsibility subtasks, connect each caller to its called modules, and label every value passed. To derive equivalent pseudocode, turn each box into a complete PROCEDURE or FUNCTION header with corresponding parameters, add calls in the parent body with matching arguments, and preserve the shown hierarchy.</p>
+            <p>A state-transition diagram documents how an algorithm or system changes between persistent states. Mark the start state; draw each state once; label directed transitions with the triggering event and any condition/action. It is not a flowchart of every processing statement.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Door controller</h3>
-            <p>States are Locked and Unlocked. Start at Locked; validCard / unlock moves to Unlocked; timeout / lock returns to Locked. A structure chart could show ControlDoor calling ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid).</p>
+            <h3>Worked example: Door controller: two design views</h3>
+            <p>A structure chart places ControlDoor above ReadCard(CardID), ValidateCard(CardID, IsValid) and SetLock(IsValid). Equivalent pseudocode declares those interfaces and calls them from ControlDoor with matching arguments. Separately, a state-transition diagram starts at Locked; validCard / unlock leads to Unlocked; timeout / lock returns to Locked.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Structure charts and state-transition diagrams: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
               <p><strong>1.</strong> What does a box represent in a structure chart?</p>
-              <details><summary>Show answer</summary><p>A module/procedure/function.</p></details>
+              <details><summary>Show answer</summary><p>A module, procedure or function.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What labels a state transition?</p>
-              <details><summary>Show answer</summary><p>The event and, where needed, a condition/action.</p></details>
+              <p><strong>2.</strong> How are parameters represented and then derived into pseudocode?</p>
+              <details><summary>Show answer</summary><p>Labelled arrows show values passed; the same values appear as parameters in the called header and arguments in the caller's call.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> How can a structure chart guide pseudocode?</p>
-              <details><summary>Show answer</summary><p>Each module becomes a subprogram with shown parameters and calls.</p></details>
+              <p><strong>3.</strong> What labels a state transition?</p>
+              <details><summary>Show answer</summary><p>The triggering event and, where needed, a condition or action.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Why is a state-transition diagram not a flowchart?</p>
+              <details><summary>Show answer</summary><p>It records persistent states and event-labelled changes, not every processing step in sequence.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A system starts LoggedOut. A valid login moves it to LoggedIn; logout returns it to LoggedOut; three invalid attempts move it to Locked. Describe the state-transition diagram.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>For a login system, construct a structure chart in which Main calls ReadCredentials(UserID, Password) and CheckLogin(UserID, Password, IsValid), then derive equivalent subprogram headers and calls. Also construct a state-transition diagram with start state LoggedOut, valid login to LoggedIn, logout back to LoggedOut and three invalid attempts to Locked.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> states LoggedOut, LoggedIn and Locked</li>
-                <li><strong>B1</strong> start state points to LoggedOut</li>
-                <li><strong>B1</strong> valid login transition to LoggedIn and logout transition back</li>
+                <li><strong>B1</strong> structure chart places Main above the two called modules</li>
+                <li><strong>B1</strong> parameter arrows label UserID, Password and IsValid coherently</li>
+                <li><strong>M1</strong> derived pseudocode contains matching complete headers and calls with arguments</li>
+                <li><strong>B1</strong> state diagram contains LoggedOut, LoggedIn and Locked with a start arrow</li>
+                <li><strong>B1</strong> valid login and logout transitions are directed correctly</li>
                 <li><strong>B1</strong> three invalid attempts transition from LoggedOut to Locked</li>
               </ol>
             </details>
@@ -449,7 +462,7 @@ for (Booking booking : bookingList) {
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

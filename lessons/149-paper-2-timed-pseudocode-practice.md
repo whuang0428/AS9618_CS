@@ -81,6 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `constructs`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-149-constructs.jpg`
 
 1. Choose a loop from when its stopping condition must be tested, not merely from whether the item count is unknown.
@@ -91,6 +92,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `method`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-149-method.jpg`
 
 1. Timed method
@@ -106,6 +108,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `quality`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-149-quality.jpg`
 
 1. Quality checklist
@@ -120,6 +123,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `skeleton-tool`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-149-skeleton-tool.jpg`
 
 1. Skeleton builder
@@ -128,6 +132,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `timer-tool`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-149-timer-tool.jpg`
 
 1. Interactive timing tool
@@ -137,6 +142,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `timing`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-149-timing.jpg`
 
 1. Use one declared mark-to-time rate consistently across timed pseudocode practice.

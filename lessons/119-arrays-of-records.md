@@ -81,6 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `access`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-access.jpg`
 
 1. Access pattern
@@ -99,6 +100,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-concept.jpg`
 
 1. Students[5] selects the complete record at array position 5.
@@ -109,6 +111,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `declare`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-declare.jpg`
 
 1. TYPE TStudent
@@ -123,6 +126,7 @@ This declaration follows ENDTYPE.
 
 - **Explains:** `explorer`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-explorer.jpg`
 
 1. Interactive record explorer
@@ -133,6 +137,7 @@ This declaration follows ENDTYPE.
 
 - **Explains:** `operations`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-operations.jpg`
 
 1. Search, count and update are alternative record operations, not mandatory consecutive stages.
@@ -144,6 +149,7 @@ This declaration follows ENDTYPE.
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-pseudocode.jpg`
 
 1. Pseudocode vs Java
@@ -162,6 +168,7 @@ This declaration follows ENDTYPE.
 
 - **Explains:** `traversal`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-119-traversal.jpg`
 
 1. Use Index to select each Students record in turn.

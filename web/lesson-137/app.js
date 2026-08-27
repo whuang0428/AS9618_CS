@@ -4,11 +4,11 @@ const scenarios = {
     unit: "mark",
     tests: [
       ["50", "Normal", "typical valid mark", "Accepted"],
-      ["0", "Boundary", "lowest valid mark", "Accepted"],
-      ["100", "Boundary", "highest valid mark", "Accepted"],
-      ["-1", "Erroneous", "just below valid range", "Rejected"],
-      ["101", "Erroneous", "just above valid range", "Rejected"],
-      ['"cat"', "Erroneous", "wrong data type for an integer mark", "Rejected or handled"],
+      ["0", "Extreme/boundary", "lowest valid mark", "Accepted"],
+      ["100", "Extreme/boundary", "highest valid mark", "Accepted"],
+      ["-1", "Abnormal", "just below valid range", "Rejected"],
+      ["101", "Abnormal", "just above valid range", "Rejected"],
+      ['"cat"', "Abnormal", "wrong data type for an integer mark", "Rejected or handled"],
     ],
   },
   password: {
@@ -16,11 +16,11 @@ const scenarios = {
     unit: "characters",
     tests: [
       ["12", "Normal", "typical valid length", "Accepted"],
-      ["8", "Boundary", "minimum valid length", "Accepted"],
-      ["20", "Boundary", "maximum valid length", "Accepted"],
-      ["7", "Erroneous", "too short", "Rejected"],
-      ["21", "Erroneous", "too long", "Rejected"],
-      ["blank password", "Erroneous", "missing required data", "Rejected"],
+      ["8", "Extreme/boundary", "minimum valid length", "Accepted"],
+      ["20", "Extreme/boundary", "maximum valid length", "Accepted"],
+      ["7", "Abnormal", "too short", "Rejected"],
+      ["21", "Abnormal", "too long", "Rejected"],
+      ["blank password", "Abnormal", "missing required data", "Rejected"],
     ],
   },
   age: {
@@ -28,11 +28,11 @@ const scenarios = {
     unit: "years",
     tests: [
       ["15", "Normal", "typical valid age", "Accepted"],
-      ["11", "Boundary", "lowest valid age", "Accepted"],
-      ["18", "Boundary", "highest valid age", "Accepted"],
-      ["10", "Erroneous", "below minimum age", "Rejected"],
-      ["19", "Erroneous", "above maximum age", "Rejected"],
-      ['"sixteen"', "Erroneous", "wrong data type for an integer age", "Rejected or handled"],
+      ["11", "Extreme/boundary", "lowest valid age", "Accepted"],
+      ["18", "Extreme/boundary", "highest valid age", "Accepted"],
+      ["10", "Abnormal", "below minimum age", "Rejected"],
+      ["19", "Abnormal", "above maximum age", "Rejected"],
+      ['"sixteen"', "Abnormal", "wrong data type for an integer age", "Rejected or handled"],
     ],
   },
 };
@@ -43,15 +43,15 @@ const examples = {
     problem: "A mark must be an integer from 0 to 100 inclusive. Classify 50, 0, 100, -1 and \"cat\".",
     table: [
       ["50", "Normal", "valid and typical"],
-      ["0", "Boundary", "lowest valid value"],
-      ["100", "Boundary", "highest valid value"],
-      ["-1", "Erroneous", "outside the valid range"],
-      ['"cat"', "Erroneous", "wrong data type"],
+      ["0", "Extreme/boundary", "lowest valid value"],
+      ["100", "Extreme/boundary", "highest valid value"],
+      ["-1", "Abnormal", "outside the valid range"],
+      ['"cat"', "Abnormal", "wrong data type"],
     ],
     points: [
       "Normal data is valid and ordinary.",
-      "Boundary data sits at the accepted edge.",
-      "Erroneous data should be rejected or handled.",
+      "Extreme/boundary data uses a valid value at an accepted limit.",
+      "Abnormal data should be rejected or handled.",
     ],
   },
   design: {
@@ -59,10 +59,10 @@ const examples = {
     problem: "Design tests for password length from 8 to 20 characters inclusive.",
     table: [
       ["12 characters", "Normal", "typical valid length", "Accepted"],
-      ["8 characters", "Boundary", "minimum valid length", "Accepted"],
-      ["20 characters", "Boundary", "maximum valid length", "Accepted"],
-      ["7 characters", "Erroneous", "too short", "Rejected"],
-      ["21 characters", "Erroneous", "too long", "Rejected"],
+      ["8 characters", "Extreme/boundary", "minimum valid length", "Accepted"],
+      ["20 characters", "Extreme/boundary", "maximum valid length", "Accepted"],
+      ["7 characters", "Abnormal", "too short", "Rejected"],
+      ["21 characters", "Abnormal", "too long", "Rejected"],
     ],
     points: [
       "Include expected results; otherwise the test table is incomplete.",
@@ -71,17 +71,17 @@ const examples = {
     ],
   },
   explain: {
-    title: "Example 3: Explain why boundary data is useful",
+    title: "Example 3: Explain why extreme/boundary data is useful",
     problem: "A condition is written as IF Mark > 0 AND Mark < 100. The intended valid range is 0 to 100 inclusive. Which tests expose the fault?",
     table: [
-      ["0", "Boundary", "should be accepted, but this code rejects it"],
-      ["100", "Boundary", "should be accepted, but this code rejects it"],
+      ["0", "Extreme/boundary", "should be accepted, but this code rejects it"],
+      ["100", "Extreme/boundary", "should be accepted, but this code rejects it"],
       ["50", "Normal", "accepted, so it does not reveal this edge error"],
-      ["-1", "Erroneous", "correctly rejected"],
-      ["101", "Erroneous", "correctly rejected"],
+      ["-1", "Abnormal", "correctly rejected"],
+      ["101", "Abnormal", "correctly rejected"],
     ],
     points: [
-      "Boundary tests reveal incorrect inclusive/exclusive comparisons.",
+      "Extreme/boundary tests reveal incorrect inclusive/exclusive comparisons.",
       "Normal data can pass even when edge values fail.",
       "Expected results make the fault visible.",
     ],
@@ -90,25 +90,25 @@ const examples = {
 
 const practice = [
   { id: "p1", prompt: "What is the term for valid, typical data inside the allowed range?", accepted: ["normal", "normal data"], answer: "Normal data." },
-  { id: "p2", prompt: "What is the term for data at the edge of a valid range?", accepted: ["boundary", "boundary data"], answer: "Boundary data." },
-  { id: "p3", prompt: "What is the term for invalid data that should be rejected?", accepted: ["erroneous", "erroneous data", "invalid data"], answer: "Erroneous data." },
+  { id: "p2", prompt: "What is the official term for valid data at an accepted limit?", accepted: ["extreme", "extreme data", "boundary", "boundary data", "extreme boundary", "extreme boundary data"], answer: "Extreme/boundary data." },
+  { id: "p3", prompt: "What is the official syllabus term for invalid data that should be rejected?", accepted: ["abnormal", "abnormal data", "erroneous", "erroneous data", "invalid data"], answer: "Abnormal data. 'Erroneous' may describe an error generally, but abnormal is the official syllabus category." },
   { id: "p4", prompt: "For a mark range 0 to 100 inclusive, classify 50.", accepted: ["normal", "normal data"], answer: "50 is normal data because it is valid and typical." },
-  { id: "p5", prompt: "For a mark range 0 to 100 inclusive, classify 0.", accepted: ["boundary", "boundary data"], answer: "0 is boundary data because it is the lowest valid value." },
-  { id: "p6", prompt: "For a mark range 0 to 100 inclusive, classify 100.", accepted: ["boundary", "boundary data"], answer: "100 is boundary data because it is the highest valid value." },
+  { id: "p5", prompt: "For a mark range 0 to 100 inclusive, classify 0.", accepted: ["extreme", "extreme data", "boundary", "boundary data", "extreme boundary", "extreme boundary data"], answer: "0 is extreme/boundary data because it is the lowest valid value." },
+  { id: "p6", prompt: "For a mark range 0 to 100 inclusive, classify 100.", accepted: ["extreme", "extreme data", "boundary", "boundary data", "extreme boundary", "extreme boundary data"], answer: "100 is extreme/boundary data because it is the highest valid value." },
   { id: "p7", prompt: "For a mark range 0 to 100 inclusive, what expected result should -1 have?", accepted: ["rejected", "reject", "not accepted", "invalid"], answer: "-1 should be rejected because it is below the valid range." },
-  { id: "p8", prompt: "For a mark range 0 to 100 inclusive, classify 101.", accepted: ["erroneous", "erroneous data", "invalid", "rejected"], answer: "101 is erroneous data and should be rejected." },
-  { id: "p9", prompt: "A mark must be an integer. Classify \"abc\".", accepted: ["erroneous", "erroneous data", "invalid", "wrong type"], answer: "\"abc\" is erroneous data because it is the wrong data type." },
+  { id: "p8", prompt: "For a mark range 0 to 100 inclusive, classify 101.", accepted: ["abnormal", "abnormal data", "erroneous", "erroneous data", "invalid", "rejected"], answer: "101 is abnormal data and should be rejected." },
+  { id: "p9", prompt: "A mark must be an integer. Classify \"abc\".", accepted: ["abnormal", "abnormal data", "erroneous", "erroneous data", "invalid", "wrong type"], answer: "\"abc\" is abnormal data because it is the wrong data type." },
   { id: "p10", prompt: "Why should a test table include expected results?", accepted: ["compare", "actual", "detect", "fault", "correct"], answer: "Expected results let the tester compare actual output with intended output and detect faults." },
 ];
 
 const mistakes = [
   {
     wrong: "A test table for marks 0 to 100 uses only 40, 50 and 60.",
-    fix: "Those are normal values only. Add boundaries 0 and 100, plus erroneous values such as -1, 101 and a wrong-type input.",
+    fix: "Those are normal values only. Add extreme/boundary values 0 and 100, plus abnormal values such as -1, 101 and a wrong-type input.",
   },
   {
     wrong: "A student calls 101 boundary data for the inclusive range 0 to 100.",
-    fix: "101 is just outside the upper boundary and is erroneous for this rule. The upper valid boundary is 100.",
+    fix: "101 is just outside the upper boundary and is abnormal for this rule. The upper valid extreme/boundary value is 100.",
   },
   {
     wrong: "The table lists inputs but leaves expected result blank.",
@@ -124,15 +124,15 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "6 marks",
-    prompt: "A mark must be an integer from 0 to 100 inclusive. Define normal, boundary and erroneous test data and give one suitable example of each.",
-    answer: "Normal data is valid, typical data, for example 50. Boundary data is data at the edge of the valid range, for example 0 or 100. Erroneous data is invalid data that should be rejected, for example -1, 101 or \"cat\".",
+    prompt: "A mark must be an integer from 0 to 100 inclusive. Define normal, abnormal and extreme/boundary test data and give one suitable example of each.",
+    answer: "Normal data is valid and typical, for example 50. Abnormal data is invalid and should be rejected, for example -1, 101 or \"cat\". Extreme/boundary data is valid data at the lower or upper limit, for example 0 or 100.",
     marking: [
       { mark: "B1", text: "defines normal data as valid and typical" },
       { mark: "B1", text: "gives a suitable normal example such as 50" },
-      { mark: "B1", text: "defines boundary data as at the edge of the valid range" },
-      { mark: "B1", text: "gives a suitable boundary example such as 0 or 100" },
-      { mark: "B1", text: "defines erroneous data as invalid data that should be rejected" },
-      { mark: "B1", text: "gives a suitable erroneous example such as -1, 101 or wrong type data" },
+      { mark: "B1", text: "defines abnormal data as invalid data that should be rejected" },
+      { mark: "B1", text: "gives a suitable abnormal example such as -1, 101 or wrong-type data" },
+      { mark: "B1", text: "defines extreme/boundary data as valid data at an accepted limit" },
+      { mark: "B1", text: "gives a suitable extreme/boundary example such as 0 or 100" },
     ],
     strict: [
       "Do not award boundary example mark for 50.",
@@ -143,15 +143,15 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "7 marks",
-    prompt: "Produce a test table for a mark validation check where valid marks are integers from 0 to 100 inclusive. Include normal, boundary and erroneous data.",
-    answer: "A suitable table includes 50 normal accepted, 0 boundary accepted, 100 boundary accepted, -1 erroneous rejected, 101 erroneous rejected, and \"abc\" erroneous rejected or handled.",
+    prompt: "Produce a test table for a mark validation check where valid marks are integers from 0 to 100 inclusive. Include normal, abnormal and extreme/boundary data.",
+    answer: "A suitable table includes 50 normal accepted, 0 and 100 extreme/boundary accepted, and -1, 101 and \"abc\" abnormal rejected or handled.",
     marking: [
       { mark: "M1", text: "provides a clear test table or structured list" },
       { mark: "B1", text: "includes at least one normal valid value" },
-      { mark: "B1", text: "includes lower boundary 0" },
-      { mark: "B1", text: "includes upper boundary 100" },
-      { mark: "B1", text: "includes at least one out-of-range erroneous value" },
-      { mark: "B1", text: "includes a wrong-type or otherwise invalid erroneous value" },
+      { mark: "B1", text: "includes lower extreme/boundary value 0" },
+      { mark: "B1", text: "includes upper extreme/boundary value 100" },
+      { mark: "B1", text: "includes at least one out-of-range abnormal value" },
+      { mark: "B1", text: "includes a wrong-type or otherwise invalid abnormal value" },
       { mark: "A1", text: "states expected results accurately for the tests" },
     ],
     strict: [
@@ -204,9 +204,9 @@ const examQuestions = [
     answer: "The set only uses normal valid data and does not test the boundaries or invalid data. Improve it by adding 0 and 100 as boundary values, -1 and 101 as just outside the range, and a wrong-type value such as \"abc\" if input type validation is required.",
     marking: [
       { mark: "B1", text: "identifies missing boundary data" },
-      { mark: "B1", text: "identifies missing erroneous/invalid data" },
+      { mark: "B1", text: "identifies missing abnormal/invalid data" },
       { mark: "B1", text: "adds valid boundary examples 0 and/or 100" },
-      { mark: "B1", text: "adds erroneous out-of-range examples such as -1 and/or 101" },
+      { mark: "B1", text: "adds abnormal out-of-range examples such as -1 and/or 101" },
     ],
     strict: [
       "Do not award improvement marks for adding more normal values only.",
@@ -247,8 +247,8 @@ function setupHook() {
   const messages = {
     50: { text: "50 is valid and typical, so it is normal data, not boundary data.", correct: false },
     0: { text: "Correct. 0 is the lower valid boundary for an inclusive 0 to 100 range.", correct: true },
-    101: { text: "101 is just outside the range, so it is erroneous for this rule.", correct: false },
-    cat: { text: "\"cat\" is wrong-type erroneous data when an integer mark is required.", correct: false },
+    101: { text: "101 is just outside the range, so it is abnormal for this rule.", correct: false },
+    cat: { text: "\"cat\" is wrong-type abnormal data when an integer mark is required.", correct: false },
   };
 
   document.querySelectorAll("[data-hook]").forEach((button) => {
@@ -266,14 +266,14 @@ function classifyValue(rawValue) {
   const trimmed = rawValue.trim();
   if (trimmed === "") {
     return {
-      type: "Erroneous",
+      type: "Abnormal",
       expected: "Rejected",
       reason: "blank input is missing required integer data",
     };
   }
   if (!/^-?\d+$/.test(trimmed)) {
     return {
-      type: "Erroneous",
+      type: "Abnormal",
       expected: "Rejected or handled",
       reason: "the value is not an integer",
     };
@@ -281,18 +281,18 @@ function classifyValue(rawValue) {
 
   const value = Number.parseInt(trimmed, 10);
   if (value === 0) {
-    return { type: "Boundary", expected: "Accepted", reason: "0 is the lower valid boundary" };
+    return { type: "Extreme/boundary", expected: "Accepted", reason: "0 is the lower valid boundary" };
   }
   if (value === 100) {
-    return { type: "Boundary", expected: "Accepted", reason: "100 is the upper valid boundary" };
+    return { type: "Extreme/boundary", expected: "Accepted", reason: "100 is the upper valid boundary" };
   }
   if (value > 0 && value < 100) {
     return { type: "Normal", expected: "Accepted", reason: `${value} is inside the valid range` };
   }
   if (value === -1 || value === 101) {
-    return { type: "Erroneous", expected: "Rejected", reason: `${value} is just outside the boundary` };
+    return { type: "Abnormal", expected: "Rejected", reason: `${value} is just outside the boundary` };
   }
-  return { type: "Erroneous", expected: "Rejected", reason: `${value} is outside the valid range` };
+  return { type: "Abnormal", expected: "Rejected", reason: `${value} is outside the valid range` };
 }
 
 function setupClassifier() {

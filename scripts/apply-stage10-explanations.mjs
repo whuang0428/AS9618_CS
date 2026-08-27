@@ -3,7 +3,7 @@ import path from "node:path";
 import { explanations } from "./stage10-explanations-data.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
-const stylesheet = '    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />';
+const stylesheet = '    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />';
 const htmlBlock = /\n?\s*<!-- stage10-explanation:start [^ ]+ -->[\s\S]*?<!-- stage10-explanation:end [^ ]+ -->\n?/g;
 const markdownBlock = /\n?<!-- stage10-explanations:start -->[\s\S]*?<!-- stage10-explanations:end -->\n?/g;
 
@@ -59,7 +59,7 @@ function htmlFor(item) {
   const stepLabels = ["Mechanism", "Reason", "Result"];
   const transcriptItems = item.transcript ?? item.steps;
   const transcript = transcriptItems.map((step, index) => {
-    const label = item.sourceGrounded ? "Lesson fact" : stepLabels[index];
+    const label = item.sourceGrounded ? "Lesson fact" : (stepLabels[index] ?? "Additional fact");
     return `<li><strong>${label}:</strong> ${escapeHtml(step)}</li>`;
   }).join("");
   const supportingTranscript = item.sourceGrounded ? "" : `
@@ -68,7 +68,7 @@ function htmlFor(item) {
   return `
 
         <!-- stage10-explanation:start ${item.targetId} -->
-        <section class="panel explanation-panel" id="${id}" data-explains="${item.targetId}" data-explanation-kind="${item.kind}" aria-labelledby="${id}-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="${item.targetId}">
+        <section class="panel explanation-panel" id="${id}" data-explains="${item.targetId}" data-explanation-kind="${item.kind}" aria-labelledby="${id}-title" data-delivery-role="${item.deliveryRole ?? "CORE"}" data-classroom-activity="${item.classroomActivity ?? "TEACH"}" data-delivery-group="${item.targetId}">
           <h2 class="explanation-sr-only" id="${id}-title">${escapeHtml(item.title)}</h2>
           <figure class="explanation-infographic">
             <img src="${escapeHtml(item.visual.src)}" width="${item.visual.width}" height="${item.visual.height}" loading="lazy" decoding="async" alt="${escapeHtml(item.visual.alt)}" />
@@ -87,7 +87,7 @@ function markdownFor(items) {
     const transcriptItems = item.transcript ?? item.steps;
     const steps = transcriptItems.map((step, index) => `${index + 1}. ${step}`).join("\n");
     const supportingNotes = item.sourceGrounded ? "" : `\n- **Analogy:** ${item.analogy}\n- **Boundary:** ${item.boundary}`;
-    return `### ${item.title}\n\n- **Explains:** \`${item.targetId}\`\n- **Explanation type:** ${item.kind}\n- **Infographic:** \`${item.visual.src}\`\n\n${steps}${supportingNotes}`;
+    return `### ${item.title}\n\n- **Explains:** \`${item.targetId}\`\n- **Explanation type:** ${item.kind}\n- **Delivery:** ${item.deliveryRole ?? "CORE"} / ${item.classroomActivity ?? "TEACH"}\n- **Infographic:** \`${item.visual.src}\`\n\n${steps}${supportingNotes}`;
   }).join("\n\n");
   return `
 

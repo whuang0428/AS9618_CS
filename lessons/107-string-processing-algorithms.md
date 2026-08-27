@@ -99,6 +99,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `build`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-build.jpg`
 
 1. Building output
@@ -117,6 +118,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `model`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-model.jpg`
 
 1. Knowledge explanation
@@ -134,6 +136,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `patterns`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-patterns.jpg`
 
 1. Core patterns
@@ -153,6 +156,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-pseudocode.jpg`
 
 1. Visit each character position in Word and normalise the current character with UCASE.
@@ -164,6 +168,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `scanner`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-107-scanner.jpg`
 
 1. Interactive string scanner

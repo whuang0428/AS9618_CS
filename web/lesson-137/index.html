@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AS9618 Lesson 137 | Testing with normal, boundary, and erroneous data</title>
+    <title>AS9618 Lesson 137 | Testing with normal, abnormal, and extreme/boundary data</title>
     <link rel="icon" href="data:" />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="topbar">
       <div>
-        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 11</p>
-        <h1>Testing with normal, boundary, and erroneous data</h1>
+        <p class="eyebrow">Cambridge AS9618 Computer Science | Paper 2 Section 12.3</p>
+        <h1>Testing with normal, abnormal, and extreme/boundary data</h1>
       </div>
       <div class="action-panel" aria-label="Page controls">
         <a class="course-home-link" href="../">Course home</a>
@@ -32,7 +32,7 @@
         <a href="#purpose">Why testing</a>
         <a href="#normal">Normal data</a>
         <a href="#boundary">Boundary data</a>
-        <a href="#erroneous">Erroneous data</a>
+        <a href="#erroneous">Abnormal data</a>
         <a href="#table">Test table</a>
         <a href="#validation">Validation</a>
         <a href="#java">Java support</a>
@@ -49,15 +49,15 @@
       <div class="lesson-content">
         <section class="hero" id="overview" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="overview">
           <div class="hero-copy">
-            <p class="lesson-meta">Lesson 137 | 45 minutes | Paper 2 Section 11 | informal questioning</p>
+            <p class="lesson-meta">Lesson 137 | 45 minutes | Paper 2 Section 12.3 | informal questioning</p>
             <h2>Testing is not “try three lucky numbers and hope the program behaves”.</h2>
             <p>
               A good test set checks typical valid data, edge values, and invalid data. Cambridge questions often ask for
-              <strong>normal</strong>, <strong>boundary</strong> and <strong>erroneous</strong> test data, plus the expected result.
-              Chinese support: normal 正常数据, boundary 边界数据, erroneous 错误数据, expected result 预期结果。
+              <strong>normal</strong>, <strong>abnormal</strong> and <strong>extreme/boundary</strong> test data, plus the expected result.
+              Chinese support: normal 正常数据, abnormal 异常数据, extreme/boundary 极限/边界数据, expected result 预期结果。
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
-              <div><strong>Classify</strong><span>test data as normal, boundary or erroneous</span></div>
+              <div><strong>Classify</strong><span>test data as normal, abnormal or extreme/boundary</span></div>
               <div><strong>Design</strong><span>a test table with data, reason and expected result</span></div>
               <div><strong>Explain</strong><span>why edge cases reveal faults that normal data can miss</span></div>
             </div>
@@ -66,7 +66,7 @@
             <div><strong>0</strong><span>lower boundary</span><em>valid if range includes 0</em></div>
             <div><strong>50</strong><span>normal</span><em>typical valid mark</em></div>
             <div><strong>100</strong><span>upper boundary</span><em>valid if range includes 100</em></div>
-            <div><strong>-1 / 101 / "cat"</strong><span>erroneous</span><em>should be rejected</em></div>
+            <div><strong>-1 / 101 / "cat"</strong><span>abnormal</span><em>invalid and should be rejected</em></div>
           </div>
         </section>
 
@@ -116,8 +116,8 @@ ENDIF</code></pre>
             </article>
             <article>
               <h3>Testing question</h3>
-              <p>Which values prove that the rule accepts valid marks and rejects invalid marks?</p>
-              <div class="callout">Normal data checks ordinary use. Boundary data checks the edges. Erroneous data checks rejection.</div>
+              <p>Which values provide evidence that the rule accepts valid marks and rejects invalid marks for the selected cases?</p>
+              <div class="callout">Normal data checks typical valid use. Extreme/boundary data checks accepted limits. Abnormal data checks rejection of invalid input.</div>
             </article>
           </div>
         </section>
@@ -134,7 +134,7 @@ ENDIF</code></pre>
     OUTPUT &quot;Valid&quot;
 ELSE
     OUTPUT &quot;Invalid&quot;
-ENDIF</li><li><strong>Lesson fact:</strong> Normal, boundary and erroneous test data provide evidence for the selected cases.</li><li><strong>Lesson fact:</strong> Finite testing can expose faults but does not prove correctness for every possible input.</li></ol>
+ENDIF</li><li><strong>Lesson fact:</strong> Normal, abnormal and extreme/boundary test data provide evidence for the selected cases.</li><li><strong>Lesson fact:</strong> Finite testing can expose faults but does not prove correctness for every possible input.</li></ol>
 
           </div>
         </section>
@@ -169,9 +169,9 @@ ENDIF</li><li><strong>Lesson fact:</strong> Normal, boundary and erroneous test 
 
         <section class="panel" id="boundary" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="boundary">
           <div class="section-title">
-            <p class="eyebrow">Boundary data</p>
-            <h2>Boundary data tests the edge of a valid range</h2>
-            <p>Use exact edges and, where helpful, values just outside the edges. Be explicit about which values are valid and invalid.</p>
+            <p class="eyebrow">Extreme / boundary data</p>
+            <h2>Extreme or boundary data uses valid values at accepted limits</h2>
+            <p>Use the exact valid lower and upper limits. Values just outside those limits are abnormal, not valid extreme/boundary data.</p>
           </div>
           <div class="range-strip" aria-label="Range 0 to 100">
             <span class="bad">-1<br />just outside</span>
@@ -180,18 +180,18 @@ ENDIF</li><li><strong>Lesson fact:</strong> Normal, boundary and erroneous test 
             <span class="edge">100<br />upper boundary</span>
             <span class="bad">101<br />just outside</span>
           </div>
-          <div class="callout">Cambridge marking usually rewards precise edge values. “Near the edge” is a direction, not a test case.</div>
+          <div class="callout">Cambridge marking rewards precise limit values. “Near the edge” is not a test case, and a value outside the accepted range is abnormal.</div>
         </section>
 
         <!-- stage10-explanation:start boundary -->
         <section class="panel explanation-panel" id="explanation-boundary" data-explains="boundary" data-explanation-kind="mechanism" aria-labelledby="explanation-boundary-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="boundary">
-          <h2 class="explanation-sr-only" id="explanation-boundary-title">Boundary data tests the edge of a valid range</h2>
+          <h2 class="explanation-sr-only" id="explanation-boundary-title">Extreme or boundary data uses valid values at accepted limits</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-137-boundary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Boundary data tests the edge of a valid range with a structured visual model." />
-            <figcaption class="explanation-sr-only">Boundary data tests the edge of a valid range: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-137-boundary.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Extreme or boundary data uses valid values at accepted limits with a structured visual model." />
+            <figcaption class="explanation-sr-only">Extreme or boundary data uses valid values at accepted limits: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Boundary data</li><li><strong>Lesson fact:</strong> Use exact edges and, where helpful, values just outside the edges. Be explicit about which values are valid and invalid.</li><li><strong>Lesson fact:</strong> just outside</li><li><strong>Lesson fact:</strong> lower boundary</li><li><strong>Lesson fact:</strong> upper boundary</li><li><strong>Lesson fact:</strong> Cambridge marking usually rewards precise edge values. “Near the edge” is a direction, not a test case.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Extreme/boundary data uses valid values at the accepted lower or upper limit.</li><li><strong>Lesson fact:</strong> For an accepted mark range of 0 to 100 inclusive, 0 and 100 are valid extreme/boundary values.</li><li><strong>Lesson fact:</strong> Values just outside the limits, such as -1 and 101, are abnormal and should be rejected.</li></ol>
 
           </div>
         </section>
@@ -199,8 +199,8 @@ ENDIF</li><li><strong>Lesson fact:</strong> Normal, boundary and erroneous test 
 
         <section class="panel" id="erroneous" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="erroneous">
           <div class="section-title">
-            <p class="eyebrow">Erroneous data</p>
-            <h2>Erroneous data is invalid data that should be rejected</h2>
+            <p class="eyebrow">Abnormal data</p>
+            <h2>Abnormal data is invalid data that should be rejected</h2>
           </div>
           <div class="card-grid">
             <article>
@@ -220,13 +220,13 @@ ENDIF</li><li><strong>Lesson fact:</strong> Normal, boundary and erroneous test 
 
         <!-- stage10-explanation:start erroneous -->
         <section class="panel explanation-panel" id="explanation-erroneous" data-explains="erroneous" data-explanation-kind="mechanism" aria-labelledby="explanation-erroneous-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="erroneous">
-          <h2 class="explanation-sr-only" id="explanation-erroneous-title">Erroneous data is invalid data that should be rejected</h2>
+          <h2 class="explanation-sr-only" id="explanation-erroneous-title">Abnormal data is invalid data that should be rejected</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-137-erroneous.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Erroneous data is invalid data that should be rejected with a structured visual model." />
-            <figcaption class="explanation-sr-only">Erroneous data is invalid data that should be rejected: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-137-erroneous.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Abnormal data is invalid data that should be rejected with a structured visual model." />
+            <figcaption class="explanation-sr-only">Abnormal data is invalid data that should be rejected: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Erroneous data</li><li><strong>Lesson fact:</strong> Out of range</li><li><strong>Lesson fact:</strong> -1 or 101 for a mark from 0 to 100. Expected result: rejected.</li><li><strong>Lesson fact:</strong> Wrong type</li><li><strong>Lesson fact:</strong> &quot;cat&quot; where an integer mark is required. Expected result: rejected or error handled.</li><li><strong>Lesson fact:</strong> Missing required data</li><li><strong>Lesson fact:</strong> An empty name when a name must be entered. Expected result: rejected with a suitable message.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Abnormal data is invalid data that should be rejected or handled.</li><li><strong>Lesson fact:</strong> For a mark from 0 to 100, -1 and 101 are out-of-range abnormal data.</li><li><strong>Lesson fact:</strong> The string &quot;cat&quot; is wrong-type abnormal data when an integer mark is required.</li></ol>
 
           </div>
         </section>
@@ -242,8 +242,8 @@ ENDIF</li><li><strong>Lesson fact:</strong> Normal, boundary and erroneous test 
             <div class="table-row"><div><code>50</code></div><div>Normal</div><div>typical valid mark</div><div>Accepted</div></div>
             <div class="table-row"><div><code>0</code></div><div>Boundary</div><div>lowest valid mark</div><div>Accepted</div></div>
             <div class="table-row"><div><code>100</code></div><div>Boundary</div><div>highest valid mark</div><div>Accepted</div></div>
-            <div class="table-row"><div><code>-1</code></div><div>Erroneous</div><div>below valid range</div><div>Rejected</div></div>
-            <div class="table-row"><div><code>"cat"</code></div><div>Erroneous</div><div>wrong data type</div><div>Rejected or handled</div></div>
+            <div class="table-row"><div><code>-1</code></div><div>Abnormal</div><div>below valid range</div><div>Rejected</div></div>
+            <div class="table-row"><div><code>"cat"</code></div><div>Abnormal</div><div>wrong data type</div><div>Rejected or handled</div></div>
           </div>
         </section>
 
@@ -255,7 +255,7 @@ ENDIF</li><li><strong>Lesson fact:</strong> Normal, boundary and erroneous test 
             <figcaption class="explanation-sr-only">A clear test table turns thinking into marks: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Test table</li><li><strong>Lesson fact:</strong> Test data</li><li><strong>Lesson fact:</strong> Expected result</li><li><strong>Lesson fact:</strong> typical valid mark</li><li><strong>Lesson fact:</strong> Accepted</li><li><strong>Lesson fact:</strong> Boundary</li><li><strong>Lesson fact:</strong> lowest valid mark</li><li><strong>Lesson fact:</strong> highest valid mark</li><li><strong>Lesson fact:</strong> Erroneous</li><li><strong>Lesson fact:</strong> below valid range</li><li><strong>Lesson fact:</strong> Rejected</li><li><strong>Lesson fact:</strong> wrong data type</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A test table records test data, its category and the expected result.</li><li><strong>Lesson fact:</strong> Use 50 as normal accepted data and 0 or 100 as valid extreme/boundary accepted data.</li><li><strong>Lesson fact:</strong> Use -1, 101 or a wrong-type input as abnormal data with a rejected or handled expected result.</li></ol>
 
           </div>
         </section>
@@ -264,7 +264,7 @@ ENDIF</li><li><strong>Lesson fact:</strong> Normal, boundary and erroneous test 
         <section class="panel" id="validation" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="validation">
           <div class="section-title">
             <p class="eyebrow">Validation vs testing</p>
-            <h2>Validation is the check. Testing proves whether the check works.</h2>
+            <h2>Validation is the rule; testing compares actual and expected results for selected cases.</h2>
           </div>
           <div class="code-grid">
             <article>
@@ -286,7 +286,7 @@ ENDIF</li><li><strong>Lesson fact:</strong> Normal, boundary and erroneous test 
             <figcaption class="explanation-sr-only">Testing checks validation against expected results: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Testing checks whether validation behaves as expected for selected normal, boundary and erroneous cases.</li><li><strong>Lesson fact:</strong> Expected and actual results are compared for each test.</li><li><strong>Lesson fact:</strong> Passing a finite test set is evidence, not a proof of universal correctness.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Testing checks whether validation behaves as expected for selected normal, abnormal and extreme/boundary cases.</li><li><strong>Lesson fact:</strong> Expected and actual results are compared for each test.</li><li><strong>Lesson fact:</strong> Passing a finite test set is evidence, not a proof of universal correctness.</li></ol>
 
           </div>
         </section>
@@ -326,7 +326,7 @@ ENDIF</code></pre>
             <figcaption class="explanation-sr-only">Java can help you run examples, but Cambridge pseudocode is the exam answer format: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Accepted&quot;</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Rejected&quot;</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> if (mark &gt;= 0 &amp;&amp; mark &lt;= 100) {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Accepted&quot;);</li><li><strong>Lesson fact:</strong> } else {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Rejected&quot;);</li><li><strong>Lesson fact:</strong> Do not write Java syntax as the final Cambridge pseudocode answer unless the question specifically asks for Java.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> IF Mark &gt;= 0 AND Mark &lt;= 100 THEN</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Accepted&quot;</li><li><strong>Lesson fact:</strong> ELSE</li><li><strong>Lesson fact:</strong> OUTPUT &quot;Rejected&quot;</li><li><strong>Lesson fact:</strong> ENDIF</li><li><strong>Lesson fact:</strong> Java support example only</li><li><strong>Lesson fact:</strong> if (mark &gt;= 0 &amp;&amp; mark &lt;= 100) {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Accepted&quot;);</li><li><strong>Lesson fact:</strong> } else {</li><li><strong>Lesson fact:</strong> System.out.println(&quot;Rejected&quot;);</li><li><strong>Lesson fact:</strong> }</li><li><strong>Lesson fact:</strong> Do not write Java syntax as the final Cambridge pseudocode answer unless the question specifically asks for Java.</li></ol>
 
           </div>
         </section>
@@ -373,6 +373,7 @@ ENDIF</code></pre>
             <p class="eyebrow">Worked examples</p>
             <h2>Three ways exam questions ask for testing knowledge</h2>
           </div>
+          <p><strong>Worked classification:</strong> for an integer mark from 0 to 100 inclusive, 50 is normal and accepted; 0 and 100 are valid extreme/boundary values and accepted; -1, 101 and <code>"cat"</code> are abnormal and rejected or handled.</p>
           <div class="tabs" role="tablist" aria-label="Worked example tabs">
             <button class="tab-button active" type="button" data-example="classify">Classify data</button>
             <button class="tab-button" type="button" data-example="design">Design table</button>
@@ -386,6 +387,11 @@ ENDIF</code></pre>
             <p class="eyebrow">Practice</p>
             <h2>Instant checking: short answers first, then reveal the answer</h2>
           </div>
+          <p>Classify each supplied value as normal, abnormal or extreme/boundary, then state its expected result before revealing the model answer.</p>
+          <details>
+            <summary>Show answer</summary>
+            <p>Normal means valid and typical. Abnormal means invalid and rejected or handled. Extreme/boundary means a valid accepted value at the lower or upper limit.</p>
+          </details>
           <div id="practiceList" class="practice-list"></div>
         </section>
 
@@ -413,8 +419,8 @@ ENDIF</code></pre>
           </div>
           <div class="summary-grid">
             <div><strong>Normal</strong><span>valid, typical data inside the allowed range</span></div>
-            <div><strong>Boundary</strong><span>values at the edge of the range, plus just outside where useful</span></div>
-            <div><strong>Erroneous</strong><span>invalid data that should be rejected or handled</span></div>
+            <div><strong>Extreme / boundary</strong><span>valid values at the accepted lower or upper limit</span></div>
+            <div><strong>Abnormal</strong><span>invalid data that should be rejected or handled</span></div>
           </div>
         </section>
 
@@ -424,7 +430,7 @@ ENDIF</code></pre>
             <h2>Make the expected result impossible to miss</h2>
           </div>
           <ol class="homework-list">
-            <li>Create a test table for a password length rule: 8 to 20 characters inclusive. Include two normal, four boundary and three erroneous tests.</li>
+            <li>Create a test table for a password length rule: 8 to 20 characters inclusive. Include two normal, two valid extreme/boundary and three abnormal tests.</li>
             <li>Write a 5-mark explanation of why boundary data is useful when testing validation rules.</li>
             <li>Write Cambridge-style pseudocode for a mark validation check, then list six test cases and their expected results.</li>
           </ol>
@@ -433,7 +439,7 @@ ENDIF</code></pre>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

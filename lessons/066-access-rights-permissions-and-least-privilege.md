@@ -72,6 +72,46 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Access rights and encryption as data-security methods
+
+### Direct explanation
+
+- Access rights restrict authorised actions on resources. Read permission controls viewing; write/modify controls alteration; delete controls removal; execute or administrative rights control running software or changing system settings. Least privilege grants only the permissions needed for a role and removes temporary rights when no longer required.
+- Encryption transforms plaintext into ciphertext using an algorithm and key. Without the correct decryption key, intercepted or stolen ciphertext should not reveal readable content. Encryption therefore protects confidentiality, while access rights can protect confidentiality and integrity by preventing unauthorised viewing or alteration.
+- The methods do different jobs: encryption does not decide which logged-in user may edit a record, and access rights do not make a stolen unencrypted copy unreadable. Neither method guarantees availability, data truth or protection after an authorised account is misused.
+
+### Worked example
+
+**Protect a payroll file:** The payroll file is encrypted at rest so a stolen storage device does not reveal readable salaries without the key. The payroll application grants read/write rights only to payroll staff and read-only rights to an auditor. A compromised ordinary account cannot open the file through the application, while an attacker who steals only the encrypted file still lacks readable plaintext.
+
+### Targeted practice and answers
+
+1. How do access rights protect confidentiality?
+   **Answer:** They prevent users without read permission from viewing the data.
+2. How do access rights protect integrity?
+   **Answer:** They prevent users without write/delete permission from altering or removing the data.
+3. How does encryption protect data?
+   **Answer:** It converts plaintext to ciphertext that is unreadable without the correct key.
+4. Why are both methods useful?
+   **Answer:** Access rights govern permitted actions in the system; encryption protects the content of an intercepted or stolen copy.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Explain how access rights and encryption protect a payroll file, and state one limitation of each method.
+
+- **B1** access rights restrict viewing to users/roles with read permission
+- **B1** access rights restrict modification/deletion to permitted users/roles
+- **B1** encryption converts plaintext to ciphertext using a key
+- **B1** without the correct key the stolen/intercepted data is not readable
+- **B1** access-rights limitation developed
+- **B1** encryption limitation developed
+
+**Strict note:** Do not claim that access rights detect changes, that encryption guarantees integrity, or that either method replaces the other.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `core`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-066-core.jpg`
 
 1. Access right A permission to perform an action on a resource, such as read or write.
@@ -90,6 +131,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `least`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-066-least.jpg`
 
 1. Definition Give users only the minimum permissions needed to perform their role.
@@ -101,6 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `matrix`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-066-matrix.jpg`
 
 1. Student records
@@ -120,6 +163,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `review`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-066-review.jpg`
 
 1. Joiner New user receives permissions based on role, not copied blindly from a friend.
@@ -131,6 +175,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `rights`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-066-rights.jpg`
 
 1. Read View or open data without changing it. Protects confidentiality when restricted.
@@ -142,6 +187,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `users`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-066-users.jpg`
 
 1. User account Individual identity, useful for accountability and audit trails.

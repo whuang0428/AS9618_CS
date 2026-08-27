@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -38,6 +38,7 @@
         <a href="#debug">Debugging</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -137,13 +138,13 @@
 
         <!-- stage10-explanation:start sensors -->
         <section class="panel explanation-panel" id="explanation-sensors" data-explains="sensors" data-explanation-kind="mechanism" aria-labelledby="explanation-sensors-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="sensors">
-          <h2 class="explanation-sr-only" id="explanation-sensors-title">Sensors capture physical data</h2>
+          <h2 class="explanation-sr-only" id="explanation-sensors-title">Required sensor types and applications</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-034-sensors.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Sensors capture physical data with a structured visual model." />
-            <figcaption class="explanation-sr-only">Sensors capture physical data: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-034-sensors.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Required sensor types and applications with a structured visual model." />
+            <figcaption class="explanation-sr-only">Required sensor types and applications: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Example system</li><li><strong>Lesson fact:</strong> Exam warning</li><li><strong>Lesson fact:</strong> Temperature</li><li><strong>Lesson fact:</strong> Heat / temperature value</li><li><strong>Lesson fact:</strong> Greenhouse fan, thermostat, freezer alarm</li><li><strong>Lesson fact:</strong> It detects temperature; it does not cool the room.</li><li><strong>Lesson fact:</strong> Light intensity</li><li><strong>Lesson fact:</strong> Street lights, phone brightness</li><li><strong>Lesson fact:</strong> The output may be a lamp, not the sensor.</li><li><strong>Lesson fact:</strong> Pressure</li><li><strong>Lesson fact:</strong> Force/pressure level</li><li><strong>Lesson fact:</strong> Burglar mat, weighing scale, tyre pressure</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A temperature sensor measures temperature and a pressure sensor measures pressure.</li><li><strong>Lesson fact:</strong> An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.</li><li><strong>Lesson fact:</strong> A sound sensor detects sound level or sound waves, for example in a noise monitor.</li><li><strong>Lesson fact:</strong> A sensor supplies input data; the processor applies the rule and an actuator performs any physical output.</li><li><strong>Lesson fact:</strong> Light intensity is supporting context and does not replace the named infra-red or sound sensors.</li></ol>
 
           </div>
         </section>
@@ -337,6 +338,68 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Monitoring, control, feedback and required sensors</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A monitoring system uses sensors to collect data for recording, display or alerts; it does not necessarily change the environment. A control system uses sensor input and a stored rule or target to send output to an actuator. In closed-loop control, feedback is the new sensor reading produced after the action, allowing the controller to adjust or stop the output.</p>
+            <p>A temperature sensor measures temperature, a pressure sensor measures force per unit area or pressure, an infra-red sensor detects infra-red radiation, and a sound sensor detects sound level or sound waves. The sensor supplies input data; it does not itself decide or perform the control action.</p>
+            <p>Choose a sensor by matching the physical quantity to the application: temperature for a greenhouse, pressure for a tyre or burglar mat, infra-red for a remote-control receiver or beam alarm, and sound for a noise monitor. A light-intensity sensor is useful supporting context but does not replace the named infra-red and sound sensors.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Greenhouse monitoring and control</h3>
+            <p>A monitoring system records and displays temperature readings. A control system also compares each reading with a threshold and activates a fan motor actuator when the greenhouse is too hot. New temperature readings provide feedback, so the fan can stop when the target is reached.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Monitoring, control, feedback and required sensors: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Distinguish monitoring from control.</p>
+              <details><summary>Show answer</summary><p>Monitoring records, displays or reports sensor data; control uses data to change an actuator or system state.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What is feedback in a closed-loop control system?</p>
+              <details><summary>Show answer</summary><p>A new sensor reading after the action, used to adjust or stop the output.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which named sensor detects radiation used by a remote control?</p>
+              <details><summary>Show answer</summary><p>An infra-red sensor.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Which named sensor is suitable for a classroom noise monitor?</p>
+              <details><summary>Show answer</summary><p>A sound sensor.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> Why is a sensor not an actuator?</p>
+              <details><summary>Show answer</summary><p>A sensor supplies input about a physical quantity; an actuator produces a physical output action.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>A greenhouse system records temperature and automatically opens a vent when necessary. Distinguish its monitoring and control functions and explain the feedback cycle.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> monitoring records/displays temperature readings</li>
+                <li><strong>B1</strong> control compares a reading with a rule/threshold</li>
+                <li><strong>B1</strong> controller sends output to a vent motor or other actuator</li>
+                <li><strong>B1</strong> new sensor readings provide feedback after the action</li>
+                <li><strong>B1</strong> feedback is used to adjust or stop the actuator</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -375,7 +438,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

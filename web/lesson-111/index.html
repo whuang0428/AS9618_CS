@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -42,7 +42,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -297,13 +297,13 @@ for (int index = 0; index &lt; 5; index++) {
 
         <!-- stage10-explanation:start analyser -->
         <section class="panel explanation-panel" id="explanation-analyser" data-explains="analyser" data-explanation-kind="mechanism" aria-labelledby="explanation-analyser-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="analyser">
-          <h2 class="explanation-sr-only" id="explanation-analyser-title">Extract the design before writing pseudocode</h2>
+          <h2 class="explanation-sr-only" id="explanation-analyser-title">Stepwise refinement turns a high-level algorithm into implementable modules</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-111-analyser.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Extract the design before writing pseudocode with a structured visual model." />
-            <figcaption class="explanation-sr-only">Extract the design before writing pseudocode: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-111-analyser.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Stepwise refinement turns a high-level algorithm into implementable modules with a structured visual model." />
+            <figcaption class="explanation-sr-only">Stepwise refinement turns a high-level algorithm into implementable modules: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Interactive scenario analyser</li><li><strong>Lesson fact:</strong> Scenario</li><li><strong>Lesson fact:</strong> Choose a scenario to see the IPOC breakdown.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps.</li><li><strong>Lesson fact:</strong> Refinement stops when every step is precise enough to implement and its input and output are clear.</li><li><strong>Lesson fact:</strong> At each level, preserve the parent step's purpose and input-process-output relationship.</li><li><strong>Lesson fact:</strong> Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.</li><li><strong>Lesson fact:</strong> Every level must reduce ambiguity and collectively remain a complete solution.</li></ol>
 
           </div>
         </section>
@@ -371,44 +371,52 @@ for (int index = 0; index &lt; 5; index++) {
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>Stepwise refinement</h2>
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Stepwise refinement from IPO design to modules</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Stepwise refinement starts with a high-level task and repeatedly replaces each complex step with smaller, precise substeps. Refinement stops when each step can be implemented directly and its inputs/outputs are clear.</p>
-            <p>It supports modularity, review and testing because each refinement level preserves the purpose of its parent step. It is not merely adding more prose; each level must reduce ambiguity.</p>
+            <p>Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.</p>
+            <p>At each level, preserve the parent step's purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.</p>
+            <p>Refinement supports review, implementation and testing because each module has a limited responsibility. It is not merely adding prose: every level must reduce ambiguity and collectively remain a complete solution.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Process an order</h3>
-            <p>Level 1: Validate order, calculate total, produce receipt. Refine calculate total into: set Total to 0; for each item validate quantity, add Price * Quantity; apply discount; add tax.</p>
+            <h3>Worked example: Refine an order-processing algorithm</h3>
+            <p>Level 1: InputOrder; ValidateOrder; CalculateTotal; ProduceReceipt. Refine CalculateTotal into Set Total to 0; for each item validate Quantity; add Price * Quantity; apply Discount; return Total. CalculateTotal can be a function returning Total, while ProduceReceipt can be a procedure receiving the completed total.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Stepwise refinement from IPO design to modules: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
               <p><strong>1.</strong> What is the starting point of stepwise refinement?</p>
-              <details><summary>Show answer</summary><p>A high-level solution/task.</p></details>
+              <details><summary>Show answer</summary><p>A high-level algorithm or task.</p></details>
             </article>
             <article class="stage2-question">
               <p><strong>2.</strong> When should refinement stop?</p>
-              <details><summary>Show answer</summary><p>When steps are precise enough to implement directly.</p></details>
+              <details><summary>Show answer</summary><p>When each step is a defined, implementable action with clear inputs and outputs.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> How does refinement support testing?</p>
-              <details><summary>Show answer</summary><p>Smaller modules/steps can be checked independently against defined inputs and outputs.</p></details>
+              <p><strong>3.</strong> How does IPO help one refinement level?</p>
+              <details><summary>Show answer</summary><p>It checks that each module receives the data it needs, performs defined processing and supplies the required output.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Apply one level of stepwise refinement to the task 'register a new library member'.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Apply two levels of stepwise refinement to 'register a new library member', showing module inputs/outputs and identifying one procedure or function.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> captures required member details</li>
-                <li><strong>B1</strong> validates details / checks existing member</li>
-                <li><strong>B1</strong> creates and stores a unique member record</li>
-                <li><strong>B1</strong> outputs confirmation/card or error; steps form a coherent sequence</li>
+                <li><strong>B1</strong> Level 1 separates capture, validation, storage and confirmation responsibilities</li>
+                <li><strong>B1</strong> Level 2 replaces at least one complex step with smaller ordered substeps</li>
+                <li><strong>B1</strong> module inputs and outputs are clear</li>
+                <li><strong>B1</strong> procedure or function choice matches action versus returned value</li>
+                <li><strong>B1</strong> refined steps collectively implement the original task</li>
               </ol>
             </details>
           </article>
@@ -451,7 +459,7 @@ for (int index = 0; index &lt; 5; index++) {
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

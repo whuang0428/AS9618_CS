@@ -72,6 +72,48 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Interrupt causes, detection and handling
+
+### Direct explanation
+
+- An interrupt is a signal or condition requesting processor attention. Possible causes include input/output devices needing service, a timer used for scheduling, a hardware fault, and a software exception. Applications include responsive input, sharing processor time and dealing promptly with exceptional conditions without continuously polling every device.
+- For most maskable interrupts, the processor completes the current instruction and checks for pending enabled interrupts at the end of that fetch-execute cycle, before beginning the next instruction. Detection is therefore not the same as stopping halfway through an ordinary instruction.
+- If an interrupt is accepted, the processor checks priority, saves the state needed to resume (such as PC, registers and status), loads or locates the correct interrupt service routine (ISR), executes the ISR, restores the saved state and resumes the interrupted program at the correct next instruction. The ISR is a routine, not the interrupt signal itself.
+
+### Worked example
+
+**Handle a keyboard interrupt:** A key press raises an interrupt while the CPU is executing another program. The CPU finishes its current instruction, detects the pending request at the cycle boundary, saves PC/register/status state, runs the keyboard ISR to read or acknowledge the input, restores the saved state and continues the original program.
+
+### Targeted practice and answers
+
+1. Give two possible causes or applications of interrupts.
+   **Answer:** For example an I/O device request, timer/scheduler event, hardware fault or software exception.
+2. When is a normal maskable interrupt detected and accepted?
+   **Answer:** After the current instruction completes, at the end of the fetch-execute cycle before the next instruction begins, subject to enabled/priority checks.
+3. What is an ISR?
+   **Answer:** An interrupt service routine: program code that handles a particular interrupt.
+4. Why must processor state be saved and restored?
+   **Answer:** So the interrupted program can resume at the correct instruction with its earlier register and status values.
+5. List the handling sequence after detection.
+   **Answer:** Check/accept, save state, locate and execute ISR, restore state, resume program.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Describe one interrupt cause or application, state when it is detected in the fetch-execute cycle, and trace handling through the ISR to resumption.
+
+- **B1** valid cause/application such as I/O, timer, fault or exception
+- **B1** current instruction completes and interrupt is detected/checked at the cycle boundary
+- **B1** priority/enabled status is checked
+- **B1** PC/register/status state is saved
+- **B1** correct ISR is located and executed
+- **B1** state is restored and the interrupted program resumes
+
+**Strict note:** Do not accept that every interrupt stops an instruction halfway through, that the ISR is the signal, or that the whole interrupted program restarts.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +121,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-048-concept.jpg`
 
 1. Interrupt
@@ -94,6 +137,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cycle`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-048-cycle.jpg`
 
 1. 1. Execute instruction The CPU finishes the current instruction before accepting most maskable interrupts.
@@ -109,6 +153,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `polling`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-048-polling.jpg`
 
 1. Interrupt-driven input
@@ -125,6 +170,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `priority`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-048-priority.jpg`
 
 1. Exam-safe wording
@@ -144,6 +190,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `sources`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-048-sources.jpg`
 
 1. Input/output device

@@ -73,15 +73,15 @@ Misconception: Students often say interpreters are 'bad compilers'. Correction: 
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S5.03
 **Focus:** Libraries and dynamically linked library files
 
 ### Direct explanation
 
-- A library is a tested collection of reusable code. A dynamically linked library is linked when a program loads or calls it, rather than copying all library code into every executable.
-- DLLs can reduce executable size and memory duplication, support reuse and allow one shared update. They also create dependency and version risks: a missing or incompatible DLL can stop a program loading or change behaviour.
+- Software under development is often constructed using existing code from program libraries. A program library is a collection of reusable routines or modules, so a developer can call tested implementations instead of rewriting common mathematical, input/output, graphics or string operations.
+- Benefits to the developer include shorter development time, less duplicated source code, reuse of tested routines and more consistent maintenance. A dynamically linked library (DLL) is connected when a program loads or calls it rather than copying all library code into every executable.
+- DLL files can reduce executable size and memory duplication, support reuse and allow one shared update. They also create dependency and version risks: a missing or incompatible DLL can stop a program loading or change behaviour.
 
 ### Worked example
 
@@ -89,11 +89,13 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 ### Targeted practice and answers
 
-1. When is a dynamically linked library connected to a program?
+1. How do program libraries support software under development?
+   **Answer:** They supply existing reusable routines or modules, avoiding the need to write common code again.
+2. When is a dynamically linked library connected to a program?
    **Answer:** At load time or run time when required.
-2. Give one storage benefit of dynamic linking.
+3. Give one storage benefit of dynamic linking.
    **Answer:** Library code need not be copied into every executable.
-3. Give one DLL risk.
+4. Give one DLL risk.
    **Answer:** A missing/incompatible version can prevent execution or cause faults.
 
 ### Exam-style question and MS
@@ -115,6 +117,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-compare.jpg`
 
 1. Main role
@@ -134,6 +137,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-concept.jpg`
 
 1. Object code Translated output from compilation or assembly, not always a complete executable.
@@ -145,6 +149,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `libraries`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-libraries.jpg`
 
 1. Purpose Provide pre-written, tested routines that programs can use.
@@ -156,6 +161,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `linkers`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-linkers.jpg`
 
 1. Input Object code modules and required library routines or references.
@@ -167,6 +173,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `loaders`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-loaders.jpg`
 
 1. Input An executable program or loadable program image.
@@ -178,6 +185,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `static-dynamic`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-058-static-dynamic.jpg`
 
 1. Static linking Library code is copied into the executable at link time.

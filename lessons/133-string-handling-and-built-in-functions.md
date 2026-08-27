@@ -92,6 +92,42 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Use supplied built-in and library routines
+
+### Direct explanation
+
+- Use built-in functions and library routines exactly as defined. The syllabus states that any function not given in the Cambridge pseudocode guide will be provided, and string manipulation functions will always be given in the question. Students are not expected to memorise one unofficial substring API.
+- Read the supplied function name, parameter order, position convention and returned type before using it. LENGTH is a familiar built-in example; LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.
+- A function call returns a value, so it can be assigned, compared, output or combined in an expression. Do not import Java's zero-based substring convention unless the question explicitly specifies it.
+
+### Worked example
+
+**Apply a supplied string routine:** A question defines EXTRACT(Text, Start, Count) using positions starting at 1. LENGTH("NETWORK") returns 7; EXTRACT("NETWORK", 4, 2) returns "WO". Code <- EXTRACT(UCASE(Name), 1, 3) nests a supplied library routine inside an expression.
+
+### Targeted practice and answers
+
+1. Will an unfamiliar string manipulation function be supplied?
+   **Answer:** Yes. The syllabus says string manipulation functions will always be given.
+2. What must be checked before tracing EXTRACT?
+   **Answer:** Its supplied parameter order, position/index convention and return definition.
+3. May a returned string be assigned to a variable?
+   **Answer:** Yes; a function return can be used wherever a compatible value is needed.
+
+### Exam-style question and MS
+
+**Question (4 marks):** A question defines TAKE(Text, Start, Count), with positions starting at 1. State LENGTH("ALGORITHM"), state TAKE("ALGORITHM", 3, 4), and write an assignment that converts the extracted text to upper case using supplied routine UCASE.
+
+- **B1** LENGTH result is 9
+- **B1** TAKE result is GORI
+- **M1** uses the supplied Start/Count convention rather than Java indexing
+- **A1** assigns UCASE(TAKE("ALGORITHM", 3, 4)) or equivalent to a variable
+
+**Strict note:** Do not require memorisation of an unstated substring signature or import Java's zero-based indexes.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -99,6 +135,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `case`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-case.jpg`
 
 1. Input Answer and normalise it with UCASE before comparison.
@@ -110,6 +147,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concat`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-concat.jpg`
 
 1. Concatenation
@@ -126,6 +164,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-java.jpg`
 
 1. Java support only
@@ -139,6 +178,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `lab`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-lab.jpg`
 
 1. Interactive string lab
@@ -150,6 +190,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `length`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-length.jpg`
 
 1. Word <- "ALGORITHM"
@@ -162,6 +203,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `position`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-position.jpg`
 
 1. Positions and indexing
@@ -177,6 +219,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `strings`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-strings.jpg`
 
 1. Cambridge-style assignment
@@ -187,22 +230,14 @@ Correction prompt: "State the correct term, then explain the relevant process or
 6. "Ada" is a string of three characters. & is used here for concatenation.
 7. If a question uses a different concatenation operator, follow the question. The mark is for clear string construction.
 
-### Use substring functions to extract part of a string
+### Use the string-function definition supplied in the question
 
 - **Explains:** `substring`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-133-substring.jpg`
 
-1. Substring functions
-2. Function
-3. LEFT(Text, n)
-4. first n characters
-5. LEFT("NETWORK", 3) returns "NET"
-6. RIGHT(Text, n)
-7. last n characters
-8. RIGHT("NETWORK", 4) returns "WORK"
-9. MID(Text, start, n)
-10. n characters from a start position
-11. MID("NETWORK", 4, 2) returns "WO"
-12. This course uses MID(Text, start, count) . If a paper specifies SUBSTRING or a different convention, follow the convention given in the question.
+1. String manipulation functions are supplied in the question; use the stated name, parameter order and position convention.
+2. Trace the supplied routine exactly, then use its returned string in an assignment, comparison, output or expression.
+3. Do not import Java's zero-based substring convention or memorise an unstated course-specific signature.
 <!-- stage10-explanations:end -->

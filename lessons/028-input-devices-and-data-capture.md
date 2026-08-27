@@ -73,9 +73,8 @@ Misconception: Students often list hardware without explaining suitability. Corr
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S3.03
 **Focus:** Microphone, touchscreen and VR headset operation
 
 ### Direct explanation
@@ -115,6 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `automatic`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-028-automatic.jpg`
 
 1. Manual input
@@ -132,6 +132,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `capture`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-028-capture.jpg`
 
 1. 1. Capture The device captures data from a user, document, object or environment.
@@ -142,6 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `devices`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-028-devices.jpg`
 
 1. Captures

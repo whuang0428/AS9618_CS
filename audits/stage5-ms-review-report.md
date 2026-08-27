@@ -5,8 +5,8 @@
 - Lesson exam-style questions: 750
 - Assessment questions: 213
 - Total approved questions: 963
-- Total marking points: 4407 (B1 3696, M1 352, A1 359)
-- Questions with explicit follow-through guidance: 43
+- Total marking points: 4428 (B1 3684, M1 387, A1 357)
+- Questions with explicit follow-through guidance: 41
 - Questions receiving specialist second review: 295
 
 ## Calibration sources

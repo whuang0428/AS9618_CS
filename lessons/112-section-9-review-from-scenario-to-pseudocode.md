@@ -74,6 +74,46 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often revise by rereading notes only. Correction: review lessons require retrieval, timed practice and correction.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Section 9 required-content checkpoint
+
+### Direct explanation
+
+- Algorithm design review: define an algorithm as a solution expressed as a sequence of defined steps; use abstraction to retain essential details in an abstract model; use decomposition to express the problem as connected modules; and choose meaningful identifiers recorded in an identifier table.
+- Solution review: design with input-process-output, use sequence, selection and iteration, document the same algorithm in structured English, a flowchart or pseudocode, and convert between the specified representations without changing its control flow.
+- Development review: use stepwise refinement until steps are programmable, and construct and interpret logic statements that define decisions, loop conditions or Boolean values. Core answers must not replace these requirements with tracing, Java syntax or vague planning advice.
+
+### Worked example
+
+**Design a result-processing solution:** Keep only student ID and required marks, decompose the task into InputResults, ValidateResult, CalculateMean and OutputReport, record meaningful identifiers and IPO, refine CalculateMean into defined steps, use a range logic statement, and represent the final control flow in Cambridge pseudocode or a matching flowchart.
+
+### Targeted practice and answers
+
+1. State the official-style definition of an algorithm.
+   **Answer:** A solution to a problem expressed as a sequence of defined steps.
+2. What is the difference between abstraction and decomposition?
+   **Answer:** Abstraction selects essential details for the model; decomposition splits the retained problem into sub-problems/modules.
+3. What must remain unchanged when converting representations?
+   **Answer:** The algorithm's inputs, outputs, conditions, order, branches and loop behaviour.
+
+### Exam-style question and MS
+
+**Question (8 marks):** Design an abstract, modular algorithm for processing ten valid marks, then show one refinement level and the central validation logic statement.
+
+- **B1** abstract model keeps only essential data, rules and output
+- **B1** decomposition expresses connected program modules
+- **B1** identifier table uses meaningful names, types and purposes
+- **B1** IPO design forms a complete solution
+- **B1** sequence, selection and iteration are used appropriately
+- **B1** one representation is accurate and convertible without changing meaning
+- **B1** stepwise refinement replaces a complex step with implementable substeps
+- **B1** logic statement correctly enforces the required mark range
+
+**Strict note:** Do not award isolated terminology when the design omits the required model, modules, refinement or logic.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -81,6 +121,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `fixer`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-112-fixer.jpg`
 
 1. Interactive answer fixer
@@ -91,6 +132,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `patterns`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-112-patterns.jpg`
 
 1. Pattern choice
@@ -110,6 +152,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-112-pseudocode.jpg`
 
 1. Initialise Total and Count, then input the first Value.
@@ -122,6 +165,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `retrieval`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-112-retrieval.jpg`
 
 1. Retrieval map
@@ -141,6 +185,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `triage`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-112-triage.jpg`
 
 1. Scenario triage

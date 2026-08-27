@@ -73,9 +73,8 @@ Misconception: Students often list hardware without explaining suitability. Corr
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S3.03, S3.04
 **Focus:** Laser/3D printers, speakers and output buffers
 
 ### Direct explanation
@@ -93,7 +92,9 @@ Correction prompt: "State the correct term, then explain the relevant process or
    **Answer:** Heat and pressure in the fuser.
 2. How does a 3D printer build an object?
    **Answer:** It deposits/solidifies successive layers.
-3. Why is a print buffer needed?
+3. How does a speaker produce sound from digital output?
+   **Answer:** A DAC and amplifier drive a coil and cone; cone vibration produces pressure waves in the air.
+4. Why is a print buffer needed?
    **Answer:** It handles the speed difference and lets the producer continue while the printer consumes data.
 
 ### Exam-style question and MS
@@ -115,6 +116,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `devices`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-029-devices.jpg`
 
 1. Output form
@@ -134,6 +136,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `feedback`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-029-feedback.jpg`
 
 1. Display, auditory and haptic feedback are alternative output forms, not inputs.
@@ -144,6 +147,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-029-purpose.jpg`
 
 1. 1. Present Output devices present processed data to a user, such as text, images or sound.

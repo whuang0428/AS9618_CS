@@ -81,6 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `checks`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-checks.jpg`
 
 1. LENGTH(Postcode) <= 8 is a maximum-length check.
@@ -92,6 +93,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `defensive`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-defensive.jpg`
 
 1. Defensive input handling
@@ -105,6 +107,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-pseudocode.jpg`
 
 1. A post-condition validation loop starts with REPEAT and ends with UNTIL.
@@ -116,6 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `tester`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-tester.jpg`
 
 1. Interactive input tester
@@ -125,6 +129,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `validation`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-103-validation.jpg`
 
 1. Knowledge explanation

@@ -39,14 +39,14 @@ Left: physical media idea. Middle: formula or encoding table. Right: quality/sto
 Teacher guidance: require the technical term and the explanation, method or application specified by the command word.
 
 ## Worked Example
-**Problem:** Calculate the size of a 10-second mono sound clip sampled at 8000 Hz with 16-bit sample resolution.
+**Problem:** Calculate the size of a 10-second mono sound clip sampled at 8000 Hz with 16-bit sampling resolution.
 
-**Worked answer / marking focus:** `8000 * 16 * 10 = 1 280 000 bits = 160 000 bytes`. Credit sample rate, sample resolution and duration.
+**Worked answer / marking focus:** `8000 * 16 * 10 = 1 280 000 bits = 160 000 bytes`. Credit sample rate, sampling resolution and duration.
 
 
 
 ## Student Task
-Students compare two clips and decide whether reducing sample rate or sample resolution is the better compromise.
+Students compare two clips and decide whether reducing sample rate or sampling resolution is the better compromise.
 
 ## Mini-Quiz
 1. State one precise definition from this lesson.
@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `channels`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-011-channels.jpg`
 
 1. One channel of audio. Use channel factor 1.
@@ -90,13 +91,14 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `formula`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-011-formula.jpg`
 
-1. size in bits = sampling rate × sample resolution × duration × channels
+1. size in bits = sampling rate × sampling resolution × duration × channels
 2. size in bytes = bits ÷ 8
 3. KiB = bytes ÷ 1024; MiB = KiB ÷ 1024
 4. Sampling rate samples per second, measured in Hz
-5. Sample resolution bits used for each sample
+5. Sampling resolution bits used for each sample
 6. Duration length of the sound in seconds
 7. Channels mono = 1, stereo = 2
 
@@ -104,11 +106,12 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `tradeoffs`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-011-tradeoffs.jpg`
 
 1. Higher sampling rate
 2. More samples per second; may improve accuracy; increases file size.
-3. Higher sample resolution
+3. Higher sampling resolution
 4. More bits per sample; more amplitude levels; increases file size.
 5. Longer duration
 6. More seconds of samples; increases file size in direct proportion.
@@ -119,6 +122,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `units`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-011-units.jpg`
 
 1. The formula gives bits first.

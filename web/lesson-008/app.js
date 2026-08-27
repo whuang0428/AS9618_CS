@@ -48,7 +48,7 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Calculate the file size in bytes of a 100 by 80 pixel bitmap image using 8-bit colour depth. Ignore metadata.",
+    prompt: "Calculate the pixel data size in bytes of a 100 by 80 pixel bitmap image using 8-bit colour depth. The file header and other metadata are ignored.",
     answer: "100 x 80 = 8000 pixels. 8000 x 8 = 64 000 bits. 64 000 / 8 = 8000 bytes.",
     marking: [
       { mark: "M1", text: "calculates number of pixels as 100 × 80" },
@@ -58,7 +58,7 @@ const examQuestions = [
     ],
     strict: [
       "Do not award final A1 for 64 000 bytes.",
-      "Ignore metadata because the question explicitly says to ignore it.",
+      "Do not add a file header or other metadata because the question explicitly excludes them.",
       "Allow FT from the candidate's earlier bit total only when it is subsequently divided by 8 to obtain bytes.",
     ],
   },

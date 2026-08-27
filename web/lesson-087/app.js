@@ -237,7 +237,7 @@ const examQuestions = [
       { mark: "B1", text: "explains all records / every row would be affected" },
       { mark: "B1", text: "retains UPDATE Student" },
       { mark: "B1", text: "retains SET TutorGroup = '12C'" },
-      { mark: "A1", text: "adds correct WHERE StudentID = 'S01'" },
+      { mark: "B1", text: "adds correct WHERE StudentID = 'S01'" },
     ],
     strict: [
       "Do not award explanation mark for vague 'it is wrong' without saying every row is affected.",

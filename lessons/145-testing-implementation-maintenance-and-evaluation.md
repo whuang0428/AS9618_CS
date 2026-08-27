@@ -75,9 +75,8 @@ Misconception: Students often describe the lifecycle as a fixed checklist. Corre
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S12.05, S12.06
 **Focus:** Testing methods, strategy and test plan
 
 ### Direct explanation
@@ -87,7 +86,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 ### Worked example
 
-**Test login:** White-box tests cover true/false paths and lockout count; black-box tests valid, invalid and boundary inputs from requirements; a stub returns simulated account results before the database is ready; acceptance confirms the agreed lockout behaviour.
+**Test login through review, construction, integration and release:** First dry-run the lockout counter and conduct a walkthrough in which peers inspect the algorithm. White-box tests cover true/false paths; black-box tests valid, invalid and boundary inputs from requirements. During integration, a stub returns simulated account results before the database is ready. Internal staff perform alpha testing, selected external users perform beta testing, and the customer performs acceptance testing against the agreed lockout behaviour.
 
 ### Targeted practice and answers
 
@@ -100,42 +99,37 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Describe four fields that should appear in a test plan and explain why expected and actual results are both recorded.
+**Question (6 marks):** For a login system, produce a test strategy naming the review, structural, functional, integration and release/user-testing methods to be used and who is responsible. Then write one complete test-plan row containing test ID, purpose, data, expected result, actual result and pass/fail.
 
-- **B1** test identifier/purpose or feature
-- **B1** test data/input and expected result
-- **B1** actual result and pass/fail outcome
-- **B1** comparison shows whether observed behaviour meets the predicted requirement
+- **B1** strategy includes dry run or walkthrough and white-box/black-box methods
+- **B1** strategy includes integration with a stub where a called module is unavailable
+- **B1** strategy distinguishes alpha, beta and acceptance testing with suitable responsibility
+- **B1** test-plan row includes identifier/purpose and test data
+- **B1** row states an expected result before execution
+- **B1** row records actual result and pass/fail outcome
 
-**Strict note:** Do not accept a list containing only normal/abnormal/boundary; those are test-data categories, not a complete test plan.
+**Strict note:** Do not accept only normal/abnormal/boundary categories as a strategy or plan; methods, responsibility and a complete recorded test must be present.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
-### Changeover methods balance risk, cost and speed
+### Test strategy and test plan are different documents
 
 - **Explains:** `changeover`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-changeover.jpg`
 
-1. Implementation strategies
-2. Advantage
-3. Risk or cost
-4. old system stops; new system starts immediately
-5. fast and cheaper
-6. high risk if new system fails
-7. Parallel
-8. old and new run together for a time
-9. outputs can be compared
-10. expensive and more work
-11. new system introduced one part at a time
-12. faults are contained
+1. A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project.
+2. A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.
+3. Normal, abnormal and extreme/boundary values are test-data categories; a list of values alone is neither a complete strategy nor a complete test plan.
 
 ### Classify input for NumberOfStudents, valid range 1 to 30
 
 - **Explains:** `data-tool`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-data-tool.jpg`
 
 1. Test data classifier
@@ -145,6 +139,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `evaluation`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-evaluation.jpg`
 
 1. A success criterion must state a measurable threshold before evidence can be judged against it.
@@ -155,6 +150,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `implementation`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-implementation.jpg`
 
 1. Implementation
@@ -168,6 +164,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `maintenance`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-maintenance.jpg`
 
 1. Maintenance
@@ -182,6 +179,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `stage-tool`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-stage-tool.jpg`
 
 1. Interactive stage chooser
@@ -191,6 +189,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `test-data`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-test-data.jpg`
 
 1. Test data
@@ -210,6 +209,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `testing`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-145-testing.jpg`
 
 1. Evidence

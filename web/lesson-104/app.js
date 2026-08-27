@@ -97,7 +97,7 @@ const examQuestions = [
     prompt: "Trace a linear search for 42 in [13, 42, 56, 70]. State the comparisons and final result.",
     answer: "Compare 42 with 13: no match. Compare 42 with 42: match. Found becomes TRUE and the search stops. The target is found at position 2.",
     marking: [
-      { mark: "B1", text: "first comparison with 13 shown as no match" },
+      { mark: "M1", text: "first comparison with 13 shown as no match and search advances" },
       { mark: "B1", text: "second comparison with 42 shown as match" },
       { mark: "B1", text: "sets/states Found becomes TRUE" },
       { mark: "B1", text: "states search stops when found" },

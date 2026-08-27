@@ -73,39 +73,44 @@ Misconception: Students often select every field with `*`. Correction: exam ques
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S8.07, S8.09
-**Focus:** DDL, DML and required SQL data types
+**Focus:** DDL, DML and the complete AS SQL subset
 
 ### Direct explanation
 
-- DDL defines or changes database structure: CREATE DATABASE, CREATE TABLE and ALTER TABLE. DML queries or changes records: SELECT, INSERT, UPDATE and DELETE. SQL is the industry-standard language used for these operations.
-- Required column types include CHARACTER/VARCHAR, BOOLEAN, INTEGER, REAL, DATE and TIME. CREATE TABLE can declare PRIMARY KEY and FOREIGN KEY references; ALTER TABLE changes an existing definition.
+- A DBMS carries out creation or modification of database structure using Data Definition Language (DDL). Required DDL includes CREATE DATABASE, CREATE TABLE and ALTER TABLE. Table definitions may use CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE and TIME, plus PRIMARY KEY(field) and FOREIGN KEY(field) REFERENCES Table(Field).
+- A DBMS carries out queries and maintenance of stored data using Data Manipulation Language (DML). SELECT queries data; INSERT INTO adds records; UPDATE changes existing records; DELETE FROM removes records. SQL is the industry-standard language for both DDL and DML. WHERE must be used when only selected existing records should be updated or deleted.
 
 ### Worked example
 
-**Create related tables:** CREATE TABLE Department (DepartmentID INTEGER PRIMARY KEY, Name VARCHAR(40)); then CREATE TABLE Employee (EmployeeID INTEGER PRIMARY KEY, Active BOOLEAN, DepartmentID INTEGER, FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID));
+**Define a database and maintain its data:** CREATE DATABASE College; creates the database structure. CREATE TABLE Department (DepartmentID INTEGER, Code CHARACTER, Name VARCHAR(40), Open BOOLEAN, Budget REAL, ReviewDate DATE, StartTime TIME, PRIMARY KEY (DepartmentID)); defines a table. ALTER TABLE Department ADD ManagerID INTEGER; changes the structure. INSERT INTO, UPDATE and DELETE FROM then maintain records rather than redefining the table.
 
 ### Targeted practice and answers
 
-1. Classify CREATE TABLE as DDL or DML.
-   **Answer:** DDL.
-2. Choose a type for 12.75.
-   **Answer:** REAL.
-3. Which statement changes an existing table structure?
-   **Answer:** ALTER TABLE.
+1. Classify CREATE TABLE and ALTER TABLE as DDL or DML.
+   **Answer:** DDL, because they define or change structure.
+2. Name all seven required DDL data types.
+   **Answer:** CHARACTER, VARCHAR(n), BOOLEAN, INTEGER, REAL, DATE and TIME.
+3. Which commands add, change and remove stored records?
+   **Answer:** INSERT INTO, UPDATE and DELETE FROM.
+4. Write the foreign-key clause for DepartmentID referencing Department(DepartmentID).
+   **Answer:** FOREIGN KEY (DepartmentID) REFERENCES Department (DepartmentID).
+5. Why can UPDATE or DELETE without WHERE be dangerous?
+   **Answer:** It can affect every record in the table.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Write SQL DDL to create Event(EventID integer primary key, EventDate date, StartTime time, Open boolean).
+**Question (6 marks):** Write SQL to create Event(EventID, Code, Title, EventDate, StartTime, Open, Price), make EventID the primary key, then insert one record and update its Price.
 
-- **B1** CREATE TABLE Event
-- **B1** EventID INTEGER PRIMARY KEY
-- **B1** EventDate DATE and StartTime TIME
-- **B1** Open BOOLEAN with valid punctuation/structure
+- **B1** CREATE TABLE Event with a valid field list
+- **B1** uses INTEGER for EventID and PRIMARY KEY (EventID)
+- **B1** uses CHARACTER or VARCHAR(n) appropriately for Code/Title
+- **B1** uses DATE, TIME, BOOLEAN and REAL for the remaining named fields
+- **B1** valid INSERT INTO with matching fields and values
+- **B1** valid UPDATE Event SET Price = value WHERE EventID = value
 
-**Strict note:** Do not award INSERT/UPDATE statements: the question asks for structure, not record data.
+**Strict note:** Do not substitute UPDATE for ALTER TABLE or treat INSERT, UPDATE and DELETE as structure-definition commands.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
@@ -115,6 +120,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `delete`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-087-delete.jpg`
 
 1. Use DELETE only when the whole record should be removed. A missing condition can remove all records.
@@ -126,6 +132,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `dml`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-087-dml.jpg`
 
 1. They change stored data. In exam answers, be precise about command keywords and affected records.
@@ -137,6 +144,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `insert`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-087-insert.jpg`
 
 1. List the fields, then list matching values in the same order. Text values use quotes.
@@ -147,6 +155,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `update`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-087-update.jpg`
 
 1. SET names the field and new value. WHERE restricts which rows are changed.

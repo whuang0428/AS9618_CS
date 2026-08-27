@@ -1,0 +1,33 @@
+{
+  "batch": 18,
+  "title": "Scientific audit residual closure",
+  "status": "Resolved",
+  "confidence": "High",
+  "records": [
+    {
+      "id": "SCI-VIS-003",
+      "status": "Resolved",
+      "evidence": "All Stage 10 panels replace the fixed 720 px raster with their complete transcript cards at 640 px and below; desktop raster behaviour is unchanged."
+    },
+    {
+      "id": "SCI-TEACH-001",
+      "status": "Resolved",
+      "evidence": "The three flagged lesson groups have distinct topic-specific hook, worked-example, practice and debugging text; the closure verifier hashes those student-visible sections independently."
+    },
+    {
+      "id": "SCI-ASSESS-001",
+      "status": "Resolved",
+      "evidence": "All 963 current questions were rescanned; no question contains an A mark without an M dependency."
+    },
+    {
+      "id": "SCI-ASSESS-002",
+      "status": "Resolved",
+      "evidence": "All 963 current questions were rescanned; no follow-through note remains on a question whose marks are all B marks."
+    },
+    {
+      "id": "SCI-ASSESS-003",
+      "status": "Resolved",
+      "evidence": "A stable question-level AO contract covers 750 lesson questions and 213 Assessment Bank questions and is bound to each current content hash."
+    }
+  ]
+}

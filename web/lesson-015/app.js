@@ -9,7 +9,7 @@ const triageData = {
   },
   sound: {
     result: "Use sound file-size calculation.",
-    method: "File size in bits = sampling rate x sample resolution x duration x channels.",
+    method: "File size in bits = sampling rate x sampling resolution x duration x channels.",
   },
   negative: {
     result: "Use signed representation reasoning.",
@@ -88,17 +88,17 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "4 marks",
-    prompt: "A mono sound file is sampled at 44 100 Hz using 16-bit sample resolution for 10 seconds. Calculate the file size in bits.",
+    prompt: "A mono sound file is sampled at 44 100 Hz using 16-bit sampling resolution for 10 seconds. Calculate the file size in bits.",
     answer: "44 100 x 16 x 10 x 1 = 7 056 000 bits.",
     marking: [
-      { mark: "M1", text: "uses sampling rate x sample resolution x duration" },
+      { mark: "M1", text: "uses sampling rate x sampling resolution x duration" },
       { mark: "B1", text: "recognises mono means one channel" },
       { mark: "A1", text: "44 100 x 16 x 10" },
       { mark: "A1", text: "7 056 000 bits" },
     ],
     strict: [
       "Do not divide by 8 because the question asks for bits.",
-      "Do not confuse sample resolution with sampling rate.",
+      "Do not confuse sampling resolution with sampling rate.",
     ],
   },
   {

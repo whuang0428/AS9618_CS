@@ -84,7 +84,7 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
   background: linear-gradient(135deg, #12304f, #2563eb 54%, #047857);
   border-radius: 8px;
 }
-.data-card p { margin: 0; color: #e0f2fe; text-align: center; font-weight: 750; }
+.lesson-content > .hero .data-card p { margin: 0; color: #ffffff; text-align: center; font-weight: 750; }
 .data-stack { display: grid; gap: 9px; }
 .data-stack span {
   display: block; padding: 11px; border-radius: 8px;
@@ -205,6 +205,7 @@ code, pre { font-family: "SFMono-Regular", Consolas, monospace; }
 
 /* Stage 2 syllabus completion:start */
 .stage2-completion { border-top: 4px solid var(--accent, #176b5b); }
+.stage2-practice-block { border-top: 2px solid var(--accent, #176b5b); }
 .stage2-explanation, .stage2-practice { display: grid; gap: 10px; }
 .stage2-example, .stage2-exam, .stage2-question { border: 1px solid var(--line, #d7ddd9); padding: 16px; background: #fff; }
 .stage2-question + .stage2-question { margin-top: 10px; }

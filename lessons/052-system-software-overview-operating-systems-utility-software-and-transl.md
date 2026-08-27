@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `categories`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-052-categories.jpg`
 
 1. System software
@@ -96,6 +97,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-052-concept.jpg`
 
 1. System software
@@ -111,6 +113,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `os`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-052-os.jpg`
 
 1. User interface Provides a way for users to interact with the computer, such as GUI or command line.
@@ -124,6 +127,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pathway`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-052-pathway.jpg`
 
 1. High-level source code Human-readable instructions such as Python, Java or pseudocode-like code.
@@ -135,6 +139,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `translators`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-052-translators.jpg`
 
 1. Compiler
@@ -150,6 +155,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `utility`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-052-utility.jpg`
 
 1. Exam-safe wording

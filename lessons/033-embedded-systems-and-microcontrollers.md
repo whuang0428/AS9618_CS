@@ -72,6 +72,44 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often define an embedded system only as a small computer. Correction: its dedicated role inside a larger device is the defining distinction.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Embedded systems: purpose, benefits and drawbacks
+
+### Direct explanation
+
+- An embedded system is a computer system built into a larger device to perform one dedicated task or a closely related set of tasks. A microcontroller may integrate the processor, memory and input/output interfaces needed for that task.
+- Benefits can include low cost, low power use, small size and reliable, predictable automatic operation because the hardware and software are designed for a limited purpose. Drawbacks can include limited processing, storage and user interface, difficulty adding new functions, and dependence on the embedded controller: if it fails, the larger device may stop working. A valid comparison must link each point to the device and task.
+
+### Worked example
+
+**Washing-machine controller:** A dedicated microcontroller can read sensors and control the motor and valves with low power use and predictable timing. Its limited interface is acceptable for wash programs, but it cannot readily run unrelated applications, and a controller failure can prevent the whole machine from operating.
+
+### Targeted practice and answers
+
+1. What two features define an embedded system?
+   **Answer:** It is built into a larger device and performs a dedicated task or closely related set of tasks.
+2. Give one benefit of an embedded controller and explain its consequence.
+   **Answer:** For example, low power use reduces energy or battery demand for the device.
+3. Give one drawback of an embedded controller and explain its consequence.
+   **Answer:** For example, limited resources make it difficult to add unrelated functions or run general-purpose software.
+4. Why can failure of an embedded controller be serious?
+   **Answer:** The larger device may lose the function controlled by that computer or stop operating.
+
+### Exam-style question and MS
+
+**Question (5 marks):** A battery-powered medical monitor uses an embedded controller. Explain two benefits and two drawbacks of this design in context.
+
+- **B1** benefit such as low power, compact size or predictable automatic operation
+- **B1** first benefit linked to battery life, portability or continuous monitoring
+- **B1** drawback such as limited resources/upgrading/interface or controller dependence
+- **B1** first drawback linked to limited new functions or device failure
+- **B1** second distinct benefit or drawback correctly developed
+
+**Strict note:** Do not award bare adjectives such as 'small' or 'cheap' without a device-specific consequence.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +117,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `embedded`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-033-embedded.jpg`
 
 1. An embedded system is designed to perform a specific task or closely related set of tasks.
@@ -91,6 +130,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `microcontroller`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-033-microcontroller.jpg`
 
 1. Microcontroller / embedded system

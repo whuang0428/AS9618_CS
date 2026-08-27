@@ -92,7 +92,7 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "3 marks",
-    prompt: "A file header has a size of 16 KiB. Calculate the number of bits used to store the file header. Show your working.",
+    prompt: "A storage block has a size of 16 KiB. Calculate the number of bits used to store the block. Show your working.",
     answer: "16 KiB = 16 x 1024 = 16 384 bytes. 16 384 x 8 = 131 072 bits.",
     marking: [
       { mark: "M1", text: "uses 1 KiB = 1024 bytes, e.g. 16 x 1024 or 16,384 bytes" },

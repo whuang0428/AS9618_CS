@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -41,7 +41,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -358,19 +358,25 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>Foreign keys and referential integrity</h2>
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Relationships, foreign keys and referential integrity</h2>
           </div>
           <div class="stage2-explanation">
             <p>A foreign key is an attribute in one table that refers to a primary/candidate key in another table. Referential integrity requires every non-null foreign-key value to match an existing referenced key.</p>
-            <p>The rule prevents orphan records. Insert, update and delete operations may be rejected or handled by an explicit cascade/null policy; the DBMS must not silently leave an invalid reference.</p>
+            <p>A one-to-one relationship links one record on each side. A one-to-many relationship links one parent record to many child records. A many-to-many relationship is normally implemented through a linking entity/table that creates two one-to-many relationships. Referential integrity prevents orphan records: insert, update and delete operations may be rejected or handled by a defined cascade/null policy, but must not silently leave an invalid reference.</p>
           </div>
           <article class="stage2-example">
             <h3>Worked example: Delete a department</h3>
             <p>If Employee.DepartmentID refers to Department.DepartmentID, deleting a department with employees would break referential integrity unless deletion is rejected or an authorised cascading policy handles dependent rows.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Relationships, foreign keys and referential integrity: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
@@ -382,20 +388,25 @@
               <details><summary>Show answer</summary><p>A child record whose foreign key has no matching parent key.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Name one valid delete response.</p>
+              <p><strong>3.</strong> How is a many-to-many relationship represented relationally?</p>
+              <details><summary>Show answer</summary><p>Use a linking table/entity containing foreign keys to both original entities.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Name one valid delete response.</p>
               <details><summary>Show answer</summary><p>Reject the delete, cascade it, or set nullable foreign keys to null according to defined rules.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Explain how a foreign key and referential integrity maintain a relationship between two tables.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Explain how a one-to-many relationship between Department and Employee is represented and protected.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> foreign key is stored in the related/child table</li>
-                <li><strong>B1</strong> references a key in the parent table</li>
-                <li><strong>B1</strong> each foreign-key value must match an existing referenced value (or valid null)</li>
-                <li><strong>B1</strong> prevents orphan/inconsistent relationships</li>
+                <li><strong>B1</strong> one Department record may relate to many Employee records</li>
+                <li><strong>B1</strong> DepartmentID is the primary/candidate key in Department</li>
+                <li><strong>B1</strong> DepartmentID is a foreign key in Employee and may repeat</li>
+                <li><strong>B1</strong> each non-null foreign-key value must match an existing Department key</li>
+                <li><strong>B1</strong> referential integrity prevents orphan Employee records</li>
               </ol>
             </details>
           </article>
@@ -438,7 +449,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

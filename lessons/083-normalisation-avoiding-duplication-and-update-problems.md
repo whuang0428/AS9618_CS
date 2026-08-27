@@ -73,15 +73,14 @@ Misconception: Students often choose names as primary keys. Correction: a primar
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S8.04
 **Focus:** First, second and third normal form
 
 ### Direct explanation
 
 - 1NF requires atomic values and no repeating groups. 2NF is 1NF with every non-key attribute dependent on the whole primary key, removing partial dependencies. 3NF is 2NF with no non-key attribute dependent on another non-key attribute, removing transitive dependencies.
-- Normalisation decomposes tables while preserving keys and relationships. A 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.
+- Normalisation decomposes tables while preserving keys and relationships. A normalised 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.
 
 ### Worked example
 
@@ -115,6 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `anomalies`
 - **Explanation type:** tradeoff
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-083-anomalies.jpg`
 
 1. Insertion may require an unrelated fact that is not yet known.
@@ -127,19 +127,21 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `normal-forms`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-083-normal-forms.jpg`
 
-1. A valid decomposition retains every original fact and follows the stated functional dependencies.
-2. After 2NF, keep Course(CourseID, CourseName, TutorID) when those course facts are represented.
-3. For 3NF, store tutor details in Tutor(TutorID, TutorName) and retain TutorID only in the relation it depends on.
-4. Do not drop CourseName or move TutorID without a stated dependency.
-- **Analogy:** Separate mixed filing rules one dependency at a time.
-- **Boundary:** A table with a single-attribute key cannot have a partial-key dependency.
+1. First Normal Form (1NF) requires atomic values and no repeating groups.
+2. Second Normal Form (2NF) is in 1NF and removes partial dependency: each non-key attribute depends on the whole primary key.
+3. Third Normal Form (3NF) is in 2NF and removes transitive dependency: a non-key attribute must not depend on another non-key attribute.
+4. A valid decomposition retains every original fact, preserves keys and relationships, and follows the stated functional dependencies.
+- **Analogy:** Each dependency belongs in the relation whose key determines it.
+- **Boundary:** Check the forms in order; satisfying a later normal form assumes the earlier requirements are already met.
 
 ### Why normalisation protects consistency
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-083-purpose.jpg`
 
 1. Each fact is stored in a relation where its determinant is clear.
@@ -152,6 +154,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `redundancy`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-083-redundancy.jpg`
 
 1. The same real-world fact appears in several rows.

@@ -143,7 +143,7 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "6 marks",
-    prompt: "A password must contain at least 8 characters. Write Cambridge-style pseudocode that inputs Password and outputs Accepted or Too short.",
+    prompt: "The question states that LENGTH(Text) returns the number of characters in Text. A password must contain at least 8 characters. Write Cambridge-style pseudocode that inputs Password and outputs Accepted or Too short.",
     answer: "INPUT Password\nIF LENGTH(Password) >= 8 THEN\n    OUTPUT \"Accepted\"\nELSE\n    OUTPUT \"Too short\"\nENDIF",
     marking: [
       { mark: "B1", text: "inputs or otherwise obtains Password" },

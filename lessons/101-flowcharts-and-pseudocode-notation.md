@@ -75,9 +75,8 @@ Misconception: Students often start coding before defining the output. Correctio
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S9.07
 **Focus:** Structured English, flowcharts and pseudocode conversion
 
 ### Direct explanation
@@ -117,6 +116,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `equivalence`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-equivalence.jpg`
 
 1. A flowchart decision diamond becomes an IF condition in pseudocode.
@@ -128,6 +128,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `flowcharts`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-flowcharts.jpg`
 
 1. A terminator marks START or END; a parallelogram marks INPUT or OUTPUT.
@@ -140,6 +141,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `notation`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-notation.jpg`
 
 1. Notation rules
@@ -154,6 +156,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-pseudocode.jpg`
 
 1. Knowledge explanation
@@ -173,6 +176,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `structure-tool`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-structure-tool.jpg`
 
 1. Interactive structure tool
@@ -183,6 +187,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `symbol-tool`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-101-symbol-tool.jpg`
 
 1. Interactive symbol tool

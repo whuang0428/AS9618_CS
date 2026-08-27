@@ -1,7 +1,7 @@
 const examples = {
   basic: {
     title: "Example 1: 8000 Hz, 16-bit, 10 seconds",
-    problem: "Calculate the size of a 10-second mono sound clip sampled at 8000 Hz with 16-bit sample resolution.",
+    problem: "Calculate the size of a 10-second mono sound clip sampled at 8000 Hz with 16-bit sampling resolution.",
     steps: [
       "Sampling rate: 8000 samples per second.",
       "Each sample uses 16 bits.",
@@ -11,16 +11,16 @@ const examples = {
   },
   rate: {
     title: "Example 2: increasing sampling rate",
-    problem: "A clip changes from 8000 Hz to 16 000 Hz while sample resolution and duration stay the same.",
+    problem: "A clip changes from 8000 Hz to 16 000 Hz while sampling resolution and duration stay the same.",
     steps: [
       "The sampling rate has doubled.",
       "Twice as many samples are stored each second.",
-      "File size doubles if sample resolution and duration are unchanged.",
+      "File size doubles if sampling resolution and duration are unchanged.",
       "Quality may improve because the wave is measured more frequently.",
     ],
   },
   resolution: {
-    title: "Example 3: increasing sample resolution",
+    title: "Example 3: increasing sampling resolution",
     problem: "A clip changes from 8-bit samples to 16-bit samples while sampling rate and duration stay the same.",
     steps: [
       "The number of bits per sample has doubled.",
@@ -34,25 +34,25 @@ const examples = {
 const practice = [
   { id: "p1", prompt: "What does sampling rate measure?", accepted: ["samples per second", "number of samples per second", "samples each second"], answer: "Samples per second." },
   { id: "p2", prompt: "What unit is commonly used for sampling rate?", accepted: ["hz", "hertz"], answer: "Hz / hertz" },
-  { id: "p3", prompt: "What does sample resolution mean?", accepted: ["bits per sample", "number of bits per sample", "bits used per sample"], answer: "Bits per sample." },
+  { id: "p3", prompt: "What does sampling resolution mean?", accepted: ["bits per sample", "number of bits per sample", "bits used per sample"], answer: "Bits per sample." },
   { id: "p4", prompt: "Calculate bits for 8000 Hz, 16-bit, 10 seconds mono sound.", accepted: ["1280000", "1280000 bits", "1 280 000 bits"], answer: "1 280 000 bits" },
   { id: "p5", prompt: "Convert 1 280 000 bits to bytes.", accepted: ["160000", "160000 bytes", "160 000 bytes"], answer: "160 000 bytes" },
-  { id: "p6", prompt: "How many possible amplitude levels can 8-bit sample resolution represent?", accepted: ["256", "256 levels", "2^8", "2⁸"], answer: "256 levels" },
+  { id: "p6", prompt: "How many possible amplitude levels can 8-bit sampling resolution represent?", accepted: ["256", "256 levels", "2^8", "2⁸"], answer: "256 levels" },
   { id: "p7", prompt: "If duration doubles and other parameters stay the same, what happens to file size?", accepted: ["doubles", "double", "it doubles"], answer: "It doubles." },
   { id: "p8", prompt: "Which parameter controls how often the wave is measured?", accepted: ["sampling rate", "sample rate"], answer: "Sampling rate" },
-  { id: "p9", prompt: "State one precise exam keyword connected to Digital sound: sampling rate, sample resolution and duration.", accepted: ["keyword","definition","concept","method"], answer: "Use a precise syllabus keyword, then define or apply it in context." },
-  { id: "p10", prompt: "What should an exam answer about Digital sound: sampling rate, sample resolution and duration include besides a keyword?", accepted: ["context","reason","evidence","consequence","example"], answer: "It should include context, reason/evidence, and a clear consequence where relevant." }
+  { id: "p9", prompt: "State one precise exam keyword connected to Digital sound: sampling rate, sampling resolution and duration.", accepted: ["keyword","definition","concept","method"], answer: "Use a precise syllabus keyword, then define or apply it in context." },
+  { id: "p10", prompt: "What should an exam answer about Digital sound: sampling rate, sampling resolution and duration include besides a keyword?", accepted: ["context","reason","evidence","consequence","example"], answer: "It should include context, reason/evidence, and a clear consequence where relevant." }
 ];
 
 const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "Calculate the size in bytes of a 10-second mono sound clip sampled at 8000 Hz with 16-bit sample resolution.",
+    prompt: "Calculate the size in bytes of a 10-second mono sound clip sampled at 8000 Hz with 16-bit sampling resolution.",
     answer: "8000 x 16 x 10 x 1 = 1 280 000 bits. 1 280 000 / 8 = 160 000 bytes.",
     marking: [
       { mark: "M1", text: "uses sampling rate 8000 samples per second" },
-      { mark: "M1", text: "multiplies by sample resolution 16 bits" },
+      { mark: "M1", text: "multiplies by sampling resolution 16 bits" },
       { mark: "M1", text: "multiplies by duration 10 seconds" },
       { mark: "A1", text: "160 000 bytes" },
     ],
@@ -74,7 +74,7 @@ const examQuestions = [
     ],
     strict: [
       "Do not accept only 'sound is better'.",
-      "Do not confuse with sample resolution / bits per sample.",
+      "Do not confuse with sampling resolution / bits per sample.",
       "Quality mark requires a link to more frequent measurement or accuracy.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
@@ -82,8 +82,8 @@ const examQuestions = [
   {
     title: "Question 3",
     marks: "3 marks",
-    prompt: "Explain the effect of increasing the sample resolution of a sound recording.",
-    answer: "Increasing sample resolution uses more bits for each sample. This allows more possible amplitude values, which can improve accuracy, but it increases file size.",
+    prompt: "Explain the effect of increasing the sampling resolution of a sound recording.",
+    answer: "Increasing sampling resolution uses more bits for each sample. This allows more possible amplitude values, which can improve accuracy, but it increases file size.",
     marking: [
       { mark: "B1", text: "more bits are used for each sample" },
       { mark: "B1", text: "more possible amplitude levels / more precise sample values" },
@@ -92,14 +92,14 @@ const examQuestions = [
     strict: [
       "Do not accept answers about pixels or image resolution.",
       "Do not accept only 'more samples'. That describes sampling rate.",
-      "Accept bit depth as equivalent wording for sample resolution.",
+      "Accept bit depth as equivalent wording for sampling resolution.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
   {
     title: "Question 4",
     marks: "4 marks",
-    prompt: "A 5-second mono sound clip is sampled at 4000 Hz using 8-bit sample resolution. Calculate its size in bytes.",
+    prompt: "A 5-second mono sound clip is sampled at 4000 Hz using 8-bit sampling resolution. Calculate its size in bytes.",
     answer: "4000 x 8 x 5 x 1 = 160 000 bits. 160 000 / 8 = 20 000 bytes.",
     marking: [
       { mark: "M1", text: "uses 4000 samples per second" },
@@ -116,17 +116,17 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "3 marks",
-    prompt: "A candidate says that sampling rate and sample resolution are the same thing. Explain why this is incorrect.",
-    answer: "Sampling rate is how many samples are taken each second. Sample resolution is how many bits are used to store each sample. They affect different parts of the calculation.",
+    prompt: "A candidate says that sampling rate and sampling resolution are the same thing. Explain why this is incorrect.",
+    answer: "Sampling rate is how many samples are taken each second. Sampling resolution is how many bits are used to store each sample. They affect different parts of the calculation.",
     marking: [
       { mark: "B1", text: "sampling rate is samples per second / how often samples are taken" },
-      { mark: "B1", text: "sample resolution is bits per sample" },
+      { mark: "B1", text: "sampling resolution is bits per sample" },
       { mark: "B1", text: "clear distinction or consequence in calculation / quality" },
     ],
     strict: [
       "Do not award full marks for only giving one definition.",
       "Do not accept image resolution examples as the main explanation.",
-      "Accept bit depth as equivalent to sample resolution.",
+      "Accept bit depth as equivalent to sampling resolution.",
       "Allow equivalent wording if the technical meaning is clear.",
     ],
   },
@@ -160,7 +160,7 @@ function setupHook() {
       if (button.dataset.hook === "rate") {
         feedback.textContent = "Correct. Sampling rate controls how many samples are taken every second.";
       } else if (button.dataset.hook === "resolution") {
-        feedback.textContent = "Close but different. Sample resolution controls bits per sample, not samples per second.";
+        feedback.textContent = "Close but different. Sampling resolution controls bits per sample, not samples per second.";
       } else {
         feedback.textContent = "Not this one. The phrase 'every second' points to sampling rate.";
       }

@@ -72,6 +72,46 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Required internet threats and matching risk-reduction methods
+
+### Direct explanation
+
+- The required threats are malware (virus and spyware), hackers, phishing and pharming. A hacker gains unauthorised access to a computer system or data. Phishing uses a deceptive message, link or site to persuade a user to disclose information. Pharming redirects traffic to a fake website, possibly even after the user enters the correct address.
+- Methods restrict risk only when their mechanism matches the threat: updated anti-virus and anti-spyware can detect known malware; user training and independent contact checks reduce phishing; secure DNS, certificate/HTTPS checks and patched software reduce pharming risk; strong authentication, access rights, patching, firewalls and monitoring reduce unauthorised access by hackers.
+- A control reduces likelihood or impact; it rarely makes an attack impossible. Layered controls are needed because people, software, credentials and network traffic provide different attack routes.
+
+### Worked example
+
+**Protect an online payroll service:** Staff receive a phishing email while a hacker probes the server and pharming redirects one user towards a fake site. Training and an independent sender check reduce phishing risk; multi-factor authentication reduces the value of a stolen password; a firewall filters unwanted traffic; access rights limit what an authenticated account may change; updated anti-virus and anti-spyware detect known virus or spyware signatures; secure DNS and certificate warnings reduce pharming risk.
+
+### Targeted practice and answers
+
+1. Distinguish phishing from pharming.
+   **Answer:** Phishing persuades through a deceptive message/link/site; pharming redirects traffic to a fake site, potentially after the correct address is entered.
+2. What is the syllabus meaning of a hacker threat?
+   **Answer:** A person gaining or attempting unauthorised access to a computer system or data.
+3. Match virus, spyware, phishing and pharming to one suitable risk-reduction method each.
+   **Answer:** Updated anti-virus; updated anti-spyware; training/independent verification; secure DNS plus certificate/HTTPS checks, respectively.
+4. Why are layered controls required?
+   **Answer:** Different controls address different attack routes, so failure or bypass of one control need not expose the whole system.
+
+### Exam-style question and MS
+
+**Question (6 marks):** For each of virus, spyware, hacking, phishing and pharming, describe the threat route and one matching method that restricts its risk.
+
+- **B1** virus route plus anti-virus mechanism
+- **B1** spyware route plus anti-spyware mechanism
+- **B1** hacker/unauthorised-access route plus a matching access/network control
+- **B1** phishing/deception route plus training or independent verification
+- **B1** pharming/redirection route plus secure DNS/certificate/HTTPS or patched-software control
+- **B1** states that controls reduce rather than eliminate risk
+
+**Strict note:** Do not define phishing and pharming identically or award a control that is unrelated to the stated attack route.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-compare.jpg`
 
 1. Route or mechanism
@@ -98,6 +139,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `controls`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-controls.jpg`
 
 1. Against hacking Strong authentication, access rights, patching, audit logs and monitoring.
@@ -110,6 +152,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `core`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-core.jpg`
 
 1. Asset Data, account, system or service being protected.
@@ -121,6 +164,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `dos`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-dos.jpg`
 
 1. Mechanism Floods a server, network or service with traffic or requests so legitimate users cannot access it.
@@ -132,6 +176,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `hacking`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-hacking.jpg`
 
 1. Mechanism Bypasses or abuses access controls to enter an account, device or system.
@@ -143,6 +188,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pharming`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-pharming.jpg`
 
 1. Mechanism Redirects traffic from a legitimate website to a fake one, often by attacking name resolution.
@@ -154,6 +200,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `phishing`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-064-phishing.jpg`
 
 1. Mechanism Uses deceptive emails, messages or websites that appear to come from a trusted source.

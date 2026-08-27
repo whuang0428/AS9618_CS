@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -42,7 +42,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -357,19 +357,26 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
+            <p class="eyebrow">Core syllabus content</p>
             <h2>Java translation and required IDE features</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Java source is compiled into platform-independent bytecode. A Java Virtual Machine then interprets and/or just-in-time compiles bytecode for the host processor, supporting portability across systems with a suitable JVM.</p>
-            <p>An IDE may provide context-sensitive prompts, dynamic syntax checking, prettyprinting, code expand/collapse, single-step execution, breakpoints, variable/expression inspection and a report/output window. Each feature supports writing, navigating or debugging code; it does not prove logical correctness.</p>
+            <p>Java in console mode is partly compiled and partly interpreted: the Java compiler translates source code into platform-independent bytecode, then a Java Virtual Machine (JVM) interprets that bytecode and may just-in-time compile parts for the host processor. Bytecode is not universal processor machine code.</p>
+            <p>For coding, an IDE can provide context-sensitive prompts. For initial error detection it can perform dynamic syntax checks. For presentation it can prettyprint code and expand or collapse code blocks. These features help create and navigate source code but do not prove that its algorithm is correct.</p>
+            <p>For debugging, an IDE can provide single stepping, breakpoints, inspection of variables and expressions, and a report window for diagnostic or output information. Single stepping executes one statement at a time; a breakpoint pauses at a chosen point; variable/expression inspection exposes changing values.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Locate a loop fault</h3>
-            <p>A breakpoint pauses before the loop, single-step advances one statement at a time, and the variable window shows Index changing. Dynamic syntax checking would flag malformed syntax, but not a valid loop with the wrong boundary.</p>
+            <h3>Worked example: Trace Java and locate a loop fault</h3>
+            <p>First the Java compiler produces bytecode; the JVM then interprets the bytecode or JIT-compiles parts for the host. In the IDE, a breakpoint pauses before the faulty loop, single stepping advances one statement at a time, the variable/expression view exposes Index, and the report window records diagnostics. Dynamic syntax checking can flag malformed syntax but not a syntactically valid wrong boundary.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Java translation and required IDE features: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
@@ -377,24 +384,34 @@
               <details><summary>Show answer</summary><p>Bytecode.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What executes Java bytecode on a host system?</p>
-              <details><summary>Show answer</summary><p>A Java Virtual Machine (JVM), using interpretation and/or JIT compilation.</p></details>
+              <p><strong>2.</strong> Why is Java described as partly compiled and partly interpreted?</p>
+              <details><summary>Show answer</summary><p>Source is compiled to bytecode, then a JVM interprets the bytecode and may JIT-compile parts for the host.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Which IDE feature pauses at a chosen line?</p>
-              <details><summary>Show answer</summary><p>A breakpoint.</p></details>
+              <p><strong>3.</strong> Which IDE feature pauses at a chosen line, and which advances one statement?</p>
+              <details><summary>Show answer</summary><p>A breakpoint pauses; single stepping advances one statement at a time.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Name the two required presentation features.</p>
+              <details><summary>Show answer</summary><p>Prettyprint and expand/collapse code blocks.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> What can a variables/expressions view and report window show?</p>
+              <details><summary>Show answer</summary><p>Current or evaluated values, plus diagnostic/output information in the report window.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Explain how Java source is translated and executed, and describe one IDE feature useful for debugging.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Explain why Java is partly compiled and partly interpreted, then describe four IDE features from coding, initial error detection, presentation and debugging.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> Java source is compiled</li>
-                <li><strong>B1</strong> compiler produces bytecode</li>
-                <li><strong>B1</strong> JVM interprets/JIT-compiles bytecode for the host</li>
-                <li><strong>B1</strong> valid debugging feature described with its effect</li>
+                <li><strong>B1</strong> Java source is compiled to bytecode</li>
+                <li><strong>B1</strong> JVM interprets bytecode and may JIT-compile parts for the host</li>
+                <li><strong>B1</strong> context-sensitive prompts or dynamic syntax checking described accurately</li>
+                <li><strong>B1</strong> prettyprint or expand/collapse code blocks described accurately</li>
+                <li><strong>B1</strong> single stepping or breakpoint described accurately</li>
+                <li><strong>B1</strong> variable/expression inspection or report window described accurately</li>
               </ol>
             </details>
           </article>
@@ -439,7 +456,7 @@
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,6 +44,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -59,7 +60,7 @@
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
               <div><strong>Order</strong><span>analysis, design, coding, testing and maintenance</span></div>
-              <div><strong>Compare</strong><span>waterfall, iterative and agile-style development ideas</span></div>
+              <div><strong>Compare</strong><span>waterfall, iterative and rapid application development (RAD)</span></div>
               <div><strong>Explain</strong><span>how weak requirements or skipped testing affect the final system</span></div>
             </div>
           </div>
@@ -217,9 +218,38 @@
         </section>
         <!-- stage10-explanation:end iterative -->
 
-        <section class="panel" id="agile" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="agile">
+        <section class="panel" id="rad" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rad">
           <div class="section-title">
-            <p class="eyebrow">Agile-style idea</p>
+            <p class="eyebrow">Rapid application development</p>
+            <h2>RAD uses rapid prototypes, time boxes and frequent user involvement</h2>
+          </div>
+          <div class="card-grid">
+            <article><h3>Rapid prototyping</h3><p>Build a working model quickly so requirements and interface decisions become visible.</p></article>
+            <article><h3>Time-boxing</h3><p>Complete a defined set of work inside a short fixed period, then review the result.</p></article>
+            <article><h3>User involvement</h3><p>Users review prototypes frequently and their feedback changes the next version.</p></article>
+          </div>
+          <div class="callout">RAD can respond quickly when informed users are available, but may be unsuitable where exhaustive assurance and stable architecture are more important than speed.</div>
+        </section>
+
+        <!-- stage10-explanation:start rad -->
+        <section class="panel explanation-panel" id="explanation-rad" data-explains="rad" data-explanation-kind="process" aria-labelledby="explanation-rad-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="rad">
+          <h2 class="explanation-sr-only" id="explanation-rad-title">Rapid application development (RAD)</h2>
+          <figure class="explanation-infographic">
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-rad.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Rapid application development (RAD) through a cause-and-effect diagram." />
+            <figcaption class="explanation-sr-only">Rapid application development (RAD): mechanism, reason, result, analogy and boundary condition.</figcaption>
+          </figure>
+          <div class="explanation-sr-only" aria-label="Infographic text alternative">
+            <ol><li><strong>Mechanism:</strong> RAD builds rapid prototypes inside short time boxes.</li><li><strong>Reason:</strong> Users review prototypes frequently and their feedback changes the next version.</li><li><strong>Result:</strong> RAD can respond quickly, but may not suit work requiring exhaustive assurance and stable architecture.</li></ol>
+
+            <p><strong>Analogy:</strong> A working model is reviewed and revised before the whole product is fixed.</p>
+            <p><strong>Boundary:</strong> RAD is a named syllabus model; Agile is related extension context, not a substitute.</p>
+          </div>
+        </section>
+        <!-- stage10-explanation:end rad -->
+
+        <section class="panel" id="agile" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="agile-extension">
+          <div class="section-title">
+            <p class="eyebrow">Extension: not a replacement for RAD</p>
             <h2>Agile development emphasises short cycles and user feedback</h2>
           </div>
           <div class="card-grid">
@@ -230,7 +260,7 @@
         </section>
 
         <!-- stage10-explanation:start agile -->
-        <section class="panel explanation-panel" id="explanation-agile" data-explains="agile" data-explanation-kind="tradeoff" aria-labelledby="explanation-agile-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="agile">
+        <section class="panel explanation-panel" id="explanation-agile" data-explains="agile" data-explanation-kind="tradeoff" aria-labelledby="explanation-agile-title" data-delivery-role="OPTIONAL" data-classroom-activity="EXTEND" data-delivery-group="agile">
           <h2 class="explanation-sr-only" id="explanation-agile-title">Why short feedback cycles support change</h2>
           <figure class="explanation-infographic">
             <img src="../assets/diagrams/stage10-infographics/stage10-lesson-142-agile.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Why short feedback cycles support change through a cause-and-effect diagram." />
@@ -253,7 +283,7 @@
           <div class="data-table three-col" role="table" aria-label="Lifecycle model comparison">
             <div class="table-row table-head"><div>Situation</div><div>Suitable approach</div><div>Reason</div></div>
             <div class="table-row"><div>stable legal payroll rules</div><div>waterfall or structured model</div><div>clear requirements and documentation matter</div></div>
-            <div class="table-row"><div>new app with uncertain user preferences</div><div>iterative/agile-style model</div><div>feedback can refine requirements</div></div>
+            <div class="table-row"><div>new app with uncertain user preferences and available users</div><div>RAD</div><div>rapid prototypes and time-boxed feedback refine requirements</div></div>
             <div class="table-row"><div>safety-critical control system</div><div>planned lifecycle with strong testing</div><div>risk and evidence need tight control</div></div>
           </div>
         </section>
@@ -382,6 +412,58 @@
           <div id="examList" class="exam-list"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Waterfall, iterative and rapid application development</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Waterfall completes planned stages largely in sequence and supports documentation and traceability, but late change can cause substantial rework. Iterative development builds and reviews repeated versions so evidence can refine later cycles.</p>
+            <p>Rapid application development (RAD) uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly. It can suit an interactive system with available users, but speed and repeated prototypes can conflict with exhaustive assurance or stable architecture. Agile is related extension context, not a replacement for the named RAD model.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose a lifecycle model</h3>
+            <p>For a small booking interface with available users and changing requirements, RAD can use a time-boxed prototype and immediate user feedback. For safety-critical stable requirements, waterfall's formal traceability may be more suitable than rapid prototyping.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Waterfall, iterative and rapid application development: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Name three defining features of RAD.</p>
+              <details><summary>Show answer</summary><p>Rapid prototyping, time-boxing and frequent user involvement/feedback.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which model proceeds through planned sequential stages?</p>
+              <details><summary>Show answer</summary><p>Waterfall.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why might RAD be unsuitable for a safety-critical system?</p>
+              <details><summary>Show answer</summary><p>Rapid cycles may not provide the exhaustive assurance and traceability required.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>Compare waterfall, iterative and RAD for a system whose users can review frequent prototypes.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> waterfall uses planned sequential stages and formal documentation</li>
+                <li><strong>B1</strong> iterative development reviews repeated versions</li>
+                <li><strong>B1</strong> RAD uses rapid prototypes/time-boxing</li>
+                <li><strong>B1</strong> RAD uses frequent user involvement and is linked to the scenario</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -389,7 +471,7 @@
           </div>
           <div class="summary-grid">
             <div><strong>Stages</strong><span>analysis, design, coding, testing and maintenance</span></div>
-            <div><strong>Models</strong><span>waterfall is planned; iterative/agile-style models use cycles and feedback</span></div>
+            <div><strong>Models</strong><span>waterfall is sequential; iterative uses repeated versions; RAD uses rapid prototypes, time boxes and user involvement</span></div>
             <div><strong>Marks</strong><span>link each stage to an artefact, a user, and a risk if skipped</span></div>
           </div>
         </section>
@@ -408,8 +490,8 @@
       </div>
     </main>
 
-    <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="./app.js?v=2"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

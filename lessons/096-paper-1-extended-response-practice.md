@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `balance`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-096-balance.jpg`
 
 1. Stakeholder Name who is affected: student, staff, customer, business, public, developer.
@@ -92,6 +93,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `map`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-096-map.jpg`
 
 1. Question map
@@ -106,6 +108,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `marking`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-096-marking.jpg`
 
 1. Marking focus
@@ -123,6 +126,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `planner`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-096-planner.jpg`
 
 1. Interactive response planner
@@ -133,6 +137,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `structure`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-096-structure.jpg`
 
 1. Structure

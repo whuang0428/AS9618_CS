@@ -72,6 +72,46 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Assembly language and machine code
+
+### Direct explanation
+
+- Machine code is the binary instruction form executed directly by a processor. Each bit pattern is interpreted according to that processor's instruction set, so machine code is processor dependent.
+- Assembly language is a low-level, processor-specific symbolic representation of machine-code instructions. Mnemonics such as ADD make operations easier for a human to read and write, while operands name the value, register or address used. An assembler translates assembly source into the corresponding machine code; assembly is not executed directly as text.
+- The relationship is close but not based on English spelling: a mnemonic maps to an opcode defined by the target instruction set, and an operand must be encoded in the form required by that instruction. Labels are resolved to addresses during assembly.
+
+### Worked example
+
+**Translate one symbolic instruction:** For a target instruction set, ADD #3 is assembly source: ADD is the mnemonic and #3 is an immediate operand. The assembler selects that processor's binary ADD opcode and encodes the operand. A different processor type may use a different opcode or instruction format, so the same machine-code bit pattern is not portable by assumption.
+
+### Targeted practice and answers
+
+1. Which language form does the processor execute directly?
+   **Answer:** Machine code: binary instructions defined by its instruction set.
+2. Why is assembly language easier for people to use than machine code?
+   **Answer:** It uses symbolic mnemonics, operands and labels instead of raw binary bit patterns.
+3. What translates assembly language into machine code?
+   **Answer:** An assembler.
+4. Why are both forms processor specific?
+   **Answer:** Their operations, opcodes and instruction formats are defined by the target processor's instruction set.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Explain the relationship between assembly language and machine code and why an assembler and a target instruction set are required.
+
+- **B1** machine code consists of binary instructions executed directly by the processor
+- **B1** assembly uses mnemonics/operands/labels as a symbolic low-level form
+- **B1** assembler translates assembly source to machine code
+- **B1** mnemonic maps to an opcode and operands are encoded
+- **B1** instruction meanings/formats are defined by the processor instruction set
+- **B1** therefore code for one processor may not execute correctly on another
+
+**Strict note:** Do not accept that assembly source is executed directly or that one machine-code instruction has a universal meaning across processors.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compatibility`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-045-compatibility.jpg`
 
 1. Same ISA
@@ -94,6 +135,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `instruction-set`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-045-instruction-set.jpg`
 
 1. Definition
@@ -109,6 +151,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `machine-code`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-045-machine-code.jpg`
 
 1. Lowest-level executable form
@@ -124,6 +167,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `opcode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-045-opcode.jpg`
 
 1. Opcode tells the CPU which operation to perform. Operand gives the data, register, address or value used by the operation.

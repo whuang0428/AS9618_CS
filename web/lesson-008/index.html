@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -38,7 +38,7 @@
         <a href="#practice">Practice</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -130,13 +130,13 @@
 
         <!-- stage10-explanation:start pixels -->
         <section class="panel explanation-panel" id="explanation-pixels" data-explains="pixels" data-explanation-kind="mechanism" aria-labelledby="explanation-pixels-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pixels">
-          <h2 class="explanation-sr-only" id="explanation-pixels-title">Bitmap images are pixel grids</h2>
+          <h2 class="explanation-sr-only" id="explanation-pixels-title">Bitmap file header and pixel data</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-008-pixels.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bitmap images are pixel grids with a structured visual model." />
-            <figcaption class="explanation-sr-only">Bitmap images are pixel grids: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-008-pixels.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Bitmap file header and pixel data with a structured visual model." />
+            <figcaption class="explanation-sr-only">Bitmap file header and pixel data: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> An image represented as a grid of pixels, where each pixel has a stored colour value.</li><li><strong>Lesson fact:</strong> The smallest addressable picture element in a bitmap image.</li><li><strong>Lesson fact:</strong> Metadata</li><li><strong>Lesson fact:</strong> Extra data about the file, such as dimensions or format. Exam calculations often say to ignore it.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> A bitmap file contains a file header and pixel data.</li><li><strong>Lesson fact:</strong> The file header stores metadata needed to interpret the bitmap; it is not an image pixel.</li><li><strong>Lesson fact:</strong> Pixel-data size is width x height x colour depth.</li><li><strong>Lesson fact:</strong> When a question says to ignore the file header, do not add metadata bytes to the pixel-data calculation.</li></ol>
 
           </div>
         </section>
@@ -334,44 +334,50 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>Image resolution and screen resolution</h2>
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Bitmap file headers, image resolution and screen resolution</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Image resolution is the number of pixels stored in the image, commonly width x height. Screen resolution is the number of physical display pixels available on the screen.</p>
-            <p>They are independent. A high-resolution image shown in a small area may be scaled down; a low-resolution image enlarged across a high-resolution screen may appear pixelated. More image pixels increase uncompressed bitmap size when colour depth is unchanged.</p>
+            <p>A bitmap file contains pixel data and a file header. The header stores metadata needed to interpret the file, such as its format and image properties; it is not one of the image pixels. When a calculation says to ignore the file header, calculate only width x height x colour depth.</p>
+            <p>Image resolution is the number of pixels stored in the image, commonly width x height. Screen resolution is the number of physical display pixels available on the screen. They are independent: scaling an image on a screen does not create new captured detail.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: 800 x 600 image on a 1920 x 1080 screen</h3>
-            <p>The file stores 480,000 image pixels. The screen contains 2,073,600 display pixels. Showing the image at 1600 x 1200 requires scaling; it does not create new captured detail.</p>
+            <h3>Worked example: 100 x 80 bitmap with an ignored header</h3>
+            <p>The pixel data is 100 x 80 x 8 = 64,000 bits = 8,000 bytes. Because the question says to ignore the file header, no metadata bytes are added to that total.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Bitmap file headers, image resolution and screen resolution: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> What does 3840 x 2160 describe for a monitor?</p>
+              <p><strong>1.</strong> What is the purpose of a bitmap file header?</p>
+              <details><summary>Show answer</summary><p>It stores metadata that tells software how to interpret the file; it is separate from the pixel data.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What does 3840 x 2160 describe for a monitor?</p>
               <details><summary>Show answer</summary><p>Its screen resolution: the number of physical display pixels.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Does a higher screen resolution automatically increase an image file's size?</p>
+              <p><strong>3.</strong> Does a higher screen resolution automatically increase an image file's size?</p>
               <details><summary>Show answer</summary><p>No. File size depends on stored image data, not the screen used to view it.</p></details>
-            </article>
-            <article class="stage2-question">
-              <p><strong>3.</strong> Why can a 200 x 100 image look pixelated when enlarged?</p>
-              <details><summary>Show answer</summary><p>The same limited image pixels are spread over more screen pixels; no extra detail is stored.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Distinguish image resolution from screen resolution and explain why increasing image resolution can increase bitmap file size.</p>
+            <p>A 200 by 100 bitmap uses 24-bit colour. Calculate its pixel-data size in bytes, ignoring the file header, and explain what has been excluded.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> image resolution is the number/dimensions of pixels stored in the image</li>
-                <li><strong>B1</strong> screen resolution is the number/dimensions of physical pixels on the display</li>
-                <li><strong>B1</strong> more image pixels must be stored</li>
-                <li><strong>B1</strong> therefore more bits are required when colour depth is unchanged</li>
+                <li><strong>M1</strong> 200 x 100 x 24 bits</li>
+                <li><strong>A1</strong> 480,000 bits / 60,000 bytes</li>
+                <li><strong>B1</strong> file header contains metadata used to interpret the bitmap</li>
+                <li><strong>B1</strong> header data is excluded because the question requests pixel data only</li>
               </ol>
             </details>
           </article>
@@ -414,7 +420,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

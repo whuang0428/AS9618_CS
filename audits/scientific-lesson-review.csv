@@ -1,0 +1,151 @@
+lesson,markdown_file,title,declared_syllabus_reference,core_regions,optional_regions,lesson_exam_questions,markdown_html_identity,browser_load_identity,normalised_duplicate_group,independent_semantic_status,defect_ids,release_status
+001,001-bits-bytes-nibbles-and-storage-units.md,"Lesson 001: Bits, bytes, nibbles and storage units",Syllabus Section 1,18,1,5,Pass,Pass,,Fail,SCI-SEQ-001,Blocked
+002,002-binary-place-value-and-denary-conversion.md,Lesson 002: Binary place value and denary conversion,Syllabus Section 1,17,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+003,003-hexadecimal-notation-and-binary-grouping.md,Lesson 003: Hexadecimal notation and binary grouping,Syllabus Section 1,17,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+004,004-binary-addition-carries-and-overflow.md,"Lesson 004: Binary addition, carries, and overflow",Syllabus Section 1,17,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+005,005-signed-binary-sign-and-magnitude-and-twos-complement.md,Lesson 005: Signed binary: sign-and-magnitude and two's complement,Syllabus Section 1,17,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+006,006-binary-fractions-and-precision-limits.md,Lesson 006: Binary fractions and precision limits,Syllabus Section 1,17,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+007,007-character-sets-ascii-unicode-and-why-emojis-are-not-magic.md,"Lesson 007: Character sets: ASCII, Unicode and emoji representation",Syllabus Section 1,19,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+008,008-bitmap-images-pixels-resolution-and-colour-depth.md,"Lesson 008: Bitmap images: pixels, resolution, and colour depth",Syllabus Section 1,18,1,5,Pass,Pass,DUP-BASE-02,PendingIndependentSemanticReview,,NotReady
+009,009-image-file-size-calculations-and-metadata.md,Lesson 009: Image file size calculations and metadata,Syllabus Section 1,16,1,5,Pass,Pass,DUP-BASE-02,PendingIndependentSemanticReview,,NotReady
+010,010-digital-sound-sampling-rate-sample-resolution-and-duration.md,"Lesson 010: Digital sound: sampling rate, sampling resolution, and duration",Syllabus Section 1,20,1,5,Pass,Pass,,Fail,SCI-TERM-001,Blocked
+011,011-sound-file-size-calculations.md,Lesson 011: Sound file size calculations,Syllabus Section 1,16,1,5,Pass,Pass,,Fail,SCI-TERM-001,Blocked
+012,012-compression-lossless-vs-lossy.md,Lesson 012: Compression: lossless vs lossy,Syllabus Section 1,18,1,5,Pass,Pass,,Fail,SCI-CONT-001,Blocked
+013,013-run-length-encoding-and-dictionary-style-compression.md,Lesson 013: Run-length encoding and dictionary-style compression,Syllabus Section 1,14,1,5,Pass,Pass,,Fail,SCI-CONT-001,Blocked
+014,014-choosing-data-representation-for-a-real-system.md,Lesson 014: Choosing data representation for a real system,Syllabus Section 1,14,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+015,015-section-1-review-representation-calculations-under-exam-timing.md,Lesson 015: Section 1 review: representation calculations under exam timing,Syllabus Section 1,14,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+016,016-network-purposes-lan-wan-and-network-topologies.md,"Lesson 016: Network purposes, LAN, WAN, and network topologies",Syllabus Section 2,16,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+017,017-client-server-and-peer-to-peer-models.md,Lesson 017: Client-server and peer-to-peer models,Syllabus Section 2,18,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+018,018-packet-switching-routing-and-packet-structure.md,"Lesson 018: Packet switching, routing, and packet structure",Syllabus Section 2,18,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+019,019-protocols-and-layered-communication.md,Lesson 019: Protocols and layered communication,Syllabus Section 2,16,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+020,020-ip-addresses-mac-addresses-dns-and-urls.md,"Lesson 020: IP addresses, MAC addresses, DNS, and URLs",Syllabus Section 2,20,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+021,021-http-https-ftp-smtp-pop3-and-imap-in-context.md,"Lesson 021: HTTP, HTTPS, FTP, SMTP, POP3, and IMAP in context",Syllabus Section 2,14,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+022,022-wired-and-wireless-transmission-media.md,Lesson 022: Wired and wireless transmission media,Syllabus Section 2,16,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+023,023-network-hardware-switches-routers-access-points-and-gateways.md,"Lesson 023: Network hardware: switches, routers, access points, and gateways",Syllabus Section 2,20,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+024,024-internet-intranet-extranet-and-cloud-services.md,"Lesson 024: Internet, intranet, extranet, and cloud services",Syllabus Section 2,16,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+025,025-network-performance-latency-bandwidth-and-congestion.md,"Lesson 025: Network performance, latency, bandwidth, and congestion",Syllabus Section 2,16,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+026,026-section-2-review-explaining-communication-with-precision.md,Lesson 026: Section 2 review: explaining communication with precision,Syllabus Section 2,12,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+027,027-computer-system-overview-input-output-storage-processor-and-memory.md,"Lesson 027: Computer system overview: input, output, storage, processor, and memory",Syllabus Section 3,16,1,5,Pass,Pass,DUP-BASE-01,PendingIndependentSemanticReview,,NotReady
+028,028-input-devices-and-data-capture.md,Lesson 028: Input devices and data capture,Syllabus Section 3,16,1,5,Pass,Pass,DUP-BASE-01,PendingIndependentSemanticReview,,NotReady
+029,029-output-devices-and-user-feedback.md,Lesson 029: Output devices and user feedback,Syllabus Section 3,16,1,5,Pass,Pass,DUP-BASE-01,PendingIndependentSemanticReview,,NotReady
+030,030-primary-storage-ram-rom-cache-and-virtual-memory.md,"Lesson 030: Primary storage: RAM, ROM, cache, and virtual memory",Syllabus Section 3,16,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+031,031-secondary-storage-magnetic-optical-and-solid-state-media.md,"Lesson 031: Secondary storage: magnetic, optical, and solid-state media",Syllabus Section 3,18,1,5,Pass,Pass,DUP-BASE-01,PendingIndependentSemanticReview,,NotReady
+032,032-storage-characteristics-capacity-speed-durability-portability-and-cost.md,"Lesson 032: Storage characteristics: capacity, speed, durability, portability, and cost",Syllabus Section 3,14,1,5,Pass,Pass,DUP-BASE-01,PendingIndependentSemanticReview,,NotReady
+033,033-embedded-systems-and-microcontrollers.md,Lesson 033: Embedded systems and microcontrollers,Syllabus Section 3,14,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+034,034-sensors-actuators-and-control-systems.md,"Lesson 034: Sensors, actuators, and control systems",Syllabus Section 3,16,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+035,035-logic-gates-not-and-or-nand-nor-xor.md,"Lesson 035: Logic gates: NOT, AND, OR, NAND, NOR, XOR",Syllabus Section 3,16,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+036,036-truth-tables-and-boolean-expressions.md,Lesson 036: Truth tables and Boolean expressions,Syllabus Section 3,14,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+037,037-building-logic-circuits-from-requirements.md,Lesson 037: Building logic circuits from requirements,Syllabus Section 3,16,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+038,038-hardware-selection-for-different-users.md,Lesson 038: Hardware selection for different users,Syllabus Section 3,14,1,5,Pass,Pass,DUP-BASE-01,PendingIndependentSemanticReview,,NotReady
+039,039-environmental-and-reliability-considerations-in-hardware.md,Lesson 039: Environmental and reliability considerations in hardware,Syllabus Section 3,14,1,5,Pass,Pass,DUP-BASE-01,PendingIndependentSemanticReview,,NotReady
+040,040-section-3-review-compare-justify-calculate.md,"Lesson 040: Section 3 review: compare, justify, calculate",Syllabus Section 3,14,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+041,041-cpu-architecture-alu-cu-registers-buses-and-clock.md,"Lesson 041: CPU architecture: ALU, CU, registers, buses, and clock",Syllabus Section 4,18,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+042,042-the-fetch-decode-execute-cycle.md,Lesson 042: The fetch-decode-execute cycle,Syllabus Section 4,20,1,5,Pass,Pass,,Fail,SCI-CONT-002,Blocked
+043,043-registers-pc-cir-mar-mdr-acc-and-status-register.md,"Lesson 043: Registers: PC, CIR, MAR, MDR, ACC, IX, and status register",Syllabus Section 4,16,1,5,Pass,Pass,,Fail,SCI-CONT-002,Blocked
+044,044-system-buses-address-data-and-control.md,"Lesson 044: System buses: address, data, and control",Syllabus Section 4,18,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+045,045-instruction-sets-and-machine-code.md,Lesson 045: Instruction sets and machine code,Syllabus Section 4,18,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+046,046-assembly-language-basics-and-mnemonics.md,Lesson 046: Assembly language basics and mnemonics,Syllabus Section 4,18,1,5,Pass,Pass,,Fail,SCI-CONT-003,Blocked
+047,047-addressing-modes-and-operand-interpretation.md,Lesson 047: Addressing modes and operand interpretation,Syllabus Section 4,18,1,5,Pass,Pass,,Fail,SCI-CONT-003,Blocked
+048,048-interrupts-and-interrupt-service-routines.md,Lesson 048: Interrupts and interrupt service routines,Syllabus Section 4,20,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+049,049-performance-factors-cores-cache-clock-speed-and-word-length.md,"Lesson 049: Performance factors: cores, cache, clock speed, and word length",Syllabus Section 4,22,1,5,Pass,Pass,,Fail,SCI-CONT-006,Blocked
+050,050-bit-manipulation-masks-and-binary-shifts.md,Lesson 050: Bit manipulation: masks and binary shifts,Syllabus Section 4,16,11,5,Pass,Pass,,Fail,SCI-VIS-001;SCI-VIS-003;SCI-WEB-001,Blocked
+051,051-section-4-review-tracing-processor-behaviour.md,Lesson 051: Section 4 review: tracing processor behaviour,Syllabus Section 4,20,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+052,052-system-software-overview-operating-systems-utility-software-and-transl.md,"Lesson 052: System software overview: operating systems, utility software, and translators",Syllabus Section 5,20,1,5,Pass,Pass,DUP-BASE-03,Fail,SCI-CROSS-001,Blocked
+053,053-operating-system-roles-process-memory-file-and-device-management.md,"Lesson 053: Operating system roles: process, memory, file, and device management",Syllabus Section 5,22,1,5,Pass,Pass,,Fail,SCI-CROSS-001,Blocked
+054,054-user-interfaces-command-line-graphical-menu-driven-and-natural-languag.md,"Lesson 054: User interfaces: command line, graphical, menu-driven, and natural language",Syllabus Section 5,20,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+055,055-utility-software-backup-compression-encryption-defragmentation-and-ant.md,"Lesson 055: Utility software: backup, compression, encryption, defragmentation, and antivirus",Syllabus Section 5,24,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+056,056-compilers-interpreters-and-assemblers.md,"Lesson 056: Compilers, interpreters, and assemblers",Syllabus Section 5,20,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+057,057-compilation-stages-lexical-analysis-to-object-code.md,Lesson 057: Compilation stages: lexical analysis to object code,Syllabus Section 5,20,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+058,058-linkers-loaders-and-libraries.md,"Lesson 058: Linkers, loaders, and libraries",Syllabus Section 5,22,1,5,Pass,Pass,DUP-BASE-03,PendingIndependentSemanticReview,,NotReady
+059,059-error-types-syntax-logic-runtime-and-translation-diagnostics.md,"Lesson 059: Error types: syntax, logic, runtime, and translation diagnostics",Syllabus Section 5,22,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+060,060-choosing-translation-approaches-for-development-and-deployment.md,Lesson 060: Choosing translation approaches for development and deployment,Syllabus Section 5,22,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+061,061-section-5-review-precise-software-comparisons.md,Lesson 061: Section 5 review: precise software comparisons,Syllabus Section 5,14,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+062,062-security-goals-confidentiality-integrity-availability-and-authenticity.md,"Lesson 062: Security goals: confidentiality, integrity, availability, and authenticity",Syllabus Section 6,22,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+063,063-malware-types-and-social-engineering.md,Lesson 063: Malware types and social engineering,Syllabus Section 6,24,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+064,064-hacking-phishing-pharming-and-denial-of-service-attacks.md,"Lesson 064: Hacking, phishing, pharming, and denial-of-service attacks",Syllabus Section 6,24,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+065,065-authentication-passwords-biometrics-tokens-and-multi-factor-authentica.md,"Lesson 065: Authentication: passwords, biometrics, tokens, and multi-factor authentication",Syllabus Section 6,26,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+066,066-access-rights-permissions-and-least-privilege.md,"Lesson 066: Access rights, permissions, and least privilege",Syllabus Section 6,22,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+067,067-encryption-hashing-and-digital-certificates.md,"Lesson 067: Encryption, hashing, and digital certificates",Syllabus Section 6,25,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+068,068-firewalls-proxies-and-network-monitoring.md,"Lesson 068: Firewalls, proxies, and network monitoring",Syllabus Section 6,24,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+069,069-data-validation-and-verification.md,Lesson 069: Data validation and verification,Syllabus Section 6,24,1,5,Pass,Pass,,Fail,SCI-CONT-004,Blocked
+070,070-backup-strategies-disaster-recovery-and-audit-trails.md,"Lesson 070: Backup strategies, disaster recovery, and audit trails",Syllabus Section 6,22,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+071,071-section-6-review-matching-risks-to-controls.md,Lesson 071: Section 6 review: matching risks to controls,Syllabus Section 6,20,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+072,072-ethical-issues-in-computer-science-decisions.md,Lesson 072: Ethical issues in Computer Science decisions,Syllabus Section 7,20,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+073,073-privacy-surveillance-and-data-protection.md,"Lesson 073: Privacy, surveillance, and data protection",Syllabus Section 7,22,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+074,074-intellectual-property-copyright-patents-and-licensing.md,"Lesson 074: Intellectual property, copyright, patents, and licensing",Syllabus Section 7,22,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+075,075-open-source-proprietary-software-and-ownership-trade-offs.md,"Lesson 075: Open source, proprietary software, and ownership trade-offs",Syllabus Section 7,22,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+076,076-environmental-and-social-impacts-of-computing.md,Lesson 076: Environmental and social impacts of computing,Syllabus Section 7,22,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+077,077-section-7-review-balanced-evaluation-answers.md,Lesson 077: Section 7 review: balanced evaluation answers,Syllabus Section 7,18,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+078,078-data-information-databases-and-dbms-roles.md,"Lesson 078: Data, information, databases, and DBMS roles",Syllabus Section 8,22,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+079,079-flat-file-databases-vs-relational-databases.md,Lesson 079: Flat-file databases vs relational databases,Syllabus Section 8,18,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+080,080-tables-records-fields-data-types-and-constraints.md,"Lesson 080: Tables, records, fields, data types, and constraints",Syllabus Section 8,24,0,5,Pass,Pass,,Fail,SCI-SEQ-002,Blocked
+081,081-primary-keys-foreign-keys-and-relationships.md,"Lesson 081: Primary keys, foreign keys, and relationships",Syllabus Section 8,22,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+082,082-entity-relationship-modelling.md,Lesson 082: Entity-relationship modelling,Syllabus Section 8,20,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+083,083-normalisation-avoiding-duplication-and-update-problems.md,Lesson 083: Normalisation: avoiding duplication and update problems,Syllabus Section 8,19,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+084,084-sql-select-from-where.md,"Lesson 084: SQL SELECT, FROM, WHERE",Syllabus Section 8,17,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+085,085-sql-order-by-aggregate-functions-and-group-by.md,"Lesson 085: SQL ORDER BY, aggregate functions, and GROUP BY",Syllabus Section 8,15,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+086,086-sql-joins-using-related-tables.md,Lesson 086: SQL joins using related tables,Syllabus Section 8,17,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+087,087-sql-insert-update-and-delete.md,"Lesson 087: SQL INSERT, UPDATE, and DELETE",Syllabus Section 8,19,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+088,088-validation-verification-security-and-backup-in-databases.md,"Lesson 088: Validation, verification, security, and backup in databases",Syllabus Section 8,17,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+089,089-section-8-review-designing-and-querying-relational-data.md,Lesson 089: Section 8 review: designing and querying relational data,Syllabus Section 8,20,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+090,090-paper-1-review-representation-and-communication.md,Lesson 090: Paper 1 review: representation and communication,Paper 1 review: Sections 1-8,16,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+091,091-paper-1-review-hardware-and-processor-fundamentals.md,Lesson 091: Paper 1 review: hardware and processor fundamentals,Paper 1 review: Sections 1-8,17,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+092,092-paper-1-review-system-software-and-security.md,Lesson 092: Paper 1 review: system software and security,Paper 1 review: Sections 1-8,18,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+093,093-paper-1-review-ethics-and-databases.md,Lesson 093: Paper 1 review: ethics and databases,Paper 1 review: Sections 1-8,18,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+094,094-paper-1-mixed-question-strategy.md,Lesson 094: Paper 1 mixed question strategy,Paper 1 review: Sections 1-8,18,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+095,095-paper-1-timed-short-answer-practice.md,Lesson 095: Paper 1 timed short-answer practice,Paper 1 review: Sections 1-8,22,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+096,096-paper-1-extended-response-practice.md,Lesson 096: Paper 1 extended-response practice,Paper 1 review: Sections 1-8,18,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+097,097-paper-1-mock-review-and-correction-clinic.md,Lesson 097: Paper 1 mock review and correction clinic,Paper 1 review: Sections 1-8,22,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+098,098-algorithmic-thinking-inputs-outputs-and-constraints.md,"Lesson 098: Algorithmic thinking: inputs, outputs, and constraints",Syllabus Section 9,16,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+099,099-decomposition-and-abstraction.md,Lesson 099: Decomposition and abstraction,Syllabus Section 9,20,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+100,100-sequence-selection-and-iteration.md,"Lesson 100: Sequence, selection, and iteration",Syllabus Section 9,20,2,5,Pass,Pass,,Fail,SCI-SEQ-003,Blocked
+101,101-flowcharts-and-pseudocode-notation.md,Lesson 101: Flowcharts and pseudocode notation,Syllabus Section 9,22,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+102,102-trace-tables-and-dry-runs.md,Lesson 102: Trace tables and dry runs,Syllabus Section 9,20,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+103,103-validation-algorithms-and-defensive-input-handling.md,Lesson 103: Validation algorithms and defensive input handling,Syllabus Section 9,18,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+104,104-linear-search-and-binary-search.md,Lesson 104: Linear search and binary search,Syllabus Section 9,22,1,5,Pass,Pass,,Fail,SCI-SEQ-004,Blocked
+105,105-bubble-sort-and-insertion-sort.md,Lesson 105: Bubble sort and insertion sort,Syllabus Section 9,20,1,5,Pass,Pass,,Fail,SCI-SEQ-004,Blocked
+106,106-finding-maximum-minimum-count-and-total.md,"Lesson 106: Finding maximum, minimum, count, and total",Syllabus Section 9,20,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+107,107-string-processing-algorithms.md,Lesson 107: String-processing algorithms,Syllabus Section 9,19,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+108,108-nested-loops-and-table-style-problems.md,Lesson 108: Nested loops and table-style problems,Syllabus Section 9,18,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+109,109-algorithm-efficiency-at-as-level.md,Lesson 109: Algorithm efficiency at AS level,Syllabus Section 9,20,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+110,110-cambridge-pseudocode-conventions-and-exam-readability.md,Lesson 110: Cambridge pseudocode conventions and exam readability,Syllabus Section 9,20,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+111,111-designing-algorithms-from-word-problems.md,Lesson 111: Designing algorithms from word problems,Syllabus Section 9,21,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+112,112-section-9-review-from-scenario-to-pseudocode.md,Lesson 112: Section 9 review: from scenario to pseudocode,Syllabus Section 9,21,1,5,Pass,Pass,,Fail,SCI-SEQ-005,Blocked
+113,113-data-types-integer-real-boolean-char-string-date-and-user-defined-type.md,"Lesson 113: Data types: integer, real, Boolean, char, string, date, and user-defined types",Syllabus Section 10,20,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+114,114-constants-variables-and-assignment.md,"Lesson 114: Constants, variables, and assignment",Syllabus Section 10,21,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+115,115-one-dimensional-arrays.md,Lesson 115: One-dimensional arrays,Syllabus Section 10,23,1,5,Pass,Pass,,Fail,SCI-SEQ-004;SCI-SEQ-005,Blocked
+116,116-two-dimensional-arrays.md,Lesson 116: Two-dimensional arrays,Syllabus Section 10,23,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+117,117-array-algorithms-traversal-update-search-and-count.md,"Lesson 117: Array algorithms: traversal, update, search, and count",Syllabus Section 10,23,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+118,118-records-and-composite-data.md,Lesson 118: Records and composite data,Syllabus Section 10,23,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+119,119-arrays-of-records.md,Lesson 119: Arrays of records,Syllabus Section 10,23,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+120,120-text-files-reading-writing-and-appending.md,"Lesson 120: Text files: reading, writing, and appending",Syllabus Section 10,28,0,5,Pass,Pass,,Fail,SCI-SEQ-006,Blocked
+121,121-csv-style-structured-text-files.md,Lesson 121: CSV-style structured text files,Syllabus Section 10,24,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+122,122-stacks-and-queues-as-abstract-data-types.md,Lesson 122: Stacks and queues as abstract data types,Syllabus Section 10,25,1,5,Pass,Pass,,Fail,SCI-SEQ-006,Blocked
+123,123-choosing-appropriate-data-structures.md,Lesson 123: Choosing appropriate data structures,Syllabus Section 10,26,1,5,Pass,Pass,,Fail,SCI-SEQ-006,Blocked
+124,124-pseudocode-data-declarations-vs-java-declarations.md,Lesson 124: Pseudocode data declarations vs Java declarations,Syllabus Section 10,24,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+125,125-section-10-review-data-modelling-in-algorithms.md,Lesson 125: Section 10 review: data modelling in algorithms,Syllabus Section 10,22,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+126,126-programming-constructs-sequence-selection-and-iteration.md,"Lesson 126: Programming constructs: sequence, selection, and iteration",Syllabus Section 11,21,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+127,127-if-case-and-nested-selection.md,"Lesson 127: IF, CASE, and nested selection",Syllabus Section 11,23,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+128,128-count-controlled-loops.md,Lesson 128: Count-controlled loops,Syllabus Section 11,21,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+129,129-condition-controlled-loops.md,Lesson 129: Condition-controlled loops,Syllabus Section 11,22,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+130,130-procedures-and-functions.md,Lesson 130: Procedures and functions,Syllabus Section 11,24,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+131,131-parameters-by-value-and-by-reference-in-pseudocode.md,Lesson 131: Parameters: by value and by reference in pseudocode,Syllabus Section 11,21,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+132,132-scope-lifetime-and-local-global-variables.md,"Lesson 132: Scope, lifetime, and local/global variables",Syllabus Section 11,22,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+133,133-string-handling-and-built-in-functions.md,Lesson 133: String handling and built-in functions,Syllabus Section 11,26,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+134,134-arithmetic-operators-integer-division-and-mod.md,"Lesson 134: Arithmetic operators, integer division, and MOD",Syllabus Section 11,24,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+135,135-input-and-output-formatting.md,Lesson 135: Input and output formatting,Syllabus Section 11,24,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+136,136-file-handling-patterns-in-pseudocode-and-java.md,Lesson 136: File handling patterns in pseudocode and Java,Syllabus Section 11,24,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+137,137-testing-with-normal-boundary-and-erroneous-data.md,"Lesson 137: Testing with normal, abnormal, and extreme/boundary data",Syllabus Section 12.3,22,2,5,Pass,Pass,,Fail,SCI-META-001;SCI-CONT-005;SCI-VIS-002,Blocked
+138,138-debugging-using-traces-and-breakpoints.md,Lesson 138: Debugging using traces and breakpoints,Syllabus Section 11,23,2,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+139,139-robust-program-design-validation-and-modularity.md,Lesson 139: Robust program design: validation and modularity,Syllabus Section 11,26,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+140,140-converting-java-habits-into-cambridge-pseudocode.md,Lesson 140: Converting Java habits into Cambridge pseudocode,Syllabus Section 11,28,1,5,Pass,Pass,,Fail,SCI-SEQ-007,Blocked
+141,141-section-11-review-writing-complete-program-fragments.md,Lesson 141: Section 11 review: writing complete program fragments,Syllabus Section 11,28,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+142,142-software-development-lifecycle-models.md,Lesson 142: Software development lifecycle models,Syllabus Section 12,26,2,5,Pass,Pass,,Fail,SCI-SEQ-007,Blocked
+143,143-requirements-analysis-and-success-criteria.md,Lesson 143: Requirements analysis and success criteria,Syllabus Section 12,24,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+144,144-design-documentation-algorithms-data-dictionaries-and-interfaces.md,"Lesson 144: Design documentation: algorithms, data dictionaries, and interfaces",Syllabus Section 12,24,1,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+145,145-testing-implementation-maintenance-and-evaluation.md,"Lesson 145: Testing, implementation, maintenance, and evaluation",Syllabus Section 12,26,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+146,146-section-12-review-software-development-case-study.md,Lesson 146: Section 12 review: software development case study,Syllabus Section 12,28,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+147,147-paper-2-review-algorithm-design-and-data-structures.md,Lesson 147: Paper 2 review: algorithm design and data structures,Paper 2 review: Sections 9-12,23,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+148,148-paper-2-review-programming-constructs-and-file-handling.md,Lesson 148: Paper 2 review: programming constructs and file handling,Paper 2 review: Sections 9-12,24,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+149,149-paper-2-timed-pseudocode-practice.md,Lesson 149: Paper 2 timed pseudocode practice,Paper 2 review: Sections 9-12,21,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady
+150,150-paper-2-mock-review-and-correction-clinic.md,Lesson 150: Paper 2 mock review and correction clinic,Paper 2 review: Sections 9-12,18,0,5,Pass,Pass,,PendingIndependentSemanticReview,,NotReady

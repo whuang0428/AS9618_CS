@@ -179,20 +179,20 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "6 marks",
-    prompt: "A student says: 'Computer A has a higher clock speed, so it must perform better than Computer B.' Discuss this statement.",
-    answer: "A higher clock speed can improve performance because the CPU can perform more clock cycles per second. However, this alone is not enough to prove Computer A is faster. Computer B may have more cores and perform better on parallel tasks, a larger or more effective cache reducing main-memory access time, or a word length better suited to the workload. The actual performance depends on the program, CPU architecture and bottlenecks such as memory or I/O, so the statement is too simplistic.",
+    prompt: "A student says: 'Computer A has a higher clock speed, so it must perform better than Computer B.' Discuss this statement using processor type, cores, bus width, clock speed and cache.",
+    answer: "A higher clock speed can improve performance because the CPU can perform more clock cycles per second. However, this alone is not enough to prove Computer A is faster. Processor type includes architecture, instruction-set and execution design, so processors may perform different amounts of useful work for the workload. Computer B may have more cores for parallel tasks, a wider data bus that transfers more bits per transfer, or a larger or more effective cache reducing main-memory access time. Actual performance depends on the program and bottlenecks, so no single factor guarantees the result.",
     marking: [
       { mark: "B1", text: "higher clock speed can improve performance through more cycles per second" },
       { mark: "B1", text: "states that clock speed alone is insufficient for judging performance" },
-      { mark: "B1", text: "explains relevance of cores for parallel/multitasking workloads" },
+      { mark: "B1", text: "explains processor type as architecture/instruction-set/execution design linked to workload" },
+      { mark: "B1", text: "explains relevance of cores for parallel work and/or bus width for bits transferred per transfer" },
       { mark: "B1", text: "explains relevance of cache reducing memory access time" },
-      { mark: "B1", text: "explains relevance of word length or CPU architecture/workload" },
       { mark: "B1", text: "reasoned conclusion that actual performance depends on task and bottlenecks" },
     ],
     strict: [
       "Do not accept a list of factors without linking at least one to performance.",
       "Do not award conclusion if it only repeats 'A is faster'.",
-      "Allow other valid factors if tied to the scenario.",
+      "Do not accept processor type as only a brand name; allow another accurate bus-width consequence if linked to the scenario.",
     ],
   },
 ];

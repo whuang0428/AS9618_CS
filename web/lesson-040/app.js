@@ -113,8 +113,8 @@ const examQuestions = [
     answer: "A AND B = 1. A NAND B = 0 because NAND is the inverse of AND. Q = 0 OR 0 = 0.",
     marking: [
       { mark: "B1", text: "A AND B = 1" },
-      { mark: "B1", text: "A NAND B = 0" },
-      { mark: "B1", text: "final Q = 0" },
+      { mark: "M1", text: "derives A NAND B = 0 by inverting the AND result" },
+      { mark: "A1", text: "final Q = 0, with follow-through from the candidate's NAND result" },
     ],
     strict: [
       "Do not accept NAND as the same as AND.",

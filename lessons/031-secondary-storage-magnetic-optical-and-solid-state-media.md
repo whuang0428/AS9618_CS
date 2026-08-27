@@ -73,9 +73,8 @@ Misconception: Students often list hardware without explaining suitability. Corr
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S3.03
 **Focus:** HDD, flash and optical reader/writer operation
 
 ### Direct explanation
@@ -115,6 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-031-compare.jpg`
 
 1. An HDD provides high capacity at relatively low cost and suits large file libraries or cost-sensitive backups.
@@ -125,6 +125,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `media`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-031-media.jpg`
 
 1. Magnetic storage uses magnetised areas; examples include HDD and tape.
@@ -136,6 +137,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-031-purpose.jpg`
 
 1. Non-volatile Data remains when power is switched off.
@@ -147,6 +149,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `storage-visual`
 - **Explanation type:** tradeoff
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-031-storage-visual.jpg`
 
 1. Visual explanation

@@ -72,6 +72,46 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Complete processor performance factors
+
+### Direct explanation
+
+- Processor performance depends on processor type, number of cores, bus width, clock speed and cache memory. Processor type means the processor architecture and instruction-set design, including how much useful work its execution units can perform for a particular instruction or workload; a clock-rate comparison alone is therefore not sufficient.
+- More cores can execute independent threads concurrently when software exposes parallel work. Wider data buses can transfer more bits per transfer, while address-bus width affects the address space. Higher clock speed provides more clock cycles per second, and cache reduces waiting when frequently used instructions or data are found close to the CPU.
+- No factor guarantees that every program runs faster. Performance must be justified for the stated workload, because software parallelism, instruction-set compatibility, cache behaviour, memory traffic, heat and other bottlenecks can limit the benefit.
+
+### Worked example
+
+**Compare two processors for two workloads:** Processor A has four faster general-purpose cores and a larger cache; Processor B has eight specialised cores but a lower clock speed. A lightly threaded office program may favour A's processor type, clock behaviour and cache, while a parallel workload written for B's processor type may use more cores. Bus width and memory traffic must also be considered before reaching a conclusion.
+
+### Targeted practice and answers
+
+1. What does processor type mean as a performance factor?
+   **Answer:** The processor architecture/instruction-set and execution design, which determines what work it can perform per instruction or for a particular workload.
+2. Why do more cores not always improve one program?
+   **Answer:** The program must contain independent threads or tasks that can run in parallel.
+3. How can bus width affect performance?
+   **Answer:** A wider data bus can transfer more bits per transfer; address-bus width affects the address space rather than directly guaranteeing speed.
+4. Why can cache improve performance?
+   **Answer:** A cache hit supplies frequently used data or instructions faster than main memory, reducing CPU waiting.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Two computers have different processor types. Explain how processor type, number of cores, bus width, clock speed and cache can affect their performance for a stated workload.
+
+- **B1** processor type linked to architecture/instruction-set/execution design and workload
+- **B1** cores linked to available parallel threads/tasks
+- **B1** bus width linked accurately to bits transferred or address space
+- **B1** clock speed linked to cycles per second
+- **B1** cache linked to reducing slower main-memory access
+- **B1** conclusion recognises workload and bottlenecks rather than claiming one factor guarantees speed
+
+**Strict note:** Do not accept processor type as only a brand name, or claim that the highest clock speed or largest core count always wins.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cache`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-049-cache.jpg`
 
 1. 1. CPU requests data The CPU needs an instruction or data item.
@@ -92,6 +133,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `clock`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-049-clock.jpg`
 
 1. Mechanism
@@ -104,6 +146,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-049-concept.jpg`
 
 1. Clock speed
@@ -117,6 +160,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cores`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-049-cores.jpg`
 
 1. One thread can execute on only one core at a time.
@@ -127,6 +171,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `limits`
 - **Explanation type:** tradeoff
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-049-limits.jpg`
 
 1. Memory bottleneck A fast CPU still waits if data arrives slowly from memory.
@@ -138,6 +183,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `word`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-049-word.jpg`
 
 1. Explanation

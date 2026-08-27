@@ -72,6 +72,47 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often memorise register names without roles. Correction: a register earns its name by what it temporarily holds.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Register-transfer notation for the fetch-decode-execute cycle
+
+### Direct explanation
+
+- Register-transfer notation describes a data transfer or register update. The arrow <- means 'is loaded with' or 'receives'; it is not an equality sign. Memory[MAR] means the contents of the memory location whose address is currently held in MAR.
+- A coherent fetch sequence is MAR <- PC; MDR <- Memory[MAR]; CIR <- MDR; and PC <- PC + 1 at an appropriate point before the next fetch. The control unit then decodes the opcode and operand in CIR and sends control signals for execution.
+- During execution, notation such as ACC <- ACC + MDR records an arithmetic result in ACC, while Memory[MAR] <- MDR records a memory write. Read every statement from right to left: obtain the source value, then replace the destination contents.
+- The exact timing of PC increment may vary between coherent processor descriptions, but MAR must receive the current instruction address before that address is replaced. Register-transfer notation describes movement and updates; it does not imply that two registers permanently contain the same value.
+
+### Worked example
+
+**Trace one instruction fetch:** Start with PC = 120 and Memory[120] = LDD 500. MAR <- PC puts 120 in MAR. MDR <- Memory[MAR] puts LDD 500 in MDR. CIR <- MDR copies the instruction into CIR. PC <- PC + 1 makes PC 121, ready to address the next instruction. The control unit then decodes LDD and executes it.
+
+### Targeted practice and answers
+
+1. What does MAR <- PC mean?
+   **Answer:** Copy the address currently in PC into MAR; PC is not changed by that transfer.
+2. What does MDR <- Memory[MAR] mean?
+   **Answer:** Read the contents of the memory location addressed by MAR into MDR.
+3. Why is CIR <- MDR needed during fetch?
+   **Answer:** It places the fetched instruction in CIR so the control unit can decode its opcode and operand.
+4. Write register-transfer notation for adding the value in MDR to ACC.
+   **Answer:** ACC <- ACC + MDR.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Using register-transfer notation, describe the fetch of one instruction and explain the meaning of Memory[MAR].
+
+- **M1** MAR <- PC
+- **M1** MDR <- Memory[MAR]
+- **M1** CIR <- MDR
+- **M1** PC <- PC + 1 at a coherent point
+- **B1** Memory[MAR] means the contents at the memory address held in MAR
+- **B1** CIR is decoded and control signals initiate execution
+
+**Strict note:** Do not accept PC <- MAR as the first transfer or treat Memory[MAR] as the address value itself.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +120,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cycle`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-cycle.jpg`
 
 1. The CPU gets the next instruction from main memory using the address stored in the PC.
@@ -89,6 +131,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cycle-visual`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-cycle-visual.jpg`
 
 1. Copy the next-instruction address from PC to MAR and read the instruction from memory into MDR.
@@ -100,6 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `decode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-decode.jpg`
 
 1. The control unit interprets the instruction in the CIR. It identifies the opcode, decides what operation is required, and identifies any operands or addresses needed.
@@ -116,6 +160,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `fetch`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-fetch.jpg`
 
 1. This is the part students must be able to trace precisely.
@@ -135,6 +180,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `registers`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-042-registers.jpg`
 
 1. Register roles

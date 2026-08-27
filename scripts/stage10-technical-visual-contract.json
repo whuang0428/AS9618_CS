@@ -1,0 +1,80 @@
+{
+  "046/assembler": {
+    "title": "Instruction groups: data movement, I/O, arithmetic, control and compare",
+    "subtitle": "Classify each instruction by its purpose before tracing its effect.",
+    "numbered": false,
+    "headingSize": 22,
+    "bodySize": 22,
+    "codeSize": 17,
+    "noteSize": 18,
+    "cards": [
+      [
+        "DATA MOVEMENT",
+        "Move values among immediate data, memory, ACC and IX.",
+        "LDM #n       ACC <- n\nLDD address  ACC <- MEM[address]\nLDI address  ACC <- MEM[MEM[address]]\nLDX address  ACC <- MEM[address + IX]\nLDR #n       IX <- n\nMOV IX       IX <- ACC\nSTO address  MEM[address] <- ACC",
+        "LDR is immediate to IX, not relative."
+      ],
+      [
+        "INPUT/OUTPUT + ARITHMETIC",
+        "Input and output use ASCII codes in ACC. Arithmetic changes ACC or a named register.",
+        "IN            key ASCII -> ACC\nOUT           ACC ASCII -> screen\nADD value     ACC <- ACC + value\nSUB value     ACC <- ACC - value\nINC register  register <- register + 1\nDEC register  register <- register - 1",
+        "Immediate values may use #, B or &."
+      ],
+      [
+        "CONTROL + COMPARE",
+        "JMP is unconditional. CMP and CMI set a True/False comparison result used by JPE or JPN.",
+        "JMP address   always jump\nCMP value     compare ACC directly\nCMI address   compare ACC indirectly\nJPE address   jump if comparison True\nJPN address   jump if comparison False\nEND           return control to OS",
+        "JPE is not 'equal'; JPN is not 'negative'."
+      ]
+    ],
+    "footer": "Five groups: data movement • input/output • arithmetic • unconditional/conditional instructions • compare.",
+    "groups": {
+      "data movement": ["LDM", "LDD", "LDI", "LDX", "LDR", "MOV", "STO"],
+      "input/output": ["IN", "OUT"],
+      "arithmetic": ["ADD", "SUB", "INC", "DEC"],
+      "unconditional/conditional": ["JMP", "JPE", "JPN"],
+      "compare": ["CMP", "CMI"]
+    },
+    "otherOpcodes": ["END"]
+  },
+  "050/shifts": {
+    "title": "Binary shifts: logical, arithmetic, cyclic",
+    "subtitle": "Every input and stored result below is exactly 8 bits wide.",
+    "numbered": false,
+    "headingSize": 22,
+    "bodySize": 22,
+    "codeSize": 18,
+    "noteSize": 18,
+    "cards": [
+      [
+        "LOGICAL LEFT / RIGHT",
+        "Empty positions receive 0; the outgoing end bit is discarded.",
+        "LSL 1\n10110011 -> 01100110\nout left 1; zero enters right\n\nLSR 1\n10110011 -> 01011001\nout right 1; zero enters left",
+        "Unsigned LSL overflow: Yes (179 x 2 > 255)."
+      ],
+      [
+        "ARITHMETIC LEFT / RIGHT",
+        "Left shift inserts 0. Right shift copies the original sign bit.",
+        "ASL 1\n10110011 -> 01100110\nsign 1 becomes 0\n\nASR 1\n10110011 -> 11011001\nsign bit 1 copied left",
+        "Signed ASL overflow: Yes (sign changed)."
+      ],
+      [
+        "CYCLIC LEFT / RIGHT",
+        "The outgoing bit rotates into the empty position at the opposite end.",
+        "ROL 1\n10110011 -> 01100111\nleft 1 rotates to right\n\nROR 1\n10110011 -> 11011001\nright 1 rotates to left",
+        "No bit is discarded; an overflow label is not used."
+      ]
+    ],
+    "footer": "Fixed width keeps 8 stored bits; overflow depends on the signed or unsigned numeric interpretation.",
+    "width": 8,
+    "input": "10110011",
+    "examples": [
+      {"name": "logical-left", "result": "01100110", "outgoing": "1", "fill": "0", "overflowContext": "unsigned", "overflow": true},
+      {"name": "logical-right", "result": "01011001", "outgoing": "1", "fill": "0", "overflowContext": null, "overflow": null},
+      {"name": "arithmetic-left", "result": "01100110", "outgoing": "1", "fill": "0", "overflowContext": "signed", "overflow": true},
+      {"name": "arithmetic-right", "result": "11011001", "outgoing": "1", "fill": "1", "overflowContext": null, "overflow": null},
+      {"name": "cyclic-left", "result": "01100111", "outgoing": "1", "fill": "1", "overflowContext": null, "overflow": null},
+      {"name": "cyclic-right", "result": "11011001", "outgoing": "1", "fill": "1", "overflowContext": null, "overflow": null}
+    ]
+  }
+}

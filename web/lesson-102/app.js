@@ -136,7 +136,7 @@ const examQuestions = [
     prompt: "The following pseudocode is traced with input values 4, 7, 9. Complete the trace for Total and state the output.\n\nTotal <- 0\nFOR Count <- 1 TO 3\n    INPUT Number\n    Total <- Total + Number\nNEXT Count\nOUTPUT Total",
     answer: "Count 1: Number 4, Total 4. Count 2: Number 7, Total 11. Count 3: Number 9, Total 20. Output is 20.",
     marking: [
-      { mark: "B1", text: "records Total as 4 after first input" },
+      { mark: "M1", text: "records Total as 4 after applying the first update" },
       { mark: "B1", text: "records Total as 11 after second input" },
       { mark: "B1", text: "records Total as 20 after third input" },
       { mark: "B1", text: "states output occurs after the loop" },

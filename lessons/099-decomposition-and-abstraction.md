@@ -74,6 +74,44 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often start coding before defining the output. Correction: an algorithm is easier to design when the required result is known first.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Abstraction and decomposition into program modules
+
+### Direct explanation
+
+- Abstraction removes each irrelevant detail that does not affect the required inputs, rules, constraints or outputs. Producing an abstract model means recording the essential details that remain: the data, relationships and processes needed to solve the problem, not merely listing what was ignored.
+- Decomposition breaks a problem into smaller sub-problems with distinct responsibilities. Express the resulting design as program modules with clear inputs, processing and outputs; a module may later be implemented as a procedure that performs an action or a function that returns a value.
+- Abstraction decides what belongs in the model; decomposition decides how the retained problem is divided. The modules must connect into one complete solution and must not omit a requirement.
+
+### Worked example
+
+**Model and decompose a car-park charge:** Keep entry time, exit time and tariff; omit car colour because it cannot change the charge. Express the solution as modules InputTimes, CalculateDuration, CalculateCharge and OutputCharge. CalculateCharge can become a function returning the charge, while OutputCharge can become a procedure that displays it.
+
+### Targeted practice and answers
+
+1. What must an abstract model contain?
+   **Answer:** The essential details and relationships/processes needed to solve the problem.
+2. What does decomposition produce here?
+   **Answer:** Smaller sub-problems expressed as connected program modules with clear responsibilities.
+3. Distinguish a procedure module from a function module at this design stage.
+   **Answer:** A procedure performs an action; a function returns a value to its caller.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Produce an abstract model for a school meal bill, then decompose it into named program modules and identify one likely procedure and one likely function.
+
+- **B1** retains meal choice, quantity and price as essential details
+- **B1** states the calculation and total output in the abstract model
+- **B1** excludes a justified irrelevant detail such as tray colour
+- **B1** expresses the problem as connected modules with distinct responsibilities
+- **B1** identifies a suitable procedure module that performs an action
+- **B1** identifies a suitable function module that returns a value
+
+**Strict note:** Do not award only a list of omitted details, vague Part1/Part2 labels or modules that do not collectively solve the problem.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -81,6 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `abstraction`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-099-abstraction.jpg`
 
 1. Keep details that affect an input, rule, calculation, constraint or output.
@@ -92,25 +131,28 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `decomposition`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-099-decomposition.jpg`
 
 1. Split the whole task into meaningful sub-problems with distinct responsibilities.
-2. Separate receiving data, checking requirements, calculations and producing results when their responsibilities differ.
-3. Use clear verb-based names instead of vague labels such as Part1 or ProcessData.
-4. Confirm that the sub-problems connect into one complete solution.
+2. Express the resulting design as program modules with clear inputs, processing and outputs.
+3. A module may become a procedure that performs an action or a function that returns a value.
+4. Confirm that all modules connect into one complete solution.
 
 ### Keep or ignore details
 
 - **Explains:** `filter`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-099-filter.jpg`
 
 1. Interactive abstraction filter
 
-### From scenario to algorithm plan
+### Produce an abstract model
 
 - **Explains:** `pattern`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-099-pattern.jpg`
 
 1. Underline the required output and keep only details that affect it.
@@ -123,6 +165,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `sorter`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-099-sorter.jpg`
 
 1. Interactive task sorter

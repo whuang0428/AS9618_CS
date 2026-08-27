@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-071-compare.jpg`
 
 1. Difference
@@ -98,6 +99,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `controls`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-071-controls.jpg`
 
 1. Verification checks that copied, entered or transferred data agrees with the source or repeated entry.
@@ -108,6 +110,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `diagnostic`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-071-diagnostic.jpg`
 
 1. Interactive diagnostic
@@ -117,6 +120,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `matcher`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-071-matcher.jpg`
 
 1. Interactive risk matcher
@@ -127,6 +131,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `method`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-071-method.jpg`
 
 1. 1. Name the risk Example: unauthorised users may view medical records.
@@ -140,6 +145,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `review-map`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-071-review-map.jpg`
 
 1. Risk family

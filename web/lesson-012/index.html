@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body class="stage7-contrast-lesson-012">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -38,6 +38,7 @@
         <a href="#practice">Practice</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -307,6 +308,66 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Compression methods for text, bitmap, vector and sound files</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Compression represents a file using fewer bits. Lossless compression must reconstruct every original bit, so it is required where any change would alter meaning, such as program source or exact text. Lossy compression permanently discards selected detail and is suitable only when the resulting quality remains acceptable for the purpose.</p>
+            <p>Text can be compressed losslessly by run-length encoding repeated characters or by replacing repeated words/strings with shorter dictionary references. Bitmap data can use run-length encoding when adjacent pixels repeat; lossy bitmap compression may reduce colour precision or discard fine spatial detail. RLE is effective only when the runs save more space than their symbol-count representation.</p>
+            <p>A vector file stores drawing objects rather than pixels. It can be compressed losslessly by storing repeated shapes or properties once and referring to them, and by removing redundant object descriptions. Sound can use lossless pattern coding when exact samples are required, or lossy perceptual coding that removes less-audible sound information; reducing sample rate or sampling resolution also reduces data but changes the recording.</p>
+            <p>Method choice depends on file type, repetition, required fidelity and use. A valid justification must connect the chosen method to what may or may not be discarded; naming 'lossy' or 'lossless' alone is not enough.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose methods for four files</h3>
+            <p>Compress repeated spaces in a text log with RLE or a dictionary without changing the characters; compress a flat-colour bitmap logo with pixel-value RLE; store one repeated vector shape once and reference it; use lossless sound compression for an evidential recording, but perceptual lossy coding may suit streamed music when smaller size is worth a controlled quality loss.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Compression methods for text, bitmap, vector and sound files: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Why must program source code use lossless compression?</p>
+              <details><summary>Show answer</summary><p>Every character must be reconstructed exactly; a discarded or changed character can alter syntax or behaviour.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> When is RLE effective for a bitmap?</p>
+              <details><summary>Show answer</summary><p>When many adjacent pixels have the same value, so symbol-count pairs use fewer bits than storing each pixel separately.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> How can repeated objects in a vector file be compressed?</p>
+              <details><summary>Show answer</summary><p>Store the repeated shape/properties once and use shorter references for each occurrence.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Give one lossy method for sound and its trade-off.</p>
+              <details><summary>Show answer</summary><p>Remove less-audible frequency/detail information, or reduce sample rate/resolution; the file is smaller but the discarded detail cannot be recovered.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>For each of text, bitmap, vector and sound data, describe one suitable compression method and state whether it preserves the original data exactly.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> text: lossless RLE or dictionary/token substitution with exact reconstruction</li>
+                <li><strong>B1</strong> bitmap: RLE for repeated adjacent pixel values, or a valid lossy image method identified as non-exact</li>
+                <li><strong>B1</strong> vector: stores repeated objects/properties once and uses references / removes redundant descriptions, losslessly</li>
+                <li><strong>B1</strong> sound: lossless pattern coding for exact samples or perceptual lossy coding that removes less-audible detail</li>
+                <li><strong>B1</strong> distinguishes exact lossless reconstruction from irreversible lossy removal</li>
+                <li><strong>B1</strong> links at least one method to repetition, fidelity or intended use</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -343,7 +404,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

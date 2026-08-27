@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `methods`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-015-methods.jpg`
 
 1. Storage units
@@ -86,7 +87,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. Binary to denary
 4. Add active place values. For 8-bit unsigned, range is 0 to 255.
 5. File size
-6. Image bits = width x height x colour depth. Sound bits = sample rate x sample resolution x duration x channels.
+6. Image bits = width x height x colour depth. Sound bits = sample rate x sampling resolution x duration x channels.
 7. Compression choice
 8. Lossless allows exact reconstruction. Lossy removes data permanently but can reduce file size more.
 
@@ -94,6 +95,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `sprint`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-015-sprint.jpg`
 
 1. Timed section
@@ -111,6 +113,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `triage`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-015-triage.jpg`
 
 1. Number bases
@@ -118,7 +121,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 3. Text representation
 4. Look for ASCII, Unicode, character set, character code, multilingual text or symbols.
 5. Images and sound
-6. Look for resolution, colour depth, sampling rate, sample resolution, duration and file size.
+6. Look for resolution, colour depth, sampling rate, sampling resolution, duration and file size.
 7. Compression
 8. Look for lossless, lossy, exact reconstruction, reduced quality, RLE or repeated data.
 <!-- stage10-explanations:end -->

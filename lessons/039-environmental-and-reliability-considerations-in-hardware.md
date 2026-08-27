@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `environment`
 - **Explanation type:** tradeoff
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-039-environment.jpg`
 
 1. Possible effect
@@ -98,6 +99,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `mitigation`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-039-mitigation.jpg`
 
 1. Outdoor weather station Weatherproof casing, low-power controller, battery/solar power and wireless communication.
@@ -110,6 +112,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `reliability`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-039-reliability.jpg`
 
 1. Redundancy, failover and a UPS can support continuity when a component or power source fails.

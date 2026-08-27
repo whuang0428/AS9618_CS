@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `answer`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-032-answer.jpg`
 
 1. Choice Use an SSD
@@ -91,6 +92,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `criteria`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-032-criteria.jpg`
 
 1. Capacity How much data can be stored, usually measured in GB or TB.
@@ -103,6 +105,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `tradeoffs`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-032-tradeoffs.jpg`
 
 1. Strengths

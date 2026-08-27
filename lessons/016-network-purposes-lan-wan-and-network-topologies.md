@@ -72,6 +72,46 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often think every topology fails in the same way. Correction: the connection pattern determines which alternative paths and single points of failure exist.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Networking benefits, LAN/WAN and the four required topologies
+
+### Direct explanation
+
+- Networking devices allow computers and users to share resources such as files, printers, storage and an internet connection. A network can also support communication, collaboration, central account management, central backup and access to shared services. A benefit must identify what is shared or managed and explain the consequence; 'it is easier' is not enough.
+- A LAN covers a limited geographical area such as one building or site and is normally owned or managed by one organisation. A WAN covers a large geographical area, connects separate LANs or sites and commonly uses telecommunications-provider infrastructure. LAN and WAN describe scope and management, not a guaranteed speed.
+- In a bus topology, devices attach to one shared backbone cable and a transmitted signal travels along that shared medium. In a star topology, every device has a separate link to a central switch and each frame passes through that switch. In a mesh topology, nodes have multiple interconnections so packets may use alternative routes. A hybrid topology combines two or more topology patterns, for example two star segments connected by a backbone.
+- Topology choice must be justified from packet path, failure effect, redundancy, cabling cost, expansion and traffic. A star isolates most individual cable faults but the central switch is a single point of failure; a mesh offers alternative paths but needs more links and management; a bus uses less cable but the shared backbone and shared traffic are weaknesses.
+
+### Worked example
+
+**Choose a topology for a two-building clinic:** Use a star LAN inside each building so individual devices have independent links to a central switch. Connect the two stars to form a hybrid network. If the inter-building link is safety-critical, add a second path: packets can use the alternative route after one link fails, at extra cost.
+
+### Targeted practice and answers
+
+1. State two concrete benefits of networking school computers.
+   **Answer:** Shared printers/files/services and central management, backup or communication; each benefit must name its consequence.
+2. Distinguish a LAN from a WAN using geographical scope and management.
+   **Answer:** A LAN covers a limited site and is normally managed by one organisation; a WAN connects sites over a large area and often uses provider infrastructure.
+3. Describe the packet or signal path in bus, star, mesh and hybrid topologies.
+   **Answer:** Bus: shared backbone; star: central switch; mesh: one of several interconnected routes; hybrid: the path follows the combined component topologies.
+4. Choose star or mesh for a hospital network that prioritises resilience.
+   **Answer:** Mesh, because alternative packet routes can maintain communication after a link failure; acknowledge the additional links/cost.
+
+### Exam-style question and MS
+
+**Question (5 marks):** A college is replacing one shared bus network with star LANs connected into a hybrid topology. Explain two networking benefits and justify the topology change.
+
+- **B1** one developed resource-sharing, communication or central-management benefit
+- **B1** a second distinct developed networking benefit
+- **B1** star frames pass through a central switch and an individual cable failure normally affects one device
+- **B1** hybrid combines topology patterns / connects the star segments
+- **B1** justification links reliability, expansion, traffic or cost to the college
+
+**Strict note:** Do not award generic benefits or a topology name without a path/failure consequence.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `lanwan`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-016-lanwan.jpg`
 
 1. A LAN usually stays within one organisation's controlled site.
@@ -91,6 +132,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-016-purpose.jpg`
 
 1. A device packages a request and names the destination.
@@ -103,6 +145,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `topologies`
 - **Explanation type:** tradeoff
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-016-topologies.jpg`
 
 1. A topology diagram's link count must match the physical links actually drawn.

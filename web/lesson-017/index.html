@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -38,7 +38,7 @@
         <a href="#practice">Practice</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -400,44 +400,56 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>Thin clients and thick clients</h2>
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Network models and thin/thick client designs</h2>
           </div>
           <div class="stage2-explanation">
-            <p>A thin client relies mainly on a server for processing and/or storage. A thick client performs more processing locally and normally stores more software or data on the client device.</p>
-            <p>Thin clients simplify central updates and can use lower-specification hardware, but depend heavily on the server and network. Thick clients can continue more work when disconnected, but local installation, security and maintenance are distributed.</p>
+            <p>In a client-server model, clients request services or resources and one or more servers provide them. Dedicated server roles can include authentication, file storage, web hosting and backup. Central management, consistent access control and central backup are benefits; server cost, specialist administration, dependence on the server and a possible central failure are drawbacks.</p>
+            <p>In a peer-to-peer model, each peer may request and provide resources directly. It can be inexpensive and simple for a small trusted group because no dedicated server is required, but distributed accounts, backups, security and availability become harder to control. A model choice must be justified from number of users, trust, management, availability, cost and the required shared services.</p>
+            <p>A thin client relies mainly on a server for processing and/or storage. A thick client performs more processing locally and normally stores more software or data on the client device. Thin clients simplify central updates and can use lower-specification hardware, but depend heavily on the server and network. Thick clients can continue more work when disconnected, but local installation, security and maintenance are distributed.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: School computer room</h3>
-            <p>Thin clients suit centrally managed exam accounts because software and files can be controlled on servers. A network outage, however, can stop the room working; a thick client may retain local applications.</p>
+            <h3>Worked example: Choose a model and client type for a school examination room</h3>
+            <p>Use a client-server model so accounts, permissions, exam files and backups are controlled by servers. Thin clients support central software management and reduce local storage, but the school must provide resilient servers and networking because a failure can stop the room. Thick clients would reduce that dependence but distribute software and security maintenance.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Network models and thin/thick client designs: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Where is most processing performed for a thin client?</p>
-              <details><summary>Show answer</summary><p>On the server.</p></details>
+              <p><strong>1.</strong> State the roles of a client and server.</p>
+              <details><summary>Show answer</summary><p>A client requests a service or resource; a server provides and manages the service or resource.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Give one thick-client advantage during a network outage.</p>
-              <details><summary>Show answer</summary><p>Local applications/data may remain usable.</p></details>
+              <p><strong>2.</strong> Give one benefit and one drawback of peer-to-peer networking.</p>
+              <details><summary>Show answer</summary><p>Benefit: no dedicated server / low setup cost. Drawback: distributed security, backup and availability are harder to manage.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Give one thin-client management advantage.</p>
-              <details><summary>Show answer</summary><p>Software and updates can be managed centrally.</p></details>
+              <p><strong>3.</strong> Justify client-server for 600 managed school users.</p>
+              <details><summary>Show answer</summary><p>Central accounts, permissions, storage, updates and backup suit many users, despite server cost and availability risk.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Distinguish a thin client from a thick client.</p>
+              <details><summary>Show answer</summary><p>A thin client depends mainly on server processing/storage; a thick client performs and stores more locally.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>A company is choosing thin clients for a call centre. Explain two benefits and one drawback.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>A call centre is choosing a client-server model with thin clients. Explain two benefits and two drawbacks of this combined choice.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> centralised software/update management</li>
-                <li><strong>B1</strong> lower client hardware/storage requirement or centralised security/data</li>
+                <li><strong>B1</strong> centralised accounts/software/update or data management</li>
+                <li><strong>B1</strong> lower client hardware/storage requirement</li>
                 <li><strong>B1</strong> depends on network/server availability or performance</li>
-                <li><strong>B1</strong> develops one point in the call-centre context</li>
+                <li><strong>B1</strong> server infrastructure, administration or central-failure cost</li>
+                <li><strong>B1</strong> develops at least one point in the call-centre context</li>
               </ol>
             </details>
           </article>
@@ -480,7 +492,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

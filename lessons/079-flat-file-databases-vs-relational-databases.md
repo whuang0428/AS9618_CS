@@ -72,6 +72,45 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often choose names as primary keys. Correction: a primary key must uniquely and reliably identify a record.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** File-based limitations and relational solutions
+
+### Direct explanation
+
+- A file-based approach stores data in separate application files. The same fact may be repeated in several files or records, causing redundancy and wasted storage. Updating only some copies creates inconsistency; insertion and deletion can also lose or require unrelated facts. Separate files may use incompatible formats, isolate data, duplicate validation/security code and make shared querying, concurrent access, backup and recovery harder to manage.
+- A relational database addresses these limitations by separating entities into linked tables, storing shared facts once, identifying records with keys and enforcing relationships and constraints centrally. A DBMS supplies shared query processing, integrity, security, access rights and backup. These mechanisms reduce particular file-based risks; a relational design is not automatically smaller, simpler or error-free.
+
+### Worked example
+
+**Replace a repeated order file:** A flat Order file repeats CustomerName and Address in every order row. Split it into Customer(CustomerID, CustomerName, Address) and Order(OrderID, CustomerID, OrderDate). CustomerID links each order to one stored customer, so an address is updated once instead of in every order row.
+
+### Targeted practice and answers
+
+1. Why can repeated data create inconsistency?
+   **Answer:** One copy may be changed while another remains out of date.
+2. What is data isolation in a file-based system?
+   **Answer:** Related data is kept in separate files or formats, making combined access and queries difficult.
+3. Which relational feature connects an order to its customer?
+   **Answer:** A foreign key in Order referring to the Customer primary key.
+4. Why is 'relational databases are always simpler' not a valid benefit?
+   **Answer:** Linked tables and DBMS administration add complexity; benefits must be tied to a file-based limitation.
+
+### Exam-style question and MS
+
+**Question (6 marks):** A clinic repeats patient details in separate appointment, billing and treatment files. Explain three file-based limitations and a relational-database feature that addresses each one.
+
+- **B1** repeated patient facts cause redundancy or wasted storage
+- **B1** linked tables store a shared patient fact once
+- **B1** separate copies can become inconsistent after partial updates
+- **B1** central keys/constraints and one stored fact improve consistency
+- **B1** isolated files/formats make combined retrieval or control difficult
+- **B1** DBMS query, integrity, access-right or backup service addresses the named difficulty
+
+**Strict note:** Do not award a generic claim such as 'relational is better' without a named limitation, mechanism and consequence.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +118,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `anomalies`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-079-anomalies.jpg`
 
 1. An anomaly is a problem caused when data is inserted, updated or deleted in a structure that stores repeated facts poorly.
@@ -90,6 +130,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-079-compare.jpg`
 
 1. Flat-file
@@ -109,6 +150,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `flat`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-079-flat.jpg`
 
 1. A flat-file database stores data in a single table. It is simple, but related data may be repeated in many records.
@@ -124,6 +166,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `relational`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-079-relational.jpg`
 
 1. A relational database stores data in multiple tables that are linked using shared fields. Shared facts can be stored once and referenced where needed.

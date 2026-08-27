@@ -73,19 +73,19 @@ Misconception: Students often confuse bandwidth with speed in every sense. Corre
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S2.09, S2.14
 **Focus:** Required LAN and internet connection hardware
 
 ### Direct explanation
 
 - A NIC/WNIC provides wired/wireless network access; a WAP connects wireless devices to a LAN; a switch forwards frames within a LAN; a bridge joins LAN segments; a repeater regenerates a weakened signal; a server provides shared services; cables carry wired signals.
-- A modem converts signals for an access link. Internet access may use the PSTN, a dedicated leased line or a cellular phone network. A router forwards packets between the local network and other networks.
+- A router connects different networks and forwards packets using destination IP addresses and routing information; for example, it connects a LAN to the internet. A router is not simply a device that 'provides WiFi', although one physical home unit may combine router and WAP functions.
+- A modem converts between the data representation used by a computer/network and the signalling required by an access link. Internet-supporting connections include the PSTN (Public Switched Telephone Network), a dedicated line that provides a permanent link, and a cell phone network (cellular phone network) that supplies radio access through mobile infrastructure.
 
 ### Worked example
 
-**Branch office connection:** Each desktop uses a NIC and cable to the switch; phones use a WNIC through the WAP. The router uses a dedicated line and suitable modem/interface to reach the ISP; a repeater is only added where signal distance requires regeneration.
+**Branch office connection:** Each desktop uses a NIC and cable to the switch; phones use a WNIC through the WAP. A server supplies shared files or authentication, a bridge may join LAN segments and a repeater is added only where a weakened signal needs regeneration. The router forwards packets to the ISP through a suitable modem and either the PSTN, a dedicated line or a cell phone network.
 
 ### Targeted practice and answers
 
@@ -93,19 +93,24 @@ Correction prompt: "State the correct term, then explain the relevant process or
    **Answer:** Repeater.
 2. Which component gives a laptop wireless network connectivity?
    **Answer:** WNIC; it connects through a WAP.
-3. Why might a business choose a dedicated line instead of PSTN dial-up?
+3. What distinct jobs do a bridge and a switch perform?
+   **Answer:** A bridge joins LAN segments; a switch connects LAN devices and forwards frames to the appropriate port.
+4. Why might a business choose a dedicated line instead of the PSTN?
    **Answer:** It offers a permanent, predictable connection suited to continuous business traffic.
+5. When may a cell phone network support internet access?
+   **Answer:** When a device or site uses cellular radio infrastructure instead of a fixed access line.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Describe the roles of a WNIC, WAP, switch and router when a wireless laptop accesses an internet server.
+**Question (5 marks):** Describe the hardware path used when a wireless laptop accesses an internet server through a dedicated line.
 
 - **B1** WNIC provides the laptop's wireless network interface
-- **B1** WAP connects wireless devices to the wired/local network
-- **B1** switch forwards local frames / connects LAN devices
+- **B1** WAP connects the laptop to the LAN and switch forwards the local frame
 - **B1** router forwards packets between the LAN and internet/other networks
+- **B1** modem/interface converts data for the access-link signalling
+- **B1** dedicated line provides the permanent external connection
 
-**Strict note:** Do not accept WAP and router as automatically identical devices; award their distinct logical roles.
+**Strict note:** Do not merge NIC/WNIC, WAP, switch, router and modem roles; a combined physical box does not make the logical functions identical.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
@@ -115,6 +120,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-023-compare.jpg`
 
 1. A switch forwards frames inside a LAN using MAC addresses.
@@ -126,6 +132,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `gateway`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-023-gateway.jpg`
 
 1. A gateway connects networks that may use different protocols, data formats or communication standards, translating where needed.
@@ -137,6 +144,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `lan`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-023-lan.jpg`
 
 1. A switch connects devices on a local area network and forwards frames to the correct device.
@@ -151,6 +159,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `routing`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-023-routing.jpg`
 
 1. A router connects different networks and forwards packets towards their destination.
@@ -165,6 +174,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `wireless`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-023-wireless.jpg`
 
 1. Wireless access point

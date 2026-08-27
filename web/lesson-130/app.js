@@ -111,7 +111,7 @@ const examQuestions = [
     prompt: "Write Cambridge-style pseudocode for a procedure DisplayMenu that outputs Add score and Quit. Show how the procedure is called.",
     answer: "PROCEDURE DisplayMenu()\n    OUTPUT \"Add score\"\n    OUTPUT \"Quit\"\nENDPROCEDURE\n\nCALL DisplayMenu()",
     marking: [
-      { mark: "B1", text: "uses PROCEDURE DisplayMenu or equivalent procedure header" },
+      { mark: "M1", text: "uses PROCEDURE DisplayMenu or equivalent procedure header" },
       { mark: "B1", text: "outputs Add score or equivalent menu option" },
       { mark: "B1", text: "outputs Quit or equivalent menu option" },
       { mark: "A1", text: "closes the procedure using ENDPROCEDURE" },

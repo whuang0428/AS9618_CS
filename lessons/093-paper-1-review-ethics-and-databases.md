@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `databases`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-093-databases.jpg`
 
 1. Normalisation must retain every original attribute and fact so the original information remains reconstructable.
@@ -89,6 +90,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `ethics`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-093-ethics.jpg`
 
 1. Ethics review
@@ -108,6 +110,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `map`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-093-map.jpg`
 
 1. Retrieval map
@@ -122,6 +125,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `sql`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-093-sql.jpg`
 
 1. SELECT, WHERE, GROUP BY and ORDER BY are clause choices with different effects, not mandatory consecutive stages.
@@ -132,6 +136,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `tracer`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-093-tracer.jpg`
 
 1. Interactive SQL tracer

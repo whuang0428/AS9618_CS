@@ -72,6 +72,46 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Firewall protection from a stand-alone PC to a network
+
+### Direct explanation
+
+- A firewall filters traffic entering or leaving a computer or network by comparing packet or connection information with configured rules. Rules may use source/destination address, port, protocol or connection state and then allow, block, reject or log the traffic.
+- A host firewall can protect a stand-alone PC; a network firewall can protect a boundary between networks. This satisfies different scales of computer-system protection, but neither placement makes a firewall an anti-virus scanner or guarantees that allowed traffic is harmless.
+- Firewalls restrict risk from unwanted connections and some unauthorised-access routes. They should be combined with accounts/passwords, authentication, access rights, anti-virus, anti-spyware, encryption, patching, user training and monitoring because those controls address different threats.
+
+### Worked example
+
+**Protect a home laptop and a school network:** The laptop's host firewall blocks unsolicited inbound connections except an explicitly required service. The school's boundary firewall denies unrequested external traffic, permits web traffic under ordered rules and logs repeated blocked attempts. Anti-virus still scans downloaded files, and account/access controls still decide who may use data after traffic is allowed.
+
+### Targeted practice and answers
+
+1. What information may a firewall rule inspect?
+   **Answer:** Source/destination address, port, protocol or connection state.
+2. Distinguish a host firewall from a network firewall.
+   **Answer:** A host firewall runs on and protects one computer; a network firewall filters traffic at a boundary for multiple connected systems.
+3. Can a firewall replace anti-virus software?
+   **Answer:** No. A firewall controls traffic; anti-virus scans for detected malicious code.
+4. Why may allowed traffic still be dangerous?
+   **Answer:** A permitted connection can carry phishing content, stolen credentials or malware that the rule does not recognise.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Describe how a firewall can protect both a stand-alone PC and a network, then explain two limitations that require other security measures.
+
+- **B1** firewall compares traffic/connection information with configured rules
+- **B1** allows/blocks/rejects/logs according to a rule
+- **B1** host firewall protects one PC
+- **B1** network firewall protects a network boundary
+- **B1** allowed traffic or misconfiguration limitation
+- **B1** matching additional measure such as anti-virus, authentication, access rights or user training
+
+**Strict note:** Do not claim that a firewall removes viruses, detects every malicious payload or makes a computer system completely secure.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,6 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `core`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-068-core.jpg`
 
 1. Traffic Data packets or requests moving across a network.
@@ -90,6 +131,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `event-tool`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-068-event-tool.jpg`
 
 1. Interactive event classifier
@@ -98,6 +140,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `firewall`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-068-firewall.jpg`
 
 1. Purpose Control traffic entering or leaving a network/device.
@@ -109,6 +152,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `limits`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-068-limits.jpg`
 
 1. Firewall limit Allowed traffic can still carry attacks, and rules may be misconfigured.
@@ -120,6 +164,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `monitoring`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-068-monitoring.jpg`
 
 1. Traffic volume Unusual spikes may suggest DoS, malware activity or misconfiguration.
@@ -131,6 +176,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `proxy`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-068-proxy.jpg`
 
 1. Forward requests Client sends request to proxy; proxy requests the resource from the destination.
@@ -142,6 +188,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `rules`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-068-rules.jpg`
 
 1. Allow HTTPS from internal users to internet

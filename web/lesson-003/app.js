@@ -69,8 +69,8 @@ const examQuestions = [
     prompt: "Convert A7₁₆ to binary.",
     answer: "Convert each hexadecimal digit to four bits: A₁₆ = 1010₂ and 7₁₆ = 0111₂. Therefore A7₁₆ = 1010 0111₂.",
     marking: [
-      { mark: "B1", text: "converts A to 1010" },
-      { mark: "B1", text: "converts 7 to 0111" },
+      { mark: "M1", text: "converts A to 1010" },
+      { mark: "M1", text: "converts 7 to 0111" },
       { mark: "A1", text: "1010 0111 / 10100111" },
     ],
     strict: [
@@ -117,7 +117,7 @@ const examQuestions = [
     answer: "3C₁₆ = 0011 1100₂. The candidate omitted the leading zeros in the 3 nibble.",
     marking: [
       { mark: "B1", text: "identifies that 3 should be written as 0011, not 11" },
-      { mark: "B1", text: "converts C to 1100" },
+      { mark: "M1", text: "converts C to 1100" },
       { mark: "A1", text: "correct binary value 0011 1100 / 00111100" },
       { mark: "B1", text: "explains that each hex digit must be represented by four bits" },
     ],

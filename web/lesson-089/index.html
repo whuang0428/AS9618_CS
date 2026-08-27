@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -41,6 +41,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -310,6 +311,70 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Section 8 required-content checkpoint</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Database design review: connect each file-based limitation to a relational or DBMS mechanism; use entity/table, record/tuple and field/attribute precisely; distinguish candidate, primary, secondary and foreign keys; classify one-to-one, one-to-many and many-to-many relationships; apply referential integrity and indexing; document the design with an E-R diagram; and explain or produce 1NF, 2NF and 3NF designs.</p>
+            <p>DBMS and SQL review: identify data management/data dictionary, data modelling, logical schema, integrity, security/backup/access rights, developer interface and query processor. Distinguish DDL structure commands from DML query/maintenance commands, use every required data type and key clause, and keep SELECT queries to at most two tables with explicit INNER JOIN ... ON when two tables are needed.</p>
+            <p>A complete answer follows the scenario through design, statement and result. It does not claim that a primary key prevents every duplicate fact, that a secondary key must be unique, that normalisation guarantees correctness, or that a three-table/comma-style query is within the AS core boundary.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Design and query a library database</h3>
+            <p>Separate Student and Loan tables, identify StudentID as primary key in Student and foreign key in Loan, state the one-to-many relationship and referential-integrity rule, then write SELECT Student.StudentName, Loan.DueDate FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID WHERE Loan.Returned = FALSE; using exactly two tables.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Section 8 required-content checkpoint: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which key may retrieve several records sharing a value?</p>
+              <details><summary>Show answer</summary><p>A secondary key; it need not be unique.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Which normal form removes partial dependency on part of a composite key?</p>
+              <details><summary>Show answer</summary><p>Second Normal Form (2NF).</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which two DBMS tools are named separately in the syllabus?</p>
+              <details><summary>Show answer</summary><p>Developer interface and query processor.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Which SQL language category changes table structure?</p>
+              <details><summary>Show answer</summary><p>DDL.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> What is the AS table-count boundary for a DML query?</p>
+              <details><summary>Show answer</summary><p>At most two tables.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>7 marks</span></div>
+            <p>A school currently repeats student details in a loan file. Propose a relational design and write a two-table query listing StudentName and DueDate for unreturned loans.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> identifies redundancy/inconsistency in the repeated file</li>
+                <li><strong>B1</strong> separates Student and Loan with suitable primary keys</li>
+                <li><strong>B1</strong> uses StudentID as a foreign key in Loan and preserves referential integrity</li>
+                <li><strong>B1</strong> SELECT contains StudentName and DueDate</li>
+                <li><strong>B1</strong> uses Student INNER JOIN Loan</li>
+                <li><strong>B1</strong> ON matches Student.StudentID to Loan.StudentID</li>
+                <li><strong>B1</strong> WHERE Loan.Returned = FALSE</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -346,7 +411,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

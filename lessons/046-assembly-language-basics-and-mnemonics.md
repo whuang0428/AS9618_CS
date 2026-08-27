@@ -73,66 +73,79 @@ Misconception: Students often memorise register names without roles. Correction:
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S4.10, S4.12, S4.13
-**Focus:** Instruction groups, core semantics and the two-pass assembler
+**Focus:** Two-pass assembly, program tracing and the instruction set
 
 ### Direct explanation
 
-- Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.
-- Instruction groups describe effects: data movement transfers values; input/output communicates with devices; arithmetic changes numeric values; compare sets status information; and branch changes the next instruction address. A conditional branch depends on status, while an unconditional jump always changes the PC.
-- Core mnemonics must be read by effect: LDM immediate; LDD direct; LDI indirect; LDX indexed; LDR relative; MOV register transfer; STO memory store; ADD/SUB/INC/DEC arithmetic; JMP branch; CMP/CMI compare; JPE/JPN conditional branches; IN/OUT I/O; END stops.
+- The two-pass assembler stages are Pass 1 and Pass 2. Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.
+- The source form <label>: <opcode> <operand> labels an instruction, while <label>: <data> assigns a symbolic address to a memory location containing data. Pass 1 records both kinds of label in the symbol table.
+- The five instruction groups are data movement (LDM, LDD, LDI, LDX, LDR, MOV, STO), input/output (IN, OUT), arithmetic (ADD, SUB, INC, DEC), unconditional branch and conditional branch. JMP is the unconditional branch instruction; CMP, CMI, JPE and JPN form the compare and conditional branch group. END returns control to the operating system.
+- Data movement: LDM #n loads immediate n into ACC; LDD <address> loads the directly addressed contents into ACC; LDI <address> follows the address stored at <address>; LDX <address> loads from <address> + IX; LDR #n loads n into IX; MOV <register> moves ACC to IX; STO <address> stores ACC at the address.
+- Arithmetic: ADD <address> or ADD #n/Bn/&n adds a memory value or immediate denary/binary/hexadecimal value to ACC; SUB has the corresponding forms; INC <register> and DEC <register> change ACC or IX by one.
+- Control, comparison and I/O: JMP <address> is unconditional. CMP <address> or CMP #n compares ACC directly or with an immediate value. CMI <address> compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.
+- ACC is the accumulator and IX is the index register. An address can be absolute or symbolic. Prefix # gives immediate denary, B immediate binary and & immediate hexadecimal data. These prefixes and operand forms are part of the instruction semantics, not optional decoration.
+- To trace a simple assembly-language program, make a table with one row per executed instruction and columns for the current instruction/address, ACC, IX, relevant memory or output, and branch result. Update only the state changed by that instruction, then use the updated PC or branch target to choose the next row; do not trace source lines that a taken jump skips.
 
 ### Worked example
 
-**Classify and translate a forward branch:** In JMP FINISH, JMP is an unconditional branch. Pass 1 records FINISH's eventual address in the symbol table; pass 2 substitutes that address when translating JMP.
+**Assemble, classify and trace a short program:** For LDM #5; ADD #3; CMP #8; JPE MATCH; LDM #0; MATCH: OUT; END, the trace gives ACC 5, then 8, then a True comparison. JPE transfers control to MATCH, so LDM #0 is skipped; OUT outputs the character whose ASCII code is 8, and END returns control to the operating system. In LOOP: ADD ONE, LOOP labels an instruction; ONE: 1 labels the data location containing 1.
 
 ### Targeted practice and answers
 
 1. Which pass builds the symbol table?
    **Answer:** Pass 1.
-2. What is the difference between LDM #5 and LDD 5?
+2. What does Pass 2 do?
+   **Answer:** Pass 2 translates mnemonics and operands into machine code using the completed symbol table.
+3. What is the difference between LDM #5 and LDD 5?
    **Answer:** LDM loads literal 5; LDD loads the contents of memory address 5.
-3. Which instruction terminates execution?
-   **Answer:** END.
-4. Why is JPE conditional?
-   **Answer:** It branches only when the equality condition/status is satisfied.
+4. What does LDR #7 do?
+   **Answer:** It loads the immediate value 7 into the index register IX.
+5. Classify IN, SUB, JMP and JPN.
+   **Answer:** IN is input/output; SUB is arithmetic; JMP is unconditional; JPN is conditional/compare.
+6. Distinguish CMP #4 from CMI 40.
+   **Answer:** CMP #4 compares ACC with immediate value 4; CMI 40 follows the address stored at memory location 40 and compares ACC with the indirectly addressed value.
+7. What do MOV IX, STO TOTAL, OUT and END do?
+   **Answer:** MOV IX copies ACC to IX; STO TOTAL stores ACC at the symbolic address TOTAL; OUT outputs the ASCII character whose code is in ACC; END returns control to the operating system.
+8. Trace LDM #2; ADD #3; STO TOTAL. What changes?
+   **Answer:** ACC becomes 2, then 5; memory at symbolic address TOTAL becomes 5.
 
 ### Exam-style question and MS
 
-**Question (6 marks):** Explain why an assembler uses two passes for a forward reference, then distinguish compare, conditional branch and unconditional branch instructions.
+**Question (6 marks):** Trace the supplied program and classify the instructions, showing each change to ACC, IX, memory, output and control flow.
 
-- **B1** label is used before its address is known
-- **B1** pass 1 assigns addresses/builds the symbol table
-- **B1** pass 2 substitutes the resolved address while translating
-- **B1** compare tests values / sets status
-- **B1** conditional branch changes flow only when its condition/status is met
-- **B1** unconditional branch always changes the next instruction/PC
+- **M1** uses one row per executed instruction in the correct control-flow order
+- **A1** updates ACC and IX correctly for data movement/arithmetic
+- **A1** updates memory or output correctly for STO/OUT
+- **M1** records compare result before evaluating JPE or JPN
+- **A1** follows the correct taken/not-taken branch and skips non-executed lines
+- **B1** classifies used instructions in the official data movement, input/output, arithmetic, unconditional/conditional and compare groups
 
-**Strict note:** Do not accept that pass 1 executes the program or that CMP itself necessarily jumps to another instruction.
+**Strict note:** Do not accept relative LDR, immediate CMI, equality/zero JPE, negative JPN, or a trace that executes a line skipped by a taken branch.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
-### Assembler: text to machine code
+### Instruction groups: data movement, I/O, arithmetic, control and compare
 
 - **Explains:** `assembler`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-046-assembler.jpg`
 
-1. 1. Read source Assembly source contains mnemonics, labels, operands, comments and directives.
-2. 2. Resolve labels Labels are replaced with actual addresses or offsets.
-3. 3. Translate mnemonics Mnemonics are converted to binary opcodes and operands are encoded.
-4. 4. Output object/machine code The generated machine code can be loaded and executed by the processor.
-5. Common error
-6. An assembler translates assembly to machine code. A compiler usually translates high-level language to lower-level code.
+1. The five groups are data movement, input/output, arithmetic, unconditional/conditional instructions and compare.
+2. Data movement uses LDM, LDD, LDI, LDX, LDR, MOV and STO; LDR #n loads the immediate value n into IX.
+3. Input/output uses IN and OUT; arithmetic uses ADD, SUB, INC and DEC.
+4. JMP is unconditional; CMP and CMI compare; JPE jumps after True and JPN jumps after False.
+5. END returns control to the operating system.
 
 ### What assembly language is
 
 - **Explains:** `assembly`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-046-assembly.jpg`
 
 1. Low-level language
@@ -148,6 +161,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `mnemonics`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-046-mnemonics.jpg`
 
 1. Mnemonic
@@ -163,20 +177,15 @@ Correction prompt: "State the correct term, then explain the relevant process or
 11. ADD value
 12. ADD is easier to read than a binary opcode for addition.
 
-### Structure of a simple assembly line
+### Instruction labels and symbolic data addresses
 
 - **Explains:** `structure`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-046-structure.jpg`
 
-1. LOOP: ADD value ; add next item
-2. LOOP: label
-3. ADD mnemonic
-4. value operand
-5. ; add next item comment
-6. A symbolic name for an address or line, often used by jump/branch instructions.
-7. The value, address, register or label used by the instruction.
-8. Text for human readers. Comments are ignored by the assembler.
-9. Directive
-10. An instruction to the assembler, not a CPU instruction. It may reserve storage or define constants.
+1. <label>: <opcode> <operand> gives a symbolic address to an instruction.
+2. <label>: <data> gives a symbolic address to a memory location containing data.
+3. Pass 1 records both instruction and data labels in the symbol table.
+4. Pass 2 replaces a label reference with its resolved address while translating.
 <!-- stage10-explanations:end -->

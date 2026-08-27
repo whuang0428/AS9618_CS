@@ -74,6 +74,43 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Selection structures in Cambridge pseudocode
+
+### Direct explanation
+
+- Use IF...THEN...ELSE...ENDIF when a Boolean condition selects between paths. An ELSE clause supplies the false path. In nested IF statements, every inner and outer IF must be closed and the indentation must show which ELSE belongs to which IF.
+- Use CASE...OF...OTHERWISE...ENDCASE when one expression is compared with several discrete values. CASE is not a replacement for range or compound-condition decisions unless the stated values cover the requirement correctly.
+
+### Worked example
+
+**Nested IF and CASE:** For a grade, an outer IF tests Mark >= 80; its ELSE contains an inner IF testing Mark >= 50; each IF closes with ENDIF. For a menu, CASE Choice OF maps 1, 2 and 3 to actions and OTHERWISE handles every unlisted value before ENDCASE.
+
+### Targeted practice and answers
+
+1. How many ENDIF statements close two nested IF statements?
+   **Answer:** Two: one closes the inner IF and one closes the outer IF.
+2. When is CASE suitable?
+   **Answer:** When one expression has several discrete values that map to separate branches.
+3. What handles an unlisted CASE value?
+   **Answer:** OTHERWISE, followed by ENDCASE for the complete structure.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Write Cambridge pseudocode that inputs Age and Member, outputs Adult member when Age is at least 18 and Member is TRUE, Adult non-member for other adults, and Child otherwise. Then state why nested IF is appropriate.
+
+- **B1** inputs/uses both Age and Member
+- **M1** outer IF tests Age >= 18
+- **M1** inner IF tests Member only on the adult path
+- **A1** three outputs are attached to the correct branches
+- **B1** closes both IF statements coherently
+- **B1** justifies nested selection because the membership decision depends on the age decision
+
+**Strict note:** Do not use CASE for overlapping ranges without a complete mapping or close two IF statements with only one ENDIF.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -81,6 +118,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `case`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-case.jpg`
 
 1. CASE compares one expression with several discrete values.
@@ -91,6 +129,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `choice`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-choice.jpg`
 
 1. Choosing IF or CASE
@@ -110,6 +149,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `if`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-if.jpg`
 
 1. IF selection
@@ -128,6 +168,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-java.jpg`
 
 1. Cambridge pseudocode uses CASE...OF, OTHERWISE and ENDCASE.
@@ -138,6 +179,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `nested`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-nested.jpg`
 
 1. Nested selection
@@ -154,6 +196,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `path`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-127-path.jpg`
 
 1. Interactive path tracer

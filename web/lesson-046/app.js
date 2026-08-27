@@ -91,7 +91,7 @@ const mistakes = [
   },
 ];
 
-const examQuestions = [
+const assemblyFoundationQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
@@ -181,6 +181,101 @@ const examQuestions = [
       "Do not require discussion of every architecture.",
       "Do not accept interpreted by CPU as correct wording.",
       "Allow 'not portable' if linked to instruction set/processor.",
+    ],
+  },
+];
+
+const examQuestions = [
+  {
+    title: "Question 1",
+    marks: "5 marks",
+    prompt: "Classify the following instruction purposes: data movement, input/output, arithmetic, unconditional branch and conditional branch/compare. Give one valid mnemonic for each group.",
+    answer: "Data movement includes LDM/LDD/LDI/LDX/LDR/MOV/STO; input/output includes IN/OUT; arithmetic includes ADD/SUB/INC/DEC; JMP is an unconditional branch; CMP/CMI/JPE/JPN form the conditional branch/compare group.",
+    marking: [
+      { mark: "B1", text: "data movement with a valid example" },
+      { mark: "B1", text: "input/output with IN or OUT" },
+      { mark: "B1", text: "arithmetic with ADD, SUB, INC or DEC" },
+      { mark: "B1", text: "unconditional branch with JMP" },
+      { mark: "B1", text: "conditional branch/compare with CMP, CMI, JPE or JPN" },
+    ],
+    strict: [
+      "Do not classify JPE by guessing that it means equality.",
+      "One accurate mnemonic is required for each group.",
+    ],
+  },
+  {
+    title: "Question 2",
+    marks: "7 marks",
+    prompt: "State the effects of LDM #n, LDD <address>, LDI <address>, LDX <address>, LDR #n, MOV <register> and STO <address>.",
+    answer: "LDM loads immediate n to ACC; LDD loads the directly addressed value to ACC; LDI loads ACC through an indirect address; LDX loads ACC from address plus IX; LDR loads immediate n to IX; MOV transfers ACC to IX; STO stores ACC at the address.",
+    marking: [
+      { mark: "B1", text: "LDM: immediate n to ACC" },
+      { mark: "B1", text: "LDD: directly addressed value to ACC" },
+      { mark: "B1", text: "LDI: indirectly addressed value to ACC" },
+      { mark: "B1", text: "LDX: value at address plus IX to ACC" },
+      { mark: "B1", text: "LDR: immediate n to IX" },
+      { mark: "B1", text: "MOV: ACC to IX" },
+      { mark: "B1", text: "STO: ACC to addressed memory location" },
+    ],
+    strict: [
+      "Do not accept LDR as relative addressing.",
+      "Do not reverse MOV or STO data direction.",
+    ],
+  },
+  {
+    title: "Question 3",
+    marks: "6 marks",
+    prompt: "State the permitted operand forms and effects of ADD, SUB, INC and DEC.",
+    answer: "ADD and SUB use a memory address or an immediate denary (#n), binary (Bn) or hexadecimal (&n) value and update ACC. INC <register> and DEC <register> add or subtract one from ACC or IX.",
+    marking: [
+      { mark: "B1", text: "ADD updates ACC using addressed or immediate data" },
+      { mark: "B1", text: "SUB updates ACC using addressed or immediate data" },
+      { mark: "B1", text: "#n denotes immediate denary" },
+      { mark: "B1", text: "Bn denotes immediate binary and &n immediate hexadecimal" },
+      { mark: "B1", text: "INC adds one to ACC or IX" },
+      { mark: "B1", text: "DEC subtracts one from ACC or IX" },
+    ],
+    strict: [
+      "Do not treat #, B and & as part of an address.",
+      "The changed register must be ACC or IX.",
+    ],
+  },
+  {
+    title: "Question 4",
+    marks: "8 marks",
+    prompt: "State the exact effects of CMP <address>, CMP #n, CMI <address>, JPE <address>, JPN <address>, IN, OUT and END.",
+    answer: "CMP compares ACC with a directly addressed or immediate value. CMI compares ACC with an indirectly addressed value. JPE branches after a True comparison and JPN after a False comparison. IN inputs an ASCII code to ACC; OUT outputs the character represented by the ASCII code in ACC; END returns control to the operating system.",
+    marking: [
+      { mark: "B1", text: "CMP <address>: compare ACC with directly addressed value" },
+      { mark: "B1", text: "CMP #n: compare ACC with immediate n" },
+      { mark: "B1", text: "CMI: indirect comparison with ACC" },
+      { mark: "B1", text: "JPE: jump after True comparison" },
+      { mark: "B1", text: "JPN: jump after False comparison" },
+      { mark: "B1", text: "IN: ASCII input code to ACC" },
+      { mark: "B1", text: "OUT: character whose ASCII code is in ACC" },
+      { mark: "B1", text: "END: return control to operating system" },
+    ],
+    strict: [
+      "Do not accept immediate CMI, equal/zero JPE or negative JPN.",
+      "ASCII data direction must be correct for IN and OUT.",
+    ],
+  },
+  {
+    title: "Question 5",
+    marks: "6 marks",
+    prompt: "Explain a two-pass assembler and distinguish LOOP: ADD ONE from ONE: 1.",
+    answer: "Pass 1 assigns addresses and builds the symbol table, so forward references can be recorded before their values are known. Pass 2 translates instructions and substitutes resolved addresses. LOOP labels an instruction containing opcode ADD and operand ONE; ONE is a symbolic data address for the memory location containing 1.",
+    marking: [
+      { mark: "B1", text: "pass 1 assigns addresses/builds symbol table" },
+      { mark: "B1", text: "forward references can be recorded" },
+      { mark: "B1", text: "pass 2 translates using resolved symbols" },
+      { mark: "B1", text: "LOOP is an instruction label" },
+      { mark: "B1", text: "ADD is opcode/mnemonic and ONE is operand" },
+      { mark: "B1", text: "ONE labels the data location containing 1" },
+    ],
+    strict: [
+      "Do not state that either pass executes the program.",
+      "Do not call a data label an opcode.",
     ],
   },
 ];

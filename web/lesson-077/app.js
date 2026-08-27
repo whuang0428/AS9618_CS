@@ -201,8 +201,8 @@ const examQuestions = [
   {
     title: "Question 5",
     marks: "8 marks",
-    prompt: "A city uses facial recognition cameras in public spaces. Evaluate ethical, privacy and social issues.",
-    answer: "Facial recognition may help identify suspects, deter crime and improve emergency response, benefiting citizens, police and local businesses. However, it processes biometric data and may track people who have done nothing wrong, reducing privacy in public spaces. False matches may lead to unfair suspicion, and some groups may be affected more than others if the system is biased. The city should be transparent, limit the purpose, restrict data access and retention, require human review before action and provide accountability. It may be justified for clear safety aims, but broad or secret surveillance is not proportionate.",
+    prompt: "A city uses AI facial recognition cameras in public spaces. Evaluate ethical, privacy and social issues.",
+    answer: "The AI system compares captured faces with stored biometric templates. It may help identify suspects, deter crime and improve emergency response, benefiting citizens, police and local businesses. However, it processes biometric data and may track people who have done nothing wrong, reducing privacy in public spaces. False matches may lead to unfair suspicion, and some groups may be affected more than others if the model is biased. The city should be transparent, limit the purpose, restrict data access and retention, require human review before action and provide accountability. It may be justified for clear safety aims, but broad or secret surveillance is not proportionate.",
     marking: [
       { mark: "B1", text: "benefit such as public safety/crime detection/emergency response" },
       { mark: "B1", text: "benefit linked to stakeholder such as citizens/police/businesses" },

@@ -81,6 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cases`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-109-cases.jpg`
 
 1. Best and worst cases
@@ -100,6 +101,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `estimator`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-109-estimator.jpg`
 
 1. Interactive step estimator
@@ -111,6 +113,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `loops`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-109-loops.jpg`
 
 1. Loop growth
@@ -130,6 +133,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `measure`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-109-measure.jpg`
 
 1. Knowledge explanation
@@ -149,6 +153,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-109-pseudocode.jpg`
 
 1. A linear search compares Target with each visited list item.
@@ -160,6 +165,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `search`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-109-search.jpg`
 
 1. Search comparison

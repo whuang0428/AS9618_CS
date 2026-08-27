@@ -90,6 +90,42 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often think working Java automatically means good pseudocode. Correction: Paper 2 rewards clear Cambridge-style algorithm expression.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Pre-condition, post-condition and loop choice
+
+### Direct explanation
+
+- A WHILE...ENDWHILE loop is a pre-condition loop: it tests before the body and may run zero times. A REPEAT...UNTIL loop is a post-condition loop: it executes the body before testing and therefore runs at least once. A FOR...NEXT loop is count-controlled.
+- Select and justify the loop structure from the problem: use FOR when the count is known, WHILE when execution may be unnecessary and continuation is tested first, and REPEAT when the body must run once before a stopping condition can be tested. The justification must use the scenario, not only say that one loop is easier.
+
+### Worked example
+
+**Choose the loop from the stopping rule:** Input validation must request a value at least once, so REPEAT; INPUT Mark; UNTIL Mark >= 0 AND Mark <= 100 is suitable. Processing records while a file is not at EOF can use WHILE because an empty file may require zero iterations. Processing twelve months uses FOR because the count is fixed.
+
+### Targeted practice and answers
+
+1. Which structure may execute zero times?
+   **Answer:** WHILE, because it tests its condition before the body.
+2. Which structure must execute at least once?
+   **Answer:** REPEAT...UNTIL, because it tests after the body.
+3. Why is FOR suitable for twelve months?
+   **Answer:** The twelve repetitions are known before execution.
+
+### Exam-style question and MS
+
+**Question (5 marks):** Choose and justify FOR, WHILE or REPEAT...UNTIL for (a) processing 50 array elements, (b) reading while a file is not at EOF, and (c) requesting a password at least once until correct.
+
+- **B1** FOR for 50 known elements
+- **B1** justifies fixed count/bounds
+- **B1** WHILE for the pre-tested EOF condition and possible empty file
+- **B1** REPEAT...UNTIL for password input that must occur once
+- **B1** distinguishes pre-condition, post-condition and count-controlled structures
+
+**Strict note:** Do not select a loop only by its spelling or claim that WHILE always executes once.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -97,6 +133,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-129-compare.jpg`
 
 1. WHILE vs REPEAT
@@ -116,6 +153,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-129-java.jpg`
 
 1. Java support only
@@ -131,6 +169,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `repeat`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-129-repeat.jpg`
 
 1. A REPEAT...UNTIL loop checks its condition after executing the body.
@@ -142,6 +181,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `sentinel`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-129-sentinel.jpg`
 
 1. Initialise Total and input the first Number before WHILE.
@@ -153,6 +193,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `validation`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-129-validation.jpg`
 
 1. Validation pattern
@@ -169,6 +210,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `while`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-129-while.jpg`
 
 1. A WHILE loop checks its condition before each iteration and may run zero times.

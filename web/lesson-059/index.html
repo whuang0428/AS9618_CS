@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -42,6 +42,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -347,6 +348,61 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Expose, locate and correct program errors</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>A syntax error breaks the language grammar and is normally exposed by a translator or an IDE's dynamic syntax check. A logic error uses valid syntax but follows the wrong algorithm, so a trace, dry run, walkthrough or deliberately selected test can expose an unexpected result. A run-time error occurs during execution, such as division by zero or opening a missing file, so exception messages and run-time diagnostics help locate it.</p>
+            <p>After an error is exposed, locate the responsible statement and identify the error type before changing it. Correct the cause, not only the observed output, then rerun the failing test and relevant regression tests. Avoid faults by using clear identifiers, modular design, validation, desk checking, peer walkthroughs and a planned set of normal, abnormal and extreme/boundary tests.</p>
+            <p>No single method proves that a program has no remaining faults. Translation can expose syntax faults but not every logic fault; testing can reveal failures for selected cases but cannot demonstrate correctness for every possible input.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Correct three different faults</h3>
+            <p>A missing ENDIF is a syntax error exposed during translation and corrected by closing the selection. Mark &gt; 50 for a pass boundary of 50 is a logic error exposed by tracing Mark = 50 and corrected to Mark &gt;= 50. Total / Count when Count may be 0 is a run-time risk exposed during execution and avoided by testing Count before division.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Expose, locate and correct program errors: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Which method can expose a syntactically valid wrong boundary?</p>
+              <details><summary>Show answer</summary><p>A trace, dry run, walkthrough or selected boundary test can expose the wrong result.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Why is a translator insufficient for all logic errors?</p>
+              <details><summary>Show answer</summary><p>Logic errors can obey the language grammar, so translation may succeed even though the result is wrong.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What must happen after a correction?</p>
+              <details><summary>Show answer</summary><p>Rerun the failing test and relevant regression tests to check the correction and existing behaviour.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>For each fault, state its type, one way to expose or locate it, and the correction: a missing ENDIF; IF Mark &gt; 50 when 50 should pass; Average &lt;- Total / Count when Count can be zero.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> missing ENDIF identified as syntax error and translator/dynamic syntax check used</li>
+                <li><strong>A1</strong> adds the required ENDIF</li>
+                <li><strong>B1</strong> Mark &gt; 50 identified as logic error and boundary trace/test at 50 used</li>
+                <li><strong>A1</strong> changes the condition to Mark &gt;= 50 or equivalent</li>
+                <li><strong>B1</strong> division by zero identified as run-time error/risk and execution/test diagnostics used</li>
+                <li><strong>A1</strong> guards the division by checking Count or handles the zero case</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -385,7 +441,7 @@
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

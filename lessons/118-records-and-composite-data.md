@@ -74,6 +74,44 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Define, read and save record data
+
+### Direct explanation
+
+- A record structure groups a set of related fields, which may have different data types, under one identifier. Field names preserve the meaning of each value, so a record suits several facts about one entity better than an array of same-type indexed elements.
+- Define a Cambridge record type with TYPE, field declarations and ENDTYPE. Declare record variables only after the type definition is complete. A complete definition states every field name and its type.
+- Read data from a record by selecting a named field, for example OUTPUT Student1.Mark or CurrentMark <- Student1.Mark. Save data to the record by assigning to a named field, for example Student1.Mark <- 75. Reading or saving one field does not replace unrelated fields.
+
+### Worked example
+
+**Define and use one student record:** TYPE TStudent declares Name : STRING, DateOfBirth : DATE, Mark : INTEGER and Enrolled : BOOLEAN, then closes with ENDTYPE. DECLARE Student1 : TStudent creates one record. Student1.Mark <- 75 saves a value to the Mark field; OUTPUT Student1.Mark reads that field.
+
+### Targeted practice and answers
+
+1. Why can a record contain both STRING and DATE fields?
+   **Answer:** Record fields may have different data types but belong to one entity under one identifier.
+2. Which statement saves a mark of 80?
+   **Answer:** Student1.Mark <- 80.
+3. Which expression reads the stored name?
+   **Answer:** Student1.Name, for example OUTPUT Student1.Name.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Define TProduct with Code, Description, Price and InStock fields, declare Product1, save values to Price and InStock, then read both fields.
+
+- **B1** opens TYPE TProduct and declares suitable named fields
+- **B1** uses suitable STRING, REAL and BOOLEAN field types
+- **B1** closes the definition with ENDTYPE
+- **B1** declares Product1 : TProduct after ENDTYPE
+- **B1** assigns/saves values through Product1.Price and Product1.InStock
+- **B1** reads/outputs the two named fields without replacing other data
+
+**Strict note:** Do not use numeric array indexing for record fields or omit ENDTYPE from the type definition.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -81,6 +119,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `access`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-118-access.jpg`
 
 1. Access and update
@@ -99,6 +138,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `array-vs-record`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-118-array-vs-record.jpg`
 
 1. Array vs record
@@ -115,6 +155,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `concept`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-118-concept.jpg`
 
 1. a composite structure containing named fields
@@ -128,24 +169,22 @@ Correction prompt: "State the correct term, then explain the relevant process or
 9. access to one field of a record variable
 10. Student1.Mark
 
-### Define the type, then declare variables that use it
+### Define a record, then save and read named fields
 
 - **Explains:** `declare`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-118-declare.jpg`
 
-1. TYPE TStudent
-    DECLARE Name : STRING
-    DECLARE Mark : INTEGER
-ENDTYPE
-2. DECLARE Student1 : TStudent
-This declaration follows ENDTYPE.
-3. Every displayed Cambridge record declaration must include ENDTYPE.
+1. A record groups related named fields of different data types under one identifier.
+2. Define the record between TYPE and ENDTYPE, then declare a variable of that record type.
+3. Student1.Mark <- 75 saves a field value; OUTPUT Student1.Mark reads that named field.
 
 ### Read one field from a record
 
 - **Explains:** `lookup`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-118-lookup.jpg`
 
 1. Interactive field lookup
@@ -155,6 +194,7 @@ This declaration follows ENDTYPE.
 
 - **Explains:** `pseudocode`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-118-pseudocode.jpg`
 
 1. TYPE TBook

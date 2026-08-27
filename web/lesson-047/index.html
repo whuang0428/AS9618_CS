@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -40,7 +40,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -179,13 +179,13 @@
 
         <!-- stage10-explanation:start modes -->
         <section class="panel explanation-panel" id="explanation-modes" data-explains="modes" data-explanation-kind="mechanism" aria-labelledby="explanation-modes-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="modes">
-          <h2 class="explanation-sr-only" id="explanation-modes-title">Four common addressing modes</h2>
+          <h2 class="explanation-sr-only" id="explanation-modes-title">Five addressing modes</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-modes.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Four common addressing modes with a structured visual model." />
-            <figcaption class="explanation-sr-only">Four common addressing modes: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-modes.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Five addressing modes with a structured visual model." />
+            <figcaption class="explanation-sr-only">Five addressing modes: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Immediate addressing uses the operand field as the value itself.</li><li><strong>Lesson fact:</strong> Direct addressing uses the operand field as the address of the value.</li><li><strong>Lesson fact:</strong> Indirect addressing follows an address stored at the operand address to reach the value.</li><li><strong>Lesson fact:</strong> Indexed addressing adds an index value to a base address to form the effective address.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Immediate addressing uses the operand field as the value itself.</li><li><strong>Lesson fact:</strong> Direct addressing uses the operand field as the address of the value.</li><li><strong>Lesson fact:</strong> Indirect addressing follows an address stored at the operand address to reach the value.</li><li><strong>Lesson fact:</strong> Indexed addressing adds an index value to a base address to form the effective address.</li><li><strong>Lesson fact:</strong> Relative addressing adds an offset to a PC-based instruction address to form the target or effective address.</li><li><strong>Lesson fact:</strong> LDR #n loads the immediate value n into IX; it is not relative addressing.</li></ol>
 
           </div>
         </section>
@@ -217,13 +217,13 @@
 
         <!-- stage10-explanation:start effective -->
         <section class="panel explanation-panel" id="explanation-effective" data-explains="effective" data-explanation-kind="mechanism" aria-labelledby="explanation-effective-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="effective">
-          <h2 class="explanation-sr-only" id="explanation-effective-title">Effective address: where the CPU actually reads</h2>
+          <h2 class="explanation-sr-only" id="explanation-effective-title">Official LDR, CMI, JPE and JPN semantics</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-effective.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Effective address: where the CPU actually reads with a structured visual model." />
-            <figcaption class="explanation-sr-only">Effective address: where the CPU actually reads: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-047-effective.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Official LDR, CMI, JPE and JPN semantics with a structured visual model." />
+            <figcaption class="explanation-sr-only">Official LDR, CMI, JPE and JPN semantics: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Stored value</li><li><strong>Lesson fact:</strong> Can be a data value or pointer, depending on mode.</li><li><strong>Lesson fact:</strong> Used by indirect example.</li><li><strong>Lesson fact:</strong> Start of an array-like block.</li><li><strong>Lesson fact:</strong> Used when base 100 and IX = 3.</li><li><strong>Lesson fact:</strong> LOAD #20 Use value 20 directly. No memory lookup for the operand value.</li><li><strong>Lesson fact:</strong> LOAD 20 Read memory[20], so the value loaded is 70.</li><li><strong>Lesson fact:</strong> LOAD (20) Read memory[20] to get address 70, then read memory[70] to get 999.</li><li><strong>Lesson fact:</strong> LOAD 100, IX=3 Effective address = 100 + 3 = 103, so value loaded is memory[103] = 44.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> LDR #n loads the immediate value n into the index register IX.</li><li><strong>Lesson fact:</strong> CMI &lt;address&gt; compares ACC with a value reached using indirect addressing.</li><li><strong>Lesson fact:</strong> JPE &lt;address&gt; jumps when the preceding comparison result is True.</li><li><strong>Lesson fact:</strong> JPN &lt;address&gt; jumps when the preceding comparison result is False.</li><li><strong>Lesson fact:</strong> Do not reinterpret these instructions as relative load, immediate compare, equal/zero branch or negative-status branch.</li></ol>
 
           </div>
         </section>
@@ -338,19 +338,26 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>Address-sensitive load, compare and branch instructions</h2>
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Addressing modes and address-sensitive instructions</h2>
           </div>
           <div class="stage2-explanation">
-            <p>LDI follows the address stored at the operand location; LDX adds IX to the operand; LDR uses an address relative to the current instruction/PC. CMI compares with an immediate value, while CMP compares using the instruction-set operand definition.</p>
-            <p>JPE branches when the equality result/zero condition is set. JPN branches when the result is negative. Correct traces update PC according to the condition and must distinguish an address from the value stored there.</p>
+            <p>Immediate addressing uses the operand as the value itself. Direct addressing uses the operand as the address of the value. Indirect addressing treats the operand as the address of a location that holds the effective address. Indexed addressing forms an effective address by adding IX to the address operand. Relative addressing forms a target/effective address by adding an offset to the current or next instruction address held in PC.</p>
+            <p>LDI follows the address stored at the operand location; LDX adds IX to the address operand; LDR #n loads the immediate value n into IX. CMI &lt;address&gt; uses indirect addressing: the contents of &lt;address&gt; give the address of the value compared with ACC.</p>
+            <p>After CMP or CMI, JPE &lt;address&gt; jumps when the comparison result is True and JPN &lt;address&gt; jumps when it is False. Relative addressing is a required addressing-mode concept, but LDR is not a relative-load instruction in the Version 2 instruction set.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Trace a conditional</h3>
-            <p>After CMI #0, JPN NEG branches only if the accumulator compares as negative. Otherwise execution continues with the next sequential instruction.</p>
+            <h3>Worked example: Compare five operand interpretations</h3>
+            <p>With operand 20, immediate uses value 20; direct uses Memory[20]; indirect follows Memory[20] as another address; indexed uses address 20 + IX; relative uses PC plus a signed or stated offset. Separately, if CMI POINTER produces True, JPE MATCH branches to MATCH; a False comparison allows JPN DIFFERENT to branch.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Addressing modes and address-sensitive instructions: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
@@ -362,20 +369,30 @@
               <details><summary>Show answer</summary><p>LDX.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> When does JPE branch?</p>
-              <details><summary>Show answer</summary><p>When the comparison indicates equal / zero condition is set.</p></details>
+              <p><strong>3.</strong> What does LDR #4 do?</p>
+              <details><summary>Show answer</summary><p>It loads 4 into IX; it does not use relative addressing.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> When does JPE branch?</p>
+              <details><summary>Show answer</summary><p>When the preceding comparison result is True.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> How is a relative address formed?</p>
+              <details><summary>Show answer</summary><p>By adding an offset to the current or next instruction address represented by PC, according to the stated model.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Describe the difference between direct and indirect loading, and state how JPN affects execution.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Distinguish immediate, direct, indirect, indexed and relative addressing, then state the effects of LDR #n, CMI &lt;address&gt;, JPE &lt;address&gt; and JPN &lt;address&gt;.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> direct uses the operand as the address of the value</li>
-                <li><strong>B1</strong> indirect uses the contents of the operand address as another address</li>
-                <li><strong>B1</strong> JPN tests the negative condition/status</li>
-                <li><strong>B1</strong> PC changes to the branch target only when that condition is true</li>
+                <li><strong>B1</strong> immediate uses operand as value; direct uses operand as address</li>
+                <li><strong>B1</strong> indirect follows an address stored at the operand address</li>
+                <li><strong>B1</strong> indexed adds IX to the address operand</li>
+                <li><strong>B1</strong> relative adds an offset to the PC/current or next instruction address</li>
+                <li><strong>B1</strong> LDR loads immediate n to IX and CMI compares through indirect addressing</li>
+                <li><strong>B1</strong> JPE follows True and JPN follows False</li>
               </ol>
             </details>
           </article>
@@ -413,7 +430,7 @@
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

@@ -3,8 +3,8 @@ import path from "node:path";
 import { repairs } from "./stage2-repairs-data.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
-const htmlMarker = "Extra practice";
-const markdownMarker = "Stage 2 syllabus completion";
+const htmlMarker = "Core syllabus content";
+const markdownMarker = "Core syllabus content";
 const htmlStart = "<!-- stage2-completion:start -->";
 const htmlEnd = "<!-- stage2-completion:end -->";
 const markdownStart = "<!-- stage2-completion:start -->";
@@ -29,7 +29,7 @@ function htmlFor(repair) {
 
   return `
         ${htmlStart}
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
             <p class="eyebrow">${htmlMarker}</p>
             <h2>${escapeHtml(repair.title)}</h2>
@@ -41,6 +41,12 @@ ${paragraphs}
             <h3>Worked example: ${escapeHtml(repair.exampleTitle)}</h3>
             <p>${escapeHtml(repair.example)}</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>${escapeHtml(repair.title)}: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>${practice}
           </div>
@@ -67,7 +73,6 @@ function markdownFor(repair) {
 ${markdownStart}
 ## ${markdownMarker}
 
-**Official audit rows:** ${repair.rows.join(", ")}
 **Focus:** ${repair.title}
 
 ### Direct explanation
@@ -96,6 +101,7 @@ ${markdownEnd}
 const css = `
 /* Stage 2 syllabus completion:start */
 .stage2-completion { border-top: 4px solid var(--accent, #176b5b); }
+.stage2-practice-block { border-top: 2px solid var(--accent, #176b5b); }
 .stage2-explanation, .stage2-practice { display: grid; gap: 10px; }
 .stage2-example, .stage2-exam, .stage2-question { border: 1px solid var(--line, #d7ddd9); padding: 16px; background: #fff; }
 .stage2-question + .stage2-question { margin-top: 10px; }
@@ -124,14 +130,14 @@ for (const webLessonDir of webLessonDirs) {
   html = html
     .replace(/\n?\s*<!-- stage2-completion:start -->[\s\S]*?<!-- stage2-completion:end -->\n?/g, "\n")
     .replace(/\n?\s*<section class="panel stage2-completion" id="stage2-completion"[^>]*>[\s\S]*?<\/section>\n?/g, "\n")
-    .replace(/^\s*<a href="#stage2-completion">Extra practice<\/a>\s*\n/gm, "");
+    .replace(/^\s*<a href="#stage2-completion">(?:Extra practice|Core syllabus content)<\/a>\s*\n/gm, "");
   styles = styles
     .replace(/\n?\/\* Stage 2 syllabus completion:start \*\/[\s\S]*?\/\* Stage 2 syllabus completion:end \*\/\n?/g, "\n")
     .replace(/\n?\/\* Stage 2 syllabus completion \*\/[\s\S]*$/g, "\n")
     .trimEnd() + "\n";
   markdown = markdown
     .replace(/\n?<!-- stage2-completion:start -->[\s\S]*?<!-- stage2-completion:end -->\n?/g, "\n")
-    .replace(/\n## Stage 2 syllabus completion[\s\S]*?(?=\n<!-- stage10-explanations:start -->|\s*$)/g, "\n")
+    .replace(/\n## (?:Stage 2 syllabus completion|Core syllabus content)[\s\S]*?(?=\n<!-- stage10-explanations:start -->|\s*$)/g, "\n")
     .replace(/[ \t]+$/gm, "")
     .trimEnd() + "\n";
 
@@ -158,7 +164,7 @@ for (const repair of repairs) {
   html = html.replace(summaryMatch[0], `${htmlFor(repair)}\n${summaryMatch[0]}`);
   html = html.replace(
     /(<aside class="lesson-nav"[^>]*>[\s\S]*?)(\s*<\/aside>)/,
-    `$1\n        <a href="#stage2-completion">Extra practice</a>$2`,
+    `$1\n        <a href="#stage2-completion">Core syllabus content</a>$2`,
   );
   styles = `${styles.trimEnd()}\n\n${css.trim()}\n`;
   fs.writeFileSync(htmlPath, html);
@@ -169,43 +175,5 @@ for (const repair of repairs) {
   markdown = markdown.replace(/[ \t]+$/gm, "");
   fs.writeFileSync(markdownPath, markdown);
 }
-
-const rowLessons = new Map();
-for (const repair of repairs) {
-  for (const row of repair.rows) {
-    const values = rowLessons.get(row) ?? [];
-    values.push(String(repair.lesson).padStart(3, "0"));
-    rowLessons.set(row, values);
-  }
-}
-
-const auditEvidenceLessons = new Map([
-  ["S1.02", ["002", "003", "005", "006"]],
-  ["S1.03", ["002", "003", "005", "006"]],
-  ["S1.04", ["004", "005"]],
-  ["S2.05", ["016", "018"]],
-  ["S4.12", ["046"]],
-  ["S4.13", ["046", "047"]],
-  ["S9.06", ["100"]],
-  ["S9.07", ["101"]],
-]);
-for (const [row, lessons] of auditEvidenceLessons) rowLessons.set(row, lessons);
-
-const auditPath = path.join(root, "syllabus-audit.md");
-let audit = fs.readFileSync(auditPath, "utf8");
-audit = audit.split("\n").map((line) => {
-  const match = line.match(/^\| (S\d+\.\d+) \|/);
-  if (!match || !rowLessons.has(match[1])) return line;
-  const cells = line.split("|");
-  const lessons = rowLessons.get(match[1]);
-  const webRefs = lessons.map((number) => `W${number}`).join(", ");
-  const markdownRefs = lessons.map((number) => `M${number}`).join(", ");
-  cells[3] = ` ${webRefs} direct teaching evidence; ${markdownRefs} matching lesson plans and completion modules where required. `;
-  cells[4] = ` ${webRefs} worked examples, targeted practice and expandable exam-style MS. `;
-  cells[5] = " Complete ";
-  cells[6] = " - ";
-  return cells.join("|");
-}).join("\n");
-fs.writeFileSync(auditPath, audit);
 
 console.log(`Applied ${repairs.length} lesson-specific Stage 2 repairs.`);

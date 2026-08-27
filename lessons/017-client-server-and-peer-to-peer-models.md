@@ -73,39 +73,42 @@ Misconception: Students often confuse bandwidth with speed in every sense. Corre
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S2.03
-**Focus:** Thin clients and thick clients
+**Focus:** Network models and thin/thick client designs
 
 ### Direct explanation
 
-- A thin client relies mainly on a server for processing and/or storage. A thick client performs more processing locally and normally stores more software or data on the client device.
-- Thin clients simplify central updates and can use lower-specification hardware, but depend heavily on the server and network. Thick clients can continue more work when disconnected, but local installation, security and maintenance are distributed.
+- In a client-server model, clients request services or resources and one or more servers provide them. Dedicated server roles can include authentication, file storage, web hosting and backup. Central management, consistent access control and central backup are benefits; server cost, specialist administration, dependence on the server and a possible central failure are drawbacks.
+- In a peer-to-peer model, each peer may request and provide resources directly. It can be inexpensive and simple for a small trusted group because no dedicated server is required, but distributed accounts, backups, security and availability become harder to control. A model choice must be justified from number of users, trust, management, availability, cost and the required shared services.
+- A thin client relies mainly on a server for processing and/or storage. A thick client performs more processing locally and normally stores more software or data on the client device. Thin clients simplify central updates and can use lower-specification hardware, but depend heavily on the server and network. Thick clients can continue more work when disconnected, but local installation, security and maintenance are distributed.
 
 ### Worked example
 
-**School computer room:** Thin clients suit centrally managed exam accounts because software and files can be controlled on servers. A network outage, however, can stop the room working; a thick client may retain local applications.
+**Choose a model and client type for a school examination room:** Use a client-server model so accounts, permissions, exam files and backups are controlled by servers. Thin clients support central software management and reduce local storage, but the school must provide resilient servers and networking because a failure can stop the room. Thick clients would reduce that dependence but distribute software and security maintenance.
 
 ### Targeted practice and answers
 
-1. Where is most processing performed for a thin client?
-   **Answer:** On the server.
-2. Give one thick-client advantage during a network outage.
-   **Answer:** Local applications/data may remain usable.
-3. Give one thin-client management advantage.
-   **Answer:** Software and updates can be managed centrally.
+1. State the roles of a client and server.
+   **Answer:** A client requests a service or resource; a server provides and manages the service or resource.
+2. Give one benefit and one drawback of peer-to-peer networking.
+   **Answer:** Benefit: no dedicated server / low setup cost. Drawback: distributed security, backup and availability are harder to manage.
+3. Justify client-server for 600 managed school users.
+   **Answer:** Central accounts, permissions, storage, updates and backup suit many users, despite server cost and availability risk.
+4. Distinguish a thin client from a thick client.
+   **Answer:** A thin client depends mainly on server processing/storage; a thick client performs and stores more locally.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** A company is choosing thin clients for a call centre. Explain two benefits and one drawback.
+**Question (5 marks):** A call centre is choosing a client-server model with thin clients. Explain two benefits and two drawbacks of this combined choice.
 
-- **B1** centralised software/update management
-- **B1** lower client hardware/storage requirement or centralised security/data
+- **B1** centralised accounts/software/update or data management
+- **B1** lower client hardware/storage requirement
 - **B1** depends on network/server availability or performance
-- **B1** develops one point in the call-centre context
+- **B1** server infrastructure, administration or central-failure cost
+- **B1** develops at least one point in the call-centre context
 
-**Strict note:** Do not award a mark for 'cheaper' unless the lower client specification or central administration explains why.
+**Strict note:** Do not award 'cheaper' unless the lower client specification or central administration explains why; do not confuse network model with topology.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
@@ -115,6 +118,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-017-compare.jpg`
 
 1. Client-server
@@ -134,6 +138,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `model-visual`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-017-model-visual.jpg`
 
 1. Visual explanation
@@ -153,6 +158,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `roles`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-017-roles.jpg`
 
 1. A client requests a service or resource, such as a web page, file, login or print job.
@@ -164,6 +170,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `usecases`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-017-usecases.jpg`
 
 1. School accounts

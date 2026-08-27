@@ -128,10 +128,10 @@ const examQuestions = [
   {
     title: "Question 1",
     marks: "4 marks",
-    prompt: "A sound file is recorded for 20 seconds at 16 000 samples per second using 8-bit sample resolution and one channel. Calculate the file size in bytes.",
+    prompt: "A sound file is recorded for 20 seconds at 16 000 samples per second using 8-bit sampling resolution and one channel. Calculate the file size in bytes.",
     answer: "16 000 x 20 x 8 x 1 = 2 560 000 bits. 2 560 000 / 8 = 320 000 bytes.",
     marking: [
-      { mark: "M1", text: "uses sample rate x duration x sample resolution x channels" },
+      { mark: "M1", text: "uses sample rate x duration x sampling resolution x channels" },
       { mark: "M1", text: "substitutes 16 000 x 20 x 8 x 1" },
       { mark: "A1", text: "obtains 2 560 000 bits" },
       { mark: "A1", text: "converts to 320 000 bytes with suitable unit" },

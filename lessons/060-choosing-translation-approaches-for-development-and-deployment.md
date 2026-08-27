@@ -73,39 +73,45 @@ Misconception: Students often call every program an operating system. Correction
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S5.06, S5.07
 **Focus:** Java translation and required IDE features
 
 ### Direct explanation
 
-- Java source is compiled into platform-independent bytecode. A Java Virtual Machine then interprets and/or just-in-time compiles bytecode for the host processor, supporting portability across systems with a suitable JVM.
-- An IDE may provide context-sensitive prompts, dynamic syntax checking, prettyprinting, code expand/collapse, single-step execution, breakpoints, variable/expression inspection and a report/output window. Each feature supports writing, navigating or debugging code; it does not prove logical correctness.
+- Java in console mode is partly compiled and partly interpreted: the Java compiler translates source code into platform-independent bytecode, then a Java Virtual Machine (JVM) interprets that bytecode and may just-in-time compile parts for the host processor. Bytecode is not universal processor machine code.
+- For coding, an IDE can provide context-sensitive prompts. For initial error detection it can perform dynamic syntax checks. For presentation it can prettyprint code and expand or collapse code blocks. These features help create and navigate source code but do not prove that its algorithm is correct.
+- For debugging, an IDE can provide single stepping, breakpoints, inspection of variables and expressions, and a report window for diagnostic or output information. Single stepping executes one statement at a time; a breakpoint pauses at a chosen point; variable/expression inspection exposes changing values.
 
 ### Worked example
 
-**Locate a loop fault:** A breakpoint pauses before the loop, single-step advances one statement at a time, and the variable window shows Index changing. Dynamic syntax checking would flag malformed syntax, but not a valid loop with the wrong boundary.
+**Trace Java and locate a loop fault:** First the Java compiler produces bytecode; the JVM then interprets the bytecode or JIT-compiles parts for the host. In the IDE, a breakpoint pauses before the faulty loop, single stepping advances one statement at a time, the variable/expression view exposes Index, and the report window records diagnostics. Dynamic syntax checking can flag malformed syntax but not a syntactically valid wrong boundary.
 
 ### Targeted practice and answers
 
 1. What does a Java compiler normally produce?
    **Answer:** Bytecode.
-2. What executes Java bytecode on a host system?
-   **Answer:** A Java Virtual Machine (JVM), using interpretation and/or JIT compilation.
-3. Which IDE feature pauses at a chosen line?
-   **Answer:** A breakpoint.
+2. Why is Java described as partly compiled and partly interpreted?
+   **Answer:** Source is compiled to bytecode, then a JVM interprets the bytecode and may JIT-compile parts for the host.
+3. Which IDE feature pauses at a chosen line, and which advances one statement?
+   **Answer:** A breakpoint pauses; single stepping advances one statement at a time.
+4. Name the two required presentation features.
+   **Answer:** Prettyprint and expand/collapse code blocks.
+5. What can a variables/expressions view and report window show?
+   **Answer:** Current or evaluated values, plus diagnostic/output information in the report window.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Explain how Java source is translated and executed, and describe one IDE feature useful for debugging.
+**Question (6 marks):** Explain why Java is partly compiled and partly interpreted, then describe four IDE features from coding, initial error detection, presentation and debugging.
 
-- **B1** Java source is compiled
-- **B1** compiler produces bytecode
-- **B1** JVM interprets/JIT-compiles bytecode for the host
-- **B1** valid debugging feature described with its effect
+- **B1** Java source is compiled to bytecode
+- **B1** JVM interprets bytecode and may JIT-compile parts for the host
+- **B1** context-sensitive prompts or dynamic syntax checking described accurately
+- **B1** prettyprint or expand/collapse code blocks described accurately
+- **B1** single stepping or breakpoint described accurately
+- **B1** variable/expression inspection or report window described accurately
 
-**Strict note:** Do not accept that Java source is compiled directly into one universal machine-code file.
+**Strict note:** Do not accept that Java source becomes one universal machine-code file or that IDE syntax checking proves logical correctness.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
@@ -115,6 +121,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `decision`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-060-decision.jpg`
 
 1. What code? High-level source code, assembly language, object modules or executable code?
@@ -126,6 +133,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `deployment`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-060-deployment.jpg`
 
 1. Useful when A finished program will be distributed to users or run many times.
@@ -137,6 +145,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `development`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-060-development.jpg`
 
 1. Useful when The programmer wants immediate feedback while writing and testing code.
@@ -148,6 +157,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `diagnostics`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-060-diagnostics.jpg`
 
 1. Compiler May provide a list of syntax/translation errors after trying to compile.
@@ -159,6 +169,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `lowlevel`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-060-lowlevel.jpg`
 
 1. Input Assembly language mnemonics for a specific processor.
@@ -170,6 +181,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pipeline`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-060-pipeline.jpg`
 
 1. A compiler translates a whole high-level program before execution.

@@ -628,6 +628,7 @@ body .lesson-content code {
 
 body.has-teacher-toolbar {
   padding-bottom: 112px;
+  scroll-padding-bottom: 112px;
 }
 
 .teacher-toolbar {
@@ -972,12 +973,13 @@ body:has(.resource-list) main {
   }
 
   body.has-teacher-toolbar {
-    padding-bottom: 132px;
+    padding-bottom: calc(150px + env(safe-area-inset-bottom));
+    scroll-padding-bottom: calc(150px + env(safe-area-inset-bottom));
   }
 
   .teacher-toolbar {
     right: 8px;
-    bottom: 8px;
+    bottom: max(12px, env(safe-area-inset-bottom));
     left: 8px;
     width: calc(100% - 16px);
   }

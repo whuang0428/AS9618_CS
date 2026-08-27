@@ -73,19 +73,19 @@ Misconception: Students often confuse bandwidth with speed in every sense. Corre
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S2.15
-**Focus:** Complete IP address distinctions
+**Focus:** IP addressing, URL structure and DNS
 
 ### Direct explanation
 
-- IPv4 uses 32-bit addresses; IPv6 uses 128-bit addresses and provides a much larger address space. A subnet divides a network into logical sections and uses part of the address to identify the network/subnet.
-- A public address is routable on the internet; a private address is used inside a private network and is not directly routed across the public internet. Static addresses remain fixed; dynamic addresses are allocated and may change. An address identifies a network interface at a given time, not a human permanently.
+- IPv4 uses 32-bit addresses; IPv6 uses 128-bit addresses and provides a much larger address space. Subnetting divides a network into logical sections called subnets and uses part of the address to identify the network/subnet.
+- An IP address is associated with a device's network interface on a network and supplies the logical source or destination used for routing. A public address is routable on the internet; a private address is used inside a private network and is not directly routed across the public internet. This reduces direct unsolicited reachability but does not guarantee security. Static addresses remain fixed; dynamic addresses are allocated and may change.
+- A Uniform Resource Locator (URL) identifies the location of a resource on the World Wide Web. Its structure can include a scheme such as https, a domain name, an optional port, a path and optional query/fragment. DNS resolves the domain-name part to an IP address; it does not translate the path or store the web resource. The browser then uses the resolved IP address to send packets towards the server and the path to request the resource.
 
 ### Worked example
 
-**School web server and laptops:** The externally reachable server may need a stable public address. Laptops can receive dynamic private addresses; this limits direct unsolicited internet reachability but is not, by itself, complete security.
+**Locate one resource on a school web server:** For https://portal.school.example:443/results/today, https is the scheme, portal.school.example is the domain name, 443 is the port and /results/today is the path. DNS resolves only the domain name to an IP address. An externally reachable server may use a static public IPv4 or IPv6 address; school laptops may use dynamic private addresses inside a subnet.
 
 ### Targeted practice and answers
 
@@ -95,17 +95,22 @@ Correction prompt: "State the correct term, then explain the relevant process or
    **Answer:** Clients/DNS need a predictable address for the service.
 3. What is the purpose of subnetting?
    **Answer:** To divide a network into logical subnetworks and identify which subnet an address belongs to.
+4. Identify the scheme, domain and path in https://shop.example.org/items/7.
+   **Answer:** Scheme: https; domain: shop.example.org; path: /items/7.
+5. Which part of that URL is resolved by DNS?
+   **Answer:** The domain name shop.example.org; DNS returns its IP address.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Compare public/private and static/dynamic IP addresses, giving one suitable use for a static public address.
+**Question (5 marks):** Compare IPv4 with IPv6, then explain how a URL and DNS are used to request a web resource.
 
-- **B1** public address is routable/visible on the internet; private address is for an internal network
-- **B1** static address remains fixed; dynamic address is allocated and may change
-- **B1** static public address suitable for an externally accessible server
-- **B1** fixed address supports reliable location/DNS mapping
+- **B1** IPv4 uses 32-bit addresses
+- **B1** IPv6 uses 128-bit addresses / provides a much larger address space
+- **B1** URL identifies a WWW resource and includes a domain plus resource path
+- **B1** DNS resolves the domain name to an IP address
+- **B1** IP address is used to route packets while the path identifies the requested resource
 
-**Strict note:** Do not accept that private IP addresses guarantee security; they reduce direct public addressing but other controls are still required.
+**Strict note:** Do not accept that a private IP address guarantees security or that DNS converts the entire URL/stores the website.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
@@ -115,6 +120,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `address-journey`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-020-address-journey.jpg`
 
 1. DNS resolves a domain name to an IP address; it does not return a MAC address.
@@ -126,6 +132,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `addresses`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-020-addresses.jpg`
 
 1. IP and MAC addresses work together at different layers; they are not an either-or choice.
@@ -137,6 +144,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `checkpoint`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-020-checkpoint.jpg`
 
 1. Monthly checkpoint
@@ -152,6 +160,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `dns`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-020-dns.jpg`
 
 1. 1. URL entered The user enters a URL containing a domain name.
@@ -165,6 +174,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `urls`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-020-urls.jpg`
 
 1. https://www.example.org/resources/page.html

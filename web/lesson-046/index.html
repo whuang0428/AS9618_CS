@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -40,7 +40,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -226,13 +226,13 @@
 
         <!-- stage10-explanation:start structure -->
         <section class="panel explanation-panel" id="explanation-structure" data-explains="structure" data-explanation-kind="mechanism" aria-labelledby="explanation-structure-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="structure">
-          <h2 class="explanation-sr-only" id="explanation-structure-title">Structure of a simple assembly line</h2>
+          <h2 class="explanation-sr-only" id="explanation-structure-title">Instruction labels and symbolic data addresses</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-046-structure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Structure of a simple assembly line with a structured visual model." />
-            <figcaption class="explanation-sr-only">Structure of a simple assembly line: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-046-structure.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Instruction labels and symbolic data addresses with a structured visual model." />
+            <figcaption class="explanation-sr-only">Instruction labels and symbolic data addresses: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> LOOP: ADD value ; add next item</li><li><strong>Lesson fact:</strong> LOOP: label</li><li><strong>Lesson fact:</strong> ADD mnemonic</li><li><strong>Lesson fact:</strong> value operand</li><li><strong>Lesson fact:</strong> ; add next item comment</li><li><strong>Lesson fact:</strong> A symbolic name for an address or line, often used by jump/branch instructions.</li><li><strong>Lesson fact:</strong> The value, address, register or label used by the instruction.</li><li><strong>Lesson fact:</strong> Text for human readers. Comments are ignored by the assembler.</li><li><strong>Lesson fact:</strong> Directive</li><li><strong>Lesson fact:</strong> An instruction to the assembler, not a CPU instruction. It may reserve storage or define constants.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> &lt;label&gt;: &lt;opcode&gt; &lt;operand&gt; gives a symbolic address to an instruction.</li><li><strong>Lesson fact:</strong> &lt;label&gt;: &lt;data&gt; gives a symbolic address to a memory location containing data.</li><li><strong>Lesson fact:</strong> Pass 1 records both instruction and data labels in the symbol table.</li><li><strong>Lesson fact:</strong> Pass 2 replaces a label reference with its resolved address while translating.</li></ol>
 
           </div>
         </section>
@@ -257,13 +257,13 @@
 
         <!-- stage10-explanation:start assembler -->
         <section class="panel explanation-panel" id="explanation-assembler" data-explains="assembler" data-explanation-kind="mechanism" aria-labelledby="explanation-assembler-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="assembler">
-          <h2 class="explanation-sr-only" id="explanation-assembler-title">Assembler: text to machine code</h2>
+          <h2 class="explanation-sr-only" id="explanation-assembler-title">Instruction groups: data movement, I/O, arithmetic, control and compare</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-046-assembler.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Assembler: text to machine code with a structured visual model." />
-            <figcaption class="explanation-sr-only">Assembler: text to machine code: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-046-assembler.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Instruction groups: data movement, I/O, arithmetic, control and compare with a structured visual model." />
+            <figcaption class="explanation-sr-only">Instruction groups: data movement, I/O, arithmetic, control and compare: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> 1. Read source Assembly source contains mnemonics, labels, operands, comments and directives.</li><li><strong>Lesson fact:</strong> 2. Resolve labels Labels are replaced with actual addresses or offsets.</li><li><strong>Lesson fact:</strong> 3. Translate mnemonics Mnemonics are converted to binary opcodes and operands are encoded.</li><li><strong>Lesson fact:</strong> 4. Output object/machine code The generated machine code can be loaded and executed by the processor.</li><li><strong>Lesson fact:</strong> Common error</li><li><strong>Lesson fact:</strong> An assembler translates assembly to machine code. A compiler usually translates high-level language to lower-level code.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> The five groups are data movement, input/output, arithmetic, unconditional/conditional instructions and compare.</li><li><strong>Lesson fact:</strong> Data movement uses LDM, LDD, LDI, LDX, LDR, MOV and STO; LDR #n loads the immediate value n into IX.</li><li><strong>Lesson fact:</strong> Input/output uses IN and OUT; arithmetic uses ADD, SUB, INC and DEC.</li><li><strong>Lesson fact:</strong> JMP is unconditional; CMP and CMI compare; JPE jumps after True and JPN jumps after False.</li><li><strong>Lesson fact:</strong> END returns control to the operating system.</li></ol>
 
           </div>
         </section>
@@ -335,20 +335,31 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>Instruction groups, core semantics and the two-pass assembler</h2>
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Two-pass assembly, program tracing and the instruction set</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.</p>
-            <p>Instruction groups describe effects: data movement transfers values; input/output communicates with devices; arithmetic changes numeric values; compare sets status information; and branch changes the next instruction address. A conditional branch depends on status, while an unconditional jump always changes the PC.</p>
-            <p>Core mnemonics must be read by effect: LDM immediate; LDD direct; LDI indirect; LDX indexed; LDR relative; MOV register transfer; STO memory store; ADD/SUB/INC/DEC arithmetic; JMP branch; CMP/CMI compare; JPE/JPN conditional branches; IN/OUT I/O; END stops.</p>
+            <p>The two-pass assembler stages are Pass 1 and Pass 2. Pass 1 scans source, assigns addresses and builds a symbol table for labels, allowing forward references. Pass 2 translates mnemonics/operands using the completed table and produces machine code; invalid mnemonics or unresolved symbols are reported.</p>
+            <p>The source form &lt;label&gt;: &lt;opcode&gt; &lt;operand&gt; labels an instruction, while &lt;label&gt;: &lt;data&gt; assigns a symbolic address to a memory location containing data. Pass 1 records both kinds of label in the symbol table.</p>
+            <p>The five instruction groups are data movement (LDM, LDD, LDI, LDX, LDR, MOV, STO), input/output (IN, OUT), arithmetic (ADD, SUB, INC, DEC), unconditional branch and conditional branch. JMP is the unconditional branch instruction; CMP, CMI, JPE and JPN form the compare and conditional branch group. END returns control to the operating system.</p>
+            <p>Data movement: LDM #n loads immediate n into ACC; LDD &lt;address&gt; loads the directly addressed contents into ACC; LDI &lt;address&gt; follows the address stored at &lt;address&gt;; LDX &lt;address&gt; loads from &lt;address&gt; + IX; LDR #n loads n into IX; MOV &lt;register&gt; moves ACC to IX; STO &lt;address&gt; stores ACC at the address.</p>
+            <p>Arithmetic: ADD &lt;address&gt; or ADD #n/Bn/&amp;n adds a memory value or immediate denary/binary/hexadecimal value to ACC; SUB has the corresponding forms; INC &lt;register&gt; and DEC &lt;register&gt; change ACC or IX by one.</p>
+            <p>Control, comparison and I/O: JMP &lt;address&gt; is unconditional. CMP &lt;address&gt; or CMP #n compares ACC directly or with an immediate value. CMI &lt;address&gt; compares using indirect addressing. JPE jumps after a True comparison and JPN after a False comparison. IN inputs one ASCII character code to ACC; OUT outputs the character whose ASCII code is in ACC; END returns control to the operating system.</p>
+            <p>ACC is the accumulator and IX is the index register. An address can be absolute or symbolic. Prefix # gives immediate denary, B immediate binary and &amp; immediate hexadecimal data. These prefixes and operand forms are part of the instruction semantics, not optional decoration.</p>
+            <p>To trace a simple assembly-language program, make a table with one row per executed instruction and columns for the current instruction/address, ACC, IX, relevant memory or output, and branch result. Update only the state changed by that instruction, then use the updated PC or branch target to choose the next row; do not trace source lines that a taken jump skips.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Classify and translate a forward branch</h3>
-            <p>In JMP FINISH, JMP is an unconditional branch. Pass 1 records FINISH's eventual address in the symbol table; pass 2 substitutes that address when translating JMP.</p>
+            <h3>Worked example: Assemble, classify and trace a short program</h3>
+            <p>For LDM #5; ADD #3; CMP #8; JPE MATCH; LDM #0; MATCH: OUT; END, the trace gives ACC 5, then 8, then a True comparison. JPE transfers control to MATCH, so LDM #0 is skipped; OUT outputs the character whose ASCII code is 8, and END returns control to the operating system. In LOOP: ADD ONE, LOOP labels an instruction; ONE: 1 labels the data location containing 1.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Two-pass assembly, program tracing and the instruction set: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
@@ -356,30 +367,46 @@
               <details><summary>Show answer</summary><p>Pass 1.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> What is the difference between LDM #5 and LDD 5?</p>
+              <p><strong>2.</strong> What does Pass 2 do?</p>
+              <details><summary>Show answer</summary><p>Pass 2 translates mnemonics and operands into machine code using the completed symbol table.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> What is the difference between LDM #5 and LDD 5?</p>
               <details><summary>Show answer</summary><p>LDM loads literal 5; LDD loads the contents of memory address 5.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Which instruction terminates execution?</p>
-              <details><summary>Show answer</summary><p>END.</p></details>
+              <p><strong>4.</strong> What does LDR #7 do?</p>
+              <details><summary>Show answer</summary><p>It loads the immediate value 7 into the index register IX.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>4.</strong> Why is JPE conditional?</p>
-              <details><summary>Show answer</summary><p>It branches only when the equality condition/status is satisfied.</p></details>
+              <p><strong>5.</strong> Classify IN, SUB, JMP and JPN.</p>
+              <details><summary>Show answer</summary><p>IN is input/output; SUB is arithmetic; JMP is unconditional; JPN is conditional/compare.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>6.</strong> Distinguish CMP #4 from CMI 40.</p>
+              <details><summary>Show answer</summary><p>CMP #4 compares ACC with immediate value 4; CMI 40 follows the address stored at memory location 40 and compares ACC with the indirectly addressed value.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>7.</strong> What do MOV IX, STO TOTAL, OUT and END do?</p>
+              <details><summary>Show answer</summary><p>MOV IX copies ACC to IX; STO TOTAL stores ACC at the symbolic address TOTAL; OUT outputs the ASCII character whose code is in ACC; END returns control to the operating system.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>8.</strong> Trace LDM #2; ADD #3; STO TOTAL. What changes?</p>
+              <details><summary>Show answer</summary><p>ACC becomes 2, then 5; memory at symbolic address TOTAL becomes 5.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
-            <p>Explain why an assembler uses two passes for a forward reference, then distinguish compare, conditional branch and unconditional branch instructions.</p>
+            <p>Trace the supplied program and classify the instructions, showing each change to ACC, IX, memory, output and control flow.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> label is used before its address is known</li>
-                <li><strong>B1</strong> pass 1 assigns addresses/builds the symbol table</li>
-                <li><strong>B1</strong> pass 2 substitutes the resolved address while translating</li>
-                <li><strong>B1</strong> compare tests values / sets status</li>
-                <li><strong>B1</strong> conditional branch changes flow only when its condition/status is met</li>
-                <li><strong>B1</strong> unconditional branch always changes the next instruction/PC</li>
+                <li><strong>M1</strong> uses one row per executed instruction in the correct control-flow order</li>
+                <li><strong>A1</strong> updates ACC and IX correctly for data movement/arithmetic</li>
+                <li><strong>A1</strong> updates memory or output correctly for STO/OUT</li>
+                <li><strong>M1</strong> records compare result before evaluating JPE or JPN</li>
+                <li><strong>A1</strong> follows the correct taken/not-taken branch and skips non-executed lines</li>
+                <li><strong>B1</strong> classifies used instructions in the official data movement, input/output, arithmetic, unconditional/conditional and compare groups</li>
               </ol>
             </details>
           </article>
@@ -417,7 +444,7 @@
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

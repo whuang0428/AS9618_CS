@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `categories`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-038-categories.jpg`
 
 1. The touch-sensing layer of a touchscreen is an input device.
@@ -89,6 +90,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `criteria`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-038-criteria.jpg`
 
 1. Speed Needed for real-time input, rapid searches, video editing or low-delay output.
@@ -103,6 +105,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `users`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-038-users.jpg`
 
 1. Librarian Needs fast, accurate item input and reliable local/network database access.

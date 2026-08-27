@@ -75,9 +75,8 @@ Misconception: Students often confuse the identifier of the whole structure with
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S10.09, S10.10
 **Focus:** Choosing stack, queue or linked list
 
 ### Direct explanation
@@ -117,6 +116,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `adt`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-adt.jpg`
 
 1. Stack and queue
@@ -133,6 +133,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `array`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-array.jpg`
 
 1. Initialise Total <- 0 before using Total as an accumulator.
@@ -147,6 +148,7 @@ OUTPUT Total
 
 - **Explains:** `criteria`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-criteria.jpg`
 
 1. Selection criteria
@@ -166,6 +168,7 @@ OUTPUT Total
 
 - **Explains:** `decision`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-decision.jpg`
 
 1. Store one book as a record with ISBN, title and pages fields.
@@ -178,6 +181,7 @@ OUTPUT Total
 
 - **Explains:** `file`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-file.jpg`
 
 1. OPENFILE "Scores.csv" FOR APPEND
@@ -189,6 +193,7 @@ OUTPUT Total
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-pseudocode.jpg`
 
 1. TYPE TBook
@@ -203,6 +208,7 @@ This declaration follows ENDTYPE.
 
 - **Explains:** `ranker`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-ranker.jpg`
 
 1. Reason ranker
@@ -212,6 +218,7 @@ This declaration follows ENDTYPE.
 
 - **Explains:** `record`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-123-record.jpg`
 
 1. TYPE TStudent

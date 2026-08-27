@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -41,7 +41,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -345,44 +345,57 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>BCS and IEEE professional codes</h2>
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Professional ethics, professional bodies and ethical decisions</h2>
           </div>
           <div class="stage2-explanation">
-            <p>The British Computer Society (BCS) and IEEE publish professional codes that guide competent, honest and responsible computing practice. They establish expectations for public interest, professional competence, integrity, privacy and accountability.</p>
-            <p>Codes support consistent decisions, public trust and disciplinary accountability. They do not replace law and do not automatically produce one answer; professionals apply principles to evidence and stakeholders.</p>
+            <p>Professional ethics provides principles for deciding how a computing professional should act when technical choices can affect clients, users, colleagues or wider society. Its purpose is to protect the public interest, support competent and honest work, and make professionals accountable for foreseeable consequences rather than treating legal compliance or a manager's instruction as the whole decision.</p>
+            <p>Joining a professional ethical body is important because membership gives a practitioner an explicit code of conduct, current professional guidance, continuing professional development and a community through which standards and misconduct can be challenged. The British Computer Society (BCS) and the Institute of Electrical and Electronics Engineers (IEEE) are the two named syllabus examples. Their codes promote public interest, competence, integrity, privacy and accountability; a code guides judgement but does not replace law.</p>
+            <p>For a given situation, decide whether an action is ethical or unethical by identifying the decision, affected stakeholders, benefits, harms, rights and responsibilities. Then explain the impact of acting ethically and the impact of acting unethically. A defensible conclusion applies evidence, proportionality and safeguards; it is not a one-sided list or an unsupported personal opinion.</p>
           </div>
           <article class="stage2-example">
             <h3>Worked example: Unsafe release pressure</h3>
-            <p>A developer documents the safety risk, refuses to conceal test failures and escalates through professional channels, applying public-interest and integrity duties rather than following schedule pressure blindly.</p>
+            <p>A developer is told to hide failed safety tests so a medical system can launch on time. Concealing the evidence would be unethical because patients could be harmed and trust would be damaged. The developer acts ethically by documenting the risk, refusing to falsify the record and escalating through BCS/IEEE-style professional channels. This may delay release and cost money, but protects patients, supports accountability and allows the defect to be corrected.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Professional ethics, professional bodies and ethical decisions: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Name the two syllabus organisations with professional codes.</p>
-              <details><summary>Show answer</summary><p>BCS and IEEE.</p></details>
+              <p><strong>1.</strong> What is the purpose of professional ethics in computing?</p>
+              <details><summary>Show answer</summary><p>To guide competent, responsible and accountable decisions that protect clients, users and the public interest.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Give one purpose of a professional code.</p>
-              <details><summary>Show answer</summary><p>To set standards guiding responsible professional conduct.</p></details>
+              <p><strong>2.</strong> Why is joining a professional body such as BCS or IEEE important?</p>
+              <details><summary>Show answer</summary><p>It provides a code of conduct, professional guidance and development, accountability and a community that supports consistent standards.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Does following a manager automatically satisfy a code?</p>
-              <details><summary>Show answer</summary><p>No; duties such as public interest and integrity may require challenge/escalation.</p></details>
+              <p><strong>3.</strong> In the unsafe-release situation, is concealing failed tests ethical or unethical?</p>
+              <details><summary>Show answer</summary><p>Unethical, because it hides foreseeable risk and can harm patients and public trust.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> State one impact of acting ethically and one impact of acting unethically in that situation.</p>
+              <details><summary>Show answer</summary><p>Ethical escalation may delay release but protects patients and supports correction; concealment may meet the deadline but risks harm, liability and loss of trust.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Explain two reasons why professional bodies such as BCS and IEEE publish codes of conduct.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>A software engineer is asked to deploy a safety-critical update despite unresolved test failures. Determine whether complying silently would be ethical or unethical, explain two stakeholder impacts, and explain how membership of BCS or IEEE could support the engineer's response.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> provide standards/guidance for professional decisions</li>
-                <li><strong>B1</strong> protect public interest / reduce harm</li>
-                <li><strong>B1</strong> support trust/accountability/discipline</li>
-                <li><strong>B1</strong> promote competence, honesty, privacy or integrity</li>
+                <li><strong>B1</strong> identifies silent deployment/concealment as unethical with a reason</li>
+                <li><strong>B1</strong> explains one impact on users or the public</li>
+                <li><strong>B1</strong> explains one impact on the organisation or professional</li>
+                <li><strong>B1</strong> explains that a BCS/IEEE code supplies professional standards or public-interest duties</li>
+                <li><strong>B1</strong> explains that professional membership supplies guidance, development, accountability or an escalation community</li>
+                <li><strong>B1</strong> gives a justified ethical action such as document, refuse concealment, escalate or delay release</li>
               </ol>
             </details>
           </article>
@@ -428,7 +441,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

@@ -92,11 +92,11 @@ const examQuestions = [
     prompt: "Write Cambridge-style pseudocode declarations for the variables Count, Name and Enrolled. Count is an integer, Name is text, and Enrolled is TRUE/FALSE.",
     answer: "DECLARE Count : INTEGER\nDECLARE Name : STRING\nDECLARE Enrolled : BOOLEAN",
     marking: [
-      { mark: "B1", text: "declares Count" },
+      { mark: "M1", text: "declares Count using Cambridge declaration syntax" },
       { mark: "A1", text: "uses INTEGER for Count" },
-      { mark: "B1", text: "declares Name" },
+      { mark: "M1", text: "declares Name using Cambridge declaration syntax" },
       { mark: "A1", text: "uses STRING for Name" },
-      { mark: "B1", text: "declares Enrolled" },
+      { mark: "M1", text: "declares Enrolled using Cambridge declaration syntax" },
       { mark: "A1", text: "uses BOOLEAN for Enrolled" },
     ],
     strict: [

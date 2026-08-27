@@ -73,9 +73,8 @@ Misconception: Students often write personal opinions only. Correction: ethics a
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S7.05
 **Focus:** Shareware and commercial licences
 
 ### Direct explanation
@@ -115,6 +114,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `advisor`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-advisor.jpg`
 
 1. Interactive software choice advisor
@@ -125,6 +125,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `method`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-method.jpg`
 
 1. 1. Need Identify the user's priority: cost, support, control, reliability, security or compatibility.
@@ -138,6 +139,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `open-source`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-open-source.jpg`
 
 1. Source code available Users can inspect the program code rather than only using compiled software.
@@ -149,6 +151,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `ownership`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-ownership.jpg`
 
 1. Copyright remains Open-source software is still protected; the licence grants permissions.
@@ -160,6 +163,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `proprietary`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-proprietary.jpg`
 
 1. Closed source Source code is usually not available to users.
@@ -171,6 +175,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `tradeoffs`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-075-tradeoffs.jpg`
 
 1. Open source may offer

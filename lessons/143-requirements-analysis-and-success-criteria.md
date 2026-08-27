@@ -81,6 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `acceptance`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-acceptance.jpg`
 
 1. Acceptance tests
@@ -100,6 +101,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `analysis`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-analysis.jpg`
 
 1. Requirements analysis
@@ -111,6 +113,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `criteria-tool`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-criteria-tool.jpg`
 
 1. Criteria checker
@@ -120,6 +123,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `functional`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-functional.jpg`
 
 1. Functional requirements
@@ -139,6 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `non-functional`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-non-functional.jpg`
 
 1. Non-functional requirements
@@ -158,6 +163,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `rewriter`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-rewriter.jpg`
 
 1. Interactive rewriter
@@ -167,6 +173,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `stakeholders`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-stakeholders.jpg`
 
 1. Stakeholders
@@ -181,6 +188,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `success`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-143-success.jpg`
 
 1. Success criteria

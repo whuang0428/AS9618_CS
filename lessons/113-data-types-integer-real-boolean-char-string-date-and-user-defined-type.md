@@ -74,6 +74,48 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Select and use the official Cambridge data types
+
+### Direct explanation
+
+- Select a type from the meaning and operations required by the problem. INTEGER stores whole numbers, REAL stores values that may contain a fractional part, CHAR stores one character, STRING stores a sequence of characters, BOOLEAN stores TRUE or FALSE, and DATE stores a calendar date.
+- Cambridge pseudocode uses the type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE. ARRAY and FILE describe structured or persistent data; their declarations also state an element type, bounds or file usage as required by the problem.
+- An identifier that contains digits is not automatically INTEGER. Codes, telephone numbers and identifiers with leading zeroes normally use STRING because arithmetic is not required. Type selection does not replace validation of permitted values.
+
+### Worked example
+
+**Choose types for a booking:** Use STRING for BookingCode because it may contain letters or leading zeroes; DATE for VisitDate; INTEGER for TicketCount; REAL for TotalCost; CHAR for a one-letter Zone; BOOLEAN for HasPaid; ARRAY for a fixed indexed set of attendee names; and FILE when bookings must persist between program runs.
+
+### Targeted practice and answers
+
+1. Choose a type for the initial M.
+   **Answer:** CHAR, because exactly one character is stored.
+2. Choose a type for 18.75 used in arithmetic.
+   **Answer:** REAL, because the value has a fractional part.
+3. Why is 0045A a STRING?
+   **Answer:** It is an identifier containing a letter and significant leading zeroes, and arithmetic is not required.
+4. Name the eight type names listed in the syllabus Notes.
+   **Answer:** INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.
+
+### Exam-style question and MS
+
+**Question (8 marks):** Select and justify suitable Cambridge types for CustomerName, MiddleInitial, DateJoined, ItemCount, MeanScore, IsActive, twenty marks and data that must remain after the program ends.
+
+- **B1** STRING for CustomerName
+- **B1** CHAR for MiddleInitial
+- **B1** DATE for DateJoined
+- **B1** INTEGER for ItemCount
+- **B1** REAL for MeanScore
+- **B1** BOOLEAN for IsActive
+- **B1** ARRAY with a numeric element type for twenty indexed marks
+- **B1** FILE for persistent data, with justifications linked to meaning or use
+
+**Strict note:** Do not select a numeric type merely because an identifier contains digits, and do not use STRING as a generic replacement for DATE, CHAR or numeric values that require their defined operations.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -81,6 +123,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `built-in`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-113-built-in.jpg`
 
 1. Built-in types
@@ -100,35 +143,29 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `choose`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-113-choose.jpg`
 
 1. INTEGER stores whole numbers and REAL stores values that may have a fractional part.
 2. Both INTEGER and REAL values can be used in arithmetic.
 3. First decide whether a value is numeric, then choose INTEGER for whole-only values or REAL when fractions are possible.
 
-### Same idea, different syntax
+### The eight Cambridge pseudocode type names
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-113-pseudocode.jpg`
 
-1. Pseudocode vs Java
-2. Cambridge-style declarations
-3. DECLARE Count : INTEGER
-4. DECLARE Average : REAL
-5. DECLARE Found : BOOLEAN
-6. DECLARE Initial : CHAR
-7. DECLARE Name : STRING
-8. DECLARE BirthDate : DATE
-9. Java support only
-10. int count;
-11. double average;
-12. boolean found;
+1. Cambridge pseudocode uses INTEGER, REAL, CHAR, STRING, BOOLEAN and DATE for scalar values.
+2. The Version 2 Notes also name ARRAY and FILE among the pseudocode data types.
+3. Select a type from the value's meaning and required operations; numeric-looking identifiers may still require STRING.
 
 ### When built-in types are not descriptive enough
 
 - **Explains:** `user-defined`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-113-user-defined.jpg`
 
 1. TYPE TStudent
@@ -143,6 +180,7 @@ Declare variables of the record type only after ENDTYPE.
 
 - **Explains:** `why-types`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-113-why-types.jpg`
 
 1. A data type determines which operations are meaningful for a stored value.

@@ -86,7 +86,7 @@
   {
     "number": 10,
     "id": "010",
-    "title": "Digital sound: sampling rate, sample resolution and duration",
+    "title": "Digital sound: sampling rate, sampling resolution and duration",
     "paper": "Paper 1",
     "section": "Section 1",
     "unitId": "section-1",
@@ -383,7 +383,7 @@
   {
     "number": 43,
     "id": "043",
-    "title": "Registers: PC, CIR, MAR, MDR, ACC and status register",
+    "title": "Registers: PC, CIR, MAR, MDR, ACC, IX and status register",
     "paper": "Paper 1",
     "section": "Section 4",
     "unitId": "section-4",
@@ -446,7 +446,7 @@
   {
     "number": 50,
     "id": "050",
-    "title": "Pipelining and why faster is not always simpler",
+    "title": "Bit manipulation: masks and binary shifts",
     "paper": "Paper 1",
     "section": "Section 4",
     "unitId": "section-4",
@@ -1229,9 +1229,9 @@
   {
     "number": 137,
     "id": "137",
-    "title": "Testing with normal, boundary, and erroneous data",
+    "title": "Testing with normal, abnormal, and extreme/boundary data",
     "paper": "Paper 2",
-    "section": "Section 11",
+    "section": "Section 12.3",
     "unitId": "section-11",
     "unitTitle": "Programming"
   },

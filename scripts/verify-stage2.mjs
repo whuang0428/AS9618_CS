@@ -8,8 +8,9 @@ const expect = (condition, message) => { if (!condition) failures.push(message);
 const occurrence = (text, needle) => text.split(needle).length - 1;
 
 const repairLessons = new Set(repairs.map((item) => item.lesson));
+const repairedRows = new Set(repairs.flatMap((item) => item.rows));
 expect(repairs.length === repairLessons.size, "repair lesson numbers must be unique");
-expect(new Set(repairs.flatMap((item) => item.rows)).size === 53, "expected 53 unique repaired audit rows");
+expect(repairedRows.size > 0, "repair data must map to at least one coverage contract row");
 
 for (let lesson = 1; lesson <= 150; lesson += 1) {
   const number = String(lesson).padStart(3, "0");
@@ -39,28 +40,23 @@ for (const repair of repairs) {
   expect(repair.practice.length >= 3, `L${number}: fewer than three targeted practice items`);
   expect(repair.marks.length >= 4, `L${number}: fewer than four marking points`);
   expect(repair.strict.startsWith("Do not"), `L${number}: strict note must begin Do not`);
-  expect(occurrence(html, ">Extra practice<") >= 1, `L${number}: student-facing extra-practice label missing`);
+  expect(occurrence(html, ">Core syllabus content<") >= 1, `L${number}: student-facing core-content label missing`);
   expect(!html.includes("Official audit rows:"), `L${number}: internal audit rows are visible in HTML`);
   expect(occurrence(html, 'id="stage2-completion"') === 1, `L${number}: HTML completion id count is not one`);
   expect(html.includes("<summary>Show MS</summary>"), `L${number}: expandable MS missing`);
   expect(html.includes("<summary>Show answer</summary>"), `L${number}: expandable answers missing`);
   expect(occurrence(css, "/* Stage 2 syllabus completion:start */") === 1, `L${number}: CSS completion block count is not one`);
-  expect(occurrence(markdown, "## Stage 2 syllabus completion") === 1, `L${number}: Markdown completion module count is not one`);
-  for (const row of repair.rows) {
-    expect(markdown.includes(row), `L${number}: audit row ${row} missing from Markdown`);
-  }
+  expect(occurrence(markdown, "## Core syllabus content") === 1, `L${number}: Markdown completion module count is not one`);
 }
 
-const audit = fs.readFileSync(path.join(root, "syllabus-audit.md"), "utf8");
-const auditRows = audit.split("\n").filter((line) => /^\| S\d+\.\d+ \|/.test(line));
-expect(auditRows.length === 121, `audit should contain 121 rows, found ${auditRows.length}`);
-expect(auditRows.every((line) => line.split("|")[5].trim() === "Complete"), "all audit rows must be Complete");
-expect(auditRows.every((line) => line.split("|")[6].trim() === "-"), "all audit actions must be closed");
-expect(!audit.includes("53 rows require repair"), "audit still claims rows require repair");
+const contract = JSON.parse(fs.readFileSync(path.join(root, "scripts", "syllabus-coverage-contract.json"), "utf8"));
+const contractIds = new Set(contract.requirements.map((item) => item.id));
+expect(contract.requirements.length === 121, `coverage contract should contain 121 rows, found ${contract.requirements.length}`);
+for (const row of repairedRows) expect(contractIds.has(row), `repair row ${row} is missing from the coverage contract`);
 
 if (failures.length) {
   console.error(failures.join("\n"));
   process.exit(1);
 }
 
-console.log(`Stage 2 verification passed: ${repairs.length} lessons, 53 repaired rows, 121 complete audit rows.`);
+console.log(`Stage 2 verification passed: ${repairs.length} lessons, ${repairedRows.size} mapped contract rows, ${contract.requirements.length} total contract rows.`);

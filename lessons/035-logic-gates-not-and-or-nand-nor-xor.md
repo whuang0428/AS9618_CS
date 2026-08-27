@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `gate-visual`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-035-gate-visual.jpg`
 
 1. Visual explanation
@@ -94,6 +95,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `gates`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-035-gates.jpg`
 
 1. The six gates are NOT, AND, OR, NAND, NOR and XOR.
@@ -105,6 +107,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `signals`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-035-signals.jpg`
 
 1. Logic 0 means false, off or a valid low logic level.
@@ -115,6 +118,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `symbols`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-035-symbols.jpg`
 
 1. NOT Triangle + bubble One input. Bubble means inversion.

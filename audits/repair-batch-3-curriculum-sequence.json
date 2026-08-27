@@ -1,0 +1,22 @@
+{
+  "batch": "curriculum-sequence-2026-08-26",
+  "authority": "Cambridge 9618 syllabus 2027-2029 Version 2 and the project's teach-before-assess contract",
+  "authorityUrl": "https://www.cambridgeinternational.org/Images/721397-2027-2029-syllabus.pdf",
+  "status": "Resolved",
+  "records": [
+    { "id": "L001-Q1->S1.08", "resolution": "Changed L001-Q1 to a storage-unit context and mapped bitmap-header assessment to L008-Q1 and AQ010-Q3." },
+    { "id": "AM080-Q4->S8.10", "resolution": "Restricted AM080-Q4 to flat-file, relational and DBMS foundations taught by L080; retained SQL assessment after L084." },
+    { "id": "AQ100-Q5->S9.07", "resolution": "Made AQ100-Q5 assess L100 control structures and moved flowchart-to-pseudocode assessment to AQ105-Q1 after L101." },
+    { "id": "AR112-Q1->S10.03", "resolution": "Restricted the Section 9 review item to scalar identifier-table entries and mapped array terminology to AQ115-Q5." },
+    { "id": "AM120-Q3->S10.09", "resolution": "Replaced the premature ADT comparison with an array-of-records task; mapped ADT assessment to Quiz 125 and L122." },
+    { "id": "AM140-Q4->S12.01", "resolution": "Replaced the premature lifecycle comparison with a Section 11 modular-program design task; mapped lifecycle assessment to L142-Q2 and AQ145-Q2." },
+    { "id": "S10.03->S10.06", "resolution": "Added a visible CORE array/index/bounds prerequisite bridge at the start of L104 before search and sort." },
+    { "id": "S4.02->S4.07", "resolution": "Removed the over-broad dependency on completing every register type; L042 depends on the architecture foundation taught in L041 and defines the registers it transfers." },
+    { "id": "S4.04->S4.07", "resolution": "Removed the over-broad dependency on completing the full bus requirement; the architecture/bus foundation is already visible in L041 before L042 notation." }
+  ],
+  "mutationEvidence": [
+    "early Quiz 100 mapping rejected",
+    "removing the L104 array bridge rejected",
+    "reintroducing later full-register/full-bus prerequisites rejected"
+  ]
+}

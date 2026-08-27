@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -40,7 +40,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -337,44 +337,61 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
-            <h2>USB, HDMI and VGA ports</h2>
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>System buses and peripheral ports</h2>
           </div>
           <div class="stage2-explanation">
-            <p>USB is a general serial interface carrying digital data and often power for peripherals. HDMI carries digital video and audio. VGA carries analogue video and does not carry audio in the standard VGA signal.</p>
-            <p>Port choice depends on signal type and device: keyboard/storage commonly use USB, a modern display/TV uses HDMI, and a legacy analogue monitor/projector may use VGA. An adapter does not make analogue and digital signals identical.</p>
+            <p>The address bus carries the address of the memory or I/O location being accessed and is normally directed from the processor. The data bus carries data and instructions in either direction. The control bus carries control and timing signals in both directions overall, including read/write signals from the CPU and interrupt or status signals toward it.</p>
+            <p>A memory read uses all three buses: the CPU places the required address on the address bus, sends a read signal on the control bus, and memory returns the requested data or instruction on the data bus. A bus transfers signals; it does not permanently store them.</p>
+            <p>USB is a general serial interface carrying digital data and often power for peripherals. HDMI carries digital video and audio. VGA carries analogue video and does not carry audio in the standard VGA signal. Port choice must match the peripheral and signal rather than rely on a claim that one connector is always best.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: Connect a laptop to a modern TV</h3>
-            <p>Use HDMI because one cable can carry digital video and audio. VGA would carry analogue video only, so a separate audio connection would be needed.</p>
+            <h3>Worked example: Read memory, then connect a display</h3>
+            <p>To read address 240, the CPU puts 240 on the address bus and read on the control bus; memory returns the contents on the data bus. To connect the computer to a modern TV with one digital audio/video cable, choose HDMI. A keyboard or removable drive commonly uses USB, while a legacy analogue display may use VGA.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>System buses and peripheral ports: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Which port commonly carries both digital video and audio?</p>
+              <p><strong>1.</strong> Which bus carries an address, which carries a value, and which carries read/write signals?</p>
+              <details><summary>Show answer</summary><p>Address bus; data bus; control bus.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Trace a memory read using the three buses.</p>
+              <details><summary>Show answer</summary><p>Address on address bus, read signal on control bus, requested data/instruction from memory on data bus.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which port commonly carries both digital video and audio?</p>
               <details><summary>Show answer</summary><p>HDMI.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> Which named port carries analogue video?</p>
+              <p><strong>4.</strong> Which named port carries analogue video?</p>
               <details><summary>Show answer</summary><p>VGA.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> Give one extra facility USB may provide besides data.</p>
-              <details><summary>Show answer</summary><p>Electrical power to a peripheral.</p></details>
+              <p><strong>5.</strong> Give one USB use or facility.</p>
+              <details><summary>Show answer</summary><p>A digital peripheral connection such as keyboard/storage, often also supplying electrical power.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Compare HDMI and VGA for connecting a computer to a display.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>6 marks</span></div>
+            <p>Describe a memory read using the address, data and control buses, then choose USB, HDMI or VGA for one stated peripheral connection.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> HDMI carries digital video</li>
-                <li><strong>B1</strong> HDMI can also carry audio</li>
-                <li><strong>B1</strong> VGA carries analogue video</li>
-                <li><strong>B1</strong> VGA does not normally carry audio / may have lower suitability for modern digital displays</li>
+                <li><strong>B1</strong> address bus carries the required memory/I/O address</li>
+                <li><strong>B1</strong> control bus carries the read signal</li>
+                <li><strong>B1</strong> data bus returns the requested data/instruction</li>
+                <li><strong>B1</strong> USB matched to a suitable digital peripheral/data/power use</li>
+                <li><strong>B1</strong> HDMI matched to digital video and audio</li>
+                <li><strong>B1</strong> VGA matched to analogue video without standard audio</li>
               </ol>
             </details>
           </article>
@@ -412,7 +429,7 @@
       </div>
     </main>
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

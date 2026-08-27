@@ -91,6 +91,44 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often confuse the identifier of the whole structure with one element. Correction: access requires an index or field name.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Select and write two-dimensional arrays
+
+### Direct explanation
+
+- A two-dimensional array uses two indexes, normally interpreted as row and column. In DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER, the first range gives 30 valid row indexes and the second gives 4 valid column indexes, for 120 cells.
+- Select 2D when the scenario has two independent position dimensions, such as Student and Test, Row and Column, or Day and Period. A simple list, sequence or one category of positions remains 1D even when it contains many elements.
+- Two-dimensional pseudocode declares both ranges, accesses one cell as Marks[Student, Test] and normally uses nested loops: one loop traverses rows and the inner loop traverses every column for the current row.
+
+### Worked example
+
+**Input a student-by-test table:** DECLARE Marks : ARRAY[1:30, 1:4] OF INTEGER. Use FOR Student <- 1 TO 30 and inside it FOR Test <- 1 TO 4; INPUT Marks[Student, Test]; NEXT Test; NEXT Student. Every one of the 120 cells is visited exactly once.
+
+### Targeted practice and answers
+
+1. Why is a seating grid normally 2D?
+   **Answer:** Each seat is identified by two independent positions: row and column.
+2. How many cells are in ARRAY[1:3, 1:4]?
+   **Answer:** 12 cells because 3 row indexes are paired with 4 column indexes.
+3. What is wrong with Marks[Row] for a 2D array?
+   **Answer:** It supplies only one index and therefore does not identify a column or one complete cell.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Write Cambridge pseudocode to declare a 5 by 7 REAL temperature table and calculate the total of every cell.
+
+- **B1** declares ARRAY[1:5, 1:7] OF REAL or equivalent explicit five-by-seven bounds
+- **B1** initialises Total
+- **M1** outer loop covers all five rows
+- **M1** inner loop covers all seven columns
+- **A1** adds Temperature[Row, Column] inside the inner loop
+- **B1** closes both loops and outputs Total after traversal
+
+**Strict note:** Do not reverse the declared bounds in the traversal or access a 2D cell with only one index.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -98,6 +136,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `access`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-116-access.jpg`
 
 1. Access and update
@@ -112,6 +151,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `declare`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-116-declare.jpg`
 
 1. Declare 2D arrays
@@ -131,6 +171,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `lookup`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-116-lookup.jpg`
 
 1. Interactive cell lookup
@@ -140,6 +181,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `model`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-116-model.jpg`
 
 1. 2D model
@@ -156,6 +198,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `nested`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-116-nested.jpg`
 
 1. Nested loops
@@ -175,6 +218,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-116-pseudocode.jpg`
 
 1. Traverse a 3 by 4 array with nested loops.

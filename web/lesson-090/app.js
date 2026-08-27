@@ -5,7 +5,7 @@ const classifierMap = {
   },
   sound: {
     topic: "Sound file size",
-    reason: "Use sample rate x sample resolution x duration. Include channels only if stated.",
+    reason: "Use sample rate x sampling resolution x duration. Include channels only if stated.",
   },
   rle: {
     topic: "Run-length encoding",
@@ -34,7 +34,7 @@ const examples = {
   },
   sound: {
     title: "Example 2: Sound file size",
-    problem: "Calculate the size of 30 seconds of mono sound sampled at 44 100 Hz with 16-bit sample resolution.",
+    problem: "Calculate the size of 30 seconds of mono sound sampled at 44 100 Hz with 16-bit sampling resolution.",
     steps: [
       "Samples = 44100 x 30 = 1323000 samples.",
       "Bits = 1323000 x 16 = 21168000 bits.",
@@ -80,8 +80,8 @@ const practice = [
   {
     id: "p3",
     prompt: "What is the formula for mono sound size in bits?",
-    accepted: ["sample rate x sample resolution x duration", "sample rate * sample resolution * duration", "sample rate x duration x sample resolution"],
-    answer: "sample rate x sample resolution x duration",
+    accepted: ["sample rate x sampling resolution x duration", "sample rate * sampling resolution * duration", "sample rate x duration x sampling resolution"],
+    answer: "sample rate x sampling resolution x duration",
   },
   {
     id: "p4",
@@ -169,11 +169,11 @@ const examQuestions = [
   {
     title: "Question 2",
     marks: "5 marks",
-    prompt: "Calculate the file size in MiB of 30 seconds of mono sound sampled at 44 100 Hz with 16-bit sample resolution. Show your working.",
+    prompt: "Calculate the file size in MiB of 30 seconds of mono sound sampled at 44 100 Hz with 16-bit sampling resolution. Show your working.",
     answer: "44100 x 30 x 16 = 21168000 bits. 21168000 / 8 = 2646000 bytes. 2646000 / 1024 / 1024 = about 2.52 MiB.",
     marking: [
       { mark: "M1", text: "multiplies sample rate by duration" },
-      { mark: "M1", text: "multiplies by sample resolution 16" },
+      { mark: "M1", text: "multiplies by sampling resolution 16" },
       { mark: "A1", text: "21168000 bits" },
       { mark: "M1", text: "converts bits to bytes and then MiB" },
       { mark: "A1", text: "approximately 2.52 MiB with correct unit" },
@@ -288,7 +288,7 @@ function setupCalculator() {
     const bytes = bits / 8;
     const kib = bytes / 1024;
     const mib = kib / 1024;
-    const label = type === "image" ? "width x height x colour depth" : "sample rate x duration x sample resolution";
+    const label = type === "image" ? "width x height x colour depth" : "sample rate x duration x sampling resolution";
     result.innerHTML = `
       <div class="calc-card">
         <strong>${type === "image" ? "Image" : "Sound"} method:</strong> ${label}<br />

@@ -133,7 +133,7 @@ const examQuestions = [
     prompt: "Scores[1:5] stores 42, 67, 55, 81, 49. Trace PassCount after counting scores >= 50.",
     answer: "PassCount starts at 0. Index 1, 42 is not >= 50 so PassCount remains 0. Index 2, 67 is >= 50 so PassCount becomes 1. Index 3, 55 is >= 50 so PassCount becomes 2. Index 4, 81 is >= 50 so PassCount becomes 3. Index 5, 49 is not >= 50 so final PassCount is 3.",
     marking: [
-      { mark: "B1", text: "PassCount starts at 0" },
+      { mark: "M1", text: "initialises PassCount to 0 before tracing the array" },
       { mark: "A1", text: "PassCount remains 0 after 42" },
       { mark: "A1", text: "PassCount becomes 1 after 67" },
       { mark: "A1", text: "PassCount becomes 2 after 55" },

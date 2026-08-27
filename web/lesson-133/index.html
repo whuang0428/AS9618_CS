@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -44,6 +44,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -194,13 +195,13 @@ OUTPUT Size</code></pre>
 
         <!-- stage10-explanation:start substring -->
         <section class="panel explanation-panel" id="explanation-substring" data-explains="substring" data-explanation-kind="mechanism" aria-labelledby="explanation-substring-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="substring">
-          <h2 class="explanation-sr-only" id="explanation-substring-title">Use substring functions to extract part of a string</h2>
+          <h2 class="explanation-sr-only" id="explanation-substring-title">Use the string-function definition supplied in the question</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-substring.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use substring functions to extract part of a string with a structured visual model." />
-            <figcaption class="explanation-sr-only">Use substring functions to extract part of a string: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-133-substring.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Use the string-function definition supplied in the question with a structured visual model." />
+            <figcaption class="explanation-sr-only">Use the string-function definition supplied in the question: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Substring functions</li><li><strong>Lesson fact:</strong> Function</li><li><strong>Lesson fact:</strong> LEFT(Text, n)</li><li><strong>Lesson fact:</strong> first n characters</li><li><strong>Lesson fact:</strong> LEFT(&quot;NETWORK&quot;, 3) returns &quot;NET&quot;</li><li><strong>Lesson fact:</strong> RIGHT(Text, n)</li><li><strong>Lesson fact:</strong> last n characters</li><li><strong>Lesson fact:</strong> RIGHT(&quot;NETWORK&quot;, 4) returns &quot;WORK&quot;</li><li><strong>Lesson fact:</strong> MID(Text, start, n)</li><li><strong>Lesson fact:</strong> n characters from a start position</li><li><strong>Lesson fact:</strong> MID(&quot;NETWORK&quot;, 4, 2) returns &quot;WO&quot;</li><li><strong>Lesson fact:</strong> This course uses MID(Text, start, count) . If a paper specifies SUBSTRING or a different convention, follow the convention given in the question.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> String manipulation functions are supplied in the question; use the stated name, parameter order and position convention.</li><li><strong>Lesson fact:</strong> Trace the supplied routine exactly, then use its returned string in an assignment, comparison, output or expression.</li><li><strong>Lesson fact:</strong> Do not import Java's zero-based substring convention or memorise an unstated course-specific signature.</li></ol>
 
           </div>
         </section>
@@ -448,6 +449,59 @@ OUTPUT Part</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Use supplied built-in and library routines</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Use built-in functions and library routines exactly as defined. The syllabus states that any function not given in the Cambridge pseudocode guide will be provided, and string manipulation functions will always be given in the question. Students are not expected to memorise one unofficial substring API.</p>
+            <p>Read the supplied function name, parameter order, position convention and returned type before using it. LENGTH is a familiar built-in example; LEFT, RIGHT, MID or SUBSTRING examples in this course illustrate a mechanism only when their definition and indexing convention are stated.</p>
+            <p>A function call returns a value, so it can be assigned, compared, output or combined in an expression. Do not import Java's zero-based substring convention unless the question explicitly specifies it.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Apply a supplied string routine</h3>
+            <p>A question defines EXTRACT(Text, Start, Count) using positions starting at 1. LENGTH(&quot;NETWORK&quot;) returns 7; EXTRACT(&quot;NETWORK&quot;, 4, 2) returns &quot;WO&quot;. Code &lt;- EXTRACT(UCASE(Name), 1, 3) nests a supplied library routine inside an expression.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Use supplied built-in and library routines: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Will an unfamiliar string manipulation function be supplied?</p>
+              <details><summary>Show answer</summary><p>Yes. The syllabus says string manipulation functions will always be given.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> What must be checked before tracing EXTRACT?</p>
+              <details><summary>Show answer</summary><p>Its supplied parameter order, position/index convention and return definition.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> May a returned string be assigned to a variable?</p>
+              <details><summary>Show answer</summary><p>Yes; a function return can be used wherever a compatible value is needed.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
+            <p>A question defines TAKE(Text, Start, Count), with positions starting at 1. State LENGTH(&quot;ALGORITHM&quot;), state TAKE(&quot;ALGORITHM&quot;, 3, 4), and write an assignment that converts the extracted text to upper case using supplied routine UCASE.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> LENGTH result is 9</li>
+                <li><strong>B1</strong> TAKE result is GORI</li>
+                <li><strong>M1</strong> uses the supplied Start/Count convention rather than Java indexing</li>
+                <li><strong>A1</strong> assigns UCASE(TAKE(&quot;ALGORITHM&quot;, 3, 4)) or equivalent to a variable</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -477,7 +531,7 @@ OUTPUT Part</code></pre>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

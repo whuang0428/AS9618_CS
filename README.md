@@ -8,9 +8,9 @@ Syllabus reference used for this pack: Cambridge International AS & A Level Comp
 
 ## Project Status
 
-All 150 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit maps all 121 AS requirements to direct teaching and assessment evidence. The assessment bank provides 30 ten-mark quizzes, 7 thirty-mark monthly checkpoints and 14 twenty-mark stage reviews. Stage 5 reviewed and approved all 963 exam-style mark schemes (750 lesson questions and 213 assessment questions); 295 questions in System Software, Security, Ethics and Databases received a specialist second review. Stage 6 completed desktop and mobile full-page QA for all 150 lessons plus the course, assessment and resource hubs. Stage 7 completed keyboard, semantic, contrast and bilingual-language accessibility QA for the same 153 pages. Stage 8 provides a versioned, checksummed and source-matched offline release. Stage 9 adds a fixed lesson toolbar, audited delivery metadata, teacher filters in the Assessment Bank and a static 150-lesson catalogue. Stage 10 adds 782 maintained academic infographics with source-grounded text alternatives across all 150 lessons.
+All 150 lesson numbers have both a teacher-facing Markdown plan and an interactive webpage. The requirement-level syllabus audit is generated from a 121-requirement coverage contract and maps each requirement to direct teaching, practice/mark-scheme and assessment evidence. The assessment bank provides 30 ten-mark quizzes, 7 thirty-mark monthly checkpoints and 14 twenty-mark stage reviews. Stage 5 reviewed and approved all 963 exam-style mark schemes (750 lesson questions and 213 assessment questions); 295 questions in System Software, Security, Ethics and Databases received a specialist second review. Stage 6 completed desktop and mobile full-page QA for all 150 lessons plus the course, assessment and resource hubs. Stage 7 completed keyboard, semantic, contrast and bilingual-language accessibility QA for the same 153 pages. Stage 8 provides a versioned, checksummed and source-matched offline release. Stage 9 adds a fixed lesson toolbar, audited delivery metadata, teacher filters in the Assessment Bank and a static 150-lesson catalogue. Stage 10 adds 783 maintained academic infographics with source-grounded text alternatives across all 150 lessons.
 
-The shared web version prioritises classroom teaching while preserving each complete lesson for student preview and revision. Every lesson provides `Course home`, previous/next lesson controls and section shortcuts without changing or hiding lesson content. The comprehensive visual register now tracks 968 diagrams and interactive visuals, including the 782 Stage 10 knowledge-point infographics. Automated checks cover structure, dimensions, file budgets and accessible transcripts; conceptual correctness remains subject to human semantic review.
+The shared web version prioritises classroom teaching while preserving each complete lesson for student preview and revision. Every lesson provides `Course home`, previous/next lesson controls and section shortcuts without changing or hiding lesson content. The comprehensive visual register tracks 969 diagrams and interactive visuals, including 783 Stage 10 knowledge-point infographics. Those 783 images have two recorded semantic review passes, while automated checks cover structure, dimensions, file budgets, accessible transcripts and current asset hashes.
 
 ## Course Design
 
@@ -86,7 +86,16 @@ node scripts/generate-stage10-semantic-audit.mjs
 node scripts/generate-stage10-audits.mjs
 ```
 
-Stage 10 now covers all 782 maintained explanation targets across all 150 lessons. Each target uses an academically styled ImageGen infographic grounded in the corresponding lesson facts, with a synchronised screen-reader transcript and matching Markdown record. The original ten-lesson pilot established the approved visual style; the full visual set remains subject to human semantic review because automated checks cannot prove conceptual correctness.
+The requirement-level syllabus audit is generated and verified from the machine-readable coverage contract:
+
+```bash
+node scripts/generate-syllabus-audit.mjs
+node scripts/verify-syllabus-coverage.mjs
+node scripts/generate-question-ao-contract.mjs
+node scripts/generate-scientific-final-audit.mjs
+```
+
+Stage 10 covers all 783 maintained explanation targets across all 150 lessons. Each target declares its delivery role and classroom activity and uses an academically styled infographic grounded in the corresponding lesson facts, with a synchronised screen-reader transcript and matching Markdown record. At mobile width, the image is replaced by the complete transcript as readable cards instead of forcing a 720 px horizontal-scroll container.
 
 ## Verification
 
@@ -96,6 +105,10 @@ node scripts/verify-academic-theme.mjs
 node scripts/verify-student-navigation.mjs
 node scripts/verify-educational-visuals.mjs
 node scripts/verify-visual-semantic-remediation.mjs
+node scripts/verify-syllabus-coverage.mjs
+node scripts/verify-question-ao-contract.mjs
+node scripts/verify-batch18-scientific-closure.mjs
+node scripts/verify-scientific-audit.mjs
 node scripts/verify-stage2.mjs
 node scripts/verify-assessments.mjs
 node scripts/verify-lesson-mark-schemes.mjs
@@ -109,7 +122,7 @@ python3 scripts/build-stage8-release.py
 node scripts/verify-stage8-release.mjs
 ```
 
-`verify-stage10.mjs --audit-only` validates the 782-row two-pass review coverage, current asset hashes, register consistency and defect accounting without requiring a clean defect gate. The default Stage 10 verifier fails while any unresolved Critical or Major semantic defect remains, so the unified verifier and release build stop before packaging.
+`verify-stage10.mjs --audit-only` validates the 783-row two-pass review coverage, current asset hashes, register consistency and defect accounting without requiring a clean defect gate. The default Stage 10 verifier fails while any unresolved Critical or Major semantic defect remains, so the unified verifier and release build stop before packaging.
 
 For the complete final acceptance workflow, run:
 
@@ -117,7 +130,7 @@ For the complete final acceptance workflow, run:
 node scripts/verify-all.mjs
 ```
 
-This runs every Stage 2-10 verifier, including the permanent 968-item visual semantic remediation gate, builds `dist/AS9618-CS-2027-2029-v1.0.0.zip`, verifies its sidecar and internal SHA-256 manifests, checks source parity and validates the packaged course inventory. The visual gate requires 66/66 repaired visuals to retain two-pass evidence, 902/902 untouched visuals to match the frozen baseline, all 79 historical Stage 10 defects to remain resolved, and the deterministic renderer, OCR/source transcripts, Markdown and HTML to agree.
+This runs every Stage 2-10 verifier plus the 121-requirement syllabus coverage gate, including the permanent visual semantic remediation gate, builds `dist/AS9618-CS-2027-2029-v1.0.0.zip`, verifies its sidecar and internal SHA-256 manifests, checks source parity and validates the packaged course inventory. Visual and OCR counts are derived from the current explanation and register data; the gate requires all repaired visuals to retain two-pass evidence, untouched visuals to match the frozen baseline, every recorded semantic defect to remain resolved, and the deterministic renderer, OCR/source transcripts, Markdown and HTML to agree.
 
 ## Generated Lesson Count
 

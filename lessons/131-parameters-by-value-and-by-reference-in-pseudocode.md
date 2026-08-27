@@ -92,6 +92,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-compare.jpg`
 
 1. Side-by-side comparison
@@ -111,6 +112,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-java.jpg`
 
 1. Java support only
@@ -128,6 +130,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `reference`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-reference.jpg`
 
 1. Passing by reference
@@ -147,6 +150,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `terms`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-terms.jpg`
 
 1. Parameter and argument
@@ -165,6 +169,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `use`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-use.jpg`
 
 1. When to use BYREF
@@ -178,6 +183,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `value`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-131-value.jpg`
 
 1. Passing by value

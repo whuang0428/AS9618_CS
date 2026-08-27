@@ -9,7 +9,7 @@ const deterministicCorrections = new Map([
   ["004/overflow", "Corrected and fact-checked after semantic review"],
 ]);
 const reviewLessons = new Set(["015", "026", "040", "051", "061", "071", "077", "089", "090", "091", "092", "093", "094", "095", "096", "097", "112", "125", "141", "146", "147", "148", "149", "150"]);
-const excludedIds = /^(?:overview|examples|stage2-completion|tool|builder|simulator|converter|checker|classifier|chooser|runner|detector|hash-demo|model-tool|order-tool|error-tool|rewrite-tool|bubble-tool|insert-tool|trace|fde|delivery-\d+)$/;
+const excludedIds = /^(?:overview|examples|core-practice|stage2-completion|tool|builder|simulator|converter|checker|classifier|chooser|runner|detector|hash-demo|model-tool|order-tool|error-tool|rewrite-tool|bubble-tool|insert-tool|trace|fde|delivery-\d+)$/;
 const excludedTitles = /^(?:why this matters|common trap|worked examples?|annotate |identify the topic|interactive |choose a project situation|spot the stage)/i;
 const visualHint = /(?:diagram|visual|topology|flowchart|architecture|cycle|journey|gate|pipeline|entity|relationship|network-map|storage-media|peer-visual|concept-svg)/i;
 
@@ -172,12 +172,33 @@ for (let number = 1; number <= 150; number += 1) {
         ? "Review lesson: consolidate related ideas into causal synthesis and avoid adding panels to retrieval items or tools."
         : "Core concept: explain mechanism, cause, consequence and boundary instead of repeating the definition.",
       contentHash: item ? hash([...(item.transcript ?? item.steps), item.analogy, item.boundary, item.visual?.src ?? ""].filter(Boolean).join("\n")) : "",
+      deliveryRole: item?.deliveryRole ?? row[deliveryIndex.delivery_role],
+      classroomActivity: item?.classroomActivity ?? row[deliveryIndex.classroom_activity],
     });
   }
 }
 
-const targetHeader = ["lesson", "target_id", "title", "target_type", "status", "implementation_id", "rationale", "content_hash"];
-const targetRows = targets.map((item) => [item.lesson, item.targetId, item.title, item.targetType, item.status, item.implementationId, item.rationale, item.contentHash].map(csv).join(","));
+const targetKeys = new Set(targets.map((item) => `${item.lesson}/${item.targetId}`));
+for (const item of explanations) {
+  const key = `${item.lesson}/${item.targetId}`;
+  if (targetKeys.has(key)) continue;
+  targets.push({
+    lesson: item.lesson,
+    targetId: item.targetId,
+    title: item.title,
+    targetType: item.kind,
+    status: "Implemented",
+    implementationId: `explanation-${item.targetId}`,
+    rationale: item.deliveryRole === "OPTIONAL" ? "Explicit extension visual retained outside compulsory syllabus evidence." : "Maintained explanation target.",
+    contentHash: hash([...(item.transcript ?? item.steps), item.analogy, item.boundary, item.visual?.src ?? ""].filter(Boolean).join("\n")),
+    deliveryRole: item.deliveryRole,
+    classroomActivity: item.classroomActivity,
+  });
+}
+targets.sort((left, right) => left.lesson.localeCompare(right.lesson) || left.targetId.localeCompare(right.targetId));
+
+const targetHeader = ["lesson", "target_id", "title", "target_type", "delivery_role", "classroom_activity", "status", "implementation_id", "rationale", "content_hash"];
+const targetRows = targets.map((item) => [item.lesson, item.targetId, item.title, item.targetType, item.deliveryRole, item.classroomActivity, item.status, item.implementationId, item.rationale, item.contentHash].map(csv).join(","));
 fs.writeFileSync(path.join(auditDirectory, "stage10-explanation-target-register.csv"), `${targetHeader.join(",")}\n${targetRows.join("\n")}\n`);
 
 const legacyRows = parseCsv(read("audits/student-visual-explanation-register.csv"));
@@ -215,13 +236,19 @@ for (let number = 1; number <= 150; number += 1) {
       const titleText = tagName === "svg" ? decodeHtml(content.slice(match.index).match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? "") : "";
       const description = tagName === "svg" ? decodeHtml(content.slice(match.index).match(/<desc[^>]*>([\s\S]*?)<\/desc>/i)?.[1] ?? "") : "";
       const legacy = legacyByLesson.get(lesson);
+      const explanation = section.id.startsWith("explanation-")
+        ? explanationByKey[`${lesson}/${section.id.replace(/^explanation-/, "")}`]
+        : null;
+      const maintainedFacts = explanation
+        ? (explanation.transcript ?? explanation.steps ?? []).join(" ")
+        : "";
       visuals.push({
         lesson,
         visualId: elementId,
         sectionId: section.id,
         method: tagName === "img" ? "Raster image" : tagName === "svg" ? "Inline SVG" : tagName === "canvas" ? "Canvas" : "HTML/CSS",
         topic: titleText || aria || alt || title,
-        requiredFacts: description || aria || alt || `Define exact facts for manual review of ${title}.`,
+        requiredFacts: maintainedFacts || description || aria || alt || `Define exact facts for manual review of ${title}.`,
         source: lesson === "016" ? "Cambridge 9618 syllabus 2027-2029 section 2.1" : "Lesson content and applicable syllabus row",
         status: lesson === "016" && section.id === "topologies" ? "PilotReview" : legacy?.[legacyIndex.status] === "Approved" ? "ApprovedBaseline" : "NeedsFactReview",
         contentHash: hash(tag),

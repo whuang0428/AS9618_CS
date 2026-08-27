@@ -32,6 +32,7 @@ ACCENT = [BLUE, GREEN, ORANGE]
 
 REPAIR_FACTS_PATH = ROOT / "scripts/stage10-visual-repair-facts.json"
 TARGET_REGISTER_PATH = ROOT / "audits/stage10-explanation-target-register.csv"
+TECHNICAL_VISUAL_CONTRACT_PATH = ROOT / "scripts/stage10-technical-visual-contract.json"
 
 
 def font(size: int, bold: bool = False, mono: bool = False) -> ImageFont.FreeTypeFont:
@@ -96,23 +97,28 @@ def draw_code(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], code: s
 
 
 def draw_card(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], index: int, heading: str,
-              body: str = "", code: str | None = None, note: str = "") -> None:
+              body: str = "", code: str | None = None, note: str = "", *, numbered: bool = True,
+              heading_size: int = 30, body_size: int = 26, code_size: int = 25,
+              note_size: int = 21) -> None:
     x1, y1, x2, y2 = box
     draw.rounded_rectangle(box, radius=22, fill=WHITE, outline=LINE, width=3)
     draw.rounded_rectangle((x1, y1, x2, y1 + 78), radius=22, fill=PALE[index], outline=PALE[index])
     draw.rectangle((x1, y1 + 56, x2, y1 + 78), fill=PALE[index])
-    draw.ellipse((x1 + 20, y1 + 18, x1 + 66, y1 + 64), fill=ACCENT[index])
-    number = str(index + 1)
-    number_width = draw.textlength(number, font=font(26, bold=True))
-    draw.text((x1 + 43 - number_width / 2, y1 + 25), number, font=font(26, bold=True), fill=WHITE)
-    draw.text((x1 + 82, y1 + 22), heading, font=font(30, bold=True), fill=ACCENT[index])
+    heading_x = x1 + 26
+    if numbered:
+        draw.ellipse((x1 + 20, y1 + 18, x1 + 66, y1 + 64), fill=ACCENT[index])
+        number = str(index + 1)
+        number_width = draw.textlength(number, font=font(26, bold=True))
+        draw.text((x1 + 43 - number_width / 2, y1 + 25), number, font=font(26, bold=True), fill=WHITE)
+        heading_x = x1 + 82
+    draw.text((heading_x, y1 + 22), heading, font=font(heading_size, bold=True), fill=ACCENT[index])
     content_y = y1 + 104
     if body:
-        content_y = draw_text_block(draw, (x1 + 26, content_y), body, font(26), x2 - x1 - 52, spacing=9)
+        content_y = draw_text_block(draw, (x1 + 26, content_y), body, font(body_size), x2 - x1 - 52, spacing=9)
     if code:
-        draw_code(draw, (x1 + 22, content_y + 5, x2 - 22, y2 - (72 if note else 24)), code)
+        draw_code(draw, (x1 + 22, content_y + 5, x2 - 22, y2 - (72 if note else 24)), code, size=code_size)
     if note:
-        draw_text_block(draw, (x1 + 26, y2 - 58), note, font(21, bold=True), x2 - x1 - 52, fill=ACCENT[index], spacing=6)
+        draw_text_block(draw, (x1 + 26, y2 - 58), note, font(note_size, bold=True), x2 - x1 - 52, fill=ACCENT[index], spacing=6)
 
 
 SPECS = {
@@ -507,6 +513,16 @@ SPECS.update({
     ),
 })
 
+# Exact-text technical diagrams are maintained as machine-readable data so the
+# renderer and semantic verifier use the same bit strings, opcodes and labels.
+with TECHNICAL_VISUAL_CONTRACT_PATH.open(encoding="utf-8") as contract_file:
+    TECHNICAL_VISUAL_CONTRACT = json.load(contract_file)
+for technical_key, technical_spec in TECHNICAL_VISUAL_CONTRACT.items():
+    SPECS[technical_key] = {
+        field: technical_spec[field]
+        for field in ("title", "subtitle", "cards", "footer", "numbered", "headingSize", "bodySize", "codeSize", "noteSize")
+    }
+
 
 def current_repair_specs() -> dict[str, dict]:
     """Build deterministic three-card specs from the maintained repair facts."""
@@ -526,10 +542,26 @@ def current_repair_specs() -> dict[str, dict]:
     }
     title_overrides = {
         "074/ip": "What intellectual property can protect",
+        "083/normal-forms": "From 1NF to 3NF",
+        "111/analyser": "Stepwise refinement: from task to modules",
+        "113/pseudocode": "The eight Cambridge pseudocode type names",
+        "118/declare": "Define, save and read a record",
+        "122/concept": "An ADT combines data and operations",
+        "122/implementation": "Array implementations of three ADTs",
         "123/pseudocode": "Justify the data structure in Cambridge answers",
         "130/procedure": "A procedure performs actions and returns no value",
+        "133/substring": "Use the supplied string-function definition",
+        "140/standard": "From design description to pseudocode",
         "137/validation": "Testing checks validation against expected results",
         "145/evaluation": "Evaluation uses requirements and measurable success criteria",
+    }
+    subtitle_overrides = {
+        "083/normal-forms": "Each normal form removes a different dependency problem while preserving the represented facts.",
+        "111/analyser": "Each level replaces a complex step with a smaller, more precise and implementable sequence.",
+    }
+    footer_overrides = {
+        "083/normal-forms": "Check in order: atomic values and no repeating groups -> no partial dependency -> no transitive dependency.",
+        "111/analyser": "Preserve the parent purpose at every level; all refined modules must still form one complete solution.",
     }
     specs: dict[str, dict] = {}
     for key, facts in facts_by_key.items():
@@ -547,9 +579,9 @@ def current_repair_specs() -> dict[str, dict]:
             cards.append((labels[index], "\n".join(group), None, notes[index]))
         specs[key] = {
             "title": title_overrides.get(key, target["title"]),
-            "subtitle": "Use the exact facts and relationships in this model.",
+            "subtitle": subtitle_overrides.get(key, "Use the exact facts and relationships in this model."),
             "cards": cards,
-            "footer": "Exam check: state only the relationship supported by the given data and rule.",
+            "footer": footer_overrides.get(key, "Exam check: state only the relationship supported by the given data and rule."),
             "edges": [("card-1", "card-2"), ("card-2", "card-3")] if kind in {"process", "mechanism"} else [],
         }
     return specs
@@ -933,16 +965,38 @@ SPECS.update({
         "IsPass returns a BOOLEAN; DisplayResult performs output and returns no value.",
         "ENDIF closes the decision; ENDFUNCTION and ENDPROCEDURE close different subroutines.",
     ),
-    "144/algorithms": code_repair(
-        "Nested decisions need two closing keywords",
-        "Check room and date first, then check time overlap inside that branch.",
-        "CAMBRIDGE DESIGN",
-        "ClashFound ← FALSE\nFOR Index ← 1 TO NumberOfBookings\n    Current ← BookingList[Index]\n    IF Current.RoomID = NewRoomID AND\n       Current.Date = NewDate THEN\n        IF TimesOverlap(Current,\n                        NewBooking) THEN\n            ClashFound ← TRUE\n        ENDIF\n    ENDIF\nNEXT Index",
-        "NESTING MAP",
-        "FOR each indexed booking\n    IF same room and date\n        IF times overlap\n            record clash\n        ENDIF\n    ENDIF\nNEXT index",
-        "There is no need to test overlap for another room or another date.",
-        "Close inner IF first, then outer IF, then advance with NEXT Index.",
-    ),
+    "138/bug": {
+        "title": "Analyse and amend an existing program",
+        "subtitle": "Preserve existing behaviour while adding a tested enhancement.",
+        "cards": [
+            ("ANALYSE", "Existing purpose: count marks at least 50.\nInput: Marks[1:30].\nPreserve: PassCount and its boundary.", None, "Trace before editing."),
+            ("AMEND", "Declare MeritCount. Initialise it to 0. Inside the existing traversal, increment it when Mark >= 70. Output both counts.", None, "Change all affected parts coherently."),
+            ("TEST", "Regression: 49 and 50.\nEnhancement: 69 and 70.\nConfirm the old pass count and new merit count.", None, "New and existing paths must pass."),
+        ],
+        "footer": "An enhancement adds requested functionality; correcting a fault alone does not satisfy this task.",
+    },
+    "144/algorithms": {
+        "title": "Structure charts, pseudocode and state transitions",
+        "subtitle": "Use each design document for its distinct purpose.",
+        "headingSize": 22,
+        "noteSize": 18,
+        "cards": [
+            ("STRUCTURE CHART", "Main calls CheckLogin. Label UserID, Password and IsValid on parameter arrows. Boxes are modules; lines show calls.", None, "Hierarchy and interfaces, not processing flow."),
+            ("DERIVE PSEUDOCODE", "Turn each box into a complete PROCEDURE or FUNCTION header. In the parent, write matching calls with arguments.", None, "Parameters in headers; arguments in calls."),
+            ("STATE TRANSITION", "Start -> LoggedOut. valid login -> LoggedIn. logout -> LoggedOut. three invalid attempts -> Locked.", None, "Directed, event-labelled changes between states."),
+        ],
+        "footer": "A state-transition diagram is not a flowchart of every statement; it documents persistent states and events.",
+    },
+    "145/changeover": {
+        "title": "Test strategy and test plan are different",
+        "subtitle": "One governs the testing approach; the other records individual cases.",
+        "cards": [
+            ("TEST STRATEGY", "Levels and methods\nResponsibilities\nSequence and resources\nEntry/exit expectations", None, "Project-wide approach."),
+            ("TEST PLAN ROW", "ID: T03\nPurpose: upper limit\nData: 30\nExpected: accepted\nActual: accepted\nOutcome: Pass", None, "One recorded test case."),
+            ("NOT ENOUGH", "Normal, abnormal and extreme/boundary describe test data. A value list alone has no methods, responsibility, expected/actual comparison or outcome.", None, "Categories do not replace either document."),
+        ],
+        "footer": "Expected result is stated before execution; pass/fail follows comparison with the actual result.",
+    },
     "148/selection": code_repair(
         "Review selection: IF for conditions, CASE for choices",
         "Both examples must have an explicit rejoin point.",
@@ -980,7 +1034,17 @@ def render(key: str, spec: dict, destination: Path) -> None:
     card_width = (1416 - gap * 2) // 3
     for index, card in enumerate(spec["cards"]):
         x1 = 60 + index * (card_width + gap)
-        draw_card(draw, (x1, 194, x1 + card_width, 852), index, *card)
+        draw_card(
+            draw,
+            (x1, 194, x1 + card_width, 852),
+            index,
+            *card,
+            numbered=spec.get("numbered", True),
+            heading_size=spec.get("headingSize", 30),
+            body_size=spec.get("bodySize", 26),
+            code_size=spec.get("codeSize", 25),
+            note_size=spec.get("noteSize", 21),
+        )
 
     for source, target in spec.get("edges", []):
         edge = (source, target)

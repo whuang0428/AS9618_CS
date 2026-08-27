@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css?v=2" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -37,6 +37,7 @@
         <a href="#practice">Practice</a>
         <a href="#exam">Exam-style</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -351,6 +352,65 @@
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Networking benefits, LAN/WAN and the four required topologies</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Networking devices allow computers and users to share resources such as files, printers, storage and an internet connection. A network can also support communication, collaboration, central account management, central backup and access to shared services. A benefit must identify what is shared or managed and explain the consequence; 'it is easier' is not enough.</p>
+            <p>A LAN covers a limited geographical area such as one building or site and is normally owned or managed by one organisation. A WAN covers a large geographical area, connects separate LANs or sites and commonly uses telecommunications-provider infrastructure. LAN and WAN describe scope and management, not a guaranteed speed.</p>
+            <p>In a bus topology, devices attach to one shared backbone cable and a transmitted signal travels along that shared medium. In a star topology, every device has a separate link to a central switch and each frame passes through that switch. In a mesh topology, nodes have multiple interconnections so packets may use alternative routes. A hybrid topology combines two or more topology patterns, for example two star segments connected by a backbone.</p>
+            <p>Topology choice must be justified from packet path, failure effect, redundancy, cabling cost, expansion and traffic. A star isolates most individual cable faults but the central switch is a single point of failure; a mesh offers alternative paths but needs more links and management; a bus uses less cable but the shared backbone and shared traffic are weaknesses.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose a topology for a two-building clinic</h3>
+            <p>Use a star LAN inside each building so individual devices have independent links to a central switch. Connect the two stars to form a hybrid network. If the inter-building link is safety-critical, add a second path: packets can use the alternative route after one link fails, at extra cost.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Networking benefits, LAN/WAN and the four required topologies: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> State two concrete benefits of networking school computers.</p>
+              <details><summary>Show answer</summary><p>Shared printers/files/services and central management, backup or communication; each benefit must name its consequence.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Distinguish a LAN from a WAN using geographical scope and management.</p>
+              <details><summary>Show answer</summary><p>A LAN covers a limited site and is normally managed by one organisation; a WAN connects sites over a large area and often uses provider infrastructure.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Describe the packet or signal path in bus, star, mesh and hybrid topologies.</p>
+              <details><summary>Show answer</summary><p>Bus: shared backbone; star: central switch; mesh: one of several interconnected routes; hybrid: the path follows the combined component topologies.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Choose star or mesh for a hospital network that prioritises resilience.</p>
+              <details><summary>Show answer</summary><p>Mesh, because alternative packet routes can maintain communication after a link failure; acknowledge the additional links/cost.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>A college is replacing one shared bus network with star LANs connected into a hybrid topology. Explain two networking benefits and justify the topology change.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> one developed resource-sharing, communication or central-management benefit</li>
+                <li><strong>B1</strong> a second distinct developed networking benefit</li>
+                <li><strong>B1</strong> star frames pass through a central switch and an individual cable failure normally affects one device</li>
+                <li><strong>B1</strong> hybrid combines topology patterns / connects the star segments</li>
+                <li><strong>B1</strong> justification links reliability, expansion, traffic or cost to the college</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel summary-panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -387,7 +447,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

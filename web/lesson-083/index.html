@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -41,7 +41,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -208,7 +208,7 @@
         <section class="panel" id="normal-forms" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="normal-forms">
           <div class="section-title">
             <p class="eyebrow">Knowledge point 4</p>
-            <h2>Normal form idea, without turning the lesson into a maze</h2>
+            <h2>From 1NF to 3NF</h2>
             <p>AS-level questions usually expect the purpose and effect of normalisation more than a formal proof. Still, the normal form idea helps explain the method.</p>
           </div>
           <div class="normal-form-grid">
@@ -227,10 +227,10 @@
             <figcaption class="explanation-sr-only">How normal forms remove dependency problems: mechanism, reason, result, analogy and boundary condition.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Mechanism:</strong> A valid decomposition retains every original fact and follows the stated functional dependencies.</li><li><strong>Reason:</strong> After 2NF, keep Course(CourseID, CourseName, TutorID) when those course facts are represented.</li><li><strong>Result:</strong> For 3NF, store tutor details in Tutor(TutorID, TutorName) and retain TutorID only in the relation it depends on.</li><li><strong>undefined:</strong> Do not drop CourseName or move TutorID without a stated dependency.</li></ol>
+            <ol><li><strong>Mechanism:</strong> First Normal Form (1NF) requires atomic values and no repeating groups.</li><li><strong>Reason:</strong> Second Normal Form (2NF) is in 1NF and removes partial dependency: each non-key attribute depends on the whole primary key.</li><li><strong>Result:</strong> Third Normal Form (3NF) is in 2NF and removes transitive dependency: a non-key attribute must not depend on another non-key attribute.</li><li><strong>Additional fact:</strong> A valid decomposition retains every original fact, preserves keys and relationships, and follows the stated functional dependencies.</li></ol>
 
-            <p><strong>Analogy:</strong> Separate mixed filing rules one dependency at a time.</p>
-            <p><strong>Boundary:</strong> A table with a single-attribute key cannot have a partial-key dependency.</p>
+            <p><strong>Analogy:</strong> Each dependency belongs in the relation whose key determines it.</p>
+            <p><strong>Boundary:</strong> Check the forms in order; satisfying a later normal form assumes the earlier requirements are already met.</p>
           </div>
         </section>
         <!-- stage10-explanation:end normal-forms -->
@@ -322,19 +322,25 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
+            <p class="eyebrow">Core syllabus content</p>
             <h2>First, second and third normal form</h2>
           </div>
           <div class="stage2-explanation">
             <p>1NF requires atomic values and no repeating groups. 2NF is 1NF with every non-key attribute dependent on the whole primary key, removing partial dependencies. 3NF is 2NF with no non-key attribute dependent on another non-key attribute, removing transitive dependencies.</p>
-            <p>Normalisation decomposes tables while preserving keys and relationships. A 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.</p>
+            <p>Normalisation decomposes tables while preserving keys and relationships. A normalised 3NF design stores each fact once in the table identified by its determinant, reducing insertion, update and deletion anomalies.</p>
           </div>
           <article class="stage2-example">
             <h3>Worked example: Order line data</h3>
             <p>ORDER_LINE(OrderID, ProductID, ProductName, Quantity) has composite key OrderID+ProductID. ProductName depends only on ProductID, so split PRODUCT(ProductID, ProductName) and ORDER_LINE(OrderID, ProductID, Quantity) to reach 2NF for that dependency.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>First, second and third normal form: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
@@ -402,7 +408,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

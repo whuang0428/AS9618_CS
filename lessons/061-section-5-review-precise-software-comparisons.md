@@ -79,6 +79,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-061-compare.jpg`
 
 1. High-value comparisons
@@ -98,6 +99,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `precision`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-061-precision.jpg`
 
 1. Precision rules
@@ -110,6 +112,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `retrieval`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-061-retrieval.jpg`
 
 1. A compiler translates a whole high-level program into object code before execution.

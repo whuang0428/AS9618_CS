@@ -3,6 +3,93 @@ import fs from "node:fs";
 // Corrections for maintained Stage 10 source facts whose generated extraction
 // omitted a necessary operation or whose wording allowed a false relationship.
 const historicalSourceFactOverrides = {
+  "008/pixels": Object.freeze([
+    "A bitmap file contains a file header and pixel data.",
+    "The file header stores metadata needed to interpret the bitmap; it is not an image pixel.",
+    "Pixel-data size is width x height x colour depth.",
+    "When a question says to ignore the file header, do not add metadata bytes to the pixel-data calculation.",
+  ]),
+  "010/resolution": Object.freeze([
+    "Sampling resolution is the official syllabus term; sample resolution is a common synonym.",
+    "An 8-bit sampling resolution provides 2^8 = 256 possible amplitude levels.",
+    "A 16-bit sampling resolution provides 2^16 = 65,536 possible amplitude levels.",
+    "More bits per sample can represent amplitude more precisely, but use more storage.",
+  ]),
+  "034/sensors": Object.freeze([
+    "A temperature sensor measures temperature and a pressure sensor measures pressure.",
+    "An infra-red sensor detects infra-red radiation, for example in a beam alarm or remote-control receiver.",
+    "A sound sensor detects sound level or sound waves, for example in a noise monitor.",
+    "A sensor supplies input data; the processor applies the rule and an actuator performs any physical output.",
+    "Light intensity is supporting context and does not replace the named infra-red or sound sensors.",
+  ]),
+  "046/structure": Object.freeze([
+    "<label>: <opcode> <operand> gives a symbolic address to an instruction.",
+    "<label>: <data> gives a symbolic address to a memory location containing data.",
+    "Pass 1 records both instruction and data labels in the symbol table.",
+    "Pass 2 replaces a label reference with its resolved address while translating.",
+  ]),
+  "046/assembler": Object.freeze([
+    "The five groups are data movement, input/output, arithmetic, unconditional/conditional instructions and compare.",
+    "Data movement uses LDM, LDD, LDI, LDX, LDR, MOV and STO; LDR #n loads the immediate value n into IX.",
+    "Input/output uses IN and OUT; arithmetic uses ADD, SUB, INC and DEC.",
+    "JMP is unconditional; CMP and CMI compare; JPE jumps after True and JPN jumps after False.",
+    "END returns control to the operating system.",
+  ]),
+  "050/shifts": Object.freeze([
+    "Every shown input and stored result contains exactly eight bits.",
+    "Logical shifts insert zero; logical left 10110011 becomes 01100110 and logical right becomes 01011001.",
+    "Arithmetic left 10110011 becomes 01100110; arithmetic right copies sign bit 1 and becomes 11011001.",
+    "Cyclic left rotates the outgoing bit to give 01100111; cyclic right gives 11011001.",
+    "Unsigned logical-left overflow and signed arithmetic-left overflow both occur here; rotations do not use an overflow label.",
+  ]),
+  "047/effective": Object.freeze([
+    "LDR #n loads the immediate value n into the index register IX.",
+    "CMI <address> compares ACC with a value reached using indirect addressing.",
+    "JPE <address> jumps when the preceding comparison result is True.",
+    "JPN <address> jumps when the preceding comparison result is False.",
+    "Do not reinterpret these instructions as relative load, immediate compare, equal/zero branch or negative-status branch.",
+  ]),
+  "055/compare": Object.freeze([
+    "A disk formatter prepares a storage medium with file-system structures.",
+    "A virus checker scans for, quarantines and removes malware.",
+    "A disk defragmenter rearranges fragmented file blocks on a magnetic disk.",
+    "A disk contents analysis/repair utility examines file-system structures and attempts defined repairs.",
+    "Compression reduces file size; backup creates a separate recoverable copy.",
+  ]),
+  "086/join": Object.freeze([
+    "AS DML questions use at most two tables.",
+    "SELECT Student.StudentName FROM Student INNER JOIN Loan ON Student.StudentID = Loan.StudentID uses an explicit two-table join.",
+    "ON states the matching key relationship between the tables.",
+    "WHERE adds a separate row filter after the join; it does not replace the required INNER JOIN syntax.",
+  ]),
+  "099/pattern": Object.freeze([
+    "Identify the required output and retain only inputs, rules, constraints and relationships that affect it.",
+    "Represent the retained details as an abstract model, not only as a list of details to ignore.",
+    "State the model's essential inputs, processing or relationships, and output.",
+    "Check that every retained detail affects the result and every required result is represented.",
+  ]),
+  "130/parameters": Object.freeze([
+    "A subprogram interface gives the caller the name, parameter list and types, and any returned value/type.",
+    "A procedure/function header declares that interface; a function header also declares its return type.",
+    "A parameter is named in the header; an argument is the actual value or variable supplied at a call.",
+    "RETURN sends a function value to the caller; displayed output is an effect, not a return value.",
+  ]),
+  "137/java": Object.freeze([
+    "Java support only",
+    "Cambridge-style pseudocode",
+    "IF Mark >= 0 AND Mark <= 100 THEN",
+    "OUTPUT \"Accepted\"",
+    "ELSE",
+    "OUTPUT \"Rejected\"",
+    "ENDIF",
+    "Java support example only",
+    "if (mark >= 0 && mark <= 100) {",
+    "System.out.println(\"Accepted\");",
+    "} else {",
+    "System.out.println(\"Rejected\");",
+    "}",
+    "Do not write Java syntax as the final Cambridge pseudocode answer unless the question specifically asks for Java.",
+  ]),
   "020/address-journey": Object.freeze([
     "DNS resolves a domain name to an IP address; it does not return a MAC address.",
     "The network-layer packet header contains the destination IP address of the endpoint.",
@@ -27,17 +114,43 @@ const historicalSourceFactOverrides = {
     "Increment PC independently so that PC points to the next instruction.",
     "PC does not feed CIR; only the instruction held in MDR is transferred to CIR.",
   ]),
+  "043/main-registers": Object.freeze([
+    "PC holds the address of the next instruction to be fetched.",
+    "CIR holds the instruction currently being decoded or executed.",
+    "MAR holds the address of the memory location being accessed.",
+    "MDR holds data or an instruction being transferred to or from memory.",
+    "ACC holds an intermediate or final ALU result.",
+    "IX holds an offset used in indexed addressing.",
+    "The status register holds flags about a result or processor state.",
+    "A general-purpose register can hold varied working values; a special-purpose register has a defined processor role.",
+    "Cambridge assembly questions assume ACC is the available general-purpose working register.",
+  ]),
   "047/modes": Object.freeze([
     "Immediate addressing uses the operand field as the value itself.",
     "Direct addressing uses the operand field as the address of the value.",
     "Indirect addressing follows an address stored at the operand address to reach the value.",
     "Indexed addressing adds an index value to a base address to form the effective address.",
+    "Relative addressing adds an offset to a PC-based instruction address to form the target or effective address.",
+    "LDR #n loads the immediate value n into IX; it is not relative addressing.",
   ]),
   "056/concept": Object.freeze([
     "A compiler translates high-level source into target machine or object code.",
     "An assembler translates assembly mnemonics into target machine or object code.",
     "A linker combines object modules and resolves references to form an executable.",
     "A loader places executable code and data into memory; it is not a generic object-to-machine translation stage.",
+  ]),
+  "056/assembler": Object.freeze([
+    "An assembler translates assembly-language mnemonics into machine code or an object-code module.",
+    "Machine code uses the instruction set and binary encodings of the target processor.",
+    "An object module may still need a linker to combine modules and resolve external library references before an executable can be produced.",
+    "An assembler does not translate high-level languages such as Java or Cambridge pseudocode.",
+  ]),
+  "056/compare": Object.freeze([
+    "A compiler translates a whole high-level program before execution and produces target or object code; a linked executable can run repeatedly without the source.",
+    "An interpreter translates and executes high-level statements during execution and normally produces no separate permanent object-code file.",
+    "An assembler translates assembly-language mnemonics into target machine code or an object module for a specific processor instruction set.",
+    "If an assembler or compiler produces object modules, a linker may still be required before there is an executable program.",
+    "Choose the translator from the input language and the development or deployment need; do not claim that every assembler output is immediately executable.",
   ]),
   "089/sql": Object.freeze([
     "For the clauses shown, written syntax order is SELECT, FROM, WHERE, GROUP BY, ORDER BY.",
@@ -116,9 +229,9 @@ const historicalSourceFactOverrides = {
     "Define an embedded system by purpose and context, not only by physical size.",
   ]),
   "098/concept": Object.freeze([
-    "Identify what data is supplied and do not invent missing data.",
-    "State the required transformation in clear natural language.",
-    "State the exact result that must be displayed, returned or stored.",
+    "An algorithm is a solution to a problem expressed as a sequence of defined steps.",
+    "Each step must be unambiguous, ordered where order matters and capable of being carried out.",
+    "Identify what data is supplied, state the required transformation and state the exact result.",
     "Record limits, quantity requirements and supported assumptions.",
     "Check that every requirement maps to an input, process, output, constraint or assumption.",
   ]),
@@ -137,9 +250,9 @@ const historicalSourceFactOverrides = {
   ]),
   "099/decomposition": Object.freeze([
     "Split the whole task into meaningful sub-problems with distinct responsibilities.",
-    "Separate receiving data, checking requirements, calculations and producing results when their responsibilities differ.",
-    "Use clear verb-based names instead of vague labels such as Part1 or ProcessData.",
-    "Confirm that the sub-problems connect into one complete solution.",
+    "Express the resulting design as program modules with clear inputs, processing and outputs.",
+    "A module may become a procedure that performs an action or a function that returns a value.",
+    "Confirm that all modules connect into one complete solution.",
   ]),
   "099/abstraction": Object.freeze([
     "Keep details that affect an input, rule, calculation, constraint or output.",
@@ -153,6 +266,13 @@ const historicalSourceFactOverrides = {
     "State each sub-problem's input and output.",
     "Check that the parts collectively meet every requirement without gaps or overlap.",
     "The result is a natural-language responsibility plan ready for a later representation lesson.",
+  ]),
+  "111/analyser": Object.freeze([
+    "Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps.",
+    "Refinement stops when every step is precise enough to implement and its input and output are clear.",
+    "At each level, preserve the parent step's purpose and input-process-output relationship.",
+    "Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.",
+    "Every level must reduce ambiguity and collectively remain a complete solution.",
   ]),
   "006/precision": Object.freeze([
     "0.75 denary equals 0.1100 binary exactly.",
@@ -286,6 +406,11 @@ const historicalSourceFactOverrides = {
     "Close every structured IF example with ENDIF.",
     "Choosing the correct type does not replace validation against the problem's allowed range.",
   ]),
+  "113/pseudocode": Object.freeze([
+    "Cambridge pseudocode uses INTEGER, REAL, CHAR, STRING, BOOLEAN and DATE for scalar values.",
+    "The Version 2 Notes also name ARRAY and FILE among the pseudocode data types.",
+    "Select a type from the value's meaning and required operations; numeric-looking identifiers may still require STRING.",
+  ]),
   "116/pseudocode": Object.freeze([
     "Traverse a 3 by 4 array with nested loops.",
     "Output the current cell inside the inner loop.",
@@ -316,6 +441,11 @@ const historicalSourceFactOverrides = {
     "A count condition increments a counter for qualifying records.",
     "An update condition changes the required field of qualifying records.",
   ]),
+  "118/declare": Object.freeze([
+    "A record groups related named fields of different data types under one identifier.",
+    "Define the record between TYPE and ENDTYPE, then declare a variable of that record type.",
+    "Student1.Mark <- 75 saves a field value; OUTPUT Student1.Mark reads that named field.",
+  ]),
   "119/traversal": Object.freeze([
     "Use Index to select each Students record in turn.",
     "Test the Mark field of the current record.",
@@ -327,6 +457,16 @@ const historicalSourceFactOverrides = {
     "Check NOT EOF before attempting READFILE.",
     "When more data exists, read and process the next line.",
     "When EOF is true, skip READFILE, leave the loop and close the file.",
+  ]),
+  "122/concept": Object.freeze([
+    "An abstract data type is a collection of data and a set of operations on those data.",
+    "Stack, queue and linked list are examples whose permitted operations define their behaviour.",
+    "The implementation may use arrays and indexes without changing the ADT's observable rules.",
+  ]),
+  "122/implementation": Object.freeze([
+    "An array stack uses Top; a queue uses Front and Rear; a linked list uses Data, Next, Start and a free list.",
+    "Add/delete preserve stack LIFO, queue FIFO and linked-list links; edit changes stored data without corrupting structure.",
+    "Candidates are not required to write pseudocode for these ADT operations; understand add, edit, delete and array implementation.",
   ]),
   "121/types": Object.freeze([
     "CSV fields arrive as text.",
@@ -373,9 +513,10 @@ const historicalSourceFactOverrides = {
     "Stop when Mark is between 0 and 100 inclusive.",
   ]),
   "130/parameters": Object.freeze([
-    "A parameter is named in a subroutine header and receives an argument supplied at a call.",
-    "IsPass returns TRUE for marks at least 50 and FALSE otherwise.",
-    "Close each IF with ENDIF independently of ENDFUNCTION.",
+    "A subprogram interface gives the caller the name, parameter list and types, and any return value/type.",
+    "A procedure header or function header declares that interface; a function header also declares its return type.",
+    "A parameter is named in the header; an argument is the actual value or variable supplied at a call.",
+    "RETURN sends a function value to the caller; displayed output is an effect, not a return value.",
   ]),
   "132/shadowing": Object.freeze([
     "Declare a global Score and set it to 50.",
@@ -388,6 +529,11 @@ const historicalSourceFactOverrides = {
     "If the normalised answer equals Y, output Continue.",
     "Close the selection with ENDIF.",
     "Case conversion changes letter case but does not remove spaces or correct spelling.",
+  ]),
+  "133/substring": Object.freeze([
+    "String manipulation functions are supplied in the question; use the stated name, parameter order and position convention.",
+    "Trace the supplied routine exactly, then use its returned string in an assignment, comparison, output or expression.",
+    "Do not import Java's zero-based substring convention or memorise an unstated course-specific signature.",
   ]),
   "139/integration": Object.freeze([
     "IsValidMark returns TRUE only for marks from 0 to 100 inclusive.",
@@ -407,6 +553,11 @@ const historicalSourceFactOverrides = {
     "Use REPEAT, then the body, then UNTIL Condition for a post-condition loop.",
     "Do not use DO...ENDWHILE as the Cambridge post-condition form.",
   ]),
+  "140/standard": Object.freeze([
+    "Follow a flowchart from Start: translate input/output symbols, decisions, branches and loop-back arrows without losing a path.",
+    "From structured English, preserve the controlled verbs, conditions and indentation when selecting Cambridge pseudocode constructs.",
+    "Dry-run the source description and pseudocode with the same data; matching paths and outputs confirm equivalence.",
+  ]),
   "141/fragment": Object.freeze([
     "Initialise PassCount before processing ten array positions.",
     "Input the current element before testing it.",
@@ -425,11 +576,20 @@ const historicalSourceFactOverrides = {
     "Close the function's IF with ENDIF before ENDFUNCTION.",
     "DisplayResult outputs its parameters and returns no value.",
   ]),
+  "138/bug": Object.freeze([
+    "Analyse the existing program's purpose, inputs, outputs, control flow and behaviour that must remain unchanged before editing it.",
+    "Amend declarations, initialisation, processing and output coherently to add the requested functionality rather than rewriting unrelated code.",
+    "Test the new path and rerun regression tests for the existing path; adding functionality is an enhancement, not merely correcting a fault.",
+  ]),
   "144/algorithms": Object.freeze([
-    "Traverse each booking and first test whether room and date match.",
-    "Only then test whether the booking times overlap.",
-    "Close the inner overlap IF before closing the outer room-and-date IF.",
-    "Advance to the next booking only after both selections are closed.",
+    "A structure chart shows module hierarchy, calling relationships and labelled parameters passed between modules, procedures or functions.",
+    "Derive pseudocode by turning each box into a complete subprogram header and each hierarchy connection into a matching call with arguments.",
+    "A separate state-transition diagram marks the start state and uses directed, event-labelled transitions between persistent states; it is not a flowchart of processing steps.",
+  ]),
+  "145/changeover": Object.freeze([
+    "A test strategy states the testing levels, methods, responsibilities, sequence and resources for the project.",
+    "A test plan records individual cases with a test ID, purpose, data, expected result, actual result and pass/fail outcome.",
+    "Normal, abnormal and extreme/boundary values are test-data categories; a list of values alone is neither a complete strategy nor a complete test plan.",
   ]),
   "148/selection": Object.freeze([
     "Use IF for a condition or range and close it with ENDIF.",

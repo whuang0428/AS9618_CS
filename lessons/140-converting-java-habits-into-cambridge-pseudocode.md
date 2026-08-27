@@ -75,9 +75,8 @@ Misconception: Students often think working Java automatically means good pseudo
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S11.01
 **Focus:** Translate descriptions into Cambridge pseudocode
 
 ### Direct explanation
@@ -100,7 +99,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Write Cambridge pseudocode for: input five temperatures, count those below zero, output the count.
+**Question (4 marks):** Translate this structured-English design into Cambridge pseudocode: input five temperatures; count those below zero; output the count.
 
 - **B1** initialises count to 0
 - **M1** uses a five-iteration count-controlled loop with INPUT
@@ -117,6 +116,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `arrays`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-arrays.jpg`
 
 1. Java support example only
@@ -131,6 +131,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `assignment`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-assignment.jpg`
 
 1. Assignment
@@ -144,6 +145,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `checkpoint`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-checkpoint.jpg`
 
 1. Monthly checkpoint
@@ -158,6 +160,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `io`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-io.jpg`
 
 1. Input and output
@@ -173,6 +176,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `loops`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-loops.jpg`
 
 1. Use FOR when a counter range determines the number of iterations.
@@ -184,6 +188,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `selection`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-selection.jpg`
 
 1. Selection
@@ -201,34 +206,28 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `spotter`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-spotter.jpg`
 
 1. Java spotter
 2. Suspicious answer fragment
 
-### Cambridge pseudocode uses readable algorithm keywords
+### Translate a flowchart or structured English into pseudocode
 
 - **Explains:** `standard`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-standard.jpg`
 
-1. Exam standard
-2. It is not Java with the class declaration removed. It has its own conventions for assignment, input/output, loops, selection and subroutines.
-3. Java habit
-4. Cambridge-style pseudocode
-5. Assignment
-6. total = total + mark;
-7. Total <- Total + Mark
-8. System.out.println(total);
-9. OUTPUT Total
-10. Selection
-11. if (...) { ... }
-12. IF ... THEN ... ENDIF
+1. Follow a flowchart from Start: translate input/output symbols, decisions, branches and loop-back arrows without losing a path.
+2. From structured English, preserve the controlled verbs, conditions and indentation when selecting Cambridge pseudocode constructs.
+3. Dry-run the source description and pseudocode with the same data; matching paths and outputs confirm equivalence.
 
 ### Use PROCEDURE and FUNCTION instead of Java method wrappers
 
 - **Explains:** `subroutines`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-140-subroutines.jpg`
 
 1. Subroutines

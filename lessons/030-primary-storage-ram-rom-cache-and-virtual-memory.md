@@ -73,28 +73,30 @@ Misconception: Students often list hardware without explaining suitability. Corr
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S3.06, S3.07
-**Focus:** SRAM, DRAM, PROM, EPROM and EEPROM
+**Focus:** RAM, ROM and their principal technologies
 
 ### Direct explanation
 
+- RAM is volatile read/write primary memory used for programs and data currently being processed. ROM is non-volatile primary memory used for instructions that must remain when power is removed, such as firmware or start-up instructions. ROM is not ordinary long-term storage for user files.
 - SRAM stores bits using flip-flop circuits, needs no refresh and is fast but expensive with lower density, so it is used for cache. DRAM stores charge in capacitors, requires refresh and is slower but cheaper and denser, so it is used for main memory.
-- PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All are non-volatile ROM technologies.
+- PROM is programmed once. EPROM can be erased with ultraviolet light and reprogrammed. EEPROM is erased and rewritten electrically, often without removing it from the system. All three are non-volatile ROM technologies.
 
 ### Worked example
 
-**Choose memory for CPU cache:** SRAM is chosen because no refresh and faster access reduce processor waiting; its higher cost and lower capacity are acceptable for a small cache.
+**Choose memory for a computer system:** Use DRAM as main RAM because its density and lower cost support a large working capacity. Use a small amount of SRAM for cache because faster, no-refresh access reduces processor waiting. Store updateable firmware in EEPROM because it remains without power but can be rewritten electrically.
 
 ### Targeted practice and answers
 
-1. Why is DRAM refreshed?
+1. Distinguish RAM from ROM by volatility and use.
+   **Answer:** RAM is volatile and holds current programs/data; ROM is non-volatile and holds persistent firmware or start-up instructions.
+2. Why is DRAM refreshed?
    **Answer:** Charge in its storage capacitors leaks and must be restored.
-2. Which ROM type is erased using ultraviolet light?
-   **Answer:** EPROM.
-3. Which ROM type can normally be rewritten electrically in circuit?
-   **Answer:** EEPROM.
+3. Why is SRAM used for cache while DRAM is used for main memory?
+   **Answer:** SRAM is faster and needs no refresh; DRAM is denser and cheaper per bit for a larger capacity.
+4. Distinguish PROM, EPROM and EEPROM.
+   **Answer:** PROM is programmed once; EPROM is erased with ultraviolet light; EEPROM is erased and rewritten electrically.
 
 ### Exam-style question and MS
 
@@ -115,6 +117,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `cache-vm`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-030-cache-vm.jpg`
 
 1. Cache holds copies of recently or frequently used instructions and data close to the CPU.
@@ -127,6 +130,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `primary`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-030-primary.jpg`
 
 1. The CPU repeatedly requests current instructions and data.
@@ -139,6 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `ram-rom`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-030-ram-rom.jpg`
 
 1. RAM holds the changing state of running programs.

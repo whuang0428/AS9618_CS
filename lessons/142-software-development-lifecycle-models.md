@@ -10,14 +10,14 @@
 
 ## Learning Objectives
 By the end of the lesson, students should be able to:
-1. Describe the development activity involved in **Software development lifecycle models**.
-2. Apply the activity to a stated client requirement or system.
-3. Explain how its output supports a later development or testing activity.
+1. Order the analysis, design, coding, testing and maintenance stages.
+2. Compare waterfall, iterative and rapid application development (RAD).
+3. Explain how rapid prototypes, time-boxing and user involvement affect model choice.
 
 ## Key Vocabulary
 English first, Chinese support:
 
-- lifecycle 生命周期, requirements 需求, testing 测试, maintenance 维护
+- lifecycle 生命周期, waterfall 瀑布模型, iterative 迭代模型, rapid application development 快速应用开发
 
 ## Warm-Up Hook
 Ask whether development should begin from the request 'make it user-friendly' or from questions that make the requirement measurable. Establish that requirements must be analysed before coding.
@@ -25,7 +25,7 @@ Ask whether development should begin from the request 'make it user-friendly' or
 Focus question: Which feature distinguishes **Software development lifecycle models** from the most closely related syllabus concept?
 
 ## Guided Explanation
-Place Software development lifecycle models inside the development lifecycle. Identify the artefact produced at this stage, who uses it, and what can go wrong if it is incomplete. Connect the stage to testing and maintenance through explicit feedback paths.
+Teach the five lifecycle stages, then compare waterfall, iterative and RAD using requirements stability, user availability, prototyping speed, time-boxing, traceability and assurance needs. Agile may be mentioned only as extension context.
 
 Require students to state the relevant term, describe the mechanism or process, and apply it to the example under discussion.
 
@@ -74,6 +74,41 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often describe the lifecycle as a fixed checklist. Correction: development is iterative; findings can send a project back to earlier stages.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** Waterfall, iterative and rapid application development
+
+### Direct explanation
+
+- Waterfall completes planned stages largely in sequence and supports documentation and traceability, but late change can cause substantial rework. Iterative development builds and reviews repeated versions so evidence can refine later cycles.
+- Rapid application development (RAD) uses rapid prototyping, time-boxed development and frequent user involvement to obtain feedback quickly. It can suit an interactive system with available users, but speed and repeated prototypes can conflict with exhaustive assurance or stable architecture. Agile is related extension context, not a replacement for the named RAD model.
+
+### Worked example
+
+**Choose a lifecycle model:** For a small booking interface with available users and changing requirements, RAD can use a time-boxed prototype and immediate user feedback. For safety-critical stable requirements, waterfall's formal traceability may be more suitable than rapid prototyping.
+
+### Targeted practice and answers
+
+1. Name three defining features of RAD.
+   **Answer:** Rapid prototyping, time-boxing and frequent user involvement/feedback.
+2. Which model proceeds through planned sequential stages?
+   **Answer:** Waterfall.
+3. Why might RAD be unsuitable for a safety-critical system?
+   **Answer:** Rapid cycles may not provide the exhaustive assurance and traceability required.
+
+### Exam-style question and MS
+
+**Question (4 marks):** Compare waterfall, iterative and RAD for a system whose users can review frequent prototypes.
+
+- **B1** waterfall uses planned sequential stages and formal documentation
+- **B1** iterative development reviews repeated versions
+- **B1** RAD uses rapid prototypes/time-boxing
+- **B1** RAD uses frequent user involvement and is linked to the scenario
+
+**Strict note:** Do not substitute Agile for RAD or describe all repeated development as the same model.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -81,6 +116,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `agile`
 - **Explanation type:** tradeoff
+- **Delivery:** OPTIONAL / EXTEND
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-142-agile.jpg`
 
 1. A small increment makes assumptions visible quickly.
@@ -93,6 +129,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `artefacts`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-142-artefacts.jpg`
 
 1. Requirements define what successful behaviour means.
@@ -105,6 +142,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-142-compare.jpg`
 
 1. Stable regulated work values traceability and formal approval.
@@ -117,6 +155,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `iterative`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-142-iterative.jpg`
 
 1. Build a limited version around a defined goal.
@@ -129,6 +168,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `purpose`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-142-purpose.jpg`
 
 1. Each stage asks a different question about need, design or evidence.
@@ -137,10 +177,24 @@ Correction prompt: "State the correct term, then explain the relevant process or
 - **Analogy:** Architectural plans turn assumptions into inspectable decisions before construction.
 - **Boundary:** Documents help only when they stay accurate and influence decisions.
 
+### Rapid application development (RAD)
+
+- **Explains:** `rad`
+- **Explanation type:** process
+- **Delivery:** CORE / TEACH
+- **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-142-rad.jpg`
+
+1. RAD builds rapid prototypes inside short time boxes.
+2. Users review prototypes frequently and their feedback changes the next version.
+3. RAD can respond quickly, but may not suit work requiring exhaustive assurance and stable architecture.
+- **Analogy:** A working model is reviewed and revised before the whole product is fixed.
+- **Boundary:** RAD is a named syllabus model; Agile is related extension context, not a substitute.
+
 ### How one stage supplies the next
 
 - **Explains:** `stages`
 - **Explanation type:** process
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-142-stages.jpg`
 
 1. Analysis defines the problem and required outcomes.
@@ -153,6 +207,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `waterfall`
 - **Explanation type:** tradeoff
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-142-waterfall.jpg`
 
 1. A stage is reviewed before the next major stage begins.

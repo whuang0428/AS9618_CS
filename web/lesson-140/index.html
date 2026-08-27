@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -45,7 +45,7 @@
         <a href="#checkpoint">Checkpoint</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -115,13 +115,13 @@
 
         <!-- stage10-explanation:start standard -->
         <section class="panel explanation-panel" id="explanation-standard" data-explains="standard" data-explanation-kind="process" aria-labelledby="explanation-standard-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="standard">
-          <h2 class="explanation-sr-only" id="explanation-standard-title">Cambridge pseudocode uses readable algorithm keywords</h2>
+          <h2 class="explanation-sr-only" id="explanation-standard-title">Translate a flowchart or structured English into pseudocode</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-standard.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Cambridge pseudocode uses readable algorithm keywords with a structured visual model." />
-            <figcaption class="explanation-sr-only">Cambridge pseudocode uses readable algorithm keywords: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-140-standard.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Translate a flowchart or structured English into pseudocode with a structured visual model." />
+            <figcaption class="explanation-sr-only">Translate a flowchart or structured English into pseudocode: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Exam standard</li><li><strong>Lesson fact:</strong> It is not Java with the class declaration removed. It has its own conventions for assignment, input/output, loops, selection and subroutines.</li><li><strong>Lesson fact:</strong> Java habit</li><li><strong>Lesson fact:</strong> Cambridge-style pseudocode</li><li><strong>Lesson fact:</strong> Assignment</li><li><strong>Lesson fact:</strong> total = total + mark;</li><li><strong>Lesson fact:</strong> Total &lt;- Total + Mark</li><li><strong>Lesson fact:</strong> System.out.println(total);</li><li><strong>Lesson fact:</strong> OUTPUT Total</li><li><strong>Lesson fact:</strong> Selection</li><li><strong>Lesson fact:</strong> if (...) { ... }</li><li><strong>Lesson fact:</strong> IF ... THEN ... ENDIF</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Follow a flowchart from Start: translate input/output symbols, decisions, branches and loop-back arrows without losing a path.</li><li><strong>Lesson fact:</strong> From structured English, preserve the controlled verbs, conditions and indentation when selecting Cambridge pseudocode constructs.</li><li><strong>Lesson fact:</strong> Dry-run the source description and pseudocode with the same data; matching paths and outputs confirm equivalence.</li></ol>
 
           </div>
         </section>
@@ -450,9 +450,9 @@ ENDFUNCTION</code></pre>
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
+            <p class="eyebrow">Core syllabus content</p>
             <h2>Translate descriptions into Cambridge pseudocode</h2>
           </div>
           <div class="stage2-explanation">
@@ -463,6 +463,12 @@ ENDFUNCTION</code></pre>
             <h3>Worked example: Flowchart sum loop</h3>
             <p>A flowchart sets Total to 0 and repeats input/add until Value = -1. Pseudocode uses Total &lt;- 0; REPEAT; INPUT Value; IF Value &lt;&gt; -1 THEN Total &lt;- Total + Value; ENDIF; UNTIL Value = -1; OUTPUT Total.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Translate descriptions into Cambridge pseudocode: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
@@ -480,7 +486,7 @@ ENDFUNCTION</code></pre>
           </div>
           <article class="stage2-exam">
             <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>Write Cambridge pseudocode for: input five temperatures, count those below zero, output the count.</p>
+            <p>Translate this structured-English design into Cambridge pseudocode: input five temperatures; count those below zero; output the count.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
@@ -521,7 +527,7 @@ ENDFUNCTION</code></pre>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

@@ -81,6 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `constructs`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-constructs.jpg`
 
 1. Sequence answers what happens next and depends on statement order.
@@ -92,6 +93,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `iteration`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-iteration.jpg`
 
 1. A FOR loop uses a counter range and checks whether the next iteration is within its bounds.
@@ -103,6 +105,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `java`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-java.jpg`
 
 1. Cambridge pseudocode uses IF, THEN, ELSE and ENDIF for a two-way selection.
@@ -113,6 +116,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `selection`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-selection.jpg`
 
 1. Use IF for a Boolean condition or range and close it with ENDIF.
@@ -123,6 +127,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `sequence`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-sequence.jpg`
 
 1. Sequence
@@ -138,6 +143,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `tracer`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-126-tracer.jpg`
 
 1. Interactive trace

@@ -100,20 +100,21 @@ const mistakes = [
 const examQuestions = [
   {
     title: "Question 1",
-    marks: "5 marks",
-    prompt: "Describe the fetch stage of the fetch-decode-execute cycle.",
-    answer: "The PC contains the address of the next instruction. This address is copied to the MAR and placed on the address bus. A read signal is sent on the control bus. The instruction is transferred from memory on the data bus into the MDR. The instruction is copied to the CIR and the PC is incremented.",
+    marks: "6 marks",
+    prompt: "Use register-transfer notation to describe the fetch stage of the fetch-decode-execute cycle and explain Memory[MAR].",
+    answer: "MAR <- PC; MDR <- Memory[MAR]; CIR <- MDR; PC <- PC + 1 at a coherent point. Memory[MAR] means the contents of the memory location whose address is held in MAR. The fetched instruction in CIR is then decoded by the control unit.",
     marking: [
-      { mark: "B1", text: "PC contains address of next instruction" },
-      { mark: "B1", text: "address copied to MAR / placed on address bus" },
-      { mark: "B1", text: "read signal sent using control bus" },
-      { mark: "B1", text: "instruction transferred from memory on data bus into MDR" },
-      { mark: "B1", text: "instruction copied to CIR and/or PC incremented" },
+      { mark: "M1", text: "MAR <- PC" },
+      { mark: "M1", text: "MDR <- Memory[MAR]" },
+      { mark: "M1", text: "CIR <- MDR" },
+      { mark: "M1", text: "PC <- PC + 1 at a coherent point" },
+      { mark: "B1", text: "Memory[MAR] is the contents at the memory address held in MAR" },
+      { mark: "B1", text: "instruction in CIR is decoded by the control unit" },
     ],
     strict: [
-      "Do not accept PC contains the instruction.",
-      "Do not award MDR mark if candidate says MAR holds the instruction value.",
-      "Allow PC increment before or after CIR copy if the sequence remains logically valid.",
+      "Do not accept PC <- MAR as the first transfer.",
+      "Do not treat <- as equality or as a permanent link between registers.",
+      "Allow PC increment before or after the memory read if MAR already holds the current instruction address.",
     ],
   },
   {

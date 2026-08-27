@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -42,6 +42,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -274,13 +275,13 @@ LocalDate birthDate;</code></pre>
 
         <!-- stage10-explanation:start pseudocode -->
         <section class="panel explanation-panel" id="explanation-pseudocode" data-explains="pseudocode" data-explanation-kind="mechanism" aria-labelledby="explanation-pseudocode-title" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="pseudocode">
-          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">Same idea, different syntax</h2>
+          <h2 class="explanation-sr-only" id="explanation-pseudocode-title">The eight Cambridge pseudocode type names</h2>
           <figure class="explanation-infographic">
-            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining Same idea, different syntax with a structured visual model." />
-            <figcaption class="explanation-sr-only">Same idea, different syntax: source-grounded visual explanation.</figcaption>
+            <img src="../assets/diagrams/stage10-infographics/stage10-lesson-113-pseudocode.jpg" width="1536" height="1024" loading="lazy" decoding="async" alt="Academic knowledge-point infographic explaining The eight Cambridge pseudocode type names with a structured visual model." />
+            <figcaption class="explanation-sr-only">The eight Cambridge pseudocode type names: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Pseudocode vs Java</li><li><strong>Lesson fact:</strong> Cambridge-style declarations</li><li><strong>Lesson fact:</strong> DECLARE Count : INTEGER</li><li><strong>Lesson fact:</strong> DECLARE Average : REAL</li><li><strong>Lesson fact:</strong> DECLARE Found : BOOLEAN</li><li><strong>Lesson fact:</strong> DECLARE Initial : CHAR</li><li><strong>Lesson fact:</strong> DECLARE Name : STRING</li><li><strong>Lesson fact:</strong> DECLARE BirthDate : DATE</li><li><strong>Lesson fact:</strong> Java support only</li><li><strong>Lesson fact:</strong> int count;</li><li><strong>Lesson fact:</strong> double average;</li><li><strong>Lesson fact:</strong> boolean found;</li></ol>
+            <ol><li><strong>Lesson fact:</strong> Cambridge pseudocode uses INTEGER, REAL, CHAR, STRING, BOOLEAN and DATE for scalar values.</li><li><strong>Lesson fact:</strong> The Version 2 Notes also name ARRAY and FILE among the pseudocode data types.</li><li><strong>Lesson fact:</strong> Select a type from the value's meaning and required operations; numeric-looking identifiers may still require STRING.</li></ol>
 
           </div>
         </section>
@@ -371,6 +372,67 @@ LocalDate birthDate;</code></pre>
           <div class="exam-list" id="examList"></div>
         </section>
 
+
+        <!-- stage2-completion:start -->
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus content</p>
+            <h2>Select and use the official Cambridge data types</h2>
+          </div>
+          <div class="stage2-explanation">
+            <p>Select a type from the meaning and operations required by the problem. INTEGER stores whole numbers, REAL stores values that may contain a fractional part, CHAR stores one character, STRING stores a sequence of characters, BOOLEAN stores TRUE or FALSE, and DATE stores a calendar date.</p>
+            <p>Cambridge pseudocode uses the type names INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE. ARRAY and FILE describe structured or persistent data; their declarations also state an element type, bounds or file usage as required by the problem.</p>
+            <p>An identifier that contains digits is not automatically INTEGER. Codes, telephone numbers and identifiers with leading zeroes normally use STRING because arithmetic is not required. Type selection does not replace validation of permitted values.</p>
+          </div>
+          <article class="stage2-example">
+            <h3>Worked example: Choose types for a booking</h3>
+            <p>Use STRING for BookingCode because it may contain letters or leading zeroes; DATE for VisitDate; INTEGER for TicketCount; REAL for TotalCost; CHAR for a one-letter Zone; BOOLEAN for HasPaid; ARRAY for a fixed indexed set of attendee names; and FILE when bookings must persist between program runs.</p>
+          </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Select and use the official Cambridge data types: apply and assess</h2>
+          </div>
+          <div class="stage2-practice">
+            <h3>Targeted practice</h3>
+            <article class="stage2-question">
+              <p><strong>1.</strong> Choose a type for the initial M.</p>
+              <details><summary>Show answer</summary><p>CHAR, because exactly one character is stored.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> Choose a type for 18.75 used in arithmetic.</p>
+              <details><summary>Show answer</summary><p>REAL, because the value has a fractional part.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Why is 0045A a STRING?</p>
+              <details><summary>Show answer</summary><p>It is an identifier containing a letter and significant leading zeroes, and arithmetic is not required.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>4.</strong> Name the eight type names listed in the syllabus Notes.</p>
+              <details><summary>Show answer</summary><p>INTEGER, REAL, CHAR, STRING, BOOLEAN, DATE, ARRAY and FILE.</p></details>
+            </article>
+          </div>
+          <article class="stage2-exam">
+            <div class="exam-head"><h3>Exam-style question</h3><span>8 marks</span></div>
+            <p>Select and justify suitable Cambridge types for CustomerName, MiddleInitial, DateJoined, ItemCount, MeanScore, IsActive, twenty marks and data that must remain after the program ends.</p>
+            <details>
+              <summary>Show MS</summary>
+              <ol class="mark-list">
+                <li><strong>B1</strong> STRING for CustomerName</li>
+                <li><strong>B1</strong> CHAR for MiddleInitial</li>
+                <li><strong>B1</strong> DATE for DateJoined</li>
+                <li><strong>B1</strong> INTEGER for ItemCount</li>
+                <li><strong>B1</strong> REAL for MeanScore</li>
+                <li><strong>B1</strong> BOOLEAN for IsActive</li>
+                <li><strong>B1</strong> ARRAY with a numeric element type for twenty indexed marks</li>
+                <li><strong>B1</strong> FILE for persistent data, with justifications linked to meaning or use</li>
+              </ol>
+            </details>
+          </article>
+        </section>
+        <!-- stage2-completion:end -->
+
         <section class="panel" id="summary" data-delivery-role="CORE" data-classroom-activity="CHECK" data-delivery-group="summary">
           <div class="section-title">
             <p class="eyebrow">Summary</p>
@@ -407,7 +469,7 @@ LocalDate birthDate;</code></pre>
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

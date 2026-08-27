@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="../stage6-qa.css?v=7" />
     <link rel="stylesheet" href="../stage7-accessibility.css?v=3" />
-    <link rel="stylesheet" href="../stage10-explanations.css?v=7" />
-    <link rel="stylesheet" href="../lesson-toolbar.css?v=2" />
-    <link rel="stylesheet" href="../academic-theme.css?v=6" />
+    <link rel="stylesheet" href="../stage10-explanations.css?v=9" />
+    <link rel="stylesheet" href="../lesson-toolbar.css?v=3" />
+    <link rel="stylesheet" href="../academic-theme.css?v=7" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -43,7 +43,7 @@
         <a href="#exam">Exam-style</a>
         <a href="#summary">Summary</a>
         <a href="#homework">Homework</a>
-        <a href="#stage2-completion">Extra practice</a>
+        <a href="#stage2-completion">Core syllabus content</a>
       </aside>
 
       <div class="lesson-content">
@@ -58,7 +58,7 @@
             </p>
             <div class="objective-grid" aria-label="Learning objectives">
               <div><strong>Distinguish</strong><span>validation from verification using precise wording</span></div>
-              <div><strong>Apply</strong><span>range, length, type, format, presence and check digit examples</span></div>
+              <div><strong>Apply</strong><span>range, format, length, presence, existence, limit and check digit examples</span></div>
               <div><strong>Evaluate</strong><span>what each method can and cannot detect</span></div>
             </div>
           </div>
@@ -208,7 +208,7 @@
             <figcaption class="explanation-sr-only">Common validation checks: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> What it tests</li><li><strong>Lesson fact:</strong> Range check</li><li><strong>Lesson fact:</strong> Value is within allowed limits.</li><li><strong>Lesson fact:</strong> Exam mark must be 0 to 75.</li><li><strong>Lesson fact:</strong> Length check</li><li><strong>Lesson fact:</strong> Number of characters is correct or acceptable.</li><li><strong>Lesson fact:</strong> Student ID must be 8 characters.</li><li><strong>Lesson fact:</strong> Type check</li><li><strong>Lesson fact:</strong> Data uses the expected data type.</li><li><strong>Lesson fact:</strong> Quantity must be an integer.</li><li><strong>Lesson fact:</strong> Format check</li><li><strong>Lesson fact:</strong> Data follows a required pattern.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> The seven required validation methods are range, format, length, presence, existence, limit and check digit.</li><li><strong>Lesson fact:</strong> A range check applies both a lower and an upper bound; a limit check applies one stated upper or lower limit.</li><li><strong>Lesson fact:</strong> An existence check confirms that a value is present in a specified stored lookup or file.</li><li><strong>Lesson fact:</strong> A check digit is calculated from the other digits and compared to detect many entry or scanning errors.</li><li><strong>Lesson fact:</strong> Validation checks rules and reasonableness; it does not prove that data is true.</li></ol>
 
           </div>
         </section>
@@ -235,7 +235,7 @@
             <figcaption class="explanation-sr-only">Verification checks accuracy against the source: source-grounded visual explanation.</figcaption>
           </figure>
           <div class="explanation-sr-only" aria-label="Infographic text alternative">
-            <ol><li><strong>Lesson fact:</strong> Verification checks whether entered or transferred data agrees with a source, second entry or transmitted value.</li><li><strong>Lesson fact:</strong> A match provides evidence of agreement but does not guarantee that the source is true or accurate.</li><li><strong>Lesson fact:</strong> Validation checks whether data satisfies specified rules; it also does not prove real-world truth.</li></ol>
+            <ol><li><strong>Lesson fact:</strong> During data entry, visual checking compares entered data with its source and double entry compares two independently entered values.</li><li><strong>Lesson fact:</strong> During transfer, a parity check on a byte tests the agreed odd or even parity; block parity applies parity across rows and columns of a data block.</li><li><strong>Lesson fact:</strong> For a checksum, the sender calculates and transmits a value for the data block; the receiver recalculates and compares it.</li><li><strong>Lesson fact:</strong> These methods detect many errors but do not prove truth or automatically correct every error.</li><li><strong>Lesson fact:</strong> A validation check digit belongs to an identifier; a transfer checksum belongs to a transmitted data block.</li></ol>
 
           </div>
         </section>
@@ -327,6 +327,9 @@
                 <option value="type">Type check: whole number quantity</option>
                 <option value="format">Format check: two letters then four digits</option>
                 <option value="presence">Presence check: not blank</option>
+                <option value="existence">Existence check: P100, P200 or P350</option>
+                <option value="limit">Upper limit check: no greater than 10 MiB</option>
+                <option value="checkDigit">Check digit: six digits, final digit calculated</option>
               </select>
             </label>
             <label>
@@ -351,7 +354,9 @@
                 <option value="password">User repeats a new password to catch typing errors.</option>
                 <option value="paper">Office worker checks typed address against a paper form.</option>
                 <option value="typedTwice">Account number is entered twice by two operators.</option>
-                <option value="copy">File copied to another system is compared with the original checksum/hash.</option>
+                <option value="copy">Transferred data block is checked using a recalculated checksum.</option>
+                <option value="parityByte">A received byte is checked using agreed odd/even parity.</option>
+                <option value="blockParity">Rows and columns of a transferred block are checked using parity.</option>
               </select>
             </label>
             <button class="primary-button" type="button" id="verifyBtn">Select method</button>
@@ -416,44 +421,68 @@
 
 
         <!-- stage2-completion:start -->
-        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="OPTIONAL" data-classroom-activity="PRACTISE" data-delivery-group="stage2-completion">
+        <section class="panel stage2-completion" id="stage2-completion" data-delivery-role="CORE" data-classroom-activity="TEACH" data-delivery-group="stage2-completion">
           <div class="section-title">
-            <p class="eyebrow">Extra practice</p>
+            <p class="eyebrow">Core syllabus content</p>
             <h2>Complete validation and verification methods</h2>
           </div>
           <div class="stage2-explanation">
-            <p>Validation checks whether data is reasonable and follows rules: range, format, length, presence, existence, limit and check digit. It cannot prove truth. Verification checks whether data was copied accurately, using visual checking or double entry.</p>
+            <p>Validation checks whether data is reasonable and follows rules: range, format, length, presence, existence, limit and check digit. It cannot prove truth. A range check applies both a lower and an upper bound, such as 0 to 75. A limit check applies one stated upper or lower limit, such as file size no greater than 10 MiB or temperature at least -20 degrees Celsius.</p>
+            <p>A format check tests a required pattern; a length check tests the number of characters; a presence check rejects a blank required field; an existence check confirms a value is stored in a specified lookup file; and a check digit is calculated from the other digits and compared. Verification checks whether data was copied accurately, using visual checking or double entry.</p>
             <p>Error detection includes parity: a parity byte checks one group and block parity adds row/column checks; a checksum is calculated from a data block and compared after transmission. These detect many errors but do not correct every error.</p>
           </div>
           <article class="stage2-example">
-            <h3>Worked example: New product code</h3>
-            <p>A presence check rejects blank input, length and format checks enforce the pattern, an existence check confirms the code is in the product file, and a check digit detects many keying errors. None proves the label was attached to the correct product.</p>
+            <h3>Worked example: Validate input, then verify a transferred record</h3>
+            <p>A 10 MiB maximum uses an upper limit check because it has one permitted limit; a mark from 0 to 75 uses a range check because it has both lower and upper bounds. A product code uses presence, length, format, existence and check-digit rules. During entry, visual checking or double entry compares values. During transfer, byte parity detects many single-bit errors, block parity adds row/column evidence and a checksum is recalculated from the received data block.</p>
           </article>
+        </section>
+        <section class="panel stage2-practice-block" id="stage2-practice" data-delivery-role="CORE" data-classroom-activity="PRACTISE" data-delivery-group="stage2-practice">
+          <div class="section-title">
+            <p class="eyebrow">Core syllabus practice</p>
+            <h2>Complete validation and verification methods: apply and assess</h2>
+          </div>
           <div class="stage2-practice">
             <h3>Targeted practice</h3>
             <article class="stage2-question">
-              <p><strong>1.</strong> Which check confirms a foreign code is already stored in a lookup file?</p>
+              <p><strong>1.</strong> Which check enforces a file size of no more than 10 MiB?</p>
+              <details><summary>Show answer</summary><p>An upper limit check.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>2.</strong> How does a range check differ from a limit check?</p>
+              <details><summary>Show answer</summary><p>A range check applies both lower and upper bounds; a limit check applies one stated upper or lower limit.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>3.</strong> Which check confirms a foreign code is already stored in a lookup file?</p>
               <details><summary>Show answer</summary><p>Existence check.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>2.</strong> How does double-entry verification work?</p>
+              <p><strong>4.</strong> Match each rule to its validation check: AA1234 follows two letters then four digits; a code has exactly six characters; a required name is not blank; a barcode includes a digit calculated from the other digits.</p>
+              <details><summary>Show answer</summary><p>Format check; length check; presence check; check digit, respectively.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>5.</strong> How does double-entry verification work?</p>
               <details><summary>Show answer</summary><p>Data is entered twice and the two entries are compared.</p></details>
             </article>
             <article class="stage2-question">
-              <p><strong>3.</strong> What happens to a checksum at the receiver?</p>
+              <p><strong>6.</strong> Distinguish byte parity from block parity.</p>
+              <details><summary>Show answer</summary><p>Byte parity checks the agreed odd/even parity for one byte; block parity applies parity across rows and columns of a block and can locate many single-bit errors.</p></details>
+            </article>
+            <article class="stage2-question">
+              <p><strong>7.</strong> What happens to a checksum at the receiver?</p>
               <details><summary>Show answer</summary><p>It is recalculated and compared with the transmitted checksum.</p></details>
             </article>
           </div>
           <article class="stage2-exam">
-            <div class="exam-head"><h3>Exam-style question</h3><span>4 marks</span></div>
-            <p>For an eight-digit account number, describe two suitable validation checks and one verification method.</p>
+            <div class="exam-head"><h3>Exam-style question</h3><span>5 marks</span></div>
+            <p>Describe one verification method used during data entry and two methods used during data transfer.</p>
             <details>
               <summary>Show MS</summary>
               <ol class="mark-list">
-                <li><strong>B1</strong> length check requires eight characters/digits</li>
-                <li><strong>B1</strong> format/type/check-digit or existence check accurately described</li>
-                <li><strong>B1</strong> visual check against source or double entry described</li>
-                <li><strong>B1</strong> distinguishes validation reasonableness from verification accuracy of copying</li>
+                <li><strong>B1</strong> visual check against source or double entry with comparison</li>
+                <li><strong>B1</strong> byte parity uses an agreed odd/even parity bit and checks it at the receiver</li>
+                <li><strong>B1</strong> block parity checks rows and columns / can locate many single-bit errors</li>
+                <li><strong>B1</strong> checksum is recalculated from received block and compared</li>
+                <li><strong>B1</strong> methods detect many errors but do not prove truth or automatically correct every error</li>
               </ol>
             </details>
           </article>
@@ -496,7 +525,7 @@
     </main>
 
     <script src="./app.js"></script>
-    <script src="../course-catalog.js?v=1"></script>
+    <script src="../course-catalog.js?v=2"></script>
     <script src="../lesson-toolbar.js?v=2"></script>
     <script src="../stage7-accessibility.js?v=4"></script>
   </body>

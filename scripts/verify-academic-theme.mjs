@@ -57,7 +57,7 @@ expect(!/@import\b/i.test(theme), "Academic theme must not import external style
 for (const definition of pageDefinitions) {
   const html = read(definition.html);
   const prefix = definition.page === "index" ? "./" : "../";
-  const themeHref = `${prefix}academic-theme.css?v=6`;
+  const themeHref = `${prefix}academic-theme.css?v=7`;
   expect(occurrences(html, `href="${themeHref}"`) === 1,
     `${definition.page}: academic theme link count is not one`);
 
@@ -71,7 +71,7 @@ for (const definition of pageDefinitions) {
     `${definition.page}: academic theme must follow the accessibility stylesheet`);
 
   if (definition.kind === "lesson") {
-    expect(html.indexOf("../lesson-toolbar.css?v=2") < html.indexOf(themeHref),
+    expect(html.indexOf("../lesson-toolbar.css?v=3") < html.indexOf(themeHref),
       `${definition.page}: academic theme must follow the lesson toolbar stylesheet`);
   }
 }
@@ -87,7 +87,7 @@ const classroomGenerator = read("scripts/apply-classroom-delivery.mjs");
 expect(classroomGenerator.includes("academicThemeStylesheet"),
   "Classroom delivery generator does not preserve the academic theme");
 for (const generator of ["scripts/generate-assessments.mjs", "scripts/generate-resource-hub.mjs"]) {
-  expect(read(generator).includes('../academic-theme.css?v=6'),
+  expect(read(generator).includes('../academic-theme.css?v=7'),
     `${generator}: generated hub output does not preserve the academic theme`);
 }
 

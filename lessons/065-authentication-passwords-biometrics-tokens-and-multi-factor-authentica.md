@@ -72,6 +72,46 @@ Do not award vague claims such as "better", "easier", "secure" or "efficient" wi
 Misconception: Students often propose encryption for every problem. Correction: encryption protects confidentiality but does not fix poor permissions, phishing or missing backups.
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
+<!-- stage2-completion:start -->
+## Core syllabus content
+
+**Focus:** User accounts, passwords and biometric authentication
+
+### Direct explanation
+
+- A user account gives an individual or role a distinct system identity and supports accountability. A password is secret knowledge used to authenticate an identity claim. Accounts should not be shared; passwords should be difficult to guess, stored as salted hashes, protected by attempt limits and changed if compromised.
+- Biometrics use a physical or behavioural characteristic such as fingerprint, face, iris, retina, voice or typing pattern. A captured feature is converted to a template and compared with an enrolled template. A match authenticates the identity claim; authorisation is the separate decision about what that user may access or do.
+- False rejection denies a valid enrolled user by mistake; false acceptance authenticates an impostor by mistake. Biometrics can be convenient and cannot be casually shared like a password, but require sensors/templates, may raise privacy concerns and cannot normally be replaced as easily as a compromised password.
+
+### Worked example
+
+**Account login with fingerprint:** A named staff account first supplies a password, then a fingerprint sensor captures a feature and compares its template with the enrolled template. A match authenticates the claimed identity. The access-rights system then separately decides whether that account may read payroll data; the biometric match itself does not grant every permission.
+
+### Targeted practice and answers
+
+1. What is the purpose of a user account?
+   **Answer:** It provides a distinct identity for authentication, access control and accountability.
+2. What does a biometric match establish?
+   **Answer:** It provides evidence that the presented feature matches the enrolled identity template; it authenticates the identity claim.
+3. Does successful authentication decide every permitted action?
+   **Answer:** No. Authorisation/access rights separately decide what the authenticated user may access or do.
+4. Distinguish false accept from false reject.
+   **Answer:** False accept authenticates an impostor; false reject denies a valid enrolled user.
+
+### Exam-style question and MS
+
+**Question (6 marks):** Describe how user accounts, passwords and biometrics can protect a computer system, including one limitation of each authentication method.
+
+- **B1** account supplies a distinct identity/accountability record
+- **B1** password is secret knowledge checked during authentication
+- **B1** password limitation such as guessing/phishing/reuse/sharing
+- **B1** biometric feature is captured and compared with an enrolled template
+- **B1** biometric limitation such as false accept/reject, sensor/template or privacy risk
+- **B1** authentication is distinguished from later authorisation/access rights
+
+**Strict note:** Do not describe a biometric match as permission to access every resource or claim that biometrics cannot produce errors.
+<!-- stage2-completion:end -->
+
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
@@ -79,17 +119,19 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `biometrics`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-065-biometrics.jpg`
 
-1. Examples Fingerprint, face, iris, retina, voice or typing pattern.
-2. Advantage Difficult to forget, lose or share casually; quick for users.
-3. Limitation Requires sensors and stored biometric templates; may raise privacy concerns.
-4. Error types False reject blocks a valid user; false accept allows an unauthorised user.
+1. A biometric sensor captures a physical or behavioural feature and the system compares its template with a stored enrolled template.
+2. A match authenticates the identity claim; authorisation is a separate process that decides what an authenticated user may access or do.
+3. A false reject denies a valid enrolled user by mistake; a false accept authenticates an impostor by mistake.
+4. Biometrics require sensors and stored templates and may create privacy, false-accept and false-reject risks.
 
 ### Compare methods by evidence, risk and context
 
 - **Explains:** `compare`
 - **Explanation type:** comparison
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-065-compare.jpg`
 
 1. Evidence
@@ -109,6 +151,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `core`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-065-core.jpg`
 
 1. Authentication Verifies that a user, device or process is who it claims to be.
@@ -120,6 +163,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `factors`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-065-factors.jpg`
 
 1. Something you know Password, passphrase or PIN. Risk: guessed, reused, shared or phished.
@@ -131,6 +175,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `mfa`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-065-mfa.jpg`
 
 1. Definition Multi-factor authentication requires evidence from two or more different factor categories.
@@ -142,6 +187,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `password-tool`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-065-password-tool.jpg`
 
 1. Interactive password check
@@ -152,6 +198,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `passwords`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-065-passwords.jpg`
 
 1. Strength Longer passwords or passphrases with less predictable structure are harder to guess.
@@ -163,6 +210,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `tokens`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-065-tokens.jpg`
 
 1. Hardware token A physical device, card or key used during login.

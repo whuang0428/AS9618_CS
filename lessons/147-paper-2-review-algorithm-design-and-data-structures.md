@@ -81,6 +81,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `algorithms`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-147-algorithms.jpg`
 
 1. Algorithm design review
@@ -92,6 +93,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `files`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-147-files.jpg`
 
 1. Files and records
@@ -109,6 +111,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `selection`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-147-selection.jpg`
 
 1. Structure choice
@@ -128,6 +131,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `strategy`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-147-strategy.jpg`
 
 1. Review strategy
@@ -147,6 +151,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `structure-tool`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-147-structure-tool.jpg`
 
 1. Data structure chooser
@@ -156,6 +161,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `structures`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-147-structures.jpg`
 
 1. Cambridge arrays have explicitly declared lower and upper bounds.
@@ -166,6 +172,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `trace-tool`
 - **Explanation type:** synthesis
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-147-trace-tool.jpg`
 
 1. Interactive trace tool

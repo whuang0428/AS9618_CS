@@ -75,58 +75,63 @@ Misconception: Students often start coding before defining the output. Correctio
 Correction prompt: "State the correct term, then explain the relevant process or distinction."
 
 <!-- stage2-completion:start -->
-## Stage 2 syllabus completion
+## Core syllabus content
 
-**Official audit rows:** S9.08
-**Focus:** Stepwise refinement
+**Focus:** Stepwise refinement from IPO design to modules
 
 ### Direct explanation
 
-- Stepwise refinement starts with a high-level task and repeatedly replaces each complex step with smaller, precise substeps. Refinement stops when each step can be implemented directly and its inputs/outputs are clear.
-- It supports modularity, review and testing because each refinement level preserves the purpose of its parent step. It is not merely adding more prose; each level must reduce ambiguity.
+- Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps. Refinement stops when every step is precise enough to implement and its input and output are clear.
+- At each level, preserve the parent step's purpose and input-process-output relationship. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.
+- Refinement supports review, implementation and testing because each module has a limited responsibility. It is not merely adding prose: every level must reduce ambiguity and collectively remain a complete solution.
 
 ### Worked example
 
-**Process an order:** Level 1: Validate order, calculate total, produce receipt. Refine calculate total into: set Total to 0; for each item validate quantity, add Price * Quantity; apply discount; add tax.
+**Refine an order-processing algorithm:** Level 1: InputOrder; ValidateOrder; CalculateTotal; ProduceReceipt. Refine CalculateTotal into Set Total to 0; for each item validate Quantity; add Price * Quantity; apply Discount; return Total. CalculateTotal can be a function returning Total, while ProduceReceipt can be a procedure receiving the completed total.
 
 ### Targeted practice and answers
 
 1. What is the starting point of stepwise refinement?
-   **Answer:** A high-level solution/task.
+   **Answer:** A high-level algorithm or task.
 2. When should refinement stop?
-   **Answer:** When steps are precise enough to implement directly.
-3. How does refinement support testing?
-   **Answer:** Smaller modules/steps can be checked independently against defined inputs and outputs.
+   **Answer:** When each step is a defined, implementable action with clear inputs and outputs.
+3. How does IPO help one refinement level?
+   **Answer:** It checks that each module receives the data it needs, performs defined processing and supplies the required output.
 
 ### Exam-style question and MS
 
-**Question (4 marks):** Apply one level of stepwise refinement to the task 'register a new library member'.
+**Question (5 marks):** Apply two levels of stepwise refinement to 'register a new library member', showing module inputs/outputs and identifying one procedure or function.
 
-- **B1** captures required member details
-- **B1** validates details / checks existing member
-- **B1** creates and stores a unique member record
-- **B1** outputs confirmation/card or error; steps form a coherent sequence
+- **B1** Level 1 separates capture, validation, storage and confirmation responsibilities
+- **B1** Level 2 replaces at least one complex step with smaller ordered substeps
+- **B1** module inputs and outputs are clear
+- **B1** procedure or function choice matches action versus returned value
+- **B1** refined steps collectively implement the original task
 
-**Strict note:** Do not award a list of unrelated features; substeps must collectively implement the parent task.
+**Strict note:** Do not award unrelated features, repeated high-level labels or a level that does not reduce ambiguity.
 <!-- stage2-completion:end -->
 
 <!-- stage10-explanations:start -->
 ## Stage 10 visual explanations
 
-### Extract the design before writing pseudocode
+### Stepwise refinement turns a high-level algorithm into implementable modules
 
 - **Explains:** `analyser`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-111-analyser.jpg`
 
-1. Interactive scenario analyser
-2. Scenario
-3. Choose a scenario to see the IPOC breakdown.
+1. Stepwise refinement starts with a high-level algorithm and repeatedly replaces each complex step with a smaller sequence of defined substeps.
+2. Refinement stops when every step is precise enough to implement and its input and output are clear.
+3. At each level, preserve the parent step's purpose and input-process-output relationship.
+4. Related substeps can be expressed as program modules, including procedures that perform actions and functions that return calculated values.
+5. Every level must reduce ambiguity and collectively remain a complete solution.
 
 ### Turn paragraphs into a design table
 
 - **Explains:** `ipoc`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-111-ipoc.jpg`
 
 1. IPOC reading
@@ -146,6 +151,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `pseudocode`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-111-pseudocode.jpg`
 
 1. Initialise PassCount before processing five marks.
@@ -157,6 +163,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `requirements`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-111-requirements.jpg`
 
 1. Requirements
@@ -176,6 +183,7 @@ Correction prompt: "State the correct term, then explain the relevant process or
 
 - **Explains:** `structures`
 - **Explanation type:** mechanism
+- **Delivery:** CORE / TEACH
 - **Infographic:** `../assets/diagrams/stage10-infographics/stage10-lesson-111-structures.jpg`
 
 1. Control choice
